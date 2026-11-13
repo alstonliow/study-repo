@@ -1,0 +1,6 @@
+# macOS
+.DS_Store
+
+# Never commit (see meta/PLAN.md §1, §4)
+raw/
+out/
