@@ -29,6 +29,11 @@ format:
     include-after-body: filter.html
     filters:
       - list-delims.lua
+    grid:
+      sidebar-width: 270px
+      body-width: 1000px
+      margin-width: 240px
+      gutter-width: 2rem
     toc: true
     toc-depth: 2
     html-math-method: mathjax

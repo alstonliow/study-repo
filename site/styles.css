@@ -27,7 +27,6 @@ body.quarto-dark {
 }
 
 /* ---------- page ---------- */
-main.content { max-width: 760px; }
 main.content p, main.content li { hyphens: auto; }
 h2 { margin-top: 2.2rem; padding-bottom: 0.2rem; border-bottom: 1px solid var(--rule); font-size: 1.45rem; }
 h3 { margin-top: 1.6rem; font-size: 1.15rem; }
