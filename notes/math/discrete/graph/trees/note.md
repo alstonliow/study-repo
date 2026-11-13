@@ -83,9 +83,7 @@ Among trees on $n$ vertices, the path $P_{n-1}$ has the longest possible path (l
 \node (p5) at (4,0) {};
 \draw (p1)--(p2)--(p3)--(p4)--(p5);
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
 \node (s0) at (0,0) {};
 \node (s1) at (-1.3,1) {};

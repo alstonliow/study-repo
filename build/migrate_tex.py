@@ -437,20 +437,24 @@ class Converter:
     def tokenise(self, tex: str, folder: str, store: dict) -> str:
         opens, raws, refs = store["opens"], store["raws"], store["refs"]
 
-        # raw drawings (outermost), including a wrapping center env
+        # raw drawings: a whole center env that contains a drawing stays one block
+        # (it may hold several drawings side by side); then bare drawings.
+        def raw_sub(m):
+            raws.append(m.group(0))
+            return f"\n\nZZRAW{len(raws) - 1}ZZ\n\n"
+        raw_any = "|".join(RAW_ENVS)
+        center = re.compile(r"\\begin\{center\}(?:(?!\\begin\{center\}|\\end\{center\}).)*\\end\{center\}", re.S)
+        tex = center.sub(lambda m: raw_sub(m) if re.search(r"\\begin\{(%s)\}" % raw_any, m.group(0)) else m.group(0), tex)
         for env in RAW_ENVS:
-            pat = re.compile(r"(\\begin\{center\}\s*)?\\begin\{%s\}.*?\\end\{%s\}(\s*\\end\{center\})?" % (env, env), re.S)
-            def raw_sub(m):
-                body = m.group(0)
-                raws.append(body)
-                return f"\n\nZZRAW{len(raws) - 1}ZZ\n\n"
-            tex = pat.sub(raw_sub, tex)
+            tex = re.sub(r"\\begin\{%s\}.*?\\end\{%s\}" % (env, env), raw_sub, tex, flags=re.S)
 
         # enumerate labels
         tex = re.sub(r"\\begin\{enumerate\}\[label=\(\\alph\*\)(?:,start=(\d+))?\]",
                      lambda m: r"\begin{enumerate}[(a)]" + (r"\setcounter{enumi}{%d}" % (int(m.group(1)) - 1) if m.group(1) else ""), tex)
         tex = tex.replace(r"\begin{enumerate}[label=(\roman*)]", r"\begin{enumerate}[(i)]")
         tex = tex.replace(r"\begin{enumerate}[label=\arabic*.]", r"\begin{enumerate}[1.]")
+        # TeX primitive accent used for loose composition; MathJax needs \hat
+        tex = tex.replace('\\mathaccent"705E\\relax\\circ', r"\hat{\circ}")
         tex = re.sub(r"\\item\[([^\]]*)\]", lambda m: "\\item " + m.group(1) + " ", tex)
         tex = re.sub(r"\\begin\{align\*\}", r"\\[\\begin{aligned}", tex)
         tex = re.sub(r"\\end\{align\*\}", r"\\end{aligned}\\]", tex)

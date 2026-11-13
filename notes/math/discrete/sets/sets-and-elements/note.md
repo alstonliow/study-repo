@@ -114,6 +114,8 @@ $$[a,b) = \{x \in \mathbb{R}: a \le x < b\}, \qquad
 :::
 
 ```{=latex}
+\begin{center}
+\setlength{\unitlength}{1cm}
 \begin{picture}(10,1.5)
 \thicklines
 \put(0,0.7){\line(1,0){10}}

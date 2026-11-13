@@ -45,18 +45,14 @@ In $K_n$ the edges are exactly the unordered pairs of distinct vertices, so ther
 \node (p3) at (0,1.6) {};
 \draw (p0)--(p1) (p1)--(p2) (p2)--(p3) (p3)--(p0) (p0)--(p2) (p1)--(p3);
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
 \node at (0,0) {};
 \node at (1.6,0) {};
 \node at (1.6,1.6) {};
 \node at (0,1.6) {};
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
 \node (p0) at (0,0) {};
 \node (p1) at (1.6,0) {};
@@ -64,9 +60,7 @@ In $K_n$ the edges are exactly the unordered pairs of distinct vertices, so ther
 \node (p3) at (0,1.6) {};
 \draw (p3)--(p0) (p0)--(p1) (p1)--(p2);
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
 \node (p0) at (0,0) {};
 \node (p1) at (1.6,0) {};
@@ -93,9 +87,7 @@ $K_4$,  $\overline{K_4}$,  $P_3$,  $C_4$ (left to right)
   }
 }
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
 \foreach \i in {0,...,5} {
   \node (c\i) at ({60*\i}:1.6) {};
@@ -124,9 +116,7 @@ $K_5$ (left) and $C_6$ (right)
   }
 }
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1pt,minimum size=5mm,font=\tiny}]
 \node (000) at (0,0) {000};
 \node (100) at (1.5,0) {100};

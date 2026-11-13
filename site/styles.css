@@ -1,0 +1,51 @@
+/* Colours follow 1058note's mystyle.sty: definitions blue, theorem-like
+   terracotta, examples green, remarks grey. */
+:root {
+  --defc: #3B6EA5;
+  --thmc: #A5533B;
+  --exc: #4E8A5A;
+  --notec: #7A7A7A;
+  --probc: #2F4F7F;
+}
+
+.definition, .theorem, .proposition, .lemma, .corollary, .example, .claim {
+  border-radius: 4px;
+  padding: 0.6em 0.9em;
+  margin: 1em 0;
+}
+
+.definition { background: color-mix(in srgb, var(--defc) 7%, transparent); }
+.definition .theorem-title { color: var(--defc); }
+
+.theorem, .proposition, .lemma, .corollary, .claim {
+  background: color-mix(in srgb, var(--thmc) 7%, transparent);
+}
+/* Quarto adds the class "theorem" to every numbered block; colour by type */
+.theorem .theorem-title, .proposition .theorem-title,
+.lemma .theorem-title, .corollary .theorem-title { color: var(--thmc); }
+
+.example { background: color-mix(in srgb, var(--exc) 7%, transparent); }
+.example .theorem-title { color: var(--exc); }
+
+/* specific types win over the generic .theorem rule above */
+.definition.theorem { background: color-mix(in srgb, var(--defc) 7%, transparent); }
+.definition.theorem .theorem-title { color: var(--defc); }
+.example.theorem { background: color-mix(in srgb, var(--exc) 7%, transparent); }
+.example.theorem .theorem-title { color: var(--exc); }
+
+.remark .proof-title { color: var(--notec); }
+
+.problem {
+  border: 1px solid color-mix(in srgb, var(--probc) 55%, transparent);
+  background: color-mix(in srgb, var(--probc) 3%, transparent);
+  border-radius: 3px;
+  padding: 0.6em 0.9em;
+  margin: 1.2em 0 0.4em;
+}
+.problem-title { font-weight: 600; color: var(--probc); }
+.problem-source { color: var(--notec); font-size: 0.85em; margin-left: 0.4em; }
+
+.tikz-figure { text-align: center; margin: 1em 0; }
+.tikz-figure img { max-width: 100%; height: auto; }
+
+.note-meta { color: var(--notec); font-size: 0.85em; }

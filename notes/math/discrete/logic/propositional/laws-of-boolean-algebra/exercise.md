@@ -50,10 +50,8 @@ switches.
                 \draw (0,0) node[left]{$A$} to[switch, l=$x$] (2,0)
                     to[switch, l=$y$] (4,0) node[right]{$B$};
             \end{circuitikz}
-```
-
-    ```{=latex}
-\begin{circuitikz}[scale=1]
+            \hspace{1.5cm}
+            \begin{circuitikz}[scale=1]
                 \draw (0,0) node[left]{$A$} -- (0.6,0);
                 \draw (0.6,0.6) to[switch, l=$x$] (2.6,0.6);
                 \draw (0.6,-0.6) to[switch, l_=$y$] (2.6,-0.6);

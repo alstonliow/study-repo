@@ -135,9 +135,7 @@ A graph may have drawings with crossings and still be planar. $K_4$ is planar, a
 \node (d) at (1.5,0) {};
 \draw (a)--(b) (a)--(c) (a)--(d) (b)--(c) (b)--(d) (c)--(d);
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
 \node (a) at (0.75,2) {};
 \node (b) at (0,0.5) {};

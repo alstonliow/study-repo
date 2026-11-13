@@ -85,9 +85,7 @@ A *multigraph* allows multiple edges; a *pseudograph* also allows loops. In a *d
 \draw[->] (v2) to[bend left] (v3);
 \draw[->] (v4) to[out=150,in=210,looseness=8] (v4);
 \end{tikzpicture}
-```
-
-```{=latex}
+\qquad
 \begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
 \node (w1) at (0,0) {$1$};
 \node (w2) at (2,0.8) {$2$};

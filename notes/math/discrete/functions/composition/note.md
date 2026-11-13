@@ -84,8 +84,8 @@ Let $f: A \to B$, $g: B \to C$.
 
 ::: {#def-loose-composition .definition name="Loose composition"}
 
-For $f: A \to B$ and $g: C \to D$ (no requirement that $B = C$), the *loose composition* $g \mathbin{\mathaccent"705E\relax\circ} f$ is
-$$g \mathbin{\mathaccent"705E\relax\circ} f : \{x \in A : f(x) \in C\} \to D, \qquad (g \mathbin{\mathaccent"705E\relax\circ} f)(x) = g(f(x)).$$
+For $f: A \to B$ and $g: C \to D$ (no requirement that $B = C$), the *loose composition* $g \mathbin{\hat{\circ}} f$ is
+$$g \mathbin{\hat{\circ}} f : \{x \in A : f(x) \in C\} \to D, \qquad (g \mathbin{\hat{\circ}} f)(x) = g(f(x)).$$
 
 :::
 
