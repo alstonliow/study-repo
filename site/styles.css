@@ -10,6 +10,8 @@
   --tint: 4%;
   --probbg: #f1efea;
   --probfg: #3d4046;
+  --accent: #2f5d8f;
+  --sidebg: #f4f1ea;
 }
 body.quarto-dark {
   --defc: #8db1dc;
@@ -20,6 +22,8 @@ body.quarto-dark {
   --tint: 7%;
   --probbg: #24272c;
   --probfg: #c9ccd1;
+  --accent: #8fb6e4;
+  --sidebg: #202328;
 }
 
 /* ---------- page ---------- */
@@ -155,3 +159,26 @@ nav.page-navigation .pagination-link i { font-size: 1.3rem; color: var(--notec);
 /* home page: branch numbers */
 .contents-list .contents-num { display: inline-block; min-width: 1.8rem; color: var(--notec); font-weight: 400; font-variant-numeric: tabular-nums; }
 .contents-list .contents-desc { padding-left: 1.8rem; }
+
+/* ---------- sidebar: tinted panel, coloured parts and current page ---------- */
+#quarto-sidebar, #quarto-sidebar .sidebar-menu-container { background: var(--sidebg); }
+#quarto-sidebar { border-right: 1px solid var(--rule); }
+#quarto-sidebar .sidebar-link { color: color-mix(in srgb, var(--bs-body-color) 78%, transparent); }
+#quarto-sidebar .sidebar-link:hover { color: var(--accent); }
+/* parts: Discrete Mathematics, Probability */
+#quarto-sidebar .sidebar-menu-container > ul > li.sidebar-item-section > .sidebar-item-container .menu-text {
+  color: var(--accent); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
+}
+#quarto-sidebar .sidebar-menu-container > ul > li.sidebar-item-section { margin-top: 0.9rem; }
+/* branches: 1 Sets, 2 Functions, ... */
+#quarto-sidebar .sidebar-menu-container > ul > li > ul > li.sidebar-item-section > .sidebar-item-container .menu-text {
+  color: var(--bs-body-color); font-weight: 600;
+}
+#quarto-sidebar li.sidebar-item-section:has(a.sidebar-link.active) > .sidebar-item-container .menu-text { color: var(--accent); }
+/* current page */
+#quarto-sidebar a.sidebar-link.active {
+  color: var(--accent) !important; font-weight: 600;
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  box-shadow: inset 2px 0 0 var(--accent);
+  border-radius: 0 3px 3px 0; padding-left: 0.4rem; margin-left: -0.4rem;
+}
