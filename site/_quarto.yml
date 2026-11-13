@@ -12,6 +12,7 @@ metadata-files:
 
 website:
   title: "Study Notes"
+  favicon: favicon.svg
   site-url: https://alstonliow.github.io/study-repo/
   repo-url: https://github.com/alstonliow/study-repo
   search: true
@@ -21,9 +22,13 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: [cosmo, theme-light.scss]
+      dark: [cosmo, theme-dark.scss]
     css: styles.css
     include-after-body: filter.html
+    filters:
+      - list-delims.lua
     toc: true
     toc-depth: 2
     html-math-method: mathjax

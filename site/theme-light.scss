@@ -1,0 +1,29 @@
+/*-- scss:defaults --*/
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap");
+
+$font-family-sans-serif: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-family-serif: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+$font-family-base: $font-family-serif;
+$headings-font-family: $font-family-serif;
+$headings-font-weight: 600;
+$font-size-root: 17px;
+$line-height-base: 1.65;
+
+$body-bg: #fcfbf8;
+$body-color: #22252a;
+$link-color: #2f5d8f;
+$primary: #2f5d8f;
+$navbar-bg: #fcfbf8;
+$navbar-fg: #22252a;
+$sidebar-bg: #fcfbf8;
+$footer-bg: #fcfbf8;
+$border-color: #e6e2d9;
+$code-bg: #f1eee6;
+$code-color: #8e3a24;
+
+/*-- scss:rules --*/
+.navbar, .sidebar, #TOC, nav[role="doc-toc"], .breadcrumb, .quarto-title-meta,
+.note-meta, .problem-title, .problem-source, .level-badge, .callout-title-container,
+.course-filter, .nav-page, .page-footer, .theorem-title, .proof-title {
+  font-family: $font-family-sans-serif;
+}

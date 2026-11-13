@@ -99,6 +99,7 @@ TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
 \DeclareMathOperator{\lcmop}{lcm}
 """
 
+KEY_PREFIXES = {"def", "thm", "prp", "lem", "cor"}
 OPEN = re.compile(r"^(:{3,})\s*\{(.*)\}\s*$")
 CLOSE = re.compile(r"^(:{3,})\s*$")
 REF = re.compile(r"(?<![\w@])@((?:def|thm|prp|lem|cor|exm|prob|sec)-[A-Za-z0-9-]*[A-Za-z0-9])")
@@ -202,6 +203,8 @@ class Note:
         self.exercises = strip_comments((folder / "exercise.md").read_text(encoding="utf-8")) if (folder / "exercise.md").exists() else ""
         self.solutions = strip_comments((folder / "solution.md").read_text(encoding="utf-8")) if (folder / "solution.md").exists() else ""
         self.blocks: dict[str, str] = {}  # id -> name
+        self.key_items: list[str] = []    # named definitions/theorems, in order
+        self.num = ""                      # e.g. "1.4", set in main()
         for text in (self.body, self.examples, self.exercises):
             for line in text.splitlines():
                 m = OPEN.match(line)
@@ -209,10 +212,16 @@ class Note:
                     a = attrs_of(m.group(2))
                     if a["id"]:
                         self.blocks[a["id"]] = a.get("name", "")
+                        if a["id"].split("-", 1)[0] in KEY_PREFIXES and a.get("name"):
+                            self.key_items.append(a["name"])
 
         self.problem_sources = [a.get("source", "") for a, _ in top_level_divs(self.exercises)
                                 if "problem" in a["classes"]]
         self.courses = courses_of(list(self.front.get("sources") or []) + self.problem_sources)
+
+    @property
+    def display_title(self) -> str:
+        return f"{self.num} {self.title}" if self.num else self.title
 
     @property
     def branch(self) -> str:
@@ -224,7 +233,7 @@ def link_for(ref: str, here: Note, notes: dict[str, Note], owner: dict[str, str]
         nid = next((n for n in notes if "sec-" + n.replace("/", "-") == ref), None)
         if nid is None:
             return "@" + ref
-        return f"[{notes[nid].title}]({page_url(nid)})"
+        return f"[{notes[nid].display_title}]({page_url(nid)})"
     if ref in here.blocks:
         return "@" + ref
     nid = owner.get(ref)
@@ -232,7 +241,7 @@ def link_for(ref: str, here: Note, notes: dict[str, Note], owner: dict[str, str]
         return "@" + ref
     word = TYPE_WORD.get(ref.split("-", 1)[0], "")
     name = notes[nid].blocks.get(ref) or ""
-    text = f"{word} ({name})" if name else f"{word} in {notes[nid].title}"
+    text = f"{word} ({name})" if name else f"{word} in {notes[nid].display_title}"
     return f"[{text}]({page_url(nid)}#{ref})"
 
 
@@ -289,7 +298,12 @@ def fix_claims(text: str) -> str:
 
 
 def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: dict[str, str | None]) -> str:
-    parts = [note.body.strip()]
+    body_text = note.body.strip()
+    if note.num:
+        counter = iter(range(1, 1000))
+        body_text = re.sub(r"(?m)^## (?!#)(.+)$",
+                           lambda m: f"## {note.num}.{next(counter)} {m.group(1)}", body_text)
+    parts = [body_text]
     if note.examples.strip():
         parts.append("## Examples\n\n" + note.examples.strip())
     if note.exercises.strip():
@@ -311,13 +325,59 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
         meta.append("Sources: " + ", ".join(f"`{s}`" for s in note.front["sources"]))
     reqs = [r for r in note.front.get("requires") or [] if r in notes]
     if reqs:
-        meta.append("Prerequisites: " + ", ".join(f"[{notes[r].title}]({page_url(r)})" for r in reqs))
+        meta.append("Prerequisites: " + ", ".join(f"[{notes[r].display_title}]({page_url(r)})" for r in reqs))
     if note.front.get("status") == "draft":
         meta.append("Status: draft")
-    head = "---\n" + yaml.safe_dump({"title": note.title}, allow_unicode=True) + "---\n\n"
+    head = "---\n" + yaml.safe_dump({"title": note.display_title}, allow_unicode=True) + "---\n\n"
     if meta:
         head += "[" + " · ".join(meta) + "]{.note-meta}\n\n"
     return head + body + "\n"
+
+
+BRANCH_DESC = {
+    "math/discrete/sets": "Sets, subsets, power sets, set operations, partitions",
+    "math/discrete/functions": "Functions, injections and bijections, inverses, composition",
+    "math/discrete/relations": "Binary relations, their properties, equivalence relations",
+    "math/discrete/proof": "Theorems and proofs, proof techniques, induction",
+    "math/discrete/logic/propositional": "Connectives, laws of Boolean algebra, normal forms",
+    "math/discrete/logic/predicate": "Predicates and quantifiers",
+    "math/discrete/sequences": "Recurrences, limits, big-O, sums and series",
+    "math/discrete/number-theory": "Divisibility, gcd, modular arithmetic, Diffie–Hellman",
+    "math/discrete/counting": "Counting rules, inclusion–exclusion, selections",
+    "math/discrete/graph": "Paths, connectivity, trees, planarity",
+    "math/probability": "Events, conditional probability, random variables, distributions",
+}
+
+
+def branch_page(bid: str, btitle: str, members: list, bnum: int) -> str:
+    """Numbered, book-style contents for one branch."""
+    nex = sum(len(n.problem_sources) for n in members)
+    counts = f"{len(members)} topics" + (f" · {nex} exercises" if nex else "")
+    desc = BRANCH_DESC.get(bid, "")
+    lines = ["---", yaml.safe_dump({"title": f"{bnum} {btitle}"}, allow_unicode=True).strip(), "---", "",
+             f"[{desc + '. ' if desc else ''}{counts}]{{.branch-intro}}", "",
+             "::: {.branch-toc}"]
+    for n in members:
+        items = n.key_items
+        shown = " · ".join(items[:6]) + (" · …" if len(items) > 6 else "")
+        lines.append(f"- [{n.num}]{{.toc-num}} [{n.title}]({page_url(n.id)})" +
+                     (f" [{shown}]{{.toc-desc}}" if shown else ""))
+    lines += [":::", ""]
+    return "\n".join(lines)
+
+
+def contents_block(heading: str, rows: list) -> list[str]:
+    """A book-style contents list for the home page: (href, title, desc)."""
+    import html
+    items = "\n".join(
+        f'<li><a href="{href}">'
+        + (f'<span class="contents-num">{num}</span>' if num else "")
+        + f'{html.escape(title)}</a>'
+        + (f'<span class="contents-desc">{html.escape(desc)}</span>' if desc else "")
+        + "</li>"
+        for href, title, desc, num in rows)
+    return ["::: {.contents-field}", f"## {heading}", "", "```{=html}",
+            f'<ul class="contents-list">\n{items}\n</ul>', "```", ":::", ""]
 
 
 def main() -> int:
@@ -334,6 +394,20 @@ def main() -> int:
     failed = sum(1 for v in svgs.values() if v is None)
     print(f"drawings: {len(codes)} ({failed} failed)")
 
+    # numbering: branches 1, 2, ... restarting in each part (field); topics b.k
+    branch_num: dict[str, int] = {}
+    for _, branches in BRANCHES:
+        seq = 0
+        for bid, _ in branches:
+            members = sorted((n for n in notes.values() if n.branch == bid),
+                             key=lambda n: (sort_key(n.front.get("sources")), n.id))
+            if not members:
+                continue
+            seq += 1
+            branch_num[bid] = seq
+            for k, n in enumerate(members, 1):
+                n.num = f"{seq}.{k}"
+
     # pages
     if OUT_NOTES.exists():
         shutil.rmtree(OUT_NOTES)
@@ -347,11 +421,13 @@ def main() -> int:
     stray = sorted({n.branch for n in notes.values()} - known)
     if stray:
         print(f"warning: branches not in BRANCHES: {stray}", file=sys.stderr)
-    sidebar, home = [], ["---", "title: Study Notes", "---", "",
-                         "Study notes organised by topic. First batch: discrete mathematics (FIT1058 scope) and discrete probability.", ""]
+    sidebar = []
+    home = ["---", "title: Study Notes", "---", "",
+            "Personal study notes, organised by topic rather than by course. "
+            "So far: discrete mathematics and discrete probability.", ""]
     for field, branches in BRANCHES:
         sec = {"section": field, "contents": []}
-        home.append(f"## {field}\n")
+        rows = []
         for bid, btitle in branches:
             members = sorted((n for n in notes.values() if n.branch == bid),
                              key=lambda n: (sort_key(n.front.get("sources")), n.id))
@@ -359,13 +435,11 @@ def main() -> int:
                 continue
             index = OUT_NOTES / bid / "index.qmd"
             index.parent.mkdir(parents=True, exist_ok=True)
-            index.write_text(f"---\ntitle: \"{btitle}\"\n---\n\n" +
-                             "\n".join(f"- [{n.title}]({page_url(n.id)})" for n in members) + "\n",
-                             encoding="utf-8")
-            sec["contents"].append({"section": btitle, "href": f"notes/{bid}/index.qmd",
+            index.write_text(branch_page(bid, btitle, members, branch_num[bid]), encoding="utf-8")
+            sec["contents"].append({"section": f"{branch_num[bid]} {btitle}", "href": f"notes/{bid}/index.qmd",
                                     "contents": [f"notes/{n.id}.qmd" for n in members]})
-            home.append(f"- [{btitle}](notes/{bid}/index.qmd) ({len(members)})")
-        home.append("")
+            rows.append((f"notes/{bid}/index.html", btitle, BRANCH_DESC.get(bid, ""), branch_num[bid]))
+        home += contents_block(field, rows)
         sidebar.append(sec)
     # course pages: knowledge points in course order, grouped by chapter
     if OUT_COURSES.exists():
@@ -373,8 +447,7 @@ def main() -> int:
     OUT_COURSES.mkdir(parents=True)
     branch_title = {b: bt for _, bs in BRANCHES for b, bt in bs}
     page_courses = {}
-    if COURSES:
-        home += ["## Courses", ""]
+    course_rows = []
     for c in COURSES:
         members = sorted((n for n in notes.values() if c["id"] in n.courses),
                          key=lambda n: (course_key(n.front.get("sources"), c), n.id))
@@ -394,11 +467,13 @@ def main() -> int:
             keys = [k for k in n.front.get("sources") or [] if str(k).startswith(c["prefix"])]
             nprob = sum(1 for s in n.problem_sources if s.startswith(c["prefix"]))
             extra = f" ({nprob} exercise{'s' if nprob != 1 else ''})" if nprob else ""
-            lines.append(f"- [{n.title}](/notes/{n.id}.qmd){extra} <span class=\"note-meta\">{', '.join(keys)}</span>")
+            lines.append(f"- [{n.display_title}](/notes/{n.id}.qmd){extra} [{', '.join(keys)}]{{.note-keys}}")
         (OUT_COURSES / f"{c['id']}.qmd").write_text("\n".join(lines) + "\n", encoding="utf-8")
-        home.append(f"- [{label}](courses/{c['id']}.qmd) ({len(members)} knowledge points)")
+        course_rows.append((f"courses/{c['id']}.html", c["code"],
+                            c.get("name") or "Knowledge points in course order", ""))
         page_courses[f"courses/{c['id']}.html"] = [c["id"]]
-    home.append("")
+    if course_rows:
+        home += contents_block("Courses", course_rows)
     for n in notes.values():
         page_courses[f"notes/{n.id}.html"] = n.courses
 

@@ -1,57 +1,157 @@
-/* Colours follow 1058note's mystyle.sty: definitions blue, theorem-like
-   terracotta, examples green, remarks grey. */
+/* Restrained, book-like styling. Colours follow 1058note's mystyle.sty:
+   definitions blue, theorem-like terracotta, examples green, remarks grey.
+   Light values on :root, dark overrides on body.quarto-dark. */
 :root {
-  --defc: #3B6EA5;
-  --thmc: #A5533B;
-  --exc: #4E8A5A;
-  --notec: #7A7A7A;
-  --probc: #2F4F7F;
+  --defc: #3b6ea5;
+  --thmc: #a5533b;
+  --exc: #4e8a5a;
+  --notec: #767676;
+  --rule: #e2ddd2;
+  --tint: 4%;
+  --probbg: #f1efea;
+  --probfg: #3d4046;
+}
+body.quarto-dark {
+  --defc: #8db1dc;
+  --thmc: #d99a84;
+  --exc: #93c49e;
+  --notec: #9a9ea5;
+  --rule: #34373d;
+  --tint: 7%;
+  --probbg: #24272c;
+  --probfg: #c9ccd1;
 }
 
+/* ---------- page ---------- */
+main.content { max-width: 760px; }
+main.content p, main.content li { hyphens: auto; }
+h2 { margin-top: 2.2rem; padding-bottom: 0.2rem; border-bottom: 1px solid var(--rule); font-size: 1.45rem; }
+h3 { margin-top: 1.6rem; font-size: 1.15rem; }
+.quarto-title h1.title { font-weight: 600; letter-spacing: -0.01em; }
+.note-meta { display: block; color: var(--notec); font-size: 0.82rem; line-height: 1.5; }
+.note-meta a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); }
+
+/* ---------- theorem-like blocks: thin rule on the left, faint tint ---------- */
 .definition, .theorem, .proposition, .lemma, .corollary, .example, .claim {
-  border-radius: 4px;
-  padding: 0.6em 0.9em;
-  margin: 1em 0;
+  margin: 1.3em 0;
+  padding: 0.55em 0 0.55em 1em;
+  border-left: 2px solid var(--thmc);
+  background: color-mix(in srgb, var(--thmc) var(--tint), transparent);
 }
+.theorem-title { font-size: 0.95em; }
+.theorem .theorem-title, .proposition .theorem-title,
+.lemma .theorem-title, .corollary .theorem-title, .claim strong:first-child { color: var(--thmc); }
 
-.definition { background: color-mix(in srgb, var(--defc) 7%, transparent); }
+.definition, .definition.theorem {
+  border-left-color: var(--defc);
+  background: color-mix(in srgb, var(--defc) var(--tint), transparent);
+}
 .definition .theorem-title { color: var(--defc); }
 
-.theorem, .proposition, .lemma, .corollary, .claim {
-  background: color-mix(in srgb, var(--thmc) 7%, transparent);
+.example, .example.theorem {
+  border-left-color: var(--exc);
+  background: color-mix(in srgb, var(--exc) var(--tint), transparent);
 }
-/* Quarto adds the class "theorem" to every numbered block; colour by type */
-.theorem .theorem-title, .proposition .theorem-title,
-.lemma .theorem-title, .corollary .theorem-title { color: var(--thmc); }
-
-.example { background: color-mix(in srgb, var(--exc) 7%, transparent); }
 .example .theorem-title { color: var(--exc); }
 
-/* specific types win over the generic .theorem rule above */
-.definition.theorem { background: color-mix(in srgb, var(--defc) 7%, transparent); }
-.definition.theorem .theorem-title { color: var(--defc); }
-.example.theorem { background: color-mix(in srgb, var(--exc) 7%, transparent); }
-.example.theorem .theorem-title { color: var(--exc); }
+/* blocks contain paragraphs; drop the trailing gap */
+.definition > :last-child, .theorem > :last-child, .example > :last-child,
+.proof > :last-child { margin-bottom: 0; }
 
+/* proofs: plain text with an end-of-proof square */
+.proof:not(.remark) { margin: 0.6em 0 1.3em; }
+.proof:not(.remark)::after { content: "\25A0"; display: block; text-align: right; font-size: 0.75em; color: var(--notec); margin-top: -1.2em; }
+.proof-title { font-size: 0.95em; }
+
+/* remarks: quiet */
+.proof.remark { color: color-mix(in srgb, currentColor 88%, transparent); font-size: 0.95em; margin: 1em 0; }
 .remark .proof-title { color: var(--notec); }
 
+/* ---------- exercises: light grey block, neutral ---------- */
+.problem-group { margin: 1.4em 0; }
 .problem {
-  border: 1px solid color-mix(in srgb, var(--probc) 55%, transparent);
-  background: color-mix(in srgb, var(--probc) 3%, transparent);
-  border-radius: 3px;
-  padding: 0.6em 0.9em;
-  margin: 1.2em 0 0.4em;
+  padding: 0.7em 1em 0.6em;
+  background: var(--probbg);
+  border-radius: 2px;
 }
-.problem-title { font-weight: 600; color: var(--probc); }
-.problem-source { color: var(--notec); font-size: 0.85em; margin-left: 0.4em; }
+.problem > :last-child { margin-bottom: 0; }
+.problem-title { font-weight: 600; font-size: 0.95em; color: var(--probfg); }
+.problem-source { color: var(--notec); font-size: 0.8em; margin-left: 0.5em; }
+.problem-group .callout { margin: 0.5em 0 0 0; }
 
-.tikz-figure { text-align: center; margin: 1em 0; }
+/* level: small caps text, no pills */
+.level-badge { margin-left: 0.6em; font-size: 0.72em; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--notec); }
+.level-easy { color: var(--exc); }
+.level-medium { color: var(--notec); }
+.level-hard { color: var(--thmc); }
+
+/* ---------- figures ---------- */
+.tikz-figure { text-align: center; margin: 1.2em 0; }
 .tikz-figure img { max-width: 100%; height: auto; }
+body.quarto-dark .tikz-figure img { filter: invert(0.88) hue-rotate(180deg); }
 
-.note-meta { color: var(--notec); font-size: 0.85em; }
+/* ---------- home page contents ---------- */
+.contents-field { margin-top: 2rem; }
+.contents-field h2 { border-bottom: none; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--notec); margin-bottom: 0.4rem; }
+.contents-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+.contents-list li { padding: 0.6rem 0 0.65rem; border-bottom: 1px solid var(--rule); }
+.contents-list a { display: block; font-size: 1.2rem; font-weight: 600; line-height: 1.3; color: var(--bs-body-color); text-decoration: none; }
+.contents-list a:hover { color: var(--bs-link-color); text-decoration: underline; text-underline-offset: 0.15em; }
+.contents-list .contents-desc { display: block; margin-top: 0.15rem; color: var(--notec); font-size: 0.85rem; line-height: 1.4; }
 
-/* level badges on exercises and examples (easy | medium | hard) */
-.level-badge { display: inline-block; font-size: 0.72em; font-weight: 600; padding: 0.05em 0.5em; margin-left: 0.5em; border-radius: 999px; vertical-align: 0.15em; text-transform: lowercase; }
-.level-easy { background: #E3F1E6; color: #2F6B3B; }
-.level-medium { background: #FBF0D9; color: #8A6212; }
-.level-hard { background: #F6E0DA; color: #8E3A24; }
+/* ---------- "(a)" and "a)" list markers (see list-delims.lua) ---------- */
+.list-two-parens.list-lower-alpha > ol > li::marker { content: "(" counter(list-item, lower-alpha) ") "; }
+.list-two-parens.list-upper-alpha > ol > li::marker { content: "(" counter(list-item, upper-alpha) ") "; }
+.list-two-parens.list-lower-roman > ol > li::marker { content: "(" counter(list-item, lower-roman) ") "; }
+.list-two-parens.list-upper-roman > ol > li::marker { content: "(" counter(list-item, upper-roman) ") "; }
+.list-two-parens.list-decimal > ol > li::marker { content: "(" counter(list-item) ") "; }
+.list-one-paren.list-lower-alpha > ol > li::marker { content: counter(list-item, lower-alpha) ") "; }
+.list-one-paren.list-upper-alpha > ol > li::marker { content: counter(list-item, upper-alpha) ") "; }
+.list-one-paren.list-lower-roman > ol > li::marker { content: counter(list-item, lower-roman) ") "; }
+.list-one-paren.list-upper-roman > ol > li::marker { content: counter(list-item, upper-roman) ") "; }
+.list-one-paren.list-decimal > ol > li::marker { content: counter(list-item) ") "; }
+.list-two-parens > ol, .list-one-paren > ol { padding-left: 2.2em; }
+
+.note-keys { color: var(--notec); font-size: 0.8em; margin-left: 0.4em; }
+.note-meta code { color: inherit !important; background: none !important; padding: 0 !important; font-size: 0.95em; }
+
+/* ---------- previous / next page boxes ---------- */
+nav.page-navigation { display: flex; gap: 1rem; border-top: none; padding-top: 0; margin-top: 2.5rem; }
+nav.page-navigation .nav-page { flex: 1 1 0; min-width: 0; }
+nav.page-navigation .nav-page-next { text-align: right; }
+nav.page-navigation .pagination-link {
+  display: flex; align-items: center; gap: 0.4rem; height: 100%;
+  padding: 0.75rem 1rem; border: 1px solid var(--rule); border-radius: 4px;
+  color: var(--bs-body-color); text-decoration: none;
+  transition: border-color 0.15s;
+}
+nav.page-navigation .nav-page-next .pagination-link { justify-content: flex-end; }
+nav.page-navigation .pagination-link:hover { border-color: var(--bs-link-color); }
+nav.page-navigation .nav-page-text { display: flex; flex-direction: column; font-weight: 600; line-height: 1.3; }
+nav.page-navigation .nav-page-text::before { font-weight: 400; font-size: 0.75rem; color: var(--notec); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.15rem; }
+nav.page-navigation .nav-page-previous .nav-page-text::before { content: "Previous"; }
+nav.page-navigation .nav-page-next .nav-page-text::before { content: "Next"; }
+nav.page-navigation .pagination-link i { font-size: 1.3rem; color: var(--notec); }
+@media (max-width: 640px) { nav.page-navigation { flex-direction: column; } }
+
+/* ---------- branch pages: numbered contents ---------- */
+.branch-intro { display: block; color: var(--notec); font-size: 0.92rem; margin: -0.4rem 0 1.4rem; }
+.branch-toc ul { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+.branch-toc li {
+  display: grid; grid-template-columns: 2.6rem 1fr; column-gap: 0.2rem;
+  padding: 0.65rem 0 0.7rem; border-bottom: 1px solid var(--rule); margin: 0;
+}
+.branch-toc .toc-num {
+  grid-row: 1 / span 2; color: var(--notec); font-size: 0.95rem;
+  font-variant-numeric: tabular-nums; padding-top: 0.15rem;
+}
+.branch-toc li > a {
+  grid-column: 2; font-size: 1.12rem; font-weight: 600; line-height: 1.3;
+  color: var(--bs-body-color); text-decoration: none;
+}
+.branch-toc li > a:hover { color: var(--bs-link-color); text-decoration: underline; text-underline-offset: 0.15em; }
+.branch-toc .toc-desc { grid-column: 2; display: block; margin-top: 0.2rem; color: var(--notec); font-size: 0.84rem; line-height: 1.45; }
+
+/* home page: branch numbers */
+.contents-list .contents-num { display: inline-block; min-width: 1.8rem; color: var(--notec); font-weight: 400; font-variant-numeric: tabular-nums; }
+.contents-list .contents-desc { padding-left: 1.8rem; }
