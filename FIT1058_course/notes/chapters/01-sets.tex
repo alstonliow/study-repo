@@ -1,0 +1,541 @@
+% ============================================================
+% CHAPTER 1 --- SETS  (CN Ch.1, \S\ref{sec:1-1}-1.16 / Rosen \S\ref{sec:2-1}-2.2)
+% ============================================================
+\section{Sets}
+\subsection{Sets and elements}
+\label{sec:1-1}
+% CN 1.1 / Rosen 2.1
+
+\begin{note}[Naive set theory]
+We work within \emph{naive set theory}: a set is a primitive, undefined notion, and any well-specified collection of objects is assumed to form a set. This suffices for ordinary practice, but unrestricted set formation is inconsistent in general -- \emph{Russell's paradox} considers $R = \{x : x \notin x\}$, for which $R \in R \leftrightarrow R \notin R$, a contradiction. Axiomatic set theory (e.g.\ ZFC) resolves this by restricting which collections may form sets.
+\end{note}
+
+\begin{definition}[Set]
+A set $A$ is an unordered collection of distinct objects, called \emph{elements} (or \emph{members}) of $A$.
+\end{definition}
+
+\begin{definition}[Membership]
+\[
+a \in A \iff a \text{ is an element of } A, \qquad
+a \notin A \iff \neg(a \in A).
+\]
+\end{definition}
+
+\begin{definition}[Set equality]
+\[
+A = B \iff \forall x\, (x \in A \leftrightarrow x \in B).
+\]
+\end{definition}
+
+\begin{definition}[Empty set]
+$\emptyset = \{\}$ is the unique set satisfying $\forall x\, (x \notin \emptyset)$.
+\end{definition}
+
+\begin{definition}[Singleton, unordered pair]
+$\{a\}$ has the sole element $a$; $\{a,b\}$ has elements $a,b$, with $\{a,b\} = \{b,a\}$.
+\end{definition}
+
+\begin{definition}[Standard number sets]
+\begin{align*}
+\N &= \{0,1,2,3,\dots\} & \text{(natural numbers)}\\
+\Z &= \{\dots,-2,-1,0,1,2,\dots\} & \text{(integers)}\\
+\Z^+ &= \{1,2,3,\dots\} & \text{(positive integers)}\\
+\Q &= \{p/q : p \in \Z,\ q \in \Z,\ q \neq 0\} & \text{(rationals)}\\
+\R &&\text{(reals)}\\
+\C &&\text{(complex numbers)}
+\end{align*}
+\end{definition}
+
+\begin{note}
+Rosen takes $0 \in \N$; confirm this matches CN \S\ref{sec:1-4} before relying on it elsewhere.
+\end{note}
+
+\begin{definition}[Universal set]
+The \emph{universal set} $U$ is the set containing all objects under discussion in a given context; every set considered is implicitly $A \subseteq U$.
+\end{definition}
+
+\begin{note}[Venn diagram]
+A \emph{Venn diagram} represents sets as regions enclosed by curves inside a rectangle representing $U$; overlapping regions represent intersections, non-overlapping regions represent disjointness.
+\end{note}
+
+\subsection{Specifying sets}
+\label{sec:1-2}
+% CN 1.2 / Rosen 2.1
+\begin{definition}[Roster method]
+$A = \{a_1, a_2, \dots, a_n\}$. Order and repetition do not matter: $\{1,2,3\} = \{3,2,1\} = \{1,1,2,3\}$.
+\end{definition}
+
+\begin{note}[Ellipsis notation]
+$\{1,2,3,\dots\}$, or bounded: $\{1,2,\dots,100\}$.
+\end{note}
+
+\begin{definition}[Set-builder notation]
+$A = \{x \in U : P(x)\}$, equivalently $\{x \mid P(x)\}$, where $P$ is a predicate.
+\end{definition}
+
+\begin{example}
+$\{x \in \Z : x^2 < 9\} = \{-2,-1,0,1,2\}$.
+\end{example}
+
+\begin{definition}[Interval notation, $a,b \in \R$, $a<b$]
+\[
+[a,b] = \{x \in \R : a \le x \le b\}, \qquad
+(a,b) = \{x \in \R : a < x < b\},
+\]
+\[
+[a,b) = \{x \in \R : a \le x < b\}, \qquad
+(a,b] = \{x \in \R : a < x \le b\}.
+\]
+\end{definition}
+
+\begin{center}
+\setlength{\unitlength}{1cm}
+\begin{picture}(10,1.5)
+\thicklines
+\put(0,0.7){\line(1,0){10}}
+\multiput(0,0.4)(1,0){11}{\line(0,1){0.6}}
+\put(2,0.7){\circle*{0.15}}
+\put(7,0.7){\circle{0.15}}
+\put(1.85,0){$a$}
+\put(6.85,0){$b$}
+\end{picture}
+\end{center}
+\begin{center}
+\small $[a,b)$: filled dot at $a$ (included), open circle at $b$ (excluded)
+\end{center}
+
+\subsection{Cardinality}
+\label{sec:1-3}
+% CN 1.3 / Rosen 2.1
+\begin{definition}[Cardinality]
+For finite $A$, $|A|$ is the number of distinct elements of $A$. $|\emptyset| = 0$.
+\end{definition}
+
+\begin{definition}[Finite, infinite set]
+$A$ is \emph{finite} if $A = \emptyset$ or there exists $n \in \Z^+$ and a bijection $\{1,2,\dots,n\} \to A$; then $|A| = n$. If no such $n$ exists, $A$ is \emph{infinite}.
+\end{definition}
+
+\subsection{Sets of numbers}
+\label{sec:1-4}
+% CN 1.4
+\begin{definition}[Signed subsets]
+\[
+\Z^+ = \{1,2,3,\dots\}, \quad \Z^- = \{-1,-2,-3,\dots\}, \quad
+\R^+ = \{x \in \R : x > 0\}, \quad \R^- = \{x \in \R : x < 0\}.
+\]
+\end{definition}
+
+\begin{note}
+$\N \subseteq \Z \subseteq \Q \subseteq \R \subseteq \C$.
+\end{note}
+
+\subsection{Sets of strings}
+\label{sec:1-5}
+% CN 1.5
+\begin{definition}[Alphabet, string, length]
+An \emph{alphabet} $\Sigma$ is a finite nonempty set of symbols. A \emph{string} over $\Sigma$ is a finite sequence of symbols from $\Sigma$. $|w|$ is the length of $w$; $\varepsilon$ is the \emph{empty string}, $|\varepsilon| = 0$.
+\end{definition}
+
+\begin{definition}[$\Sigma^*$, $\Sigma^n$]
+\[
+\Sigma^n = \{w : w \text{ over } \Sigma,\ |w| = n\}, \qquad
+\Sigma^* = \bigcup_{n=0}^{\infty} \Sigma^n.
+\]
+\end{definition}
+
+\subsection{Subsets and supersets}
+\label{sec:1-6}
+% CN 1.6 / Rosen 2.1
+\begin{definition}[Subset, superset]
+\[
+A \subseteq B \iff \forall x\,(x \in A \rightarrow x \in B), \qquad
+A \supseteq B \iff B \subseteq A.
+\]
+\end{definition}
+
+\begin{definition}[Proper subset]
+\[
+A \subsetneq B \iff (A \subseteq B) \wedge (A \neq B).
+\]
+\end{definition}
+
+\begin{proposition}
+For every set $A$, $\emptyset \subseteq A$.
+\end{proposition}
+\begin{proof}
+By definition $\emptyset \subseteq A$ iff $\forall x\,(x \in \emptyset \rightarrow x \in A)$. Since $x \in \emptyset$ is always false, the conditional is vacuously true for every $x$, so the universally quantified statement holds. Hence $\emptyset \subseteq A$.
+\end{proof}
+
+\begin{proposition}
+$\subseteq$ is reflexive ($A \subseteq A$) and transitive ($A \subseteq B \wedge B \subseteq C \Rightarrow A \subseteq C$).
+\end{proposition}
+
+\subsection{Minimal, minimum, maximal, maximum}
+\label{sec:1-7}
+% CN 1.7
+\begin{example}[Motivating example: cliques]
+Let $B$ be a set of people, with some pairs acquainted. A \emph{clique} is a subset $A \subseteq B$ such that every two people in $A$ know each other. We want to describe the ``biggest'' cliques -- but ``biggest'' has two different meanings.
+\end{example}
+
+\begin{definition}[Maximum, maximal, w.r.t.\ a family $\mathcal{F}$ of sets sharing a property]
+Let $\mathcal{F}$ be a family of subsets of some set, all sharing a given property (e.g.\ ``is a clique''), ordered by $\subseteq$.
+\begin{itemize}
+    \item $M \in \mathcal{F}$ is a \emph{maximum} if $S \subseteq M$ for every $S \in \mathcal{F}$ (largest possible size).
+    \item $M \in \mathcal{F}$ is \emph{maximal} if $M$ is not a proper subset of any $S \in \mathcal{F}$ (cannot be enlarged while keeping the property).
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+Every maximum is maximal.
+\end{proposition}
+\begin{proof}
+If $M$ is a maximum, then $S \subseteq M$ for all $S \in \mathcal{F}$, so no $S \in \mathcal{F}$ can have $M \subsetneq S$ (that would force $M \subsetneq S \subseteq M$, impossible). Hence $M$ is maximal.
+\end{proof}
+
+\begin{note}
+The converse fails in general: a maximal clique need not be a maximum clique -- it just cannot be enlarged, while some other, larger clique may exist elsewhere in $B$.
+\end{note}
+
+\begin{definition}[Minimum, minimal -- dual definitions]
+Dually, for $\mathcal{F}$ ordered by $\subseteq$:
+\begin{itemize}
+    \item $m \in \mathcal{F}$ is a \emph{minimum} if $m \subseteq S$ for every $S \in \mathcal{F}$.
+    \item $m \in \mathcal{F}$ is \emph{minimal} if $m$ is not a proper superset of any $S \in \mathcal{F}$ (removing anything from $m$ destroys the property).
+\end{itemize}
+Every minimum is minimal; the converse fails in general.
+\end{definition}
+
+\begin{note}[Why the distinction matters here but not for $\R$]
+For real numbers, $\le$ is a \emph{total order}: any two reals are comparable, so ``cannot be increased'' and ``is the largest'' coincide, and \emph{maximum}/\emph{maximal} are used interchangeably. But $\subseteq$ is only a \emph{partial order}: two sets $A,B$ can be \emph{incomparable} ($A \not\subseteq B$ and $B \not\subseteq A$). This is exactly why a family can have several maximal elements without any single maximum.
+\end{note}
+
+\subsection{Counting all subsets}
+\label{sec:1-8}
+% CN 1.8
+
+\begin{theorem}
+For finite $B$ with $|B| = n$, the number of subsets of $B$ is $2^n$.
+\end{theorem}
+\begin{proof}
+A subset is determined by choosing, independently for each of the $n$ elements, whether to include it (2 options per element). By the product rule, the number of independent choice-sequences is $\underbrace{2 \times 2 \times \cdots \times 2}_{n} = 2^n$, and each choice-sequence corresponds to exactly one subset.
+\end{proof}
+
+\subsection{The power set of a set}
+\label{sec:1-9}
+% CN 1.9 / Rosen 2.1
+\begin{definition}[Power set]
+$\mathcal{P}(A) = \{S : S \subseteq A\}$.
+\end{definition}
+
+\begin{corollary}
+$|A| = n \Rightarrow |\mathcal{P}(A)| = 2^n$.
+\end{corollary}
+\begin{proof}
+Immediate from \S\ref{sec:1-8}: $\mathcal{P}(A)$ is exactly the set of subsets of $A$, and there are $2^n$ of them.
+\end{proof}
+
+\begin{note}
+Holds even for $A = \emptyset$: $n=0$ gives $2^0 = 1$, consistent with $\emptyset$ having exactly one subset, itself. $\mathcal{P}(A)$ is also written $2^A$.
+\end{note}
+
+\begin{example}
+$\emptyset$ has exactly one subset, itself, so $\mathcal{P}(\emptyset) = \{\emptyset\}$. The set $\{\emptyset\}$ has exactly two subsets, $\emptyset$ and $\{\emptyset\}$ itself, so $\mathcal{P}(\{\emptyset\}) = \{\emptyset, \{\emptyset\}\}$.
+\end{example}
+
+\subsection{Counting subsets by size using binomial coefficients}
+\label{sec:1-10}
+% CN 1.10
+\begin{definition}[Binomial coefficient]
+For $0 \le k \le n$, $\dbinom{n}{k}$ (``$n$ choose $k$'') is the number of $k$-element subsets of an $n$-element set.
+\end{definition}
+
+\begin{proposition}[Sum over $k$]
+\[
+\sum_{k=0}^{n} \binom{n}{k} = 2^n.
+\]
+\end{proposition}
+\begin{proof}
+The binomial coefficients $\binom{n}{0}, \binom{n}{1}, \dots, \binom{n}{n}$ partition the subsets of an $n$-set by size, so they sum to the total subset count, $2^n$ (\S\ref{sec:1-8}).
+\end{proof}
+
+\begin{example}[$n=3$]
+Identify each subset of $\{1,2,3\}$ with its indicator vector (\S\ref{sec:1-8}):
+\begin{center}
+\begin{tabular}{c|cccccccc}
+subset & $\varnothing$ & $\{1\}$ & $\{2\}$ & $\{3\}$ & $\{1,2\}$ & $\{1,3\}$ & $\{2,3\}$ & $\{1,2,3\}$ \\ \hline
+vector & $000$ & $100$ & $010$ & $001$ & $110$ & $101$ & $011$ & $111$
+\end{tabular}
+\end{center}
+Grouped by size: $1+3+3+1=8=2^3$.
+\end{example}
+
+\begin{proposition}[Symmetry]
+\[
+\binom{n}{k} = \binom{n}{n-k}.
+\]
+\end{proposition}
+\begin{proof}
+Choosing $k$ elements to include determines which $n-k$ elements are excluded, and vice versa; this is a bijection between $k$-subsets and $(n-k)$-subsets.
+\end{proof}
+
+\begin{theorem}[Closed form]
+\[
+\binom{n}{k} = \frac{n(n-1)(n-2)\cdots(n-k+1)}{k!} = \frac{n!}{k!(n-k)!}.
+\]
+\end{theorem}
+\begin{proof}
+Count \emph{ordered} choices of $k$ distinct elements from $n$: $n$ options for the first, $n-1$ for the second, \dots, $n-k+1$ for the $k$-th, giving $n(n-1)\cdots(n-k+1) = n!/(n-k)!$ ordered sequences. Each $k$-subset is counted once for every ordering of its $k$ elements, i.e.\ $k!$ times, so
+\[
+\binom{n}{k} = \frac{1}{k!} \cdot \frac{n!}{(n-k)!} = \frac{n!}{k!(n-k)!}.
+\]
+\end{proof}
+
+\subsection{Complement and set difference}
+\label{sec:1-11}
+% CN 1.11 / Rosen 2.2
+\begin{definition}[Set difference, complement w.r.t.\ $U$]
+\[
+A - B = \{x : x \in A \wedge x \notin B\}, \qquad
+\overline{A} = U - A.
+\]
+\end{definition}
+
+\begin{center}
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillOnlyA
+\end{venndiagram2sets}
+\end{center}
+\begin{center}
+\small $A\setminus B$ (shaded)
+\end{center}
+
+\begin{theorem}[De Morgan's laws]
+\[
+\overline{A \cup B} = \overline{A} \cap \overline{B}, \qquad
+\overline{A \cap B} = \overline{A} \cup \overline{B}.
+\]
+\end{theorem}
+
+\begin{example}
+Prove $\overline{A \cap B} = \overline{A} \cup \overline{B}$ using set-builder notation and logical equivalences.
+\begin{align*}
+\overline{A \cap B} &= \{x : x \notin A \cap B\} \\
+&= \{x : \neg(x \in A \cap B)\} \\
+&= \{x : \neg(x \in A \wedge x \in B)\} \\
+&= \{x : \neg(x \in A) \vee \neg(x \in B)\} &&\text{(De Morgan's law, logic)}\\
+&= \{x : x \notin A \vee x \notin B\} \\
+&= \{x : x \in \overline{A} \vee x \in \overline{B}\} \\
+&= \overline{A} \cup \overline{B}.
+\end{align*}
+\end{example}
+
+\begin{example}
+Let $A,B,C$ be sets. Prove $\overline{A \cup (B \cap C)} = (\overline{C} \cup \overline{B}) \cap \overline{A}$ by chaining previously established identities.
+\begin{align*}
+\overline{A \cup (B \cap C)} &= \overline{A} \cap \overline{(B \cap C)} &&\text{(1st De Morgan's law)}\\
+&= \overline{A} \cap (\overline{B} \cup \overline{C}) &&\text{(2nd De Morgan's law)}\\
+&= (\overline{B} \cup \overline{C}) \cap \overline{A} &&\text{(commutativity of $\cap$)}\\
+&= (\overline{C} \cup \overline{B}) \cap \overline{A}. &&\text{(commutativity of $\cup$)}
+\end{align*}
+\end{example}
+
+\subsection{Union and intersection}
+\label{sec:1-12}
+% CN 1.12 / Rosen 2.2
+\begin{definition}[Union, intersection]
+\[
+A \cup B = \{x : x \in A \vee x \in B\}, \qquad
+A \cap B = \{x : x \in A \wedge x \in B\}.
+\]
+\end{definition}
+
+\begin{center}
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillA
+\fillB
+\end{venndiagram2sets}
+\quad
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillACapB
+\end{venndiagram2sets}
+\end{center}
+\begin{center}
+\small $A\cup B$ (shaded) \hspace{3cm} $A\cap B$ (shaded)
+\end{center}
+
+\begin{definition}[Disjoint]
+$A \cap B = \emptyset$.
+\end{definition}
+
+\begin{theorem}[Inclusion--exclusion]
+$|A \cup B| = |A| + |B| - |A \cap B|$.
+\end{theorem}
+
+\begin{example}
+Prove $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$ by the element argument.
+
+($\subseteq$) Let $x \in A \cap (B\cup C)$. Then $x \in A$ and ($x \in B$ or $x \in C$). If $x \in B$ then $x \in A\cap B$; if $x \in C$ then $x \in A\cap C$. Either way $x \in (A\cap B)\cup(A\cap C)$.
+
+($\supseteq$) Let $x \in (A\cap B)\cup(A\cap C)$. Then $x \in A\cap B$ or $x \in A\cap C$; either way $x \in A$ and ($x \in B$ or $x \in C$), so $x \in A \cap (B\cup C)$.
+
+Both directions hold, so the sets are equal.
+\end{example}
+
+\begin{note}[Methods for proving set identities]
+\begin{enumerate}[label=(\roman*)]
+    \item \emph{Element argument (double inclusion)}: show LHS $\subseteq$ RHS and RHS $\subseteq$ LHS, as above.
+    \item \emph{Membership table}: tabulate membership ($0/1$) of an arbitrary $x$ in each named set for every combination, and compare the LHS/RHS columns.
+    \item \emph{Using established identities}: rewrite one side into the other via a chain of already-proven identities (the Set Identities table), analogous to proving logical equivalences.
+\end{enumerate}
+\end{note}
+
+\begin{definition}[Family of sets]
+A \emph{family of sets} indexed by $I$ is a collection $\{A_i\}_{i \in I}$, one set $A_i$ for each $i \in I$; $I$ is the \emph{index set}.
+\end{definition}
+
+\begin{definition}[Generalized union and intersection, finite]
+\[
+\bigcup_{i=1}^n A_i = A_1 \cup A_2 \cup \cdots \cup A_n = \{x : \exists i \in \{1,\dots,n\},\ x\in A_i\},
+\]
+\[
+\bigcap_{i=1}^n A_i = A_1 \cap A_2 \cap \cdots \cap A_n = \{x : \forall i \in \{1,\dots,n\},\ x\in A_i\}.
+\]
+\end{definition}
+
+\begin{definition}[Generalized union and intersection, arbitrary index set]
+For a family $\{A_i\}_{i\in I}$,
+\[
+\bigcup_{i \in I} A_i = \{x : \exists i \in I,\ x \in A_i\}, \qquad
+\bigcap_{i \in I} A_i = \{x : \forall i \in I,\ x \in A_i\}.
+\]
+When $I = \Z^+$ one also writes $\displaystyle\bigcup_{i=1}^{\infty} A_i$, $\displaystyle\bigcap_{i=1}^{\infty} A_i$.
+\end{definition}
+
+\begin{theorem}[Set identities]
+For sets $A,B,C$ with universal set $U$:
+\begin{align*}
+A \cup \emptyset = A,\quad A \cap U = A &\quad\text{(Identity laws)}\\
+A \cup U = U,\quad A \cap \emptyset = \emptyset &\quad\text{(Domination laws)}\\
+A \cup A = A,\quad A \cap A = A &\quad\text{(Idempotent laws)}\\
+\overline{\overline{A}} = A &\quad\text{(Complementation law)}\\
+A \cup B = B \cup A,\quad A \cap B = B \cap A &\quad\text{(Commutative laws)}\\
+(A\cup B)\cup C = A\cup(B\cup C),\ (A\cap B)\cap C = A\cap(B\cap C) &\quad\text{(Associative laws)}\\
+A\cup(B\cap C) = (A\cup B)\cap(A\cup C) &\quad\text{(Distributive law)}\\
+A\cap(B\cup C) = (A\cap B)\cup(A\cap C) &\quad\text{(Distributive law)}\\
+\overline{A\cup B} = \overline A\cap\overline B,\quad \overline{A\cap B}=\overline A\cup\overline B &\quad\text{(De Morgan's laws)}\\
+A\cup(A\cap B) = A,\quad A\cap(A\cup B)=A &\quad\text{(Absorption laws)}\\
+A \cup \overline A = U,\quad A \cap \overline A = \emptyset &\quad\text{(Complement laws)}
+\end{align*}
+\end{theorem}
+
+\begin{definition}[Bit-string representation]
+For finite $U = \{a_1,\dots,a_n\}$ with a fixed ordering, $A \subseteq U$ corresponds to the bit string $b_1b_2\cdots b_n$ where $b_i = 1$ iff $a_i \in A$. Then $A\cup B \leftrightarrow$ bitwise OR, $A\cap B \leftrightarrow$ bitwise AND, $\overline{A} \leftrightarrow$ bitwise NOT.
+\end{definition}
+
+\subsection{Symmetric difference}
+\label{sec:1-13}
+% CN 1.13 / Rosen 2.2
+\begin{definition}[Symmetric difference]
+$A \triangle B = \{x : x \in A \text{ or } x \in B \text{ but not both}\}$ (exclusive or).
+\end{definition}
+
+\begin{center}
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillOnlyA
+\fillOnlyB
+\end{venndiagram2sets}
+\end{center}
+\begin{center}
+\small $A\triangle B$ (shaded)
+\end{center}
+
+\begin{proposition}[Equivalent forms]
+\[
+A \triangle B = (A \setminus B) \cup (B \setminus A) = (A \cap \overline{B}) \cup (\overline{A} \cap B) = (A \cup B) \setminus (A \cap B).
+\]
+\end{proposition}
+
+\begin{note}
+$A \triangle A = \emptyset$, and this is the only case where a symmetric difference is empty.
+\end{note}
+
+\begin{proposition}
+$A = B \iff A \triangle B = \emptyset$.
+\end{proposition}
+\begin{proof}
+\[
+A = B \iff A \subseteq B \text{ and } B \subseteq A \iff A\setminus B = \emptyset \text{ and } B\setminus A = \emptyset \iff (A\setminus B)\cup(B\setminus A) = \emptyset \iff A \triangle B = \emptyset.
+\]
+\end{proof}
+
+\begin{proposition}
+$\overline{A \triangle B} = \overline{A} \triangle \overline{B}$.
+\end{proposition}
+\begin{proof}
+\[
+\overline{A \triangle B} = \overline{(A \cap \overline{B}) \cup (\overline{A} \cap B)} = \overline{(A \cap \overline{B})} \cap \overline{(\overline{A} \cap B)} = (\overline{A} \cup B) \cap (A \cup \overline{B}).
+\]
+Expanding and simplifying (using distributivity and $A \cap \overline{A} = \emptyset$) gives $(A \cap \overline{B}) \cup (\overline{A} \cap B) = A \triangle B$, so the complement identity holds by the same characterization applied to $\overline{A}, \overline{B}$: $\overline{A}\triangle\overline{B} = (\overline{A}\cap B)\cup(A\cap\overline{B}) = A \triangle B = \overline{A \triangle B}$.
+\end{proof}
+
+\subsection{Cartesian product}
+\label{sec:1-14}
+% CN 1.14 / Rosen 2.1
+\begin{definition}[Ordered pair]
+$(a,b)$ collects $a,b$ in order; $(a,b) = (c,d) \iff a=c \wedge b=d$.
+\end{definition}
+
+\begin{definition}[Cartesian product]
+$A \times B = \{(a,b) : a \in A,\ b \in B\}$.
+\end{definition}
+
+\begin{proposition}
+$|A \times B| = |A|\cdot|B|$ for finite $A,B$.
+\end{proposition}
+\begin{proof}
+There are $|A|$ choices for the first coordinate, and independently $|B|$ choices for the second, so by the product rule there are $|A|\cdot|B|$ pairs.
+\end{proof}
+
+\begin{definition}[$n$-tuple, generalized Cartesian product]
+For sets $A_1,\dots,A_n$:
+\[
+A_1 \times A_2 \times \cdots \times A_n = \{(a_1,\dots,a_n) : a_i \in A_i,\ i=1,\dots,n\},
+\]
+with equality of $n$-tuples componentwise: $(a_1,\dots,a_n)=(b_1,\dots,b_n) \iff a_i=b_i\ \forall i$. If finite, $|A_1\times\cdots\times A_n| = |A_1|\cdots|A_n|$.
+\end{definition}
+
+\begin{definition}[Power notation]
+For a set $A$ and $n \in \N$, $A^n = A \times A \times \cdots \times A$ ($n$ factors); $A^0 = \{\emptyset\text{-tuple}\}$ is conventionally treated as a single-element set, $A^1 = A$. If $A$ is finite, $|A^n| = |A|^n$.
+\end{definition}
+
+\begin{note}
+When $A$ is an alphabet, $A^n$ is identified with strings of length $n$ (\S\ref{sec:1-5}): e.g.\ $\{0,1\}^3 = \{000,001,\dots,111\}$. Also $\R^n = \R\times\cdots\times\R$ is the set of coordinates in $n$-dimensional space.
+\end{note}
+
+\begin{corollary}
+$|A_1 \times \cdots \times A_n| = |A_1| \cdot |A_2| \cdots |A_n|$ for finite $A_i$.
+\end{corollary}
+
+\subsection{Partitions}
+\label{sec:1-15}
+% CN 1.15
+\begin{definition}[Partition]
+A \emph{partition} of $A$ is a set of pairwise disjoint, nonempty subsets of $A$ (called \emph{parts}, \emph{blocks}, or \emph{cells}) whose union is $A$.
+\end{definition}
+
+\begin{note}[Equivalent characterization]
+A collection of nonempty subsets of $A$ is a partition of $A$ iff every element of $A$ belongs to \emph{exactly one} part.
+\end{note}
+
+\begin{example}
+For $A = \{a,b,c\}$: $\{\{a,c\},\{b\}\}$ and $\{\{a\},\{b\},\{c\}\}$ are partitions; $\{\{a,b\},\{c\},\emptyset\}$ fails (empty part), $\{\{a,b\},\{b,c\}\}$ fails (not disjoint), $\{\{a\},\{b\}\}$ fails (union $\neq A$, misses $c$).
+\end{example}
+
+\begin{definition}[Coarsest and finest partitions]
+For any $A$: the \emph{coarsest} partition is $\{A\}$ (one part, everything together); the \emph{finest} partition is $\{\{a\} : a \in A\}$ (one singleton part per element). If $|A|=1$ these coincide; otherwise they are the two extremes, with every other partition of $A$ intermediate between them.
+\end{definition}
+
+\begin{note}[Connection to equivalence relations]
+Partitions are closely tied to \emph{equivalence relations} (reflexive, symmetric, transitive relations -- \S\ref{sec:2-16}): every equivalence relation $R$ on $A$ partitions $A$ into \emph{equivalence classes} $[a]_R = \{x \in A : x\,R\,a\}$, and conversely every partition of $A$ arises this way from exactly one equivalence relation (namely, $x\,R\,y \iff x,y$ lie in the same part). We revisit this correspondence formally once binary relations are covered.
+\end{note}
+

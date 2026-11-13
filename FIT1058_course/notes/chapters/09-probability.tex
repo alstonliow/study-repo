@@ -1,0 +1,542 @@
+\newpage
+\section{Discrete Probability}
+\label{sec:probability}
+
+\subsection{The nature of randomness}
+\label{sec:9-1}
+% CN 9.1
+
+\begin{note}[Three sources of randomness]
+Randomness may come from a genuinely unpredictable physical process (a quantum measurement), from a deterministic process too complex to model exactly (a coin toss), or simply from an observer's ignorance of a fixed but unknown outcome (a coin lying face down some distance away). Probability theory treats all three in the same way.
+\end{note}
+
+\subsection{Probability}
+\label{sec:9-2}
+% CN 9.2
+
+\begin{definition}[Sample space, event]
+A random experiment has a set $U$ of all possible outcomes, called the \emph{sample space}. An \emph{event} is a subset $A\subseteq U$.
+\end{definition}
+
+\begin{definition}[Probability, equally likely case]
+If $U$ is finite and every outcome is equally likely, then
+\[
+\Pr(A) = \frac{|A|}{|U|}.
+\]
+\end{definition}
+
+\begin{example}
+For a fair coin, $U=\{\text{Heads},\text{Tails}\}$, and $\Pr(\emptyset)=0$, $\Pr(\{\text{Heads}\})=\Pr(\{\text{Tails}\})=\frac12$, $\Pr(U)=1$. For a fair die, $U=\{1,\dots,6\}$, so $\Pr(\text{odd})=\Pr(\{1,3,5\})=\frac12$, $\Pr(\text{square})=\Pr(\{1,4\})=\frac13$ and $\Pr(\text{not }1)=\frac56$.
+\end{example}
+
+\begin{definition}[Probability, general case]
+Assign a probability $\Pr(x)\in[0,1]$ to each outcome $x\in U$ so that $\sum_{x\in U}\Pr(x)=1$. The probability of an event is then $\Pr(A)=\sum_{x\in A}\Pr(x)$.
+\end{definition}
+
+\begin{note}[Special cases]
+Always $\Pr(\emptyset)=0$ and $\Pr(U)=1$. The equally likely case is $\Pr(x)=1/|U|$ for every $x$. Outcomes need not be equally likely: in Scrabble, a tile drawn from the bag of $100$ is a blank with probability $2/100$.
+\end{note}
+
+\begin{example}[Infinite sample space]
+Let $U=\N$ with $\Pr(n)=1/2^n$. This is a valid assignment, since $\sum_{n\ge1}1/2^n=\frac{1/2}{1-1/2}=1$ (\S\ref{sec:6-14}). Then
+\[
+\Pr(\text{odd}) = \sum_{k=1}^\infty \frac{1}{2^{2k-1}} = \frac{1/2}{1-1/4} = \frac{2}{3}.
+\]
+\end{example}
+
+\subsection{Choice of sample space}
+\label{sec:9-3}
+% CN 9.3
+
+\begin{note}[Prefer equally likely outcomes]
+For two dice, the $11$ possible totals $2,\dots,12$ are not equally likely. Treating the dice as an \emph{ordered} pair $(d_1,d_2)$ gives $36$ outcomes that \emph{are} equally likely, each with probability $1/36$. A finer sample space with uniform probabilities is usually easier to work with. (An \emph{unordered} pair would not do: $\{1,2\}$ arises in two ways but $\{1,1\}$ in only one.)
+\end{note}
+
+\begin{example}
+The total is $8$ for the outcomes $(2,6),(3,5),(4,4),(5,3),(6,2)$, so $\Pr(\text{total is }8)=5/36$.
+\end{example}
+
+\subsection{Mutually exclusive events}
+\label{sec:9-4}
+% CN 9.4
+
+\begin{definition}[Mutually exclusive]
+Events $A,B$ are \emph{mutually exclusive} if $A\cap B=\emptyset$.
+\end{definition}
+
+\begin{proposition}
+If $A,B$ are mutually exclusive, then $\Pr(A\cup B)=\Pr(A)+\Pr(B)$.
+\end{proposition}
+\begin{proof}
+Each $x\in A\cup B$ lies in exactly one of $A$ and $B$, so $\Pr(A\cup B)=\sum_{x\in A\cup B}\Pr(x)=\sum_{x\in A}\Pr(x)+\sum_{x\in B}\Pr(x)=\Pr(A)+\Pr(B)$.
+\end{proof}
+
+\begin{example}
+For two dice, $\Pr(\text{total}\le5)=10/36$ and $\Pr(\text{total}\ge10)=6/36$. These events are disjoint, so $\Pr(\text{total}\le5\text{ or }\ge10)=16/36=4/9$.
+\end{example}
+
+\subsection{Operations on events}
+\label{sec:9-5}
+% CN 9.5
+
+\begin{proposition}[Complement]
+$\Pr(\overline{A}) = 1-\Pr(A)$.
+\end{proposition}
+\begin{proof}
+$A$ and $\overline A$ are mutually exclusive with union $U$, so $\Pr(A)+\Pr(\overline A)=\Pr(U)=1$.
+\end{proof}
+
+\begin{example}
+In ``dice cricket'', each throw of a fair die is the runs scored off one delivery, except that $5$ means out. So $\Pr(\text{not out})=1-\frac16=\frac56$.
+\end{example}
+
+\begin{proposition}[Difference and monotonicity]
+If $A\subseteq B$, then $\Pr(B\setminus A)=\Pr(B)-\Pr(A)$, and hence $\Pr(A)\le\Pr(B)$.
+\end{proposition}
+\begin{proof}
+$B$ is the disjoint union of $A$ and $B\setminus A$, so $\Pr(B)=\Pr(A)+\Pr(B\setminus A)$. Both claims follow, the second because $\Pr(B\setminus A)\ge0$.
+\end{proof}
+
+\begin{note}[In words]
+You cannot make something less likely by creating more ways for it to happen.
+\end{note}
+
+\begin{example}
+In Scrabble, $\Pr(\text{vowel})=0.42$ and $\Pr(\text{letter, not blank})=0.98$. Every vowel tile is a letter tile, so $\Pr(\text{consonant})=0.98-0.42=0.56$.
+\end{example}
+
+\subsection{Inclusion-Exclusion for probabilities}
+\label{sec:9-6}
+% CN 9.6
+
+\begin{proposition}
+$\Pr(A\cup B) = \Pr(A)+\Pr(B)-\Pr(A\cap B)$.
+\end{proposition}
+\begin{proof}
+$A\cup B$ is the disjoint union of $A$ and $B\setminus A$, and $B\setminus A=B\setminus(A\cap B)$ with $A\cap B\subseteq B$. So $\Pr(A\cup B)=\Pr(A)+\Pr(B)-\Pr(A\cap B)$ by the previous two theorems.
+\end{proof}
+
+\begin{theorem}[General case]
+\[
+\Pr\left(\bigcup_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<i_k} \Pr(A_{i_1}\cap\cdots\cap A_{i_k}).
+\]
+\end{theorem}
+
+\begin{note}[Same proof as for counting]
+The proof is the same as for inclusion-exclusion on set sizes (\S\ref{sec:8-3}), with $\Pr$ in place of $|\cdot|$.
+\end{note}
+
+\subsection{Independent events}
+\label{sec:9-7}
+% CN 9.7
+
+\begin{definition}[Independent]
+Events $A,B$ are \emph{independent} if $\Pr(A\cap B) = \Pr(A)\cdot\Pr(B)$.
+\end{definition}
+
+\begin{example}
+Throw two dice. Let $A$: the first die shows $3$, and $B$: the second shows $5$. Then $\Pr(A)=\Pr(B)=\frac16$ and $A\cap B=\{(3,5)\}$, so $\Pr(A\cap B)=\frac1{36}=\Pr(A)\Pr(B)$. The events are independent, as expected for two separate dice.
+\end{example}
+
+\begin{example}[Independence can be subtle]
+Now let $A$: the total is $7$, and $B$: the second die is one more than the first, capped at $6$, so $B=\{(1,2),(2,3),(3,4),(4,5),(5,6),(6,6)\}$. Both events depend on both dice, yet $\Pr(A)=\Pr(B)=\frac16$ and $A\cap B=\{(3,4)\}$, so $\Pr(A\cap B)=\frac1{36}=\Pr(A)\Pr(B)$. They are independent.
+\end{example}
+
+\begin{note}[Reason from the definition]
+Independence must be checked from the probabilities, not from intuition about ``separate mechanisms''. Note also that independent is different from mutually exclusive: if $\Pr(A),\Pr(B)>0$ and $A\cap B=\emptyset$, then $\Pr(A\cap B)=0\ne\Pr(A)\Pr(B)$.
+\end{note}
+
+\begin{definition}[Mutual independence, $n$ events]
+$A_1,\dots,A_n$ are \emph{mutually independent} if for \emph{every} subset $\{i_1,\dots,i_k\}\subseteq\{1,\dots,n\}$,
+\[
+\Pr(A_{i_1}\cap\cdots\cap A_{i_k}) = \Pr(A_{i_1})\cdots\Pr(A_{i_k}).
+\]
+\end{definition}
+
+\begin{example}[Network reliability]
+Each link of a network survives with probability $p$, independently.
+\begin{itemize}
+    \item Two links in series, $S$--$M$--$T$: a path survives iff both links do, so the probability is $p\cdot p=p^2$.
+    \item Two parallel links between $S$ and $T$: a path survives iff at least one link does. The complement is that both fail, with probability $(1-p)^2$, so the probability is $1-(1-p)^2=2p-p^2$.
+\end{itemize}
+\end{example}
+
+\subsection{Conditional probability}
+\label{sec:9-8}
+% CN 9.8
+
+\begin{definition}[Conditional probability]
+For $\Pr(B)>0$, the probability of $A$ \emph{given} $B$ is
+\[
+\Pr(A\mid B) = \frac{\Pr(A\cap B)}{\Pr(B)}.
+\]
+\end{definition}
+
+\begin{note}[Restricting the sample space]
+Conditioning on $B$ means treating $B$ as the new sample space: we keep only the outcomes in $B$ and rescale their probabilities so they add up to $1$.
+\end{note}
+
+\begin{example}
+In Scrabble, $\Pr(\text{vowel})=0.42$ is not the proportion of \emph{letter} tiles that are vowels, because of the two blanks. Since every vowel tile is non-blank,
+\[
+\Pr(\text{vowel}\mid\text{not blank})=\frac{\Pr(\text{vowel})}{\Pr(\text{not blank})}=\frac{0.42}{0.98}\approx0.43.
+\]
+\end{example}
+
+\begin{proposition}[Independence restated]
+If $\Pr(B)>0$, then $A,B$ are independent if and only if $\Pr(A\mid B)=\Pr(A)$.
+\end{proposition}
+\begin{proof}
+$\Pr(A\mid B)=\Pr(A)$ iff $\Pr(A\cap B)/\Pr(B)=\Pr(A)$ iff $\Pr(A\cap B)=\Pr(A)\Pr(B)$.
+\end{proof}
+
+\begin{note}[Meaning]
+$A$ and $B$ are independent exactly when learning that $B$ happened does not change the probability of $A$.
+\end{note}
+
+\begin{proposition}[Multiplication rule]
+$\Pr(A\cap B) = \Pr(B)\cdot\Pr(A\mid B)$.
+\end{proposition}
+
+\subsection{Bayes' Theorem}
+\label{sec:9-9}
+% CN 9.9
+
+\begin{theorem}[Law of total probability]
+If $B_1,\dots,B_n$ partition $U$ (\S\ref{sec:1-15}) and each $\Pr(B_i)>0$, then
+\[
+\Pr(A) = \sum_{i=1}^n \Pr(A\mid B_i)\Pr(B_i).
+\]
+\end{theorem}
+\begin{proof}
+$A$ is the disjoint union of the sets $A\cap B_i$, since the $B_i$ are pairwise disjoint and cover $U$. So $\Pr(A)=\sum_i\Pr(A\cap B_i)=\sum_i\Pr(A\mid B_i)\Pr(B_i)$ by the multiplication rule.
+\end{proof}
+
+\begin{theorem}[Bayes' Theorem]
+With $B_1,\dots,B_n$ as above and $\Pr(A)>0$,
+\[
+\Pr(B_j\mid A) = \frac{\Pr(A\mid B_j)\Pr(B_j)}{\Pr(A)} = \frac{\Pr(A\mid B_j)\Pr(B_j)}{\sum_{i=1}^n \Pr(A\mid B_i)\Pr(B_i)}.
+\]
+\end{theorem}
+\begin{proof}
+By the definition and the multiplication rule, $\Pr(B_j\mid A) = \Pr(A\cap B_j)/\Pr(A) = \Pr(A\mid B_j)\Pr(B_j)/\Pr(A)$. Then substitute the law of total probability for $\Pr(A)$.
+\end{proof}
+
+\begin{note}[Prior and posterior]
+$\Pr(B_j)$ is the \emph{prior} probability of $B_j$, before observing $A$; $\Pr(B_j\mid A)$ is the \emph{posterior}, after observing $A$. Bayes' Theorem is the rule for updating beliefs in the light of evidence, and is a basic tool of statistics and machine learning.
+\end{note}
+
+\begin{example}[Three coins]
+A coin is chosen at random from three: Fair, DoubleHead and DoubleTail, each with prior probability $\frac13$. It is tossed once and shows Heads. By the law of total probability,
+\[
+\Pr(\text{Heads})=\tfrac12\cdot\tfrac13+1\cdot\tfrac13+0\cdot\tfrac13=\tfrac12.
+\]
+By Bayes' Theorem,
+\[
+\Pr(\text{Fair}\mid\text{Heads})=\frac{\frac12\cdot\frac13}{\frac12}=\frac13,\qquad
+\Pr(\text{DoubleHead}\mid\text{Heads})=\frac{1\cdot\frac13}{\frac12}=\frac23,
+\]
+\[
+\Pr(\text{DoubleTail}\mid\text{Heads})=\frac{0\cdot\frac13}{\frac12}=0.
+\]
+So one toss leaves our belief in Fair unchanged, rules out DoubleTail, and doubles our belief in DoubleHead.
+\end{example}
+
+\subsection{Random variables}
+\label{sec:10-1}
+% CN 10.1
+
+\begin{definition}[Random variable]
+A \emph{random variable} on a sample space $U$ is a function $X:U\to\R$.
+\end{definition}
+
+\begin{example}
+Throw two dice, so $U=\{1,\dots,6\}^2$. The total $Z(d_1,d_2)=d_1+d_2$ is a random variable with values in $\{2,\dots,12\}$; the event $Z=9$ is $\{(3,6),(4,5),(5,4),(6,3)\}$.
+\end{example}
+
+\begin{note}[Notation]
+$X=k$ is shorthand for the event $\{u\in U : X(u)=k\}$, so $\Pr(X=k)$ means the probability of that event. Similarly for $X\le k$, etc.
+\end{note}
+
+\begin{definition}[Independent random variables]
+$X,Y$ are \emph{independent} if for all $r,s$,
+\[
+\Pr(X=r \text{ and } Y=s) = \Pr(X=r)\cdot\Pr(Y=s).
+\]
+\end{definition}
+
+\begin{note}[Compared with independent events]
+This says that the events $X=r$ and $Y=s$ are independent (\S\ref{sec:9-7}) for \emph{every} pair of values $r,s$. The numbers shown on two separate fair dice are independent random variables.
+\end{note}
+
+\subsection{Probability distributions}
+\label{sec:10-2}
+% CN 10.2
+
+\begin{definition}[Probability distribution]
+The \emph{probability distribution} of $X$ is the function $p(k) = \Pr(X=k)$, over the possible values $k$ of $X$. These probabilities add up to $1$.
+\end{definition}
+
+\begin{example}
+For the total $Z$ of two fair dice,
+\[
+\begin{array}{c|ccccccccccc}
+k & 2&3&4&5&6&7&8&9&10&11&12\\\hline
+36\Pr(Z=k) & 1&2&3&4&5&6&5&4&3&2&1
+\end{array}
+\]
+The distribution is symmetric about $7$, the most likely total.
+\end{example}
+
+\subsection{Expectation}
+\label{sec:10-3}
+% CN 10.3
+
+\begin{definition}[Expectation]
+The \emph{expectation} (or \emph{expected value}, or \emph{mean}) of $X$ is
+\[
+E[X] = \sum_{u\in U} X(u)\Pr(u) = \sum_k k\cdot\Pr(X=k).
+\]
+\end{definition}
+
+\begin{example}
+For one fair die, $E[X]=(1+2+3+4+5+6)/6=21/6=3.5$. The expectation need not be a possible value of $X$.
+\end{example}
+
+\begin{theorem}[Linearity of expectation]
+For any random variables $X,Y$ and constants $a,b$,
+\[
+E[aX+b] = aE[X]+b, \qquad E[X+Y] = E[X]+E[Y].
+\]
+\end{theorem}
+\begin{proof}
+$E[X+Y] = \sum_{u}(X(u)+Y(u))\Pr(u) = \sum_u X(u)\Pr(u) + \sum_u Y(u)\Pr(u) = E[X]+E[Y]$. The first identity is proved the same way.
+\end{proof}
+
+\begin{note}[No independence required]
+Linearity holds for \emph{any} $X,Y$: the proof never uses independence. For example, the expected total of two dice is $3.5+3.5=7$.
+\end{note}
+
+\subsection{Median}
+\label{sec:10-4}
+% CN 10.4
+
+\begin{definition}[Median]
+$m$ is a \emph{median} of $X$ if $\Pr(X\le m)\ge\tfrac12$ and $\Pr(X\ge m)\ge\tfrac12$.
+\end{definition}
+
+\begin{example}
+For one die, every $m$ between $3$ and $4$ satisfies the definition; when the median falls in a gap like this we take the middle, $3.5$. For the points $X$ on a random Scrabble tile, $\Pr(X=0)=0.02$, $\Pr(X=1)=0.68$, $\Pr(X\ge2)=0.3$, so $\Pr(X\le1)=0.7$ and $\Pr(X\ge1)=0.98$, and the median is $1$.
+\end{example}
+
+\begin{note}[Median vs.\ mean]
+The median is less affected by rare extreme values. For a lottery ticket, the prize money has median $0$, even though a huge but very unlikely prize can make the mean much larger.
+\end{note}
+
+\subsection{Mode}
+\label{sec:10-5}
+% CN 10.5
+
+\begin{definition}[Mode]
+A \emph{mode} of $X$ is a value $k$ that maximises $\Pr(X=k)$.
+\end{definition}
+
+\begin{example}
+The total of two dice has mode $7$. A fair die has every value $1,\dots,6$ as a mode, so a mode need not be unique.
+\end{example}
+
+\subsection{Variance}
+\label{sec:10-6}
+% CN 10.6
+
+\begin{definition}[Variance, standard deviation]
+With $\mu=E[X]$, the \emph{variance} of $X$ is $\mathrm{Var}(X) = E\big[(X-\mu)^2\big]$, and the \emph{standard deviation} is $\sigma_X = \sqrt{\mathrm{Var}(X)}$.
+\end{definition}
+
+\begin{note}[Units]
+The variance is in the square of the units of $X$; the standard deviation is back in the units of $X$, which makes it easier to interpret as a typical distance from the mean.
+\end{note}
+
+\begin{proposition}
+$\mathrm{Var}(X) = E[X^2] - E[X]^2$.
+\end{proposition}
+\begin{proof}
+Let $\mu=E[X]$. By linearity, $E[(X-\mu)^2] = E[X^2]-2\mu E[X]+\mu^2 = E[X^2]-\mu^2$.
+\end{proof}
+
+\begin{example}
+For one die, $E[X^2]=(1+4+9+16+25+36)/6=91/6$, so $\mathrm{Var}(X)=\frac{91}6-3.5^2=\frac{35}{12}\approx2.92$ and $\sigma_X\approx1.71$.
+\end{example}
+
+\begin{theorem}[Variance of an independent sum]
+If $X,Y$ are independent, then $\mathrm{Var}(X+Y) = \mathrm{Var}(X)+\mathrm{Var}(Y)$.
+\end{theorem}
+\begin{proof}
+First, independence gives $E[XY]=E[X]E[Y]$: in $E[XY]=\sum_{r,s}rs\Pr(X=r,Y=s)$, replace $\Pr(X=r,Y=s)$ by $\Pr(X=r)\Pr(Y=s)$ and factor the double sum. Then
+\[
+\mathrm{Var}(X+Y) = E[X^2]+2E[XY]+E[Y^2] - (E[X]+E[Y])^2 = \big(E[X^2]-E[X]^2\big)+\big(E[Y^2]-E[Y]^2\big). \qedhere
+\]
+\end{proof}
+
+\begin{example}
+The total of two dice has variance $\frac{35}{12}+\frac{35}{12}=\frac{35}6$.
+\end{example}
+
+\bigskip
+\begin{theorem}[Chebyshev's inequality]
+For any $a>0$, \ $\Pr\big(|X-E[X]|\ge a\big) \le \dfrac{\mathrm{Var}(X)}{a^2}$.
+\end{theorem}
+\begin{proof}
+Let $\mu=E[X]$. Dropping the terms with $|k-\mu|<a$, and then using $(k-\mu)^2\ge a^2$ in the rest,
+\[
+\mathrm{Var}(X) = \sum_k (k-\mu)^2\Pr(X=k) \ge \sum_{k:\,|k-\mu|\ge a} (k-\mu)^2\Pr(X=k) \ge a^2\Pr(|X-\mu|\ge a).
+\]
+Divide by $a^2$.
+\end{proof}
+
+\begin{note}[Any distribution]
+Chebyshev's inequality holds for every distribution, with no assumption about its shape. Taking $a=c\sigma$ gives $\Pr(|X-\mu|\ge c\sigma)\le1/c^2$: e.g.\ at most $\frac14$ of the probability lies two or more standard deviations from the mean.
+\end{note}
+
+\subsection{Uniform distribution}
+\label{sec:10-7}
+% CN 10.7
+
+\begin{definition}[Discrete uniform distribution]
+$X\sim\mathrm{Unif}(a,b)$ means $X$ takes each integer value in $[a,b]$ with the same probability $1/(b-a+1)$.
+\end{definition}
+
+\begin{example}
+A fair coin with Tails $=0$ and Heads $=1$ is $\mathrm{Unif}(0,1)$; a fair die is $\mathrm{Unif}(1,6)$. The uniform distribution is also used to model ignorance: with no other information, the age of an adult learner driver might be modelled as $\mathrm{Unif}(18,21)$.
+\end{example}
+
+\begin{proposition}
+If $X\sim\mathrm{Unif}(1,n)$, then $E[X] = \dfrac{n+1}{2}$ and $\mathrm{Var}(X) = \dfrac{n^2-1}{12}$.
+\end{proposition}
+\begin{proof}
+$E[X]=\frac1n\sum_{k=1}^n k = \frac{n+1}2$ (\S\ref{sec:6-12}). Also $E[X^2]=\frac1n\sum_{k=1}^n k^2=\frac{(n+1)(2n+1)}6$, so $\mathrm{Var}(X)=\frac{(n+1)(2n+1)}6-\frac{(n+1)^2}4=\frac{n^2-1}{12}$.
+\end{proof}
+
+\subsection{Binomial distribution}
+\label{sec:10-8}
+% CN 10.8
+
+\begin{definition}[Bernoulli trial]
+A \emph{Bernoulli trial} is a random experiment with two outcomes, ``success'' with probability $p$ and ``failure'' with probability $1-p$.
+\end{definition}
+
+\begin{definition}[Binomial distribution]
+$X\sim\mathrm{Bin}(n,p)$ is the number of successes in $n$ independent Bernoulli trials, each with success probability $p$:
+\[
+\Pr(X=k) = \binom{n}{k}p^k(1-p)^{n-k}, \qquad k=0,1,\dots,n.
+\]
+\end{definition}
+
+\begin{note}[Where the formula comes from]
+$\binom nk$ counts the ways to choose which $k$ of the $n$ trials succeed (\S\ref{sec:8-8}), and each such outcome has probability $p^k(1-p)^{n-k}$ by independence.
+\end{note}
+
+\begin{example}
+For $n=10$, $p=0.3$: \ $\Pr(X=6)=\binom{10}6(0.3)^6(0.7)^4=210\cdot0.000729\cdot0.2401\approx0.037$.
+\end{example}
+
+\begin{proposition}
+If $X\sim\mathrm{Bin}(n,p)$, then $E[X] = np$ and $\mathrm{Var}(X) = np(1-p)$.
+\end{proposition}
+\begin{proof}
+Let $X_i=1$ if trial $i$ succeeds and $0$ otherwise, so $X=\sum_i X_i$. Each $E[X_i]=p$, so $E[X]=np$ by linearity. Also $\mathrm{Var}(X_i)=E[X_i^2]-E[X_i]^2=p-p^2=p(1-p)$, and the $X_i$ are independent, so $\mathrm{Var}(X)=np(1-p)$ by the variance of an independent sum.
+\end{proof}
+
+\subsection{Poisson distribution}
+\label{sec:10-9}
+% CN 10.9
+
+\begin{definition}[Poisson distribution]
+$X\sim\mathrm{Poisson}(\mu)$, for a parameter $\mu>0$, means
+\[
+\Pr(X=k) = \frac{e^{-\mu}\mu^k}{k!}, \qquad k=0,1,2,\dots
+\]
+\end{definition}
+
+\begin{note}[When it applies]
+The Poisson distribution counts events that happen independently at random times, at a steady average rate, during a fixed time interval: phone calls to a call centre, visits to a website, coins tossed into a busker's cap, alpha particles emitted by radioactive material. The parameter $\mu$ is the average number of events in the interval.
+\end{note}
+
+\begin{example}
+For $\mu=3$: \ $\Pr(X\le2)=e^{-3}\bigl(1+3+\tfrac92\bigr)\approx0.0498+0.1494+0.2240\approx0.423$.
+\end{example}
+
+\begin{proposition}
+If $X\sim\mathrm{Poisson}(\mu)$, then $E[X]=\mu$ and $\mathrm{Var}(X)=\mu$.
+\end{proposition}
+
+\begin{theorem}[Poisson as a limit of binomial]
+Fix $\mu>0$. As $n\to\infty$ with $p=\mu/n$,
+\[
+\binom{n}{k}p^k(1-p)^{n-k} \to \frac{e^{-\mu}\mu^k}{k!}.
+\]
+\end{theorem}
+\begin{proof}
+Write the left side as $\dfrac{\mu^k}{k!}\cdot\dfrac{n(n-1)\cdots(n-k+1)}{n^k}\cdot\Bigl(1-\dfrac\mu n\Bigr)^{n-k}$. As $n\to\infty$, the middle factor tends to $1$ (it is a product of $k$ factors, each tending to $1$), and the last tends to $e^{-\mu}$ (using $(1+x/n)^n\to e^x$).
+\end{proof}
+
+\begin{note}[Approximating the binomial]
+So $\mathrm{Bin}(n,p)$ with $n$ large, $p$ small and $np$ moderate is well approximated by $\mathrm{Poisson}(np)$: think of many trials, each with a small chance of a rare event.
+\end{note}
+
+\subsection{Geometric distribution}
+\label{sec:10-10}
+% CN 10.10
+
+\begin{definition}[Geometric distribution]
+$X\sim\mathrm{Geom}(p)$ is the number of independent Bernoulli trials, each with success probability $p$, up to and including the first success:
+\[
+\Pr(X=k) = (1-p)^{k-1}p, \qquad k=1,2,3,\dots
+\]
+\end{definition}
+
+\begin{note}[Two conventions]
+Some books instead count the failures \emph{before} the first success, which is $X-1$. Check which one is meant.
+\end{note}
+
+\begin{example}
+For $p=0.3$: \ $\Pr(X=6)=(0.7)^5\cdot0.3\approx0.050$.
+\end{example}
+
+\begin{proposition}
+If $X\sim\mathrm{Geom}(p)$, then $E[X] = \dfrac1p$ and $\mathrm{Var}(X)=\dfrac{1-p}{p^2}$.
+\end{proposition}
+\begin{proof}[Proof of the expectation]
+$E[X] = p\sum_{k\ge1} k(1-p)^{k-1}$. Differentiating the geometric series $\sum_{k\ge0}x^k=\frac1{1-x}$ (\S\ref{sec:6-14}) gives $\sum_{k\ge1}kx^{k-1}=\frac1{(1-x)^2}$; with $x=1-p$ this is $1/p^2$, so $E[X]=p\cdot\frac1{p^2}=\frac1p$.
+\end{proof}
+
+\begin{note}[Memoryless property]
+Given that the first $t$ trials have all failed, the number of further trials needed is again $\mathrm{Geom}(p)$: past failures do not make success ``due''. Examples include the number of loop iterations until a random stopping condition holds, the number of time intervals until a component fails, and the number of balls a cricket batter faces.
+\end{note}
+
+\subsection{The coupon collector's problem}
+\label{sec:10-11}
+% CN 10.11
+
+\begin{theorem}[Coupon collector]
+There are $n$ types of coupon, and each draw gives a type chosen uniformly at random, independently. Let $T$ be the number of draws needed to collect all $n$ types. Then
+\[
+E[T] = n H_n = n\left(1+\frac12+\cdots+\frac1n\right).
+\]
+\end{theorem}
+\begin{proof}
+Let $T_i$ be the number of draws taken to go from $i-1$ to $i$ distinct types, so $T=\sum_{i=1}^n T_i$. When $i-1$ types have been collected, each draw is new with probability $\frac{n-i+1}{n}$, so $T_i$ is geometric with this $p$, and $E[T_i]=\frac{n}{n-i+1}$. By linearity,
+\[
+E[T] = \sum_{i=1}^n \frac{n}{n-i+1} = n\sum_{j=1}^n\frac1j = nH_n,
+\]
+substituting $j=n-i+1$.
+\end{proof}
+
+\begin{example}
+To see all six faces of a die takes on average $6H_6=6\bigl(1+\frac12+\frac13+\frac14+\frac15+\frac16\bigr)=14.7$ throws.
+\end{example}
+
+\begin{note}[The last few are expensive]
+Since $H_n\approx\ln n$ (\S\ref{sec:6-15}), collecting all $n$ types takes about $n\ln n$ draws, not about $n$. The early types come quickly; the last one alone takes $n$ draws on average.
+\end{note}
+

@@ -1,0 +1,164 @@
+% CN 9.10 Exercises (p.342--346)
+
+% ======================================================================
+\begin{exercise}{1}
+    A random word is chosen from a list of all five-letter English words, and
+    then one of that word's five letters is chosen.
+    \begin{enumerate}[label=(\alph*)]
+        \item What is a suitable sample space? What should the probabilities of
+              its elements be?
+        \item Challenge: use Linux and \texttt{/usr/share/dict/words} to
+              determine the probability of each English letter in this
+              experiment.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{2}
+    A fair coin is tossed three times; the outcome is the sequence of results (H
+    or T). Specify a suitable sample space, with associated probabilities.
+\end{exercise}
+
+\begin{exercise}{3}
+    A fair coin is tossed repeatedly until it comes up Heads for the first time;
+    the outcome is the sequence of results (e.g.\ TTH). Specify a suitable sample
+    space, with associated probabilities.
+\end{exercise}
+
+\begin{exercise}{4}
+    Two fair dice are thrown and their numbers added; let $T$ be the total.
+    \begin{enumerate}[label=(\alph*)]
+        \item What is the probability that $T$ is prime?
+        \item What is the minimum $d$ such that $\Pr(|T-7|\ge d)\le0.1$?
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{5}
+    Find the probability that a random poker hand contains no diamonds.
+\end{exercise}
+
+\begin{exercise}{6}
+    A random positive integer $\le100$ is chosen uniformly. What is the
+    probability that it is divisible by 3 but not by 9?
+\end{exercise}
+
+\begin{exercise}{7}
+    (Birthday Paradox) Let $n\in\N$, and suppose $n$ people are chosen at random.
+    \begin{enumerate}[label=(\alph*)]
+        \item What is the probability that at least two of them share a
+              birthday?
+        \item What is the minimum $n$ such that it is more likely than not that
+              at least two share a birthday?
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{8}
+    Prove that, for any events $A$ and $B$,
+    \[
+        \Pr(A\cup B) = 1-\Pr(\overline A\cap\overline B).
+    \]
+\end{exercise}
+
+\begin{exercise}{9}
+    Prove by induction on $n$ that, for all $n\in\N$ and any mutually disjoint
+    sets $A_1,\dots,A_n$,
+    \[
+        \Pr(A_1\sqcup A_2\sqcup\cdots\sqcup A_n) = \sum_{k=1}^n\Pr(A_k).
+    \]
+\end{exercise}
+
+\begin{exercise}{10}
+    Suppose events $A,B,C$ are independent. Must $A$ also be independent of
+    $B\cap C$? Justify with a proof or a counterexample.
+\end{exercise}
+
+% ======================================================================
+\begin{exercise}{11}
+    Recall the network reliability problems in \S9.7. All links behave
+    independently with survival probability $p$. Consider the network
+    \begin{center}
+    \begin{tikzpicture}[scale=0.9,every node/.style={circle,fill,inner sep=1.5pt}]
+        \node[label=left:$S$] (S) at (0,0) {};
+        \node[label=above:$M$] (M) at (2,1) {};
+        \node[label=below:$N$] (N) at (2,-1) {};
+        \node[label=right:$T$] (T) at (4,0) {};
+        \draw (S)--(M)--(T)--(N)--(S);
+        \begin{scope}[xshift=6.5cm]
+            \node[label=left:$S$] (S2) at (0,0) {};
+            \node[label=above:$M$] (M2) at (2,1) {};
+            \node[label=below:$N$] (N2) at (2,-1) {};
+            \node[label=right:$T$] (T2) at (4,0) {};
+            \draw (S2)--(M2)--(T2)--(N2)--(S2);
+            \draw (M2)--(N2);
+        \end{scope}
+    \end{tikzpicture}
+    \end{center}
+    \begin{enumerate}[label=(\alph*)]
+        \item (Left network.) Give an expression in $p$ for the probability that
+              there is a path of surviving links from $S$ to $T$.
+        \item Compare your answer to (a) with Exercise 4.8(b). Discuss the
+              relationship.
+        \item (Right network: add a link between $M$ and $N$.) Give an expression
+              in $p$ for the probability that there is a path of surviving links
+              from $S$ to $T$.
+        \item Compare your answer to (c) with Exercise 4.8(c). Discuss the
+              relationship.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{12}
+    Determine the probability that a random permutation on a set of two elements
+    is fixed-point-free. Then do the same for three elements, and then five.
+\end{exercise}
+
+\begin{exercise}{13}
+    What is the probability that a Scrabble letter is a vowel, given that it is
+    in the first half of the alphabet?
+\end{exercise}
+
+\begin{exercise}{14}
+    Prove that, for any two events $A$ and $B$, $\Pr(A\mid B)=\Pr(B\mid A)$ if and
+    only if the events have the same probability.
+\end{exercise}
+
+\begin{exercise}{15}
+    Consider again the four-node, five-link network from Exercise 11, with
+    $p=\frac12$.
+    \begin{enumerate}[label=\arabic*.]
+        \item What is the probability that there is a path from $S$ to $T$?
+        \item What is the probability that there is a path from $M$ to $N$?
+    \end{enumerate}
+\end{exercise}
+
+% ======================================================================
+\begin{exercise}{16}
+    At a cricket match the ball is hit towards a fielder, who could be any of
+    Alex, Chris, Kim and Sam (indistinguishable at this distance). Alex catches
+    with probability 0.9 (drops with 0.1). Each of Chris, Kim and Sam catches with
+    probability 0.4 (drops with 0.6).
+    \begin{enumerate}[label=(\alph*)]
+        \item What is the probability that the ball is caught?
+        \item Given that the ball is caught, what is the probability that the
+              fielder was Alex? That it was not Alex?
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{17}
+    A serious crime is committed in a big city; 5 million people cannot be ruled
+    out. A degraded DNA fragment from the criminal is found; there is no other
+    evidence. A random person has a one-in-a-million chance of matching. A
+    database search finds a match with someone who provided DNA in an irrelevant
+    context years ago. How likely is it that this person committed the crime? Are
+    they guilty beyond reasonable doubt?
+\end{exercise}
+
+\begin{exercise}{18}
+    In the three-coins example (from p.337 in \S9.9), suppose we observe two
+    coin tosses instead of one. For each observation, determine the prior and
+    posterior probabilities of the chosen coin being Fair, DoubleHead,
+    DoubleTail:
+    \begin{enumerate}[label=(\alph*)]
+        \item both tosses are Heads;
+        \item both tosses are Tails;
+        \item the first toss is Heads, the second is Tails.
+    \end{enumerate}
+\end{exercise}

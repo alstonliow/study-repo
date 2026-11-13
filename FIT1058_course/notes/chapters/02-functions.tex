@@ -1,0 +1,880 @@
+% ============================================================
+% CHAPTER 2 --- FUNCTIONS  (CN Ch.2, \S\ref{sec:2-1}-2.19)
+% Relations content (Rosen \S9.1) lives at CN's own 2.13/2.14.
+% \S\ref{sec:2-13}-2.14 filled below; the rest of Ch.2 (\S\ref{sec:2-1}-2.12, 2.15-2.19)
+% is functions material outside this session's scope -- left as
+% titled stubs so the chapter numbering stays complete and correct.
+% ============================================================
+\newpage
+\section{Functions}
+
+\subsection{Definitions}
+\label{sec:2-1}
+% CN 2.1 / Rosen 2.3
+\begin{definition}[Function]
+A function $f$ consists of: a set called the \emph{domain}; a set called the \emph{codomain}; and a rule assigning, to each $x$ in the domain, a unique value $f(x)$ in the codomain.
+\end{definition}
+
+\begin{center}
+\begin{tikzcd}[row sep=small, column sep=huge]
+1 \arrow[r, "f"] & p \\
+2 \arrow[r, "f"'] & q \\
+3 \arrow[r, "f"] & r
+\end{tikzcd}
+\end{center}
+\begin{center}
+\small A function $f:\{1,2,3\}\to\{p,q,r\}$, each argument pointing to its unique value
+\end{center}
+
+\begin{note}[Alternative phrasing]
+Let $A,B$ be nonempty sets. A \emph{function} $f$ from $A$ to $B$ is an assignment of exactly one element of $B$ to each element of $A$. We write $f(a)=b$ if $b$ is the element assigned to $a$, and $f: A \to B$.
+\end{note}
+
+\begin{note}
+$x$ is the \emph{argument} (parameter, input); $f(x)$ is the \emph{value} (output).
+\end{note}
+
+\begin{definition}[Equality of functions]
+$f = g$ iff $\dom(f) = \dom(g)$, their codomains agree, and $f(x) = g(x)$ for every $x \in \dom(f)$.
+\end{definition}
+
+\begin{example}
+Let $\mathrm{CubeSum4}_\Z(w,x,y,z) = w^3+x^3+y^3+z^3$ on $\dom = \Z^4$, and $\mathrm{CubeSum4}_\R$ the same rule on $\dom = \R^4$. Despite the identical rule, these are \emph{different} functions, since equality of functions requires equal domains.
+\end{example}
+
+\subsubsection{Domain}
+\label{sec:2-1-1}
+% CN 2.1.1
+\begin{definition}[Domain]
+The \emph{domain} of $f$, written $\dom(f)$, is exactly the set of valid arguments: $f(x)$ must be defined for every $x \in \dom(f)$, and undefined for every $x \notin \dom(f)$.
+\end{definition}
+
+\begin{note}[The domain as a promise]
+Specifying $\dom(f)$ commits $f$ to working correctly on \emph{every} member of it -- no more, no less. A larger domain is a bigger promise (more work to guarantee); a smaller domain that still covers the intended use case is often preferable.
+\end{note}
+
+\subsubsection{Codomain \& co.}
+\label{sec:2-1-2}
+% CN 2.1.2
+\begin{definition}[Codomain]
+The \emph{codomain} of $f$ is a set containing every possible value $f(x)$ for $x \in \dom(f)$, but is allowed to be a \emph{loose} superset -- it may contain elements never actually attained.
+\end{definition}
+
+\begin{definition}[Image]
+The \emph{image} of $f$ is the exact set of attained values, $\{f(x) : x \in \dom(f)\}$ -- a subset of the codomain, not necessarily proper.
+\end{definition}
+
+\begin{note}
+CN deliberately avoids the word ``range'', since usage is inconsistent (sometimes the image, sometimes the codomain). Rosen uses ``range'' for what CN calls the image.
+\end{note}
+
+\begin{note}[Why allow looseness at all?]
+The image is often hard, or even provably impossible, to compute exactly (e.g.\ a function whose value depends on uncomputable properties of programs), while a simple superset codomain is easy to state. So we specify a codomain we're confident covers every value, rather than insisting on the exact image.
+\end{note}
+
+\begin{definition}[Image of a set]
+For $f: A \to B$ and $S \subseteq A$, the \emph{image of $S$ under $f$} is
+\[
+f(S) = \{f(s) : s \in S\} \subseteq B.
+\]
+(The image of $f$ itself, above, is the special case $f(A)$.)
+\end{definition}
+
+\begin{note}[Onto / surjective]
+If the codomain equals the image, $f$ is \emph{onto} (\emph{surjective}), a \emph{surjection}. (Formal treatment in \S\ref{sec:2-7}.)
+\end{note}
+
+\subsubsection{Rule}
+\label{sec:2-1-3}
+% CN 2.1.3
+\begin{definition}[Rule]
+The \emph{rule} of $f$ specifies, for each $x \in \dom(f)$, what $f(x)$ is -- it need not specify \emph{how} to compute it (no algorithm required).
+\end{definition}
+
+\begin{definition}[Graph of a function]
+The \emph{graph} of $f$ is $\{(x, f(x)) : x \in \dom(f)\}$, the set of all argument--value pairs.
+\end{definition}
+
+\begin{example}
+A function on the finite domain $\{1,2,3,4\}$ can be given as a finite graph, e.g.\ $\{(1,a),(2,a),(3,b),(4,c)\}$ (its image is $\{a,b,c\}$, a proper subset of a larger codomain). A function on an infinite domain typically needs a rule rather than a listed graph: the squaring function on $\Z$ has graph $\{(x,x^2):x\in\Z\}$.
+\end{example}
+
+\subsection{Notation}
+\label{sec:2-3}
+% CN 2.3 / Rosen 2.3
+\begin{definition}[Function declaration]
+\[
+f : \text{domain} \to \text{codomain}, \qquad f(x) = \text{expression in } x.
+\]
+Equivalently, the rule may be given with a \emph{mapping arrow}: $x \mapsto \text{expression in } x$ (note: $\mapsto$ for the rule, $\to$ for domain/codomain -- do not conflate them).
+\end{definition}
+
+\begin{example}
+$f : \R \to \R,\ f(x) = x^2$, equivalently $f: \R \to \R,\ x \mapsto x^2$. The codomain need not be the tightest possible: $\R_0^+$ (the image) would also be valid, but a codomain like $\R \cup \{0,-\sqrt2,-42\}$, while technically valid, is needlessly cluttered.
+\end{example}
+
+\subsection{Some special functions}
+\label{sec:2-4}
+% CN 2.4 / Rosen 2.3 (floor, ceiling)
+\begin{definition}[Empty function]
+\[
+\emptyset : \emptyset \to \emptyset
+\]
+Empty domain, empty codomain, vacuous rule.
+\end{definition}
+
+\begin{definition}[Identity function]
+For a set $A$:
+\[
+i_A : A \to A, \qquad i_A(x) = x.
+\]
+\end{definition}
+
+\begin{definition}[Indicator (characteristic) function]
+For $A \subseteq D$:
+\[
+\chi_A : D \to \{0,1\}, \qquad
+\chi_A(x) =
+\begin{cases}
+1, & x \in A; \\
+0, & x \notin A.
+\end{cases}
+\]
+Depends on $D$, not just $A$: different domains give different indicator functions.
+\end{definition}
+
+\begin{example}
+\[
+\chi_{A \cup B}(x) = \max\{\chi_A(x), \chi_B(x)\} \quad \text{for all } x.
+\]
+\end{example}
+
+\begin{definition}[Constant function]
+For a domain $D$ and object $a$:
+\[
+c_a : D \to \{a\}, \qquad c_a(x) = a.
+\]
+\end{definition}
+
+\begin{definition}[Floor and ceiling]
+For $x \in \R$:
+\[
+\lfloor x \rfloor = \max\{n \in \Z : n \le x\}, \qquad
+\lceil x \rceil = \min\{n \in \Z : n \ge x\}.
+\]
+\end{definition}
+
+\begin{note}[Contrast with CN's \S\ref{sec:2-1-1}]
+CN's definition of a function already \emph{is} what Rosen calls a \emph{total} function: $\dom(f)$ equals the declared domain exactly, with no gaps. Rosen's ``partial function from $A$ to $B$'' allows $\dom(f)\subsetneq A$ -- a total function on the smaller set $\dom(f)\subseteq A$.
+\end{note}
+
+\begin{example}
+$f:\R\to\R$, $f(x)=1/x$ is a partial function on $\R$ (undefined at $0$); as a \emph{total} function it is $f:\R\setminus\{0\}\to\R$ -- same rule, different declared domain (CN's \S\ref{sec:2-1-1} view of the domain as an exact promise).
+\end{example}
+
+\subsection{Functions with multiple arguments and values}
+\label{sec:2-5}
+% CN 2.5
+\begin{definition}[Multiple arguments via Cartesian product]
+A function of two arguments $f(x,y)$, $x \in X, y \in Y$, value in $C$, is formally $f: X \times Y \to C$ -- a function of \emph{one} argument, the ordered pair $(x,y)$, with $f(x,y)$ shorthand for $f((x,y))$. Extends to any number of arguments via $X_1 \times \cdots \times X_n$.
+\end{definition}
+
+\begin{note}[Notation styles]
+$f(x,y)$ is \emph{prefix} notation (name before arguments). \emph{Infix} (name between, e.g.\ $x+y$) and \emph{postfix} (name after) also occur.
+\end{note}
+
+\begin{definition}[Multiple (tuple-valued) outputs]
+A function returning a pair is $f: X \to Y \times Z$; its value is a single element $(y,z) \in Y \times Z$, viewable as ``two outputs.'' Extends to any number of returned values.
+\end{definition}
+
+\subsection{Restrictions}
+\label{sec:2-6}
+% CN 2.6
+\begin{definition}[Restriction]
+For $f: A \to B$ and $X \subseteq A$, the \emph{restriction} of $f$ to $X$, written $f|_X$ (or $f\restriction_X$), is
+\[
+f|_X : X \to B, \qquad f|_X(x) = f(x) \text{ for all } x \in X.
+\]
+\end{definition}
+
+\begin{note}[Why restrict?]
+A smaller domain means: a smaller stored representation (fewer ordered pairs to list); a smaller ``promise'' to keep (less testing if implemented); sometimes simpler analysis; and sometimes \emph{stronger properties} unavailable to the original function.
+\end{note}
+
+\begin{example}
+Let $f: \R \to \R,\ f(x)=x^2$. Its restriction $f|_{\R_0^+} : \R_0^+ \to \R$ is strictly increasing throughout its domain (unlike $f$, which decreases on $\R_0^-$), and every $y$ in its image has a \emph{unique} preimage $\sqrt{y}$ -- whereas under $f$ itself, each nonzero $y$ in the image has two preimages, $\pm\sqrt{y}$. (This makes $f|_{\R_0^+}$ invertible, unlike $f$ -- see \S\ref{sec:2-8}.)
+\end{example}
+
+\subsection{Injections, surjections, bijections}
+\label{sec:2-7}
+% CN 2.7 / Rosen 2.3.2
+
+\begin{definition}[Injective / one-to-one]
+$f: A \to B$ is \emph{injective} (an \emph{injection}, \emph{one-to-one}) if distinct arguments always give distinct values:
+\[
+\forall x_1, x_2 \in A,\quad x_1 \neq x_2 \implies f(x_1) \neq f(x_2).
+\]
+\end{definition}
+
+\begin{note}[Contrapositive phrasing]
+Equivalently (contrapositive):
+\[
+\forall x_1, x_2 \in A,\quad f(x_1) = f(x_2) \implies x_1 = x_2.
+\]
+This is the form most useful in proofs: assume $f(x_1)=f(x_2)$ and derive $x_1=x_2$.
+\end{note}
+
+\begin{note}[Injections preserve information]
+Every $y$ in the image of an injection has a \emph{unique} preimage, so knowing $y$ determines $x$ uniquely. A non-injective function is \emph{lossy} (some inputs become indistinguishable from their output); an injective one is \emph{lossless}.
+\end{note}
+
+\begin{definition}[Surjective / onto]
+$f: A \to B$ is \emph{surjective} (a \emph{surjection}, \emph{onto}) if
+\[
+\forall y \in B,\ \exists x \in A \text{ such that } f(x) = y,
+\]
+i.e.\ the image equals the codomain.
+\end{definition}
+
+\begin{definition}[Bijective]
+$f$ is \emph{bijective} (a \emph{bijection}, \emph{one-to-one correspondence}) if it is both injective and surjective.
+\end{definition}
+
+\begin{note}[Permutation]
+A bijection $f: A \to A$ (domain = codomain) is also called a \emph{permutation} of $A$ -- usually reserved for finite $A$.
+\end{note}
+
+\begin{theorem}[Finite equal-size domain/codomain]
+Let $f: A \to B$ with $A, B$ finite and $|A| = |B|$. Then $f$ is injective $\iff$ $f$ is surjective $\iff$ $f$ is bijective.
+\end{theorem}
+\begin{proof}[Proof by induction on $n = |A| = |B|$]
+We show: $f$ injective $\implies$ $f$ bijective. (The surjective case is symmetric, swapping the roles of $A$ and $B$ throughout.)
+
+\textbf{Base case} ($n=0$): $A = B = \emptyset$. The unique function $\emptyset \to \emptyset$ is vacuously injective and vacuously surjective, hence bijective.
+
+\textbf{Inductive step}: Suppose the claim holds for all injective functions between finite sets of size $n-1$. Let $f: A \to B$ be injective with $|A| = |B| = n \ge 1$.
+
+Pick any $a \in A$ and let $b = f(a)$. Set $A' = A \setminus \{a\}$, $B' = B \setminus \{b\}$, and let $f' = f|_{A'}$ be the restriction of $f$ to $A'$.
+
+\begin{itemize}
+    \item \emph{$f'$ maps into $B'$}: for $x \in A'$ we have $x \neq a$, so by injectivity of $f$, $f(x) \neq f(a) = b$; hence $f(x) \in B \setminus \{b\} = B'$.
+    \item \emph{$f'$ is injective}: it is a restriction of the injective function $f$.
+    \item $|A'| = |B'| = n-1$.
+\end{itemize}
+
+By the inductive hypothesis, $f' : A' \to B'$ is bijective, in particular surjective onto $B'$.
+
+Now take any $y \in B$. Either $y = b$, in which case $y = f(a)$; or $y \in B'$, in which case surjectivity of $f'$ gives some $x \in A'$ with $f(x) = f'(x) = y$. Either way, $y$ has a preimage under $f$. So $f$ is surjective onto $B$, and being injective by hypothesis, $f$ is bijective.
+
+By induction, the claim holds for all $n \ge 0$.
+\end{proof}
+
+\begin{note}
+This theorem requires \emph{finite} $A, B$ of equal size -- it fails for infinite sets (e.g.\ $f:\N\to\N,\ f(x)=2x$ is injective but not surjective, despite $|\N|=|\N|$ in the infinite-cardinality sense).
+\end{note}
+
+\begin{note}[Proof strategies for injectivity and surjectivity]
+To prove $f: A \to B$ is \textbf{injective}: let $x_1, x_2 \in A$ be arbitrary with $f(x_1) = f(x_2)$, and show $x_1 = x_2$ follows (direct proof of the contrapositive form).
+
+To prove $f$ is \textbf{not injective}: exhibit specific $x_1 \neq x_2 \in A$ with $f(x_1) = f(x_2)$ (one counterexample suffices).
+
+To prove $f$ is \textbf{surjective}: let $y \in B$ be arbitrary, and \emph{construct} (or show the existence of) some $x \in A$ with $f(x) = y$ -- typically by solving $f(x) = y$ for $x$ in terms of $y$ and checking $x \in A$.
+
+To prove $f$ is \textbf{not surjective}: exhibit a specific $y \in B$ for which no $x \in A$ satisfies $f(x) = y$ (one counterexample suffices).
+\end{note}
+
+\subsection{Inverse functions}
+\label{sec:2-8}
+% CN 2.8 / Rosen 2.3 (Inverse Functions)
+
+\begin{note}[Why uniqueness can fail]
+Let $f: A \to B$. For a given $y \in B$, trying to go ``backwards'' can fail in two distinct ways:
+\begin{itemize}
+    \item \emph{Non-uniqueness}: there exist $x_1 \neq x_2 \in A$ with $f(x_1) = f(x_2) = y$.
+    \item \emph{Non-existence}: $y$ lies in the codomain but not the image, so no $x \in A$ satisfies $f(x)=y$.
+\end{itemize}
+Both failures are ruled out exactly when $f$ is, respectively, injective and surjective.
+\end{note}
+
+\begin{definition}[Inverse function]
+If $f: A \to B$ is such that every $y \in B$ has a \emph{unique} $x \in A$ with $f(x) = y$, the \emph{inverse function} $f^{-1} : B \to A$ is defined by
+\[
+f^{-1}(y) = \text{the unique } x \in A \text{ such that } f(x) = y.
+\]
+Equivalently, as a set of ordered pairs (the graph of $f$, reversed):
+\[
+f^{-1} = \{(y,x) : (x,y) \in f\} = \{(f(x),x) : x \in A\}.
+\]
+\end{definition}
+
+\begin{theorem}
+$f: A \to B$ has an inverse function if and only if $f$ is a bijection.
+\end{theorem}
+\begin{proof}
+($\Rightarrow$) If $f^{-1}$ exists, every $y \in B$ has \emph{some} preimage (so $f$ is surjective) and \emph{at most one} preimage (so $f$ is injective, since two preimages of the same $y$ would break the ``unique $x$'' requirement in the definition of $f^{-1}$). Hence $f$ is a bijection.
+
+($\Leftarrow$) If $f$ is a bijection, surjectivity guarantees every $y \in B$ has \emph{at least one} preimage, and injectivity guarantees \emph{at most one}; together, exactly one. This unique preimage is exactly what $f^{-1}(y)$ requires, so $f^{-1}$ is well-defined.
+\end{proof}
+
+\begin{note}[When invertibility fails]
+Neither the \texttt{Employer} function (not injective: two computers both mapped to Harvard College Observatory) nor the squaring function $\R \to \R$ (not injective: $2^2=(-2)^2$; also not surjective onto all of $\R$) is invertible.
+\end{note}
+
+\begin{proposition}[$f^{-1}$ undoes $f$, and vice versa]
+If $f: A \to B$ is a bijection, then for all $x \in A$ and all $y \in B$:
+\[
+f^{-1}(f(x)) = x, \qquad f(f^{-1}(y)) = y.
+\]
+\end{proposition}
+\begin{proof}
+Let $x \in A$ and $y = f(x)$. By definition, $f^{-1}(y)$ is the unique element of $A$ mapping to $y$ under $f$ -- and $x$ is such an element, so $f^{-1}(f(x)) = f^{-1}(y) = x$. The second identity is symmetric: apply the same argument with the roles of $f, f^{-1}$ swapped, using that $f^{-1}$ is itself a bijection (below).
+\end{proof}
+
+\begin{proposition}
+If $f$ is a bijection, so is $f^{-1}$, and $(f^{-1})^{-1} = f$.
+\end{proposition}
+\begin{proof}
+$f^{-1}: B \to A$ is injective and surjective by the symmetry of the defining property (unique $x$ for each $y$ $\Leftrightarrow$ unique $y$ for each $x$, since $f$ itself is a bijection), hence $f^{-1}$ is a bijection and has its own inverse. That inverse must send each $x$ back to the $y$ with $f^{-1}(y)=x$, i.e.\ $y=f(x)$ -- exactly $f$. So $(f^{-1})^{-1}=f$.
+\end{proof}
+
+\begin{definition}[Preimage of a set]
+For $f: A \to B$ (\emph{not} necessarily a bijection) and $S \subseteq B$, the \emph{preimage} (or \emph{inverse image}) of $S$ under $f$ is
+\[
+f^{-1}(S) = \{a \in A : f(a) \in S\}.
+\]
+\end{definition}
+
+\begin{note}[Overloaded notation -- read carefully]
+$f^{-1}(S)$ (preimage of a \emph{set}, defined for \emph{any} function $f$) and $f^{-1}(y)$ (the \emph{inverse function} applied to a point, defined \emph{only when $f$ is a bijection}) use the same symbol $f^{-1}$ but are different concepts. When $f$ is a bijection, $f^{-1}(\{y\}) = \{f^{-1}(y)\}$ -- the set-level and point-level notions agree -- but $f^{-1}(S)$ makes sense even when no bijection (or even no inverse function) exists.
+\end{note}
+
+\begin{example}
+For $f: \R \to \R,\ f(x) = x^2$ (not a bijection, so $f^{-1}$ as a function does not exist), the preimage of $S = [4,9]$ is
+\[
+f^{-1}([4,9]) = \{x \in \R : x^2 \in [4,9]\} = [-3,-2] \cup [2,3].
+\]
+\end{example}
+
+\subsection{Composition}
+\label{sec:2-9}
+% CN 2.9 / Rosen 2.3.3
+
+\begin{definition}[Composition]
+For $f: A \to B$ and $g: B \to C$, the \emph{composition} $g \circ f : A \to C$ is
+\[
+(g \circ f)(x) = g(f(x)).
+\]
+\end{definition}
+
+\begin{note}[Order of writing vs.\ order of application]
+$g \circ f$ is read right-to-left in application ($f$ first, then $g$), matching the order inside $g(f(x))$ -- but this is the \emph{reverse} of our usual left-to-right reading order. Read carefully.
+\end{note}
+
+\begin{note}[Compatibility requirement]
+$g \circ f$ is defined only when $\mathrm{codomain}(f) = \mathrm{domain}(g)$: whatever $f$ guarantees to produce must be exactly what $g$ is guaranteed to handle. If this fails, the composition is simply undefined -- not partially defined, not an error to patch around.
+\end{note}
+
+\begin{proposition}[Not commutative, but associative]
+In general $g \circ f \neq f \circ g$ (indeed one side may not even be defined). But for $f: A\to B,\ g: B\to C,\ h: C\to D$:
+\[
+h \circ (g \circ f) = (h \circ g) \circ f,
+\]
+so $h \circ g \circ f$ is unambiguous without parentheses.
+\end{proposition}
+\begin{proof}
+Both sides are functions $A \to D$. For any $x \in A$:
+\[
+\big(h \circ (g \circ f)\big)(x) = h\big((g\circ f)(x)\big) = h(g(f(x))) = (h \circ g)(f(x)) = \big((h \circ g) \circ f\big)(x).
+\]
+Equal on every input, so the functions are equal.
+\end{proof}
+
+\begin{proposition}[Role of the identity]
+For $f: A \to A$ a bijection: $f \circ f^{-1} = i_A$ and $f^{-1} \circ f = i_A$. For any $g: C \to D$: $g \circ i_C = g$ and $i_D \circ g = g$.
+\end{proposition}
+
+\begin{definition}[Iterated composition]
+For $f: A \to A$ and $n \in \Z^+$:
+\[
+f^{(n)} = \underbrace{f \circ f \circ \cdots \circ f}_{n \text{ copies}}.
+\]
+\end{definition}
+
+\begin{proposition}[Composition preserves injectivity/surjectivity]
+Let $f: A \to B$, $g: B \to C$.
+\begin{enumerate}[label=(\roman*)]
+    \item If $f,g$ are both injective, so is $g \circ f$.
+    \item If $f,g$ are both surjective, so is $g \circ f$.
+    \item If $f,g$ are both bijective, so is $g \circ f$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(i) Suppose $(g\circ f)(x_1) = (g\circ f)(x_2)$, i.e.\ $g(f(x_1)) = g(f(x_2))$. Since $g$ is injective, $f(x_1) = f(x_2)$; since $f$ is injective, $x_1 = x_2$.
+
+(ii) Let $z \in C$. Since $g$ is surjective, $z = g(y)$ for some $y \in B$; since $f$ is surjective, $y = f(x)$ for some $x \in A$. Then $(g\circ f)(x) = g(f(x)) = g(y) = z$.
+
+(iii) Immediate from (i) and (ii).
+\end{proof}
+
+\subsection{Cryptosystems}
+\label{sec:2-10}
+% CN 2.10 / Rosen Ch.4 (Number Theory and Cryptography, esp. \S\ref{sec:4-6})
+
+\begin{definition}[Cryptosystem]
+A \emph{cryptosystem} consists of a message space $M$, cyphertext space $C$, keyspace $K$, an \emph{encryption function} $e: M \times K \to C$, and a \emph{decryption function} $d: C \times K \to M$, such that for every key $k \in K$, the single-argument functions
+\[
+e_k : M \to C,\ e_k(m) = e(m,k), \qquad d_k : C \to M,\ d_k(c) = d(c,k)
+\]
+satisfy:
+\begin{enumerate}[label=(\roman*)]
+    \item $e_k, d_k$ are bijective (onto their images), and
+    \item $d_k = e_k^{-1}$.
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+Condition (ii) is the essential one: it forces $d_k(e_k(m)) = m$ for all $m \in M$ -- decryption with $k$ genuinely undoes encryption with $k$.
+\end{note}
+
+\begin{example}[Shift cipher]
+Take $M = C = \Z_{26} = \{0,1,\dots,25\}$ (letters as residues mod 26) and $K = \Z_{26}$. Define
+\[
+e_k(p) = (p+k) \bmod 26, \qquad d_k(c) = (c-k) \bmod 26.
+\]
+Each $e_k$ is a bijection on $\Z_{26}$ with $d_k = e_k^{-1}$, so $(M,C,K,e,d)$ is a cryptosystem. ($k=3$ is the classical Caesar cipher.)
+\end{example}
+
+\begin{definition}[Composition of cryptosystems]
+Given $\mathcal{C} = (M,M,K,e,d)$ and $\mathcal{C}' = (M,M,K',e',d')$ (same message space), the \emph{keyed composition} of encryption functions is
+\[
+e' \bullet e : M \times (K \times K') \to M, \qquad (e' \bullet e)(m,(k,k')) = e'(e(m,k),k'),
+\]
+and similarly $d \bullet d'$ for decryption. The composed cryptosystem is $\mathcal{C}' \circ \mathcal{C} = (M,M,K\times K', e'\bullet e, d\bullet d')$. For each key pair $(k,k')$, the resulting single-argument maps are exactly the ordinary function compositions:
+\[
+e_{(k,k')} = e'_{k'} \circ e_k, \qquad d_{(k,k')} = d_k \circ d'_{k'}.
+\]
+\end{definition}
+
+\begin{proposition}
+The composition of two cryptosystems is a cryptosystem.
+\end{proposition}
+\begin{proof}
+Fix $(k,k') \in K \times K'$. Since $\mathcal{C}, \mathcal{C}'$ are cryptosystems, $e_k, e'_{k'}, d_k, d'_{k'}$ are all bijections. By the composition-preserves-bijectivity theorem (\S\ref{sec:2-9}), $e_{(k,k')} = e'_{k'} \circ e_k$ is a bijection. It remains to check $d_{(k,k')} = (e_{(k,k')})^{-1}$: since $(e'_{k'})^{-1} = d'_{k'}$ and $(e_k)^{-1} = d_k$, and the inverse of a composition reverses order, $(e'_{k'}\circ e_k)^{-1} = e_k^{-1} \circ (e'_{k'})^{-1} = d_k \circ d'_{k'} = d_{(k,k')}$, as required.
+\end{proof}
+
+\begin{note}[Security is not guaranteed by composition]
+A good cryptosystem needs $e_k, d_k$ easy to compute \emph{with} $k$, but $e_k$ hard to invert \emph{without} $k$. Composing two hard-to-invert systems is often, but not always, harder still to break. Counterexample: composing two shift ciphers with keys $k,k'$ gives $e'_{k'}(e_k(p)) = (p+k+k') \bmod 26 = e_{k+k'}(p)$ -- just another shift cipher, no stronger than a single shift, since the keyspace effectively collapses.
+\end{note}
+
+\subsection{Loose composition}
+\label{sec:2-11}
+% CN 2.11 -- not in Rosen; CN's own extension of composition
+
+\begin{definition}[Loose composition]
+For $f: A \to B$ and $g: C \to D$ (no requirement that $B = C$), the \emph{loose composition} $g \mathbin{\mathaccent"705E\relax\circ} f$ is
+\[
+g \mathbin{\mathaccent"705E\relax\circ} f : \{x \in A : f(x) \in C\} \to D, \qquad (g \mathbin{\mathaccent"705E\relax\circ} f)(x) = g(f(x)).
+\]
+\end{definition}
+
+\begin{note}[Always defined, but harder to use]
+Unlike ordinary (``tight'') composition, loose composition is defined for \emph{any} $f,g$ -- if $B \cap C = \emptyset$, it degenerates to the empty function. The cost: determining its domain requires inspecting the \emph{rule} of $f$ (which inputs land in $C$), not just $f$'s stated codomain -- so it is harder to reason about mechanically. This course uses tight composition throughout.
+\end{note}
+
+\subsection{Counting functions}
+\label{sec:2-12}
+% CN 2.12 / Rosen Ch.6 (product rule, permutations)
+
+\begin{theorem}[Counting all functions]
+If $|A|=m$, $|B|=n$, the number of functions $f: A \to B$ is $n^m$.
+\end{theorem}
+\begin{proof}
+Each of the $m$ elements of $A$ independently has $n$ possible images in $B$; by the product rule, $\underbrace{n \times n \times \cdots \times n}_{m} = n^m$.
+\end{proof}
+
+\begin{theorem}[Counting injections]
+If $|A|=m$, $|B|=n$, the number of injections $f: A \to B$ is
+\[
+n(n-1)(n-2)\cdots(n-m+1) = \frac{n!}{(n-m)!} \quad (\text{also written } P(n,m)).
+\]
+\end{theorem}
+\begin{proof}
+Enumerate $A = \{a_1,\dots,a_m\}$. $a_1$ has $n$ choices in $B$; $a_2$ must avoid $f(a_1)$, so $n-1$ choices; \dots; $a_m$ must avoid the $m-1$ already-used values, so $n-m+1$ choices. These choices are made in sequence, so by the product rule the total is $n(n-1)\cdots(n-m+1)$.
+\end{proof}
+
+\begin{note}
+If $m > n$, the product includes a factor of $0$, correctly giving $0$ injections -- consistent with the pigeonhole principle.
+\end{note}
+
+\begin{theorem}[Counting bijections / permutations]
+If $|A|=|B|=n$, the number of bijections $f: A \to B$ is $n!$.
+\end{theorem}
+\begin{proof}
+By \S\ref{sec:2-7}, for finite sets of equal size, bijective $\iff$ injective. So this is the injection count with $m=n$: $n(n-1)\cdots(n-n+1) = n!$.
+\end{proof}
+
+\begin{note}
+In particular, the number of permutations of an $n$-element set (bijections $A \to A$) is $n!$.
+\end{note}
+
+\subsection{Binary relations}
+\label{sec:2-13}
+% CN 2.13 / Rosen 9.1
+
+\begin{definition}[Binary relation]
+A \emph{binary relation} from $A$ to $B$ is a subset $R \subseteq A \times B$. We write $x R y$, $R(x,y)$, or $(x,y) \in R$ interchangeably. A relation \emph{on} $A$ satisfies $R \subseteq A \times A$.
+\end{definition}
+
+\begin{note}[Relations as ``relaxed functions'']
+A function $f: A \to B$ is exactly a relation $R \subseteq A \times B$ satisfying: for every $a \in A$, there is a \emph{unique} $b \in B$ with $(a,b) \in R$. Dropping the uniqueness (and even the existence) requirement gives a general binary relation -- so every function is a relation, but not conversely.
+\end{note}
+
+\begin{definition}[Domain, range/codomain of a relation]
+For $R \subseteq A \times B$:
+\[
+\{x \in A : (x,y) \in R \text{ for some } y \in B\} \quad \text{(elements actually related to something)},
+\]
+\[
+\{y \in B : (x,y) \in R \text{ for some } x \in A\} \quad \text{(elements actually related to)}.
+\]
+\end{definition}
+
+\begin{definition}[$R(x)$, $R^{-1}(y)$ -- CN notation]
+For $x \in A$: $R(x) = \{y \in B : xRy\}$ (a \emph{set}, possibly empty -- not a single value, unlike function notation). For $y \in B$: $R^{-1}(y) = \{x \in A : xRy\}$.
+\end{definition}
+
+\begin{definition}[Inverse relation]
+For $R \subseteq A \times B$, the \emph{inverse relation} $R^{-1} \subseteq B \times A$ is
+\[
+y R^{-1} x \iff x R y.
+\]
+\end{definition}
+
+\begin{note}
+When $R$ happens to be a function, this agrees with the inverse function of \S\ref{sec:2-8} -- \emph{but only when that function is a bijection}. For a general function $f$, $f^{-1}$ as a \emph{relation} always exists (just reverse the pairs); it is only a \emph{function} in its own right when $f$ is bijective.
+\end{note}
+
+\begin{definition}[Zero-one matrix of a relation]
+For finite $A=\{a_1,\dots,a_m\}$, $B=\{b_1,\dots,b_n\}$ and $R\subseteq A\times B$: the matrix $M_R$ is $m\times n$ with
+\[
+(M_R)_{ij} = 1 \iff (a_i,b_j)\in R, \qquad (M_R)_{ij}=0 \text{ otherwise.}
+\]
+\end{definition}
+
+\begin{note}[Properties as matrix conditions, $R$ on $A$]
+Reflexive: diagonal all $1$s. Symmetric: $M_R = M_R^t$. Antisymmetric: $(M_R)_{ij}=1$ and $i\neq j$ $\implies (M_R)_{ji}=0$.
+\end{note}
+
+\begin{definition}[Directed graph of a relation]
+For $R$ on $A$: vertices $=A$; a directed edge $a\to b$ exactly when $(a,b)\in R$.
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm, every node/.style={draw,circle,inner sep=2pt,minimum size=7mm}, >={Stealth[length=2mm]}]
+\node (a) at (0,0) {$a$};
+\node (b) at (2.5,0) {$b$};
+\node (c) at (1.25,2) {$c$};
+\draw[->] (a) -- (b);
+\draw[->] (b) -- (c);
+\draw[->] (a) to[bend left] (c);
+\draw[->] (a) to[out=150,in=210,looseness=8] (a);
+\end{tikzpicture}
+\end{center}
+\begin{center}
+\small Directed graph of $R=\{(a,a),(a,b),(a,c),(b,c)\}$ -- the loop at $a$ shows reflexivity there
+\end{center}
+
+\begin{note}[Properties as graph conditions]
+Reflexive: a loop at every vertex. Symmetric: every edge $a\to b$ has a matching edge $b\to a$. Transitive: whenever $a\to b\to c$, also $a\to c$ directly.
+\end{note}
+
+\begin{note}[Boolean matrix product computes composition]
+If $M_R$, $M_S$ are zero-one matrices of $R\subseteq A\times B$, $S\subseteq B\times C$, then $M_R\odot M_S = M_{S\circ R}$ (Boolean product, \S\ref{sec:2-6}) -- so relation composition (\S\ref{sec:2-15}) reduces to matrix multiplication with $\vee,\wedge$ in place of $+,\times$.
+\end{note}
+
+\subsection{Properties of binary relations}
+\label{sec:2-14}
+% CN 2.14 / Rosen 9.1, 9.1.4
+
+\begin{definition}[Reflexive]
+$R$ on $A$ is \emph{reflexive} iff
+\[
+\forall a \in A,\quad (a,a) \in R.
+\]
+\end{definition}
+
+\begin{definition}[Irreflexive]
+$R$ on $A$ is \emph{irreflexive} iff
+\[
+\forall a \in A,\quad (a,a) \notin R.
+\]
+\end{definition}
+
+\begin{definition}[Symmetric]
+$R$ on $A$ is \emph{symmetric} iff
+\[
+\forall x,y \in A,\quad (x,y) \in R \implies (y,x) \in R.
+\]
+\end{definition}
+
+\begin{definition}[Antisymmetric]
+$R$ on $A$ is \emph{antisymmetric} iff
+\[
+\forall x,y \in A,\quad \big[(x,y) \in R \wedge (y,x) \in R\big] \implies x = y.
+\]
+\end{definition}
+
+\begin{definition}[Asymmetric]
+$R$ on $A$ is \emph{asymmetric} iff
+\[
+\forall x,y \in A,\quad (x,y) \in R \implies (y,x) \notin R.
+\]
+\end{definition}
+
+\begin{definition}[Transitive]
+$R$ on $A$ is \emph{transitive} iff
+\[
+\forall x,y,z \in A,\quad \big[(x,y) \in R \wedge (y,z) \in R\big] \implies (x,z) \in R.
+\]
+\end{definition}
+
+\begin{example}
+On $\Z$: $=,\ \le,\ \ge$ are reflexive; $<,\ >$ are irreflexive. $=$ is symmetric; $<,\le,>,\ge$ are not. $=,\le,\ge$ are antisymmetric. $<,\ >$ are asymmetric. $=,<,\le,>,\ge$ are all transitive; $\neq$ is not.
+\end{example}
+
+\begin{proposition}
+\[
+R \text{ asymmetric} \implies R \text{ antisymmetric} \wedge R \text{ irreflexive}.
+\]
+The converse is false.
+\end{proposition}
+\begin{proof}
+Suppose $R$ is asymmetric. If $(x,y) \in R$ and $(y,x) \in R$ simultaneously held for $x \neq y$, this would contradict asymmetry directly, so antisymmetry holds. If $(a,a) \in R$ for some $a$, then taking $x=y=a$ in the asymmetry condition gives $(a,a) \in R \implies (a,a) \notin R$, a contradiction; so $R$ is irreflexive.
+
+For the converse: $\le$ on $\Z$ is antisymmetric (if $x\le y$ and $y\le x$ then $x=y$) but not irreflexive ($a \le a$ holds for all $a$), hence not asymmetric.
+\end{proof}
+
+\begin{example}[Checking all properties on a concrete relation]
+Let $A = \{a,b,c,d\}$ and
+\[
+R = \{(a,a),(a,c),(a,d),(b,a),(b,b),(b,c),(b,d),(c,b),(c,c),(d,b),(d,d)\}.
+\]
+\begin{itemize}
+    \item \emph{Reflexive}: yes, since $(a,a),(b,b),(c,c),(d,d) \in R$.
+    \item \emph{Symmetric}: no, since $(a,c) \in R$ but $(c,a) \notin R$.
+    \item \emph{Antisymmetric}: no, since $(b,c),(c,b) \in R$ with $b \neq c$.
+    \item \emph{Transitive}: no, since $(a,c),(c,b) \in R$ but $(a,b) \notin R$.
+\end{itemize}
+\end{example}
+
+\begin{proposition}[Properties under union and intersection]
+Let $R,S$ be relations on $A$.
+\begin{align*}
+R,S \text{ reflexive} &\implies R\cup S,\ R\cap S \text{ reflexive}, \\
+R,S \text{ symmetric} &\implies R\cup S,\ R\cap S \text{ symmetric}, \\
+R,S \text{ transitive} &\implies R\cap S \text{ transitive (but not necessarily } R\cup S\text{)}.
+\end{align*}
+\end{proposition}
+\begin{proof}
+\emph{Reflexive:} $R,S$ reflexive $\implies \forall a\in A,\ (a,a)\in R \wedge (a,a)\in S \implies (a,a) \in R\cup S \text{ and } (a,a)\in R\cap S$.
+
+\emph{Symmetric:} If $(x,y) \in R\cup S$, then $(x,y)\in R$ or $(x,y)\in S$; symmetry of the relation containing it gives $(y,x)$ in that same relation, hence $(y,x)\in R\cup S$. If $(x,y)\in R\cap S$, then $(x,y)$ is in both, so by symmetry $(y,x)$ is in both, hence $(y,x)\in R\cap S$.
+
+\emph{Transitive ($\cap$ only):} If $(x,y),(y,z) \in R\cap S$, both pairs lie in $R$, so transitivity of $R$ gives $(x,z)\in R$; both pairs also lie in $S$, so $(x,z)\in S$; hence $(x,z)\in R\cap S$. Union fails in general: a chain $x\to y$ witnessed only by $R$ and $y\to z$ witnessed only by $S$ need not put $(x,z)$ in $R$ or in $S$ individually.
+\end{proof}
+
+\subsection{Combining binary relations}
+\label{sec:2-15}
+% CN 2.15 / Rosen 9.1 (composition), 9.4 (transitive closure)
+
+\begin{definition}[Union and intersection of relations]
+For $R,S \subseteq A \times B$:
+\[
+R \cup S = \{(x,y) : xRy \text{ or } xSy\}, \qquad
+R \cap S = \{(x,y) : xRy \text{ and } xSy\}.
+\]
+\end{definition}
+
+\begin{definition}[Composition of relations]
+For $R \subseteq A \times B$ and $S \subseteq B \times C$, the \emph{composition} $S \circ R \subseteq A \times C$ is
+\[
+S \circ R = \{(x,z) : \exists y \in B \text{ such that } xRy \text{ and } ySz\}.
+\]
+\end{definition}
+
+\begin{note}
+When $R,S$ happen to be functions, this is exactly function composition (\S\ref{sec:2-9}). Relation composition generalizes it: no uniqueness of the intermediate $y$ is required, and there may be several, or none.
+\end{note}
+
+\begin{proposition}[Composing $R$ with its inverse]
+For $R \subseteq A \times B$:
+\[
+(x,z) \in R^{-1} \circ R \iff \exists y \in B \text{ such that } xRy \text{ and } zRy.
+\]
+\end{proposition}
+\begin{proof}
+\[
+(x,z) \in R^{-1}\circ R \iff \exists y,\ xRy \wedge yR^{-1}z \iff \exists y,\ xRy \wedge zRy
+\]
+using the defining property $yR^{-1}z \iff zRy$.
+\end{proof}
+
+\begin{note}
+So $R^{-1}\circ R$ relates $x,z \in A$ exactly when they share a common $R$-image in $B$; symmetrically, $R \circ R^{-1}$ relates elements of $B$ that share a common preimage in $A$.
+\end{note}
+
+\begin{definition}[Iterated composition of a relation with itself]
+For $R$ on $A$ and $n \in \Z^+$:
+\[
+R^{(n)} = \underbrace{R \circ R \circ \cdots \circ R}_{n \text{ copies}}.
+\]
+\end{definition}
+
+\begin{example}[``Six degrees of separation'']
+For the relation $\mathrm{knows}$ on the set of all people, $\mathrm{knows}^{(2)}$ relates two people with a mutual acquaintance; $\mathrm{knows}^{(6)}$ is (under this popular hypothesis) the complete relation on all people.
+\end{example}
+
+\begin{definition}[Transitive closure]
+The \emph{transitive closure} of $R$ on $A$ is the unique relation $R^+$ on $A$ such that, for all $x,y,z \in A$:
+\begin{enumerate}[label=(\roman*)]
+    \item $xRy \implies xR^+y$;
+    \item $xR^+y \wedge yRz \implies xR^+z$;
+    \item $xRy \wedge yR^+z \implies xR^+z$.
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+Condition (i) is essential (it seeds the closure); either (ii) or (iii) alone suffices together with (i) -- both are not simultaneously required.
+\end{note}
+
+\begin{theorem}
+\[
+R^+ = \bigcup_{i=1}^{\infty} R^{(i)}.
+\]
+$R^+$ is always transitive.
+\end{theorem}
+\begin{proof}[Proof sketch]
+Each $R^{(i)}$ is contained in $R^+$: $R^{(1)}=R \subseteq R^+$ by (i), and if $R^{(i)} \subseteq R^+$, then $(x,z)\in R^{(i+1)}$ means $\exists y,\ (x,y)\in R^{(i)} \subseteq R^+$ and $yRz$, so $(x,z) \in R^+$ by (ii); induction gives $R^{(i)}\subseteq R^+$ for all $i$, hence $\bigcup_i R^{(i)} \subseteq R^+$. Conversely, $\bigcup_i R^{(i)}$ satisfies (i)-(iii) itself, and $R^+$ is the \emph{unique} relation satisfying them, so equality follows. Transitivity of $R^+$ is then immediate: any finite chain of $R^+$-steps is absorbed into some $R^{(i)} \subseteq R^+$.
+\end{proof}
+
+\begin{definition}[Closure, general]
+The \emph{closure} of $R$ under a property $P$ is the smallest relation $R'\supseteq R$ with property $P$ (if it exists).
+\end{definition}
+
+\begin{definition}[Reflexive closure]
+\[
+r(R) = R \cup \Delta_A, \qquad \Delta_A = \{(a,a):a\in A\} \text{ (the diagonal relation)}.
+\]
+\end{definition}
+
+\begin{definition}[Symmetric closure]
+\[
+s(R) = R \cup R^{-1}.
+\]
+\end{definition}
+
+\begin{note}
+Transitive closure $R^+$ was already defined above: $R^+=\bigcup_{i=1}^\infty R^{(i)}$.
+\end{note}
+
+\subsection{Equivalence relations}
+\label{sec:2-16}
+% CN 2.16 / Rosen 9.5
+
+\begin{definition}[Equivalence relation]
+$R$ on $A$ is an \emph{equivalence relation} iff $R$ is reflexive, symmetric, and transitive.
+\end{definition}
+
+\begin{note}[Why not antisymmetric too?]
+Equality is reflexive, symmetric, \emph{and} antisymmetric. But requiring antisymmetry of a general equivalence relation would force $xRy \wedge yRx \implies x=y$ -- collapsing ``equivalent'' into ``identical,'' which defeats the purpose of a looser notion of sameness.
+\end{note}
+
+\begin{example}
+\begin{itemize}
+    \item Congruence modulo $m$: $x \equiv y \pmod{m} \iff m \mid (x-y)$.
+    \item For any $f: A \to B$: $x \sim_f y \iff f(x)=f(y)$ defines an equivalence relation on $A$.
+    \item The transitive closure of any reflexive, symmetric relation is an equivalence relation.
+    \item For any relation $R$: $R \circ R^{-1}$ and $R^{-1} \circ R$ are equivalence relations.
+\end{itemize}
+\end{example}
+
+\begin{definition}[Equivalence class]
+For equivalence relation $R$ on $A$, an \emph{equivalence class} is a nonempty $X \subseteq A$ such that:
+\[
+\text{(i) } \forall x,y \in X,\ xRy; \qquad \text{(ii) } \nexists x \in X, z \notin X \text{ such that } xRz.
+\]
+Equivalently, $X$ is a \emph{maximal} subset of $A$ on which $R$ holds between every pair.
+\end{definition}
+
+\begin{note}
+For $x \in A$, the equivalence class containing $x$ is $[x]_R = \{y \in A : xRy\}$.
+\end{note}
+
+\begin{theorem}
+The equivalence classes of an equivalence relation $R$ on $A$ form a partition of $A$.
+\end{theorem}
+\begin{proof}
+\textbf{(a) Every $x \in A$ lies in some equivalence class.} Let $X = \{y \in A : xRy\} = [x]_R$.
+\begin{itemize}
+    \item \emph{$X$ satisfies (i)}: for $y,z \in X$, $xRy$ and $xRz$; by symmetry $yRx$, and with $xRz$ and transitivity, $yRz$.
+    \item \emph{$X$ satisfies (ii)}: suppose $v \in X$, $w \notin X$, $vRw$. Since $v \in X$: $xRv$; combined with $vRw$ and transitivity, $xRw$, so $w \in X$ -- contradiction. So no such $v,w$ exist.
+    \item $x \in X$ by reflexivity ($xRx$).
+\end{itemize}
+So $X$ is an equivalence class containing $x$.
+
+\textbf{(b) Distinct equivalence classes are disjoint.} Suppose $X,Y$ are equivalence classes with $X \cap Y \neq \emptyset$; let $x \in X \cap Y$. We show $X = Y$ by showing $Y \setminus X = \emptyset$ and $X \setminus Y = \emptyset$.
+
+If $y \in Y \setminus X$: since $X$ is an equivalence class and $y \notin X$, $(x,y) \notin R$ (property (ii) for $X$, using $x \in X$). But $x,y \in Y$, and $Y$ is an equivalence class, so property (i) forces $(x,y) \in R$ -- contradiction. So $Y \setminus X = \emptyset$; symmetrically $X \setminus Y = \emptyset$. Hence $X = Y$.
+
+So every element of $A$ lies in exactly one equivalence class -- the classes are nonempty (by definition), pairwise disjoint (part (b)), and cover $A$ (part (a)): a partition.
+\end{proof}
+
+\subsection{Relations}
+\label{sec:2-17}
+% CN 2.17 / Rosen 9.2
+
+\begin{definition}[Ternary relation]
+A \emph{ternary relation} on sets $A,B,C$ is a subset of $A \times B \times C$: a set of triples $(x,y,z)$ with $x\in A,\ y\in B,\ z\in C$.
+\end{definition}
+
+\begin{definition}[$n$-ary relation]
+An \emph{$n$-ary relation} on sets $A_1,A_2,\dots,A_n$ is a subset
+\[
+R \subseteq A_1 \times A_2 \times \cdots \times A_n,
+\]
+i.e.\ a set of $n$-tuples $(x_1,\dots,x_n)$ with $x_i \in A_i$ for each $i$. Each $A_i$ is the $i$-th \emph{domain}; $n$ is the \emph{degree}. An $n$-ary relation is also called an \emph{$n$-ary predicate}.
+\end{definition}
+
+\subsection{Counting relations}
+\label{sec:2-18}
+% CN 2.18 / Rosen (exercises, \S9.1)
+
+\begin{theorem}[Counting binary relations]
+For finite $A,B$ with $|A|=m,\ |B|=n$:
+\[
+\#\{\text{binary relations from } A \text{ to } B\} = 2^{mn}.
+\]
+In particular, with $A=B$, $|A|=m$:
+\[
+\#\{\text{binary relations on } A\} = 2^{m^2}.
+\]
+\end{theorem}
+\begin{proof}
+A binary relation from $A$ to $B$ is exactly a subset of $A \times B$, so the count equals $|\mathcal{P}(A\times B)| = 2^{|A\times B|}$ (\S\ref{sec:1-9}). Since $|A\times B| = mn$ (\S\ref{sec:1-14}), this is $2^{mn}$. The case $A=B$ substitutes $n=m$.
+\end{proof}
+
+\begin{corollary}[Counting $n$-ary relations]
+For finite $A_1,\dots,A_n$ with $|A_i|=m_i$:
+\[
+\#\{n\text{-ary relations on } A_1,\dots,A_n\} = 2^{m_1 m_2 \cdots m_n}.
+\]
+If all $A_i = A$ with $|A|=m$: $2^{m^n}$.
+\end{corollary}
+\begin{proof}
+Identical argument: an $n$-ary relation is a subset of $A_1\times\cdots\times A_n$, of size $\prod_i m_i$ (\S\ref{sec:1-14} generalized), so the count is $2^{\prod_i m_i}$.
+\end{proof}
+
+\begin{example}[Counting relations with a given property]
+Reflexive relations on $A$ with $|A|=m$: the $m$ diagonal pairs $(a,a)$ are forced \emph{in}, leaving $m^2 - m$ off-diagonal pairs free to choose independently, so there are $2^{m^2-m}$ reflexive relations on $A$.
+\end{example}
+

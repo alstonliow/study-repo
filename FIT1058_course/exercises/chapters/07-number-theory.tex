@@ -1,0 +1,222 @@
+% CN 7.19 Exercises (p.274--280)
+
+% ======================================================================
+\begin{exercise}{1}
+    \begin{enumerate}[label=(\alph*)]
+        \item Write the statement that integer $d$ is a divisor of integer $n$ as
+              a predicate logic expression, using integer multiplication and
+              without using $\mid$.
+        \item Write the statement that integer $n$ is prime as a predicate logic
+              expression. You may use $\mid$ and $\le$.
+        \item Write the statement that $d$ is the greatest common divisor of $m$
+              and $n$ as a predicate logic expression, using $\mid$ and $\le$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{2}
+    A positive integer $n$ is \emph{perfect} if it equals the sum of its own
+    proper divisors.
+    \begin{enumerate}[label=(\alph*)]
+        \item Show by direct calculation that the first two perfect numbers are
+              6 and 28.
+        \item Verify that 496 is perfect.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{3}
+    Represent days of the week by $\Z_7$ (Sunday $=0$, Monday $=1$, \ldots). Let
+    $d\in\Z_7$ be the day of the week of a given date this year.
+    \begin{enumerate}[label=(\alph*)]
+        \item Give an expression in $d$, using mod, for the day of the week of
+              the same date next year.
+        \item How would you modify it if there is a leap day (29 February)
+              between that date and the same date next year?
+        \item Let $d$ be the day of the week of 29 February in some leap year.
+              Assuming the next leap year is four years later, give an expression
+              for the weekday of the next 29 February.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{4}
+    In (2.1) on p.54 we defined
+    $\mathrm{LCG}(x)$ = the last 31 bits of $1103515245x+12345$. Restate this
+    definition using the mod operation.
+\end{exercise}
+
+\begin{exercise}{5}
+    The online game Primel (\url{https://converged.yt/primel/}) is about
+    guessing an unknown five-digit prime (like Wordle). Non-prime guesses are not
+    penalised but give no information; you have at most six prime guesses.
+    \begin{enumerate}[label=(\alph*)]
+        \item Are there any prohibitions on certain digits in certain positions
+              in prime numbers in general? What does this mean for the digits in
+              your first guess?
+        \item The density of primes decreases as numbers get higher (e.g.\ more
+              five-digit primes start with 1 than with 5). What five digits
+              would be best in your first guess? Which five-digit prime do you
+              recommend?
+        \item Try asking ChatGPT for help choosing your next guess, and check
+              whether its suggestions are actually prime. How many attempts are
+              necessary before it gives an actual prime satisfying the conditions?
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{6}
+    \emph{A positive integer is a leap year iff it is a multiple of 4, unless it
+    is also a multiple of 100, in which case it is not a leap year unless it is a
+    multiple of 400.} Define the unary predicate $\mathrm{Leap}$ on $\N$. Using
+    $\mathrm{Leap}$ and $\mid$, write this rule in predicate logic.
+\end{exercise}
+
+\begin{exercise}{7}
+    Prove that the square of an odd number is odd and the square of an even
+    number is even.
+\end{exercise}
+
+\begin{exercise}{8}
+    Restate the definitions of the Caesar slide encryption and decryption
+    functions (Exercise 2.15) using the mod operation.
+\end{exercise}
+
+% ======================================================================
+\begin{exercise}{9}
+    Prove each of the following.
+    \begin{enumerate}[label=(\alph*)]
+        \item $4\mid n$ iff the last two decimal digits of $n$ give a multiple
+              of 4.
+        \item $8\mid n$ iff the last three decimal digits of $n$ give a multiple
+              of 8.
+        \item $25\mid n$ iff the last two decimal digits of $n$ give a multiple
+              of 25.
+        \item Extend (a) and (b) to higher powers of 2.
+        \item (Challenge) For which $d$ can divisibility of $n$ by $d$ be tested
+              by looking only at some constant number of digits at the end of
+              $n$?
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{10}
+    The \emph{digital sum} $\mathrm{ds}(n)$ of $n$ is the sum of its decimal
+    digits, e.g.\ $\mathrm{ds}(1984)=1+9+8+4=22$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Prove that for all $n\in\N$,
+              $n\bmod3=\mathrm{ds}(n)\bmod3$.
+        \item A similar method works for remainders mod 9. Explain why, briefly.
+        \item The \emph{alternating digital sum} $\mathrm{ads}(n)$ alternately
+              adds and subtracts digits, starting with addition at the right-hand
+              end, e.g.\ $\mathrm{ads}(1984)=-1+9-8+4=4$. Prove that for all
+              $n\in\N$, $n\bmod11=\mathrm{ads}(n)\bmod11$.
+        \item Devise a similar technique for working out $n\bmod3$ from the bits
+              of the binary representation of $n$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{11}
+    For each equation, use the method of Exercise 10(b) to work out by hand the
+    remainder mod 9 of each side. Comment on what comparing them tells you.
+    \begin{enumerate}[label=(\alph*)]
+        \item $92\times31=2847$
+        \item $92\times31=2852$
+        \item $92\times31=2861$
+        \item $2718281828\times3141592653=8539734219628209634$
+    \end{enumerate}
+\end{exercise}
+
+% ======================================================================
+\begin{exercise}{12}
+    Use the Euclidean algorithm to find the gcd of the consecutive Fibonacci
+    numbers 34 and 55. What do you notice about the other numbers found at each
+    step?
+
+    Prove, by induction on $n$, that for all $n\ge3$ the Euclidean algorithm uses
+    $n-2$ subtractions to compute $\gcd(f_n,f_{n+1})$, and that every
+    intermediate number found is also a Fibonacci number.
+\end{exercise}
+
+\begin{exercise}{13}
+    Use the Extended Euclidean Algorithm to show that 86 and 99 are coprime, to
+    express 1 as an integer linear combination of them, and to find the inverse
+    of 86 in $\Z_{99}$.
+\end{exercise}
+
+\begin{exercise}{14}
+    \begin{enumerate}[label=(\alph*)]
+        \item Find $\varphi(n)$ for all $n$ up to 20.
+        \item Find primitive roots for a selection of values of $n$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{15}
+    \textbf{Modular multiplication cryptosystem.} Messages and cyphertexts are
+    strings over the 26-letter alphabet, with $\mathtt a,\dots,\mathtt z$ as
+    $0,\dots,25\in\Z_{26}$. The key is $k\in\Z_{26}$, and
+    \[
+        c_i = k\,m_i \bmod 26.
+    \]
+    \begin{enumerate}[label=(\alph*)]
+        \item Not all keys work properly. What restriction must be placed on
+              members of $\Z_{26}$ so they work as keys? Specify the keyspace in
+              mathematical notation.
+        \item Define the decryption function.
+        \item How would modular multiplication work for an arbitrary alphabet
+              size $n$? Define its keyspace, encryption and decryption functions.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{16}
+    Compute by hand, showing your working,
+    \[
+        1752^{31415926535897932384626433832795028841971693993751058209749445923078164}
+        \bmod 125.
+    \]
+    (The exponent is $\lfloor10^{70}\pi\rfloor$.)
+\end{exercise}
+
+\begin{exercise}{17}
+    Investigate the primitive roots of 11.
+    \begin{enumerate}[label=(\alph*)]
+        \item If $a$ is a primitive root of 11, what is the least $k$ such that
+              $a^k\equiv1\pmod{11}$?
+        \item Show that 2 is a primitive root of 11 by working out its powers
+              $2^i$ (multiplying by 2 and reducing mod 11 as you go).
+        \item Among the exponents $i$ in your list from (b), which are coprime to
+              $\varphi(11)$?
+        \item Using (c), list all the primitive roots of 11.
+    \end{enumerate}
+\end{exercise}
+
+% ======================================================================
+\begin{exercise}{18}
+    Alice and Bob use Diffie-Hellman with public prime $p=11$ and primitive root
+    $a=7$. Their public numbers are $y_A=2$, $y_B=8$. As the cryptanalyst, find
+    their private numbers and the shared key.
+\end{exercise}
+
+\begin{exercise}{19}
+    You have been using Diffie-Hellman with $p=17$ and $a=7$. Your General
+    Manager decides that ``bigger is better'' and you will now use $p=18$ (with
+    appropriate $a$).
+    \begin{enumerate}[label=(\alph*)]
+        \item What value of $a$ would you choose?
+        \item What are the security implications of the change? Estimate e.g.\
+              the percentage change in the time for an exhaustive attack.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}{20}
+    Explain how the security of Diffie-Hellman is affected if user A selects
+    private key $x_A=p-1$ (where $p$ is the prime modulus).
+\end{exercise}
+
+\begin{exercise}{21}
+    Devise a variant of Diffie-Hellman enabling three people A, B, C to arrive at
+    a common secret key, such that:
+    \begin{itemize}
+        \item they initially have no secret information in common;
+        \item the common key itself is not sent anywhere by anyone;
+        \item it is hard for an eavesdropper (knowing only public information)
+              to determine the key;
+        \item no one or two of A, B, C can find the key without the cooperation
+              of the other(s).
+    \end{itemize}
+\end{exercise}

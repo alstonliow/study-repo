@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage{../mystyle}
+
+% Each solution stays on one page (invisible, unbreakable box).
+% Solutions taller than a page use \begin{solbox}[long]: new page, then breakable.
+\tcbset{long/.style={breakable, before={\clearpage}}}
+\newtcolorbox{solbox}[1][]{blanker, before skip=4pt, after skip=10pt, #1}
+
+\title{FIT1058 --- Course Notes Exercises \& Solutions\\
+\large CN end-of-chapter exercises (boxed) with solutions where done}
+\author{Alston}
+\date{Semester 2, 2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Chapter 1: Sets}
+\input{chapters/01-sets}
+
+\newpage
+\section{Chapter 2: Functions}
+\input{chapters/02-functions}
+
+\newpage
+\section{Chapter 3: Proofs}
+\input{chapters/03-proofs}
+
+\newpage
+\section{Chapter 4: Propositional Logic}
+\input{chapters/04-propositional-logic}
+
+\newpage
+\section{Chapter 5: Predicate Logic}
+\input{chapters/05-predicate-logic}
+
+\newpage
+\section{Chapter 6: Sequences \& Series}
+\input{chapters/06-sequences-series}
+
+\newpage
+\section{Chapter 7: Number Theory}
+\input{chapters/07-number-theory}
+
+\newpage
+\section{Chapter 8: Counting \& Combinatorics}
+\input{chapters/08-counting-combinatorics}
+
+\newpage
+\section{Chapter 9: Discrete Probability I}
+\input{chapters/09-probability-1}
+
+\newpage
+\section{Chapter 10: Discrete Probability II}
+\input{chapters/10-probability-2}
+
+\newpage
+\section{Chapter 11: Graph Theory I}
+\input{chapters/11-graph-theory-1}
+
+\newpage
+\section{Chapter 12: Graph Theory II}
+\input{chapters/12-graph-theory-2}
+\end{document}

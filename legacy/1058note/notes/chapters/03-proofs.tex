@@ -1,0 +1,605 @@
+% ============================================================
+% CHAPTER 3 --- PROOFS  (CN Ch.3, §3.1-3.15)
+% ============================================================
+\newpage
+\section{Proofs}
+
+\subsection{Theorems and proofs}
+\label{sec:3-1}
+% CN 3.1 / Rosen 1.7
+
+\begin{definition}[Theorem]
+A \emph{theorem} is a mathematical statement that has been proved true.
+\end{definition}
+
+\begin{definition}[Lemma, proposition, corollary]
+A \emph{lemma} is a theorem whose main purpose is as a stepping stone in the proof of a more significant theorem. A \emph{proposition} is a theorem of independent interest, typically less significant or easier to prove than the main theorems around it. A \emph{corollary} is a theorem that follows almost immediately from one just proved.
+\end{definition}
+
+\begin{definition}[Proof]
+A \emph{proof} of a claim is a finite sequence of statements (\emph{steps}), ending in the claim, where each step is one of:
+\begin{itemize}
+    \item something already known: a \emph{definition}, an \emph{axiom} (a fundamental assumed property, e.g.\ $x(y+z)=xy+xz$), or a previously proved theorem;
+    \item an \emph{assumption}, made as a starting point;
+    \item a \emph{logical consequence} of earlier steps.
+\end{itemize}
+The final step establishes the claim from what precedes it.
+\end{definition}
+
+\begin{note}[Verifiability]
+A proof must be readable sequentially -- each step justified only by what comes \emph{before} it, never by reading ahead. The end of a proof is marked by $\blacksquare$ (or historically ``Q.E.D.'', \emph{quod erat demonstrandum}).
+\end{note}
+
+\begin{example}
+For any sets $A, B$: if $A \subseteq B$ then $\mathcal{P}(A) \subseteq \mathcal{P}(B)$.
+\end{example}
+\begin{proof}
+Assume $A \subseteq B$. Let $X \in \mathcal{P}(A)$; then $X \subseteq A$ by definition of $\mathcal{P}(A)$. Since $A \subseteq B$, also $X \subseteq B$. Hence $X \in \mathcal{P}(B)$ by definition of $\mathcal{P}(B)$. So $X \in \mathcal{P}(A) \implies X \in \mathcal{P}(B)$, i.e.\ $\mathcal{P}(A) \subseteq \mathcal{P}(B)$.
+\end{proof}
+
+\begin{note}[Annotating each step]
+\begin{itemize}
+    \item ``Assume $A\subseteq B$'' -- an \emph{assumption} (the theorem is conditional on it).
+    \item ``Let $X \in \mathcal{P}(A)$'' -- a \emph{definition}, naming an arbitrary element so we can reason about it generically.
+    \item ``$X \subseteq A$'' -- a \emph{logical consequence} of the previous line and the definition of $\mathcal{P}(A)$.
+    \item ``$X \subseteq B$'' -- a consequence of $X\subseteq A$ and the assumption $A \subseteq B$.
+    \item ``$X \in \mathcal{P}(B)$'' -- a consequence of $X \subseteq B$ and the definition of $\mathcal{P}(B)$.
+    \item Final line -- restates the whole chain as the subset relation $\mathcal{P}(A)\subseteq\mathcal{P}(B)$.
+\end{itemize}
+Every line either restates a definition/axiom, states an assumption, or follows logically from what came strictly before -- exactly the requirement above.
+\end{note}
+
+\subsection{Logical deduction}
+\label{sec:3-2}
+% CN 3.2 / Rosen 1.6-1.7
+
+\begin{note}[Modus ponens]
+The core deduction rule: if $P$ has been established, and $P \implies Q$ has been established, then $Q$ may be deduced. This is used constantly and rarely named explicitly, but it is the essence of every logical deduction step in a proof.
+\end{note}
+
+\begin{note}[Implication as a subset relation]
+In general, for statements $P,Q$, let $\hat P, \hat Q$ be the sets of situations in which $P$, resp.\ $Q$, holds. Then
+\[
+P \implies Q \quad \text{corresponds to} \quad \hat P \subseteq \hat Q.
+\]
+This generalizes the set-membership fact from \S\ref{sec:1-6}: $A \subseteq B \iff \forall x\,(x\in A \implies x \in B)$ -- the correspondence holds even when $P,Q$ are not phrased as membership statements at all (as the domino example shows).
+\end{note}
+
+\begin{note}[Vacuous truth]
+If $X$ is false, $X \implies Y$ is true regardless of $Y$ -- corresponding to $\emptyset \subseteq Y$ for any set $Y$ (\S\ref{sec:1-6}, Theorem 1: the empty set is a subset of every set).
+\end{note}
+
+\begin{definition}[Converse]
+The \emph{converse} of $P \implies Q$ is $Q \implies P$ (equivalently written $P \impliedby Q$). An implication holding does \emph{not} entail its converse holds: implication is not symmetric, as both examples above show ($P\Rightarrow Q$ but not $Q \Rightarrow P$; $X \Rightarrow Y$ but not $Y \Rightarrow X$).
+\end{definition}
+
+\begin{definition}[Biconditional]
+When both $P \implies Q$ and its converse $Q \implies P$ hold, we write $P \iff Q$ (``$P$ if and only if $Q$''; $P,Q$ are \emph{logically equivalent}: $\hat P = \hat Q$ as sets of situations).
+\end{definition}
+
+\begin{definition}[Contrapositive and inverse]
+For $P \implies Q$: the \emph{contrapositive} is $\neg Q \implies \neg P$; the \emph{inverse} is $\neg P \implies \neg Q$.
+\end{definition}
+
+\begin{theorem}
+$P \implies Q$ is logically equivalent to its contrapositive $\neg Q \implies \neg P$. It is \emph{not}, in general, equivalent to its converse or its inverse (which are themselves contrapositives of each other).
+\end{theorem}
+\begin{proof}
+Both $P\Rightarrow Q$ and $\neg Q \Rightarrow \neg P$ are false in exactly one case ($P$ true, $Q$ false) and true otherwise -- identical truth tables, hence logically equivalent. The converse $Q\Rightarrow P$ and inverse $\neg P \Rightarrow \neg Q$ each fail in the case $P$ false, $Q$ true (for the converse) or $P$ false, $Q$ true (checking directly) -- a different failure case from the original, so neither need agree with $P \Rightarrow Q$ in general; the domino example ($P\Rightarrow Q$ true, $Q \Rightarrow P$ false) is a concrete witness.
+\end{proof}
+
+\begin{note}[Common logical fallacies]
+\emph{Affirming the consequent}: from $P\implies Q$ and $Q$, wrongly concluding $P$ (this is the \emph{converse} error from earlier in this section). \emph{Denying the antecedent}: from $P\implies Q$ and $\neg P$, wrongly concluding $\neg Q$ (this is the \emph{inverse} error). \emph{Begging the question / circular reasoning}: using the claim being proved (or something equivalent to it) as a premise in its own proof.
+\end{note}
+
+\begin{example}[Affirming the consequent, in the wild]
+``If it rains, the ground is wet. The ground is wet. Therefore it rained.'' Invalid: the ground could be wet from a sprinkler.
+\end{example}
+
+\subsection{Proofs of existential and universal statements}
+\label{sec:3-3}
+% CN 3.3 / Rosen 1.4, 1.7
+
+\begin{definition}[Existential statement]
+An \emph{existential statement} asserts $\exists x \in D,\ P(x)$ for some domain $D$ and predicate $P$: that \emph{something} with the stated property exists. It may be true or false.
+\end{definition}
+
+\begin{example}
+English has a palindrome.
+\end{example}
+\begin{proof}
+`rotator' is an English word, and it reads the same forwards and backwards.
+\end{proof}
+
+\begin{note}[Proving $\exists x,\ P(x)$]
+A single \emph{witness} suffices: exhibit one $x \in D$ and verify $P(x)$ holds. No need to search further once found.
+\end{note}
+
+\begin{definition}[Universal statement]
+A \emph{universal statement} asserts $\forall x \in D,\ P(x)$: \emph{everything} in $D$ has the property.
+\end{definition}
+
+\subsection{Finding proofs}
+\label{sec:3-4}
+% CN 3.4 / Rosen 1.7-1.8
+
+\begin{note}[No algorithm for finding proofs]
+There is no systematic method for discovering proofs.
+\end{note}
+
+\begin{note}[Strategy: proving $A \subseteq B$]
+\begin{enumerate}[label=\arabic*.]
+    \item Name a general member: ``Let $x \in A$.''
+    \item Unpack what the definition of $A$ tells you about $x$.
+    \item Follow the logical consequences.
+    \item Aim to conclude $x$ satisfies the definition of $B$.
+\end{enumerate}
+\end{note}
+
+\begin{note}[Strategy: proving $A = B$ (sets)]
+Prove $A \subseteq B$ and $A \supseteq B$ separately (\S\ref{sec:1-6}). Each direction uses the subset strategy above.
+\end{note}
+
+\begin{note}[Strategy: proving $A = B$ (numbers)]
+If direct symbolic manipulation (algebraic rules) can transform expression $A$ into expression $B$, use that. Otherwise, prove $A \le B$ and $A \ge B$ separately -- the numerical analogue of the double-inclusion technique.
+\end{note}
+
+\begin{note}[Without loss of generality (WLOG)]
+When a proof is symmetric in two variables (swapping them leaves the claim unchanged), it suffices to prove one case and invoke the symmetry for the other -- written ``WLOG, assume $x\le y$'' etc. Using WLOG when the situation is \emph{not} actually symmetric is a common error -- check the symmetry claim carefully before invoking it.
+\end{note}
+
+\begin{note}[Forward vs.\ backward reasoning]
+\emph{Forward}: start from known facts/assumptions, derive consequences, until reaching the goal. \emph{Backward}: start from the goal, ask ``what would suffice to prove this?'', and work backward to something already known. Backward reasoning is often how a proof is \emph{discovered}; it is then usually rewritten forward for presentation.
+\end{note}
+
+\subsection{Types of proofs}
+\label{sec:3-5}
+% CN 3.5 / Rosen 1.7-1.8
+
+\begin{note}[Proof types]
+\begin{itemize}
+    \item \emph{Direct proof / proof by symbolic manipulation} (\S\ref{sec:3-6}): assume $P$, derive $Q$ via a direct chain of implications or equations.
+    \item \emph{Proof by construction} (\S\ref{sec:3-7}, also called \emph{proof by example}): exhibit a specific object and verify it works -- a \emph{constructive} existence proof, producing an explicit witness (contrast: \emph{nonconstructive} existence proofs establish that something exists, e.g.\ via contradiction or a counting argument, without exhibiting it).
+    \item \emph{Proof by cases} (\S\ref{sec:3-8}): split the domain into exhaustive cases, prove the claim in each.
+    \item \emph{Proof by contradiction} (\S\ref{sec:3-9}): assume the negation of the claim, derive a contradiction (some statement and its negation both true).
+    \item \emph{Proof by contraposition}: to prove $P \implies Q$, instead prove the equivalent $\neg Q \implies \neg P$ (\S\ref{sec:3-2}'s contrapositive theorem) -- useful when $\neg Q$ gives more to work with than $P$ does.
+    \item \emph{Vacuous / trivial proof}: prove $P \implies Q$ by showing $P$ is always false (vacuous) or $Q$ is always true (trivial).
+    \item \emph{Proof by (mathematical) induction} (\S\ref{sec:3-10}).
+    \item \emph{Uniqueness proofs}: show existence, then show any two witnesses must coincide.
+\end{itemize}
+This list is not exhaustive, and real proofs frequently mix several of these -- e.g.\ a proof by cases where one case is handled by contradiction and another by direct construction.
+\end{note}
+
+\begin{example}[Vacuous proof]
+``For all $x\in\emptyset$, $x^2<0$.'' True vacuously: $\emptyset$ has no members, so the implication ``$x\in\emptyset \implies x^2<0$'' is never tested against an actual counterexample.
+\end{example}
+
+\subsection{Proof by symbolic manipulation}
+\label{sec:3-6}
+% CN 3.6 / Rosen (equational reasoning, throughout Ch.1-2)
+
+\begin{note}[The pattern]
+A chain of equations, each step justified by a known law (axiom or previously proved fact), linking the two sides of the claim.
+\end{note}
+
+\begin{example}[Difference of two squares]
+\[
+(x-y)(x+y) = x^2 - y^2.
+\]
+\end{example}
+\begin{proof}
+\begin{align*}
+(x-y)(x+y) &= x^2 + xy - yx - y^2 && \text{(distributive law)} \\
+&= x^2 + xy - xy - y^2 && \text{(commutativity of multiplication)} \\
+&= x^2 - y^2 && \text{(additive cancellation)}.
+\end{align*}
+\end{proof}
+
+\subsection{Proof by construction}
+\label{sec:3-7}
+% CN 3.7 / Rosen: constructive existence proof
+\begin{note}[Pattern]
+Describe a specific object precisely, and show it exists and satisfies the required conditions -- a \emph{constructive} proof of an existential statement (\S\ref{sec:3-3}). Theorem 14 (`rotator' is a palindrome) is an example.
+\end{note}
+
+\begin{note}[Two mistakes to avoid]
+\begin{itemize}
+    \item Using construction to attempt a \emph{universal} statement: exhibiting one object with a property never establishes that \emph{every} object has it.
+    \item Mistaking an illustrative example for a proof: an example can clarify a proof's ideas, but is not itself a proof unless the statement being proved is genuinely existential.
+\end{itemize}
+\end{note}
+
+\begin{example}[Ramanujan's taxicab number (extra)]
+There is a positive integer expressible as the sum of two positive cubes in two genuinely different ways.
+\end{example}
+\begin{proof}
+\[
+1729 = 10^3 + 9^3 = 1000 + 729 = 12^3 + 1^3 = 1728 + 1.
+\]
+Both decompositions use positive integers, and $\{10,9\} \neq \{12,1\}$, so these are two different ways.
+\end{proof}
+
+\begin{note}
+This is the smallest such number -- hence its fame as the ``taxicab number,'' from the (possibly apocryphal) anecdote of Hardy visiting Ramanujan in a taxi numbered 1729.
+\end{note}
+
+\subsection{Proof by cases}
+\label{sec:3-8}
+% CN 3.8 / Rosen: proof by cases / exhaustive proof
+
+\begin{example}[Nonconstructive existence via cases]
+There exist irrational numbers $x, y$ such that $x^y$ is rational.
+\end{example}
+\begin{proof}
+Consider $\sqrt{2}^{\sqrt{2}}$. Either it is rational or it is irrational -- these are the only two (exhaustive) cases.
+
+\textbf{Case 1: $\sqrt{2}^{\sqrt{2}}$ is rational.} Take $x = y = \sqrt{2}$, both irrational, with $x^y$ rational by assumption. Done.
+
+\textbf{Case 2: $\sqrt{2}^{\sqrt{2}}$ is irrational.} Take $x = \sqrt{2}^{\sqrt{2}}$ (irrational, by this case's assumption) and $y = \sqrt{2}$ (irrational). Then
+\[
+x^y = \left(\sqrt{2}^{\sqrt{2}}\right)^{\sqrt{2}} = \sqrt{2}^{\sqrt{2}\cdot\sqrt{2}} = \sqrt{2}^2 = 2,
+\]
+which is rational. Done.
+
+Either way, such $x,y$ exist.
+\end{proof}
+
+\begin{note}[Strikingly nonconstructive]
+This proves the statement true \emph{without ever determining which case actually holds} -- we don't know, from this proof alone, whether $\sqrt2^{\sqrt2}$ itself is rational or irrational. (It is, in fact, irrational -- even transcendental, by the Gelfond--Schneider theorem -- but that fact is not needed here.) This is the clearest illustration of the constructive/nonconstructive distinction from \S\ref{sec:3-5}.
+\end{note}
+
+\subsection{Proof by contradiction}
+\label{sec:3-9}
+% CN 3.9 / Rosen 1.7-1.8 (proof by contradiction, reductio ad absurdum)
+\begin{note}[Pattern]
+Assume the \emph{negation} of the claim; reason from it to a contradiction (some statement and its negation both derived as true); conclude the assumption was false, so the original claim holds.
+\end{note}
+
+\begin{example}[Infinitely many primes]
+There are infinitely many prime numbers.
+\end{example}
+\begin{proof}
+Suppose, for contradiction, that there are only finitely many primes $p_1,p_2,\dots,p_n$. Let
+\[
+q = p_1 p_2 \cdots p_n + 1.
+\]
+Since $q > p_i$ for every $i$, $q$ is not itself prime, so $q$ is composite and hence divisible by some prime. But for each $p_i$, dividing $q$ by $p_i$ leaves remainder $1$ (since $p_i$ divides $p_1\cdots p_n$ exactly), so $p_i \nmid q$. So $q$ is divisible by no prime at all -- contradicting that $q$ is composite. Hence the assumption was false: there are infinitely many primes.
+\end{proof}
+
+\begin{note}[A useful auxiliary fact used implicitly]
+The argument above (and many proofs by contradiction over $\N$ or $\Z^+$) relies on: any nonempty set of natural numbers has a smallest element (well-ordering). This lets you say things like ``let $n$ be the smallest counterexample'' and derive a contradiction from its minimality.
+\end{note}
+
+\begin{example}
+$\sqrt{2}$ is irrational.
+\end{example}
+\begin{proof}
+Suppose, for contradiction, that $\sqrt2$ is rational: $\sqrt2 = a/b$ for integers $a,b$ with no common factor (in lowest terms). Squaring, $2 = a^2/b^2$, so $a^2 = 2b^2$ -- hence $a^2$ is even, hence $a$ is even (an odd number squares to an odd number), say $a = 2c$. Substituting: $4c^2 = 2b^2$, so $b^2 = 2c^2$ -- hence $b^2$ is even, hence $b$ is even. But then $a$ and $b$ are \emph{both} even, contradicting that $a/b$ was in lowest terms. So the assumption was false: $\sqrt2$ is irrational.
+\end{proof}
+
+\begin{note}
+Alongside Euclid's proof, this is the other canonical proof-by-contradiction example in mathematics -- both hinge on deriving a property (divisibility, in each case) that eventually contradicts an assumption baked into the setup (finiteness of the prime list; lowest-terms form of the fraction).
+\end{note}
+
+\bigskip
+\begin{note}[Open problems]
+Not every true mathematical statement has a known proof. An \emph{open problem} is a precisely stated claim believed true (or at least undecided) but not yet proved or disproved.
+\end{note}
+
+\begin{example}[The Collatz conjecture]
+Define, for $n\in\Z^+$:
+\[
+\mathrm{Collatz}(n) = \begin{cases} n/2, & n \text{ even}, \\ 3n+1, & n \text{ odd}. \end{cases}
+\]
+\emph{Conjecture}: iterating $\mathrm{Collatz}$ from any starting $n\in\Z^+$ eventually reaches $1$.
+\end{example}
+
+\begin{note}
+Verified by computer for enormous ranges of starting values, but no proof (or disproof) is known -- an active open problem since 1937. Contrast with Euclid's infinitude-of-primes proof (\S\ref{sec:3-9} above): that claim, once conjectured, was fully settled by a short contradiction argument; Collatz has resisted proof for nearly a century despite its simple statement.
+\end{note}
+
+\subsection{Proof by mathematical induction}
+\label{sec:3-10}
+% CN 3.10 / Rosen 5.1, 5.2
+
+\begin{note}[Principle of mathematical induction]
+To prove $S(n)$ holds for all $n \in \N$ (or all $n \ge n_0$):
+\begin{itemize}
+    \item \textbf{Base case}: prove $S(1)$ (or $S(n_0)$).
+    \item \textbf{Inductive step}: prove, for all $k$:
+    \[
+    S(k) \implies S(k+1)
+    \]
+    (the assumption $S(k)$ here is the \emph{inductive hypothesis}).
+\end{itemize}
+Conclude $S(n)$ holds for all $n$.
+\end{note}
+
+\bigskip
+\begin{theorem}[Generalized De Morgan's law, CN Thm 18]
+For all $n \in \N$ and sets $A_1,\dots,A_n$:
+\[
+\overline{A_1 \cup A_2 \cup \cdots \cup A_n} = \overline{A_1} \cap \overline{A_2} \cap \cdots \cap \overline{A_n}.
+\]
+\end{theorem}
+\begin{proof}
+Let $S(n)$ be this identity for a given $n$.
+
+\textbf{Base case} ($n=1$):
+\[
+\overline{A_1} = \overline{A_1}.
+\]
+
+\textbf{Inductive step}: assume $S(k)$, i.e.
+\[
+\overline{A_1\cup\cdots\cup A_k} = \overline{A_1}\cap\cdots\cap\overline{A_k}.
+\]
+Then
+\[
+\overline{A_1\cup\cdots\cup A_k \cup A_{k+1}} = \overline{(A_1\cup\cdots\cup A_k) \cup A_{k+1}} = \overline{(A_1\cup\cdots\cup A_k)} \cap \overline{A_{k+1}}
+\]
+by ordinary De Morgan's law (\S\ref{sec:1-11}). Applying $S(k)$ to the first factor:
+\[
+= (\overline{A_1}\cap\cdots\cap\overline{A_k})\cap\overline{A_{k+1}} = \overline{A_1}\cap\cdots\cap\overline{A_{k+1}},
+\]
+which is $S(k+1)$.
+
+By induction, $S(n)$ holds for all $n$.
+\end{proof}
+
+\bigskip
+\begin{example}[$3\mid n^3-n$]
+For all $n\in\N$: $3 \mid (n^3-n)$.
+\end{example}
+\begin{proof}
+\textbf{Base case} ($n=0$): $n^3-n=0$, and $3\mid 0$.
+
+\textbf{Inductive step}: assume $3\mid(k^3-k)$ for some $k\ge0$, i.e.\ $k^3-k=3m$ for some $m\in\Z$. Consider $n=k+1$:
+\[
+(k+1)^3-(k+1) = k^3+3k^2+3k+1-k-1 = (k^3-k) + 3k^2+3k = 3m+3k^2+3k = 3(m+k^2+k).
+\]
+This is $3$ times an integer, so $3\mid\big((k+1)^3-(k+1)\big)$.
+
+By induction, $3\mid(n^3-n)$ for all $n\in\N$.
+\end{proof}
+
+\bigskip
+\begin{definition}[Well-ordering property]
+Every nonempty subset of $\N$ has a least element.
+\end{definition}
+
+\begin{theorem}[Well-ordering $\implies$ mathematical induction]
+If the well-ordering property holds for $\N$, then the principle of mathematical induction is valid.
+\end{theorem}
+\begin{proof}
+Suppose $S(1)$ holds and $S(k)\implies S(k+1)$ for all $k\ge1$. Suppose, for contradiction, $S(n)$ fails for some $n$. Let
+\[
+F = \{n\in\Z^+ : S(n) \text{ is false}\}.
+\]
+$F\neq\emptyset$ by assumption, so by well-ordering, $F$ has a least element $m$. Since $S(1)$ holds, $m\neq1$, so $m\ge2$ and $m-1\ge1$. Since $m$ is the \emph{least} element of $F$, $m-1\notin F$, i.e.\ $S(m-1)$ holds. But then the inductive step gives $S(m-1)\implies S(m)$, so $S(m)$ holds -- contradicting $m\in F$.
+
+So $F=\emptyset$: $S(n)$ holds for all $n$.
+\end{proof}
+
+\bigskip
+\begin{definition}[Principle of strong induction, formal statement]
+To prove $S(n)$ for all $n\ge n_0$:
+\begin{itemize}
+    \item \textbf{Base case}: prove $S(n_0)$.
+    \item \textbf{Inductive step}: prove, for all $k\ge n_0$: if $S(n_0),S(n_0+1),\dots,S(k)$ \emph{all} hold, then $S(k+1)$ holds.
+\end{itemize}
+\end{definition}
+
+\begin{note}[Strong vs.\ weak induction -- equivalent in power]
+Strong induction's hypothesis is more generous (all of $S(n_0),\dots,S(k)$, not just $S(k)$), but this doesn't let you prove anything weak induction can't -- any strong-induction proof can be mechanically rewritten as a weak-induction proof of the stronger statement $T(n) = S(n_0)\wedge\cdots\wedge S(n)$. Strong induction is a convenience, not a logically stronger tool. See \S\ref{sec:3-11} for worked examples of both.
+\end{note}
+
+\subsection{Induction: more examples}
+\label{sec:3-11}
+% CN 3.11 / Rosen 5.1, 5.2
+
+\bigskip
+\begin{example}[Bernoulli's inequality (extra)]
+For all $x \ge -1$ and all integers $n \ge 0$:
+\[
+(1+x)^n \ge 1 + nx.
+\]
+\end{example}
+\begin{proof}
+\textbf{Base case} ($n=0$): $(1+x)^0 = 1 = 1+0\cdot x$.
+
+\textbf{Inductive step}: assume $(1+x)^k \ge 1+kx$ for some $k \ge 0$. Since $x \ge -1$, we have $1+x \ge 0$, so multiplying both sides of the inductive hypothesis by $(1+x)$ preserves the inequality:
+\[
+(1+x)^{k+1} = (1+x)^k(1+x) \ge (1+kx)(1+x) = 1 + kx + x + kx^2 = 1 + (k+1)x + kx^2.
+\]
+Since $kx^2 \ge 0$:
+\[
+(1+x)^{k+1} \ge 1 + (k+1)x.
+\]
+
+By induction, the inequality holds for all $n \ge 0$.
+\end{proof}
+
+\begin{note}
+The condition $x\ge-1$ is exactly what's needed for $1+x\ge0$, which is what allows multiplying an inequality through by $(1+x)$ without flipping its direction.
+\end{note}
+
+\bigskip
+\begin{example}[Harmonic numbers]
+Let $H_m = 1+\tfrac12+\tfrac13+\cdots+\tfrac1m$. Then for every $n\ge0$:
+\[
+H_{2^n} \ge 1+\frac{n}{2}.
+\]
+\end{example}
+\begin{proof}
+\textbf{Base case} ($n=0$): $H_{2^0}=H_1=1 \ge 1+0$.
+
+\textbf{Inductive step}: assume $H_{2^k}\ge1+\frac{k}{2}$ for some $k\ge0$. Then
+\[
+H_{2^{k+1}} = H_{2^k} + \frac{1}{2^k+1}+\frac{1}{2^k+2}+\cdots+\frac{1}{2^{k+1}}.
+\]
+There are $2^k$ terms in this added block, each $\ge \frac{1}{2^{k+1}}$, so the block sums to at least $2^k\cdot\frac{1}{2^{k+1}}=\frac12$. Hence
+\[
+H_{2^{k+1}} \ge \left(1+\frac{k}{2}\right)+\frac12 = 1+\frac{k+1}{2}.
+\]
+
+By induction, $H_{2^n}\ge1+\frac{n}{2}$ for all $n\ge0$.
+\end{proof}
+
+\begin{note}
+Since $1+n/2 \to \infty$ as $n\to\infty$, this proves the harmonic series diverges.
+\end{note}
+
+\bigskip
+\begin{definition}[Depth of a set of intervals]
+For lectures given as time intervals, the \emph{depth} is the maximum number that mutually overlap at any single instant.
+\end{definition}
+
+\bigskip
+\begin{example}[Existence of prime factorisation]
+Every integer $n\ge2$ can be written as a product of one or more primes.
+\end{example}
+\begin{proof}
+\textbf{Base case} ($n=2$): $2$ itself is prime.
+
+\textbf{Inductive step}: let $k\ge2$, and suppose every integer from $2$ to $k$ has a prime factorization. Consider $n=k+1$.
+
+\textbf{Case 1}: $n$ is prime. Then $n$ itself is its factorization.
+
+\textbf{Case 2}: $n$ is composite, so $n=ab$ for integers $2\le a,b\le n-1=k$. By the strong inductive hypothesis, both $a$ and $b$ have prime factorizations; concatenating them gives a prime factorization of $n=ab$.
+
+Either way, $n$ has a prime factorization.
+
+By strong induction, every $n\ge2$ has one.
+\end{proof}
+
+\begin{note}
+This needs \emph{strong} induction: the factors $a,b$ of composite $n$ can be much smaller than $n-1$, so the hypothesis must cover \emph{all} smaller values.
+\end{note}
+
+\bigskip
+\begin{example}[Division algorithm: existence via well-ordering]
+For $a\in\Z,\ d\in\Z^+$, there exist $q,r\in\Z$ with $a=dq+r$ and $0\le r<d$.
+\end{example}
+\begin{proof}
+Consider $S = \{a-dq : q\in\Z,\ a-dq\ge0\}$. $S\subseteq\N$ and $S\neq\emptyset$. By well-ordering, $S$ has a least element $r=a-dq_0$.
+
+We claim $r<d$. If not, $r-d = a-d(q_0+1) \in S$, but $r-d<r$, contradicting minimality of $r$.
+
+So $r<d$, and $q=q_0$ gives $a=dq+r$ with $0\le r<d$.
+\end{proof}
+
+\bigskip
+\begin{definition}[Simple polygon, diagonal]
+A \emph{simple polygon} is a polygon whose sides do not cross. A \emph{diagonal} is a line segment connecting two non-adjacent vertices that lies entirely inside the polygon.
+\end{definition}
+
+\begin{lemma}[Every simple polygon with $\ge4$ sides has a diagonal]
+\end{lemma}
+\begin{proof}[Proof sketch]
+Take the leftmost vertex $v$ and its two neighbors $u,w$. If segment $uw$ lies inside the polygon, it is a diagonal. Otherwise, some vertex lies inside triangle $uvw$; take the one farthest from line $uw$ -- the segment from $v$ to that vertex is a diagonal.
+\end{proof}
+
+
+\bigskip
+\begin{example}[Round-robin tournament ranking]
+In a round-robin tournament with $n$ players, the players can be labeled $p_1,\dots,p_n$ such that $p_i$ beats $p_{i+1}$ for every $i$.
+\end{example}
+\begin{proof}
+\textbf{Base case} ($n=1$): trivial.
+
+\textbf{Inductive step}: let $k\ge1$, suppose the claim holds for at most $k$ players. Consider $k+1$ players. Pick any player $x$; let $B$ = players who beat $x$, $L$ = players $x$ beats, so $|B|,|L|\le k$.
+
+By the inductive hypothesis, $B$ has a chain ordering $b_1,\dots,b_{|B|}$, and $L$ has $\ell_1,\dots,\ell_{|L|}$. Concatenate:
+\[
+b_1,\dots,b_{|B|},\ x,\ \ell_1,\dots,\ell_{|L|}.
+\]
+The joins $b_{|B|}\to x$ and $x\to\ell_1$ hold by definition of $B,L$.
+
+By strong induction, the claim holds for all $n\ge1$.
+\end{proof}
+\subsection{Induction: extended example}
+\label{sec:3-12}
+% CN 3.12 (omega, advanced) -- CN's own extended example: injections into a shortlist relation
+
+\begin{note}[Setup]
+$m$ job positions $A$ ($|A|=m$), $n$ applicants $B$ ($|B|=n$), a \emph{shortlist relation} $S \subseteq A\times B$.
+
+For $X \subseteq A$, write
+\[
+S(X) = \bigcup_{a\in X} S(a)
+\]
+(\S\ref{sec:2-13} notation) for the combined shortlist of positions in $X$.
+
+A valid assignment (every position filled, no applicant doubled) is exactly an \emph{injection} $A \to B$ contained in $S$.
+\end{note}
+
+\bigskip
+\begin{theorem}[Necessity, CN Thm 20]
+If $S$ contains an injection with domain $A$, then $|X| \le |S(X)|$ for every $X \subseteq A$.
+\end{theorem}
+\begin{proof}
+An injection assigns distinct applicants to distinct positions, so the positions in $X$ alone already require $|X|$ distinct applicants, all drawn from $S(X)$.
+\end{proof}
+
+\bigskip
+\begin{theorem}[Sufficiency, CN Thm 21]
+If $|X| \le |S(X)|$ for every $X \subseteq A$, then $S$ contains an injection with domain $A$.
+\end{theorem}
+\begin{proof}
+Induction on $m=|A|$.
+
+\medskip
+\textbf{Base case} ($m=1$):
+
+$A=\{a\}$; the condition with $X=\{a\}$ gives $|S(a)|\ge1$, so pick any $(a,b)\in S$ -- this single pair is an injection with domain $A$.
+
+\medskip
+\textbf{Inductive step}: assume the theorem for all relations with domain-size $\le m$. Let $|A|=m+1$ and suppose $|X|\le|S(X)|$ for all $X\subseteq A$.
+
+\medskip
+\textbf{Case 1}: every nonempty proper $X\subsetneq A$ has \emph{strict} slack,
+\[
+|X| \le |S(X)|-1.
+\]
+
+Pick any $(a,b)\in S$. Restrict $S$ to
+\[
+T = S \cap \big((A\setminus\{a\})\times(B\setminus\{b\})\big),
+\]
+i.e.\ drop $a$ and $b$. For $X\subseteq A\setminus\{a\}$, the strict slack gives $|T(X)|\ge|X|$ even after excluding $b$.
+
+Since $|A\setminus\{a\}|=m$, the inductive hypothesis applies: $T$ contains an injection $g$ with domain $A\setminus\{a\}$.
+
+Then $g \cup \{(a,b)\}$ is an injection with domain $A$, contained in $S$.
+
+\medskip
+\textbf{Case 2}: some nonempty proper $X\subsetneq A$ has \emph{exact} fit,
+\[
+|X|=|S(X)|.
+\]
+
+Apply the inductive hypothesis to $S$ restricted to $X\times S(X)$ (domain size $|X|\le m$): get an injection $g: X \to S(X)$.
+
+For the rest, $A\setminus X$: for any $Z\subseteq A\setminus X$, a counting argument using $|X\cup Z|\le|S(X\cup Z)|$ and $|S(X)|=|X|$ shows
+\[
+|Z| \le |S(Z)\setminus S(X)|.
+\]
+
+So the relation $U = S \cap \big((A\setminus X)\times(B\setminus S(X))\big)$ satisfies the same slack condition on domain $A\setminus X$ (size $\le m$), so by the inductive hypothesis, $U$ contains an injection $h$ with domain $A\setminus X$.
+
+Since $g,h$ have disjoint domains ($X$, $A\setminus X$) and disjoint codomains ($S(X)$, $B\setminus S(X)$), $g\cup h$ is an injection with domain $A$, contained in $S$.
+
+\medskip
+Cases 1 and 2 are exhaustive, completing the inductive step. By induction, the theorem holds for all $m$.
+\end{proof}
+
+\bigskip
+\begin{corollary}[CN Cor. 22]
+$S \subseteq A\times B$ contains an injection with domain $A$ $\iff$ $|X|\le|S(X)|$ for every $X\subseteq A$.
+\end{corollary}
+
+\begin{note}[Why this matters]
+This gives easily \emph{verifiable} evidence in both directions: a ``yes'' is witnessed by the injection itself (checkable directly); a ``no'' is witnessed by a single offending set $X$ with $|X|>|S(X)|$ -- no need to search the whole space of possible assignments. This is a defect-form statement of \emph{Hall's marriage theorem}.
+\end{note}
+

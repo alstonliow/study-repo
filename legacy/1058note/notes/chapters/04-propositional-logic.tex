@@ -1,0 +1,597 @@
+% ============================================================
+% CHAPTER 4 --- PROPOSITIONAL LOGIC  (CN Ch.4, §4.1-4.21)
+% ============================================================
+\newpage
+\section{Propositional Logic}
+
+\subsection{Truth values}
+\label{sec:4-1}
+% CN 4.1 / Rosen 1.1
+
+\begin{definition}[Truth values]
+Logic (classical, two-valued) is built on two \emph{truth values}: \emph{True} ($T$) and \emph{False} ($F$).
+\end{definition}
+
+\begin{note}
+Physically, truth values may correspond to presence/absence of electrical current, magnetisation, a switch's on/off state, etc. -- the abstraction lets us reason about logic independently of implementation. The \emph{bit} (0 or 1) is a closely related abstraction: $F \leftrightarrow 0$, $T \leftrightarrow 1$.
+\end{note}
+
+\subsection{Boolean variables}
+\label{sec:4-2}
+% CN 4.2
+
+\begin{definition}[Boolean / propositional variable]
+A \emph{Boolean variable} (or \emph{propositional variable}) is a variable whose value is $T$ or $F$.
+\end{definition}
+
+\subsection{Propositions}
+\label{sec:4-3}
+% CN 4.3 / Rosen 1.1
+
+\begin{definition}[Proposition]
+A \emph{proposition} is a declarative sentence that is either true or false, but not both.
+\end{definition}
+
+\begin{example}[Propositions]
+$1+1=2$ (true); ``The earth is flat.'' (false); ``It will rain tomorrow.'' (a proposition -- has a definite truth value, even if unknown to us right now).
+\end{example}
+
+\begin{example}[Not propositions]
+Questions (``Come and work for us!''), nonsensical or non-declarative sentences (Lewis Carroll's ``'Twas brillig...''), and self-referential sentences with no consistent truth value (``This statement is false.'') are not propositions.
+\end{example}
+
+\begin{note}[Naming a proposition]
+A proposition may be named by a Boolean variable, e.g.\ let $X$ be the proposition $1+1=2$; then $X$'s truth value is $T$.
+\end{note}
+
+\subsection{Logical operations}
+\label{sec:4-4}
+% CN 4.4 / Rosen 1.1
+
+\begin{note}[The basic connectives]
+\begin{center}
+\begin{tabular}{ll}
+Not & $\neg$ \\
+And & $\wedge$ \\
+Or & $\vee$ \\
+Implies & $\implies$ \\
+Equivalence & $\iff$
+\end{tabular}
+\end{center}
+Logical operations combining propositions are also called \emph{connectives}; in hardware they are implemented as \emph{logic gates}.
+\end{note}
+
+\subsection{Negation}
+\label{sec:4-5}
+% CN 4.5 / Rosen 1.1
+
+\begin{definition}[Negation]
+For proposition $P$, $\neg P$ is true iff $P$ is false.
+\[
+\begin{array}{c|c}
+P & \neg P \\ \hline
+F & T \\
+T & F
+\end{array}
+\]
+\end{definition}
+
+\begin{proposition}[Double negation]
+\[
+\neg\neg P = P.
+\]
+\end{proposition}
+
+\begin{note}[Analogy with set complement]
+Negation mirrors complementation (\S\ref{sec:1-11}): both give the ``completely opposite'' outcome, and applying either twice returns the original. If $P$ is the proposition $x \in A$, then $\neg P$ is $x \in \overline{A}$: e.g.\ $\neg(\sqrt2 \in \Q)$ is the same as $\sqrt2 \in \overline{\Q}$ (equivalently $\sqrt2 \notin \Q$).
+\end{note}
+
+\subsection{Conjunction}
+\label{sec:4-6}
+% CN 4.6 / Rosen 1.1
+
+\begin{definition}[Conjunction]
+For propositions $P,Q$: $P \wedge Q$ (``$P$ and $Q$'') is true iff \emph{both} $P$ and $Q$ are true.
+\[
+\begin{array}{cc|c}
+P & Q & P \wedge Q \\ \hline
+F & F & F \\
+F & T & F \\
+T & F & F \\
+T & T & T
+\end{array}
+\]
+\end{definition}
+
+\begin{note}[Analogy with set intersection]
+For object $x$ and sets $A,B$:
+\[
+(x \in A) \wedge (x \in B) \iff x \in A \cap B, \qquad A \cap B = \{x : x\in A \wedge x \in B\}
+\]
+(restating \S\ref{sec:1-12}'s definition using $\wedge$).
+\end{note}
+
+\begin{definition}[Generalized (n-ary) conjunction]
+For propositions $P_1,\dots,P_n$:
+\[
+P_1 \wedge P_2 \wedge \cdots \wedge P_n
+\]
+is true iff \emph{every} $P_i$ is true.
+\end{definition}
+
+\begin{example}[Translating English ``and'']
+``You can access the internet from campus only if you are a computer science major or you are not a freshman'' involves nested connectives; more simply, ``It is below freezing and snowing'' translates directly as $P \wedge Q$ for $P=$``it is below freezing'', $Q=$``it is snowing''. Care is needed when English sentences bury an implicit ``and'' inside a single clause (e.g.\ ``$x$ is between $2$ and $5$'' is really $(x>2)\wedge(x<5)$).
+\end{example}
+
+\subsection{Disjunction}
+\label{sec:4-7}
+% CN 4.7 / Rosen 1.1
+
+\begin{definition}[Disjunction]
+For propositions $P,Q$: $P \vee Q$ (``$P$ or $Q$'') is true iff \emph{at least one} of $P,Q$ is true.
+\[
+\begin{array}{cc|c}
+P & Q & P \vee Q \\ \hline
+F & F & F \\
+F & T & T \\
+T & F & T \\
+T & T & T
+\end{array}
+\]
+\end{definition}
+
+\begin{note}[Inclusive, not exclusive]
+This is the \emph{inclusive-or}: true even when \emph{both} $P,Q$ are true. Contrast with \emph{exclusive-or} (\S\ref{sec:4-11}), true precisely when \emph{exactly one} holds.
+\end{note}
+
+\begin{example}[English ``or'' is ambiguous]
+``Students who have taken CS100 or CS200 may take this class'' -- inclusive: having taken both still qualifies. ``Soup or salad comes with this entree'' -- exclusive in ordinary restaurant use: you get one, not both, even though the sentence uses the same word ``or.'' Mathematical $\vee$ always means \emph{inclusive}-or unless stated otherwise; natural language is not reliable here.
+\end{example}
+
+\begin{note}[Analogy with set union]
+For object $x$ and sets $A,B$:
+\[
+(x \in A) \vee (x \in B) \iff x \in A \cup B, \qquad A \cup B = \{x : x\in A \vee x \in B\}
+\]
+(restating \S\ref{sec:1-12}'s definition using $\vee$).
+\end{note}
+
+\begin{note}[Operator precedence so far]
+Among the connectives introduced up to this point, precedence (highest to lowest) is:
+\[
+\neg \ > \ \wedge \ > \ \vee.
+\]
+So $\neg P \vee Q$ means $(\neg P) \vee Q$, and $P \wedge Q \vee R$ means $(P \wedge Q) \vee R$ -- parenthesize explicitly whenever there's any doubt.
+\end{note}
+
+\subsection{De Morgan's Laws}
+\label{sec:4-8}
+% CN 4.8 / Rosen 1.3
+
+\begin{theorem}[De Morgan's Laws for propositions]
+\[
+\neg(P \vee Q) = \neg P \wedge \neg Q, \qquad \neg(P \wedge Q) = \neg P \vee \neg Q.
+\]
+\end{theorem}
+
+\bigskip
+\begin{proof}[Proof of the first law, by truth table]
+\[
+\begin{array}{cc|c|c|cc|c}
+P & Q & P\vee Q & \neg(P\vee Q) & \neg P & \neg Q & \neg P \wedge \neg Q \\ \hline
+F & F & F & T & T & T & T \\
+F & T & T & F & T & F & F \\
+T & F & T & F & F & T & F \\
+T & T & T & F & F & F & F
+\end{array}
+\]
+The columns for $\neg(P\vee Q)$ and $\neg P \wedge \neg Q$ agree in every row, so the two expressions are \emph{logically equivalent} -- true or false together, for every assignment of truth values to $P,Q$.
+\end{proof}
+
+\bigskip
+\begin{note}[Building the table incrementally]
+The table is constructed left to right, each column using only earlier columns: start with all combinations of $P,Q$; build $P\vee Q$; negate it to get $\neg(P\vee Q)$; separately build $\neg P$ and $\neg Q$; conjoin them to get $\neg P \wedge \neg Q$. Comparing the two target columns (highlighted) completes the proof.
+\end{note}
+
+\bigskip
+\begin{note}[Deriving the second law from the first]
+Rather than repeating the truth-table argument, the second law follows from the first by substitution: replace $P,Q$ with $\neg P, \neg Q$ in the first law and simplify using double negation (\S\ref{sec:4-5}).
+\end{note}
+
+\bigskip
+\begin{theorem}[Generalized De Morgan's law, CN Thm 23]
+For all $n$:
+\[
+\neg(P_1 \vee \cdots \vee P_n) = \neg P_1 \wedge \cdots \wedge \neg P_n.
+\]
+\end{theorem}
+\begin{proof}
+\begin{align*}
+\text{LHS is true} &\iff P_1 \vee \cdots \vee P_n \text{ is false} \\
+&\iff P_1,\dots,P_n \text{ are all false} \\
+&\iff \neg P_1,\dots,\neg P_n \text{ are all true} \\
+&\iff \text{RHS is true.}
+\end{align*}
+\end{proof}
+
+\begin{note}
+This argument works for \emph{every} $n$ at once -- unlike the truth-table method, which would need a separate (and infinite) family of tables, one per $n$.
+\end{note}
+
+\bigskip
+\begin{note}[Correspondence with the set-theoretic De Morgan's laws]
+Compare directly with \S\ref{sec:1-11}'s Theorem (De Morgan's laws for sets): $\overline{A\cup B} = \overline A \cap \overline B$ and $\overline{A\cap B} = \overline A \cup \overline B$ are exactly the propositional laws above, applied to the propositions $x\in A$ and $x\in B$.
+\end{note}
+
+\bigskip
+\begin{note}[Naming logical equivalence]
+Two compound propositions are \emph{logically equivalent} iff their truth tables are identical in every row -- written $P \equiv Q$ or $P \iff Q$ (a \emph{tautology}, true under every assignment; formalized further in \S\ref{sec:4-12}).
+\end{note}
+
+\subsection{Implication}
+\label{sec:4-9}
+% CN 4.9 / Rosen 1.1
+
+\begin{definition}[Implication]
+$P \implies Q$ (``if $P$ then $Q$'') is false only when $P$ is true and $Q$ is false.
+\[
+\begin{array}{cc|c}
+P & Q & P \implies Q \\ \hline
+F & F & T \\
+F & T & T \\
+T & F & F \\
+T & T & T
+\end{array}
+\]
+\end{definition}
+
+\begin{note}[Alternative phrasings]
+$P \implies Q$ reads: ``if $P$ then $Q$''; ``$P$ only if $Q$''; ``$P$ is sufficient for $Q$''; ``$Q$ is necessary for $P$''; ``$Q$ whenever $P$''.
+\end{note}
+
+\subsection{Equivalence}
+\label{sec:4-10}
+% CN 4.10 / Rosen 1.1
+
+\begin{definition}[Equivalence / biconditional]
+$P \iff Q$ is true iff $P,Q$ have the same truth value.
+\[
+\begin{array}{cc|c}
+P & Q & P \iff Q \\ \hline
+F & F & T \\
+F & T & F \\
+T & F & F \\
+T & T & T
+\end{array}
+\]
+\end{definition}
+
+\begin{proposition}
+\[
+P \iff Q \quad \equiv \quad (P \implies Q) \wedge (Q \implies P).
+\]
+\end{proposition}
+
+\begin{note}[Alternative phrasing]
+$P \iff Q$ reads: ``$P$ if and only if $Q$''; ``$P$ is necessary and sufficient for $Q$''.
+\end{note}
+
+\begin{note}[Analogy with set equality]
+$x\in A \iff x\in B$ for all $x$ is exactly $A=B$ (\S\ref{sec:1-6}).
+\end{note}
+
+\subsection{Exclusive-or}
+\label{sec:4-11}
+% CN 4.11 / Rosen 1.1
+
+\begin{definition}[Exclusive-or]
+$P \oplus Q$ is true iff exactly one of $P,Q$ is true.
+\[
+\begin{array}{cc|c}
+P & Q & P \oplus Q \\ \hline
+F & F & F \\
+F & T & T \\
+T & F & T \\
+T & T & F
+\end{array}
+\]
+\end{definition}
+
+\begin{proposition}
+\[
+P \oplus Q = \neg(P \iff Q).
+\]
+\end{proposition}
+
+\bigskip
+\begin{theorem}[Generalized XOR parity, CN Thm 24]
+For all $n$ and propositions $P_1,\dots,P_n$: $P_1\oplus\cdots\oplus P_n$ is true iff an \emph{odd} number of the $P_i$ are true.
+\end{theorem}
+\begin{proof}
+Induction on $n$.
+
+\medskip
+\textbf{Base case} ($n=1$): $P_1$ alone is true iff exactly $1$ (odd) of it is true.
+
+\medskip
+\textbf{Inductive step}: assume the claim for $k$ propositions. Then
+\[
+P_1\oplus\cdots\oplus P_{k+1} = (P_1\oplus\cdots\oplus P_k) \oplus P_{k+1}.
+\]
+By the inductive hypothesis, the first factor is $T$ iff an odd number of $P_1,\dots,P_k$ are true, else $F$. Checking all four combinations of (that factor, $P_{k+1}$) against $\oplus$'s truth table shows the result is $T$ exactly when the \emph{total} count of true propositions among $P_1,\dots,P_{k+1}$ is odd.
+
+\medskip
+By induction, the claim holds for all $n$.
+\end{proof}
+
+\begin{note}[Analogy with symmetric difference]
+$x \in A_1 \triangle \cdots \triangle A_n \iff (x\in A_1)\oplus\cdots\oplus(x\in A_n)$ (\S\ref{sec:1-13}).
+\end{note}
+
+\subsection{Tautologies and logical equivalence}
+\label{sec:4-12}
+% CN 4.12 / Rosen 1.3
+
+\begin{definition}[Tautology]
+A proposition that is true under every assignment of truth values (every row of its truth table is $T$).
+\end{definition}
+
+\begin{definition}[Logical equivalence]
+$P \equiv Q$ (written $P=Q$) iff their truth tables are identical, iff $P\iff Q$ is a tautology.
+\end{definition}
+
+\begin{note}[Key equivalences]
+\[
+\neg\neg P = P, \qquad \neg(P\vee Q)=\neg P\wedge\neg Q, \qquad \neg(P\wedge Q)=\neg P\vee\neg Q,
+\]
+\[
+P\implies Q = \neg P \vee Q, \qquad P\iff Q = (P\implies Q)\wedge(Q\implies P),
+\]
+\[
+P\oplus Q = \neg(P\iff Q) = P \iff \neg Q.
+\]
+\end{note}
+
+\bigskip
+\begin{proposition}[Exportation law]
+\[
+(P \wedge Q) \implies R \ \equiv \ P \implies (Q \implies R).
+\]
+\end{proposition}
+\begin{proof}
+Using $X\implies Y = \neg X \vee Y$ repeatedly:
+\begin{align*}
+(P\wedge Q)\implies R &= \neg(P\wedge Q)\vee R = (\neg P \vee \neg Q)\vee R && \text{(De Morgan's)}\\
+&= \neg P \vee (\neg Q \vee R) && \text{(associativity of $\vee$)}\\
+&= \neg P \vee (Q \implies R) \\
+&= P \implies (Q \implies R).
+\end{align*}
+\end{proof}
+
+\subsection{History}
+\label{sec:4-13}
+% CN 4.13
+
+\subsection{Distributive Laws}
+\label{sec:4-14}
+% CN 4.14 / Rosen 1.3
+
+\begin{theorem}[Distributive laws]
+\[
+P \wedge (Q\vee R) = (P\wedge Q)\vee(P\wedge R), \qquad P \vee (Q\wedge R) = (P\vee Q)\wedge(P\vee R).
+\]
+\end{theorem}
+
+\bigskip
+\begin{proposition}[Absorption laws]
+\[
+P \vee (P\wedge Q) = P, \qquad P \wedge (P\vee Q) = P.
+\]
+\end{proposition}
+\begin{proof}
+\begin{align*}
+P \vee (P\wedge Q) &= (P\wedge T)\vee(P\wedge Q) && \text{(identity: $P = P\wedge T$)}\\
+&= P \wedge (T \vee Q) && \text{(distributive law)}\\
+&= P \wedge T && \text{(domination: $T\vee Q=T$)}\\
+&= P.
+\end{align*}
+The second identity is the dual (swap $\wedge \leftrightarrow \vee$, $T \leftrightarrow F$ throughout).
+\end{proof}
+
+\subsection{Laws of Boolean algebra}
+\label{sec:4-15}
+% CN 4.15 / Rosen 1.3 (Table of Logical Equivalences)
+
+\begin{note}[Full table, dual pairs]
+\[
+\neg\neg P = P
+\]
+\[
+\neg T = F, \quad \neg F = T
+\]
+\[
+P\wedge Q = Q\wedge P, \qquad P\vee Q = Q\vee P \quad \text{(commutative)}
+\]
+\[
+(P\wedge Q)\wedge R = P\wedge(Q\wedge R), \qquad (P\vee Q)\vee R = P\vee(Q\vee R) \quad \text{(associative)}
+\]
+\[
+P\wedge P = P, \qquad P\vee P = P \quad \text{(idempotent)}
+\]
+\[
+P\wedge\neg P = F, \qquad P\vee\neg P = T \quad \text{(complement)}
+\]
+\[
+P\wedge T = P, \qquad P\vee F = P \quad \text{(identity)}
+\]
+\[
+P\wedge F = F, \qquad P\vee T = T \quad \text{(domination)}
+\]
+\[
+P\wedge(Q\vee R)=(P\wedge Q)\vee(P\wedge R), \qquad P\vee(Q\wedge R)=(P\vee Q)\wedge(P\vee R) \quad \text{(distributive)}
+\]
+\[
+\neg(P\vee Q)=\neg P\wedge\neg Q, \qquad \neg(P\wedge Q)=\neg P\vee\neg Q \quad \text{(De Morgan's)}
+\]
+\end{note}
+
+\bigskip
+\begin{example}[Algebraic proof]
+Show $\neg(P\implies Q) \equiv P \wedge \neg Q$.
+\begin{align*}
+\neg(P\implies Q) &= \neg(\neg P \vee Q) \\
+&= \neg\neg P \wedge \neg Q && \text{(De Morgan's)}\\
+&= P \wedge \neg Q && \text{(double negation)}.
+\end{align*}
+\end{example}
+
+\subsection{Disjunctive Normal Form}
+\label{sec:4-16}
+% CN 4.16 / Rosen 1.3 (min-terms)
+
+\begin{definition}[Literal]
+A logical variable, unnegated or negated once ($X$ or $\neg X$).
+\end{definition}
+
+\begin{definition}[DNF]
+A disjunction of conjunctions of literals.
+\end{definition}
+
+\begin{note}[Constructing DNF from a truth table]
+For each row where the expression is $T$: form the conjunction of literals matching that row ($X$ if $X=T$ in that row, $\neg X$ if $X=F$); disjoin all such conjunctions.
+\end{note}
+
+\bigskip
+\begin{example}[Majority function of 3 variables]
+$\mathrm{Maj}(X,Y,Z)$ is true iff at least two of $X,Y,Z$ are true.
+\[
+\begin{array}{ccc|c}
+X&Y&Z&\mathrm{Maj}\\\hline
+F&F&F&F\\ F&F&T&F\\ F&T&F&F\\ F&T&T&T\\
+T&F&F&F\\ T&F&T&T\\ T&T&F&T\\ T&T&T&T
+\end{array}
+\]
+DNF (four true rows):
+\[
+\mathrm{Maj}(X,Y,Z) = (\neg X\wedge Y\wedge Z)\vee(X\wedge\neg Y\wedge Z)\vee(X\wedge Y\wedge \neg Z)\vee(X\wedge Y\wedge Z).
+\]
+\end{example}
+
+\begin{note}[Cost of DNF]
+Every expression has an equivalent DNF, but the number of parts can be as large as $2^k$ for $k$ variables -- exponential blow-up. DNF makes \emph{satisfiability} easy to certify (any one part gives a satisfying assignment) but gives no efficient way to certify a \emph{tautology}.
+\end{note}
+
+\subsection{Conjunctive Normal Form}
+\label{sec:4-17}
+% CN 4.17 / Rosen 1.3
+
+\begin{definition}[CNF]
+A conjunction of \emph{clauses}, each a disjunction of literals.
+\end{definition}
+
+\begin{note}[Duality with DNF, via De Morgan's]
+If $P$ is in CNF, $\neg P$ -- negation of a conjunction of disjunctions -- becomes, via repeated De Morgan's and double negation, a disjunction of conjunctions of literals: DNF. So CNF and DNF are dual representations.
+\end{note}
+
+\begin{note}[Converting truth table $\to$ CNF]
+Negate the output column; build DNF for $\neg P$; negate that expression; apply De Morgan's to push the negation inward into CNF form.
+\end{note}
+
+\subsection{Representing logical statements}
+\label{sec:4-18}
+% CN 4.18
+
+\begin{note}[Top-down / bottom-up modelling]
+\textbf{Top-down}: identify the top-level conjunction of required conditions. \textbf{Bottom-up}: identify the atomic Boolean variables (simplest possible true/false assertions) before worrying about their eventual truth values.
+\end{note}
+
+\begin{example}[CNF from natural-language rules]
+Variables: one Boolean per guest. Rules:
+\[
+(\text{Harry}\vee\text{Ron}\vee\text{Hermione}\vee\text{Ginny})
+\]
+\[
+\wedge\ (\neg\text{Hagrid}\vee\text{Norberta})
+\]
+\[
+\wedge\ (\neg\text{Fred}\vee\text{George}) \wedge (\text{Fred}\vee\neg\text{George})
+\]
+\[
+\wedge\ (\neg\text{Voldemort}\vee\neg\text{Bellatrix})\wedge(\neg\text{Voldemort}\vee\neg\text{Dolores})\wedge(\neg\text{Bellatrix}\vee\neg\text{Dolores}).
+\]
+``At least one of'' $\to$ disjunction; ``$A$ only if $B$'' $\to$ implication $\to \neg A\vee B$; ``none or both'' $\to$ biconditional $\to$ two implications; ``no more than one of a set'' $\to$ conjunction of pairwise ``not both'' clauses.
+\end{example}
+
+\subsection{Statements about how many variables are true}
+\label{sec:4-19}
+% CN 4.19
+
+\begin{definition}[At most $k$ of $n$ variables true]
+For variables $x_1,\dots,x_n$:
+\[
+\text{``at most } k \text{ true''} \ \equiv\ \bigwedge_{\substack{S\subseteq\{1,\dots,n\} \\ |S|=k+1}} \ \bigvee_{i\in S} \neg x_i.
+\]
+\end{definition}
+\begin{proof}[Why this is correct]
+``At most $k$ true'' fails iff at least $k+1$ variables are true, i.e.\ iff some set $S$ of size $k+1$ has \emph{all} its variables true, i.e.\ iff some $S$ has $\bigvee_{i\in S}\neg x_i$ false. So ``at most $k$ true'' holds iff \emph{every} size-$(k{+}1)$ set $S$ has $\bigvee_{i\in S}\neg x_i$ true -- exactly the conjunction above. There are $\binom{n}{k+1}$ such sets $S$.
+\end{proof}
+
+\begin{definition}[At least $k$ of $n$ variables true]
+\[
+\text{``at least } k \text{ true''} \ \equiv\ \bigwedge_{\substack{S\subseteq\{1,\dots,n\} \\ |S|=n-k+1}} \ \bigvee_{i\in S} x_i.
+\]
+\end{definition}
+\begin{proof}[Why this is correct]
+``At least $k$ true'' fails iff at most $k-1$ are true, iff at least $n-k+1$ are false, iff some set $S$ of size $n-k+1$ has \emph{all} its variables false, iff some $S$ has $\bigvee_{i\in S}x_i$ false. So ``at least $k$ true'' holds iff every size-$(n{-}k{+}1)$ set $S$ has $\bigvee_{i\in S}x_i$ true. There are $\binom{n}{n-k+1}$ such sets.
+\end{proof}
+
+\begin{definition}[Exactly $k$]
+\[
+\text{``exactly } k \text{ true''} \ \equiv\ \text{``at least } k\text{''} \ \wedge\ \text{``at most } k\text{''}.
+\]
+\end{definition}
+
+\subsection{Universal sets of operations}
+\label{sec:4-20}
+% CN 4.20 / Rosen 1.1 (Sheffer stroke)
+
+\begin{definition}[Universal set of operations]
+$X$ is \emph{universal} if every logical expression is equivalent to one using only operations from $X$.
+\end{definition}
+
+\begin{proposition}
+$\{\wedge,\vee,\neg\}$ is universal (immediate from DNF/CNF, \S\ref{sec:4-16}-4.17).
+\end{proposition}
+
+\begin{corollary}
+$\{\wedge,\neg\}$ and $\{\vee,\neg\}$ are each universal.
+\end{corollary}
+\begin{proof}
+De Morgan's laws express $\vee$ in terms of $\wedge,\neg$ (and vice versa), so either can be dropped while keeping $\neg$.
+\end{proof}
+
+\bigskip
+\begin{note}[$\{\wedge,\vee\}$ is not universal]
+Without $\neg$, every expression built from $\wedge,\vee$ is \emph{monotone}: increasing any input from $F$ to $T$ can never make the output go from $T$ to $F$. Since $\neg P$ itself is not monotone, it cannot be expressed -- so $\{\wedge,\vee\}$ fails to be universal.
+\end{note}
+
+\bigskip
+\begin{definition}[Sheffer stroke (NAND) (extra)]
+\[
+P \mid Q = \neg(P\wedge Q).
+\]
+\end{definition}
+
+\begin{proposition}[$\{\mid\}$ alone is universal (extra)]
+\[
+\neg P = P\mid P, \qquad P\wedge Q = (P\mid Q)\mid(P\mid Q), \qquad P\vee Q = (P\mid P)\mid(Q\mid Q).
+\]
+\end{proposition}
+\begin{proof}
+Check each directly by truth table, or: $P\mid P = \neg(P\wedge P) = \neg P$; then $(P\mid Q)\mid(P\mid Q) = \neg(P\mid Q) = \neg\neg(P\wedge Q) = P\wedge Q$; and $(P\mid P)\mid(Q\mid Q) = \neg P \mid \neg Q = \neg(\neg P\wedge\neg Q) = P\vee Q$ (De Morgan's). Since $\{\wedge,\vee,\neg\}$ is universal and all three are expressible via $\mid$ alone, $\{\mid\}$ is universal.
+\end{proof}
+
+\begin{note}
+This is why NAND gates alone suffice to build any digital circuit -- a genuinely important fact in computer engineering, well beyond what CN's syllabus covers here.
+\end{note}
+

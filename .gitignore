@@ -4,3 +4,26 @@
 # Never commit (see meta/PLAN.md §1, §4)
 raw/
 out/
+
+# LaTeX build artefacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+main.pdf
+
+# Quarto
+_site/
+.quarto/
+
+# Claude Code and private planning files (kept local only)
+.claude/
+CLAUDE.md
+meta/PLAN.md
+meta/PLAN.zh.md
+
+# Editor / tool history
+.Rhistory

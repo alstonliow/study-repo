@@ -1,0 +1,105 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mystyle}[2026/08/19 discrete-math shared style]
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{mathtools}
+\RequirePackage{enumitem}
+\RequirePackage{float}
+\RequirePackage{placeins}
+\RequirePackage[ruled,vlined,linesnumbered]{algorithm2e}
+\RequirePackage{geometry}
+\RequirePackage{hyperref}
+\RequirePackage{venndiagram}
+\RequirePackage{tikz-cd}
+\RequirePackage{pict2e}
+\RequirePackage{tikz}
+\RequirePackage{longtable}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes.gates.logic.US}
+\DeclareMathOperator{\lcmop}{lcm}
+\usetikzlibrary{backgrounds}
+\RequirePackage[american]{circuitikz}
+
+\geometry{margin=2.5cm}
+
+% ---------- colours ----------
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{etoolbox}
+\definecolor{defc}{HTML}{3B6EA5}   % definitions: muted blue
+\definecolor{thmc}{HTML}{A5533B}   % theorem-like: muted terracotta
+\definecolor{exc}{HTML}{4E8A5A}    % examples: muted green
+\definecolor{notec}{HTML}{7A7A7A}  % notes: grey
+
+\hypersetup{colorlinks=true, linkcolor=defc!85!black,
+            urlcolor=defc!85!black, citecolor=defc!85!black}
+
+% ---------- theorem-like environments (soft tinted cards) ----------
+% All share ONE counter, numbered within \section: Definition 7.1, Example 7.2, ...
+% Usage: \begin{theorem}[Optional title] ... \end{theorem}
+\tcbset{
+    cardbox/.style n args={4}{%  #1 colour, #2 name, #3 title, #4 body font
+        enhanced, breakable, frame hidden, colback=#1!7, arc=3pt,
+        left=7pt, right=7pt, top=5pt, bottom=5pt,
+        before skip=10pt plus 2pt, after skip=8pt plus 2pt,
+        before upper={{\color{#1}\bfseries #2~\thetcbcounter}%
+            \ifblank{#3}{}{\enspace{\color{#1!80}(#3)}}\par\smallskip#4},
+    },
+}
+\newtcolorbox[auto counter, number within=section]{definition}[1][]%
+    {cardbox={defc}{Definition}{#1}{}}
+\newtcolorbox[use counter from=definition]{theorem}[1][]%
+    {cardbox={thmc}{Theorem}{#1}{\itshape}}
+\newtcolorbox[use counter from=definition]{proposition}[1][]%
+    {cardbox={thmc}{Proposition}{#1}{\itshape}}
+\newtcolorbox[use counter from=definition]{lemma}[1][]%
+    {cardbox={thmc}{Lemma}{#1}{\itshape}}
+\newtcolorbox[use counter from=definition]{corollary}[1][]%
+    {cardbox={thmc}{Corollary}{#1}{\itshape}}
+\newtcolorbox[use counter from=definition]{claim}[1][]%
+    {cardbox={thmc}{Claim}{#1}{\itshape}}
+\newtcolorbox[use counter from=definition]{example}[1][]%
+    {cardbox={exc}{Example}{#1}{}}
+
+% Notes and remarks: no box, grey italic heading.
+\newtheoremstyle{notestyle}{6pt plus 2pt}{6pt plus 2pt}{}{}%
+    {\itshape\color{notec}}{.}{.5em}{}
+\theoremstyle{notestyle}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+
+% ---------- exercise / solution ----------
+% Unbreakable by default; pass [breakable] only for boxes taller than a page.
+\newtcolorbox{exercise}[2][]{%
+    enhanced,
+    colback=blue!3!white, colframe=blue!45!black,
+    boxrule=0.6pt, arc=2pt,
+    left=6pt, right=6pt, top=4pt, bottom=4pt,
+    before skip=12pt, after skip=8pt,
+    title={Exercise #2}, fonttitle=\bfseries,
+    #1
+}
+
+\newenvironment{solution}[1][]{%
+    \par\noindent\textit{Solution.}\ #1\quad
+}{%
+    \hfill$\blacksquare$\par\medskip
+}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\proofby}[1]{\noindent\textit{Proof (by #1).}\quad}
+
+% ---------- common math macros ----------
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\power}[1]{\mathcal{P}(#1)}
+\DeclareMathOperator{\Collatz}{Collatz}
+\DeclareMathOperator{\dom}{dom}
+
+\endinput
