@@ -9,6 +9,8 @@ metadata-files:
 
 website:
   title: "Study Notes"
+  site-url: https://alstonliow.github.io/study-repo/
+  repo-url: https://github.com/alstonliow/study-repo
   search: true
   page-navigation: true
   navbar:

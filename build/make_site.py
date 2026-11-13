@@ -54,7 +54,6 @@ TYPE_WORD = {"def": "Definition", "thm": "Theorem", "prp": "Proposition",
 
 TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,mathtools}
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 \usepackage{xcolor}
