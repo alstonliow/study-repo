@@ -16,4 +16,4 @@ preview:
 	quarto preview site
 
 clean-site:
-	rm -rf site/_site site/notes site/tikz site/index.qmd site/_sidebar.yml site/.quarto
+	rm -rf site/_site site/notes site/courses site/tikz site/index.qmd site/_nav.yml site/_sidebar.yml site/courses.json site/.quarto

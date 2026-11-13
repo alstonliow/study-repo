@@ -1,0 +1,15 @@
+# Course registry. A note or problem belongs to a course when one of its
+# source keys (note YAML `sources`, problem `source`) starts with `prefix`.
+# Read by build/make_site.py (course pages, course filter on the website).
+#
+# Fields:
+#   id      short lowercase id, used in URLs (courses/<id>.html)
+#   code    display code
+#   name    full course/book title (filled in by the owner; never guessed)
+#   prefix  source-key prefix that marks membership
+courses:
+  - id: fit1058
+    code: FIT1058
+    name: ""  # TODO: full unit name (owner to fill in)
+    institution: Monash University
+    prefix: fit1058-

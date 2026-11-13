@@ -20,8 +20,11 @@ _site/
 .quarto/
 site/notes/
 site/tikz/
+site/courses/
 site/index.qmd
+site/_nav.yml
 site/_sidebar.yml
+site/courses.json
 
 # Claude Code and private planning files (kept local only)
 .claude/

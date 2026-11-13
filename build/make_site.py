@@ -6,7 +6,8 @@
 - Cross-page @-references become links; same-page ones stay Quarto xrefs.
 - Raw LaTeX drawings (```{=latex} blocks) are compiled to SVG and cached in
   site/tikz/ (keyed by content hash).
-- Writes site/notes/**, site/index.qmd, site/_sidebar.yml (all generated).
+- Writes site/notes/**, site/courses/**, site/index.qmd, site/_nav.yml,
+  site/courses.json (all generated).
 
 Read-only with respect to notes/. Never runs git.
 """
@@ -29,7 +30,26 @@ ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "notes"
 SITE = ROOT / "site"
 OUT_NOTES = SITE / "notes"
+OUT_COURSES = SITE / "courses"
 TIKZ = SITE / "tikz"
+COURSES = (yaml.safe_load((ROOT / "meta" / "courses.yml").read_text(encoding="utf-8")) or {}).get("courses", [])
+
+
+def courses_of(keys) -> list[str]:
+    """Course ids whose prefix matches any of the given source keys."""
+    keys = [str(k) for k in keys or [] if k]
+    return [c["id"] for c in COURSES if any(k.startswith(c["prefix"]) for k in keys)]
+
+
+def course_key(keys, course: dict) -> tuple:
+    """Numeric position of a note inside a course (from its first matching key)."""
+    for k in keys or []:
+        k = str(k)
+        if k.startswith(course["prefix"]):
+            nums = re.findall(r"\d+", k[len(course["prefix"]):])
+            if nums:
+                return tuple(int(n) for n in nums)
+    return (999,)
 
 BRANCHES = [
     ("Discrete Mathematics", [
@@ -190,6 +210,10 @@ class Note:
                     if a["id"]:
                         self.blocks[a["id"]] = a.get("name", "")
 
+        self.problem_sources = [a.get("source", "") for a, _ in top_level_divs(self.exercises)
+                                if "problem" in a["classes"]]
+        self.courses = courses_of(list(self.front.get("sources") or []) + self.problem_sources)
+
     @property
     def branch(self) -> str:
         return self.id.rsplit("/", 1)[0]
@@ -224,13 +248,17 @@ def render_problems(note: Note) -> str:
         m = re.match(r"fit1058-cn-([\d.]+)-q(\d+)", src)
         src_label = f"FIT1058 CN {m.group(1)} Q{m.group(2)}" if m else src
         f = fence_for(body)
-        out.append(f"{f} {{#{pid} .problem}}\n[Exercise {num}]{{.problem-title}}"
-                   f"[{src_label}]{{.problem-source}}\n\n{body.strip()}\n{f}\n")
+        group = [f"{f} {{#{pid} .problem}}\n[Exercise {num}]{{.problem-title}}"
+                 f"[{src_label}]{{.problem-source}}\n\n{body.strip()}\n{f}\n"]
         if pid in sols:
             sb = sols[pid]
             f2 = fence_for(sb)
-            out.append(f'{f2} {{.callout-tip collapse="true" appearance="simple" title="Solution"}}\n'
-                       f"{sb.strip()}\n{f2}\n")
+            group.append(f'{f2} {{.callout-tip collapse="true" appearance="simple" title="Solution"}}\n'
+                         f"{sb.strip()}\n{f2}\n")
+        inner = "\n".join(group)
+        fo = fence_for(inner)
+        cs = " ".join(courses_of([src]))
+        out.append(f'{fo} {{.problem-group data-courses="{cs}"}}\n{inner}\n{fo}\n')
     return "\n".join(out)
 
 
@@ -263,6 +291,9 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
     body = REF.sub(lambda m: link_for(m.group(1), note, notes, owner), body)
 
     meta = []
+    if note.courses:
+        meta.append("Courses: " + ", ".join(
+            f"[{c['code']}](/courses/{c['id']}.qmd)" for c in COURSES if c["id"] in note.courses))
     if note.front.get("sources"):
         meta.append("Sources: " + ", ".join(f"`{s}`" for s in note.front["sources"]))
     reqs = [r for r in note.front.get("requires") or [] if r in notes]
@@ -323,13 +354,61 @@ def main() -> int:
             home.append(f"- [{btitle}](notes/{bid}/index.qmd) ({len(members)})")
         home.append("")
         sidebar.append(sec)
+    # course pages: knowledge points in course order, grouped by chapter
+    if OUT_COURSES.exists():
+        shutil.rmtree(OUT_COURSES)
+    OUT_COURSES.mkdir(parents=True)
+    branch_title = {b: bt for _, bs in BRANCHES for b, bt in bs}
+    course_menu, page_courses = [], {}
+    if COURSES:
+        home += ["## Courses", ""]
+    for c in COURSES:
+        members = sorted((n for n in notes.values() if c["id"] in n.courses),
+                         key=lambda n: (course_key(n.front.get("sources"), c), n.id))
+        label = c["code"] + (f" – {c['name']}" if c.get("name") else "")
+        lines = ["---", yaml.safe_dump({"title": label}, allow_unicode=True).strip(), "---", "",
+                 f"Knowledge points used by {c['code']}, in course order. "
+                 "Use the course filter in the sidebar to show only this course's content.", ""]
+        chapter = None
+        for n in members:
+            pos = course_key(n.front.get("sources"), c)
+            ch = pos[0] if pos != (999,) else None
+            if ch != chapter:
+                chapter = ch
+                same = [m.branch for m in members if course_key(m.front.get("sources"), c)[:1] == (ch,)]
+                topic = branch_title.get(max(set(same), key=same.count), "") if same else ""
+                lines += ["", f"## Chapter {ch}" + (f" · {topic}" if topic else "") if ch else "## Other", ""]
+            keys = [k for k in n.front.get("sources") or [] if str(k).startswith(c["prefix"])]
+            nprob = sum(1 for s in n.problem_sources if s.startswith(c["prefix"]))
+            extra = f" ({nprob} exercise{'s' if nprob != 1 else ''})" if nprob else ""
+            lines.append(f"- [{n.title}](/notes/{n.id}.qmd){extra} <span class=\"note-meta\">{', '.join(keys)}</span>")
+        (OUT_COURSES / f"{c['id']}.qmd").write_text("\n".join(lines) + "\n", encoding="utf-8")
+        course_menu.append({"href": f"courses/{c['id']}.qmd", "text": c["code"]})
+        home.append(f"- [{label}](courses/{c['id']}.qmd) ({len(members)} knowledge points)")
+        page_courses[f"courses/{c['id']}.html"] = [c["id"]]
+    home.append("")
+    for n in notes.values():
+        page_courses[f"notes/{n.id}.html"] = n.courses
+
+    import json
+    (SITE / "courses.json").write_text(json.dumps({
+        "courses": [{"id": c["id"], "code": c["code"], "name": c.get("name", "")} for c in COURSES],
+        "pages": page_courses}, ensure_ascii=False, indent=1), encoding="utf-8")
+
     (SITE / "index.qmd").write_text("\n".join(home) + "\n", encoding="utf-8")
-    (SITE / "_sidebar.yml").write_text(
+    navbar = [{"href": "index.qmd", "text": "Home"}]
+    if course_menu:
+        navbar.append({"text": "Courses", "menu": course_menu})
+    (SITE / "_nav.yml").write_text(
         "# Generated by build/make_site.py\n" +
-        yaml.safe_dump({"website": {"sidebar": {"style": "docked", "collapse-level": 2,
+        yaml.safe_dump({"website": {"navbar": {"left": navbar},
+                                    "sidebar": {"style": "docked", "collapse-level": 2,
                                                 "contents": sidebar}}},
                        allow_unicode=True, sort_keys=False),
         encoding="utf-8")
+    old = SITE / "_sidebar.yml"
+    if old.exists():
+        old.unlink()
     print(f"pages: {len(notes)} notes")
     return 0
 
