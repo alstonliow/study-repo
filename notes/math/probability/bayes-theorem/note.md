@@ -2,7 +2,6 @@
 title: "Bayes' Theorem"
 sources: [fit1058-cn-9.9]
 requires: [math/discrete/sets/partitions]
-level: core
 status: draft
 ---
 

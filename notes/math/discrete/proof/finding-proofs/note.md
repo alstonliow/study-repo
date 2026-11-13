@@ -2,7 +2,6 @@
 title: "Finding Proofs"
 sources: [fit1058-cn-3.3, fit1058-cn-3.4, fit1058-cn-3.5]
 requires: [math/discrete/proof/contradiction, math/discrete/proof/induction, math/discrete/proof/techniques, math/discrete/proof/theorems-and-proofs, math/discrete/sets/subsets]
-level: core
 status: draft
 ---
 

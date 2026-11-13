@@ -2,7 +2,6 @@
 title: Selection and Ordered Selection
 sources: [fit1058-cn-8.5, fit1058-cn-8.6, fit1058-cn-8.7]
 requires: [math/discrete/counting/sum-and-product-rules]
-level: core
 status: draft
 ---
 

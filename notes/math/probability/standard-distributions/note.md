@@ -2,7 +2,6 @@
 title: "Standard Distributions"
 sources: [fit1058-cn-10.7, fit1058-cn-10.8, fit1058-cn-10.9, fit1058-cn-10.10]
 requires: [math/discrete/counting/combinations, math/discrete/sequences/sums-and-series]
-level: core
 status: draft
 ---
 

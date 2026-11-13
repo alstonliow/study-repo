@@ -2,7 +2,6 @@
 title: "Composition"
 sources: [fit1058-cn-2.9, fit1058-cn-2.11]
 requires: []
-level: core
 status: draft
 ---
 

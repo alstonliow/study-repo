@@ -2,7 +2,6 @@
 title: "Forests and Spanning Trees"
 sources: [fit1058-cn-12.3, fit1058-cn-12.4]
 requires: [math/discrete/graph/walks-paths-cycles]
-level: core
 status: draft
 ---
 

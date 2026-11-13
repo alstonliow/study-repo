@@ -2,7 +2,6 @@
 title: "Predicates"
 sources: [fit1058-cn-5.1, fit1058-cn-5.2, fit1058-cn-5.3, fit1058-cn-5.4]
 requires: [math/discrete/functions/special-functions, math/discrete/relations/binary-relations, math/discrete/relations/counting]
-level: core
 status: draft
 ---
 

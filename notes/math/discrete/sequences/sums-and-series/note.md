@@ -2,7 +2,6 @@
 title: "Sums and Series"
 sources: [fit1058-cn-6.10, fit1058-cn-6.11, fit1058-cn-6.12, fit1058-cn-6.13, fit1058-cn-6.14, fit1058-cn-6.15]
 requires: [math/discrete/proof/induction-examples, math/discrete/sequences/limits]
-level: core
 status: draft
 ---
 

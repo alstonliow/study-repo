@@ -2,7 +2,6 @@
 title: "Random Variables and Distributions"
 sources: [fit1058-cn-10.1, fit1058-cn-10.2]
 requires: [math/probability/conditional-probability]
-level: core
 status: draft
 ---
 

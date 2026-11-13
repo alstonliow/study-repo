@@ -2,7 +2,6 @@
 title: "The GCD and the Euclidean Algorithm"
 sources: [fit1058-cn-7.5, fit1058-cn-7.6]
 requires: [math/discrete/number-theory/coprimality, math/discrete/number-theory/divisibility-and-primes]
-level: core
 status: draft
 ---
 

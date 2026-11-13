@@ -2,7 +2,6 @@
 title: "The Fibonacci sequence"
 sources: [fit1058-cn-6.7]
 requires: []
-level: core
 status: draft
 ---
 

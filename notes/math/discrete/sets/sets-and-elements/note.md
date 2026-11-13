@@ -2,7 +2,6 @@
 title: "Sets and Elements"
 sources: [fit1058-cn-1.1, fit1058-cn-1.2]
 requires: [math/discrete/sets/cardinality-and-standard-sets]
-level: core
 status: draft
 ---
 

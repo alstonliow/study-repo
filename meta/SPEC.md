@@ -54,7 +54,6 @@ Examples and exercises are not knowledge points of their own. They live in the
 title: Truth Values
 sources: [fit1058-w4, rosen-1.1]
 requires: [math/discrete/logic/propositional/statements]
-level: core          # core | extra
 status: draft        # draft | done
 ---
 ```
@@ -64,32 +63,35 @@ status: draft        # draft | done
 | `title` | yes | English title |
 | `sources` | yes | List of source keys; may be empty if unknown (with a TODO comment) |
 | `requires` | yes | List of ids; may be empty |
-| `level` | yes | `core` or `extra`. The first batch uses `core` only |
 | `status` | yes | `draft` or `done`. Mechanical migration always sets `draft` |
 
 Source keys are never invented. If a source is unknown, leave it out and add a
 `<!-- TODO: source -->` comment.
+
+Knowledge points carry no difficulty field. Difficulty belongs to individual
+problems and examples (`level`, §5 and §6.1).
 
 ## 5. Block types
 
 Content blocks are Pandoc fenced divs (`:::`).
 
 Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
-`claim`, `proof`, `example`, `remark`, `problem`, `solution`, `extra`.
+`claim`, `proof`, `example`, `remark`, `problem`, `solution`.
 
 1. Blocks that are numbered or referenced carry a Quarto id with a prefix:
    `def-`, `thm-`, `prp-`, `lem-`, `cor-`, `exm-`, `prob-`.
-2. `proof`, `remark`, `claim` and `extra` blocks normally carry no id.
-3. `extra` marks beyond-syllabus content inside the body (not used in the first
-   batch).
+2. `proof`, `remark` and `claim` blocks normally carry no id.
+3. Which course a piece of content belongs to comes from its source keys
+   (`sources`, `source`) and `meta/courses.yml`, not from block markup.
 4. A block title goes in a `name` attribute: `{#thm-sum-rule .theorem name="Sum rule"}`.
    Use single quotes around the value if the title contains `"`.
 5. 1058note `note` environments become `remark` blocks.
 6. Examples stay inside `note.md` in the author's order; `example.md` is for
    additional worked examples.
 7. Drawings (TikZ, circuitikz, picture, algorithm) are kept as raw LaTeX
-   blocks (```` ```{=latex} ````). They render in the PDF only; the website
-   rendering is decided in P6.
+   blocks (```` ```{=latex} ````). The website build compiles them to SVG.
+8. `example` blocks may carry `level="easy|medium|hard"`, filled in by the owner
+   only.
 
 ```markdown
 ::: {#def-tautology .definition}
@@ -110,7 +112,7 @@ for every assignment of truth values.
 ### 6.1 `exercise.md`
 
 ```markdown
-::: {.problem #prob-induction-03 origin="external" source="fit1058-tut6-q3" difficulty="2" tags="induction,divisibility"}
+::: {.problem #prob-induction-03 origin="external" source="fit1058-tut6-q3" level="medium" tags="induction,divisibility"}
 ...full problem statement...
 :::
 ```
@@ -120,7 +122,7 @@ for every assignment of truth values.
 | id (`#prob-...`) | yes | Unique across the repository |
 | `origin` | yes | `self` (written by the owner) or `external` (textbook, unit, open course) |
 | `source` | yes | Source key. If unknown: empty value plus a TODO comment; never guessed |
-| `difficulty` | no | `1`–`3`, filled in by the owner only; empty if unknown |
+| `level` | no | `easy`, `medium` or `hard`, filled in by the owner only; omitted if unknown |
 | `tags` | no | Comma-separated, lowercase, hyphenated |
 
 1. Problem statements are copied verbatim. They are never paraphrased,

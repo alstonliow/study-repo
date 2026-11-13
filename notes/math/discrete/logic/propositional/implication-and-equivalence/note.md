@@ -2,7 +2,6 @@
 title: "Implication, Equivalence and Exclusive-or"
 sources: [fit1058-cn-4.9, fit1058-cn-4.10, fit1058-cn-4.11]
 requires: [math/discrete/sets/subsets, math/discrete/sets/symmetric-difference]
-level: core
 status: draft
 ---
 

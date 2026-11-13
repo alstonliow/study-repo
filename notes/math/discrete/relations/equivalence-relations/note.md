@@ -2,7 +2,6 @@
 title: "Equivalence relations"
 sources: [fit1058-cn-2.16]
 requires: []
-level: core
 status: draft
 ---
 

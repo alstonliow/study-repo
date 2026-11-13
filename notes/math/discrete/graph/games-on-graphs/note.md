@@ -2,7 +2,6 @@
 title: "Games on graphs"
 sources: [fit1058-cn-12.6]
 requires: []
-level: core
 status: draft
 ---
 

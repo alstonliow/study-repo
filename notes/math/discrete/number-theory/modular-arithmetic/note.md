@@ -2,7 +2,6 @@
 title: "Modular Arithmetic and Inverses"
 sources: [fit1058-cn-7.10, fit1058-cn-7.11]
 requires: [math/discrete/number-theory/coprimality, math/discrete/number-theory/modular-exponentiation]
-level: core
 status: draft
 ---
 

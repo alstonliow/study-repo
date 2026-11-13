@@ -2,7 +2,6 @@
 title: "Induction: more examples"
 sources: [fit1058-cn-3.11]
 requires: []
-level: core
 status: draft
 ---
 

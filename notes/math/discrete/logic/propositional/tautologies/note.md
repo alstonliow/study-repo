@@ -2,7 +2,6 @@
 title: "Tautologies and Logical Equivalence"
 sources: [fit1058-cn-4.12, fit1058-cn-4.13]
 requires: []
-level: core
 status: draft
 ---
 

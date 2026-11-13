@@ -2,7 +2,6 @@
 title: Inclusion-Exclusion
 sources: [fit1058-cn-8.3]
 requires: [math/discrete/counting/combinations]
-level: core
 status: draft
 ---
 

@@ -2,7 +2,6 @@
 title: "Proof by contradiction"
 sources: [fit1058-cn-3.9]
 requires: []
-level: core
 status: draft
 ---
 

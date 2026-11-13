@@ -2,7 +2,6 @@
 title: "Combining binary relations"
 sources: [fit1058-cn-2.15]
 requires: [math/discrete/functions/composition]
-level: core
 status: draft
 ---
 

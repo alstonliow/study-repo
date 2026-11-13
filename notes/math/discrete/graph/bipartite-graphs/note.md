@@ -2,7 +2,6 @@
 title: "Bipartite graphs"
 sources: [fit1058-cn-11.10]
 requires: [math/discrete/graph/walks-paths-cycles]
-level: core
 status: draft
 ---
 

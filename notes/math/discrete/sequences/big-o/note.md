@@ -2,7 +2,6 @@
 title: "Big-O notation"
 sources: [fit1058-cn-6.9]
 requires: [math/discrete/logic/propositional/representing-statements, math/discrete/sequences/sums-and-series]
-level: core
 status: draft
 ---
 

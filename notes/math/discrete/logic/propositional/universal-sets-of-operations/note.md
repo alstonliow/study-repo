@@ -2,7 +2,6 @@
 title: "Universal sets of operations"
 sources: [fit1058-cn-4.20]
 requires: [math/discrete/logic/propositional/normal-forms]
-level: core
 status: draft
 ---
 

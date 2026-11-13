@@ -49,3 +49,9 @@
 .tikz-figure img { max-width: 100%; height: auto; }
 
 .note-meta { color: var(--notec); font-size: 0.85em; }
+
+/* level badges on exercises and examples (easy | medium | hard) */
+.level-badge { display: inline-block; font-size: 0.72em; font-weight: 600; padding: 0.05em 0.5em; margin-left: 0.5em; border-radius: 999px; vertical-align: 0.15em; text-transform: lowercase; }
+.level-easy { background: #E3F1E6; color: #2F6B3B; }
+.level-medium { background: #FBF0D9; color: #8A6212; }
+.level-hard { background: #F6E0DA; color: #8E3A24; }

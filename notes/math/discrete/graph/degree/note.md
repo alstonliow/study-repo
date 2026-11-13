@@ -2,7 +2,6 @@
 title: "Degree"
 sources: [fit1058-cn-11.7]
 requires: [math/discrete/graph/basic-definitions]
-level: core
 status: draft
 ---
 

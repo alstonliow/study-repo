@@ -2,7 +2,6 @@
 title: "Normal Forms"
 sources: [fit1058-cn-4.16, fit1058-cn-4.17]
 requires: []
-level: core
 status: draft
 ---
 

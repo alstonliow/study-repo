@@ -2,7 +2,6 @@
 title: "Walks, paths and cycles"
 sources: [fit1058-cn-11.8]
 requires: []
-level: core
 status: draft
 ---
 

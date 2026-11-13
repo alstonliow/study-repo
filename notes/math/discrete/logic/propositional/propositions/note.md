@@ -2,7 +2,6 @@
 title: "Truth Values and Propositions"
 sources: [fit1058-cn-4.1, fit1058-cn-4.2, fit1058-cn-4.3, fit1058-cn-4.4]
 requires: []
-level: core
 status: draft
 ---
 

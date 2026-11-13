@@ -2,7 +2,6 @@
 title: "Proof by mathematical induction"
 sources: [fit1058-cn-3.10]
 requires: [math/discrete/proof/induction-examples, math/discrete/sets/set-operations]
-level: core
 status: draft
 ---
 

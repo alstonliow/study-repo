@@ -2,7 +2,6 @@
 title: "Doing Logic with Quantifiers"
 sources: [fit1058-cn-5.12, fit1058-cn-5.13, fit1058-cn-5.15, fit1058-cn-5.14]
 requires: [math/discrete/logic/predicate/multiple-quantifiers, math/discrete/logic/predicate/quantifiers]
-level: core
 status: draft
 ---
 

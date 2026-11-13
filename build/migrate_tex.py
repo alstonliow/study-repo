@@ -740,7 +740,6 @@ def main(dry: bool) -> int:
             f'title: "{yaml_title}"\n'
             f"sources: [{', '.join(sources)}]\n"
             f"requires: [{', '.join(req)}]\n"
-            "level: core\n"
             "status: draft\n"
             "---\n\n"
             f"<!-- Migrated from 1058note notes/chapters/{f['chapter']}.tex: {'; '.join(s.replace('--', '–') for s in f['subs'])}. -->\n\n"

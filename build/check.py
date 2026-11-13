@@ -17,8 +17,9 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "notes"
 
-REQUIRED_YAML = ["title", "sources", "requires", "level", "status"]
-ALLOWED = {"level": {"core", "extra"}, "status": {"draft", "done"}}
+REQUIRED_YAML = ["title", "sources", "requires", "status"]
+ALLOWED = {"status": {"draft", "done"}}
+LEVELS = {"easy", "medium", "hard"}  # optional `level` on problem and example blocks
 
 BLOCK_PREFIXES = "def|thm|lem|cor|prp|exm|rem|prob"
 DIV_OPEN = re.compile(r"^:::+\s*\{(?P<attrs>[^}]*)\}\s*$")
@@ -95,7 +96,7 @@ def check_notes() -> None:
                         errors.append(f"{rel(note)}: missing YAML field '{key}'")
                 for key, allowed in ALLOWED.items():
                     if key in fm and fm[key] not in allowed:
-                        errors.append(f"{rel(note)}: {key}={fm[key]!r} not in {sorted(allowed)}")
+                        errors.append(f"{rel(note)}: {key}={fm[key]!r} not in {sorted(a for a in allowed if a)}")
                 for r in fm.get("requires") or []:
                     requires.append((note, r))
 
@@ -132,9 +133,13 @@ def check_notes() -> None:
                         errors.append(f"{where}: problem missing source")
                     elif not kv["source"]:
                         warnings.append(f"{where}: problem has empty source (TODO)")
-                    diff = kv.get("difficulty", "")
-                    if diff and diff not in {"1", "2", "3"}:
-                        errors.append(f"{where}: difficulty must be 1-3")
+                if "difficulty" in kv:
+                    errors.append(f"{where}: use level=\"easy|medium|hard\" instead of difficulty")
+                if kv.get("level"):
+                    if not ({"problem", "example"} & set(classes)):
+                        errors.append(f"{where}: level is only for problem and example blocks")
+                    elif kv["level"] not in LEVELS:
+                        errors.append(f"{where}: level must be easy, medium or hard")
                 if "solution" in classes:
                     target = kv.get("for")
                     if not target:

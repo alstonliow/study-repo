@@ -2,7 +2,6 @@
 title: "Representing Graphs"
 sources: [fit1058-cn-11.4, fit1058-cn-11.3]
 requires: [math/discrete/functions/special-functions, math/discrete/graph/basic-definitions, math/discrete/relations/binary-relations]
-level: core
 status: draft
 ---
 

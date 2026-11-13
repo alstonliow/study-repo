@@ -2,7 +2,6 @@
 title: "Functions: Definitions and Notation"
 sources: [fit1058-cn-2.1, fit1058-cn-2.3]
 requires: [math/discrete/functions/injections-surjections-bijections]
-level: core
 status: draft
 ---
 

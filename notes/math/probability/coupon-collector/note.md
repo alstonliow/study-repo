@@ -2,7 +2,6 @@
 title: "The coupon collector's problem"
 sources: [fit1058-cn-10.11]
 requires: [math/discrete/sequences/sums-and-series]
-level: core
 status: draft
 ---
 

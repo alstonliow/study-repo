@@ -2,7 +2,6 @@
 title: "Modular Exponentiation"
 sources: [fit1058-cn-7.13, fit1058-cn-7.14]
 requires: [math/discrete/number-theory/coprimality, math/discrete/number-theory/euler-totient, math/discrete/number-theory/modular-arithmetic]
-level: core
 status: draft
 ---
 

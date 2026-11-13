@@ -2,7 +2,6 @@
 title: "The Extended Euclidean Algorithm"
 sources: [fit1058-cn-7.7, fit1058-cn-7.8]
 requires: [math/discrete/number-theory/divisibility-and-primes, math/discrete/number-theory/remainders-and-parity]
-level: core
 status: draft
 ---
 

@@ -2,7 +2,6 @@
 title: "Properties of binary relations"
 sources: [fit1058-cn-2.14]
 requires: []
-level: core
 status: draft
 ---
 

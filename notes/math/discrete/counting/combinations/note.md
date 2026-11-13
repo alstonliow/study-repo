@@ -2,7 +2,6 @@
 title: Unordered Selection without Replacement
 sources: [fit1058-cn-8.8]
 requires: [math/discrete/counting/selection, math/discrete/counting/sum-and-product-rules]
-level: core
 status: draft
 ---
 

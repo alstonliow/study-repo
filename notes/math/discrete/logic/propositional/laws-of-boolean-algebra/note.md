@@ -2,7 +2,6 @@
 title: "Laws of Boolean Algebra"
 sources: [fit1058-cn-4.14, fit1058-cn-4.15]
 requires: []
-level: core
 status: draft
 ---
 

@@ -2,7 +2,6 @@
 title: "From recursive definitions to formulas"
 sources: [fit1058-cn-6.6]
 requires: [math/discrete/sequences/sums-and-series]
-level: core
 status: draft
 ---
 

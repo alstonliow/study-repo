@@ -2,7 +2,6 @@
 title: "Counting functions"
 sources: [fit1058-cn-2.12]
 requires: [math/discrete/functions/injections-surjections-bijections]
-level: core
 status: draft
 ---
 

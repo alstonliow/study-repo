@@ -2,7 +2,6 @@
 title: "Connectivity"
 sources: [fit1058-cn-11.9]
 requires: [math/discrete/graph/basic-definitions, math/discrete/relations/equivalence-relations]
-level: core
 status: draft
 ---
 

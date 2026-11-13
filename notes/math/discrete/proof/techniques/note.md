@@ -2,7 +2,6 @@
 title: "Proof by Manipulation, Construction and Cases"
 sources: [fit1058-cn-3.6, fit1058-cn-3.7, fit1058-cn-3.8]
 requires: [math/discrete/proof/finding-proofs]
-level: core
 status: draft
 ---
 

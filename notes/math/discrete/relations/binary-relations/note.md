@@ -2,7 +2,6 @@
 title: "Binary relations"
 sources: [fit1058-cn-2.13]
 requires: [math/discrete/functions/inverse-functions, math/discrete/functions/special-functions, math/discrete/relations/combining]
-level: core
 status: draft
 ---
 

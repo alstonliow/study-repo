@@ -2,7 +2,6 @@
 title: "Multiple Quantifiers"
 sources: [fit1058-cn-5.10, fit1058-cn-5.11]
 requires: []
-level: core
 status: draft
 ---
 

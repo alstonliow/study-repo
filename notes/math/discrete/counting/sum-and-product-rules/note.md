@@ -2,7 +2,6 @@
 title: Counting by Addition and Multiplication
 sources: [fit1058-cn-8.1, fit1058-cn-8.2]
 requires: []
-level: core
 status: draft
 ---
 

@@ -2,7 +2,6 @@
 title: "Symmetric difference"
 sources: [fit1058-cn-1.13]
 requires: []
-level: core
 status: draft
 ---
 

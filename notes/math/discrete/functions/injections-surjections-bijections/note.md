@@ -2,7 +2,6 @@
 title: "Injections, surjections, bijections"
 sources: [fit1058-cn-2.7]
 requires: []
-level: core
 status: draft
 ---
 

@@ -2,7 +2,6 @@
 title: "Trees"
 sources: [fit1058-cn-12.1, fit1058-cn-12.2]
 requires: []
-level: core
 status: draft
 ---
 

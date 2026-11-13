@@ -2,7 +2,6 @@
 title: "Cryptosystems"
 sources: [fit1058-cn-2.10]
 requires: [math/discrete/functions/composition]
-level: core
 status: draft
 ---
 

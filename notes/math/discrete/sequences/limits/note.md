@@ -2,7 +2,6 @@
 title: "Limits of infinite sequences"
 sources: [fit1058-cn-6.8]
 requires: [math/discrete/logic/predicate/multiple-quantifiers]
-level: core
 status: draft
 ---
 

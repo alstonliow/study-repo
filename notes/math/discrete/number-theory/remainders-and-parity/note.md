@@ -2,7 +2,6 @@
 title: "Remainders and Parity"
 sources: [fit1058-cn-7.3, fit1058-cn-7.4]
 requires: []
-level: core
 status: draft
 ---
 

@@ -2,7 +2,6 @@
 title: "Quantifiers"
 sources: [fit1058-cn-5.5, fit1058-cn-5.6, fit1058-cn-5.7, fit1058-cn-5.8, fit1058-cn-5.9]
 requires: [math/discrete/logic/propositional/laws-of-boolean-algebra, math/discrete/sets/subsets]
-level: core
 status: draft
 ---
 

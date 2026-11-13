@@ -2,7 +2,6 @@
 title: "The Power Set"
 sources: [fit1058-cn-1.8, fit1058-cn-1.9, fit1058-cn-1.10]
 requires: []
-level: core
 status: draft
 ---
 

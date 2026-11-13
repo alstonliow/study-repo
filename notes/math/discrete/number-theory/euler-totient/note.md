@@ -2,7 +2,6 @@
 title: "The Euler totient function"
 sources: [fit1058-cn-7.12]
 requires: [math/discrete/number-theory/modular-arithmetic]
-level: core
 status: draft
 ---
 

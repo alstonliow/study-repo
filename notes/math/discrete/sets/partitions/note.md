@@ -2,7 +2,6 @@
 title: "Partitions"
 sources: [fit1058-cn-1.15]
 requires: [math/discrete/relations/equivalence-relations]
-level: core
 status: draft
 ---
 

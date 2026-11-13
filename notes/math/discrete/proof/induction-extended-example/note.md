@@ -2,7 +2,6 @@
 title: "Induction: extended example"
 sources: [fit1058-cn-3.12]
 requires: [math/discrete/relations/binary-relations]
-level: core
 status: draft
 ---
 

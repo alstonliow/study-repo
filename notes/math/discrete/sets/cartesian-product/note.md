@@ -2,7 +2,6 @@
 title: "Cartesian product"
 sources: [fit1058-cn-1.14]
 requires: [math/discrete/sets/cardinality-and-standard-sets]
-level: core
 status: draft
 ---
 

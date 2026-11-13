@@ -2,7 +2,6 @@
 title: "Divisibility and Primes"
 sources: [fit1058-cn-7.1, fit1058-cn-7.2]
 requires: [math/discrete/number-theory/coprimality, math/discrete/number-theory/diffie-hellman]
-level: core
 status: draft
 ---
 
