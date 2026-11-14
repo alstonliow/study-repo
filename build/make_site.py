@@ -7,7 +7,7 @@
 - Raw LaTeX drawings (```{=latex} blocks) are compiled to SVG and cached in
   site/tikz/ (keyed by content hash).
 - Writes site/notes/**, site/courses/**, site/index.qmd, site/_nav.yml,
-  site/courses.json (all generated).
+  site/courses.json, site/progress.json (all generated).
 
 Read-only with respect to notes/. Never runs git.
 """
@@ -422,6 +422,7 @@ def main() -> int:
     if stray:
         print(f"warning: branches not in BRANCHES: {stray}", file=sys.stderr)
     sidebar = []
+    branch_items = {}
     home = ["---", "title: Study Notes", "---", "",
             "Personal study notes, organised by topic rather than by course. "
             "So far: discrete mathematics and discrete probability.", ""]
@@ -433,6 +434,7 @@ def main() -> int:
                              key=lambda n: (sort_key(n.front.get("sources")), n.id))
             if not members:
                 continue
+            branch_items[bid] = [n.id for n in members]
             index = OUT_NOTES / bid / "index.qmd"
             index.parent.mkdir(parents=True, exist_ok=True)
             index.write_text(branch_page(bid, btitle, members, branch_num[bid]), encoding="utf-8")
@@ -481,6 +483,12 @@ def main() -> int:
     (SITE / "courses.json").write_text(json.dumps({
         "courses": [{"id": c["id"], "code": c["code"], "name": c.get("name", "")} for c in COURSES],
         "pages": page_courses}, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    # progress tracking (site/progress.html): which problems sit on which page
+    (SITE / "progress.json").write_text(json.dumps({
+        "branches": branch_items,
+        "notes": {n.id: [a["id"] for a, _ in top_level_divs(n.exercises) if "problem" in a["classes"]]
+                  for n in notes.values()}}, ensure_ascii=False, indent=1), encoding="utf-8")
 
     (SITE / "index.qmd").write_text("\n".join(home) + "\n", encoding="utf-8")
     navbar = [{"href": "index.qmd", "text": "Home"}]

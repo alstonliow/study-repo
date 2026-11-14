@@ -25,6 +25,7 @@ site/index.qmd
 site/_nav.yml
 site/_sidebar.yml
 site/courses.json
+site/progress.json
 
 # Claude Code and private planning files (kept local only)
 .claude/

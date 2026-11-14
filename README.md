@@ -104,6 +104,27 @@ make check   # must report 0 errors; warnings are open TODOs
 make site    # optional local preview
 ```
 
+## Progress tracking
+
+Every knowledge point and exercise on the website has a mark:
+**New → Learned → Reviewing → Mastered** (click to advance, shift-click to go
+back). Branch pages and the home page show the totals.
+
+Marks are saved in the browser. To sync them across devices, sign in with
+GitHub (link at the bottom of the sidebar). Sync uses Supabase:
+
+1. Create a Supabase project. In the SQL Editor, run
+   [`build/supabase-schema.sql`](build/supabase-schema.sql).
+2. Create a GitHub OAuth app with the callback URL
+   `https://<project>.supabase.co/auth/v1/callback`, and enter its client id and
+   secret under Authentication → Sign In / Providers → GitHub.
+3. Under Authentication → URL Configuration, set the Site URL to the website
+   and add `http://localhost:4321/**` to the redirect URLs.
+4. Put the project URL and the **anon** key in `site/progress.html`. Never use
+   the `service_role` key.
+5. After signing in once, turn off "Allow new users to sign up" so that no one
+   else can create an account.
+
 ## Repository layout
 
 | Path | Contents |
