@@ -101,3 +101,11 @@ $$a\wedge b \equiv \neg\big(\neg(a\wedge b)\big) \equiv \neg(a\ \text{NAND}\ b) 
 
 Since NAND alone can express $\wedge,\vee,\neg$, and $\{\wedge,\vee,\neg\}$ is universal, the single operation NAND is itself a **universal (functionally complete) operation**: every Boolean circuit can, in principle, be built using nothing but NAND gates.
 :::
+
+::: {.solution for="prob-propositional-18"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-propositional-23"}
+<!-- TODO: solution -->
+:::

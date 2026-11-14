@@ -121,3 +121,15 @@ Hence, $f$ is a bijection.
 
 :::
 :::
+
+::: {.solution for="prob-functions-04"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-functions-07"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-functions-12"}
+<!-- TODO: solution -->
+:::

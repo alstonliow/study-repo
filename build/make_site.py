@@ -260,7 +260,7 @@ def render_problems(note: Note) -> str:
         badge = level_badge(a.get("level"))
         group = [f"{f} {{#{pid} .problem}}\n[Exercise {num}]{{.problem-title}}"
                  f"[{src_label}]{{.problem-source}}{badge}\n\n{body.strip()}\n{f}\n"]
-        if pid in sols:
+        if sols.get(pid, "").strip():   # empty TODO stubs are not shown
             sb = sols[pid]
             f2 = fence_for(sb)
             group.append(f'{f2} {{.callout-tip collapse="true" appearance="simple" title="Solution"}}\n'

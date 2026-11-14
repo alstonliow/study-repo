@@ -42,3 +42,19 @@ $$(x\wedge w\wedge z)\vee(\neg x\wedge w\wedge z)\equiv (w\wedge z)\wedge(x\vee\
 The remaining two terms, $(x\wedge v\wedge z)$ and $(x\wedge w\wedge y)$, do not simplify further. Hence:
 $$(v\wedge y)\vee(w\wedge z)\vee(x\wedge v\wedge z)\vee(x\wedge w\wedge y)$$
 :::
+
+::: {.solution for="prob-propositional-04"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-propositional-05"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-propositional-07"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-propositional-13"}
+<!-- TODO: solution -->
+:::

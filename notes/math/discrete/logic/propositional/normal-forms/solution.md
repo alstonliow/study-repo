@@ -51,3 +51,11 @@ This matches the claimed formula for $n+1$ variables.
 
 :::
 :::
+
+::: {.solution for="prob-propositional-14"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-propositional-17"}
+<!-- TODO: solution -->
+:::

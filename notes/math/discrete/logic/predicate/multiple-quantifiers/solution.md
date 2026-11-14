@@ -41,3 +41,23 @@ $$D(d_1,m_1,y_1)\wedge D(d_2,m_2,y_2)\wedge\Big((y_1<y_2)\vee\big((y_1=y_2)\wedg
 ::: {.solution for="prob-predicate-13"}
 $$\exists! x\ P(x) \;\equiv\; \exists x\ \Big(P(x)\wedge\big(\forall y\ (P(y)\Rightarrow x=y)\big)\Big)$$
 :::
+
+::: {.solution for="prob-predicate-03"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-predicate-04"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-predicate-05"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-predicate-06"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-predicate-12"}
+<!-- TODO: solution -->
+:::

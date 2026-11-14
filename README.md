@@ -27,6 +27,83 @@ The full conventions are in [`meta/SPEC.md`](meta/SPEC.md). The topic tree is in
 [`meta/taxonomy.md`](meta/taxonomy.md) and the notation in
 [`meta/notation.md`](meta/notation.md).
 
+## Adding content
+
+### A solution
+
+Every problem already has a stub in the `solution.md` of its folder:
+
+```markdown
+::: {.solution for="prob-proofs-11"}
+<!-- TODO: solution -->
+:::
+```
+
+Replace the TODO line with the solution. Write proofs as numbered steps. Empty
+stubs are not shown on the website, and `make check` lists them as warnings.
+
+### A problem
+
+Add it to the folder's `exercise.md`, and add a matching stub to `solution.md`:
+
+```markdown
+::: {.problem #prob-proofs-20 origin="self" source=""}
+<!-- TODO: source -->
+Problem statement, copied verbatim.
+:::
+```
+
+- The id is unique across the repository. Continue the folder's numbering.
+- `origin` is `self` (written by me) or `external` (from a textbook or course).
+- `source` is a source key, e.g. `fit1058-cn-8.10-q5`. If it is unknown, leave
+  it empty and add a TODO comment. Only `fit1058-` keys appear in the course
+  filter.
+- `level="easy|medium|hard"` and `tags="a,b"` are optional.
+
+### A knowledge point
+
+1. Create a folder under an existing branch (see `meta/taxonomy.md`), with a
+   lowercase hyphenated name, e.g. `notes/math/discrete/counting/stars-and-bars/`.
+2. Write `note.md`:
+
+   ```markdown
+   ---
+   title: Stars and Bars
+   sources: [fit1058-cn-8.6]                         # [] plus a TODO if unknown
+   requires: [math/discrete/counting/combinations]   # ids, may be empty
+   status: draft
+   ---
+
+   ::: {#def-xxx .definition name="..."}
+   ...
+   :::
+
+   ::: {#thm-xxx .theorem name="..."}
+   ...
+   :::
+
+   ::: {.proof}
+   1. ...
+
+   2. ...
+   :::
+   ```
+
+3. Optionally add `example.md`, `exercise.md` and `solution.md`.
+4. Refer to blocks with `@thm-xxx` and to knowledge points with
+   `@sec-` plus the id with `/` replaced by `-`.
+5. Keep it to about 30–150 lines. Split above 200 lines.
+
+The website numbers pages automatically. Within a branch, pages are ordered by
+their first source key.
+
+### Before committing
+
+```bash
+make check   # must report 0 errors; warnings are open TODOs
+make site    # optional local preview
+```
+
 ## Repository layout
 
 | Path | Contents |

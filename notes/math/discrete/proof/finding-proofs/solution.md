@@ -269,3 +269,11 @@ exchange” technique (Steinitz exchange lemma) underlies both.
 
 **Algorithm & justification**
 :::
+
+::: {.solution for="prob-proofs-04"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-proofs-15"}
+<!-- TODO: solution -->
+:::

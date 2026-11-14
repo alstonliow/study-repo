@@ -32,3 +32,11 @@ This matches intuition: incrementing always flips the lowest bit.
 **Summary.**
 $$y_2 \equiv x_1\wedge x_0, \qquad y_1\equiv x_1\oplus x_0, \qquad y_0\equiv \neg x_0$$
 :::
+
+::: {.solution for="prob-propositional-15"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-propositional-16"}
+<!-- TODO: solution -->
+:::

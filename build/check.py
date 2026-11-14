@@ -14,6 +14,7 @@ from pathlib import Path
 
 import yaml
 
+EMPTY_SOL = re.compile(r'^:::+\s*\{[^}]*\.solution[^}]*for="([^"]+)"[^}]*\}\s*\n\s*:::+\s*$', re.M)
 ROOT = Path(__file__).resolve().parent.parent
 NOTES = ROOT / "notes"
 
@@ -78,6 +79,7 @@ def check_notes() -> None:
     block_ids: dict[str, str] = {}
     problems: dict[str, Path] = {}
     solutions: dict[str, Path] = {}
+    empty_solutions: set[str] = set()   # stubs holding only a TODO comment
     refs: list[tuple[Path, str]] = []
     requires: list[tuple[Path, str]] = []
 
@@ -146,6 +148,8 @@ def check_notes() -> None:
                         errors.append(f"{where}: solution missing 'for'")
                     else:
                         solutions[target] = md
+            for m in EMPTY_SOL.finditer(text):
+                empty_solutions.add(m.group(1))
             for m in REF.finditer(text):
                 refs.append((md, m.group(1)))
 
@@ -168,6 +172,8 @@ def check_notes() -> None:
     for pid, md in problems.items():
         if pid not in solutions:
             warnings.append(f"{rel(md)}: problem '{pid}' has no solution")
+        elif pid in empty_solutions:
+            warnings.append(f"{rel(md)}: problem '{pid}' has an empty solution (TODO)")
     for pid, md in solutions.items():
         if pid not in problems:
             errors.append(f"{rel(md)}: solution for unknown problem '{pid}'")
@@ -175,7 +181,8 @@ def check_notes() -> None:
             errors.append(f"{rel(md)}: solution '{pid}' not in the same folder as its problem")
 
     print(f"notes: {len(ids)} knowledge points, {len(block_ids)} labelled blocks, "
-          f"{len(problems)} problems, {len(solutions)} solutions")
+          f"{len(problems)} problems, {len(solutions) - len(empty_solutions)} solutions "
+          f"({len(empty_solutions)} empty)")
 
 
 def check_forbidden_files() -> None:
