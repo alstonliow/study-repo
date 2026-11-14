@@ -35,3 +35,6 @@ meta/PLAN.zh.md
 
 # Editor / tool history
 .Rhistory
+
+# Course PDFs kept at the root while working; never commit
+/*.pdf

@@ -143,8 +143,12 @@ for every assignment of truth values.
 1. Every `solution` has a `for` attribute naming an existing problem id.
 2. A solution lives in the `solution.md` of the same folder as its problem.
 3. Problems without a solution yet are allowed; `make check` reports them as
-   warnings.
-4. Source keys for course-note exercises: `fit1058-cn-<exercise section>-q<n>`,
+   warnings. An empty stub (only a `<!-- TODO: solution -->` comment) counts as
+   no solution.
+4. `status="draft"` marks a solution that the owner has not reviewed yet (for
+   example one written by Claude). The website labels it "Draft solution".
+   The owner removes the attribute after review.
+5. Source keys for course-note exercises: `fit1058-cn-<exercise section>-q<n>`,
    e.g. `fit1058-cn-8.10-q5`. Note sources: `fit1058-cn-<section>`.
 
 ## 7. Writing conventions

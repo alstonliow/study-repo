@@ -146,6 +146,8 @@ def check_notes() -> None:
                     target = kv.get("for")
                     if not target:
                         errors.append(f"{where}: solution missing 'for'")
+                    if kv.get("status", "draft") != "draft":
+                        errors.append(f"{where}: solution status must be draft (or omitted once reviewed)")
                     else:
                         solutions[target] = md
             for m in EMPTY_SOL.finditer(text):

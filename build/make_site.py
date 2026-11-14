@@ -247,6 +247,8 @@ def link_for(ref: str, here: Note, notes: dict[str, Note], owner: dict[str, str]
 
 def render_problems(note: Note) -> str:
     sols = {a.get("for"): body for a, body in top_level_divs(note.solutions) if "solution" in a["classes"]}
+    draft = {a.get("for") for a, _ in top_level_divs(note.solutions)
+             if "solution" in a["classes"] and a.get("status") == "draft"}
     out = []
     for a, body in top_level_divs(note.exercises):
         if "problem" not in a["classes"]:
@@ -263,7 +265,8 @@ def render_problems(note: Note) -> str:
         if sols.get(pid, "").strip():   # empty TODO stubs are not shown
             sb = sols[pid]
             f2 = fence_for(sb)
-            group.append(f'{f2} {{.callout-tip collapse="true" appearance="simple" title="Solution"}}\n'
+            title = "Draft solution (not yet reviewed)" if pid in draft else "Solution"
+            group.append(f'{f2} {{.callout-tip collapse="true" appearance="simple" title="{title}"}}\n'
                          f"{sb.strip()}\n{f2}\n")
         inner = "\n".join(group)
         fo = fence_for(inner)
