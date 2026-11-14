@@ -1,3 +1,6 @@
+<!-- Solutions marked status="draft" were written by Claude with the FIT1058
+     sample solutions as a reference; not copied. Owner to review, then remove status. -->
+
 <!-- Migrated from 1058note exercises/chapters (owner's solutions). -->
 
 ::: {.solution for="prob-proofs-02"}
@@ -270,10 +273,46 @@ exchange” technique (Steinitz exchange lemma) underlies both.
 **Algorithm & justification**
 :::
 
-::: {.solution for="prob-proofs-04"}
-<!-- TODO: solution -->
+::: {.solution for="prob-proofs-04" status="draft"}
+<!-- TODO: as in Exercise 3, this refers to the proofs in these notes rather
+     than the Course Notes' numbering. Owner to check. -->
+(a) **Construction.** The ($\Leftarrow$) direction of @thm-inverse-functions-1
+    constructs $f^{-1}$, by defining $f^{-1}(y)$ as the unique preimage of
+    $y$. Part (a) of the proof of @thm-equivalence-relations-1 constructs the
+    class $[x]_R$ containing $x$.
+
+(b) **Contrapositive.** The definition of injectivity is used in its
+    contrapositive form ($x_1\ne x_2\Rightarrow f(x_1)\ne f(x_2)$ becomes
+    $f(x_1) = f(x_2)\Rightarrow x_1 = x_2$). The ($\Rightarrow$) direction of
+    @thm-inverse-functions-1 argues that two preimages of the same $y$ would
+    contradict the definition of $f^{-1}$, which is close to a contrapositive
+    argument.
+
+(c) **Cases.** The inductive step for @thm-finite-equal-size-domain-codomain
+    splits on whether $y = b$ or $y\in B'$. Part (b) of the proof of
+    @thm-equivalence-relations-1 treats $Y\setminus X$ and $X\setminus Y$
+    separately.
+
+A proof with several parts is not automatically a proof by cases. For example,
+parts (a) and (b) of the proof of @thm-equivalence-relations-1 prove two
+statements that must *both* hold, not alternatives.
 :::
 
-::: {.solution for="prob-proofs-15"}
-<!-- TODO: solution -->
+::: {.solution for="prob-proofs-15" status="draft"}
+We show that $G\circ G$ is not embeddable in $G$ (definitions as in Exercise
+2.15), so $G\circ G\not\equiv G$.
+
+1. Take the key pair $(\mathtt m,\mathtt m)$ for $G\circ G$. Since
+   $\mathtt m = 12$, encrypting with it adds $12 + 12 = 24$ to every letter
+   (mod $26$).
+
+2. A key $k$ of $G$ adds $k\in\{0,1,\dots,12\}$ to every letter. To match the
+   pair on the message $\mathtt a$ (letter $0$), we would need
+   $k\equiv 24\pmod{26}$, but $24\notin\{0,\dots,12\}$.
+
+3. So no key of $G$ does the same job as $(\mathtt m,\mathtt m)$. Hence
+   $G\circ G\not\le G$, and $G$ is not idempotent.
+
+The full Caesar slide is idempotent (Exercise 2.15) because its keyspace is
+closed under addition mod $26$. Restricting the keys breaks this closure.
 :::

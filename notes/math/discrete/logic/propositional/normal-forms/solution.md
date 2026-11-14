@@ -1,3 +1,6 @@
+<!-- Solutions marked status="draft" were written by Claude with the FIT1058
+     sample solutions as a reference; not copied. Owner to review, then remove status. -->
+
 <!-- Migrated from 1058note exercises/chapters (owner's solutions). -->
 
 ::: {.solution for="prob-propositional-20"}
@@ -52,10 +55,49 @@ This matches the claimed formula for $n+1$ variables.
 :::
 :::
 
-::: {.solution for="prob-propositional-14"}
-<!-- TODO: solution -->
+::: {.solution for="prob-propositional-14" status="draft"}
+$P$ is true exactly when at least two of $X,Y,Z$ are true (the *majority*
+function).
+
+(a) One conjunction for each row where $P$ is true:
+    $$(\neg X\wedge Y\wedge Z)\vee(X\wedge\neg Y\wedge Z)\vee(X\wedge Y\wedge\neg Z)\vee(X\wedge Y\wedge Z).$$
+
+(b) One conjunction for each row where $P$ is false:
+    $$(\neg X\wedge\neg Y\wedge\neg Z)\vee(\neg X\wedge\neg Y\wedge Z)\vee(\neg X\wedge Y\wedge\neg Z)\vee(X\wedge\neg Y\wedge\neg Z).$$
+
+(c) Negate (b) with De Morgan's laws:
+    $$(X\vee Y\vee Z)\wedge(X\vee Y\vee\neg Z)\wedge(X\vee\neg Y\vee Z)\wedge(\neg X\vee Y\vee Z).$$
+    That is $4$ clauses and $12$ literals.
+
+(d) Distributing the DNF of (a), each clause picks one literal from each of
+    the $4$ conjunctions. That gives $3^4 = 81$ clauses of $4$ literals each,
+    so $324$ literal occurrences (many clauses are tautologies or repeats,
+    but they are not simplified away).
+
+    Route (c) is far shorter and easier: it produces one clause per false
+    row, while route (d) multiplies out all the choices.
 :::
 
-::: {.solution for="prob-propositional-17"}
-<!-- TODO: solution -->
+::: {.solution for="prob-propositional-17" status="draft"}
+1. Start from the DNF of the function, with one conjunction (minterm) per
+   true row of its truth table. (If there are no true rows, the function is
+   False, which is in ANF.)
+
+2. Different minterms are never true together, because they disagree on some
+   variable. For formulas $A,B$ that are never true together, $A\vee B = A\oplus B$, since by Exercise
+   12(a) $A\vee B = A\oplus B\oplus(A\wedge B)$ and here $A\wedge B$ is False.
+   So the $\vee$ between minterms can be replaced by $\oplus$.
+
+3. Replace each negated variable by $\neg x = \mathrm{True}\oplus x$.
+
+4. Each minterm is now a conjunction of factors of the form $x$ or
+   $(\mathrm{True}\oplus x)$. Multiply out using the distributive law of
+   $\wedge$ over $\oplus$ (Exercise 13). The result is an exclusive-or of
+   conjunctions of unnegated variables, together with True terms.
+
+5. Simplify using $A\oplus A = \mathrm{False}$ and $A\oplus\mathrm{False} = A$
+   to remove repeated terms, and $x\wedge x = x$, $x\wedge\mathrm{True} = x$
+   inside conjunctions. If everything cancels, the result is False.
+
+The result is in algebraic normal form.
 :::

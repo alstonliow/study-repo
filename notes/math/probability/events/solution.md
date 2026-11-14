@@ -14,7 +14,9 @@
 ::: {.solution for="prob-probability-1-09" status="draft"}
 Let $P(n)$ be the statement for $n$ sets.
 
-1. *Base case $n=1$.* Both sides equal $\Pr(A_1)$.
+1. *Base case $n=0$.* The union of no sets is $\emptyset$, and
+   $\Pr(\emptyset) = 0$, which is the empty sum. (For $n = 1$ both sides
+   are $\Pr(A_1)$.)
 
 2. *Inductive step.* Assume $P(n)$, and let $A_1,\dots,A_{n+1}$ be mutually
    disjoint. Put $B = A_1\sqcup\cdots\sqcup A_n$.

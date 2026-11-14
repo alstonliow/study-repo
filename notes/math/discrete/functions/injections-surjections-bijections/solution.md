@@ -1,3 +1,6 @@
+<!-- Solutions marked status="draft" were written by Claude with the FIT1058
+     sample solutions as a reference; not copied. Owner to review, then remove status. -->
+
 <!-- Migrated from 1058note exercises/chapters (owner's solutions). -->
 
 ::: {.solution for="prob-functions-08"}
@@ -122,14 +125,66 @@ Hence, $f$ is a bijection.
 :::
 :::
 
-::: {.solution for="prob-functions-04"}
-<!-- TODO: solution -->
+::: {.solution for="prob-functions-04" status="draft"}
+Every function is a binary relation, and binary and ternary relations are
+disjoint kinds of relation. Bijections are the functions that are both
+injections and surjections, and identity functions are bijections:
+
+```{=latex}
+\begin{tikzpicture}[every node/.style={font=\small}]
+  \draw (0,0) rectangle (11,6.4);
+  \node[anchor=north west] at (0.1,6.35) {Relations};
+  \draw (0.4,0.3) rectangle (2.6,5.6);
+  \node[align=center] at (1.5,3) {Ternary\\relations};
+  \draw (3,0.3) rectangle (10.7,5.6);
+  \node[anchor=north west] at (3.05,5.55) {Binary relations};
+  \draw (3.4,0.6) rectangle (10.4,4.9);
+  \node[anchor=north west] at (3.45,4.85) {Functions};
+  \draw (6.0,2.6) ellipse (2.0 and 1.6);
+  \draw (7.8,2.6) ellipse (2.0 and 1.6);
+  \node at (4.95,2.6) {Injections};
+  \node at (8.85,2.6) {Surjections};
+  \node at (6.9,3.15) {Bijections};
+  \draw (6.9,2.3) ellipse (0.62 and 0.55);
+  \node[align=center, font=\scriptsize] at (6.9,2.3) {Identity\\functions};
+\end{tikzpicture}
+```
+
+(Other $n$-ary relations, $n\ne2,3$, lie inside "Relations" but outside both
+boxes.)
 :::
 
-::: {.solution for="prob-functions-07"}
-<!-- TODO: solution -->
+::: {.solution for="prob-functions-07" status="draft"}
+Here $\mathbb N = \{0,1,2,\dots\}$.
+
+**Injection.** $f(m,n) = 2^m3^n$. By unique prime factorisation,
+$2^m3^n = 2^{m'}3^{n'}$ forces $m = m'$ and $n = n'$.
+
+**Bijection.**
+$$g(m,n) = 2^m(2n+1) - 1.$$
+
+1. *Injective.* $g(m,n)+1 = 2^m(2n+1)$. The exponent $m$ is the number of
+   factors $2$ in $g(m,n)+1$, and $2n+1$ is its odd part, so both are
+   determined by the value.
+
+2. *Surjective.* Let $N\in\mathbb N$. Then $N+1\ge1$ can be written as
+   $2^m\cdot q$ with $q$ odd, say $q = 2n+1$. Then $g(m,n) = N$.
 :::
 
-::: {.solution for="prob-functions-12"}
-<!-- TODO: solution -->
+::: {.solution for="prob-functions-12" status="draft"}
+$f\sqcup g : A\cup C\to B\cup D$ is defined by
+$$(f\sqcup g)(x) = \begin{cases} f(x), & x\in A,\\ g(x), & x\in C.\end{cases}$$
+This is well defined because $A\cap C = \emptyset$.
+
+1. *Injective.* Let $(f\sqcup g)(x) = (f\sqcup g)(y)$. If $x,y\in A$, then
+   $f(x) = f(y)$, so $x = y$. Likewise if $x,y\in C$. If $x\in A$ and $y\in C$,
+   the value would lie in $B\cap D = \emptyset$, which is impossible.
+
+2. *Surjective.* Each $b\in B$ is $f(a)$ for some $a\in A$, and each $d\in D$
+   is $g(c)$ for some $c\in C$.
+
+3. *Inverse.* By the same construction with the inverses,
+   $$(f\sqcup g)^{-1} = f^{-1}\sqcup g^{-1},$$
+   which sends $y\in B$ to $f^{-1}(y)$ and $y\in D$ to $g^{-1}(y)$. Checking
+   on $A$ and $C$ separately shows both compositions are identities.
 :::

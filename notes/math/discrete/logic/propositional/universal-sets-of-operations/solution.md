@@ -1,3 +1,6 @@
+<!-- Solutions marked status="draft" were written by Claude with the FIT1058
+     sample solutions as a reference; not copied. Owner to review, then remove status. -->
+
 <!-- Migrated from 1058note exercises/chapters (owner's solutions). -->
 
 ::: {.solution for="prob-propositional-19"}
@@ -102,10 +105,36 @@ $$a\wedge b \equiv \neg\big(\neg(a\wedge b)\big) \equiv \neg(a\ \text{NAND}\ b) 
 Since NAND alone can express $\wedge,\vee,\neg$, and $\{\wedge,\vee,\neg\}$ is universal, the single operation NAND is itself a **universal (functionally complete) operation**: every Boolean circuit can, in principle, be built using nothing but NAND gates.
 :::
 
-::: {.solution for="prob-propositional-18"}
-<!-- TODO: solution -->
+::: {.solution for="prob-propositional-18" status="draft"}
+Each 2-input gate reduces the number of values still to be combined by one.
+Starting from $8$ inputs and ending with $1$ output takes exactly $7$ gates,
+whatever the arrangement.
+
+- *Chain:* $((((((x_1\wedge x_2)\wedge x_3)\wedge x_4)\cdots)\wedge x_8)$.
+  Each gate waits for the previous one, so it takes $7t$.
+
+- *Balanced tree:* in the first layer, $4$ gates compute $x_1\wedge x_2$,
+  $x_3\wedge x_4$, $x_5\wedge x_6$, $x_7\wedge x_8$ in parallel. The second
+  layer combines these with $2$ gates, and the third with $1$ gate. That is
+  still $4 + 2 + 1 = 7$ gates, but the time is $3t$.
+
+$3t$ is optimal. After time $kt$, each available value depends on at most
+$2^k$ inputs, so combining all $8 = 2^3$ inputs needs $k\ge3$.
 :::
 
-::: {.solution for="prob-propositional-23"}
-<!-- TODO: solution -->
+::: {.solution for="prob-propositional-23" status="draft"}
+True. The single operation NAND, $P\uparrow Q = \neg(P\wedge Q)$, is
+universal.
+
+1. $\{\neg,\wedge\}$ is universal (every Boolean function has a DNF, and
+   $\vee$ can be rewritten with $\neg$ and $\wedge$ by De Morgan's law).
+
+2. Express both with NAND:
+   $$\neg P = P\uparrow P,\qquad P\wedge Q = \neg(P\uparrow Q) = (P\uparrow Q)\uparrow(P\uparrow Q).$$
+
+3. So every Boolean function can be built from NAND alone.
+
+This is a *proof by construction* (a constructive existence proof): it proves
+that such a set exists by exhibiting one, $\{\uparrow\}$. NOR,
+$\neg(P\vee Q)$, also works.
 :::
