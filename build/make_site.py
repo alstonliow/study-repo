@@ -41,6 +41,9 @@ def courses_of(keys) -> list[str]:
     return [c["id"] for c in COURSES if any(k.startswith(c["prefix"]) for k in keys)]
 
 
+ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
+
+
 def course_key(keys, course: dict) -> tuple:
     """Numeric position of a note inside a course (from its first matching key)."""
     for k in keys or []:
@@ -461,14 +464,24 @@ def main() -> int:
         lines = ["---", yaml.safe_dump({"title": label}, allow_unicode=True).strip(), "---", "",
                  f"Knowledge points used by {c['code']}, in course order. "
                  "The course filter at the bottom of the sidebar shows only this course's content.", ""]
+        # chapter topic = the most common branch among its notes; a topic that
+        # spans several chapters gets Roman numerals (Graph Theory I, II)
+        topics = {}
+        for ch in sorted({course_key(m.front.get("sources"), c)[0] for m in members} - {999}):
+            same = [m.branch for m in members if course_key(m.front.get("sources"), c)[:1] == (ch,)]
+            topics[ch] = branch_title.get(max(sorted(set(same)), key=same.count), "")
+        for t in set(topics.values()):
+            chs = [ch for ch in topics if topics[ch] == t]
+            if t and len(chs) > 1:
+                for i, ch in enumerate(chs):
+                    topics[ch] = f"{t} {ROMAN[i]}"
         chapter = None
         for n in members:
             pos = course_key(n.front.get("sources"), c)
             ch = pos[0] if pos != (999,) else None
             if ch != chapter:
                 chapter = ch
-                same = [m.branch for m in members if course_key(m.front.get("sources"), c)[:1] == (ch,)]
-                topic = branch_title.get(max(set(same), key=same.count), "") if same else ""
+                topic = topics.get(ch, "")
                 heading = f"Chapter {ch}" + (f" · {topic}" if topic else "") if ch else "Other"
                 lines += ["", f"## {heading}", ""]
                 course_order.setdefault(c["id"], []).append({"title": heading, "num": ch, "pages": []})
