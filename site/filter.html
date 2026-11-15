@@ -70,6 +70,28 @@
     return [li, ul];
   }
 
+  // Course numbering: chapter.k, by position inside the chapter (e.g. 2.8).
+  // Notes keep their own topic number on the page itself; only the sidebar and
+  // previous/next links use the course number while a filter is active.
+  const TOPIC_NUM = /^\s*\d+(\.\d+)*\s+/;
+  function courseNumbers(data, cid) {
+    const m = {};
+    (data.order[cid] || []).forEach(ch => ch.pages.forEach((p, k) => {
+      m[p] = ch.num ? ch.num + "." + (k + 1) : "";
+    }));
+    return m;
+  }
+  function plainTitle(li) {
+    return li.querySelector(".menu-text").textContent.replace(TOPIC_NUM, "").trim();
+  }
+  function renumber(li, num) {
+    // change only the text node, so a progress dot inside .menu-text survives
+    const text = li.querySelector(".menu-text");
+    const node = Array.from(text.childNodes).reverse().find(n => n.nodeType === 3 && n.textContent.trim());
+    const title = text.textContent.replace(TOPIC_NUM, "").trim();
+    if (node) node.textContent = (num ? num + " " : "") + title;
+  }
+
   // Sidebar in course order: one block per selected course, grouped by chapter.
   function buildCourseTree(data, sel) {
     const leaves = leafMap();
@@ -77,12 +99,14 @@
     tree.className = "list-unstyled mt-1 course-order-tree";
     data.courses.filter(c => sel.includes(c.id)).forEach(c => {
       const [cli, cul] = section(c.code + " (course order)", "courses/" + c.id + ".html", 1);
+      const nums = courseNumbers(data, c.id);
       (data.order[c.id] || []).forEach(ch => {
         const [hli, hul] = section(ch.title, null, 2);
         ch.pages.forEach(p => {
           if (!leaves[p]) return;
           const li = leaves[p].cloneNode(true);
           li.classList.remove("course-hidden");
+          renumber(li, nums[p]);
           hul.appendChild(li);
         });
         if (hul.children.length) cul.appendChild(hli);
@@ -121,9 +145,10 @@
     if (!sel.length) return;
     const here = sitePath(window.location.href);
     const leaves = leafMap();
-    const title = p => (leaves[p] ? leaves[p].querySelector(".menu-text").textContent.trim() : p);
     for (const c of data.courses) {
       if (!sel.includes(c.id)) continue;
+      const nums = courseNumbers(data, c.id);
+      const title = p => ((nums[p] ? nums[p] + " " : "") + (leaves[p] ? plainTitle(leaves[p]) : p));
       const flat = (data.order[c.id] || []).flatMap(ch => ch.pages).filter(p => leaves[p]);
       const i = flat.indexOf(here);
       if (i < 0) continue;

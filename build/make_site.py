@@ -471,7 +471,7 @@ def main() -> int:
                 topic = branch_title.get(max(set(same), key=same.count), "") if same else ""
                 heading = f"Chapter {ch}" + (f" · {topic}" if topic else "") if ch else "Other"
                 lines += ["", f"## {heading}", ""]
-                course_order.setdefault(c["id"], []).append({"title": heading, "pages": []})
+                course_order.setdefault(c["id"], []).append({"title": heading, "num": ch, "pages": []})
             course_order[c["id"]][-1]["pages"].append(f"notes/{n.id}.html")
             keys = [k for k in n.front.get("sources") or [] if str(k).startswith(c["prefix"])]
             nprob = sum(1 for s in n.problem_sources if s.startswith(c["prefix"]))
