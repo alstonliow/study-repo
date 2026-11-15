@@ -172,6 +172,67 @@
     }
   }
 
+  // Numbers on the page itself (title, headings, table of contents, links to
+  // other notes, breadcrumbs, tab title) follow the course too. Original
+  // texts are remembered so unticking restores them.
+  const origText = new Map(), origHref = new Map();
+  let origDocTitle = null;
+  function setText(node, t) { if (!origText.has(node)) origText.set(node, node.textContent); node.textContent = t; }
+  function setHref(a, h) { if (!origHref.has(a)) origHref.set(a, a.getAttribute("href")); a.setAttribute("href", h); }
+  function restorePage() {
+    origText.forEach((t, n) => { n.textContent = t; }); origText.clear();
+    origHref.forEach((h, a) => a.setAttribute("href", h)); origHref.clear();
+    if (origDocTitle !== null) document.title = origDocTitle;
+  }
+  function swapNum(t, from, to) {
+    const m = t.match(/^(\s*)(\d+(?:\.\d+)*)/);
+    if (!m || !(m[2] === from || m[2].startsWith(from + "."))) return null;
+    return m[1] + to + m[2].slice(from.length) + t.slice(m[0].length);
+  }
+  function renumIn(el, from, to) {
+    const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    for (let n = w.nextNode(); n; n = w.nextNode()) {
+      if (!n.textContent.trim()) continue;
+      const t = swapNum(n.textContent, from, to);
+      if (t !== null) setText(n, t);
+      return;  // only the first non-empty text carries the number
+    }
+  }
+  function topicNum(li) {
+    const m = li && li.querySelector(".menu-text").textContent.trim().match(/^\d+(\.\d+)*/);
+    return m ? m[0] : null;
+  }
+
+  function applyPage(data, sel) {
+    restorePage();
+    if (!sel.length) return;
+    const here = sitePath(window.location.href);
+    const leaves = leafMap();
+    const c = data.courses.find(c => sel.includes(c.id) && courseNumbers(data, c.id)[here]);
+    if (!c) return;
+    const nums = courseNumbers(data, c.id);
+    const from = topicNum(leaves[here]), to = nums[here];
+    if (!from) return;
+    // this page: title, section headings, table of contents, tab title
+    document.querySelectorAll("h1.title, main h2, main h3, main h4, #TOC a").forEach(el => renumIn(el, from, to));
+    if (origDocTitle === null) origDocTitle = document.title;
+    document.title = swapNum(document.title, from, to) || document.title;
+    // links to notes (prerequisites, cross-references, breadcrumb leaf)
+    document.querySelectorAll("main a[href], .quarto-page-breadcrumbs a[href]").forEach(a => {
+      if (a.closest("nav.page-navigation")) return;
+      const p = sitePath(a.getAttribute("href"));
+      if (nums[p] && topicNum(leaves[p])) renumIn(a, topicNum(leaves[p]), nums[p]);
+    });
+    // breadcrumb topic -> course chapter
+    const chapter = (data.order[c.id] || []).find(ch => ch.pages.includes(here));
+    document.querySelectorAll(".quarto-page-breadcrumbs a[href]").forEach(a => {
+      if (chapter && /\/index\.html$/.test(sitePath(a.getAttribute("href"))) && a.closest("li") !== a.closest("ol").firstElementChild) {
+        setText(a, chapter.title);
+        setHref(a, new URL("courses/" + c.id + ".html", root).href);
+      }
+    });
+  }
+
   function apply(data, sel) {
     const active = sel.length > 0;
     // sidebar: topic order when no filter, course order when filtered
@@ -193,6 +254,7 @@
       }
     }
     applyNav(data, sel);
+    applyPage(data, sel);
     // exercises on the page
     document.querySelectorAll("[data-courses]").forEach(el => {
       const courses = el.getAttribute("data-courses").split(/\s+/).filter(Boolean);
