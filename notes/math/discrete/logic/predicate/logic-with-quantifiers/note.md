@@ -128,16 +128,16 @@ Note the restricted-$\forall$ pattern from @sec-math-discrete-logic-predicate-qu
 
 ::: {#rmk-logic-with-quantifiers-4 .remark name="Full rule list"}
 
-$$\begin{aligned}
-\exists x\in A\, P(x) &\equiv \exists x\,(x\in A \wedge P(x)) & \text{(@sec-math-discrete-logic-predicate-quantifiers)}\\
-\forall x\in A\, P(x) &\equiv \forall x\,(x\in A \implies P(x)) & \text{(@sec-math-discrete-logic-predicate-quantifiers)}\\
-\exists x\, R &\equiv R, \quad \forall x\, R \equiv R & (x \text{ not free in } R;\ @sec-math-discrete-logic-predicate-quantifiers,5.9)\\
-\exists x\exists y\, P(x,y) &\equiv \exists y\exists x\, P(x,y) & \text{(@sec-math-discrete-logic-predicate-multiple-quantifiers)}\\
-\forall x\forall y\, P(x,y) &\equiv \forall y\forall x\, P(x,y) & \text{(@sec-math-discrete-logic-predicate-multiple-quantifiers)}\\
-\forall x\, P(x) &\implies P(\mathrm{obj}), \quad P(\mathrm{obj}) \implies \exists x\, P(x) & \text{(@sec-math-discrete-logic-predicate-logic-with-quantifiers)}\\
-\exists x\,(P(x)\vee Q(x)) &\equiv (\exists x\,P(x))\vee(\exists x\,Q(x)) & \text{(@sec-math-discrete-logic-predicate-logic-with-quantifiers)}\\
-\forall x\,(P(x)\wedge Q(x)) &\equiv (\forall x\,P(x))\wedge(\forall x\,Q(x)) & \text{(@sec-math-discrete-logic-predicate-logic-with-quantifiers)}\\
-\neg\exists x\, P(x) &\equiv \forall x\,\neg P(x), \quad \neg\forall x\, P(x) \equiv \exists x\,\neg P(x) & \text{(@sec-math-discrete-logic-predicate-logic-with-quantifiers)}
-\end{aligned}$$
+| Rule | Where |
+|---|---|
+| $\exists x\in A\, P(x) \equiv \exists x\,(x\in A \wedge P(x))$ | @sec-math-discrete-logic-predicate-quantifiers |
+| $\forall x\in A\, P(x) \equiv \forall x\,(x\in A \implies P(x))$ | @sec-math-discrete-logic-predicate-quantifiers |
+| $\exists x\, R \equiv R$, $\forall x\, R \equiv R$ ($x$ not free in $R$) | @sec-math-discrete-logic-predicate-quantifiers |
+| $\exists x\exists y\, P(x,y) \equiv \exists y\exists x\, P(x,y)$ | @sec-math-discrete-logic-predicate-multiple-quantifiers |
+| $\forall x\forall y\, P(x,y) \equiv \forall y\forall x\, P(x,y)$ | @sec-math-discrete-logic-predicate-multiple-quantifiers |
+| $\forall x\, P(x) \implies P(\mathrm{obj})$, $P(\mathrm{obj}) \implies \exists x\, P(x)$ | this note |
+| $\exists x\,(P(x)\vee Q(x)) \equiv (\exists x\,P(x))\vee(\exists x\,Q(x))$ | this note |
+| $\forall x\,(P(x)\wedge Q(x)) \equiv (\forall x\,P(x))\wedge(\forall x\,Q(x))$ | this note |
+| $\neg\exists x\, P(x) \equiv \forall x\,\neg P(x)$, $\neg\forall x\, P(x) \equiv \exists x\,\neg P(x)$ | this note |
 
 :::

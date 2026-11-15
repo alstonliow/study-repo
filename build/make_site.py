@@ -29,7 +29,7 @@ from pathlib import Path
 
 import yaml
 
-from model import (NOTES, OPEN, RAW, REF, ROOT, Note, Repo, attrs_of, divs_in, fence_for,
+from model import (MATH, NOTES, OPEN, RAW, REF, ROOT, Note, Repo, attrs_of, divs_in, fence_for,
                    load, top_level_divs)
 
 SITE = ROOT / "site"
@@ -169,6 +169,24 @@ def link_for(ref: str, here: Note, notes: dict[str, Note], owner: dict[str, str]
     return f"[{text}]({page_url(nid)}#{ref})"
 
 
+def link_refs(text: str, here: Note, notes: dict[str, Note], owner: dict[str, str]) -> str:
+    """Turn @-references into links, except inside maths, where a Markdown link
+    would show as raw text: there the reference becomes its plain title
+    (check.py reports such references as errors)."""
+    def plain(m):
+        ref = m.group(1)
+        nid = next((n for n in notes if "sec-" + n.replace("/", "-") == ref), None) if ref.startswith("sec-") else owner.get(ref)
+        title = notes[nid].title if nid else ref
+        return title.replace("\\", "").replace("{", "").replace("}", "")
+    out, last = [], 0
+    for m in MATH.finditer(text):
+        out.append(REF.sub(lambda r: link_for(r.group(1), here, notes, owner), text[last:m.start()]))
+        out.append(REF.sub(plain, m.group(0)))
+        last = m.end()
+    out.append(REF.sub(lambda r: link_for(r.group(1), here, notes, owner), text[last:]))
+    return "".join(out)
+
+
 def render_problems(note: Note) -> str:
     sols = {a.get("for"): body for a, body in top_level_divs(note.solutions) if "solution" in a["classes"]}
     draft = {a.get("for") for a, _ in top_level_divs(note.solutions)
@@ -260,7 +278,8 @@ def wrap_scope(text: str, note: Note) -> str:
         inner = "\n".join(lines[i:j + 1])
         f = fence_for(inner)
         lab = label.replace('"', "&quot;")
-        lines[i:j + 1] = [f'{f} {{.scope-block data-courses="{" ".join(cs)}" data-label="{lab}"}}'] + \
+        kind = bid.split("-", 1)[0]
+        lines[i:j + 1] = [f'{f} {{.scope-block data-courses="{" ".join(cs)}" data-kind="{kind}" data-label="{lab}"}}'] + \
             lines[i:j + 1] + [f]
     return "\n".join(lines)
 
@@ -318,7 +337,7 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
     body = lift_plain_ids(body)
     body = fix_claims(body)
     body = add_example_levels(body)
-    body = REF.sub(lambda m: link_for(m.group(1), note, notes, owner), body)
+    body = link_refs(body, note, notes, owner)
 
     meta = []
     if note.front.get("sources"):

@@ -17,16 +17,30 @@
   .course-filter-note { color: #7A7A7A; margin-top: 0.25rem; }
   .course-hidden { display: none !important; }
   .scope-folded:not(.scope-open) { display: none !important; }
-  .beyond-summary { display: flex; align-items: baseline; gap: 0.6em; width: 100%; margin: 0.9em 0; padding: 0.35em 0.7em;
-    text-align: left; font: 0.82rem/1.4 "Source Sans 3", system-ui, sans-serif; color: var(--notec, #777);
-    background: none; border: 1px dashed var(--rule, #ddd); border-radius: 3px; cursor: pointer; }
-  .beyond-summary:hover { border-color: var(--notec, #999); }
-  .beyond-summary::before { content: "\25B8"; }
-  .beyond-summary.open::before { content: "\25BE"; }
-  .beyond-summary.open { margin-bottom: 0.3em; }
-  .beyond-tag { font-weight: 600; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
-  .course-order-tree .depth2 > .course-order-section > .sidebar-item-container .menu-text { font-size: 0.85em; color: #7A7A7A; }
-  .course-banner { border-left: 3px solid #A5533B; background: rgba(165, 83, 59, 0.07); padding: 0.4rem 0.7rem; margin: 0 0 1rem; font-size: 0.9rem; }
+  /* a folded block: one line in the block's own colour, like a closed theorem box */
+  .beyond-summary { --k: var(--notec, #767676);
+    display: flex; align-items: baseline; gap: 0.7em; width: 100%; margin: 0.55em 0; padding: 0.45em 0.8em 0.45em 0.9em;
+    text-align: left; font: 0.9rem/1.4 "Source Sans 3", system-ui, sans-serif; color: var(--bs-body-color);
+    background: color-mix(in srgb, var(--k) 9%, transparent); border: none; border-left: 3px solid var(--k);
+    border-radius: 0 3px 3px 0; cursor: pointer; }
+  .beyond-summary:hover { background: color-mix(in srgb, var(--k) 15%, transparent); }
+  .beyond-summary[data-kind="def"] { --k: var(--defc, #3b6ea5); }
+  .beyond-summary[data-kind="thm"], .beyond-summary[data-kind="prp"], .beyond-summary[data-kind="lem"],
+  .beyond-summary[data-kind="cor"] { --k: var(--thmc, #a5533b); }
+  .beyond-summary[data-kind="exm"] { --k: var(--exc, #4e8a5a); }
+  .beyond-summary[data-kind="prob"] { --k: var(--probfg, #3d4046); }
+  .beyond-kind { --k: var(--notec, #767676); font-weight: 700; color: var(--k); }
+  .beyond-kind[data-kind="def"] { --k: var(--defc, #3b6ea5); }
+  .beyond-kind[data-kind="thm"], .beyond-kind[data-kind="prp"], .beyond-kind[data-kind="lem"],
+  .beyond-kind[data-kind="cor"] { --k: var(--thmc, #a5533b); }
+  .beyond-kind[data-kind="exm"] { --k: var(--exc, #4e8a5a); }
+  .beyond-name { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .beyond-tag { flex: none; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--thmc, #a5533b); }
+  .beyond-tag::after { content: "  \25B8"; }
+  .beyond-summary.open .beyond-tag::after { content: "  \25BE"; }
+  .beyond-summary.open { margin-bottom: 0.2em; }
+  .scope-open { outline: 1px dashed color-mix(in srgb, var(--thmc, #a5533b) 45%, transparent); outline-offset: 4px; }
 </style>
 <script>
 (function () {
@@ -246,25 +260,52 @@
     const active = sel.filter(c => here.includes(c));
     if (!active.length) return;
     const codes = active.map(id => (data.courses.find(c => c.id === id) || { code: id }).code).join(", ");
+    // group neighbouring out-of-scope blocks: one summary line per group
+    const groups = [];
+    let prev = null;
     document.querySelectorAll(".scope-block[data-courses], .problem-group[data-courses]").forEach(el => {
       const cs = el.getAttribute("data-courses").split(/\s+/).filter(Boolean);
-      if (overlaps(cs, sel)) return;
-      const t = el.querySelector(".problem-title");
-      const label = el.getAttribute("data-label") || (t ? t.textContent : "");
+      if (overlaps(cs, sel)) { prev = null; return; }
+      if (prev && prev.nextElementSibling === el) groups[groups.length - 1].push(el);
+      else groups.push([el]);
+      prev = el;
+    });
+    groups.forEach(group => {
+      const items = group.map(el => {
+        const t = el.querySelector(".problem-title");
+        const label = el.getAttribute("data-label") || (t ? t.textContent : "");
+        const cut = label.indexOf(": ");
+        return { kind: el.getAttribute("data-kind") || (t ? "prob" : ""),
+                 word: cut < 0 ? label : label.slice(0, cut), name: cut < 0 ? "" : label.slice(cut + 2) };
+      });
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "beyond-summary";
+      const kinds = new Set(items.map(x => x.kind));
+      btn.dataset.kind = kinds.size === 1 ? items[0].kind : "";
+      const list = document.createElement("span");
+      list.className = "beyond-name";
+      items.forEach((x, k) => {
+        if (k) list.appendChild(document.createTextNode("  ·  "));
+        const w = document.createElement("span");
+        w.className = "beyond-kind";
+        w.dataset.kind = x.kind;
+        w.textContent = x.word;
+        list.appendChild(w);
+        if (x.name) list.appendChild(document.createTextNode(" " + x.name));
+      });
+      btn.title = items.map(x => x.word + (x.name ? " " + x.name : "")).join(" · ");
       const tag = document.createElement("span");
       tag.className = "beyond-tag";
-      tag.textContent = "Beyond " + codes;
-      btn.appendChild(tag);
-      btn.appendChild(document.createTextNode(label));
+      tag.textContent = "Beyond " + codes + (group.length > 1 ? " · " + group.length : "");
+      btn.append(list, tag);
       btn.addEventListener("click", () => {
-        el.classList.toggle("scope-open");
-        btn.classList.toggle("open");
+        const open = !btn.classList.contains("open");
+        btn.classList.toggle("open", open);
+        group.forEach(el => el.classList.toggle("scope-open", open));
       });
-      el.before(btn);
-      el.classList.add("scope-folded");
+      group[0].before(btn);
+      group.forEach(el => el.classList.add("scope-folded"));
     });
   }
 

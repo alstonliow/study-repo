@@ -30,6 +30,7 @@ CLOSE = re.compile(r"^(:{3,})\s*$")
 REF = re.compile(r"(?<![\w@])@((?:def|thm|prp|lem|cor|exm|prob|fig|rmk|clm|rem|sec)-[A-Za-z0-9-]*[A-Za-z0-9])")
 RAW = re.compile(r"^([ \t]*)```\{=latex\}\n(.*?)\n[ \t]*```", re.S | re.M)
 COMMENT = re.compile(r"<!--.*?-->", re.S)
+MATH = re.compile(r"\$\$.*?\$\$|(?<![\\$])\$[^$\n]+?\$", re.S)   # display and inline maths
 
 
 # ---------------------------------------------------------------- text utilities

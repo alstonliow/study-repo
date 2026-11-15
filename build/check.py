@@ -12,7 +12,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from model import ID_PREFIXES, NOTES, REF, ROOT, load
+from model import ID_PREFIXES, MATH, NOTES, REF, ROOT, load
 
 REQUIRED_YAML = ["title", "sources", "requires", "status"]
 ALLOWED = {"status": {"draft", "done"}}
@@ -112,6 +112,10 @@ def check_notes() -> None:
                             empty_solutions.add(target)
             for m in REF.finditer(f.text):
                 refs.append((md, m.group(1)))
+            for m in MATH.finditer(f.masked):
+                for r in REF.finditer(m.group(0)):
+                    line = f.masked[:m.start()].count("\n") + 1
+                    errors.append(f"{rel(md)}:{line}: @{r.group(1)} inside maths cannot be a link; move it out of the formula")
 
     for path, r in requires:
         if r not in ids:
