@@ -65,9 +65,11 @@ For $R$ on $A$: vertices $=A$; a directed edge $a\to b$ exactly when $(a,b)\in R
 
 :::
 
+::: {#fig-binary-relations-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[node distance=2.5cm, every node/.style={draw,circle,inner sep=2pt,minimum size=7mm}, >={Stealth[length=2mm]}]
+\begin{tikzpicture}[graph]
 \node (a) at (0,0) {$a$};
 \node (b) at (2.5,0) {$b$};
 \node (c) at (1.25,2) {$c$};
@@ -80,6 +82,8 @@ For $R$ on $A$: vertices $=A$; a directed edge $a\to b$ exactly when $(a,b)\in R
 ```
 
 Directed graph of $R=\{(a,a),(a,b),(a,c),(b,c)\}$ – the loop at $a$ shows reflexivity there
+
+:::
 
 ::: {.remark name="Properties as graph conditions"}
 

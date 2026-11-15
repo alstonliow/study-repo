@@ -25,9 +25,11 @@ Being connected is an equivalence relation on $V$, and its equivalence classes a
 
 :::
 
+::: {#fig-connectivity-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (a) at (0,1.5) {$a$};
 \node (b) at (0,0) {$b$};
 \node (c) at (1.3,0.75) {$c$};
@@ -37,12 +39,14 @@ Being connected is an equivalence relation on $V$, and its equivalence classes a
 \node (g) at (6,0) {$g$};
 \draw (a)--(b) (a)--(c) (b)--(c) (c)--(d) (f)--(g);
 \begin{scope}[on background layer]
-\filldraw[fill=blue!10,draw=blue,rounded corners] (-0.6,-0.6) rectangle (3.2,2.1);
-\filldraw[fill=red!10,draw=red,rounded corners] (4.1,0.35) rectangle (4.9,1.15);
-\filldraw[fill=green!10,draw=green!50!black,rounded corners] (5.5,-0.6) rectangle (6.5,2.1);
+\filldraw[regionA] (-0.6,-0.6) rectangle (3.2,2.1);
+\filldraw[regionB] (4.1,0.35) rectangle (4.9,1.15);
+\filldraw[regionC] (5.5,-0.6) rectangle (6.5,2.1);
 \end{scope}
 \end{tikzpicture}
 \end{center}
 ```
 
 The three components of the graph of @sec-math-discrete-graph-basic-definitions; each shaded region is one equivalence class
+
+:::

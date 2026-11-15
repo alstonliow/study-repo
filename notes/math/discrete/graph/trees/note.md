@@ -15,9 +15,11 @@ A *tree* is a connected graph with no cycles.
 
 :::
 
+::: {#fig-trees-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (r) at (2,3) {};
 \node (a) at (0.5,1.8) {};
 \node (b) at (2,1.8) {};
@@ -31,6 +33,8 @@ A *tree* is a connected graph with no cycles.
 ```
 
 A tree
+
+:::
 
 ::: {.remark name="Where trees appear"}
 
@@ -72,9 +76,11 @@ Among trees on $n$ vertices, the path $P_{n-1}$ has the longest possible path (l
 
 :::
 
+::: {#fig-trees-2}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (p1) at (0,0) {};
 \node (p2) at (1,0) {};
 \node (p3) at (2,0) {};
@@ -83,7 +89,7 @@ Among trees on $n$ vertices, the path $P_{n-1}$ has the longest possible path (l
 \draw (p1)--(p2)--(p3)--(p4)--(p5);
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (s0) at (0,0) {};
 \node (s1) at (-1.3,1) {};
 \node (s2) at (-0.6,1.3) {};
@@ -95,6 +101,8 @@ Among trees on $n$ vertices, the path $P_{n-1}$ has the longest possible path (l
 ```
 
 $P_4$ (left) and $K_{1,4}$ (right): the two extreme trees on $5$ vertices
+
+:::
 
 ::: {#thm-cn-thm-67 .theorem name="CN Thm 67"}
 

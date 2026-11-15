@@ -70,3 +70,24 @@ If $y \in Y \setminus X$: since $X$ is an equivalence class and $y \notin X$, $(
 So every element of $A$ lies in exactly one equivalence class – the classes are nonempty (by definition), pairwise disjoint (part (b)), and cover $A$ (part (a)): a partition.
 
 :::
+
+::: {#fig-equivalence-relations-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \draw[regionA] (0,0) rectangle (1.6,3);
+  \draw[regionB] (1.9,0) rectangle (3.5,3);
+  \draw[regionC] (3.8,0) rectangle (5.4,3);
+  \foreach \x/\c in {0.8/0, 2.7/1, 4.6/2} {
+    \foreach \k in {0,1,2} {
+      \pgfmathtruncatemacro{\v}{\c+3*\k}
+      \node at (\x, 2.4-0.9*\k) {$\v$};
+    }
+    \node[below] at (\x,0) {$[\c]$};
+  }
+\end{tikzpicture}
+```
+
+Congruence modulo $3$ on $\{0,1,\dots,8\}$: the equivalence classes $[0]$, $[1]$, $[2]$ partition the set
+
+:::

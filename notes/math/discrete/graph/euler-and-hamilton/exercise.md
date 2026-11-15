@@ -6,7 +6,7 @@ a trail that includes every edge, and also if it has an Euler tour.
 
 ```{=latex}
 \begin{center}
-    \begin{tikzpicture}[every node/.style={circle,fill,inner sep=1.8pt}]
+    \begin{tikzpicture}[dotgraph]
         \node (A) at (0,1.4) {};
         \node (B) at (2.4,1.4) {};
         \node (C) at (2.4,0) {};

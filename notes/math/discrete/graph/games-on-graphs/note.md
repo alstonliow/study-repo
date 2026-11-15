@@ -17,7 +17,7 @@ The game is played on a connected graph $G$ with two *terminals* $s,t$. Two play
 
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (s) at (0,0) {$s$};
 \node (a) at (1.5,1) {$a$};
 \node (b) at (1.5,-1) {$b$};

@@ -112,6 +112,8 @@ $$[a,b) = \{x \in \mathbb{R}: a \le x < b\}, \qquad
 
 :::
 
+::: {#fig-sets-and-elements-1}
+
 ```{=latex}
 \begin{center}
 \setlength{\unitlength}{1cm}
@@ -128,3 +130,5 @@ $$[a,b) = \{x \in \mathbb{R}: a \le x < b\}, \qquad
 ```
 
 $[a,b)$: filled dot at $a$ (included), open circle at $b$ (excluded)
+
+:::

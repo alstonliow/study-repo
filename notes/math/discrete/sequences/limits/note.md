@@ -21,7 +21,7 @@ If such an $\ell$ exists, $(a_n)$ is *convergent*; otherwise it is *divergent*.
  \draw[-{Latex}] (0,0) -- (9,0) node[right] {$n$};
  \draw[-{Latex}] (0,-1.6) -- (0,2.6) node[above] {$a_n$};
  \draw[dashed] (0,1.5) -- (9,1.5) node[right] {$\ell$};
- \fill[gray!15] (0,1.1) rectangle (9,1.9);
+ \fill[defc!12] (0,1.1) rectangle (9,1.9);
  \draw[dashed,gray] (0,1.9) -- (9,1.9) node[right] {$\ell+\varepsilon$};
  \draw[dashed,gray] (0,1.1) -- (9,1.1) node[right] {$\ell-\varepsilon$};
  \draw[dashed] (4.3,0) -- (4.3,2.6);

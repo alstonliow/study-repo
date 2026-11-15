@@ -74,7 +74,7 @@ BRANCHES = [
 ]
 
 TYPE_WORD = {"def": "Definition", "thm": "Theorem", "prp": "Proposition",
-             "lem": "Lemma", "cor": "Corollary", "exm": "Example", "prob": "Exercise"}
+             "lem": "Lemma", "cor": "Corollary", "exm": "Example", "prob": "Exercise", "fig": "Figure"}
 
 TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
 \usepackage[utf8]{inputenc}
@@ -85,12 +85,34 @@ TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
 \usepackage{tikz-cd}
 \usepackage{pict2e}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,shapes.gates.logic.US,backgrounds}
+\usetikzlibrary{arrows.meta,calc,shapes.gates.logic.US,backgrounds,shapes.geometric,decorations.pathreplacing}
 \usepackage[american]{circuitikz}
 \definecolor{defc}{HTML}{3B6EA5}
 \definecolor{thmc}{HTML}{A5533B}
 \definecolor{exc}{HTML}{4E8A5A}
 \definecolor{notec}{HTML}{7A7A7A}
+% shared figure styles (meta/SPEC.md: figures)
+\colorlet{ink}{black!82}
+\tikzset{
+  every picture/.style={line width=0.6pt, line cap=round, line join=round, >={Stealth[length=5pt,width=4.5pt]}},
+  vertex/.style={circle, draw=ink, fill=defc!8, line width=0.7pt, inner sep=1.5pt, minimum size=6.5mm},
+  dot/.style={circle, fill=ink, draw=none, inner sep=0pt, minimum size=5.5pt},
+  graph/.style={every node/.style={vertex}},
+  dotgraph/.style={every node/.style={dot}},
+  hl/.style={draw=thmc, line width=1.8pt},
+  faint/.style={draw=black!28, line width=0.5pt},
+  regionA/.style={fill=defc!10, draw=defc!75, rounded corners=4pt},
+  regionB/.style={fill=thmc!10, draw=thmc!75, rounded corners=4pt},
+  regionC/.style={fill=exc!12, draw=exc!75, rounded corners=4pt},
+  shade/.style={fill=defc!25},
+  tintA/.style={fill=defc, fill opacity=0.10},
+  tintB/.style={fill=thmc, fill opacity=0.10},
+  tintC/.style={fill=exc, fill opacity=0.12},
+  tintD/.style={fill=notec, fill opacity=0.12},
+  lab/.style={fill=none, draw=none, inner sep=1pt, minimum size=0pt, font=\small},
+  set/.style={ellipse, draw=ink, fill=defc!6, minimum width=1.3cm, minimum height=2.5cm},
+  map/.style={->, shorten <=3pt, shorten >=3pt},
+}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -106,7 +128,7 @@ TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
 KEY_PREFIXES = {"def", "thm", "prp", "lem", "cor"}
 OPEN = re.compile(r"^(:{3,})\s*\{(.*)\}\s*$")
 CLOSE = re.compile(r"^(:{3,})\s*$")
-REF = re.compile(r"(?<![\w@])@((?:def|thm|prp|lem|cor|exm|prob|sec)-[A-Za-z0-9-]*[A-Za-z0-9])")
+REF = re.compile(r"(?<![\w@])@((?:def|thm|prp|lem|cor|exm|prob|fig|sec)-[A-Za-z0-9-]*[A-Za-z0-9])")
 RAW = re.compile(r"^([ \t]*)```\{=latex\}\n(.*?)\n[ \t]*```", re.S | re.M)
 
 
@@ -304,6 +326,17 @@ def fix_claims(text: str) -> str:
     return re.sub(r"^(:{3,})\s*\{(.*)\}\s*$", sub, text, flags=re.M)
 
 
+FIG_SCALE = 1.3  # figures are drawn at 10pt; scale up to sit with the larger body text
+
+
+def svg_width(name: str) -> int:
+    """Display width in px for a compiled SVG: its natural size times FIG_SCALE."""
+    head = (TIKZ / name).read_text(encoding="utf-8")[:600]
+    m = re.search(r'width="([\d.]+)(pt|px)?"', head)
+    w = float(m.group(1)) * (4 / 3 if (m.group(2) or "pt") == "pt" else 1) if m else 400
+    return round(w * FIG_SCALE)
+
+
 def is_algorithm(code: str) -> bool:
     """Raw LaTeX blocks in algorithmic syntax, rendered as HTML instead of SVG."""
     return "\\begin{algorithmic}" in code
@@ -329,7 +362,7 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
             src = html.escape(textwrap.dedent(m.group(2)), quote=False)
             return "\n".join(ind + l for l in ["```{=html}", f'<pre class="pseudocode">{src}</pre>', "```"])
         name = svgs.get(textwrap.dedent(m.group(2)))
-        inner = f"![](/tikz/{name})" if name else "*(Figure available in the PDF version.)*"
+        inner = f"![](/tikz/{name}){{width={svg_width(name)}px}}" if name else "*(Figure available in the PDF version.)*"
         return "\n".join(ind + l for l in ["::: {.tikz-figure}", inner, ":::"])
     body = RAW.sub(raw_sub, body)
     body = fix_claims(body)

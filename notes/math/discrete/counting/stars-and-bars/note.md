@@ -66,6 +66,30 @@ $$
 $n=5$, $r=4$: the ones split $00110110$ into the blocks $00$, (empty), $0$, (empty), $0$. So $(x_1,\dots,x_5)=(2,0,1,0,1)$, i.e. the multiset $\{1,1,3,5\}$. The length is $8=r+n-1$.
 :::
 
+::: {#fig-stars-and-bars-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.85cm]
+  \foreach \i/\s in {1/0,2/0,3/1,4/1,5/0,6/1,7/1,8/0} {
+    \ifnum\s=0
+      \node[text=defc, font=\Large] at (\i,0) {$\bigstar$};
+    \else
+      \draw[thmc, line width=1.6pt] (\i,-0.4) -- (\i,0.4);
+    \fi
+    \node[font=\footnotesize, text=notec] at (\i,-0.8) {$\s$};
+  }
+  \draw[decorate, decoration={brace, amplitude=4pt}] (0.7,0.55) -- (2.3,0.55) node[midway, above=5pt] {$x_1=2$};
+  \node at (3.5,0.95) {$x_2=0$};
+  \draw[decorate, decoration={brace, amplitude=4pt}] (4.7,0.55) -- (5.3,0.55) node[midway, above=5pt] {$x_3=1$};
+  \node at (6.5,0.95) {$x_4=0$};
+  \draw[decorate, decoration={brace, amplitude=4pt}] (7.7,0.55) -- (8.3,0.55) node[midway, above=5pt] {$x_5=1$};
+\end{tikzpicture}
+```
+
+The string $00110110$ as stars ($0$) and bars ($1$): the four bars cut the stars into blocks of sizes $2,0,1,0,1$
+
+:::
+
 ::: {#exm-fruit-salad .example name="Fruit salad"}
 $n=3$, $r=5$: there are $\binom{3+5-1}{5}=\binom75=21$ possible salads.
 :::

@@ -19,6 +19,28 @@ $A \times B = \{(a,b) : a \in A,\ b \in B\}$.
 
 :::
 
+::: {#fig-cartesian-product-1}
+
+```{=latex}
+\begin{tikzpicture}[x=1.7cm, y=1.1cm]
+  \draw[->] (0,0) -- (3.6,0) node[right] {$A$};
+  \draw[->] (0,0) -- (0,2.7) node[above] {$B$};
+  \foreach \i in {1,2,3} \node[below] at (\i,0) {$\i$};
+  \foreach \j/\b in {1/a,2/b} \node[left] at (0,\j) {$\b$};
+  \foreach \i in {1,2,3} {
+    \foreach \j/\b in {1/a,2/b} {
+      \draw[faint] (\i,0) -- (\i,\j) -- (0,\j);
+      \node[dot] at (\i,\j) {};
+      \node[above right, font=\small, inner sep=2pt] at (\i,\j) {$(\i,\b)$};
+    }
+  }
+\end{tikzpicture}
+```
+
+$\{1,2,3\}\times\{a,b\}$: one point for each of the $3\cdot2=6$ ordered pairs
+
+:::
+
 ::: {#prp-cartesian-product-1 .proposition}
 
 $|A \times B| = |A|\cdot|B|$ for finite $A,B$.

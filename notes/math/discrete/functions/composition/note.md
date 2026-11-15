@@ -16,6 +16,26 @@ $$(g \circ f)(x) = g(f(x)).$$
 
 :::
 
+::: {#fig-composition-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \node[set, label=above:$A$] at (0,0) {};
+  \node[set, label=above:$B$] at (3.4,0) {};
+  \node[set, label=above:$C$] at (6.8,0) {};
+  \node[dot, label={[lab]left:$x$}] (x) at (0,0.3) {};
+  \node[dot, label={[lab]above:$f(x)$}] (y) at (3.4,0.3) {};
+  \node[dot, label={[lab]above:$g(f(x))$}] (z) at (6.8,0.3) {};
+  \draw[map] (x) -- node[lab, above] {$f$} (y);
+  \draw[map] (y) -- node[lab, above] {$g$} (z);
+  \draw[map, thmc, line width=1pt] (x) .. controls (1.8,-2.0) and (5.0,-2.0) .. node[lab, below, text=thmc] {$g\circ f$} (z);
+\end{tikzpicture}
+```
+
+$g\circ f$ sends $x$ straight to $g(f(x))$: first $f$, then $g$
+
+:::
+
 ::: {.remark name="Order of writing vs.\ order of application"}
 
 $g \circ f$ is read right-to-left in application ($f$ first, then $g$), matching the order inside $g(f(x))$ – but this is the *reverse* of our usual left-to-right reading order. Read carefully.

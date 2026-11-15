@@ -21,7 +21,7 @@ A walk may visit a vertex more than once, and may use an edge more than once, in
 
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (a) at (0,1) {$a$};
 \node (b) at (1.3,1.6) {$b$};
 \node (c) at (0,-0.3) {$c$};

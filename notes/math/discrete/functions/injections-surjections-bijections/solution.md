@@ -140,6 +140,9 @@ injections and surjections, and identity functions are bijections:
   \node[anchor=north west] at (3.05,5.55) {Binary relations};
   \draw (3.4,0.6) rectangle (10.4,4.9);
   \node[anchor=north west] at (3.45,4.85) {Functions};
+  \fill[tintA] (6.0,2.6) ellipse (2.0 and 1.6);
+  \fill[tintB] (7.8,2.6) ellipse (2.0 and 1.6);
+  \fill[tintC] (6.9,2.3) ellipse (0.62 and 0.55);
   \draw (6.0,2.6) ellipse (2.0 and 1.6);
   \draw (7.8,2.6) ellipse (2.0 and 1.6);
   \node at (4.95,2.6) {Injections};

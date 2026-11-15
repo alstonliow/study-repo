@@ -50,3 +50,33 @@ $$\Pr(\text{DoubleTail}\mid\text{Heads})=\frac{0\cdot\frac13}{\frac12}=0.$$
 So one toss leaves our belief in Fair unchanged, rules out DoubleTail, and doubles our belief in DoubleHead.
 
 :::
+
+::: {#fig-bayes-theorem-1}
+
+```{=latex}
+\begin{tikzpicture}[coin/.style={draw=ink, fill=defc!8, rounded corners=3pt, inner sep=3pt, font=\small},
+                    leaf/.style={font=\small, anchor=west},
+                    pr/.style={lab, font=\footnotesize, fill=white, inner sep=1.5pt}]
+  \node[dot] (r) at (0,0) {};
+  \node[coin] (F) at (3,1.8) {Fair};
+  \node[coin] (D) at (3,0) {DoubleHead};
+  \node[coin] (T) at (3,-1.8) {DoubleTail};
+  \foreach \c in {F,D,T} \draw (r) -- node[pr] {$\tfrac13$} (\c.west);
+  \node[leaf, text=thmc] (FH) at (6.2,2.3) {Heads: $\tfrac13\cdot\tfrac12=\tfrac16$};
+  \node[leaf, text=notec] (FT) at (6.2,1.3) {Tails};
+  \node[leaf, text=thmc] (DH) at (6.2,0.5) {Heads: $\tfrac13\cdot1=\tfrac13$};
+  \node[leaf, text=notec] (DT) at (6.2,-0.5) {Tails};
+  \node[leaf, text=thmc] (TH) at (6.2,-1.3) {Heads: $\tfrac13\cdot0=0$};
+  \node[leaf, text=notec] (TT) at (6.2,-2.3) {Tails};
+  \draw (F.east) -- node[pr] {$\tfrac12$} (FH.west);
+  \draw (F.east) -- node[pr] {$\tfrac12$} (FT.west);
+  \draw (D.east) -- node[pr] {$1$} (DH.west);
+  \draw (D.east) -- node[pr] {$0$} (DT.west);
+  \draw (T.east) -- node[pr] {$0$} (TH.west);
+  \draw (T.east) -- node[pr] {$1$} (TT.west);
+\end{tikzpicture}
+```
+
+The three coins as a tree: $\Pr(\text{Heads})$ is the sum of the highlighted leaves, $\tfrac16+\tfrac13+0=\tfrac12$
+
+:::

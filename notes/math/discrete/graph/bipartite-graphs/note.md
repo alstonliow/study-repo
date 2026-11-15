@@ -19,14 +19,16 @@ If $A$ is a set of jobs and $B$ a set of candidates, joining each job to the can
 
 :::
 
+::: {#fig-bipartite-graphs-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
-\node (a1) at (0,1.5) {};
-\node (a2) at (0,0.5) {};
-\node (a3) at (0,-0.5) {};
-\node (b1) at (2.5,1) {};
-\node (b2) at (2.5,0) {};
+\begin{tikzpicture}[dotgraph]
+\node[fill=defc] (a1) at (0,1.5) {};
+\node[fill=defc] (a2) at (0,0.5) {};
+\node[fill=defc] (a3) at (0,-0.5) {};
+\node[fill=thmc] (b1) at (2.5,1) {};
+\node[fill=thmc] (b2) at (2.5,0) {};
 \draw (a1)--(b1) (a1)--(b2) (a2)--(b1) (a3)--(b2);
 \node[draw=none,fill=none] at (0,-1.2) {$A$};
 \node[draw=none,fill=none] at (2.5,-0.7) {$B$};
@@ -35,6 +37,8 @@ If $A$ is a set of jobs and $B$ a set of candidates, joining each job to the can
 ```
 
 A bipartite graph: every edge crosses between $A$ and $B$
+
+:::
 
 ::: {#def-colouring .definition name="$2$-colouring"}
 

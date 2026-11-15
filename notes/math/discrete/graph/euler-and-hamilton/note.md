@@ -41,9 +41,11 @@ The four land masses of Königsberg are vertices and its seven bridges are edges
 
 :::
 
+::: {#fig-euler-and-hamilton-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=7mm}]
+\begin{tikzpicture}[graph]
 \node (A) at (0,1.8) {$A$};
 \node (B) at (0,-1.8) {$B$};
 \node (C) at (0,0) {$C$};
@@ -60,6 +62,8 @@ The four land masses of Königsberg are vertices and its seven bridges are edges
 ```
 
 Königsberg: the island $C$ has degree $5$, and $A$, $B$, $D$ have degree $3$, so no Euler tour exists
+
+:::
 
 ::: {.remark name="Multigraphs"}
 
@@ -82,6 +86,28 @@ In practice the added edges stand for streets walked twice. Choosing the pairing
 ::: {#def-hamiltonian .definition name="Hamiltonian cycle"}
 
 A cycle is *Hamiltonian* if it contains every vertex of the graph.
+
+:::
+
+::: {#fig-euler-and-hamilton-2}
+
+```{=latex}
+\begin{tikzpicture}[dotgraph, x=1.15cm, y=1.15cm]
+  \node[label={[lab, font=\scriptsize]below left:000}] (000) at (0,0) {};
+  \node[label={[lab, font=\scriptsize]below right:100}] (100) at (2,0) {};
+  \node[label={[lab, font=\scriptsize]above left:010}] (010) at (0,2) {};
+  \node[label={[lab, font=\scriptsize]below right:110}] (110) at (2,2) {};
+  \node[label={[lab, font=\scriptsize]above left:001}] (001) at (0.8,0.8) {};
+  \node[label={[lab, font=\scriptsize]below right:101}] (101) at (2.8,0.8) {};
+  \node[label={[lab, font=\scriptsize]above left:011}] (011) at (0.8,2.8) {};
+  \node[label={[lab, font=\scriptsize]above right:111}] (111) at (2.8,2.8) {};
+  \draw (000)--(100) (000)--(010) (000)--(001) (100)--(110) (100)--(101) (010)--(110)
+        (010)--(011) (001)--(101) (001)--(011) (110)--(111) (101)--(111) (011)--(111);
+  \draw[hl] (000)--(001)--(011)--(010)--(110)--(111)--(101)--(100)--cycle;
+\end{tikzpicture}
+```
+
+A Hamiltonian cycle (highlighted) in the cube graph $Q_3$: $000,001,011,010,110,111,101,100$, then back to $000$
 
 :::
 

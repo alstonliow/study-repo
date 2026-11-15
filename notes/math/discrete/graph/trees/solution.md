@@ -5,7 +5,7 @@
 There are six trees with six vertices:
 
 ```{=latex}
-\begin{tikzpicture}[scale=0.62, every node/.style={circle, fill, inner sep=1.6pt}]
+\begin{tikzpicture}[scale=0.62, dotgraph]
   % 1 path
   \begin{scope}[shift={(0,0)}]
     \foreach \i in {0,...,5} \node (p\i) at (\i*0.8,0) {};

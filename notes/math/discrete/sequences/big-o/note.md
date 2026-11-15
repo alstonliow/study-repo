@@ -98,9 +98,13 @@ If any one NP-complete problem had a polynomial-time algorithm, then composing i
 
 :::
 
+::: {#fig-big-o-1}
+
 ```{=latex}
 \begin{center}
 \begin{tikzpicture}[scale=0.8]
+ \fill[tintA] (0,0) circle (2.6cm);
+ \fill[tintB] (3,0) circle (2.6cm);
  \draw (0,0) circle (2.6cm) node[above,yshift=2.1cm] {$NP$};
  \draw (3,0) circle (2.6cm) node[above,yshift=2.1cm] {$NP\text{-hard}$};
  \node at (-1.6,0) {$P$};
@@ -112,3 +116,5 @@ If any one NP-complete problem had a polynomial-time algorithm, then composing i
 ```
 
 NP-complete $=$ NP $\cap$ NP-hard (drawn assuming $P\ne NP$)
+
+:::

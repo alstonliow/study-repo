@@ -79,7 +79,7 @@ Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
 `claim`, `proof`, `example`, `remark`, `problem`, `solution`.
 
 1. Blocks that are numbered or referenced carry a Quarto id with a prefix:
-   `def-`, `thm-`, `prp-`, `lem-`, `cor-`, `exm-`, `prob-`.
+   `def-`, `thm-`, `prp-`, `lem-`, `cor-`, `exm-`, `prob-`, `fig-`.
 2. `proof`, `remark` and `claim` blocks normally carry no id.
 3. Which course a piece of content belongs to comes from its source keys
    (`sources`, `source`) and `meta/courses.yml`, not from block markup.
@@ -96,6 +96,34 @@ Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
    `\WHILE{..}`/`\ENDWHILE`, `\FOR{..}`/`\ENDFOR`, `\RETURN`, `\COMMENT{..}`.
    The website renders them as text with pseudocode.js (`site/pseudocode.html`);
    they are not compiled to SVG. A PDF build must define `\INPUT` and `\OUTPUT`.
+   **Figures with a caption** are a div with a `fig-` id holding the drawing,
+   then the caption as the last paragraph. They are numbered per page
+   ("Figure 1") and referenced as `@fig-...`, also from other notes. Ids are
+   `fig-<folder name>-<n>`, e.g. `fig-trees-2`. A drawing without a caption
+   needs no div.
+
+   ````markdown
+   ::: {#fig-trees-1}
+
+   ```{=latex}
+   \begin{tikzpicture}[dotgraph] ... \end{tikzpicture}
+   ```
+
+   A tree
+
+   :::
+   ````
+
+   **Shared drawing styles** (defined in the preamble in `build/make_site.py`;
+   use them instead of ad-hoc colours and sizes):
+   `graph` (all nodes are labelled vertices), `dotgraph` (all nodes are small
+   dots), `vertex`, `dot`, `hl` (highlighted edge), `faint` (background edge),
+   `regionA`/`regionB`/`regionC` (shaded rounded regions), `tintA`–`tintD`
+   (translucent fills for overlapping sets), `shade`, `set` (an oval for a
+   domain or codomain), `map` (an arrow between elements), `lab` (a plain
+   label). Colours: `defc` (blue), `thmc` (red-brown), `exc` (green), `notec`
+   (grey), `ink` (near-black). The website shows figures at 1.3 times their
+   natural size.
 8. `example` blocks may carry `level="easy|medium|hard"`, filled in by the owner
    only.
 

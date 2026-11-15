@@ -28,6 +28,31 @@ $$f^{-1} = \{(y,x) : (x,y) \in f\} = \{(f(x),x) : x \in A\}.$$
 
 :::
 
+::: {#fig-inverse-functions-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \node[set, label=above:$A$] at (0,0) {};
+  \node[set, label=above:$B$] at (2.8,0) {};
+  \node (a1) at (0,0.7) {$1$}; \node (a2) at (0,0) {$2$}; \node (a3) at (0,-0.7) {$3$};
+  \node (b1) at (2.8,0.7) {$p$}; \node (b2) at (2.8,0) {$q$}; \node (b3) at (2.8,-0.7) {$r$};
+  \draw[map] (a1) -- (b2); \draw[map] (a2) -- (b3); \draw[map] (a3) -- (b1);
+  \node at (1.4,-1.75) {$f\colon A\to B$};
+  \begin{scope}[xshift=5.4cm]
+    \node[set, label=above:$B$] at (0,0) {};
+    \node[set, label=above:$A$] at (2.8,0) {};
+    \node (c1) at (0,0.7) {$p$}; \node (c2) at (0,0) {$q$}; \node (c3) at (0,-0.7) {$r$};
+    \node (d1) at (2.8,0.7) {$1$}; \node (d2) at (2.8,0) {$2$}; \node (d3) at (2.8,-0.7) {$3$};
+    \draw[map, thmc] (c2) -- (d1); \draw[map, thmc] (c3) -- (d2); \draw[map, thmc] (c1) -- (d3);
+    \node at (1.4,-1.75) {$f^{-1}\colon B\to A$};
+  \end{scope}
+\end{tikzpicture}
+```
+
+A bijection $f$ (left) and its inverse $f^{-1}$ (right): every arrow is reversed
+
+:::
+
 ::: {#thm-inverse-functions-1 .theorem}
 
 $f: A \to B$ has an inverse function if and only if $f$ is a bijection.

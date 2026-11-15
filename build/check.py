@@ -22,7 +22,7 @@ REQUIRED_YAML = ["title", "sources", "requires", "status"]
 ALLOWED = {"status": {"draft", "done"}}
 LEVELS = {"easy", "medium", "hard"}  # optional `level` on problem and example blocks
 
-BLOCK_PREFIXES = "def|thm|lem|cor|prp|exm|rem|prob"
+BLOCK_PREFIXES = "def|thm|lem|cor|prp|exm|rem|prob|fig"
 DIV_OPEN = re.compile(r"^:::+\s*\{(?P<attrs>[^}]*)\}\s*$")
 ID_ATTR = re.compile(r"(?:^|\s)#([A-Za-z][\w-]*)")
 CLASS_ATTR = re.compile(r"(?:^|\s)\.([A-Za-z][\w-]*)")

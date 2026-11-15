@@ -33,9 +33,11 @@ Let $V=\{a,b,c,d,e,f,g\}$ and $E=\{\{a,b\},\{a,c\},\{b,c\},\{c,d\},\{f,g\}\}$: s
 
 :::
 
+::: {#fig-basic-definitions-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (a) at (0,1.5) {$a$};
 \node (b) at (0,0) {$b$};
 \node (c) at (1.3,0.75) {$c$};
@@ -49,6 +51,8 @@ Let $V=\{a,b,c,d,e,f,g\}$ and $E=\{\{a,b\},\{a,c\},\{b,c\},\{c,d\},\{f,g\}\}$: s
 ```
 
 $e$ is isolated; $d,f,g$ are leaves; $\{a,b,c,d\}$, $\{e\}$, $\{f,g\}$ are the three components (@sec-math-discrete-graph-connectivity)
+
+:::
 
 ::: {.remark name="A graph is not its drawing"}
 
@@ -70,9 +74,11 @@ A *multigraph* allows multiple edges; a *pseudograph* also allows loops. In a *d
 
 :::
 
+::: {#fig-basic-definitions-2}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}, >={Stealth[length=2mm]}]
+\begin{tikzpicture}[graph]
 \node (v1) at (0,0) {$v_1$};
 \node (v2) at (2,0.8) {$v_2$};
 \node (v3) at (2,-0.8) {$v_3$};
@@ -85,7 +91,7 @@ A *multigraph* allows multiple edges; a *pseudograph* also allows loops. In a *d
 \draw[->] (v4) to[out=150,in=210,looseness=8] (v4);
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (w1) at (0,0) {$1$};
 \node (w2) at (2,0.8) {$2$};
 \node (w3) at (2,-0.8) {$3$};
@@ -99,6 +105,8 @@ A *multigraph* allows multiple edges; a *pseudograph* also allows loops. In a *d
 ```
 
 Directed graph (left, with a self-loop at $v_4$) and weighted graph (right)
+
+:::
 
 ::: {#def-complement .definition name="Complement"}
 
@@ -144,22 +152,26 @@ The subgraph *induced* by $S\subseteq V$, written $G[S]$, has vertex set $S$ and
 
 :::
 
+::: {#fig-basic-definitions-3}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (p) at (0,1) {$p$};
 \node (q) at (1.3,1.6) {$q$};
 \node (r) at (1.3,0.4) {$r$};
 \node (s) at (2.6,1) {$s$};
 \draw[thick] (p)--(q) (p)--(r) (q)--(r) (q)--(s) (r)--(s);
 \begin{scope}[on background layer]
-\filldraw[fill=blue!10,draw=blue,rounded corners] (-0.5,0.2) rectangle (2,2.1);
+\filldraw[regionA] (-0.5,0.2) rectangle (2,2.1);
 \end{scope}
 \end{tikzpicture}
 \end{center}
 ```
 
 The subgraph induced by $\{p,q,r\}$ (shaded): it includes *every* edge among them, $\{p,q\},\{p,r\},\{q,r\}$
+
+:::
 
 ::: {.remark name="Induced vs.\ ordinary subgraph"}
 

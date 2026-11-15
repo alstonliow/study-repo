@@ -94,6 +94,28 @@ Problem statement, copied verbatim.
    `@sec-` plus the id with `/` replaced by `-`.
 5. Keep it to about 30–150 lines. Split above 200 lines.
 
+### A figure
+
+Draw with TikZ in a ```` ```{=latex} ```` block, using the shared styles
+(`graph`, `dotgraph`, `hl`, `regionA`, `set`, `map`, … listed in
+`meta/SPEC.md` §5). To give it a number and a caption, wrap it in a `fig-` div
+with the caption as the last paragraph, then refer to it as `@fig-trees-1`:
+
+````markdown
+::: {#fig-trees-1}
+
+```{=latex}
+\begin{tikzpicture}[dotgraph]
+  \node (a) at (0,0) {}; \node (b) at (1,0) {};
+  \draw (a) -- (b);
+\end{tikzpicture}
+```
+
+A tree
+
+:::
+````
+
 The website numbers pages automatically. Within a branch, pages are ordered by
 their first source key.
 

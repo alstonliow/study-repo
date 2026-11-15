@@ -85,6 +85,30 @@ $$R = \{(a,a),(a,c),(a,d),(b,a),(b,b),(b,c),(b,d),(c,b),(c,c),(d,b),(d,d)\}.$$
 
 :::
 
+::: {#fig-properties-1}
+
+```{=latex}
+\begin{tikzpicture}[graph]
+  \node (a) at (0,2.2) {$a$}; \node (b) at (2.6,2.2) {$b$};
+  \node (c) at (2.6,0) {$c$}; \node (d) at (0,0) {$d$};
+  \draw[->] (a) to[loop left, min distance=9mm, looseness=7] (a);
+  \draw[->] (b) to[loop right, min distance=9mm, looseness=7] (b);
+  \draw[->] (c) to[loop right, min distance=9mm, looseness=7] (c);
+  \draw[->] (d) to[loop left, min distance=9mm, looseness=7] (d);
+  \draw[->] (b) -- (a);
+  \draw[->] (a) -- (d);
+  \draw[->] (b) to[bend right=20] (c);
+  \draw[->] (b) to[bend left=12] (d);
+  \draw[->] (d) to[bend left=12] (b);
+  \draw[->, thmc, line width=1.2pt] (a) -- (c);
+  \draw[->, thmc, line width=1.2pt] (c) to[bend right=20] (b);
+\end{tikzpicture}
+```
+
+The relation $R$ of @exm-checking-all-properties-on-a. There is a loop at every vertex, so $R$ is reflexive. The highlighted path $a\to c\to b$ has no shortcut $a\to b$, so $R$ is not transitive
+
+:::
+
 ::: {#prp-properties-under-union-and-intersection .proposition name="Properties under union and intersection"}
 
 Let $R,S$ be relations on $A$.

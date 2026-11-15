@@ -13,6 +13,27 @@ $$
 $$
 :::
 
+::: {#fig-inclusion-exclusion-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \fill[tintA] (0,0) circle (1.3);
+  \fill[tintB] (1.6,0) circle (1.3);
+  \begin{scope}
+    \clip (0,0) circle (1.3);
+    \fill[thmc, fill opacity=0.25] (1.6,0) circle (1.3);
+  \end{scope}
+  \draw (0,0) circle (1.3);
+  \draw (1.6,0) circle (1.3);
+  \node at (-1.05,1.25) {$A$}; \node at (2.65,1.25) {$B$};
+  \node at (-0.5,0) {$1$}; \node at (0.8,0) {$2$}; \node at (2.1,0) {$1$};
+\end{tikzpicture}
+```
+
+How many times $|A|+|B|$ counts each region: $A\cap B$ is counted twice, so it is subtracted once
+
+:::
+
 ::: {.remark name="Correcting the double count"}
 Already proved at @sec-math-discrete-sets-set-operations. $|A|+|B|$ double-counts $A\cap B$; subtracting once corrects it.
 :::

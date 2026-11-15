@@ -33,9 +33,11 @@ Let the components be $F_1,\dots,F_k$, with $n_i$ vertices and $m_i$ edges. Each
 
 :::
 
+::: {#fig-forests-and-spanning-trees-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (a) at (0,1) {}; \node (b) at (0,0) {}; \node (c) at (1,0.5) {};
 \draw (a)--(c) (b)--(c);
 \node (e) at (2.7,0.5) {};
@@ -46,6 +48,8 @@ Let the components be $F_1,\dots,F_k$, with $n_i$ vertices and $m_i$ edges. Each
 ```
 
 A forest with $k=3$ components: $n=6$ vertices and $3=n-k$ edges
+
+:::
 
 ## Spanning trees
 
@@ -73,22 +77,26 @@ The graph below (the graph of @sec-math-discrete-graph-walks-paths-cycles) has $
 
 :::
 
+::: {#fig-forests-and-spanning-trees-2}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (a) at (0,1) {$a$};
 \node (b) at (1.3,1.6) {$b$};
 \node (c) at (0,-0.3) {$c$};
 \node (d) at (1.3,-0.9) {$d$};
 \node (e) at (2.8,0.5) {$e$};
 \node (f) at (4.3,0.5) {$f$};
-\draw[very thin, gray] (a)--(b) (b)--(c) (b)--(e);
-\draw[very thick] (a)--(c) (c)--(d) (b)--(d) (d)--(e) (e)--(f);
+\draw[faint] (a)--(b) (b)--(c) (b)--(e);
+\draw[hl] (a)--(c) (c)--(d) (b)--(d) (d)--(e) (e)--(f);
 \end{tikzpicture}
 \end{center}
 ```
 
 A spanning tree (thick edges)
+
+:::
 
 ::: {.remark name="Building up instead"}
 

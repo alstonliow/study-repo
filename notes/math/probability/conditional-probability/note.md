@@ -65,6 +65,29 @@ Conditioning on $B$ means treating $B$ as the new sample space: we keep only the
 
 :::
 
+::: {#fig-conditional-probability-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \draw (-1.7,-1.55) rectangle (3.0,1.6);
+  \node[anchor=north west] at (-1.7,1.6) {$U$};
+  \fill[thmc!12] (1.3,0) circle (1.2);
+  \fill[tintA] (0,0) circle (1.2);
+  \begin{scope}
+    \clip (0,0) circle (1.2);
+    \fill[thmc!40] (1.3,0) circle (1.2);
+  \end{scope}
+  \draw (0,0) circle (1.2);
+  \draw[thmc, line width=1.4pt] (1.3,0) circle (1.2);
+  \node at (-0.6,0) {$A$}; \node at (1.95,0) {$B$};
+  \node[font=\footnotesize] at (0.65,0) {$A\cap B$};
+\end{tikzpicture}
+```
+
+Conditioning on $B$: $B$ (outlined) becomes the new sample space, and $\Pr(A\mid B)$ is the share of $B$ taken up by $A\cap B$
+
+:::
+
 ::: {#exm-conditional-probability-1-2 .example}
 
 In Scrabble, $\Pr(\text{vowel})=0.42$ is not the proportion of *letter* tiles that are vowels, because of the two blanks. Since every vowel tile is non-blank,

@@ -35,9 +35,11 @@ In $K_n$ the edges are exactly the unordered pairs of distinct vertices, so ther
 
 :::
 
+::: {#fig-special-graphs-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (p0) at (0,0) {};
 \node (p1) at (1.6,0) {};
 \node (p2) at (1.6,1.6) {};
@@ -45,14 +47,14 @@ In $K_n$ the edges are exactly the unordered pairs of distinct vertices, so ther
 \draw (p0)--(p1) (p1)--(p2) (p2)--(p3) (p3)--(p0) (p0)--(p2) (p1)--(p3);
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node at (0,0) {};
 \node at (1.6,0) {};
 \node at (1.6,1.6) {};
 \node at (0,1.6) {};
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (p0) at (0,0) {};
 \node (p1) at (1.6,0) {};
 \node (p2) at (1.6,1.6) {};
@@ -60,7 +62,7 @@ In $K_n$ the edges are exactly the unordered pairs of distinct vertices, so ther
 \draw (p3)--(p0) (p0)--(p1) (p1)--(p2);
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (p0) at (0,0) {};
 \node (p1) at (1.6,0) {};
 \node (p2) at (1.6,1.6) {};
@@ -72,9 +74,13 @@ In $K_n$ the edges are exactly the unordered pairs of distinct vertices, so ther
 
 $K_4$,  $\overline{K_4}$,  $P_3$,  $C_4$ (left to right)
 
+:::
+
+::: {#fig-special-graphs-2}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \foreach \i in {0,...,4} {
   \node (v\i) at ({90+\i*72}:1.6) {};
 }
@@ -87,7 +93,7 @@ $K_4$,  $\overline{K_4}$,  $P_3$,  $C_4$ (left to right)
 }
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \foreach \i in {0,...,5} {
   \node (c\i) at ({60*\i}:1.6) {};
 }
@@ -101,9 +107,13 @@ $K_4$,  $\overline{K_4}$,  $P_3$,  $C_4$ (left to right)
 
 $K_5$ (left) and $C_6$ (right)
 
+:::
+
+::: {#fig-special-graphs-3}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (a1) at (0,1) {};
 \node (a2) at (0,-1) {};
 \node (b1) at (2.5,1.5) {};
@@ -116,7 +126,7 @@ $K_5$ (left) and $C_6$ (right)
 }
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1pt,minimum size=5mm,font=\tiny}]
+\begin{tikzpicture}[every node/.style={vertex, minimum size=5.5mm, inner sep=0.5pt, font=\scriptsize}]
 \node (000) at (0,0) {000};
 \node (100) at (1.5,0) {100};
 \node (010) at (0,1.5) {010};
@@ -135,3 +145,5 @@ $K_5$ (left) and $C_6$ (right)
 ```
 
 $K_{2,3}$ (left) and $Q_3$ (right)
+
+:::

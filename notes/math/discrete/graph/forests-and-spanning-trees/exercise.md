@@ -5,7 +5,7 @@ How many spanning trees does the following graph have?
 
 ```{=latex}
 \begin{center}
-    \begin{tikzpicture}[every node/.style={circle,fill,inner sep=1.8pt}]
+    \begin{tikzpicture}[dotgraph]
         \node[label=left:$a$] (a) at (0,1.4) {};
         \node[label=above:$b$] (b) at (1.4,1.4) {};
         \node[label=left:$c$] (c) at (0,0) {};
@@ -26,7 +26,7 @@ following weighted graph.
 
 ```{=latex}
 \begin{center}
-    \begin{tikzpicture}[every node/.style={circle,fill,inner sep=1.8pt},
+    \begin{tikzpicture}[dotgraph,
                         lab/.style={fill=none,draw=none,inner sep=1pt,font=\small}]
         \node[label=below:$a$] (a) at (0,0) {};
         \node[label=below:$c$] (c) at (2,0) {};

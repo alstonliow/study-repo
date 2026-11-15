@@ -31,9 +31,11 @@ Walking around the boundary of every face, each edge is met exactly twice: once 
 
 :::
 
+::: {#fig-planarity-1}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[graph]
 \node (a) at (0,0.75) {$a$};
 \node (b) at (1.3,0.3) {$b$};
 \node (c) at (1.3,1.5) {$c$};
@@ -52,6 +54,8 @@ Walking around the boundary of every face, each edge is met exactly twice: once 
 ```
 
 A plane graph with $n=8$, $m=10$, $f=4$; indeed $n-m+f=8-10+4=2$
+
+:::
 
 ::: {#thm-euler-s-theorem-cn-thm .theorem name="Euler's Theorem, CN Thm 71"}
 
@@ -125,9 +129,11 @@ A graph may have drawings with crossings and still be planar. $K_4$ is planar, a
 
 :::
 
+::: {#fig-planarity-2}
+
 ```{=latex}
 \begin{center}
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (a) at (0,1.5) {};
 \node (b) at (1.5,1.5) {};
 \node (c) at (0,0) {};
@@ -135,7 +141,7 @@ A graph may have drawings with crossings and still be planar. $K_4$ is planar, a
 \draw (a)--(b) (a)--(c) (a)--(d) (b)--(c) (b)--(d) (c)--(d);
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={circle,draw,fill=white,inner sep=1.5pt,minimum size=6mm}]
+\begin{tikzpicture}[dotgraph]
 \node (a) at (0.75,2) {};
 \node (b) at (0,0.5) {};
 \node (c) at (1.5,0.5) {};
@@ -146,6 +152,8 @@ A graph may have drawings with crossings and still be planar. $K_4$ is planar, a
 ```
 
 $K_4$: a drawing with a crossing (left) and a plane drawing (right) of the same graph
+
+:::
 
 ::: {#thm-four-colour-theorem-extra .theorem name="Four colour theorem (extra)"}
 

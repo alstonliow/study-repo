@@ -20,7 +20,7 @@ of the three sets (see Exercise 18). So the shaded regions are the three
 
 ```{=latex}
 \begin{tikzpicture}[scale=1.1]
-  \fill[gray!35, even odd rule] (0,0) circle (1.2) (1.4,0) circle (1.2) (0.7,-1.2) circle (1.2);
+  \fill[shade, even odd rule] (0,0) circle (1.2) (1.4,0) circle (1.2) (0.7,-1.2) circle (1.2);
   \draw (0,0) circle (1.2);
   \draw (1.4,0) circle (1.2);
   \draw (0.7,-1.2) circle (1.2);

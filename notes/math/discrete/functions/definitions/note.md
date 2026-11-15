@@ -15,6 +15,8 @@ A function $f$ consists of: a set called the *domain*; a set called the *codomai
 
 :::
 
+::: {#fig-definitions-1}
+
 ```{=latex}
 \begin{center}
 \begin{tikzcd}[row sep=small, column sep=huge]
@@ -26,6 +28,8 @@ A function $f$ consists of: a set called the *domain*; a set called the *codomai
 ```
 
 A function $f:\{1,2,3\}\to\{p,q,r\}$, each argument pointing to its unique value
+
+:::
 
 ::: {.remark name="Alternative phrasing"}
 

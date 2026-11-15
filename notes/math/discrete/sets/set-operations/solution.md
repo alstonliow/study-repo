@@ -46,6 +46,9 @@ original one.
 
 ```{=latex}
 \begin{tikzpicture}[scale=1.5, every node/.style={font=\scriptsize}]
+  \fill[tintA] (0,0) circle (1.3);
+  \fill[tintB] (1.5,0) circle (1.3);
+  \fill[tintC] (0.75,-1.3) circle (1.3);
   \draw (0,0) circle (1.3);
   \draw (1.5,0) circle (1.3);
   \draw (0.75,-1.3) circle (1.3);
@@ -77,6 +80,10 @@ original one.
 
 ```{=latex}
 \begin{tikzpicture}[scale=0.85]
+  \fill[tintA, rotate around={45:(-0.6,0)}]   (-0.6,0)   ellipse (2.4 and 1.1);
+  \fill[tintB, rotate around={45:(-0.6,1.5)}] (-0.6,1.5) ellipse (2.4 and 1.1);
+  \fill[tintC, rotate around={-45:(0.6,1.5)}] (0.6,1.5)  ellipse (2.4 and 1.1);
+  \fill[tintD, rotate around={-45:(0.6,0)}]   (0.6,0)    ellipse (2.4 and 1.1);
   \draw[rotate around={45:(-0.6,0)}]   (-0.6,0)   ellipse (2.4 and 1.1);
   \draw[rotate around={45:(-0.6,1.5)}] (-0.6,1.5) ellipse (2.4 and 1.1);
   \draw[rotate around={-45:(0.6,1.5)}] (0.6,1.5)  ellipse (2.4 and 1.1);

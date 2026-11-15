@@ -42,6 +42,39 @@ $f$ is *bijective* (a *bijection*, *one-to-one correspondence*) if it is both in
 
 :::
 
+::: {#fig-injections-surjections-bijections-1}
+
+```{=latex}
+\begin{tikzpicture}
+  % injective, not surjective
+  \node[set] at (0,0) {}; \node[set] at (2.4,0) {};
+  \node (a1) at (0,0.4) {$1$}; \node (a2) at (0,-0.4) {$2$};
+  \node (b1) at (2.4,0.7) {$p$}; \node (b2) at (2.4,0) {$q$}; \node (b3) at (2.4,-0.7) {$r$};
+  \draw[map] (a1) -- (b1); \draw[map] (a2) -- (b3);
+  \node[font=\small, align=center] at (1.2,-1.85) {injective,\\ not surjective};
+  % surjective, not injective
+  \begin{scope}[xshift=4.6cm]
+    \node[set] at (0,0) {}; \node[set] at (2.4,0) {};
+    \node (a1) at (0,0.7) {$1$}; \node (a2) at (0,0) {$2$}; \node (a3) at (0,-0.7) {$3$};
+    \node (b1) at (2.4,0.4) {$p$}; \node (b2) at (2.4,-0.4) {$q$};
+    \draw[map] (a1) -- (b1); \draw[map] (a2) -- (b1); \draw[map] (a3) -- (b2);
+    \node[font=\small, align=center] at (1.2,-1.85) {surjective,\\ not injective};
+  \end{scope}
+  % bijective
+  \begin{scope}[xshift=9.2cm]
+    \node[set] at (0,0) {}; \node[set] at (2.4,0) {};
+    \node (a1) at (0,0.7) {$1$}; \node (a2) at (0,0) {$2$}; \node (a3) at (0,-0.7) {$3$};
+    \node (b1) at (2.4,0.7) {$p$}; \node (b2) at (2.4,0) {$q$}; \node (b3) at (2.4,-0.7) {$r$};
+    \draw[map, thmc] (a1) -- (b2); \draw[map, thmc] (a2) -- (b1); \draw[map, thmc] (a3) -- (b3);
+    \node[font=\small, align=center] at (1.2,-1.85) {bijective\\ \phantom{x}};
+  \end{scope}
+\end{tikzpicture}
+```
+
+Three functions from a domain (left oval) to a codomain (right oval)
+
+:::
+
 ::: {.remark name="Permutation"}
 
 A bijection $f: A \to A$ (domain = codomain) is also called a *permutation* of $A$ – usually reserved for finite $A$.

@@ -51,6 +51,26 @@ The equivalence classes of congruence mod $n$ are the *residue classes* $[a]=a+n
 
 :::
 
+::: {#fig-modular-arithmetic-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \draw (0,0) circle (1.6);
+  \foreach \k in {0,...,11} {
+    \node[dot] at ({90-30*\k}:1.6) {};
+    \node at ({90-30*\k}:2.0) {$\k$};
+  }
+  \node[dot, fill=thmc, minimum size=7pt] at ({90-30*9}:1.6) {};
+  \node[dot, fill=thmc, minimum size=7pt] at ({90-30*2}:1.6) {};
+  \draw[map, thmc, line width=1.2pt] ({90-30*9}:1.2) arc[start angle={90-30*9}, end angle={90-30*14}, radius=1.2];
+  \node[text=thmc] at (0,0) {$+5$};
+\end{tikzpicture}
+```
+
+$\mathbb{Z}_{12}$ drawn as a clock: five steps on from $9$ lands on $2$, since $9+5=14\equiv2\pmod{12}$
+
+:::
+
 ::: {.remark name="Equation in $\mathbb{Z}_n$ vs.\ congruence"}
 
 In $\mathbb{Z}_4$, $2+3=1$, since $5\bmod4=1$. This is different from the congruence $2+3\equiv1\pmod4$: the congruence only says that $2+3$ and $1$ lie in the same class, so $2+3\equiv37\pmod4$ is also true, while “$2+3=37$ in $\mathbb{Z}_4$” makes no sense ($37\notin\mathbb{Z}_4$).

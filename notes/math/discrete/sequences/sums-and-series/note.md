@@ -55,6 +55,27 @@ Write the sum $S$ forwards and backwards and add term by term. Each of the $n$ p
 
 :::
 
+::: {#fig-sums-and-series-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.55cm, y=0.55cm]
+  \foreach \k in {1,...,5} {
+    \foreach \j in {1,...,\k}
+      \filldraw[fill=defc!45, draw=white, line width=1.2pt] (\k-1,\j-1) rectangle (\k,\j);
+    \pgfmathtruncatemacro{\s}{\k+1}
+    \foreach \j in {\s,...,6}
+      \filldraw[fill=thmc!35, draw=white, line width=1.2pt] (\k-1,\j-1) rectangle (\k,\j);
+  }
+  \draw (0,0) rectangle (5,6);
+  \node[below] at (2.5,0) {$n=5$};
+  \node[left] at (0,3) {$n+1=6$};
+\end{tikzpicture}
+```
+
+Two copies of $1+2+3+4+5$ (blue, and the same staircase turned upside down) fill a $5\times6$ rectangle, so the sum is $\frac{5\cdot6}{2}=15$
+
+:::
+
 ::: {#exm-sums-and-series-1 .example}
 
 $1+3+5+\cdots+99$ has $50$ terms, so it equals $50\cdot\frac{1+99}{2}=2500=50^2$.

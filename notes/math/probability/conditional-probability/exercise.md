@@ -11,7 +11,7 @@ independently with survival probability $p$. Consider the network
 
 ```{=latex}
 \begin{center}
-    \begin{tikzpicture}[scale=0.9,every node/.style={circle,fill,inner sep=1.5pt}]
+    \begin{tikzpicture}[scale=0.9, dotgraph]
         \node[label=left:$S$] (S) at (0,0) {};
         \node[label=above:$M$] (M) at (2,1) {};
         \node[label=below:$N$] (N) at (2,-1) {};

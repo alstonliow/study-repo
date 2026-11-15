@@ -25,6 +25,29 @@ For $A = \{a,b,c\}$: $\{\{a,c\},\{b\}\}$ and $\{\{a\},\{b\},\{c\}\}$ are partiti
 
 :::
 
+::: {#fig-partitions-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \draw[ink, rounded corners=6pt] (0,0) rectangle (3,2.3);
+  \draw[regionA] (0.25,1.2) rectangle (2.75,2.05);
+  \draw[regionB] (1.0,0.25) rectangle (2.0,0.95);
+  \node at (0.9,1.62) {$a$}; \node at (2.1,1.62) {$c$}; \node at (1.5,0.6) {$b$};
+  \node[font=\small] at (1.5,-0.4) {a partition};
+  \begin{scope}[xshift=4.2cm]
+    \draw[ink, rounded corners=6pt] (0,0) rectangle (3,2.3);
+    \filldraw[draw=defc!75, fill=defc, fill opacity=0.12] (1.05,1.15) ellipse (0.95 and 0.55);
+    \filldraw[draw=thmc!75, fill=thmc, fill opacity=0.12] (1.95,1.15) ellipse (0.95 and 0.55);
+    \node at (0.55,1.15) {$a$}; \node at (1.5,1.15) {$b$}; \node at (2.45,1.15) {$c$};
+    \node[font=\small] at (1.5,-0.4) {not a partition};
+  \end{scope}
+\end{tikzpicture}
+```
+
+$\{\{a,c\},\{b\}\}$ is a partition of $\{a,b,c\}$ (left); $\{\{a,b\},\{b,c\}\}$ is not, because the parts overlap at $b$ (right)
+
+:::
+
 ::: {#def-coarsest-and-finest-partitions .definition name="Coarsest and finest partitions"}
 
 For any $A$: the *coarsest* partition is $\{A\}$ (one part, everything together); the *finest* partition is $\{\{a\} : a \in A\}$ (one singleton part per element). If $|A|=1$ these coincide; otherwise they are the two extremes, with every other partition of $A$ intermediate between them.
