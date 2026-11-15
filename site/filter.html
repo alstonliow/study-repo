@@ -159,6 +159,19 @@
     }
   }
 
+  // The course tree is built after Quarto has scrolled the (now hidden) topic
+  // tree, so bring the current page's entry into view ourselves.
+  function scrollToActive(tree) {
+    const a = tree.querySelector("a.sidebar-link.active");
+    const box = document.getElementById("quarto-sidebar");
+    if (!a || !box) return;
+    const r = a.getBoundingClientRect(), b = box.getBoundingClientRect();
+    // leave it alone when already comfortably visible; otherwise put it a third of the way down
+    if (r.top < b.top || r.bottom > b.bottom - box.clientHeight / 4) {
+      box.scrollTop += r.top - b.top - box.clientHeight / 3;
+    }
+  }
+
   function apply(data, sel) {
     const active = sel.length > 0;
     // sidebar: topic order when no filter, course order when filtered
@@ -168,6 +181,15 @@
       if (active) {
         courseTree = buildCourseTree(data, sel);
         topicTree.after(courseTree);
+      }
+      const tree = courseTree || topicTree;
+      {
+        scrollToActive(tree);
+        // run again once the page has finished loading: fonts, maths and
+        // Quarto's own sidebar scroll can still move things after this point
+        if (document.readyState !== "complete") {
+          window.addEventListener("load", () => requestAnimationFrame(() => scrollToActive(tree)), { once: true });
+        }
       }
     }
     applyNav(data, sel);
