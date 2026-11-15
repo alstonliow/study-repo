@@ -32,6 +32,7 @@ format:
       - filter.html
       - progress.html
       - summary.html
+      - export-builder.html
       - pseudocode.html
     filters:
       - list-delims.lua

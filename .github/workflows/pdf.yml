@@ -1,0 +1,58 @@
+# Build one PDF on demand with LaTeX (build/make_pdf.py).
+# The website's Export page writes the options for you: copy them, then
+# Actions -> Build PDF -> Run workflow -> paste -> Run. When the run finishes,
+# download the PDF from the run's "Artifacts". Only people with write access to
+# the repository can run it. Read-only: never commits or pushes.
+name: Build PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      options:
+        description: "Options for build/make_pdf.py (copy them from the Export page)"
+        required: true
+        default: "--scope book"
+
+permissions:
+  contents: read
+
+jobs:
+  pdf:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.11.9
+
+      - name: Install TeX
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
+            texlive-pictures texlive-science texlive-fonts-recommended \
+            texlive-xetex fonts-lmodern lmodern
+
+      # The options arrive through an environment variable and are split by
+      # Python (shlex), never by the shell, so they cannot run commands.
+      - name: Build PDF
+        env:
+          OPTIONS: ${{ inputs.options }}
+        run: |
+          python3 -c 'import os, shlex, subprocess, sys
+          args = [a for a in shlex.split(os.environ["OPTIONS"]) if a not in ("--all-presets", "--keep")]
+          sys.exit(subprocess.call([sys.executable, "build/make_pdf.py", *args, "--name", "custom"]))'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdf
+          path: out/pdf/custom*.pdf
+          retention-days: 7

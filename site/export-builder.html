@@ -1,0 +1,419 @@
+<!-- Export page (site/export.qmd, meta/SPEC.md §15). Active only on pages with
+     .export-builder. The reader ticks what to print; "Preview" fetches the
+     chosen note pages, keeps the chosen blocks and assembles one document in
+     #export-output; "Save as PDF" prints it with the browser. The same choices
+     are also written as options for build/make_pdf.py, to build a LaTeX PDF on
+     GitHub (.github/workflows/pdf.yml). Choices are kept per browser.
+     (Not named export.html: Quarto would treat it as the output of export.qmd.) -->
+<style>
+  .export-builder { font: 0.88rem/1.5 "Source Sans 3", system-ui, sans-serif; margin: 0.6rem 0 1.4rem; }
+  .export-builder fieldset { border: 1px solid var(--rule, #ddd); border-radius: 4px; padding: 0.55rem 0.9rem 0.7rem; margin: 0 0 0.8rem; }
+  .export-builder legend { float: none; width: auto; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.07em;
+    text-transform: uppercase; color: var(--notec, #777); padding: 0 0.3rem; margin: 0; }
+  .export-builder label { cursor: pointer; margin-right: 1rem; white-space: nowrap; }
+  .export-builder input { margin-right: 0.3rem; vertical-align: -1px; }
+  .export-builder .ex-row { margin: 0.15rem 0; }
+  .export-builder .ex-row > b { display: inline-block; min-width: 7.5rem; font-weight: 600; }
+  .export-builder .ex-tree { max-height: 22rem; overflow: auto; padding-right: 0.4rem; }
+  .export-builder details { margin: 0.1rem 0; }
+  .export-builder details > summary { cursor: pointer; color: var(--bs-body-color); }
+  .export-builder details .ex-notes { padding: 0.15rem 0 0.3rem 1.6rem; columns: 2 18rem; }
+  .export-builder details .ex-notes label { display: block; white-space: normal; }
+  .export-builder .ex-note { color: var(--notec, #777); font-size: 0.8rem; }
+  .export-builder .ex-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-top: 0.4rem; }
+  .export-builder button { font: inherit; padding: 0.3rem 0.9rem; border: 1px solid var(--rule, #ccc); border-radius: 3px;
+    background: none; color: inherit; cursor: pointer; }
+  .export-builder button.primary { border-color: var(--accent, #2f5d8f); color: var(--accent, #2f5d8f); font-weight: 600; }
+  .export-builder .ex-status { color: var(--notec, #777); }
+  .export-builder textarea { width: 100%; font: 0.8rem/1.4 ui-monospace, Menlo, monospace; padding: 0.4rem; margin-top: 0.3rem;
+    border: 1px solid var(--rule, #ccc); border-radius: 3px; background: none; color: inherit; }
+  #export-output .ex-doc-title { font-size: 2rem; margin: 1rem 0 0.5rem; }
+  #export-output .ex-toc { margin: 0 0 2rem; }
+  #export-output .ex-toc ol { padding-left: 1.2rem; }
+  #export-output h1.ex-chapter { font-size: 1.7rem; margin-top: 2.4rem; border-bottom: 1px solid var(--rule); padding-bottom: 0.2rem; }
+  #export-output h2.ex-note { font-size: 1.3rem; margin-top: 1.8rem; }
+  #export-output .ex-solution-label { font-style: italic; }
+  /* exercises as in a textbook: no grey boxes; number left, source right */
+  #export-output .problem { background: none !important; padding: 0 !important; }
+  #export-output .problem-group { margin: 0.4rem 0 1.2rem; }
+  #export-output .ex-exercise-head { display: flex; justify-content: space-between; font-weight: 600; margin-top: 1.1rem; color: var(--thmc); }
+  #export-output .ex-exercise-head span:last-child { font-weight: 400; font-style: italic; font-size: 0.85em; color: var(--notec); }
+  /* plain style: black and white */
+  #export-output.ex-plain .definition, #export-output.ex-plain .theorem, #export-output.ex-plain .proposition,
+  #export-output.ex-plain .lemma, #export-output.ex-plain .corollary, #export-output.ex-plain .example
+    { background: none !important; border-left-color: #999 !important; }
+  #export-output.ex-plain .theorem-title, #export-output.ex-plain .ex-exercise-head { color: inherit !important; }
+  @media print {
+    body.ex-printing #quarto-sidebar, body.ex-printing #quarto-margin-sidebar, body.ex-printing .navbar,
+    body.ex-printing #quarto-header, body.ex-printing .export-builder, body.ex-printing #title-block-header,
+    body.ex-printing .summary-intro, body.ex-printing nav.page-navigation, body.ex-printing .page-footer,
+    body.ex-printing .quarto-title-breadcrumbs { display: none !important; }
+    body.ex-printing { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    body.ex-printing main.content, body.ex-printing #quarto-content { max-width: none !important; margin: 0 !important; padding: 0 !important; display: block !important; }
+    #export-output .definition, #export-output .theorem, #export-output .proposition, #export-output .lemma,
+    #export-output .corollary, #export-output .example { break-inside: avoid; }
+    #export-output h1, #export-output h2 { break-after: avoid; }
+    #export-output.ex-newpage h1.ex-chapter { break-before: page; }
+    #export-output a { color: inherit !important; text-decoration: none !important; }
+  }
+</style>
+<script>
+(function () {
+  const KEY = "study-export";
+  const TYPES = [["def", "Definitions"], ["result", "Theorems, propositions, lemmas"], ["proof", "Proofs"],
+                 ["example", "Examples"], ["remark", "Remarks"], ["figure", "Figures"],
+                 ["exercise", "Exercises"], ["synthesis", "Synthesis problems"]];
+  const DEFAULT = { mode: "branch", branches: [], chapters: [], notes: {}, types: TYPES.map(t => t[0]),
+    solutions: "end", levels: ["easy", "medium", "hard", "unrated"], states: ["new", "learned", "reviewing", "mastered"],
+    courseOnly: false, style: "color", paper: "a4", toc: true, newpage: true, layout: "book" };
+
+  function load() {
+    try { return Object.assign({}, DEFAULT, JSON.parse(localStorage.getItem(KEY) || "{}")); }
+    catch (e) { return Object.assign({}, DEFAULT); }
+  }
+  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { /* private mode */ } }
+  const el = (tag, attrs = {}, ...kids) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") e.className = v; else if (k in e) e[k] = v; else e.setAttribute(k, v);
+    }
+    kids.forEach(k => e.append(k));
+    return e;
+  };
+  function check(name, value, checked, text, onchange, type = "checkbox") {
+    const i = el("input", { type, name, value, checked });
+    i.addEventListener("change", onchange);
+    return el("label", {}, i, text);
+  }
+
+  // ---------------------------------------------------------------- the form
+  function build(box, data) {
+    const s = load();
+    const course = data.courses[0];
+    const branches = Object.keys(data.branchTitles);
+    if (!s.branches.length && !s.chapters.length) s.branches = branches.slice(0, 1);
+    const change = () => { save(s); updateArgs(); };
+
+    // what: branches or course chapters, each expandable to its notes
+    const what = el("fieldset", {}, el("legend", {}, "What"));
+    const modeRow = el("div", { class: "ex-row" });
+    modeRow.append(check("ex-mode", "branch", s.mode === "branch", "By branch", () => { s.mode = "branch"; drawTree(); change(); }, "radio"));
+    if (course) modeRow.append(check("ex-mode", "course", s.mode === "course", `By ${course.code} chapter (course order)`,
+      () => { s.mode = "course"; drawTree(); change(); }, "radio"));
+    const tree = el("div", { class: "ex-tree" });
+    what.append(modeRow, tree);
+
+    const openGroups = new Set();   // keep expanded groups open across redraws
+    function group(key, title, noteIds, selected, onToggle) {
+      const det = el("details", { open: openGroups.has(key) });
+      det.addEventListener("toggle", () => { det.open ? openGroups.add(key) : openGroups.delete(key); });
+      const all = el("input", { type: "checkbox", checked: selected });
+      all.addEventListener("click", ev => ev.stopPropagation());
+      all.addEventListener("change", () => { onToggle(all.checked); s.notes[key] = null; drawTree(); change(); });
+      const picked = s.notes[key];
+      det.append(el("summary", {}, all, " " + title,
+        el("span", { class: "ex-note" }, picked ? `  (${picked.length} of ${noteIds.length} topics)` : `  (${noteIds.length} topics)`)));
+      const list = el("div", { class: "ex-notes" });
+      noteIds.forEach(nid => {
+        const on = selected && (!picked || picked.includes(nid));
+        list.append(check("ex-note", nid, on, data.titles[nid] || nid, ev => {
+          let cur = s.notes[key] || noteIds.slice();
+          cur = ev.target.checked ? [...new Set([...cur, nid])] : cur.filter(x => x !== nid);
+          s.notes[key] = cur.length === noteIds.length ? null : cur;
+          if (cur.length && !selected) onToggle(true);
+          drawTree(); change();
+        }));
+      });
+      det.append(list);
+      return det;
+    }
+    function drawTree() {
+      tree.innerHTML = "";
+      if (s.mode === "branch") {
+        branches.forEach(b => tree.append(group("b:" + b, data.branchTitles[b], data.branches[b] || [], s.branches.includes(b),
+          on => { s.branches = on ? [...new Set([...s.branches, b])] : s.branches.filter(x => x !== b); })));
+      } else {
+        (data.order[course.id] || []).forEach(ch => {
+          const ids = ch.pages.map(p => p.replace(/^notes\//, "").replace(/\.html$/, ""));
+          tree.append(group("c:" + ch.num, ch.title, ids, s.chapters.includes(ch.num),
+            on => { s.chapters = on ? [...new Set([...s.chapters, ch.num])] : s.chapters.filter(x => x !== ch.num); }));
+        });
+      }
+    }
+    drawTree();
+
+    // include
+    const inc = el("fieldset", {}, el("legend", {}, "Include"));
+    TYPES.forEach(([v, t]) => inc.append(check("ex-type", v, s.types.includes(v), t, ev => {
+      s.types = ev.target.checked ? [...s.types, v] : s.types.filter(x => x !== v); change();
+    })));
+
+    // exercises
+    const ex = el("fieldset", {}, el("legend", {}, "Exercises"));
+    const solRow = el("div", { class: "ex-row" }, el("b", {}, "Solutions"));
+    [["inline", "after each exercise"], ["end", "at the end"], ["none", "none"]].forEach(([v, t]) =>
+      solRow.append(check("ex-sol", v, s.solutions === v, t, () => { s.solutions = v; change(); }, "radio")));
+    const lvRow = el("div", { class: "ex-row" }, el("b", {}, "Levels"));
+    [["easy", "Easy"], ["medium", "Medium"], ["hard", "Hard"], ["unrated", "Unrated"]].forEach(([v, t]) =>
+      lvRow.append(check("ex-level", v, s.levels.includes(v), t, ev => {
+        s.levels = ev.target.checked ? [...s.levels, v] : s.levels.filter(x => x !== v); change();
+      })));
+    ex.append(solRow, lvRow);
+
+    // filters
+    const fl = el("fieldset", {}, el("legend", {}, "Filters"));
+    const stRow = el("div", { class: "ex-row" }, el("b", {}, "Progress"));
+    [["new", "New"], ["learned", "Learned"], ["reviewing", "Reviewing"], ["mastered", "Mastered"]].forEach(([v, t]) =>
+      stRow.append(check("ex-state", v, s.states.includes(v), t, ev => {
+        s.states = ev.target.checked ? [...s.states, v] : s.states.filter(x => x !== v); change();
+      })));
+    stRow.append(el("span", { class: "ex-note" }, "browser PDF only"));
+    fl.append(stRow);
+    if (course) fl.append(el("div", { class: "ex-row" }, el("b", {}, "Scope"),
+      check("ex-course", "1", s.courseOnly, `Only ${course.code} content (leave out extra)`, ev => { s.courseOnly = ev.target.checked; change(); })));
+
+    // layout
+    const lay = el("fieldset", {}, el("legend", {}, "Layout"));
+    const r1 = el("div", { class: "ex-row" }, el("b", {}, "Style"));
+    [["color", "Colour (as the website)"], ["plain", "Black and white"]].forEach(([v, t]) =>
+      r1.append(check("ex-style", v, s.style === v, t, () => { s.style = v; change(); }, "radio")));
+    const r2 = el("div", { class: "ex-row" }, el("b", {}, "Paper"));
+    [["a4", "A4"], ["letter", "Letter"]].forEach(([v, t]) =>
+      r2.append(check("ex-paper", v, s.paper === v, t, () => { s.paper = v; change(); }, "radio")));
+    const r3 = el("div", { class: "ex-row" }, el("b", {}, "Pages"),
+      check("ex-toc", "1", s.toc, "Table of contents", ev => { s.toc = ev.target.checked; change(); }),
+      check("ex-newpage", "1", s.newpage, "Each chapter on a new page", ev => { s.newpage = ev.target.checked; change(); }));
+    const r4 = el("div", { class: "ex-row" }, el("b", {}, "LaTeX layout"));
+    [["book", "Book"], ["document", "Document"]].forEach(([v, t]) =>
+      r4.append(check("ex-layout", v, s.layout === v, t, () => { s.layout = v; change(); }, "radio")));
+    r4.append(el("span", { class: "ex-note" }, "LaTeX PDF only"));
+    lay.append(r1, r2, r3, r4);
+
+    // actions
+    const status = el("span", { class: "ex-status" });
+    const preview = el("button", { type: "button" }, "Preview");
+    const print = el("button", { type: "button", class: "primary" }, "Save as PDF");
+    preview.addEventListener("click", () => assemble(data, s, status));
+    print.addEventListener("click", async () => { await assemble(data, s, status); printNow(s); });
+    const acts = el("div", { class: "ex-actions" }, preview, print, status);
+
+    // LaTeX options
+    const tex = el("fieldset", {}, el("legend", {}, "LaTeX PDF (built on GitHub)"));
+    const args = el("textarea", { rows: 3, readOnly: true });
+    const copy = el("button", { type: "button" }, "Copy options");
+    copy.addEventListener("click", () => { args.select(); navigator.clipboard && navigator.clipboard.writeText(args.value); });
+    const repo = (data.repoUrl || "").replace(/\/$/, "");
+    tex.append(el("div", { class: "ex-note" },
+      "Copy the options, open the workflow, choose Run workflow, paste them and run. The PDF appears under Artifacts when the run finishes (about two minutes). Only the repository owner can run it."),
+      args, el("div", { class: "ex-actions" }, copy,
+        repo ? el("a", { href: repo + "/actions/workflows/pdf.yml", target: "_blank", rel: "noopener" }, "Open the Build PDF workflow →") : ""));
+
+    function updateArgs() {
+      const a = [];
+      if (s.mode === "course" && course) {
+        a.push(`--scope course:${course.id}`);
+        if (s.chapters.length) a.push(`--chapters ${s.chapters.slice().sort((x, y) => x - y).join(",")}`);
+      } else {
+        a.push("--scope book");
+        if (s.branches.length) a.push(`--branches ${s.branches.join(",")}`);
+        if (s.courseOnly && course) a.push(`--course ${course.id}`);
+      }
+      const picked = selectedNotes(data, s, true);
+      if (picked) a.push(`--notes ${picked.join(",")}`);
+      if (s.types.length !== TYPES.length) a.push(`--include ${s.types.join(",")}`);
+      a.push(`--solutions ${s.solutions}`);
+      if (s.courseOnly) a.push("--extra omit");
+      if (s.levels.length !== 4) a.push(`--level ${s.levels.join(",")}`);
+      a.push(`--style ${s.style}`, `--paper ${s.paper}`, `--layout ${s.layout}`, `--toc ${s.toc ? "yes" : "no"}`);
+      args.value = a.join(" ");
+    }
+    box.append(what, inc, ex, fl, lay, acts, tex);
+    updateArgs();
+  }
+
+  // chosen chapters: [{title, notes: [ids], branch?}]
+  function selection(data, s) {
+    const out = [];
+    if (s.mode === "course") {
+      const c = data.courses[0];
+      (data.order[c.id] || []).forEach(ch => {
+        if (!s.chapters.includes(ch.num)) return;
+        let ids = ch.pages.map(p => p.replace(/^notes\//, "").replace(/\.html$/, ""));
+        const picked = s.notes["c:" + ch.num];
+        if (picked) ids = ids.filter(i => picked.includes(i));
+        // course numbering (chapter.k by position in the chapter), as on the website when filtered
+        const all = ch.pages.map(p => p.replace(/^notes\//, "").replace(/\.html$/, ""));
+        const nums = Object.fromEntries(all.map((id, k) => [id, `${ch.num}.${k + 1}`]));
+        out.push({ title: ch.title, notes: ids, nums });
+      });
+    } else {
+      Object.keys(data.branchTitles).forEach(b => {
+        if (!s.branches.includes(b)) return;
+        let ids = data.branches[b] || [];
+        const picked = s.notes["b:" + b];
+        if (picked) ids = ids.filter(i => picked.includes(i));
+        out.push({ title: data.branchTitles[b], notes: ids, branch: b });
+      });
+    }
+    return out;
+  }
+  // the explicit --notes list, or null when only whole chapters are chosen
+  function selectedNotes(data, s, onlyPartial) {
+    const keys = Object.entries(s.notes).filter(([k, v]) => v && (s.mode === "course" ? k.startsWith("c:") : k.startsWith("b:")));
+    if (onlyPartial && !keys.length) return null;
+    return selection(data, s).flatMap(c => c.notes);
+  }
+
+  // ---------------------------------------------------------------- assembly
+  const BLOCK = { def: ".definition", result: ".theorem, .proposition, .lemma, .corollary", example: ".example",
+                  remark: ".remark, .claim", figure: ".quarto-float, .tikz-figure" };
+  const stateOf = item => (window.StudyProgress ? window.StudyProgress.stateOf(item) : "new");
+
+  async function fetchMain(url) {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(url);
+    const doc = new DOMParser().parseFromString(await r.text(), "text/html");
+    const main = doc.querySelector("main") || doc.body;
+    // absolute addresses for images and links
+    main.querySelectorAll("[src]").forEach(e => e.setAttribute("src", new URL(e.getAttribute("src"), url).href));
+    main.querySelectorAll("a[href]").forEach(e => {
+      const h = e.getAttribute("href");
+      if (!h.startsWith("#")) e.setAttribute("href", new URL(h, url).href);
+    });
+    return main;
+  }
+
+  function filterNote(main, s, course, solutionsOut, noteTitle) {
+    main.querySelectorAll("#title-block-header, .note-meta, nav.page-navigation, .quarto-title-banner").forEach(e => e.remove());
+    if (s.courseOnly && course) {                      // course scope
+      main.querySelectorAll(".scope-block[data-courses], .problem-group[data-courses]").forEach(e => {
+        if (!e.dataset.courses.split(/\s+/).includes(course.id)) e.remove();
+      });
+    }
+    const outside = e => !e.closest(".problem-group");
+    for (const [type, sel] of Object.entries(BLOCK)) { // block types, outside exercises
+      if (s.types.includes(type)) continue;
+      main.querySelectorAll(sel).forEach(e => {
+        if (!outside(e)) return;
+        const wrap = e.parentElement && e.parentElement.classList.contains("block") ? e.parentElement : e;
+        const n = wrap.nextElementSibling;             // a proof belongs to the block before it
+        if (type !== "remark" && n && n.matches(".proof:not(.remark)")) n.remove();
+        wrap.remove();
+      });
+    }
+    if (!s.types.includes("proof")) main.querySelectorAll(".proof:not(.remark)").forEach(e => { if (outside(e)) e.remove(); });
+    main.querySelectorAll(".problem-group").forEach(g => {
+      const keep = s.types.includes("exercise") && s.levels.includes(g.dataset.level || "unrated")
+        && s.states.includes(stateOf(g.dataset.item));
+      if (!keep) g.remove(); else formatExercise(g, s, solutionsOut, noteTitle);
+    });
+    main.querySelectorAll("section").forEach(sec => {  // sections left empty
+      const h = sec.querySelector(":scope > h2");
+      if (h && /(^|\s)(Examples|Exercises)$/.test(h.textContent.trim()) &&
+          !sec.querySelector(".example, .problem-group")) sec.remove();
+    });
+    return main;
+  }
+
+  function formatExercise(g, s, solutionsOut, noteTitle) {
+    const prob = g.querySelector(".problem");
+    const title = prob && prob.querySelector(".problem-title");
+    const source = prob && prob.querySelector(".problem-source");
+    const level = prob && prob.querySelector(".level-badge");
+    if (title) {
+      const head = el("div", { class: "ex-exercise-head" }, el("span", {}, title.textContent),
+        el("span", {}, [source && source.textContent, level && level.textContent].filter(Boolean).join(" · ")));
+      const p = title.closest("p");
+      if (p) p.replaceWith(head); else prob.prepend(head);
+    }
+    g.querySelectorAll(".callout").forEach(c => {
+      const body = c.querySelector(".callout-body-container, .callout-body") || c;
+      const raw = (c.querySelector(".callout-title-container") || {}).textContent || "Solution";
+      const label = raw.trim().replace(/^(Tip|Note|Warning|Important|Caution)(?=[A-Z])/, "");  // hidden icon text
+      const sol = el("div", { class: "ex-solution" }, el("p", { class: "ex-solution-label" }, label.trim().replace(/\s+/g, " ") + "."));
+      sol.append(...body.childNodes);
+      if (s.solutions === "inline") c.replaceWith(sol);
+      else {
+        c.remove();
+        if (s.solutions === "end") solutionsOut.push(
+          el("p", {}, el("strong", {}, `${noteTitle}, ${title ? title.textContent : "exercise"}`)), sol);
+      }
+    });
+  }
+
+  async function assemble(data, s, status) {
+    const out = document.getElementById("export-output");
+    const course = data.courses[0];
+    const chapters = selection(data, s);
+    if (!chapters.length) { status.textContent = "Choose at least one branch or chapter."; return; }
+    status.textContent = "Assembling…";
+    out.innerHTML = "";
+    out.className = (s.style === "plain" ? "ex-plain" : "") + (s.newpage ? " ex-newpage" : "");
+    const root = window.StudySite.root;
+    const solutions = [];
+    const tocList = el("ol");
+    let count = 0;
+    for (const ch of chapters) {
+      out.append(el("h1", { class: "ex-chapter" }, ch.title));
+      const sub = el("ol");
+      for (const nid of ch.notes) {
+        if (!s.states.includes(stateOf(nid))) continue;
+        try {
+          const main = await fetchMain(new URL(`notes/${nid}.html`, root).href);
+          let title = data.titles[nid] || nid;
+          if (ch.nums && ch.nums[nid]) {               // renumber headings from topic to course numbering
+            const from = (title.match(/^\d+(\.\d+)*/) || [""])[0], to = ch.nums[nid];
+            title = to + title.slice(from.length);
+            if (from) main.querySelectorAll("h2, h3, h4").forEach(h => {
+              const w = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
+              for (let n = w.nextNode(); n; n = w.nextNode()) {
+                if (!n.textContent.trim()) continue;
+                const t = n.textContent.replace(/^(\s*)(\d+(?:\.\d+)*)/, (m, sp, num) =>
+                  num === from || num.startsWith(from + ".") ? sp + to + num.slice(from.length) : m);
+                n.textContent = t;
+                break;
+              }
+            });
+          }
+          filterNote(main, s, course, solutions, title);
+          out.append(el("h2", { class: "ex-note" }, title), ...main.childNodes);
+          sub.append(el("li", {}, title));
+          status.textContent = `Assembling… ${++count} topics`;
+        } catch (e) { console.warn("export: could not load", nid, e); }
+      }
+      if (ch.branch && s.types.includes("synthesis") && (data.reviews || []).includes(ch.branch)) {
+        try {
+          const main = await fetchMain(new URL(`notes/${ch.branch}/summary.html`, root).href);
+          const holder = el("div");
+          main.querySelectorAll(".problem-group.synthesis").forEach(g => holder.append(g));
+          filterNote(holder, s, course, solutions, ch.title + ", synthesis");
+          if (holder.children.length) out.append(el("h2", { class: "ex-note" }, "Synthesis problems"), ...holder.childNodes);
+        } catch (e) { console.warn("export: no synthesis page for", ch.branch); }
+      }
+      tocList.append(el("li", {}, ch.title, sub));
+    }
+    if (solutions.length) out.append(el("h1", { class: "ex-chapter" }, "Solutions"), ...solutions);
+    if (s.toc) out.prepend(el("div", { class: "ex-toc" }, tocList));
+    out.prepend(el("div", { class: "ex-doc-title" }, "Study Notes"));
+    // typeset algorithms and maths in the new content
+    try { window.pseudocode && window.pseudocode.renderClass("pseudocode", { lineNumber: true, lineNumberPunc: "", scopeLines: true }); } catch (e) { /* optional */ }
+    if (window.MathJax && window.MathJax.typesetPromise) await window.MathJax.typesetPromise([out]);
+    status.textContent = `${count} topics ready.`;
+  }
+
+  function printNow(s) {
+    let page = document.getElementById("ex-page-size");
+    if (!page) { page = el("style", { id: "ex-page-size" }); document.head.append(page); }
+    page.textContent = `@page { size: ${s.paper === "letter" ? "letter" : "A4"}; margin: 2cm 2.2cm; }`;
+    document.body.classList.add("ex-printing");
+    const done = () => { document.body.classList.remove("ex-printing"); window.removeEventListener("afterprint", done); };
+    window.addEventListener("afterprint", done);
+    window.print();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const box = document.querySelector(".export-builder");
+    if (box) window.StudySite.data.then(d => { if (d) build(box, d); });
+  });
+})();
+</script>

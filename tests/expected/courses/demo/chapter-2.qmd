@@ -22,7 +22,7 @@ title: 'DEMO100 Chapter 2 · More: Summary'
 
 ## Definitions and results
 
-### [2.1 Third note](/notes/t/beta/third.qmd)
+### 2.1 Third note [→](/notes/t/beta/third.qmd){.summary-src title="Open the note"}
 
 ::: {.summary-item .k-def data-kind="def" data-item="t/beta/third"}
 [Definition]{.summary-kind} Third [→](/notes/t/beta/third.qmd#def-third){.summary-src title="2.1 Third note"}

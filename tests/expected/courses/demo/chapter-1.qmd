@@ -22,7 +22,7 @@ title: 'DEMO100 Chapter 1 · Basics: Summary'
 
 ## Definitions and results
 
-### [1.1 First note](/notes/t/alpha/first.qmd)
+### 1.1 First note [→](/notes/t/alpha/first.qmd){.summary-src title="Open the note"}
 
 ::: {.summary-item .k-def data-kind="def" data-item="t/alpha/first"}
 [Definition]{.summary-kind} Widget [→](/notes/t/alpha/first.qmd#def-widget){.summary-src title="1.1 First note"}
@@ -37,7 +37,7 @@ $$ w = 1. $$
 Every widget is a widget.
 :::
 
-### [1.2 Second note](/notes/t/alpha/second.qmd)
+### 1.2 Second note [→](/notes/t/alpha/second.qmd){.summary-src title="Open the note"}
 
 ::: {.summary-item .k-thm data-kind="result" data-item="t/alpha/second"}
 [Theorem]{.summary-kind} Gadget theorem [→](/notes/t/alpha/second.qmd#thm-gadget){.summary-src title="1.2 Second note"}
@@ -47,7 +47,7 @@ Gadgets follow from [Definition (Widget)](/notes/t/alpha/first.qmd#def-widget).
 
 ## Exercises
 
-### [1.1 First note](/notes/t/alpha/first.qmd)
+### 1.1 First note [→](/notes/t/alpha/first.qmd){.summary-src title="Open the note"}
 
 :::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium"}
 ::: {#prob-first-01 .problem}

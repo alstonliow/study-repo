@@ -56,6 +56,11 @@ def item(note, d, ctx, courses: list[str]) -> str:
     return f"{fence} {{{cls} {attrs}}}\n{head}\n\n{body}\n{fence}\n"
 
 
+def heading(note, ctx) -> str:
+    """A plain sub-heading for a note, with a small link to it."""
+    return f"### {note.display_title} [→]({ctx.page_url(note.id)}){{.summary-src title=\"Open the note\"}}"
+
+
 def page(title: str, intro: str, notes: list, reviews: list, ctx, page_path: str,
          course=None, in_scope=None) -> str:
     """Markdown for one summary page.
@@ -77,7 +82,7 @@ def page(title: str, intro: str, notes: list, reviews: list, ctx, page_path: str
         items = statements(n, keep_block(n))
         if not items:
             continue
-        lines += [f"### [{n.display_title}]({ctx.page_url(n.id)})", ""]
+        lines += [heading(n, ctx), ""]
         for d in items:
             courses = None if course else ctx.block_courses(n, d.id)
             lines.append(ctx.transform(item(n, d, ctx, courses), NO_BLOCKS))
@@ -87,7 +92,7 @@ def page(title: str, intro: str, notes: list, reviews: list, ctx, page_path: str
         keep = (lambda n: lambda pid: in_scope(n, pid))(n) if course else None
         probs = ctx.render_problems(n, keep=keep)
         if probs.strip():
-            ex += [f"### [{n.display_title}]({ctx.page_url(n.id)})", "", ctx.transform(probs, NO_BLOCKS), ""]
+            ex += [heading(n, ctx), "", ctx.transform(probs, NO_BLOCKS), ""]
     if ex:
         lines += ["## Exercises", ""] + ex
 

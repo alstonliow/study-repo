@@ -70,7 +70,7 @@
 The $n$-th harmonic number $H_n$ is defined by
 $$H_n = 1+\frac12+\frac13+\cdots+\frac1n.$$
 
-# Main result: $H_n \ge \ln(n+1)$
+**Main result:** $H_n \ge \ln(n+1)$ for all $n\ge1$.
 
 ::: {.proof name="Proof (by induction on $n$)"}
 
@@ -98,7 +98,7 @@ $H_n \ge \ln(n+1)$ for all $n\ge1$.
 
 :::
 
-# Advanced afterthoughts
+**Advanced afterthoughts.**
 
 1.  The inequality $H_n\ge\ln(n+1)$ implies $H_n\ge\ln n$, since
     $\ln(n+1)\ge\ln n$. Trying to prove $H_n\ge\ln n$ *directly*
@@ -107,7 +107,10 @@ $H_n \ge \ln(n+1)$ for all $n\ge1$.
     $$\ln(n+1)-\ln n = \ln\left(1+\frac1n\right) \le \frac{1}{n+1},$$
     but $\ln(1+x)\le x$ only gives the weaker bound
     $\ln(1+\frac1n)\le\frac1n$, which is not tight enough (since
-    $\frac1n > \frac{1}{n+1}$). This illustrates that induction
+    $\frac1n > \frac{1}{n+1}$). In fact the needed inequality is
+    false: $\ln(1+x)\ge\frac{x}{1+x}$ gives
+    $\ln\left(1+\frac1n\right)\ge\frac{1}{n+1}$, with equality
+    never attained for $n\ge1$. This illustrates that induction
     sometimes requires proving something *stronger* than what
     one set out to prove — the extra “room” in $\ln(n+1)$
     compared to $\ln n$ is exactly what makes the induction go

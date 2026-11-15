@@ -306,6 +306,40 @@ class TestPdf(Repo):
         self.assertNotIn("@sec-t-alpha-first", md)
 
 
+class TestSelection(Repo):
+    def assemble(self, *args) -> str:
+        r = run("make_pdf.py", self.root, "--markdown-only", "--name", "t", *args)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        return (self.root / "out/pdf/t.qmd").read_text()
+
+    def test_branches_notes_and_types(self):
+        md = self.assemble("--branches", "alpha", "--notes", "t/alpha/second", "--include", "result,exercise")
+        self.assertIn("Second note", md)
+        self.assertNotIn("First note {#", md)
+        self.assertIn("Gadget theorem", md)
+        self.assertNotIn("Use @thm-widget", md)              # proofs left out
+        self.assertNotIn("Beyond the course", md)            # remarks left out
+
+    def test_exercise_numbers_start_at_one(self):
+        md = self.assemble("--only", "exercises", "--solutions", "none")
+        self.assertIn("\\exercisehead{1}", md)
+        self.assertIn("\\exercisehead{2}", md)
+
+    def test_unknown_note_is_refused(self):
+        r = run("make_pdf.py", self.root, "--markdown-only", "--notes", "t/nope")
+        self.assertNotEqual(r.returncode, 0)
+
+    def test_export_page_data(self):
+        site = generate(self.root)
+        self.assertTrue((site / "export.qmd").exists())
+        data = json.loads((site / "site-data.json").read_text())
+        self.assertEqual(data["titles"]["t/alpha/first"], "1.1 First note")
+        self.assertEqual(data["reviews"], ["t/alpha"])
+        page = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("[Exercise 1]", page)
+        self.assertIn("[Exercise 2]", page)
+
+
 def update_expected() -> None:
     tmp = Path(tempfile.mkdtemp(prefix="study-test-"))
     try:

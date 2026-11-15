@@ -27,6 +27,7 @@ site/_sidebar.yml
 site/site-data.json
 site/map.qmd
 site/downloads.qmd
+site/export.qmd
 site/pdf/
 
 # Claude Code and private planning files (kept local only)

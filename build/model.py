@@ -203,6 +203,13 @@ class Note:
                               if "solution" in a["classes"]]
         self.num = ""   # display number, set by the site build
 
+    def exercise_number(self, pid: str) -> int | None:
+        """Position (1, 2, 3, ...) of a problem among this note's exercises."""
+        for k, p in enumerate(self.problems, 1):
+            if p.id == pid:
+                return k
+        return None
+
     @property
     def has_note(self) -> bool:
         return "note.md" in self.files

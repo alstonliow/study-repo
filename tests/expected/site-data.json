@@ -71,5 +71,18 @@
   "t/alpha/second": [],
   "t/beta/third": []
  },
- "aliases": {}
+ "aliases": {},
+ "titles": {
+  "t/alpha/first": "1.1 First note",
+  "t/alpha/second": "1.2 Second note",
+  "t/beta/third": "2.1 Third note"
+ },
+ "branchTitles": {
+  "t/alpha": "1 Alpha",
+  "t/beta": "2 Beta"
+ },
+ "reviews": [
+  "t/alpha"
+ ],
+ "repoUrl": ""
 }

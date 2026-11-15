@@ -13,10 +13,20 @@ $A \triangle B = \{x : x \in A \text{ or } x \in B \text{ but not both}\}$ (excl
 
 :::
 
-::: venndiagram2sets
-:::
+::: {#fig-symmetric-difference-1}
+
+```{=latex}
+\begin{center}
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillOnlyA
+\fillOnlyB
+\end{venndiagram2sets}
+\end{center}
+```
 
 $A\triangle B$ (shaded)
+
+:::
 
 ::: {#prp-equivalent-forms .proposition name="Equivalent forms"}
 

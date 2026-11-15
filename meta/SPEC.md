@@ -373,7 +373,18 @@ Options: scope (book, branch, course), solutions (inline, end, separate,
 none), extra content (include, omit; needs a course), content (all, summaries,
 exercises), exercise levels, paper (A4, Letter), layout (book, document),
 margins, and style (color = the website's look; plain = black and white).
+Selection: branches, course chapters, single knowledge points, and block types
+(definitions, results, proofs, examples, remarks, figures, exercises, synthesis
+problems); table of contents on or off. Exercises are numbered 1, 2, 3, ... per
+knowledge point, everywhere, with their source beside the number.
 `make pdf` builds the common versions (presets in `make_pdf.py`), which CI
-publishes on the website's PDF page; any other combination is built locally.
+publishes on the website's PDF page.
+
+The website's **Export** page offers the same choices as checkboxes. It
+assembles the chosen content in the browser (also filtering by progress
+marks) and prints it with "Save as PDF"; it also writes the matching
+`make_pdf.py` options, which the owner can run on GitHub
+(`.github/workflows/pdf.yml`, "Build PDF") to get a LaTeX PDF of any
+combination.
 Figures use `build/figures.tex`, shared with the website. References to content
 that a PDF leaves out are printed as plain text.

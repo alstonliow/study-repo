@@ -6,7 +6,7 @@
 ::: {.solution for="prob-functions-08"}
 **(a)**
 
-#### Setup: grouping by length.
+**Setup: grouping by length.**
 
 For each $n\ge0$, there are $2^n$
 bitstrings of length $n$. We assign each bitstring a natural number
@@ -20,7 +20,7 @@ bitstrings of length $n$. We assign each bitstring a natural number
 | $\vdots$ |   $\vdots$    |       $\vdots$       |        $\vdots$        |
 |   $n$    |   $\cdots$    |        $2^n$         |        $\cdots$        |
 
-#### Defining $f_n$.
+**Defining $f_n$.**
 
 For $\{0,1\}^n$, the value of a string is a
 member of $\{0,1,\dots,2^n-1\}$. Define $f_n$ to be the value of
@@ -56,7 +56,7 @@ By induction, we know that $f_n$ is a bijection.
 
 :::
 
-#### Starting index of each length group.
+**Starting index of each length group.**
 
 Observe that, for
 length $=n$, the starting index is equal to the number of bitstrings of

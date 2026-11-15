@@ -163,7 +163,9 @@ follow. Add `--dry-run` to see what it would change.
 - Synthesis problems for a branch go in `notes/<branch>/review/exercise.md` and
   `solution.md`; they appear at the end of the branch's summary page.
 - Summary pages (one per branch, one per course chapter) are generated.
-- PDFs:
+- PDFs: on the website, **Export** lets you tick what to print and save it as a
+  PDF from the browser, or copy the options for a LaTeX PDF built on GitHub
+  (Actions → Build PDF → Run workflow). Locally:
 
   ```bash
   make pdf                                   # the common versions, into out/pdf/

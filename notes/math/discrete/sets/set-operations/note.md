@@ -16,10 +16,19 @@ $$A - B = \{x : x \in A \wedge x \notin B\}, \qquad
 
 :::
 
-::: venndiagram2sets
-:::
+::: {#fig-set-operations-1}
+
+```{=latex}
+\begin{center}
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillOnlyA
+\end{venndiagram2sets}
+\end{center}
+```
 
 $A\setminus B$ (shaded)
+
+:::
 
 ::: {#thm-de-morgan-s-laws .theorem name="De Morgan's laws"}
 
@@ -64,13 +73,24 @@ A \cap B = \{x : x \in A \wedge x \in B\}.$$
 
 :::
 
-::: venndiagram2sets
-:::
+::: {#fig-set-operations-2}
 
-::: venndiagram2sets
-:::
+```{=latex}
+\begin{center}
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillA
+\fillB
+\end{venndiagram2sets}
+\quad
+\begin{venndiagram2sets}[labelA=$A$,labelB=$B$]
+\fillACapB
+\end{venndiagram2sets}
+\end{center}
+```
 
-$A\cup B$ (shaded) $A\cap B$ (shaded)
+$A\cup B$ (left) and $A\cap B$ (right), shaded
+
+:::
 
 ::: {#def-disjoint .definition name="Disjoint"}
 

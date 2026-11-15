@@ -123,6 +123,10 @@ def check_notes() -> None:
             for m in re.finditer(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", f.raw):
                 line = f.raw[:m.start()].count("\n") + 1
                 errors.append(f"{rel(md)}:{line}: invisible control character {m.group(0)!r} (corrupted text?)")
+            if f.name in ("exercise.md", "solution.md"):
+                for m in re.finditer(r"^[ \t]*#{1,6} ", f.masked, re.M):
+                    line = f.masked[:m.start()].count("\n") + 1
+                    errors.append(f"{rel(md)}:{line}: no headings inside problems or solutions; use **bold** text")
             for m in REF.finditer(f.text):
                 refs.append((md, m.group(1)))
             for m in MATH.finditer(f.masked):
