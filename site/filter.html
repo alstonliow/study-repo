@@ -67,21 +67,44 @@
     return m;
   }
 
-  function section(title, href, depth) {
+  // A sidebar section in Quarto's own markup, so it collapses like the normal
+  // sidebar (Bootstrap collapse: a chevron button, and the title toggles when it
+  // is not a link). `open` = shown expanded.
+  let sectionSeq = 0;
+  function section(title, href, depth, open = true) {
+    const id = "course-sidebar-section-" + (++sectionSeq);
     const li = document.createElement("li");
     li.className = "sidebar-item sidebar-item-section course-order-section";
     const head = document.createElement("div");
     head.className = "sidebar-item-container";
-    const t = document.createElement(href ? "a" : "span");
-    t.className = "sidebar-item-text sidebar-link";
+    const t = document.createElement("a");
+    t.className = "sidebar-item-text sidebar-link text-start";
     if (href) t.href = new URL(href, root).href;
+    else {
+      t.setAttribute("data-bs-toggle", "collapse");
+      t.setAttribute("data-bs-target", "#" + id);
+      t.setAttribute("role", "navigation");
+      t.setAttribute("aria-expanded", String(open));
+      if (!open) t.classList.add("collapsed");
+    }
     const span = document.createElement("span");
     span.className = "menu-text";
     span.textContent = title;
     t.appendChild(span);
     head.appendChild(t);
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "sidebar-item-toggle text-start" + (open ? "" : " collapsed");
+    toggle.setAttribute("data-bs-toggle", "collapse");
+    toggle.setAttribute("data-bs-target", "#" + id);
+    toggle.setAttribute("aria-controls", id);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", "Toggle section: " + title);
+    toggle.innerHTML = '<i class="bi bi-chevron-right ms-2" aria-hidden="true"></i>';
+    head.appendChild(toggle);
     const ul = document.createElement("ul");
-    ul.className = "list-unstyled sidebar-section depth" + depth;
+    ul.id = id;
+    ul.className = "collapse list-unstyled sidebar-section depth" + depth + (open ? " show" : "");
     li.appendChild(head);
     li.appendChild(ul);
     return [li, ul];
@@ -127,8 +150,11 @@
     data.courses.filter(c => sel.includes(c.id)).forEach(c => {
       const [cli, cul] = section(c.code + " (course order)", "courses/" + c.id + ".html", 1);
       const nums = courseNumbers(data, c.id);
+      const here = sitePath(window.location.href);
       (data.order[c.id] || []).forEach(ch => {
-        const [hli, hul] = section(ch.title, null, 2);
+        // only the chapter of the current page starts expanded, as in the normal sidebar
+        const open = ch.pages.includes(here) || ch.summary === here;
+        const [hli, hul] = section(ch.title, null, 2, open);
         ch.pages.forEach(p => {
           if (!leaves[p]) return;
           const li = leaves[p].cloneNode(true);
