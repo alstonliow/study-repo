@@ -57,6 +57,7 @@ exclude:
   - rmk-solving-recurrences-3                        # Solving recurrences with generating functions (extra)
   # other material that is not in the Course Notes (checked against the text)
   - prp-derangement-recurrence                       # Derangement recurrence
+  - exm-derangement-cases                            # example for the recurrence proof above
   - def-complement                                   # Complement of a graph
   - prp-basic-definitions-1                          # Edges of the complement graph
   - prp-absorption-laws                              # Absorption laws
