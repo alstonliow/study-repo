@@ -93,14 +93,14 @@ A cycle is *Hamiltonian* if it contains every vertex of the graph.
 
 ```{=latex}
 \begin{tikzpicture}[dotgraph, x=1.15cm, y=1.15cm]
-  \node[label={[lab, font=\scriptsize]below left:000}] (000) at (0,0) {};
-  \node[label={[lab, font=\scriptsize]below right:100}] (100) at (2,0) {};
-  \node[label={[lab, font=\scriptsize]above left:010}] (010) at (0,2) {};
-  \node[label={[lab, font=\scriptsize]below right:110}] (110) at (2,2) {};
-  \node[label={[lab, font=\scriptsize]above left:001}] (001) at (0.8,0.8) {};
-  \node[label={[lab, font=\scriptsize]below right:101}] (101) at (2.8,0.8) {};
-  \node[label={[lab, font=\scriptsize]above left:011}] (011) at (0.8,2.8) {};
-  \node[label={[lab, font=\scriptsize]above right:111}] (111) at (2.8,2.8) {};
+  \node[label={[lab, tick]below left:000}] (000) at (0,0) {};
+  \node[label={[lab, tick]below right:100}] (100) at (2,0) {};
+  \node[label={[lab, tick]above left:010}] (010) at (0,2) {};
+  \node[label={[lab, tick]below right:110}] (110) at (2,2) {};
+  \node[label={[lab, tick]above left:001}] (001) at (0.8,0.8) {};
+  \node[label={[lab, tick]below right:101}] (101) at (2.8,0.8) {};
+  \node[label={[lab, tick]above left:011}] (011) at (0.8,2.8) {};
+  \node[label={[lab, tick]above right:111}] (111) at (2.8,2.8) {};
   \draw (000)--(100) (000)--(010) (000)--(001) (100)--(110) (100)--(101) (010)--(110)
         (010)--(011) (001)--(101) (001)--(011) (110)--(111) (101)--(111) (011)--(111);
   \draw[hl] (000)--(001)--(011)--(010)--(110)--(111)--(101)--(100)--cycle;

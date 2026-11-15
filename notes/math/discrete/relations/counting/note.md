@@ -40,13 +40,13 @@ $$\#\{\text{binary relations on } A\} = 2^{m^2}.$$
 \begin{tikzpicture}[x=0.9cm, y=0.9cm]
   \foreach \r/\a in {0/a,1/b,2/c} {
     \foreach \c/\b in {0/a,1/b,2/c}
-      \filldraw[fill=black!5, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
-    \node[left, font=\small] at (0,-\r-0.5) {$\a$};
-    \node[above, font=\small] at (\r+0.5,0) {$\a$};
+      \filldraw[cell, fill=neutral] (\c,-\r) rectangle (\c+1,-\r-1);
+    \node[left, lbl] at (0,-\r-0.5) {$\a$};
+    \node[above, lbl] at (\r+0.5,0) {$\a$};
   }
   \foreach \c/\r in {0/0, 1/0, 2/1, 0/2}
-    \filldraw[fill=defc!45, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
-  \node[left, font=\small] at (-0.35,-1.5) {$x$}; \node[above, font=\small] at (1.5,0.4) {$y$};
+    \filldraw[cell, fill=primaryMid] (\c,-\r) rectangle (\c+1,-\r-1);
+  \node[left, lbl] at (-0.35,-1.5) {$x$}; \node[above, lbl] at (1.5,0.4) {$y$};
 \end{tikzpicture}
 ```
 

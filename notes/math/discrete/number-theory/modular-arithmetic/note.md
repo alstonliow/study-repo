@@ -60,10 +60,10 @@ The equivalence classes of congruence mod $n$ are the *residue classes* $[a]=a+n
     \node[dot] at ({90-30*\k}:1.6) {};
     \node at ({90-30*\k}:2.0) {$\k$};
   }
-  \node[dot, fill=thmc, minimum size=7pt] at ({90-30*9}:1.6) {};
-  \node[dot, fill=thmc, minimum size=7pt] at ({90-30*2}:1.6) {};
-  \draw[map, thmc, line width=1.2pt] ({90-30*9}:1.2) arc[start angle={90-30*9}, end angle={90-30*14}, radius=1.2];
-  \node[text=thmc] at (0,0) {$+5$};
+  \node[hl dot] at ({90-30*9}:1.6) {};
+  \node[hl dot] at ({90-30*2}:1.6) {};
+  \draw[map, accent, emph] ({90-30*9}:1.2) arc[start angle={90-30*9}, end angle={90-30*14}, radius=1.2];
+  \node[text=accent] at (0,0) {$+5$};
 \end{tikzpicture}
 ```
 

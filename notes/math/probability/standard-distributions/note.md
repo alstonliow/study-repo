@@ -16,13 +16,13 @@ $X\sim\mathrm{Unif}(a,b)$ means $X$ takes each integer value in $[a,b]$ with the
 :::
 
 ```{=latex}
-\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
-  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
   \draw (-0.6,0) -- (10.6,0);
-  \foreach \k/\p in {1/0.167, 2/0.167, 3/0.167, 4/0.167, 5/0.167, 6/0.167} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k/\p in {1/0.167, 2/0.167, 3/0.167, 4/0.167, 5/0.167, 6/0.167} \fill[primaryStrong] (\k-0.32,0) rectangle (\k+0.32,\p);
   \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
-  \draw[thmc, dashed] (3.5,0) -- (3.5,0.31) node[above] {$E[X]=3.5$};
-  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Unif}(1,6)$ (a fair die)};
+  \draw[accent, dashed] (3.5,0) -- (3.5,0.31) node[above] {$E[X]=3.5$};
+  \node[anchor=south, heading] at (5,0.36) {$\mathrm{Unif}(1,6)$ (a fair die)};
 \end{tikzpicture}
 ```
 
@@ -60,13 +60,13 @@ $$\Pr(X=k) = \binom{n}{k}p^k(1-p)^{n-k}, \qquad k=0,1,\dots,n.$$
 :::
 
 ```{=latex}
-\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
-  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
   \draw (-0.6,0) -- (10.6,0);
-  \foreach \k/\p in {0/0.028, 1/0.121, 2/0.233, 3/0.267, 4/0.200, 5/0.103, 6/0.037, 7/0.009, 8/0.001} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k/\p in {0/0.028, 1/0.121, 2/0.233, 3/0.267, 4/0.200, 5/0.103, 6/0.037, 7/0.009, 8/0.001} \fill[primaryStrong] (\k-0.32,0) rectangle (\k+0.32,\p);
   \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
-  \draw[thmc, dashed] (3,0) -- (3,0.31) node[above] {$E[X]=3$};
-  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Bin}(10,\,0.3)$};
+  \draw[accent, dashed] (3,0) -- (3,0.31) node[above] {$E[X]=3$};
+  \node[anchor=south, heading] at (5,0.36) {$\mathrm{Bin}(10,\,0.3)$};
 \end{tikzpicture}
 ```
 
@@ -104,13 +104,13 @@ $$\Pr(X=k) = \frac{e^{-\mu}\mu^k}{k!}, \qquad k=0,1,2,\dots$$
 :::
 
 ```{=latex}
-\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
-  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
   \draw (-0.6,0) -- (10.6,0);
-  \foreach \k/\p in {0/0.050, 1/0.149, 2/0.224, 3/0.224, 4/0.168, 5/0.101, 6/0.050, 7/0.022, 8/0.008, 9/0.003, 10/0.001} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k/\p in {0/0.050, 1/0.149, 2/0.224, 3/0.224, 4/0.168, 5/0.101, 6/0.050, 7/0.022, 8/0.008, 9/0.003, 10/0.001} \fill[primaryStrong] (\k-0.32,0) rectangle (\k+0.32,\p);
   \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
-  \draw[thmc, dashed] (3,0) -- (3,0.31) node[above] {$E[X]=3$};
-  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Poisson}(3)$ (continues past $10$)};
+  \draw[accent, dashed] (3,0) -- (3,0.31) node[above] {$E[X]=3$};
+  \node[anchor=south, heading] at (5,0.36) {$\mathrm{Poisson}(3)$ (continues past $10$)};
 \end{tikzpicture}
 ```
 
@@ -161,13 +161,13 @@ $$\Pr(X=k) = (1-p)^{k-1}p, \qquad k=1,2,3,\dots$$
 :::
 
 ```{=latex}
-\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
-  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
   \draw (-0.6,0) -- (10.6,0);
-  \foreach \k/\p in {1/0.300, 2/0.210, 3/0.147, 4/0.103, 5/0.072, 6/0.050, 7/0.035, 8/0.025, 9/0.017, 10/0.012} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k/\p in {1/0.300, 2/0.210, 3/0.147, 4/0.103, 5/0.072, 6/0.050, 7/0.035, 8/0.025, 9/0.017, 10/0.012} \fill[primaryStrong] (\k-0.32,0) rectangle (\k+0.32,\p);
   \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
-  \draw[thmc, dashed] (3.333,0) -- (3.333,0.31) node[above] {$E[X]=\tfrac{10}{3}$};
-  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Geom}(0.3)$ (continues past $10$)};
+  \draw[accent, dashed] (3.333,0) -- (3.333,0.31) node[above] {$E[X]=\tfrac{10}{3}$};
+  \node[anchor=south, heading] at (5,0.36) {$\mathrm{Geom}(0.3)$ (continues past $10$)};
 \end{tikzpicture}
 ```
 

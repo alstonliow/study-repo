@@ -47,7 +47,7 @@ For instance $a\sim c$ because the entry in row $a$, column $c$ is $1$; the last
   \node (a) at (0,1.5) {$a$}; \node (b) at (0,0) {$b$}; \node (c) at (1.3,0.75) {$c$};
   \node (d) at (2.6,0.75) {$d$}; \node (e) at (3.6,0.75) {$e$};
   \draw (a)--(b) (a)--(c) (b)--(c) (c)--(d);
-  \node[lab, anchor=west, font=\normalsize] at (4.6,0.75) {$\begin{array}{c|ccccc}
+  \node[lab, anchor=west, heading] at (4.6,0.75) {$\begin{array}{c|ccccc}
       & a & b & c & d & e\\ \hline
     a & 0 & 1 & 1 & 0 & 0\\
     b & 1 & 0 & 1 & 0 & 0\\

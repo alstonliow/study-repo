@@ -24,11 +24,11 @@ If $A$ is a set of jobs and $B$ a set of candidates, joining each job to the can
 ```{=latex}
 \begin{center}
 \begin{tikzpicture}[dotgraph]
-\node[fill=defc] (a1) at (0,1.5) {};
-\node[fill=defc] (a2) at (0,0.5) {};
-\node[fill=defc] (a3) at (0,-0.5) {};
-\node[fill=thmc] (b1) at (2.5,1) {};
-\node[fill=thmc] (b2) at (2.5,0) {};
+\node[fill=primary] (a1) at (0,1.5) {};
+\node[fill=primary] (a2) at (0,0.5) {};
+\node[fill=primary] (a3) at (0,-0.5) {};
+\node[fill=accent] (b1) at (2.5,1) {};
+\node[fill=accent] (b2) at (2.5,0) {};
 \draw (a1)--(b1) (a1)--(b2) (a2)--(b1) (a3)--(b2);
 \node[draw=none,fill=none] at (0,-1.2) {$A$};
 \node[draw=none,fill=none] at (2.5,-0.7) {$B$};

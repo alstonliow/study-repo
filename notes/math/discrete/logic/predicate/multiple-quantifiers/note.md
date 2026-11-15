@@ -38,12 +38,12 @@ The first implies the second (that one exceptional dater witnesses every $y$), b
 \begin{tikzpicture}[dotgraph]
   \foreach \i in {1,2,3} { \node (x\i) at (0,2-\i) {}; \node (y\i) at (2.2,2-\i) {}; }
   \node[lab] at (0,1.55) {$x$}; \node[lab] at (2.2,1.55) {$y$};
-  \foreach \i in {1,2,3} \draw[thmc, line width=1pt] (x1) -- (y\i);
+  \foreach \i in {1,2,3} \draw[accent, emph] (x1) -- (y\i);
   \node[lab] at (1.1,-1.65) {$\exists x\,\forall y\,D(x,y)$};
   \begin{scope}[xshift=4.6cm]
     \foreach \i in {1,2,3} { \node (u\i) at (0,2-\i) {}; \node (v\i) at (2.2,2-\i) {}; }
     \node[lab] at (0,1.55) {$x$}; \node[lab] at (2.2,1.55) {$y$};
-    \draw[defc, line width=1pt] (u1) -- (v2) (u2) -- (v3) (u3) -- (v1);
+    \draw[primary, emph] (u1) -- (v2) (u2) -- (v3) (u3) -- (v1);
     \node[lab] at (1.1,-1.65) {$\forall y\,\exists x\,D(x,y)$};
   \end{scope}
 \end{tikzpicture}

@@ -21,7 +21,7 @@ $$
   \fill[tintB] (1.6,0) circle (1.3);
   \begin{scope}
     \clip (0,0) circle (1.3);
-    \fill[thmc, fill opacity=0.25] (1.6,0) circle (1.3);
+    \fill[overlapB] (1.6,0) circle (1.3);
   \end{scope}
   \draw (0,0) circle (1.3);
   \draw (1.6,0) circle (1.3);

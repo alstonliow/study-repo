@@ -51,11 +51,11 @@ Applying @prp-gcdsub repeatedly, always subtracting the smaller number from the 
 
 ```{=latex}
 \begin{tikzpicture}[scale=0.2]
-  \filldraw[fill=defc!18, draw=ink] (0,0) rectangle (12,12);
-  \filldraw[fill=thmc!18, draw=ink] (12,4) rectangle (20,12);
-  \filldraw[fill=exc!25, draw=ink] (12,0) rectangle (16,4);
-  \filldraw[fill=exc!25, draw=ink] (16,0) rectangle (20,4);
-  \draw[line width=1pt] (0,0) rectangle (20,12);
+  \filldraw[fill=primaryLight, draw=ink] (0,0) rectangle (12,12);
+  \filldraw[fill=accentSoft, draw=ink] (12,4) rectangle (20,12);
+  \filldraw[fill=secondarySoft, draw=ink] (12,0) rectangle (16,4);
+  \filldraw[fill=secondarySoft, draw=ink] (16,0) rectangle (20,4);
+  \draw[emph] (0,0) rectangle (20,12);
   \node at (6,6) {$12$}; \node at (16,8) {$8$}; \node at (14,2) {$4$}; \node at (18,2) {$4$};
   \node[below] at (10,0) {$20$}; \node[left] at (0,6) {$12$};
 \end{tikzpicture}

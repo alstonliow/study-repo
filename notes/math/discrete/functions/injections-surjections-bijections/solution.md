@@ -131,7 +131,7 @@ disjoint kinds of relation. Bijections are the functions that are both
 injections and surjections, and identity functions are bijections:
 
 ```{=latex}
-\begin{tikzpicture}[every node/.style={font=\small}]
+\begin{tikzpicture}[every node/.style={lbl}]
   \draw (0,0) rectangle (11,6.4);
   \node[anchor=north west] at (0.1,6.35) {Relations};
   \draw (0.4,0.3) rectangle (2.6,5.6);
@@ -149,7 +149,7 @@ injections and surjections, and identity functions are bijections:
   \node at (8.85,2.6) {Surjections};
   \node at (6.9,3.15) {Bijections};
   \draw (6.9,2.3) ellipse (0.62 and 0.55);
-  \node[align=center, font=\scriptsize] at (6.9,2.3) {Identity\\functions};
+  \node[align=center, tick] at (6.9,2.3) {Identity\\functions};
 \end{tikzpicture}
 ```
 

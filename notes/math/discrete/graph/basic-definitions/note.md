@@ -96,10 +96,10 @@ A *multigraph* allows multiple edges; a *pseudograph* also allows loops. In a *d
 \node (w2) at (2,0.8) {$2$};
 \node (w3) at (2,-0.8) {$3$};
 \node (w4) at (4,0) {$4$};
-\draw (w1)--(w2) node[midway,above left,font=\scriptsize] {$5$};
-\draw (w1)--(w3) node[midway,below left,font=\scriptsize] {$2$};
-\draw (w2)--(w4) node[midway,above right,font=\scriptsize] {$3$};
-\draw (w3)--(w4) node[midway,below right,font=\scriptsize] {$7$};
+\draw (w1)--(w2) node[midway,above left,tick] {$5$};
+\draw (w1)--(w3) node[midway,below left,tick] {$2$};
+\draw (w2)--(w4) node[midway,above right,tick] {$3$};
+\draw (w3)--(w4) node[midway,below right,tick] {$7$};
 \end{tikzpicture}
 \end{center}
 ```
@@ -161,7 +161,7 @@ The subgraph *induced* by $S\subseteq V$, written $G[S]$, has vertex set $S$ and
 \node (q) at (1.3,1.6) {$q$};
 \node (r) at (1.3,0.4) {$r$};
 \node (s) at (2.6,1) {$s$};
-\draw[thick] (p)--(q) (p)--(r) (q)--(r) (q)--(s) (r)--(s);
+\draw[emph] (p)--(q) (p)--(r) (q)--(r) (q)--(s) (r)--(s);
 \begin{scope}[on background layer]
 \filldraw[regionA] (-0.5,0.2) rectangle (2,2.1);
 \end{scope}

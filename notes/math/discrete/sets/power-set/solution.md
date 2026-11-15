@@ -5,8 +5,7 @@
 (a) and (b) Each arrow is labelled by the element it adds:
 
 ```{=latex}
-\begin{tikzpicture}[x=1.9cm, y=1.5cm, every node/.style={font=\small},
-    lab/.style={font=\scriptsize, fill=white, inner sep=1pt}]
+\begin{tikzpicture}[x=1.9cm, y=1.5cm, every node/.style={lbl}]
   \node (e)   at (0,0) {$\emptyset$};
   \node (a)   at (-1,1) {$\{a\}$};
   \node (b)   at (0,1)  {$\{b\}$};
@@ -18,7 +17,7 @@
   \foreach \s/\t/\l/\p in {e/a/a/0.5, e/b/b/0.5, e/c/c/0.5,
       a/ab/b/0.5, a/ac/c/0.3, b/ab/a/0.3, b/bc/c/0.3, c/ac/a/0.3, c/bc/b/0.5,
       ab/abc/c/0.5, ac/abc/b/0.5, bc/abc/a/0.5}
-    \draw[-{Stealth[length=4pt]}] (\s) -- node[lab, pos=\p] {$\l$} (\t);
+    \draw[-{Stealth[length=4pt]}] (\s) -- node[edge label, tick, pos=\p] {$\l$} (\t);
 \end{tikzpicture}
 ```
 

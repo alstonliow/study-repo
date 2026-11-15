@@ -29,11 +29,11 @@ All six elements appear, and $1$ is first reached at $k=6$, so $3$ is a primitiv
 ```{=latex}
 \begin{tikzpicture}
   \foreach \k/\pos in {1/0, 3/1, 2/2, 6/3, 4/4, 5/5} \node[vertex] (a\k) at ({90-60*\pos}:1.45) {$\k$};
-  \foreach \s/\t in {1/3, 3/2, 2/6, 6/4, 4/5, 5/1} \draw[map, thmc, line width=0.9pt] (a\s) to[bend left=15] (a\t);
+  \foreach \s/\t in {1/3, 3/2, 2/6, 6/4, 4/5, 5/1} \draw[map, accent, emph] (a\s) to[bend left=15] (a\t);
   \node at (0,-2.2) {powers of $3$};
   \begin{scope}[xshift=4.6cm]
     \foreach \k/\pos in {1/0, 3/1, 2/2, 6/3, 4/4, 5/5} \node[vertex] (b\k) at ({90-60*\pos}:1.45) {$\k$};
-    \foreach \s/\t in {1/2, 2/4, 4/1} \draw[map, defc, line width=0.9pt] (b\s) -- (b\t);
+    \foreach \s/\t in {1/2, 2/4, 4/1} \draw[map, primary, emph] (b\s) -- (b\t);
     \node at (0,-2.2) {powers of $2$};
   \end{scope}
 \end{tikzpicture}

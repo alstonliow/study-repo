@@ -115,16 +115,30 @@ Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
    :::
    ````
 
-   **Shared drawing styles** (defined in the preamble in `build/make_site.py`;
-   use them instead of ad-hoc colours and sizes):
-   `graph` (all nodes are labelled vertices), `dotgraph` (all nodes are small
-   dots), `vertex`, `dot`, `hl` (highlighted edge), `faint` (background edge),
-   `regionA`/`regionB`/`regionC` (shaded rounded regions), `tintA`–`tintD`
-   (translucent fills for overlapping sets), `shade`, `set` (an oval for a
-   domain or codomain), `map` (an arrow between elements), `lab` (a plain
-   label). Colours: `defc` (blue), `thmc` (red-brown), `exc` (green), `notec`
-   (grey), `ink` (near-black). The website shows figures at 1.3 times their
-   natural size.
+   **Shared drawing styles.** Figures never hard-code colours, line widths,
+   font sizes or node sizes; they use only the names defined in the preamble
+   in `build/make_site.py`, so the look of every figure is changed in one
+   place. Coordinates and scales (`x=0.6cm`, `scale=0.8`) are layout and stay
+   in the figure. `make check` warns about raw values.
+   - Colours (roles): `primary` (blue), `accent` (red-brown, for emphasis),
+     `secondary` (green), `muted` (grey), `ink` (near-black). Fixed tints:
+     `primarySoft`, `primaryLight`, `primaryMid`, `primaryStrong`,
+     `accentSoft`, `accentLight`, `secondarySoft`, `neutral` (cell grey),
+     `rule` (light lines).
+   - Text: `lbl` (labels), `tick` (axis ticks, small notes), `note`,
+     `heading`, `big`, `lbl bold`, `heading bold`.
+   - Lines: `emph`, `bold`, `hl` (highlighted edge), `faint`, `gridline`.
+   - Graphs: `graph` (all nodes labelled vertices), `dotgraph` (all nodes
+     dots), `vertex`, `small vertex`, `dot`, `hl dot`, `hollow dot`, `pt`
+     (radius for `circle[pt]`).
+   - Areas: `regionA`/`regionB`/`regionC`, `tintA`–`tintD` and
+     `overlapA`/`overlapB` (translucent fills), `shade`.
+   - Cells, bars, boxes: `cell`, `cell frame`, `hl cell`, `bar`, `box`,
+     `hl box`, `ball`, `hl ball`.
+   - Labels and maps: `lab`, `edge label`, `set` (an oval for a domain or
+     codomain), `map` (an arrow between elements).
+
+   The website shows figures at 1.3 times their natural size.
 8. `example` blocks may carry `level="easy|medium|hard"`, filled in by the owner
    only.
 

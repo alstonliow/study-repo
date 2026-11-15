@@ -29,17 +29,17 @@ For $A = \{a,b,c\}$: $\{\{a,c\},\{b\}\}$ and $\{\{a\},\{b\},\{c\}\}$ are partiti
 
 ```{=latex}
 \begin{tikzpicture}
-  \draw[ink, rounded corners=6pt] (0,0) rectangle (3,2.3);
+  \draw[ink, rounded corners] (0,0) rectangle (3,2.3);
   \draw[regionA] (0.25,1.2) rectangle (2.75,2.05);
   \draw[regionB] (1.0,0.25) rectangle (2.0,0.95);
   \node at (0.9,1.62) {$a$}; \node at (2.1,1.62) {$c$}; \node at (1.5,0.6) {$b$};
-  \node[font=\small] at (1.5,-0.4) {a partition};
+  \node[lbl] at (1.5,-0.4) {a partition};
   \begin{scope}[xshift=4.2cm]
-    \draw[ink, rounded corners=6pt] (0,0) rectangle (3,2.3);
-    \filldraw[draw=defc!75, fill=defc, fill opacity=0.12] (1.05,1.15) ellipse (0.95 and 0.55);
-    \filldraw[draw=thmc!75, fill=thmc, fill opacity=0.12] (1.95,1.15) ellipse (0.95 and 0.55);
+    \draw[ink, rounded corners] (0,0) rectangle (3,2.3);
+    \filldraw[draw=primaryStrong, tintA] (1.05,1.15) ellipse (0.95 and 0.55);
+    \filldraw[draw=accentLight, tintB] (1.95,1.15) ellipse (0.95 and 0.55);
     \node at (0.55,1.15) {$a$}; \node at (1.5,1.15) {$b$}; \node at (2.45,1.15) {$c$};
-    \node[font=\small] at (1.5,-0.4) {not a partition};
+    \node[lbl] at (1.5,-0.4) {not a partition};
   \end{scope}
 \end{tikzpicture}
 ```

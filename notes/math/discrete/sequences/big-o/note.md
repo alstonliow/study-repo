@@ -109,8 +109,8 @@ If any one NP-complete problem had a polynomial-time algorithm, then composing i
  \draw (3,0) circle (2.6cm) node[above,yshift=2.1cm] {$NP\text{-hard}$};
  \node at (-1.6,0) {$P$};
  \node[align=center] at (1.5,0.3) {$NP$-complete};
- \node[align=center,font=\small] at (1.5,-0.5) {(e.g.\ SAT)};
- \node[align=center,font=\small] at (4.5,1.0) {outside $NP$\\(e.g.\ TSP\\optimisation)};
+ \node[align=center,lbl] at (1.5,-0.5) {(e.g.\ SAT)};
+ \node[align=center,lbl] at (4.5,1.0) {outside $NP$\\(e.g.\ TSP\\optimisation)};
 \end{tikzpicture}
 \end{center}
 ```

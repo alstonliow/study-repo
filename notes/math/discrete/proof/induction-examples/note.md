@@ -121,9 +121,9 @@ A *simple polygon* is a polygon whose sides do not cross. A *diagonal* is a line
 \begin{tikzpicture}[scale=1.15]
   \coordinate (v0) at (0,0); \coordinate (v1) at (3,0); \coordinate (v2) at (3.4,1.8);
   \coordinate (v3) at (1.9,1.0); \coordinate (v4) at (1.4,2.6); \coordinate (v5) at (-0.2,1.6);
-  \filldraw[fill=defc!8, draw=ink, line width=0.8pt] (v0)--(v1)--(v2)--(v3)--(v4)--(v5)--cycle;
+  \filldraw[fill=primarySoft, draw=ink, emph] (v0)--(v1)--(v2)--(v3)--(v4)--(v5)--cycle;
   \draw[hl] (v0) -- (v3);
-  \draw[notec, dashed, line width=1pt] (v1) -- (v4);
+  \draw[muted, dashed, emph] (v1) -- (v4);
   \foreach \v in {v0,v1,v2,v3,v4,v5} \node[dot] at (\v) {};
 \end{tikzpicture}
 ```

@@ -76,13 +76,13 @@ The total is $8$ for the outcomes $(2,6),(3,5),(4,4),(5,3),(6,2)$, so $\Pr(\text
   \foreach \i in {1,...,6} {
     \foreach \j in {1,...,6} {
       \pgfmathtruncatemacro{\s}{\i+\j}
-      \ifnum\s=8 \def\col{thmc!35}\else\def\col{defc!10}\fi
-      \filldraw[fill=\col, draw=white, line width=1.5pt] (\j-1,1-\i) rectangle (\j,-\i);
+      \ifnum\s=8 \def\col{accentLight}\else\def\col{primarySoft}\fi
+      \filldraw[cell, fill=\col] (\j-1,1-\i) rectangle (\j,-\i);
     }
-    \node[font=\small] at (\i-0.5,0.45) {\i};
-    \node[font=\small] at (-0.45,0.5-\i) {\i};
+    \node[lbl] at (\i-0.5,0.45) {\i};
+    \node[lbl] at (-0.45,0.5-\i) {\i};
   }
-  \node[font=\small] at (3,1.2) {$d_2$}; \node[font=\small] at (-1.3,-3) {$d_1$};
+  \node[lbl] at (3,1.2) {$d_2$}; \node[lbl] at (-1.3,-3) {$d_1$};
 \end{tikzpicture}
 ```
 

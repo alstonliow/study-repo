@@ -49,8 +49,8 @@ The divisor $d$ is always positive, but $n$ may be negative; $q$ is still the la
 \begin{tikzpicture}[x=0.55cm]
   \draw[->] (-12.6,0) -- (2.6,0);
   \foreach \t in {-12,...,2} \draw (\t,0.1) -- (\t,-0.1);
-  \foreach \t in {-10,-5,0} { \draw[line width=1pt] (\t,0.22) -- (\t,-0.22); \node[below] at (\t,-0.25) {$\t$}; }
-  \node[dot, fill=thmc, minimum size=7pt, label={[lab, text=thmc]below:$-6$}] at (-6,0) {};
+  \foreach \t in {-10,-5,0} { \draw[emph] (\t,0.22) -- (\t,-0.22); \node[below] at (\t,-0.25) {$\t$}; }
+  \node[hl dot, label={[lab, text=accent]below:$-6$}] at (-6,0) {};
   \draw[decorate, decoration={brace, amplitude=5pt}] (-10,0.35) -- (-6,0.35) node[midway, above=6pt] {$r=4$};
 \end{tikzpicture}
 ```

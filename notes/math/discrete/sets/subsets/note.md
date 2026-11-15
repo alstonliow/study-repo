@@ -44,9 +44,9 @@ $\subseteq$ is reflexive ($A \subseteq A$) and transitive ($A \subseteq B \wedge
 
 ```{=latex}
 \begin{tikzpicture}
-  \draw[fill=defc!6] (0,0) ellipse (2.6 and 1.5);
-  \draw[fill=defc!14] (-0.5,-0.1) ellipse (1.7 and 1.05);
-  \draw[fill=defc!26] (-0.9,-0.15) ellipse (0.85 and 0.6);
+  \draw[fill=primarySoft] (0,0) ellipse (2.6 and 1.5);
+  \draw[fill=primaryLight] (-0.5,-0.1) ellipse (1.7 and 1.05);
+  \draw[fill=primaryLight] (-0.9,-0.15) ellipse (0.85 and 0.6);
   \node at (-0.9,-0.15) {$A$}; \node at (0.6,0.1) {$B$}; \node at (1.85,0.3) {$C$};
 \end{tikzpicture}
 ```
@@ -80,8 +80,8 @@ Let $\mathcal{F}$ be a family of subsets of some set, all sharing a given proper
   \node (a) at (0,1.6) {$a$}; \node (b) at (1.6,1.6) {$b$};
   \node (c) at (0,0) {$c$};   \node (d) at (1.6,0) {$d$};
   \node (e) at (3.0,0.9) {$e$}; \node (f) at (3.0,-0.7) {$f$};
-  \draw[defc, line width=1.4pt] (a)--(b) (a)--(c) (a)--(d) (b)--(c) (b)--(d) (c)--(d);
-  \draw[thmc, line width=1.4pt] (d)--(e) (e)--(f) (f)--(d);
+  \draw[primary, bold] (a)--(b) (a)--(c) (a)--(d) (b)--(c) (b)--(d) (c)--(d);
+  \draw[accent, bold] (d)--(e) (e)--(f) (f)--(d);
 \end{tikzpicture}
 ```
 

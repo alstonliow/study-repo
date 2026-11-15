@@ -80,8 +80,8 @@ Compare directly with @sec-math-discrete-sets-set-operations’s Theorem (De Mor
     \node at (1.3,-1.5) {$\neg(P\vee Q)$};
   \end{scope}
   \begin{scope}[xshift=4.4cm]
-    \fill[defc, fill opacity=0.22, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (0.85,0) circle (0.75);
-    \fill[thmc, fill opacity=0.22, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (1.75,0) circle (0.75);
+    \fill[overlapA, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (0.85,0) circle (0.75);
+    \fill[overlapB, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (1.75,0) circle (0.75);
     \draw (-0.4,-1.1) rectangle (3.0,1.1);
     \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
     \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};

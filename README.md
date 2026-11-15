@@ -96,9 +96,11 @@ Problem statement, copied verbatim.
 
 ### A figure
 
-Draw with TikZ in a ```` ```{=latex} ```` block, using the shared styles
-(`graph`, `dotgraph`, `hl`, `regionA`, `set`, `map`, … listed in
-`meta/SPEC.md` §5). To give it a number and a caption, wrap it in a `fig-` div
+Draw with TikZ in a ```` ```{=latex} ```` block, using only the shared styles
+and colours (`graph`, `hl`, `lbl`, `bold`, `box`, `primary`, `accentLight`, …
+listed in `meta/SPEC.md` §5). Do not write raw colours (`defc!30`), line
+widths, font sizes or node sizes; `make check` warns if you do, and changing
+a style in `build/make_site.py` restyles every figure. To give it a number and a caption, wrap it in a `fig-` div
 with the caption as the last paragraph, then refer to it as `@fig-trees-1`:
 
 ````markdown

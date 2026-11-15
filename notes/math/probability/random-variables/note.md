@@ -63,11 +63,11 @@ The distribution is symmetric about $7$, the most likely total.
 
 ```{=latex}
 \begin{tikzpicture}[x=0.62cm, y=0.42cm]
-  \foreach \y in {2,4,6} {\draw[black!15] (1.4,\y) -- (12.6,\y); \node[left, font=\scriptsize] at (1.4,\y) {$\y/36$};}
+  \foreach \y in {2,4,6} {\draw[rule] (1.4,\y) -- (12.6,\y); \node[left, tick] at (1.4,\y) {$\y/36$};}
   \draw (1.4,0) -- (12.6,0);
   \foreach \k/\c in {2/1,3/2,4/3,5/4,6/5,7/6,8/5,9/4,10/3,11/2,12/1} {
-    \fill[defc!70] (\k-0.34,0) rectangle (\k+0.34,\c);
-    \node[below, font=\scriptsize] at (\k,0) {$\k$};
+    \fill[primaryStrong] (\k-0.34,0) rectangle (\k+0.34,\c);
+    \node[below, tick] at (\k,0) {$\k$};
   }
 \end{tikzpicture}
 ```

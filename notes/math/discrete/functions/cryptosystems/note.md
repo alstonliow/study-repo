@@ -41,11 +41,11 @@ Each $e_k$ is a bijection on $\mathbb{Z}_{26}$ with $d_k = e_k^{-1}$, so $(M,C,K
   \foreach \i in {0,...,25} {
     \pgfmathsetmacro{\a}{90-\i*360/26}
     \pgfmathtruncatemacro{\j}{mod(\i+3,26)}
-    \draw[black!25] (\a:1.4) -- (\a:2.75);
+    \draw[rule] (\a:1.4) -- (\a:2.75);
     \node at ({\a-360/52}:2.4) {\char\numexpr65+\i\relax};
-    \node[text=thmc] at ({\a-360/52}:1.72) {\char\numexpr65+\j\relax};
+    \node[text=accent] at ({\a-360/52}:1.72) {\char\numexpr65+\j\relax};
   }
-  \node[font=\small, align=center] at (0,0) {$k=3$};
+  \node[lbl, align=center] at (0,0) {$k=3$};
 \end{tikzpicture}
 ```
 

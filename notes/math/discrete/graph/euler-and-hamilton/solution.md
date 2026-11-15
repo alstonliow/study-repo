@@ -48,7 +48,7 @@ $$T\,1\,2\,3\,4\,1\,B\,2\,T\,3\,B\,4\,T.$$
     the three directions correspond to the three bits:
 
 ```{=latex}
-\begin{tikzpicture}[scale=1.6, every node/.style={font=\small, fill=white, inner sep=1.5pt}]
+\begin{tikzpicture}[scale=1.6, every node/.style={lbl, fill=white}]
   \node (000) at (0,0) {000};   \node (100) at (2,0) {100};
   \node (010) at (0,2) {010};   \node (110) at (2,2) {110};
   \node (001) at (0.8,0.7) {001}; \node (101) at (2.8,0.7) {101};

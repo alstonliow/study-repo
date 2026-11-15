@@ -106,22 +106,22 @@ In Pascal's triangle the summands lie along a diagonal, and the left-hand side s
 \begin{tikzpicture}
   \node at (0.000,0.000) {$1$};
   \node at (-0.475,-0.750) {$1$};
-  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (0.475,-0.750) {$1$};
+  \node[ball] at (0.475,-0.750) {$1$};
   \node at (-0.950,-1.500) {$1$};
-  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (0.000,-1.500) {$2$};
+  \node[ball] at (0.000,-1.500) {$2$};
   \node at (0.950,-1.500) {$1$};
   \node at (-1.425,-2.250) {$1$};
-  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (-0.475,-2.250) {$3$};
+  \node[ball] at (-0.475,-2.250) {$3$};
   \node at (0.475,-2.250) {$3$};
   \node at (1.425,-2.250) {$1$};
   \node at (-1.900,-3.000) {$1$};
-  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (-0.950,-3.000) {$4$};
+  \node[ball] at (-0.950,-3.000) {$4$};
   \node at (0.000,-3.000) {$6$};
   \node at (0.950,-3.000) {$4$};
   \node at (1.900,-3.000) {$1$};
   \node at (-2.375,-3.750) {$1$};
   \node at (-1.425,-3.750) {$5$};
-  \node[circle, fill=thmc!22, draw=thmc, inner sep=0pt, minimum size=6.5mm] at (-0.475,-3.750) {$10$};
+  \node[hl ball] at (-0.475,-3.750) {$10$};
   \node at (0.475,-3.750) {$10$};
   \node at (1.425,-3.750) {$5$};
   \node at (2.375,-3.750) {$1$};

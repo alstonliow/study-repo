@@ -40,7 +40,7 @@ $$S \circ R = \{(x,z) : \exists y \in B \text{ such that } xRy \text{ and } ySz\
     \node[set, label=above:$C$] at (2.4,0) {};
     \node (1') at (0,0.4) {$1$}; \node (2') at (0,-0.4) {$2$};
     \node (u') at (2.4,0.4) {$u$}; \node (v') at (2.4,-0.4) {$v$};
-    \draw[map, thmc] (1') -- (u'); \draw[map, thmc] (1') -- (v'); \draw[map, thmc] (2') -- (v');
+    \draw[map, accent] (1') -- (u'); \draw[map, accent] (1') -- (v'); \draw[map, accent] (2') -- (v');
     \node at (1.2,-1.7) {$S\circ R$};
   \end{scope}
 \end{tikzpicture}

@@ -21,17 +21,17 @@ If such an $\ell$ exists, $(a_n)$ is *convergent*; otherwise it is *divergent*.
  \draw[-{Latex}] (0,0) -- (9,0) node[right] {$n$};
  \draw[-{Latex}] (0,-1.6) -- (0,2.6) node[above] {$a_n$};
  \draw[dashed] (0,1.5) -- (9,1.5) node[right] {$\ell$};
- \fill[defc!12] (0,1.1) rectangle (9,1.9);
- \draw[dashed,gray] (0,1.9) -- (9,1.9) node[right] {$\ell+\varepsilon$};
- \draw[dashed,gray] (0,1.1) -- (9,1.1) node[right] {$\ell-\varepsilon$};
+ \fill[primarySoft] (0,1.1) rectangle (9,1.9);
+ \draw[dashed,muted] (0,1.9) -- (9,1.9) node[right] {$\ell+\varepsilon$};
+ \draw[dashed,muted] (0,1.1) -- (9,1.1) node[right] {$\ell-\varepsilon$};
  \draw[dashed] (4.3,0) -- (4.3,2.6);
  \node[below] at (4.3,0) {$N$};
  \foreach \x/\y in {0.5/-1.2, 1.1/2.4, 1.8/-0.6, 2.5/2.0, 3.2/0.4, 3.9/1.9}
-   \fill (\x,\y) circle (2pt);
+   \fill (\x,\y) circle[pt];
  \foreach \x/\y in {4.6/1.65, 5.2/1.35, 5.8/1.55, 6.4/1.42, 7.0/1.58, 7.6/1.48, 8.2/1.53}
-   \fill (\x,\y) circle (2pt);
- \node[align=center,font=\small] at (2.1,-1.4) {terms with $n<N$:\\ may lie outside the band};
- \node[align=center,font=\small] at (6.4,-1.4) {terms with $n\ge N$:\\ all lie within $(\ell-\varepsilon,\ell+\varepsilon)$};
+   \fill (\x,\y) circle[pt];
+ \node[align=center,lbl] at (2.1,-1.4) {terms with $n<N$:\\ may lie outside the band};
+ \node[align=center,lbl] at (6.4,-1.4) {terms with $n\ge N$:\\ all lie within $(\ell-\varepsilon,\ell+\varepsilon)$};
 \end{tikzpicture}
 \end{center}
 ```

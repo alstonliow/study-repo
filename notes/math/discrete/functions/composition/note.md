@@ -28,7 +28,7 @@ $$(g \circ f)(x) = g(f(x)).$$
   \node[dot, label={[lab]above:$g(f(x))$}] (z) at (6.8,0.3) {};
   \draw[map] (x) -- node[lab, above] {$f$} (y);
   \draw[map] (y) -- node[lab, above] {$g$} (z);
-  \draw[map, thmc, line width=1pt] (x) .. controls (1.8,-2.0) and (5.0,-2.0) .. node[lab, below, text=thmc] {$g\circ f$} (z);
+  \draw[map, accent, emph] (x) .. controls (1.8,-2.0) and (5.0,-2.0) .. node[lab, below, text=accent] {$g\circ f$} (z);
 \end{tikzpicture}
 ```
 

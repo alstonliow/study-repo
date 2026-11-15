@@ -17,11 +17,11 @@ $f_1=1$, $f_2=1$, and $f_n=f_{n-1}+f_{n-2}$ for $n\ge3$. It begins $1,1,2,3,5,8,
 
 ```{=latex}
 \begin{tikzpicture}[scale=0.42]
-  \foreach \x/\y/\s/\c in {0/0/1/defc!20, 1/0/1/thmc!20, 0/1/2/exc!22, -3/0/3/defc!14, -3/-5/5/thmc!14, 2/-5/8/exc!14}
+  \foreach \x/\y/\s/\c in {0/0/1/primaryLight, 1/0/1/accentSoft, 0/1/2/secondarySoft, -3/0/3/primaryLight, -3/-5/5/accentSoft, 2/-5/8/secondarySoft}
     \filldraw[fill=\c, draw=ink] (\x,\y) rectangle (\x+\s,\y+\s);
   \foreach \x/\y/\s in {0/0/1, 1/0/1, 0/1/2, -3/0/3, -3/-5/5, 2/-5/8}
-    \node[font=\small] at (\x+\s/2,\y+\s/2) {$\s$};
-  \draw[thmc, line width=1.1pt] (0,1) arc[start angle=180, end angle=270, radius=1]
+    \node[lbl] at (\x+\s/2,\y+\s/2) {$\s$};
+  \draw[accent, emph] (0,1) arc[start angle=180, end angle=270, radius=1]
         arc[start angle=270, end angle=360, radius=1] arc[start angle=0, end angle=90, radius=2]
         arc[start angle=90, end angle=180, radius=3] arc[start angle=180, end angle=270, radius=5]
         arc[start angle=270, end angle=360, radius=8];

@@ -45,7 +45,7 @@ original one.
     $\overline B$, and $C$ or $\overline C$:
 
 ```{=latex}
-\begin{tikzpicture}[scale=1.5, every node/.style={font=\scriptsize}]
+\begin{tikzpicture}[scale=1.5, every node/.style={tick}]
   \fill[tintA] (0,0) circle (1.3);
   \fill[tintB] (1.5,0) circle (1.3);
   \fill[tintC] (0.75,-1.3) circle (1.3);

@@ -85,18 +85,18 @@ Both equal $a^{x_Ax_B}=2^{18}\equiv3\pmod{11}$, which an eavesdropper who sees o
 ::: {#fig-diffie-hellman-1}
 
 ```{=latex}
-\begin{tikzpicture}[box/.style={draw=ink, fill=defc!8, rounded corners=3pt, inner sep=4pt, align=center, font=\small}]
-  \fill[black!5] (2.6,-3.6) rectangle (5.4,0.9);
-  \node[font=\small, text=notec] at (4,0.6) {public: $p=11$, $a=2$};
-  \node[font=\bfseries] at (0,0.6) {Alice}; \node[font=\bfseries] at (8,0.6) {Bob};
+\begin{tikzpicture}[every node/.style={lbl}]
+  \fill[neutral] (2.6,-3.6) rectangle (5.4,0.9);
+  \node[lbl, text=muted] at (4,0.6) {public: $p=11$, $a=2$};
+  \node[heading bold] at (0,0.6) {Alice}; \node[heading bold] at (8,0.6) {Bob};
   \node[box] at (0,-0.3) {secret $x_A=3$};
   \node[box] at (8,-0.3) {secret $x_B=6$};
   \node[box] at (0,-1.2) {$y_A=2^3\bmod 11=8$};
   \node[box] at (8,-1.2) {$y_B=2^6\bmod 11=9$};
-  \draw[map, line width=0.9pt] (1.6,-1.9) -- node[lab, above, fill=black!5] {$8$} (6.4,-1.9);
-  \draw[map, line width=0.9pt] (6.4,-2.35) -- node[lab, below, fill=black!5] {$9$} (1.6,-2.35);
-  \node[box, fill=thmc!15] at (0,-3.15) {$k=9^3\bmod 11=3$};
-  \node[box, fill=thmc!15] at (8,-3.15) {$k=8^6\bmod 11=3$};
+  \draw[map, emph] (1.6,-1.9) -- node[lab, above, fill=neutral] {$8$} (6.4,-1.9);
+  \draw[map, emph] (6.4,-2.35) -- node[lab, below, fill=neutral] {$9$} (1.6,-2.35);
+  \node[hl box] at (0,-3.15) {$k=9^3\bmod 11=3$};
+  \node[hl box] at (8,-3.15) {$k=8^6\bmod 11=3$};
 \end{tikzpicture}
 ```
 

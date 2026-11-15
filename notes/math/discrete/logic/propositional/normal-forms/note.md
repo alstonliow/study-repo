@@ -50,9 +50,9 @@ $$\mathrm{Maj}(X,Y,Z) = (\neg X\wedge Y\wedge Z)\vee(X\wedge\neg Y\wedge Z)\vee(
   \draw (FFF)--(TFF)--(TTF)--(FTF)--cycle (FFT)--(TFT)--(TTT)--(FTT)--cycle
         (FFF)--(FFT) (TFF)--(TFT) (FTF)--(FTT) (TTF)--(TTT);
   \foreach \t/\pos in {FFF/below left, TFF/below right, FTF/above left, FFT/above left}
-    \node[circle, draw=ink, fill=white, inner sep=0pt, minimum size=6pt, label={[lab, font=\footnotesize]\pos:\t}] at (\t) {};
+    \node[hollow dot, label={[lab, note]\pos:\t}] at (\t) {};
   \foreach \t/\pos in {TTF/below right, TFT/below right, FTT/above left, TTT/above right}
-    \node[dot, fill=thmc, minimum size=7pt, label={[lab, font=\footnotesize, text=thmc]\pos:\t}] at (\t) {};
+    \node[hl dot, label={[lab, note, text=accent]\pos:\t}] at (\t) {};
 \end{tikzpicture}
 ```
 

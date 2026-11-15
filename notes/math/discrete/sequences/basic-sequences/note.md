@@ -109,15 +109,15 @@ Arithmetic sequences grow by *adding* the same amount each time; geometric seque
 \begin{tikzpicture}[x=0.9cm, y=0.11cm]
   \draw[->] (0.4,0) -- (6.7,0) node[right] {$n$};
   \draw[->] (0.4,0) -- (0.4,35);
-  \foreach \y in {10,20,30} { \draw[black!15] (0.4,\y) -- (6.4,\y); \node[left, font=\scriptsize] at (0.4,\y) {$\y$}; }
-  \foreach \n in {1,...,6} \node[below, font=\scriptsize] at (\n,0) {$\n$};
-  \draw[defc, dashed] (1,1) -- (2,3) -- (3,5) -- (4,7) -- (5,9) -- (6,11);
-  \draw[thmc, dashed] (1,1) -- (2,2) -- (3,4) -- (4,8) -- (5,16) -- (6,32);
+  \foreach \y in {10,20,30} { \draw[rule] (0.4,\y) -- (6.4,\y); \node[left, tick] at (0.4,\y) {$\y$}; }
+  \foreach \n in {1,...,6} \node[below, tick] at (\n,0) {$\n$};
+  \draw[primary, dashed] (1,1) -- (2,3) -- (3,5) -- (4,7) -- (5,9) -- (6,11);
+  \draw[accent, dashed] (1,1) -- (2,2) -- (3,4) -- (4,8) -- (5,16) -- (6,32);
   \foreach \n/\a/\g in {1/1/1, 2/3/2, 3/5/4, 4/7/8, 5/9/16, 6/11/32} {
-    \node[dot, fill=defc] at (\n,\a) {}; \node[dot, fill=thmc] at (\n,\g) {};
+    \node[dot, fill=primary] at (\n,\a) {}; \node[dot, fill=accent] at (\n,\g) {};
   }
-  \node[text=defc, font=\small, anchor=west] at (6.15,11) {$2n-1$};
-  \node[text=thmc, font=\small, anchor=west] at (6.15,32) {$2^{n-1}$};
+  \node[text=primary, lbl, anchor=west] at (6.15,11) {$2n-1$};
+  \node[text=accent, lbl, anchor=west] at (6.15,32) {$2^{n-1}$};
 \end{tikzpicture}
 ```
 

@@ -33,17 +33,17 @@ $$n(n-1)(n-2)\cdots(n-m+1) = \frac{n!}{(n-m)!} \quad (\text{also written } P(n,m
   \foreach \r/\a in {0/a,1/b,2/c} {
     \foreach \c/\b in {0/a,1/b,2/c} {
       \ifnum\r=\c
-        \filldraw[fill=black!8, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
+        \filldraw[cell, fill=neutral] (\c,-\r) rectangle (\c+1,-\r-1);
       \else
-        \filldraw[fill=defc!30, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
+        \filldraw[cell, fill=primaryLight] (\c,-\r) rectangle (\c+1,-\r-1);
       \fi
-      \node[font=\small] at (\c+0.5,-\r-0.5) {$\a\b$};
+      \node[lbl] at (\c+0.5,-\r-0.5) {$\a\b$};
     }
-    \node[left, font=\small] at (0,-\r-0.5) {$\a$};
-    \node[above, font=\small] at (\r+0.5,0) {$\a$};
+    \node[left, lbl] at (0,-\r-0.5) {$\a$};
+    \node[above, lbl] at (\r+0.5,0) {$\a$};
   }
-  \node[left, font=\small] at (-0.4,-1.5) {$f(1)$};
-  \node[above, font=\small] at (1.5,0.4) {$f(2)$};
+  \node[left, lbl] at (-0.4,-1.5) {$f(1)$};
+  \node[above, lbl] at (1.5,0.4) {$f(2)$};
 \end{tikzpicture}
 ```
 

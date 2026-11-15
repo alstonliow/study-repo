@@ -36,18 +36,18 @@ Compute $3^{36}$. Since $36=100100_2=2^5+2^2$, we have $3^{36}=3^{32}\cdot3^4$. 
 ::: {#fig-modular-exponentiation-1}
 
 ```{=latex}
-\begin{tikzpicture}[box/.style={draw=ink, fill=defc!8, rounded corners=3pt, minimum width=1.1cm, minimum height=0.7cm}]
+\begin{tikzpicture}
   \foreach \i/\b in {0/0, 1/0, 2/1, 3/0, 4/0, 5/1} {
     \pgfmathtruncatemacro{\e}{2^\i}
     \ifnum\b=1
-      \node[box, fill=thmc!20, draw=thmc] (p\i) at (\i*2.4,0) {$3^{\e}$};
+      \node[hl box] (p\i) at (\i*2.4,0) {$3^{\e}$};
     \else
       \node[box] (p\i) at (\i*2.4,0) {$3^{\e}$};
     \fi
-    \node[font=\small, text=notec] at (\i*2.4,0.85) {$b_{\i}=\b$};
+    \node[lbl, text=muted] at (\i*2.4,0.85) {$b_{\i}=\b$};
   }
-  \foreach \i/\j in {0/1, 1/2, 2/3, 3/4, 4/5} \draw[map] (p\i) -- node[lab, below=3pt, font=\scriptsize, text=notec] {square} (p\j);
-  \draw[thmc, line width=0.9pt] (p2.south) -- ++(0,-0.75) -| node[lab, near start, below, text=thmc] {multiply: $3^{36}=3^{32}\cdot3^{4}$} (p5.south);
+  \foreach \i/\j in {0/1, 1/2, 2/3, 3/4, 4/5} \draw[map] (p\i) -- node[lab, below=3pt, tick, text=muted] {square} (p\j);
+  \draw[accent, emph] (p2.south) -- ++(0,-0.75) -| node[lab, near start, below, text=accent] {multiply: $3^{36}=3^{32}\cdot3^{4}$} (p5.south);
 \end{tikzpicture}
 ```
 

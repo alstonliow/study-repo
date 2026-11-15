@@ -39,13 +39,13 @@ So $D_3=2$, the derangements being $(2,3,1)$ and $(3,1,2)$.
       \ifnum\d=1 \filldraw[regionB] (-0.35,-0.55) rectangle (1.45,1.45); \fi
       \foreach \i in {1,2,3} {
         \node[dot] (t\i) at ({(\i-1)*0.55},1) {}; \node[dot] (b\i) at ({(\i-1)*0.55},0) {};
-        \node[font=\scriptsize] at ({(\i-1)*0.55},1.27) {\i};
+        \node[tick] at ({(\i-1)*0.55},1.27) {\i};
       }
       \foreach \i/\j in {1/\a, 2/\b, 3/\c} {
-        \ifnum\i=\j \def\col{notec}\else\ifnum\d=1 \def\col{thmc}\else\def\col{ink}\fi\fi
+        \ifnum\i=\j \def\col{muted}\else\ifnum\d=1 \def\col{accent}\else\def\col{ink}\fi\fi
         \draw[map, \col, shorten <=2pt, shorten >=2pt] (t\i) -- (b\j);
       }
-      \node[font=\small] at (0.55,-0.35) {$(\a,\b,\c)$};
+      \node[lbl] at (0.55,-0.35) {$(\a,\b,\c)$};
     \end{scope}
   }
 \end{tikzpicture}

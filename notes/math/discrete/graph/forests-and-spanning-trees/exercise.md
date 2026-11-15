@@ -26,8 +26,7 @@ following weighted graph.
 
 ```{=latex}
 \begin{center}
-    \begin{tikzpicture}[dotgraph,
-                        lab/.style={fill=none,draw=none,inner sep=1pt,font=\small}]
+    \begin{tikzpicture}[dotgraph]
         \node[label=below:$a$] (a) at (0,0) {};
         \node[label=below:$c$] (c) at (2,0) {};
         \node[label=below:$e$] (e) at (4,0) {};

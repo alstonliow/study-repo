@@ -28,11 +28,11 @@ For one fair die, $E[X]=(1+2+3+4+5+6)/6=21/6=3.5$. The expectation need not be a
 \begin{tikzpicture}[x=0.8cm, y=8cm]
   \draw (0.4,0) -- (6.6,0);
   \foreach \k in {1,...,6} {
-    \fill[defc!70] (\k-0.3,0) rectangle (\k+0.3,1/6);
-    \node[below, font=\scriptsize] at (\k,-0.012) {$\k$};
+    \fill[primaryStrong] (\k-0.3,0) rectangle (\k+0.3,1/6);
+    \node[below, tick] at (\k,-0.012) {$\k$};
   }
-  \filldraw[fill=thmc, draw=thmc] (3.5,-0.005) -- (3.2,-0.07) -- (3.8,-0.07) -- cycle;
-  \node[text=thmc, font=\small, anchor=north] at (3.5,-0.075) {$E[X]=3.5$};
+  \filldraw[fill=accent, draw=accent] (3.5,-0.005) -- (3.2,-0.07) -- (3.8,-0.07) -- cycle;
+  \node[text=accent, lbl, anchor=north] at (3.5,-0.075) {$E[X]=3.5$};
 \end{tikzpicture}
 ```
 

@@ -42,11 +42,11 @@ $$
 \begin{tikzpicture}[x=1cm, y=0.55cm]
   \node[dot] (r) at (0,0) {};
   \foreach \f/\y/\rest in {a/3.3/{b,c}, b/0/{a,c}, c/-3.3/{a,b}} {
-    \node[vertex, minimum size=5.5mm] (s\f) at (2,\y) {$\f$};
+    \node[small vertex] (s\f) at (2,\y) {$\f$};
     \draw (r) -- (s\f);
     \foreach \g [count=\n] in \rest {
       \pgfmathsetmacro{\dy}{\n==1 ? 0.8 : -0.8}
-      \node[font=\small, anchor=west] (l\f\g) at (4,\y+\dy) {$\f\g$};
+      \node[lbl, anchor=west] (l\f\g) at (4,\y+\dy) {$\f\g$};
       \draw (s\f) -- (l\f\g.west);
     }
   }

@@ -61,10 +61,10 @@ Write the sum $S$ forwards and backwards and add term by term. Each of the $n$ p
 \begin{tikzpicture}[x=0.55cm, y=0.55cm]
   \foreach \k in {1,...,5} {
     \foreach \j in {1,...,\k}
-      \filldraw[fill=defc!45, draw=white, line width=1.2pt] (\k-1,\j-1) rectangle (\k,\j);
+      \filldraw[cell, fill=primaryMid] (\k-1,\j-1) rectangle (\k,\j);
     \pgfmathtruncatemacro{\s}{\k+1}
     \foreach \j in {\s,...,6}
-      \filldraw[fill=thmc!35, draw=white, line width=1.2pt] (\k-1,\j-1) rectangle (\k,\j);
+      \filldraw[cell, fill=accentLight] (\k-1,\j-1) rectangle (\k,\j);
   }
   \draw (0,0) rectangle (5,6);
   \node[below] at (2.5,0) {$n=5$};

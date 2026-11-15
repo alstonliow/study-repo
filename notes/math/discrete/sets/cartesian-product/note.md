@@ -31,7 +31,7 @@ $A \times B = \{(a,b) : a \in A,\ b \in B\}$.
     \foreach \j/\b in {1/a,2/b} {
       \draw[faint] (\i,0) -- (\i,\j) -- (0,\j);
       \node[dot] at (\i,\j) {};
-      \node[above right, font=\small, inner sep=2pt] at (\i,\j) {$(\i,\b)$};
+      \node[above right, lbl] at (\i,\j) {$(\i,\b)$};
     }
   }
 \end{tikzpicture}

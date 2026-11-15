@@ -72,11 +72,11 @@ $n=5$, $r=4$: the ones split $00110110$ into the blocks $00$, (empty), $0$, (emp
 \begin{tikzpicture}[x=0.85cm]
   \foreach \i/\s in {1/0,2/0,3/1,4/1,5/0,6/1,7/1,8/0} {
     \ifnum\s=0
-      \node[text=defc, font=\Large] at (\i,0) {$\bigstar$};
+      \node[text=primary, big] at (\i,0) {$\bigstar$};
     \else
-      \draw[thmc, line width=1.6pt] (\i,-0.4) -- (\i,0.4);
+      \draw[accent, bold] (\i,-0.4) -- (\i,0.4);
     \fi
-    \node[font=\footnotesize, text=notec] at (\i,-0.8) {$\s$};
+    \node[note, text=muted] at (\i,-0.8) {$\s$};
   }
   \draw[decorate, decoration={brace, amplitude=4pt}] (0.7,0.55) -- (2.3,0.55) node[midway, above=5pt] {$x_1=2$};
   \node at (3.5,0.95) {$x_2=0$};

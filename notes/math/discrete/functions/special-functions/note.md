@@ -66,20 +66,20 @@ $$\lfloor x \rfloor = \max\{n \in \mathbb{Z}: n \le x\}, \qquad
       \draw[->] (-2.5,0) -- (3.6,0) node[right] {$x$};
       \draw[->] (0,-2.5) -- (0,3.6);
       \node[anchor=south west] at (0.1,3.2) {$y=\name$};
-      \foreach \t in {-2,-1,1,2,3} \draw (\t,0.08) -- (\t,-0.08) node[below, font=\scriptsize] {$\t$};
-      \foreach \t in {1,2,3} \draw (0.08,\t) -- (-0.08,\t) node[left, font=\scriptsize] {$\t$};
+      \foreach \t in {-2,-1,1,2,3} \draw (\t,0.08) -- (\t,-0.08) node[below, tick] {$\t$};
+      \foreach \t in {1,2,3} \draw (0.08,\t) -- (-0.08,\t) node[left, tick] {$\t$};
     \end{scope}
   }
   \foreach \k in {-2,...,2} {
-    \draw[defc, line width=1.4pt] (\k,\k) -- (\k+1,\k);
-    \fill[defc] (\k,\k) circle (2.4pt);
-    \filldraw[fill=white, draw=defc, line width=0.9pt] (\k+1,\k) circle (2.4pt);
+    \draw[primary, bold] (\k,\k) -- (\k+1,\k);
+    \fill[primary] (\k,\k) circle[pt];
+    \filldraw[fill=white, draw=primary, emph] (\k+1,\k) circle[pt];
   }
   \begin{scope}[xshift=7cm]
     \foreach \k in {-1,...,3} {
-      \draw[thmc, line width=1.4pt] (\k-1,\k) -- (\k,\k);
-      \filldraw[fill=white, draw=thmc, line width=0.9pt] (\k-1,\k) circle (2.4pt);
-      \fill[thmc] (\k,\k) circle (2.4pt);
+      \draw[accent, bold] (\k-1,\k) -- (\k,\k);
+      \filldraw[fill=white, draw=accent, emph] (\k-1,\k) circle[pt];
+      \fill[accent] (\k,\k) circle[pt];
     }
   \end{scope}
 \end{tikzpicture}

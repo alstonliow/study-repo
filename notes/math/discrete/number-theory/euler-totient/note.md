@@ -67,8 +67,8 @@ $\varphi(12)=\varphi(4)\varphi(3)=2\cdot2=4$; indeed the integers in $[1,12]$ co
 
 ```{=latex}
 \begin{tikzpicture}[x=0.8cm]
-  \foreach \k in {1,...,12} \filldraw[fill=black!4, draw=black!30, rounded corners=2pt] (\k-0.95,0) rectangle (\k-0.05,0.7);
-  \foreach \k in {1,5,7,11} \filldraw[fill=thmc!30, draw=thmc, rounded corners=2pt] (\k-0.95,0) rectangle (\k-0.05,0.7);
+  \foreach \k in {1,...,12} \filldraw[cell frame] (\k-0.95,0) rectangle (\k-0.05,0.7);
+  \foreach \k in {1,5,7,11} \filldraw[hl cell] (\k-0.95,0) rectangle (\k-0.05,0.7);
   \foreach \k in {1,...,12} \node at (\k-0.5,0.35) {$\k$};
 \end{tikzpicture}
 ```

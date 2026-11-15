@@ -32,14 +32,14 @@ To see all six faces of a die takes on average $6H_6=6\bigl(1+\frac12+\frac13+\f
 
 ```{=latex}
 \begin{tikzpicture}[x=0.9cm, y=0.5cm]
-  \foreach \y in {2,4,6} {\draw[black!15] (0.4,\y) -- (6.6,\y); \node[left, font=\scriptsize] at (0.4,\y) {$\y$};}
+  \foreach \y in {2,4,6} {\draw[rule] (0.4,\y) -- (6.6,\y); \node[left, tick] at (0.4,\y) {$\y$};}
   \draw (0.4,0) -- (6.6,0);
   \foreach \k/\w/\t in {1/1/{\tfrac66}, 2/1.2/{\tfrac65}, 3/1.5/{\tfrac64}, 4/2/{\tfrac63}, 5/3/{\tfrac62}, 6/6/{\tfrac61}} {
-    \fill[defc!70] (\k-0.32,0) rectangle (\k+0.32,\w);
-    \node[above, font=\scriptsize] at (\k,\w) {$\t$};
-    \node[below, font=\scriptsize] at (\k,0) {$\k$};
+    \fill[primaryStrong] (\k-0.32,0) rectangle (\k+0.32,\w);
+    \node[above, tick] at (\k,\w) {$\t$};
+    \node[below, tick] at (\k,0) {$\k$};
   }
-  \node[font=\scriptsize, text=notec] at (3.5,-1.5) {new face number};
+  \node[tick, text=muted] at (3.5,-1.5) {new face number};
 \end{tikzpicture}
 ```
 

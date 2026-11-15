@@ -126,7 +126,7 @@ $K_5$ (left) and $C_6$ (right)
 }
 \end{tikzpicture}
 \qquad
-\begin{tikzpicture}[every node/.style={vertex, minimum size=5.5mm, inner sep=0.5pt, font=\scriptsize}]
+\begin{tikzpicture}[every node/.style={small vertex, tick}]
 \node (000) at (0,0) {000};
 \node (100) at (1.5,0) {100};
 \node (010) at (0,1.5) {010};

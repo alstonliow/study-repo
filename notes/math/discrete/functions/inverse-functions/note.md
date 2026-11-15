@@ -43,7 +43,7 @@ $$f^{-1} = \{(y,x) : (x,y) \in f\} = \{(f(x),x) : x \in A\}.$$
     \node[set, label=above:$A$] at (2.8,0) {};
     \node (c1) at (0,0.7) {$p$}; \node (c2) at (0,0) {$q$}; \node (c3) at (0,-0.7) {$r$};
     \node (d1) at (2.8,0.7) {$1$}; \node (d2) at (2.8,0) {$2$}; \node (d3) at (2.8,-0.7) {$3$};
-    \draw[map, thmc] (c2) -- (d1); \draw[map, thmc] (c3) -- (d2); \draw[map, thmc] (c1) -- (d3);
+    \draw[map, accent] (c2) -- (d1); \draw[map, accent] (c3) -- (d2); \draw[map, accent] (c1) -- (d3);
     \node at (1.4,-1.75) {$f^{-1}\colon B\to A$};
   \end{scope}
 \end{tikzpicture}

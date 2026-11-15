@@ -91,16 +91,37 @@ TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
 \definecolor{thmc}{HTML}{A5533B}
 \definecolor{exc}{HTML}{4E8A5A}
 \definecolor{notec}{HTML}{7A7A7A}
-% shared figure styles (meta/SPEC.md: figures)
+% ---- shared figure styles (meta/SPEC.md §5). Figures use only these names:
+% ---- no raw colour mixes, line widths, font sizes or node sizes in notes.
+% colours: roles, then a few fixed tints of each
 \colorlet{ink}{black!82}
+\colorlet{primary}{defc}   \colorlet{accent}{thmc}   \colorlet{secondary}{exc}   \colorlet{muted}{notec}
+\colorlet{primarySoft}{defc!8}   \colorlet{primaryLight}{defc!22}
+\colorlet{primaryMid}{defc!40}   \colorlet{primaryStrong}{defc!72}
+\colorlet{accentSoft}{thmc!16}   \colorlet{accentLight}{thmc!32}
+\colorlet{secondarySoft}{exc!20}
+\colorlet{neutral}{black!5}      \colorlet{rule}{black!22}
 \tikzset{
   every picture/.style={line width=0.6pt, line cap=round, line join=round, >={Stealth[length=5pt,width=4.5pt]}},
-  vertex/.style={circle, draw=ink, fill=defc!8, line width=0.7pt, inner sep=1.5pt, minimum size=6.5mm},
+  % text sizes
+  lbl/.style={font=\small}, tick/.style={font=\scriptsize}, note/.style={font=\footnotesize},
+  heading/.style={font=\normalsize}, big/.style={font=\Large},
+  lbl bold/.style={font=\small\bfseries}, heading bold/.style={font=\bfseries},
+  % line weights
+  emph/.style={line width=1pt}, bold/.style={line width=1.4pt},
+  hl/.style={draw=accent, line width=1.8pt},
+  faint/.style={draw=rule, line width=0.5pt},
+  gridline/.style={draw=rule, line width=0.4pt},
+  % graphs
+  vertex/.style={circle, draw=ink, fill=primarySoft, line width=0.7pt, inner sep=1.5pt, minimum size=6.5mm},
+  small vertex/.style={vertex, minimum size=5.5mm, inner sep=0.5pt},
   dot/.style={circle, fill=ink, draw=none, inner sep=0pt, minimum size=5.5pt},
+  hl dot/.style={dot, fill=accent, minimum size=7pt},
+  hollow dot/.style={circle, draw=ink, fill=white, inner sep=0pt, minimum size=6pt},
   graph/.style={every node/.style={vertex}},
   dotgraph/.style={every node/.style={dot}},
-  hl/.style={draw=thmc, line width=1.8pt},
-  faint/.style={draw=black!28, line width=0.5pt},
+  pt/.style={radius=2.4pt},
+  % areas
   regionA/.style={fill=defc!10, draw=defc!75, rounded corners=4pt},
   regionB/.style={fill=thmc!10, draw=thmc!75, rounded corners=4pt},
   regionC/.style={fill=exc!12, draw=exc!75, rounded corners=4pt},
@@ -109,8 +130,21 @@ TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
   tintB/.style={fill=thmc, fill opacity=0.10},
   tintC/.style={fill=exc, fill opacity=0.12},
   tintD/.style={fill=notec, fill opacity=0.12},
-  lab/.style={fill=none, draw=none, inner sep=1pt, minimum size=0pt, font=\small},
-  set/.style={ellipse, draw=ink, fill=defc!6, minimum width=1.3cm, minimum height=2.5cm},
+  overlapA/.style={fill=defc, fill opacity=0.22},
+  overlapB/.style={fill=thmc, fill opacity=0.22},
+  % cells, bars, boxes
+  cell/.style={fill=neutral, draw=white, line width=1.5pt},
+  cell frame/.style={fill=neutral, draw=rule},
+  hl cell/.style={fill=accentLight, draw=accent},
+  bar/.style={fill=primaryStrong},
+  box/.style={draw=ink, fill=primarySoft, rounded corners=3pt, inner sep=3pt, minimum width=1.1cm, minimum height=0.7cm, align=center},
+  hl box/.style={box, fill=accentSoft, draw=accent},
+  ball/.style={circle, fill=primaryLight, draw=primary, inner sep=0pt, minimum size=6.5mm},
+  hl ball/.style={ball, fill=accentLight, draw=accent},
+  % labels and maps
+  lab/.style={fill=none, draw=none, inner sep=1pt, minimum size=0pt, lbl},
+  edge label/.style={lab, note, fill=white, inner sep=1.5pt},
+  set/.style={ellipse, draw=ink, fill=primarySoft, minimum width=1.3cm, minimum height=2.5cm},
   map/.style={->, shorten <=3pt, shorten >=3pt},
 }
 \newcommand{\N}{\mathbb{N}}

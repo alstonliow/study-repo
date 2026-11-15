@@ -100,8 +100,8 @@ $$R = \{(a,a),(a,c),(a,d),(b,a),(b,b),(b,c),(b,d),(c,b),(c,c),(d,b),(d,d)\}.$$
   \draw[->] (b) to[bend right=20] (c);
   \draw[->] (b) to[bend left=12] (d);
   \draw[->] (d) to[bend left=12] (b);
-  \draw[->, thmc, line width=1.2pt] (a) -- (c);
-  \draw[->, thmc, line width=1.2pt] (c) to[bend right=20] (b);
+  \draw[->, accent, emph] (a) -- (c);
+  \draw[->, accent, emph] (c) to[bend right=20] (b);
 \end{tikzpicture}
 ```
 

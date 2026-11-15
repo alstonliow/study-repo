@@ -51,7 +51,7 @@ In the graph of @sec-math-discrete-graph-basic-definitions, the degrees add up t
   \node (d) at (2.6,0.75) {$d$}; \node (e) at (4.5,0.75) {$e$}; \node (f) at (6,1.5) {$f$}; \node (g) at (6,0) {$g$};
   \draw (a)--(b) (a)--(c) (b)--(c) (c)--(d) (f)--(g);
   \foreach \v/\d/\pos in {a/2/left, b/2/left, c/3/above, d/1/above, e/0/above, f/1/right, g/1/right}
-    \node[lab, text=thmc, font=\small\bfseries, \pos=14pt] at (\v) {\d};
+    \node[lab, text=accent, lbl bold, \pos=14pt] at (\v) {\d};
 \end{tikzpicture}
 ```
 

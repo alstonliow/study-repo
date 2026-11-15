@@ -139,15 +139,15 @@ The Prime Number Theorem says that $\pi(x)$, the number of primes $\le x$, satis
 \begin{tikzpicture}[x=0.62cm, y=0.62cm]
   \foreach \k in {1,...,60} {
     \pgfmathtruncatemacro{\c}{mod(\k-1,10)} \pgfmathtruncatemacro{\r}{div(\k-1,10)}
-    \filldraw[fill=black!4, draw=black!25] (\c,-\r) rectangle (\c+0.9,-\r-0.9);
+    \filldraw[cell frame] (\c,-\r) rectangle (\c+0.9,-\r-0.9);
   }
   \foreach \k in {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59} {
     \pgfmathtruncatemacro{\c}{mod(\k-1,10)} \pgfmathtruncatemacro{\r}{div(\k-1,10)}
-    \filldraw[fill=thmc!30, draw=thmc] (\c,-\r) rectangle (\c+0.9,-\r-0.9);
+    \filldraw[hl cell] (\c,-\r) rectangle (\c+0.9,-\r-0.9);
   }
   \foreach \k in {1,...,60} {
     \pgfmathtruncatemacro{\c}{mod(\k-1,10)} \pgfmathtruncatemacro{\r}{div(\k-1,10)}
-    \node[font=\small] at (\c+0.45,-\r-0.45) {\k};
+    \node[lbl] at (\c+0.45,-\r-0.45) {\k};
   }
 \end{tikzpicture}
 ```

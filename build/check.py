@@ -187,6 +187,29 @@ def check_notes() -> None:
           f"({len(empty_solutions)} empty)")
 
 
+RAW_LATEX = re.compile(r"^[ \t]*```\{=latex\}\n(.*?)\n[ \t]*```", re.S | re.M)
+HARD_CODED = re.compile(
+    r"\b(?:defc|thmc|exc|notec|black|gray|red|blue|green)!\d+"      # colour mixes
+    r"|\b(?:defc|thmc|exc|notec|gray|red|blue|green)\b"             # raw colour names
+    r"|line width=[\d.]+|\b(?:very |ultra )?(?:thick|thin)\b"      # line widths
+    r"|font=\\(?:tiny|scriptsize|footnotesize|small|normalsize|large|Large|LARGE|huge|Huge)"
+    r"|minimum (?:size|width|height)=|inner sep=|fill opacity=|rounded corners=")
+
+
+def check_figures() -> None:
+    """Figures use the shared styles (meta/SPEC.md §5), not raw colours and sizes."""
+    for md in sorted(NOTES.rglob("*.md")):
+        text = strip_comments(md.read_text(encoding="utf-8"))
+        for m in RAW_LATEX.finditer(text):
+            code = m.group(1)
+            if "\\begin{algorithmic}" in code or "circuitikz" in code:
+                continue
+            found = sorted(set(HARD_CODED.findall(code)))
+            if found:
+                line = text[:m.start()].count("\n") + 1
+                warnings.append(f"{rel(md)}:{line}: figure hard-codes {', '.join(found)}; use the shared styles")
+
+
 def check_forbidden_files() -> None:
     """Files that would be committed (tracked or untracked, not ignored)."""
     try:
@@ -207,6 +230,7 @@ def check_forbidden_files() -> None:
 
 def main() -> int:
     check_notes()
+    check_figures()
     check_forbidden_files()
     for w in warnings:
         print(f"warning: {w}")
