@@ -30,6 +30,7 @@ format:
     include-after-body:
       - filter.html
       - progress.html
+      - pseudocode.html
     filters:
       - list-delims.lua
     grid:

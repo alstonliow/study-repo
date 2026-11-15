@@ -97,16 +97,17 @@ Equivalently, start with no edges and repeatedly add any edge that does not crea
 :::
 
 ```{=latex}
-\begin{algorithm}[H]
-\SetAlgoLined
-\KwIn{Connected graph $G=(V,E)$}
-\KwOut{Spanning tree $F=(V,X)$}
-$X\gets\emptyset$\;
-\While{$\exists e\in E\setminus X$ such that $X\cup\{e\}$ has no cycle}{
-    pick such an $e$\;
-    $X\gets X\cup\{e\}$\;
-}
+\begin{algorithm}
 \caption{Spanning tree by adding edges}
+\begin{algorithmic}
+\INPUT Connected graph $G=(V,E)$
+\OUTPUT Spanning tree $F=(V,X)$
+\STATE $X\gets\emptyset$
+\WHILE{$\exists e\in E\setminus X$ such that $X\cup\{e\}$ has no cycle}
+    \STATE pick such an $e$
+    \STATE $X\gets X\cup\{e\}$
+\ENDWHILE
+\end{algorithmic}
 \end{algorithm}
 ```
 
@@ -123,16 +124,17 @@ In a connected graph with a weight (cost) $w(e)$ on each edge, a *minimum spanni
 :::
 
 ```{=latex}
-\begin{algorithm}[H]
-\SetAlgoLined
-\KwIn{Connected weighted graph $G=(V,E,w)$}
-\KwOut{Minimum spanning tree $F=(V,X)$}
-$X\gets\emptyset$\;
-\While{$\exists e\in E\setminus X$ such that $X\cup\{e\}$ has no cycle}{
-    $e\gets$ such an edge of minimum weight\;
-    $X\gets X\cup\{e\}$\;
-}
+\begin{algorithm}
 \caption{Kruskal's Greedy Algorithm}
+\begin{algorithmic}
+\INPUT Connected weighted graph $G=(V,E,w)$
+\OUTPUT Minimum spanning tree $F=(V,X)$
+\STATE $X\gets\emptyset$
+\WHILE{$\exists e\in E\setminus X$ such that $X\cup\{e\}$ has no cycle}
+    \STATE $e\gets$ such an edge of minimum weight
+    \STATE $X\gets X\cup\{e\}$
+\ENDWHILE
+\end{algorithmic}
 \end{algorithm}
 ```
 

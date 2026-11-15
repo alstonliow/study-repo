@@ -1,0 +1,64 @@
+<!-- Algorithms: raw LaTeX blocks in algorithmic syntax are emitted by
+     build/make_site.py as <pre class="pseudocode"> and typeset here in the
+     browser by pseudocode.js, using the page's MathJax for the maths. Styled to
+     match the body text and both light and dark themes. -->
+<style>
+  pre.pseudocode { display: none; }
+  pre.pseudocode.ps-fallback { display: block; }
+  .ps-root { font-family: inherit; font-size: 0.95em; margin: 1.2rem 0; }
+  .ps-root .ps-algorithm { margin: 0; border-top: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
+  .ps-root .ps-algorithm.with-caption > .ps-line:first-child { border-bottom: 1px solid currentColor; padding: 0.3em 0; }
+  .ps-root .ps-algorithmic { padding: 0.35em 0 0.45em; }
+  .ps-root .ps-line { line-height: 1.65; margin: 0; padding: 0; }
+  .ps-root .ps-keyword { font-family: inherit; font-weight: 600; color: #3B6EA5; }
+  .ps-root .ps-algorithm.with-caption > .ps-line:first-child .ps-keyword { color: inherit; }
+  .ps-root .ps-funcname { font-family: inherit; font-variant: small-caps; }
+  .ps-root .ps-comment { font-family: inherit; color: #7A7A7A; }
+  /* line numbers in one left column, whatever the nesting depth */
+  .ps-root .ps-algorithmic.with-linenum { position: relative; padding-left: 2em; }
+  .ps-root .ps-algorithmic.with-linenum > .ps-block { margin-left: 0 !important; }
+  .ps-root .ps-algorithmic.with-linenum .ps-line.ps-code { text-indent: 0; }
+  .ps-root .ps-algorithmic.with-linenum > .ps-line:not(.ps-code) { margin-left: -2em; }
+  .ps-root .ps-linenum { position: absolute; left: 0 !important; width: 1.4em; text-align: right; font-size: 0.75em; color: #9A9A9A; line-height: inherit; }
+  .ps-root .ps-algorithmic.with-scopelines div.ps-block { border-left: 1px solid rgba(127, 127, 127, 0.45); padding-left: 0.8em; }
+  .ps-root .ps-algorithmic.with-scopelines > div.ps-block { border-left: none; }
+  .ps-root mjx-container { text-indent: 0; }
+  body.quarto-dark .ps-root .ps-keyword { color: #8FB3E0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"
+        integrity="sha384-i3+YbLfC66kxqBVtgH6I+lEFAr+57mVZY/MSthCK/oTPo0rWCRzW/kSg2mJnTKLs"
+        crossorigin="anonymous"></script>
+<script>
+(function () {
+  const OPTIONS = { lineNumber: true, lineNumberPunc: "", scopeLines: true, indentSize: "1.2em", commentDelimiter: " ▷ " };
+
+  function fallback() {
+    document.querySelectorAll("pre.pseudocode").forEach(p => p.classList.add("ps-fallback"));
+  }
+  function render() {
+    try {
+      window.pseudocode.renderClass("pseudocode", OPTIONS);
+      // MathJax 3+: add the styles for the maths pseudocode.js just converted
+      const doc = window.MathJax && MathJax.startup && MathJax.startup.document;
+      if (doc) { doc.clear(); doc.updateDocument(); }
+    } catch (e) {
+      console.warn("pseudocode.js:", e);
+      fallback();
+    }
+  }
+  // MathJax is loaded asynchronously by Quarto; wait for it (at most ~8 s).
+  function whenMathReady(cb, tries) {
+    const mj = window.MathJax;
+    if (mj && mj.startup && mj.startup.promise) return mj.startup.promise.then(cb, cb);
+    if (tries <= 0) return cb();
+    setTimeout(() => whenMathReady(cb, tries - 1), 100);
+  }
+  function start() {
+    if (!document.querySelector("pre.pseudocode")) return;
+    if (!window.pseudocode) return fallback();
+    whenMathReady(render, 80);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
+})();
+</script>

@@ -88,8 +88,14 @@ Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
 5. 1058note `note` environments become `remark` blocks.
 6. Examples stay inside `note.md` in the author's order; `example.md` is for
    additional worked examples.
-7. Drawings (TikZ, circuitikz, picture, algorithm) are kept as raw LaTeX
-   blocks (```` ```{=latex} ````). The website build compiles them to SVG.
+7. Drawings (TikZ, circuitikz, picture) are kept as raw LaTeX blocks
+   (```` ```{=latex} ````). The website build compiles them to SVG.
+   Algorithms are raw LaTeX blocks too, written in `algorithmic` syntax:
+   `\begin{algorithm}`, `\caption{...}`, `\begin{algorithmic}`, then `\INPUT`,
+   `\OUTPUT`, `\STATE`, `\IF{..}`/`\ELSIF{..}`/`\ELSE`/`\ENDIF`,
+   `\WHILE{..}`/`\ENDWHILE`, `\FOR{..}`/`\ENDFOR`, `\RETURN`, `\COMMENT{..}`.
+   The website renders them as text with pseudocode.js (`site/pseudocode.html`);
+   they are not compiled to SVG. A PDF build must define `\INPUT` and `\OUTPUT`.
 8. `example` blocks may carry `level="easy|medium|hard"`, filled in by the owner
    only.
 

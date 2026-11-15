@@ -15,6 +15,7 @@ Read-only with respect to notes/. Never runs git.
 from __future__ import annotations
 
 import hashlib
+import html
 import re
 import shutil
 import subprocess
@@ -303,6 +304,11 @@ def fix_claims(text: str) -> str:
     return re.sub(r"^(:{3,})\s*\{(.*)\}\s*$", sub, text, flags=re.M)
 
 
+def is_algorithm(code: str) -> bool:
+    """Raw LaTeX blocks in algorithmic syntax, rendered as HTML instead of SVG."""
+    return "\\begin{algorithmic}" in code
+
+
 def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: dict[str, str | None]) -> str:
     body_text = note.body.strip()
     if note.num:
@@ -318,6 +324,10 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
 
     def raw_sub(m):
         ind = m.group(1)
+        if is_algorithm(m.group(2)):
+            # algorithms are typeset in the browser by pseudocode.js (site/pseudocode.html)
+            src = html.escape(textwrap.dedent(m.group(2)), quote=False)
+            return "\n".join(ind + l for l in ["```{=html}", f'<pre class="pseudocode">{src}</pre>', "```"])
         name = svgs.get(textwrap.dedent(m.group(2)))
         inner = f"![](/tikz/{name})" if name else "*(Figure available in the PDF version.)*"
         return "\n".join(ind + l for l in ["::: {.tikz-figure}", inner, ":::"])
@@ -394,7 +404,8 @@ def main() -> int:
     # compile drawings
     TIKZ.mkdir(parents=True, exist_ok=True)
     codes = sorted({textwrap.dedent(m.group(2)) for n in notes.values()
-                    for t in (n.body, n.examples, n.exercises, n.solutions) for m in RAW.finditer(t)})
+                    for t in (n.body, n.examples, n.exercises, n.solutions) for m in RAW.finditer(t)
+                    if not is_algorithm(m.group(2))})
     with ThreadPoolExecutor(max_workers=6) as pool:
         svgs = dict(zip(codes, pool.map(compile_svg, codes)))
     failed = sum(1 for v in svgs.values() if v is None)
