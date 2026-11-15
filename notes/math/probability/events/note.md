@@ -47,6 +47,38 @@ $A$ and $\overline A$ are mutually exclusive with union $U$, so $\Pr(A)+\Pr(\ove
 
 :::
 
+::: {#fig-events-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \begin{scope}[xshift=0cm]
+    \fill[shade] (0.85,0) circle (0.75); \fill[shade] (1.75,0) circle (0.75);
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$A$}; \node at (2.15,0) {$B$};
+    \node at (1.3,-1.5) {$A\cup B$};
+  \end{scope}
+  \begin{scope}[xshift=4.0cm]
+    \fill[shade] (0.85,0) circle (0.75); \begin{scope}\clip (0.85,0) circle (0.75); \fill[white] (1.75,0) circle (0.75);\end{scope}
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$A$}; \node at (2.15,0) {$B$};
+    \node at (1.3,-1.5) {$A\setminus B$};
+  \end{scope}
+  \begin{scope}[xshift=8.0cm]
+    \fill[shade, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (0.85,0) circle (0.75);
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$A$}; \node at (2.15,0) {$B$};
+    \node at (1.3,-1.5) {$\overline{A}$};
+  \end{scope}
+\end{tikzpicture}
+```
+
+Operations on events as regions of the sample space (shaded)
+
+:::
+
 ::: {#exm-events-1-2 .example}
 
 In “dice cricket”, each throw of a fair die is the runs scored off one delivery, except that $5$ means out. So $\Pr(\text{not out})=1-\frac16=\frac56$.

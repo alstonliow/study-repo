@@ -34,6 +34,26 @@ $$\#\{\text{binary relations on } A\} = 2^{m^2}.$$
 
 :::
 
+::: {#fig-relations-counting-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.9cm, y=0.9cm]
+  \foreach \r/\a in {0/a,1/b,2/c} {
+    \foreach \c/\b in {0/a,1/b,2/c}
+      \filldraw[fill=black!5, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
+    \node[left, font=\small] at (0,-\r-0.5) {$\a$};
+    \node[above, font=\small] at (\r+0.5,0) {$\a$};
+  }
+  \foreach \c/\r in {0/0, 1/0, 2/1, 0/2}
+    \filldraw[fill=defc!45, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
+  \node[left, font=\small] at (-0.35,-1.5) {$x$}; \node[above, font=\small] at (1.5,0.4) {$y$};
+\end{tikzpicture}
+```
+
+A relation on $\{a,b,c\}$ is a choice of cells $(x,y)$ in this $3\times3$ grid; the one shown is $\{(a,a),(a,b),(b,c),(c,a)\}$. Each of the $9$ cells is in or out, giving $2^9$ relations
+
+:::
+
 ::: {.proof}
 
 A binary relation from $A$ to $B$ is exactly a subset of $A \times B$, so the count equals $|\mathcal{P}(A\times B)| = 2^{|A\times B|}$ (@sec-math-discrete-sets-power-set). Since $|A\times B| = mn$ (@sec-math-discrete-sets-cartesian-product), this is $2^{mn}$. The case $A=B$ substitutes $n=m$.

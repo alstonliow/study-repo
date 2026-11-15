@@ -33,6 +33,26 @@ Each $e_k$ is a bijection on $\mathbb{Z}_{26}$ with $d_k = e_k^{-1}$, so $(M,C,K
 
 :::
 
+::: {#fig-cryptosystems-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \draw (0,0) circle (2.75); \draw (0,0) circle (2.05); \draw (0,0) circle (1.4);
+  \foreach \i in {0,...,25} {
+    \pgfmathsetmacro{\a}{90-\i*360/26}
+    \pgfmathtruncatemacro{\j}{mod(\i+3,26)}
+    \draw[black!25] (\a:1.4) -- (\a:2.75);
+    \node at ({\a-360/52}:2.4) {\char\numexpr65+\i\relax};
+    \node[text=thmc] at ({\a-360/52}:1.72) {\char\numexpr65+\j\relax};
+  }
+  \node[font=\small, align=center] at (0,0) {$k=3$};
+\end{tikzpicture}
+```
+
+The shift cipher with $k=3$: each letter on the outer ring is encrypted to the letter just inside it ($A\mapsto D$, $X\mapsto A$)
+
+:::
+
 ::: {#def-composition-of-cryptosystems .definition name="Composition of cryptosystems"}
 
 Given $\mathcal{C} = (M,M,K,e,d)$ and $\mathcal{C}' = (M,M,K',e',d')$ (same message space), the *keyed composition* of encryption functions is

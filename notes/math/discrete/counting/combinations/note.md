@@ -99,3 +99,35 @@ $n=5$, $k=1$: $\binom52=10$, and $\binom41+\binom31+\binom21+\binom11=4+3+2+1=10
 ::: {.remark name="Name"}
 In Pascal's triangle the summands lie along a diagonal, and the left-hand side sits just off the end of that diagonal, giving a hockey-stick shape.
 :::
+
+::: {#fig-combinations-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \node at (0.000,0.000) {$1$};
+  \node at (-0.475,-0.750) {$1$};
+  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (0.475,-0.750) {$1$};
+  \node at (-0.950,-1.500) {$1$};
+  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (0.000,-1.500) {$2$};
+  \node at (0.950,-1.500) {$1$};
+  \node at (-1.425,-2.250) {$1$};
+  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (-0.475,-2.250) {$3$};
+  \node at (0.475,-2.250) {$3$};
+  \node at (1.425,-2.250) {$1$};
+  \node at (-1.900,-3.000) {$1$};
+  \node[circle, fill=defc!22, draw=defc, inner sep=0pt, minimum size=6.5mm] at (-0.950,-3.000) {$4$};
+  \node at (0.000,-3.000) {$6$};
+  \node at (0.950,-3.000) {$4$};
+  \node at (1.900,-3.000) {$1$};
+  \node at (-2.375,-3.750) {$1$};
+  \node at (-1.425,-3.750) {$5$};
+  \node[circle, fill=thmc!22, draw=thmc, inner sep=0pt, minimum size=6.5mm] at (-0.475,-3.750) {$10$};
+  \node at (0.475,-3.750) {$10$};
+  \node at (1.425,-3.750) {$5$};
+  \node at (2.375,-3.750) {$1$};
+\end{tikzpicture}
+```
+
+Pascal's triangle, rows $0$ to $5$. The blue diagonal $\binom11+\binom21+\binom31+\binom41=1+2+3+4$ sums to the red entry $\binom52=10$, the blade of the hockey stick
+
+:::

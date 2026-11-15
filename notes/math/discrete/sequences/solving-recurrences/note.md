@@ -37,6 +37,21 @@ There are $n$ disks of different sizes on peg $A$, largest at the bottom. They m
 
 :::
 
+::: {#fig-solving-recurrences-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \fill[ink] (-1.4,-0.12) rectangle (7.4,0);
+  \foreach \x/\p in {0/A, 3/B, 6/C} { \fill[ink] (\x-0.05,0) rectangle (\x+0.05,2.2); \node[below] at (\x,-0.15) {$\p$}; }
+  \foreach \w/\k/\c in {1.25/0/defc!55, 0.98/1/defc!45, 0.71/2/defc!35, 0.44/3/defc!25}
+    \filldraw[fill=\c, draw=ink, rounded corners=2pt] (-\w,\k*0.36) rectangle (\w,\k*0.36+0.32);
+\end{tikzpicture}
+```
+
+The Tower of Hanoi with $n=4$ disks. All the disks must move from peg $A$ to peg $C$
+
+:::
+
 ::: {#def-linear-homogeneous-recurrence-with-constant .definition name="Linear homogeneous recurrence with constant coefficients (extra)"}
 
 This is a recurrence

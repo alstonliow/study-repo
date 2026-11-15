@@ -132,3 +132,26 @@ To test whether $n$ is prime, it is enough to try dividing by the primes up to $
 The Prime Number Theorem says that $\pi(x)$, the number of primes $\le x$, satisfies $\pi(x)\sim x/\ln x$. So primes thin out, but only slowly: an integer near $x$ is prime with probability about $1/\ln x$. This is why searching randomly for large primes (as needed in @sec-math-discrete-number-theory-diffie-hellman) is practical.
 
 :::
+
+::: {#fig-divisibility-and-primes-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.62cm, y=0.62cm]
+  \foreach \k in {1,...,60} {
+    \pgfmathtruncatemacro{\c}{mod(\k-1,10)} \pgfmathtruncatemacro{\r}{div(\k-1,10)}
+    \filldraw[fill=black!4, draw=black!25] (\c,-\r) rectangle (\c+0.9,-\r-0.9);
+  }
+  \foreach \k in {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59} {
+    \pgfmathtruncatemacro{\c}{mod(\k-1,10)} \pgfmathtruncatemacro{\r}{div(\k-1,10)}
+    \filldraw[fill=thmc!30, draw=thmc] (\c,-\r) rectangle (\c+0.9,-\r-0.9);
+  }
+  \foreach \k in {1,...,60} {
+    \pgfmathtruncatemacro{\c}{mod(\k-1,10)} \pgfmathtruncatemacro{\r}{div(\k-1,10)}
+    \node[font=\small] at (\c+0.45,-\r-0.45) {\k};
+  }
+\end{tikzpicture}
+```
+
+The primes up to $60$ (shaded): $17$ of the first $60$ integers
+
+:::

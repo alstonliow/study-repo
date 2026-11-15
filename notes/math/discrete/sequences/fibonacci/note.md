@@ -13,6 +13,25 @@ $f_1=1$, $f_2=1$, and $f_n=f_{n-1}+f_{n-2}$ for $n\ge3$. It begins $1,1,2,3,5,8,
 
 :::
 
+::: {#fig-fibonacci-1}
+
+```{=latex}
+\begin{tikzpicture}[scale=0.42]
+  \foreach \x/\y/\s/\c in {0/0/1/defc!20, 1/0/1/thmc!20, 0/1/2/exc!22, -3/0/3/defc!14, -3/-5/5/thmc!14, 2/-5/8/exc!14}
+    \filldraw[fill=\c, draw=ink] (\x,\y) rectangle (\x+\s,\y+\s);
+  \foreach \x/\y/\s in {0/0/1, 1/0/1, 0/1/2, -3/0/3, -3/-5/5, 2/-5/8}
+    \node[font=\small] at (\x+\s/2,\y+\s/2) {$\s$};
+  \draw[thmc, line width=1.1pt] (0,1) arc[start angle=180, end angle=270, radius=1]
+        arc[start angle=270, end angle=360, radius=1] arc[start angle=0, end angle=90, radius=2]
+        arc[start angle=90, end angle=180, radius=3] arc[start angle=180, end angle=270, radius=5]
+        arc[start angle=270, end angle=360, radius=8];
+\end{tikzpicture}
+```
+
+Squares with sides $1,1,2,3,5,8$ tile a $13\times8$ rectangle, whose sides are again consecutive Fibonacci numbers
+
+:::
+
 ::: {.remark name="No obvious formula"}
 
 The recurrence does not suggest a formula. But the ratio $f_{n+1}/f_n$ seems to settle down (e.g. $f_{10}/f_9=55/34\approx1.618$), suggesting exponential growth at some fixed rate. We explore this with upper and lower bounds.

@@ -22,6 +22,24 @@ For one fair die, $E[X]=(1+2+3+4+5+6)/6=21/6=3.5$. The expectation need not be a
 
 :::
 
+::: {#fig-expectation-and-variance-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.8cm, y=8cm]
+  \draw (0.4,0) -- (6.6,0);
+  \foreach \k in {1,...,6} {
+    \fill[defc!70] (\k-0.3,0) rectangle (\k+0.3,1/6);
+    \node[below, font=\scriptsize] at (\k,-0.012) {$\k$};
+  }
+  \filldraw[fill=thmc, draw=thmc] (3.5,-0.005) -- (3.2,-0.07) -- (3.8,-0.07) -- cycle;
+  \node[text=thmc, font=\small, anchor=north] at (3.5,-0.075) {$E[X]=3.5$};
+\end{tikzpicture}
+```
+
+The distribution of one fair die balances at its mean $E[X]=3.5$, even though $3.5$ is not a possible value
+
+:::
+
 ::: {#thm-linearity-of-expectation .theorem name="Linearity of expectation"}
 
 For any random variables $X,Y$ and constants $a,b$,

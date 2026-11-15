@@ -36,6 +36,27 @@ $$
 $$
 :::
 
+::: {#fig-selection-1}
+
+```{=latex}
+\begin{tikzpicture}[x=1cm, y=0.55cm]
+  \node[dot] (r) at (0,0) {};
+  \foreach \f/\y/\rest in {a/3.3/{b,c}, b/0/{a,c}, c/-3.3/{a,b}} {
+    \node[vertex, minimum size=5.5mm] (s\f) at (2,\y) {$\f$};
+    \draw (r) -- (s\f);
+    \foreach \g [count=\n] in \rest {
+      \pgfmathsetmacro{\dy}{\n==1 ? 0.8 : -0.8}
+      \node[font=\small, anchor=west] (l\f\g) at (4,\y+\dy) {$\f\g$};
+      \draw (s\f) -- (l\f\g.west);
+    }
+  }
+\end{tikzpicture}
+```
+
+Ordered selections of $2$ from $\{a,b,c\}$ without replacement: $3$ choices, then $2$, giving $(3)_2=6$ sequences
+
+:::
+
 ::: {.proof name="Derivation"}
 Choice $k$ (for $k=1,\dots,r$) has $n-(k-1)$ options remaining (the $k-1$ prior choices excluded). By the product rule (@sec-math-discrete-counting-sum-and-product-rules):
 $$

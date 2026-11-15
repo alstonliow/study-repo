@@ -58,3 +58,20 @@ k & 2&3&4&5&6&7&8&9&10&11&12\\\hline
 The distribution is symmetric about $7$, the most likely total.
 
 :::
+
+::: {#fig-random-variables-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.62cm, y=0.42cm]
+  \foreach \y in {2,4,6} {\draw[black!15] (1.4,\y) -- (12.6,\y); \node[left, font=\scriptsize] at (1.4,\y) {$\y/36$};}
+  \draw (1.4,0) -- (12.6,0);
+  \foreach \k/\c in {2/1,3/2,4/3,5/4,6/5,7/6,8/5,9/4,10/3,11/2,12/1} {
+    \fill[defc!70] (\k-0.34,0) rectangle (\k+0.34,\c);
+    \node[below, font=\scriptsize] at (\k,0) {$\k$};
+  }
+\end{tikzpicture}
+```
+
+The distribution of the total $Z$ of two fair dice: symmetric about $7$, the most likely total
+
+:::

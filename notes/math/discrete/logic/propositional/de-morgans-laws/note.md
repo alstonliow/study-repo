@@ -68,6 +68,32 @@ Compare directly with @sec-math-discrete-sets-set-operations’s Theorem (De Mor
 
 :::
 
+::: {#fig-de-morgans-laws-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \begin{scope}[xshift=0cm]
+    \fill[shade] (-0.4,-1.1) rectangle (3.0,1.1); \fill[white] (0.85,0) circle (0.75); \fill[white] (1.75,0) circle (0.75);
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};
+    \node at (1.3,-1.5) {$\neg(P\vee Q)$};
+  \end{scope}
+  \begin{scope}[xshift=4.4cm]
+    \fill[defc, fill opacity=0.22, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (0.85,0) circle (0.75);
+    \fill[thmc, fill opacity=0.22, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (1.75,0) circle (0.75);
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};
+    \node at (1.3,-1.5) {$\neg P\wedge\neg Q$};
+  \end{scope}
+\end{tikzpicture}
+```
+
+Left: $\neg(P\vee Q)$ is the region outside both circles. Right: $\neg P$ (blue) and $\neg Q$ (red) overlap in exactly that region
+
+:::
+
 ::: {.remark name="Naming logical equivalence"}
 
 Two compound propositions are *logically equivalent* iff their truth tables are identical in every row – written $P \equiv Q$ or $P \iff Q$ (a *tautology*, true under every assignment; formalized further in @sec-math-discrete-logic-propositional-tautologies).

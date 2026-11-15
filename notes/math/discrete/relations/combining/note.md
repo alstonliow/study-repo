@@ -22,6 +22,34 @@ $$S \circ R = \{(x,z) : \exists y \in B \text{ such that } xRy \text{ and } ySz\
 
 :::
 
+::: {#fig-combining-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \node[set, label=above:$A$] at (0,0) {};
+  \node[set, label=above:$B$] at (2.4,0) {};
+  \node[set, label=above:$C$] at (4.8,0) {};
+  \node (1) at (0,0.4) {$1$}; \node (2) at (0,-0.4) {$2$};
+  \node (p) at (2.4,0.7) {$p$}; \node (q) at (2.4,0) {$q$}; \node (r) at (2.4,-0.7) {$r$};
+  \node (u) at (4.8,0.4) {$u$}; \node (v) at (4.8,-0.4) {$v$};
+  \draw[map] (1) -- (p); \draw[map] (1) -- (q); \draw[map] (2) -- (r);
+  \draw[map] (p) -- (u); \draw[map] (q) -- (v); \draw[map] (r) -- (v);
+  \node at (1.2,-1.7) {$R$}; \node at (3.6,-1.7) {$S$};
+  \begin{scope}[xshift=7.4cm]
+    \node[set, label=above:$A$] at (0,0) {};
+    \node[set, label=above:$C$] at (2.4,0) {};
+    \node (1') at (0,0.4) {$1$}; \node (2') at (0,-0.4) {$2$};
+    \node (u') at (2.4,0.4) {$u$}; \node (v') at (2.4,-0.4) {$v$};
+    \draw[map, thmc] (1') -- (u'); \draw[map, thmc] (1') -- (v'); \draw[map, thmc] (2') -- (v');
+    \node at (1.2,-1.7) {$S\circ R$};
+  \end{scope}
+\end{tikzpicture}
+```
+
+Relations $R$ and $S$ (left) and their composition $S\circ R$ (right): $1$ is related to $u$ through $p$ and to $v$ through $q$
+
+:::
+
 ::: {.remark}
 
 When $R,S$ happen to be functions, this is exactly function composition (@sec-math-discrete-functions-composition). Relation composition generalizes it: no uniqueness of the intermediate $y$ is required, and there may be several, or none.

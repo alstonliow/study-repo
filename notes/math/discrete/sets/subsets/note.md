@@ -40,6 +40,21 @@ $\subseteq$ is reflexive ($A \subseteq A$) and transitive ($A \subseteq B \wedge
 
 :::
 
+::: {#fig-subsets-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \draw[fill=defc!6] (0,0) ellipse (2.6 and 1.5);
+  \draw[fill=defc!14] (-0.5,-0.1) ellipse (1.7 and 1.05);
+  \draw[fill=defc!26] (-0.9,-0.15) ellipse (0.85 and 0.6);
+  \node at (-0.9,-0.15) {$A$}; \node at (0.6,0.1) {$B$}; \node at (1.85,0.3) {$C$};
+\end{tikzpicture}
+```
+
+$A\subseteq B$ and $B\subseteq C$, so $A\subseteq C$
+
+:::
+
 ## Minimal, minimum, maximal, maximum
 
 ::: {#exm-motivating-example-cliques .example name="Motivating example: cliques"}
@@ -55,6 +70,22 @@ Let $\mathcal{F}$ be a family of subsets of some set, all sharing a given proper
 - $M \in \mathcal{F}$ is a *maximum* if $S \subseteq M$ for every $S \in \mathcal{F}$ (largest possible size).
 
 - $M \in \mathcal{F}$ is *maximal* if $M$ is not a proper subset of any $S \in \mathcal{F}$ (cannot be enlarged while keeping the property).
+
+:::
+
+::: {#fig-subsets-2}
+
+```{=latex}
+\begin{tikzpicture}[graph]
+  \node (a) at (0,1.6) {$a$}; \node (b) at (1.6,1.6) {$b$};
+  \node (c) at (0,0) {$c$};   \node (d) at (1.6,0) {$d$};
+  \node (e) at (3.0,0.9) {$e$}; \node (f) at (3.0,-0.7) {$f$};
+  \draw[defc, line width=1.4pt] (a)--(b) (a)--(c) (a)--(d) (b)--(c) (b)--(d) (c)--(d);
+  \draw[thmc, line width=1.4pt] (d)--(e) (e)--(f) (f)--(d);
+\end{tikzpicture}
+```
+
+$\{a,b,c,d\}$ (blue) and $\{d,e,f\}$ (red) are both maximal cliques: neither can be enlarged. Only the blue one has the largest possible size
 
 :::
 

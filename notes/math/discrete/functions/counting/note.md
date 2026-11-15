@@ -26,6 +26,31 @@ $$n(n-1)(n-2)\cdots(n-m+1) = \frac{n!}{(n-m)!} \quad (\text{also written } P(n,m
 
 :::
 
+::: {#fig-functions-counting-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.9cm, y=0.9cm]
+  \foreach \r/\a in {0/a,1/b,2/c} {
+    \foreach \c/\b in {0/a,1/b,2/c} {
+      \ifnum\r=\c
+        \filldraw[fill=black!8, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
+      \else
+        \filldraw[fill=defc!30, draw=white, line width=1.5pt] (\c,-\r) rectangle (\c+1,-\r-1);
+      \fi
+      \node[font=\small] at (\c+0.5,-\r-0.5) {$\a\b$};
+    }
+    \node[left, font=\small] at (0,-\r-0.5) {$\a$};
+    \node[above, font=\small] at (\r+0.5,0) {$\a$};
+  }
+  \node[left, font=\small] at (-0.4,-1.5) {$f(1)$};
+  \node[above, font=\small] at (1.5,0.4) {$f(2)$};
+\end{tikzpicture}
+```
+
+The $3^2=9$ functions $f:\{1,2\}\to\{a,b,c\}$, written $f(1)f(2)$. The $3\cdot2=6$ off the diagonal (blue) are injective
+
+:::
+
 ::: {.proof}
 
 Enumerate $A = \{a_1,\dots,a_m\}$. $a_1$ has $n$ choices in $B$; $a_2$ must avoid $f(a_1)$, so $n-1$ choices; …; $a_m$ must avoid the $m-1$ already-used values, so $n-m+1$ choices. These choices are made in sequence, so by the product rule the total is $n(n-1)\cdots(n-m+1)$.

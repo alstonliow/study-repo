@@ -24,6 +24,25 @@ All six elements appear, and $1$ is first reached at $k=6$, so $3$ is a primitiv
 
 :::
 
+::: {#fig-primitive-roots-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \foreach \k/\pos in {1/0, 3/1, 2/2, 6/3, 4/4, 5/5} \node[vertex] (a\k) at ({90-60*\pos}:1.45) {$\k$};
+  \foreach \s/\t in {1/3, 3/2, 2/6, 6/4, 4/5, 5/1} \draw[map, thmc, line width=0.9pt] (a\s) to[bend left=15] (a\t);
+  \node at (0,-2.2) {powers of $3$};
+  \begin{scope}[xshift=4.6cm]
+    \foreach \k/\pos in {1/0, 3/1, 2/2, 6/3, 4/4, 5/5} \node[vertex] (b\k) at ({90-60*\pos}:1.45) {$\k$};
+    \foreach \s/\t in {1/2, 2/4, 4/1} \draw[map, defc, line width=0.9pt] (b\s) -- (b\t);
+    \node at (0,-2.2) {powers of $2$};
+  \end{scope}
+\end{tikzpicture}
+```
+
+Multiplying by $3$ modulo $7$ visits all six elements of $\mathbb{Z}_7^*$ before returning to $1$; multiplying by $2$ only cycles through $1,2,4$
+
+:::
+
 ::: {.remark name="Primitive roots have the widest range"}
 
 Among the members of $\mathbb{Z}_n^*$, the primitive roots are exactly those whose powers take the greatest possible number of values. This is what makes them useful in cryptography (@sec-math-discrete-number-theory-diffie-hellman).

@@ -43,6 +43,22 @@ The divisor $d$ is always positive, but $n$ may be negative; $q$ is still the la
 
 :::
 
+::: {#fig-remainders-and-parity-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.55cm]
+  \draw[->] (-12.6,0) -- (2.6,0);
+  \foreach \t in {-12,...,2} \draw (\t,0.1) -- (\t,-0.1);
+  \foreach \t in {-10,-5,0} { \draw[line width=1pt] (\t,0.22) -- (\t,-0.22); \node[below] at (\t,-0.25) {$\t$}; }
+  \node[dot, fill=thmc, minimum size=7pt, label={[lab, text=thmc]below:$-6$}] at (-6,0) {};
+  \draw[decorate, decoration={brace, amplitude=5pt}] (-10,0.35) -- (-6,0.35) node[midway, above=6pt] {$r=4$};
+\end{tikzpicture}
+```
+
+$-6\bmod5=4$: the largest multiple of $5$ that is at most $-6$ is $-10$, and the remainder is the distance from it
+
+:::
+
 ## Parity
 
 ::: {#def-parity .definition name="Parity"}

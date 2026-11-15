@@ -68,3 +68,24 @@ For two dice, the $11$ possible totals $2,\dots,12$ are not equally likely. Trea
 The total is $8$ for the outcomes $(2,6),(3,5),(4,4),(5,3),(6,2)$, so $\Pr(\text{total is }8)=5/36$.
 
 :::
+
+::: {#fig-sample-spaces-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.62cm, y=0.62cm]
+  \foreach \i in {1,...,6} {
+    \foreach \j in {1,...,6} {
+      \pgfmathtruncatemacro{\s}{\i+\j}
+      \ifnum\s=8 \def\col{thmc!35}\else\def\col{defc!10}\fi
+      \filldraw[fill=\col, draw=white, line width=1.5pt] (\j-1,1-\i) rectangle (\j,-\i);
+    }
+    \node[font=\small] at (\i-0.5,0.45) {\i};
+    \node[font=\small] at (-0.45,0.5-\i) {\i};
+  }
+  \node[font=\small] at (3,1.2) {$d_2$}; \node[font=\small] at (-1.3,-3) {$d_1$};
+\end{tikzpicture}
+```
+
+The $36$ equally likely outcomes $(d_1,d_2)$ of two dice; the $5$ with total $8$ are shaded, so $\Pr(\text{total is }8)=5/36$
+
+:::

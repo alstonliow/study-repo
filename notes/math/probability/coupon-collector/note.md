@@ -28,6 +28,25 @@ To see all six faces of a die takes on average $6H_6=6\bigl(1+\frac12+\frac13+\f
 
 :::
 
+::: {#fig-coupon-collector-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.9cm, y=0.5cm]
+  \foreach \y in {2,4,6} {\draw[black!15] (0.4,\y) -- (6.6,\y); \node[left, font=\scriptsize] at (0.4,\y) {$\y$};}
+  \draw (0.4,0) -- (6.6,0);
+  \foreach \k/\w/\t in {1/1/{\tfrac66}, 2/1.2/{\tfrac65}, 3/1.5/{\tfrac64}, 4/2/{\tfrac63}, 5/3/{\tfrac62}, 6/6/{\tfrac61}} {
+    \fill[defc!70] (\k-0.32,0) rectangle (\k+0.32,\w);
+    \node[above, font=\scriptsize] at (\k,\w) {$\t$};
+    \node[below, font=\scriptsize] at (\k,0) {$\k$};
+  }
+  \node[font=\scriptsize, text=notec] at (3.5,-1.5) {new face number};
+\end{tikzpicture}
+```
+
+Expected throws to see each new face of a die: $1, \tfrac65, \tfrac64, \tfrac63, \tfrac62, 6$. The last face alone takes $6$ throws on average, and the total is $14.7$
+
+:::
+
 ::: {.remark name="The last few are expensive"}
 
 Since $H_n\approx\ln n$ (@sec-math-discrete-sequences-sums-and-series), collecting all $n$ types takes about $n\ln n$ draws, not about $n$. The early types come quickly; the last one alone takes $n$ draws on average.

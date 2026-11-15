@@ -47,6 +47,24 @@ Applying @prp-gcdsub repeatedly, always subtracting the smaller number from the 
 
 :::
 
+::: {#fig-gcd-and-euclidean-algorithm-1}
+
+```{=latex}
+\begin{tikzpicture}[scale=0.2]
+  \filldraw[fill=defc!18, draw=ink] (0,0) rectangle (12,12);
+  \filldraw[fill=thmc!18, draw=ink] (12,4) rectangle (20,12);
+  \filldraw[fill=exc!25, draw=ink] (12,0) rectangle (16,4);
+  \filldraw[fill=exc!25, draw=ink] (16,0) rectangle (20,4);
+  \draw[line width=1pt] (0,0) rectangle (20,12);
+  \node at (6,6) {$12$}; \node at (16,8) {$8$}; \node at (14,2) {$4$}; \node at (18,2) {$4$};
+  \node[below] at (10,0) {$20$}; \node[left] at (0,6) {$12$};
+\end{tikzpicture}
+```
+
+$\gcd(20,12)$ by cutting off squares: a $20\times12$ rectangle splits into squares of side $12$, $8$, $4$, $4$. The last side, $4$, divides everything before it and is the gcd
+
+:::
+
 ::: {#prp-gcdlcm .proposition name="gcd–lcm identity (extra)"}
 
 For $a,b\in\mathbb{N}$,  $\gcd(a,b)\cdot\operatorname{lcm}(a,b)=ab$.

@@ -21,6 +21,25 @@ Conclude $S(n)$ holds for all $n$.
 
 :::
 
+::: {#fig-induction-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \foreach \i/\ang/\f in {1/-38/25, 2/-24/25, 3/-10/25, 4/0/8, 5/0/8, 6/0/8, 7/0/8} {
+    \draw[fill=defc!\f, rotate around={\ang:(\i*0.95+0.13,0)}] (\i*0.95-0.13,0) rectangle (\i*0.95+0.13,1.5);
+  }
+  \draw (0.4,0) -- (7.4,0);
+  \foreach \i/\t in {1/{S(1)}, 2/{S(2)}, 3/{S(3)}, 4/{S(4)}, 5/{S(5)}, 6/{S(6)}} \node[font=\scriptsize] at (\i*0.95,-0.3) {$\t$};
+  \node[font=\scriptsize] at (7*0.95,-0.3) {$\cdots$};
+  \draw[map, thmc, line width=1pt] (-0.4,1.45) -- (0.45,1.15);
+  \node[font=\scriptsize, text=thmc, anchor=east] at (-0.4,1.45) {base case};
+\end{tikzpicture}
+```
+
+Induction as a row of dominoes: the base case knocks over $S(1)$, and the inductive step $S(k)\implies S(k+1)$ makes each domino knock over the next
+
+:::
+
 ::: {#thm-generalized-de-morgan-s-law .theorem name="Generalized De Morgan's law, CN Thm 18"}
 
 For all $n \in \mathbb{N}$ and sets $A_1,\dots,A_n$:

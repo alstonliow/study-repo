@@ -48,6 +48,28 @@ $$
 Already established at @sec-math-discrete-sets-cartesian-product. "Independent" is essential: the count of options at step $i$ must not depend on earlier choices.
 :::
 
+::: {#fig-sum-and-product-rules-1}
+
+```{=latex}
+\begin{tikzpicture}[x=1cm, y=0.55cm, leaf/.style={font=\small}]
+  \node[dot] (r) at (0,0) {};
+  \foreach \i/\y in {1/3.3, 2/0, 3/-3.3} {
+    \node[vertex, minimum size=5.5mm] (s\i) at (2,\y) {$\i$};
+    \draw (r) -- (s\i);
+    \foreach \b/\dy in {a/0.8, b/-0.8} {
+      \node[leaf, anchor=west] (l\i\b) at (4,\y+\dy) {$(\i,\b)$};
+      \draw (s\i) -- (l\i\b.west);
+    }
+  }
+  \node[font=\scriptsize, text=notec] at (1.4,5.2) {step 1: $3$ options};
+  \node[font=\scriptsize, text=notec] at (4.4,5.2) {step 2: $2$ options};
+\end{tikzpicture}
+```
+
+A task in two independent steps, with $3$ and then $2$ options, has $3\cdot2=6$ outcomes, one for each leaf
+
+:::
+
 ::: {#exm-product-rule-table .example}
 An $r\times c$ table: summing every entry via nested loops costs $rc$ additions -- exactly $|\{1,\dots,r\}\times\{1,\dots,c\}|$.
 :::

@@ -104,6 +104,36 @@ $$(x \in A) \vee (x \in B) \iff x \in A \cup B, \qquad A \cup B = \{x : x\in A \
 
 :::
 
+::: {#fig-connectives-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \begin{scope}
+    \fill[shade, even odd rule] (-0.4,-1.1) rectangle (3.0,1.1) (1.3,0) circle (0.75);
+    \draw (-0.4,-1.1) rectangle (3.0,1.1); \draw (1.3,0) circle (0.75); \node at (1.3,0) {$P$};
+    \node at (1.3,-1.5) {$\neg P$};
+  \end{scope}
+  \begin{scope}[xshift=4.0cm]
+    \begin{scope}\clip (0.85,0) circle (0.75); \fill[shade] (1.75,0) circle (0.75);\end{scope}
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};
+    \node at (1.3,-1.5) {$P\wedge Q$};
+  \end{scope}
+  \begin{scope}[xshift=8.0cm]
+    \fill[shade] (0.85,0) circle (0.75); \fill[shade] (1.75,0) circle (0.75);
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};
+    \node at (1.3,-1.5) {$P\vee Q$};
+  \end{scope}
+\end{tikzpicture}
+```
+
+Each connective as a region where it is true (shaded), with $P$ and $Q$ the regions where $P$ and $Q$ are true
+
+:::
+
 ::: {.remark name="Operator precedence so far"}
 
 Among the connectives introduced up to this point, precedence (highest to lowest) is:

@@ -30,6 +30,31 @@ Writing $\sigma$ as $(\sigma(1),\sigma(2),\sigma(3))$:
 So $D_3=2$, the derangements being $(2,3,1)$ and $(3,1,2)$.
 :::
 
+::: {#fig-derangements-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \foreach \a/\b/\c/\d [count=\k from 0] in {1/2/3/0, 1/3/2/0, 2/1/3/0, 2/3/1/1, 3/1/2/1, 3/2/1/0} {
+    \begin{scope}[xshift=\k*2.25cm]
+      \ifnum\d=1 \filldraw[regionB] (-0.35,-0.55) rectangle (1.45,1.45); \fi
+      \foreach \i in {1,2,3} {
+        \node[dot] (t\i) at ({(\i-1)*0.55},1) {}; \node[dot] (b\i) at ({(\i-1)*0.55},0) {};
+        \node[font=\scriptsize] at ({(\i-1)*0.55},1.27) {\i};
+      }
+      \foreach \i/\j in {1/\a, 2/\b, 3/\c} {
+        \ifnum\i=\j \def\col{notec}\else\ifnum\d=1 \def\col{thmc}\else\def\col{ink}\fi\fi
+        \draw[map, \col, shorten <=2pt, shorten >=2pt] (t\i) -- (b\j);
+      }
+      \node[font=\small] at (0.55,-0.35) {$(\a,\b,\c)$};
+    \end{scope}
+  }
+\end{tikzpicture}
+```
+
+The six permutations of $\{1,2,3\}$, each drawn as arrows $i\to\sigma(i)$; a vertical (grey) arrow is a fixed point. The two shaded ones are the derangements, so $D_3=2$
+
+:::
+
 ::: {#thm-derangement-count .theorem name="Derangement count"}
 $$
 D_n = n!\sum_{k=0}^n \frac{(-1)^k}{k!}.

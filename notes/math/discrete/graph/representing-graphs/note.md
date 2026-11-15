@@ -40,6 +40,28 @@ For instance $a\sim c$ because the entry in row $a$, column $c$ is $1$; the last
 
 :::
 
+::: {#fig-representing-graphs-1}
+
+```{=latex}
+\begin{tikzpicture}[graph]
+  \node (a) at (0,1.5) {$a$}; \node (b) at (0,0) {$b$}; \node (c) at (1.3,0.75) {$c$};
+  \node (d) at (2.6,0.75) {$d$}; \node (e) at (3.6,0.75) {$e$};
+  \draw (a)--(b) (a)--(c) (b)--(c) (c)--(d);
+  \node[lab, anchor=west, font=\normalsize] at (4.6,0.75) {$\begin{array}{c|ccccc}
+      & a & b & c & d & e\\ \hline
+    a & 0 & 1 & 1 & 0 & 0\\
+    b & 1 & 0 & 1 & 0 & 0\\
+    c & 1 & 1 & 0 & 1 & 0\\
+    d & 0 & 0 & 1 & 0 & 0\\
+    e & 0 & 0 & 0 & 0 & 0
+  \end{array}$};
+\end{tikzpicture}
+```
+
+The graph on $\{a,b,c,d,e\}$ and its adjacency matrix: row $c$ has $1$s exactly at the neighbours $a$, $b$, $d$
+
+:::
+
 ::: {.remark name="Shape of the matrix"}
 
 $A$ is symmetric because edges are unordered, and its diagonal is all $0$ because a simple graph has no loops. It is exactly the zero-one matrix of the adjacency relation (@sec-math-discrete-functions-special-functions).

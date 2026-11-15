@@ -99,7 +99,8 @@ Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
    **Figures with a caption** are a div with a `fig-` id holding the drawing,
    then the caption as the last paragraph. They are numbered per page
    ("Figure 1") and referenced as `@fig-...`, also from other notes. Ids are
-   `fig-<folder name>-<n>`, e.g. `fig-trees-2`. A drawing without a caption
+   `fig-<folder name>-<n>`, e.g. `fig-trees-2`; when two folders share a
+   name, put the parent folder first, e.g. `fig-relations-counting-1`. A drawing without a caption
    needs no div.
 
    ````markdown

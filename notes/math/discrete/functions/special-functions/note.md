@@ -57,6 +57,38 @@ $$\lfloor x \rfloor = \max\{n \in \mathbb{Z}: n \le x\}, \qquad
 
 :::
 
+::: {#fig-special-functions-1}
+
+```{=latex}
+\begin{tikzpicture}[x=0.75cm, y=0.75cm]
+  \foreach \s/\name in {0/{\lfloor x\rfloor}, 7/{\lceil x\rceil}} {
+    \begin{scope}[xshift=\s cm]
+      \draw[->] (-2.5,0) -- (3.6,0) node[right] {$x$};
+      \draw[->] (0,-2.5) -- (0,3.6);
+      \node[anchor=south west] at (0.1,3.2) {$y=\name$};
+      \foreach \t in {-2,-1,1,2,3} \draw (\t,0.08) -- (\t,-0.08) node[below, font=\scriptsize] {$\t$};
+      \foreach \t in {1,2,3} \draw (0.08,\t) -- (-0.08,\t) node[left, font=\scriptsize] {$\t$};
+    \end{scope}
+  }
+  \foreach \k in {-2,...,2} {
+    \draw[defc, line width=1.4pt] (\k,\k) -- (\k+1,\k);
+    \fill[defc] (\k,\k) circle (2.4pt);
+    \filldraw[fill=white, draw=defc, line width=0.9pt] (\k+1,\k) circle (2.4pt);
+  }
+  \begin{scope}[xshift=7cm]
+    \foreach \k in {-1,...,3} {
+      \draw[thmc, line width=1.4pt] (\k-1,\k) -- (\k,\k);
+      \filldraw[fill=white, draw=thmc, line width=0.9pt] (\k-1,\k) circle (2.4pt);
+      \fill[thmc] (\k,\k) circle (2.4pt);
+    }
+  \end{scope}
+\end{tikzpicture}
+```
+
+Floor (left) and ceiling (right). A filled dot is included, an open dot is not
+
+:::
+
 ::: {.remark name="Contrast with CN's @sec-math-discrete-functions-definitions"}
 
 CN’s definition of a function already *is* what Rosen calls a *total* function: $\operatorname{dom}(f)$ equals the declared domain exactly, with no gaps. Rosen’s “partial function from $A$ to $B$” allows $\operatorname{dom}(f)\subsetneq A$ – a total function on the smaller set $\operatorname{dom}(f)\subseteq A$.

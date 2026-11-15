@@ -43,6 +43,22 @@ In the graph of @sec-math-discrete-graph-basic-definitions, the degrees add up t
 
 :::
 
+::: {#fig-degree-1}
+
+```{=latex}
+\begin{tikzpicture}[graph]
+  \node (a) at (0,1.5) {$a$}; \node (b) at (0,0) {$b$}; \node (c) at (1.3,0.75) {$c$};
+  \node (d) at (2.6,0.75) {$d$}; \node (e) at (4.5,0.75) {$e$}; \node (f) at (6,1.5) {$f$}; \node (g) at (6,0) {$g$};
+  \draw (a)--(b) (a)--(c) (b)--(c) (c)--(d) (f)--(g);
+  \foreach \v/\d/\pos in {a/2/left, b/2/left, c/3/above, d/1/above, e/0/above, f/1/right, g/1/right}
+    \node[lab, text=thmc, font=\small\bfseries, \pos=14pt] at (\v) {\d};
+\end{tikzpicture}
+```
+
+The graph of @sec-math-discrete-graph-basic-definitions with each degree in red: $2+2+3+1+0+1+1=10$, twice the number of edges
+
+:::
+
 ::: {#cor-odd-degree .corollary}
 
 In every graph, the number of vertices of odd degree is even.

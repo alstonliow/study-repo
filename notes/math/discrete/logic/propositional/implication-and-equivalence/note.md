@@ -107,3 +107,37 @@ By induction, the claim holds for all $n$.
 $x \in A_1 \triangle \cdots \triangle A_n \iff (x\in A_1)\oplus\cdots\oplus(x\in A_n)$ (@sec-math-discrete-sets-symmetric-difference).
 
 :::
+
+::: {#fig-implication-and-equivalence-1}
+
+```{=latex}
+\begin{tikzpicture}
+  \begin{scope}[xshift=0cm]
+    \fill[shade] (-0.4,-1.1) rectangle (3.0,1.1); \fill[white] (0.85,0) circle (0.75);
+    \begin{scope}\clip (0.85,0) circle (0.75); \fill[shade] (1.75,0) circle (0.75);\end{scope}
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};
+    \node at (1.3,-1.5) {$P\implies Q$};
+  \end{scope}
+  \begin{scope}[xshift=4.0cm]
+    \fill[shade] (-0.4,-1.1) rectangle (3.0,1.1); \fill[white] (0.85,0) circle (0.75); \fill[white] (1.75,0) circle (0.75);
+    \begin{scope}\clip (0.85,0) circle (0.75); \fill[shade] (1.75,0) circle (0.75);\end{scope}
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};
+    \node at (1.3,-1.5) {$P\iff Q$};
+  \end{scope}
+  \begin{scope}[xshift=8.0cm]
+    \fill[shade, even odd rule] (0.85,0) circle (0.75) (1.75,0) circle (0.75);
+    \draw (-0.4,-1.1) rectangle (3.0,1.1);
+    \draw (0.85,0) circle (0.75); \draw (1.75,0) circle (0.75);
+    \node at (0.45,0) {$P$}; \node at (2.15,0) {$Q$};
+    \node at (1.3,-1.5) {$P\oplus Q$};
+  \end{scope}
+\end{tikzpicture}
+```
+
+Where each connective is true (shaded). $P\implies Q$ fails only in the part of $P$ outside $Q$
+
+:::
