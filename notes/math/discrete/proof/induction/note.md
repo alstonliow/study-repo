@@ -1,7 +1,7 @@
 ---
 title: "Proof by mathematical induction"
-sources: [fit1058-cn-3.10]
-requires: [math/discrete/proof/induction-examples, math/discrete/sets/set-operations]
+sources: [fit1058-cn-3.10, fit1058-cn-3.13]
+requires: [math/discrete/proof/induction-examples, math/discrete/sets/set-operations, math/discrete/proof/contradiction]
 status: draft
 ---
 
@@ -84,9 +84,58 @@ By induction, $3\mid(n^3-n)$ for all $n\in\mathbb{N}$.
 
 :::
 
+<!-- Added 2026-11-15 from CN §3.10 (own wording and proof). -->
+
+::: {#exm-induction-sum-first-n .example name="Sum of the first $n$ positive integers"}
+
+For all $n\in\mathbb{N}$:
+$$1 + 2 + \cdots + n = \frac{n(n+1)}{2}.$$
+
+:::
+
+::: {.proof}
+
+1. Let $S(n)$ be the statement $1 + 2 + \cdots + n = \frac{n(n+1)}{2}$.
+
+2. **Base case** ($n=1$): the left side is $1$ and the right side is $\frac{1\cdot2}{2} = 1$.
+
+3. **Inductive step**: assume $S(k)$ for some $k\ge1$. Then
+$$1 + \cdots + k + (k+1) = \frac{k(k+1)}{2} + (k+1) = \frac{k(k+1) + 2(k+1)}{2} = \frac{(k+1)(k+2)}{2},$$
+which is $S(k+1)$.
+
+4. By induction, $S(n)$ holds for all $n\in\mathbb{N}$.
+
+:::
+
 ::: {#def-well-ordering-property .definition name="Well-ordering property"}
 
 Every nonempty subset of $\mathbb{N}$ has a least element.
+
+:::
+
+<!-- Added 2026-11-15 from CN §3.10 (own wording). -->
+
+::: {#exm-interesting-numbers .example name="Every natural number is interesting"}
+
+Every natural number is interesting.
+
+:::
+
+::: {.proof}
+
+1. Suppose, for contradiction, that some natural number is uninteresting.
+
+2. Then the set of uninteresting natural numbers is nonempty, so by well-ordering it has a least element $m$.
+
+3. But being *the smallest uninteresting number* is an interesting property, so $m$ is interesting.
+
+4. This contradicts the choice of $m$, so every natural number is interesting.
+
+:::
+
+::: {.remark name="What the joke shows"}
+
+"Interesting" is vague, so this is not a real proof. Its shape is useful, though: it is a proof by contradiction (@sec-math-discrete-proof-contradiction), and it picks the *least* counterexample, whose minimality often gives the extra fact needed to finish. The same idea drives @thm-well-ordering-mathematical-induction.
 
 :::
 
@@ -119,5 +168,13 @@ To prove $S(n)$ for all $n\ge n_0$:
 ::: {.remark name="Strong vs.\ weak induction – equivalent in power"}
 
 Strong induction’s hypothesis is more generous (all of $S(n_0),\dots,S(k)$, not just $S(k)$), but this doesn’t let you prove anything weak induction can’t – any strong-induction proof can be mechanically rewritten as a weak-induction proof of the stronger statement $T(n) = S(n_0)\wedge\cdots\wedge S(n)$. Strong induction is a convenience, not a logically stronger tool. See @sec-math-discrete-proof-induction-examples for worked examples of both.
+
+:::
+
+<!-- Added 2026-11-15 from CN §3.13 (own wording). -->
+
+::: {.remark name="Mathematical induction vs statistical induction"}
+
+In statistics, *induction* means drawing general conclusions from data. Those conclusions may be wrong, because the data contain randomness and error, so statistical induction is not logical deduction and cannot be a step in a proof. Mathematical induction is different: it is a rigorous deductive method, and a correct induction proof establishes its statement with certainty.
 
 :::

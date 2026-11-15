@@ -1,6 +1,6 @@
 ---
 title: "Functions: Definitions and Notation"
-sources: [fit1058-cn-2.1, fit1058-cn-2.3]
+sources: [fit1058-cn-2.1, fit1058-cn-2.2, fit1058-cn-2.3]
 requires: [math/discrete/functions/injections-surjections-bijections]
 status: draft
 ---
@@ -126,6 +126,22 @@ The *graph* of $f$ is $\{(x, f(x)) : x \in \operatorname{dom}(f)\}$, the set of 
 ::: {#exm-definitions-2 .example}
 
 A function on the finite domain $\{1,2,3,4\}$ can be given as a finite graph, e.g. $\{(1,a),(2,a),(3,b),(4,c)\}$ (its image is $\{a,b,c\}$, a proper subset of a larger codomain). A function on an infinite domain typically needs a rule rather than a listed graph: the squaring function on $\mathbb{Z}$ has graph $\{(x,x^2):x\in\mathbb{Z}\}$.
+
+:::
+
+<!-- Added 2026-11-15 from CN §2.2 (own wording). -->
+
+## Functions in computer science
+
+::: {.remark name="Functions as specifications"}
+
+Software development starts with *analysis*: working out, usually with the client, exactly what must be done. One common outcome is a function: a precise statement of the required output for each possible input. A function says *what* is to be computed, not *how*. The *how* comes next: design an algorithm that computes the function, then implement the algorithm in a programming language. Real projects loop back between these stages, and not every specification is a function (some describe how components interact, or a database), but functions are a central product of analysis.
+
+:::
+
+::: {.remark name="Mathematical functions vs programming functions"}
+
+In many programming languages, a "function" also contains code: it says *how* to compute its values, not just *what* they are. In these notes, "function" always means a mathematical function, with no algorithm attached. When the programming sense is meant, we say so explicitly, e.g. "Python function". (Functional programming languages are built around programming functions that can be passed to and returned from other functions.)
 
 :::
 

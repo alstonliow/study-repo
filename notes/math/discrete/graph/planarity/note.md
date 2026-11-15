@@ -75,6 +75,14 @@ By the Principle of Mathematical Induction, the formula holds for all $m\ge n-1$
 
 :::
 
+<!-- Added 2026-11-15 from CN §12.5 (own wording). -->
+
+::: {.remark name="The Jordan curve theorem"}
+
+The inductive step used the fact that a cycle drawn in the plane separates the plane into an inside and an outside, so the two sides of an edge on the cycle lie in different faces. This looks obvious, but proving it rigorously for arbitrary curves is surprisingly hard. It is the *Jordan curve theorem*, which we take for granted here.
+
+:::
+
 ::: {#cor-cn-cor-72 .corollary name="CN Cor 72"}
 
 For any simple planar graph with $n\ge3$ vertices and $m$ edges,  $m \le 3n-6$.

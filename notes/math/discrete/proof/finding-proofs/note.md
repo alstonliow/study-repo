@@ -1,6 +1,6 @@
 ---
 title: "Finding Proofs"
-sources: [fit1058-cn-3.3, fit1058-cn-3.4, fit1058-cn-3.5]
+sources: [fit1058-cn-3.3, fit1058-cn-3.4, fit1058-cn-3.5, fit1058-cn-3.14]
 requires: [math/discrete/proof/contradiction, math/discrete/proof/induction, math/discrete/proof/techniques, math/discrete/proof/theorems-and-proofs, math/discrete/sets/subsets]
 status: draft
 ---
@@ -36,6 +36,28 @@ A single *witness* suffices: exhibit one $x \in D$ and verify $P(x)$ holds. No n
 ::: {#def-universal-statement .definition name="Universal statement"}
 
 A *universal statement* asserts $\forall x \in D,\ P(x)$: *everything* in $D$ has the property.
+
+:::
+
+<!-- Added 2026-11-15 from CN §3.4 (own wording). -->
+
+::: {#exm-proof-by-exhaustion .example name="Proof by exhaustion"}
+
+Every English word has a vowel or a 'y'.
+
+:::
+
+::: {.proof}
+
+1. Go through the dictionary word by word: 'aardvark' has a vowel, 'abacus' has a vowel, …, 'rhythm' has a 'y', …, 'zygote' has a vowel.
+
+2. Every word passes the check, so the statement holds.
+
+:::
+
+::: {.remark name="Exhaustion works only for small finite domains"}
+
+A universal statement over a finite domain can be proved by checking every member. Here that means tens of thousands of lines, one per word. For a large or infinite domain this is impossible, and a general argument about an arbitrary member is needed instead.
 
 :::
 
@@ -110,5 +132,27 @@ This list is not exhaustive, and real proofs frequently mix several of these –
 ::: {#exm-vacuous-proof .example name="Vacuous proof"}
 
 “For all $x\in\emptyset$, $x^2<0$.” True vacuously: $\emptyset$ has no members, so the implication “$x\in\emptyset \implies x^2<0$” is never tested against an actual counterexample.
+
+:::
+
+<!-- Added 2026-11-15 from CN §3.14 (own wording). -->
+
+## Programs and proofs
+
+::: {.remark name="Proof techniques match program constructs"}
+
+Each type of proof suits a kind of program construct:
+
+- an `if`-statement splits into branches, so statements about it are usually proved *by cases*;
+
+- a recursive function calls itself on smaller inputs, so statements about it are usually proved *by induction*;
+
+- a loop repeats the same body, so statements about it (for example a loop invariant) are also usually proved *by induction* on the number of iterations.
+
+:::
+
+::: {.remark name="Writing programs is like writing proofs"}
+
+Both turn a precise specification into a sequence of exact steps, where every step must be justified by what came before and nothing may be left to guesswork. A proof shows *why* a claim holds, and a program can be checked the same way: each step should be correct given the steps before it. Practising proofs therefore builds the same habits of precise reasoning that good programming needs.
 
 :::

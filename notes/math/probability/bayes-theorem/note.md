@@ -20,6 +20,31 @@ $A$ is the disjoint union of the sets $A\cap B_i$, since the $B_i$ are pairwise 
 
 :::
 
+<!-- Added 2026-11-15 from CN §9.9 (own wording and proof). -->
+
+::: {#thm-bayes-two-events .theorem name="Bayes' Theorem, two events"}
+
+If $\Pr(A) > 0$ and $\Pr(B) > 0$, then
+$$\Pr(A\mid B) = \frac{\Pr(B\mid A)\Pr(A)}{\Pr(B)}.$$
+
+:::
+
+::: {.proof}
+
+1. By the multiplication rule (@prp-multiplication-rule), $\Pr(A\cap B) = \Pr(B)\Pr(A\mid B)$.
+
+2. Swapping the roles of $A$ and $B$, also $\Pr(A\cap B) = \Pr(A)\Pr(B\mid A)$.
+
+3. Equate the right sides and divide by $\Pr(B)$.
+
+:::
+
+::: {.remark name="Extended form"}
+
+The next theorem is the same rule when the condition is split over a partition $B_1,\dots,B_n$ and $\Pr(A)$ is expanded by the law of total probability.
+
+:::
+
 ::: {#thm-bayes-theorem .theorem name="Bayes' Theorem"}
 
 With $B_1,\dots,B_n$ as above and $\Pr(A)>0$,

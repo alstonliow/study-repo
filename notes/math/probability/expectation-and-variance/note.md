@@ -59,6 +59,32 @@ Linearity holds for *any* $X,Y$: the proof never uses independence. For example,
 
 :::
 
+<!-- Added 2026-11-15 from CN §10.3 (own wording and proof). -->
+
+::: {#thm-expectation-of-product .theorem name="Expectation of an independent product"}
+
+If $X$ and $Y$ are independent (@def-independent-random-variables), then
+$$E[XY] = E[X]\,E[Y].$$
+
+:::
+
+::: {.proof}
+
+1. By the definition of expectation, $E[XY] = \sum_{r}\sum_{s} rs\,\Pr(X=r, Y=s)$, summing over all values $r$ of $X$ and $s$ of $Y$.
+
+2. By independence, $\Pr(X=r, Y=s) = \Pr(X=r)\Pr(Y=s)$.
+
+3. So the double sum factorises:
+$$E[XY] = \left(\sum_r r\Pr(X=r)\right)\left(\sum_s s\Pr(Y=s)\right) = E[X]\,E[Y].$$
+
+:::
+
+::: {.remark name="Independence is needed here"}
+
+Unlike linearity, this can fail without independence. If $X$ is $\pm1$ with probability $\frac12$ each and $Y = X$, then $E[XY] = E[X^2] = 1$, but $E[X]E[Y] = 0$.
+
+:::
+
 ## Median
 
 ::: {#def-median .definition name="Median"}
@@ -94,6 +120,14 @@ The total of two dice has mode $7$. A fair die has every value $1,\dots,6$ as a 
 :::
 
 ## Variance
+
+<!-- Added 2026-11-15 from CN §10.6 (own wording). -->
+
+::: {.remark name="Measuring spread"}
+
+To measure how far $X$ typically is from $\mu = E[X]$, the plain average $E[X-\mu]$ is useless: it is always $E[X]-\mu = 0$, because positive and negative deviations cancel. The *mean absolute deviation* $E\big[|X-\mu|\big]$ avoids this and is in the units of $X$, but it has weaker mathematical properties. The variance squares the deviations instead.
+
+:::
 
 ::: {#def-variance-standard-deviation .definition name="Variance, standard deviation"}
 

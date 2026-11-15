@@ -134,3 +134,17 @@ $$\Pr\left(\bigcup_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<
 The proof is the same as for inclusion-exclusion on set sizes (@sec-math-discrete-counting-inclusion-exclusion), with $\Pr$ in place of $|\cdot|$.
 
 :::
+
+<!-- Added 2026-11-15 from CN §9.6 (own wording). -->
+
+::: {#thm-ie-probability-intersection .theorem name="Inclusion-exclusion, intersection form"}
+
+$$\Pr\left(\bigcap_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<i_k} \Pr(A_{i_1}\cup\cdots\cup A_{i_k}).$$
+
+:::
+
+::: {.remark name="Proof and relation to counting"}
+
+This is the probability version of the dual form for set sizes (@cor-ie-dual), with the same proof. When all outcomes are equally likely, $\Pr(A) = |A|/|U|$, and both forms reduce to the counting versions: inclusion-exclusion for counting is a special case of inclusion-exclusion for probability.
+
+:::

@@ -71,6 +71,30 @@ The theorem also holds for multigraphs, and for graphs with loops if each loop c
 
 :::
 
+<!-- Added 2026-11-15 from CN §11.11 (own wording; the CN states it without proof). -->
+
+::: {#thm-partition-into-trails .theorem name="Partitioning the edges into trails"}
+
+Let $G$ be a connected graph with at least one edge, and let $k\in\mathbb{N}$. The edges of $G$ can be partitioned into at most $k$ trails (@def-trail-path-cycle) if and only if $G$ has at most $2k$ vertices of odd degree. In a partition using the fewest trails, every open trail starts and ends at vertices of odd degree.
+
+:::
+
+::: {.proof}
+
+1. ($\Rightarrow$) Take a partition into at most $k$ trails. Each time a trail passes *through* a vertex it uses two of its edges, and a closed trail also pairs its first and last edges. So the only unpaired edge-ends are at the two ends of each open trail.
+
+2. Hence a vertex has odd degree only if it is an end of some open trail. There are at most $k$ trails, with at most $2$ ends each, so at most $2k$ vertices have odd degree.
+
+3. ($\Leftarrow$) The number of odd-degree vertices is even (@cor-odd-degree); say it is $2j \le 2k$. If $j = 0$, $G$ has an Euler tour (@thm-euler-1736), which is one trail.
+
+4. If $j \ge 1$, pair up the odd-degree vertices and add one new edge joining each pair (parallel edges allowed). Now every degree is even and the graph is still connected, so it has an Euler tour (see the remark on multigraphs above).
+
+5. Delete the $j$ new edges from this closed tour. The new edges have no endpoint in common, so no two of them are consecutive on the tour, and the tour falls apart into exactly $j$ nonempty trails of $G$. Together they use every edge of $G$ once, and $j \le k$.
+
+6. Each of these trails starts and ends at an endpoint of a deleted edge, that is, at a vertex of odd degree. With $2j$ odd vertices, step 2 shows at least $j$ trails are needed, so this partition uses the fewest.
+
+:::
+
 ::: {#thm-route-inspection-chinese-postman-extra .theorem name="Route inspection / Chinese postman (extra)"}
 
 If $G$ is connected with $2k$ vertices of odd degree ($k\ge1$; this number is even by @cor-odd-degree), then pairing them up and adding $k$ new edges, one per pair (parallel edges allowed), makes every degree even. The new graph therefore has an Euler tour.
