@@ -15,6 +15,17 @@ $X\sim\mathrm{Unif}(a,b)$ means $X$ takes each integer value in $[a,b]$ with the
 
 :::
 
+```{=latex}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+  \draw (-0.6,0) -- (10.6,0);
+  \foreach \k/\p in {1/0.167, 2/0.167, 3/0.167, 4/0.167, 5/0.167, 6/0.167} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
+  \draw[thmc, dashed] (3.5,0) -- (3.5,0.31) node[above] {$E[X]=3.5$};
+  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Unif}(1,6)$ (a fair die)};
+\end{tikzpicture}
+```
+
 ::: {#exm-standard-distributions-1 .example}
 
 A fair coin with Tails $=0$ and Heads $=1$ is $\mathrm{Unif}(0,1)$; a fair die is $\mathrm{Unif}(1,6)$. The uniform distribution is also used to model ignorance: with no other information, the age of an adult learner driver might be modelled as $\mathrm{Unif}(18,21)$.
@@ -48,6 +59,17 @@ $$\Pr(X=k) = \binom{n}{k}p^k(1-p)^{n-k}, \qquad k=0,1,\dots,n.$$
 
 :::
 
+```{=latex}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+  \draw (-0.6,0) -- (10.6,0);
+  \foreach \k/\p in {0/0.028, 1/0.121, 2/0.233, 3/0.267, 4/0.200, 5/0.103, 6/0.037, 7/0.009, 8/0.001} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
+  \draw[thmc, dashed] (3,0) -- (3,0.31) node[above] {$E[X]=3$};
+  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Bin}(10,\,0.3)$};
+\end{tikzpicture}
+```
+
 ::: {.remark name="Where the formula comes from"}
 
 $\binom nk$ counts the ways to choose which $k$ of the $n$ trials succeed (@sec-math-discrete-counting-combinations), and each such outcome has probability $p^k(1-p)^{n-k}$ by independence.
@@ -80,6 +102,17 @@ $X\sim\mathrm{Poisson}(\mu)$, for a parameter $\mu>0$, means
 $$\Pr(X=k) = \frac{e^{-\mu}\mu^k}{k!}, \qquad k=0,1,2,\dots$$
 
 :::
+
+```{=latex}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+  \draw (-0.6,0) -- (10.6,0);
+  \foreach \k/\p in {0/0.050, 1/0.149, 2/0.224, 3/0.224, 4/0.168, 5/0.101, 6/0.050, 7/0.022, 8/0.008, 9/0.003, 10/0.001} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
+  \draw[thmc, dashed] (3,0) -- (3,0.31) node[above] {$E[X]=3$};
+  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Poisson}(3)$ (continues past $10$)};
+\end{tikzpicture}
+```
 
 ::: {.remark name="When it applies"}
 
@@ -127,6 +160,17 @@ $$\Pr(X=k) = (1-p)^{k-1}p, \qquad k=1,2,3,\dots$$
 
 :::
 
+```{=latex}
+\begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={font=\footnotesize}]
+  \foreach \y in {0.1,0.2,0.3} {\draw[gray!25] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}
+  \draw (-0.6,0) -- (10.6,0);
+  \foreach \k/\p in {1/0.300, 2/0.210, 3/0.147, 4/0.103, 5/0.072, 6/0.050, 7/0.035, 8/0.025, 9/0.017, 10/0.012} \fill[defc!75] (\k-0.32,0) rectangle (\k+0.32,\p);
+  \foreach \k in {0,...,10} \node[below] at (\k,0) {\k};
+  \draw[thmc, dashed] (3.333,0) -- (3.333,0.31) node[above] {$E[X]=\tfrac{10}{3}$};
+  \node[anchor=south, font=\normalsize] at (5,0.36) {$\mathrm{Geom}(0.3)$ (continues past $10$)};
+\end{tikzpicture}
+```
+
 ::: {.remark name="Two conventions"}
 
 Some books instead count the failures *before* the first success, which is $X-1$. Check which one is meant.
@@ -156,3 +200,16 @@ $E[X] = p\sum_{k\ge1} k(1-p)^{k-1}$. Differentiating the geometric series $\sum_
 Given that the first $t$ trials have all failed, the number of further trials needed is again $\mathrm{Geom}(p)$: past failures do not make success “due”. Examples include the number of loop iterations until a random stopping condition holds, the number of time intervals until a component fails, and the number of balls a cricket batter faces.
 
 :::
+
+## Comparing the four
+
+All four plots above use the same axes and have mean about $3$, so the shapes can be compared directly.
+
+| | $X$ is | $E[X]$ | $\mathrm{Var}(X)$ | use when |
+|---|---|---|---|---|
+| $\mathrm{Unif}(a,b)$ | one of $a,\dots,b$ | $\frac{a+b}2$ | $\frac{(b-a+1)^2-1}{12}$ | all outcomes equally likely |
+| $\mathrm{Bin}(n,p)$ | successes in $n$ trials | $np$ | $np(1-p)$ | a fixed number of trials |
+| $\mathrm{Poisson}(\mu)$ | events in an interval | $\mu$ | $\mu$ | a steady rate, no fixed number of trials |
+| $\mathrm{Geom}(p)$ | trials to first success | $\frac1p$ | $\frac{1-p}{p^2}$ | repeat until the first success |
+
+Binomial and Poisson count *how many* successes; Geometric counts *how long* until one. Binomial is bounded by $n$, while Poisson and Geometric have no upper limit. For large $n$ and small $p$, $\mathrm{Bin}(n,p)\approx\mathrm{Poisson}(np)$ (@thm-poisson-as-a-limit-of). Only Geometric is memoryless.
