@@ -13,7 +13,7 @@ A *partition* of $A$ is a set of pairwise disjoint, nonempty subsets of $A$ (cal
 
 :::
 
-::: {.remark name="Equivalent characterization"}
+::: {#rmk-partitions-1 .remark name="Equivalent characterization"}
 
 A collection of nonempty subsets of $A$ is a partition of $A$ iff every element of $A$ belongs to *exactly one* part.
 
@@ -54,7 +54,7 @@ For any $A$: the *coarsest* partition is $\{A\}$ (one part, everything together)
 
 :::
 
-::: {.remark name="Connection to equivalence relations"}
+::: {#rmk-partitions-2 .remark name="Connection to equivalence relations"}
 
 Partitions are closely tied to *equivalence relations* (reflexive, symmetric, transitive relations – @sec-math-discrete-relations-equivalence-relations): every equivalence relation $R$ on $A$ partitions $A$ into *equivalence classes* $[a]_R = \{x \in A : x\,R\,a\}$, and conversely every partition of $A$ arises this way from exactly one equivalence relation (namely, $x\,R\,y \iff x,y$ lie in the same part). We revisit this correspondence formally once binary relations are covered.
 

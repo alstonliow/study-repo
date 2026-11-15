@@ -97,7 +97,7 @@ $B$ is the disjoint union of $A$ and $B\setminus A$, so $\Pr(B)=\Pr(A)+\Pr(B\set
 
 :::
 
-::: {.remark name="In words"}
+::: {#rmk-events-1 .remark name="In words"}
 
 You cannot make something less likely by creating more ways for it to happen.
 
@@ -129,7 +129,7 @@ $$\Pr\left(\bigcup_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<
 
 :::
 
-::: {.remark name="Same proof as for counting"}
+::: {#rmk-events-2 .remark name="Same proof as for counting"}
 
 The proof is the same as for inclusion-exclusion on set sizes (@sec-math-discrete-counting-inclusion-exclusion), with $\Pr$ in place of $|\cdot|$.
 
@@ -143,7 +143,7 @@ $$\Pr\left(\bigcap_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<
 
 :::
 
-::: {.remark name="Proof and relation to counting"}
+::: {#rmk-events-3 .remark name="Proof and relation to counting"}
 
 This is the probability version of the dual form for set sizes (@cor-ie-dual), with the same proof. When all outcomes are equally likely, $\Pr(A) = |A|/|U|$, and both forms reduce to the counting versions: inclusion-exclusion for counting is a special case of inclusion-exclusion for probability.
 

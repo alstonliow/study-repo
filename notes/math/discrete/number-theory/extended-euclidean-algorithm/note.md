@@ -48,7 +48,7 @@ Let $\Delta$ be as in @lem-deltaz. Since $\Delta$ divides every element of $m\ma
 
 :::
 
-::: {.remark name="Bézout coefficients are never unique"}
+::: {#rmk-extended-euclidean-algorithm-1 .remark name="Bézout coefficients are never unique"}
 
 Since $nm-mn=0$, adding $k$ times $(n,-m)$ to a solution gives another: $(x+kn)m+(y-km)n = xm+yn$. For example $4=2\cdot12-1\cdot20=(-3)\cdot12+2\cdot20$.
 
@@ -70,7 +70,7 @@ To find $\gcd(m,n)$ together with $x,y$ such that $\gcd(m,n)=xm+yn$:
 
 :::
 
-::: {.remark name="The EA with extra bookkeeping"}
+::: {#rmk-extended-euclidean-algorithm-2 .remark name="The EA with extra bookkeeping"}
 
 The first entries of the triples evolve exactly as in the EA. The other two entries just record how each first entry is made up as an integer linear combination of $m$ and $n$.
 
@@ -118,7 +118,7 @@ So $\gcd(1180,482)=2=-29\cdot1180+71\cdot482$. Check: $71\cdot482-29\cdot1180=34
 
 :::
 
-::: {.remark name="Error check"}
+::: {#rmk-extended-euclidean-algorithm-3 .remark name="Error check"}
 
 The signs in the last two columns alternate down the table. If they ever fail to alternate, an arithmetic mistake has been made.
 

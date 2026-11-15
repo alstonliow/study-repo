@@ -21,13 +21,13 @@ For a sequence $f$, the value $f(n)$, also written $f_n$, is its *$n$-th term*. 
 
 :::
 
-::: {.remark name="Indexing from $0$"}
+::: {#rmk-basic-sequences-1 .remark name="Indexing from $0$"}
 
 Some books index sequences from $0$ instead of $1$, i.e. use domain $\{0,1,2,\dots\}$. This only shifts the subscripts; the sequence is the same.
 
 :::
 
-::: {.remark name="Ways to specify a sequence"}
+::: {#rmk-basic-sequences-2 .remark name="Ways to specify a sequence"}
 
 - List all its terms (only practical if it is short).
 
@@ -47,7 +47,7 @@ A *recurrence relation* for $(a_n)$ expresses $a_n$ in terms of one or more earl
 
 :::
 
-::: {.remark name="Same shape as induction"}
+::: {#rmk-basic-sequences-3 .remark name="Same shape as induction"}
 
 A recursive definition has a **base case**, defining finitely many of the simplest terms directly, and a **recursive case**, defining a general term from earlier ones. This mirrors the base case and inductive step of a proof by induction, which is why induction is the natural way to prove things about recursively defined sequences.
 
@@ -63,7 +63,7 @@ A recursive definition has a **base case**, defining finitely many of the simple
 
 :::
 
-::: {.remark name="Multiple base cases"}
+::: {#rmk-basic-sequences-4 .remark name="Multiple base cases"}
 
 A rule such as $f_n=4f_{n-2}$, which looks *two* terms back, needs two base cases $f_1,f_2$; one base case alone fixes only every other term. For example, $f_1=2$, $f_2=0$, $f_n=4f_{n-2}$ gives $2,0,8,0,32,0,\dots$
 
@@ -97,7 +97,7 @@ The powers of $2$, $1,2,4,8,\dots$ ($a=1,r=2$), and $1,\frac12,\frac14,\frac18,\
 
 :::
 
-::: {.remark name="Arithmetic vs.\ geometric"}
+::: {#rmk-basic-sequences-5 .remark name="Arithmetic vs.\ geometric"}
 
 Arithmetic sequences grow by *adding* the same amount each time; geometric sequences grow by *multiplying* by the same amount. For $r>1$, geometric growth eventually beats any arithmetic growth.
 

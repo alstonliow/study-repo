@@ -53,7 +53,7 @@ $E[X+Y] = \sum_{u}(X(u)+Y(u))\Pr(u) = \sum_u X(u)\Pr(u) + \sum_u Y(u)\Pr(u) = E[
 
 :::
 
-::: {.remark name="No independence required"}
+::: {#rmk-expectation-and-variance-1 .remark name="No independence required"}
 
 Linearity holds for *any* $X,Y$: the proof never uses independence. For example, the expected total of two dice is $3.5+3.5=7$.
 
@@ -79,7 +79,7 @@ $$E[XY] = \left(\sum_r r\Pr(X=r)\right)\left(\sum_s s\Pr(Y=s)\right) = E[X]\,E[Y
 
 :::
 
-::: {.remark name="Independence is needed here"}
+::: {#rmk-expectation-and-variance-2 .remark name="Independence is needed here"}
 
 Unlike linearity, this can fail without independence. If $X$ is $\pm1$ with probability $\frac12$ each and $Y = X$, then $E[XY] = E[X^2] = 1$, but $E[X]E[Y] = 0$.
 
@@ -99,7 +99,7 @@ For one die, every $m$ between $3$ and $4$ satisfies the definition; when the me
 
 :::
 
-::: {.remark name="Median vs.\ mean"}
+::: {#rmk-expectation-and-variance-3 .remark name="Median vs.\ mean"}
 
 The median is less affected by rare extreme values. For a lottery ticket, the prize money has median $0$, even though a huge but very unlikely prize can make the mean much larger.
 
@@ -123,7 +123,7 @@ The total of two dice has mode $7$. A fair die has every value $1,\dots,6$ as a 
 
 <!-- Added 2026-11-15 from CN §10.6 (own wording). -->
 
-::: {.remark name="Measuring spread"}
+::: {#rmk-expectation-and-variance-4 .remark name="Measuring spread"}
 
 To measure how far $X$ typically is from $\mu = E[X]$, the plain average $E[X-\mu]$ is useless: it is always $E[X]-\mu = 0$, because positive and negative deviations cancel. The *mean absolute deviation* $E\big[|X-\mu|\big]$ avoids this and is in the units of $X$, but it has weaker mathematical properties. The variance squares the deviations instead.
 
@@ -135,7 +135,7 @@ With $\mu=E[X]$, the *variance* of $X$ is $\mathrm{Var}(X) = E\big[(X-\mu)^2\big
 
 :::
 
-::: {.remark name="Units"}
+::: {#rmk-expectation-and-variance-5 .remark name="Units"}
 
 The variance is in the square of the units of $X$; the standard deviation is back in the units of $X$, which makes it easier to interpret as a typical distance from the mean.
 
@@ -192,7 +192,7 @@ Divide by $a^2$.
 
 :::
 
-::: {.remark name="Any distribution"}
+::: {#rmk-expectation-and-variance-6 .remark name="Any distribution"}
 
 Chebyshev’s inequality holds for every distribution, with no assumption about its shape. Taking $a=c\sigma$ gives $\Pr(|X-\mu|\ge c\sigma)\le1/c^2$: e.g. at most $\frac14$ of the probability lies two or more standard deviations from the mean.
 

@@ -27,7 +27,7 @@ English has a palindrome.
 
 :::
 
-::: {.remark name="Proving $\exists x,\ P(x)$"}
+::: {#rmk-finding-proofs-1 .remark name="Proving $\exists x,\ P(x)$"}
 
 A single *witness* suffices: exhibit one $x \in D$ and verify $P(x)$ holds. No need to search further once found.
 
@@ -55,7 +55,7 @@ Every English word has a vowel or a 'y'.
 
 :::
 
-::: {.remark name="Exhaustion works only for small finite domains"}
+::: {#rmk-finding-proofs-2 .remark name="Exhaustion works only for small finite domains"}
 
 A universal statement over a finite domain can be proved by checking every member. Here that means tens of thousands of lines, one per word. For a large or infinite domain this is impossible, and a general argument about an arbitrary member is needed instead.
 
@@ -63,13 +63,13 @@ A universal statement over a finite domain can be proved by checking every membe
 
 ## Finding proofs
 
-::: {.remark name="No algorithm for finding proofs"}
+::: {#rmk-finding-proofs-3 .remark name="No algorithm for finding proofs"}
 
 There is no systematic method for discovering proofs.
 
 :::
 
-::: {.remark name="Strategy: proving $A \subseteq B$"}
+::: {#rmk-finding-proofs-4 .remark name="Strategy: proving $A \subseteq B$"}
 
 1.  Name a general member: “Let $x \in A$.”
 
@@ -81,25 +81,25 @@ There is no systematic method for discovering proofs.
 
 :::
 
-::: {.remark name="Strategy: proving $A = B$ (sets)"}
+::: {#rmk-finding-proofs-5 .remark name="Strategy: proving $A = B$ (sets)"}
 
 Prove $A \subseteq B$ and $A \supseteq B$ separately (@sec-math-discrete-sets-subsets). Each direction uses the subset strategy above.
 
 :::
 
-::: {.remark name="Strategy: proving $A = B$ (numbers)"}
+::: {#rmk-finding-proofs-6 .remark name="Strategy: proving $A = B$ (numbers)"}
 
 If direct symbolic manipulation (algebraic rules) can transform expression $A$ into expression $B$, use that. Otherwise, prove $A \le B$ and $A \ge B$ separately – the numerical analogue of the double-inclusion technique.
 
 :::
 
-::: {.remark name="Without loss of generality (WLOG)"}
+::: {#rmk-finding-proofs-7 .remark name="Without loss of generality (WLOG)"}
 
 When a proof is symmetric in two variables (swapping them leaves the claim unchanged), it suffices to prove one case and invoke the symmetry for the other – written “WLOG, assume $x\le y$” etc. Using WLOG when the situation is *not* actually symmetric is a common error – check the symmetry claim carefully before invoking it.
 
 :::
 
-::: {.remark name="Forward vs.\ backward reasoning"}
+::: {#rmk-finding-proofs-8 .remark name="Forward vs.\ backward reasoning"}
 
 *Forward*: start from known facts/assumptions, derive consequences, until reaching the goal. *Backward*: start from the goal, ask “what would suffice to prove this?”, and work backward to something already known. Backward reasoning is often how a proof is *discovered*; it is then usually rewritten forward for presentation.
 
@@ -107,7 +107,7 @@ When a proof is symmetric in two variables (swapping them leaves the claim uncha
 
 ## Types of proofs
 
-::: {.remark name="Proof types"}
+::: {#rmk-finding-proofs-9 .remark name="Proof types"}
 
 - *Direct proof / proof by symbolic manipulation* (@sec-math-discrete-proof-techniques): assume $P$, derive $Q$ via a direct chain of implications or equations.
 
@@ -139,7 +139,7 @@ This list is not exhaustive, and real proofs frequently mix several of these –
 
 ## Programs and proofs
 
-::: {.remark name="Proof techniques match program constructs"}
+::: {#rmk-finding-proofs-10 .remark name="Proof techniques match program constructs"}
 
 Each type of proof suits a kind of program construct:
 
@@ -151,7 +151,7 @@ Each type of proof suits a kind of program construct:
 
 :::
 
-::: {.remark name="Writing programs is like writing proofs"}
+::: {#rmk-finding-proofs-11 .remark name="Writing programs is like writing proofs"}
 
 Both turn a precise specification into a sequence of exact steps, where every step must be justified by what came before and nothing may be left to guesswork. A proof shows *why* a claim holds, and a program can be checked the same way: each step should be correct given the steps before it. Practising proofs therefore builds the same habits of precise reasoning that good programming needs.
 

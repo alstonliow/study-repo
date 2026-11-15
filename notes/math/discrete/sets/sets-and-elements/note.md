@@ -9,7 +9,7 @@ status: draft
 
 ## Sets and elements
 
-::: {.remark name="Naive set theory"}
+::: {#rmk-sets-and-elements-1 .remark name="Naive set theory"}
 
 We work within *naive set theory*: a set is a primitive, undefined notion, and any well-specified collection of objects is assumed to form a set. This suffices for ordinary practice, but unrestricted set formation is inconsistent in general – *Russell’s paradox* considers $R = \{x : x \notin x\}$, for which $R \in R \leftrightarrow R \notin R$, a contradiction. Axiomatic set theory (e.g. ZFC) resolves this by restricting which collections may form sets.
 
@@ -59,7 +59,7 @@ $$\begin{aligned}
 
 :::
 
-::: {.remark}
+::: {#rmk-sets-and-elements-2 .remark}
 
 Rosen takes $0 \in \mathbb{N}$; confirm this matches CN @sec-math-discrete-sets-cardinality-and-standard-sets before relying on it elsewhere.
 
@@ -71,7 +71,7 @@ The *universal set* $U$ is the set containing all objects under discussion in a 
 
 :::
 
-::: {.remark name="Venn diagram"}
+::: {#rmk-sets-and-elements-3 .remark name="Venn diagram"}
 
 A *Venn diagram* represents sets as regions enclosed by curves inside a rectangle representing $U$; overlapping regions represent intersections, non-overlapping regions represent disjointness.
 
@@ -85,7 +85,7 @@ $A = \{a_1, a_2, \dots, a_n\}$. Order and repetition do not matter: $\{1,2,3\} =
 
 :::
 
-::: {.remark name="Ellipsis notation"}
+::: {#rmk-sets-and-elements-4 .remark name="Ellipsis notation"}
 
 $\{1,2,3,\dots\}$, or bounded: $\{1,2,\dots,100\}$.
 

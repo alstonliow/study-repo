@@ -26,13 +26,13 @@ The columns for $\neg(P\vee Q)$ and $\neg P \wedge \neg Q$ agree in every row, s
 
 :::
 
-::: {.remark name="Building the table incrementally"}
+::: {#rmk-de-morgans-laws-1 .remark name="Building the table incrementally"}
 
 The table is constructed left to right, each column using only earlier columns: start with all combinations of $P,Q$; build $P\vee Q$; negate it to get $\neg(P\vee Q)$; separately build $\neg P$ and $\neg Q$; conjoin them to get $\neg P \wedge \neg Q$. Comparing the two target columns (highlighted) completes the proof.
 
 :::
 
-::: {.remark name="Deriving the second law from the first"}
+::: {#rmk-de-morgans-laws-2 .remark name="Deriving the second law from the first"}
 
 Rather than repeating the truth-table argument, the second law follows from the first by substitution: replace $P,Q$ with $\neg P, \neg Q$ in the first law and simplify using double negation (@sec-math-discrete-logic-propositional-connectives).
 
@@ -56,13 +56,13 @@ $$\begin{aligned}
 
 :::
 
-::: {.remark}
+::: {#rmk-de-morgans-laws-3 .remark}
 
 This argument works for *every* $n$ at once – unlike the truth-table method, which would need a separate (and infinite) family of tables, one per $n$.
 
 :::
 
-::: {.remark name="Correspondence with the set-theoretic De Morgan's laws"}
+::: {#rmk-de-morgans-laws-4 .remark name="Correspondence with the set-theoretic De Morgan's laws"}
 
 Compare directly with @sec-math-discrete-sets-set-operations’s Theorem (De Morgan’s laws for sets): $\overline{A\cup B} = \overline A \cap \overline B$ and $\overline{A\cap B} = \overline A \cup \overline B$ are exactly the propositional laws above, applied to the propositions $x\in A$ and $x\in B$.
 
@@ -94,7 +94,7 @@ Left: $\neg(P\vee Q)$ is the region outside both circles. Right: $\neg P$ (blue)
 
 :::
 
-::: {.remark name="Naming logical equivalence"}
+::: {#rmk-de-morgans-laws-5 .remark name="Naming logical equivalence"}
 
 Two compound propositions are *logically equivalent* iff their truth tables are identical in every row – written $P \equiv Q$ or $P \iff Q$ (a *tautology*, true under every assignment; formalized further in @sec-math-discrete-logic-propositional-tautologies).
 

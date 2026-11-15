@@ -7,7 +7,7 @@ status: draft
 
 <!-- Migrated from 1058note notes/chapters/03-proofs.tex: Proof by contradiction. -->
 
-::: {.remark name="Pattern"}
+::: {#rmk-contradiction-1 .remark name="Pattern"}
 
 Assume the *negation* of the claim; reason from it to a contradiction (some statement and its negation both derived as true); conclude the assumption was false, so the original claim holds.
 
@@ -27,7 +27,7 @@ Since $q > p_i$ for every $i$, $q$ is not itself prime, so $q$ is composite and 
 
 :::
 
-::: {.remark name="A useful auxiliary fact used implicitly"}
+::: {#rmk-contradiction-2 .remark name="A useful auxiliary fact used implicitly"}
 
 The argument above (and many proofs by contradiction over $\mathbb{N}$ or $\mathbb{Z}^+$) relies on: any nonempty set of natural numbers has a smallest element (well-ordering). This lets you say things like “let $n$ be the smallest counterexample” and derive a contradiction from its minimality.
 
@@ -45,13 +45,13 @@ Suppose, for contradiction, that $\sqrt2$ is rational: $\sqrt2 = a/b$ for intege
 
 :::
 
-::: {.remark}
+::: {#rmk-contradiction-3 .remark}
 
 Alongside Euclid’s proof, this is the other canonical proof-by-contradiction example in mathematics – both hinge on deriving a property (divisibility, in each case) that eventually contradicts an assumption baked into the setup (finiteness of the prime list; lowest-terms form of the fraction).
 
 :::
 
-::: {.remark name="Open problems"}
+::: {#rmk-contradiction-4 .remark name="Open problems"}
 
 Not every true mathematical statement has a known proof. An *open problem* is a precisely stated claim believed true (or at least undecided) but not yet proved or disproved.
 
@@ -65,7 +65,7 @@ $$\mathrm{Collatz}(n) = \begin{cases} n/2, & n \text{ even}, \\ 3n+1, & n \text{
 
 :::
 
-::: {.remark}
+::: {#rmk-contradiction-5 .remark}
 
 Verified by computer for enormous ranges of starting values, but no proof (or disproof) is known – an active open problem since 1937. Contrast with Euclid’s infinitude-of-primes proof (@sec-math-discrete-proof-contradiction above): that claim, once conjectured, was fully settled by a short contradiction argument; Collatz has resisted proof for nearly a century despite its simple statement.
 

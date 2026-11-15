@@ -21,7 +21,7 @@ The positive divisors of $12$ are $1,2,3,4,6,12$ and those of $20$ are $1,2,4,5,
 
 :::
 
-::: {.remark name="Why the gcd exists"}
+::: {#rmk-gcd-and-euclidean-algorithm-1 .remark name="Why the gcd exists"}
 
 The set of common divisors contains $1$, and is bounded above because $d\mid n\ne0$ implies $d\le|n|$; so it has a greatest element. If $a=b=0$, every integer is a common divisor, which is why $\gcd(0,0)$ is undefined.
 
@@ -41,7 +41,7 @@ If $d\mid a$ and $d\mid b$, then $d\mid(a-b)$ by @prp-divlinear, so $d$ is a com
 
 :::
 
-::: {.remark name="Repeated subtraction"}
+::: {#rmk-gcd-and-euclidean-algorithm-2 .remark name="Repeated subtraction"}
 
 Applying @prp-gcdsub repeatedly, always subtracting the smaller number from the larger, computes the gcd: $\gcd(20,12)=\gcd(12,8)=\gcd(8,4)=\gcd(4,4)=\gcd(4,0)=4$. The Euclidean algorithm (@sec-math-discrete-number-theory-gcd-and-euclidean-algorithm) speeds this up.
 
@@ -119,7 +119,7 @@ To find $\gcd(a,b)$:
 
 :::
 
-::: {.remark name="Division replaces repeated subtraction"}
+::: {#rmk-gcd-and-euclidean-algorithm-3 .remark name="Division replaces repeated subtraction"}
 
 Subtracting $b$ from $a$ until the result drops below $b$ is exactly division with remainder. So one EA step does in one go what @prp-gcdsub would do with many subtractions.
 

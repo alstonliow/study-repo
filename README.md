@@ -20,8 +20,12 @@ University** or any other institution, and it is not official course material.
   - `solution.md` – solutions, paired with problems by id
 - Notes are Markdown with YAML front matter and Pandoc fenced divs
   (`::: {#thm-… .theorem}`).
-- Sources (courses, textbooks) are metadata, not folders. Course membership
-  comes from source keys and `meta/courses.yml`.
+- Sources (courses, textbooks) are metadata, not folders. `sources`/`source`
+  only record where content came from.
+- Which course needs which content is defined in one file per course,
+  `meta/courses/<id>.yml`: the course outline, and for each outline point the
+  notes (or single blocks) it covers. Blocks outside a course's scope are folded
+  on the website when that course is selected in the course filter.
 
 The full conventions are in [`meta/SPEC.md`](meta/SPEC.md). The topic tree is in
 [`meta/taxonomy.md`](meta/taxonomy.md) and the notation in
@@ -56,8 +60,8 @@ Problem statement, copied verbatim.
 - The id is unique across the repository. Continue the folder's numbering.
 - `origin` is `self` (written by me) or `external` (from a textbook or course).
 - `source` is a source key, e.g. `fit1058-cn-8.10-q5`. If it is unknown, leave
-  it empty and add a TODO comment. Only `fit1058-` keys appear in the course
-  filter.
+  it empty and add a TODO comment. It records provenance only; the problem is
+  in a course's scope when its note is (see "A course" below).
 - `level="easy|medium|hard"` and `tags="a,b"` are optional.
 
 ### A knowledge point
@@ -88,6 +92,11 @@ Problem statement, copied verbatim.
    2. ...
    :::
    ```
+
+   Every block except a proof needs an id: `def-`, `thm-`, `prp-`, `lem-`,
+   `cor-`, `exm-`, `fig-`, and `rmk-` for remarks (`rmk-<folder>-<n>`),
+   `clm-` for claims. Ids never change once given. A proof belongs to the
+   block before it.
 
 3. Optionally add `example.md`, `exercise.md` and `solution.md`.
 4. Refer to blocks with `@thm-xxx` and to knowledge points with
@@ -120,6 +129,16 @@ A tree
 
 The website numbers pages automatically. Within a branch, pages are ordered by
 their first source key.
+
+### A course
+
+Add `meta/courses/<id>.yml` (format in `meta/SPEC.md` §13; see
+`meta/courses/fit1058.yml`). List the course's chapters and outline points, and
+for each point the note ids (or single block ids) it covers. Put blocks inside a
+covered note that the course does not need under `exclude`. Keep
+`status: draft` until the mapping has been reviewed. A new note that a course
+needs must be added to that course's file; `make check` lists notes drawn from a
+course's material that its file does not cover.
 
 ### Before committing
 
@@ -154,8 +173,8 @@ GitHub (link at the bottom of the sidebar). Sync uses Supabase:
 | Path | Contents |
 |---|---|
 | `notes/` | The notes (one folder per knowledge point) |
-| `meta/` | Specification, taxonomy, notation, course registry |
-| `build/` | Scripts: checks, website generator, one-off LaTeX migration |
+| `meta/` | Specification, taxonomy (`taxonomy.md` + `taxonomy.yml`), notation, course files (`courses/`) |
+| `build/` | `model.py` (the one parser of notes and courses), checks, website generator, one-off LaTeX migration |
 | `site/` | Quarto website configuration; generated pages are not committed |
 | `legacy/` | Original LaTeX notes, kept until migration review is finished |
 | `.github/workflows/` | Builds and publishes the website on every push to `main` |

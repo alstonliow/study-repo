@@ -23,13 +23,13 @@ Rosen also calls this a *propositional function*.
 
 :::
 
-::: {.remark name="Substitution yields a proposition"}
+::: {#rmk-predicates-1 .remark name="Substitution yields a proposition"}
 
 Giving specific values to every argument of a predicate produces a proposition (definite truth value).
 
 :::
 
-::: {.remark name="Equality is always available"}
+::: {#rmk-predicates-2 .remark name="Equality is always available"}
 
 $=$ is a predicate assumed available for *every* domain – without it, no domain of objects could even be meaningfully discussed.
 
@@ -49,7 +49,7 @@ A name for an object, without specifying it exactly, used to reason about an unk
 
 :::
 
-::: {.remark name="Domain"}
+::: {#rmk-predicates-3 .remark name="Domain"}
 
 $Domain$ also call $domain of discourse$ or $universe of discourse$.
 
@@ -61,7 +61,7 @@ An object belonging to the domain of some variable – a specific, named member 
 
 :::
 
-::: {.remark name="Every variable has a domain"}
+::: {#rmk-predicates-4 .remark name="Every variable has a domain"}
 
 E.g. “let $x\in\mathbb{Z}$” declares $x$ with domain $\mathbb{Z}$; a Boolean variable always has domain $\{T,F\}$.
 
@@ -75,19 +75,19 @@ A variable in a predicate expression not (yet) assigned a value.
 
 :::
 
-::: {.remark name="Truth value requires all arguments fixed"}
+::: {#rmk-predicates-5 .remark name="Truth value requires all arguments fixed"}
 
 An expression with $\ge1$ free variable is not a proposition (no truth value). Only when *every* free variable is assigned a value from its domain does the expression become a proposition.
 
 :::
 
-::: {.remark name="Domain matching is mandatory"}
+::: {#rmk-predicates-6 .remark name="Domain matching is mandatory"}
 
 Any value or variable placed into an argument of a predicate must belong to that argument’s declared domain – mismatched domains make the expression ill-formed, not just false.
 
 :::
 
-::: {.remark name="Prefix vs.\ infix notation"}
+::: {#rmk-predicates-7 .remark name="Prefix vs.\ infix notation"}
 
 Newly defined predicates typically use prefix notation, $R(a,b)$; predicates for ordering/equality/equivalence conventionally use infix notation, $a<b$, $a=b$ (@sec-math-discrete-functions-special-functions).
 
@@ -107,7 +107,7 @@ A *term* of domain $D$ is one of:
 
 :::
 
-::: {.remark name="Recursion bottoms out"}
+::: {#rmk-predicates-8 .remark name="Recursion bottoms out"}
 
 Terms are built from constants/variables/functions to arbitrary finite depth (composition, nested function calls), but never infinitely – every term has a finite construction.
 

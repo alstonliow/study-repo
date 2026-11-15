@@ -57,7 +57,7 @@ Square-and-multiply for $3^{36}$, where $36=100100_2$: square repeatedly, then m
 
 ## Modular exponentiation
 
-::: {.remark name="Two savings"}
+::: {#rmk-modular-exponentiation-1 .remark name="Two savings"}
 
 Modular exponentiation is exponentiation in $\mathbb{Z}_n$. Two separate savings apply: reduce each intermediate product mod $n$ (@thm-congarith), and, when $\gcd(a,n)=1$, reduce the *exponent* mod $\varphi(n)$ (@cor-expred below).
 
@@ -101,7 +101,7 @@ Taking $x\ge y$, write $x=y+k\varphi(n)$. Then $a^x=a^y\bigl(a^{\varphi(n)}\bigr
 
 :::
 
-::: {.remark name="The coprimality hypothesis is essential"}
+::: {#rmk-modular-exponentiation-2 .remark name="The coprimality hypothesis is essential"}
 
 For $n=4$: $\varphi(4)=2$ and $3\equiv1\pmod2$, yet $2^3=8\equiv0$ while $2^1=2\pmod4$.
 

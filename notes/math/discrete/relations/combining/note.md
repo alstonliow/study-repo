@@ -50,7 +50,7 @@ Relations $R$ and $S$ (left) and their composition $S\circ R$ (right): $1$ is re
 
 :::
 
-::: {.remark}
+::: {#rmk-combining-1 .remark}
 
 When $R,S$ happen to be functions, this is exactly function composition (@sec-math-discrete-functions-composition). Relation composition generalizes it: no uniqueness of the intermediate $y$ is required, and there may be several, or none.
 
@@ -70,7 +70,7 @@ using the defining property $yR^{-1}z \iff zRy$.
 
 :::
 
-::: {.remark}
+::: {#rmk-combining-2 .remark}
 
 So $R^{-1}\circ R$ relates $x,z \in A$ exactly when they share a common $R$-image in $B$; symmetrically, $R \circ R^{-1}$ relates elements of $B$ that share a common preimage in $A$.
 
@@ -101,7 +101,7 @@ The *transitive closure* of $R$ on $A$ is the unique relation $R^+$ on $A$ such 
 
 :::
 
-::: {.remark}
+::: {#rmk-combining-3 .remark}
 
 Condition (i) is essential (it seeds the closure); either (ii) or (iii) alone suffices together with (i) – both are not simultaneously required.
 
@@ -138,7 +138,7 @@ $$s(R) = R \cup R^{-1}.$$
 
 :::
 
-::: {.remark}
+::: {#rmk-combining-4 .remark}
 
 Transitive closure $R^+$ was already defined above: $R^+=\bigcup_{i=1}^\infty R^{(i)}$.
 

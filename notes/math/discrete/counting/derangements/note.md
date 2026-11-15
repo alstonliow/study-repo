@@ -147,6 +147,6 @@ $$
 the $n$-th partial sum of the Taylor series $e^{-1}=\sum_{k=0}^\infty \dfrac{(-1)^k}{k!}$ (this partial sum converges to $e^{-1}$ as $n\to\infty$).
 :::
 
-::: {.remark name="Interpretation"}
+::: {#rmk-derangements-1 .remark name="Interpretation"}
 The fraction of permutations with *no* fixed point converges rapidly to $1/e\approx0.368$ -- already accurate to $4$ decimal places by $n=7$. This underlies the classic "hat-check problem": the probability nobody gets their own hat back, for $n$ people with hats mixed uniformly at random, is $D_n/n!\to1/e$, essentially independent of $n$ once $n$ is even moderately large.
 :::

@@ -22,7 +22,7 @@ T & T & T
 
 :::
 
-::: {.remark name="Alternative phrasings"}
+::: {#rmk-implication-and-equivalence-1 .remark name="Alternative phrasings"}
 
 $P \implies Q$ reads: “if $P$ then $Q$”; “$P$ only if $Q$”; “$P$ is sufficient for $Q$”; “$Q$ is necessary for $P$”; “$Q$ whenever $P$”.
 
@@ -49,13 +49,13 @@ $$P \iff Q \quad \equiv \quad (P \implies Q) \wedge (Q \implies P).$$
 
 :::
 
-::: {.remark name="Alternative phrasing"}
+::: {#rmk-implication-and-equivalence-2 .remark name="Alternative phrasing"}
 
 $P \iff Q$ reads: “$P$ if and only if $Q$”; “$P$ is necessary and sufficient for $Q$”.
 
 :::
 
-::: {.remark name="Analogy with set equality"}
+::: {#rmk-implication-and-equivalence-3 .remark name="Analogy with set equality"}
 
 $x\in A \iff x\in B$ for all $x$ is exactly $A=B$ (@sec-math-discrete-sets-subsets).
 
@@ -102,7 +102,7 @@ By induction, the claim holds for all $n$.
 
 :::
 
-::: {.remark name="Analogy with symmetric difference"}
+::: {#rmk-implication-and-equivalence-4 .remark name="Analogy with symmetric difference"}
 
 $x \in A_1 \triangle \cdots \triangle A_n \iff (x\in A_1)\oplus\cdots\oplus(x\in A_n)$ (@sec-math-discrete-sets-symmetric-difference).
 

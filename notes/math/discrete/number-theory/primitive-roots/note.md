@@ -43,7 +43,7 @@ Multiplying by $3$ modulo $7$ visits all six elements of $\mathbb{Z}_7^*$ before
 
 :::
 
-::: {.remark name="Primitive roots have the widest range"}
+::: {#rmk-primitive-roots-1 .remark name="Primitive roots have the widest range"}
 
 Among the members of $\mathbb{Z}_n^*$, the primitive roots are exactly those whose powers take the greatest possible number of values. This is what makes them useful in cryptography (@sec-math-discrete-number-theory-diffie-hellman).
 
@@ -101,7 +101,7 @@ For $n=7$: $\varphi(\varphi(7))=\varphi(6)=2$. Indeed the primitive roots are $3
 
 :::
 
-::: {.remark name="Finding primitive roots is hard"}
+::: {#rmk-primitive-roots-2 .remark name="Finding primitive roots is hard"}
 
 No fast algorithm is known for finding a primitive root of a given $n$.
 

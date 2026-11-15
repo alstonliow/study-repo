@@ -24,7 +24,7 @@ $$A \triangle B = (A \setminus B) \cup (B \setminus A) = (A \cap \overline{B}) \
 
 :::
 
-::: {.remark}
+::: {#rmk-symmetric-difference-1 .remark}
 
 $A \triangle A = \emptyset$, and this is the only case where a symmetric difference is empty.
 

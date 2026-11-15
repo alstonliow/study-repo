@@ -21,7 +21,7 @@ $P \equiv Q$ (written $P=Q$) iff their truth tables are identical, iff $P\iff Q$
 
 :::
 
-::: {.remark name="Key equivalences"}
+::: {#rmk-tautologies-1 .remark name="Key equivalences"}
 
 $$\neg\neg P = P, \qquad \neg(P\vee Q)=\neg P\wedge\neg Q, \qquad \neg(P\wedge Q)=\neg P\vee\neg Q,$$
 $$P\implies Q = \neg P \vee Q, \qquad P\iff Q = (P\implies Q)\wedge(Q\implies P),$$

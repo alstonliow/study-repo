@@ -14,7 +14,7 @@ $$\forall x_1, x_2 \in A,\quad x_1 \neq x_2 \implies f(x_1) \neq f(x_2).$$
 
 :::
 
-::: {.remark name="Contrapositive phrasing"}
+::: {#rmk-injections-surjections-bijections-1 .remark name="Contrapositive phrasing"}
 
 Equivalently (contrapositive):
 $$\forall x_1, x_2 \in A,\quad f(x_1) = f(x_2) \implies x_1 = x_2.$$
@@ -22,7 +22,7 @@ This is the form most useful in proofs: assume $f(x_1)=f(x_2)$ and derive $x_1=x
 
 :::
 
-::: {.remark name="Injections preserve information"}
+::: {#rmk-injections-surjections-bijections-2 .remark name="Injections preserve information"}
 
 Every $y$ in the image of an injection has a *unique* preimage, so knowing $y$ determines $x$ uniquely. A non-injective function is *lossy* (some inputs become indistinguishable from their output); an injective one is *lossless*.
 
@@ -75,7 +75,7 @@ Three functions from a domain (left oval) to a codomain (right oval)
 
 :::
 
-::: {.remark name="Permutation"}
+::: {#rmk-injections-surjections-bijections-3 .remark name="Permutation"}
 
 A bijection $f: A \to A$ (domain = codomain) is also called a *permutation* of $A$ – usually reserved for finite $A$.
 
@@ -111,13 +111,13 @@ By induction, the claim holds for all $n \ge 0$.
 
 :::
 
-::: {.remark}
+::: {#rmk-injections-surjections-bijections-4 .remark}
 
 This theorem requires *finite* $A, B$ of equal size – it fails for infinite sets (e.g. $f:\mathbb{N}\to\mathbb{N},\ f(x)=2x$ is injective but not surjective, despite $|\mathbb{N}|=|\mathbb{N}|$ in the infinite-cardinality sense).
 
 :::
 
-::: {.remark name="Proof strategies for injectivity and surjectivity"}
+::: {#rmk-injections-surjections-bijections-5 .remark name="Proof strategies for injectivity and surjectivity"}
 
 To prove $f: A \to B$ is **injective**: let $x_1, x_2 \in A$ be arbitrary with $f(x_1) = f(x_2)$, and show $x_1 = x_2$ follows (direct proof of the contrapositive form).
 

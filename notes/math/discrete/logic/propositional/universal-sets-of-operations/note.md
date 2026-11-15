@@ -31,7 +31,7 @@ De Morgan’s laws express $\vee$ in terms of $\wedge,\neg$ (and vice versa), so
 
 :::
 
-::: {.remark name="$\{\wedge,\vee\}$ is not universal"}
+::: {#rmk-universal-sets-of-operations-1 .remark name="$\{\wedge,\vee\}$ is not universal"}
 
 Without $\neg$, every expression built from $\wedge,\vee$ is *monotone*: increasing any input from $F$ to $T$ can never make the output go from $T$ to $F$. Since $\neg P$ itself is not monotone, it cannot be expressed – so $\{\wedge,\vee\}$ fails to be universal.
 
@@ -55,7 +55,7 @@ Check each directly by truth table, or: $P\mid P = \neg(P\wedge P) = \neg P$; th
 
 :::
 
-::: {.remark}
+::: {#rmk-universal-sets-of-operations-2 .remark}
 
 This is why NAND gates alone suffice to build any digital circuit – a genuinely important fact in computer engineering, well beyond what CN’s syllabus covers here.
 

@@ -35,7 +35,7 @@ If $T$ uses every edge, we are done. Otherwise, because $G$ is connected, some v
 
 :::
 
-::: {.remark name="Königsberg"}
+::: {#rmk-euler-and-hamilton-1 .remark name="Königsberg"}
 
 The four land masses of Königsberg are vertices and its seven bridges are edges. Every vertex has odd degree, so by the theorem there is no walk crossing every bridge exactly once and returning home, settling the old puzzle.
 
@@ -65,7 +65,7 @@ Königsberg: the island $C$ has degree $5$, and $A$, $B$, $D$ have degree $3$, s
 
 :::
 
-::: {.remark name="Multigraphs"}
+::: {#rmk-euler-and-hamilton-2 .remark name="Multigraphs"}
 
 The theorem also holds for multigraphs, and for graphs with loops if each loop counts $2$ towards the degree of its vertex.
 
@@ -101,7 +101,7 @@ If $G$ is connected with $2k$ vertices of odd degree ($k\ge1$; this number is ev
 
 :::
 
-::: {.remark name="Re-using the fewest edges"}
+::: {#rmk-euler-and-hamilton-3 .remark name="Re-using the fewest edges"}
 
 In practice the added edges stand for streets walked twice. Choosing the pairing so that the total re-walked length is as small as possible is the *route inspection problem*. Unlike TSP (@sec-math-discrete-graph-walks-paths-cycles), it can be solved efficiently.
 
@@ -147,7 +147,7 @@ If $G$ is simple with $n\ge3$ vertices, and $\deg(v)\ge n/2$ for every $v$, then
 
 :::
 
-::: {.remark name="Sufficient, not necessary"}
+::: {#rmk-euler-and-hamilton-4 .remark name="Sufficient, not necessary"}
 
 Many Hamiltonian graphs fail Dirac’s condition, e.g. $C_n$ for $n\ge5$, where every degree is $2$. The proof is beyond this unit.
 
@@ -171,7 +171,7 @@ Fix a starting vertex. A Hamiltonian cycle is determined by the order in which t
 
 :::
 
-::: {.remark name="Why TSP is hard"}
+::: {#rmk-euler-and-hamilton-5 .remark name="Why TSP is hard"}
 
 Checking every Hamiltonian cycle of $K_n$ means checking $(n-1)!/2$ cycles, which grows faster than any exponential. No efficient algorithm for TSP is known.
 

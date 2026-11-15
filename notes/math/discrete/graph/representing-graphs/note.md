@@ -62,7 +62,7 @@ The graph on $\{a,b,c,d,e\}$ and its adjacency matrix: row $c$ has $1$s exactly 
 
 :::
 
-::: {.remark name="Shape of the matrix"}
+::: {#rmk-representing-graphs-1 .remark name="Shape of the matrix"}
 
 $A$ is symmetric because edges are unordered, and its diagonal is all $0$ because a simple graph has no loops. It is exactly the zero-one matrix of the adjacency relation (@sec-math-discrete-functions-special-functions).
 
@@ -84,7 +84,7 @@ From it we read off at once that $N(c)=\{a,b,d\}$, that $e$ has no neighbours, a
 
 :::
 
-::: {.remark name="Most common in practice"}
+::: {#rmk-representing-graphs-2 .remark name="Most common in practice"}
 
 The adjacency list is the most widely used representation in computers: it is compact, and it makes searching the neighbourhood of a vertex fast, which many graph algorithms need.
 
@@ -98,7 +98,7 @@ For $V=\{v_1,\dots,v_n\}$ and $E=\{e_1,\dots,e_m\}$, the *incidence matrix* $M$ 
 
 :::
 
-::: {.remark name="Columns"}
+::: {#rmk-representing-graphs-3 .remark name="Columns"}
 
 Each column of $M$ contains exactly two $1$’s, one for each endpoint of that edge.
 
@@ -116,7 +116,7 @@ By the definition of matrix multiplication, $(MM^{\mathsf T})_{ij}=\sum_{k}M_{ik
 
 :::
 
-::: {.remark name="Comparison of representations"}
+::: {#rmk-representing-graphs-4 .remark name="Comparison of representations"}
 
 Up to a constant factor:
 $$\begin{array}{l|cccc}
@@ -143,7 +143,7 @@ Given a simple graph $G=(V,E)$, define $R\subseteq V\times V$ by $(v,w)\in R$ if
 
 :::
 
-::: {.remark name="Dropping the conditions"}
+::: {#rmk-representing-graphs-5 .remark name="Dropping the conditions"}
 
 Dropping irreflexivity allows loops; dropping symmetry gives directed graphs. An arbitrary binary relation on $V$ (@sec-math-discrete-relations-binary-relations) is the same thing as a directed graph with loops allowed.
 

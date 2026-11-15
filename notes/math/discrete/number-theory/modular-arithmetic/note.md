@@ -9,7 +9,7 @@ status: draft
 
 ## Modular arithmetic
 
-::: {.remark name="Where remainders arise"}
+::: {#rmk-modular-arithmetic-1 .remark name="Where remainders arise"}
 
 Often only remainders matter. Days of the week are remainders mod $7$ of the number of days since a reference date; hours in 24-hour time are remainders mod $24$; the state of a toggle switch ($0$ off, $1$ on) is the number of presses mod $2$.
 
@@ -71,7 +71,7 @@ $\mathbb{Z}_{12}$ drawn as a clock: five steps on from $9$ lands on $2$, since $
 
 :::
 
-::: {.remark name="Equation in $\mathbb{Z}_n$ vs.\ congruence"}
+::: {#rmk-modular-arithmetic-2 .remark name="Equation in $\mathbb{Z}_n$ vs.\ congruence"}
 
 In $\mathbb{Z}_4$, $2+3=1$, since $5\bmod4=1$. This is different from the congruence $2+3\equiv1\pmod4$: the congruence only says that $2+3$ and $1$ lie in the same class, so $2+3\equiv37\pmod4$ is also true, while “$2+3=37$ in $\mathbb{Z}_4$” makes no sense ($37\notin\mathbb{Z}_4$).
 
@@ -90,7 +90,7 @@ Write $a-b=kn$ and $c-d=ln$. Then $(a+c)-(b+d)=(k+l)n$ and $(a-c)-(b-d)=(k-l)n$.
 
 :::
 
-::: {.remark name="Reduce as you go"}
+::: {#rmk-modular-arithmetic-3 .remark name="Reduce as you go"}
 
 By @thm-congarith, in any calculation using only $+,-,\times$, you can reduce mod $n$ at *every* step instead of only at the end. Division and exponentiation need separate treatment (@sec-math-discrete-number-theory-modular-arithmetic, @sec-math-discrete-number-theory-modular-exponentiation).
 
@@ -132,7 +132,7 @@ $x\in\mathbb{Z}_n$ has an inverse in $\mathbb{Z}_n$ if and only if $\gcd(x,n)=1$
 
 :::
 
-::: {.remark name="Finding inverses with the EEA"}
+::: {#rmk-modular-arithmetic-4 .remark name="Finding inverses with the EEA"}
 
 The proof is constructive: run the EEA on $(x,n)$ to get $yx+zn=1$; then $x^{-1}=y\bmod n$. This is the main practical use of the EEA.
 

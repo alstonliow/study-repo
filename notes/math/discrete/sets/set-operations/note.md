@@ -96,7 +96,7 @@ Both directions hold, so the sets are equal.
 
 :::
 
-::: {.remark name="Methods for proving set identities"}
+::: {#rmk-set-operations-1 .remark name="Methods for proving set identities"}
 
 (i) *Element argument (double inclusion)*: show LHS $\subseteq$ RHS and RHS $\subseteq$ LHS, as above.
 

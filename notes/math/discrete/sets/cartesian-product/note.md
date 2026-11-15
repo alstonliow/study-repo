@@ -67,7 +67,7 @@ For a set $A$ and $n \in \mathbb{N}$, $A^n = A \times A \times \cdots \times A$ 
 
 :::
 
-::: {.remark}
+::: {#rmk-cartesian-product-1 .remark}
 
 When $A$ is an alphabet, $A^n$ is identified with strings of length $n$ (@sec-math-discrete-sets-cardinality-and-standard-sets): e.g. $\{0,1\}^3 = \{000,001,\dots,111\}$. Also $\mathbb{R}^n = \mathbb{R}\times\cdots\times\mathbb{R}$ is the set of coordinates in $n$-dimensional space.
 

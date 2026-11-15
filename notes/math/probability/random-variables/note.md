@@ -21,7 +21,7 @@ Throw two dice, so $U=\{1,\dots,6\}^2$. The total $Z(d_1,d_2)=d_1+d_2$ is a rand
 
 :::
 
-::: {.remark name="Notation"}
+::: {#rmk-random-variables-1 .remark name="Notation"}
 
 $X=k$ is shorthand for the event $\{u\in U : X(u)=k\}$, so $\Pr(X=k)$ means the probability of that event. Similarly for $X\le k$, etc.
 
@@ -34,7 +34,7 @@ $$\Pr(X=r \text{ and } Y=s) = \Pr(X=r)\cdot\Pr(Y=s).$$
 
 :::
 
-::: {.remark name="Compared with independent events"}
+::: {#rmk-random-variables-2 .remark name="Compared with independent events"}
 
 This says that the events $X=r$ and $Y=s$ are independent (@sec-math-probability-conditional-probability) for *every* pair of values $r,s$. The numbers shown on two separate fair dice are independent random variables.
 

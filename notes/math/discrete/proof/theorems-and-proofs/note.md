@@ -35,7 +35,7 @@ The final step establishes the claim from what precedes it.
 
 :::
 
-::: {.remark name="Verifiability"}
+::: {#rmk-theorems-and-proofs-1 .remark name="Verifiability"}
 
 A proof must be readable sequentially – each step justified only by what comes *before* it, never by reading ahead. The end of a proof is marked by $\blacksquare$ (or historically “Q.E.D.”, *quod erat demonstrandum*).
 
@@ -53,7 +53,7 @@ Assume $A \subseteq B$. Let $X \in \mathcal{P}(A)$; then $X \subseteq A$ by defi
 
 :::
 
-::: {.remark name="Annotating each step"}
+::: {#rmk-theorems-and-proofs-2 .remark name="Annotating each step"}
 
 - “Assume $A\subseteq B$” – an *assumption* (the theorem is conditional on it).
 
@@ -73,13 +73,13 @@ Every line either restates a definition/axiom, states an assumption, or follows 
 
 ## Logical deduction
 
-::: {.remark name="Modus ponens"}
+::: {#rmk-theorems-and-proofs-3 .remark name="Modus ponens"}
 
 The core deduction rule: if $P$ has been established, and $P \implies Q$ has been established, then $Q$ may be deduced. This is used constantly and rarely named explicitly, but it is the essence of every logical deduction step in a proof.
 
 :::
 
-::: {.remark name="Implication as a subset relation"}
+::: {#rmk-theorems-and-proofs-4 .remark name="Implication as a subset relation"}
 
 In general, for statements $P,Q$, let $\hat P, \hat Q$ be the sets of situations in which $P$, resp. $Q$, holds. Then
 $$P \implies Q \quad \text{corresponds to} \quad \hat P \subseteq \hat Q.$$
@@ -87,7 +87,7 @@ This generalizes the set-membership fact from @sec-math-discrete-sets-subsets: $
 
 :::
 
-::: {.remark name="Vacuous truth"}
+::: {#rmk-theorems-and-proofs-5 .remark name="Vacuous truth"}
 
 If $X$ is false, $X \implies Y$ is true regardless of $Y$ – corresponding to $\emptyset \subseteq Y$ for any set $Y$ (@sec-math-discrete-sets-subsets, Theorem 1: the empty set is a subset of every set).
 
@@ -123,7 +123,7 @@ Both $P\Rightarrow Q$ and $\neg Q \Rightarrow \neg P$ are false in exactly one c
 
 :::
 
-::: {.remark name="Common logical fallacies"}
+::: {#rmk-theorems-and-proofs-6 .remark name="Common logical fallacies"}
 
 *Affirming the consequent*: from $P\implies Q$ and $Q$, wrongly concluding $P$ (this is the *converse* error from earlier in this section). *Denying the antecedent*: from $P\implies Q$ and $\neg P$, wrongly concluding $\neg Q$ (this is the *inverse* error). *Begging the question / circular reasoning*: using the claim being proved (or something equivalent to it) as a premise in its own proof.
 

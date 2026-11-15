@@ -37,7 +37,7 @@ $6\bmod4=2$,  $7\bmod4=3$,  $6\bmod2=0$,  $7\bmod2=1$,  $6\bmod5=1$,  $144\
 
 :::
 
-::: {.remark name="Negative $n$"}
+::: {#rmk-remainders-and-parity-1 .remark name="Negative $n$"}
 
 The divisor $d$ is always positive, but $n$ may be negative; $q$ is still the largest integer with $qd\le n$. For example $-6\bmod5=4$: the largest multiple of $5$ that is $\le-6$ is $-10$ (so $q=-2$), and $-10+4=-6$. A programming language’s `%` operator need not agree with $\bmod$ on negative arguments.
 
@@ -73,7 +73,7 @@ The sum or difference of two odd numbers is even, while their product is odd.
 
 :::
 
-::: {.remark name="Parity as Boolean algebra"}
+::: {#rmk-remainders-and-parity-2 .remark name="Parity as Boolean algebra"}
 
 Writing parities as $0,1$, the addition and multiplication tables mod $2$ are
 $$\begin{array}{c|cc}

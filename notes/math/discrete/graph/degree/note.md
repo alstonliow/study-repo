@@ -13,7 +13,7 @@ The *degree* of $v$ is $\deg(v) = |N(v)|$, the number of neighbours of $v$. Writ
 
 :::
 
-::: {.remark name="Isolated vertices and leaves"}
+::: {#rmk-degree-1 .remark name="Isolated vertices and leaves"}
 
 In a simple graph, $\deg(v)$ is also the number of edges at $v$. So $v$ is isolated iff $\deg(v)=0$, and a leaf iff $\deg(v)=1$. In the graph of @sec-math-discrete-graph-basic-definitions, $\deg(c)=3$, $\deg(a)=\deg(b)=2$, $\deg(d)=\deg(f)=\deg(g)=1$, $\deg(e)=0$.
 
@@ -83,13 +83,13 @@ Divide @thm-handshake by $n$.
 
 :::
 
-::: {.remark name="Range of the average"}
+::: {#rmk-degree-2 .remark name="Range of the average"}
 
 Since $0\le\deg(v)\le n-1$, the average degree lies between $0$ (the null graph $\overline{K_n}$) and $n-1$ (the complete graph $K_n$). The formula $2m/n$ uses only the global counts $n$ and $m$, yet tells us about local structure.
 
 :::
 
-::: {.remark name="Directed graphs (extra)"}
+::: {#rmk-degree-3 .remark name="Directed graphs (extra)"}
 
 For a directed graph, let $\deg^-(v)$ and $\deg^+(v)$ be the in-degree and out-degree of $v$. Each arc $(v,w)$ contributes $1$ to $\deg^+(v)$ and $1$ to $\deg^-(w)$, so $\sum_v\deg^-(v)=\sum_v\deg^+(v)=|E|$.
 
@@ -111,13 +111,13 @@ Let $G$ have $n\ge2$ vertices. The possible degrees are $0,1,\dots,n-1$, which i
 
 :::
 
-::: {.remark name="The key observation"}
+::: {#rmk-degree-4 .remark name="The key observation"}
 
 Degrees $0$ and $n-1$ cannot both occur: a vertex of degree $n-1$ is adjacent to everything, and a vertex of degree $0$ to nothing. So the $n$ vertices have at most $n-1$ values available.
 
 :::
 
-::: {.remark name="Necessary conditions on degree lists"}
+::: {#rmk-degree-5 .remark name="Necessary conditions on degree lists"}
 
 For $d_1,\dots,d_n$ (with $0\le d_i\le n-1$) to be the degrees of a graph on $n$ vertices, it is necessary that $\sum_i d_i$ is even (@thm-handshake), that the number of odd $d_i$ is even (@cor-odd-degree), and, if $n\ge2$, that the $d_i$ are not all different (@thm-equal-degree). These conditions are not sufficient, as the next example shows.
 

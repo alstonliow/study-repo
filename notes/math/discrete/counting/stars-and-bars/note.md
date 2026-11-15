@@ -11,7 +11,7 @@ status: draft
 A *multiset* is a collection in which elements may repeat and order is irrelevant, e.g. $\{1,1,3,5\}$. A size-$r$ multiset drawn from $\{1,\dots,n\}$ is determined by its multiplicities $x_1,\dots,x_n\ge0$, where $x_1+\cdots+x_n=r$.
 :::
 
-::: {.remark name="Multisets and stars and bars"}
+::: {#rmk-stars-and-bars-1 .remark name="Multisets and stars and bars"}
 Hence the number of size-$r$ multisets from an $n$-set equals the stars-and-bars count below. This is exactly "unordered selection with replacement".
 :::
 
@@ -94,6 +94,6 @@ The string $00110110$ as stars ($0$) and bars ($1$): the four bars cut the stars
 $n=3$, $r=5$: there are $\binom{3+5-1}{5}=\binom75=21$ possible salads.
 :::
 
-::: {.remark name="Four different counts"}
+::: {#rmk-stars-and-bars-2 .remark name="Four different counts"}
 All four answer "choose $r$ from $n$" differing only in order-matters and replacement-allowed -- yet the formulas look structurally unrelated at first glance. The stars-and-bars bijection above is what connects the fourth case back to ordinary binomial coefficients.
 :::

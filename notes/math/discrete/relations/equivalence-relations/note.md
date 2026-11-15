@@ -13,7 +13,7 @@ $R$ on $A$ is an *equivalence relation* iff $R$ is reflexive, symmetric, and tra
 
 :::
 
-::: {.remark name="Why not antisymmetric too?"}
+::: {#rmk-equivalence-relations-1 .remark name="Why not antisymmetric too?"}
 
 Equality is reflexive, symmetric, *and* antisymmetric. But requiring antisymmetry of a general equivalence relation would force $xRy \wedge yRx \implies x=y$ – collapsing “equivalent” into “identical,” which defeats the purpose of a looser notion of sameness.
 
@@ -39,7 +39,7 @@ Equivalently, $X$ is a *maximal* subset of $A$ on which $R$ holds between every 
 
 :::
 
-::: {.remark}
+::: {#rmk-equivalence-relations-2 .remark}
 
 For $x \in A$, the equivalence class containing $x$ is $[x]_R = \{y \in A : xRy\}$.
 

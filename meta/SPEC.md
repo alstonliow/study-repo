@@ -1,23 +1,30 @@
 ---
 title: Repository Specification
-version: 0.1
+version: 0.2
 status: draft
 ---
 
-# Repository Specification v0.1
+# Repository Specification v0.2
 
 This file is the normative specification for notes in this repository.
 It is consolidated from `meta/PLAN.md` §5–§6. Where they differ, this file wins
 once approved.
 
 - **v0.1**: drafted in P1, before the pilot.
-- **v0.2**: revised once after the P3 pilot, then frozen (see §8).
+- **v0.2** (2026-11-15): provenance and course scope separated (§1, §13); every
+  block except proofs carries an id (§5); one shared parser (`build/model.py`);
+  branches in `meta/taxonomy.yml`. Frozen (see §9).
 
 ## 1. Scope
 
 - Notes cover topics under `notes/`, organised by knowledge topic only.
 - Sources (units, books, open courses) are never directories. They appear only
   as YAML metadata (`sources`, `source`) and in generated `sources/` mappings.
+- **Provenance and scope are different things.** `sources` / `source` record
+  where content came from (attribution, copyright). Which course *requires* a
+  piece of content is recorded only in the course files `meta/courses/<id>.yml`
+  (§13). A course never changes a note, and a source key never puts content in
+  a course.
 - First batch: discrete mathematics within FIT1058 scope, plus the probability
   chapter of 1058note (see `meta/taxonomy.md`).
 
@@ -30,8 +37,11 @@ once approved.
 3. Folder names are lowercase English words joined by hyphens.
 4. Paths are at most 3–4 levels below the field (for example below
    `math/discrete/`).
-5. `meta/taxonomy.md` fixes the top two levels and the branches. Leaf folders are
-   created only when content is added. No empty directories in advance.
+5. `meta/taxonomy.md` fixes the top two levels and the branches;
+   `meta/taxonomy.yml` is the machine-readable list of parts and branches (order,
+   display title, one-line description) used by the build. The two are changed
+   together. Leaf folders are created only when content is added. No empty
+   directories in advance.
 6. ids are not renamed without the owner's approval. When a knowledge point is split, the
    original id stays as an overview so existing references do not break.
 
@@ -78,11 +88,16 @@ Content blocks are Pandoc fenced divs (`:::`).
 Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
 `claim`, `proof`, `example`, `remark`, `problem`, `solution`.
 
-1. Blocks that are numbered or referenced carry a Quarto id with a prefix:
-   `def-`, `thm-`, `prp-`, `lem-`, `cor-`, `exm-`, `prob-`, `fig-`.
-2. `proof`, `remark` and `claim` blocks normally carry no id.
-3. Which course a piece of content belongs to comes from its source keys
-   (`sources`, `source`) and `meta/courses.yml`, not from block markup.
+1. Every block in `note.md`, `example.md` and `exercise.md` carries a stable id
+   with a prefix: `def-`, `thm-`, `prp-`, `lem-`, `cor-`, `exm-`, `prob-`,
+   `fig-` (numbered, can be cross-referenced with `@`), and `rmk-` (remark),
+   `clm-` (claim). `rmk-`/`clm-` ids are not numbered and are not used in
+   `@`-references; they exist so that courses and progress tracking can name
+   the block (§13). Ids are never renamed or reused.
+2. `proof` blocks carry no id. A proof belongs to the block just before it.
+   Blocks inside `solution.md` belong to their solution and need no id.
+3. Blocks carry no course markup. Course scope is defined in
+   `meta/courses/<id>.yml` (§13).
 4. A block title goes in a `name` attribute: `{#thm-sum-rule .theorem name="Sum rule"}`.
    Use single quotes around the value if the title contains `"`.
 5. 1058note `note` environments become `remark` blocks.
@@ -233,9 +248,8 @@ for every assignment of truth values.
 
 ## 9. Freeze
 
-After the P3 pilot this SPEC is revised once and frozen as v0.2. While the
-first 20 knowledge points are migrated, structure is not changed; wanted changes
-go into `meta/ideas.md` and are applied in one batch afterwards.
+v0.2 is frozen. Wanted structural changes go into `meta/ideas.md` and are
+applied in one batch, with the owner's approval, as v0.3.
 
 ## 10. Excluded content
 
@@ -255,10 +269,56 @@ build artefacts (`*.aux`, `*.log`, PDFs, `out/`, `_site/`).
 6. `requires` entries pointing to non-existent ids.
 7. Files that must not be committed: anything under `raw/`, PDFs, `.aux` and
    similar artefacts.
+8. Blocks without an id (§5), and `@`-references to `rmk-`/`clm-` ids.
+9. Course files (§13): unknown note or block ids in `covers`/`exclude`, duplicate
+   point ids, points that cover nothing (warning), and notes whose `sources`
+   name a course that does not cover them (warning: provenance without scope).
 
-## 12. Open questions (verify in P3)
+All checks run on the model built by `build/model.py`, the single parser of
+notes, blocks and course files. `build/make_site.py` uses the same model; no
+other script parses notes on its own.
 
-1. Whether Quarto id prefixes and custom `.problem`/`.solution` blocks render and
-   keep cross-references on both the website and the PDF.
-2. Which id prefixes to use for `example`, `remark`, `problem` (currently
-   `prob-` in examples above).
+## 12. Open questions
+
+1. Whether Quarto id prefixes and custom `.problem`/`.solution` blocks keep
+   cross-references in the PDF build (P4). The website is verified.
+
+## 13. Courses and scope
+
+One file per course: `meta/courses/<id>.yml`. It lists the course outline and,
+for each outline point, which content the course requires.
+
+```yaml
+id: fit1058
+code: FIT1058
+name: ""                    # full name; filled in by the owner, never guessed
+institution: Monash University
+source_prefix: fit1058-     # provenance keys from this course's own material
+outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
+status: draft               # draft | confirmed (owner reviewed the mapping)
+exclude: [exm-x, rmk-y]     # blocks inside covered notes that are out of scope
+chapters:
+  - num: 1
+    title: Sets
+    points:
+      - id: "1.6"
+        title: Subsets and supersets
+        covers: [math/discrete/sets/subsets]   # note ids and/or block ids
+```
+
+1. **Scope is block-level.** A block is in a course's scope when its note is
+   covered (by note id) and the block is not in `exclude`, or when the block
+   itself is covered (by block id). A proof follows the block before it; a
+   solution follows its problem. Prose outside blocks follows its note.
+2. **Outline points** use the course's own numbering and short titles, written
+   by the owner or Claude, never copied text. Order of chapters and points is
+   the course order, used for course pages and the course filter.
+3. Content beyond the course (sections the course material itself marks as
+   extra, and the owner's "(extra)" material) is simply not in scope; there is
+   no `extra` tag.
+4. **Mappings are drafted, then confirmed.** Claude may draft a course file from
+   an outline; `status: draft` until the owner has reviewed it.
+5. On the website, the course filter shows the selected courses' notes in
+   course order, and folds blocks outside their scope into a one-line
+   "Beyond <code>" summary that can be opened. Progress marks are shared across
+   courses.

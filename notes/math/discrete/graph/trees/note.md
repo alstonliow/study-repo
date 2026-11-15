@@ -36,7 +36,7 @@ A tree
 
 :::
 
-::: {.remark name="Where trees appear"}
+::: {#rmk-trees-1 .remark name="Where trees appear"}
 
 Trees model communication networks with the fewest possible links, hierarchies (directories, class inheritance, organisation charts), decision processes, and the structure of sentences in a grammar. Many of these have a special vertex called the *root*, such as `/` in a Unix directory tree.
 
@@ -64,13 +64,13 @@ A graph $G$ is a tree if and only if it is a minimal connected graph.
 
 :::
 
-::: {.remark name="Unique paths"}
+::: {#rmk-trees-2 .remark name="Unique paths"}
 
 It follows that any two vertices of a tree are joined by exactly one path: two different paths would together contain a cycle.
 
 :::
 
-::: {.remark name="The two extreme trees"}
+::: {#rmk-trees-3 .remark name="The two extreme trees"}
 
 Among trees on $n$ vertices, the path $P_{n-1}$ has the longest possible path (length $n-1$) and the smallest possible maximum degree ($2$). The star $K_{1,n-1}$ has the shortest paths (length at most $2$) and the largest possible maximum degree ($n-1$).
 
@@ -134,7 +134,7 @@ By the Principle of Mathematical Induction, the claim holds for all $n$.
 
 :::
 
-::: {.remark name="Using the edge count"}
+::: {#rmk-trees-4 .remark name="Using the edge count"}
 
 So a connected graph on $n$ vertices has at least $n-1$ edges, and has exactly $n-1$ if and only if it is a tree.
 

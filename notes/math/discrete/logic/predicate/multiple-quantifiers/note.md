@@ -9,14 +9,14 @@ status: draft
 
 ## Multiple quantifiers
 
-::: {.remark name="Same-type quantifiers commute"}
+::: {#rmk-multiple-quantifiers-1 .remark name="Same-type quantifiers commute"}
 
 $$\exists X\,\exists Y\, P = \exists Y\,\exists X\, P = \exists(X,Y)\, P, \qquad
 \forall X\,\forall Y\, P = \forall Y\,\forall X\, P = \forall(X,Y)\, P.$$
 
 :::
 
-::: {.remark name="Mixed quantifiers do *not* commute"}
+::: {#rmk-multiple-quantifiers-2 .remark name="Mixed quantifiers do *not* commute"}
 
 $$\exists X\,\forall Y\, P, \quad \forall X\,\exists Y\, P, \quad \exists Y\,\forall X\, P, \quad \forall Y\,\exists X\, P$$
 are, in general, four genuinely different statements.
@@ -86,7 +86,7 @@ lets a trivial witness make the statement true for the wrong reason.
 
 :::
 
-::: {.remark name="Free variables shrink under quantification"}
+::: {#rmk-multiple-quantifiers-3 .remark name="Free variables shrink under quantification"}
 
 If $V$ is the free-variable set of $E$, then $\exists X: E$ and $\forall X: E$ each have free-variable set $V\setminus\{X\}$.
 

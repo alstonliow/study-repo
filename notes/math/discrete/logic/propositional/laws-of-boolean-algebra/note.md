@@ -35,7 +35,7 @@ The second identity is the dual (swap $\wedge \leftrightarrow \vee$, $T \leftrig
 
 ## Laws of Boolean algebra
 
-::: {.remark name="Full table, dual pairs"}
+::: {#rmk-laws-of-boolean-algebra-1 .remark name="Full table, dual pairs"}
 
 $$\neg\neg P = P$$
 $$\neg T = F, \quad \neg F = T$$

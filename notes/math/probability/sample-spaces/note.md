@@ -9,7 +9,7 @@ status: draft
 
 ## The nature of randomness
 
-::: {.remark name="Three sources of randomness"}
+::: {#rmk-sample-spaces-1 .remark name="Three sources of randomness"}
 
 Randomness may come from a genuinely unpredictable physical process (a quantum measurement), from a deterministic process too complex to model exactly (a coin toss), or simply from an observer’s ignorance of a fixed but unknown outcome (a coin lying face down some distance away). Probability theory treats all three in the same way.
 
@@ -42,7 +42,7 @@ Assign a probability $\Pr(x)\in[0,1]$ to each outcome $x\in U$ so that $\sum_{x\
 
 :::
 
-::: {.remark name="Special cases"}
+::: {#rmk-sample-spaces-2 .remark name="Special cases"}
 
 Always $\Pr(\emptyset)=0$ and $\Pr(U)=1$. The equally likely case is $\Pr(x)=1/|U|$ for every $x$. Outcomes need not be equally likely: in Scrabble, a tile drawn from the bag of $100$ is a blank with probability $2/100$.
 
@@ -57,7 +57,7 @@ $$\Pr(\text{odd}) = \sum_{k=1}^\infty \frac{1}{2^{2k-1}} = \frac{1/2}{1-1/4} = \
 
 ## Choice of sample space
 
-::: {.remark name="Prefer equally likely outcomes"}
+::: {#rmk-sample-spaces-3 .remark name="Prefer equally likely outcomes"}
 
 For two dice, the $11$ possible totals $2,\dots,12$ are not equally likely. Treating the dice as an *ordered* pair $(d_1,d_2)$ gives $36$ outcomes that *are* equally likely, each with probability $1/36$. A finer sample space with uniform probabilities is usually easier to work with. (An *unordered* pair would not do: $\{1,2\}$ arises in two ways but $\{1,1\}$ in only one.)
 

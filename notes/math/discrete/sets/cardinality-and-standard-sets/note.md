@@ -30,7 +30,7 @@ $$\mathbb{Z}^+ = \{1,2,3,\dots\}, \quad \mathbb{Z}^- = \{-1,-2,-3,\dots\}, \quad
 
 :::
 
-::: {.remark}
+::: {#rmk-cardinality-and-standard-sets-1 .remark}
 
 $\mathbb{N}\subseteq \mathbb{Z}\subseteq \mathbb{Q}\subseteq \mathbb{R}\subseteq \mathbb{C}$.
 

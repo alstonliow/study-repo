@@ -15,7 +15,7 @@ Logic (classical, two-valued) is built on two *truth values*: *True* ($T$) and *
 
 :::
 
-::: {.remark}
+::: {#rmk-propositions-1 .remark}
 
 Physically, truth values may correspond to presence/absence of electrical current, magnetisation, a switch’s on/off state, etc. – the abstraction lets us reason about logic independently of implementation. The *bit* (0 or 1) is a closely related abstraction: $F \leftrightarrow 0$, $T \leftrightarrow 1$.
 
@@ -49,7 +49,7 @@ Questions (“Come and work for us!”), nonsensical or non-declarative sentence
 
 :::
 
-::: {.remark name="Naming a proposition"}
+::: {#rmk-propositions-2 .remark name="Naming a proposition"}
 
 A proposition may be named by a Boolean variable, e.g. let $X$ be the proposition $1+1=2$; then $X$’s truth value is $T$.
 
@@ -57,7 +57,7 @@ A proposition may be named by a Boolean variable, e.g. let $X$ be the propositi
 
 ## Logical operations
 
-::: {.remark name="The basic connectives"}
+::: {#rmk-propositions-3 .remark name="The basic connectives"}
 
 |             |            |
 |:------------|:-----------|

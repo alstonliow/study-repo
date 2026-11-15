@@ -13,7 +13,7 @@ A *binary relation* from $A$ to $B$ is a subset $R \subseteq A \times B$. We wri
 
 :::
 
-::: {.remark name="Relations as “relaxed functions”"}
+::: {#rmk-binary-relations-1 .remark name="Relations as “relaxed functions”"}
 
 A function $f: A \to B$ is exactly a relation $R \subseteq A \times B$ satisfying: for every $a \in A$, there is a *unique* $b \in B$ with $(a,b) \in R$. Dropping the uniqueness (and even the existence) requirement gives a general binary relation – so every function is a relation, but not conversely.
 
@@ -40,7 +40,7 @@ $$y R^{-1} x \iff x R y.$$
 
 :::
 
-::: {.remark}
+::: {#rmk-binary-relations-2 .remark}
 
 When $R$ happens to be a function, this agrees with the inverse function of @sec-math-discrete-functions-inverse-functions – *but only when that function is a bijection*. For a general function $f$, $f^{-1}$ as a *relation* always exists (just reverse the pairs); it is only a *function* in its own right when $f$ is bijective.
 
@@ -53,7 +53,7 @@ $$(M_R)_{ij} = 1 \iff (a_i,b_j)\in R, \qquad (M_R)_{ij}=0 \text{ otherwise.}$$
 
 :::
 
-::: {.remark name="Properties as matrix conditions, $R$ on $A$"}
+::: {#rmk-binary-relations-3 .remark name="Properties as matrix conditions, $R$ on $A$"}
 
 Reflexive: diagonal all $1$s. Symmetric: $M_R = M_R^t$. Antisymmetric: $(M_R)_{ij}=1$ and $i\neq j$ $\implies (M_R)_{ji}=0$.
 
@@ -85,13 +85,13 @@ Directed graph of $R=\{(a,a),(a,b),(a,c),(b,c)\}$ – the loop at $a$ shows refl
 
 :::
 
-::: {.remark name="Properties as graph conditions"}
+::: {#rmk-binary-relations-4 .remark name="Properties as graph conditions"}
 
 Reflexive: a loop at every vertex. Symmetric: every edge $a\to b$ has a matching edge $b\to a$. Transitive: whenever $a\to b\to c$, also $a\to c$ directly.
 
 :::
 
-::: {.remark name="Boolean matrix product computes composition"}
+::: {#rmk-binary-relations-5 .remark name="Boolean matrix product computes composition"}
 
 If $M_R$, $M_S$ are zero-one matrices of $R\subseteq A\times B$, $S\subseteq B\times C$, then $M_R\odot M_S = M_{S\circ R}$ (Boolean product, @sec-math-discrete-functions-special-functions) – so relation composition (@sec-math-discrete-relations-combining) reduces to matrix multiplication with $\vee,\wedge$ in place of $+,\times$.
 

@@ -15,7 +15,7 @@ A *forest* is a graph with no cycles (not necessarily connected).
 
 :::
 
-::: {.remark name="A forest is a union of trees"}
+::: {#rmk-forests-and-spanning-trees-1 .remark name="A forest is a union of trees"}
 
 Each component of a forest is connected and has no cycles, so it is a tree.
 
@@ -98,7 +98,7 @@ A spanning tree (thick edges)
 
 :::
 
-::: {.remark name="Building up instead"}
+::: {#rmk-forests-and-spanning-trees-2 .remark name="Building up instead"}
 
 Equivalently, start with no edges and repeatedly add any edge that does not create a cycle, until no more can be added:
 
@@ -152,13 +152,13 @@ For every weighted graph $G$, Kruskal’s Greedy Algorithm finds a minimum weigh
 
 :::
 
-::: {.remark name="Proof idea: the exchange argument"}
+::: {#rmk-forests-and-spanning-trees-3 .remark name="Proof idea: the exchange argument"}
 
 CN does not prove this. The idea: suppose Kruskal’s tree $T$ is not minimum, and let $T^*$ be a minimum spanning tree sharing as many edges with $T$ as possible. Let $e$ be the first edge chosen by Kruskal that is not in $T^*$. Adding $e$ to $T^*$ creates a cycle, which contains an edge $f\notin T$. When Kruskal chose $e$, the edge $f$ was also available (adding it would not have created a cycle), so $w(e)\le w(f)$. Then $T^*-f+e$ is a spanning tree of weight at most $w(T^*)$, so it is also minimum, and it shares more edges with $T$, a contradiction.
 
 :::
 
-::: {.remark name="Greedy is usually not optimal"}
+::: {#rmk-forests-and-spanning-trees-4 .remark name="Greedy is usually not optimal"}
 
 Repeatedly taking the biggest immediate benefit seldom gives the best overall result. For example, greedily following the shortest available edge does not, in general, find a shortest path between two vertices, and may not find a path at all. Minimum spanning trees are a striking exception.
 

@@ -31,13 +31,13 @@ A function $f:\{1,2,3\}\to\{p,q,r\}$, each argument pointing to its unique value
 
 :::
 
-::: {.remark name="Alternative phrasing"}
+::: {#rmk-definitions-1 .remark name="Alternative phrasing"}
 
 Let $A,B$ be nonempty sets. A *function* $f$ from $A$ to $B$ is an assignment of exactly one element of $B$ to each element of $A$. We write $f(a)=b$ if $b$ is the element assigned to $a$, and $f: A \to B$.
 
 :::
 
-::: {.remark}
+::: {#rmk-definitions-2 .remark}
 
 $x$ is the *argument* (parameter, input); $f(x)$ is the *value* (output).
 
@@ -63,7 +63,7 @@ The *domain* of $f$, written $\operatorname{dom}(f)$, is exactly the set of vali
 
 :::
 
-::: {.remark name="The domain as a promise"}
+::: {#rmk-definitions-3 .remark name="The domain as a promise"}
 
 Specifying $\operatorname{dom}(f)$ commits $f$ to working correctly on *every* member of it – no more, no less. A larger domain is a bigger promise (more work to guarantee); a smaller domain that still covers the intended use case is often preferable.
 
@@ -83,13 +83,13 @@ The *image* of $f$ is the exact set of attained values, $\{f(x) : x \in \operato
 
 :::
 
-::: {.remark}
+::: {#rmk-definitions-4 .remark}
 
 CN deliberately avoids the word “range”, since usage is inconsistent (sometimes the image, sometimes the codomain). Rosen uses “range” for what CN calls the image.
 
 :::
 
-::: {.remark name="Why allow looseness at all?"}
+::: {#rmk-definitions-5 .remark name="Why allow looseness at all?"}
 
 The image is often hard, or even provably impossible, to compute exactly (e.g. a function whose value depends on uncomputable properties of programs), while a simple superset codomain is easy to state. So we specify a codomain we’re confident covers every value, rather than insisting on the exact image.
 
@@ -103,7 +103,7 @@ $$f(S) = \{f(s) : s \in S\} \subseteq B.$$
 
 :::
 
-::: {.remark name="Onto / surjective"}
+::: {#rmk-definitions-6 .remark name="Onto / surjective"}
 
 If the codomain equals the image, $f$ is *onto* (*surjective*), a *surjection*. (Formal treatment in @sec-math-discrete-functions-injections-surjections-bijections.)
 
@@ -133,13 +133,13 @@ A function on the finite domain $\{1,2,3,4\}$ can be given as a finite graph, e.
 
 ## Functions in computer science
 
-::: {.remark name="Functions as specifications"}
+::: {#rmk-definitions-7 .remark name="Functions as specifications"}
 
 Software development starts with *analysis*: working out, usually with the client, exactly what must be done. One common outcome is a function: a precise statement of the required output for each possible input. A function says *what* is to be computed, not *how*. The *how* comes next: design an algorithm that computes the function, then implement the algorithm in a programming language. Real projects loop back between these stages, and not every specification is a function (some describe how components interact, or a database), but functions are a central product of analysis.
 
 :::
 
-::: {.remark name="Mathematical functions vs programming functions"}
+::: {#rmk-definitions-8 .remark name="Mathematical functions vs programming functions"}
 
 In many programming languages, a "function" also contains code: it says *how* to compute its values, not just *what* they are. In these notes, "function" always means a mathematical function, with no algorithm attached. When the programming sense is meant, we say so explicitly, e.g. "Python function". (Functional programming languages are built around programming functions that can be passed to and returned from other functions.)
 

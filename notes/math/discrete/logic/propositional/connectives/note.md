@@ -26,7 +26,7 @@ $$\neg\neg P = P.$$
 
 :::
 
-::: {.remark name="Analogy with set complement"}
+::: {#rmk-connectives-1 .remark name="Analogy with set complement"}
 
 Negation mirrors complementation (@sec-math-discrete-sets-set-operations): both give the “completely opposite” outcome, and applying either twice returns the original. If $P$ is the proposition $x \in A$, then $\neg P$ is $x \in \overline{A}$: e.g. $\neg(\sqrt2 \in \mathbb{Q})$ is the same as $\sqrt2 \in \overline{\mathbb{Q}}$ (equivalently $\sqrt2 \notin \mathbb{Q}$).
 
@@ -47,7 +47,7 @@ T & T & T
 
 :::
 
-::: {.remark name="Analogy with set intersection"}
+::: {#rmk-connectives-2 .remark name="Analogy with set intersection"}
 
 For object $x$ and sets $A,B$:
 $$(x \in A) \wedge (x \in B) \iff x \in A \cap B, \qquad A \cap B = \{x : x\in A \wedge x \in B\}$$
@@ -84,7 +84,7 @@ T & T & T
 
 :::
 
-::: {.remark name="Inclusive, not exclusive"}
+::: {#rmk-connectives-3 .remark name="Inclusive, not exclusive"}
 
 This is the *inclusive-or*: true even when *both* $P,Q$ are true. Contrast with *exclusive-or* (@sec-math-discrete-logic-propositional-implication-and-equivalence), true precisely when *exactly one* holds.
 
@@ -96,7 +96,7 @@ This is the *inclusive-or*: true even when *both* $P,Q$ are true. Contrast with 
 
 :::
 
-::: {.remark name="Analogy with set union"}
+::: {#rmk-connectives-4 .remark name="Analogy with set union"}
 
 For object $x$ and sets $A,B$:
 $$(x \in A) \vee (x \in B) \iff x \in A \cup B, \qquad A \cup B = \{x : x\in A \vee x \in B\}$$
@@ -134,7 +134,7 @@ Each connective as a region where it is true (shaded), with $P$ and $Q$ the regi
 
 :::
 
-::: {.remark name="Operator precedence so far"}
+::: {#rmk-connectives-5 .remark name="Operator precedence so far"}
 
 Among the connectives introduced up to this point, precedence (highest to lowest) is:
 $$\neg \ > \ \wedge \ > \ \vee.$$

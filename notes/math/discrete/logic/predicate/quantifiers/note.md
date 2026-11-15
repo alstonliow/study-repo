@@ -19,7 +19,7 @@ status: draft
 
 :::
 
-::: {.remark name="Free variables propagate"}
+::: {#rmk-quantifiers-1 .remark name="Free variables propagate"}
 
 A predicate logic expression’s free variables are the union of the free variables of its terms/sub-expressions – combining expressions never removes a free variable (only quantification, @sec-math-discrete-logic-predicate-quantifiers, does that).
 
@@ -41,7 +41,7 @@ is true iff $P(a)$ is true for *at least one* $a\in D$.
 
 :::
 
-::: {.remark name="Punctuation"}
+::: {#rmk-quantifiers-2 .remark name="Punctuation"}
 
 $\exists x : P(x)$, $\exists x.\, P(x)$, $\exists x\, P(x)$ are all used; the colon/period is read “such that”.
 
@@ -53,25 +53,25 @@ Once quantified, $x$ is *bound*: no longer available to receive a specific value
 
 :::
 
-::: {.remark name="Domain matters"}
+::: {#rmk-quantifiers-3 .remark name="Domain matters"}
 
 $\exists W\in\mathbb{N}:\ W<0$ is false; $\exists W\in\mathbb{Z}:\ W<0$ is true – same predicate, different domain, different truth value.
 
 :::
 
-::: {.remark name="Analogy with disjunction – and where it breaks"}
+::: {#rmk-quantifiers-4 .remark name="Analogy with disjunction – and where it breaks"}
 
 $\exists x \in D,\ P(x)$ behaves like the disjunction $\bigvee_{a\in D} P(a)$ – true iff at least one disjunct is true. But this is only an analogy: disjunctions must be *finite*, while $D$ may be infinite, so existential quantification genuinely extends what propositional logic alone can express.
 
 :::
 
-::: {.remark name="Vacuous quantification"}
+::: {#rmk-quantifiers-5 .remark name="Vacuous quantification"}
 
 If $x$ does not appear in $P$, $\exists x\, P$ is equivalent to $P$ itself (the quantifier is inert): e.g. $\exists w:\ z<0$ is just $z<0$.
 
 :::
 
-::: {.remark}
+::: {#rmk-quantifiers-6 .remark}
 
 Quantifiers apply only to variables, never to constants: $\exists 5$ or $\exists\text{Annie}$ are ill-formed.
 
@@ -79,7 +79,7 @@ Quantifiers apply only to variables, never to constants: $\exists 5$ or $\exists
 
 ## Restricting existentially quantified variables
 
-::: {.remark name="Restricting $\exists$ uses $\wedge$"}
+::: {#rmk-quantifiers-7 .remark name="Restricting $\exists$ uses $\wedge$"}
 
 To assert “some $X$ satisfying $R(X)$ also satisfies $P(X)$”:
 $$\exists X:\ R(X) \wedge P(X).$$
@@ -96,13 +96,13 @@ is true iff $P(a)$ is true for *every* $a\in D$.
 
 :::
 
-::: {.remark}
+::: {#rmk-quantifiers-8 .remark}
 
 As with $\exists$: the quantified variable becomes bound; an irrelevant quantifier (variable not appearing in the body) can be dropped.
 
 :::
 
-::: {.remark name="Vacuous truth generalizes"}
+::: {#rmk-quantifiers-9 .remark name="Vacuous truth generalizes"}
 
 $\forall x\in\emptyset,\ P(x)$ is vacuously true for *any* $P$, exactly generalizing $\emptyset\subseteq A$ (@sec-math-discrete-sets-subsets Theorem 1) to arbitrary predicates, not just set membership.
 
@@ -110,20 +110,20 @@ $\forall x\in\emptyset,\ P(x)$ is vacuously true for *any* $P$, exactly generali
 
 ## Restricting universally quantified variables
 
-::: {.remark name="Restricting $\forall$ uses $\implies$"}
+::: {#rmk-quantifiers-10 .remark name="Restricting $\forall$ uses $\implies$"}
 
 To assert “every $X$ satisfying $R(X)$ also satisfies $P(X)$”:
 $$\forall X:\ R(X) \implies P(X).$$
 
 :::
 
-::: {.remark name="Preview: De Morgan's laws for quantifiers"}
+::: {#rmk-quantifiers-11 .remark name="Preview: De Morgan's laws for quantifiers"}
 
 $$\neg\forall x\, P(x) \ \equiv\ \exists x\,\neg P(x), \qquad \neg\exists x\, P(x) \ \equiv\ \forall x\,\neg P(x).$$
 
 :::
 
-::: {.remark}
+::: {#rmk-quantifiers-12 .remark}
 
 Consequence: negating $\forall X: R(X)\implies P(X)$ gives $\exists X: R(X)\wedge\neg P(X)$ – exactly matching the $\exists/\wedge$ pairing above, since $\neg(R\implies P) \equiv R\wedge\neg P$ (@sec-math-discrete-logic-propositional-laws-of-boolean-algebra).
 

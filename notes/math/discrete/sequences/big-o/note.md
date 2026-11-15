@@ -14,7 +14,7 @@ $$a_n = O(f(n)) \iff \exists c,N\ \forall n\ge N\quad a_n \le c\cdot f(n).$$
 
 :::
 
-::: {.remark name="Meaning"}
+::: {#rmk-big-o-1 .remark name="Meaning"}
 
 $a_n=O(f(n))$ says that, from some point on, $a_n$ is at most a constant multiple of $f(n)$: $f$ is an upper bound on the growth of $(a_n)$, ignoring constant factors and small $n$. This is the Big-O Game of Exercise 6.11.
 
@@ -26,13 +26,13 @@ Let $t_n = 100n+10n^2+2n+\log n$. For $n\ge10$, each of $100n$, $10n^2$, $2n$, $
 
 :::
 
-::: {.remark name="Constant factors don't matter"}
+::: {#rmk-big-o-2 .remark name="Constant factors don't matter"}
 
 $t_n=O(2^n)$, $t_n=O(4\cdot2^n)$ and $t_n=O(0.001\cdot2^n)$ are all true, since the constant $c$ can absorb any constant factor. So we just write $O(2^n)$.
 
 :::
 
-::: {.remark name="Exponential bases do matter"}
+::: {#rmk-big-o-3 .remark name="Exponential bases do matter"}
 
 $t_n=O(3^n)$ is also true but looser. However $2^n=O(1.9^n)$ is *false*: $2^n/1.9^n=(2/1.9)^n\to\infty$, so no constant $c$ works. Unlike constant factors, different exponential bases are not interchangeable.
 
@@ -44,7 +44,7 @@ $f(n)=\Omega(g(n))$ if $\exists c>0,N\ \forall n\ge N\ f(n)\ge c\,g(n)$ (a lower
 
 :::
 
-::: {.remark name="Tight bounds (extra)"}
+::: {#rmk-big-o-4 .remark name="Tight bounds (extra)"}
 
 $O$ alone only gives an upper bound: $n=O(n^2)$ is true but loose. $\Theta$ pins down the growth rate up to constants: $t_n=\Theta(n^2)$, but $t_n$ is not $\Theta(2^n)$.
 
@@ -80,7 +80,7 @@ $P$ is the class of decision problems solvable by a polynomial-time algorithm. $
 
 :::
 
-::: {.remark name="P vs.\ NP (extra)"}
+::: {#rmk-big-o-5 .remark name="P vs.\ NP (extra)"}
 
 $P\subseteq NP$, since a polynomial-time solver can also check answers. Whether $P=NP$, i.e. whether every problem whose solutions are easy to check is also easy to solve, is the most famous open problem in computer science. For example, SAT (@sec-math-discrete-logic-propositional-representing-statements) is in $NP$: a proposed truth assignment is checked quickly by evaluating the formula, but no polynomial-time algorithm is known for finding one.
 
@@ -92,7 +92,7 @@ A problem $H$ is *NP-hard* if every $L\in NP$ is polynomial-time reducible to $H
 
 :::
 
-::: {.remark name="Why NP-complete problems matter (extra)"}
+::: {#rmk-big-o-6 .remark name="Why NP-complete problems matter (extra)"}
 
 If any one NP-complete problem had a polynomial-time algorithm, then composing it with the reductions would solve every problem in $NP$ in polynomial time, so $P=NP$. SAT was the first problem shown NP-complete (Cook–Levin, 1971); further problems are shown NP-complete by reducing a known NP-complete problem to them. Examples include $3$-SAT, Hamiltonian cycle, graph colouring, subset sum, and the decision version of TSP.
 

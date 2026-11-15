@@ -13,7 +13,7 @@ $a,b\in\mathbb{Z}$ are *coprime* (*relatively prime*) if $\gcd(a,b)=1$.
 
 :::
 
-::: {.remark name="Coprime is not prime"}
+::: {#rmk-coprimality-1 .remark name="Coprime is not prime"}
 
 $21$ and $25$ are coprime, but neither is prime. Coprimality is easy to test (run the EA), whereas primality testing is a genuinely different and harder problem.
 
@@ -61,7 +61,7 @@ Assume $p\mid ab$ and $p\nmid a$; we show $p\mid b$. Since $p$ is prime and $p\n
 
 :::
 
-::: {.remark name="Primality is needed"}
+::: {#rmk-coprimality-2 .remark name="Primality is needed"}
 
 $3\mid(8\times9)$ forces $3\mid8$ or $3\mid9$ (here $3\mid9$). But for non-prime divisors this fails: $6\mid(3\times4)$, yet $6\nmid3$ and $6\nmid4$.
 

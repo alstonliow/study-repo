@@ -54,7 +54,7 @@ $e$ is isolated; $d,f,g$ are leaves; $\{a,b,c,d\}$, $\{e\}$, $\{f,g\}$ are the t
 
 :::
 
-::: {.remark name="A graph is not its drawing"}
+::: {#rmk-basic-definitions-1 .remark name="A graph is not its drawing"}
 
 The graph is just the pair $(V,E)$. Positions of dots, lengths of lines and crossings in a picture carry no information; many different drawings show the same graph.
 
@@ -68,7 +68,7 @@ $G$ is *simple* if it has no loops (edges $\{v,v\}$) and no multiple edges.
 
 :::
 
-::: {.remark name="Relaxations"}
+::: {#rmk-basic-definitions-2 .remark name="Relaxations"}
 
 A *multigraph* allows multiple edges; a *pseudograph* also allows loops. In a *directed graph* the edges are ordered pairs $(v,w)$ (*arcs*), e.g. for one-way streets. In a *weighted graph* each edge carries a number, such as a distance or cost.
 
@@ -173,7 +173,7 @@ The subgraph induced by $\{p,q,r\}$ (shaded): it includes *every* edge among the
 
 :::
 
-::: {.remark name="Induced vs.\ ordinary subgraph"}
+::: {#rmk-basic-definitions-3 .remark name="Induced vs.\ ordinary subgraph"}
 
 Every induced subgraph is a subgraph, but not conversely. For a subgraph $H$ we only know $E_H\subseteq E(G[V_H])$, while $H$ is induced exactly when equality holds, $H=G[V_H]$. The graph $F$ above is not induced, since it omits $\{b,c\}$.
 

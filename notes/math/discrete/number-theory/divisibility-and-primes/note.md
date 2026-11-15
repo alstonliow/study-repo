@@ -23,7 +23,7 @@ $2\mathbb{Z}$ is the set of even integers, and $10\mathbb{Z}=\{\dots,-20,-10,0,1
 
 :::
 
-::: {.remark name="Zero is a special case"}
+::: {#rmk-divisibility-and-primes-1 .remark name="Zero is a special case"}
 
 Every $d\ne0$ divides $0$, since $0=0\cdot d$. So whenever divisors are involved, $0$ often needs separate treatment.
 
@@ -43,13 +43,13 @@ Write $m=q_1d$ and $n=q_2d$. Then $xm+yn=(xq_1+yq_2)d$, and $xq_1+yq_2\in\mathbb
 
 :::
 
-::: {.remark name="The converse fails"}
+::: {#rmk-divisibility-and-primes-2 .remark name="The converse fails"}
 
 $2\mid(3+5)$, but $2\nmid3$ and $2\nmid5$. Knowing that $d$ divides a sum tells you nothing about the individual terms.
 
 :::
 
-::: {.remark name="Divisibility tests from the last digits"}
+::: {#rmk-divisibility-and-primes-3 .remark name="Divisibility tests from the last digits"}
 
 Some divisors can be detected from the decimal representation alone:
 
@@ -73,7 +73,7 @@ An integer $p>1$ is *prime* if it has no proper divisors. An integer $n>1$ that 
 
 :::
 
-::: {.remark name="$1$ is neither"}
+::: {#rmk-divisibility-and-primes-4 .remark name="$1$ is neither"}
 
 $1$ is neither prime nor composite. Excluding it is what makes prime factorisations unique (@thm-fta): otherwise $6=2\cdot3=1\cdot2\cdot3=1\cdot1\cdot2\cdot3=\cdots$.
 
@@ -121,13 +121,13 @@ Write $n=ab$ with $1<a\le b<n$. Then $a^2\le ab=n$, so $a\le\sqrt n$. By @thm-pr
 
 :::
 
-::: {.remark name="Using the bound"}
+::: {#rmk-divisibility-and-primes-5 .remark name="Using the bound"}
 
 To test whether $n$ is prime, it is enough to try dividing by the primes up to $\sqrt n$. For example, $97$ is prime because none of $2,3,5,7$ divides it, and $11^2=121>97$.
 
 :::
 
-::: {.remark name="Density of primes (extra)"}
+::: {#rmk-divisibility-and-primes-6 .remark name="Density of primes (extra)"}
 
 The Prime Number Theorem says that $\pi(x)$, the number of primes $\le x$, satisfies $\pi(x)\sim x/\ln x$. So primes thin out, but only slowly: an integer near $x$ is prime with probability about $1/\ln x$. This is why searching randomly for large primes (as needed in @sec-math-discrete-number-theory-diffie-hellman) is practical.
 

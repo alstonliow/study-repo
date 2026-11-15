@@ -36,7 +36,7 @@ If such an $\ell$ exists, $(a_n)$ is *convergent*; otherwise it is *divergent*.
 \end{center}
 ```
 
-::: {.remark name="Reading the quantifiers"}
+::: {#rmk-limits-1 .remark name="Reading the quantifiers"}
 
 However narrow a band $(\ell-\varepsilon,\ell+\varepsilon)$ is chosen, from some point $N$ onwards *all* terms lie inside it. The order of quantifiers matters (@sec-math-discrete-logic-predicate-multiple-quantifiers): $N$ may depend on $\varepsilon$. This is exactly the Limit Game of Exercise 6.10: Una picks $\varepsilon$, then Lim picks $N$.
 
@@ -122,7 +122,7 @@ Here $r^{1/n}$ is the positive $n$-th root of $r$.
 
 :::
 
-::: {.remark name="Why $r > 0$"}
+::: {#rmk-limits-2 .remark name="Why $r > 0$"}
 
 For $r < 0$ an $n$-th root may not be a positive real number, or not real at all, so the statement is restricted to $r > 0$.
 
@@ -151,7 +151,7 @@ $\lim_{n\to\infty} n^2 = \infty$ and $\lim_{n\to\infty} (-n^2) = -\infty$. Such 
 
 :::
 
-::: {.remark name="Why we need more than \"$= \infty$\""}
+::: {#rmk-limits-3 .remark name="Why we need more than \"$= \infty$\""}
 
 Running times of algorithms usually grow without bound, but very differently:
 $$\log n,\quad \sqrt n,\quad n,\quad n\log n,\quad n^2,\quad 2^n,\quad n!,\quad 2^{2^n}$$

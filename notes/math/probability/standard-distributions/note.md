@@ -70,7 +70,7 @@ $$\Pr(X=k) = \binom{n}{k}p^k(1-p)^{n-k}, \qquad k=0,1,\dots,n.$$
 \end{tikzpicture}
 ```
 
-::: {.remark name="Where the formula comes from"}
+::: {#rmk-standard-distributions-1 .remark name="Where the formula comes from"}
 
 $\binom nk$ counts the ways to choose which $k$ of the $n$ trials succeed (@sec-math-discrete-counting-combinations), and each such outcome has probability $p^k(1-p)^{n-k}$ by independence.
 
@@ -114,7 +114,7 @@ $$\Pr(X=k) = \frac{e^{-\mu}\mu^k}{k!}, \qquad k=0,1,2,\dots$$
 \end{tikzpicture}
 ```
 
-::: {.remark name="When it applies"}
+::: {#rmk-standard-distributions-2 .remark name="When it applies"}
 
 The Poisson distribution counts events that happen independently at random times, at a steady average rate, during a fixed time interval: phone calls to a call centre, visits to a website, coins tossed into a busker’s cap, alpha particles emitted by radioactive material. The parameter $\mu$ is the average number of events in the interval.
 
@@ -145,7 +145,7 @@ Write the left side as $\dfrac{\mu^k}{k!}\cdot\dfrac{n(n-1)\cdots(n-k+1)}{n^k}\c
 
 :::
 
-::: {.remark name="Approximating the binomial"}
+::: {#rmk-standard-distributions-3 .remark name="Approximating the binomial"}
 
 So $\mathrm{Bin}(n,p)$ with $n$ large, $p$ small and $np$ moderate is well approximated by $\mathrm{Poisson}(np)$: think of many trials, each with a small chance of a rare event.
 
@@ -171,7 +171,7 @@ $$\Pr(X=k) = (1-p)^{k-1}p, \qquad k=1,2,3,\dots$$
 \end{tikzpicture}
 ```
 
-::: {.remark name="Two conventions"}
+::: {#rmk-standard-distributions-4 .remark name="Two conventions"}
 
 Some books instead count the failures *before* the first success, which is $X-1$. Check which one is meant.
 
@@ -195,7 +195,7 @@ $E[X] = p\sum_{k\ge1} k(1-p)^{k-1}$. Differentiating the geometric series $\sum_
 
 :::
 
-::: {.remark name="Memoryless property"}
+::: {#rmk-standard-distributions-5 .remark name="Memoryless property"}
 
 Given that the first $t$ trials have all failed, the number of further trials needed is again $\mathrm{Geom}(p)$: past failures do not make success “due”. Examples include the number of loop iterations until a random stopping condition holds, the number of time intervals until a component fails, and the number of balls a cricket batter faces.
 

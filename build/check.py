@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Repository checks (meta/SPEC.md §11).
+"""Repository checks (meta/SPEC.md §11), on the model from build/model.py.
 
 Errors make the script exit non-zero. Warnings are printed but do not fail.
 Read-only: never modifies files and never runs git write commands.
@@ -12,69 +12,27 @@ import subprocess
 import sys
 from pathlib import Path
 
-import yaml
-
-EMPTY_SOL = re.compile(r'^:::+\s*\{[^}]*\.solution[^}]*for="([^"]+)"[^}]*\}\s*\n\s*:::+\s*$', re.M)
-ROOT = Path(__file__).resolve().parent.parent
-NOTES = ROOT / "notes"
+from model import ID_PREFIXES, NOTES, REF, ROOT, load
 
 REQUIRED_YAML = ["title", "sources", "requires", "status"]
 ALLOWED = {"status": {"draft", "done"}}
 LEVELS = {"easy", "medium", "hard"}  # optional `level` on problem and example blocks
-
-BLOCK_PREFIXES = "def|thm|lem|cor|prp|exm|rem|prob|fig"
-DIV_OPEN = re.compile(r"^:::+\s*\{(?P<attrs>[^}]*)\}\s*$")
-ID_ATTR = re.compile(r"(?:^|\s)#([A-Za-z][\w-]*)")
-CLASS_ATTR = re.compile(r"(?:^|\s)\.([A-Za-z][\w-]*)")
-KV_ATTR = re.compile(r'([A-Za-z][\w-]*)="([^"]*)"')
-REF = re.compile(r"(?<![\w@])@((?:%s|sec)-[A-Za-z0-9-]*[A-Za-z0-9])" % BLOCK_PREFIXES)
 FORBIDDEN_SUFFIXES = {".pdf", ".aux", ".log", ".toc", ".out", ".fls",
                       ".fdb_latexmk", ".synctex.gz"}
+NO_ID_CLASSES = {"proof", "solution"}      # SPEC §5.2: these never carry an id
 
 errors: list[str] = []
 warnings: list[str] = []
+REPO = load()
 
 
 def rel(p: Path) -> str:
     return str(p.relative_to(ROOT))
 
 
-def strip_comments(text: str) -> str:
-    return re.sub(r"<!--.*?-->", "", text, flags=re.S)
-
-
-def read_front_matter(path: Path) -> dict | None:
-    text = path.read_text(encoding="utf-8")
-    m = re.match(r"^---\n(.*?)\n---\n", text, flags=re.S)
-    if not m:
-        errors.append(f"{rel(path)}: missing YAML front matter")
-        return None
-    try:
-        data = yaml.safe_load(m.group(1)) or {}
-    except yaml.YAMLError as exc:
-        errors.append(f"{rel(path)}: invalid YAML ({exc})")
-        return None
-    return data
-
-
-def note_dirs() -> list[Path]:
-    if not NOTES.exists():
-        return []
-    return sorted({p.parent for p in NOTES.rglob("*.md")})
-
-
-def note_id(d: Path) -> str:
-    return str(d.relative_to(NOTES))
-
-
-def sec_label(nid: str) -> str:
-    return "sec-" + nid.replace("/", "-")
-
-
 def check_notes() -> None:
-    dirs = note_dirs()
-    ids = {note_id(d) for d in dirs}
-    sec_labels = {sec_label(i) for i in ids}
+    ids = {n.id for n in REPO.all_notes}
+    sec_labels = {n.sec_label for n in REPO.all_notes}
 
     block_ids: dict[str, str] = {}
     problems: dict[str, Path] = {}
@@ -82,51 +40,51 @@ def check_notes() -> None:
     empty_solutions: set[str] = set()   # stubs holding only a TODO comment
     refs: list[tuple[Path, str]] = []
     requires: list[tuple[Path, str]] = []
+    missing_ids: list[str] = []
 
-    for d in dirs:
-        nid = note_id(d)
+    for note in REPO.all_notes:
+        nid = note.id
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*", nid):
             errors.append(f"{nid}: folder names must be lowercase words joined by hyphens")
-        note = d / "note.md"
-        if not note.exists():
+        if not note.has_note:
             errors.append(f"{nid}: missing note.md")
         else:
-            fm = read_front_matter(note)
-            if fm is not None:
+            path = note.files["note.md"].path
+            if note.front_error:
+                errors.append(f"{rel(path)}: {note.front_error}")
+            else:
+                fm = note.front
                 for key in REQUIRED_YAML:
                     if key not in fm:
-                        errors.append(f"{rel(note)}: missing YAML field '{key}'")
+                        errors.append(f"{rel(path)}: missing YAML field '{key}'")
                 for key, allowed in ALLOWED.items():
                     if key in fm and fm[key] not in allowed:
-                        errors.append(f"{rel(note)}: {key}={fm[key]!r} not in {sorted(a for a in allowed if a)}")
+                        errors.append(f"{rel(path)}: {key}={fm[key]!r} not in {sorted(a for a in allowed if a)}")
                 for r in fm.get("requires") or []:
-                    requires.append((note, r))
+                    requires.append((path, r))
 
-        for md in sorted(d.glob("*.md")):
-            text = strip_comments(md.read_text(encoding="utf-8"))
-            for lineno, line in enumerate(text.splitlines(), 1):
-                m = DIV_OPEN.match(line)
-                if not m:
-                    continue
-                attrs = m.group("attrs")
-                classes = CLASS_ATTR.findall(attrs)
-                kv = dict(KV_ATTR.findall(attrs))
-                attrs_no_kv = KV_ATTR.sub("", attrs)
-                bid = ID_ATTR.search(attrs_no_kv)
-                where = f"{rel(md)}:{lineno}"
+        for f in note.files.values():
+            md = f.path
+            for d in f.divs:
+                classes, kv, bid = d.classes, d.attrs, d.id
+                where = f"{rel(md)}:{d.line}"
                 if bid:
-                    b = bid.group(1)
-                    if b in block_ids:
-                        errors.append(f"{where}: duplicate id '{b}' (also {block_ids[b]})")
+                    if bid in block_ids:
+                        errors.append(f"{where}: duplicate id '{bid}' (also {block_ids[bid]})")
                     else:
-                        block_ids[b] = where
+                        block_ids[bid] = where
+                    if bid.split("-", 1)[0] not in ID_PREFIXES:
+                        warnings.append(f"{where}: id '{bid}' has an unknown prefix")
+                elif (f.name != "solution.md" and d.depth == 0 and classes
+                      and not NO_ID_CLASSES & set(classes) and classes[0] not in ("tikz-figure",)):
+                    missing_ids.append(where)
                 if "problem" in classes:
                     if md.name != "exercise.md":
                         errors.append(f"{where}: problem block outside exercise.md")
                     if not bid:
                         errors.append(f"{where}: problem without id")
                     else:
-                        problems[bid.group(1)] = md
+                        problems[bid] = md
                     if not kv.get("origin"):
                         errors.append(f"{where}: problem missing origin")
                     elif kv["origin"] not in {"self", "external"}:
@@ -150,14 +108,14 @@ def check_notes() -> None:
                         errors.append(f"{where}: solution status must be draft (or omitted once reviewed)")
                     else:
                         solutions[target] = md
-            for m in EMPTY_SOL.finditer(text):
-                empty_solutions.add(m.group(1))
-            for m in REF.finditer(text):
+                        if not d.body.strip():
+                            empty_solutions.add(target)
+            for m in REF.finditer(f.text):
                 refs.append((md, m.group(1)))
 
-    for note, r in requires:
+    for path, r in requires:
         if r not in ids:
-            errors.append(f"{rel(note)}: requires unknown id '{r}'")
+            errors.append(f"{rel(path)}: requires unknown id '{r}'")
 
     legacy = 0
     for md, r in refs:
@@ -166,10 +124,14 @@ def check_notes() -> None:
         elif r.startswith("sec-"):
             if r not in sec_labels:
                 errors.append(f"{rel(md)}: broken reference @{r}")
+        elif r.split("-", 1)[0] in ("rmk", "clm", "rem"):
+            errors.append(f"{rel(md)}: @{r}: remarks and claims are not cross-referenced (SPEC §5.1)")
         elif r not in block_ids:
             errors.append(f"{rel(md)}: broken reference @{r}")
     if legacy:
         warnings.append(f"{legacy} reference(s) to not-yet-migrated sections (@sec-legacy-*)")
+    if missing_ids:
+        warnings.append(f"{len(missing_ids)} block(s) without an id (SPEC §5.1), e.g. {missing_ids[0]}")
 
     for pid, md in problems.items():
         if pid not in solutions:
@@ -187,6 +149,26 @@ def check_notes() -> None:
           f"({len(empty_solutions)} empty)")
 
 
+def check_courses() -> None:
+    """Course files (SPEC §13): references resolve; provenance without scope is reported."""
+    if not REPO.courses:
+        warnings.append("no course files in meta/courses/")
+    for c in REPO.courses:
+        where = rel(c.path)
+        for level, msg in c.problems:
+            (errors if level == "error" else warnings).append(f"{where}: {msg}")
+        if c.status not in ("draft", "confirmed"):
+            errors.append(f"{where}: status must be draft or confirmed")
+        outside = [n.id for n in REPO.notes.values()
+                   if c.source_prefix and any(str(k).startswith(c.source_prefix) for k in n.front.get("sources") or [])
+                   and not REPO.in_scope(c, n.id)]
+        scoped = sum(1 for n in REPO.notes if REPO.in_scope(c, n))
+        print(f"course {c.id}: {len(c.points)} outline points, {scoped} notes in scope, "
+              f"{len(c.exclude)} excluded blocks ({c.status})")
+        for nid in outside:
+            print(f"info: {nid}: drawn from {c.code} material but outside its scope")
+
+
 RAW_LATEX = re.compile(r"^[ \t]*```\{=latex\}\n(.*?)\n[ \t]*```", re.S | re.M)
 HARD_CODED = re.compile(
     r"\b(?:defc|thmc|exc|notec|black|gray|red|blue|green)!\d+"      # colour mixes
@@ -198,8 +180,8 @@ HARD_CODED = re.compile(
 
 def check_figures() -> None:
     """Figures use the shared styles (meta/SPEC.md §5), not raw colours and sizes."""
-    for md in sorted(NOTES.rglob("*.md")):
-        text = strip_comments(md.read_text(encoding="utf-8"))
+    for f in (f for n in REPO.all_notes for f in n.files.values()):
+        md, text = f.path, f.masked
         for m in RAW_LATEX.finditer(text):
             code = m.group(1)
             if "\\begin{algorithmic}" in code or "circuitikz" in code:
@@ -230,6 +212,7 @@ def check_forbidden_files() -> None:
 
 def main() -> int:
     check_notes()
+    check_courses()
     check_figures()
     check_forbidden_files()
     for w in warnings:

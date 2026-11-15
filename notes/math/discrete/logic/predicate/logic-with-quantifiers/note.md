@@ -9,7 +9,7 @@ status: draft
 
 ## Doing logic with quantifiers
 
-::: {.remark name="Instantiation and generalization"}
+::: {#rmk-logic-with-quantifiers-1 .remark name="Instantiation and generalization"}
 
 $$\big(\forall X\, P(X)\big) \implies P(\mathrm{obj}), \qquad P(\mathrm{obj}) \implies \big(\exists X\, P(X)\big)$$
 for any specific $\mathrm{obj}$ in $X$’s domain.
@@ -23,7 +23,7 @@ $$\exists X\,(P(X)\vee Q(X)) \ \equiv\ (\exists X\, P(X)) \vee (\exists X\, Q(X)
 
 :::
 
-::: {.remark name="$\forall$ over $\vee$, and $\exists$ over $\wedge$, only give one-way implications"}
+::: {#rmk-logic-with-quantifiers-2 .remark name="$\forall$ over $\vee$, and $\exists$ over $\wedge$, only give one-way implications"}
 
 $$(\forall X\, P(X)) \vee (\forall X\, Q(X)) \implies \forall X\,(P(X)\vee Q(X)),$$
 $$\exists X\,(P(X)\wedge Q(X)) \implies (\exists X\, P(X)) \wedge (\exists X\, Q(X)),$$
@@ -79,7 +79,7 @@ $$\begin{aligned}
 
 :::
 
-::: {.remark}
+::: {#rmk-logic-with-quantifiers-3 .remark}
 
 $\neg\forall Y\,\neg = \exists Y$, and $\neg\exists Y\,\neg = \forall Y$ (apply the laws twice, using double negation).
 
@@ -126,7 +126,7 @@ Note the restricted-$\forall$ pattern from @sec-math-discrete-logic-predicate-qu
 
 ## Summary of rules for logic with quantifiers
 
-::: {.remark name="Full rule list"}
+::: {#rmk-logic-with-quantifiers-4 .remark name="Full rule list"}
 
 $$\begin{aligned}
 \exists x\in A\, P(x) &\equiv \exists x\,(x\in A \wedge P(x)) & \text{(@sec-math-discrete-logic-predicate-quantifiers)}\\

@@ -41,7 +41,7 @@ Immediate from @sec-math-discrete-sets-power-set: $\mathcal{P}(A)$ is exactly th
 
 :::
 
-::: {.remark}
+::: {#rmk-power-set-1 .remark}
 
 Holds even for $A = \emptyset$: $n=0$ gives $2^0 = 1$, consistent with $\emptyset$ having exactly one subset, itself. $\mathcal{P}(A)$ is also written $2^A$.
 

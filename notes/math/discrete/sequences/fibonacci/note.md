@@ -32,7 +32,7 @@ Squares with sides $1,1,2,3,5,8$ tile a $13\times8$ rectangle, whose sides are a
 
 :::
 
-::: {.remark name="No obvious formula"}
+::: {#rmk-fibonacci-1 .remark name="No obvious formula"}
 
 The recurrence does not suggest a formula. But the ratio $f_{n+1}/f_n$ seems to settle down (e.g. $f_{10}/f_9=55/34\approx1.618$), suggesting exponential growth at some fixed rate. We explore this with upper and lower bounds.
 
@@ -52,7 +52,7 @@ We use strong induction, with base cases $f_1=1\le2$ and $f_2=1\le4$. For the in
 
 :::
 
-::: {.remark name="Tightening the bound"}
+::: {#rmk-fibonacci-2 .remark name="Tightening the bound"}
 
 The inductive step only used $2^k+2^{k-1}\le2^{k+1}$, i.e. (dividing by $2^{k-1}$) $2+1\le2^2$. Any $r$ with $r+1\le r^2$ would work in place of $2$, so the smallest such $r$ gives the best bound of this form.
 
@@ -86,7 +86,7 @@ By strong induction. The base cases are $f_1=1\ge\varphi^{-1}$ and $f_2=1=\varph
 
 ### Asymptotic behaviour
 
-::: {.remark name="Squeezing $f_n$"}
+::: {#rmk-fibonacci-3 .remark name="Squeezing $f_n$"}
 
 Together the bounds give $\varphi^{n-2} \le f_n \le \varphi^n$, i.e. $\varphi^{-2} \le f_n/\varphi^n \le 1$. So $f_n/\varphi^n$ stays between two constants: $f_n$ grows like $\varphi^n$, up to a bounded factor. The number $\varphi$ is the *golden ratio*.
 
@@ -94,7 +94,7 @@ Together the bounds give $\varphi^{n-2} \le f_n \le \varphi^n$, i.e. $\varphi^{
 
 ### An exact formula
 
-::: {.remark name="Why two roots are needed"}
+::: {#rmk-fibonacci-4 .remark name="Why two roots are needed"}
 
 Since $\varphi^2=\varphi+1$, multiplying by $\varphi^{n-2}$ shows that $\varphi^n$ satisfies the Fibonacci recurrence. But a formula $\alpha\varphi^n$ has only one free constant, and cannot match both initial terms $f_1=f_2=1$. The other root of $r^2=r+1$, namely $\psi=\frac{1-\sqrt5}{2}\approx-0.618$, also gives a solution $\psi^n$. Since the recurrence is linear, $\alpha\varphi^n+\beta\psi^n$ is a solution for any $\alpha,\beta$, and now there are two constants to match the two initial terms.
 
@@ -113,7 +113,7 @@ By the note above, $f_n = \alpha\varphi^n + \beta\psi^n$ satisfies the recurrenc
 
 :::
 
-::: {.remark name="Consistency with the bounds"}
+::: {#rmk-fibonacci-5 .remark name="Consistency with the bounds"}
 
 Since $|\psi|<1$, $\psi^n\to0$, so $f_n \approx \varphi^n/\sqrt5$ for large $n$, consistent with $\varphi^{-2}\le f_n/\varphi^n\le1$. In fact $f_n$ is the integer nearest to $\varphi^n/\sqrt5$, since $|\psi^n/\sqrt5|<\frac12$. It is surprising that a formula full of $\sqrt5$ always gives integers: the irrational parts cancel.
 

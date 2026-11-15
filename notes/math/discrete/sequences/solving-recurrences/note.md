@@ -7,7 +7,7 @@ status: draft
 
 <!-- Migrated from 1058note notes/chapters/06-sequences-series.tex: From recursive definitions to formulas. -->
 
-::: {.remark name="Explore, conjecture, prove"}
+::: {#rmk-solving-recurrences-1 .remark name="Explore, conjecture, prove"}
 
 To find a formula for a recursively defined sequence:
 
@@ -60,7 +60,7 @@ with $k$ initial terms given. Its *characteristic equation* is $x^k - c_1x^{k-1}
 
 :::
 
-::: {.remark name="Why the characteristic equation (extra)"}
+::: {#rmk-solving-recurrences-2 .remark name="Why the characteristic equation (extra)"}
 
 Trying $a_n=x^n$ in the recurrence and dividing by $x^{n-k}$ gives exactly the characteristic equation. So each root $r$ gives a solution $a_n=r^n$. Moreover, the recurrence is *linear*: any combination $\alpha a_n+\beta b_n$ of two solutions is again a solution.
 
@@ -157,7 +157,7 @@ The sequence $1,1,1,\dots$ has generating function $\sum x^n = \dfrac{1}{1-x}$ (
 
 :::
 
-::: {.remark name="Solving recurrences with generating functions (extra)"}
+::: {#rmk-solving-recurrences-3 .remark name="Solving recurrences with generating functions (extra)"}
 
 Multiply the recurrence by $x^n$ and sum over $n$; recognise each sum as a shifted or scaled copy of $G(x)$; solve the resulting equation for $G(x)$; then expand $G(x)$ as a power series (e.g. by partial fractions) and read off $a_n$ as the coefficient of $x^n$.
 

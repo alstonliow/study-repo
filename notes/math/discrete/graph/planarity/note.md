@@ -13,7 +13,7 @@ A graph is *planar* if it can be drawn in the plane with no crossings: vertices 
 
 :::
 
-::: {.remark name="Why planarity matters"}
+::: {#rmk-planarity-1 .remark name="Why planarity matters"}
 
 Electrical circuits are laid out on flat circuit boards, and wires that cross can cause short circuits; maps and diagrams are easier to read without crossings.
 
@@ -25,7 +25,7 @@ A plane graph divides the plane into regions called *faces*: each face is a maxi
 
 :::
 
-::: {.remark name="Sides of an edge"}
+::: {#rmk-planarity-2 .remark name="Sides of an edge"}
 
 Walking around the boundary of every face, each edge is met exactly twice: once from each side. The two sides usually belong to different faces, but may belong to the same face (e.g. for an edge to a leaf).
 
@@ -77,7 +77,7 @@ By the Principle of Mathematical Induction, the formula holds for all $m\ge n-1$
 
 <!-- Added 2026-11-15 from CN §12.5 (own wording). -->
 
-::: {.remark name="The Jordan curve theorem"}
+::: {#rmk-planarity-3 .remark name="The Jordan curve theorem"}
 
 The inductive step used the fact that a cycle drawn in the plane separates the plane into an inside and an outside, so the two sides of an edge on the cycle lie in different faces. This looks obvious, but proving it rigorously for arbitrary curves is surprisingly hard. It is the *Jordan curve theorem*, which we take for granted here.
 
@@ -131,7 +131,7 @@ $K_{3,3}$ is bipartite, so it has no odd cycles and in particular no triangles. 
 
 :::
 
-::: {.remark name="A crossing drawing does not prove nonplanarity"}
+::: {#rmk-planarity-4 .remark name="A crossing drawing does not prove nonplanarity"}
 
 A graph may have drawings with crossings and still be planar. $K_4$ is planar, as the second drawing below shows; to prove a graph *non*planar, use a counting argument like the ones above.
 
@@ -169,7 +169,7 @@ The vertices of every planar graph can be coloured with $4$ colours so that adja
 
 :::
 
-::: {.remark name="History"}
+::: {#rmk-planarity-5 .remark name="History"}
 
 Conjectured in 1852 and proved in 1976 by Appel and Haken. It was the first major theorem whose proof essentially needed a computer (to check about $1900$ configurations), which was controversial because no person could check it by hand.
 

@@ -145,19 +145,19 @@ The $j$-th block has $2^{j-1}$ terms, each at least $1/2^j$, so it adds up to at
 
 :::
 
-::: {.remark name="Same bound, two proofs"}
+::: {#rmk-sums-and-series-1 .remark name="Same bound, two proofs"}
 
 This is the bound $H_{2^n}\ge1+n/2$ proved by induction in @sec-math-discrete-proof-induction-examples; here it comes directly from grouping.
 
 :::
 
-::: {.remark name="Growth rate"}
+::: {#rmk-sums-and-series-2 .remark name="Growth rate"}
 
 $H_n$ grows like $\log_e n$: in fact $H_n - \log_e n \to \gamma = 0.5772\ldots$ (Euler’s constant), so $H_n\approx\log_e n+\gamma$ for large $n$. It is unknown whether $\gamma$ is rational.
 
 :::
 
-::: {.remark name="A borderline case"}
+::: {#rmk-sums-and-series-3 .remark name="A borderline case"}
 
 $(1/2^n)$ and $(1/n^2)$ tend to $0$ and have finite sums, but $(1/n)$ also tends to $0$ yet has an infinite sum: it decays just too slowly.
 

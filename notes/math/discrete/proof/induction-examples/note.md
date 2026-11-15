@@ -27,7 +27,7 @@ By induction, the inequality holds for all $n \ge 0$.
 
 :::
 
-::: {.remark}
+::: {#rmk-induction-examples-1 .remark}
 
 The condition $x\ge-1$ is exactly what’s needed for $1+x\ge0$, which is what allows multiplying an inequality through by $(1+x)$ without flipping its direction.
 
@@ -53,7 +53,7 @@ By induction, $H_{2^n}\ge1+\frac{n}{2}$ for all $n\ge0$.
 
 :::
 
-::: {.remark}
+::: {#rmk-induction-examples-2 .remark}
 
 Since $1+n/2 \to \infty$ as $n\to\infty$, this proves the harmonic series diverges.
 
@@ -87,7 +87,7 @@ By strong induction, every $n\ge2$ has one.
 
 :::
 
-::: {.remark}
+::: {#rmk-induction-examples-3 .remark}
 
 This needs *strong* induction: the factors $a,b$ of composite $n$ can be much smaller than $n-1$, so the hypothesis must cover *all* smaller values.
 

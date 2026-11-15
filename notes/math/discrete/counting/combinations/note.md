@@ -13,7 +13,7 @@ $$
 $$
 :::
 
-::: {.remark name="Dividing out the order"}
+::: {#rmk-combinations-1 .remark name="Dividing out the order"}
 Already @sec-math-discrete-sets-power-set; each $r$-subset corresponds to $r!$ ordered sequences (@sec-math-discrete-counting-selection), collapsed by dividing.
 :::
 
@@ -31,7 +31,7 @@ $$
 $$
 :::
 
-::: {.remark name="The hypothesis is essential"}
+::: {#rmk-combinations-2 .remark name="The hypothesis is essential"}
 Every $b$ must have the *same* number $m$ of preimages. @sec-math-discrete-counting-stars-and-bars shows a natural situation where this fails.
 :::
 
@@ -63,11 +63,11 @@ $$
 Let $|A|=n\ge1$ and fix $a\in A$. The map $X\mapsto X\triangle\{a\}$ (add $a$ if absent, remove it if present) is a bijection from the even-size subsets of $A$ to the odd-size ones. So there are equally many of each, i.e. $\sum_{k \text{ even}}\binom nk=\sum_{k \text{ odd}}\binom nk$, which is the claim.
 :::
 
-::: {.remark name="Why $n\ge1$"}
+::: {#rmk-combinations-3 .remark name="Why $n\ge1$"}
 The hypothesis $n\ge1$ is needed: for $n=0$ the sum is $\binom00=1$. This corollary drives the combinatorial proof of inclusion--exclusion in @sec-math-discrete-counting-inclusion-exclusion.
 :::
 
-::: {.remark name="Combinatorial proofs"}
+::: {#rmk-combinations-4 .remark name="Combinatorial proofs"}
 To prove an identity combinatorially, show that both sides count the same set. Either count one set in two ways (*double counting*), or exhibit a bijection between the sets counted by the two sides (@thm-bijection-rule). Pascal's identity above is a double-counting proof, and so is the next one.
 :::
 
@@ -96,7 +96,7 @@ $$
 $n=5$, $k=1$: $\binom52=10$, and $\binom41+\binom31+\binom21+\binom11=4+3+2+1=10$. The $2$-subsets of $\{1,\dots,5\}$ with minimum $1,2,3,4$ number $4,3,2,1$ respectively.
 :::
 
-::: {.remark name="Name"}
+::: {#rmk-combinations-5 .remark name="Name"}
 In Pascal's triangle the summands lie along a diagonal, and the left-hand side sits just off the end of that diagonal, giving a hockey-stick shape.
 :::
 

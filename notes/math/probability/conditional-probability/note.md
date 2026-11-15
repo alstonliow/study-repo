@@ -27,7 +27,7 @@ Now let $A$: the total is $7$, and $B$: the second die is one more than the firs
 
 :::
 
-::: {.remark name="Reason from the definition"}
+::: {#rmk-conditional-probability-1 .remark name="Reason from the definition"}
 
 Independence must be checked from the probabilities, not from intuition about “separate mechanisms”. Note also that independent is different from mutually exclusive: if $\Pr(A),\Pr(B)>0$ and $A\cap B=\emptyset$, then $\Pr(A\cap B)=0\ne\Pr(A)\Pr(B)$.
 
@@ -59,7 +59,7 @@ $$\Pr(A\mid B) = \frac{\Pr(A\cap B)}{\Pr(B)}.$$
 
 :::
 
-::: {.remark name="Restricting the sample space"}
+::: {#rmk-conditional-probability-2 .remark name="Restricting the sample space"}
 
 Conditioning on $B$ means treating $B$ as the new sample space: we keep only the outcomes in $B$ and rescale their probabilities so they add up to $1$.
 
@@ -107,7 +107,7 @@ $\Pr(A\mid B)=\Pr(A)$ iff $\Pr(A\cap B)/\Pr(B)=\Pr(A)$ iff $\Pr(A\cap B)=\Pr(A)\
 
 :::
 
-::: {.remark name="Meaning"}
+::: {#rmk-conditional-probability-3 .remark name="Meaning"}
 
 $A$ and $B$ are independent exactly when learning that $B$ happened does not change the probability of $A$.
 

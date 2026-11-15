@@ -57,7 +57,7 @@ Enumerate $A = \{a_1,\dots,a_m\}$. $a_1$ has $n$ choices in $B$; $a_2$ must avoi
 
 :::
 
-::: {.remark}
+::: {#rmk-functions-counting-1 .remark}
 
 If $m > n$, the product includes a factor of $0$, correctly giving $0$ injections – consistent with the pigeonhole principle.
 
@@ -75,7 +75,7 @@ By @sec-math-discrete-functions-injections-surjections-bijections, for finite se
 
 :::
 
-::: {.remark}
+::: {#rmk-functions-counting-2 .remark}
 
 In particular, the number of permutations of an $n$-element set (bijections $A \to A$) is $n!$.
 

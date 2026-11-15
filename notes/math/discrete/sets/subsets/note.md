@@ -101,7 +101,7 @@ If $M$ is a maximum, then $S \subseteq M$ for all $S \in \mathcal{F}$, so no $S 
 
 :::
 
-::: {.remark}
+::: {#rmk-subsets-1 .remark}
 
 The converse fails in general: a maximal clique need not be a maximum clique – it just cannot be enlarged, while some other, larger clique may exist elsewhere in $B$.
 
@@ -119,7 +119,7 @@ Every minimum is minimal; the converse fails in general.
 
 :::
 
-::: {.remark name="Why the distinction matters here but not for $\mathbb{R}$"}
+::: {#rmk-subsets-2 .remark name="Why the distinction matters here but not for $\mathbb{R}$"}
 
 For real numbers, $\le$ is a *total order*: any two reals are comparable, so “cannot be increased” and “is the largest” coincide, and *maximum*/*maximal* are used interchangeably. But $\subseteq$ is only a *partial order*: two sets $A,B$ can be *incomparable* ($A \not\subseteq B$ and $B \not\subseteq A$). This is exactly why a family can have several maximal elements without any single maximum.
 

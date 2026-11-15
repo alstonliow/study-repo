@@ -19,7 +19,7 @@ $\varphi(6)=|\{1,5\}|=2$ and $\varphi(7)=|\{1,\dots,6\}|=6$.
 
 :::
 
-::: {.remark name="Range of $x$"}
+::: {#rmk-euler-totient-1 .remark name="Range of $x$"}
 
 For $n\ge2$ this agrees with CN’s range $0<x<n$, since $\gcd(n,n)=n>1$. Including $x=n$ gives $\varphi(1)=1$, which keeps multiplicativity valid when one factor is $1$.
 
@@ -77,7 +77,7 @@ The integers $1,\dots,12$; the four coprime to $12$ are shaded, so $\varphi(12)=
 
 :::
 
-::: {.remark name="Needs the factorisation"}
+::: {#rmk-euler-totient-2 .remark name="Needs the factorisation"}
 
 The formula needs the prime factorisation of $n$, and no essentially easier way to compute $\varphi(n)$ is known. The RSA cryptosystem relies on this.
 

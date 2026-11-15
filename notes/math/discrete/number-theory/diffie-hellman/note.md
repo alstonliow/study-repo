@@ -15,13 +15,13 @@ A function $f$ is *one-way* if it is easy to compute but hard to invert, for alm
 
 :::
 
-::: {.remark name="None are proved"}
+::: {#rmk-diffie-hellman-1 .remark name="None are proved"}
 
 No function has been *proved* to be one-way; doing so would resolve $P\ne NP$ (@sec-math-discrete-sequences-big-o). Several functions are believed to be one-way and are used as such.
 
 :::
 
-::: {.remark name="Application: password storage"}
+::: {#rmk-diffie-hellman-2 .remark name="Application: password storage"}
 
 Instead of storing each password $P_i$, a system stores $(U_i,f(P_i))$ for a one-way $f$. A login with password $P$ is accepted iff $f(P)=f(P_i)$, which is fast to check. An attacker who steals $f(P_i)$ still faces the inversion problem. This is not encryption: no key is involved, and nobody is meant to recover $P_i$.
 
@@ -47,7 +47,7 @@ With $n=7$ and $a=3$, the table in @sec-math-discrete-number-theory-primitive-ro
 
 :::
 
-::: {.remark name="Choosing the parameters"}
+::: {#rmk-diffie-hellman-3 .remark name="Choosing the parameters"}
 
 The base is chosen to be a primitive root because then $a^x$ takes the widest range of values, which maximises the search space for an attacker. Discrete Logarithm is believed to have no fast algorithm, and in practice is about as hard as integer factorisation. Since $\varphi(n)$ is largest when $n$ is prime, the best candidate one-way function uses a large prime $p$ and a primitive root $a$ of $p$.
 
@@ -104,7 +104,7 @@ Diffie–Hellman with $p=11$, $a=2$: only $8$ and $9$ cross the public channel, 
 
 :::
 
-::: {.remark name="Agreement, not encryption"}
+::: {#rmk-diffie-hellman-4 .remark name="Agreement, not encryption"}
 
 Diffie–Hellman is a key *agreement* scheme, not a cryptosystem: neither party can use it to send a message of their choosing. The shared $k_{AB}$ is then used as the key of a conventional secret-key cryptosystem. Its value is that no secure channel is needed to set up the shared key, and neither party alone decides it.
 
@@ -128,7 +128,7 @@ Give $p,a,a^{x_A}$ to the Discrete Logarithm algorithm to recover $x_A$. Then co
 
 :::
 
-::: {.remark name="Open problem"}
+::: {#rmk-diffie-hellman-5 .remark name="Open problem"}
 
 Whether the reduction also goes the other way (an efficient algorithm for the Diffie–Hellman problem giving one for Discrete Logarithm) is widely believed but unproven.
 

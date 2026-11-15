@@ -7,7 +7,7 @@ status: draft
 
 <!-- Migrated from 1058note notes/chapters/03-proofs.tex: Proof by mathematical induction. -->
 
-::: {.remark name="Principle of mathematical induction"}
+::: {#rmk-induction-1 .remark name="Principle of mathematical induction"}
 
 To prove $S(n)$ holds for all $n \in \mathbb{N}$ (or all $n \ge n_0$):
 
@@ -133,7 +133,7 @@ Every natural number is interesting.
 
 :::
 
-::: {.remark name="What the joke shows"}
+::: {#rmk-induction-2 .remark name="What the joke shows"}
 
 "Interesting" is vague, so this is not a real proof. Its shape is useful, though: it is a proof by contradiction (@sec-math-discrete-proof-contradiction), and it picks the *least* counterexample, whose minimality often gives the extra fact needed to finish. The same idea drives @thm-well-ordering-mathematical-induction.
 
@@ -165,7 +165,7 @@ To prove $S(n)$ for all $n\ge n_0$:
 
 :::
 
-::: {.remark name="Strong vs.\ weak induction – equivalent in power"}
+::: {#rmk-induction-3 .remark name="Strong vs.\ weak induction – equivalent in power"}
 
 Strong induction’s hypothesis is more generous (all of $S(n_0),\dots,S(k)$, not just $S(k)$), but this doesn’t let you prove anything weak induction can’t – any strong-induction proof can be mechanically rewritten as a weak-induction proof of the stronger statement $T(n) = S(n_0)\wedge\cdots\wedge S(n)$. Strong induction is a convenience, not a logically stronger tool. See @sec-math-discrete-proof-induction-examples for worked examples of both.
 
@@ -173,7 +173,7 @@ Strong induction’s hypothesis is more generous (all of $S(n_0),\dots,S(k)$, no
 
 <!-- Added 2026-11-15 from CN §3.13 (own wording). -->
 
-::: {.remark name="Mathematical induction vs statistical induction"}
+::: {#rmk-induction-4 .remark name="Mathematical induction vs statistical induction"}
 
 In statistics, *induction* means drawing general conclusions from data. Those conclusions may be wrong, because the data contain randomness and error, so statistical induction is not logical deduction and cannot be a step in a proof. Mathematical induction is different: it is a rigorous deductive method, and a correct induction proof establishes its statement with certainty.
 

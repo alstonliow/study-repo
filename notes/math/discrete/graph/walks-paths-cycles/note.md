@@ -13,7 +13,7 @@ A *walk* from $v$ to $w$ is a sequence $v_0,e_1,v_1,e_2,\dots,e_k,v_k$ of vertic
 
 :::
 
-::: {.remark name="Two freedoms"}
+::: {#rmk-walks-paths-cycles-1 .remark name="Two freedoms"}
 
 A walk may visit a vertex more than once, and may use an edge more than once, in either direction. The shortest walk has length $0$: a single vertex and no edges. In a simple graph a walk is determined by its vertices alone, so we usually write just $v_0,v_1,\dots,v_k$.
 
@@ -61,7 +61,7 @@ In the graph above, $a,b,c,a$ and $a,c,b,d,e,b,a$ are closed trails (the second 
 
 :::
 
-::: {.remark name="Each notion restricts the last"}
+::: {#rmk-walks-paths-cycles-2 .remark name="Each notion restricts the last"}
 
 Walk $\supseteq$ trail $\supseteq$ path: a trail gives up reusing edges, and a path also gives up reusing vertices. A cycle is *not* a “closed path”, since a path of length $\ge1$ cannot be closed. In a simple graph a cycle has length at least $3$: there are no loops, and $u,v,u$ uses the edge $\{u,v\}$ twice.
 
@@ -103,7 +103,7 @@ So $W$ repeats no vertex except $v_0=v_k$. Then it repeats no edge either (as $k
 
 :::
 
-::: {.remark name="The “even” version fails"}
+::: {#rmk-walks-paths-cycles-3 .remark name="The “even” version fails"}
 
 $K_2$ has the closed walk $v,w,v$ of even length $2$ but no cycle at all. The proof breaks because an even length can split as odd $+$ odd, so no shorter *even* closed walk need appear.
 
@@ -129,7 +129,7 @@ By the Principle of Mathematical Induction, the claim holds for all $r\ge1$.
 
 :::
 
-::: {.remark name="Walks, not paths"}
+::: {#rmk-walks-paths-cycles-4 .remark name="Walks, not paths"}
 
 The theorem counts walks, which may repeat vertices. It also holds for $r=0$: $A^0=I$, and the only walk of length $0$ from $v_i$ ends at $v_i$.
 

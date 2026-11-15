@@ -9,7 +9,7 @@ status: draft
 
 ## Selection
 
-::: {.remark name="Four kinds of selection"}
+::: {#rmk-selection-1 .remark name="Four kinds of selection"}
 
 |  | **order matters** | **order irrelevant** |
 |:--|:--|:--|
@@ -64,6 +64,6 @@ n\cdot(n-1)\cdots(n-r+1).
 $$
 :::
 
-::: {.remark name="Counting injections"}
+::: {#rmk-selection-2 .remark name="Counting injections"}
 Already the counting-injections theorem of @sec-math-discrete-functions-counting.
 :::

@@ -16,7 +16,7 @@ $$
 $$
 :::
 
-::: {.remark name="Counting meaning"}
+::: {#rmk-sum-and-product-rules-1 .remark name="Counting meaning"}
 Already established set-theoretically at @sec-math-discrete-sets-set-operations. Combinatorially: choosing one item from $m$ pairwise disjoint option-sets has $\sum_i|A_i|$ total possibilities.
 :::
 
@@ -31,7 +31,7 @@ $$
 $$
 :::
 
-::: {.remark name="Counting by correspondence"}
+::: {#rmk-sum-and-product-rules-2 .remark name="Counting by correspondence"}
 Every combinatorial argument below rests on this: to count a hard set, put it in one-to-one correspondence with an easy one. Bijections: @sec-math-discrete-functions-injections-surjections-bijections. Used for subsets $\leftrightarrow$ bit strings (@sec-math-discrete-sets-power-set), derangements (@sec-math-discrete-counting-derangements) and multisets $\leftrightarrow$ $0/1$ strings (@sec-math-discrete-counting-stars-and-bars).
 :::
 
@@ -44,7 +44,7 @@ $$
 $$
 :::
 
-::: {.remark name="Independence of the steps"}
+::: {#rmk-sum-and-product-rules-3 .remark name="Independence of the steps"}
 Already established at @sec-math-discrete-sets-cartesian-product. "Independent" is essential: the count of options at step $i$ must not depend on earlier choices.
 :::
 

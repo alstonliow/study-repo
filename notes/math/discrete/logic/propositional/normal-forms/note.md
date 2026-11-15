@@ -21,7 +21,7 @@ A disjunction of conjunctions of literals.
 
 :::
 
-::: {.remark name="Constructing DNF from a truth table"}
+::: {#rmk-normal-forms-1 .remark name="Constructing DNF from a truth table"}
 
 For each row where the expression is $T$: form the conjunction of literals matching that row ($X$ if $X=T$ in that row, $\neg X$ if $X=F$); disjoin all such conjunctions.
 
@@ -60,7 +60,7 @@ The assignments $XYZ$ as corners of a cube. $\mathrm{Maj}$ is true at the four r
 
 :::
 
-::: {.remark name="Cost of DNF"}
+::: {#rmk-normal-forms-2 .remark name="Cost of DNF"}
 
 Every expression has an equivalent DNF, but the number of parts can be as large as $2^k$ for $k$ variables – exponential blow-up. DNF makes *satisfiability* easy to certify (any one part gives a satisfying assignment) but gives no efficient way to certify a *tautology*.
 
@@ -74,13 +74,13 @@ A conjunction of *clauses*, each a disjunction of literals.
 
 :::
 
-::: {.remark name="Duality with DNF, via De Morgan's"}
+::: {#rmk-normal-forms-3 .remark name="Duality with DNF, via De Morgan's"}
 
 If $P$ is in CNF, $\neg P$ – negation of a conjunction of disjunctions – becomes, via repeated De Morgan’s and double negation, a disjunction of conjunctions of literals: DNF. So CNF and DNF are dual representations.
 
 :::
 
-::: {.remark name="Converting truth table $\to$ CNF"}
+::: {#rmk-normal-forms-4 .remark name="Converting truth table $\to$ CNF"}
 
 Negate the output column; build DNF for $\neg P$; negate that expression; apply De Morgan’s to push the negation inward into CNF form.
 

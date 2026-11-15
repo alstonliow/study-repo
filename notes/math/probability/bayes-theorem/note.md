@@ -39,7 +39,7 @@ $$\Pr(A\mid B) = \frac{\Pr(B\mid A)\Pr(A)}{\Pr(B)}.$$
 
 :::
 
-::: {.remark name="Extended form"}
+::: {#rmk-bayes-theorem-1 .remark name="Extended form"}
 
 The next theorem is the same rule when the condition is split over a partition $B_1,\dots,B_n$ and $\Pr(A)$ is expanded by the law of total probability.
 
@@ -58,7 +58,7 @@ By the definition and the multiplication rule, $\Pr(B_j\mid A) = \Pr(A\cap B_j)/
 
 :::
 
-::: {.remark name="Prior and posterior"}
+::: {#rmk-bayes-theorem-2 .remark name="Prior and posterior"}
 
 $\Pr(B_j)$ is the *prior* probability of $B_j$, before observing $A$; $\Pr(B_j\mid A)$ is the *posterior*, after observing $A$. Bayes’ Theorem is the rule for updating beliefs in the light of evidence, and is a basic tool of statistics and machine learning.
 

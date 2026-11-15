@@ -34,7 +34,7 @@ How many times $|A|+|B|$ counts each region: $A\cap B$ is counted twice, so it i
 
 :::
 
-::: {.remark name="Correcting the double count"}
+::: {#rmk-inclusion-exclusion-1 .remark name="Correcting the double count"}
 Already proved at @sec-math-discrete-sets-set-operations. $|A|+|B|$ double-counts $A\cap B$; subtracting once corrects it.
 :::
 
@@ -44,7 +44,7 @@ $$
 $$
 :::
 
-::: {.remark name="Why the correction pattern"}
+::: {#rmk-inclusion-exclusion-2 .remark name="Why the correction pattern"}
 Summing $|A|+|B|+|C|$ counts elements in exactly two sets twice, elements in all three sets three times. Subtracting all pairwise intersections fixes the double-count but now over-corrects triple-members (removed three times, once per pair, instead of the needed two). Adding back $|A\cap B\cap C|$ restores them to count $1$.
 :::
 
@@ -107,6 +107,6 @@ $$
 $$
 :::
 
-::: {.remark name="Proof strategy"}
+::: {#rmk-inclusion-exclusion-3 .remark name="Proof strategy"}
 Either repeat the induction above with $\cup\leftrightarrow\cap$ swapped throughout, or apply the theorem above to $\overline{A_1},\dots,\overline{A_n}$ and De Morgan's laws (@sec-math-discrete-sets-set-operations).
 :::

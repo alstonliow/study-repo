@@ -36,13 +36,13 @@ $g\circ f$ sends $x$ straight to $g(f(x))$: first $f$, then $g$
 
 :::
 
-::: {.remark name="Order of writing vs.\ order of application"}
+::: {#rmk-composition-1 .remark name="Order of writing vs.\ order of application"}
 
 $g \circ f$ is read right-to-left in application ($f$ first, then $g$), matching the order inside $g(f(x))$ – but this is the *reverse* of our usual left-to-right reading order. Read carefully.
 
 :::
 
-::: {.remark name="Compatibility requirement"}
+::: {#rmk-composition-2 .remark name="Compatibility requirement"}
 
 $g \circ f$ is defined only when $\mathrm{codomain}(f) = \mathrm{domain}(g)$: whatever $f$ guarantees to produce must be exactly what $g$ is guaranteed to handle. If this fails, the composition is simply undefined – not partially defined, not an error to patch around.
 
@@ -107,7 +107,7 @@ Once the iterates reach $1$, they cycle through $4, 2, 1$ for ever.
 
 :::
 
-::: {.remark name="Collatz's conjecture"}
+::: {#rmk-composition-3 .remark name="Collatz's conjecture"}
 
 It is conjectured that for every $x \in \mathbb{N}$ there is some $n$ with $C^{(n)}(x) = 1$. This is *Collatz's conjecture* (the "$3x+1$ problem"), and it is still unsolved: a very simple iterated function can raise very hard questions.
 
@@ -160,7 +160,7 @@ $$g \circ f \text{ is a bijection} \iff f \text{ and } g \text{ are both bijecti
 
 :::
 
-::: {.remark name="The size condition matters"}
+::: {#rmk-composition-4 .remark name="The size condition matters"}
 
 Without equal sizes the theorem fails. Take $f: \{1\} \to \{1,2\}$ with $f(1)=1$, and $g: \{1,2\} \to \{1\}$. Then $g \circ f: \{1\} \to \{1\}$ is a bijection, but $f$ is not surjective and $g$ is not injective.
 
@@ -187,7 +187,7 @@ $$(f^{-1}\circ g^{-1})\circ(g\circ f) = f^{-1} \circ (g^{-1} \circ g) \circ f = 
 
 :::
 
-::: {.remark name="Socks and shoes"}
+::: {#rmk-composition-5 .remark name="Socks and shoes"}
 
 The order reverses: to undo "first $f$, then $g$", undo $g$ first. You put on socks, then shoes; you take off shoes, then socks.
 
@@ -202,7 +202,7 @@ $$g \mathbin{\hat{\circ}} f : \{x \in A : f(x) \in C\} \to D, \qquad (g \mathbin
 
 :::
 
-::: {.remark name="Always defined, but harder to use"}
+::: {#rmk-composition-6 .remark name="Always defined, but harder to use"}
 
 Unlike ordinary (“tight”) composition, loose composition is defined for *any* $f,g$ – if $B \cap C = \emptyset$, it degenerates to the empty function. The cost: determining its domain requires inspecting the *rule* of $f$ (which inputs land in $C$), not just $f$’s stated codomain – so it is harder to reason about mechanically. This course uses tight composition throughout.
 

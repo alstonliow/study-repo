@@ -1,0 +1,571 @@
+# FIT1058 course scope (meta/SPEC.md §13).
+# Outline: the chapters and sections of the FIT1058 Course Notes. Sections the
+# Course Notes mark as beyond the curriculum (superscript omega: 2.11, 3.12,
+# 4.13, 11.3, 12.6) are not listed, so content drawn only from them is out of scope.
+# Each point covers whole notes; "exclude" takes single blocks back out.
+id: fit1058
+code: FIT1058
+name: ""  # TODO: full unit name (owner to fill in)
+institution: Monash University
+source_prefix: fit1058-
+outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
+status: draft  # draft until the owner has reviewed the mapping
+
+exclude:
+  # material from sections marked beyond the curriculum
+  - def-loose-composition        # 2.11 Loose composition
+  - rmk-composition-6            # 2.11 Loose composition
+  - prp-representing-graphs-1    # 11.3 Graphs and relations
+  - rmk-representing-graphs-5    # 11.3 Graphs and relations
+  # the owner's "(extra)" material
+  - thm-division-rule                            # Division rule ("Second Rule of Counting") (extra)
+  - rmk-combinations-2                           # remark on the block above
+  - prp-hockey-stick                             # Hockey-stick identity (extra)
+  - rmk-degree-3                                 # Directed graphs (extra)
+  - thm-route-inspection-chinese-postman-extra   # Route inspection / Chinese postman (extra)
+  - rmk-euler-and-hamilton-3                     # remark on the block above
+  - thm-dirac-extra                              # Dirac (extra)
+  - rmk-euler-and-hamilton-4                     # remark on the block above
+  - thm-four-colour-theorem-extra                # Four colour theorem (extra)
+  - rmk-planarity-5                              # remark on the block above
+  - prp-mmt                                      # Incidence matrix and adjacency matrix (extra)
+  - thm-walks                                    # Counting walks via matrix powers (extra)
+  - rmk-walks-paths-cycles-4                     # remark on the block above
+  - def-sheffer-stroke-nand-extra                # Sheffer stroke (NAND) (extra)
+  - prp-alone-is-universal-extra                 # $\{\mid\}$ alone is universal (extra)
+  - rmk-universal-sets-of-operations-2           # remark on the block above
+  - rmk-divisibility-and-primes-6                # Density of primes (extra)
+  - prp-gcdlcm                                   # gcd–lcm identity (extra)
+  - exm-bernoulli-s-inequality-extra             # Bernoulli's inequality (extra)
+  - rmk-induction-examples-1                     # remark on the block above
+  - exm-ramanujan-s-taxicab-number-extra         # Ramanujan's taxicab number (extra)
+  - rmk-techniques-4                             # remark on the block above
+  - def-big-omega-big-theta-extra                # Big-Omega, Big-Theta (extra)
+  - rmk-big-o-4                                  # Tight bounds (extra)
+  - def-time-complexity-of-an-algorithm          # Time complexity of an algorithm (extra)
+  - exm-linear-search-extra                      # Linear search (extra)
+  - def-polynomial-time-extra                    # Polynomial time (extra)
+  - exm-why-the-distinction-matters-extra        # Why the distinction matters (extra)
+  - def-classes-p-and-np-extra                   # Classes P and NP (extra)
+  - rmk-big-o-5                                  # P vs.\ NP (extra)
+  - def-np-hard-np-complete-extra                # NP-hard, NP-complete (extra)
+  - rmk-big-o-6                                  # Why NP-complete problems matter (extra)
+  - exm-tower-of-hanoi-extra                     # Tower of Hanoi (extra)
+  - def-linear-homogeneous-recurrence-with-constant # Linear homogeneous recurrence with constant coefficients (extra)
+  - rmk-solving-recurrences-2                    # Why the characteristic equation (extra)
+  - thm-distinct-roots                           # Distinct roots case (extra)
+  - exm-solving-a-second-order-recurrence        # Solving a second-order recurrence (extra)
+  - def-linear-nonhomogeneous-recurrence-extra   # Linear nonhomogeneous recurrence (extra)
+  - prp-general-solution-shape-extra             # General solution shape (extra)
+  - exm-worked-nonhomogeneous-example-extra      # Worked nonhomogeneous example (extra)
+  - def-divide-and-conquer-recurrence-extra      # Divide-and-conquer recurrence (extra)
+  - exm-merge-sort-extra                         # Merge sort (extra)
+  - thm-master-theorem-special-case-extra        # Master theorem, special case $g(n)=cn^d$ (extra)
+  - def-generating-function-extra                # Generating function (extra)
+  - rmk-solving-recurrences-3                    # Solving recurrences with generating functions (extra)
+
+chapters:
+  - num: 1
+    title: "Sets"
+    points:
+      - id: "1.1"
+        title: "Sets and elements"
+        covers: [math/discrete/sets/sets-and-elements]
+      - id: "1.2"
+        title: "Specifying sets"
+        covers: [math/discrete/sets/sets-and-elements]
+      - id: "1.3"
+        title: "Cardinality"
+        covers: [math/discrete/sets/cardinality-and-standard-sets]
+      - id: "1.4"
+        title: "Sets of numbers"
+        covers: [math/discrete/sets/cardinality-and-standard-sets]
+      - id: "1.5"
+        title: "Sets of strings"
+        covers: [math/discrete/sets/cardinality-and-standard-sets]
+      - id: "1.6"
+        title: "Subsets and supersets"
+        covers: [math/discrete/sets/subsets]
+      - id: "1.7"
+        title: "Minimal, minimum, maximal, maximum"
+        covers: [math/discrete/sets/subsets]
+      - id: "1.8"
+        title: "Counting all subsets"
+        covers: [math/discrete/sets/power-set]
+      - id: "1.9"
+        title: "The power set of a set"
+        covers: [math/discrete/sets/power-set]
+      - id: "1.10"
+        title: "Counting subsets by size using binomial coefficients"
+        covers: [math/discrete/sets/power-set]
+      - id: "1.11"
+        title: "Complement and set difference"
+        covers: [math/discrete/sets/set-operations]
+      - id: "1.12"
+        title: "Union and intersection"
+        covers: [math/discrete/sets/set-operations]
+      - id: "1.13"
+        title: "Symmetric difference"
+        covers: [math/discrete/sets/symmetric-difference]
+      - id: "1.14"
+        title: "Cartesian product"
+        covers: [math/discrete/sets/cartesian-product]
+      - id: "1.15"
+        title: "Partitions"
+        covers: [math/discrete/sets/partitions]
+  - num: 2
+    title: "Functions"
+    points:
+      - id: "2.1"
+        title: "Definitions"
+        covers: [math/discrete/functions/definitions]
+      - id: "2.2"
+        title: "Functions in computer science"
+        covers: [math/discrete/functions/definitions]
+      - id: "2.3"
+        title: "Notation"
+        covers: [math/discrete/functions/definitions]
+      - id: "2.4"
+        title: "Some special functions"
+        covers: [math/discrete/functions/special-functions]
+      - id: "2.5"
+        title: "Functions with multiple arguments and values"
+        covers: [math/discrete/functions/special-functions]
+      - id: "2.6"
+        title: "Restrictions"
+        covers: [math/discrete/functions/special-functions]
+      - id: "2.7"
+        title: "Injections, surjections, bijections"
+        covers: [math/discrete/functions/injections-surjections-bijections]
+      - id: "2.8"
+        title: "Inverse functions"
+        covers: [math/discrete/functions/inverse-functions]
+      - id: "2.9"
+        title: "Composition"
+        covers: [math/discrete/functions/composition]
+      - id: "2.10"
+        title: "Cryptosystems"
+        covers: [math/discrete/functions/cryptosystems]
+      - id: "2.12"
+        title: "Counting functions"
+        covers: [math/discrete/functions/counting]
+      - id: "2.13"
+        title: "Binary relations"
+        covers: [math/discrete/relations/binary-relations]
+      - id: "2.14"
+        title: "Properties of binary relations"
+        covers: [math/discrete/relations/properties]
+      - id: "2.15"
+        title: "Combining binary relations"
+        covers: [math/discrete/relations/combining]
+      - id: "2.16"
+        title: "Equivalence relations"
+        covers: [math/discrete/relations/equivalence-relations]
+      - id: "2.17"
+        title: "Relations"
+        covers: [math/discrete/relations/counting]
+      - id: "2.18"
+        title: "Counting relations"
+        covers: [math/discrete/relations/counting]
+  - num: 3
+    title: "Proofs"
+    points:
+      - id: "3.1"
+        title: "Theorems and proofs"
+        covers: [math/discrete/proof/theorems-and-proofs]
+      - id: "3.2"
+        title: "Logical deduction"
+        covers: [math/discrete/proof/theorems-and-proofs]
+      - id: "3.3"
+        title: "Proofs of existential and universal statements"
+        covers: [math/discrete/proof/finding-proofs]
+      - id: "3.4"
+        title: "Finding proofs"
+        covers: [math/discrete/proof/finding-proofs]
+      - id: "3.5"
+        title: "Types of proofs"
+        covers: [math/discrete/proof/finding-proofs]
+      - id: "3.6"
+        title: "Proof by symbolic manipulation"
+        covers: [math/discrete/proof/techniques]
+      - id: "3.7"
+        title: "Proof by construction"
+        covers: [math/discrete/proof/techniques]
+      - id: "3.8"
+        title: "Proof by cases"
+        covers: [math/discrete/proof/techniques]
+      - id: "3.9"
+        title: "Proof by contradiction"
+        covers: [math/discrete/proof/contradiction]
+      - id: "3.10"
+        title: "Proof by mathematical induction"
+        covers: [math/discrete/proof/induction]
+      - id: "3.11"
+        title: "Induction: more examples"
+        covers: [math/discrete/proof/induction-examples]
+      - id: "3.13"
+        title: "Mathematical induction and statistical induction"
+        covers: [math/discrete/proof/induction]
+      - id: "3.14"
+        title: "Programs and proofs"
+        covers: [math/discrete/proof/finding-proofs]
+  - num: 4
+    title: "Propositional Logic"
+    points:
+      - id: "4.1"
+        title: "Truth values"
+        covers: [math/discrete/logic/propositional/propositions]
+      - id: "4.2"
+        title: "Boolean variables"
+        covers: [math/discrete/logic/propositional/propositions]
+      - id: "4.3"
+        title: "Propositions"
+        covers: [math/discrete/logic/propositional/propositions]
+      - id: "4.4"
+        title: "Logical operations"
+        covers: [math/discrete/logic/propositional/propositions]
+      - id: "4.5"
+        title: "Negation"
+        covers: [math/discrete/logic/propositional/connectives]
+      - id: "4.6"
+        title: "Conjunction"
+        covers: [math/discrete/logic/propositional/connectives]
+      - id: "4.7"
+        title: "Disjunction"
+        covers: [math/discrete/logic/propositional/connectives]
+      - id: "4.8"
+        title: "De Morgan’s Laws"
+        covers: [math/discrete/logic/propositional/de-morgans-laws]
+      - id: "4.9"
+        title: "Implication"
+        covers: [math/discrete/logic/propositional/implication-and-equivalence]
+      - id: "4.10"
+        title: "Equivalence"
+        covers: [math/discrete/logic/propositional/implication-and-equivalence]
+      - id: "4.11"
+        title: "Exclusive-or"
+        covers: [math/discrete/logic/propositional/implication-and-equivalence]
+      - id: "4.12"
+        title: "Tautologies and logical equivalence"
+        covers: [math/discrete/logic/propositional/tautologies]
+      - id: "4.14"
+        title: "Distributive Laws"
+        covers: [math/discrete/logic/propositional/laws-of-boolean-algebra]
+      - id: "4.15"
+        title: "Laws of Boolean algebra"
+        covers: [math/discrete/logic/propositional/laws-of-boolean-algebra]
+      - id: "4.16"
+        title: "Disjunctive Normal Form"
+        covers: [math/discrete/logic/propositional/normal-forms]
+      - id: "4.17"
+        title: "Conjunctive Normal Form"
+        covers: [math/discrete/logic/propositional/normal-forms]
+      - id: "4.18"
+        title: "Representing logical statements"
+        covers: [math/discrete/logic/propositional/representing-statements]
+      - id: "4.19"
+        title: "Statements about how many variables are true"
+        covers: [math/discrete/logic/propositional/representing-statements]
+      - id: "4.20"
+        title: "Universal sets of operations"
+        covers: [math/discrete/logic/propositional/universal-sets-of-operations]
+  - num: 5
+    title: "Predicate Logic"
+    points:
+      - id: "5.1"
+        title: "Relations, predicates, and truth-valued functions"
+        covers: [math/discrete/logic/predicate/predicates]
+      - id: "5.2"
+        title: "Variables and constants"
+        covers: [math/discrete/logic/predicate/predicates]
+      - id: "5.3"
+        title: "Predicates and variables"
+        covers: [math/discrete/logic/predicate/predicates]
+      - id: "5.4"
+        title: "Arguments of predicates"
+        covers: [math/discrete/logic/predicate/predicates]
+      - id: "5.5"
+        title: "Building logical expressions with predicates"
+        covers: [math/discrete/logic/predicate/quantifiers]
+      - id: "5.6"
+        title: "Existential quantifier"
+        covers: [math/discrete/logic/predicate/quantifiers]
+      - id: "5.7"
+        title: "Restricting existentially quantified variables"
+        covers: [math/discrete/logic/predicate/quantifiers]
+      - id: "5.8"
+        title: "Universal quantifier"
+        covers: [math/discrete/logic/predicate/quantifiers]
+      - id: "5.9"
+        title: "Restricting universally quantified variables"
+        covers: [math/discrete/logic/predicate/quantifiers]
+      - id: "5.10"
+        title: "Multiple quantifiers"
+        covers: [math/discrete/logic/predicate/multiple-quantifiers]
+      - id: "5.11"
+        title: "Predicate logic expressions"
+        covers: [math/discrete/logic/predicate/multiple-quantifiers]
+      - id: "5.12"
+        title: "Doing logic with quantifiers"
+        covers: [math/discrete/logic/predicate/logic-with-quantifiers]
+      - id: "5.13"
+        title: "Duality between quantifiers"
+        covers: [math/discrete/logic/predicate/logic-with-quantifiers]
+      - id: "5.14"
+        title: "Summary of rules for logic with quantifiers"
+        covers: [math/discrete/logic/predicate/logic-with-quantifiers]
+      - id: "5.15"
+        title: "Some examples"
+        covers: [math/discrete/logic/predicate/logic-with-quantifiers]
+  - num: 6
+    title: "Sequences & Series"
+    points:
+      - id: "6.1"
+        title: "Definitions and notation"
+        covers: [math/discrete/sequences/basic-sequences]
+      - id: "6.2"
+        title: "Recursive definitions of sequences"
+        covers: [math/discrete/sequences/basic-sequences]
+      - id: "6.3"
+        title: "Arithmetic sequences"
+        covers: [math/discrete/sequences/basic-sequences]
+      - id: "6.4"
+        title: "Geometric sequences"
+        covers: [math/discrete/sequences/basic-sequences]
+      - id: "6.5"
+        title: "Harmonic sequences"
+        covers: [math/discrete/sequences/basic-sequences]
+      - id: "6.6"
+        title: "From recursive definitions to formulas"
+        covers: [math/discrete/sequences/solving-recurrences]
+      - id: "6.7"
+        title: "The Fibonacci sequence"
+        covers: [math/discrete/sequences/fibonacci]
+      - id: "6.8"
+        title: "Limits of infinite sequences"
+        covers: [math/discrete/sequences/limits]
+      - id: "6.9"
+        title: "Big-O notation"
+        covers: [math/discrete/sequences/big-o]
+      - id: "6.10"
+        title: "Sums and summation"
+        covers: [math/discrete/sequences/sums-and-series]
+      - id: "6.11"
+        title: "Finite series"
+        covers: [math/discrete/sequences/sums-and-series]
+      - id: "6.12"
+        title: "Finite arithmetic series"
+        covers: [math/discrete/sequences/sums-and-series]
+      - id: "6.13"
+        title: "Finite geometric series"
+        covers: [math/discrete/sequences/sums-and-series]
+      - id: "6.14"
+        title: "Infinite geometric series"
+        covers: [math/discrete/sequences/sums-and-series]
+      - id: "6.15"
+        title: "Harmonic numbers"
+        covers: [math/discrete/sequences/sums-and-series]
+  - num: 7
+    title: "Number Theory"
+    points:
+      - id: "7.1"
+        title: "Multiples and divisors"
+        covers: [math/discrete/number-theory/divisibility-and-primes]
+      - id: "7.2"
+        title: "Prime numbers"
+        covers: [math/discrete/number-theory/divisibility-and-primes]
+      - id: "7.3"
+        title: "Remainders and the mod operation"
+        covers: [math/discrete/number-theory/remainders-and-parity]
+      - id: "7.4"
+        title: "Parity"
+        covers: [math/discrete/number-theory/remainders-and-parity]
+      - id: "7.5"
+        title: "The greatest common divisor"
+        covers: [math/discrete/number-theory/gcd-and-euclidean-algorithm]
+      - id: "7.6"
+        title: "The Euclidean algorithm"
+        covers: [math/discrete/number-theory/gcd-and-euclidean-algorithm]
+      - id: "7.7"
+        title: "The gcd and integer linear combinations"
+        covers: [math/discrete/number-theory/extended-euclidean-algorithm]
+      - id: "7.8"
+        title: "The extended Euclidean algorithm"
+        covers: [math/discrete/number-theory/extended-euclidean-algorithm]
+      - id: "7.9"
+        title: "Coprimality"
+        covers: [math/discrete/number-theory/coprimality]
+      - id: "7.10"
+        title: "Modular arithmetic"
+        covers: [math/discrete/number-theory/modular-arithmetic]
+      - id: "7.11"
+        title: "Modular inverses"
+        covers: [math/discrete/number-theory/modular-arithmetic]
+      - id: "7.12"
+        title: "The Euler totient function"
+        covers: [math/discrete/number-theory/euler-totient]
+      - id: "7.13"
+        title: "Fast exponentiation"
+        covers: [math/discrete/number-theory/modular-exponentiation]
+      - id: "7.14"
+        title: "Modular exponentiation"
+        covers: [math/discrete/number-theory/modular-exponentiation]
+      - id: "7.15"
+        title: "Primitive roots"
+        covers: [math/discrete/number-theory/primitive-roots]
+      - id: "7.16"
+        title: "One-way functions"
+        covers: [math/discrete/number-theory/diffie-hellman]
+      - id: "7.17"
+        title: "Modular exponentiation with fixed base"
+        covers: [math/discrete/number-theory/diffie-hellman]
+      - id: "7.18"
+        title: "Diffie-Hellman key agreement scheme"
+        covers: [math/discrete/number-theory/diffie-hellman]
+  - num: 8
+    title: "Counting & Combinatorics"
+    points:
+      - id: "8.1"
+        title: "Counting by addition"
+        covers: [math/discrete/counting/sum-and-product-rules]
+      - id: "8.2"
+        title: "Counting by multiplication"
+        covers: [math/discrete/counting/sum-and-product-rules]
+      - id: "8.3"
+        title: "Inclusion-exclusion"
+        covers: [math/discrete/counting/inclusion-exclusion]
+      - id: "8.4"
+        title: "Inclusion-exclusion: derangements"
+        covers: [math/discrete/counting/derangements]
+      - id: "8.5"
+        title: "Selection"
+        covers: [math/discrete/counting/selection]
+      - id: "8.6"
+        title: "Ordered selection with replacement"
+        covers: [math/discrete/counting/selection]
+      - id: "8.7"
+        title: "Ordered selection without replacement"
+        covers: [math/discrete/counting/selection]
+      - id: "8.8"
+        title: "Unordered selection without replacement"
+        covers: [math/discrete/counting/combinations]
+      - id: "8.9"
+        title: "Unordered selection with replacement"
+        covers: [math/discrete/counting/stars-and-bars]
+  - num: 9
+    title: "Discrete Probability I"
+    points:
+      - id: "9.1"
+        title: "The nature of randomness"
+        covers: [math/probability/sample-spaces]
+      - id: "9.2"
+        title: "Probability"
+        covers: [math/probability/sample-spaces]
+      - id: "9.3"
+        title: "Choice of sample space"
+        covers: [math/probability/sample-spaces]
+      - id: "9.4"
+        title: "Mutually exclusive events"
+        covers: [math/probability/events]
+      - id: "9.5"
+        title: "Operations on events"
+        covers: [math/probability/events]
+      - id: "9.6"
+        title: "Inclusion-Exclusion for probabilities"
+        covers: [math/probability/events]
+      - id: "9.7"
+        title: "Independent events"
+        covers: [math/probability/conditional-probability]
+      - id: "9.8"
+        title: "Conditional probability"
+        covers: [math/probability/conditional-probability]
+      - id: "9.9"
+        title: "Bayes’ Theorem"
+        covers: [math/probability/bayes-theorem]
+  - num: 10
+    title: "Discrete Probability II"
+    points:
+      - id: "10.1"
+        title: "Random variables"
+        covers: [math/probability/random-variables]
+      - id: "10.2"
+        title: "Probability distributions"
+        covers: [math/probability/random-variables]
+      - id: "10.3"
+        title: "Expectation"
+        covers: [math/probability/expectation-and-variance]
+      - id: "10.4"
+        title: "Median"
+        covers: [math/probability/expectation-and-variance]
+      - id: "10.5"
+        title: "Mode"
+        covers: [math/probability/expectation-and-variance]
+      - id: "10.6"
+        title: "Variance"
+        covers: [math/probability/expectation-and-variance]
+      - id: "10.7"
+        title: "Uniform distribution"
+        covers: [math/probability/standard-distributions]
+      - id: "10.8"
+        title: "Binomial distribution"
+        covers: [math/probability/standard-distributions]
+      - id: "10.9"
+        title: "Poisson distribution"
+        covers: [math/probability/standard-distributions]
+      - id: "10.10"
+        title: "Geometric distribution"
+        covers: [math/probability/standard-distributions]
+      - id: "10.11"
+        title: "The coupon collector’s problem"
+        covers: [math/probability/coupon-collector]
+  - num: 11
+    title: "Graph Theory I"
+    points:
+      - id: "11.1"
+        title: "Basic definitions"
+        covers: [math/discrete/graph/basic-definitions]
+      - id: "11.2"
+        title: "Types of graphs"
+        covers: [math/discrete/graph/basic-definitions]
+      - id: "11.4"
+        title: "Representing graphs"
+        covers: [math/discrete/graph/representing-graphs]
+      - id: "11.5"
+        title: "Subgraphs"
+        covers: [math/discrete/graph/basic-definitions]
+      - id: "11.6"
+        title: "Some special graphs"
+        covers: [math/discrete/graph/special-graphs]
+      - id: "11.7"
+        title: "Degree"
+        covers: [math/discrete/graph/degree]
+      - id: "11.8"
+        title: "Moving around"
+        covers: [math/discrete/graph/walks-paths-cycles]
+      - id: "11.9"
+        title: "Connectivity"
+        covers: [math/discrete/graph/connectivity]
+      - id: "11.10"
+        title: "Bipartite graphs"
+        covers: [math/discrete/graph/bipartite-graphs]
+      - id: "11.11"
+        title: "Euler tours"
+        covers: [math/discrete/graph/euler-and-hamilton]
+  - num: 12
+    title: "Graph Theory II"
+    points:
+      - id: "12.1"
+        title: "Trees"
+        covers: [math/discrete/graph/trees]
+      - id: "12.2"
+        title: "Properties of trees"
+        covers: [math/discrete/graph/trees]
+      - id: "12.3"
+        title: "Forests"
+        covers: [math/discrete/graph/forests-and-spanning-trees]
+      - id: "12.4"
+        title: "Spanning trees"
+        covers: [math/discrete/graph/forests-and-spanning-trees]
+      - id: "12.5"
+        title: "Planarity"
+        covers: [math/discrete/graph/planarity]

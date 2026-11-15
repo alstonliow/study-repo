@@ -1,0 +1,40 @@
+# Machine-readable parts and branches (meta/SPEC.md §2.5).
+# Order here is the order on the website. Change together with meta/taxonomy.md.
+parts:
+  - title: Discrete Mathematics
+    branches:
+      - id: math/discrete/sets
+        title: Sets
+        desc: Sets, subsets, power sets, set operations, partitions
+      - id: math/discrete/functions
+        title: Functions
+        desc: Functions, injections and bijections, inverses, composition
+      - id: math/discrete/relations
+        title: Relations
+        desc: Binary relations, their properties, equivalence relations
+      - id: math/discrete/proof
+        title: Proof
+        desc: Theorems and proofs, proof techniques, induction
+      - id: math/discrete/logic/propositional
+        title: Propositional Logic
+        desc: Connectives, laws of Boolean algebra, normal forms
+      - id: math/discrete/logic/predicate
+        title: Predicate Logic
+        desc: Predicates and quantifiers
+      - id: math/discrete/sequences
+        title: Sequences and Series
+        desc: Recurrences, limits, big-O, sums and series
+      - id: math/discrete/number-theory
+        title: Number Theory
+        desc: Divisibility, gcd, modular arithmetic, Diffie–Hellman
+      - id: math/discrete/counting
+        title: Counting
+        desc: Counting rules, inclusion–exclusion, selections
+      - id: math/discrete/graph
+        title: Graph Theory
+        desc: Paths, connectivity, trees, planarity
+  - title: Probability
+    branches:
+      - id: math/probability
+        title: Discrete Probability
+        desc: Events, conditional probability, random variables, distributions

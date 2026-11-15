@@ -9,7 +9,7 @@ status: draft
 
 ## Representing logical statements
 
-::: {.remark name="Top-down / bottom-up modelling"}
+::: {#rmk-representing-statements-1 .remark name="Top-down / bottom-up modelling"}
 
 **Top-down**: identify the top-level conjunction of required conditions. **Bottom-up**: identify the atomic Boolean variables (simplest possible true/false assertions) before worrying about their eventual truth values.
 

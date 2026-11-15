@@ -89,7 +89,7 @@ Floor (left) and ceiling (right). A filled dot is included, an open dot is not
 
 :::
 
-::: {.remark name="Contrast with CN's @sec-math-discrete-functions-definitions"}
+::: {#rmk-special-functions-1 .remark name="Contrast with CN's @sec-math-discrete-functions-definitions"}
 
 CN’s definition of a function already *is* what Rosen calls a *total* function: $\operatorname{dom}(f)$ equals the declared domain exactly, with no gaps. Rosen’s “partial function from $A$ to $B$” allows $\operatorname{dom}(f)\subsetneq A$ – a total function on the smaller set $\operatorname{dom}(f)\subseteq A$.
 
@@ -109,7 +109,7 @@ A function of two arguments $f(x,y)$, $x \in X, y \in Y$, value in $C$, is forma
 
 :::
 
-::: {.remark name="Notation styles"}
+::: {#rmk-special-functions-2 .remark name="Notation styles"}
 
 $f(x,y)$ is *prefix* notation (name before arguments). *Infix* (name between, e.g. $x+y$) and *postfix* (name after) also occur.
 
@@ -130,7 +130,7 @@ $$f|_X : X \to B, \qquad f|_X(x) = f(x) \text{ for all } x \in X.$$
 
 :::
 
-::: {.remark name="Why restrict?"}
+::: {#rmk-special-functions-3 .remark name="Why restrict?"}
 
 A smaller domain means: a smaller stored representation (fewer ordered pairs to list); a smaller “promise” to keep (less testing if implemented); sometimes simpler analysis; and sometimes *stronger properties* unavailable to the original function.
 

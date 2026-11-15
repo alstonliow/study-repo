@@ -7,7 +7,7 @@ status: draft
 
 <!-- Migrated from 1058note notes/chapters/03-proofs.tex: Induction: extended example. -->
 
-::: {.remark name="Setup"}
+::: {#rmk-induction-extended-example-1 .remark name="Setup"}
 
 $m$ job positions $A$ ($|A|=m$), $n$ applicants $B$ ($|B|=n$), a *shortlist relation* $S \subseteq A\times B$.
 
@@ -80,7 +80,7 @@ $S \subseteq A\times B$ contains an injection with domain $A$ $\iff$ $|X|\le|S(X
 
 :::
 
-::: {.remark name="Why this matters"}
+::: {#rmk-induction-extended-example-2 .remark name="Why this matters"}
 
 This gives easily *verifiable* evidence in both directions: a “yes” is witnessed by the injection itself (checkable directly); a “no” is witnessed by a single offending set $X$ with $|X|>|S(X)|$ – no need to search the whole space of possible assignments. This is a defect-form statement of *Hall’s marriage theorem*.
 

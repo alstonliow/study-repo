@@ -45,7 +45,7 @@ If play continued until every edge were thickened or crossed out, then the thick
 
 :::
 
-::: {.remark name="Four possible cases"}
+::: {#rmk-games-on-graphs-1 .remark name="Four possible cases"}
 
 Since there are no draws, on each graph exactly one of these holds: Join has a winning strategy whoever starts; Cut has a winning strategy whoever starts; the first player has a winning strategy; or the second player has a winning strategy. In fact the last case never happens.
 
@@ -63,7 +63,7 @@ We use strategy stealing. Suppose, for contradiction, that on some graph the sec
 
 :::
 
-::: {.remark name="Bridg-It"}
+::: {#rmk-games-on-graphs-2 .remark name="Bridg-It"}
 
 A commercial version of this game, Bridg-It, was invented by David Gale and sold from 1960.
 
@@ -77,7 +77,7 @@ Two players take turns choosing edges so that the chosen edges always form a pat
 
 :::
 
-::: {.remark name="Impartial vs.\ partisan"}
+::: {#rmk-games-on-graphs-3 .remark name="Impartial vs.\ partisan"}
 
 In Slither both players make the same kind of move, so the game is *impartial*; Shannon’s Switching Game, where one player thickens and the other crosses out, is *partisan*. Unlike Shannon’s game, Slither has graphs where the first player has a winning strategy and also graphs where the second player does.
 

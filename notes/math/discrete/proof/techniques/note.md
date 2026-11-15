@@ -9,7 +9,7 @@ status: draft
 
 ## Proof by symbolic manipulation
 
-::: {.remark name="The pattern"}
+::: {#rmk-techniques-1 .remark name="The pattern"}
 
 A chain of equations, each step justified by a known law (axiom or previously proved fact), linking the two sides of the claim.
 
@@ -33,13 +33,13 @@ $$\begin{aligned}
 
 ## Proof by construction
 
-::: {.remark name="Pattern"}
+::: {#rmk-techniques-2 .remark name="Pattern"}
 
 Describe a specific object precisely, and show it exists and satisfies the required conditions – a *constructive* proof of an existential statement (@sec-math-discrete-proof-finding-proofs). Theorem 14 (‘rotator’ is a palindrome) is an example.
 
 :::
 
-::: {.remark name="Two mistakes to avoid"}
+::: {#rmk-techniques-3 .remark name="Two mistakes to avoid"}
 
 - Using construction to attempt a *universal* statement: exhibiting one object with a property never establishes that *every* object has it.
 
@@ -60,7 +60,7 @@ Both decompositions use positive integers, and $\{10,9\} \neq \{12,1\}$, so thes
 
 :::
 
-::: {.remark}
+::: {#rmk-techniques-4 .remark}
 
 This is the smallest such number – hence its fame as the “taxicab number,” from the (possibly apocryphal) anecdote of Hardy visiting Ramanujan in a taxi numbered 1729.
 
@@ -88,7 +88,7 @@ Either way, such $x,y$ exist.
 
 :::
 
-::: {.remark name="Strikingly nonconstructive"}
+::: {#rmk-techniques-5 .remark name="Strikingly nonconstructive"}
 
 This proves the statement true *without ever determining which case actually holds* – we don’t know, from this proof alone, whether $\sqrt2^{\sqrt2}$ itself is rational or irrational. (It is, in fact, irrational – even transcendental, by the Gelfond–Schneider theorem – but that fact is not needed here.) This is the clearest illustration of the constructive/nonconstructive distinction from @sec-math-discrete-proof-finding-proofs.
 

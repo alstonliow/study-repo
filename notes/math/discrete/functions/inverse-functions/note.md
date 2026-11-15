@@ -7,7 +7,7 @@ status: draft
 
 <!-- Migrated from 1058note notes/chapters/02-functions.tex: Inverse functions. -->
 
-::: {.remark name="Why uniqueness can fail"}
+::: {#rmk-inverse-functions-1 .remark name="Why uniqueness can fail"}
 
 Let $f: A \to B$. For a given $y \in B$, trying to go “backwards” can fail in two distinct ways:
 
@@ -67,7 +67,7 @@ $f: A \to B$ has an inverse function if and only if $f$ is a bijection.
 
 :::
 
-::: {.remark name="When invertibility fails"}
+::: {#rmk-inverse-functions-2 .remark name="When invertibility fails"}
 
 Neither the `Employer` function (not injective: two computers both mapped to Harvard College Observatory) nor the squaring function $\mathbb{R}\to \mathbb{R}$ (not injective: $2^2=(-2)^2$; also not surjective onto all of $\mathbb{R}$) is invertible.
 
@@ -105,7 +105,7 @@ $$f^{-1}(S) = \{a \in A : f(a) \in S\}.$$
 
 :::
 
-::: {.remark name="Overloaded notation – read carefully"}
+::: {#rmk-inverse-functions-3 .remark name="Overloaded notation – read carefully"}
 
 $f^{-1}(S)$ (preimage of a *set*, defined for *any* function $f$) and $f^{-1}(y)$ (the *inverse function* applied to a point, defined *only when $f$ is a bijection*) use the same symbol $f^{-1}$ but are different concepts. When $f$ is a bijection, $f^{-1}(\{y\}) = \{f^{-1}(y)\}$ – the set-level and point-level notions agree – but $f^{-1}(S)$ makes sense even when no bijection (or even no inverse function) exists.
 

@@ -19,7 +19,7 @@ satisfy:
 
 :::
 
-::: {.remark}
+::: {#rmk-cryptosystems-1 .remark}
 
 Condition (ii) is the essential one: it forces $d_k(e_k(m)) = m$ for all $m \in M$ – decryption with $k$ genuinely undoes encryption with $k$.
 
@@ -74,7 +74,7 @@ Fix $(k,k') \in K \times K'$. Since $\mathcal{C}, \mathcal{C}'$ are cryptosystem
 
 :::
 
-::: {.remark name="Security is not guaranteed by composition"}
+::: {#rmk-cryptosystems-2 .remark name="Security is not guaranteed by composition"}
 
 A good cryptosystem needs $e_k, d_k$ easy to compute *with* $k$, but $e_k$ hard to invert *without* $k$. Composing two hard-to-invert systems is often, but not always, harder still to break. Counterexample: composing two shift ciphers with keys $k,k'$ gives $e'_{k'}(e_k(p)) = (p+k+k') \bmod 26 = e_{k+k'}(p)$ – just another shift cipher, no stronger than a single shift, since the keyspace effectively collapses.
 
