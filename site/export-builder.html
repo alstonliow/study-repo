@@ -88,6 +88,8 @@
 
   // ---------------------------------------------------------------- the form
   function build(box, data) {
+    // the kinds of block a reader can switch, from the registry (build/kinds.py)
+    if (data.groups) TYPES.splice(0, TYPES.length, ...data.groups);
     const s = load();
     const course = data.courses[0];
     const branches = Object.keys(data.branchTitles);
@@ -266,7 +268,7 @@
 
   // ---------------------------------------------------------------- assembly
   const BLOCK = { def: ".definition", result: ".theorem, .proposition, .lemma, .corollary", example: ".example",
-                  remark: ".remark, .claim", figure: ".quarto-float, .tikz-figure" };
+                  remark: ".remark, .claim", figure: ".st-figure, .quarto-float, .tikz-figure" };
   const stateOf = item => (window.StudyProgress ? window.StudyProgress.stateOf(item) : "new");
 
   async function fetchMain(url) {
@@ -321,8 +323,9 @@
     const source = prob && prob.querySelector(".problem-source");
     const level = prob && prob.querySelector(".level-badge");
     if (title) {
+      const from = g.classList.contains("synthesis") ? "" : "from " + noteTitle;   // where it comes from
       const head = el("div", { class: "ex-exercise-head" }, el("span", {}, title.textContent),
-        el("span", {}, [source && source.textContent, level && level.textContent].filter(Boolean).join(" · ")));
+        el("span", {}, [from, source && source.textContent, level && level.textContent].filter(Boolean).join(" · ")));
       const p = title.closest("p");
       if (p) p.replaceWith(head); else prob.prepend(head);
     }
@@ -361,18 +364,13 @@
         try {
           const main = await fetchMain(new URL(`notes/${nid}.html`, root).href);
           let title = data.titles[nid] || nid;
-          if (ch.nums && ch.nums[nid]) {               // renumber headings from topic to course numbering
+          if (ch.nums && ch.nums[nid]) {               // course numbering (numbering.py via site-data.json)
             const from = (title.match(/^\d+(\.\d+)*/) || [""])[0], to = ch.nums[nid];
             title = to + title.slice(from.length);
-            if (from) main.querySelectorAll("h2, h3, h4").forEach(h => {
-              const w = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
-              for (let n = w.nextNode(); n; n = w.nextNode()) {
-                if (!n.textContent.trim()) continue;
-                const t = n.textContent.replace(/^(\s*)(\d+(?:\.\d+)*)/, (m, sp, num) =>
-                  num === from || num.startsWith(from + ".") ? sp + to + num.slice(from.length) : m);
-                n.textContent = t;
-                break;
-              }
+            const topic = (data.numbers || {}).topic || {}, cn = (data.numbers || {})[course.id] || {};
+            main.querySelectorAll(".num[data-note]").forEach(e => {
+              const a = topic[e.dataset.note], b = cn[e.dataset.note];
+              if (a && b && e.textContent.startsWith(a)) e.textContent = b + e.textContent.slice(a.length);
             });
           }
           filterNote(main, s, course, solutions, title);

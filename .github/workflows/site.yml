@@ -28,7 +28,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Python dependencies
-        run: pip install pyyaml
+        run: pip install pyyaml mypy types-PyYAML
 
       - uses: quarto-dev/quarto-actions/setup@v2
         with:

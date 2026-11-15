@@ -7,22 +7,35 @@ Read-only: never modifies files and never runs git write commands.
 
 from __future__ import annotations
 
+import argparse
 import re
 import subprocess
 import sys
 from pathlib import Path
+from typing import Callable
 
-from model import ID_PREFIXES, MATH, NOTES, REF, ROOT, load
+from kinds import ID_PREFIXES, NO_ID_CLASSES
+from model import MATH, REF, ROOT, load
 
 REQUIRED_YAML = ["title", "sources", "requires", "status"]
 ALLOWED = {"status": {"draft", "done"}}
 LEVELS = {"easy", "medium", "hard"}  # optional `level` on problem and example blocks
 FORBIDDEN_SUFFIXES = {".pdf", ".aux", ".log", ".toc", ".out", ".fls",
                       ".fdb_latexmk", ".synctex.gz"}
-NO_ID_CLASSES = {"proof", "solution"}      # SPEC §5.2: these never carry an id
 
 errors: list[str] = []
 warnings: list[str] = []
+
+# Rule registry: (id, description, function), run in this order. A new check is
+# a function decorated with @rule; `check.py --list` shows them all.
+RULES: list[tuple[str, str, Callable[[], None]]] = []
+
+
+def rule(rid: str, desc: str):
+    def register(fn: Callable[[], None]) -> Callable[[], None]:
+        RULES.append((rid, desc, fn))
+        return fn
+    return register
 REPO = load()
 
 
@@ -30,6 +43,7 @@ def rel(p: Path) -> str:
     return str(p.relative_to(ROOT))
 
 
+@rule("notes", "ids, YAML, blocks, problems and solutions, references")
 def check_notes() -> None:
     ids = {n.id for n in REPO.all_notes}
     sec_labels = {n.sec_label for n in REPO.all_notes}
@@ -42,8 +56,8 @@ def check_notes() -> None:
     requires: list[tuple[Path, str]] = []
     missing_ids: list[str] = []
 
-    for bid, rv in REPO.reviews.items():
-        if bid not in REPO.branch_order:
+    for branch, rv in REPO.reviews.items():
+        if branch not in REPO.branch_order:
             errors.append(f"{rv.id}: review folder is not directly under a branch in meta/taxonomy.yml")
         extra = sorted(set(rv.files) - {"exercise.md", "solution.md"})
         if extra:
@@ -114,7 +128,7 @@ def check_notes() -> None:
                     target = kv.get("for")
                     if not target:
                         errors.append(f"{where}: solution missing 'for'")
-                    if kv.get("status", "draft") != "draft":
+                    elif kv.get("status", "draft") != "draft":
                         errors.append(f"{where}: solution status must be draft (or omitted once reviewed)")
                     else:
                         solutions[target] = md
@@ -170,12 +184,27 @@ def check_notes() -> None:
           f"({len(empty_solutions)} empty)")
 
 
+@rule("sources", "source keys registered in meta/sources.yml")
+def check_sources() -> None:
+    """Every source key belongs to a registered source (meta/sources.yml)."""
+    keys = [(n.files["note.md"].path, str(k)) for n in REPO.notes.values() for k in n.front.get("sources") or []]
+    keys += [(n.files["exercise.md"].path, p.attrs.get("source", ""))
+             for n in list(REPO.notes.values()) + list(REPO.reviews.values()) for p in n.problems]
+    for path, key in keys:
+        if key:
+            msg = REPO.sources.problems(key)
+            if msg:
+                errors.append(f"{rel(path)}: {msg}")
+
+
+@rule("requires", "prerequisites: no cycles, nothing implied or later")
 def check_requires() -> None:
     """requires = direct prerequisites only: no cycles, nothing implied, nothing later."""
     for level, msg in REPO.requires_problems():
         (errors if level == "error" else warnings).append(msg)
 
 
+@rule("aliases", "old ids of moved notes are unique")
 def check_aliases() -> None:
     """Old ids kept after a move (SPEC §2.6) must not be reused or repeated."""
     seen: dict[str, str] = {}
@@ -188,11 +217,13 @@ def check_aliases() -> None:
             seen[a] = n.id
 
 
+@rule("taxonomy", "every note listed in meta/taxonomy.yml")
 def check_taxonomy() -> None:
     for msg in REPO.taxonomy_problems():
         errors.append(f"meta/taxonomy.yml: {msg}")
 
 
+@rule("courses", "course files resolve; provenance without scope")
 def check_courses() -> None:
     """Course files (SPEC §13): references resolve; provenance without scope is reported."""
     if not REPO.courses:
@@ -222,6 +253,7 @@ HARD_CODED = re.compile(
     r"|minimum (?:size|width|height)=|inner sep=|fill opacity=|rounded corners=")
 
 
+@rule("figures", "figures use the shared styles")
 def check_figures() -> None:
     """Figures use the shared styles (meta/SPEC.md §5), not raw colours and sizes."""
     for f in (f for n in REPO.all_notes for f in n.files.values()):
@@ -236,6 +268,7 @@ def check_figures() -> None:
                 warnings.append(f"{rel(md)}:{line}: figure hard-codes {', '.join(found)}; use the shared styles")
 
 
+@rule("files", "nothing from raw/, no PDFs or build artefacts")
 def check_forbidden_files() -> None:
     """Files that would be committed (tracked or untracked, not ignored)."""
     try:
@@ -254,14 +287,25 @@ def check_forbidden_files() -> None:
             errors.append(f"{f}: build artefact or PDF must not be committed")
 
 
-def main() -> int:
-    check_notes()
-    check_taxonomy()
-    check_aliases()
-    check_requires()
-    check_courses()
-    check_figures()
-    check_forbidden_files()
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(description="Repository checks (meta/SPEC.md §11).")
+    ap.add_argument("--list", action="store_true", help="list the rules and exit")
+    ap.add_argument("--only", default="", help="comma-separated rule ids to run")
+    ap.add_argument("--skip", default="", help="comma-separated rule ids to skip")
+    a = ap.parse_args(argv)
+    if a.list:
+        for rid, desc, _ in RULES:
+            print(f"{rid:10} {desc}")
+        return 0
+    only = {x for x in a.only.split(",") if x}
+    skip = {x for x in a.skip.split(",") if x}
+    unknown = (only | skip) - {rid for rid, _, _ in RULES}
+    if unknown:
+        print(f"unknown rule(s): {', '.join(sorted(unknown))}; see --list")
+        return 2
+    for rid, _, fn in RULES:
+        if (not only or rid in only) and rid not in skip:
+            fn()
     for w in warnings:
         print(f"warning: {w}")
     for e in errors:
@@ -271,4 +315,4 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(sys.argv[1:]))

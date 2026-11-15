@@ -19,7 +19,7 @@ import sys
 from collections import OrderedDict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]   # build/legacy/ -> repository
 LEGACY = ROOT / "legacy" / "1058note"
 NOTES = ROOT / "notes"
 D = "math/discrete"

@@ -72,6 +72,114 @@
   "t/beta/third": []
  },
  "aliases": {},
+ "kinds": [
+  {
+   "prefix": "def",
+   "class": "definition",
+   "word": "Definition",
+   "group": "def"
+  },
+  {
+   "prefix": "thm",
+   "class": "theorem",
+   "word": "Theorem",
+   "group": "result"
+  },
+  {
+   "prefix": "prp",
+   "class": "proposition",
+   "word": "Proposition",
+   "group": "result"
+  },
+  {
+   "prefix": "lem",
+   "class": "lemma",
+   "word": "Lemma",
+   "group": "result"
+  },
+  {
+   "prefix": "cor",
+   "class": "corollary",
+   "word": "Corollary",
+   "group": "result"
+  },
+  {
+   "prefix": "exm",
+   "class": "example",
+   "word": "Example",
+   "group": "example"
+  },
+  {
+   "prefix": "fig",
+   "class": "",
+   "word": "Figure",
+   "group": "figure"
+  },
+  {
+   "prefix": "rmk",
+   "class": "remark",
+   "word": "Remark",
+   "group": "remark"
+  },
+  {
+   "prefix": "clm",
+   "class": "claim",
+   "word": "Claim",
+   "group": "remark"
+  },
+  {
+   "prefix": "prob",
+   "class": "problem",
+   "word": "Exercise",
+   "group": "exercise"
+  }
+ ],
+ "groups": [
+  [
+   "def",
+   "Definitions"
+  ],
+  [
+   "result",
+   "Theorems, propositions, lemmas"
+  ],
+  [
+   "proof",
+   "Proofs"
+  ],
+  [
+   "example",
+   "Examples"
+  ],
+  [
+   "remark",
+   "Remarks"
+  ],
+  [
+   "figure",
+   "Figures"
+  ],
+  [
+   "exercise",
+   "Exercises"
+  ],
+  [
+   "synthesis",
+   "Synthesis problems"
+  ]
+ ],
+ "numbers": {
+  "topic": {
+   "t/alpha/first": "1.1",
+   "t/alpha/second": "1.2",
+   "t/beta/third": "2.1"
+  },
+  "demo": {
+   "t/alpha/first": "1.1",
+   "t/alpha/second": "1.2",
+   "t/beta/third": "2.1"
+  }
+ },
  "titles": {
   "t/alpha/first": "1.1 First note",
   "t/alpha/second": "1.2 Second note",

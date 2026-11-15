@@ -40,17 +40,15 @@ text. Read-only with respect to notes/; never runs git.
 from __future__ import annotations
 
 import argparse
-import re
 import shutil
 import subprocess
 import sys
-import textwrap
 from pathlib import Path
 
 import yaml
 
-from model import RAW, REF, ROOT, divs_in, fence_for, load
-from summaries import statements
+import kinds
+from model import ROOT, load
 
 OUT = ROOT / "out" / "pdf"
 FIGURES = (Path(__file__).resolve().parent / "figures.tex").read_text(encoding="utf-8")
@@ -62,37 +60,22 @@ HEADER = FIGURES + r"""
 % exercises: "Exercise n" in bold (accent colour in the colour style), source and
 % level small and italic on the right; space between exercises, no boxes
 \providecommand{\exercisecolor}{black}
-\newcommand{\exercisehead}[2]{\par\bigskip\noindent
-  {\bfseries\color{\exercisecolor}Exercise #1}\hfill{\small\itshape #2}\par\nopagebreak\smallskip}
-% number theorem-like blocks 1, 2, 3, ... through the document (sections are unnumbered)
-\makeatletter
-\AtBeginDocument{\@for\st@env:=definition,theorem,proposition,lemma,corollary,example\do{%
-  \@ifundefined{c@\st@env}{}{\counterwithout{\st@env}{section}%
-    \@ifundefined{c@chapter}{}{\counterwithout{\st@env}{chapter}}}}}
-\makeatother
+\newcommand{\exercisehead}[3]{\par\bigskip\noindent
+  {\bfseries\color{\exercisecolor}#1 #2}\hfill{\small\itshape #3}\par\nopagebreak\smallskip}
+% numbered titles are written by numbering.py; thmheadc colours them
+\colorlet{thmheadc}{black}
 """
 # --style color: the website's look. Colours are the ones in figures.tex
 # (defc blue, thmc terracotta, exc green), so web, figures and PDF match.
 COLOR_HEADER = r"""
 \usepackage[most]{tcolorbox}
-\colorlet{thmheadc}{black}
-\makeatletter
-\AtBeginDocument{\@ifundefined{thmhead}{}{%
-  \let\st@thmhead\thmhead
-  \renewcommand{\thmhead}[3]{\textcolor{thmheadc}{\st@thmhead{#1}{#2}{#3}}}}}
-\makeatother
 \newtcolorbox{stbox}[1]{enhanced, breakable, frame hidden, sharp corners, boxrule=0pt,
   colback=#1!5!white, borderline west={2pt}{0pt}{#1}, left=8pt, right=6pt, top=3pt, bottom=3pt,
   before skip=8pt, after skip=8pt, before upper={\colorlet{thmheadc}{#1}}}
 \renewcommand{\exercisecolor}{thmc}
 """
-BOX_COLOR = {"def": "defc", "thm": "thmc", "prp": "thmc", "lem": "thmc", "cor": "thmc", "exm": "exc"}
-WORD = {"def": "Definition", "thm": "Theorem", "prp": "Proposition", "lem": "Lemma", "cor": "Corollary",
-        "exm": "Example", "fig": "Figure", "prob": "Exercise", "rmk": "Remark", "clm": "Claim"}
 LEVELS = ("easy", "medium", "hard", "unrated")
-TYPES = ("def", "result", "proof", "example", "remark", "figure", "exercise", "synthesis")
-TYPE_OF_PREFIX = {"def": "def", "thm": "result", "prp": "result", "lem": "result", "cor": "result",
-                  "exm": "example", "rmk": "remark", "clm": "remark", "fig": "figure"}
+TYPES = tuple(g for g, _ in kinds.GROUPS)
 
 # Common versions, built by CI and linked from the website's Downloads page.
 PRESETS = {
@@ -110,6 +93,9 @@ DESCRIPTIONS = {
 }
 
 
+from book import Book  # noqa: E402
+
+
 class Options(argparse.Namespace):
     scope = "book"
     solutions = "end"
@@ -121,7 +107,7 @@ class Options(argparse.Namespace):
     style = "color"
     layout = "book"
     margin = 2.2
-    name = None
+    name: str | None = None
     keep = False
     markdown_only = False
     branches = ""
@@ -187,280 +173,6 @@ def preset_options(name: str) -> Options:
     return o
 
 
-# ---------------------------------------------------------------- content
-class Book:
-    """Assembles one document from the model according to the options."""
-
-    def __init__(self, repo, o: Options):
-        self.repo, self.o = repo, o
-        self.levels = {x.strip() for x in o.level.split(",") if x.strip()}
-        self.course = None
-        cid = o.scope.split(":", 1)[1] if o.scope.startswith("course:") else o.course
-        if cid:
-            self.course = next((c for c in repo.courses if c.id == cid), None)
-            if not self.course:
-                raise SystemExit(f"unknown course '{cid}'")
-        if o.extra == "omit" and not self.course:
-            raise SystemExit("--extra omit needs a course (--scope course:<id> or --course <id>)")
-        self.branch_num = repo.number_notes()
-        self.include = {x.strip() for x in o.include.split(",") if x.strip()}
-        bad = self.include - set(TYPES)
-        if bad:
-            raise SystemExit(f"--include: unknown {', '.join(sorted(bad))}; use {','.join(TYPES)}")
-        self.chapters = self.select(self.plan())
-        self.printed: set[str] = set()      # labels present in the document
-        self.solutions_end: list[str] = []
-        self.solutions_only: list[str] = []
-
-    # which notes, grouped into chapters: [(title, [notes], [review folders])]
-    def plan(self):
-        r, o = self.repo, self.o
-        if o.scope == "book":
-            return [(f"{self.branch_num[b]} {t}", r.branch_members(b), [r.reviews[b]] if b in r.reviews else [])
-                    for _, bs in r.parts for b, t in bs if r.branch_members(b)]
-        if o.scope.startswith("branch:"):
-            b = o.scope.split(":", 1)[1]
-            title = next((t for _, bs in r.parts for x, t in bs if x == b), None)
-            if title is None:
-                raise SystemExit(f"unknown branch '{b}'")
-            return [(f"{self.branch_num[b]} {title}", r.branch_members(b), [r.reviews[b]] if b in r.reviews else [])]
-        if o.scope.startswith("course:"):
-            c = self.course
-            out, last = [], {}
-            for nid, p in c.order:
-                last[r.notes[nid].branch] = p.chapter
-            for ch in c.chapters:
-                notes = [r.notes[nid] for nid, p in c.order if p.chapter == ch["num"]]
-                if self.o.extra == "omit":
-                    notes = [n for n in notes if r.in_scope(c, n.id)]
-                if not notes:
-                    continue
-                for k, n in enumerate(notes, 1):   # course numbering, as on the website when filtered
-                    n.num = f"{ch['num']}.{k}"
-                reviews = [r.reviews[b] for b, lc in last.items() if lc == ch["num"] and b in r.reviews]
-                out.append((f"{ch['num']} {ch['title']}", notes, reviews))
-            return out
-        raise SystemExit(f"--scope must be book, branch:<id> or course:<id>, not '{o.scope}'")
-
-    def select(self, chapters):
-        """Apply --branches, --chapters and --notes."""
-        o = self.o
-        if o.branches:
-            want = {x.strip() for x in o.branches.split(",") if x.strip()}
-            chapters = [ch for ch in chapters
-                        if ch[1] and (ch[1][0].branch in want or ch[1][0].branch.rsplit("/", 1)[-1] in want)]
-        if o.chapters:
-            want = {x.strip() for x in o.chapters.split(",") if x.strip()}
-            chapters = [ch for ch in chapters if ch[0].split(" ", 1)[0] in want]
-        if o.notes:
-            want = {x.strip() for x in o.notes.split(",") if x.strip()}
-            unknown = want - set(self.repo.notes)
-            if unknown:
-                raise SystemExit(f"--notes: unknown {', '.join(sorted(unknown))}")
-            chapters = [(t, [n for n in ns if n.id in want], rv) for t, ns, rv in chapters]
-            chapters = [ch for ch in chapters if ch[1]]
-        if not chapters:
-            raise SystemExit("nothing selected")
-        return chapters
-
-    def keep(self, note, bid) -> bool:
-        if self.o.extra != "omit" or bid is None:
-            return True
-        return self.repo.in_scope(self.course, note.id, bid)
-
-    def keep_problem(self, note, pid, level) -> bool:
-        lv = level or "unrated"
-        if lv not in self.levels:
-            return False
-        if self.o.extra == "omit":
-            if note.id in self.repo.notes:
-                return self.repo.in_scope(self.course, note.id, pid)
-            return self.course.id in self.repo.review_courses(note.branch, pid)
-        return True
-
-    # ---- pieces
-    def note_body(self, note) -> str:
-        """note.md (+ example.md) without out-of-scope blocks, headings demoted."""
-        parts = []
-        for k, text in enumerate((note.body, note.examples)):
-            text = text.strip()
-            if not text:
-                continue
-            lines = text.split("\n")
-            drop = []
-            last = None
-            for d in divs_in(text):
-                if d.depth:
-                    continue
-                is_proof = d.has("proof") and not d.has("remark")
-                owner = last if is_proof else d.id
-                if not is_proof:
-                    last = d.id
-                kind = "proof" if is_proof else TYPE_OF_PREFIX.get((d.id or "").split("-", 1)[0])
-                owner_kind = TYPE_OF_PREFIX.get((owner or "").split("-", 1)[0])
-                if (owner and not self.keep(note, owner)) or (kind and kind not in self.include) \
-                        or (is_proof and owner_kind and owner_kind not in self.include):
-                    drop.append((d.line - 1, d.end - 1))
-            for a, b in reversed(drop):
-                del lines[a:b + 1]
-            text = "\n".join(lines)
-            text = re.sub(r"(?m)^(#{2,5}) ", lambda m: "#" + m.group(1) + " ", text)   # ## -> ###
-            if k == 1:                                   # example.md
-                if "example" not in self.include:
-                    continue
-                text = "### Examples\n\n" + text
-            parts.append(text)
-        body = "\n\n".join(parts)
-        for d in divs_in(body):
-            if d.id:
-                self.printed.add(d.id)
-        return body
-
-    @staticmethod
-    def no_headings(text: str) -> str:
-        """Headings inside a problem or solution would become chapters in the
-        PDF; print them as bold paragraphs (check.py also rejects them)."""
-        return re.sub(r"^([ \t]*)#{1,6} (.+)$", r"\1**\2**", text, flags=re.M)
-
-    def problems(self, note, heading: str) -> str:
-        sols = {d.attrs.get("for"): d for d in note.solution_divs}
-        out = []
-        for k, p in enumerate(note.problems, 1):
-            pid, lv = p.id, p.attrs.get("level", "")
-            if not self.keep_problem(note, pid, lv):
-                continue
-            num = k                      # 1, 2, 3, ... within the note, as on the website
-            src = p.attrs.get("source", "")
-            m = re.match(r"fit1058-cn-([\d.]+)-q(\d+)", src)
-            label = f"FIT1058 CN {m.group(1)} Q{m.group(2)}" if m else src
-            # textbook layout: "Exercise n" on the left, source and level small on the right
-            side = " · ".join(x for x in (label, lv) if x)
-            head = (f"\\exercisehead{{{num}}}{{{tex_escape(side)}}}")
-            stmt = (f"[]{{#{pid}}}\n```{{=latex}}\n{head}\n```\n\n"
-                    f"{self.no_headings(p.body.strip())}\n")
-            self.printed.add(pid)
-            out.append(stmt)
-            sol = sols.get(pid)
-            if sol is None or not sol.body.strip() or self.o.solutions == "none":
-                continue
-            draft = " (draft)" if sol.attrs.get("status") == "draft" else ""
-            text = f"*Solution{draft}.*\n\n{self.no_headings(sol.body.strip())}\n"
-            if self.o.solutions == "inline":
-                out.append(text)
-            elif self.o.solutions == "end":
-                self.solutions_end.append(f"**{heading}, exercise {num}.**\n\n{text}")
-            else:
-                self.solutions_only.append(f"**{heading}, exercise {num}.**\n\n{p.body.strip()}\n\n{text}")
-        return "\n\n".join(out)
-
-    def statements_of(self, note) -> str:
-        out = []
-        want = lambda bid: self.keep(note, bid) and TYPE_OF_PREFIX.get(bid.split("-", 1)[0]) in self.include
-        for d in statements(note, want):
-            f = fence_for(d.body)
-            attrs = "{" + f"#{d.id} ." + d.classes[0] + (f' name="{d.name}"' if d.name else "") + "}"
-            out.append(f"{f} {attrs}\n{d.body.strip()}\n{f}")
-            self.printed.add(d.id)
-        return "\n\n".join(out)
-
-    # ---- document
-    def markdown(self) -> str:
-        o = self.o
-        lines = []
-        for title, notes, reviews in self.chapters:
-            lines += [f"# {title}", ""]
-            if o.only == "summaries":
-                lines += ["## Definitions and results", ""]
-                for n in notes:
-                    st = self.statements_of(n)
-                    if st:
-                        lines += [f"### {n.display_title}", "", st, ""]
-                ex = [(n, self.problems(n, n.display_title) if "exercise" in self.include else "") for n in notes]
-                if any(p for _, p in ex):
-                    lines += ["## Exercises", ""]
-                    for n, p in ex:
-                        if p:
-                            lines += [f"### {n.display_title}", "", p, ""]
-            else:
-                for n in notes:
-                    self.printed.add(n.sec_label)
-                    lines += [f"## {n.display_title} {{#{n.sec_label}}}", ""]
-                    if o.only == "all":
-                        lines += [self.note_body(n), ""]
-                    probs = self.problems(n, n.display_title) if "exercise" in self.include else ""
-                    if probs:
-                        lines += (["### Exercises", ""] if o.only == "all" else []) + [probs, ""]
-            syn = [self.problems(rv, f"{title}, synthesis") for rv in reviews] if "synthesis" in self.include else []
-            syn = [s for s in syn if s]
-            if syn:
-                lines += ["## Synthesis problems", ""] + syn + [""]
-        if self.solutions_end:
-            lines += ["# Solutions", ""] + self.solutions_end
-        return self.finish("\n".join(lines))
-
-    def finish(self, md: str) -> str:
-        """Lift remark ids, turn claims into text, and resolve references."""
-        md = lift_plain_ids(md)
-        if self.o.style == "color":
-            md = boxed(md)
-        # LaTeX (unlike MathJax) needs braces for a command as sub/superscript: x_\mathbb{Z}
-        md = re.sub(r"([_^])\\((?:math[a-z]+|text[a-z]*|operatorname|bm))\{([^{}]*)\}", r"\1{\\\2{\3}}", md)
-        notes, owner = self.repo.notes, self.repo.owner
-
-        def ref(m):
-            r = m.group(1)
-            pre = r.split("-", 1)[0]
-            if r.startswith("sec-"):
-                nid = next((x for x in notes if notes[x].sec_label == r), None)
-                if r in self.printed:
-                    return "@" + r
-                return notes[nid].display_title if nid else r
-            if pre == "prob":
-                nid = owner.get(r)
-                if nid in notes:
-                    return f"Exercise {notes[nid].exercise_number(r)} in {notes[nid].display_title}"
-                rv = next((v for v in self.repo.reviews.values() if r in v.blocks), None)
-                return f"Synthesis problem {rv.exercise_number(r)}" if rv else "an exercise"
-            if r in self.printed and pre in ("def", "thm", "prp", "lem", "cor", "exm", "fig"):
-                return "@" + r
-            nid = owner.get(r)
-            name = notes[nid].blocks.get(r, "") if nid in notes else ""
-            word = WORD.get(pre, "")
-            return f"{word} ({name})" if name else (f"{word} in {notes[nid].display_title}" if nid in notes else word)
-        return REF.sub(ref, md)
-
-
-def tex_escape(t: str) -> str:
-    return re.sub(r"([\\&%$#_{}~^])", lambda m: {"\\": r"\textbackslash{}", "~": r"\textasciitilde{}",
-                                                  "^": r"\textasciicircum{}"}.get(m.group(1), "\\" + m.group(1)), t)
-
-
-def boxed(md: str) -> str:
-    """Wrap each top-level definition, result and example (with the proof that
-    follows it) in a coloured box, like the website."""
-    lines = md.split("\n")
-    units = []
-    for d in divs_in(md):
-        if d.depth:
-            continue
-        if d.has("proof") and not d.has("remark") and units and units[-1][2] == d.line - 2:
-            units[-1][2] = d.end - 1
-            continue
-        pre = (d.id or "").split("-", 1)[0]
-        if pre in BOX_COLOR:
-            units.append([BOX_COLOR[pre], d.line - 1, d.end - 1])
-    for color, a, b in reversed(units):
-        lines[b + 1:b + 1] = ["", "```{=latex}", "\\end{stbox}", "```"]
-        lines[a:a] = ["```{=latex}", f"\\begin{{stbox}}{{{color}}}", "```", ""]
-    return "\n".join(lines)
-
-
-def lift_plain_ids(text: str) -> str:
-    """Quarto rejects ids on remarks/claims (rmk-, clm-); drop them for the PDF."""
-    return re.sub(r"^(:{3,}\s*\{)#(?:rmk|clm)-[\w-]+\s*", r"\1", text, flags=re.M)
-
-
-# ---------------------------------------------------------------- render
 def default_name(o: Options) -> str:
     parts = [o.scope.replace("course:", "").replace("branch:", "branch-").replace("/", "-")]
     if o.only != "all":
@@ -523,7 +235,7 @@ def build(o: Options) -> list[Path]:
     book = Book(repo, o)
     name = o.name or default_name(o)
     scope_title = {"book": "Study Notes"}.get(o.scope) or (
-        f"{book.course.code}" if o.scope.startswith("course:") else book.chapters[0][0])
+        book.course.code if (o.scope.startswith("course:") and book.course) else book.chapters[0][0])
     kind = {"all": "", "summaries": ": Chapter summaries", "exercises": ": Exercises"}[o.only]
     out = [render(book.markdown(), scope_title + kind, name, o)]
     if o.solutions == "separate" and book.solutions_only:

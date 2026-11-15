@@ -91,6 +91,7 @@ def main(argv: list[str]) -> int:
         path = NOTES / o / "note.md"
         text = changes.get(path, path.read_text(encoding="utf-8"))
         m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+        assert m, f"{path}: no YAML header"
         head = m.group(1)
         am = re.search(r"^aliases:\s*\[(.*?)\]\s*(#.*)?$", head, re.M)
         if am:

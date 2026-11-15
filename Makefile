@@ -8,6 +8,7 @@ check:
 # Tests of the build scripts on tests/fixture (python3 tests/test_build.py --update
 # accepts new expected output after an intended change)
 test:
+	$(PYTHON) -m mypy
 	$(PYTHON) tests/test_build.py
 
 # Generate pages from notes/ and render the website into site/_site/

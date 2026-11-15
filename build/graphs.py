@@ -51,7 +51,7 @@ def layout(nodes: list[str], edges: list[tuple[str, str]]) -> dict[str, tuple[in
 
 
 def svg(nodes: list[str], edges: list[tuple[str, str]], label: dict[str, str], href: dict[str, str],
-        faded: set[str] = frozenset(), css_class: str = "dep-graph", across: bool = False) -> str:
+        faded: set[str] | frozenset[str] = frozenset(), css_class: str = "dep-graph", across: bool = False) -> str:
     """An SVG drawing of the graph. `faded` nodes (e.g. prerequisites from other
     branches) are drawn lighter."""
     if not nodes:

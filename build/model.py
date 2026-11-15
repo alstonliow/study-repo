@@ -11,8 +11,12 @@ import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
+from typing import Any
 
 import yaml
+
+from sources import Sources
+from kinds import SUMMARY_PREFIXES as KEY_PREFIXES
 
 # STUDY_ROOT points the model at another repository (tests use a small fixture).
 ROOT = Path(os.environ.get("STUDY_ROOT") or Path(__file__).resolve().parent.parent).resolve()
@@ -20,13 +24,7 @@ NOTES = ROOT / "notes"
 META = ROOT / "meta"
 
 NOTE_FILES = ("note.md", "example.md", "exercise.md", "solution.md")
-XREF_PREFIXES = ("def", "thm", "prp", "lem", "cor", "exm", "prob", "fig")   # numbered, @-referenceable
-ID_PREFIXES = XREF_PREFIXES + ("rmk", "clm")                                  # every block id (SPEC §5)
-KEY_PREFIXES = {"def", "thm", "prp", "lem", "cor"}
-REVIEW = "review"   # folder name for a branch's synthesis problems                            # listed on branch pages
-PREFIX_OF_CLASS = {"definition": "def", "theorem": "thm", "proposition": "prp", "lemma": "lem",
-                   "corollary": "cor", "example": "exm", "problem": "prob", "remark": "rmk",
-                   "claim": "clm"}
+REVIEW = "review"   # folder name for a branch's synthesis problems (SPEC §6.3)
 
 OPEN = re.compile(r"^(:{3,})\s*\{(.*)\}\s*$")
 CLOSE = re.compile(r"^(:{3,})\s*$")
@@ -57,7 +55,7 @@ def mask_comments(text: str) -> str:
 
 def attrs_of(s: str) -> dict:
     """Pandoc attribute string -> {"id", "classes", key: value, ...}."""
-    out = {"classes": re.findall(r"(?:^|\s)\.([\w-]+)", s)}
+    out: dict[str, Any] = {"classes": re.findall(r"(?:^|\s)\.([\w-]+)", s)}
     kv = dict(re.findall(r'([\w-]+)="([^"]*)"', s))
     kv.update(dict(re.findall(r"([\w-]+)='([^']*)'", s)))
     no_kv = re.sub(r'[\w-]+=("[^"]*"|\'[^\']*\')', "", s)
@@ -202,6 +200,7 @@ class Note:
         self.solution_divs = [Div("solution.md", 0, a, 0, b) for a, b in top_level_divs(self.solutions)
                               if "solution" in a["classes"]]
         self.num = ""   # display number, set by the site build
+        self.courses: list[str] = []   # course ids whose scope includes this note (set by the site build)
 
     def exercise_number(self, pid: str) -> int | None:
         """Position (1, 2, 3, ...) of a problem among this note's exercises."""
@@ -234,11 +233,11 @@ class Note:
         """Top-level blocks of the page body (note.md, then example.md) with the
         id that decides their scope: their own id, or for a proof the block
         just before it (SPEC §13.1)."""
-        out = []
+        out: list[tuple[str | None, Div]] = []
         for name in ("note.md", "example.md"):
             if name not in self.files:
                 continue
-            last = None
+            last: str | None = None
             for d in self.files[name].divs:
                 if d.depth:
                     continue
@@ -319,6 +318,7 @@ class Repo:
         # explicit topic order of the notes in each branch (folder names)
         self.branch_order = {b["id"]: [str(x) for x in b.get("notes") or []]
                              for p in tax.get("parts", []) for b in p["branches"]}
+        self.sources = Sources(META)
         cdir = META / "courses"
         self.courses = [Course(p) for p in sorted(cdir.glob("*.yml"))] if cdir.exists() else []
         self.resolve_courses()
@@ -379,23 +379,14 @@ class Repo:
         Unlisted notes (an error in check.py) go last, by source key."""
         order = {slug: k for k, slug in enumerate(self.branch_order.get(bid, []))}
         return sorted((n for n in self.notes.values() if n.branch == bid),
-                      key=lambda n: (order.get(n.slug, len(order)), sort_key(n.front.get("sources")), n.id))
+                      key=lambda n: (order.get(n.slug, len(order)), sort_key(n.front.get("sources") or []), n.id))
 
     def number_notes(self) -> dict[str, int]:
-        """Topic numbering: branches 1, 2, ... restarting in each part; notes b.k.
-        Sets note.num; returns branch -> number."""
-        branch_num: dict[str, int] = {}
-        for _, branches in self.parts:
-            seq = 0
-            for bid, _ in branches:
-                members = self.branch_members(bid)
-                if not members:
-                    continue
-                seq += 1
-                branch_num[bid] = seq
-                for k, n in enumerate(members, 1):
-                    n.num = f"{seq}.{k}"
-        return branch_num
+        """Topic numbering (outline.topic): sets note.num; returns branch -> number."""
+        import outline
+        o = outline.topic(self)
+        o.apply()
+        return {ch.key: int(ch.num) for ch in o.chapters}
 
     # ------------------------------------------------------------ prerequisites (SPEC §4)
     def topic_order(self) -> list[str]:

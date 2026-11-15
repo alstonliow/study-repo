@@ -322,8 +322,9 @@ class TestSelection(Repo):
 
     def test_exercise_numbers_start_at_one(self):
         md = self.assemble("--only", "exercises", "--solutions", "none")
-        self.assertIn("\\exercisehead{1}", md)
-        self.assertIn("\\exercisehead{2}", md)
+        self.assertIn("\\exercisehead{Exercise}{1}", md)
+        self.assertIn("\\exercisehead{Exercise}{2}", md)
+        self.assertIn("\\exercisehead{Review}{1.1}", md)
 
     def test_unknown_note_is_refused(self):
         r = run("make_pdf.py", self.root, "--markdown-only", "--notes", "t/nope")
@@ -338,6 +339,51 @@ class TestSelection(Repo):
         page = (site / "notes/t/alpha/first.qmd").read_text()
         self.assertIn("[Exercise 1]", page)
         self.assertIn("[Exercise 2]", page)
+
+
+class TestNumbering(Repo):
+    def test_blocks_numbered_per_kind_on_the_page(self):
+        site = generate(self.root)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn('Definition [1.1.1]{.num data-note="t/alpha/first"} (Widget)', first)
+        self.assertIn('Theorem [1.1.1]{.num data-note="t/alpha/first"} (Widget theorem)', first)
+        self.assertIn('Example [1.1.1]{.num', first)
+        self.assertNotIn("#thm-widget .theorem", first)      # no Quarto numbering
+        self.assertIn('<span id="thm-widget" class="anchor"></span>', first)
+
+    def test_references_use_numbers(self):
+        site = generate(self.root)
+        second = (site / "notes/t/alpha/second.qmd").read_text()
+        self.assertIn('[Definition [1.1.1]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#def-widget)', second)
+
+    def test_course_numbers_in_site_data(self):
+        site = generate(self.root)
+        data = json.loads((site / "site-data.json").read_text())
+        self.assertEqual(data["numbers"]["topic"]["t/beta/third"], "2.1")
+        self.assertEqual(data["numbers"]["demo"]["t/beta/third"], "2.1")
+        self.assertIn("kinds", data)
+
+    def test_review_numbers(self):
+        site = generate(self.root)
+        page = (site / "notes/t/alpha/summary.qmd").read_text()
+        self.assertIn("[Review 1.1]{.problem-title}", page)
+        self.assertIn("from 1.1 First note", page)
+
+    def test_pdf_titles_and_solution_labels(self):
+        r = run("make_pdf.py", self.root, "--markdown-only", "--name", "t")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        md = (self.root / "out/pdf/t.qmd").read_text()
+        self.assertIn("**Theorem 1.1.1**", md)
+        self.assertIn("**Exercise 1.1.1.**", md)              # solutions at the end use full numbers
+        self.assertIn("**Review 1.1.**", md)
+
+    def test_cross_book_label(self):
+        code = ("import model, numbering; r = model.Repo(); nb = numbering.build(r); "
+                "nb.book['t/beta/third'] = 'Other Book'; "
+                "print(nb.label('thm-widget', r.notes['t/alpha/first'], r.notes['t/beta/third']))")
+        out = subprocess.run([PY, "-c", code], cwd=BUILD, capture_output=True, text=True,
+                             env=dict(os.environ, STUDY_ROOT=str(self.root)))
+        self.assertEqual(out.stdout.strip(), "Theorem 1.1.1 (Testing)", out.stderr)
 
 
 def update_expected() -> None:

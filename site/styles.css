@@ -212,3 +212,9 @@ nav.page-navigation .pagination-link i { font-size: 1.3rem; color: var(--notec);
 .summary-kind { font-family: "Source Sans 3", system-ui, sans-serif; font-weight: 700; color: var(--k); }
 .summary-src { font-family: "Source Sans 3", system-ui, sans-serif; font-size: 0.85em; margin-left: 0.3em; text-decoration: none; }
 .course-summary-item .menu-text { font-style: italic; }
+
+/* ---------- numbered blocks and figures (numbering.py) ---------- */
+.anchor { position: relative; top: -4.5rem; }   /* keep linked titles clear of the navbar */
+.st-figure { margin: 1.4em 0; }
+.st-figure p:has(> .fig-label) { text-align: center; color: var(--notec); font-size: 0.9em; margin-top: 0.4em; }
+.st-figure .fig-label strong { color: var(--bs-body-color); font-weight: 600; }

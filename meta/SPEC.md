@@ -102,7 +102,8 @@ problems and examples (`level`, §5 and §6.1).
 Content blocks are Pandoc fenced divs (`:::`).
 
 Allowed classes: `definition`, `theorem`, `proposition`, `lemma`, `corollary`,
-`claim`, `proof`, `example`, `remark`, `problem`, `solution`.
+`claim`, `proof`, `example`, `remark`, `problem`, `solution`. The registry of
+kinds (prefix, word, numbering, colour) is `build/kinds.py` (§16.7).
 
 1. Every block in `note.md`, `example.md` and `exercise.md` carries a stable id
    with a prefix: `def-`, `thm-`, `prp-`, `lem-`, `cor-`, `exm-`, `prob-`,
@@ -247,7 +248,8 @@ note of the branch does, unless the course excludes them.
    block.
 4. Cross-references use labels only (compiled to `\label`/`\ref`/`\eqref`).
    Never plain text such as "§1.6" or "Theorem X".
-   - Blocks: `@thm-sum-rule`. Quarto supplies the word "Theorem".
+   - Blocks: `@thm-sum-rule`. The build writes the label with its number,
+     "Theorem 8.1.2" (§16), as a link.
    - Knowledge points: `@sec-` plus the id with `/` replaced by `-`, e.g.
      `@sec-math-discrete-counting-derangements`. The build gives each note this
      section label.
@@ -388,3 +390,30 @@ marks) and prints it with "Save as PDF"; it also writes the matching
 combination.
 Figures use `build/figures.tex`, shared with the website. References to content
 that a PDF leaves out are printed as plain text.
+
+## 16. Numbering
+
+Numbers come from an **outline** (`build/outline.py`): the topic outline from
+`meta/taxonomy.yml` (books = parts → chapters = branches → notes), or one
+outline per course from `meta/courses/<id>.yml`. `build/numbering.py` turns an
+outline and `meta/numbering.yml` into every number; nothing else computes
+numbers, and Quarto's or LaTeX's own theorem numbering is not used.
+
+1. **Books.** Each part is a book with its own numbers; fields (math, cs) only
+   group the navigation. A reference into another book adds the book's title:
+   Theorem 11.8.1 (Discrete Mathematics).
+2. **Notes**: chapter.k (8.1). Headings inside a note are not numbered.
+3. **Blocks**: the note's number and a counter per kind: Definition 8.1.1,
+   Definition 8.1.2, Example 8.1.1, Theorem 8.1.1. Numbered kinds are listed in
+   `numbering.yml` (definitions, theorems, propositions, lemmas, corollaries,
+   examples, figures); remarks and claims are not numbered.
+4. **Exercises**: 1, 2, 3 on their note's page; Exercise 8.1.3 anywhere else
+   (references, PDF solutions). On summary pages and the Export page they keep
+   1, 2, 3 and note the topic they come from, their source and level.
+5. **Synthesis problems** (`review/`): Review 8.1, 8.2 (chapter.k).
+6. **Courses.** With the course filter on, the website shows the course's
+   numbers (Theorem 7.1.2): every number is marked with its note and switched
+   from the maps in `site-data.json`. Course PDFs use course numbers.
+7. **Kinds of block** are defined once in `build/kinds.py` (prefix, class,
+   word, group, numbered, cross-referenced, colour); the page scripts read the
+   same table from `site-data.json`.

@@ -91,12 +91,22 @@
   // Notes keep their own topic number on the page itself; only the sidebar and
   // previous/next links use the course number while a filter is active.
   const TOPIC_NUM = /^\s*\d+(\.\d+)*\s+/;
+  // page path -> course section number, from site-data.json (numbering.py)
   function courseNumbers(data, cid) {
     const m = {};
-    (data.order[cid] || []).forEach(ch => ch.pages.forEach((p, k) => {
-      m[p] = ch.num ? ch.num + "." + (k + 1) : "";
-    }));
+    Object.entries((data.numbers || {})[cid] || {}).forEach(([nid, n]) => { m["notes/" + nid + ".html"] = n; });
     return m;
+  }
+  // every number marked with its note (<span class="num" data-note>) switches to
+  // the course's numbering: Theorem 8.1.2 -> Theorem 7.1.2
+  function swapNumbers(data, cid) {
+    const topic = (data.numbers || {}).topic || {}, course = (data.numbers || {})[cid] || {};
+    document.querySelectorAll(".num[data-note]").forEach(el => {
+      const from = topic[el.dataset.note], to = course[el.dataset.note];
+      if (!from || !to) return;
+      const t = swapNum(el.textContent, from, to);
+      if (t !== null) setText(el, t);
+    });
   }
   function plainTitle(li) {
     return li.querySelector(".menu-text").textContent.replace(TOPIC_NUM, "").trim();
@@ -237,6 +247,7 @@
   function applyPage(data, sel) {
     restorePage();
     if (!sel.length) return;
+    swapNumbers(data, sel[0]);
     const here = sitePath(window.location.href);
     const leaves = leafMap();
     const c = data.courses.find(c => sel.includes(c.id) && courseNumbers(data, c.id)[here]);

@@ -4,15 +4,15 @@ title: 1.1 First note
 
 [Sources: `demo-1.1` · Leads to: [1.2 Second note](/notes/t/alpha/second.qmd), [2.1 Third note](/notes/t/beta/third.qmd) · Status: draft]{.note-meta}
 
-## 1.1.1 Part one
+## Part one
 
-::: {#def-widget .definition name="Widget"}
-A *widget* is a thing with
+::: {.definition}
+<span id="def-widget" class="anchor"></span>[**Definition [1.1.1]{.num data-note="t/alpha/first"} (Widget)**]{.theorem-title} A *widget* is a thing with
 $$ w = 1. $$
 :::
 
-::: {#thm-widget .theorem name="Widget theorem"}
-Every widget is a widget.
+::: {.theorem}
+<span id="thm-widget" class="anchor"></span>[**Theorem [1.1.1]{.num data-note="t/alpha/first"} (Widget theorem)**]{.theorem-title} Every widget is a widget.
 :::
 
 ::: {.proof}
@@ -23,35 +23,35 @@ Every widget is a widget.
 
 :::: {#rmk-first-1 .block}
 ::: {.remark name="Aside"}
-See [1.2 Second note](/notes/t/alpha/second.qmd) and [Theorem (Gadget theorem)](/notes/t/alpha/second.qmd#thm-gadget).
+See [1.2 Second note](/notes/t/alpha/second.qmd) and [Theorem [1.2.1]{.num data-note="t/alpha/second"}](/notes/t/alpha/second.qmd#thm-gadget).
 :::
 ::::
 
-## 1.1.2 Part two
+## Part two
 
-::: {#exm-widget .example level="easy"}
-[easy]{.level-badge .level-easy}
-An example with $x$ and $y$, and @def-widget on this page.
+::: {.example level="easy"}
+<span id="exm-widget" class="anchor"></span>[**Example [1.1.1]{.num data-note="t/alpha/first"}**]{.theorem-title} [easy]{.level-badge .level-easy}
+An example with $x$ and $y$, and [Definition [1.1.1]{.num data-note="t/alpha/first"}](#def-widget) on this page.
 :::
 
 ## Exercises
 
 :::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium"}
 ::: {#prob-first-01 .problem}
-[Exercise 1]{.problem-title}[demo-1.1-q1]{.problem-source} [medium]{.level-badge .level-medium}
+[Exercise 1]{.problem-title}[DEMO 1.1 Q1]{.problem-source} [medium]{.level-badge .level-medium}
 
 Show that a widget is a widget.
 :::
 
 ::: {.callout-tip collapse="true" appearance="simple" title="Draft solution (not yet reviewed)"}
-1. By @thm-widget.
+1. By [Theorem [1.1.1]{.num data-note="t/alpha/first"}](#thm-widget).
 :::
 
 ::::
 
 :::: {.problem-group data-courses="demo" data-item="prob-first-02" data-level=""}
 ::: {#prob-first-02 .problem}
-[Exercise 2]{.problem-title}[demo-1.1-q2]{.problem-source}
+[Exercise 2]{.problem-title}[DEMO 1.1 Q2]{.problem-source}
 
 Statement two.
 :::

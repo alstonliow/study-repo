@@ -22,16 +22,16 @@ title: '2 Beta: Summary'
 
 ## Definitions and results
 
-### 2.1 Third note [→](/notes/t/beta/third.qmd){.summary-src title="Open the note"}
+### [2.1]{.num data-note="t/beta/third"} Third note [→](/notes/t/beta/third.qmd){.summary-src title="Open the note"}
 
 ::: {.summary-item .k-def .scope-block data-kind="def" data-item="t/beta/third" data-courses="demo" data-label="Definition: Third"}
-[Definition]{.summary-kind} Third [→](/notes/t/beta/third.qmd#def-third){.summary-src title="2.1 Third note"}
+[Definition [2.1.1]{.num data-note="t/beta/third"}]{.summary-kind} Third [→](/notes/t/beta/third.qmd#def-third){.summary-src title="2.1 Third note"}
 
 Covered by block id. Back to [1.1 First note](/notes/t/alpha/first.qmd).
 :::
 
 ::: {.summary-item .k-prp .scope-block data-kind="result" data-item="t/beta/third" data-courses="" data-label="Proposition: Not covered"}
-[Proposition]{.summary-kind} Not covered [→](/notes/t/beta/third.qmd#prp-third){.summary-src title="2.1 Third note"}
+[Proposition [2.1.1]{.num data-note="t/beta/third"}]{.summary-kind} Not covered [→](/notes/t/beta/third.qmd#prp-third){.summary-src title="2.1 Third note"}
 
 Outside the demo course.
 :::

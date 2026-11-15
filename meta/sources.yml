@@ -1,0 +1,12 @@
+# Source registry (meta/SPEC.md §4, §6): every source-key prefix, its edition and
+# how its keys are shown. Keys are never renamed when a new edition appears:
+# add the edition below with a map from old to new section numbers instead.
+sources:
+  - prefix: fit1058-cn-
+    title: FIT1058 Foundations of Computing, Course Notes
+    course: fit1058
+    edition: "2026-06-16"            # the version the keys refer to
+    # key shapes: fit1058-cn-<section>  and  fit1058-cn-<exercise section>-q<n>
+    pattern: '^fit1058-cn-(?P<section>\d+(?:\.\d+)*)(?:-q(?P<n>\d+))?$'
+    label: "FIT1058 CN {section}"
+    problem_label: "FIT1058 CN {section} Q{n}"

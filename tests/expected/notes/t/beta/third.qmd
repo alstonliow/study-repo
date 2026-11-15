@@ -4,12 +4,12 @@ title: 2.1 Third note
 
 [Prerequisites: [1.1 First note](/notes/t/alpha/first.qmd)]{.note-meta}
 
-::: {#def-third .definition name="Third"}
-Covered by block id. Back to [1.1 First note](/notes/t/alpha/first.qmd).
+::: {.definition}
+<span id="def-third" class="anchor"></span>[**Definition [2.1.1]{.num data-note="t/beta/third"} (Third)**]{.theorem-title} Covered by block id. Back to [1.1 First note](/notes/t/alpha/first.qmd).
 :::
 
 :::: {.scope-block data-courses="" data-kind="prp" data-label="Proposition: Not covered"}
-::: {#prp-third .proposition name="Not covered"}
-Outside the demo course.
+::: {.proposition}
+<span id="prp-third" class="anchor"></span>[**Proposition [2.1.1]{.num data-note="t/beta/third"} (Not covered)**]{.theorem-title} Outside the demo course.
 :::
 ::::

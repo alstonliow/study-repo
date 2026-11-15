@@ -1,0 +1,21 @@
+# How numbers are written (meta/SPEC.md §16). Numbers come from an outline
+# (topic or course); this file only says how to write them.
+#
+# Placeholders: {chapter} chapter number, {section} the note's number ("8.1"),
+# {n} the position, {label} a full label, {book} the book's title.
+
+# Blocks: the note's number, then a counter per kind (Definition 8.1.1,
+# Definition 8.1.2, Theorem 8.1.1). Kinds not listed are not numbered.
+block: "{section}.{n}"
+numbered: [def, thm, prp, lem, cor, exm, fig]
+
+# Exercises: 1, 2, 3 on their own page; the full number anywhere else.
+exercise_page: "{n}"
+exercise_ref: "{section}.{n}"
+
+# Synthesis problems in a branch's review/ folder: Review 8.1, 8.2.
+review_word: Review
+review: "{chapter}.{n}"
+
+# A reference into another book (part): Theorem 11.8.1 (Discrete Mathematics).
+cross_book: "{label} ({book})"
