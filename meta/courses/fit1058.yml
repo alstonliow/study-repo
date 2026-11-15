@@ -1,7 +1,7 @@
 # FIT1058 course scope (meta/SPEC.md §13).
-# Outline: the chapters and sections of the FIT1058 Course Notes. Sections the
-# Course Notes mark as beyond the curriculum (superscript omega: 2.11, 3.12,
-# 4.13, 11.3, 12.6) are not listed, so content drawn only from them is out of scope.
+# Rule (owner): content that is in the FIT1058 Course Notes is in scope, including
+# sections the Course Notes mark as beyond the curriculum (superscript omega).
+# Content that is not in the Course Notes is out of scope ("extra").
 # Each point covers whole notes; "exclude" takes single blocks back out.
 id: fit1058
 code: FIT1058
@@ -12,57 +12,76 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
-  # material from sections marked beyond the curriculum
-  - def-loose-composition        # 2.11 Loose composition
-  - rmk-composition-6            # 2.11 Loose composition
-  - prp-representing-graphs-1    # 11.3 Graphs and relations
-  - rmk-representing-graphs-5    # 11.3 Graphs and relations
-  # the owner's "(extra)" material
-  - thm-division-rule                            # Division rule ("Second Rule of Counting") (extra)
-  - rmk-combinations-2                           # remark on the block above
-  - prp-hockey-stick                             # Hockey-stick identity (extra)
-  - rmk-degree-3                                 # Directed graphs (extra)
-  - thm-route-inspection-chinese-postman-extra   # Route inspection / Chinese postman (extra)
-  - rmk-euler-and-hamilton-3                     # remark on the block above
-  - thm-dirac-extra                              # Dirac (extra)
-  - rmk-euler-and-hamilton-4                     # remark on the block above
-  - thm-four-colour-theorem-extra                # Four colour theorem (extra)
-  - rmk-planarity-5                              # remark on the block above
-  - prp-mmt                                      # Incidence matrix and adjacency matrix (extra)
-  - thm-walks                                    # Counting walks via matrix powers (extra)
-  - rmk-walks-paths-cycles-4                     # remark on the block above
-  - def-sheffer-stroke-nand-extra                # Sheffer stroke (NAND) (extra)
-  - prp-alone-is-universal-extra                 # $\{\mid\}$ alone is universal (extra)
-  - rmk-universal-sets-of-operations-2           # remark on the block above
-  - rmk-divisibility-and-primes-6                # Density of primes (extra)
-  - prp-gcdlcm                                   # gcd–lcm identity (extra)
-  - exm-bernoulli-s-inequality-extra             # Bernoulli's inequality (extra)
-  - rmk-induction-examples-1                     # remark on the block above
-  - exm-ramanujan-s-taxicab-number-extra         # Ramanujan's taxicab number (extra)
-  - rmk-techniques-4                             # remark on the block above
-  - def-big-omega-big-theta-extra                # Big-Omega, Big-Theta (extra)
-  - rmk-big-o-4                                  # Tight bounds (extra)
-  - def-time-complexity-of-an-algorithm          # Time complexity of an algorithm (extra)
-  - exm-linear-search-extra                      # Linear search (extra)
-  - def-polynomial-time-extra                    # Polynomial time (extra)
-  - exm-why-the-distinction-matters-extra        # Why the distinction matters (extra)
-  - def-classes-p-and-np-extra                   # Classes P and NP (extra)
-  - rmk-big-o-5                                  # P vs.\ NP (extra)
-  - def-np-hard-np-complete-extra                # NP-hard, NP-complete (extra)
-  - rmk-big-o-6                                  # Why NP-complete problems matter (extra)
-  - exm-tower-of-hanoi-extra                     # Tower of Hanoi (extra)
-  - def-linear-homogeneous-recurrence-with-constant # Linear homogeneous recurrence with constant coefficients (extra)
-  - rmk-solving-recurrences-2                    # Why the characteristic equation (extra)
-  - thm-distinct-roots                           # Distinct roots case (extra)
-  - exm-solving-a-second-order-recurrence        # Solving a second-order recurrence (extra)
-  - def-linear-nonhomogeneous-recurrence-extra   # Linear nonhomogeneous recurrence (extra)
-  - prp-general-solution-shape-extra             # General solution shape (extra)
-  - exm-worked-nonhomogeneous-example-extra      # Worked nonhomogeneous example (extra)
-  - def-divide-and-conquer-recurrence-extra      # Divide-and-conquer recurrence (extra)
-  - exm-merge-sort-extra                         # Merge sort (extra)
-  - thm-master-theorem-special-case-extra        # Master theorem, special case $g(n)=cn^d$ (extra)
-  - def-generating-function-extra                # Generating function (extra)
-  - rmk-solving-recurrences-3                    # Solving recurrences with generating functions (extra)
+  # the owner's "(extra)" material, and remarks that belong to it
+  - thm-division-rule                                # Division rule ("Second Rule of Counting") (extra)
+  - rmk-combinations-2                               # remark on the block above
+  - prp-hockey-stick                                 # Hockey-stick identity (extra)
+  - rmk-degree-3                                     # Directed graphs (extra)
+  - thm-route-inspection-chinese-postman-extra       # Route inspection / Chinese postman (extra)
+  - rmk-euler-and-hamilton-3                         # remark on the block above
+  - thm-dirac-extra                                  # Dirac (extra)
+  - rmk-euler-and-hamilton-4                         # remark on the block above
+  - thm-four-colour-theorem-extra                    # Four colour theorem (extra)
+  - rmk-planarity-5                                  # remark on the block above
+  - prp-mmt                                          # Incidence matrix and adjacency matrix (extra)
+  - thm-walks                                        # Counting walks via matrix powers (extra)
+  - rmk-walks-paths-cycles-4                         # remark on the block above
+  - rmk-divisibility-and-primes-6                    # Density of primes (extra)
+  - prp-gcdlcm                                       # gcd–lcm identity (extra)
+  - exm-bernoulli-s-inequality-extra                 # Bernoulli's inequality (extra)
+  - rmk-induction-examples-1                         # remark on the block above
+  - exm-ramanujan-s-taxicab-number-extra             # Ramanujan's taxicab number (extra)
+  - rmk-techniques-4                                 # remark on the block above
+  - def-big-omega-big-theta-extra                    # Big-Omega, Big-Theta (extra)
+  - rmk-big-o-4                                      # Tight bounds (extra)
+  - def-time-complexity-of-an-algorithm              # Time complexity of an algorithm (extra)
+  - exm-linear-search-extra                          # Linear search (extra)
+  - def-polynomial-time-extra                        # Polynomial time (extra)
+  - exm-why-the-distinction-matters-extra            # Why the distinction matters (extra)
+  - def-classes-p-and-np-extra                       # Classes P and NP (extra)
+  - rmk-big-o-5                                      # P vs.\ NP (extra)
+  - def-np-hard-np-complete-extra                    # NP-hard, NP-complete (extra)
+  - rmk-big-o-6                                      # Why NP-complete problems matter (extra)
+  - exm-tower-of-hanoi-extra                         # Tower of Hanoi (extra)
+  - def-linear-homogeneous-recurrence-with-constant  # Linear homogeneous recurrence with constant coefficients (extra)
+  - rmk-solving-recurrences-2                        # Why the characteristic equation (extra)
+  - thm-distinct-roots                               # Distinct roots case (extra)
+  - exm-solving-a-second-order-recurrence            # Solving a second-order recurrence (extra)
+  - def-linear-nonhomogeneous-recurrence-extra       # Linear nonhomogeneous recurrence (extra)
+  - prp-general-solution-shape-extra                 # General solution shape (extra)
+  - exm-worked-nonhomogeneous-example-extra          # Worked nonhomogeneous example (extra)
+  - def-divide-and-conquer-recurrence-extra          # Divide-and-conquer recurrence (extra)
+  - exm-merge-sort-extra                             # Merge sort (extra)
+  - thm-master-theorem-special-case-extra            # Master theorem, special case $g(n)=cn^d$ (extra)
+  - def-generating-function-extra                    # Generating function (extra)
+  - rmk-solving-recurrences-3                        # Solving recurrences with generating functions (extra)
+  # other material that is not in the Course Notes (checked against the text)
+  - prp-derangement-recurrence                       # Derangement recurrence
+  - def-complement                                   # Complement of a graph
+  - prp-basic-definitions-1                          # Edges of the complement graph
+  - prp-absorption-laws                              # Absorption laws
+  - prp-exportation-law                              # Exportation law
+  - thm-totientmult                                  # Multiplicativity of the totient
+  - thm-totientformula                               # General totient formula
+  - def-depth-of-a-set-of                            # Depth of a set of intervals
+  - cor-alternating-sum                              # Alternating binomial sum
+  - def-induced-subgraph                             # Induced subgraph
+  - fig-basic-definitions-3                          # figure: an induced subgraph
+  - rmk-basic-definitions-3                          # Induced vs. ordinary subgraph
+  - def-simple-polygon-diagonal                      # Simple polygon, diagonal
+  - lem-every-simple-polygon-with-sides              # Every simple polygon has a diagonal
+  - fig-induction-examples-1                         # figure: polygon diagonal
+  - def-generalized-union-and-intersection-arbitrary # Union and intersection over an arbitrary index set
+  - thm-well-ordering-mathematical-induction         # Well-ordering implies induction
+  - def-zero-one-matrix-of-a                         # Zero-one matrix of a relation
+  - rmk-binary-relations-5                           # Boolean matrix product computes composition
+  - prp-sqrtbound                                    # Trial division bound
+  - rmk-divisibility-and-primes-5                    # Using the bound
+  - prp-euler-and-hamilton-1                         # Number of Hamiltonian cycles of K_n
+  - rmk-euler-and-hamilton-5                         # Why TSP is hard
+  - def-asymmetric                                   # Asymmetric relation (CN only names it)
+  - prp-properties-1                                 # Asymmetric implies antisymmetric and irreflexive
+  - exm-division-algorithm-existence-via-well        # Division algorithm via well-ordering
 
 chapters:
   - num: 1
@@ -146,6 +165,9 @@ chapters:
       - id: "2.10"
         title: "Cryptosystems"
         covers: [math/discrete/functions/cryptosystems]
+      - id: "2.11"   # marked beyond the curriculum in the Course Notes
+        title: "Loose composition"
+        covers: [math/discrete/functions/composition]
       - id: "2.12"
         title: "Counting functions"
         covers: [math/discrete/functions/counting]
@@ -203,6 +225,9 @@ chapters:
       - id: "3.11"
         title: "Induction: more examples"
         covers: [math/discrete/proof/induction-examples]
+      - id: "3.12"   # marked beyond the curriculum in the Course Notes
+        title: "Induction: extended example"
+        covers: [math/discrete/proof/induction-extended-example]
       - id: "3.13"
         title: "Mathematical induction and statistical induction"
         covers: [math/discrete/proof/induction]
@@ -247,6 +272,9 @@ chapters:
         covers: [math/discrete/logic/propositional/implication-and-equivalence]
       - id: "4.12"
         title: "Tautologies and logical equivalence"
+        covers: [math/discrete/logic/propositional/tautologies]
+      - id: "4.13"   # marked beyond the curriculum in the Course Notes
+        title: "History"
         covers: [math/discrete/logic/propositional/tautologies]
       - id: "4.14"
         title: "Distributive Laws"
@@ -527,6 +555,9 @@ chapters:
       - id: "11.2"
         title: "Types of graphs"
         covers: [math/discrete/graph/basic-definitions]
+      - id: "11.3"   # marked beyond the curriculum in the Course Notes
+        title: "Graphs and relations"
+        covers: [math/discrete/graph/representing-graphs]
       - id: "11.4"
         title: "Representing graphs"
         covers: [math/discrete/graph/representing-graphs]
@@ -569,3 +600,6 @@ chapters:
       - id: "12.5"
         title: "Planarity"
         covers: [math/discrete/graph/planarity]
+      - id: "12.6"   # marked beyond the curriculum in the Course Notes
+        title: "Games on graphs"
+        covers: [math/discrete/graph/games-on-graphs]

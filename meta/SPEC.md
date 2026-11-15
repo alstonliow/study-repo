@@ -313,9 +313,13 @@ chapters:
 2. **Outline points** use the course's own numbering and short titles, written
    by the owner or Claude, never copied text. Order of chapters and points is
    the course order, used for course pages and the course filter.
-3. Content beyond the course (sections the course material itself marks as
-   extra, and the owner's "(extra)" material) is simply not in scope; there is
-   no `extra` tag.
+3. **What is in scope:** everything that appears in the course's own material
+   (for FIT1058, the Course Notes), including sections that material marks as
+   optional or beyond the curriculum. Everything else is out of scope ("extra"):
+   the owner's "(extra)" material, and any other block whose content the course
+   material does not have. This is decided by checking the content against the
+   course material, not by labels or source keys. There is no `extra` tag; out of
+   scope simply means listed under `exclude` (or not covered).
 4. **Mappings are drafted, then confirmed.** Claude may draft a course file from
    an outline; `status: draft` until the owner has reviewed it.
 5. On the website, the course filter shows the selected courses' notes in
