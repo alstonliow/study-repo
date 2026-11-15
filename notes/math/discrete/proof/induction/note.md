@@ -1,7 +1,7 @@
 ---
 title: "Proof by mathematical induction"
 sources: [fit1058-cn-3.10, fit1058-cn-3.13]
-requires: [math/discrete/proof/induction-examples, math/discrete/sets/set-operations, math/discrete/proof/contradiction]
+requires: [math/discrete/proof/contradiction, math/discrete/sets/set-operations]
 status: draft
 ---
 

@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: check test site preview clean-site
+.PHONY: check test site pdf preview clean-site
 
 check:
 	$(PYTHON) build/check.py
@@ -15,10 +15,15 @@ site:
 	$(PYTHON) build/make_site.py
 	quarto render site
 
+# PDFs: the common versions (what the website offers) into out/pdf/.
+# Other combinations: python3 build/make_pdf.py --help
+pdf:
+	$(PYTHON) build/make_pdf.py --all-presets
+
 # Live local preview (regenerates pages first)
 preview:
 	$(PYTHON) build/make_site.py
 	quarto preview site
 
 clean-site:
-	rm -rf site/_site site/notes site/courses site/tikz site/index.qmd site/_nav.yml site/_sidebar.yml site/site-data.json site/.quarto
+	rm -rf site/_site site/notes site/courses site/tikz site/index.qmd site/_nav.yml site/_sidebar.yml site/site-data.json site/map.qmd site/downloads.qmd site/pdf site/.quarto

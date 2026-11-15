@@ -30,6 +30,8 @@ from pathlib import Path
 
 import yaml
 
+import graphs
+import summaries
 from model import (MATH, NOTES, OPEN, RAW, REF, ROOT, Note, Repo, attrs_of, divs_in, fence_for,
                    load, top_level_divs)
 
@@ -41,88 +43,9 @@ TYPE_WORD = {"def": "Definition", "thm": "Theorem", "prp": "Proposition",
              "lem": "Lemma", "cor": "Corollary", "exm": "Example", "prob": "Exercise", "fig": "Figure",
              "rmk": "Remark", "clm": "Claim"}
 
-TIKZ_PREAMBLE = r"""\documentclass[varwidth=16cm,border=4pt]{standalone}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath,amssymb,mathtools}
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
-\usepackage{xcolor}
-\usepackage{venndiagram}
-\usepackage{tikz-cd}
-\usepackage{pict2e}
-\usepackage{tikz}
-\usetikzlibrary{arrows.meta,calc,shapes.gates.logic.US,backgrounds,shapes.geometric,decorations.pathreplacing}
-\usepackage[american]{circuitikz}
-\definecolor{defc}{HTML}{3B6EA5}
-\definecolor{thmc}{HTML}{A5533B}
-\definecolor{exc}{HTML}{4E8A5A}
-\definecolor{notec}{HTML}{7A7A7A}
-% ---- shared figure styles (meta/SPEC.md §5). Figures use only these names:
-% ---- no raw colour mixes, line widths, font sizes or node sizes in notes.
-% colours: roles, then a few fixed tints of each
-\colorlet{ink}{black!82}
-\colorlet{primary}{defc}   \colorlet{accent}{thmc}   \colorlet{secondary}{exc}   \colorlet{muted}{notec}
-\colorlet{primarySoft}{defc!8}   \colorlet{primaryLight}{defc!22}
-\colorlet{primaryMid}{defc!40}   \colorlet{primaryStrong}{defc!72}
-\colorlet{accentSoft}{thmc!16}   \colorlet{accentLight}{thmc!32}
-\colorlet{secondarySoft}{exc!20}
-\colorlet{neutral}{black!5}      \colorlet{rule}{black!22}
-\tikzset{
-  every picture/.style={line width=0.6pt, line cap=round, line join=round, >={Stealth[length=5pt,width=4.5pt]}},
-  % text sizes
-  lbl/.style={font=\small}, tick/.style={font=\scriptsize}, note/.style={font=\footnotesize},
-  heading/.style={font=\normalsize}, big/.style={font=\Large},
-  lbl bold/.style={font=\small\bfseries}, heading bold/.style={font=\bfseries},
-  % line weights
-  emph/.style={line width=1pt}, bold/.style={line width=1.4pt},
-  hl/.style={draw=accent, line width=1.8pt},
-  faint/.style={draw=rule, line width=0.5pt},
-  gridline/.style={draw=rule, line width=0.4pt},
-  % graphs
-  vertex/.style={circle, draw=ink, fill=primarySoft, line width=0.7pt, inner sep=1.5pt, minimum size=6.5mm},
-  small vertex/.style={vertex, minimum size=5.5mm, inner sep=0.5pt},
-  dot/.style={circle, fill=ink, draw=none, inner sep=0pt, minimum size=5.5pt},
-  hl dot/.style={dot, fill=accent, minimum size=7pt},
-  hollow dot/.style={circle, draw=ink, fill=white, inner sep=0pt, minimum size=6pt},
-  graph/.style={every node/.style={vertex}},
-  dotgraph/.style={every node/.style={dot}},
-  pt/.style={radius=2.4pt},
-  % areas
-  regionA/.style={fill=defc!10, draw=defc!75, rounded corners=4pt},
-  regionB/.style={fill=thmc!10, draw=thmc!75, rounded corners=4pt},
-  regionC/.style={fill=exc!12, draw=exc!75, rounded corners=4pt},
-  shade/.style={fill=defc!25},
-  tintA/.style={fill=defc, fill opacity=0.10},
-  tintB/.style={fill=thmc, fill opacity=0.10},
-  tintC/.style={fill=exc, fill opacity=0.12},
-  tintD/.style={fill=notec, fill opacity=0.12},
-  overlapA/.style={fill=defc, fill opacity=0.22},
-  overlapB/.style={fill=thmc, fill opacity=0.22},
-  % cells, bars, boxes
-  cell/.style={fill=neutral, draw=white, line width=1.5pt},
-  cell frame/.style={fill=neutral, draw=rule},
-  hl cell/.style={fill=accentLight, draw=accent},
-  bar/.style={fill=primaryStrong},
-  box/.style={draw=ink, fill=primarySoft, rounded corners=3pt, inner sep=3pt, minimum width=1.1cm, minimum height=0.7cm, align=center},
-  hl box/.style={box, fill=accentSoft, draw=accent},
-  ball/.style={circle, fill=primaryLight, draw=primary, inner sep=0pt, minimum size=6.5mm},
-  hl ball/.style={ball, fill=accentLight, draw=accent},
-  % labels and maps
-  lab/.style={fill=none, draw=none, inner sep=1pt, minimum size=0pt, lbl},
-  edge label/.style={lab, note, fill=white, inner sep=1.5pt},
-  set/.style={ellipse, draw=ink, fill=primarySoft, minimum width=1.3cm, minimum height=2.5cm},
-  map/.style={->, shorten <=3pt, shorten >=3pt},
-}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\I}{\mathcal{I}}
-\newcommand{\power}[1]{\mathcal{P}(#1)}
-\DeclareMathOperator{\Collatz}{Collatz}
-\DeclareMathOperator{\dom}{dom}
-\DeclareMathOperator{\lcmop}{lcm}
-"""
+FIGURES = (Path(__file__).resolve().parent / "figures.tex").read_text(encoding="utf-8")
+TIKZ_PREAMBLE = ("\\documentclass[varwidth=16cm,border=4pt]{standalone}\n"
+                 "\\usepackage[utf8]{inputenc}\n" + FIGURES)
 
 def page_url(nid: str) -> str:
     return f"/notes/{nid}.qmd"
@@ -188,7 +111,11 @@ def link_refs(text: str, here: Note, notes: dict[str, Note], owner: dict[str, st
     return "".join(out)
 
 
-def render_problems(note: Note) -> str:
+def render_problems(note: Note, courses_of=None, keep=None) -> str:
+    """Exercises of a note (or review folder) with collapsed solutions.
+    courses_of(pid) -> course ids (default: the note's scope); keep(pid) -> bool
+    drops problems (used by course summaries)."""
+    courses_of = courses_of or (lambda pid: REPO.block_courses(note, pid))
     sols = {a.get("for"): body for a, body in top_level_divs(note.solutions) if "solution" in a["classes"]}
     draft = {a.get("for") for a, _ in top_level_divs(note.solutions)
              if "solution" in a["classes"] and a.get("status") == "draft"}
@@ -197,6 +124,8 @@ def render_problems(note: Note) -> str:
         if "problem" not in a["classes"]:
             continue
         pid = a["id"]
+        if keep and not keep(pid):
+            continue
         num = int(pid.rsplit("-", 1)[-1]) if pid.rsplit("-", 1)[-1].isdigit() else ""
         src = a.get("source", "")
         m = re.match(r"fit1058-cn-([\d.]+)-q(\d+)", src)
@@ -213,8 +142,9 @@ def render_problems(note: Note) -> str:
                          f"{sb.strip()}\n{f2}\n")
         inner = "\n".join(group)
         fo = fence_for(inner)
-        cs = " ".join(REPO.block_courses(note, pid))
-        out.append(f'{fo} {{.problem-group data-courses="{cs}"}}\n{inner}\n{fo}\n')
+        cs = " ".join(courses_of(pid))
+        lv = a.get("level", "")
+        out.append(f'{fo} {{.problem-group data-courses="{cs}" data-item="{pid}" data-level="{lv}"}}\n{inner}\n{fo}\n')
     return "\n".join(out)
 
 
@@ -312,6 +242,29 @@ def is_algorithm(code: str) -> bool:
     return "\\begin{algorithmic}" in code
 
 
+SVGS: dict[str, str | None] = {}   # drawing source -> compiled SVG file name (set in main)
+
+
+def transform(body: str, here) -> str:
+    """Turn note Markdown into page Markdown: drawings, plain ids, claims,
+    example levels and @-references. `here` is the page's note (or any object
+    with `blocks`, for pages that own no blocks)."""
+    def raw_sub(m):
+        ind = m.group(1)
+        if is_algorithm(m.group(2)):
+            # algorithms are typeset in the browser by pseudocode.js (site/pseudocode.html)
+            src = html.escape(textwrap.dedent(m.group(2)), quote=False)
+            return "\n".join(ind + l for l in ["```{=html}", f'<pre class="pseudocode">{src}</pre>', "```"])
+        name = SVGS.get(textwrap.dedent(m.group(2)))
+        inner = f"![](/tikz/{name}){{width={svg_width(name)}px}}" if name else "*(Figure available in the PDF version.)*"
+        return "\n".join(ind + l for l in ["::: {.tikz-figure}", inner, ":::"])
+    body = RAW.sub(raw_sub, body)
+    body = lift_plain_ids(body)
+    body = fix_claims(body)
+    body = add_example_levels(body)
+    return link_refs(body, here, REPO.notes, REPO.owner)
+
+
 def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: dict[str, str | None]) -> str:
     body_text = wrap_scope(note.body.strip(), note)
     if note.num:
@@ -323,22 +276,7 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
         parts.append("## Examples\n\n" + wrap_scope(note.examples.strip(), note))
     if note.exercises.strip():
         parts.append("## Exercises\n\n" + render_problems(note))
-    body = "\n\n".join(parts)
-
-    def raw_sub(m):
-        ind = m.group(1)
-        if is_algorithm(m.group(2)):
-            # algorithms are typeset in the browser by pseudocode.js (site/pseudocode.html)
-            src = html.escape(textwrap.dedent(m.group(2)), quote=False)
-            return "\n".join(ind + l for l in ["```{=html}", f'<pre class="pseudocode">{src}</pre>', "```"])
-        name = svgs.get(textwrap.dedent(m.group(2)))
-        inner = f"![](/tikz/{name}){{width={svg_width(name)}px}}" if name else "*(Figure available in the PDF version.)*"
-        return "\n".join(ind + l for l in ["::: {.tikz-figure}", inner, ":::"])
-    body = RAW.sub(raw_sub, body)
-    body = lift_plain_ids(body)
-    body = fix_claims(body)
-    body = add_example_levels(body)
-    body = link_refs(body, note, notes, owner)
+    body = transform("\n\n".join(parts), note)
 
     meta = []
     if note.front.get("sources"):
@@ -346,6 +284,9 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
     reqs = [r for r in note.front.get("requires") or [] if r in notes]
     if reqs:
         meta.append("Prerequisites: " + ", ".join(f"[{notes[r].display_title}]({page_url(r)})" for r in reqs))
+    nexts = REPO.dependents(note.id)
+    if nexts:
+        meta.append("Leads to: " + ", ".join(f"[{notes[r].display_title}]({page_url(r)})" for r in nexts))
     if note.front.get("status") == "draft":
         meta.append("Status: draft")
     front = {"title": note.display_title}
@@ -370,8 +311,90 @@ def branch_page(bid: str, btitle: str, members: list, bnum: int) -> str:
         shown = " · ".join(items[:6]) + (" · …" if len(items) > 6 else "")
         lines.append(f"- [{n.num}]{{.toc-num}} [{n.title}]({page_url(n.id)})" +
                      (f" [{shown}]{{.toc-desc}}" if shown else ""))
-    lines += [":::", ""]
+    lines += [":::", "", "[Summary of this branch: definitions, results and all exercises →](summary.qmd)"
+              "{.chapter-summary-link}", ""]
+    graph = dep_graph([n.id for n in members], f"notes/{bid}/index.html")
+    if graph:
+        lines += ["## Prerequisites", "",
+                  "[Arrows point from a prerequisite to the topics that need it. "
+                  "Faded boxes are prerequisites from other branches. Colours follow your progress marks.]"
+                  "{.graph-note}", "", graph, ""]
     return "\n".join(lines)
+
+
+def rel_href(from_page: str, to_page: str) -> str:
+    """Relative link between two site pages (raw HTML is not rewritten by Quarto)."""
+    import posixpath
+    return posixpath.relpath(to_page, posixpath.dirname(from_page))
+
+
+def dep_graph(ids: list[str], page: str, with_outside: bool = True, across: bool = False) -> str:
+    """Raw-HTML block with the prerequisite graph of the notes `ids`; their
+    prerequisites outside `ids` are added faded when with_outside."""
+    inside = list(ids)
+    outside = []
+    if with_outside:
+        for n in ids:
+            for r in REPO.requires(n):
+                if r not in inside and r not in outside:
+                    outside.append(r)
+    nodes = outside + inside
+    edges = [(r, n) for n in inside for r in REPO.requires(n) if r in nodes]
+    if not edges and len(nodes) < 2:
+        return ""
+    notes = REPO.notes
+    label = {n: notes[n].display_title for n in nodes}
+    href = {n: rel_href(page, f"notes/{n}.html") for n in nodes}
+    svg = graphs.svg(nodes, edges, label, href, faded=set(outside), across=across)
+    raw = "```{=html}\n<div class=\"dep-graph-wrap\">\n" + svg + "\n</div>\n```"
+    return f"::: {{.column-screen-inset-right}}\n{raw}\n:::" if across else raw
+
+
+def write_downloads() -> None:
+    """Downloads page for the PDFs in out/pdf/ (built by build/make_pdf.py),
+    copied to site/pdf/. Only PDFs that exist are listed."""
+    import make_pdf
+    src, dest = ROOT / "out" / "pdf", SITE / "pdf"
+    if dest.exists():
+        shutil.rmtree(dest)
+    dest.mkdir(parents=True)
+    rows = []
+    for name in make_pdf.all_presets():
+        pdf = src / f"{name}.pdf"
+        if not pdf.exists():
+            continue
+        shutil.copy2(pdf, dest / pdf.name)
+        desc = make_pdf.DESCRIPTIONS.get(name) or "Branch: " + name[len("branch-"):].replace("-", " ").capitalize()
+        extra = ""
+        sol = src / f"{name}-solutions.pdf"
+        if sol.exists():
+            shutil.copy2(sol, dest / sol.name)
+            extra = f" · [solutions](pdf/{sol.name})"
+        rows.append(f"| [{name}.pdf](pdf/{pdf.name}){extra} | {desc} | {pdf.stat().st_size // 1024} KB |")
+    lines = ["---", "title: PDF downloads", "---", "",
+             "Printable versions of the notes, rebuilt with every update of the website.", ""]
+    if rows:
+        lines += ["| File | Contents | Size |", "|---|---|---|"] + rows
+    else:
+        lines += ["*No PDFs have been built yet.* Run `make pdf` to build them locally."]
+    lines += ["", "## Other combinations", "",
+              "Any combination of options can be built locally, for example:", "",
+              "```bash",
+              "python3 build/make_pdf.py --scope course:fit1058 --solutions separate --extra omit --style plain",
+              "python3 build/make_pdf.py --scope branch:math/discrete/graph --only exercises --level medium,hard",
+              "```", "",
+              "Options: `--scope` book, branch or course · `--solutions` inline, end, separate or none · "
+              "`--extra` include or omit · `--only` all, summaries or exercises · `--level` · "
+              "`--paper` a4 or letter · `--style` color or plain. See `python3 build/make_pdf.py --help`.", ""]
+    (SITE / "downloads.qmd").write_text("\n".join(lines), encoding="utf-8")
+
+
+def ctx():
+    """What summaries.py needs from the site build."""
+    from types import SimpleNamespace
+    return SimpleNamespace(fence_for=fence_for, page_url=page_url, transform=transform,
+                           render_problems=render_problems, dep_graph=dep_graph,
+                           block_courses=REPO.block_courses, review_courses=REPO.review_courses)
 
 
 def contents_block(heading: str, rows: list) -> list[str]:
@@ -407,21 +430,11 @@ def main() -> int:
                     if not is_algorithm(m.group(2))})
     with ThreadPoolExecutor(max_workers=6) as pool:
         svgs = dict(zip(codes, pool.map(compile_svg, codes)))
+    SVGS.update(svgs)
     failed = sum(1 for v in svgs.values() if v is None)
     print(f"drawings: {len(codes)} ({failed} failed)")
 
-    # numbering: branches 1, 2, ... restarting in each part (field); topics b.k
-    branch_num: dict[str, int] = {}
-    for _, branches in BRANCHES:
-        seq = 0
-        for bid, _ in branches:
-            members = REPO.branch_members(bid)
-            if not members:
-                continue
-            seq += 1
-            branch_num[bid] = seq
-            for k, n in enumerate(members, 1):
-                n.num = f"{seq}.{k}"
+    branch_num = REPO.number_notes()
 
     # pages
     if OUT_NOTES.exists():
@@ -438,6 +451,7 @@ def main() -> int:
         print(f"warning: branches not in BRANCHES: {stray}", file=sys.stderr)
     sidebar = []
     branch_items = {}
+    summary_courses: dict[str, list[str]] = {}
     home = ["---", "title: Study Notes", "---", "",
             "Personal study notes, organised by topic rather than by course. "
             "So far: discrete mathematics and discrete probability.", ""]
@@ -452,8 +466,16 @@ def main() -> int:
             index = OUT_NOTES / bid / "index.qmd"
             index.parent.mkdir(parents=True, exist_ok=True)
             index.write_text(branch_page(bid, btitle, members, branch_num[bid]), encoding="utf-8")
+            review = [REPO.reviews[bid]] if bid in REPO.reviews else []
+            (OUT_NOTES / bid / "summary.qmd").write_text(summaries.page(
+                f"{branch_num[bid]} {btitle}: Summary",
+                f"Definitions, results and exercises of {btitle}, with synthesis problems at the end. "
+                "Use the filters to choose what to see; print this page for a review sheet.",
+                members, review, ctx(), f"notes/{bid}/summary.html"), encoding="utf-8")
+            summary_courses[f"notes/{bid}/summary.html"] = sorted({c for n in members for c in n.courses})
             sec["contents"].append({"section": f"{branch_num[bid]} {btitle}", "href": f"notes/{bid}/index.qmd",
-                                    "contents": [f"notes/{n.id}.qmd" for n in members]})
+                                    "contents": [f"notes/{n.id}.qmd" for n in members]
+                                    + [f"notes/{bid}/summary.qmd"]})
             rows.append((f"notes/{bid}/index.html", btitle, REPO.branch_desc.get(bid, ""), branch_num[bid]))
         home += contents_block(field, rows)
         sidebar.append(sec)
@@ -483,20 +505,40 @@ def main() -> int:
                 chapter = point.chapter
                 ch = next(x for x in c.chapters if x["num"] == chapter)
                 heading = f"Chapter {chapter}" + (f" · {ch['title']}" if ch["title"] else "")
-                lines += ["", f"## {heading}", ""]
-                course_order[c.id].append({"title": heading, "num": chapter, "pages": []})
+                summary = f"courses/{c.id}/chapter-{chapter}"
+                lines += ["", f"## {heading}", "", f"[Chapter summary →](/{summary}.qmd){{.chapter-summary-link}}", ""]
+                course_order[c.id].append({"title": heading, "num": chapter, "pages": [],
+                                           "summary": summary + ".html"})
             course_order[c.id][-1]["pages"].append(f"notes/{n.id}.html")
             nprob = sum(1 for pr in n.problems if c.id in REPO.block_courses(n, pr.id))
             extra = f" ({nprob} exercise{'s' if nprob != 1 else ''})" if nprob else ""
             pts = ", ".join("§" + x for x in points_of.get(nid, []))
             lines.append(f"- [{n.display_title}](/notes/{n.id}.qmd){extra} [{pts}]{{.note-keys}}")
         (OUT_COURSES / f"{c.id}.qmd").write_text("\n".join(lines) + "\n", encoding="utf-8")
+        # chapter summaries: in-scope content only; a branch's synthesis problems
+        # go to the last chapter of the course that uses the branch
+        last_chapter = {}
+        for nid, point in c.order:
+            last_chapter[notes[nid].branch] = point.chapter
+        (OUT_COURSES / c.id).mkdir(exist_ok=True)
+        for chap in course_order[c.id]:
+            members = [notes[pg[len("notes/"):-len(".html")]] for pg in chap["pages"]]
+            reviews = [REPO.reviews[b] for b, last in last_chapter.items()
+                       if last == chap["num"] and b in REPO.reviews]
+            (OUT_COURSES / c.id / f"chapter-{chap['num']}.qmd").write_text(summaries.page(
+                f"{c.code} {chap['title']}: Summary",
+                f"Everything {c.code} needs from this chapter: definitions, results and exercises in course "
+                "order, with synthesis problems at the end. Use the filters; print for a review sheet.",
+                members, reviews, ctx(), chap["summary"], course=c,
+                in_scope=lambda n, bid, c=c: REPO.in_scope(c, n.id, bid)), encoding="utf-8")
+            summary_courses[chap["summary"]] = [c.id]
         course_rows.append((f"courses/{c.id}.html", c.code, c.name or "Knowledge points in course order", ""))
         page_courses[f"courses/{c.id}.html"] = [c.id]
     if course_rows:
         home += contents_block("Courses", course_rows)
     for n in notes.values():
         page_courses[f"notes/{n.id}.html"] = n.courses
+    page_courses.update(summary_courses)
 
     # one data file for the page scripts (site/site-data.html): courses, scope,
     # course order, and the topics and exercises used by progress tracking
@@ -513,7 +555,15 @@ def main() -> int:
             (SITE / old).unlink()
 
     (SITE / "index.qmd").write_text("\n".join(home) + "\n", encoding="utf-8")
-    navbar = [{"href": "index.qmd", "text": "Home"}]
+    all_ids = REPO.topic_order()
+    (SITE / "map.qmd").write_text(
+        "---\ntitle: Map of topics\n---\n\n"
+        "[Every knowledge point and its prerequisites. Arrows point from a prerequisite to the topics "
+        "that need it; click a box to open the topic. Colours follow your progress marks.]{.graph-note}\n\n"
+        + dep_graph(all_ids, "map.html", with_outside=False, across=True) + "\n", encoding="utf-8")
+    write_downloads()
+    navbar = [{"href": "index.qmd", "text": "Home"}, {"href": "map.qmd", "text": "Map"},
+              {"href": "downloads.qmd", "text": "PDF"}]
     (SITE / "_nav.yml").write_text(
         "# Generated by build/make_site.py\n" +
         yaml.safe_dump({"website": {"navbar": {"left": navbar},

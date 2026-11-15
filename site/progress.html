@@ -113,7 +113,7 @@ window.STUDY_PROGRESS_CONFIG = {
   // ---------- page helpers ----------
   function noteIdOf(href) {
     const m = sitePath(href).match(/^notes\/(.+)\.html$/);
-    return m && !m[1].endsWith("/index") && m[1] !== "index" ? m[1] : null;
+    return m && !/(^|\/)(index|summary)$/.test(m[1]) ? m[1] : null;
   }
   function branchIdOf(href) {
     const m = sitePath(href).match(/^notes\/(.+)\/index\.html$/);
@@ -171,6 +171,8 @@ window.STUDY_PROGRESS_CONFIG = {
 
   function render() {
     document.querySelectorAll(".pg-dot[data-item]").forEach(d => { d.dataset.state = stateOf(d.dataset.item); });
+    document.querySelectorAll(".dep-node[data-item]").forEach(a => a.setAttribute("data-state", stateOf(a.getAttribute("data-item"))));
+    document.dispatchEvent(new CustomEvent("study-progress-change"));
     document.querySelectorAll(".pg-mark").forEach(b => {
       const s = stateOf(b.dataset.item);
       b.dataset.state = s;
@@ -281,6 +283,9 @@ window.STUDY_PROGRESS_CONFIG = {
       });
     }
   }
+
+  // read-only access for other page scripts (summary filters)
+  window.StudyProgress = { stateOf };
 
   // another tab changed the marks
   window.addEventListener("storage", e => { if (e.key === KEY) { store = load(); render(); } });

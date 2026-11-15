@@ -1,7 +1,7 @@
 ---
 title: "Primitive roots"
 sources: [fit1058-cn-7.15]
-requires: [math/discrete/number-theory/coprimality, math/discrete/number-theory/diffie-hellman, math/discrete/number-theory/modular-exponentiation]
+requires: [math/discrete/number-theory/modular-exponentiation]
 status: draft
 ---
 

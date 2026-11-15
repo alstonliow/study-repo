@@ -1,7 +1,7 @@
 ---
 title: Counting by Addition and Multiplication
 sources: [fit1058-cn-8.1, fit1058-cn-8.2]
-requires: []
+requires: [math/discrete/sets/set-operations, math/discrete/functions/injections-surjections-bijections]
 status: draft
 ---
 

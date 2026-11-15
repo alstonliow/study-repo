@@ -126,6 +126,20 @@
           renumber(li, nums[p]);
           hul.appendChild(li);
         });
+        if (ch.summary) {   // chapter summary page (build/summaries.py)
+          const li = document.createElement("li");
+          li.className = "sidebar-item course-summary-item";
+          const a = document.createElement("a");
+          a.className = "sidebar-item-text sidebar-link";
+          a.href = new URL(ch.summary, root).href;
+          if (sitePath(a.href) === sitePath(window.location.href)) a.classList.add("active");
+          const t = document.createElement("span");
+          t.className = "menu-text";
+          t.textContent = "Chapter summary";
+          a.appendChild(t);
+          li.appendChild(a);
+          hul.appendChild(li);
+        }
         if (hul.children.length) cul.appendChild(hli);
       });
       tree.appendChild(cli);

@@ -63,7 +63,7 @@
 
     By the Principle of Mathematical Induction, the formula
     $$\sum_{i=1}^{n}\frac{i(i+1)}{2} = \frac{n(n+1)(n+2)}{6}$$
-    holds for all $n\ge1$. 0◻
+    holds for all $n\ge1$.
 :::
 
 ::: {.solution for="prob-proofs-11"}

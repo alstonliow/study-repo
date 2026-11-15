@@ -1,7 +1,7 @@
 ---
 title: "Composition"
 sources: [fit1058-cn-2.9, fit1058-cn-2.11]
-requires: [math/discrete/functions/injections-surjections-bijections, math/discrete/functions/inverse-functions]
+requires: [math/discrete/functions/inverse-functions]
 status: draft
 ---
 

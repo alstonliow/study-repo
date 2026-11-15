@@ -1,7 +1,7 @@
 ---
 title: "Laws of Boolean Algebra"
 sources: [fit1058-cn-4.14, fit1058-cn-4.15]
-requires: []
+requires: [math/discrete/logic/propositional/tautologies, math/discrete/logic/propositional/de-morgans-laws]
 status: draft
 ---
 

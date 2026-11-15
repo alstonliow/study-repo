@@ -1,7 +1,7 @@
 ---
 title: "Cardinality and Standard Sets"
 sources: [fit1058-cn-1.3, fit1058-cn-1.4, fit1058-cn-1.5]
-requires: []
+requires: [math/discrete/sets/sets-and-elements]
 status: draft
 ---
 

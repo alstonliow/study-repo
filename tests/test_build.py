@@ -215,6 +215,97 @@ class TestMove(Repo):
         self.assertIn("already exists", r.stdout)
 
 
+class TestRequires(Repo):
+    def test_cycle_is_an_error(self):
+        self.edit("notes/t/alpha/first/note.md", "requires: []", "requires: [t/beta/third]")
+        r = self.check()
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn("leads back to itself (cycle)", r.stdout)
+
+    def test_later_prerequisite_warns(self):
+        self.edit("notes/t/alpha/second/note.md", "requires: [t/alpha/first]", "requires: [t/beta/third]")
+        r = self.check()
+        self.assertIn("comes later in topic order", r.stdout)
+
+    def test_redundant_prerequisite_warns(self):
+        self.edit("notes/t/beta/third/note.md", "requires: [t/alpha/first]",
+                  "requires: [t/alpha/first, t/alpha/second]")
+        r = self.check()
+        self.assertIn("already implied by another one", r.stdout)
+
+
+class TestPages(Repo):
+    def test_graphs_and_leads_to(self):
+        site = generate(self.root)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("Leads to:", first)
+        branch = (site / "notes/t/alpha/index.qmd").read_text()
+        self.assertIn('class="dep-node"', branch)
+        self.assertIn('data-item="t/alpha/second"', (site / "map.qmd").read_text())
+
+    def test_branch_summary(self):
+        site = generate(self.root)
+        page = (site / "notes/t/alpha/summary.qmd").read_text()
+        self.assertIn('data-kind="def" data-item="t/alpha/first"', page)
+        self.assertIn("Widget theorem", page)
+        self.assertNotIn("Trivial.", page)                         # statements only, no proofs
+        self.assertIn('data-item="prob-first-01" data-level="medium"', page)
+        self.assertIn("## Synthesis problems", page)
+        self.assertIn(".problem-group .synthesis", page)
+        nav = (site / "_nav.yml").read_text()
+        self.assertIn("notes/t/alpha/summary.qmd", nav)
+
+    def test_course_chapter_summary_keeps_scope(self):
+        site = generate(self.root)
+        ch2 = (site / "courses/demo/chapter-2.qmd").read_text()
+        self.assertIn("Third", ch2)                                # def-third is covered
+        self.assertNotIn("Not covered", ch2)                       # prp-third is not
+        data = json.loads((site / "site-data.json").read_text())
+        self.assertEqual(data["order"]["demo"][0]["summary"], "courses/demo/chapter-1.html")
+
+
+class TestPdf(Repo):
+    def assemble(self, *args) -> str:
+        r = run("make_pdf.py", self.root, "--markdown-only", "--name", "t", *args)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        return (self.root / "out/pdf/t.qmd").read_text()
+
+    def test_book_has_everything_and_solutions_at_end(self):
+        md = self.assemble()
+        self.assertIn("## 1.1 First note {#sec-t-alpha-first}", md)
+        self.assertIn("Every widget is a widget.", md)
+        self.assertIn("## Synthesis problems", md)
+        self.assertLess(md.index("Show that a widget"), md.index("# Solutions"))
+        self.assertIn("\\begin{stbox}{defc}", md)                 # colour style by default
+
+    def test_course_omit_extra(self):
+        md = self.assemble("--scope", "course:demo", "--extra", "omit")
+        self.assertNotIn("Beyond the course", md)                  # excluded remark
+        self.assertNotIn("Not covered", md)                        # block outside the course
+        self.assertIn("Third", md)
+
+    def test_solutions_options(self):
+        self.assertIn("*Solution (draft).*", self.assemble("--solutions", "inline"))
+        self.assertNotIn("Solution", self.assemble("--solutions", "none"))
+        self.assemble("--solutions", "separate")
+        self.assertIn("Use both theorems.", (self.root / "out/pdf/t-solutions.qmd").read_text())
+
+    def test_level_and_only(self):
+        md = self.assemble("--only", "exercises", "--level", "hard", "--solutions", "none")
+        self.assertIn("Combine", md)                               # the hard synthesis problem
+        self.assertNotIn("Show that a widget", md)                 # a medium problem
+        self.assertNotIn("Every widget is a widget.", md)          # no notes text
+        md = self.assemble("--only", "summaries", "--solutions", "none")
+        self.assertIn("## Definitions and results", md)
+        self.assertNotIn("Trivial.", md)
+
+    def test_plain_style_and_missing_references(self):
+        md = self.assemble("--scope", "branch:t/beta", "--style", "plain")
+        self.assertNotIn("stbox", md)
+        self.assertIn("First note", md)                            # @sec- to a note not printed -> text
+        self.assertNotIn("@sec-t-alpha-first", md)
+
+
 def update_expected() -> None:
     tmp = Path(tempfile.mkdtemp(prefix="study-test-"))
     try:

@@ -1,7 +1,7 @@
 ---
 title: "Negation, Conjunction and Disjunction"
 sources: [fit1058-cn-4.5, fit1058-cn-4.6, fit1058-cn-4.7]
-requires: [math/discrete/logic/propositional/implication-and-equivalence, math/discrete/sets/set-operations]
+requires: [math/discrete/logic/propositional/propositions]
 status: draft
 ---
 

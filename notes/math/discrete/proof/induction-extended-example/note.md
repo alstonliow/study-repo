@@ -1,7 +1,7 @@
 ---
 title: "Induction: extended example"
 sources: [fit1058-cn-3.12]
-requires: [math/discrete/relations/binary-relations]
+requires: [math/discrete/proof/induction-examples, math/discrete/relations/binary-relations, math/discrete/functions/injections-surjections-bijections]
 status: draft
 ---
 

@@ -2,7 +2,7 @@
 title: 1.1 First note
 ---
 
-[Sources: `demo-1.1` · Status: draft]{.note-meta}
+[Sources: `demo-1.1` · Leads to: [1.2 Second note](/notes/t/alpha/second.qmd), [2.1 Third note](/notes/t/beta/third.qmd) · Status: draft]{.note-meta}
 
 ## 1.1.1 Part one
 
@@ -36,7 +36,7 @@ An example with $x$ and $y$, and @def-widget on this page.
 
 ## Exercises
 
-:::: {.problem-group data-courses="demo"}
+:::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium"}
 ::: {#prob-first-01 .problem}
 [Exercise 1]{.problem-title}[demo-1.1-q1]{.problem-source} [medium]{.level-badge .level-medium}
 
@@ -49,7 +49,7 @@ Show that a widget is a widget.
 
 ::::
 
-:::: {.problem-group data-courses="demo"}
+:::: {.problem-group data-courses="demo" data-item="prob-first-02" data-level=""}
 ::: {#prob-first-02 .problem}
 [Exercise 2]{.problem-title}[demo-1.1-q2]{.problem-source}
 

@@ -19,6 +19,18 @@
   ],
   "notes/t/beta/third.html": [
    "demo"
+  ],
+  "notes/t/alpha/summary.html": [
+   "demo"
+  ],
+  "notes/t/beta/summary.html": [
+   "demo"
+  ],
+  "courses/demo/chapter-1.html": [
+   "demo"
+  ],
+  "courses/demo/chapter-2.html": [
+   "demo"
   ]
  },
  "order": {
@@ -29,14 +41,16 @@
     "pages": [
      "notes/t/alpha/first.html",
      "notes/t/alpha/second.html"
-    ]
+    ],
+    "summary": "courses/demo/chapter-1.html"
    },
    {
     "title": "Chapter 2 · More",
     "num": 2,
     "pages": [
      "notes/t/beta/third.html"
-    ]
+    ],
+    "summary": "courses/demo/chapter-2.html"
    }
   ]
  },

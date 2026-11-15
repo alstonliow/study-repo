@@ -1,7 +1,7 @@
 ---
 title: "Inverse functions"
 sources: [fit1058-cn-2.8]
-requires: []
+requires: [math/discrete/functions/injections-surjections-bijections]
 status: draft
 ---
 

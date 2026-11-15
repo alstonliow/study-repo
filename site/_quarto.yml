@@ -6,6 +6,7 @@ project:
   output-dir: _site
   resources:
     - site-data.json
+    - pdf/*.pdf
 
 metadata-files:
   - _nav.yml
@@ -30,6 +31,7 @@ format:
       - site-data.html
       - filter.html
       - progress.html
+      - summary.html
       - pseudocode.html
     filters:
       - list-delims.lua

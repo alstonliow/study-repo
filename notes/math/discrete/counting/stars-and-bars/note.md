@@ -1,7 +1,7 @@
 ---
 title: Unordered Selection with Replacement
 sources: [fit1058-cn-8.9]
-requires: [math/discrete/counting/combinations, math/discrete/counting/selection, math/discrete/counting/sum-and-product-rules]
+requires: [math/discrete/counting/combinations]
 status: draft
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Equivalence relations"
 sources: [fit1058-cn-2.16]
-requires: []
+requires: [math/discrete/relations/properties, math/discrete/sets/partitions]
 status: draft
 ---
 

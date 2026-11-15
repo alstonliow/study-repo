@@ -1,7 +1,7 @@
 ---
 title: "Sequences: Definitions and Basic Types"
 sources: [fit1058-cn-6.1, fit1058-cn-6.2, fit1058-cn-6.3, fit1058-cn-6.4, fit1058-cn-6.5]
-requires: [math/discrete/sequences/sums-and-series, math/discrete/sets/cartesian-product, math/discrete/sets/sets-and-elements]
+requires: [math/discrete/functions/definitions]
 status: draft
 ---
 

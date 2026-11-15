@@ -1,7 +1,7 @@
 ---
 title: "Complement, Difference, Union and Intersection"
 sources: [fit1058-cn-1.11, fit1058-cn-1.12]
-requires: []
+requires: [math/discrete/sets/subsets]
 status: draft
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Remainders and Parity"
 sources: [fit1058-cn-7.3, fit1058-cn-7.4]
-requires: []
+requires: [math/discrete/number-theory/divisibility-and-primes]
 status: draft
 ---
 

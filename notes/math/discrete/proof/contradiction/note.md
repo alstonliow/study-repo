@@ -1,7 +1,7 @@
 ---
 title: "Proof by contradiction"
 sources: [fit1058-cn-3.9]
-requires: []
+requires: [math/discrete/proof/finding-proofs]
 status: draft
 ---
 

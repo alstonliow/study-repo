@@ -1,7 +1,7 @@
 ---
 title: "Special Functions and Restrictions"
 sources: [fit1058-cn-2.4, fit1058-cn-2.5, fit1058-cn-2.6]
-requires: [math/discrete/functions/definitions, math/discrete/functions/inverse-functions]
+requires: [math/discrete/functions/definitions]
 status: draft
 ---
 

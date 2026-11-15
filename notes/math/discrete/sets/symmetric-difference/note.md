@@ -1,7 +1,7 @@
 ---
 title: "Symmetric difference"
 sources: [fit1058-cn-1.13]
-requires: []
+requires: [math/discrete/sets/set-operations]
 status: draft
 ---
 

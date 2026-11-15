@@ -1,7 +1,7 @@
 ---
 title: "Games on graphs"
 sources: [fit1058-cn-12.6]
-requires: []
+requires: [math/discrete/graph/forests-and-spanning-trees]
 status: draft
 ---
 

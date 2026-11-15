@@ -1,7 +1,7 @@
 ---
 title: "Theorems, Proofs and Logical Deduction"
 sources: [fit1058-cn-3.1, fit1058-cn-3.2]
-requires: [math/discrete/sets/subsets]
+requires: [math/discrete/sets/power-set]
 status: draft
 ---
 

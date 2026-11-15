@@ -8,3 +8,19 @@ title: 1 Alpha
 - [1.1]{.toc-num} [First note](/notes/t/alpha/first.qmd) [Widget · Widget theorem]{.toc-desc}
 - [1.2]{.toc-num} [Second note](/notes/t/alpha/second.qmd) [Gadget theorem]{.toc-desc}
 :::
+
+[Summary of this branch: definitions, results and all exercises →](summary.qmd){.chapter-summary-link}
+
+## Prerequisites
+
+[Arrows point from a prerequisite to the topics that need it. Faded boxes are prerequisites from other branches. Colours follow your progress marks.]{.graph-note}
+
+```{=html}
+<div class="dep-graph-wrap">
+<svg class="dep-graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 158" width="196" height="158" role="img" aria-label="Prerequisite graph">
+<path class="dep-edge" d="M98,58 C98,79 98,79 98,96"/>
+<a href="first.html" class="dep-node" data-item="t/alpha/first"><title>1.1 First note</title><rect x="12" y="12" width="172" height="46" rx="4"/><text x="22" y="40">1.1 First note</text></a>
+<a href="second.html" class="dep-node" data-item="t/alpha/second"><title>1.2 Second note</title><rect x="12" y="100" width="172" height="46" rx="4"/><text x="22" y="128">1.2 Second note</text></a>
+</svg>
+</div>
+```

@@ -1,7 +1,7 @@
 ---
 title: "Bayes' Theorem"
 sources: [fit1058-cn-9.9]
-requires: [math/discrete/sets/partitions]
+requires: [math/probability/conditional-probability, math/discrete/sets/partitions]
 status: draft
 ---
 

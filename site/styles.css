@@ -185,3 +185,30 @@ nav.page-navigation .pagination-link i { font-size: 1.3rem; color: var(--notec);
   box-shadow: inset 2px 0 0 var(--accent);
   border-radius: 0 3px 3px 0; padding-left: 0.4rem; margin-left: -0.4rem;
 }
+
+/* ---------- prerequisite graphs (build/graphs.py) ---------- */
+.graph-note { display: block; color: var(--notec); font-size: 0.85rem; margin-bottom: 0.6rem; }
+.dep-graph-wrap { overflow-x: auto; margin: 0.4rem 0 1.6rem; padding-bottom: 0.4rem; }
+.dep-graph { max-width: none; height: auto; font-family: "Source Sans 3", system-ui, sans-serif; }
+.dep-graph .dep-edge { fill: none; stroke: color-mix(in srgb, var(--notec) 70%, transparent); stroke-width: 1.2; }
+.dep-graph .dep-edge.faded { stroke-dasharray: 3 3; opacity: 0.6; }
+.dep-graph .dep-node rect { fill: var(--sidebg); stroke: var(--rule); stroke-width: 1.2; }
+.dep-graph .dep-node text { fill: var(--bs-body-color); font-size: 12.5px; }
+.dep-graph .dep-node.faded { opacity: 0.55; }
+.dep-graph .dep-node.faded rect { stroke-dasharray: 3 2; }
+.dep-graph .dep-node:hover rect { stroke: var(--accent); stroke-width: 2; }
+.dep-graph .dep-node[data-state="learned"] rect { stroke: var(--pg-learned, #3b6ea5); stroke-width: 2; }
+.dep-graph .dep-node[data-state="reviewing"] rect { stroke: var(--pg-reviewing, #b07a1f); stroke-width: 2; }
+.dep-graph .dep-node[data-state="mastered"] rect {
+  stroke: var(--pg-mastered, #4e8a5a); stroke-width: 2;
+  fill: color-mix(in srgb, var(--pg-mastered, #4e8a5a) 14%, var(--sidebg)); }
+
+/* ---------- chapter summaries (build/summaries.py) ---------- */
+.chapter-summary-link { display: inline-block; margin: 0.2rem 0 1rem; font-family: "Source Sans 3", system-ui, sans-serif; font-size: 0.9rem; }
+.summary-item { --k: var(--thmc); margin: 0.7em 0; padding: 0.45em 0.2em 0.45em 0.9em; border-left: 2px solid var(--k);
+  background: color-mix(in srgb, var(--k) var(--tint), transparent); }
+.summary-item.k-def { --k: var(--defc); }
+.summary-item > :last-child { margin-bottom: 0; }
+.summary-kind { font-family: "Source Sans 3", system-ui, sans-serif; font-weight: 700; color: var(--k); }
+.summary-src { font-family: "Source Sans 3", system-ui, sans-serif; font-size: 0.85em; margin-left: 0.3em; text-decoration: none; }
+.course-summary-item .menu-text { font-style: italic; }

@@ -1,7 +1,7 @@
 ---
 title: "Relations and Counting Relations"
 sources: [fit1058-cn-2.17, fit1058-cn-2.18]
-requires: [math/discrete/sets/cartesian-product, math/discrete/sets/power-set]
+requires: [math/discrete/relations/binary-relations, math/discrete/sets/power-set]
 status: draft
 ---
 

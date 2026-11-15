@@ -1,7 +1,7 @@
 ---
 title: "Combining binary relations"
 sources: [fit1058-cn-2.15]
-requires: [math/discrete/functions/composition]
+requires: [math/discrete/relations/properties, math/discrete/functions/composition]
 status: draft
 ---
 

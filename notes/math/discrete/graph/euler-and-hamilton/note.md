@@ -1,7 +1,7 @@
 ---
 title: "Euler tours and Hamiltonian cycles"
 sources: [fit1058-cn-11.11]
-requires: [math/discrete/graph/degree, math/discrete/graph/walks-paths-cycles]
+requires: [math/discrete/graph/connectivity, math/discrete/graph/degree]
 status: draft
 ---
 

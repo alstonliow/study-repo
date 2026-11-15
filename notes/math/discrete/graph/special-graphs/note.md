@@ -1,7 +1,7 @@
 ---
 title: "Some special graphs"
 sources: [fit1058-cn-11.6]
-requires: [math/discrete/graph/degree]
+requires: [math/discrete/graph/basic-definitions]
 status: draft
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "The Fibonacci sequence"
 sources: [fit1058-cn-6.7]
-requires: []
+requires: [math/discrete/sequences/solving-recurrences]
 status: draft
 ---
 

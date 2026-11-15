@@ -4,6 +4,10 @@ website:
     left:
     - href: index.qmd
       text: Home
+    - href: map.qmd
+      text: Map
+    - href: downloads.qmd
+      text: PDF
   sidebar:
     style: docked
     collapse-level: 2
@@ -15,7 +19,9 @@ website:
         contents:
         - notes/t/alpha/first.qmd
         - notes/t/alpha/second.qmd
+        - notes/t/alpha/summary.qmd
       - section: 2 Beta
         href: notes/t/beta/index.qmd
         contents:
         - notes/t/beta/third.qmd
+        - notes/t/beta/summary.qmd

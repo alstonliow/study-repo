@@ -1,7 +1,7 @@
 ---
 title: "De Morgan's Laws"
 sources: [fit1058-cn-4.8]
-requires: [math/discrete/logic/propositional/connectives, math/discrete/logic/propositional/tautologies, math/discrete/sets/set-operations]
+requires: [math/discrete/logic/propositional/connectives]
 status: draft
 ---
 

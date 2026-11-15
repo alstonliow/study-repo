@@ -1,7 +1,7 @@
 ---
 title: "Events"
 sources: [fit1058-cn-9.4, fit1058-cn-9.5, fit1058-cn-9.6]
-requires: [math/discrete/counting/inclusion-exclusion]
+requires: [math/probability/sample-spaces, math/discrete/counting/inclusion-exclusion]
 status: draft
 ---
 

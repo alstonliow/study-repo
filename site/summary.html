@@ -1,0 +1,143 @@
+<!-- Filter bar for chapter summary pages (build/summaries.py, meta/SPEC.md §14).
+     Active only on pages with a .summary-filters placeholder. Filters: content
+     type, level, progress state (from progress.html, via window.StudyProgress),
+     and solutions (hidden / collapsed / expanded). Choices are kept per browser.
+     Printing the page prints what the filters show. -->
+<style>
+  .summary-filters { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin: 0.6rem 0 1.4rem; padding: 0.7rem 0.9rem;
+    border: 1px solid var(--rule, #ddd); border-radius: 4px; font: 0.82rem/1.5 "Source Sans 3", system-ui, sans-serif; }
+  .summary-filters fieldset { border: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.7rem; }
+  .summary-filters legend { float: left; margin: 0 0.4rem 0 0; padding: 0; font-size: inherit; font-weight: 700;
+    color: var(--notec, #777); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
+  .summary-filters label { cursor: pointer; white-space: nowrap; }
+  .summary-filters input { margin-right: 0.25rem; vertical-align: -1px; }
+  .summary-filters .sf-count { margin-left: auto; color: var(--notec, #777); align-self: center; }
+  .sf-hidden { display: none !important; }
+  .summary-intro { display: block; color: var(--notec); font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .solutions-hidden .problem-group .callout { display: none !important; }
+  @media print {
+    #quarto-sidebar, #quarto-margin-sidebar, .navbar, #quarto-header, .summary-filters, nav.page-navigation,
+    .page-footer, .pg-mark, .pg-note-row, .beyond-summary, .quarto-title-breadcrumbs, .course-banner,
+    .callout-header .callout-btn-toggle { display: none !important; }
+    #quarto-content { display: block !important; }
+    main.content { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+    body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+    .summary-item, .problem-group { break-inside: avoid; }
+    h2 { break-after: avoid; }
+    .dep-graph-wrap { overflow: visible; }
+    .dep-graph { max-width: 100%; }
+    .solutions-expanded .callout .collapse { display: block !important; height: auto !important; }
+    a { color: inherit !important; text-decoration: none !important; }
+  }
+</style>
+<script>
+(function () {
+  const KEY = "study-summary-filters";
+  const GROUPS = [
+    { key: "kind", label: "Show", type: "check", options: [
+      ["def", "Definitions"], ["result", "Results"], ["exercise", "Exercises"], ["synthesis", "Synthesis"]] },
+    { key: "level", label: "Level", type: "check", options: [
+      ["easy", "Easy"], ["medium", "Medium"], ["hard", "Hard"], ["", "Unrated"]] },
+    { key: "state", label: "Progress", type: "check", options: [
+      ["new", "New"], ["learned", "Learned"], ["reviewing", "Reviewing"], ["mastered", "Mastered"]] },
+    { key: "solutions", label: "Solutions", type: "radio", options: [
+      ["hidden", "Hidden"], ["collapsed", "Collapsed"], ["expanded", "Expanded"]] },
+  ];
+  const DEFAULT = { kind: ["def", "result", "exercise", "synthesis"], level: ["easy", "medium", "hard", ""],
+                    state: ["new", "learned", "reviewing", "mastered"], solutions: "collapsed" };
+
+  function load() {
+    try { return Object.assign({}, DEFAULT, JSON.parse(localStorage.getItem(KEY) || "{}")); }
+    catch (e) { return Object.assign({}, DEFAULT); }
+  }
+  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { /* private mode */ } }
+
+  function stateOf(item) {
+    return window.StudyProgress ? window.StudyProgress.stateOf(item) : "new";
+  }
+
+  function apply(box, s) {
+    const main = document.querySelector("main") || document.body;
+    let shown = 0, total = 0;
+    main.querySelectorAll(".summary-item").forEach(el => {
+      const ok = s.kind.includes(el.dataset.kind) && s.state.includes(stateOf(el.dataset.item));
+      el.classList.toggle("sf-hidden", !ok);
+      total++; if (ok) shown++;
+    });
+    main.querySelectorAll(".problem-group").forEach(el => {
+      const kind = el.classList.contains("synthesis") ? "synthesis" : "exercise";
+      const ok = s.kind.includes(kind) && s.level.includes(el.dataset.level || "") &&
+                 s.state.includes(stateOf(el.dataset.item));
+      el.classList.toggle("sf-hidden", !ok);
+      total++; if (ok) shown++;
+    });
+    // headings with nothing visible under them
+    main.querySelectorAll("h3").forEach(h => {
+      let n = h.nextElementSibling, any = false;
+      const VISIBLE = ".summary-item:not(.sf-hidden), .problem-group:not(.sf-hidden)";
+      while (n && !/^H[23]$/.test(n.tagName)) {
+        if (n.matches(VISIBLE) || n.querySelector(VISIBLE)) any = true;
+        n = n.nextElementSibling;
+      }
+      h.classList.toggle("sf-hidden", !any);
+    });
+    document.body.classList.toggle("solutions-hidden", s.solutions === "hidden");
+    document.body.classList.toggle("solutions-expanded", s.solutions === "expanded");
+    main.querySelectorAll(".problem-group .callout").forEach(c => {
+      const body = c.querySelector(".callout-collapse, .collapse");
+      if (!body) return;
+      const open = s.solutions === "expanded";
+      body.classList.toggle("show", open);
+      const head = c.querySelector(".callout-header");
+      if (head) head.setAttribute("aria-expanded", open ? "true" : "false");
+      c.classList.toggle("callout-titled-expanded", open);
+    });
+    const count = box.querySelector(".sf-count");
+    if (count) count.textContent = `${shown} of ${total} shown`;
+  }
+
+  function build(box) {
+    let s = load();
+    GROUPS.forEach(g => {
+      const fs = document.createElement("fieldset");
+      const lg = document.createElement("legend");
+      lg.textContent = g.label;
+      fs.appendChild(lg);
+      g.options.forEach(([value, text]) => {
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = g.type === "radio" ? "radio" : "checkbox";
+        input.name = "sf-" + g.key;
+        input.value = value;
+        input.checked = g.type === "radio" ? s[g.key] === value : s[g.key].includes(value);
+        input.addEventListener("change", () => {
+          if (g.type === "radio") s[g.key] = value;
+          else s[g.key] = Array.from(fs.querySelectorAll("input:checked")).map(i => i.value);
+          save(s);
+          apply(box, s);
+        });
+        label.append(input, text);
+        fs.appendChild(label);
+      });
+      box.appendChild(fs);
+    });
+    const count = document.createElement("span");
+    count.className = "sf-count";
+    box.appendChild(count);
+    const reset = document.createElement("button");
+    reset.type = "button";
+    reset.textContent = "Reset";
+    reset.className = "btn btn-sm btn-link p-0";
+    reset.addEventListener("click", () => { s = Object.assign({}, DEFAULT); save(s); box.innerHTML = ""; build(box); });
+    box.appendChild(reset);
+    box.hidden = false;
+    apply(box, s);
+    document.addEventListener("study-progress-change", () => apply(box, s));
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const box = document.querySelector(".summary-filters");
+    if (box) build(box);
+  });
+})();
+</script>

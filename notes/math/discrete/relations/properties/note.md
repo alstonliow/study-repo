@@ -1,7 +1,7 @@
 ---
 title: "Properties of binary relations"
 sources: [fit1058-cn-2.14]
-requires: []
+requires: [math/discrete/relations/binary-relations]
 status: draft
 ---
 

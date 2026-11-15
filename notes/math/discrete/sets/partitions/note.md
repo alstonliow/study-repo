@@ -1,7 +1,7 @@
 ---
 title: "Partitions"
 sources: [fit1058-cn-1.15]
-requires: [math/discrete/relations/equivalence-relations]
+requires: [math/discrete/sets/set-operations]
 status: draft
 ---
 

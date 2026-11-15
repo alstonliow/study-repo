@@ -1,7 +1,7 @@
 ---
 title: "Representing Logical Statements"
 sources: [fit1058-cn-4.18, fit1058-cn-4.19]
-requires: []
+requires: [math/discrete/logic/propositional/normal-forms]
 status: draft
 ---
 

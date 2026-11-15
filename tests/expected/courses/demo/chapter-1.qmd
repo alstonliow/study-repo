@@ -1,0 +1,91 @@
+---
+title: 'DEMO100 Chapter 1 · Basics: Summary'
+---
+
+[Everything DEMO100 needs from this chapter: definitions, results and exercises in course order, with synthesis problems at the end. Use the filters; print for a review sheet.]{.summary-intro}
+
+```{=html}
+<div class="summary-filters" hidden></div>
+```
+
+## Prerequisites
+
+```{=html}
+<div class="dep-graph-wrap">
+<svg class="dep-graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 158" width="196" height="158" role="img" aria-label="Prerequisite graph">
+<path class="dep-edge" d="M98,58 C98,79 98,79 98,96"/>
+<a href="../../notes/t/alpha/first.html" class="dep-node" data-item="t/alpha/first"><title>1.1 First note</title><rect x="12" y="12" width="172" height="46" rx="4"/><text x="22" y="40">1.1 First note</text></a>
+<a href="../../notes/t/alpha/second.html" class="dep-node" data-item="t/alpha/second"><title>1.2 Second note</title><rect x="12" y="100" width="172" height="46" rx="4"/><text x="22" y="128">1.2 Second note</text></a>
+</svg>
+</div>
+```
+
+## Definitions and results
+
+### [1.1 First note](/notes/t/alpha/first.qmd)
+
+::: {.summary-item .k-def data-kind="def" data-item="t/alpha/first"}
+[Definition]{.summary-kind} Widget [→](/notes/t/alpha/first.qmd#def-widget){.summary-src title="1.1 First note"}
+
+A *widget* is a thing with
+$$ w = 1. $$
+:::
+
+::: {.summary-item .k-thm data-kind="result" data-item="t/alpha/first"}
+[Theorem]{.summary-kind} Widget theorem [→](/notes/t/alpha/first.qmd#thm-widget){.summary-src title="1.1 First note"}
+
+Every widget is a widget.
+:::
+
+### [1.2 Second note](/notes/t/alpha/second.qmd)
+
+::: {.summary-item .k-thm data-kind="result" data-item="t/alpha/second"}
+[Theorem]{.summary-kind} Gadget theorem [→](/notes/t/alpha/second.qmd#thm-gadget){.summary-src title="1.2 Second note"}
+
+Gadgets follow from [Definition (Widget)](/notes/t/alpha/first.qmd#def-widget).
+:::
+
+## Exercises
+
+### [1.1 First note](/notes/t/alpha/first.qmd)
+
+:::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium"}
+::: {#prob-first-01 .problem}
+[Exercise 1]{.problem-title}[demo-1.1-q1]{.problem-source} [medium]{.level-badge .level-medium}
+
+Show that a widget is a widget.
+:::
+
+::: {.callout-tip collapse="true" appearance="simple" title="Draft solution (not yet reviewed)"}
+1. By [Theorem (Widget theorem)](/notes/t/alpha/first.qmd#thm-widget).
+:::
+
+::::
+
+:::: {.problem-group data-courses="demo" data-item="prob-first-02" data-level=""}
+::: {#prob-first-02 .problem}
+[Exercise 2]{.problem-title}[demo-1.1-q2]{.problem-source}
+
+Statement two.
+:::
+
+::::
+
+
+## Synthesis problems
+
+[Problems that combine several topics of the chapter.]{.summary-intro}
+
+:::: {.problem-group .synthesis data-courses="demo" data-item="prob-alpha-review-01" data-level="hard"}
+::: {#prob-alpha-review-01 .problem}
+[Exercise 1]{.problem-title}[]{.problem-source} [hard]{.level-badge .level-hard}
+
+Combine [Theorem (Widget theorem)](/notes/t/alpha/first.qmd#thm-widget) and [Theorem (Gadget theorem)](/notes/t/alpha/second.qmd#thm-gadget).
+:::
+
+::: {.callout-tip collapse="true" appearance="simple" title="Draft solution (not yet reviewed)"}
+1. Use both theorems.
+:::
+
+::::
+

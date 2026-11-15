@@ -1,0 +1,38 @@
+---
+title: '2 Beta: Summary'
+---
+
+[Definitions, results and exercises of Beta, with synthesis problems at the end. Use the filters to choose what to see; print this page for a review sheet.]{.summary-intro}
+
+```{=html}
+<div class="summary-filters" hidden></div>
+```
+
+## Prerequisites
+
+```{=html}
+<div class="dep-graph-wrap">
+<svg class="dep-graph" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 158" width="196" height="158" role="img" aria-label="Prerequisite graph">
+<path class="dep-edge faded" d="M98,58 C98,79 98,79 98,96"/>
+<a href="../alpha/first.html" class="dep-node faded" data-item="t/alpha/first"><title>1.1 First note</title><rect x="12" y="12" width="172" height="46" rx="4"/><text x="22" y="40">1.1 First note</text></a>
+<a href="third.html" class="dep-node" data-item="t/beta/third"><title>2.1 Third note</title><rect x="12" y="100" width="172" height="46" rx="4"/><text x="22" y="128">2.1 Third note</text></a>
+</svg>
+</div>
+```
+
+## Definitions and results
+
+### [2.1 Third note](/notes/t/beta/third.qmd)
+
+::: {.summary-item .k-def .scope-block data-kind="def" data-item="t/beta/third" data-courses="demo" data-label="Definition: Third"}
+[Definition]{.summary-kind} Third [→](/notes/t/beta/third.qmd#def-third){.summary-src title="2.1 Third note"}
+
+Covered by block id. Back to [1.1 First note](/notes/t/alpha/first.qmd).
+:::
+
+::: {.summary-item .k-prp .scope-block data-kind="result" data-item="t/beta/third" data-courses="" data-label="Proposition: Not covered"}
+[Proposition]{.summary-kind} Not covered [→](/notes/t/beta/third.qmd#prp-third){.summary-src title="2.1 Third note"}
+
+Outside the demo course.
+:::
+

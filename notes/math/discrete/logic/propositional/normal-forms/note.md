@@ -1,7 +1,7 @@
 ---
 title: "Normal Forms"
 sources: [fit1058-cn-4.16, fit1058-cn-4.17]
-requires: []
+requires: [math/discrete/logic/propositional/laws-of-boolean-algebra]
 status: draft
 ---
 

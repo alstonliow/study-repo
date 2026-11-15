@@ -1,7 +1,7 @@
 ---
 title: "One-Way Functions and Diffie–Hellman"
 sources: [fit1058-cn-7.16, fit1058-cn-7.17, fit1058-cn-7.18]
-requires: [math/discrete/number-theory/modular-exponentiation, math/discrete/number-theory/primitive-roots, math/discrete/sequences/big-o]
+requires: [math/discrete/number-theory/primitive-roots]
 status: draft
 ---
 

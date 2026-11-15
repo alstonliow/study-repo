@@ -22,7 +22,8 @@ META = ROOT / "meta"
 NOTE_FILES = ("note.md", "example.md", "exercise.md", "solution.md")
 XREF_PREFIXES = ("def", "thm", "prp", "lem", "cor", "exm", "prob", "fig")   # numbered, @-referenceable
 ID_PREFIXES = XREF_PREFIXES + ("rmk", "clm")                                  # every block id (SPEC §5)
-KEY_PREFIXES = {"def", "thm", "prp", "lem", "cor"}                            # listed on branch pages
+KEY_PREFIXES = {"def", "thm", "prp", "lem", "cor"}
+REVIEW = "review"   # folder name for a branch's synthesis problems                            # listed on branch pages
 PREFIX_OF_CLASS = {"definition": "def", "theorem": "thm", "proposition": "prp", "lemma": "lem",
                    "corollary": "cor", "example": "exm", "problem": "prob", "remark": "rmk",
                    "claim": "clm"}
@@ -93,7 +94,11 @@ def divs_in(text: str, file: str = "") -> list["Div"]:
 
 
 def fence_for(body: str) -> str:
-    longest = max((len(m.group(1)) for m in re.finditer(r"^(:{3,})", body, re.M)), default=2)
+    """A fence longer than any inside body. Raw LaTeX drawings count as a ':::'
+    div, because the site build turns them into one."""
+    longest = max((len(m.group(1)) for m in re.finditer(r"^[ \t]*(:{3,})", body, re.M)), default=2)
+    if RAW.search(body):
+        longest = max(longest, 3)
     return ":" * max(3, longest + 1)
 
 
@@ -287,12 +292,21 @@ class Repo:
     def __init__(self, root: Path = ROOT):
         self.root = root
         self.errors: list[str] = []
-        folders = sorted({p.parent for p in NOTES.rglob("*.md")}) if NOTES.exists() else []
-        self.all_notes = [Note(f) for f in folders]            # includes folders without note.md
-        self.notes = {n.id: n for n in self.all_notes if n.has_note}
-        self.owner = {bid: n.id for n in self.notes.values() for bid in n.blocks}
-        self.alias_of = {a: n.id for n in self.notes.values() for a in n.aliases}   # old id -> current id
         tax = yaml.safe_load((META / "taxonomy.yml").read_text(encoding="utf-8")) or {}
+        folders = sorted({p.parent for p in NOTES.rglob("*.md")}) if NOTES.exists() else []
+        # notes/<branch>/review/: the branch's synthesis problems (SPEC §6.3), not a note
+        self.reviews: dict[str, Note] = {}
+        self.all_notes = []                                   # includes folders without note.md
+        for f in folders:
+            n = Note(f)
+            if f.name == REVIEW and not n.has_note:
+                self.reviews[n.branch] = n
+            else:
+                self.all_notes.append(n)
+        self.notes = {n.id: n for n in self.all_notes if n.has_note}
+        self.owner = {bid: n.id for n in list(self.notes.values()) + list(self.reviews.values())
+                      for bid in n.blocks}
+        self.alias_of = {a: n.id for n in self.notes.values() for a in n.aliases}   # old id -> current id
         self.parts = [(p["title"], [(b["id"], b["title"]) for b in p["branches"]]) for p in tax.get("parts", [])]
         self.branch_desc = {b["id"]: b.get("desc", "") for p in tax.get("parts", []) for b in p["branches"]}
         # explicit topic order of the notes in each branch (folder names)
@@ -338,6 +352,12 @@ class Repo:
             return False
         return nid in c.whole or bid in c.parts
 
+    def review_courses(self, bid: str, pid: str) -> list[str]:
+        """A synthesis problem of branch bid is in a course when some note of the
+        branch is, unless the course excludes the problem."""
+        return [c.id for c in self.courses if pid not in c.excluded
+                and any(self.in_scope(c, n.id) for n in self.notes.values() if n.branch == bid)]
+
     def note_courses(self, n: "Note") -> list[str]:
         return [c.id for c in self.courses if self.in_scope(c, n.id)]
 
@@ -353,6 +373,62 @@ class Repo:
         order = {slug: k for k, slug in enumerate(self.branch_order.get(bid, []))}
         return sorted((n for n in self.notes.values() if n.branch == bid),
                       key=lambda n: (order.get(n.slug, len(order)), sort_key(n.front.get("sources")), n.id))
+
+    def number_notes(self) -> dict[str, int]:
+        """Topic numbering: branches 1, 2, ... restarting in each part; notes b.k.
+        Sets note.num; returns branch -> number."""
+        branch_num: dict[str, int] = {}
+        for _, branches in self.parts:
+            seq = 0
+            for bid, _ in branches:
+                members = self.branch_members(bid)
+                if not members:
+                    continue
+                seq += 1
+                branch_num[bid] = seq
+                for k, n in enumerate(members, 1):
+                    n.num = f"{seq}.{k}"
+        return branch_num
+
+    # ------------------------------------------------------------ prerequisites (SPEC §4)
+    def topic_order(self) -> list[str]:
+        """All notes in website order: parts, branches, then each branch's list."""
+        return [n.id for _, bs in self.parts for bid, _ in bs for n in self.branch_members(bid)]
+
+    def requires(self, nid: str) -> list[str]:
+        return [r for r in self.notes[nid].front.get("requires") or [] if r in self.notes]
+
+    def dependents(self, nid: str) -> list[str]:
+        """Notes that list nid as a direct prerequisite, in topic order."""
+        return [m for m in self.topic_order() if nid in self.requires(m)]
+
+    def ancestors(self, nid: str) -> set[str]:
+        seen: set[str] = set()
+        stack = list(self.requires(nid))
+        while stack:
+            x = stack.pop()
+            if x not in seen:
+                seen.add(x)
+                stack += self.requires(x)
+        return seen
+
+    def requires_problems(self) -> list[tuple[str, str]]:
+        """(level, message): cycles are errors; prerequisites that come later in
+        topic order, or are implied by another prerequisite, are warnings."""
+        out = []
+        pos = {nid: k for k, nid in enumerate(self.topic_order())}
+        for nid in self.notes:
+            reqs = self.requires(nid)
+            if nid in self.ancestors(nid):
+                out.append(("error", f"{nid}: requires leads back to itself (cycle)"))
+            for r in reqs:
+                if pos.get(r, -1) > pos.get(nid, -1):
+                    out.append(("warning", f"{nid}: prerequisite {r} comes later in topic order"))
+                if any(r in self.ancestors(q) for q in reqs if q != r):
+                    out.append(("warning", f"{nid}: prerequisite {r} is already implied by another one"))
+            if len(set(reqs)) != len(reqs):
+                out.append(("warning", f"{nid}: a prerequisite is listed twice"))
+        return out
 
     def taxonomy_problems(self) -> list[str]:
         """Notes missing from, or listed but absent in, meta/taxonomy.yml."""

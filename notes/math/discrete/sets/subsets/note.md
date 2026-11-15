@@ -1,7 +1,7 @@
 ---
 title: "Subsets"
 sources: [fit1058-cn-1.6, fit1058-cn-1.7]
-requires: []
+requires: [math/discrete/sets/sets-and-elements]
 status: draft
 ---
 

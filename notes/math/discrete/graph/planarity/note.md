@@ -1,7 +1,7 @@
 ---
 title: "Planarity"
 sources: [fit1058-cn-12.5]
-requires: []
+requires: [math/discrete/graph/trees, math/discrete/graph/degree]
 status: draft
 ---
 

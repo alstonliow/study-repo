@@ -1,7 +1,7 @@
 ---
 title: "Coprimality"
 sources: [fit1058-cn-7.9]
-requires: [math/discrete/number-theory/divisibility-and-primes, math/discrete/number-theory/extended-euclidean-algorithm]
+requires: [math/discrete/number-theory/extended-euclidean-algorithm]
 status: draft
 ---
 

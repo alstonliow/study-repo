@@ -1,7 +1,7 @@
 ---
 title: "Connectivity"
 sources: [fit1058-cn-11.9]
-requires: [math/discrete/graph/basic-definitions, math/discrete/relations/equivalence-relations]
+requires: [math/discrete/graph/walks-paths-cycles, math/discrete/relations/equivalence-relations]
 status: draft
 ---
 

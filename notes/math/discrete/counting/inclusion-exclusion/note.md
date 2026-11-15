@@ -1,7 +1,7 @@
 ---
 title: Inclusion-Exclusion
 sources: [fit1058-cn-8.3]
-requires: [math/discrete/counting/combinations]
+requires: [math/discrete/counting/sum-and-product-rules, math/discrete/proof/induction]
 status: draft
 ---
 

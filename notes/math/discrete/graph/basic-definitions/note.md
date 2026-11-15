@@ -1,7 +1,7 @@
 ---
 title: "Graphs: Basic Definitions"
 sources: [fit1058-cn-11.1, fit1058-cn-11.2, fit1058-cn-11.5]
-requires: [math/discrete/graph/connectivity]
+requires: [math/discrete/sets/set-operations]
 status: draft
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Walks, paths and cycles"
 sources: [fit1058-cn-11.8]
-requires: []
+requires: [math/discrete/graph/basic-definitions]
 status: draft
 ---
 

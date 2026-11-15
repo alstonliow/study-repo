@@ -1,7 +1,7 @@
 ---
 title: "Inclusion-Exclusion: Derangements"
 sources: [fit1058-cn-8.4]
-requires: [math/discrete/counting/inclusion-exclusion, math/discrete/counting/sum-and-product-rules]
+requires: [math/discrete/counting/inclusion-exclusion, math/discrete/functions/counting]
 status: draft
 ---
 

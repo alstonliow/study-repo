@@ -1,7 +1,7 @@
 ---
 title: "Injections, surjections, bijections"
 sources: [fit1058-cn-2.7]
-requires: []
+requires: [math/discrete/functions/definitions]
 status: draft
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "The Power Set"
 sources: [fit1058-cn-1.8, fit1058-cn-1.9, fit1058-cn-1.10]
-requires: []
+requires: [math/discrete/sets/subsets, math/discrete/sets/cardinality-and-standard-sets]
 status: draft
 ---
 

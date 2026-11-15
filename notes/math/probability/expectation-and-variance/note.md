@@ -1,7 +1,7 @@
 ---
 title: "Expectation, Median, Mode and Variance"
 sources: [fit1058-cn-10.3, fit1058-cn-10.4, fit1058-cn-10.5, fit1058-cn-10.6]
-requires: []
+requires: [math/probability/random-variables]
 status: draft
 ---
 

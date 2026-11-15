@@ -42,11 +42,21 @@ def check_notes() -> None:
     requires: list[tuple[Path, str]] = []
     missing_ids: list[str] = []
 
-    for note in REPO.all_notes:
+    for bid, rv in REPO.reviews.items():
+        if bid not in REPO.branch_order:
+            errors.append(f"{rv.id}: review folder is not directly under a branch in meta/taxonomy.yml")
+        extra = sorted(set(rv.files) - {"exercise.md", "solution.md"})
+        if extra:
+            errors.append(f"{rv.id}: a review folder holds only exercise.md and solution.md (found {', '.join(extra)})")
+
+    for note in REPO.all_notes + list(REPO.reviews.values()):
         nid = note.id
+        is_review = note in REPO.reviews.values()
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*", nid):
             errors.append(f"{nid}: folder names must be lowercase words joined by hyphens")
-        if not note.has_note:
+        if is_review:
+            pass
+        elif not note.has_note:
             errors.append(f"{nid}: missing note.md")
         else:
             path = note.files["note.md"].path
@@ -110,6 +120,9 @@ def check_notes() -> None:
                         solutions[target] = md
                         if not d.body.strip():
                             empty_solutions.add(target)
+            for m in re.finditer(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", f.raw):
+                line = f.raw[:m.start()].count("\n") + 1
+                errors.append(f"{rel(md)}:{line}: invisible control character {m.group(0)!r} (corrupted text?)")
             for m in REF.finditer(f.text):
                 refs.append((md, m.group(1)))
             for m in MATH.finditer(f.masked):
@@ -151,6 +164,12 @@ def check_notes() -> None:
     print(f"notes: {len(ids)} knowledge points, {len(block_ids)} labelled blocks, "
           f"{len(problems)} problems, {len(solutions) - len(empty_solutions)} solutions "
           f"({len(empty_solutions)} empty)")
+
+
+def check_requires() -> None:
+    """requires = direct prerequisites only: no cycles, nothing implied, nothing later."""
+    for level, msg in REPO.requires_problems():
+        (errors if level == "error" else warnings).append(msg)
 
 
 def check_aliases() -> None:
@@ -235,6 +254,7 @@ def main() -> int:
     check_notes()
     check_taxonomy()
     check_aliases()
+    check_requires()
     check_courses()
     check_figures()
     check_forbidden_files()

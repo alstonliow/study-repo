@@ -155,11 +155,28 @@ every reference, `requires`, the course files and `meta/taxonomy.yml`, and
 records the old id under `aliases`, so old links redirect and progress marks
 follow. Add `--dry-run` to see what it would change.
 
+### Prerequisites, summaries and PDFs
+
+- `requires` in a note's YAML lists its **direct** prerequisites only (see
+  `meta/SPEC.md` §4); the website draws every prerequisite graph from it, and
+  `make check` rejects cycles.
+- Synthesis problems for a branch go in `notes/<branch>/review/exercise.md` and
+  `solution.md`; they appear at the end of the branch's summary page.
+- Summary pages (one per branch, one per course chapter) are generated.
+- PDFs:
+
+  ```bash
+  make pdf                                   # the common versions, into out/pdf/
+  python3 build/make_pdf.py --help           # every option
+  python3 build/make_pdf.py --scope course:fit1058 --extra omit --solutions separate --layout document --style plain
+  ```
+
 ### Before committing
 
 ```bash
 make check   # must report 0 errors; warnings are open TODOs
 make test    # only needed after changing build/ or site/ scripts
+make pdf     # optional: PDFs (CI builds them too)
 make site    # optional local preview
 ```
 
