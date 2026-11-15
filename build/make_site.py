@@ -453,6 +453,7 @@ def main() -> int:
     branch_title = {b: bt for _, bs in BRANCHES for b, bt in bs}
     page_courses = {}
     course_rows = []
+    course_order = {}  # course id -> [{"title": chapter heading, "pages": [note html paths]}]
     for c in COURSES:
         members = sorted((n for n in notes.values() if c["id"] in n.courses),
                          key=lambda n: (course_key(n.front.get("sources"), c), n.id))
@@ -468,7 +469,10 @@ def main() -> int:
                 chapter = ch
                 same = [m.branch for m in members if course_key(m.front.get("sources"), c)[:1] == (ch,)]
                 topic = branch_title.get(max(set(same), key=same.count), "") if same else ""
-                lines += ["", f"## Chapter {ch}" + (f" · {topic}" if topic else "") if ch else "## Other", ""]
+                heading = f"Chapter {ch}" + (f" · {topic}" if topic else "") if ch else "Other"
+                lines += ["", f"## {heading}", ""]
+                course_order.setdefault(c["id"], []).append({"title": heading, "pages": []})
+            course_order[c["id"]][-1]["pages"].append(f"notes/{n.id}.html")
             keys = [k for k in n.front.get("sources") or [] if str(k).startswith(c["prefix"])]
             nprob = sum(1 for s in n.problem_sources if s.startswith(c["prefix"]))
             extra = f" ({nprob} exercise{'s' if nprob != 1 else ''})" if nprob else ""
@@ -485,7 +489,7 @@ def main() -> int:
     import json
     (SITE / "courses.json").write_text(json.dumps({
         "courses": [{"id": c["id"], "code": c["code"], "name": c.get("name", "")} for c in COURSES],
-        "pages": page_courses}, ensure_ascii=False, indent=1), encoding="utf-8")
+        "pages": page_courses, "order": course_order}, ensure_ascii=False, indent=1), encoding="utf-8")
 
     # progress tracking (site/progress.html): which problems sit on which page
     (SITE / "progress.json").write_text(json.dumps({
