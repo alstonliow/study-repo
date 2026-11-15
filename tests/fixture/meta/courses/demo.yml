@@ -1,0 +1,25 @@
+# Test fixture course.
+id: demo
+code: DEMO100
+name: "Demo course"
+source_prefix: demo-
+outline_from: "fixture"
+status: draft
+exclude:
+  - rmk-second-1
+chapters:
+  - num: 1
+    title: "Basics"
+    points:
+      - id: "1.1"
+        title: "First things"
+        covers: [t/alpha/first]
+      - id: "1.2"
+        title: "Second things"
+        covers: [t/alpha/second]
+  - num: 2
+    title: "More"
+    points:
+      - id: "2.1"
+        title: "One block only"
+        covers: [def-third]

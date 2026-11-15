@@ -1,0 +1,15 @@
+---
+title: DEMO100 – Demo course
+---
+
+Knowledge points used by DEMO100, in course order. The course filter at the bottom of the sidebar shows only this course's content.
+
+
+## Chapter 1 · Basics
+
+- [1.1 First note](/notes/t/alpha/first.qmd) (2 exercises) [§1.1]{.note-keys}
+- [1.2 Second note](/notes/t/alpha/second.qmd) [§1.2]{.note-keys}
+
+## Chapter 2 · More
+
+- [2.1 Third note](/notes/t/beta/third.qmd) [§2.1]{.note-keys}

@@ -1,0 +1,21 @@
+---
+title: 1.2 Second note
+---
+
+[Sources: `demo-1.2` · Prerequisites: [1.1 First note](/notes/t/alpha/first.qmd) · Status: draft]{.note-meta}
+
+::: {#thm-gadget .theorem name="Gadget theorem"}
+Gadgets follow from [Definition (Widget)](/notes/t/alpha/first.qmd#def-widget).
+:::
+
+::: {.proof}
+1. Use [Theorem (Widget theorem)](/notes/t/alpha/first.qmd#thm-widget).
+:::
+
+:::: {.scope-block data-courses="" data-kind="rmk" data-label="Remark: Beyond the course"}
+:::: {#rmk-second-1 .block}
+::: {.remark name="Beyond the course"}
+This remark is excluded by the demo course.
+:::
+::::
+::::

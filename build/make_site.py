@@ -17,6 +17,7 @@ Read-only with respect to notes/. Never runs git.
 from __future__ import annotations
 
 import hashlib
+import os
 import html
 import re
 import shutil
@@ -32,7 +33,7 @@ import yaml
 from model import (MATH, NOTES, OPEN, RAW, REF, ROOT, Note, Repo, attrs_of, divs_in, fence_for,
                    load, top_level_divs)
 
-SITE = ROOT / "site"
+SITE = Path(os.environ.get("STUDY_SITE") or ROOT / "site").resolve()   # tests write elsewhere
 OUT_NOTES = SITE / "notes"
 OUT_COURSES = SITE / "courses"
 TIKZ = SITE / "tikz"
@@ -347,7 +348,10 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
         meta.append("Prerequisites: " + ", ".join(f"[{notes[r].display_title}]({page_url(r)})" for r in reqs))
     if note.front.get("status") == "draft":
         meta.append("Status: draft")
-    head = "---\n" + yaml.safe_dump({"title": note.display_title}, allow_unicode=True) + "---\n\n"
+    front = {"title": note.display_title}
+    if note.aliases:   # redirect pages at the old addresses of a moved note
+        front["aliases"] = [f"/notes/{a}.html" for a in note.aliases]
+    head = "---\n" + yaml.safe_dump(front, allow_unicode=True) + "---\n\n"
     if meta:
         head += "[" + " · ".join(meta) + "]{.note-meta}\n\n"
     return head + body + "\n"
@@ -502,6 +506,7 @@ def main() -> int:
         "pages": page_courses, "order": course_order,
         "branches": branch_items,
         "notes": {n.id: [pr.id for pr in n.problems] for n in notes.values()},
+        "aliases": REPO.alias_of,
     }, ensure_ascii=False, indent=1), encoding="utf-8")
     for old in ("courses.json", "progress.json"):
         if (SITE / old).exists():

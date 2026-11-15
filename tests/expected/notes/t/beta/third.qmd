@@ -1,0 +1,15 @@
+---
+title: 2.1 Third note
+---
+
+[Prerequisites: [1.1 First note](/notes/t/alpha/first.qmd)]{.note-meta}
+
+::: {#def-third .definition name="Third"}
+Covered by block id. Back to [1.1 First note](/notes/t/alpha/first.qmd).
+:::
+
+:::: {.scope-block data-courses="" data-kind="prp" data-label="Proposition: Not covered"}
+::: {#prp-third .proposition name="Not covered"}
+Outside the demo course.
+:::
+::::

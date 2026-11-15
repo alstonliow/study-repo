@@ -79,12 +79,28 @@ window.STUDY_PROGRESS_CONFIG = {
     for (const [i, v] of Object.entries(remote)) {
       if (!store[i] || store[i].t < v.t) store[i] = v;
     }
+    migrate();
     for (const [i, v] of Object.entries(store)) {
       if (!remote[i] || remote[i].t < v.t) toPush.push(i);
     }
     save();
     render();
     await push(toPush);
+  }
+
+  // A note that moved keeps its old id as an alias (site-data.json "aliases");
+  // marks saved under the old id move to the new one, the newer mark winning.
+  function migrate() {
+    const aliases = (data && data.aliases) || {};
+    let changed = false;
+    for (const [old, now] of Object.entries(aliases)) {
+      if (!store[old]) continue;
+      if (!store[now] || store[now].t < store[old].t) store[now] = store[old];
+      delete store[old];
+      changed = true;
+    }
+    if (changed) save();
+    return changed;
   }
 
   function setState(item, s) {
@@ -273,7 +289,11 @@ window.STUDY_PROGRESS_CONFIG = {
     decorate();
     authLine();
     render();
-    window.StudySite.data.then(d => { data = d; render(); });
+    window.StudySite.data.then(d => {
+      data = d;
+      if (migrate()) push(Object.values((d && d.aliases) || {}).filter(i => store[i]));
+      render();
+    });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();

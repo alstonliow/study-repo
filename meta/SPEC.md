@@ -39,11 +39,19 @@ once approved.
    `math/discrete/`).
 5. `meta/taxonomy.md` fixes the top two levels and the branches;
    `meta/taxonomy.yml` is the machine-readable list of parts and branches (order,
-   display title, one-line description) used by the build. The two are changed
-   together. Leaf folders are created only when content is added. No empty
+   display title, one-line description) and, for each branch, the order of its
+   notes (`notes:`, folder names). Every note is listed there; topic order on
+   the website comes only from this list, never from source keys. The two files
+   are changed together. Leaf folders are created only when content is added. No empty
    directories in advance.
 6. ids are not renamed without the owner's approval. When a knowledge point is split, the
    original id stays as an overview so existing references do not break.
+7. **Moving** a knowledge point or a folder of them is done only with
+   `build/move_note.py OLD NEW`. It rewrites `@sec-` references, `requires`,
+   course files and `meta/taxonomy.yml`, and adds the old id to the note's
+   `aliases` (§4). The website keeps a redirect page at every old address, and
+   progress marks saved under an old id move to the new one. An alias is never
+   reused as the id of another note. Block ids never change when a note moves.
 
 ## 3. Folder contents
 
@@ -74,6 +82,7 @@ status: draft        # draft | done
 | `sources` | yes | List of source keys; may be empty if unknown (with a TODO comment) |
 | `requires` | yes | List of ids; may be empty |
 | `status` | yes | `draft` or `done`. Mechanical migration always sets `draft` |
+| `aliases` | no | Old ids of this note, added by `build/move_note.py`; never edited by hand |
 
 Source keys are never invented. If a source is unknown, leave it out and add a
 `<!-- TODO: source -->` comment.
@@ -270,12 +279,18 @@ build artefacts (`*.aux`, `*.log`, PDFs, `out/`, `_site/`).
 7. Files that must not be committed: anything under `raw/`, PDFs, `.aux` and
    similar artefacts.
 8. Blocks without an id (§5), and `@`-references to `rmk-`/`clm-` ids.
-9. Course files (§13): unknown note or block ids in `covers`/`exclude`, duplicate
+9. Notes missing from `meta/taxonomy.yml`, or listed there but absent (§2.5);
+   aliases that clash with a note id or with each other (§2.7).
+10. Course files (§13): unknown note or block ids in `covers`/`exclude`, duplicate
    point ids, points that cover nothing (warning), and notes whose `sources`
    name a course that does not cover them (warning: provenance without scope).
 
 All checks run on the model built by `build/model.py`, the single parser of
-notes, blocks and course files. `build/make_site.py` uses the same model; no
+notes, blocks and course files. `make test` runs the build scripts on a small
+fixture repository (`tests/fixture`) and compares the generated pages with
+`tests/expected`; CI runs it before `make check`. Any change to the build
+scripts keeps `make test` passing; an intended change of output is accepted
+with `python3 tests/test_build.py --update` and reviewed in the diff. `build/make_site.py` uses the same model; no
 other script parses notes on its own.
 
 ## 12. Open questions

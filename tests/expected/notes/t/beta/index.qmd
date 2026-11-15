@@ -1,0 +1,9 @@
+---
+title: 2 Beta
+---
+
+[Second test branch. 1 topics]{.branch-intro}
+
+::: {.branch-toc}
+- [2.1]{.toc-num} [Third note](/notes/t/beta/third.qmd) [Third · Not covered]{.toc-desc}
+:::

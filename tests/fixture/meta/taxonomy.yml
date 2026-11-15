@@ -1,0 +1,15 @@
+# Test fixture taxonomy (not real content).
+parts:
+  - title: Testing
+    branches:
+      - id: t/alpha
+        title: Alpha
+        desc: First test branch
+        notes:
+          - first
+          - second
+      - id: t/beta
+        title: Beta
+        desc: Second test branch
+        notes:
+          - third

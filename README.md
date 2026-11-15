@@ -67,7 +67,9 @@ Problem statement, copied verbatim.
 ### A knowledge point
 
 1. Create a folder under an existing branch (see `meta/taxonomy.md`), with a
-   lowercase hyphenated name, e.g. `notes/math/discrete/counting/stars-and-bars/`.
+   lowercase hyphenated name, e.g. `notes/math/discrete/counting/stars-and-bars/`,
+   and add the folder name to that branch's `notes:` list in
+   `meta/taxonomy.yml`, at the place where it should appear.
 2. Write `note.md`:
 
    ```markdown
@@ -140,10 +142,24 @@ covered note that the course does not need under `exclude`. Keep
 needs must be added to that course's file; `make check` lists notes drawn from a
 course's material that its file does not cover.
 
+### Moving or renaming notes
+
+Never move note folders by hand. Use
+
+```bash
+python3 build/move_note.py math/discrete/counting/stars-and-bars math/discrete/counting/multisets
+```
+
+It works for a single note or a whole folder (`math/discrete/graph`), updates
+every reference, `requires`, the course files and `meta/taxonomy.yml`, and
+records the old id under `aliases`, so old links redirect and progress marks
+follow. Add `--dry-run` to see what it would change.
+
 ### Before committing
 
 ```bash
 make check   # must report 0 errors; warnings are open TODOs
+make test    # only needed after changing build/ or site/ scripts
 make site    # optional local preview
 ```
 

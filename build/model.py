@@ -7,13 +7,15 @@ Read-only: never writes files and never runs git.
 
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
+# STUDY_ROOT points the model at another repository (tests use a small fixture).
+ROOT = Path(os.environ.get("STUDY_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 NOTES = ROOT / "notes"
 META = ROOT / "meta"
 
@@ -171,6 +173,7 @@ class Note:
                     self.front_error = f"invalid YAML ({exc})"
                     body = re.sub(r"^---\n.*?\n---\n", "", note.raw, count=1, flags=re.S)
         self.title = self.front.get("title", self.id.rsplit("/", 1)[-1])
+        self.aliases = [str(a) for a in self.front.get("aliases") or []]   # old ids (SPEC §2.6)
         self.body = strip_comments(body)
         self.examples = self.files["example.md"].text if "example.md" in self.files else ""
         self.exercises = self.files["exercise.md"].text if "exercise.md" in self.files else ""
@@ -202,6 +205,10 @@ class Note:
     @property
     def branch(self) -> str:
         return self.id.rsplit("/", 1)[0]
+
+    @property
+    def slug(self) -> str:
+        return self.id.rsplit("/", 1)[-1]
 
     @property
     def sec_label(self) -> str:
@@ -284,9 +291,13 @@ class Repo:
         self.all_notes = [Note(f) for f in folders]            # includes folders without note.md
         self.notes = {n.id: n for n in self.all_notes if n.has_note}
         self.owner = {bid: n.id for n in self.notes.values() for bid in n.blocks}
+        self.alias_of = {a: n.id for n in self.notes.values() for a in n.aliases}   # old id -> current id
         tax = yaml.safe_load((META / "taxonomy.yml").read_text(encoding="utf-8")) or {}
         self.parts = [(p["title"], [(b["id"], b["title"]) for b in p["branches"]]) for p in tax.get("parts", [])]
         self.branch_desc = {b["id"]: b.get("desc", "") for p in tax.get("parts", []) for b in p["branches"]}
+        # explicit topic order of the notes in each branch (folder names)
+        self.branch_order = {b["id"]: [str(x) for x in b.get("notes") or []]
+                             for p in tax.get("parts", []) for b in p["branches"]}
         cdir = META / "courses"
         self.courses = [Course(p) for p in sorted(cdir.glob("*.yml"))] if cdir.exists() else []
         self.resolve_courses()
@@ -337,9 +348,28 @@ class Repo:
                 if (self.in_scope(c, n.id) if bid is None else self.in_scope(c, n.id, bid))]
 
     def branch_members(self, bid: str) -> list[Note]:
-        """Notes of a branch in topic order."""
+        """Notes of a branch in topic order: the order listed in taxonomy.yml.
+        Unlisted notes (an error in check.py) go last, by source key."""
+        order = {slug: k for k, slug in enumerate(self.branch_order.get(bid, []))}
         return sorted((n for n in self.notes.values() if n.branch == bid),
-                      key=lambda n: (sort_key(n.front.get("sources")), n.id))
+                      key=lambda n: (order.get(n.slug, len(order)), sort_key(n.front.get("sources")), n.id))
+
+    def taxonomy_problems(self) -> list[str]:
+        """Notes missing from, or listed but absent in, meta/taxonomy.yml."""
+        out = []
+        for bid, slugs in self.branch_order.items():
+            have = {n.slug for n in self.notes.values() if n.branch == bid}
+            for s in slugs:
+                if s not in have:
+                    out.append(f"{bid}: lists '{s}', but notes/{bid}/{s}/note.md does not exist")
+            if len(set(slugs)) != len(slugs):
+                out.append(f"{bid}: a note is listed twice")
+        for n in self.notes.values():
+            if n.branch not in self.branch_order:
+                out.append(f"{n.id}: its branch '{n.branch}' is not in meta/taxonomy.yml")
+            elif n.slug not in self.branch_order[n.branch]:
+                out.append(f"{n.id}: not listed under its branch in meta/taxonomy.yml (notes:)")
+        return out
 
 
 def load() -> Repo:

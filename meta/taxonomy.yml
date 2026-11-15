@@ -1,40 +1,135 @@
 # Machine-readable parts and branches (meta/SPEC.md §2.5).
-# Order here is the order on the website. Change together with meta/taxonomy.md.
+# Order here is the order on the website: parts, branches, and the notes inside
+# each branch (folder names). Every note must be listed (make check).
+# Change together with meta/taxonomy.md.
 parts:
   - title: Discrete Mathematics
     branches:
       - id: math/discrete/sets
         title: Sets
         desc: Sets, subsets, power sets, set operations, partitions
+        notes:   # topic order on the website
+          - sets-and-elements
+          - cardinality-and-standard-sets
+          - subsets
+          - power-set
+          - set-operations
+          - symmetric-difference
+          - cartesian-product
+          - partitions
       - id: math/discrete/functions
         title: Functions
         desc: Functions, injections and bijections, inverses, composition
+        notes:   # topic order on the website
+          - definitions
+          - special-functions
+          - injections-surjections-bijections
+          - inverse-functions
+          - composition
+          - cryptosystems
+          - counting
       - id: math/discrete/relations
         title: Relations
         desc: Binary relations, their properties, equivalence relations
+        notes:   # topic order on the website
+          - binary-relations
+          - properties
+          - combining
+          - equivalence-relations
+          - counting
       - id: math/discrete/proof
         title: Proof
         desc: Theorems and proofs, proof techniques, induction
+        notes:   # topic order on the website
+          - theorems-and-proofs
+          - finding-proofs
+          - techniques
+          - contradiction
+          - induction
+          - induction-examples
+          - induction-extended-example
       - id: math/discrete/logic/propositional
         title: Propositional Logic
         desc: Connectives, laws of Boolean algebra, normal forms
+        notes:   # topic order on the website
+          - propositions
+          - connectives
+          - de-morgans-laws
+          - implication-and-equivalence
+          - tautologies
+          - laws-of-boolean-algebra
+          - normal-forms
+          - representing-statements
+          - universal-sets-of-operations
       - id: math/discrete/logic/predicate
         title: Predicate Logic
         desc: Predicates and quantifiers
+        notes:   # topic order on the website
+          - predicates
+          - quantifiers
+          - multiple-quantifiers
+          - logic-with-quantifiers
       - id: math/discrete/sequences
         title: Sequences and Series
         desc: Recurrences, limits, big-O, sums and series
+        notes:   # topic order on the website
+          - basic-sequences
+          - solving-recurrences
+          - fibonacci
+          - limits
+          - big-o
+          - sums-and-series
       - id: math/discrete/number-theory
         title: Number Theory
         desc: Divisibility, gcd, modular arithmetic, Diffie–Hellman
+        notes:   # topic order on the website
+          - divisibility-and-primes
+          - remainders-and-parity
+          - gcd-and-euclidean-algorithm
+          - extended-euclidean-algorithm
+          - coprimality
+          - modular-arithmetic
+          - euler-totient
+          - modular-exponentiation
+          - primitive-roots
+          - diffie-hellman
       - id: math/discrete/counting
         title: Counting
         desc: Counting rules, inclusion–exclusion, selections
+        notes:   # topic order on the website
+          - sum-and-product-rules
+          - inclusion-exclusion
+          - derangements
+          - selection
+          - combinations
+          - stars-and-bars
       - id: math/discrete/graph
         title: Graph Theory
         desc: Paths, connectivity, trees, planarity
+        notes:   # topic order on the website
+          - basic-definitions
+          - representing-graphs
+          - special-graphs
+          - degree
+          - walks-paths-cycles
+          - connectivity
+          - bipartite-graphs
+          - euler-and-hamilton
+          - trees
+          - forests-and-spanning-trees
+          - planarity
+          - games-on-graphs
   - title: Probability
     branches:
       - id: math/probability
         title: Discrete Probability
         desc: Events, conditional probability, random variables, distributions
+        notes:   # topic order on the website
+          - sample-spaces
+          - events
+          - conditional-probability
+          - bayes-theorem
+          - random-variables
+          - expectation-and-variance
+          - standard-distributions
+          - coupon-collector

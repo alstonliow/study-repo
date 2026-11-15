@@ -1,0 +1,61 @@
+{
+ "courses": [
+  {
+   "id": "demo",
+   "code": "DEMO100",
+   "name": "Demo course",
+   "status": "draft"
+  }
+ ],
+ "pages": {
+  "courses/demo.html": [
+   "demo"
+  ],
+  "notes/t/alpha/first.html": [
+   "demo"
+  ],
+  "notes/t/alpha/second.html": [
+   "demo"
+  ],
+  "notes/t/beta/third.html": [
+   "demo"
+  ]
+ },
+ "order": {
+  "demo": [
+   {
+    "title": "Chapter 1 · Basics",
+    "num": 1,
+    "pages": [
+     "notes/t/alpha/first.html",
+     "notes/t/alpha/second.html"
+    ]
+   },
+   {
+    "title": "Chapter 2 · More",
+    "num": 2,
+    "pages": [
+     "notes/t/beta/third.html"
+    ]
+   }
+  ]
+ },
+ "branches": {
+  "t/alpha": [
+   "t/alpha/first",
+   "t/alpha/second"
+  ],
+  "t/beta": [
+   "t/beta/third"
+  ]
+ },
+ "notes": {
+  "t/alpha/first": [
+   "prob-first-01",
+   "prob-first-02"
+  ],
+  "t/alpha/second": [],
+  "t/beta/third": []
+ },
+ "aliases": {}
+}

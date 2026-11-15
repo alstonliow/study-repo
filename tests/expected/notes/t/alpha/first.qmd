@@ -1,0 +1,60 @@
+---
+title: 1.1 First note
+---
+
+[Sources: `demo-1.1` · Status: draft]{.note-meta}
+
+## 1.1.1 Part one
+
+::: {#def-widget .definition name="Widget"}
+A *widget* is a thing with
+$$ w = 1. $$
+:::
+
+::: {#thm-widget .theorem name="Widget theorem"}
+Every widget is a widget.
+:::
+
+::: {.proof}
+1. Trivial.
+
+2. Done.
+:::
+
+:::: {#rmk-first-1 .block}
+::: {.remark name="Aside"}
+See [1.2 Second note](/notes/t/alpha/second.qmd) and [Theorem (Gadget theorem)](/notes/t/alpha/second.qmd#thm-gadget).
+:::
+::::
+
+## 1.1.2 Part two
+
+::: {#exm-widget .example level="easy"}
+[easy]{.level-badge .level-easy}
+An example with $x$ and $y$, and @def-widget on this page.
+:::
+
+## Exercises
+
+:::: {.problem-group data-courses="demo"}
+::: {#prob-first-01 .problem}
+[Exercise 1]{.problem-title}[demo-1.1-q1]{.problem-source} [medium]{.level-badge .level-medium}
+
+Show that a widget is a widget.
+:::
+
+::: {.callout-tip collapse="true" appearance="simple" title="Draft solution (not yet reviewed)"}
+1. By @thm-widget.
+:::
+
+::::
+
+:::: {.problem-group data-courses="demo"}
+::: {#prob-first-02 .problem}
+[Exercise 2]{.problem-title}[demo-1.1-q2]{.problem-source}
+
+Statement two.
+:::
+
+::::
+

@@ -49,6 +49,9 @@ jobs:
           key: tikz-${{ hashFiles('notes/**/*.md') }}
           restore-keys: tikz-
 
+      - name: Test build scripts
+        run: make test
+
       - name: Check notes
         run: make check
 

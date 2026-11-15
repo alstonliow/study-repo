@@ -153,6 +153,23 @@ def check_notes() -> None:
           f"({len(empty_solutions)} empty)")
 
 
+def check_aliases() -> None:
+    """Old ids kept after a move (SPEC §2.6) must not be reused or repeated."""
+    seen: dict[str, str] = {}
+    for n in REPO.notes.values():
+        for a in n.aliases:
+            if a in REPO.notes:
+                errors.append(f"{n.id}: alias '{a}' is the id of an existing note")
+            elif a in seen:
+                errors.append(f"{n.id}: alias '{a}' is also an alias of {seen[a]}")
+            seen[a] = n.id
+
+
+def check_taxonomy() -> None:
+    for msg in REPO.taxonomy_problems():
+        errors.append(f"meta/taxonomy.yml: {msg}")
+
+
 def check_courses() -> None:
     """Course files (SPEC §13): references resolve; provenance without scope is reported."""
     if not REPO.courses:
@@ -216,6 +233,8 @@ def check_forbidden_files() -> None:
 
 def main() -> int:
     check_notes()
+    check_taxonomy()
+    check_aliases()
     check_courses()
     check_figures()
     check_forbidden_files()

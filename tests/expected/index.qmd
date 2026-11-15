@@ -1,0 +1,27 @@
+---
+title: Study Notes
+---
+
+Personal study notes, organised by topic rather than by course. So far: discrete mathematics and discrete probability.
+
+::: {.contents-field}
+## Testing
+
+```{=html}
+<ul class="contents-list">
+<li><a href="notes/t/alpha/index.html"><span class="contents-num">1</span>Alpha</a><span class="contents-desc">First test branch</span></li>
+<li><a href="notes/t/beta/index.html"><span class="contents-num">2</span>Beta</a><span class="contents-desc">Second test branch</span></li>
+</ul>
+```
+:::
+
+::: {.contents-field}
+## Courses
+
+```{=html}
+<ul class="contents-list">
+<li><a href="courses/demo.html">DEMO100</a><span class="contents-desc">Demo course</span></li>
+</ul>
+```
+:::
+
