@@ -1,12 +1,13 @@
 ---
 title: Repository Specification
-version: 0.2
+version: 0.3
 status: draft
 ---
 
-# Repository Specification v0.2
+# Repository Specification v0.3
 
-This file is the normative specification for notes in this repository.
+This file is the normative specification for this repository: the notes, and
+the domain model (§17) that all content follows.
 It is consolidated from `meta/PLAN.md` §5–§6. Where they differ, this file wins
 once approved.
 
@@ -14,9 +15,18 @@ once approved.
 - **v0.2** (2026-11-15): provenance and course scope separated (§1, §13); every
   block except proofs carries an id (§5); one shared parser (`build/model.py`);
   branches in `meta/taxonomy.yml`. Frozen (see §9).
+- **v0.3** (2026-11-16): the domain model (§17): entities, identity,
+  references, typed relationships, backlinks, outlines and placement with an
+  optional book level, numbering context, and public/private visibility. The
+  repository becomes a personal knowledge system whose public part is the
+  study notes. Implemented in phases (§17.10).
 
 ## 1. Scope
 
+- The repository is a personal knowledge system built from entities (§17). Its
+  public part is the study notes described in §2–§16. Its private part holds
+  personal content, kept behind the privacy boundary (§17.9). New entity types
+  are added one at a time, each specified here before it is built.
 - Notes cover topics under `notes/`, organised by knowledge topic only.
 - Sources (units, books, open courses) are never directories. They appear only
   as YAML metadata (`sources`, `source`) and in generated `sources/` mappings.
@@ -52,6 +62,8 @@ once approved.
    `aliases` (§4). The website keeps a redirect page at every old address, and
    progress marks saved under an old id move to the new one. An alias is never
    reused as the id of another note. Block ids never change when a note moves.
+8. ids name things; they never encode numbers, courses or books (§17.3). Block
+   ids are unique across the whole repository, public and private.
 
 ## 3. Folder contents
 
@@ -274,8 +286,10 @@ note of the branch does, unless the course excludes them.
 
 ## 9. Freeze
 
-v0.2 is frozen. Wanted structural changes go into `meta/ideas.md` and are
-applied in one batch, with the owner's approval, as v0.3.
+v0.2 is frozen. v0.3 adds the domain model (§17), approved by the owner on
+2026-11-16; it is frozen once its phase 2 is built. Further structural changes
+go into `meta/ideas.md` and are applied in one batch, with the owner's
+approval.
 
 ## 10. Excluded content
 
@@ -317,7 +331,10 @@ None. (Cross-references in the PDF build were verified in November 2026.)
 ## 13. Courses and scope
 
 One file per course: `meta/courses/<id>.yml`. It lists the course outline and,
-for each outline point, which content the course requires.
+for each outline point, which content the course requires. In terms of the
+domain model (§17.7), a course is an outline, and `covers` gives placements:
+the same notes and blocks are placed in the course without being copied or
+changed.
 
 ```yaml
 id: fit1058
@@ -393,15 +410,21 @@ that a PDF leaves out are printed as plain text.
 
 ## 16. Numbering
 
-Numbers come from an **outline** (`build/outline.py`): the topic outline from
-`meta/taxonomy.yml` (books = parts → chapters = branches → notes), or one
-outline per course from `meta/courses/<id>.yml`. `build/numbering.py` turns an
-outline and `meta/numbering.yml` into every number; nothing else computes
-numbers, and Quarto's or LaTeX's own theorem numbering is not used.
+Numbers are derived from the **numbering context** (§17.8): an entity, its
+placement, and the **outline** in use (`build/outline.py`). Outlines are the
+topic outline from `meta/taxonomy.yml` (books = parts → chapters = branches →
+notes), and one outline per course from `meta/courses/<id>.yml`.
+`build/numbering.py` turns an outline and `meta/numbering.yml` into every
+number; nothing else computes numbers, and Quarto's or LaTeX's own theorem
+numbering is not used. Numbers are never stored in content and never used as
+references.
 
-1. **Books.** Each part is a book with its own numbers; fields (math, cs) only
-   group the navigation. A reference into another book adds the book's title:
-   Theorem 11.8.1 (Discrete Mathematics).
+1. **Books and other collections.** A book is an optional level of an outline
+   (§17.7). Where an outline has books, each book has its own numbers; fields
+   (math, cs) only group the navigation. A reference into another collection
+   (another book or course) adds that collection's title after the number:
+   Theorem 11.8.1 (Discrete Mathematics). An outline without a book level
+   numbers its chapters directly.
 2. **Notes**: chapter.k (8.1). Headings inside a note are not numbered.
 3. **Blocks**: the note's number and a counter per kind: Definition 8.1.1,
    Definition 8.1.2, Example 8.1.1, Theorem 8.1.1. Numbered kinds are listed in
@@ -417,3 +440,271 @@ numbers, and Quarto's or LaTeX's own theorem numbering is not used.
 7. **Kinds of block** are defined once in `build/kinds.py` (prefix, class,
    word, group, numbered, cross-referenced, colour); the page scripts read the
    same table from `site-data.json`.
+
+## 17. Domain model
+
+This section is the architecture of the whole repository: a personal knowledge
+system whose public part is the study notes and whose private part holds
+personal content. It defines concepts. It does not require code for entity
+types that do not exist yet; implementation goes in phases (§17.10).
+
+### 17.1 Principles
+
+1. **Entity-centred.** Everything stored is an entity with a stable id. Books,
+   courses and chapters organise entities; they are not levels every entity
+   must pass through.
+2. **Identity, position and number are separate.** An id never contains a
+   number, a course or a book. Moving an entity or renumbering an outline
+   never breaks a reference.
+3. **One canonical record, many derived views.** Each fact is written once;
+   numbers, backlinks, graphs, summaries, `site-data.json` and PDFs are
+   generated from it at build time and never edited by hand.
+4. **References and relationships point to ids**, never to numbers or titles.
+5. **Shared core, own schemas.** Entity types share only id, title, status and
+   visibility; every other field belongs to one type's schema.
+6. **No speculative abstraction.** Code is generalised only when at least two
+   entity types need the same thing.
+
+### 17.2 Entities and entity types
+
+1. An **entity** is an object with a stable id that can be referenced. There
+   are two levels:
+   - **file-level** entities: a knowledge point (note) today; resources,
+     ideas, projects and others later;
+   - **block-level** entities: definitions, theorems, examples, problems,
+     figures, remarks and claims inside a file (§5). A block belongs to its
+     file.
+2. An **entity type** is defined once in a registry: name, where it is stored,
+   how its id is formed, its schema (YAML fields), whether it is numbered and
+   whether it can be placed in outlines. Block types are defined in
+   `build/kinds.py` (§16.7). File-level types today: note (§2–§4) and review
+   folder (§6.3). Planned: resource first, then others; each new type gets its
+   own subsection here, with its schema, before any code (§17.10).
+3. Core fields of every file-level type: `id` (for notes, derived from the
+   path), `title`, `status`, and visibility (derived from where it is stored,
+   §17.9).
+4. **Not entities:** proofs (they belong to the block before them and have a
+   local anchor only), solutions (paired with a problem by `for`, §6),
+   headings and prose outside blocks.
+
+### 17.3 Identity
+
+1. ids are stable and never reused.
+2. A note's id is its path (§2.2). The path is a namespace, not a position:
+   numbering and placement never read it. The note's place in the topic
+   outline comes from `meta/taxonomy.yml`.
+3. A **rename** (move, §2.7) gives the entity a new id and keeps the old one as
+   an alias. Aliases are a **permanent compatibility layer for addresses
+   outside the repository**: web addresses (redirect pages), progress marks,
+   and links from elsewhere. Inside the repository, references and
+   relationships always use the current id; `build/move_note.py` rewrites
+   them, and `make check` reports an alias used as a target.
+   - Aliases are flat: every alias of an entity points directly to its
+     current id. Moving again keeps the earlier aliases and adds one more, so
+     there are no chains and no cycles.
+   - An alias is never the id of an existing entity and never the alias of
+     two entities (check error). It is never reused.
+   - Block ids never change, so blocks have no aliases.
+   - Aliases are never deleted.
+4. Block ids are unique across all files, entity types and visibilities.
+5. **Entity index.** `build/model.py` builds one index of all entities
+   (id → type, file, title, visibility, aliases), which the resolver, checks,
+   backlinks and pages use. It is a thin index over the per-type classes, not a
+   universal entity class.
+6. **Known cost of path ids.** Because a note's id is its path, a move changes
+   its id. If moves become frequent, notes can later get an opaque `id` field,
+   with their current paths kept as aliases. That migration only touches the
+   front matter and the index, because references already go through ids and
+   aliases. It is recorded here, not planned.
+
+### 17.4 References
+
+1. A **reference** is a link in content to an id: `@<block id>`, or
+   `@sec-<note id>` for a note (§7). It is never a number or a title.
+2. Resolving a reference: id or alias → entity → presentation in the current
+   numbering context (§17.8).
+3. Three cases of a target that cannot be shown are kept apart:
+
+   | Case | Example | Result |
+   |---|---|---|
+   | **Missing**: no entity has this id | a typo, a deleted block | check error |
+   | **Left out**: the target exists but this build does not include it | a PDF selection, a course filter | plain text, no link (the target is public, so its label may be shown) |
+   | **Not visible**: the target is private and the build is public | a public note pointing to a private idea | not allowed (§17.9); a public build cannot see the private store, so there it is reported as missing, and nothing about the target appears |
+
+4. References and relationships (§17.5) are separate records with separate
+   meanings. A reference says only "this text points there"; it never implies
+   `uses` or any other type. They share id resolution (§17.3) and the backlink
+   index (§17.6).
+
+### 17.5 Relationships
+
+1. A **relationship** is a record (source id, type, target id) with optional
+   metadata (for example a note or a date). The model stores the full record.
+   Files use a short syntax, and a longer form is reserved for metadata.
+2. A relationship is written **once, at its source**, in one of two syntaxes
+   that mean the same thing:
+   - file-level, in the YAML header:
+
+     ```yaml
+     relations:
+       uses: [math/discrete/number-theory/gcd]
+       generalizes: [math/discrete/counting/sum-rule]
+     ```
+
+     `requires` stays a top-level field (§4); it is the relationship type
+     `requires`.
+   - block-level, as a div attribute named after the type, with
+     space-separated ids:
+
+     ```markdown
+     ::: {#thm-euclidean .theorem uses="def-gcd def-divides"}
+     ```
+
+   Reserved for later, only when needed: a list item in `relations` may be a
+   mapping `{to: <id>, note: "..."}` instead of a bare id.
+3. **Types** are defined in `meta/relations.yml`: name, inverse display name,
+   symmetric or not, acyclic or not, and which entity types may be source and
+   target. Initial types:
+
+   | Type | Shown at the target as | Symmetric | Acyclic | Between |
+   |---|---|---|---|---|
+   | `requires` | required by | no | yes | notes |
+   | `uses` | used by | no | no | notes, blocks |
+   | `generalizes` | specializes | no | yes | notes, blocks |
+   | `equivalent` | equivalent | yes | no | notes, blocks |
+   | `related` | related | yes | no | notes, blocks |
+
+4. **Inverse names are display names, not stored relationships.** "Used by"
+   is never written; it is derived. A symmetric relationship is stored once,
+   on either side; writing it on both sides is a check warning.
+5. **Cycles** are checked only for acyclic types, over that type's whole graph
+   across all notes and blocks. Cycles in other types, and cycles that mix
+   types, are allowed.
+6. The `requires` rules in §4 still hold: direct prerequisites only, nothing
+   already implied, nothing later in topic order.
+7. **Not relationships:** references (§17.4), the pairing of problems and
+   solutions, a block belonging to its file, and placement in outlines.
+8. `make check` reports unknown types, unknown target ids, types used between
+   entity types the registry does not allow, cycles in acyclic types (errors),
+   and duplicate symmetric pairs (warnings).
+
+### 17.6 Backlinks
+
+1. Backlinks are derived data: canonical references and relationships →
+   backlink index → rendered backlinks. They are never written by hand;
+   removing a relationship removes its backlink at the next build.
+2. Two groups are kept apart:
+   - **References**: "Referenced by", from `@` links;
+   - **Relationships**: grouped by inverse name: Required by, Used by,
+     Specializes, Equivalent, Related.
+3. A note page ends with its backlinks: those to the note, then those to each
+   of its blocks (for example "Theorem 8.1.2 ← used by Example 8.3.1"). Labels
+   use the current numbering context.
+4. Relationships written in YAML or div attributes do not appear in the text,
+   so the source's page also lists them forward ("Uses", "Generalizes", ...),
+   next to the existing "Prerequisites / Leads to". Both directions come from
+   the same records.
+
+### 17.7 Outlines, collections and placement
+
+1. A **collection** is a named group of entities. Only one kind exists so far:
+   the **outline**, an ordered tree. Other kinds (unordered, filtered,
+   hand-picked) are added only when needed.
+2. An outline's levels and their names are set by the outline's own
+   configuration. Current outlines: the topic outline (`meta/taxonomy.yml`:
+   book → chapter → note) and course outlines (`meta/courses/<id>.yml`:
+   chapter → point → notes and blocks). A **book is an optional level** that an
+   outline may have; an entity never needs a book.
+3. A **placement** is the position of one entity in one outline, and it gives
+   the entity its number there. An entity may be placed in many outlines, but
+   has **exactly one numbered placement in each**. This is a deliberate design
+   limit, so that an entity never has two numbers in one numbering context.
+   - In the topic outline, each note is listed once in `meta/taxonomy.yml`
+     (check error otherwise).
+   - In a course outline, several points may cover the same note (for
+     example a note spanning points 1.3–1.5). Coverage decides scope (§13).
+     Only the **first** point that covers the note places it: the note is
+     numbered and shown there, and later points link to it.
+   - Showing an entity in another place of the same outline is done with a
+     reference or, later, a collection view, never with a second placement.
+4. Every note has a placement in the topic outline (§2.5); other entity types
+   say in their schema whether they need one.
+5. Entities exist independently of their placements. Removing an entity from
+   an outline never changes the entity.
+
+### 17.8 Numbering context
+
+1. A number is computed from the entity, its placement and the outline in use
+   (the **context**), with the formats in `meta/numbering.yml`. The rules are
+   in §16.
+2. An outline may be unnumbered; its entities are then shown by title.
+3. A reference shows the target's number in the current context. A target in
+   another collection (another book, another course) shows that collection's
+   number with the collection's name after it (§16.1). A target with no
+   placement in any numbered outline is shown by its title.
+
+### 17.9 Visibility and the privacy boundary
+
+1. Every entity is **public** or **private**. Private: personal content, that
+   is ideas, projects, goals, decisions, logs, personal reading records, and
+   anything else the owner marks private. Public: the study notes, problems
+   and solutions, as now.
+2. Visibility follows from where an entity is stored, never from a field that
+   could be forgotten. Public entities are stored in this repository. Private
+   entities are stored outside its public history. The first implementation
+   is a private Git repository mounted at `private/`, added in the Resources
+   phase. The rules below do not depend on that mechanism.
+3. Rules:
+   1. A public entity never references or relates to a private one (check
+      error), because its title would leak. Private entities may point to
+      public ones. A private build reports this case by name. A public build
+      sees only "missing" (§17.4). Writing a private id in a public file
+      already reveals that the id exists, and git history keeps it, so the
+      owner runs the private `make check` before committing. Private ids
+      follow the same id rules and must not clash with public ids; only a
+      private build can check this.
+   2. A **public build** (CI, the public website, published PDFs) never reads
+      the private store. Its output is the same whether or not the private
+      store is present.
+   3. A **private build** runs locally, reads both, and is never published.
+      If the private store is missing it warns and builds the public part.
+   4. Private content never appears in any public file: pages,
+      `site-data.json`, search index, graphs, redirects, summaries or PDFs.
+   5. Private content is never copied into the public tree.
+4. Progress marks are personal records already kept outside the repository
+   (Supabase); they stay there.
+5. §10 and the `raw/` rules apply to all content. Excluded material is not
+   allowed in the private store either.
+
+### 17.10 Phases
+
+1. **Specification**: this section (v0.3).
+2. **Notes**: entity index, backlinks, typed relationships and
+   `meta/relations.yml`, outline levels from configuration with an optional
+   book level. No note file changes. Existing output stays the same except
+   for the new backlink sections.
+3. **Resources**: the first new entity type, with its schema written here
+   first, and the private store. This phase must keep three concepts apart:
+   - **Resource**: the logical work you keep, read or watch (one book across
+     its editions);
+   - **Source locator**: a place in one edition (chapter, section, page, URL);
+     edition maps stay in `meta/sources.yml` (§16);
+   - **Citation**: a note's pointer to a source locator (today the `sources`
+     and `source` fields).
+
+   This phase also decides how `meta/sources.yml` entries relate to Resource
+   entities.
+4. **Further types** (ideas, projects, and others), one per round. Shared code
+   is generalised only when two types need it.
+
+### 17.11 Compatibility with v0.2
+
+| v0.2 | v0.3 |
+|---|---|
+| Note id = path | Kept; the path is a namespace, not a position (§17.3) |
+| "ids are never renamed" | A move is a new id plus an alias; aliases keep outside addresses working, and in-repo references use the current id (§2.7, §17.3) |
+| A course may cover a note from several points; it was placed at the first, without a written rule | One numbered placement per outline: the first covering point (§17.7) |
+| Topic outline is always book → chapter → note | The book level is optional (§16.1, §17.7) |
+| Only `requires` between notes | `requires` plus typed relationships (§17.5) |
+| No backlinks | Derived backlinks (§17.6) |
+| Public repository only | Public and private entities, with a privacy boundary (§17.9) |
