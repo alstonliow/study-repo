@@ -42,6 +42,31 @@ Theorem 4 (*For any two sets $A$ and $B$, they are identical if and
 only if their symmetric difference is empty*) in predicate logic.
 :::
 
+::: {.problem #prob-predicate-07 origin="external" source="fit1058-cn-5.16-q7"}
+For each statement, (i) identify the predicates, functions, variables (with a
+suggested domain for each) and constants used; (ii) state whether or not it
+is a proposition, and if so, whether it is true or false.
+
+(a) $\forall x\ x^2\ge0$
+
+(b) $x^2<0$
+
+(c) $\forall x\ 2^x=x^2$
+
+(d) $x<0\Rightarrow\forall y\,((0<y)\Rightarrow(x<y))$
+
+(e) $\forall x\forall z\exists y\ (x<y)\wedge(y<z)$
+
+(f) $\exists x\exists y\ \neg(x\Rightarrow y)$
+:::
+
+::: {.problem #prob-predicate-08 origin="external" source="fit1058-cn-5.16-q8"}
+Consider
+$$\forall A\forall B\ (A\subseteq B)\Rightarrow(\mathcal{P}(A)\subseteq\mathcal{P}(B)).$$
+What predicates, functions and variables does this statement use? Restate,
+in words, the theorem being stated.
+:::
+
 ::: {.problem #prob-predicate-09 origin="external" source="fit1058-cn-5.16-q9"}
 Let $W$ range over English words, $L$ over English letters, and
 $\mathrm{WordContainsLetter}(W,L)$ be True when word $W$ contains letter $L$
@@ -59,14 +84,6 @@ Using the properties $\mathrm{Even}$, $\mathrm{Prime}$ and the binary
 predicate $\le$ on $\mathbb{N}$, write a predicate logic expression for:
 *There are infinitely many odd prime numbers but only finitely many even
 prime numbers.*
-:::
-
-::: {.problem #prob-predicate-11 origin="external" source="fit1058-cn-5.16-q11"}
-The ternary predicate $\mathrm{Date}(d,m,y)$ on $\mathbb{N}^3$ is True iff
-$(d,m,y)$ is a valid Gregorian date in day-month-year format. Using
-$\mathrm{Date}$ and $<$, write an expression which is True iff
-$(d_1,m_1,y_1)$ and $(d_2,m_2,y_2)$ are both valid dates and the first comes
-chronologically before the second.
 :::
 
 ::: {.problem #prob-predicate-12 origin="external" source="fit1058-cn-5.16-q12"}

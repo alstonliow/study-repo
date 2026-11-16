@@ -3,48 +3,6 @@
 
 <!-- Migrated from 1058note exercises/chapters (owner's solutions). -->
 
-::: {.solution for="prob-predicate-09"}
-Write $\text{WordContainsLetter}(W,L)$ as $W(W,L)$.
-
-**(a)**
-$$\forall W\,\exists L\ \Big(\big(L=a\vee L=e\vee L=i\vee L=o\vee L=u\big)\wedge W(W,L)\Big)\ \vee\ W(W,y)$$
-
-**(b)** Writing $\text{Vowel}(L)$ as $V(L)$:
-$$\forall W\,\exists L\ \Big(V(L)\wedge W(W,L)\Big)\ \vee\ W(W,y)$$
-or, with the disjunction brought inside the scope of $\exists L$:
-$$\forall W\ \Big(\exists L\ \big(V(L)\wedge W(W,L)\big)\ \vee\ W(W,y)\Big)$$
-:::
-
-::: {.solution for="prob-predicate-10"}
-Write $\text{Even}(n)$ as $E(n)$ and $\text{Prime}(n)$ as $P(n)$. By
-the domain assumption, any element that is not even is odd, so
-“odd” is $\neg E(n)$, and “odd prime” is $P(n)\wedge\neg E(n)$.
-
-**Infinitely many odd primes.** There is no largest
-odd prime – for any bound $b$, some odd prime exceeds it:
-$$R = \forall b\,\exists n\ \big(P(n)\wedge\neg E(n)\wedge b\leq n\big)$$
-
-**Only finitely many even primes.** There is a
-largest even prime $m$, and every even prime is at most $m$:
-$$S = \exists m\ \Big(P(m)\wedge E(m)\ \wedge\ \forall n\big(P(n)\wedge E(n)\Rightarrow n\leq m\big)\Big)$$
-
-**Final statement.**
-$$R\wedge S$$
-:::
-
-::: {.solution for="prob-predicate-11"}
-Write $\text{Date}(d,m,y)$ as $D(d,m,y)$. $(d_1,m_1,y_1)$ comes
-chronologically before $(d_2,m_2,y_2)$ exactly when
-$$y_1<y_2, \quad\text{or}\quad y_1=y_2 \wedge m_1<m_2, \quad\text{or}\quad y_1=y_2\wedge m_1=m_2\wedge d_1<d_2.$$
-
-So the answer is
-$$D(d_1,m_1,y_1)\wedge D(d_2,m_2,y_2)\wedge\Big((y_1<y_2)\vee\big((y_1=y_2)\wedge(m_1<m_2)\big)\vee\big((y_1=y_2)\wedge(m_1=m_2)\wedge(d_1<d_2)\big)\Big)$$
-:::
-
-::: {.solution for="prob-predicate-13"}
-$$\exists! x\ P(x) \;\equiv\; \exists x\ \Big(P(x)\wedge\big(\forall y\ (P(y)\Rightarrow x=y)\big)\Big)$$
-:::
-
 ::: {.solution for="prob-predicate-03" status="draft"}
 Write $s$ for $\mathrm{supervised}$, and $\mathrm{Church}$, $\mathrm{Turing}$
 for the two constants.
@@ -94,9 +52,75 @@ contains a path of length at most $6$.
 $$\forall A\ \forall B\ \bigl(A = B\ \leftrightarrow\ A\triangle B = \emptyset\bigr).$$
 :::
 
+::: {.solution for="prob-predicate-07" status="draft"}
+| | predicates | functions | variables (domain) | constants | proposition? |
+|---|---|---|---|---|---|
+| (a) | $\ge$ | squaring | $x\in\mathbb R$ (bound) | $0$ | yes, **true** |
+| (b) | $<$ | squaring | $x\in\mathbb R$ (free) | $0$ | no: $x$ is free |
+| (c) | $=$ | $2^x$, squaring | $x\in\mathbb N$ (bound) | $2$ | yes, **false**: $x = 0$ gives $1\ne0$ |
+| (d) | $<$ | none | $x\in\mathbb R$ (free), $y\in\mathbb R$ (bound) | $0$ | no: $x$ is free |
+| (e) | $<$ | none | $x,y,z\in\mathbb R$ (bound) | none | yes, **false**: take $x = z$ |
+| (f) | none | none | $x,y$ Boolean (bound) | none | yes, **true**: $x = \mathrm T$, $y = \mathrm F$ |
+
+Notes:
+
+- (c) is false over $\mathbb N$ even though $2^x = x^2$ holds for $x = 2$ and
+  $x = 4$; a universal statement needs every $x$.
+- (d) is true for every value of $x$ once $x$ is fixed (if $x<0$, then
+  $x<y$ for all positive $y$), but as written it has a free variable.
+- (e) would be true if it required $x<z$ first, as in
+  $\forall x\forall z\,(x<z\Rightarrow\exists y\,(x<y\wedge y<z))$: the
+  reals are dense.
+- In (f), $\neg(x\Rightarrow y)$ uses only connectives; $x,y$ are
+  propositional variables.
+:::
+
+::: {.solution for="prob-predicate-08" status="draft"}
+- Predicates: $\subseteq$ (binary, used twice).
+- Functions: the power set function $\mathcal P$.
+- Variables: $A$ and $B$, ranging over sets; both are bound by $\forall$.
+- Connective: $\Rightarrow$.
+
+In words: *for all sets $A$ and $B$, if $A$ is a subset of $B$, then the power
+set of $A$ is a subset of the power set of $B$* (Exercise 1.7).
+:::
+
+::: {.solution for="prob-predicate-09"}
+Write $\text{WordContainsLetter}(W,L)$ as $W(W,L)$.
+
+**(a)**
+$$\forall W\,\exists L\ \Big(\big(L=a\vee L=e\vee L=i\vee L=o\vee L=u\big)\wedge W(W,L)\Big)\ \vee\ W(W,y)$$
+
+**(b)** Writing $\text{Vowel}(L)$ as $V(L)$:
+$$\forall W\,\exists L\ \Big(V(L)\wedge W(W,L)\Big)\ \vee\ W(W,y)$$
+or, with the disjunction brought inside the scope of $\exists L$:
+$$\forall W\ \Big(\exists L\ \big(V(L)\wedge W(W,L)\big)\ \vee\ W(W,y)\Big)$$
+:::
+
+::: {.solution for="prob-predicate-10"}
+Write $\text{Even}(n)$ as $E(n)$ and $\text{Prime}(n)$ as $P(n)$. By
+the domain assumption, any element that is not even is odd, so
+“odd” is $\neg E(n)$, and “odd prime” is $P(n)\wedge\neg E(n)$.
+
+**Infinitely many odd primes.** There is no largest
+odd prime – for any bound $b$, some odd prime exceeds it:
+$$R = \forall b\,\exists n\ \big(P(n)\wedge\neg E(n)\wedge b\leq n\big)$$
+
+**Only finitely many even primes.** There is a
+largest even prime $m$, and every even prime is at most $m$:
+$$S = \exists m\ \Big(P(m)\wedge E(m)\ \wedge\ \forall n\big(P(n)\wedge E(n)\Rightarrow n\leq m\big)\Big)$$
+
+**Final statement.**
+$$R\wedge S$$
+:::
+
 ::: {.solution for="prob-predicate-12" status="draft"}
 $$\exists c\ \exists k\ \forall x\ \Bigl(t(P,x)\le c\cdot\mathrm{len}(x)^k\Bigr).$$
 Here $c,k$ range over positive integers and $x$ over $A^*$. The order of the
 quantifiers matters: $c$ and $k$ are chosen once, before $x$. This says that
 $P$ runs in polynomial time.
+:::
+
+::: {.solution for="prob-predicate-13"}
+$$\exists! x\ P(x) \;\equiv\; \exists x\ \Big(P(x)\wedge\big(\forall y\ (P(y)\Rightarrow x=y)\big)\Big)$$
 :::
