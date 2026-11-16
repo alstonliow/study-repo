@@ -1,9 +1,0 @@
-# Test fixture sources.
-sources:
-  - prefix: demo-
-    title: Demo course notes
-    course: demo
-    edition: "2026-01-01"
-    pattern: '^demo-(?P<section>\d+(?:\.\d+)*)(?:-q(?P<n>\d+))?$'
-    label: "DEMO {section}"
-    problem_label: "DEMO {section} Q{n}"

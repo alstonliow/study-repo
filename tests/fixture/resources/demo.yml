@@ -1,0 +1,33 @@
+# Test fixture resource (meta/SPEC.md §17.12): the demo course notes.
+id: res-demo
+kind: course-notes
+title: Demo course notes
+status: draft
+courses: [demo]
+editions:
+  - id: "2026-01-01"
+    current: true
+legacy_keys:
+  prefix: demo-
+  edition: "2026-01-01"
+  pattern: '^demo-(?P<section>\d+(?:\.\d+)*)(?:-q(?P<n>\d+))?$'
+  label: "DEMO {section}"
+  problem_label: "DEMO {section} Q{n}"
+nodes:
+  - id: res-demo-basics
+    kind: chapter
+    title: Basics
+    at: {"2026-01-01": "1"}
+    nodes:
+      - id: res-demo-widgets
+        kind: section
+        title: Widgets
+        at: {"2026-01-01": "1.1"}
+      - id: res-demo-gadgets
+        kind: section
+        title: Gadgets
+        at: {"2026-01-01": "1.2"}
+      - id: res-demo-basics-exercises
+        kind: exercises
+        title: Basics exercises
+        at: {"2026-01-01": "1.10"}

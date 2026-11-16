@@ -869,7 +869,8 @@ and checked it. Steps:
      locator for that edition. The result is (resource id, edition, node id,
      question).
    - A key whose locator matches no node of that edition is a check error, not
-     a guess.
+     a guess. Locators match exactly: `1`, `1.1` and `1.10` are three
+     different places.
    - Because the edition is fixed per prefix, a later edition never changes
      what an old key means.
 4. No note, `sources` field or `source` attribute changes in this phase. New
@@ -878,6 +879,11 @@ and checked it. Steps:
 5. `make check` verifies that every existing key resolves to a node of the
    stated edition. Only then is `sources.yml` deleted. There is never a second
    registry of sources.
+
+Done on 2026-11-16 (round A): `resources/fit1058-cn.yml` (185 nodes), the
+resolver in `build/resources.py` behind `Sources` (`build/sources.py`), and all
+361 keys resolved. Site and PDF output were byte-identical before and after,
+and `meta/sources.yml` was removed.
 
 #### 17.12.7 Organisation and pages
 
@@ -903,12 +909,20 @@ and checked it. Steps:
 
 #### 17.12.8 Build order for phase 3
 
-1. Model: resource files → `Repo.resources`, nodes into the entity index,
-   `res-` added to the reference prefixes, and `covers` in
-   `meta/relations.yml`.
-2. Migrate FIT1058 CN: resource file, nodes, and the legacy key resolver
-   behind the same `Sources` interface (`label`, `problems`). Check that
-   every key resolves, then remove `sources.yml`. Note files stay unchanged.
-3. Library pages and backlinks: covers, cited by, referenced by.
-4. Private store: `private/` mounted (the owner creates the repository), a
-   private build, and the visibility checks of §17.9.
+Phase 3 is built in three rounds, each reviewed and committed on its own:
+
+1. **Round A** (done 2026-11-16): the model and the CN migration. Resource
+   files are read into `Repo.resources`, and resources and nodes enter the
+   entity index (types `resource` and `resource-node`). The legacy key
+   resolver sits behind `Sources`, and `sources.yml` was removed. Output was
+   unchanged.
+2. **Round B**: `res-` added to the reference prefixes, and `covers` added to
+   `meta/relations.yml`. CN `covers` are seeded once from the course mapping
+   as a draft for the owner to review. Then the Connections groups ("Covered
+   in", "Cited by") and the Library pages.
+3. **Round C**: the private store (`private/`, a repository the owner
+   creates), a private build, and the visibility checks and leak tests of
+   §17.9 and §17.12.7.
+
+A resource file may also carry `courses: [<course id>]`. This only records
+which courses use the resource; it gives no ownership and no scope.

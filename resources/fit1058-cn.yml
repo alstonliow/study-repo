@@ -1,0 +1,959 @@
+# FIT1058 Course Notes as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Generated once from meta/courses/fit1058.yml (titles are the project's own short titles,
+# not copied text) and the former meta/sources.yml (edition, legacy key format).
+# Node ids are stable: they are never renamed when a title or a locator changes.
+# `at` maps an edition to the node's locator (section number) in that edition.
+# No `covers` yet (added in round B, reviewed separately).
+# Optional fields with no value (authors, url) are omitted, never left empty.
+id: res-fit1058-cn
+kind: course-notes
+title: FIT1058 Foundations of Computing, Course Notes
+status: draft
+courses: [fit1058]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: '2026-06-16'
+  current: true
+legacy_keys:
+  prefix: fit1058-cn-
+  edition: '2026-06-16'
+  pattern: ^fit1058-cn-(?P<section>\d+(?:\.\d+)*)(?:-q(?P<n>\d+))?$
+  label: FIT1058 CN {section}
+  problem_label: FIT1058 CN {section} Q{n}
+nodes:
+- id: res-fit1058-cn-sets
+  kind: chapter
+  title: Sets
+  at:
+    '2026-06-16': '1'
+  nodes:
+  - id: res-fit1058-cn-sets-and-elements
+    kind: section
+    title: Sets and elements
+    at:
+      '2026-06-16': '1.1'
+  - id: res-fit1058-cn-specifying-sets
+    kind: section
+    title: Specifying sets
+    at:
+      '2026-06-16': '1.2'
+  - id: res-fit1058-cn-cardinality
+    kind: section
+    title: Cardinality
+    at:
+      '2026-06-16': '1.3'
+  - id: res-fit1058-cn-sets-of-numbers
+    kind: section
+    title: Sets of numbers
+    at:
+      '2026-06-16': '1.4'
+  - id: res-fit1058-cn-sets-of-strings
+    kind: section
+    title: Sets of strings
+    at:
+      '2026-06-16': '1.5'
+  - id: res-fit1058-cn-subsets-and-supersets
+    kind: section
+    title: Subsets and supersets
+    at:
+      '2026-06-16': '1.6'
+  - id: res-fit1058-cn-minimal-minimum-maximal-maximum
+    kind: section
+    title: Minimal, minimum, maximal, maximum
+    at:
+      '2026-06-16': '1.7'
+  - id: res-fit1058-cn-counting-all-subsets
+    kind: section
+    title: Counting all subsets
+    at:
+      '2026-06-16': '1.8'
+  - id: res-fit1058-cn-the-power-set-of-a-set
+    kind: section
+    title: The power set of a set
+    at:
+      '2026-06-16': '1.9'
+  - id: res-fit1058-cn-counting-subsets-by-size-using-binomial-coefficients
+    kind: section
+    title: Counting subsets by size using binomial coefficients
+    at:
+      '2026-06-16': '1.10'
+  - id: res-fit1058-cn-complement-and-set-difference
+    kind: section
+    title: Complement and set difference
+    at:
+      '2026-06-16': '1.11'
+  - id: res-fit1058-cn-union-and-intersection
+    kind: section
+    title: Union and intersection
+    at:
+      '2026-06-16': '1.12'
+  - id: res-fit1058-cn-symmetric-difference
+    kind: section
+    title: Symmetric difference
+    at:
+      '2026-06-16': '1.13'
+  - id: res-fit1058-cn-cartesian-product
+    kind: section
+    title: Cartesian product
+    at:
+      '2026-06-16': '1.14'
+  - id: res-fit1058-cn-partitions
+    kind: section
+    title: Partitions
+    at:
+      '2026-06-16': '1.15'
+  - id: res-fit1058-cn-sets-exercises
+    kind: exercises
+    title: Sets exercises
+    at:
+      '2026-06-16': '1.16'
+- id: res-fit1058-cn-functions
+  kind: chapter
+  title: Functions
+  at:
+    '2026-06-16': '2'
+  nodes:
+  - id: res-fit1058-cn-definitions
+    kind: section
+    title: Definitions
+    at:
+      '2026-06-16': '2.1'
+  - id: res-fit1058-cn-functions-in-computer-science
+    kind: section
+    title: Functions in computer science
+    at:
+      '2026-06-16': '2.2'
+  - id: res-fit1058-cn-notation
+    kind: section
+    title: Notation
+    at:
+      '2026-06-16': '2.3'
+  - id: res-fit1058-cn-some-special-functions
+    kind: section
+    title: Some special functions
+    at:
+      '2026-06-16': '2.4'
+  - id: res-fit1058-cn-functions-with-multiple-arguments-and-values
+    kind: section
+    title: Functions with multiple arguments and values
+    at:
+      '2026-06-16': '2.5'
+  - id: res-fit1058-cn-restrictions
+    kind: section
+    title: Restrictions
+    at:
+      '2026-06-16': '2.6'
+  - id: res-fit1058-cn-injections-surjections-bijections
+    kind: section
+    title: Injections, surjections, bijections
+    at:
+      '2026-06-16': '2.7'
+  - id: res-fit1058-cn-inverse-functions
+    kind: section
+    title: Inverse functions
+    at:
+      '2026-06-16': '2.8'
+  - id: res-fit1058-cn-composition
+    kind: section
+    title: Composition
+    at:
+      '2026-06-16': '2.9'
+  - id: res-fit1058-cn-cryptosystems
+    kind: section
+    title: Cryptosystems
+    at:
+      '2026-06-16': '2.10'
+  - id: res-fit1058-cn-loose-composition
+    kind: section
+    title: Loose composition
+    at:
+      '2026-06-16': '2.11'
+  - id: res-fit1058-cn-counting-functions
+    kind: section
+    title: Counting functions
+    at:
+      '2026-06-16': '2.12'
+  - id: res-fit1058-cn-binary-relations
+    kind: section
+    title: Binary relations
+    at:
+      '2026-06-16': '2.13'
+  - id: res-fit1058-cn-properties-of-binary-relations
+    kind: section
+    title: Properties of binary relations
+    at:
+      '2026-06-16': '2.14'
+  - id: res-fit1058-cn-combining-binary-relations
+    kind: section
+    title: Combining binary relations
+    at:
+      '2026-06-16': '2.15'
+  - id: res-fit1058-cn-equivalence-relations
+    kind: section
+    title: Equivalence relations
+    at:
+      '2026-06-16': '2.16'
+  - id: res-fit1058-cn-relations
+    kind: section
+    title: Relations
+    at:
+      '2026-06-16': '2.17'
+  - id: res-fit1058-cn-counting-relations
+    kind: section
+    title: Counting relations
+    at:
+      '2026-06-16': '2.18'
+  - id: res-fit1058-cn-functions-exercises
+    kind: exercises
+    title: Functions exercises
+    at:
+      '2026-06-16': '2.19'
+- id: res-fit1058-cn-proofs
+  kind: chapter
+  title: Proofs
+  at:
+    '2026-06-16': '3'
+  nodes:
+  - id: res-fit1058-cn-theorems-and-proofs
+    kind: section
+    title: Theorems and proofs
+    at:
+      '2026-06-16': '3.1'
+  - id: res-fit1058-cn-logical-deduction
+    kind: section
+    title: Logical deduction
+    at:
+      '2026-06-16': '3.2'
+  - id: res-fit1058-cn-proofs-of-existential-and-universal-statements
+    kind: section
+    title: Proofs of existential and universal statements
+    at:
+      '2026-06-16': '3.3'
+  - id: res-fit1058-cn-finding-proofs
+    kind: section
+    title: Finding proofs
+    at:
+      '2026-06-16': '3.4'
+  - id: res-fit1058-cn-types-of-proofs
+    kind: section
+    title: Types of proofs
+    at:
+      '2026-06-16': '3.5'
+  - id: res-fit1058-cn-proof-by-symbolic-manipulation
+    kind: section
+    title: Proof by symbolic manipulation
+    at:
+      '2026-06-16': '3.6'
+  - id: res-fit1058-cn-proof-by-construction
+    kind: section
+    title: Proof by construction
+    at:
+      '2026-06-16': '3.7'
+  - id: res-fit1058-cn-proof-by-cases
+    kind: section
+    title: Proof by cases
+    at:
+      '2026-06-16': '3.8'
+  - id: res-fit1058-cn-proof-by-contradiction
+    kind: section
+    title: Proof by contradiction
+    at:
+      '2026-06-16': '3.9'
+  - id: res-fit1058-cn-proof-by-mathematical-induction
+    kind: section
+    title: Proof by mathematical induction
+    at:
+      '2026-06-16': '3.10'
+  - id: res-fit1058-cn-induction-more-examples
+    kind: section
+    title: 'Induction: more examples'
+    at:
+      '2026-06-16': '3.11'
+  - id: res-fit1058-cn-induction-extended-example
+    kind: section
+    title: 'Induction: extended example'
+    at:
+      '2026-06-16': '3.12'
+  - id: res-fit1058-cn-mathematical-induction-and-statistical-induction
+    kind: section
+    title: Mathematical induction and statistical induction
+    at:
+      '2026-06-16': '3.13'
+  - id: res-fit1058-cn-programs-and-proofs
+    kind: section
+    title: Programs and proofs
+    at:
+      '2026-06-16': '3.14'
+  - id: res-fit1058-cn-proofs-exercises
+    kind: exercises
+    title: Proofs exercises
+    at:
+      '2026-06-16': '3.15'
+- id: res-fit1058-cn-propositional-logic
+  kind: chapter
+  title: Propositional Logic
+  at:
+    '2026-06-16': '4'
+  nodes:
+  - id: res-fit1058-cn-truth-values
+    kind: section
+    title: Truth values
+    at:
+      '2026-06-16': '4.1'
+  - id: res-fit1058-cn-boolean-variables
+    kind: section
+    title: Boolean variables
+    at:
+      '2026-06-16': '4.2'
+  - id: res-fit1058-cn-propositions
+    kind: section
+    title: Propositions
+    at:
+      '2026-06-16': '4.3'
+  - id: res-fit1058-cn-logical-operations
+    kind: section
+    title: Logical operations
+    at:
+      '2026-06-16': '4.4'
+  - id: res-fit1058-cn-negation
+    kind: section
+    title: Negation
+    at:
+      '2026-06-16': '4.5'
+  - id: res-fit1058-cn-conjunction
+    kind: section
+    title: Conjunction
+    at:
+      '2026-06-16': '4.6'
+  - id: res-fit1058-cn-disjunction
+    kind: section
+    title: Disjunction
+    at:
+      '2026-06-16': '4.7'
+  - id: res-fit1058-cn-de-morgans-laws
+    kind: section
+    title: De Morgan’s Laws
+    at:
+      '2026-06-16': '4.8'
+  - id: res-fit1058-cn-implication
+    kind: section
+    title: Implication
+    at:
+      '2026-06-16': '4.9'
+  - id: res-fit1058-cn-equivalence
+    kind: section
+    title: Equivalence
+    at:
+      '2026-06-16': '4.10'
+  - id: res-fit1058-cn-exclusive-or
+    kind: section
+    title: Exclusive-or
+    at:
+      '2026-06-16': '4.11'
+  - id: res-fit1058-cn-tautologies-and-logical-equivalence
+    kind: section
+    title: Tautologies and logical equivalence
+    at:
+      '2026-06-16': '4.12'
+  - id: res-fit1058-cn-history
+    kind: section
+    title: History
+    at:
+      '2026-06-16': '4.13'
+  - id: res-fit1058-cn-distributive-laws
+    kind: section
+    title: Distributive Laws
+    at:
+      '2026-06-16': '4.14'
+  - id: res-fit1058-cn-laws-of-boolean-algebra
+    kind: section
+    title: Laws of Boolean algebra
+    at:
+      '2026-06-16': '4.15'
+  - id: res-fit1058-cn-disjunctive-normal-form
+    kind: section
+    title: Disjunctive Normal Form
+    at:
+      '2026-06-16': '4.16'
+  - id: res-fit1058-cn-conjunctive-normal-form
+    kind: section
+    title: Conjunctive Normal Form
+    at:
+      '2026-06-16': '4.17'
+  - id: res-fit1058-cn-representing-logical-statements
+    kind: section
+    title: Representing logical statements
+    at:
+      '2026-06-16': '4.18'
+  - id: res-fit1058-cn-statements-about-how-many-variables-are-true
+    kind: section
+    title: Statements about how many variables are true
+    at:
+      '2026-06-16': '4.19'
+  - id: res-fit1058-cn-universal-sets-of-operations
+    kind: section
+    title: Universal sets of operations
+    at:
+      '2026-06-16': '4.20'
+  - id: res-fit1058-cn-propositional-logic-exercises
+    kind: exercises
+    title: Propositional Logic exercises
+    at:
+      '2026-06-16': '4.21'
+- id: res-fit1058-cn-predicate-logic
+  kind: chapter
+  title: Predicate Logic
+  at:
+    '2026-06-16': '5'
+  nodes:
+  - id: res-fit1058-cn-relations-predicates-and-truth-valued-functions
+    kind: section
+    title: Relations, predicates, and truth-valued functions
+    at:
+      '2026-06-16': '5.1'
+  - id: res-fit1058-cn-variables-and-constants
+    kind: section
+    title: Variables and constants
+    at:
+      '2026-06-16': '5.2'
+  - id: res-fit1058-cn-predicates-and-variables
+    kind: section
+    title: Predicates and variables
+    at:
+      '2026-06-16': '5.3'
+  - id: res-fit1058-cn-arguments-of-predicates
+    kind: section
+    title: Arguments of predicates
+    at:
+      '2026-06-16': '5.4'
+  - id: res-fit1058-cn-building-logical-expressions-with-predicates
+    kind: section
+    title: Building logical expressions with predicates
+    at:
+      '2026-06-16': '5.5'
+  - id: res-fit1058-cn-existential-quantifier
+    kind: section
+    title: Existential quantifier
+    at:
+      '2026-06-16': '5.6'
+  - id: res-fit1058-cn-restricting-existentially-quantified-variables
+    kind: section
+    title: Restricting existentially quantified variables
+    at:
+      '2026-06-16': '5.7'
+  - id: res-fit1058-cn-universal-quantifier
+    kind: section
+    title: Universal quantifier
+    at:
+      '2026-06-16': '5.8'
+  - id: res-fit1058-cn-restricting-universally-quantified-variables
+    kind: section
+    title: Restricting universally quantified variables
+    at:
+      '2026-06-16': '5.9'
+  - id: res-fit1058-cn-multiple-quantifiers
+    kind: section
+    title: Multiple quantifiers
+    at:
+      '2026-06-16': '5.10'
+  - id: res-fit1058-cn-predicate-logic-expressions
+    kind: section
+    title: Predicate logic expressions
+    at:
+      '2026-06-16': '5.11'
+  - id: res-fit1058-cn-doing-logic-with-quantifiers
+    kind: section
+    title: Doing logic with quantifiers
+    at:
+      '2026-06-16': '5.12'
+  - id: res-fit1058-cn-duality-between-quantifiers
+    kind: section
+    title: Duality between quantifiers
+    at:
+      '2026-06-16': '5.13'
+  - id: res-fit1058-cn-summary-of-rules-for-logic-with-quantifiers
+    kind: section
+    title: Summary of rules for logic with quantifiers
+    at:
+      '2026-06-16': '5.14'
+  - id: res-fit1058-cn-some-examples
+    kind: section
+    title: Some examples
+    at:
+      '2026-06-16': '5.15'
+  - id: res-fit1058-cn-predicate-logic-exercises
+    kind: exercises
+    title: Predicate Logic exercises
+    at:
+      '2026-06-16': '5.16'
+- id: res-fit1058-cn-sequences-and-series
+  kind: chapter
+  title: Sequences & Series
+  at:
+    '2026-06-16': '6'
+  nodes:
+  - id: res-fit1058-cn-definitions-and-notation
+    kind: section
+    title: Definitions and notation
+    at:
+      '2026-06-16': '6.1'
+  - id: res-fit1058-cn-recursive-definitions-of-sequences
+    kind: section
+    title: Recursive definitions of sequences
+    at:
+      '2026-06-16': '6.2'
+  - id: res-fit1058-cn-arithmetic-sequences
+    kind: section
+    title: Arithmetic sequences
+    at:
+      '2026-06-16': '6.3'
+  - id: res-fit1058-cn-geometric-sequences
+    kind: section
+    title: Geometric sequences
+    at:
+      '2026-06-16': '6.4'
+  - id: res-fit1058-cn-harmonic-sequences
+    kind: section
+    title: Harmonic sequences
+    at:
+      '2026-06-16': '6.5'
+  - id: res-fit1058-cn-from-recursive-definitions-to-formulas
+    kind: section
+    title: From recursive definitions to formulas
+    at:
+      '2026-06-16': '6.6'
+  - id: res-fit1058-cn-the-fibonacci-sequence
+    kind: section
+    title: The Fibonacci sequence
+    at:
+      '2026-06-16': '6.7'
+  - id: res-fit1058-cn-limits-of-infinite-sequences
+    kind: section
+    title: Limits of infinite sequences
+    at:
+      '2026-06-16': '6.8'
+  - id: res-fit1058-cn-big-o-notation
+    kind: section
+    title: Big-O notation
+    at:
+      '2026-06-16': '6.9'
+  - id: res-fit1058-cn-sums-and-summation
+    kind: section
+    title: Sums and summation
+    at:
+      '2026-06-16': '6.10'
+  - id: res-fit1058-cn-finite-series
+    kind: section
+    title: Finite series
+    at:
+      '2026-06-16': '6.11'
+  - id: res-fit1058-cn-finite-arithmetic-series
+    kind: section
+    title: Finite arithmetic series
+    at:
+      '2026-06-16': '6.12'
+  - id: res-fit1058-cn-finite-geometric-series
+    kind: section
+    title: Finite geometric series
+    at:
+      '2026-06-16': '6.13'
+  - id: res-fit1058-cn-infinite-geometric-series
+    kind: section
+    title: Infinite geometric series
+    at:
+      '2026-06-16': '6.14'
+  - id: res-fit1058-cn-harmonic-numbers
+    kind: section
+    title: Harmonic numbers
+    at:
+      '2026-06-16': '6.15'
+  - id: res-fit1058-cn-sequences-and-series-exercises
+    kind: exercises
+    title: Sequences & Series exercises
+    at:
+      '2026-06-16': '6.16'
+- id: res-fit1058-cn-number-theory
+  kind: chapter
+  title: Number Theory
+  at:
+    '2026-06-16': '7'
+  nodes:
+  - id: res-fit1058-cn-multiples-and-divisors
+    kind: section
+    title: Multiples and divisors
+    at:
+      '2026-06-16': '7.1'
+  - id: res-fit1058-cn-prime-numbers
+    kind: section
+    title: Prime numbers
+    at:
+      '2026-06-16': '7.2'
+  - id: res-fit1058-cn-remainders-and-the-mod-operation
+    kind: section
+    title: Remainders and the mod operation
+    at:
+      '2026-06-16': '7.3'
+  - id: res-fit1058-cn-parity
+    kind: section
+    title: Parity
+    at:
+      '2026-06-16': '7.4'
+  - id: res-fit1058-cn-the-greatest-common-divisor
+    kind: section
+    title: The greatest common divisor
+    at:
+      '2026-06-16': '7.5'
+  - id: res-fit1058-cn-the-euclidean-algorithm
+    kind: section
+    title: The Euclidean algorithm
+    at:
+      '2026-06-16': '7.6'
+  - id: res-fit1058-cn-the-gcd-and-integer-linear-combinations
+    kind: section
+    title: The gcd and integer linear combinations
+    at:
+      '2026-06-16': '7.7'
+  - id: res-fit1058-cn-the-extended-euclidean-algorithm
+    kind: section
+    title: The extended Euclidean algorithm
+    at:
+      '2026-06-16': '7.8'
+  - id: res-fit1058-cn-coprimality
+    kind: section
+    title: Coprimality
+    at:
+      '2026-06-16': '7.9'
+  - id: res-fit1058-cn-modular-arithmetic
+    kind: section
+    title: Modular arithmetic
+    at:
+      '2026-06-16': '7.10'
+  - id: res-fit1058-cn-modular-inverses
+    kind: section
+    title: Modular inverses
+    at:
+      '2026-06-16': '7.11'
+  - id: res-fit1058-cn-the-euler-totient-function
+    kind: section
+    title: The Euler totient function
+    at:
+      '2026-06-16': '7.12'
+  - id: res-fit1058-cn-fast-exponentiation
+    kind: section
+    title: Fast exponentiation
+    at:
+      '2026-06-16': '7.13'
+  - id: res-fit1058-cn-modular-exponentiation
+    kind: section
+    title: Modular exponentiation
+    at:
+      '2026-06-16': '7.14'
+  - id: res-fit1058-cn-primitive-roots
+    kind: section
+    title: Primitive roots
+    at:
+      '2026-06-16': '7.15'
+  - id: res-fit1058-cn-one-way-functions
+    kind: section
+    title: One-way functions
+    at:
+      '2026-06-16': '7.16'
+  - id: res-fit1058-cn-modular-exponentiation-with-fixed-base
+    kind: section
+    title: Modular exponentiation with fixed base
+    at:
+      '2026-06-16': '7.17'
+  - id: res-fit1058-cn-diffie-hellman-key-agreement-scheme
+    kind: section
+    title: Diffie-Hellman key agreement scheme
+    at:
+      '2026-06-16': '7.18'
+  - id: res-fit1058-cn-number-theory-exercises
+    kind: exercises
+    title: Number Theory exercises
+    at:
+      '2026-06-16': '7.19'
+- id: res-fit1058-cn-counting-and-combinatorics
+  kind: chapter
+  title: Counting & Combinatorics
+  at:
+    '2026-06-16': '8'
+  nodes:
+  - id: res-fit1058-cn-counting-by-addition
+    kind: section
+    title: Counting by addition
+    at:
+      '2026-06-16': '8.1'
+  - id: res-fit1058-cn-counting-by-multiplication
+    kind: section
+    title: Counting by multiplication
+    at:
+      '2026-06-16': '8.2'
+  - id: res-fit1058-cn-inclusion-exclusion
+    kind: section
+    title: Inclusion-exclusion
+    at:
+      '2026-06-16': '8.3'
+  - id: res-fit1058-cn-inclusion-exclusion-derangements
+    kind: section
+    title: 'Inclusion-exclusion: derangements'
+    at:
+      '2026-06-16': '8.4'
+  - id: res-fit1058-cn-selection
+    kind: section
+    title: Selection
+    at:
+      '2026-06-16': '8.5'
+  - id: res-fit1058-cn-ordered-selection-with-replacement
+    kind: section
+    title: Ordered selection with replacement
+    at:
+      '2026-06-16': '8.6'
+  - id: res-fit1058-cn-ordered-selection-without-replacement
+    kind: section
+    title: Ordered selection without replacement
+    at:
+      '2026-06-16': '8.7'
+  - id: res-fit1058-cn-unordered-selection-without-replacement
+    kind: section
+    title: Unordered selection without replacement
+    at:
+      '2026-06-16': '8.8'
+  - id: res-fit1058-cn-unordered-selection-with-replacement
+    kind: section
+    title: Unordered selection with replacement
+    at:
+      '2026-06-16': '8.9'
+  - id: res-fit1058-cn-counting-and-combinatorics-exercises
+    kind: exercises
+    title: Counting & Combinatorics exercises
+    at:
+      '2026-06-16': '8.10'
+- id: res-fit1058-cn-discrete-probability-i
+  kind: chapter
+  title: Discrete Probability I
+  at:
+    '2026-06-16': '9'
+  nodes:
+  - id: res-fit1058-cn-the-nature-of-randomness
+    kind: section
+    title: The nature of randomness
+    at:
+      '2026-06-16': '9.1'
+  - id: res-fit1058-cn-probability
+    kind: section
+    title: Probability
+    at:
+      '2026-06-16': '9.2'
+  - id: res-fit1058-cn-choice-of-sample-space
+    kind: section
+    title: Choice of sample space
+    at:
+      '2026-06-16': '9.3'
+  - id: res-fit1058-cn-mutually-exclusive-events
+    kind: section
+    title: Mutually exclusive events
+    at:
+      '2026-06-16': '9.4'
+  - id: res-fit1058-cn-operations-on-events
+    kind: section
+    title: Operations on events
+    at:
+      '2026-06-16': '9.5'
+  - id: res-fit1058-cn-inclusion-exclusion-for-probabilities
+    kind: section
+    title: Inclusion-Exclusion for probabilities
+    at:
+      '2026-06-16': '9.6'
+  - id: res-fit1058-cn-independent-events
+    kind: section
+    title: Independent events
+    at:
+      '2026-06-16': '9.7'
+  - id: res-fit1058-cn-conditional-probability
+    kind: section
+    title: Conditional probability
+    at:
+      '2026-06-16': '9.8'
+  - id: res-fit1058-cn-bayes-theorem
+    kind: section
+    title: Bayes’ Theorem
+    at:
+      '2026-06-16': '9.9'
+  - id: res-fit1058-cn-discrete-probability-i-exercises
+    kind: exercises
+    title: Discrete Probability I exercises
+    at:
+      '2026-06-16': '9.10'
+- id: res-fit1058-cn-discrete-probability-ii
+  kind: chapter
+  title: Discrete Probability II
+  at:
+    '2026-06-16': '10'
+  nodes:
+  - id: res-fit1058-cn-random-variables
+    kind: section
+    title: Random variables
+    at:
+      '2026-06-16': '10.1'
+  - id: res-fit1058-cn-probability-distributions
+    kind: section
+    title: Probability distributions
+    at:
+      '2026-06-16': '10.2'
+  - id: res-fit1058-cn-expectation
+    kind: section
+    title: Expectation
+    at:
+      '2026-06-16': '10.3'
+  - id: res-fit1058-cn-median
+    kind: section
+    title: Median
+    at:
+      '2026-06-16': '10.4'
+  - id: res-fit1058-cn-mode
+    kind: section
+    title: Mode
+    at:
+      '2026-06-16': '10.5'
+  - id: res-fit1058-cn-variance
+    kind: section
+    title: Variance
+    at:
+      '2026-06-16': '10.6'
+  - id: res-fit1058-cn-uniform-distribution
+    kind: section
+    title: Uniform distribution
+    at:
+      '2026-06-16': '10.7'
+  - id: res-fit1058-cn-binomial-distribution
+    kind: section
+    title: Binomial distribution
+    at:
+      '2026-06-16': '10.8'
+  - id: res-fit1058-cn-poisson-distribution
+    kind: section
+    title: Poisson distribution
+    at:
+      '2026-06-16': '10.9'
+  - id: res-fit1058-cn-geometric-distribution
+    kind: section
+    title: Geometric distribution
+    at:
+      '2026-06-16': '10.10'
+  - id: res-fit1058-cn-the-coupon-collectors-problem
+    kind: section
+    title: The coupon collector’s problem
+    at:
+      '2026-06-16': '10.11'
+  - id: res-fit1058-cn-discrete-probability-ii-exercises
+    kind: exercises
+    title: Discrete Probability II exercises
+    at:
+      '2026-06-16': '10.12'
+- id: res-fit1058-cn-graph-theory-i
+  kind: chapter
+  title: Graph Theory I
+  at:
+    '2026-06-16': '11'
+  nodes:
+  - id: res-fit1058-cn-basic-definitions
+    kind: section
+    title: Basic definitions
+    at:
+      '2026-06-16': '11.1'
+  - id: res-fit1058-cn-types-of-graphs
+    kind: section
+    title: Types of graphs
+    at:
+      '2026-06-16': '11.2'
+  - id: res-fit1058-cn-graphs-and-relations
+    kind: section
+    title: Graphs and relations
+    at:
+      '2026-06-16': '11.3'
+  - id: res-fit1058-cn-representing-graphs
+    kind: section
+    title: Representing graphs
+    at:
+      '2026-06-16': '11.4'
+  - id: res-fit1058-cn-subgraphs
+    kind: section
+    title: Subgraphs
+    at:
+      '2026-06-16': '11.5'
+  - id: res-fit1058-cn-some-special-graphs
+    kind: section
+    title: Some special graphs
+    at:
+      '2026-06-16': '11.6'
+  - id: res-fit1058-cn-degree
+    kind: section
+    title: Degree
+    at:
+      '2026-06-16': '11.7'
+  - id: res-fit1058-cn-moving-around
+    kind: section
+    title: Moving around
+    at:
+      '2026-06-16': '11.8'
+  - id: res-fit1058-cn-connectivity
+    kind: section
+    title: Connectivity
+    at:
+      '2026-06-16': '11.9'
+  - id: res-fit1058-cn-bipartite-graphs
+    kind: section
+    title: Bipartite graphs
+    at:
+      '2026-06-16': '11.10'
+  - id: res-fit1058-cn-euler-tours
+    kind: section
+    title: Euler tours
+    at:
+      '2026-06-16': '11.11'
+  - id: res-fit1058-cn-graph-theory-i-exercises
+    kind: exercises
+    title: Graph Theory I exercises
+    at:
+      '2026-06-16': '11.12'
+- id: res-fit1058-cn-graph-theory-ii
+  kind: chapter
+  title: Graph Theory II
+  at:
+    '2026-06-16': '12'
+  nodes:
+  - id: res-fit1058-cn-trees
+    kind: section
+    title: Trees
+    at:
+      '2026-06-16': '12.1'
+  - id: res-fit1058-cn-properties-of-trees
+    kind: section
+    title: Properties of trees
+    at:
+      '2026-06-16': '12.2'
+  - id: res-fit1058-cn-forests
+    kind: section
+    title: Forests
+    at:
+      '2026-06-16': '12.3'
+  - id: res-fit1058-cn-spanning-trees
+    kind: section
+    title: Spanning trees
+    at:
+      '2026-06-16': '12.4'
+  - id: res-fit1058-cn-planarity
+    kind: section
+    title: Planarity
+    at:
+      '2026-06-16': '12.5'
+  - id: res-fit1058-cn-games-on-graphs
+    kind: section
+    title: Games on graphs
+    at:
+      '2026-06-16': '12.6'
+  - id: res-fit1058-cn-graph-theory-ii-exercises
+    kind: exercises
+    title: Graph Theory II exercises
+    at:
+      '2026-06-16': '12.7'

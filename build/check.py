@@ -189,9 +189,29 @@ def check_notes() -> None:
           f"({len(empty_solutions)} empty)")
 
 
-@rule("sources", "source keys registered in meta/sources.yml")
+@rule("resources", "resource files: ids, nodes, editions, locators")
+def check_resources() -> None:
+    """Resource files (SPEC §17.12): valid ids, unique node ids and locators,
+    editions listed, no id shared with another entity."""
+    others = {n.id for n in REPO.all_notes} | set(REPO.owner)
+    seen: dict[str, str] = {}
+    for r in REPO.resources.values():
+        where = rel(r.path)
+        for msg in r.problems:
+            errors.append(f"{where}: {msg}")
+        for eid in [r.id] + list(r.nodes):
+            if eid in others:
+                errors.append(f"{where}: '{eid}' is also the id of a note or block")
+            elif eid in seen and seen[eid] != where:
+                errors.append(f"{where}: '{eid}' is also an id in {seen[eid]}")
+            seen[eid] = where
+    nodes = sum(len(r.nodes) for r in REPO.resources.values())
+    print(f"resources: {len(REPO.resources)} ({nodes} nodes)")
+
+
+@rule("sources", "source keys resolve to a resource node (legacy keys)")
 def check_sources() -> None:
-    """Every source key belongs to a registered source (meta/sources.yml)."""
+    """Every source key resolves to an explicit resource, edition and node (SPEC §17.12.6)."""
     keys = [(n.files["note.md"].path, str(k)) for n in REPO.notes.values() for k in n.front.get("sources") or []]
     keys += [(n.files["exercise.md"].path, p.attrs.get("source", ""))
              for n in list(REPO.notes.values()) + list(REPO.reviews.values()) for p in n.problems]

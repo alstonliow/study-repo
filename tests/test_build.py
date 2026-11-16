@@ -507,6 +507,82 @@ class TestRelations(Repo):
         self.assertCheck(1, "book must be true or false")
 
 
+
+class TestResources(Repo):
+    """Resources and legacy source keys (SPEC §17.12)."""
+
+    RES = "resources/demo.yml"
+
+    def py(self, code: str) -> list[str]:
+        out = subprocess.run([PY, "-c", code], cwd=BUILD, capture_output=True, text=True,
+                             env=dict(os.environ, STUDY_ROOT=str(self.root)))
+        self.assertEqual(out.returncode, 0, out.stderr)
+        return out.stdout.strip().split("\n")
+
+    def resolve(self, *keys: str) -> list[str]:
+        code = ("import model; r = model.Repo()\n"
+                f"for k in {list(keys)!r}:\n"
+                "    x = r.sources.resolve(k)\n"
+                "    print(f'{x.resource} {x.edition} {x.node} {x.locator} {x.question}' if x else 'none')")
+        return self.py(code)
+
+    def test_locators_match_exactly(self):
+        self.assertEqual(self.resolve("demo-1", "demo-1.1", "demo-1.10-q3", "demo-1.3"), [
+            "res-demo 2026-01-01 res-demo-basics 1 None",
+            "res-demo 2026-01-01 res-demo-widgets 1.1 None",
+            "res-demo 2026-01-01 res-demo-basics-exercises 1.10 3",
+            "none"])
+
+    def test_nodes_in_entity_index_but_not_notes(self):
+        out = self.py("import model; r = model.Repo(); e = r.entities['res-demo-widgets']; "
+                      "print(e.type, e.holder, e.level, 'res-demo-widgets' in r.notes, r.resources['res-demo'].nodes['res-demo-widgets'].parent)")
+        self.assertEqual(out, ["resource-node res-demo nodes False res-demo-basics"])
+
+    def test_labels_unchanged(self):
+        site = generate(self.root)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("DEMO 1.1 Q1", first)
+        self.assertIn("Sources: `demo-1.1`", first)
+
+    def test_unresolved_key_is_an_error(self):
+        self.edit("notes/t/alpha/second/note.md", "sources: [demo-1.2]", "sources: [demo-1.3]")
+        r = self.check()
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn("no node of res-demo is at 1.3 in edition 2026-01-01", r.stdout)
+
+    def test_unknown_prefix_is_an_error(self):
+        self.edit("notes/t/alpha/second/note.md", "sources: [demo-1.2]", "sources: [other-1.2]")
+        r = self.check()
+        self.assertIn("belongs to no resource", r.stdout)
+
+    def test_locator_change_keeps_node_id(self):
+        # a new edition renumbers 1.2 -> 1.5: only `at` changes; the node and old keys stay
+        self.edit(self.RES, '    current: true\n', '    current: true\n  - id: "2027-01-01"\n')
+        self.edit(self.RES, 'at: {"2026-01-01": "1.2"}', 'at: {"2026-01-01": "1.2", "2027-01-01": "1.5"}')
+        self.assertEqual(self.check().returncode, 0)
+        self.assertEqual(self.resolve("demo-1.2"), ["res-demo 2026-01-01 res-demo-gadgets 1.2 None"])
+        out = self.py("import model; r = model.Repo(); print(r.resources['res-demo'].node_at('2027-01-01', '1.5').id)")
+        self.assertEqual(out, ["res-demo-gadgets"])
+
+    def test_duplicate_locator_and_node_id(self):
+        self.edit(self.RES, 'at: {"2026-01-01": "1.2"}', 'at: {"2026-01-01": "1.1"}')
+        r = self.check()
+        self.assertIn("locator 1.1 of edition 2026-01-01 is also res-demo-widgets", r.stdout)
+        self.edit(self.RES, "id: res-demo-gadgets", "id: res-demo-widgets")
+        self.assertIn("node id 'res-demo-widgets' is used twice", self.check().stdout)
+
+    def test_bad_ids_and_empty_fields(self):
+        self.edit(self.RES, "id: res-demo-gadgets", "id: gadgets")
+        self.edit(self.RES, "courses: [demo]", "courses: [demo]\nurl: ''")
+        out = self.check().stdout
+        self.assertIn("node id 'gadgets' must start with 'res-demo-'", out)
+        self.assertIn("'url' is empty; leave it out instead", out)
+
+    def test_resource_id_must_not_clash(self):
+        self.edit("notes/t/beta/third/note.md", "#prp-third", "#res-demo-widgets")
+        self.assertIn("'res-demo-widgets' is also the id of a note or block", self.check().stdout)
+
+
 def update_expected() -> None:
     tmp = Path(tempfile.mkdtemp(prefix="study-test-"))
     try:

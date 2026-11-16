@@ -1,55 +1,41 @@
-"""The source registry (meta/sources.yml): which source-key prefixes exist,
-which edition they refer to, and how a key is shown ("FIT1058 CN 1.16 Q2")."""
+"""Source keys (meta/SPEC.md §4, §6, §17.12.6): how a key such as
+`fit1058-cn-1.16-q2` is checked and shown ("FIT1058 CN 1.16 Q2").
+
+Source keys are citations. Each key belongs to the resource whose
+`legacy_keys.prefix` it starts with, and resolves through that resource to an
+explicit edition and node (build/resources.py). There is no other registry of
+sources.
+"""
 
 from __future__ import annotations
 
-import re
-from dataclasses import dataclass
-from pathlib import Path
+from typing import TYPE_CHECKING
 
-import yaml
-
-
-@dataclass(frozen=True)
-class Source:
-    prefix: str
-    title: str
-    course: str
-    edition: str
-    pattern: re.Pattern
-    label: str
-    problem_label: str
-
-    def show(self, key: str) -> str | None:
-        m = self.pattern.match(key)
-        if not m:
-            return None
-        parts = {k: v for k, v in m.groupdict().items() if v is not None}
-        return (self.problem_label if "n" in parts else self.label).format(**parts)
+if TYPE_CHECKING:
+    from resources import Resolution, Resource
 
 
 class Sources:
-    def __init__(self, meta: Path):
-        path = meta / "sources.yml"
-        data = (yaml.safe_load(path.read_text(encoding="utf-8")) or {}) if path.exists() else {}
-        self.all = [Source(s["prefix"], s.get("title", ""), s.get("course", ""), str(s.get("edition", "")),
-                           re.compile(s["pattern"]), s.get("label", "{section}"),
-                           s.get("problem_label", s.get("label", "{section}")))
-                    for s in data.get("sources") or []]
+    def __init__(self, resources: dict[str, "Resource"]):
+        self.resources = [r for r in resources.values() if r.legacy is not None]
 
-    def find(self, key: str) -> Source | None:
-        return next((s for s in self.all if key.startswith(s.prefix)), None)
+    def find(self, key: str) -> "Resource | None":
+        return next((r for r in self.resources if r.legacy and key.startswith(r.legacy.prefix)), None)
+
+    def resolve(self, key: str) -> "Resolution | None":
+        r = self.find(key)
+        res = r.resolve(key) if r else None
+        return None if res is None or isinstance(res, str) else res
 
     def label(self, key: str) -> str:
-        """How a key is shown; the key itself when no source knows it."""
-        s = self.find(key)
-        return (s.show(key) if s else None) or key
+        """How a key is shown; the key itself when no resource knows it."""
+        r = self.find(key)
+        return (r.label(key) if r else None) or key
 
     def problems(self, key: str) -> str | None:
         """Why a key is not valid, or None."""
-        s = self.find(key)
-        if s is None:
-            return f"source key '{key}' has no entry in meta/sources.yml"
-        if not s.pattern.match(key):
-            return f"source key '{key}' does not have the form of {s.prefix}… keys"
-        return None
+        r = self.find(key)
+        if r is None:
+            return f"source key '{key}' belongs to no resource (no legacy_keys prefix matches)"
+        res = r.resolve(key)
+        return res if isinstance(res, str) else None

@@ -214,7 +214,8 @@ GitHub (link at the bottom of the sidebar). Sync uses Supabase:
 | Path | Contents |
 |---|---|
 | `notes/` | The notes (one folder per knowledge point) |
-| `meta/` | Specification, taxonomy (`taxonomy.md` + `taxonomy.yml`), notation, course files (`courses/`), sources (`sources.yml`), numbering formats (`numbering.yml`) |
+| `meta/` | Specification, taxonomy (`taxonomy.md` + `taxonomy.yml`), notation, course files (`courses/`), relationship types (`relations.yml`), numbering formats (`numbering.yml`) |
+| `resources/` | One YAML file per resource (book, course notes, ...): its chapters and sections as nodes, editions, and the format of its source keys (`meta/SPEC.md` §17.12) |
 | `build/` | `model.py` (the one parser), registries (`kinds.py`, `sources.py`), `outline.py` and `numbering.py`, `refs.py`, `filters.py`, `transforms.py`; site (`make_site.py`, `web.py`, `summaries.py`, `graphs.py`, `tikz.py`), PDF (`make_pdf.py`, `book.py`), checks, `move_note.py`; `legacy/` holds the one-off LaTeX migration |
 | `site/` | Quarto website configuration; generated pages are not committed |
 | `legacy/` | Original LaTeX notes, kept until migration review is finished |

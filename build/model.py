@@ -15,6 +15,7 @@ from typing import Any
 
 import yaml
 
+import resources as resource_files
 from sources import Sources
 from kinds import SUMMARY_PREFIXES as KEY_PREFIXES
 
@@ -254,15 +255,16 @@ class Entity:
     """One row of the entity index (SPEC §17.3.5): a thin view over notes,
     review folders and blocks, not a class of its own."""
     id: str
-    type: str          # "note", "review", or a block kind prefix ("def", "thm", ...)
+    type: str          # "note", "review", "resource", "resource-node", or a block kind prefix ("def", ...)
     holder: str        # the note or review folder that holds it (itself for a note)
     title: str
     visibility: str = "public"   # everything is public until a private store exists (SPEC §17.9)
 
     @property
     def level(self) -> str:
-        """'notes' or 'blocks', the words meta/relations.yml uses in `between`."""
-        return "notes" if self.type in ("note", "review") else "blocks"
+        """The word meta/relations.yml uses in `between`: notes, blocks, resources, nodes."""
+        return {"note": "notes", "review": "notes", "resource": "resources",
+                "resource-node": "nodes"}.get(self.type, "blocks")
 
 
 @dataclass
@@ -329,6 +331,7 @@ class Repo:
         self.owner = {bid: n.id for n in list(self.notes.values()) + list(self.reviews.values())
                       for bid in n.blocks}
         self.alias_of = {a: n.id for n in self.notes.values() for a in n.aliases}   # old id -> current id
+        self.resources = resource_files.load(root)                     # SPEC §17.12
         self.entities = self._index()
         self.parts = [(p["title"], [(b["id"], b["title"]) for b in p["branches"]]) for p in tax.get("parts", [])]
         # parts with `book: false` only group the navigation; their chapters are not in a book (SPEC §17.7)
@@ -338,7 +341,7 @@ class Repo:
         # explicit topic order of the notes in each branch (folder names)
         self.branch_order = {b["id"]: [str(x) for x in b.get("notes") or []]
                              for p in tax.get("parts", []) for b in p["branches"]}
-        self.sources = Sources(META)
+        self.sources = Sources(self.resources)
         cdir = META / "courses"
         self.courses = [Course(p) for p in sorted(cdir.glob("*.yml"))] if cdir.exists() else []
         self.resolve_courses()
@@ -354,6 +357,10 @@ class Repo:
         for n in list(self.notes.values()) + list(self.reviews.values()):
             for bid, name in n.blocks.items():
                 out.setdefault(bid, Entity(bid, bid.split("-", 1)[0], n.id, name))
+        for r in self.resources.values():
+            out.setdefault(r.id, Entity(r.id, "resource", r.id, r.title, r.visibility))
+            for node in r.nodes.values():
+                out.setdefault(node.id, Entity(node.id, "resource-node", r.id, node.title, r.visibility))
         return out
 
     # ------------------------------------------------------------ scope (SPEC §13)
