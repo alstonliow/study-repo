@@ -250,6 +250,22 @@ class Note:
 
 
 @dataclass
+class Entity:
+    """One row of the entity index (SPEC §17.3.5): a thin view over notes,
+    review folders and blocks, not a class of its own."""
+    id: str
+    type: str          # "note", "review", or a block kind prefix ("def", "thm", ...)
+    holder: str        # the note or review folder that holds it (itself for a note)
+    title: str
+    visibility: str = "public"   # everything is public until a private store exists (SPEC §17.9)
+
+    @property
+    def level(self) -> str:
+        """'notes' or 'blocks', the words meta/relations.yml uses in `between`."""
+        return "notes" if self.type in ("note", "review") else "blocks"
+
+
+@dataclass
 class Point:
     id: str
     title: str
@@ -313,7 +329,11 @@ class Repo:
         self.owner = {bid: n.id for n in list(self.notes.values()) + list(self.reviews.values())
                       for bid in n.blocks}
         self.alias_of = {a: n.id for n in self.notes.values() for a in n.aliases}   # old id -> current id
+        self.entities = self._index()
         self.parts = [(p["title"], [(b["id"], b["title"]) for b in p["branches"]]) for p in tax.get("parts", [])]
+        # parts with `book: false` only group the navigation; their chapters are not in a book (SPEC §17.7)
+        self.unbooked = {p["title"] for p in tax.get("parts", []) if p.get("book", True) is False}
+        self.bad_book_flags = [p["title"] for p in tax.get("parts", []) if not isinstance(p.get("book", True), bool)]
         self.branch_desc = {b["id"]: b.get("desc", "") for p in tax.get("parts", []) for b in p["branches"]}
         # explicit topic order of the notes in each branch (folder names)
         self.branch_order = {b["id"]: [str(x) for x in b.get("notes") or []]
@@ -322,6 +342,19 @@ class Repo:
         cdir = META / "courses"
         self.courses = [Course(p) for p in sorted(cdir.glob("*.yml"))] if cdir.exists() else []
         self.resolve_courses()
+
+    def _index(self) -> dict[str, Entity]:
+        """The entity index (SPEC §17.3.5): id -> Entity, for every note, review
+        folder and labelled block. Aliases are not in it (see alias_of)."""
+        out: dict[str, Entity] = {}
+        for n in self.notes.values():
+            out[n.id] = Entity(n.id, "note", n.id, n.title)
+        for rv in self.reviews.values():
+            out[rv.id] = Entity(rv.id, "review", rv.id, "Synthesis problems")
+        for n in list(self.notes.values()) + list(self.reviews.values()):
+            for bid, name in n.blocks.items():
+                out.setdefault(bid, Entity(bid, bid.split("-", 1)[0], n.id, name))
+        return out
 
     # ------------------------------------------------------------ scope (SPEC §13)
     def resolve_courses(self) -> None:
@@ -430,7 +463,7 @@ class Repo:
 
     def taxonomy_problems(self) -> list[str]:
         """Notes missing from, or listed but absent in, meta/taxonomy.yml."""
-        out = []
+        out = [f"part '{t}': book must be true or false" for t in self.bad_book_flags]
         for bid, slugs in self.branch_order.items():
             have = {n.slug for n in self.notes.values() if n.branch == bid}
             for s in slugs:

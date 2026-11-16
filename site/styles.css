@@ -122,6 +122,13 @@ body.quarto-dark .tikz-figure img { filter: invert(0.88) hue-rotate(180deg); }
 .note-keys { color: var(--notec); font-size: 0.8em; margin-left: 0.4em; }
 .note-meta code { color: inherit !important; background: none !important; padding: 0 !important; font-size: 0.95em; }
 
+/* ---------- Connections: relationships and backlinks at the end of a page (SPEC §17.6) ---------- */
+.connections { font-size: 0.88rem; color: var(--notec); }
+.connections ul { margin: 0.2em 0 0.9em; padding-left: 1.2em; }
+.connections li { margin: 0.15em 0; }
+.connections a { text-decoration-color: var(--rule); }
+.connections em { font-style: italic; color: var(--notec); }
+
 /* ---------- previous / next page boxes ---------- */
 nav.page-navigation { display: flex; gap: 1rem; border-top: none; padding-top: 0; margin-top: 2.5rem; }
 nav.page-navigation .nav-page { flex: 1 1 0; min-width: 0; }

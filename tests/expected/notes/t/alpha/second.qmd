@@ -19,3 +19,13 @@ This remark is excluded by the demo course.
 :::
 ::::
 ::::
+
+## Connections
+
+::: {.connections}
+**Referenced by**
+
+- This topic ← [Remark (Aside)](/notes/t/alpha/first.qmd#rmk-first-1)
+- [Theorem [1.2.1]{.num data-note="t/alpha/second"}](#thm-gadget) ← [Remark (Aside)](/notes/t/alpha/first.qmd#rmk-first-1), [Review 1.1](/notes/t/alpha/summary.qmd#prob-alpha-review-01)
+
+:::

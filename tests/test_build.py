@@ -386,6 +386,127 @@ class TestNumbering(Repo):
         self.assertEqual(out.stdout.strip(), "Theorem 1.1.1 (Testing)", out.stderr)
 
 
+
+class TestRelations(Repo):
+    """Acceptance tests for typed relationships, backlinks and placement (SPEC §17)."""
+
+    THIRD = "notes/t/beta/third/note.md"
+
+    def add_relations(self, yaml_lines: str, rel: str = THIRD) -> None:
+        self.edit(rel, "status:", yaml_lines + "\nstatus:")
+
+    def assertCheck(self, code: int, text: str = "") -> str:
+        r = self.check()
+        self.assertEqual(r.returncode, code, r.stdout)
+        if text:
+            self.assertIn(text, r.stdout)
+        return r.stdout
+
+    def test_uses_gives_forward_and_backlink(self):
+        self.add_relations("relations:\n  uses: [t/alpha/second]")
+        self.edit(self.THIRD, '{#prp-third .proposition name="Not covered"}',
+                  '{#prp-third .proposition name="Not covered" uses="def-widget"}')
+        self.assertCheck(0, "relationships: 2 typed")
+        site = generate(self.root)
+        third = (site / "notes/t/beta/third.qmd").read_text()
+        self.assertIn("Uses: [1.2 Second note](/notes/t/alpha/second.qmd)", third)
+        self.assertIn("(#prp-third) *uses* [Definition [1.1.1]", third)
+        second = (site / "notes/t/alpha/second.qmd").read_text()
+        self.assertIn("- This topic *used by* [2.1 Third note](/notes/t/beta/third.qmd)", second)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("(#def-widget) *used by* [Proposition [2.1.1]", first)
+
+    def test_reference_is_a_backlink_not_uses(self):
+        site = generate(self.root)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        conn = first[first.index("## Connections"):]
+        self.assertIn("**Referenced by**", conn)
+        self.assertIn("- This topic ← [Definition [2.1.1]", conn)    # @sec-t-alpha-first in third
+        self.assertNotIn("**Relationships**", conn)
+        self.assertNotIn("used by", conn)
+
+    def test_symmetric_relation_once_or_twice(self):
+        self.add_relations("relations:\n  related: [t/alpha/first]")
+        self.assertCheck(0)
+        site = generate(self.root)
+        self.assertIn("Related: [2.1 Third note]", (site / "notes/t/alpha/first.qmd").read_text())
+        self.add_relations("relations:\n  related: [t/beta/third]", "notes/t/alpha/first/note.md")
+        self.assertCheck(0, "related is symmetric; write it on one side only")
+
+    def test_requires_cycle_is_an_error(self):
+        self.edit("notes/t/alpha/first/note.md", "requires: []", "requires: [t/beta/third]")
+        self.assertCheck(1, "requires leads back to itself (cycle)")
+
+    def test_acyclic_type_cycle_is_an_error(self):
+        self.add_relations("relations:\n  generalizes: [t/alpha/first]")
+        self.add_relations("relations:\n  generalizes: [t/beta/third]", "notes/t/alpha/first/note.md")
+        self.assertCheck(1, "generalizes has a cycle: t/alpha/first -> t/beta/third -> t/alpha/first")
+
+    def test_uses_cycle_is_allowed(self):
+        self.add_relations("relations:\n  uses: [t/alpha/first]")
+        self.add_relations("relations:\n  uses: [t/beta/third]", "notes/t/alpha/first/note.md")
+        self.assertCheck(0)
+
+    def test_alias_as_target_is_an_error(self):
+        self.edit(self.THIRD, "requires: [t/alpha/first]", "requires: [t/alpha/first]\naliases: [t/beta/old-third]")
+        self.add_relations("relations:\n  uses: [t/beta/old-third]", "notes/t/alpha/second/note.md")
+        self.assertCheck(1, "'t/beta/old-third' is an old id; use the current id 't/beta/third'")
+
+    def test_alias_in_requires_and_reference_is_an_error(self):
+        self.edit(self.THIRD, "requires: [t/alpha/first]", "requires: [t/alpha/first]\naliases: [t/beta/old-third]")
+        self.edit("notes/t/alpha/second/note.md", "requires: [t/alpha/first]", "requires: [t/beta/old-third]")
+        self.edit("notes/t/alpha/second/note.md", "Gadgets follow", "See @sec-t-beta-old-third. Gadgets follow")
+        out = self.assertCheck(1, "requires 't/beta/old-third', an old id")
+        self.assertIn("@sec-t-beta-old-third points to an old id; use @sec-t-beta-third", out)
+
+    def test_unknown_type_end_and_target(self):
+        self.add_relations("relations:\n  inspires: [t/alpha/first]")
+        self.edit("notes/t/alpha/second/note.md", '{#thm-gadget .theorem name="Gadget theorem"}',
+                  '{#thm-gadget .theorem name="Gadget theorem" requires="thm-widget" uses="thm-gadget idea-secret"}')
+        out = self.assertCheck(1, "unknown relationship type 'inspires'")
+        self.assertIn("requires is only between notes, not blocks", out)
+        self.assertIn("thm-gadget uses itself", out)
+        self.assertIn("uses unknown id 'idea-secret'", out)
+
+    def test_unknown_or_private_target_leaks_nothing(self):
+        # A public build cannot see private entities: such a target is "missing" (SPEC §17.4.3).
+        self.add_relations("relations:\n  related: [idea-secret]")
+        self.assertCheck(1, "related unknown id 'idea-secret'")
+        site = generate(self.root)
+        for page in (site / "notes").rglob("*.qmd"):
+            self.assertNotIn("idea-secret", page.read_text(), page)
+        self.assertNotIn("idea-secret", (site / "site-data.json").read_text())
+
+    def test_left_out_target_is_plain_text(self):
+        md = run("make_pdf.py", self.root, "--markdown-only", "--name", "t", "--scope", "branch:t/beta")
+        self.assertEqual(md.returncode, 0, md.stdout + md.stderr)
+        text = (self.root / "out/pdf/t.qmd").read_text()
+        self.assertIn("First note", text)
+        self.assertNotIn("@sec-t-alpha-first", text)
+
+    def test_note_covered_by_two_course_points_is_placed_at_the_first(self):
+        self.edit("meta/courses/demo.yml", "        covers: [def-third]",
+                  "        covers: [def-third]\n      - id: \"2.2\"\n        title: \"Again\"\n        covers: [t/alpha/first]")
+        self.assertCheck(0)
+        data = json.loads((generate(self.root) / "site-data.json").read_text())
+        self.assertEqual(data["numbers"]["demo"]["t/alpha/first"], "1.1")
+        self.assertEqual(data["numbers"]["demo"]["t/beta/third"], "2.1")
+
+    def test_part_without_book(self):
+        self.edit("meta/taxonomy.yml", "      - id: t/beta\n", "  - title: Loose\n    book: false\n    branches:\n      - id: t/beta\n")
+        self.assertCheck(0)
+        code = ("import model, numbering; r = model.Repo(); nb = numbering.build(r); "
+                "f, t = r.notes['t/alpha/first'], r.notes['t/beta/third']; "
+                "print(nb.section['t/beta/third']); print(nb.label('thm-widget', f, t)); print(nb.label('def-third', t, f))")
+        out = subprocess.run([PY, "-c", code], cwd=BUILD, capture_output=True, text=True,
+                             env=dict(os.environ, STUDY_ROOT=str(self.root)))
+        self.assertEqual(out.stdout.split("\n")[:3], ["1.1", "Theorem 1.1.1 (Testing)", "Definition 1.1.1"], out.stderr)
+
+    def test_book_flag_must_be_boolean(self):
+        self.edit("meta/taxonomy.yml", "  - title: Testing\n", "  - title: Testing\n    book: maybe\n")
+        self.assertCheck(1, "book must be true or false")
+
+
 def update_expected() -> None:
     tmp = Path(tempfile.mkdtemp(prefix="study-test-"))
     try:

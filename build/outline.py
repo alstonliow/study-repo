@@ -53,15 +53,18 @@ class Outline:
 
 
 def topic(repo) -> Outline:
+    """Chapter numbers restart in each book. Parts marked `book: false` are no
+    book (SPEC §17.7): their chapters share one sequence, and their book is ''."""
     chapters = []
-    for book, branches in repo.parts:
-        seq = 0
+    seq: dict[str | None, int] = {}
+    for part, branches in repo.parts:
+        book = None if part in repo.unbooked else part
         for bid, title in branches:
             members = repo.branch_members(bid)
             if not members:
                 continue
-            seq += 1
-            chapters.append(Chapter(bid, str(seq), title, book, members,
+            seq[book] = seq.get(book, 0) + 1
+            chapters.append(Chapter(bid, str(seq[book]), title, book or "", members,
                                     [repo.reviews[bid]] if bid in repo.reviews else []))
     return Outline("topic", chapters)
 

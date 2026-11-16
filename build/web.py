@@ -20,6 +20,7 @@ import kinds
 import numbering
 import tikz
 import refs
+import relations
 from transforms import (add_example_levels, caption_figures, fix_claims, level_badge, title_blocks,
                         wrap_plain_ids)
 from model import (MATH, RAW, REF, ROOT, Note, Repo, divs_in, fence_for, top_level_divs)
@@ -32,15 +33,17 @@ TIKZ = SITE / "tikz"
 REPO: Repo
 RESOLVER: refs.Resolver
 NUMBERING: numbering.Numbering
+GRAPH: relations.Graph
 SVGS: dict[str, str | None] = {}   # drawing source -> compiled SVG file name
 
 
 def setup(repo: Repo) -> Repo:
     """Prepare the page functions for one build."""
-    global REPO, RESOLVER, NUMBERING
+    global REPO, RESOLVER, NUMBERING, GRAPH
     REPO = repo
     RESOLVER = refs.Resolver(repo)
     NUMBERING = numbering.build(repo)
+    GRAPH = relations.Graph(repo)
     SVGS.clear()
     return repo
 
@@ -87,7 +90,9 @@ def link_for(ref: str, here) -> str:
         else RESOLVER.describe(t)
     if ref in here.blocks:
         return f"[{label}](#{ref})"
-    return f"[{label}]({page_url(t.note.id)}#{ref})"
+    # synthesis problems have no page of their own; they are on the branch summary
+    url = page_url(t.note.id) if t.note.id in REPO.notes else f"/notes/{t.note.branch}/summary.qmd"
+    return f"[{label}]({url}#{ref})"
 
 
 def link_refs(text: str, here) -> str:
@@ -205,6 +210,57 @@ def transform(body: str, here) -> str:
     return link_refs(body, here)
 
 
+def at(eid: str) -> str:
+    """An @-reference to any entity: blocks by id, notes by their sec- label."""
+    n = REPO.notes.get(eid)
+    return "@" + (n.sec_label if n else eid)
+
+
+def note_relations(note: Note) -> list[tuple[str, list[str]]]:
+    """Typed relationships written at the note itself (not requires, shown as
+    Prerequisites), grouped by type in registry order, for the page's meta line."""
+    out = []
+    links = [l for l in GRAPH.outgoing(note.id) if l.name != "requires"]
+    for name in GRAPH.types:
+        targets = [l.other for l in links if l.name == name]
+        if targets:
+            out.append((name, targets))
+    return out
+
+
+def connections(note: Note) -> str:
+    """The page's closing "Connections" section (SPEC §17.6): relationships of
+    its blocks (both directions), relationships pointing to the note, and
+    references from other pages. Derived from relations.Graph; written as
+    @-references, so labels follow numbering and the course filter."""
+    def label(eid: str) -> str:
+        return "This topic" if eid == note.id else at(eid)
+    rel_rows, ref_rows = [], []
+    for eid in relations.page_entities(note):
+        if eid != note.id:                                     # the note's own are in the meta line
+            for l in GRAPH.outgoing(eid):
+                rel_rows.append(f"- {label(eid)} *{GRAPH.word(l, True)}* {at(l.other)}")
+        for l in GRAPH.incoming(eid):
+            if l.name == "requires":                           # shown as "Leads to"
+                continue
+            rel_rows.append(f"- {label(eid)} *{GRAPH.word(l, False)}* {at(l.other)}")
+        sources: list[str] = []
+        for l in GRAPH.referenced_by.get(eid, []):
+            src = l.other if l.other in REPO.entities else l.holder
+            if src not in sources:
+                sources.append(src)
+        if sources:
+            ref_rows.append(f"- {label(eid)} ← " + ", ".join(at(s) for s in sources))
+    if not rel_rows and not ref_rows:
+        return ""
+    out = ["## Connections", "", "::: {.connections}"]
+    if rel_rows:
+        out += ["**Relationships**", ""] + rel_rows + [""]
+    if ref_rows:
+        out += ["**Referenced by**", ""] + ref_rows + [""]
+    return "\n".join(out + [":::"])
+
+
 def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: dict[str, str | None]) -> str:
     body_text = wrap_scope(note.body.strip(), note)     # headings inside a note are not numbered
     parts = [body_text]
@@ -212,6 +268,9 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
         parts.append("## Examples\n\n" + wrap_scope(note.examples.strip(), note))
     if note.exercises.strip():
         parts.append("## Exercises\n\n" + render_problems(note))
+    conn = connections(note)
+    if conn:
+        parts.append(conn)
     body = transform("\n\n".join(parts), note)
 
     meta = []
@@ -223,6 +282,8 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
     nexts = REPO.dependents(note.id)
     if nexts:
         meta.append("Leads to: " + ", ".join(f"[{notes[r].display_title}]({page_url(r)})" for r in nexts))
+    for word, targets in note_relations(note):
+        meta.append(f"{word.capitalize()}: " + ", ".join(link_refs(at(x), note) for x in targets))
     if note.front.get("status") == "draft":
         meta.append("Status: draft")
     front: dict[str, object] = {"title": note.display_title}

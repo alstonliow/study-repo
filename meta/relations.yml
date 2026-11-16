@@ -1,0 +1,37 @@
+# Relationship types (meta/SPEC.md §17.5). One entry per type; nothing else
+# defines relationship types.
+#
+# name:       how the relationship is written: `relations: {<name>: [...]}` in a
+#             note's YAML, or <name>="id id" on a block's div
+# inverse:    shown at the target ("used by"); a display name, never written
+# symmetric:  stored once, on either side; shown the same way at both ends
+# acyclic:    no cycles allowed in this type's graph (check error)
+# between:    which entities may be connected: notes, blocks
+#
+# `requires` is written as the top-level `requires` field (SPEC §4).
+types:
+  - name: requires
+    inverse: required by
+    symmetric: false
+    acyclic: true
+    between: [notes]
+  - name: uses
+    inverse: used by
+    symmetric: false
+    acyclic: false
+    between: [notes, blocks]
+  - name: generalizes
+    inverse: specializes
+    symmetric: false
+    acyclic: true
+    between: [notes, blocks]
+  - name: equivalent
+    inverse: equivalent
+    symmetric: true
+    acyclic: false
+    between: [notes, blocks]
+  - name: related
+    inverse: related
+    symmetric: true
+    acyclic: false
+    between: [notes, blocks]

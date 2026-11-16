@@ -52,7 +52,8 @@ once approved.
    display title, one-line description) and, for each branch, the order of its
    notes (`notes:`, folder names). Every note is listed there; topic order on
    the website comes only from this list, never from source keys. The two files
-   are changed together. Leaf folders are created only when content is added. No empty
+   are changed together. A part with `book: false` only groups the navigation:
+   it is not a book (§16.1, §17.7). Leaf folders are created only when content is added. No empty
    directories in advance.
 6. ids are not renamed without the owner's approval. When a knowledge point is split, the
    original id stays as an overview so existing references do not break.
@@ -315,6 +316,8 @@ build artefacts (`*.aux`, `*.log`, PDFs, `out/`, `_site/`).
 10. Course files (§13): unknown note or block ids in `covers`/`exclude`, duplicate
    point ids, points that cover nothing (warning), and notes whose `sources`
    name a course that does not cover them (warning: provenance without scope).
+11. Relationships (§17.5.8), and old ids (aliases) used in `requires`,
+   `relations` or `@sec-` references (§17.3.3).
 
 All checks run on the model built by `build/model.py`, the single parser of
 notes, blocks and course files. `make test` runs the build scripts on a small
@@ -423,8 +426,9 @@ references.
    (§17.7). Where an outline has books, each book has its own numbers; fields
    (math, cs) only group the navigation. A reference into another collection
    (another book or course) adds that collection's title after the number:
-   Theorem 11.8.1 (Discrete Mathematics). An outline without a book level
-   numbers its chapters directly.
+   Theorem 11.8.1 (Discrete Mathematics). Chapters outside any book (parts
+   with `book: false`) share one sequence of chapter numbers and add no book
+   name; a reference from them into a book adds the book's title.
 2. **Notes**: chapter.k (8.1). Headings inside a note are not numbered.
 3. **Blocks**: the note's number and a counter per kind: Definition 8.1.1,
    Definition 8.1.2, Example 8.1.1, Theorem 8.1.1. Numbered kinds are listed in
@@ -597,7 +601,7 @@ types that do not exist yet; implementation goes in phases (§17.10).
    - **References**: "Referenced by", from `@` links;
    - **Relationships**: grouped by inverse name: Required by, Used by,
      Specializes, Equivalent, Related.
-3. A note page ends with its backlinks: those to the note, then those to each
+3. A note page ends with its backlinks, in a **Connections** section: those to the note, then those to each
    of its blocks (for example "Theorem 8.1.2 ← used by Example 8.3.1"). Labels
    use the current numbering context.
 4. Relationships written in YAML or div attributes do not appear in the text,
@@ -679,10 +683,11 @@ types that do not exist yet; implementation goes in phases (§17.10).
 ### 17.10 Phases
 
 1. **Specification**: this section (v0.3).
-2. **Notes**: entity index, backlinks, typed relationships and
-   `meta/relations.yml`, outline levels from configuration with an optional
-   book level. No note file changes. Existing output stays the same except
-   for the new backlink sections.
+2. **Notes** (built 2026-11-16): entity index (`Repo.entities`), backlinks and
+   typed relationships (`build/relations.py`, `meta/relations.yml`), and an
+   optional book level (`book: false` on a part in `meta/taxonomy.yml`). No
+   note file changed; the output is unchanged except for the new Connections
+   sections.
 3. **Resources**: the first new entity type, with its schema written here
    first, and the private store. This phase must keep three concepts apart:
    - **Resource**: the logical work you keep, read or watch (one book across

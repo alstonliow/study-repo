@@ -51,7 +51,9 @@ class Resolver:
         if t.is_note:
             return t.note.display_title
         word = t.kind.word if t.kind else ""
-        return f"{word} ({t.name})" if t.name else f"{word} in {t.note.display_title}"
+        from model import REF
+        name = REF.sub(lambda m: self.title(m.group(1)), t.name)   # a name may cite: keep it plain text
+        return f"{word} ({name})" if name else f"{word} in {t.note.display_title}"
 
     def title(self, ref: str) -> str:
         """Bare title, safe inside maths (no braces or backslashes)."""

@@ -58,3 +58,14 @@ Statement two.
 
 ::::
 
+
+## Connections
+
+::: {.connections}
+**Referenced by**
+
+- This topic ← [Definition [2.1.1]{.num data-note="t/beta/third"}](/notes/t/beta/third.qmd#def-third)
+- [Definition [1.1.1]{.num data-note="t/alpha/first"}](#def-widget) ← [Theorem [1.2.1]{.num data-note="t/alpha/second"}](/notes/t/alpha/second.qmd#thm-gadget)
+- [Theorem [1.1.1]{.num data-note="t/alpha/first"}](#thm-widget) ← [Theorem [1.2.1]{.num data-note="t/alpha/second"}](/notes/t/alpha/second.qmd#thm-gadget), [Review 1.1](/notes/t/alpha/summary.qmd#prob-alpha-review-01)
+
+:::

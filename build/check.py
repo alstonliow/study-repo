@@ -149,15 +149,20 @@ def check_notes() -> None:
                     errors.append(f"{rel(md)}:{line}: @{r.group(1)} inside maths cannot be a link; move it out of the formula")
 
     for path, r in requires:
-        if r not in ids:
+        if r in REPO.alias_of:
+            errors.append(f"{rel(path)}: requires '{r}', an old id; use the current id '{REPO.alias_of[r]}' (SPEC §17.3)")
+        elif r not in ids:
             errors.append(f"{rel(path)}: requires unknown id '{r}'")
 
+    old_labels = {"sec-" + a.replace("/", "-"): cur for a, cur in REPO.alias_of.items()}
     legacy = 0
     for md, r in refs:
         if r.startswith("sec-legacy-"):
             legacy += 1
         elif r.startswith("sec-"):
-            if r not in sec_labels:
+            if r in old_labels:
+                errors.append(f"{rel(md)}: @{r} points to an old id; use @sec-{old_labels[r].replace('/', '-')} (SPEC §17.3)")
+            elif r not in sec_labels:
                 errors.append(f"{rel(md)}: broken reference @{r}")
         elif r.split("-", 1)[0] in ("rmk", "clm", "rem"):
             errors.append(f"{rel(md)}: @{r}: remarks and claims are not cross-referenced (SPEC §5.1)")
@@ -215,6 +220,18 @@ def check_aliases() -> None:
             elif a in seen:
                 errors.append(f"{n.id}: alias '{a}' is also an alias of {seen[a]}")
             seen[a] = n.id
+
+
+@rule("relations", "typed relationships: known types and ids, allowed ends, no cycles")
+def check_relations() -> None:
+    """Relationships (SPEC §17.5): types from meta/relations.yml, current ids,
+    ends the type allows, no cycles in acyclic types, no duplicates."""
+    import relations
+    g = relations.Graph(REPO)
+    for level, msg in g.check():
+        (errors if level == "error" else warnings).append(msg)
+    typed = sum(1 for r in g.relations if r.type != "requires")
+    print(f"relationships: {typed} typed, {len(g.references)} references between pages")
 
 
 @rule("taxonomy", "every note listed in meta/taxonomy.yml")

@@ -102,9 +102,12 @@ class Numbering:
         return self.across(text, holder, here)
 
     def across(self, text: str, holder: "Note", here=None) -> str:
+        """Add the target's book when `here` is in another collection: another
+        book, or no book at all (SPEC §16.1). A target outside any book gets no
+        name; a page whose place is unknown adds nothing."""
         hid = getattr(here, "id", None)
-        b, h = self.book.get(holder.id), (self.book.get(hid) if hid else None)
-        if b and h and b != h:
+        b = self.book.get(holder.id)
+        if b and hid in self.book and self.book[hid] != b:
             return self.formats.cross_book.format(label=text, book=b)
         return text
 

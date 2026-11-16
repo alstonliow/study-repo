@@ -160,6 +160,12 @@ follow. Add `--dry-run` to see what it would change.
 - `requires` in a note's YAML lists its **direct** prerequisites only (see
   `meta/SPEC.md` §4); the website draws every prerequisite graph from it, and
   `make check` rejects cycles.
+- Other relationships (`uses`, `generalizes`, `equivalent`, `related`; the
+  list is `meta/relations.yml`) are written once, at their source: in a note's
+  YAML as `relations: {uses: [<note id>]}`, or on a block as
+  `::: {#thm-x .theorem uses="def-a def-b"}`. Never write the reverse ("used
+  by"): each page's **Connections** section shows both directions, plus every
+  `@` reference from other pages ("Referenced by"). See `meta/SPEC.md` §17.
 - Synthesis problems for a branch go in `notes/<branch>/review/exercise.md` and
   `solution.md`; they appear at the end of the branch's summary page.
 - Summary pages (one per branch, one per course chapter) are generated.
