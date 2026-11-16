@@ -30,7 +30,7 @@ class Sources:
     def label(self, key: str) -> str:
         """How a key is shown; the key itself when no resource knows it."""
         r = self.find(key)
-        return (r.label(key) if r else None) or key
+        return (r.key_label(key) if r else None) or key
 
     def problems(self, key: str) -> str | None:
         """Why a key is not valid, or None."""

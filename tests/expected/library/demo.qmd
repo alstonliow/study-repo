@@ -1,0 +1,24 @@
+---
+title: Demo course notes
+---
+
+[Course notes · edition 2026-01-01 · 4 parts · used by DEMO100 · draft]{.note-meta}
+
+## 1 Basics {#res-demo-basics}
+
+::: {#res-demo-widgets .resource-node}
+[1.1]{.node-loc} **Widgets**
+
+[Cited by: [1.1 First note](/notes/t/alpha/first.qmd), [Exercise [1.1.1]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-01), [Exercise [1.1.2]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-02)]{.node-links}
+:::
+
+::: {#res-demo-gadgets .resource-node}
+[1.2]{.node-loc} **Gadgets**
+
+[Cited by: [1.2 Second note](/notes/t/alpha/second.qmd)]{.node-links}
+:::
+
+::: {#res-demo-basics-exercises .resource-node}
+[1.10]{.node-loc} **Basics exercises**
+:::
+

@@ -187,6 +187,13 @@ def main() -> int:
                                                 "contents": sidebar}}},
                        allow_unicode=True, sort_keys=False),
         encoding="utf-8")
+    # the Library: one page per resource (SPEC §17.12.7)
+    lib = SITE / "library"
+    if lib.exists():
+        shutil.rmtree(lib)
+    lib.mkdir(parents=True)
+    for res in REPO.resources.values():
+        (lib / f"{res.slug}.qmd").write_text(web.resource_page(res), encoding="utf-8")
     old = SITE / "_sidebar.yml"
     if old.exists():
         old.unlink()

@@ -6,6 +6,8 @@ website:
       text: Home
     - href: map.qmd
       text: Map
+    - href: library.qmd
+      text: Library
     - href: export.qmd
       text: Export
     - href: downloads.qmd

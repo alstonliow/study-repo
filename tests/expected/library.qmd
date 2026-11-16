@@ -1,0 +1,7 @@
+---
+title: Library
+---
+
+[Books, course notes and other resources the notes are built on. Each page shows a resource's chapters and sections, the topics each one teaches, and the notes and exercises that cite it.]{.summary-intro}
+
+- [Demo course notes](/library/demo.qmd) [course notes · 4 parts · 4 citations]{.toc-desc}

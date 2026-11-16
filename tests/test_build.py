@@ -43,7 +43,7 @@ def generate(root: Path) -> Path:
     return site
 
 
-GENERATED = ["notes", "courses", "index.qmd", "_nav.yml", "site-data.json"]
+GENERATED = ["notes", "courses", "library", "library.qmd", "index.qmd", "_nav.yml", "site-data.json"]
 
 
 def copy_generated(site: Path, dest: Path) -> None:
@@ -464,7 +464,7 @@ class TestRelations(Repo):
         self.edit("notes/t/alpha/second/note.md", '{#thm-gadget .theorem name="Gadget theorem"}',
                   '{#thm-gadget .theorem name="Gadget theorem" requires="thm-widget" uses="thm-gadget idea-secret"}')
         out = self.assertCheck(1, "unknown relationship type 'inspires'")
-        self.assertIn("requires is only between notes, not blocks", out)
+        self.assertIn("requires is only from notes, not blocks ('thm-gadget')", out)
         self.assertIn("thm-gadget uses itself", out)
         self.assertIn("uses unknown id 'idea-secret'", out)
 
@@ -581,6 +581,78 @@ class TestResources(Repo):
     def test_resource_id_must_not_clash(self):
         self.edit("notes/t/beta/third/note.md", "#prp-third", "#res-demo-widgets")
         self.assertIn("'res-demo-widgets' is also the id of a note or block", self.check().stdout)
+
+
+
+class TestLibrary(Repo):
+    """covers, citations and the Library (SPEC §17.12.4–§17.12.7)."""
+
+    RES = "resources/demo.yml"
+
+    def cover(self, targets: str) -> None:
+        self.edit(self.RES, '        at: {"2026-01-01": "1.1"}\n',
+                  f'        at: {{"2026-01-01": "1.1"}}\n        covers: [{targets}]\n')
+
+    def test_covers_shows_on_both_sides(self):
+        self.cover("t/alpha/first, thm-gadget")
+        self.assertEqual(self.check().returncode, 0)
+        site = generate(self.root)
+        lib = (site / "library/demo.qmd").read_text()
+        self.assertIn("Covers: [1.1 First note](/notes/t/alpha/first.qmd), [Theorem [1.2.1]", lib)
+        second = (site / "notes/t/alpha/second.qmd").read_text()
+        self.assertIn("(#thm-gadget) *covered in* [DEMO 1.1 Widgets](/library/demo.qmd#res-demo-widgets)", second)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("- This topic *covered in* [DEMO 1.1 Widgets]", first)
+
+    def test_citations_are_not_covers(self):
+        site = generate(self.root)
+        lib = (site / "library/demo.qmd").read_text()
+        self.assertIn("Cited by: [1.1 First note](/notes/t/alpha/first.qmd), [Exercise [1.1.1]", lib)
+        self.assertNotIn("Covers:", lib)
+        self.assertNotIn("covered in", (site / "notes/t/alpha/first.qmd").read_text())
+
+    def test_course_placement_is_not_covers(self):
+        # the demo course covers t/alpha/first (placement): no relationship appears
+        site = generate(self.root)
+        self.assertNotIn("covered in", (site / "notes/t/alpha/first.qmd").read_text())
+
+    def test_covers_ends_are_checked(self):
+        self.edit("notes/t/beta/third/note.md", "status:", "relations:\n  covers: [t/alpha/first]\nstatus:")
+        self.assertIn("covers is only from nodes and resources, not notes", self.check().stdout)  # written in resource files
+        self.edit("notes/t/beta/third/note.md", "relations:\n  covers: [t/alpha/first]\n", "")
+        self.cover("res-demo-gadgets")
+        self.assertIn("covers is only to blocks and notes, not nodes ('res-demo-gadgets')", self.check().stdout)
+
+    def test_covers_unknown_and_old_ids(self):
+        self.edit("notes/t/beta/third/note.md", "requires: [t/alpha/first]", "requires: [t/alpha/first]\naliases: [t/beta/old]")
+        self.cover("t/beta/old, def-nothing")
+        out = self.check().stdout
+        self.assertIn("covers 't/beta/old' is an old id; use the current id 't/beta/third'", out)
+        self.assertIn("covers unknown id 'def-nothing'", out)
+
+    def test_reference_to_a_node(self):
+        self.edit("notes/t/beta/third/note.md", "Back to @sec-t-alpha-first.", "Back to @sec-t-alpha-first. Read @res-demo-gadgets.")
+        self.assertEqual(self.check().returncode, 0)
+        site = generate(self.root)
+        third = (site / "notes/t/beta/third.qmd").read_text()
+        self.assertIn("Read [DEMO 1.2 Gadgets](/library/demo.qmd#res-demo-gadgets)", third)
+        lib = (site / "library/demo.qmd").read_text()
+        self.assertIn("Referenced by: [Definition [2.1.1]", lib)
+        r = run("make_pdf.py", self.root, "--markdown-only", "--name", "t")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn("Read DEMO 1.2 Gadgets.", (self.root / "out/pdf/t.qmd").read_text())
+
+    def test_broken_resource_reference(self):
+        self.edit("notes/t/beta/third/note.md", "Back to @sec-t-alpha-first.", "See @res-demo-nothing.")
+        self.assertIn("broken reference @res-demo-nothing", self.check().stdout)
+
+    def test_library_lists_hierarchy_with_exact_locators(self):
+        site = generate(self.root)
+        lib = (site / "library/demo.qmd").read_text()
+        self.assertIn("## 1 Basics {#res-demo-basics}", lib)
+        self.assertIn("[1.10]{.node-loc} **Basics exercises**", lib)
+        self.assertIn("[Demo course notes](/library/demo.qmd)", (site / "library.qmd").read_text())
+        self.assertIn("library.qmd", (site / "_nav.yml").read_text())
 
 
 def update_expected() -> None:

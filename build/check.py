@@ -166,7 +166,7 @@ def check_notes() -> None:
                 errors.append(f"{rel(md)}: broken reference @{r}")
         elif r.split("-", 1)[0] in ("rmk", "clm", "rem"):
             errors.append(f"{rel(md)}: @{r}: remarks and claims are not cross-referenced (SPEC §5.1)")
-        elif r not in block_ids:
+        elif r not in block_ids and not (r.startswith("res-") and r in REPO.entities):
             errors.append(f"{rel(md)}: broken reference @{r}")
     if legacy:
         warnings.append(f"{legacy} reference(s) to not-yet-migrated sections (@sec-legacy-*)")

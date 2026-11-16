@@ -6,7 +6,8 @@
 # inverse:    shown at the target ("used by"); a display name, never written
 # symmetric:  stored once, on either side; shown the same way at both ends
 # acyclic:    no cycles allowed in this type's graph (check error)
-# between:    which entities may be connected: notes, blocks
+# between:    which entities may be connected: notes, blocks, resources, nodes
+# from, to:   optional, restrict the source and the target end separately
 #
 # `requires` is written as the top-level `requires` field (SPEC §4).
 types:
@@ -35,3 +36,9 @@ types:
     symmetric: true
     acyclic: false
     between: [notes, blocks]
+  - name: covers               # a resource or node teaches the note or block (SPEC §17.12.4):
+    inverse: covered in        # "to study B, read A"; not a citation, not course placement
+    symmetric: false
+    acyclic: false
+    from: [resources, nodes]   # `from`/`to` restrict the two ends separately (default: between)
+    to: [notes, blocks]

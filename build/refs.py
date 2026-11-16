@@ -45,6 +45,18 @@ class Resolver:
             return None
         return Target(ref, n, kinds.of(ref), n.blocks.get(ref, ""))
 
+    def resource_of(self, ref: str):
+        """(Resource, ref) when ref is a resource or a resource node, else None."""
+        e = self.repo.entities.get(ref)
+        if e is None or e.type not in ("resource", "resource-node"):
+            return None
+        return self.repo.resources[e.holder], ref
+
+    def resource_label(self, ref: str) -> str | None:
+        """'FIT1058 CN 5.5 Quantifiers' for a node, the title for a resource."""
+        rr = self.resource_of(ref)
+        return rr[0].label(ref) if rr else None
+
     def describe(self, t: Target) -> str:
         """Plain words for a target: '8.1 Divisibility', 'Theorem (Euclid)',
         'Theorem in 8.1 Divisibility'."""
@@ -58,5 +70,5 @@ class Resolver:
     def title(self, ref: str) -> str:
         """Bare title, safe inside maths (no braces or backslashes)."""
         t = self.find(ref)
-        text = t.note.title if t else ref
+        text = t.note.title if t else (self.resource_label(ref) or ref)
         return text.replace("\\", "").replace("{", "").replace("}", "")

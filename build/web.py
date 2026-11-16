@@ -13,6 +13,7 @@ from pathlib import Path
 
 import yaml
 from dataclasses import dataclass
+from types import SimpleNamespace
 from typing import Callable
 
 import graphs
@@ -52,6 +53,11 @@ def page_url(nid: str) -> str:
     return f"/notes/{nid}.qmd"
 
 
+def library_url(rid: str) -> str:
+    """A resource's page in the Library (SPEC §17.12.7)."""
+    return f"/library/{rid[len('res-'):]}.qmd"
+
+
 # ---------------------------------------------------------------- TikZ -> SVG
 def num(number: str, nid: str) -> str:
     """A number on the website, marked with its note so the course filter can
@@ -81,6 +87,10 @@ def figure_label(d, holder) -> str:
 def link_for(ref: str, here) -> str:
     """An @-reference as a link with its numbered label (numbering.label);
     unknown targets stay as written (check.py reports them)."""
+    rr = RESOLVER.resource_of(ref)
+    if rr:                                   # resources and their nodes live in the Library
+        res, _ = rr
+        return f"[{res.label(ref)}]({library_url(res.id)}{'' if ref == res.id else '#' + ref})"
     t = RESOLVER.find(ref)
     if t is None:
         return "@" + ref
@@ -374,6 +384,92 @@ def map_page() -> str:
             "[Every knowledge point and its prerequisites. Arrows point from a prerequisite to the topics "
             "that need it; click a box to open the topic. Colours follow your progress marks.]{.graph-note}\n\n"
             + dep_graph(REPO.topic_order(), "map.html", with_outside=False, across=True) + "\n")
+
+
+# ---------------------------------------------------------------- Library (SPEC §17.12.7)
+def _links(eids: list[str]) -> str:
+    """Comma-separated links to entities, without repeats, in the given order."""
+    seen: list[str] = []
+    for e in eids:
+        if e not in seen:
+            seen.append(e)
+    nowhere = SimpleNamespace(id=None, blocks={})
+    return ", ".join(link_for(at(e)[1:], nowhere) for e in seen)
+
+
+def node_links(eid: str) -> str:
+    """What one resource or node is connected to, from the relationship graph:
+    its relationships (covers, ...), the notes and problems citing it, and @
+    references to it. Empty when it has none."""
+    parts = []
+    for name in GRAPH.types:
+        out = [l.other for l in GRAPH.outgoing(eid) if l.name == name]
+        if out:
+            parts.append(f"{name.capitalize()}: " + _links(out))
+    for name, t in GRAPH.types.items():
+        inc = [l.other for l in GRAPH.incoming(eid) if l.name == name]
+        if inc:
+            parts.append(f"{t.inverse.capitalize()}: " + _links(inc))
+    cited = [l.other for l in GRAPH.cited_by.get(eid, [])]
+    if cited:
+        parts.append("Cited by: " + _links(cited))
+    refd = [l.other if l.other in REPO.entities else l.holder for l in GRAPH.referenced_by.get(eid, [])]
+    if refd:
+        parts.append("Referenced by: " + _links(refd))
+    return " · ".join(parts)
+
+
+def resource_page(res) -> str:
+    """One resource: its details and hierarchy, and for each node what it covers,
+    what cites it and what refers to it. Derived from the resource model and the
+    relationship graph, like the Connections sections of note pages."""
+    nnodes = len(res.nodes)
+    courses = [c.code for c in REPO.courses if c.id in (res.meta.get("courses") or [])]
+    info = [res.kind.replace("-", " ").capitalize() if res.kind else "Resource",
+            f"edition {res.current}" if res.current else "", f"{nnodes} parts" if nnodes else "",
+            ("used by " + ", ".join(courses)) if courses else "", "draft" if res.status == "draft" else ""]
+    lines = ["---", yaml.safe_dump({"title": res.title}, allow_unicode=True).strip(), "---", "",
+             "[" + " · ".join(x for x in info if x) + "]{.note-meta}", ""]
+    own = node_links(res.id)
+    if own:
+        lines += [f"[{own}]{{.node-links}}", ""]
+
+    def node(nid: str, depth: int) -> None:
+        n = res.nodes[nid]
+        loc = res.locator(nid)
+        links = node_links(nid)
+        if depth == 0:
+            lines.extend([f"## {loc + ' ' if loc else ''}{n.title} {{#{nid}}}", ""])
+            if links:
+                lines.extend([f"[{links}]{{.node-links}}", ""])
+        else:
+            f = ":::"
+            lines.extend([f"{f} {{#{nid} .resource-node}}",
+                          (f"[{loc}]{{.node-loc}} " if loc else "") + f"**{n.title}**"]
+                         + ([f"\n[{links}]{{.node-links}}"] if links else []) + [f, ""])
+        for c in n.children:
+            node(c, depth + 1)
+    for root in res.roots:
+        node(root, 0)
+    return "\n".join(lines) + "\n"
+
+
+@page("library.qmd", nav="Library")
+def library_page() -> str:
+    """The Library: public resources (private ones only in a private build, SPEC §17.9)."""
+    rows = []
+    for res in sorted(REPO.resources.values(), key=lambda r: r.title.lower()):
+        covered = sum(1 for n in [res.id, *res.nodes] for l in GRAPH.outgoing(n) if l.name == "covers")
+        cited = sum(len(GRAPH.cited_by.get(n, [])) for n in res.nodes)
+        desc = " · ".join(x for x in [res.kind.replace("-", " ") if res.kind else "",
+                                      f"{len(res.nodes)} parts" if res.nodes else "",
+                                      f"{covered} topics covered" if covered else "",
+                                      f"{cited} citations" if cited else ""] if x)
+        rows.append(f"- [{res.title}]({library_url(res.id)})" + (f" [{desc}]{{.toc-desc}}" if desc else ""))
+    return ("---\ntitle: Library\n---\n\n"
+            "[Books, course notes and other resources the notes are built on. Each page shows a resource's "
+            "chapters and sections, the topics each one teaches, and the notes and exercises that cite it.]"
+            "{.summary-intro}\n\n" + ("\n".join(rows) if rows else "*No resources yet.*") + "\n")
 
 
 @page("export.qmd", nav="Export")

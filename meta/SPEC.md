@@ -569,7 +569,7 @@ types that do not exist yet; implementation goes in phases (§17.10).
    mapping `{to: <id>, note: "..."}` instead of a bare id.
 3. **Types** are defined in `meta/relations.yml`: name, inverse display name,
    symmetric or not, acyclic or not, and which entity types may be source and
-   target. Initial types:
+   target (`between` for both ends, or `from` and `to` separately). Initial types:
 
    | Type | Shown at the target as | Symmetric | Acyclic | Between |
    |---|---|---|---|---|
@@ -916,10 +916,19 @@ Phase 3 is built in three rounds, each reviewed and committed on its own:
    entity index (types `resource` and `resource-node`). The legacy key
    resolver sits behind `Sources`, and `sources.yml` was removed. Output was
    unchanged.
-2. **Round B**: `res-` added to the reference prefixes, and `covers` added to
-   `meta/relations.yml`. CN `covers` are seeded once from the course mapping
-   as a draft for the owner to review. Then the Connections groups ("Covered
-   in", "Cited by") and the Library pages.
+2. **Round B** (built 2026-11-16):
+   - `@res-…` references, shown as "FIT1058 CN 5.5 Quantifiers" and linking to
+     the Library; plain text in PDFs.
+   - `covers` in `meta/relations.yml`, with separate `from`/`to` ends.
+   - Citations resolved to nodes.
+   - "covered in" on note pages (Connections).
+   - The Library: `library.qmd` and one page per resource. Each node shows
+     Covers, Cited by and Referenced by.
+
+   Everything is derived from the resource model and `relations.Graph` (no
+   page has data of its own), so the Library and Connections never disagree.
+   No `covers` exist yet; they are added only as real teaching coverage,
+   reviewed by the owner.
 3. **Round C**: the private store (`private/`, a repository the owner
    creates), a private build, and the visibility checks and leak tests of
    §17.9 and §17.12.7.

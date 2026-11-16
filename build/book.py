@@ -227,6 +227,9 @@ class Book:
 
         def ref(m):
             r = m.group(1)
+            rl = resolver.resource_label(r)
+            if rl:                                   # resources are not printed: plain text
+                return rl
             t = resolver.find(r)
             if t is None:
                 return kinds.word(r)

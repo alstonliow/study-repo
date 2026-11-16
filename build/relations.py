@@ -31,7 +31,9 @@ class RelType:
     inverse: str
     symmetric: bool
     acyclic: bool
-    between: frozenset[str]          # "notes", "blocks"
+    between: frozenset[str]          # "notes", "blocks", "resources", "nodes"
+    sources: frozenset[str] = frozenset()   # allowed at the source end (default: between)
+    targets: frozenset[str] = frozenset()   # allowed at the target end (default: between)
 
 
 def load_types(meta: Path = META) -> dict[str, RelType]:
@@ -39,8 +41,10 @@ def load_types(meta: Path = META) -> dict[str, RelType]:
     data = (yaml.safe_load(path.read_text(encoding="utf-8")) or {}) if path.exists() else {}
     out = {}
     for t in data.get("types") or []:
+        between = frozenset(t.get("between") or ["notes", "blocks"])
         out[t["name"]] = RelType(t["name"], t.get("inverse", t["name"]), bool(t.get("symmetric")),
-                                 bool(t.get("acyclic")), frozenset(t.get("between") or ["notes", "blocks"]))
+                                 bool(t.get("acyclic")), between,
+                                 frozenset(t.get("from") or between), frozenset(t.get("to") or between))
     return out
 
 
@@ -77,8 +81,11 @@ class Graph:
         self.relations: list[Relation] = []
         self.references: list[Reference] = []
         self.problems: list[tuple[str, str]] = []           # (level, message), read by check.py
+        self.cited_by: dict[str, list[Link]] = {}           # node id -> notes and problems citing it
         self._collect_relations()
+        self._collect_resource_relations()
         self._collect_references()
+        self._collect_citations()
         self.forward: dict[str, list[Link]] = {}
         self.backward: dict[str, list[Link]] = {}
         for r in self.relations:
@@ -136,6 +143,30 @@ class Graph:
                             for target in str(value).split():
                                 self._add(d.id, key, target, f"notes/{n.id}/{f.name}:{d.line}")
 
+    def _collect_resource_relations(self) -> None:
+        """Relationships written in resource files: on the resource or on a
+        node, a field named after the type (covers: [...]), SPEC §17.12.4."""
+        for res in self.repo.resources.values():
+            where = str(res.path.relative_to(self.repo.root)) if res.path.is_relative_to(self.repo.root) else str(res.path)
+            items = [(res.id, res.meta)] + [(n.id, n.extra) for n in res.nodes.values()]
+            for source, fields in items:
+                for key, value in fields.items():
+                    if key in self.types:
+                        for item in value if isinstance(value, list) else [value]:
+                            self._add(source, key, item, f"{where} ({source})")
+
+    def _collect_citations(self) -> None:
+        """Citations (SPEC §17.12.5): source keys of notes and problems, resolved
+        to resource nodes. Provenance, not relationships."""
+        repo = self.repo
+        for n in list(repo.notes.values()) + list(repo.reviews.values()):
+            keys = [(n.id, str(k)) for k in n.front.get("sources") or []]
+            keys += [(p.id, p.attrs.get("source", "")) for p in n.problems if p.id]
+            for source, key in keys:
+                res = repo.sources.resolve(key) if key else None
+                if res:
+                    self.cited_by.setdefault(res.node, []).append(Link("citation", "cites", source, n.id))
+
     def check(self) -> list[tuple[str, str]]:
         """Problems with relationships (SPEC §17.5.8). `requires` targets and
         cycles are checked by the model's own requires rules (SPEC §4)."""
@@ -160,10 +191,12 @@ class Graph:
             if r.source == r.target:
                 out.append(("error", f"{r.where}: {r.source} {r.type} itself"))
                 continue
-            for end in (r.source, r.target):
-                if ents[end].level not in t.between:
-                    out.append(("error", f"{r.where}: {r.type} is only between {' and '.join(sorted(t.between))}, "
-                                         f"not {ents[end].level} ('{end}')"))
+            if r.source in ents and ents[r.source].level not in t.sources:
+                out.append(("error", f"{r.where}: {r.type} is only from {' and '.join(sorted(t.sources))}, "
+                                     f"not {ents[r.source].level} ('{r.source}')"))
+            if ents[r.target].level not in t.targets:
+                out.append(("error", f"{r.where}: {r.type} is only to {' and '.join(sorted(t.targets))}, "
+                                     f"not {ents[r.target].level} ('{r.target}')"))
             key = (r.source, r.type, r.target)
             if key in seen:
                 out.append(("warning", f"{r.where}: {r.source} {r.type} {r.target} is written twice"))

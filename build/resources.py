@@ -33,6 +33,7 @@ class Node:
     at: dict[str, str]                # edition id -> locator in that edition
     parent: str                       # parent node id, or the resource id
     children: list[str] = field(default_factory=list)
+    extra: dict = field(default_factory=dict)          # other fields, e.g. relationships (covers: [...])
 
 
 @dataclass
@@ -68,6 +69,36 @@ class Resource:
     visibility: str = "public"
     problems: list[str] = field(default_factory=list)   # found while loading
     meta: dict = field(default_factory=dict)            # the other fields (courses, authors, url, ...)
+    current_marks: list[str] = field(default_factory=list)   # editions marked current: true
+
+    @property
+    def slug(self) -> str:
+        return self.id[len("res-"):]
+
+    @property
+    def current(self) -> str:
+        """The current edition (the one marked current, else the first)."""
+        return self._current
+
+    def locator(self, node_id: str) -> str:
+        """The node's locator in the current edition ('' if it has none there)."""
+        n = self.nodes.get(node_id)
+        return n.at.get(self.current, "") if n else ""
+
+    def short(self, locator: str) -> str:
+        """'FIT1058 CN 5.5': the legacy label when there is one, else title and locator."""
+        if self.legacy:
+            return self.legacy.label.format(section=locator)
+        return f"{self.title} {locator}".strip()
+
+    def label(self, eid: str) -> str:
+        """How a resource or one of its nodes is named in links:
+        'FIT1058 Course Notes' or 'FIT1058 CN 5.5 Quantifiers'."""
+        if eid == self.id:
+            return self.title
+        n = self.nodes[eid]
+        loc = self.locator(eid)
+        return f"{self.short(loc)} {n.title}" if loc else n.title
 
     def node_at(self, edition: str, locator: str) -> Node | None:
         """The node at an exact locator in one edition."""
@@ -88,7 +119,7 @@ class Resource:
         q = m.groupdict().get("n")
         return Resolution(self.id, lk.edition, node.id, loc, int(q) if q else None)
 
-    def label(self, key: str) -> str | None:
+    def key_label(self, key: str) -> str | None:
         r = self.resolve(key)
         if isinstance(r, str) or self.legacy is None:
             return None
@@ -96,6 +127,7 @@ class Resource:
         return fmt.format(section=r.locator, n=r.question)
 
     def __post_init__(self):
+        self._current = next((e for e in self.editions if e in self.current_marks), self.editions[0] if self.editions else "")
         self._at: dict[tuple[str, str], Node] = {}
         for n in self.nodes.values():
             for ed, loc in n.at.items():
@@ -130,7 +162,8 @@ def parse(path: Path) -> Resource:
             for ed in at:
                 if ed not in editions:
                     problems.append(f"{nid}: edition '{ed}' is not listed under editions")
-            nodes[nid] = Node(nid, str(item.get("kind", "")), str(item.get("title", "")), at, parent)
+            nodes[nid] = Node(nid, str(item.get("kind", "")), str(item.get("title", "")), at, parent,
+                              extra={k: v for k, v in item.items() if k not in ("id", "kind", "title", "at", "nodes")})
             nodes[nid].children = walk(item.get("nodes"), nid)
             ids.append(nid)
         return ids
@@ -150,7 +183,8 @@ def parse(path: Path) -> Resource:
     known = {"id", "kind", "title", "status", "editions", "legacy_keys", "nodes"}
     return Resource(rid, path, str(d.get("kind", "")), str(d.get("title", "")), str(d.get("status", "draft")),
                     editions, lk, nodes, roots, problems=problems,
-                    meta={k: v for k, v in d.items() if k not in known})
+                    meta={k: v for k, v in d.items() if k not in known},
+                    current_marks=[str(e["id"]) for e in d.get("editions") or [] if e.get("current")])
 
 
 def load(root: Path) -> dict[str, Resource]:

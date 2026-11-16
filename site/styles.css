@@ -129,6 +129,15 @@ body.quarto-dark .tikz-figure img { filter: invert(0.88) hue-rotate(180deg); }
 .connections a { text-decoration-color: var(--rule); }
 .connections em { font-style: italic; color: var(--notec); }
 
+/* ---------- Library: a resource's hierarchy (SPEC §17.12.7) ---------- */
+.resource-node { margin: 0.5em 0 0.7em; padding-left: 0.2em; }
+.resource-node p { margin: 0; }
+.resource-node > p:first-child { display: flex; gap: 0.2em; }   /* long titles wrap under themselves */
+.node-loc { flex: 0 0 auto; }
+.node-loc { display: inline-block; min-width: 3.2em; color: var(--notec); font-variant-numeric: tabular-nums; }
+.node-links { display: block; margin: 0.15em 0 0 3.4em; font-size: 0.82rem; color: var(--notec); line-height: 1.5; }
+.node-links a { color: inherit; text-decoration: underline; text-decoration-color: var(--rule); }
+
 /* ---------- previous / next page boxes ---------- */
 nav.page-navigation { display: flex; gap: 1rem; border-top: none; padding-top: 0; margin-top: 2.5rem; }
 nav.page-navigation .nav-page { flex: 1 1 0; min-width: 0; }

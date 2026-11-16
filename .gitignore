@@ -29,6 +29,8 @@ site/map.qmd
 site/downloads.qmd
 site/export.qmd
 site/pdf/
+site/library/
+site/library.qmd
 
 # Claude Code and private planning files (kept local only)
 .claude/
