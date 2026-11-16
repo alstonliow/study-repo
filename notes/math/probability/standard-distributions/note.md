@@ -1,11 +1,12 @@
 ---
 title: "Standard Distributions"
-sources: [fit1058-cn-10.7, fit1058-cn-10.8, fit1058-cn-10.9, fit1058-cn-10.10, cs70-13.3.1]
+sources: [fit1058-cn-10.7, fit1058-cn-10.8, fit1058-cn-10.9, fit1058-cn-10.10, cs70-13.3.1, cs70-19.1.1, cs70-19.2.1]
 requires: [math/probability/expectation-and-variance, math/discrete/counting/combinations]
 status: draft
 ---
 
 <!-- Migrated from 1058note notes/chapters/09-probability.tex: Uniform distribution; Binomial distribution; Poisson distribution; Geometric distribution. -->
+<!-- Proofs written out in steps; the Poisson moments and the tail sum method for the Geometric moments follow CS70 Note 19 (cs70-19.1.1, cs70-19.2.1), in our own wording. -->
 
 ## Uniform distribution
 
@@ -40,7 +41,18 @@ If $X\sim\mathrm{Unif}(1,n)$, then $E[X] = \dfrac{n+1}{2}$ and $\mathrm{Var}(X) 
 
 ::: {.proof}
 
-$E[X]=\frac1n\sum_{k=1}^n k = \frac{n+1}2$ (@sec-math-discrete-sequences-sums-and-series). Also $E[X^2]=\frac1n\sum_{k=1}^n k^2=\frac{(n+1)(2n+1)}6$, so $\mathrm{Var}(X)=\frac{(n+1)(2n+1)}6-\frac{(n+1)^2}4=\frac{n^2-1}{12}$.
+1. Each value $k\in\{1,\dots,n\}$ has probability $\frac1n$. By @def-expectation and @thm-sums-and-series-1,
+   $$E[X]=\sum_{k=1}^n k\cdot\frac1n=\frac1n\cdot\frac{n(n+1)}2=\frac{n+1}2.$$
+
+2. The sum of squares is $\sum_{k=1}^n k^2=\frac{n(n+1)(2n+1)}6$. This holds for $n=1$, and if it holds for $n$, then
+   $$\frac{n(n+1)(2n+1)}6+(n+1)^2=\frac{(n+1)\bigl(2n^2+7n+6\bigr)}6=\frac{(n+1)(n+2)(2n+3)}6,$$
+   which is the formula for $n+1$. So it holds for all $n\ge1$ by induction.
+
+3. Hence
+   $$E[X^2]=\sum_{k=1}^n k^2\cdot\frac1n=\frac{(n+1)(2n+1)}6.$$
+
+4. By @prp-expectation-and-variance-1,
+   $$\mathrm{Var}(X)=E[X^2]-E[X]^2=\frac{(n+1)(2n+1)}6-\frac{(n+1)^2}4=\frac{(n+1)\bigl(2(2n+1)-3(n+1)\bigr)}{12}=\frac{(n+1)(n-1)}{12}=\frac{n^2-1}{12}.$$
 
 :::
 
@@ -90,7 +102,27 @@ If $X\sim\mathrm{Bin}(n,p)$, then $E[X] = np$ and $\mathrm{Var}(X) = np(1-p)$.
 
 ::: {.proof}
 
-Let $X_i=1$ if trial $i$ succeeds and $0$ otherwise, so $X=\sum_i X_i$. Each $E[X_i]=p$, so $E[X]=np$ by linearity. Also $\mathrm{Var}(X_i)=E[X_i^2]-E[X_i]^2=p-p^2=p(1-p)$, and the $X_i$ are independent, so $\mathrm{Var}(X)=np(1-p)$ by the variance of an independent sum.
+1. For $i=1,\dots,n$ let $X_i=1$ if trial $i$ succeeds and $X_i=0$ otherwise. Then $X$ counts the successes, so
+   $$X=X_1+X_2+\cdots+X_n.$$
+
+2. Each $X_i$ takes the value $1$ with probability $p$ and $0$ with probability $1-p$, so $E[X_i]=1\cdot p+0\cdot(1-p)=p$.
+
+3. By @thm-linearity-of-expectation, applied $n-1$ times,
+   $$E[X]=E[X_1]+\cdots+E[X_n]=np.$$
+
+4. For the variance, expand the square:
+   $$X^2=\sum_{i=1}^n X_i^2+\sum_{i\ne j}X_iX_j.$$
+   The second sum has $n(n-1)$ ordered pairs $(i,j)$ with $i\ne j$.
+
+5. Since $X_i\in\{0,1\}$, we have $X_i^2=X_i$, so $E[X_i^2]=p$.
+
+6. For $i\ne j$, trials $i$ and $j$ are independent, so $X_i$ and $X_j$ are independent random variables. By @thm-expectation-of-product, $E[X_iX_j]=E[X_i]\,E[X_j]=p^2$.
+
+7. By linearity, steps 4–6 give
+   $$E[X^2]=np+n(n-1)p^2.$$
+
+8. By @prp-expectation-and-variance-1,
+   $$\mathrm{Var}(X)=E[X^2]-E[X]^2=np+n(n-1)p^2-n^2p^2=np-np^2=np(1-p).$$
 
 :::
 
@@ -132,6 +164,30 @@ If $X\sim\mathrm{Poisson}(\mu)$, then $E[X]=\mu$ and $\mathrm{Var}(X)=\mu$.
 
 :::
 
+::: {.proof}
+
+1. We use the exponential series from calculus: for every real $x$,
+   $$e^{x}=\sum_{j=0}^{\infty}\frac{x^j}{j!}.$$
+   With $x=\mu$ it shows that the probabilities in @def-poisson-distribution add up to $e^{-\mu}e^{\mu}=1$.
+
+2. By @def-expectation,
+   $$E[X]=\sum_{k=0}^{\infty}k\,\frac{e^{-\mu}\mu^k}{k!}.$$
+   The term $k=0$ is $0$, and for $k\ge1$ we have $\frac{k}{k!}=\frac1{(k-1)!}$.
+
+3. Substituting $j=k-1$,
+   $$E[X]=\mu e^{-\mu}\sum_{k=1}^{\infty}\frac{\mu^{k-1}}{(k-1)!}=\mu e^{-\mu}\sum_{j=0}^{\infty}\frac{\mu^{j}}{j!}=\mu e^{-\mu}e^{\mu}=\mu.$$
+
+4. In the same way, the terms $k=0,1$ of $E[X(X-1)]$ are $0$, and for $k\ge2$ we have $\frac{k(k-1)}{k!}=\frac1{(k-2)!}$. With $j=k-2$,
+   $$E[X(X-1)]=\sum_{k=2}^{\infty}k(k-1)\frac{e^{-\mu}\mu^k}{k!}=\mu^2e^{-\mu}\sum_{j=0}^{\infty}\frac{\mu^j}{j!}=\mu^2.$$
+
+5. All terms in these series are non-negative and the series converge, so they may be added term by term. Since $X^2=X(X-1)+X$, this gives
+   $$E[X^2]=E[X(X-1)]+E[X]=\mu^2+\mu.$$
+
+6. By @prp-expectation-and-variance-1,
+   $$\mathrm{Var}(X)=E[X^2]-E[X]^2=\mu^2+\mu-\mu^2=\mu.$$
+
+:::
+
 ::: {#thm-poisson-as-a-limit-of .theorem name="Poisson as a limit of binomial"}
 
 Fix $\mu>0$. As $n\to\infty$ with $p=\mu/n$,
@@ -141,7 +197,19 @@ $$\binom{n}{k}p^k(1-p)^{n-k} \to \frac{e^{-\mu}\mu^k}{k!}.$$
 
 ::: {.proof}
 
-Write the left side as $\dfrac{\mu^k}{k!}\cdot\dfrac{n(n-1)\cdots(n-k+1)}{n^k}\cdot\Bigl(1-\dfrac\mu n\Bigr)^{n-k}$. As $n\to\infty$, the middle factor tends to $1$ (it is a product of $k$ factors, each tending to $1$), and the last tends to $e^{-\mu}$ (using $(1+x/n)^n\to e^x$).
+1. Fix $k\ge0$ and take $n>\max(k,\mu)$, so that $0<p=\mu/n<1$. Since $\binom nk=\frac{n(n-1)\cdots(n-k+1)}{k!}$ and $p^k=\frac{\mu^k}{n^k}$,
+   $$\binom{n}{k}p^k(1-p)^{n-k}=\frac{\mu^k}{k!}\cdot\frac{n(n-1)\cdots(n-k+1)}{n^k}\cdot\Bigl(1-\frac\mu n\Bigr)^{n}\cdot\Bigl(1-\frac\mu n\Bigr)^{-k}.$$
+
+2. The second factor is a product of the $k$ factors $1-\frac in$ for $i=0,\dots,k-1$:
+   $$\frac{n(n-1)\cdots(n-k+1)}{n^k}=\prod_{i=0}^{k-1}\Bigl(1-\frac in\Bigr).$$
+   Each factor tends to $1$ as $n\to\infty$. There are $k$ of them and $k$ does not depend on $n$, so the product tends to $1$.
+
+3. Since $1-\frac\mu n\to1$ and the exponent $-k$ is fixed, $\bigl(1-\frac\mu n\bigr)^{-k}\to1$.
+
+4. By the standard limit $\bigl(1+\frac xn\bigr)^n\to e^{x}$ with $x=-\mu$, we get $\bigl(1-\frac\mu n\bigr)^n\to e^{-\mu}$.
+
+5. The limit of a product of finitely many convergent factors is the product of their limits. So the left side tends to
+   $$\frac{\mu^k}{k!}\cdot1\cdot e^{-\mu}\cdot1=\frac{e^{-\mu}\mu^k}{k!}.$$
 
 :::
 
@@ -189,9 +257,30 @@ If $X\sim\mathrm{Geom}(p)$, then $E[X] = \dfrac1p$ and $\mathrm{Var}(X)=\dfrac{1
 
 :::
 
-::: {.proof name="Proof of the expectation"}
+::: {.proof}
 
-$E[X] = p\sum_{k\ge1} k(1-p)^{k-1}$. Differentiating the geometric series $\sum_{k\ge0}x^k=\frac1{1-x}$ (@sec-math-discrete-sequences-sums-and-series) gives $\sum_{k\ge1}kx^{k-1}=\frac1{(1-x)^2}$; with $x=1-p$ this is $1/p^2$, so $E[X]=p\cdot\frac1{p^2}=\frac1p$.
+Write $q=1-p$, so $0\le q<1$.
+
+1. **Tails.** For $i\ge1$, the event $X\ge i$ means that the first $i-1$ trials all fail. The trials are independent, so
+   $$\Pr(X\ge i)=q^{\,i-1}.$$
+
+2. **Tail sum formula.** If $X$ takes values in $\{1,2,3,\dots\}$, then $E[X]=\sum_{i\ge1}\Pr(X\ge i)$. Indeed, write $j=\sum_{i=1}^{j}1$ and swap the order of summation (@exm-swapping-the-order-of-a):
+   $$E[X]=\sum_{j\ge1}j\Pr(X=j)=\sum_{j\ge1}\sum_{i=1}^{j}\Pr(X=j)=\sum_{i\ge1}\sum_{j\ge i}\Pr(X=j)=\sum_{i\ge1}\Pr(X\ge i).$$
+   All terms are non-negative, so swapping the order of an infinite double sum does not change its value.
+
+3. **Expectation.** By steps 1–2 and @thm-convergence-condition (with ratio $q$, $|q|<1$),
+   $$E[X]=\sum_{i\ge1}q^{\,i-1}=\frac1{1-q}=\frac1p.$$
+
+4. **Second moment.** In the same way, write $j^2=\sum_{i=1}^{j}(2i-1)$ (the sum of the first $j$ odd numbers) and swap the order of summation:
+   $$E[X^2]=\sum_{j\ge1}j^2\Pr(X=j)=\sum_{i\ge1}(2i-1)\Pr(X\ge i)=2\sum_{i\ge1}i\,q^{\,i-1}-\sum_{i\ge1}q^{\,i-1}.$$
+
+5. **The remaining series.** By @def-geometric-distribution,
+   $$E[X]=\sum_{i\ge1}i\,q^{\,i-1}p,$$
+   so $\sum_{i\ge1}i\,q^{\,i-1}=\frac{E[X]}p=\frac1{p^2}$. In particular this series converges. Together with $\sum_{i\ge1}q^{\,i-1}=\frac1p$ from step 3,
+   $$E[X^2]=\frac2{p^2}-\frac1p.$$
+
+6. **Variance.** By @prp-expectation-and-variance-1,
+   $$\mathrm{Var}(X)=E[X^2]-E[X]^2=\frac2{p^2}-\frac1p-\frac1{p^2}=\frac{1-p}{p^2}.$$
 
 :::
 
