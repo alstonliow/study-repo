@@ -482,7 +482,8 @@ types that do not exist yet; implementation goes in phases (§17.10).
    how its id is formed, its schema (YAML fields), whether it is numbered and
    whether it can be placed in outlines. Block types are defined in
    `build/kinds.py` (§16.7). File-level types today: note (§2–§4) and review
-   folder (§6.3). Planned: resource first, then others; each new type gets its
+   folder (§6.3). Specified: resource and resource node (§17.12). Later:
+   others; each new type gets its
    own subsection here, with its schema, before any code (§17.10).
 3. Core fields of every file-level type: `id` (for notes, derived from the
    path), `title`, `status`, and visibility (derived from where it is stored,
@@ -688,17 +689,9 @@ types that do not exist yet; implementation goes in phases (§17.10).
    optional book level (`book: false` on a part in `meta/taxonomy.yml`). No
    note file changed; the output is unchanged except for the new Connections
    sections.
-3. **Resources**: the first new entity type, with its schema written here
-   first, and the private store. This phase must keep three concepts apart:
-   - **Resource**: the logical work you keep, read or watch (one book across
-     its editions);
-   - **Source locator**: a place in one edition (chapter, section, page, URL);
-     edition maps stay in `meta/sources.yml` (§16);
-   - **Citation**: a note's pointer to a source locator (today the `sources`
-     and `source` fields).
-
-   This phase also decides how `meta/sources.yml` entries relate to Resource
-   entities.
+3. **Resources**: specified in §17.12 (resource and resource node, hierarchy,
+   `covers`, editions and locators, absorbing `meta/sources.yml`, the Library,
+   the private store). The build order is in §17.12.8.
 4. **Further types** (ideas, projects, and others), one per round. Shared code
    is generalised only when two types need it.
 
@@ -713,3 +706,178 @@ types that do not exist yet; implementation goes in phases (§17.10).
 | Only `requires` between notes | `requires` plus typed relationships (§17.5) |
 | No backlinks | Derived backlinks (§17.6) |
 | Public repository only | Public and private entities, with a privacy boundary (§17.9) |
+
+### 17.12 Resources
+
+Approved by the owner on 2026-11-16. This is the schema of the first new
+entity type (§17.10, phase 3). It is written before any code.
+
+#### 17.12.1 Three mechanisms, kept apart
+
+| Mechanism | What it does | Examples |
+|---|---|---|
+| **Placement** (§17.7) | How an outline organises and numbers entities | A course covers a note: scope, course numbers, multi-point coverage (§13) |
+| **Hierarchy** | The internal structure of one resource | Book → chapter → section; video → timestamped parts |
+| **Relationship** (§17.5) | A typed semantic link between two entities | Rosen §1.1 *covers* a note on propositions |
+
+- Courses stay outlines, and course coverage stays placement. Placement is not
+  a relationship, and course numbering and scope do not change.
+- Hierarchy is not a relationship either. A chapter is not "related to" its
+  book; it belongs to it, the way a block belongs to its note.
+- Resources connect to knowledge only through typed relationships.
+
+#### 17.12.2 Resource and resource node
+
+1. A **resource** is a first-class entity: a logical work you keep, read or
+   watch, such as a book, a set of course notes, a paper, a video or a
+   website. It has its own id, metadata, type and visibility. It belongs to no
+   book and to no branch of the knowledge outline. It needs no file of its own
+   (no PDF, no text): the resource file holds only metadata and structure.
+2. A **resource node** is a part of one resource, such as a chapter, a
+   section or a timestamped part. Nodes are sub-entities, like blocks in a
+   note:
+   - each has a stable id, resolved by the entity index;
+   - each can be the target of references and relationships, and has
+     backlinks;
+   - it is a resource node, never a note.
+
+   Nodes form a tree under their resource (parent → children). A resource may
+   have no nodes at all, as a website usually does.
+3. **Entity types** (§17.2): `resource` (file level) and `resource-node`
+   (block level). In `meta/relations.yml`, `between` gains the words
+   `resources` and `nodes`.
+
+#### 17.12.3 Storage and ids
+
+1. One YAML file per resource. Public resources go in `resources/<slug>.yml`.
+   Private ones go in `private/resources/<slug>.yml`, in the private store
+   (§17.9). Visibility follows from the location, never from a field.
+2. **Resource id**: `res-<slug>`, for example `res-rosen`, `res-clrs` or
+   `res-fit1058-cn`. The slug is lowercase words joined by hyphens, and equals
+   the file name. The `res-` prefix keeps resource ids apart from note paths
+   and block ids, and makes them citable with `@`.
+3. **Node id**: the resource id, a hyphen, then a slug for the node, for
+   example `res-rosen-propositional-logic`.
+   - Node slugs name the content, never its number. A new edition can
+     renumber sections without changing any id (§17.1.2). Numbers are
+     locators (§17.12.5).
+   - Node ids are written in the resource file and never renamed (§17.3).
+4. **Titles** of resources and nodes are short titles written by the owner or
+   Claude, or bare numbers, as with course outline points (§13.2). They are
+   never copied text. A resource file never holds the work's text (§10).
+5. Sketch of a resource file (the field names are fixed when it is built):
+
+   ```yaml
+   id: res-fit1058-cn
+   kind: course-notes            # book | course-notes | paper | video | website | ...
+   title: FIT1058 Course Notes
+   authors: []
+   url: ""
+   editions:
+     - id: "2026-06-16"          # the edition the legacy keys refer to
+       current: true
+   legacy_keys:                  # §17.12.6
+     prefix: fit1058-cn-
+     edition: "2026-06-16"
+     pattern: '^fit1058-cn-(?P<section>\d+(?:\.\d+)*)(?:-q(?P<n>\d+))?$'
+     label: "FIT1058 CN {section}"
+     problem_label: "FIT1058 CN {section} Q{n}"
+   nodes:
+     - id: res-fit1058-cn-predicate-logic
+       title: Predicate logic
+       at: {"2026-06-16": "5"}    # locator in each edition
+       nodes:
+         - id: res-fit1058-cn-quantifiers
+           title: Quantifiers
+           at: {"2026-06-16": "5.5"}
+           covers: [math/discrete/logic/predicate/quantifiers]
+   ```
+
+#### 17.12.4 Relationships of resources
+
+1. Relationships are written at their source (§17.5.2). For resources the
+   source is normally the resource file: a node lists the knowledge it
+   teaches, with the type **`covers`** (resource or node → note or block; shown
+   at the target as "covered in"; not symmetric; may form cycles).
+   - Writing it on the resource side means adding a book never touches a
+     note.
+   - A private resource may cover a public note, because private may point to
+     public (§17.9). A public note never points to a private resource.
+2. Several notes may be covered by one node, and one note by nodes of several
+   resources. A note's Connections section (§17.6) then lists every chapter
+   that covers it, across all books. A node's page lists every note it
+   covers.
+3. `covers` is added to `meta/relations.yml` in the build round, with
+   `between` allowing resources and nodes as sources and notes and blocks as
+   targets. The existing types gain `resources` and `nodes` only when a real
+   use appears (§17.1.6).
+
+#### 17.12.5 Editions, locators and citations
+
+Three identities are kept apart:
+
+| Concept | Identity | Example |
+|---|---|---|
+| **Resource** | `res-<slug>`, one per logical work | `res-fit1058-cn` |
+| **Edition** | an edition id within the resource | `2026-06-16` |
+| **Source locator** | (resource, edition, place) | (`res-fit1058-cn`, `2026-06-16`, `5.5`) |
+
+1. A node's `at` maps each edition to the node's locator in that edition. A
+   node that is missing from an edition has no entry for it.
+2. A **citation** is a note's pointer to a locator: today the `sources` field
+   and a problem's `source`. A citation records provenance. It is not a
+   relationship (§17.5.7); `covers` is the relationship. Citations also show
+   in the node's backlinks, as their own group ("Cited by").
+3. When a new edition renumbers sections, existing citations keep naming
+   their original edition. Through the node they also resolve to the new
+   edition's locator, so nothing is renumbered by hand.
+
+#### 17.12.6 Absorbing `meta/sources.yml`
+
+`meta/sources.yml` is retired once the Resources build has migrated its data
+and checked it. Steps:
+
+1. Each `sources.yml` entry becomes a resource file. Its title and edition go
+   to the resource; its key pattern and labels go to `legacy_keys`.
+2. The resource's nodes are created for every section that a citation or a
+   course outline uses. For FIT1058 CN, the course outline already lists the
+   sections.
+3. **Legacy key resolver.** Every existing key (`fit1058-cn-5.5`,
+   `fit1058-cn-5.4-q3`) resolves through the `legacy_keys` entry to an
+   explicit resource, edition and node (plus a question number). It never
+   relies on the displayed number alone. Labels ("FIT1058 CN 5.5 Q3") come out
+   unchanged.
+4. No note, `sources` field or `source` attribute changes in this phase. New
+   citations may use node ids directly; the legacy keys stay valid
+   permanently, like aliases (§17.3.3).
+5. `make check` verifies that every existing key resolves to a node of the
+   stated edition. Only then is `sources.yml` deleted. There is never a second
+   registry of sources.
+
+#### 17.12.7 Organisation and pages
+
+1. A resource's hierarchy is its own outline (§17.7), numbered by its own
+   locators, never by the knowledge outline.
+2. **Resource collections** (for example "Algorithms" holding CLRS, Kleinberg
+   & Tardos and Skiena) are outlines whose entries are resources. They are
+   optional: a resource need not belong to any collection. They are built
+   only when there are several resources to group (§17.1.6).
+3. The public website gets a **Library**: a list of public resources, and one
+   page per resource showing its hierarchy and, for each node, the notes it
+   covers and the notes that cite it. A private build shows private resources
+   as well (§17.9).
+4. **Personal records** about a resource, such as reading status, dates or
+   personal notes, are private. They are not fields of a public resource
+   file. They belong to a later records type, or to a private resource.
+
+#### 17.12.8 Build order for phase 3
+
+1. Model: resource files → `Repo.resources`, nodes into the entity index,
+   `res-` added to the reference prefixes, and `covers` in
+   `meta/relations.yml`.
+2. Migrate FIT1058 CN: resource file, nodes, and the legacy key resolver
+   behind the same `Sources` interface (`label`, `problems`). Check that
+   every key resolves, then remove `sources.yml`. Note files stay unchanged.
+3. Library pages and backlinks: covers, cited by, referenced by.
+4. Private store: `private/` mounted (the owner creates the repository), a
+   private build, and the visibility checks of §17.9.
