@@ -1,6 +1,6 @@
 ---
 title: "Standard Distributions"
-sources: [fit1058-cn-10.7, fit1058-cn-10.8, fit1058-cn-10.9, fit1058-cn-10.10]
+sources: [fit1058-cn-10.7, fit1058-cn-10.8, fit1058-cn-10.9, fit1058-cn-10.10, cs70-13.3.1]
 requires: [math/probability/expectation-and-variance, math/discrete/counting/combinations]
 status: draft
 ---

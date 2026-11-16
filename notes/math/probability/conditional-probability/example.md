@@ -1,4 +1,4 @@
-<!-- Adapted (own wording) from UC Berkeley EECS 70, Fall 2020, Note 13, §3.7 "The Monty Hall Problem". TODO: source (CS70 is not yet a registered resource, SPEC §17.12). -->
+<!-- Adapted (own wording) from UC Berkeley CS 70, Fall 2020, Note 13, §3.7 "The Monty Hall Problem" (source key cs70-13.3.7, in note.md). -->
 
 ::: {#exm-monty-hall .example name="The Monty Hall problem" level="medium"}
 A prize is behind one of three doors and the other two hide nothing. You pick

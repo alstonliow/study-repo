@@ -1,4 +1,4 @@
-<!-- Adapted (own wording) from UC Berkeley EECS 70, Fall 2020, Note 13, §3.5 "Balls and Bins". TODO: source (CS70 is not yet a registered resource, SPEC §17.12). -->
+<!-- Adapted (own wording) from UC Berkeley CS 70, Fall 2020, Note 13, §3.5 "Balls and Bins" (source key cs70-13.3.5, in note.md). -->
 
 ::: {#exm-balls-and-bins .example name="Balls and bins" level="medium"}
 Throw $20$ labelled balls into $10$ labelled bins. Each ball lands in each bin

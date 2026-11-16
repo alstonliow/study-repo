@@ -1,0 +1,374 @@
+# UC Berkeley CS 70 (Discrete Mathematics and Probability Theory) course notes, Fall 2020,
+# as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Only the notes kept in raw/UCB_CS70 are listed (Notes 10, 13-19); their sections have
+# short titles of our own. Locators are <note>.<section>[.<subsection>], so a source key
+# is cs70-13.3.5 (Note 13, section 3.5) and cs70-10.6-q3 for an exercise.
+# Node ids are stable: never renamed when a title or a locator changes.
+id: res-ucb-cs70
+kind: course-notes
+title: UC Berkeley CS 70 Course Notes
+status: draft
+editions:
+- id: 2020-fall
+  current: true
+legacy_keys:
+  prefix: cs70-
+  edition: 2020-fall
+  pattern: ^cs70-(?P<section>\d+(?:\.\d+)*)(?:-q(?P<n>\d+))?$
+  label: CS70 {section}
+  problem_label: CS70 {section} Q{n}
+nodes:
+- id: res-ucb-cs70-counting
+  kind: note
+  title: Counting
+  at:
+    2020-fall: '10'
+  nodes:
+  - id: res-ucb-cs70-counting-sequences
+    kind: section
+    title: Counting sequences
+    at:
+      2020-fall: '10.1'
+  - id: res-ucb-cs70-counting-sets
+    kind: section
+    title: Counting sets
+    at:
+      2020-fall: '10.2'
+  - id: res-ucb-cs70-sampling-with-replacement
+    kind: section
+    title: Sampling with replacement
+    at:
+      2020-fall: '10.3'
+    nodes:
+    - id: res-ucb-cs70-counting-coin-tosses
+      kind: subsection
+      title: Coin tosses
+      at:
+        2020-fall: 10.3.1
+    - id: res-ucb-cs70-multisets
+      kind: subsection
+      title: Unordered sampling with replacement
+      at:
+        2020-fall: 10.3.3
+  - id: res-ucb-cs70-combinatorial-proofs
+    kind: section
+    title: Combinatorial proofs
+    at:
+      2020-fall: '10.4'
+    nodes:
+    - id: res-ucb-cs70-combinatorial-identities
+      kind: subsection
+      title: Combinatorial identities
+      at:
+        2020-fall: 10.4.1
+    - id: res-ucb-cs70-derangements
+      kind: subsection
+      title: Permutations and derangements
+      at:
+        2020-fall: 10.4.2
+  - id: res-ucb-cs70-inclusion-exclusion
+    kind: section
+    title: Inclusion-exclusion
+    at:
+      2020-fall: '10.5'
+  - id: res-ucb-cs70-counting-exercises
+    kind: section
+    title: Counting exercises
+    at:
+      2020-fall: '10.6'
+- id: res-ucb-cs70-discrete-probability
+  kind: note
+  title: Discrete probability
+  at:
+    2020-fall: '13'
+  nodes:
+  - id: res-ucb-cs70-random-experiments
+    kind: section
+    title: Random experiments
+    at:
+      2020-fall: '13.1'
+  - id: res-ucb-cs70-probability-spaces
+    kind: section
+    title: Probability spaces
+    at:
+      2020-fall: '13.2'
+  - id: res-ucb-cs70-probability-examples
+    kind: section
+    title: Examples
+    at:
+      2020-fall: '13.3'
+    nodes:
+    - id: res-ucb-cs70-coin-tosses
+      kind: subsection
+      title: Coin tosses
+      at:
+        2020-fall: 13.3.1
+    - id: res-ucb-cs70-rolling-dice
+      kind: subsection
+      title: Rolling dice
+      at:
+        2020-fall: 13.3.2
+    - id: res-ucb-cs70-card-shuffling
+      kind: subsection
+      title: Card shuffling
+      at:
+        2020-fall: 13.3.3
+    - id: res-ucb-cs70-poker-hands
+      kind: subsection
+      title: Poker hands
+      at:
+        2020-fall: 13.3.4
+    - id: res-ucb-cs70-balls-and-bins
+      kind: subsection
+      title: Balls and bins
+      at:
+        2020-fall: 13.3.5
+    - id: res-ucb-cs70-birthday-paradox
+      kind: subsection
+      title: Birthday paradox
+      at:
+        2020-fall: 13.3.6
+    - id: res-ucb-cs70-monty-hall
+      kind: subsection
+      title: Monty Hall problem
+      at:
+        2020-fall: 13.3.7
+  - id: res-ucb-cs70-probability-summary
+    kind: section
+    title: Summary
+    at:
+      2020-fall: '13.4'
+- id: res-ucb-cs70-conditional-probability
+  kind: note
+  title: Conditional probability
+  at:
+    2020-fall: '14'
+  nodes:
+  - id: res-ucb-cs70-conditional-probability-definition
+    kind: section
+    title: Conditional probability
+    at:
+      2020-fall: '14.1'
+  - id: res-ucb-cs70-bayesian-inference
+    kind: section
+    title: Bayesian inference
+    at:
+      2020-fall: '14.2'
+  - id: res-ucb-cs70-bayes-rule-and-total-probability
+    kind: section
+    title: Bayes' rule and total probability
+    at:
+      2020-fall: '14.3'
+    nodes:
+    - id: res-ucb-cs70-bayes-examples
+      kind: subsection
+      title: Examples
+      at:
+        2020-fall: 14.3.1
+    - id: res-ucb-cs70-bayes-generalization
+      kind: subsection
+      title: Generalization
+      at:
+        2020-fall: 14.3.2
+  - id: res-ucb-cs70-combinations-of-events
+    kind: section
+    title: Combinations of events
+    at:
+      2020-fall: '14.4'
+    nodes:
+    - id: res-ucb-cs70-independent-events
+      kind: subsection
+      title: Independent events
+      at:
+        2020-fall: 14.4.1
+    - id: res-ucb-cs70-intersections-of-events
+      kind: subsection
+      title: Intersections of events
+      at:
+        2020-fall: 14.4.2
+    - id: res-ucb-cs70-unions-of-events
+      kind: subsection
+      title: Unions of events
+      at:
+        2020-fall: 14.4.3
+  - id: res-ucb-cs70-conditional-probability-exercises
+    kind: section
+    title: Conditional probability exercises
+    at:
+      2020-fall: '14.5'
+- id: res-ucb-cs70-random-variables
+  kind: note
+  title: 'Random variables: distribution and expectation'
+  at:
+    2020-fall: '15'
+  nodes:
+  - id: res-ucb-cs70-random-variables-definition
+    kind: section
+    title: Random variables
+    at:
+      2020-fall: '15.1'
+  - id: res-ucb-cs70-multiple-random-variables
+    kind: section
+    title: Multiple random variables and independence
+    at:
+      2020-fall: '15.3'
+  - id: res-ucb-cs70-expectation
+    kind: section
+    title: Expectation
+    at:
+      2020-fall: '15.4'
+    nodes:
+    - id: res-ucb-cs70-expectation-examples
+      kind: subsection
+      title: Examples
+      at:
+        2020-fall: 15.4.1
+- id: res-ucb-cs70-variance-and-covariance
+  kind: note
+  title: 'Random variables: variance and covariance'
+  at:
+    2020-fall: '16'
+  nodes:
+  - id: res-ucb-cs70-computing-variance
+    kind: section
+    title: Computing variance
+    at:
+      2020-fall: '16.2'
+  - id: res-ucb-cs70-sums-of-independent-random-variables
+    kind: section
+    title: Sums of independent random variables
+    at:
+      2020-fall: '16.3'
+  - id: res-ucb-cs70-variance-exercises
+    kind: section
+    title: Variance exercises
+    at:
+      2020-fall: '16.5'
+- id: res-ucb-cs70-concentration-inequalities
+  kind: note
+  title: Concentration inequalities
+  at:
+    2020-fall: '17'
+  nodes:
+  - id: res-ucb-cs70-markov-inequality
+    kind: section
+    title: Markov's inequality
+    at:
+      2020-fall: '17.1'
+  - id: res-ucb-cs70-concentration-applications
+    kind: section
+    title: Applications
+    at:
+      2020-fall: '17.3'
+    nodes:
+    - id: res-ucb-cs70-estimating-coin-bias
+      kind: subsection
+      title: Estimating the bias of a coin
+      at:
+        2020-fall: 17.3.1
+    - id: res-ucb-cs70-estimating-expectation
+      kind: subsection
+      title: Estimating an expectation
+      at:
+        2020-fall: 17.3.2
+  - id: res-ucb-cs70-law-of-large-numbers
+    kind: section
+    title: Law of large numbers
+    at:
+      2020-fall: '17.4'
+- id: res-ucb-cs70-probability-applications
+  kind: note
+  title: 'Applications: hashing and load balancing'
+  at:
+    2020-fall: '18'
+  nodes:
+  - id: res-ucb-cs70-hashing
+    kind: section
+    title: Hashing
+    at:
+      2020-fall: '18.1'
+    nodes:
+    - id: res-ucb-cs70-hashing-balls-and-bins
+      kind: subsection
+      title: Balls and bins
+      at:
+        2020-fall: 18.1.1
+    - id: res-ucb-cs70-hashing-union-bound
+      kind: subsection
+      title: Using the union bound
+      at:
+        2020-fall: 18.1.2
+    - id: res-ucb-cs70-birthday-paradox-revisited
+      kind: subsection
+      title: Birthday paradox revisited
+      at:
+        2020-fall: 18.1.3
+    - id: res-ucb-cs70-hashing-accurate-bound
+      kind: subsection
+      title: A more accurate bound
+      at:
+        2020-fall: 18.1.4
+  - id: res-ucb-cs70-load-balancing
+    kind: section
+    title: Load balancing
+    at:
+      2020-fall: '18.2'
+    nodes:
+    - id: res-ucb-cs70-load-balancing-balls-and-bins
+      kind: subsection
+      title: Balls and bins
+      at:
+        2020-fall: 18.2.1
+    - id: res-ucb-cs70-load-balancing-union-bound
+      kind: subsection
+      title: Applying the union bound
+      at:
+        2020-fall: 18.2.2
+    - id: res-ucb-cs70-load-balancing-tighter-bound
+      kind: subsection
+      title: A tighter bound
+      at:
+        2020-fall: 18.2.3
+- id: res-ucb-cs70-geometric-and-poisson
+  kind: note
+  title: Geometric and Poisson distributions
+  at:
+    2020-fall: '19'
+  nodes:
+  - id: res-ucb-cs70-geometric-distribution
+    kind: section
+    title: Geometric distribution
+    at:
+      2020-fall: '19.1'
+    nodes:
+    - id: res-ucb-cs70-geometric-mean-and-variance
+      kind: subsection
+      title: Mean and variance
+      at:
+        2020-fall: 19.1.1
+    - id: res-ucb-cs70-coupon-collector
+      kind: subsection
+      title: Coupon collector's problem
+      at:
+        2020-fall: 19.1.2
+  - id: res-ucb-cs70-poisson-distribution
+    kind: section
+    title: Poisson distribution
+    at:
+      2020-fall: '19.2'
+    nodes:
+    - id: res-ucb-cs70-poisson-mean-and-variance
+      kind: subsection
+      title: Mean and variance
+      at:
+        2020-fall: 19.2.1
+    - id: res-ucb-cs70-sum-of-independent-poisson
+      kind: subsection
+      title: Sum of independent Poisson variables
+      at:
+        2020-fall: 19.2.2
+    - id: res-ucb-cs70-poisson-limit-of-binomial
+      kind: subsection
+      title: Poisson as a limit of binomial
+      at:
+        2020-fall: 19.2.3

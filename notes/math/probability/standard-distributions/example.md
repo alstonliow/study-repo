@@ -1,4 +1,4 @@
-<!-- Adapted (own wording) from UC Berkeley EECS 70, Fall 2020, Note 13, §3.1 "Coin Tosses". TODO: source (CS70 is not yet a registered resource, SPEC §17.12). -->
+<!-- Adapted (own wording) from UC Berkeley CS 70, Fall 2020, Note 13, §3.1 "Coin Tosses" (source key cs70-13.3.1, in note.md). -->
 
 ::: {#exm-biased-coin-tosses .example name="Biased coin tosses" level="easy"}
 A coin shows Heads with probability $p$ and Tails with probability $1-p$, and

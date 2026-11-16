@@ -1,6 +1,6 @@
 ---
 title: "Independence and Conditional Probability"
-sources: [fit1058-cn-9.7, fit1058-cn-9.8]
+sources: [fit1058-cn-9.7, fit1058-cn-9.8, cs70-13.3.7]
 requires: [math/probability/events]
 status: draft
 ---
