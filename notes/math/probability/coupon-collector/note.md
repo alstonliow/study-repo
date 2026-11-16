@@ -1,7 +1,7 @@
 ---
 title: "The coupon collector's problem"
 sources: [fit1058-cn-10.11]
-requires: [math/probability/standard-distributions]
+requires: [math/probability/geometric-distribution]
 status: draft
 ---
 

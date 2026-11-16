@@ -537,16 +537,16 @@ chapters:
         covers: [math/probability/expectation-and-variance]
       - id: "10.7"
         title: "Uniform distribution"
-        covers: [math/probability/standard-distributions]
+        covers: [math/probability/uniform-distribution]
       - id: "10.8"
         title: "Binomial distribution"
-        covers: [math/probability/standard-distributions]
+        covers: [math/probability/binomial-distribution]
       - id: "10.9"
         title: "Poisson distribution"
-        covers: [math/probability/standard-distributions]
+        covers: [math/probability/poisson-distribution]
       - id: "10.10"
         title: "Geometric distribution"
-        covers: [math/probability/standard-distributions]
+        covers: [math/probability/geometric-distribution, math/probability/standard-distributions]
       - id: "10.11"
         title: "The coupon collector’s problem"
         covers: [math/probability/coupon-collector]
