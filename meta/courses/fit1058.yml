@@ -12,6 +12,9 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  - exm-balls-and-bins                               # Balls and bins (CS70, not in CN)
+  - exm-biased-coin-tosses                           # Biased coin tosses (CS70, not in CN)
+  - exm-monty-hall                                   # Monty Hall (CS70, not in CN)
   # the owner's "(extra)" material, and remarks that belong to it
   - thm-division-rule                                # Division rule ("Second Rule of Counting") (extra)
   - rmk-combinations-2                               # remark on the block above

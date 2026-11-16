@@ -32,6 +32,10 @@ site/pdf/
 site/library/
 site/library.qmd
 
+# Private store (SPEC §17.9): a separate private Git repository cloned here.
+# Never part of this public repository's history.
+private/
+
 # Claude Code and private planning files (kept local only)
 .claude/
 CLAUDE.md
