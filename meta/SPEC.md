@@ -739,7 +739,9 @@ entity type (§17.10, phase 3). It is written before any code.
    - each has a stable id, resolved by the entity index;
    - each can be the target of references and relationships, and has
      backlinks;
-   - it is a resource node, never a note.
+   - it is a resource node, never a note: it is in the entity index with type
+     `resource-node` and its resource as holder, and has no note page, note
+     number or `requires`.
 
    Nodes form a tree under their resource (parent → children). A resource may
    have no nodes at all, as a website usually does.
@@ -799,6 +801,18 @@ entity type (§17.10, phase 3). It is written before any code.
    source is normally the resource file: a node lists the knowledge it
    teaches, with the type **`covers`** (resource or node → note or block; shown
    at the target as "covered in"; not symmetric; may form cycles).
+
+   **Meaning of `covers`:** A covers B when a reader could learn B from A. A
+   presents B's content (its definitions, results or method) as a topic of its
+   own, not just in passing. So:
+   - a section that only mentions or uses B does not cover it;
+   - a node covers a note when it teaches most of that note, and covers single
+     blocks when it teaches only some of them;
+   - `covers` says nothing about where the note's text came from (that is a
+     citation, §17.12.5) and nothing about a course's scope (that is
+     placement, §13).
+
+   The test is the reader's: "to study B, read A".
    - Writing it on the resource side means adding a book never touches a
      note.
    - A private resource may cover a public note, because private may point to
@@ -822,8 +836,11 @@ Three identities are kept apart:
 | **Edition** | an edition id within the resource | `2026-06-16` |
 | **Source locator** | (resource, edition, place) | (`res-fit1058-cn`, `2026-06-16`, `5.5`) |
 
-1. A node's `at` maps each edition to the node's locator in that edition. A
-   node that is missing from an edition has no entry for it.
+1. A node's `at` maps each edition to the node's locator in that edition, so
+   a node can have several locators, for example
+   `at: {"8e": "1.1", "7e": "1.1", "6e": "1.2"}`. A node that is missing from
+   an edition has no entry for it. Within one edition, a locator belongs to at
+   most one node (check error).
 2. A **citation** is a note's pointer to a locator: today the `sources` field
    and a problem's `source`. A citation records provenance. It is not a
    relationship (§17.5.7); `covers` is the relationship. Citations also show
@@ -847,6 +864,14 @@ and checked it. Steps:
    explicit resource, edition and node (plus a question number). It never
    relies on the displayed number alone. Labels ("FIT1058 CN 5.5 Q3") come out
    unchanged.
+   - Resolution: the prefix gives the resource and the fixed `edition`; the
+     pattern gives the locator (`5.5`); the node is the one whose `at` has that
+     locator for that edition. The result is (resource id, edition, node id,
+     question).
+   - A key whose locator matches no node of that edition is a check error, not
+     a guess.
+   - Because the edition is fixed per prefix, a later edition never changes
+     what an old key means.
 4. No note, `sources` field or `source` attribute changes in this phase. New
    citations may use node ids directly; the legacy keys stay valid
    permanently, like aliases (§17.3.3).
@@ -866,7 +891,13 @@ and checked it. Steps:
    page per resource showing its hierarchy and, for each node, the notes it
    covers and the notes that cite it. A private build shows private resources
    as well (§17.9).
-4. **Personal records** about a resource, such as reading status, dates or
+4. **Backlinks across the boundary.** A private resource may cover a public
+   note, but that relationship is private: it is shown only in a private
+   build. In a public build the public note's Connections, the Library,
+   `site-data.json`, graphs and search never mention the private resource or
+   its nodes, and never hint that they exist (no counts, no empty groups).
+   §17.9.3 applies.
+5. **Personal records** about a resource, such as reading status, dates or
    personal notes, are private. They are not fields of a public resource
    file. They belong to a later records type, or to a private resource.
 
