@@ -168,7 +168,8 @@ follow. Add `--dry-run` to see what it would change.
   `@` reference from other pages ("Referenced by"). See `meta/SPEC.md` §17.
 - Resources (books, course notes) are YAML files in `resources/` (SPEC §17.12).
   To record that a section teaches a topic, add `covers: [<note or block id>]`
-  to that node in the resource file. Only add real teaching coverage ("to study
+  to that node in the resource file (a resource without chapters or sections
+  puts `covers` at its top level). Only add real teaching coverage ("to study
   B, read A"), not mentions. Cite a section in text with `@res-<node id>`. The
   website's **Library** shows each resource's sections with what they cover
   and what cites them.

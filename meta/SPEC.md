@@ -817,11 +817,17 @@ entity type (§17.10, phase 3). It is written before any code.
      note.
    - A private resource may cover a public note, because private may point to
      public (§17.9). A public note never points to a private resource.
-2. Several notes may be covered by one node, and one note by nodes of several
+2. **Where `covers` starts must match the resource's structure.** A resource
+   with nodes covers only from its nodes: the node that teaches the topic,
+   which keeps backlinks precise to the chapter or section. A resource
+   without nodes (a website, a short paper) covers from the resource itself,
+   so a simple resource never needs an invented hierarchy. Root-level
+   `covers` on a resource that has nodes is a check error.
+3. Several notes may be covered by one node, and one note by nodes of several
    resources. A note's Connections section (§17.6) then lists every chapter
    that covers it, across all books. A node's page lists every note it
    covers.
-3. `covers` is added to `meta/relations.yml` in the build round, with
+4. `covers` is added to `meta/relations.yml` in the build round, with
    `between` allowing resources and nodes as sources and notes and blocks as
    targets. The existing types gain `resources` and `nodes` only when a real
    use appears (§17.1.6).
@@ -927,6 +933,12 @@ Phase 3 is built in three rounds, each reviewed and committed on its own:
 
    Everything is derived from the resource model and `relations.Graph` (no
    page has data of its own), so the Library and Connections never disagree.
+
+   What changed in the output: the body of every existing page (notes,
+   branches, courses, summaries, PDFs) is unchanged. `_nav.yml` gains the
+   Library entry, so the navigation bar of every rendered page changes.
+   `library.qmd` and `library/` are new pages. Root-level `covers` is allowed
+   only on resources without nodes (§17.12.4).
    No `covers` exist yet; they are added only as real teaching coverage,
    reviewed by the owner.
 3. **Round C**: the private store (`private/`, a repository the owner

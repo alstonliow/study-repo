@@ -197,6 +197,10 @@ class Graph:
             if ents[r.target].level not in t.targets:
                 out.append(("error", f"{r.where}: {r.type} is only to {' and '.join(sorted(t.targets))}, "
                                      f"not {ents[r.target].level} ('{r.target}')"))
+            res = self.repo.resources.get(r.source)
+            if res is not None and res.nodes:
+                out.append(("error", f"{r.where}: {r.source} has nodes, so {r.type} goes on the node that "
+                                     "teaches it, not on the resource (SPEC §17.12.4)"))
             key = (r.source, r.type, r.target)
             if key in seen:
                 out.append(("warning", f"{r.where}: {r.source} {r.type} {r.target} is written twice"))

@@ -623,6 +623,25 @@ class TestLibrary(Repo):
         self.cover("res-demo-gadgets")
         self.assertIn("covers is only to blocks and notes, not nodes ('res-demo-gadgets')", self.check().stdout)
 
+    def test_root_covers_without_nodes_passes(self):
+        (self.root / "resources/site.yml").write_text(
+            "id: res-site\nkind: website\ntitle: A website\nurl: https://example.org\n"
+            "covers: [t/beta/third]\n", encoding="utf-8")
+        r = self.check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        third = (generate(self.root) / "notes/t/beta/third.qmd").read_text()
+        self.assertIn("- This topic *covered in* [A website](/library/site.qmd)", third)
+
+    def test_root_covers_with_nodes_is_an_error(self):
+        self.edit(self.RES, "courses: [demo]", "courses: [demo]\ncovers: [t/alpha/first]")
+        r = self.check()
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn("res-demo has nodes, so covers goes on the node", r.stdout)
+
+    def test_node_covers_with_nodes_passes(self):
+        self.cover("t/alpha/first")
+        self.assertEqual(self.check().returncode, 0)
+
     def test_covers_unknown_and_old_ids(self):
         self.edit("notes/t/beta/third/note.md", "requires: [t/alpha/first]", "requires: [t/alpha/first]\naliases: [t/beta/old]")
         self.cover("t/beta/old, def-nothing")
