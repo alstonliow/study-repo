@@ -369,6 +369,18 @@ chapters:
       - id: "7"
         title: "RSA"
         covers: [math/discrete/number-theory/rsa]
+  - num: 8
+    title: "Polynomials"
+    points:
+      - id: "8"
+        title: "Polynomials and secret sharing"
+        covers: [math/discrete/polynomials/polynomials-and-roots, math/discrete/polynomials/interpolation, math/discrete/polynomials/finite-fields, math/discrete/polynomials/secret-sharing]
+  - num: 9
+    title: "Error-correcting codes"
+    points:
+      - id: "9"
+        title: "Erasure and general errors"
+        covers: [math/discrete/polynomials/erasure-codes, math/discrete/polynomials/reed-solomon-codes]
   - num: 10
     title: "Counting"
     points:

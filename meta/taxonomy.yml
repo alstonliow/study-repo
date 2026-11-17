@@ -121,6 +121,16 @@ parts:
           - forests-and-spanning-trees
           - planarity
           - games-on-graphs
+      - id: math/discrete/polynomials
+        title: Polynomials and Codes
+        desc: Roots and interpolation, finite fields, secret sharing, error-correcting codes
+        notes:   # topic order on the website
+          - polynomials-and-roots
+          - interpolation
+          - finite-fields
+          - secret-sharing
+          - erasure-codes
+          - reed-solomon-codes
   - title: Probability
     branches:
       - id: math/probability/discrete

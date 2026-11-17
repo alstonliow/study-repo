@@ -215,6 +215,16 @@ nodes:
   title: 'Public-key cryptography: RSA'
   at:
     2020-fall: '7'
+- id: res-ucb-cs70-polynomials
+  kind: note
+  title: Polynomials, interpolation and secret sharing
+  at:
+    2020-fall: '8'
+- id: res-ucb-cs70-error-correcting-codes
+  kind: note
+  title: Error-correcting codes
+  at:
+    2020-fall: '9'
 - id: res-ucb-cs70-counting
   kind: note
   title: Counting
