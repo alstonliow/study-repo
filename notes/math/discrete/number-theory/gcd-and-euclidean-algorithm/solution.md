@@ -30,3 +30,15 @@ intermediate number is a Fibonacci number.
 5. In total that is $1 + (n-2) = (n+1) - 2$ subtractions, which is
    $P(n+1)$. By induction, $P(n)$ holds for all $n\ge 3$.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-4-q1" status="draft"}
+For $n=0$ read $F_{-1}=1$, the value that keeps $F_1=F_0+F_{-1}$ true; then $\gcd(F_0,F_{-1})=\gcd(0,1)=1$. For $n\ge1$ we use induction.
+
+1. *Base case $n=1$:* $\gcd(F_1,F_0)=\gcd(1,0)=1$.
+
+2. *Step:* suppose $\gcd(F_n,F_{n-1})=1$. Since $\gcd(a,b)=\gcd(a-b,b)$ (a common divisor of $a$ and $b$ divides $a-b$, and conversely),
+   $$\gcd(F_{n+1},F_n)=\gcd(F_{n+1}-F_n,F_n)=\gcd(F_{n-1},F_n)=1.$$
+:::

@@ -132,3 +132,20 @@ $$\frac{2(n-1)}{n} = 2 - \frac2n < 2.$$
 ::: {.solution for="prob-cs70-5-q3"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-3-q2" status="draft"}
+(a)
+
+1. Removing a vertex of degree $2$ from a tree leaves exactly two components (each edge of a tree is a bridge): $L\ni u$ and $R\ni v$. Each is connected and acyclic, so a tree.
+
+2. In $L$, only $u$ lost an edge. If $\deg_Tu=1$, then $L$ is the single vertex $u$, a binary tree of height $0$ with root $u$. If $\deg_Tu=3$, then $u$ has degree $2$ in $L$ and every other vertex of $L$ keeps degree $1$ or $3$, so $L$ is a binary tree with root $u$. The same holds for $R$.
+
+3. In a tree the path from $r$ to a leaf $\ell\ne r$ is unique; it starts with the edge to $u$ or to $v$, and then stays in $L$ or in $R$. So its length is $1$ plus the length of the path from $u$ (or $v$) to $\ell$ in $L$ (or $R$). The leaves of $T$ are exactly the leaves of $L$ and of $R$ (a root of height $0$ is a leaf of degree $1$ in $T$). Taking the maximum, $h(T)=1+\max(h(L),h(R))$.
+
+(b) Strong induction on $h$. For $h=0$ there is $1=2^1-1$ vertex. For $h>0$, by (a), $T$ is the root plus $L$ and $R$ of heights at most $h-1$, so it has at most $1+2(2^h-1)=2^{h+1}-1$ vertices.
+
+(c) Strong induction on $n$. A binary tree with one leaf is the single vertex (a tree of height $>0$ has at least two leaves, one in each of $L$, $R$), with $1=2\cdot1-1$ vertices. If $n>1$, the root is not a leaf, so by (a) the $n$ leaves split as $a$ in $L$ and $b$ in $R$ with $a+b=n$, $a,b\ge1$. By the hypothesis $T$ has $1+(2a-1)+(2b-1)=2n-1$ vertices.
+:::

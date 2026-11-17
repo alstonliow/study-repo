@@ -124,3 +124,20 @@ $P$ runs in polynomial time.
 ::: {.solution for="prob-predicate-13"}
 $$\exists! x\ P(x) \;\equiv\; \exists x\ \Big(P(x)\wedge\big(\forall y\ (P(y)\Rightarrow x=y)\big)\Big)$$
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-1-q2" status="draft"}
+(a) $(\exists x\in\mathbb R)\bigl(x^2=0\land(\forall y\in\mathbb R)(y^2=0\implies y=x)\bigr)$: a solution exists, and every solution equals it.
+
+(b) $(\forall x,y\in\mathbb Q)\bigl(x\ne y\implies(\exists z\in\mathbb Q)((x<z\land z<y)\lor(y<z\land z<x))\bigr)$.
+
+(c) $(\forall x\in\mathbb Z)\bigl(x^2>4\implies(x>2\lor x<-2)\bigr)$.
+
+(d) Every real number is a complex number.
+
+(e) There are no two integers whose squares differ by $10$. (This is true: $x^2-y^2=(x-y)(x+y)$, and $x-y$, $x+y$ have the same parity, so the product is odd or divisible by $4$, never $10$.)
+
+(f) For every natural number $x>1$, $2x$ is the sum of two primes. (This is Goldbach's conjecture, still unproved.)
+:::

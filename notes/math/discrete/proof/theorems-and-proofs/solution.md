@@ -30,3 +30,18 @@ Some classifications are a matter of interpretation.
     equivalences of this kind are universally quantified implications and
     equivalences.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-1-q6" status="draft"}
+(a) False. Seat the five people around a round table and let each person be friends exactly with their two neighbours. Any three people include two who are not neighbours, so no three are all friends. Any three people out of five around a circle include two neighbours, so no three are all strangers.
+
+(b) True.
+
+1. Fix a person $A$. Each of the other $5$ people is a friend or a stranger of $A$, so by the pigeonhole principle (@thm-pigeonhole) $A$ has at least $3$ friends or at least $3$ strangers. By symmetry, suppose $B,C,D$ are friends of $A$.
+
+2. If two of $B,C,D$ are friends, those two and $A$ are three mutual friends.
+
+3. Otherwise $B,C,D$ are three mutual strangers.
+:::

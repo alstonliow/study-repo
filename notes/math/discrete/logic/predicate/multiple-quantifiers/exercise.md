@@ -102,3 +102,19 @@ $\exists!x\,P(x)$ means “there exists a unique $x$ such that $P(x)$
 holds”. How would you write this statement using only the tools of
 predicate logic (without “!”)?
 :::
+
+::: {.problem #prob-cs70hw-1-q2 origin="external" source="cs70hw-1-q2"}
+**Propositional Practice.** In parts (a)-(c), convert the English sentences into propositional logic. In parts (d)-(f), convert the propositions into English. In part (f), let $P(a)$ represent the proposition that $a$ is prime.
+
+(a) There is one and only one real solution to the equation $x^2 = 0$.
+
+(b) Between any two distinct rational numbers, there is another rational number.
+
+(c) If the square of an integer is greater than 4, that integer is greater than 2 or it is less than -2.
+
+(d) $(\forall x \in \mathbb{R})\ (x \in \mathbb{C})$
+
+(e) $(\forall x, y \in \mathbb{Z})(x^2 - y^2 \ne 10)$
+
+(f) $(\forall x \in \mathbb{N})\ [\,(x > 1) \implies (\exists a, b \in \mathbb{N})\ ((a + b = 2x) \land P(a) \land P(b))\,]$
+:::

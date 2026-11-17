@@ -12,6 +12,25 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # CS70 homework problems (CS70 material, not in CN)
+  - prob-cs70hw-1-q2
+  - prob-cs70hw-1-q3
+  - prob-cs70hw-1-q4
+  - prob-cs70hw-1-q5
+  - prob-cs70hw-1-q6
+  - prob-cs70hw-1-q7
+  - prob-cs70hw-2-q1
+  - prob-cs70hw-2-q2
+  - prob-cs70hw-2-q3
+  - prob-cs70hw-3-q1
+  - prob-cs70hw-3-q2
+  - prob-cs70hw-3-q3
+  - prob-cs70hw-3-q4
+  - prob-cs70hw-3-q5
+  - prob-cs70hw-3-q6
+  - prob-cs70hw-4-q1
+  - prob-cs70hw-4-q2
+  - prob-cs70hw-4-q5
   # CS70 Notes 5-7 material (not in CN)
   - thm-kuratowski
   - rmk-planarity-kuratowski

@@ -1,0 +1,95 @@
+# UC Berkeley CS 70 homework, Fall 2020, as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Homework problems may be copied as exercises (owner decision, 2026-11-17; meta/SPEC.md §10);
+# the official solutions are never copied. Kept locally in raw/UCB_CS70/hws.
+# Locator = homework number; a source key is cs70hw-4-q3 (HW 4, problem 3).
+# Titles are our own short titles. Node ids are stable: never renamed when a title or a locator changes.
+id: res-ucb-cs70-hw
+kind: homework
+title: UC Berkeley CS 70 Homework
+status: draft
+courses: [cs70]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2020-fall
+  current: true
+legacy_keys:
+  prefix: cs70hw-
+  edition: 2020-fall
+  pattern: ^cs70hw-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: CS70 HW {section}
+  problem_label: CS70 HW {section} Q{n}
+nodes:
+- id: res-ucb-cs70-hw-proofs
+  kind: homework
+  title: Proofs and logic
+  at:
+    2020-fall: '1'
+- id: res-ucb-cs70-hw-induction-stable-matching
+  kind: homework
+  title: Induction and stable matching
+  at:
+    2020-fall: '2'
+- id: res-ucb-cs70-hw-graphs
+  kind: homework
+  title: Graphs
+  at:
+    2020-fall: '3'
+- id: res-ucb-cs70-hw-modular-arithmetic
+  kind: homework
+  title: Modular arithmetic and RSA
+  at:
+    2020-fall: '4'
+- id: res-ucb-cs70-hw-secret-sharing
+  kind: homework
+  title: RSA, polynomials and secret sharing
+  at:
+    2020-fall: '5'
+- id: res-ucb-cs70-hw-error-correcting-codes
+  kind: homework
+  title: Error-correcting codes and counting
+  at:
+    2020-fall: '6'
+- id: res-ucb-cs70-hw-counting
+  kind: homework
+  title: Counting
+  at:
+    2020-fall: '7'
+- id: res-ucb-cs70-hw-countability
+  kind: homework
+  title: Countability
+  at:
+    2020-fall: '8'
+- id: res-ucb-cs70-hw-computability
+  kind: homework
+  title: Computability and probability
+  at:
+    2020-fall: '9'
+- id: res-ucb-cs70-hw-probability
+  kind: homework
+  title: Probability
+  at:
+    2020-fall: '10'
+- id: res-ucb-cs70-hw-random-variables
+  kind: homework
+  title: Random variables
+  at:
+    2020-fall: '11'
+- id: res-ucb-cs70-hw-variance-concentration
+  kind: homework
+  title: Variance and concentration
+  at:
+    2020-fall: '12'
+- id: res-ucb-cs70-hw-hashing-continuous
+  kind: homework
+  title: Hashing, geometric and continuous distributions
+  at:
+    2020-fall: '13'
+- id: res-ucb-cs70-hw-continuous-probability
+  kind: homework
+  title: Continuous probability
+  at:
+    2020-fall: '14'
+- id: res-ucb-cs70-hw-markov-chains
+  kind: homework
+  title: Markov chains
+  at:
+    2020-fall: '15'

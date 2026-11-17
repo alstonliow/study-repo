@@ -49,3 +49,16 @@ Complete the proof of the converse direction in Theorem 5.4 by proving, using in
 
 *Note (these notes):* Theorem 5.4 of CS70 Note 5 is described in *Four ways to say tree* in @sec-math-discrete-graph-trees.
 :::
+
+::: {.problem #prob-cs70hw-3-q2 origin="external" source="cs70hw-3-q2"}
+**Binary Trees.** You have seen the recursive definition of binary trees from lecture and from previous classes. Here, we define binary trees in graph theoretic terms as follows (Note: here we will modify the definition of leaves slightly for consistency).
+
+- A binary tree of height $> 0$ is a tree where exactly one vertex, called the root, has degree 2, and all other vertices have degrees 1 or 3. Each vertex of degree 1 is called a leaf. The height $h$ is defined as the maximum length of the path between the root and any leaf.
+- A binary tree of height 0 is the graph with a single vertex. The vertex is both a leaf and a root.
+
+(a) Let $T$ be a binary tree of height $> 0$, and let $h(T)$ denote it's height. Let $r$ be the root in $T$ and $u$ and $v$ be it's neighbors. Show that removing $r$ from $T$ will result in two binary trees, $L, R$ with roots $u$ and $v$ respectively. Also, show that $h(T) = \max(h(L), h(R)) + 1$
+
+(b) Using the graph theoretic definition of binary trees, prove that the number of vertices in a binary tree of height $h$ is at most $2^{h+1} - 1$
+
+(c) Prove that all binary trees with $n$ leaves have $2n - 1$ vertices
+:::

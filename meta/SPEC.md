@@ -294,9 +294,14 @@ approval.
 
 ## 10. Excluded content
 
-Never in the repository: assignments, quizzes, exams, original lecture slides,
+Never in the repository: quizzes, exams, original lecture slides,
 original course-note or textbook text, textbook PDFs, anything from `raw/`,
 build artefacts (`*.aux`, `*.log`, PDFs, `out/`, `_site/`).
+
+Homework problems are allowed as exercises (owner decision, 2026-11-17): the
+statement is copied verbatim with `origin="external"` and a `source` key of a
+homework resource. Official homework solutions are never copied; solutions are
+written in our own words.
 
 ## 11. Checks (`make check`)
 

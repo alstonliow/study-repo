@@ -61,3 +61,13 @@ pieces by $n$ straight lines.
 ::: {.problem #prob-cs70-3-q1 origin="external" source="cs70-3.6-q1"}
 Prove for any natural number $n$ that $1^2 + 2^2 + 3^2 + \dots + n^2 = \frac{1}{6}n(n + 1)(2n + 1)$.
 :::
+
+::: {.problem #prob-cs70hw-2-q1 origin="external" source="cs70hw-2-q1"}
+**Induction.** Prove the following using induction:
+
+(a) For all natural numbers $n > 2$, $2^n > 2n + 1$.
+
+(b) For all positive integers $n$, $1^2 + 2^2 + 3^2 + \cdots + n^2 = \frac{n(n+1)(2n+1)}{6}$.
+
+(c) For all positive natural numbers $n$, $\frac{5}{4} \cdot 8^n + 3^{3n-1}$ is divisible by 19.
+:::

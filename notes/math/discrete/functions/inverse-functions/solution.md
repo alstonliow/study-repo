@@ -17,3 +17,22 @@ $B\setminus\operatorname{im}f$ to nothing.
   function on $B$ (namely $i_B$) only if $f$ is also surjective; otherwise it
   is only a partial function.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-1-q7" status="draft"}
+(a)–(c) For every $x$, by the definition of the preimage,
+$$x\in f^{-1}(A\cup B)\iff f(x)\in A\cup B\iff f(x)\in A\lor f(x)\in B\iff x\in f^{-1}(A)\cup f^{-1}(B).$$
+Replacing $\lor$ by $\land$ gives (b), and by "$f(x)\in A$ and $f(x)\notin B$" gives (c). A chain of equivalences proves both inclusions at once.
+
+(d)
+
+1. If $y\in f(A\cup B)$, then $y=f(x)$ with $x\in A$ or $x\in B$, so $y\in f(A)$ or $y\in f(B)$.
+
+2. If $y\in f(A)$, then $y=f(x)$ with $x\in A\subseteq A\cup B$, so $y\in f(A\cup B)$; the same for $f(B)$.
+
+(e) If $y=f(x)$ with $x\in A\cap B$, then $y\in f(A)$ and $y\in f(B)$. For strict inclusion, let $f:\{1,2\}\to\{0\}$, $A=\{1\}$, $B=\{2\}$: then $f(A\cap B)=f(\emptyset)=\emptyset$ but $f(A)\cap f(B)=\{0\}$.
+
+(f) Let $y\in f(A)\setminus f(B)$, so $y=f(x)$ for some $x\in A$. If $x\in B$, then $y\in f(B)$, which is false; so $x\in A\setminus B$ and $y\in f(A\setminus B)$. For strict inclusion, take the same $f$ with $A=\{1,2\}$, $B=\{2\}$: $f(A\setminus B)=\{0\}$ but $f(A)\setminus f(B)=\emptyset$.
+:::

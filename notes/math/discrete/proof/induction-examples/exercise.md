@@ -67,3 +67,41 @@ Use the proof of Theorem 3.6 to design an algorithm that, given any amount of po
 
 *Note (these notes):* Theorem 3.6 of CS70 Note 3 is @exm-postage-four-five.
 :::
+
+::: {.problem #prob-cs70hw-2-q2 origin="external" source="cs70hw-2-q2"}
+**Negative pacman returns.** Pacman has had a bit of a wild night, and wakes up feeling a bit under the weather. He starts at some location $(i, j) \in \mathbb{N}^2$ in the third quadrant, and is constrained walk on the infinite 2D grid and stay in the third quadrant (say, by walls along the negative x and negative y axes). Every second he does one of the following (if possible):
+
+(i) Walk one step up, to $(i, j + 1)$.
+
+(ii) Walk one step right, to $(i + 1, j)$.
+
+For example, if he is at $(-5, 0)$, his only option is to walk right to $(-4, 0)$; if Pacman is instead at $(-3, -2)$, he could walk either to $(-2, -2)$ or $(-3, -1)$.
+
+Prove by induction that no matter how he walks, he will always reach $(0, 0)$ in finite time. (Hint: Try starting Pacman at a few small points like $(-2, -1)$ and looking all the different paths he could take to reach $(0, 0)$. Do you notice a pattern?)
+
+*Note (these notes):* The positions meant are those with $i,j\le0$ (the third quadrant), as the example $(-5,0)$ shows.
+:::
+
+::: {.problem #prob-cs70hw-2-q3 origin="external" source="cs70hw-2-q3"}
+**Losing Marbles.** Two EECS70 GSIs have inexplicably run out of research topics to pursue, papers to read, or homeworks to create, and so they decide to play an incredibly boring game. (This is EECS after all.)
+
+In the game, there is an urn that contains some number of red marbles ($R$), green marbles ($G$), and blue marbles ($B$). There is also an infinite supply of marbles outside the urn.
+
+When it is a player's turn, the player may either:
+
+(i) Remove one red marble from the urn, and add 3 green marbles.
+
+(ii) Remove two green marbles from the urn, and add 7 blue marbles.
+
+(iii) Remove one blue marble from the urn.
+
+These are the only legal moves. The last player that can make a legal move wins. We play optimally, of course – meaning we always play one of the best possible legal moves.
+
+(a) If the urn contains $(R, G, B)$ red, green, and blue marbles initially, then determine the conditions on $R, G, B$ for the first player to win the game. Prove it. In this case, does it matter what strategy the players use?
+
+Hint: Assign each marble a weight, and argue that at every step, the combined weight will go down by exactly 1.
+
+(b) Prove by induction that, if the urn initially contains a finite number of marbles at the start of the game, then the game will end after a finite number of moves.
+
+*Note (these notes):* The official solution states that the final weight is $0$; it can also be $4$ (one green marble left), which does not change the answer because $4$ is even.
+:::

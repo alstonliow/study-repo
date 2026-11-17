@@ -91,3 +91,30 @@ The "theorem" is false, and the error is in step 4.
 ::: {.solution for="prob-cs70-3-q1"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-2-q1" status="draft"}
+(a)
+
+1. *Base case $n=3$:* $2^3=8>7=2\cdot3+1$.
+
+2. *Inductive step:* suppose $2^k>2k+1$ for some $k\ge3$. Then $2^{k+1}=2\cdot2^k>4k+2=(2k+3)+(2k-1)>2k+3=2(k+1)+1$, since $2k-1>0$.
+
+(b)
+
+1. *Base case $n=1$:* both sides are $1$.
+
+2. *Inductive step:* if the formula holds for $k$, then
+   $$\sum_{i=1}^{k+1}i^2=\frac{k(k+1)(2k+1)}6+(k+1)^2=\frac{(k+1)\bigl(2k^2+7k+6\bigr)}6=\frac{(k+1)(k+2)(2k+3)}6,$$
+   which is the formula for $k+1$.
+
+(c) Let $a_n=\frac54\cdot8^n+3^{3n-1}$; it is an integer because $4\mid8^n$.
+
+1. *Base case $n=1$:* $a_1=10+9=19$.
+
+2. *Inductive step:* suppose $19\mid a_k$. Since $3^{3(k+1)-1}=27\cdot3^{3k-1}$,
+   $$a_{k+1}=8\cdot\tfrac54\cdot8^k+27\cdot3^{3k-1}=8a_k+19\cdot3^{3k-1}.$$
+   Both terms are divisible by $19$, so $19\mid a_{k+1}$.
+:::

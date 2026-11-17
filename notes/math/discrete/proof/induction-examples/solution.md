@@ -173,3 +173,32 @@ $H_n \ge \ln(n+1)$ for all $n\ge1$.
 ::: {.solution for="prob-cs70-3-q5"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-2-q2" status="draft"}
+Pacman's positions are the points $(i,j)$ with $i,j\le0$. Let $d(i,j)=-i-j\ge0$, his taxicab distance to the origin. We prove by induction on $d$: *from any position with $d(i,j)=d$, every walk reaches $(0,0)$ after exactly $d$ seconds.*
+
+1. *Base case $d=0$:* the only such position is $(0,0)$ itself.
+
+2. *Inductive step:* let $d(i,j)=d+1\ge1$, so $(i,j)\ne(0,0)$. If $i<0$ he can step right; if $j<0$ he can step up. So he is never stuck, and every move is one of these two.
+
+3. Each move increases $i$ or $j$ by $1$ and stays in the quadrant, so after one second he is at a position with distance $d$. By the hypothesis, from there every walk reaches $(0,0)$ after exactly $d$ more seconds: $d+1$ in all.
+:::
+
+::: {.solution for="prob-cs70hw-2-q3" status="draft"}
+Give a blue marble weight $1$, a green one $4$ and a red one $13$, and let $W=13R+4G+B$ be the total weight.
+
+1. Every move lowers $W$ by exactly $1$: move (i) changes it by $-13+3\cdot4$, move (ii) by $-2\cdot4+7$, move (iii) by $-1$.
+
+(b) By induction on the number $m$ of moves made, the weight after $m$ moves is $W_0-m$, where $W_0$ is the starting weight: true for $m=0$, and each further move subtracts $1$ (step 1). Weights are never negative, so at most $W_0$ moves can be made, and the game ends.
+
+(a)
+
+2. The game ends exactly when no move is legal: no red and no blue marble, and at most one green. So the final weight is $0$ or $4$, an even number in both cases.
+
+3. By (b), the number of moves played is $W_0-W_{\text{end}}$, which has the parity of $W_0=13R+4G+B$, that is, of $R+B$.
+
+4. The first player makes the last move exactly when the number of moves is odd. So **the first player wins if and only if $R+B$ is odd**, and the strategy does not matter: every sequence of legal moves has the same parity of length.
+:::

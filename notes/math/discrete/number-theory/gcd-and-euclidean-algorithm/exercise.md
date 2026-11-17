@@ -9,3 +9,7 @@ Prove, by induction on $n$, that for all $n\ge3$ the Euclidean algorithm uses
 $n-2$ subtractions to compute $\gcd(f_n,f_{n+1})$, and that every
 intermediate number found is also a Fibonacci number.
 :::
+
+::: {.problem #prob-cs70hw-4-q1 origin="external" source="cs70hw-4-q1"}
+**Fibonacci GCD.** The Fibonacci sequence is given by $F_n = F_{n-1} + F_{n-2}$, where $F_0 = 0$ and $F_1 = 1$. Prove that, for all $n \ge 0$, $\gcd(F_n, F_{n-1}) = 1$.
+:::

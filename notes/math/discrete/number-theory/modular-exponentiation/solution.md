@@ -23,3 +23,18 @@ Let $e$ be the given exponent.
 5. Therefore
    $$1752^{e}\bmod 125 = 116.$$
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-4-q5" status="draft"}
+1. *For every prime $p$ and every integer $n$, $n^p\equiv n\pmod p$.* If $p\mid n$, both sides are $0$. Otherwise $n\bmod p\in\{1,\dots,p-1\}$, so $n^{p-1}\equiv1$; multiply by $n$.
+
+2. *Modulo $7$:* $n^7\equiv n$ by step 1.
+
+3. *Modulo $3$:* $n^3\equiv n$, so $n^7=n^3\cdot n^3\cdot n\equiv n\cdot n\cdot n=n^3\equiv n$.
+
+4. *Modulo $2$:* $n^2\equiv n$, so $n^7\equiv n$ (apply $n^2\equiv n$ repeatedly).
+
+5. So $2$, $3$ and $7$ divide $n^7-n$. They are pairwise coprime, so their product $42$ divides it (@prp-coprimedivides).
+:::

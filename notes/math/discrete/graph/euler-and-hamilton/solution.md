@@ -111,3 +111,26 @@ Let $G$ be a connected multigraph (multiple edges and loops allowed).
 ::: {.solution for="prob-cs70-5-q1"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-3-q3" status="draft"}
+(a) True. Induction on $n$, proving: some city $c$ can be reached from every other city in at most $2$ roads.
+
+1. *Base case $n=2$:* the road between the two cities ends at one of them; take that one.
+
+2. *Step:* given $n+1$ cities, remove one city $d$. By the hypothesis, among the other $n$ there is a city $c$ reachable from each of them in at most $2$ roads (not through $d$). Let $A$ be the set of cities with a road into $c$.
+
+3. If $d$ has a road to $c$ or to some city of $A$, then $c$ is reachable from $d$ in at most $2$ roads, and $c$ works for all $n+1$ cities.
+
+4. Otherwise $c$ has a road to $d$ and every city of $A$ has a road to $d$. Then $d$ works: $c$ and the cities of $A$ reach $d$ in one road; every other city reaches $c$ in two roads, through some city of $A$, so it has a road to a city of $A$, from which one more road leads to $d$.
+
+(b) True.
+
+1. Add a new vertex $z$ joined by an edge to each of the $2m$ odd-degree vertices. Now every old vertex has even degree, $z$ has degree $2m$, and the new graph is connected. By Euler's theorem (@sec-math-discrete-graph-euler-and-hamilton) it has an Eulerian tour; start it at $z$.
+
+2. The tour passes through $z$ exactly $m$ times, using its $2m$ edges in pairs. Delete $z$ and its edges: the tour falls into $m$ pieces, each a walk in $G$ between two odd-degree vertices.
+
+3. Each piece has at least one edge: a piece $z,a,\dots,b,z$ with no edge of $G$ would use the edge $\{z,a\}$ twice. The tour uses every edge of $G$ exactly once, so the $m$ walks cover each edge exactly once and no walk repeats an edge.
+:::

@@ -72,3 +72,15 @@ Find the Eulerian tour of this graph that generates the de Bruijn sequence given
 
 *Note (these notes):* Theorem 5.1 is @thm-euler-1736, and its directed form is the remark *Directed graphs* in @sec-math-discrete-graph-euler-and-hamilton. TODO: the example sequence and the figure did not survive text extraction from the PDF; the owner should check them against the original.
 :::
+
+::: {.problem #prob-cs70hw-3-q3 origin="external" source="cs70hw-3-q3"}
+**Proofs in Graphs.** Please prove or disprove the following claims.
+
+(a) On the axis from San Francisco traffic habits to Los Angeles traffic habits, Old California is more towards San Francisco: that is, civilized. In Old California, all roads were one way streets. Suppose Old California had $n$ cities ($n \ge 2$) such that for every pair of cities $X$ and $Y$, either $X$ had a road to $Y$ or $Y$ had a road to $X$. Prove or disprove that there existed a city which was reachable from every other city by traveling through at most 2 roads.
+
+[Hint: Induction]
+
+(b) In lecture, we have shown that a connected undirected graph has an Eulerian tour if and only if every vertex has even degree.
+
+Consider a connected graph $G$ with $n$ vertices which has exactly $2m$ vertices of odd degree, where $m > 0$. Prove or disprove that there are $m$ walks that together cover all the edges of $G$ (i.e., each edge of $G$ occurs in exactly one of the $m$ walks, and each of the walks should not contain any particular edge more than once).
+:::

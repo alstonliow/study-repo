@@ -43,3 +43,27 @@ side is $\infty$ and there is nothing to prove. Otherwise:
 3. $d_G(u,w)$ is the length of a shortest walk from $u$ to $w$, so it is at
    most this length.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-3-q1" status="draft"}
+(a) $V=\{A,B,C,D,E,F,G,H\}$ and
+$$E=\{(A,B),(A,F),(B,C),(B,E),(C,D),(D,B),(D,H),(E,D),(E,G),(F,E),(F,G),(G,F),(H,G)\}.$$
+
+(b) $G$ has the highest in-degree, $3$ (from $E$, $F$, $H$); $A$ has the lowest, $0$. In-degree equals out-degree for $B,D,E,F$ (both $2$) and for $C,H$ (both $1$). ($A$ has $0$ and $2$; $G$ has $3$ and $1$.)
+
+(c) Three paths: $B\to C\to D\to H\to G\to F$ and $B\to E\to D\to H\to G\to F$ (length $5$), and $B\to E\to G\to F$ (length $3$), the shortest.
+
+(d) (i) and (ii). (iii) does not end where it starts; (iv) visits $D$ twice.
+
+(e) All except (iv) and (v): in (iv) the edge $(H,G)$ does not start where $(C,D)$ ends, and in (v) there is no edge $(G,C)$.
+
+(f) Only (iii): a tour is a walk that ends where it starts.
+
+(g) True. A cycle needs at least $3$ distinct vertices in an undirected simple graph, each with two edges of the cycle, so each has degree at least $2$.
+
+(h) True. Take a longest path $v_0,\dots,v_k$. As $\deg v_0\ge2$, $v_0$ has a neighbour other than $v_1$. That neighbour is on the path, or the path could be extended; so it is some $v_i$ with $i\ge2$, and $v_0,v_1,\dots,v_i,v_0$ is a cycle.
+
+(i) False. A triangle ($n=3$) is connected and every vertex has degree $2$.
+:::

@@ -252,8 +252,10 @@ make clean-site  # remove the generated website files
   each problem records its source in the `source` attribute.
 - These problems are not covered by this repository's licence. They will be
   removed or replaced by citations on request from the copyright holder.
-- Assignments, quizzes, exams, lecture slides and textbook files are never
-  included.
+- Homework problems may appear as exercises in the same way (statement copied,
+  source recorded); their official solutions are never copied, and every
+  solution here is our own.
+- Quizzes, exams, lecture slides and textbook files are never included.
 
 ## Licence
 

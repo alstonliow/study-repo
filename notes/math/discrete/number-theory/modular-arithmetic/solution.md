@@ -96,3 +96,14 @@ the equation may or may not be true.
     - Decryption: $m_i = k^{-1}c_i\bmod n$, where $k^{-1}$ is the inverse of
       $k$ mod $n$ (found with the Extended Euclidean Algorithm).
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-4-q2" status="draft"}
+Last digits are residues modulo $10$.
+
+(a) $9k+5\equiv2k+1\pmod{10}$ gives $7k\equiv-4\equiv6\pmod{10}$. Since $7\cdot3=21\equiv1$, the inverse of $7$ is $3$, so $k\equiv18\equiv8\pmod{10}$. The last digit of $k$ is $8$.
+
+(b) For $i\ge5$, $i!$ is a multiple of $5!=120$, hence $\equiv0\pmod{10}$. So $S\equiv1+2+6+24=33\equiv3$ and $S^2\equiv9\pmod{10}$. The last digit is $9$.
+:::

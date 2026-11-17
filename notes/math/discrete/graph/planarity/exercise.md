@@ -37,3 +37,27 @@ Check that Euler’s Theorem ($n-m+f=2$) holds for the following graphs:
 ::: {.problem #prob-graph-2-12 origin="external" source="fit1058-cn-12.7-q12"}
 Prove that every planar graph has a vertex of degree $\le5$.
 :::
+
+::: {.problem #prob-cs70hw-3-q4 origin="external" source="cs70hw-3-q4"}
+**Planarity.**
+
+(a) Prove that $K_{3,3}$ is nonplanar.
+
+(b) Consider graphs with the property $T$: For every three distinct vertices $v_1, v_2, v_3$ of graph $G$, there are at least two edges among them. Use a proof by contradiction to show that if $G$ is a graph on $\ge 7$ vertices, and $G$ has property $T$, then $G$ is nonplanar.
+:::
+
+::: {.problem #prob-cs70hw-3-q5 origin="external" source="cs70hw-3-q5"}
+**Always, Sometimes, or Never.** In each part below, you are given some information about the so-called original graph, $OG$. Using only the information in the current part, say whether $OG$ will always be planar, always be non-planar, or could be either. If you think it is always planar or always non-planar, prove it. If you think it could be either, give a planar example and a non-planar example.
+
+(a) $OG$ can be vertex-colored with 4 colors.
+
+(b) $OG$ requires 7 colors to be vertex-colored.
+
+(c) $e \le 3v - 6$, where $e$ is the number of edges of $OG$ and $v$ is the number of vertices of $OG$.
+
+(d) $OG$ is connected, and each vertex in $OG$ has degree at most 2.
+
+(e) Each vertex in $OG$ has degree at most 2.
+
+*Note (these notes):* (b) uses the four colour theorem, which these notes state but do not prove.
+:::

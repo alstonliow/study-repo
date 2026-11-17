@@ -66,3 +66,11 @@ $$c_i = k\,m_i \bmod 26.$$
 (c) How would modular multiplication work for an arbitrary alphabet
     size $n$? Define its keyspace, encryption and decryption functions.
 :::
+
+::: {.problem #prob-cs70hw-4-q2 origin="external" source="cs70hw-4-q2"}
+**The Last Digit.** In each case show your work and justify your answers.
+
+(a) If $9k + 5$ and $2k + 1$ have the same last digit for some natural number $k$, find the last digit of $k$.
+
+(b) If $S = \sum_{i=1}^{19} i!$, then find the last digit of $S^2$.
+:::
