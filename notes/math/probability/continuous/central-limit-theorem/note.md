@@ -18,6 +18,60 @@ $$\Pr\Bigl(\frac{S_n-n\mu}{\sigma\sqrt n}\le c\Bigr)\to\frac1{\sqrt{2\pi}}\int_{
 
 :::
 
+::: {#fig-central-limit-theorem-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=40cm]
+\fill[bar] (-3.310,0) rectangle (-3.170,0.00019);
+\fill[bar] (-3.130,0) rectangle (-2.990,0.00039);
+\fill[bar] (-2.950,0) rectangle (-2.810,0.00077);
+\fill[bar] (-2.770,0) rectangle (-2.630,0.00141);
+\fill[bar] (-2.590,0) rectangle (-2.450,0.00245);
+\fill[bar] (-2.410,0) rectangle (-2.270,0.00403);
+\fill[bar] (-2.230,0) rectangle (-2.090,0.00634);
+\fill[bar] (-2.050,0) rectangle (-1.910,0.00954);
+\fill[bar] (-1.870,0) rectangle (-1.730,0.01375);
+\fill[bar] (-1.690,0) rectangle (-1.550,0.01904);
+\fill[bar] (-1.510,0) rectangle (-1.370,0.02539);
+\fill[bar] (-1.330,0) rectangle (-1.190,0.03262);
+\fill[bar] (-1.150,0) rectangle (-1.010,0.04046);
+\fill[bar] (-0.970,0) rectangle (-0.830,0.04846);
+\fill[bar] (-0.790,0) rectangle (-0.650,0.05612);
+\fill[bar] (-0.610,0) rectangle (-0.470,0.06287);
+\fill[bar] (-0.430,0) rectangle (-0.290,0.06816);
+\fill[bar] (-0.250,0) rectangle (-0.110,0.07153);
+\fill[bar] (-0.070,0) rectangle (0.070,0.07269);
+\fill[bar] (0.110,0) rectangle (0.250,0.07153);
+\fill[bar] (0.290,0) rectangle (0.430,0.06816);
+\fill[bar] (0.470,0) rectangle (0.610,0.06287);
+\fill[bar] (0.650,0) rectangle (0.790,0.05612);
+\fill[bar] (0.830,0) rectangle (0.970,0.04846);
+\fill[bar] (1.010,0) rectangle (1.150,0.04046);
+\fill[bar] (1.190,0) rectangle (1.330,0.03262);
+\fill[bar] (1.370,0) rectangle (1.510,0.02539);
+\fill[bar] (1.550,0) rectangle (1.690,0.01904);
+\fill[bar] (1.730,0) rectangle (1.870,0.01375);
+\fill[bar] (1.910,0) rectangle (2.050,0.00954);
+\fill[bar] (2.090,0) rectangle (2.230,0.00634);
+\fill[bar] (2.270,0) rectangle (2.410,0.00403);
+\fill[bar] (2.450,0) rectangle (2.590,0.00245);
+\fill[bar] (2.630,0) rectangle (2.770,0.00141);
+\fill[bar] (2.810,0) rectangle (2.950,0.00077);
+\fill[bar] (2.990,0) rectangle (3.130,0.00039);
+\fill[bar] (3.170,0) rectangle (3.310,0.00019);
+\draw[emph, accent, domain=-4.5:4.5, samples=100] plot (\x,{exp(-(\x/0.18)*(\x/0.18)/(2*29.1667))/(5.4006*sqrt(2*pi))});
+\draw[muted] (-4.6,0) -- (4.6,0);
+\foreach \s in {20,25,...,50} \node[tick, below] at ({(\s-35)*0.18},0) {$\s$};
+\node[lab, accent] at (2.6,0.06) {$N(35,\tfrac{350}{12})$};
+\end{tikzpicture}
+\end{center}
+```
+
+The exact distribution of the sum of $10$ fair dice (bars) and the normal density with the same mean and variance. Already for $n=10$ they are close.
+
+:::
+
 ::: {#rmk-central-limit-theorem-meaning}
 
 1. We do not prove the theorem here; the usual proofs use characteristic or moment generating functions.

@@ -15,6 +15,29 @@ $N(0,1)$ is the *standard normal* distribution. The graph of $f$ is a bell-shape
 
 :::
 
+::: {#fig-normal-distribution-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=0.75cm,y=7cm]
+\draw[->, muted] (-6.3,0) -- (6.5,0) node[lab, right] {$x$};
+\draw[->, muted] (-6.3,0) -- (-6.3,0.47);
+\foreach \x in {-6,-4,-2,0,2,4,6} \node[tick, below] at (\x,0) {$\x$};
+\foreach \y in {0.1,0.2,0.3,0.4} \node[tick, left] at (-6.3,\y) {$\y$};
+\draw[emph, primary, domain=-6:6, samples=100] plot (\x,{exp(-\x*\x/2)/sqrt(2*pi)});
+\draw[emph, secondary, domain=-6:6, samples=100] plot (\x,{exp(-\x*\x/8)/sqrt(8*pi)});
+\draw[emph, accent, domain=-4:6, samples=100] plot (\x,{exp(-(\x-2)*(\x-2)/2)/sqrt(2*pi)});
+\node[lab, primary, anchor=east] at (-0.9,0.36) {$N(0,1)$};
+\node[lab, secondary] at (-4.2,0.12) {$N(0,4)$};
+\node[lab, accent, anchor=west] at (3.1,0.3) {$N(2,1)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Normal densities: $\mu$ moves the bell, and $\sigma$ sets its width; a larger $\sigma$ gives a wider, lower bell.
+
+:::
+
 ::: {#prp-gaussian-integral .proposition name="Gaussian integral"}
 
 $\displaystyle\int_{-\infty}^{\infty}e^{-x^2/2}\,dx=\sqrt{2\pi}$. Hence the normal density integrates to $1$.
@@ -93,6 +116,40 @@ If $X,Y\sim N(0,1)$ are independent and $a,b$ are constants, not both $0$, then 
 4. By step 1, $\Pr(aX+bY\le t)=\Pr(X\le t/c)=\Pr(cX\le t)$. This holds for every $t$, so $aX+bY$ has the same c.d.f., hence the same distribution, as $cX$.
 
 5. By @lem-normal-standardize, $cX\sim N(0,c^2)=N(0,a^2+b^2)$.
+
+:::
+
+::: {#fig-normal-distribution-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=0.9cm,y=0.9cm]
+\begin{scope}
+\clip (-2.6,-2.6) rectangle (2.6,2.6);
+\fill[tintA] (-2.6,3.1) -- (3.1,-2.6) -- (-2.6,-2.6) -- cycle;
+\draw[emph, primary] (-2.6,3.1) -- (3.1,-2.6);
+\foreach \r in {0.8,1.6,2.4} \draw[faint] (0,0) circle[radius=\r];
+\draw[->, muted] (-2.6,0) -- (2.6,0); \draw[->, muted] (0,-2.6) -- (0,2.6);
+\draw[<->, accent] (0,0) -- (0.25,0.25);
+\end{scope}
+\node[tick, accent] at (0.55,0.15) {$d$};
+\node[lab, primary] at (1.2,1.6) {$ax+by=t$};
+\node[lab] at (-1.3,-1.7) {$A$};
+\draw[->, emph, muted] (3,0) -- node[lab, above] {rotate} (4.2,0);
+\begin{scope}[xshift=7.2cm]
+\clip (-2.6,-2.6) rectangle (2.6,2.6);
+\fill[tintA] (-2.6,-2.6) rectangle (0.354,2.6);
+\draw[emph, primary] (0.354,-2.6) -- (0.354,2.6);
+\foreach \r in {0.8,1.6,2.4} \draw[faint] (0,0) circle[radius=\r];
+\draw[->, muted] (-2.6,0) -- (2.6,0); \draw[->, muted] (0,-2.6) -- (0,2.6);
+\end{scope}
+\node[lab, primary] at (8.9,1.6) {$x=d$};
+\node[lab] at (6.0,-1.7) {$T(A)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The joint density of two independent standard normals is constant on circles about the origin, so rotating the half-plane $A=\{ax+by\le t\}$ onto $\{x\le d\}$, $d=t/\sqrt{a^2+b^2}$, does not change its probability.
 
 :::
 

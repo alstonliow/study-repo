@@ -161,6 +161,24 @@ By contraposition. Suppose every box contains at most one object. Then the numbe
 
 :::
 
+::: {#fig-theorems-and-proofs-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \h in {0,...,3} {\draw[emph] (\h*1.3,1.6) -- (\h*1.3,0) -- (\h*1.3+1,0) -- (\h*1.3+1,1.6); \node[tick] at (\h*1.3+0.5,-0.35) {hole \the\numexpr\h+1\relax};}
+\node[ball] at (0.5,0.4) {};
+\node[hl ball] at (1.8,0.4) {}; \node[hl ball] at (1.8,1.1) {};
+\node[ball] at (3.1,0.4) {};
+\node[ball] at (4.4,0.4) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Five objects in four boxes: some box holds at least two.
+
+:::
+
 ::: {#exm-hairs-on-heads .example name="Two people with the same number of hairs"}
 
 Nobody has more than $500\,000$ hairs on their head, but a city of more than $800\,000$ people has more people than possible hair counts $0,1,\dots,500\,000$. By @thm-pigeonhole, two residents have exactly the same number of hairs. The principle gives the conclusion without telling us who they are.

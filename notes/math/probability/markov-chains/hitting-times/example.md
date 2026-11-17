@@ -16,6 +16,29 @@ $$\beta(S)=1+\tfrac12\beta(T)+\tfrac12\beta(H),\quad\beta(T)=1+\tfrac12\beta(T)+
 Substituting the third into the second: $\beta(T)=\frac32+\frac34\beta(T)$, so $\beta(T)=6$, $\beta(H)=4$, and $\beta(S)=1+3+2=6$. On average $6$ flips are needed.
 :::
 
+::: {#fig-hitting-times-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.7cm]
+\node[vertex] (S) at (0,0) {$S$};
+\node[vertex] (T) at (1.6,1) {$T$};
+\node[vertex] (H) at (1.6,-1) {$H$};
+\node[vertex] (E) at (3.4,-1) {$E$};
+\draw[->] (S) -- node[edge label] {$\frac12$} (T);
+\draw[->] (S) -- node[edge label] {$\frac12$} (H);
+\draw[->] (T) to[loop right] node[edge label] {$\frac12$} (T);
+\draw[->] (T) to[bend left=20] node[edge label] {$\frac12$} (H);
+\draw[->] (H) to[bend left=20] node[edge label] {$\frac12$} (T);
+\draw[->] (H) -- node[edge label] {$\frac12$} (E);
+\end{tikzpicture}
+\end{center}
+```
+
+The chain of @exm-two-heads: $T$ and $H$ record the last flip, and $E$ means two heads in a row.
+
+:::
+
 ::: {#exm-dice-sum-eight .example name="Two rolls summing to 8" level="medium"}
 Roll a fair die until two consecutive rolls sum to $8$. The states are $S$, the last roll $1,\dots,6$, and $E$. From state $i$, the roll $8-i$ ends the game if it is a possible roll, i.e. if $i\ge2$; from $1$ (and from $S$) no roll ends it. So $\beta(1)=\beta(S)$, and by symmetry $\beta(2)=\dots=\beta(6)=\gamma$. The first step equations become
 $$\beta(S)=1+\tfrac16\bigl(\beta(S)+5\gamma\bigr),\qquad \gamma=1+\tfrac16\bigl(\beta(S)+4\gamma\bigr).$$
@@ -43,4 +66,23 @@ A gambler bets $1$ on each flip of a coin with $\Pr(\text{heads})=p\ne\frac12$, 
 With $p=0.48$, $n=10$ and $M=100$ this is about $4\times10^{-4}$. The casino then gains $10$ with probability about $1-4\times10^{-4}$ and loses $90$ otherwise, an expected gain of about $9.96$ per gambler; had the gambler bet all $10$ on one flip, it would have been $0.52\cdot10-0.48\cdot10=0.40$. By the same method (@thm-first-step-hitting-time), the mean duration of the game is
 $$\beta(n)=\frac n{1-2p}-\frac M{1-2p}\cdot\frac{1-\rho^n}{1-\rho^M},$$
 about $249$ flips here.
+:::
+
+::: {#fig-hitting-times-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.8cm]
+\foreach \i/\l in {0/0,1/1,2/2,4/M-1,5/M} \node[vertex] (s\i) at (\i,0) {$\l$};
+\node[lab] (s3) at (3,0) {$\cdots$};
+\foreach \i/\j in {1/2,2/3,3/4,4/5} \draw[->] (s\i) to[bend left=28] node[tick, above] {$p$} (s\j);
+\foreach \i/\j in {1/0,2/1,3/2,4/3} \draw[->] (s\i) to[bend left=28] node[tick, below] {$1-p$} (s\j);
+\draw[->] (s0) to[loop left] node[edge label] {$1$} (s0);
+\draw[->] (s5) to[loop right] node[edge label] {$1$} (s5);
+\end{tikzpicture}
+\end{center}
+```
+
+Gambler's ruin: the fortune moves up with probability $p$ and down with probability $1-p$ until it reaches $0$ or $M$, where it stays.
+
 :::

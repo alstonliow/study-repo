@@ -68,3 +68,21 @@ A polynomial of degree $d$ that is not the zero polynomial has at most $d$ roots
 3. Now suppose $p$ had $d+1$ distinct roots. By step 1 applied to $d$ of them, $p(x)=c(x-a_1)\cdots(x-a_d)$; at the remaining root $a$, every factor $a-a_i$ and $c$ are non-zero, so $p(a)\ne0$, a contradiction.
 
 :::
+
+::: {#fig-polynomials-and-roots-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.1cm,y=0.55cm]
+\draw[->, muted] (-2.4,0) -- (3,0) node[lab, right] {$x$};
+\draw[->, muted] (0,-3.2) -- (0,3.6);
+\draw[emph, primary, domain=-2.05:2.6, samples=80] plot (\x,{0.5*(\x+1.5)*(\x-0.5)*(\x-2)});
+\foreach \r/\l in {-1.5/-\frac32, 0.5/\frac12, 2/2} {\fill[accent] (\r,0) circle[pt]; \node[tick, below] at (\r,-0.15) {$\l$};}
+\node[lab, primary] at (-1.6,2.8) {$p(x)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The cubic $p(x)=\frac12\bigl(x+\frac32\bigr)\bigl(x-\frac12\bigr)(x-2)$ has three real roots, the most a polynomial of degree $3$ can have.
+
+:::

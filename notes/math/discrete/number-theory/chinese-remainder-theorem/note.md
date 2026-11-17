@@ -26,6 +26,38 @@ $$x\equiv a\pmod n\qquad\text{and}\qquad x\equiv b\pmod m.$$
 
 :::
 
+::: {#fig-chinese-remainder-theorem-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=0.65cm]
+\draw[cell frame] (0,0) rectangle ++(1,1); \node[lab] at (0+0.5,0+0.5) {0};
+\draw[cell frame] (1,0) rectangle ++(1,1); \node[lab] at (1+0.5,0+0.5) {6};
+\draw[cell frame] (2,0) rectangle ++(1,1); \node[lab] at (2+0.5,0+0.5) {12};
+\draw[cell frame] (3,0) rectangle ++(1,1); \node[lab] at (3+0.5,0+0.5) {3};
+\draw[cell frame] (4,0) rectangle ++(1,1); \node[lab] at (4+0.5,0+0.5) {9};
+\draw[cell frame] (0,-1) rectangle ++(1,1); \node[lab] at (0+0.5,-1+0.5) {10};
+\draw[cell frame] (1,-1) rectangle ++(1,1); \node[lab] at (1+0.5,-1+0.5) {1};
+\draw[cell frame] (2,-1) rectangle ++(1,1); \node[lab] at (2+0.5,-1+0.5) {7};
+\draw[cell frame] (3,-1) rectangle ++(1,1); \node[lab] at (3+0.5,-1+0.5) {13};
+\draw[cell frame] (4,-1) rectangle ++(1,1); \node[lab] at (4+0.5,-1+0.5) {4};
+\draw[cell frame] (0,-2) rectangle ++(1,1); \node[lab] at (0+0.5,-2+0.5) {5};
+\draw[cell frame] (1,-2) rectangle ++(1,1); \node[lab] at (1+0.5,-2+0.5) {11};
+\draw[cell frame] (2,-2) rectangle ++(1,1); \node[lab] at (2+0.5,-2+0.5) {2};
+\draw[cell frame] (3,-2) rectangle ++(1,1); \node[lab] at (3+0.5,-2+0.5) {8};
+\draw[cell frame] (4,-2) rectangle ++(1,1); \node[lab] at (4+0.5,-2+0.5) {14};
+\foreach \b in {0,...,4} \node[lab] at (\b+0.5,1.4) {$\b$};
+\foreach \a in {0,1,2} \node[lab] at (-0.5,-\a+0.5) {$\a$};
+\node[lab] at (2.5,2.1) {$b=x\bmod5$};
+\node[lab, anchor=east] at (-0.9,-0.5) {$a=x\bmod3$};
+\end{tikzpicture}
+\end{center}
+```
+
+With $n=3$ and $m=5$: each $x\in\{0,\dots,14\}$ sits in row $x\bmod3$ and column $x\bmod5$, and every cell holds exactly one $x$.
+
+:::
+
 ::: {#thm-crt .theorem name="Chinese Remainder Theorem"}
 
 Let $n_1,\dots,n_k\ge1$ be pairwise coprime and $N=n_1n_2\cdots n_k$. For all integers $a_1,\dots,a_k$ there is exactly one $x\in\{0,\dots,N-1\}$ with $x\equiv a_i\pmod{n_i}$ for every $i$. It is

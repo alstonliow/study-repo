@@ -13,6 +13,24 @@ For a prime $p$, $\mathrm{GF}(p)$ (also written $\mathbb F_p$) is $\{0,1,\dots,p
 
 :::
 
+::: {#fig-finite-fields-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=0.6cm,y=0.6cm]
+\foreach \i in {0,...,6} {\draw[gridline] (\i,0) -- (\i,6); \draw[gridline] (0,\i) -- (6,\i);
+  \node[tick] at (\i,-0.6) {$\i$}; \node[tick] at (-0.6,\i) {$\i$};}
+\foreach \x/\y in {0/1,1/2,2/5,3/3,4/3,5/5,6/2} \fill[primary] (\x,\y) circle[pt];
+\node[lab] at (3,-1.4) {$x$};
+\node[lab] at (-1.6,3) {$P(x)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The polynomial $P(x)=x^2+1$ over $\mathrm{GF}(7)$ is not a curve but a set of $7$ points, one in each column; still, it is determined by any $3$ of them.
+
+:::
+
 ::: {#prp-polynomials-mod-p .proposition name="The polynomial facts hold modulo a prime"}
 
 For polynomials with coefficients and values in $\mathrm{GF}(p)$, division with remainder (@thm-polynomial-division), the factor theorem (@thm-factor-theorem), the bound on roots (@thm-at-most-d-roots) and interpolation (@thm-interpolation, with distinct $x_i$ in $\mathrm{GF}(p)$) all hold.

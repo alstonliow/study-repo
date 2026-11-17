@@ -29,6 +29,61 @@ The interval $[0,1]$, and hence $\mathbb R$, is uncountable.
 
 :::
 
+::: {#fig-cantor-diagonalization-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=0.65cm,y=0.6cm]
+\node[lab, anchor=east] at (-0.2,0+0.5) {$f(0)=0.$};
+\draw[hl cell] (0,0) rectangle ++(1,1); \node[lab] at (0+0.5,0+0.5) {3};
+\draw[cell] (1,0) rectangle ++(1,1); \node[lab] at (1+0.5,0+0.5) {1};
+\draw[cell] (2,0) rectangle ++(1,1); \node[lab] at (2+0.5,0+0.5) {4};
+\draw[cell] (3,0) rectangle ++(1,1); \node[lab] at (3+0.5,0+0.5) {1};
+\draw[cell] (4,0) rectangle ++(1,1); \node[lab] at (4+0.5,0+0.5) {5};
+\node[lab] at (5.5,0+0.5) {$\cdots$};
+\node[lab, anchor=east] at (-0.2,-1+0.5) {$f(1)=0.$};
+\draw[cell] (0,-1) rectangle ++(1,1); \node[lab] at (0+0.5,-1+0.5) {2};
+\draw[hl cell] (1,-1) rectangle ++(1,1); \node[lab] at (1+0.5,-1+0.5) {7};
+\draw[cell] (2,-1) rectangle ++(1,1); \node[lab] at (2+0.5,-1+0.5) {1};
+\draw[cell] (3,-1) rectangle ++(1,1); \node[lab] at (3+0.5,-1+0.5) {8};
+\draw[cell] (4,-1) rectangle ++(1,1); \node[lab] at (4+0.5,-1+0.5) {2};
+\node[lab] at (5.5,-1+0.5) {$\cdots$};
+\node[lab, anchor=east] at (-0.2,-2+0.5) {$f(2)=0.$};
+\draw[cell] (0,-2) rectangle ++(1,1); \node[lab] at (0+0.5,-2+0.5) {1};
+\draw[cell] (1,-2) rectangle ++(1,1); \node[lab] at (1+0.5,-2+0.5) {4};
+\draw[hl cell] (2,-2) rectangle ++(1,1); \node[lab] at (2+0.5,-2+0.5) {1};
+\draw[cell] (3,-2) rectangle ++(1,1); \node[lab] at (3+0.5,-2+0.5) {4};
+\draw[cell] (4,-2) rectangle ++(1,1); \node[lab] at (4+0.5,-2+0.5) {2};
+\node[lab] at (5.5,-2+0.5) {$\cdots$};
+\node[lab, anchor=east] at (-0.2,-3+0.5) {$f(3)=0.$};
+\draw[cell] (0,-3) rectangle ++(1,1); \node[lab] at (0+0.5,-3+0.5) {6};
+\draw[cell] (1,-3) rectangle ++(1,1); \node[lab] at (1+0.5,-3+0.5) {6};
+\draw[cell] (2,-3) rectangle ++(1,1); \node[lab] at (2+0.5,-3+0.5) {6};
+\draw[hl cell] (3,-3) rectangle ++(1,1); \node[lab] at (3+0.5,-3+0.5) {6};
+\draw[cell] (4,-3) rectangle ++(1,1); \node[lab] at (4+0.5,-3+0.5) {6};
+\node[lab] at (5.5,-3+0.5) {$\cdots$};
+\node[lab, anchor=east] at (-0.2,-4+0.5) {$f(4)=0.$};
+\draw[cell] (0,-4) rectangle ++(1,1); \node[lab] at (0+0.5,-4+0.5) {0};
+\draw[cell] (1,-4) rectangle ++(1,1); \node[lab] at (1+0.5,-4+0.5) {9};
+\draw[cell] (2,-4) rectangle ++(1,1); \node[lab] at (2+0.5,-4+0.5) {8};
+\draw[cell] (3,-4) rectangle ++(1,1); \node[lab] at (3+0.5,-4+0.5) {7};
+\draw[hl cell] (4,-4) rectangle ++(1,1); \node[lab] at (4+0.5,-4+0.5) {6};
+\node[lab] at (5.5,-4+0.5) {$\cdots$};
+\node[lab, anchor=east] at (-0.2,-5.3) {$s=0.$};
+\draw[hl cell] (0,-5.8) rectangle ++(1,1); \node[lab] at (0+0.5,-5.3) {5};
+\draw[hl cell] (1,-5.8) rectangle ++(1,1); \node[lab] at (1+0.5,-5.3) {9};
+\draw[hl cell] (2,-5.8) rectangle ++(1,1); \node[lab] at (2+0.5,-5.3) {3};
+\draw[hl cell] (3,-5.8) rectangle ++(1,1); \node[lab] at (3+0.5,-5.3) {8};
+\draw[hl cell] (4,-5.8) rectangle ++(1,1); \node[lab] at (4+0.5,-5.3) {8};
+\node[lab] at (5.5,-5.3) {$\cdots$};
+\end{tikzpicture}
+\end{center}
+```
+
+The diagonal argument: digit $n+1$ of $s$ is digit $n+1$ of $f(n)$ plus $2$ (mod $10$), so $s$ differs from every number in the list.
+
+:::
+
 ::: {#rmk-cantor-diagonalization-rationals .remark name="Why the argument fails for the rationals"}
 
 Applying the same construction to a list of the rationals in $[0,1]$ produces a number $s$ that is not on the list, but $s$ need not be rational (its decimal need not repeat), so there is no contradiction. This is consistent with @cor-rationals-countable.
@@ -40,6 +95,56 @@ Applying the same construction to a list of the rationals in $[0,1]$ produces a 
 ::: {#def-cantor-set .definition name="Cantor set"}
 
 Start with $[0,1]$, remove the open middle third $(\frac13,\frac23)$, then the open middle third of each remaining interval, and so on forever. The *Cantor set* $C$ is the set of points never removed.
+
+:::
+
+::: {#fig-cantor-diagonalization-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[bold, primary] (0.0000,-0.0) -- (9.0000,-0.0);
+\node[tick, anchor=east] at (-0.2,-0.0) {$C_0$};
+\draw[bold, primary] (0.0000,-0.55) -- (3.0000,-0.55);
+\draw[bold, primary] (6.0000,-0.55) -- (9.0000,-0.55);
+\node[tick, anchor=east] at (-0.2,-0.55) {$C_1$};
+\draw[bold, primary] (0.0000,-1.1) -- (1.0000,-1.1);
+\draw[bold, primary] (2.0000,-1.1) -- (3.0000,-1.1);
+\draw[bold, primary] (6.0000,-1.1) -- (7.0000,-1.1);
+\draw[bold, primary] (8.0000,-1.1) -- (9.0000,-1.1);
+\node[tick, anchor=east] at (-0.2,-1.1) {$C_2$};
+\draw[bold, primary] (0.0000,-1.6500000000000001) -- (0.3333,-1.6500000000000001);
+\draw[bold, primary] (0.6667,-1.6500000000000001) -- (1.0000,-1.6500000000000001);
+\draw[bold, primary] (2.0000,-1.6500000000000001) -- (2.3333,-1.6500000000000001);
+\draw[bold, primary] (2.6667,-1.6500000000000001) -- (3.0000,-1.6500000000000001);
+\draw[bold, primary] (6.0000,-1.6500000000000001) -- (6.3333,-1.6500000000000001);
+\draw[bold, primary] (6.6667,-1.6500000000000001) -- (7.0000,-1.6500000000000001);
+\draw[bold, primary] (8.0000,-1.6500000000000001) -- (8.3333,-1.6500000000000001);
+\draw[bold, primary] (8.6667,-1.6500000000000001) -- (9.0000,-1.6500000000000001);
+\node[tick, anchor=east] at (-0.2,-1.6500000000000001) {$C_3$};
+\draw[bold, primary] (0.0000,-2.2) -- (0.1111,-2.2);
+\draw[bold, primary] (0.2222,-2.2) -- (0.3333,-2.2);
+\draw[bold, primary] (0.6667,-2.2) -- (0.7778,-2.2);
+\draw[bold, primary] (0.8889,-2.2) -- (1.0000,-2.2);
+\draw[bold, primary] (2.0000,-2.2) -- (2.1111,-2.2);
+\draw[bold, primary] (2.2222,-2.2) -- (2.3333,-2.2);
+\draw[bold, primary] (2.6667,-2.2) -- (2.7778,-2.2);
+\draw[bold, primary] (2.8889,-2.2) -- (3.0000,-2.2);
+\draw[bold, primary] (6.0000,-2.2) -- (6.1111,-2.2);
+\draw[bold, primary] (6.2222,-2.2) -- (6.3333,-2.2);
+\draw[bold, primary] (6.6667,-2.2) -- (6.7778,-2.2);
+\draw[bold, primary] (6.8889,-2.2) -- (7.0000,-2.2);
+\draw[bold, primary] (8.0000,-2.2) -- (8.1111,-2.2);
+\draw[bold, primary] (8.2222,-2.2) -- (8.3333,-2.2);
+\draw[bold, primary] (8.6667,-2.2) -- (8.7778,-2.2);
+\draw[bold, primary] (8.8889,-2.2) -- (9.0000,-2.2);
+\node[tick, anchor=east] at (-0.2,-2.2) {$C_4$};
+\foreach \x/\l in {0/0,3/\frac13,6/\frac23,9/1} \node[tick] at (\x,0.35) {$\l$};
+\end{tikzpicture}
+\end{center}
+```
+
+The first steps of the construction: $C_k$ consists of $2^k$ intervals of length $3^{-k}$, and $C$ is what is left in every $C_k$.
 
 :::
 

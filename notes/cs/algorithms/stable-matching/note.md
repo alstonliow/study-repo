@@ -17,6 +17,25 @@ In a matching $M$, a job $J$ and a candidate $C$ that are not paired with each o
 
 :::
 
+::: {#fig-stable-matching-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=0.85cm]
+\foreach \j/\y in {1/2,2/1,3/0} \node[vertex] (j\j) at (0,\y) {$\j$};
+\foreach \c/\y in {a/2,b/1,c/0} \node[vertex] (c\c) at (3,\y) {$\c$};
+\node[lab] at (0,2.8) {jobs};
+\node[lab] at (3,2.8) {candidates};
+\draw[emph] (j1)--(cc) (j2)--(cb) (j3)--(ca);
+\draw[hl, dashed] (j1)--(cb);
+\end{tikzpicture}
+\end{center}
+```
+
+The matching $\{(1,c),(2,b),(3,a)\}$ for the lists of @exm-propose-and-reject-run is not stable: job $1$ prefers $b$ to $c$, and $b$ prefers $1$ to $2$, so $(1,b)$ is a rogue couple (dashed).
+
+:::
+
 ::: {#rmk-stable-matching-existence}
 
 It is not obvious that a stable matching always exists. Repeatedly pairing up a rogue couple removes that couple but may create new ones, so this procedure need not stop. For the *roommates problem*, where $2n$ people of one type are paired with each other, there are instances with no stable matching at all (@exm-roommates-no-stable). So an existence proof must use the fact that there are two different types. The proof below is an algorithm.

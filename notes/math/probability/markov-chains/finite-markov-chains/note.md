@@ -62,6 +62,25 @@ In particular, $\Pr(X_n=j\mid X_0=i)=P^n(i,j)$ when $\pi_0(i)>0$.
 
 :::
 
+::: {#fig-finite-markov-chains-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (0) at (0,0) {$0$};
+\node[vertex] (1) at (3,0) {$1$};
+\draw[->] (0) to[bend left=25] node[edge label] {$a$} (1);
+\draw[->] (1) to[bend left=25] node[edge label] {$a$} (0);
+\draw[->] (0) to[loop left] node[edge label] {$1-a$} (0);
+\draw[->] (1) to[loop right] node[edge label] {$1-a$} (1);
+\end{tikzpicture}
+\end{center}
+```
+
+The state transition diagram of the two-state chain.
+
+:::
+
 ::: {#prp-two-state-chain .proposition name="The two-state chain"}
 
 On $\{0,1\}$, let $P=\begin{pmatrix}1-a&a\\a&1-a\end{pmatrix}$ with $0\le a\le1$: at each step the chain switches state with probability $a$. Then for $n\ge0$,

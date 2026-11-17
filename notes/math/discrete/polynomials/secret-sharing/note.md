@@ -31,6 +31,29 @@ A secret $s$ is to be shared among $n$ people so that any $k$ of them can recove
 
 :::
 
+::: {#fig-secret-sharing-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.3cm,y=0.45cm]
+\draw[->, muted] (-0.6,0) -- (3.4,0) node[lab, right] {$x$};
+\draw[->, muted] (0,-1.5) -- (0,7.5);
+\draw[emph, primary, domain=-0.15:3.1, samples=60] plot (\x,{-0.5*\x*\x+(2.5)*\x+0});
+\fill[primary] (0,0) circle[pt]; \node[tick, anchor=east, primary] at (-0.12,0) {$s=0$};
+\draw[emph, secondary, domain=-0.15:3.1, samples=60] plot (\x,{0.5*\x*\x+(-0.5)*\x+2});
+\fill[secondary] (0,2) circle[pt]; \node[tick, anchor=east, secondary] at (-0.12,2) {$s=2$};
+\draw[emph, accent, domain=-0.15:3.1, samples=60] plot (\x,{1.5*\x*\x+(-3.5)*\x+4});
+\fill[accent] (0,4) circle[pt]; \node[tick, anchor=east, accent] at (-0.12,4) {$s=4$};
+\foreach \x/\y in {1/2,2/3} \fill[ink] (\x,\y) circle[pt];
+\node[lab, anchor=west] at (1.05,1.2) {shares};
+\end{tikzpicture}
+\end{center}
+```
+
+The idea over the reals, with $k=3$: two shares are matched by a parabola with *every* value at $0$, so two people learn nothing about the secret. A third share fixes the parabola.
+
+:::
+
 ::: {#rmk-secret-sharing-why-finite .remark name="Why a finite field"}
 
 The scheme would also reconstruct over the real numbers, but there "no information" cannot be made precise and calculations would be inexact. Over $\mathrm{GF}(q)$ every value is exact, and the $q$ possible secrets can be counted.

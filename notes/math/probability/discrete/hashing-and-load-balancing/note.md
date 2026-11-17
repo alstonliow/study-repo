@@ -16,6 +16,26 @@ A hash function sends each of $m$ keys to one of $n$ table positions; a simple s
 
 :::
 
+::: {#fig-hashing-and-load-balancing-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \b in {0,...,7} {\draw[emph] (\b+0.1,1.9) -- (\b+0.1,0) -- (\b+0.9,0) -- (\b+0.9,1.9); \node[tick] at (\b+0.5,-0.35) {$\b$};}
+\node[ball] at (3.5,0.4) {$1$};
+\node[hl ball] at (6.5,0.4) {$2$};
+\node[ball] at (1.5,0.4) {$3$};
+\node[hl ball] at (6.5,1.1) {$4$};
+\node[ball] at (0.5,0.4) {$5$};
+\node[ball] at (4.5,0.4) {$6$};
+\end{tikzpicture}
+\end{center}
+```
+
+Hashing $6$ keys into a table of $8$ slots: keys $2$ and $4$ land in the same slot, a collision.
+
+:::
+
 ## Hashing without collisions
 
 ::: {#prp-collision-union-bound .proposition name="Collision probability, union bound"}

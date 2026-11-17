@@ -15,6 +15,29 @@ It models a waiting time in continuous time: until a component fails, a request 
 
 :::
 
+::: {#fig-exponential-distribution-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.6cm,y=1.6cm]
+\draw[->, muted] (0,0) -- (3.3,0) node[lab, right] {$x$};
+\draw[->, muted] (0,0) -- (0,2.2);
+\foreach \y in {0.5,1,1.5,2} \node[tick, left] at (0,\y) {$\y$};
+\foreach \x in {1,2,3} \node[tick, below] at (\x,0) {$\x$};
+\draw[emph, primary, domain=0:3.1, samples=60] plot (\x,{0.5*exp(-0.5*\x)}) ;
+\draw[emph, secondary, domain=0:3.1, samples=60] plot (\x,{exp(-\x)});
+\node[lab, primary] at (2.2,0.38) {$\lambda=\tfrac12$};
+\node[lab, secondary] at (1.0,0.62) {$\lambda=1$};
+\draw[emph, accent, domain=0:3.1, samples=60] plot (\x,{2*exp(-2*\x)});
+\node[lab, accent] at (0.45,1.5) {$\lambda=2$};
+\end{tikzpicture}
+\end{center}
+```
+
+Exponential densities for $\lambda=\frac12,1,2$. A larger rate starts higher and decays faster: the waits are shorter.
+
+:::
+
 ::: {#prp-exponential-tail .proposition name="Tail of the exponential distribution"}
 
 If $X\sim\mathrm{Exp}(\lambda)$, then $f$ is a density and $\Pr(X>t)=e^{-\lambda t}$ for all $t\ge0$.

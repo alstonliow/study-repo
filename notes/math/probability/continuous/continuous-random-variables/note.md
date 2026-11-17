@@ -28,6 +28,27 @@ $$\Pr(a\le X\le b)=\int_a^b f(x)\,dx\qquad\text{for all }a\le b.$$
 
 :::
 
+::: {#fig-continuous-random-variables-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.2cm,y=5cm]
+\fill[shade, domain=1:2.5, samples=40] (1,0) -- plot (\x,{\x*exp(-\x)}) -- (2.5,0) -- cycle;
+\draw[->, muted] (-0.2,0) -- (5.3,0) node[lab, right] {$x$};
+\draw[->, muted] (0,-0.03) -- (0,0.5);
+\draw[emph, primary, domain=0:5, samples=80] plot (\x,{\x*exp(-\x)});
+\node[tick, below] at (1,0) {$a$}; \node[tick, below] at (2.5,0) {$b$};
+\node[lab, primary] at (0.8,0.43) {$f$};
+\node[lab] at (3.6,0.3) {area $=\Pr(a\le X\le b)$};
+\draw[muted] (3.0,0.27) -- (1.9,0.12);
+\end{tikzpicture}
+\end{center}
+```
+
+A probability is an area under the density: $\Pr(a\le X\le b)=\int_a^bf(x)\,dx$. The total area under $f$ is $1$.
+
+:::
+
 ::: {#rmk-continuous-random-variables-density}
 
 1. Taking $a=b$ gives $\Pr(X=a)=0$, so it does not matter whether the endpoints are included: $\Pr(a<X<b)=\Pr(a\le X\le b)$.
@@ -71,6 +92,35 @@ If $X\sim U[0,\ell]$, then $E[X]=\dfrac\ell2$ and $\mathrm{Var}(X)=\dfrac{\ell^2
 2. $E[X]=\int_0^\ell \frac x\ell\,dx=\frac1\ell\cdot\frac{\ell^2}2=\frac\ell2$.
 
 3. $E[X^2]=\int_0^\ell\frac{x^2}\ell\,dx=\frac{\ell^2}3$, so $\mathrm{Var}(X)=\frac{\ell^2}3-\frac{\ell^2}4=\frac{\ell^2}{12}$.
+
+:::
+
+::: {#fig-continuous-random-variables-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1.6cm]
+\begin{scope}
+\draw[->, muted] (-0.8,0) -- (3.6,0) node[lab, right] {$x$};
+\draw[->, muted] (0,-0.1) -- (0,1.4);
+\draw[emph, primary] (-0.8,0) -- (0,0); \draw[emph, primary] (0,1) -- (2.5,1); \draw[emph, primary] (2.5,0) -- (3.4,0);
+\draw[faint, dashed] (2.5,0) -- (2.5,1);
+\node[tick, below] at (2.5,0) {$\ell$}; \node[tick, left] at (0,1) {$\frac1\ell$};
+\node[lab] at (1.25,1.3) {density $f$};
+\end{scope}
+\begin{scope}[xshift=5cm]
+\draw[->, muted] (-0.8,0) -- (3.6,0) node[lab, right] {$x$};
+\draw[->, muted] (0,-0.1) -- (0,1.4);
+\draw[emph, primary] (-0.8,0) -- (0,0) -- (2.5,1) -- (3.4,1);
+\draw[faint, dashed] (2.5,0) -- (2.5,1);
+\node[tick, below] at (2.5,0) {$\ell$}; \node[tick, left] at (0,1) {$1$};
+\node[lab] at (1.25,1.3) {c.d.f. $F$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The uniform distribution on $[0,\ell]$: its density is constant on $[0,\ell]$, and its c.d.f. rises linearly from $0$ to $1$ there.
 
 :::
 

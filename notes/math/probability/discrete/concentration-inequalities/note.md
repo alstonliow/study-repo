@@ -29,6 +29,33 @@ $$\Pr(X\ge c)\le\frac{E[X]}{c}.$$
 
 :::
 
+::: {#fig-concentration-inequalities-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=0.6cm,y=10cm]
+\draw[bar] (-0.32,0) rectangle (0.32,0.0282); \node[tick, below] at (0,0) {$0$};
+\draw[bar] (0.6799999999999999,0) rectangle (1.32,0.1211); \node[tick, below] at (1,0) {$1$};
+\draw[bar] (1.68,0) rectangle (2.32,0.2335); \node[tick, below] at (2,0) {$2$};
+\draw[bar] (2.68,0) rectangle (3.32,0.2668); \node[tick, below] at (3,0) {$3$};
+\draw[bar] (3.68,0) rectangle (4.32,0.2001); \node[tick, below] at (4,0) {$4$};
+\draw[bar] (4.68,0) rectangle (5.32,0.1029); \node[tick, below] at (5,0) {$5$};
+\draw[hl cell] (5.68,0) rectangle (6.32,0.0368); \node[tick, below] at (6,0) {$6$};
+\draw[hl cell] (6.68,0) rectangle (7.32,0.0090); \node[tick, below] at (7,0) {$7$};
+\draw[hl cell] (7.68,0) rectangle (8.32,0.0014); \node[tick, below] at (8,0) {$8$};
+\draw[hl cell] (8.68,0) rectangle (9.32,0.0001); \node[tick, below] at (9,0) {$9$};
+\draw[hl cell] (9.68,0) rectangle (10.32,0.0000); \node[tick, below] at (10,0) {$10$};
+\draw[muted] (-0.6,0) -- (10.6,0);
+\draw[accent, dashed] (3,0) -- (3,0.3) node[lab, above] {$E[X]=3$};
+\node[lab, accent] at (8.3,0.15) {$\Pr(X\ge6)\approx0.047\le\frac36$};
+\end{tikzpicture}
+\end{center}
+```
+
+$X\sim\mathrm{Bin}(10,0.3)$ has mean $3$. Markov's inequality bounds the tail $\Pr(X\ge6)$ (shaded) by $\frac36$; the true value is about $0.047$, so the bound is valid but crude.
+
+:::
+
 ::: {#thm-generalised-markov .theorem name="Generalised Markov inequality"}
 
 For any random variable $Y$ and constants $c>0$ and $r>0$ with $E\bigl[|Y|^r\bigr]$ finite,

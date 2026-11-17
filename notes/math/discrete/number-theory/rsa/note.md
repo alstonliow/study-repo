@@ -27,6 +27,27 @@ Bob chooses two large primes $p\ne q$ and puts $N=pq$. He chooses $e$ coprime to
 
 :::
 
+::: {#fig-rsa-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\node[box] (alice) at (0,0) {Alice\\ $y=x^e\bmod N$};
+\node[box] (bob) at (6,0) {Bob\\ $x=y^d\bmod N$};
+\node[hl box] (key) at (6,1.8) {Bob's keys: public $(N,e)$,\\ private $d$};
+\draw[->, emph] (alice) -- node[lab, above] {$y$} node[lab, below, note] {public channel} (bob);
+\draw[->, primary, dashed] (key.west) -| node[lab, note, above, pos=0.25] {published} (alice.north);
+\node[lab] (x) at (-2.2,0) {$x$};
+\node[lab] (x2) at (8.2,0) {$x$};
+\draw[->] (x) -- (alice); \draw[->] (bob) -- (x2);
+\end{tikzpicture}
+\end{center}
+```
+
+Anyone can encrypt with the public key $(N,e)$; only Bob, who knows $d$, can decrypt. An eavesdropper sees $N$, $e$ and $y$.
+
+:::
+
 ::: {#thm-rsa-correct .theorem name="RSA decrypts correctly"}
 
 $D(E(x))=x$ for every $x\in\{0,1,\dots,N-1\}$.

@@ -45,3 +45,26 @@ Four people $A,B,C,D$ must be split into two pairs. The lists are $A: B,C,D$; $B
 
 For example, in $\{(A,B),(C,D)\}$ the rogue couple is $(B,C)$, and in $\{(A,D),(B,C)\}$ it is $(A,C)$.
 :::
+
+::: {#fig-stable-matching-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (A) at (90:1.3) {$A$};
+\node[vertex] (B) at (210:1.3) {$B$};
+\node[vertex] (C) at (330:1.3) {$C$};
+\node[vertex] (D) at (0,-2.4) {$D$};
+\draw[->, emph, primary] (A) -- (B);
+\draw[->, emph, primary] (B) -- (C);
+\draw[->, emph, primary] (C) -- (A);
+\draw[faint, dashed] (D) -- (A) (D) -- (B) (D) -- (C);
+\node[lab, note] at (2.6,0.6) {arrow: first choice};
+\node[lab, note] at (1.9,-2.4) {last for everyone};
+\end{tikzpicture}
+\end{center}
+```
+
+First choices among $A,B,C$ form a cycle, and everyone ranks $D$ last. Whoever is paired with $D$ is someone else's first choice.
+
+:::

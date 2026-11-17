@@ -41,6 +41,40 @@ where $\binom mj=0$ when $j>m$.
 
 :::
 
+::: {#fig-hypergeometric-distribution-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1cm,y=8cm]
+\fill[bar] (-0.3,0) rectangle (0,0.0511);
+\draw[cell frame] (0,0) rectangle (0.3,0.0778);
+\node[tick, below] at (0,0) {$0$};
+\fill[bar] (0.7,0) rectangle (1,0.2554);
+\draw[cell frame] (1,0) rectangle (1.3,0.2592);
+\node[tick, below] at (1,0) {$1$};
+\fill[bar] (1.7,0) rectangle (2,0.3973);
+\draw[cell frame] (2,0) rectangle (2.3,0.3456);
+\node[tick, below] at (2,0) {$2$};
+\fill[bar] (2.7,0) rectangle (3,0.2384);
+\draw[cell frame] (3,0) rectangle (3.3,0.2304);
+\node[tick, below] at (3,0) {$3$};
+\fill[bar] (3.7,0) rectangle (4,0.0542);
+\draw[cell frame] (4,0) rectangle (4.3,0.0768);
+\node[tick, below] at (4,0) {$4$};
+\fill[bar] (4.7,0) rectangle (5,0.0036);
+\draw[cell frame] (5,0) rectangle (5.3,0.0102);
+\node[tick, below] at (5,0) {$5$};
+\draw[muted] (-0.6,0) -- (5.6,0);
+\fill[bar] (3.6,0.4) rectangle (3.85,0.43); \node[lab, anchor=west] at (3.9,0.415) {without replacement};
+\draw[cell frame] (3.6,0.34) rectangle (3.85,0.37); \node[lab, anchor=west] at (3.9,0.355) {with replacement};
+\end{tikzpicture}
+\end{center}
+```
+
+Drawing $n=5$ balls from $N=20$, of which $B=8$ are black: $\mathrm{Hypergeometric}(20,8,5)$ without replacement, and $\mathrm{Bin}(5,0.4)$ with replacement. Without replacement the count is more concentrated around the mean $2$.
+
+:::
+
 ::: {#rmk-hypergeometric-distribution-2 .remark name="Counting view"}
 
 The formula also follows by counting sets: there are $\binom Nn$ equally likely sets of $n$ balls, and $\binom Bk\binom{N-B}{n-k}$ of them contain exactly $k$ black balls. $\Pr(Y=k)>0$ only when $\max(0,n+B-N)\le k\le\min(n,B)$.

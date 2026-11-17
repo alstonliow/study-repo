@@ -73,6 +73,26 @@ A code of minimum distance $k+1$ can, in principle, recover from $k$ erasures: f
 
 :::
 
+::: {#fig-reed-solomon-codes-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p/\n in {(0,0)/a,(3.2,0.4)/b,(1.5,2.6)/c} {\draw[regionA] \p circle[radius=1.15]; \fill[primary] \p circle[pt];}
+\node[lab, below] at (0,-0.1) {$c$};
+\node[lab, below] at (3.2,0.3) {$c'$};
+\node[lab, below] at (1.5,2.5) {$c''$};
+\fill[accent] (0.6,0.55) circle[pt]; \node[lab, accent, right] at (0.65,0.6) {$r$};
+\draw[<->, muted] (0,0) -- node[tick, below] {$\le k$} (-1.15,0);
+\draw[<->, ink] (0,-1.5) -- node[tick, below] {$\ge 2k+1$} (3.2,-1.5);
+\end{tikzpicture}
+\end{center}
+```
+
+Codewords at distance at least $2k+1$ from each other: the balls of radius $k$ around them do not overlap, so a received string $r$ with at most $k$ errors lies in the ball of exactly one codeword.
+
+:::
+
 ::: {#thm-reed-solomon-distance .theorem name="Minimum distance of the code"}
 
 The code that sends $n$ message characters as $n+2k$ values of $P$ has minimum distance exactly $2k+1$.

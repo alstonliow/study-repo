@@ -71,6 +71,47 @@ The map $\pi(m,n)=\frac{(m+n)(m+n+1)}2+n$ is a bijection $\mathbb N\times\mathbb
 
 :::
 
+::: {#fig-countable-sets-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.15cm,y=1.15cm]
+\draw[->, muted] (-0.5,-0.5) -- (5,-0.5) node[lab, right] {$m$};
+\draw[->, muted] (-0.5,-0.5) -- (-0.5,4.8) node[lab, above] {$n$};
+\foreach \k in {0,...,4} {\node[tick] at (\k,-0.8) {$\k$}; \node[tick] at (-0.8,\k) {$\k$};}
+\node[small vertex] (p00) at (0,0) {0};
+\node[small vertex] (p10) at (1,0) {1};
+\node[small vertex] (p01) at (0,1) {2};
+\node[small vertex] (p20) at (2,0) {3};
+\node[small vertex] (p11) at (1,1) {4};
+\node[small vertex] (p02) at (0,2) {5};
+\node[small vertex] (p30) at (3,0) {6};
+\node[small vertex] (p21) at (2,1) {7};
+\node[small vertex] (p12) at (1,2) {8};
+\node[small vertex] (p03) at (0,3) {9};
+\node[small vertex] (p40) at (4,0) {10};
+\node[small vertex] (p31) at (3,1) {11};
+\node[small vertex] (p22) at (2,2) {12};
+\node[small vertex] (p13) at (1,3) {13};
+\node[small vertex] (p04) at (0,4) {14};
+\draw[->, primary] (p10) -- (p01);
+\draw[->, primary] (p20) -- (p11);
+\draw[->, primary] (p11) -- (p02);
+\draw[->, primary] (p30) -- (p21);
+\draw[->, primary] (p21) -- (p12);
+\draw[->, primary] (p12) -- (p03);
+\draw[->, primary] (p40) -- (p31);
+\draw[->, primary] (p31) -- (p22);
+\draw[->, primary] (p22) -- (p13);
+\draw[->, primary] (p13) -- (p04);
+\end{tikzpicture}
+\end{center}
+```
+
+The pairing function $\pi$ numbers the pairs $(m,n)$ diagonal by diagonal: $m+n=0$, then $m+n=1$, and so on, each diagonal from bottom right to top left.
+
+:::
+
 ::: {#cor-rationals-countable .corollary name="The rationals are countable"}
 
 $\mathbb Z\times\mathbb Z$ and $\mathbb Q$ are countable.

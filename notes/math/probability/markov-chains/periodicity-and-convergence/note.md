@@ -15,6 +15,28 @@ For a state $i$ let $S(i)=\{n\ge1:P^n(i,i)>0\}$, the lengths of the possible ret
 
 :::
 
+::: {#fig-periodicity-and-convergence-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[y=2.2cm]
+\draw[->, muted] (0,0) -- (7.2,0) node[lab, right] {$n$};
+\draw[->, muted] (0,0) -- (0,1.25);
+\draw[gridline, dashed] (0,0.5) -- (7,0.5);
+\node[tick, left] at (0,1) {$1$}; \node[tick, left] at (0,0.5) {$\frac12$}; \node[tick, left] at (0,0) {$0$};
+\foreach \n in {0,2,...,12} \node[tick, below] at (\n*0.55,0) {$\n$};
+\fill[accent] (0.00,1) circle[pt]; \fill[accent] (0.55,0) circle[pt]; \fill[accent] (1.10,1) circle[pt]; \fill[accent] (1.65,0) circle[pt]; \fill[accent] (2.20,1) circle[pt]; \fill[accent] (2.75,0) circle[pt]; \fill[accent] (3.30,1) circle[pt]; \fill[accent] (3.85,0) circle[pt]; \fill[accent] (4.40,1) circle[pt]; \fill[accent] (4.95,0) circle[pt]; \fill[accent] (5.50,1) circle[pt]; \fill[accent] (6.05,0) circle[pt]; \fill[accent] (6.60,1) circle[pt];
+\fill[primary] (0.00,1.0000) circle[pt]; \fill[primary] (0.55,0.7000) circle[pt]; \fill[primary] (1.10,0.5800) circle[pt]; \fill[primary] (1.65,0.5320) circle[pt]; \fill[primary] (2.20,0.5128) circle[pt]; \fill[primary] (2.75,0.5051) circle[pt]; \fill[primary] (3.30,0.5020) circle[pt]; \fill[primary] (3.85,0.5008) circle[pt]; \fill[primary] (4.40,0.5003) circle[pt]; \fill[primary] (4.95,0.5001) circle[pt]; \fill[primary] (5.50,0.5001) circle[pt]; \fill[primary] (6.05,0.5000) circle[pt]; \fill[primary] (6.60,0.5000) circle[pt];
+\node[lab, accent, anchor=west] at (7.3,1) {$a=1$};
+\node[lab, primary, anchor=west] at (7.3,0.5) {$a=0.3$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\Pr(X_n=0)$ for the two-state chain started at $0$. With $a=1$ (period $2$) it alternates between $1$ and $0$; with $a=0.3$ (aperiodic) it converges to $\frac12$.
+
+:::
+
 The two-state chain with $a=1$ has $S(0)=\{2,4,6,\dots\}$, so $d(0)=2$. With $0<a<1$, $S(0)=\{1,2,3,\dots\}$ and $d(0)=1$. In @exm-web-chain-invariant, $A$ returns to itself in $2$ steps ($A\to D\to A$) and in $3$ steps ($A\to B\to C\to A$), so $d(A)=1$.
 
 ::: {#prp-period-class .proposition name="All states have the same period"}

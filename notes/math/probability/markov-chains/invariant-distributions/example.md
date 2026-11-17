@@ -11,3 +11,35 @@ Solve from the right: $\pi(D)=\frac12$, $\pi(E)=\frac16$, $\pi(B)=\frac12+\frac1
 $$\pi=\tfrac1{39}(12,\,9,\,10,\,6,\,2).$$
 Check the dropped equation: $\pi(A)=\pi(C)+\frac13\pi(D)=\frac{10+2}{39}$. The pages rank $A,C,B,D,E$.
 :::
+
+::: {#fig-invariant-distributions-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (A) at (0,0) {$A$};
+\node[vertex] (B) at (2.6,1.7) {$B$};
+\node[vertex] (C) at (5.2,0) {$C$};
+\node[vertex] (D) at (1.3,-2.2) {$D$};
+\node[vertex] (E) at (3.9,-2.2) {$E$};
+\draw[->] (A) -- (B);
+\draw[->] (A) to[bend left=15] (D);
+\draw[->] (D) to[bend left=15] (A);
+\draw[->] (B) -- (C);
+\draw[->] (C) to[bend right=0] (A);
+\draw[->] (D) -- (B);
+\draw[->] (D) -- (E);
+\draw[->] (E) -- (B);
+\draw[->] (E) -- (C);
+\node[tick, primary, left=2pt] at (A.west) {$\frac{12}{39}$};
+\node[tick, primary, above=2pt] at (B.north) {$\frac{9}{39}$};
+\node[tick, primary, right=2pt] at (C.east) {$\frac{10}{39}$};
+\node[tick, primary, below=2pt] at (D.south) {$\frac{6}{39}$};
+\node[tick, primary, below=2pt] at (E.south) {$\frac{2}{39}$};
+\end{tikzpicture}
+\end{center}
+```
+
+The five-page web of @exm-web-chain-invariant; every link out of a page is followed with equal probability. Next to each page, its invariant probability.
+
+:::

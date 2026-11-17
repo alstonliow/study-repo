@@ -68,6 +68,53 @@ This is a diagonal argument, as in @thm-reals-uncountable. Programs are finite s
 
 :::
 
+::: {#fig-computability-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=0.8cm,y=0.6cm]
+\draw[hl cell] (0,0) rectangle ++(1,1); \node[lab] at (0+0.5,0+0.5) {H};
+\draw[cell] (1,0) rectangle ++(1,1); \node[lab] at (1+0.5,0+0.5) {L};
+\draw[cell] (2,0) rectangle ++(1,1); \node[lab] at (2+0.5,0+0.5) {H};
+\draw[cell] (3,0) rectangle ++(1,1); \node[lab] at (3+0.5,0+0.5) {L};
+\draw[cell] (4,0) rectangle ++(1,1); \node[lab] at (4+0.5,0+0.5) {H};
+\draw[cell] (0,-1) rectangle ++(1,1); \node[lab] at (0+0.5,-1+0.5) {L};
+\draw[hl cell] (1,-1) rectangle ++(1,1); \node[lab] at (1+0.5,-1+0.5) {L};
+\draw[cell] (2,-1) rectangle ++(1,1); \node[lab] at (2+0.5,-1+0.5) {H};
+\draw[cell] (3,-1) rectangle ++(1,1); \node[lab] at (3+0.5,-1+0.5) {L};
+\draw[cell] (4,-1) rectangle ++(1,1); \node[lab] at (4+0.5,-1+0.5) {L};
+\draw[cell] (0,-2) rectangle ++(1,1); \node[lab] at (0+0.5,-2+0.5) {H};
+\draw[cell] (1,-2) rectangle ++(1,1); \node[lab] at (1+0.5,-2+0.5) {H};
+\draw[hl cell] (2,-2) rectangle ++(1,1); \node[lab] at (2+0.5,-2+0.5) {H};
+\draw[cell] (3,-2) rectangle ++(1,1); \node[lab] at (3+0.5,-2+0.5) {H};
+\draw[cell] (4,-2) rectangle ++(1,1); \node[lab] at (4+0.5,-2+0.5) {L};
+\draw[cell] (0,-3) rectangle ++(1,1); \node[lab] at (0+0.5,-3+0.5) {H};
+\draw[cell] (1,-3) rectangle ++(1,1); \node[lab] at (1+0.5,-3+0.5) {H};
+\draw[cell] (2,-3) rectangle ++(1,1); \node[lab] at (2+0.5,-3+0.5) {H};
+\draw[hl cell] (3,-3) rectangle ++(1,1); \node[lab] at (3+0.5,-3+0.5) {H};
+\draw[cell] (4,-3) rectangle ++(1,1); \node[lab] at (4+0.5,-3+0.5) {H};
+\draw[cell] (0,-4) rectangle ++(1,1); \node[lab] at (0+0.5,-4+0.5) {L};
+\draw[cell] (1,-4) rectangle ++(1,1); \node[lab] at (1+0.5,-4+0.5) {H};
+\draw[cell] (2,-4) rectangle ++(1,1); \node[lab] at (2+0.5,-4+0.5) {L};
+\draw[cell] (3,-4) rectangle ++(1,1); \node[lab] at (3+0.5,-4+0.5) {L};
+\draw[hl cell] (4,-4) rectangle ++(1,1); \node[lab] at (4+0.5,-4+0.5) {H};
+\draw[hl cell] (0,-5.4) rectangle ++(1,1); \node[lab] at (0+0.5,-4.9) {L};
+\draw[hl cell] (1,-5.4) rectangle ++(1,1); \node[lab] at (1+0.5,-4.9) {H};
+\draw[hl cell] (2,-5.4) rectangle ++(1,1); \node[lab] at (2+0.5,-4.9) {L};
+\draw[hl cell] (3,-5.4) rectangle ++(1,1); \node[lab] at (3+0.5,-4.9) {L};
+\draw[hl cell] (4,-5.4) rectangle ++(1,1); \node[lab] at (4+0.5,-4.9) {L};
+\foreach \j in {0,...,4} \node[lab] at (\j+0.5,1.5) {$P_{\j}$};
+\foreach \i in {0,...,4} \node[lab, anchor=east] at (-0.1,-\i+0.5) {$P_{\i}$};
+\node[lab, anchor=east] at (-0.1,-4.9) {$\mathrm{Turing}$};
+\node[lab, note] at (2.5,2.4) {input};
+\end{tikzpicture}
+\end{center}
+```
+
+Entry $(i,j)$ is H if $P_i$ halts on input $P_j$ and L if it loops. $\mathrm{Turing}$ flips the diagonal, so its row differs from row $P_n$ in column $P_n$ for every $n$.
+
+:::
+
 ::: {#def-reduction .definition name="Reduction"}
 
 A question $A$ *reduces* to a question $B$ if a program could answer $A$ using a program for $B$ as a subroutine. Then if $A$ is not computable, neither is $B$: a program for $B$ would give one for $A$.
