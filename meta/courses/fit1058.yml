@@ -525,67 +525,67 @@ chapters:
     points:
       - id: "9.1"
         title: "The nature of randomness"
-        covers: [math/probability/sample-spaces]
+        covers: [math/probability/discrete/sample-spaces]
       - id: "9.2"
         title: "Probability"
-        covers: [math/probability/sample-spaces]
+        covers: [math/probability/discrete/sample-spaces]
       - id: "9.3"
         title: "Choice of sample space"
-        covers: [math/probability/sample-spaces]
+        covers: [math/probability/discrete/sample-spaces]
       - id: "9.4"
         title: "Mutually exclusive events"
-        covers: [math/probability/events]
+        covers: [math/probability/discrete/events]
       - id: "9.5"
         title: "Operations on events"
-        covers: [math/probability/events]
+        covers: [math/probability/discrete/events]
       - id: "9.6"
         title: "Inclusion-Exclusion for probabilities"
-        covers: [math/probability/events]
+        covers: [math/probability/discrete/events]
       - id: "9.7"
         title: "Independent events"
-        covers: [math/probability/conditional-probability]
+        covers: [math/probability/discrete/conditional-probability]
       - id: "9.8"
         title: "Conditional probability"
-        covers: [math/probability/conditional-probability]
+        covers: [math/probability/discrete/conditional-probability]
       - id: "9.9"
         title: "Bayes’ Theorem"
-        covers: [math/probability/bayes-theorem]
+        covers: [math/probability/discrete/bayes-theorem]
   - num: 10
     title: "Discrete Probability II"
     points:
       - id: "10.1"
         title: "Random variables"
-        covers: [math/probability/random-variables]
+        covers: [math/probability/discrete/random-variables]
       - id: "10.2"
         title: "Probability distributions"
-        covers: [math/probability/random-variables]
+        covers: [math/probability/discrete/random-variables]
       - id: "10.3"
         title: "Expectation"
-        covers: [math/probability/expectation-and-variance]
+        covers: [math/probability/discrete/expectation-and-variance]
       - id: "10.4"
         title: "Median"
-        covers: [math/probability/expectation-and-variance]
+        covers: [math/probability/discrete/expectation-and-variance]
       - id: "10.5"
         title: "Mode"
-        covers: [math/probability/expectation-and-variance]
+        covers: [math/probability/discrete/expectation-and-variance]
       - id: "10.6"
         title: "Variance"
-        covers: [math/probability/expectation-and-variance]
+        covers: [math/probability/discrete/expectation-and-variance]
       - id: "10.7"
         title: "Uniform distribution"
-        covers: [math/probability/uniform-distribution]
+        covers: [math/probability/discrete/uniform-distribution]
       - id: "10.8"
         title: "Binomial distribution"
-        covers: [math/probability/binomial-distribution]
+        covers: [math/probability/discrete/binomial-distribution]
       - id: "10.9"
         title: "Poisson distribution"
-        covers: [math/probability/poisson-distribution]
+        covers: [math/probability/discrete/poisson-distribution]
       - id: "10.10"
         title: "Geometric distribution"
-        covers: [math/probability/geometric-distribution, math/probability/standard-distributions]
+        covers: [math/probability/discrete/geometric-distribution, math/probability/discrete/standard-distributions]
       - id: "10.11"
         title: "The coupon collector’s problem"
-        covers: [math/probability/coupon-collector]
+        covers: [math/probability/discrete/coupon-collector]
   - num: 11
     title: "Graph Theory I"
     points:

@@ -121,7 +121,7 @@ parts:
           - games-on-graphs
   - title: Probability
     branches:
-      - id: math/probability
+      - id: math/probability/discrete
         title: Discrete Probability
         desc: Events, conditional probability, random variables, distributions
         notes:   # topic order on the website

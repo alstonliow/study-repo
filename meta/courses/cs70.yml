@@ -123,10 +123,10 @@ chapters:
     points:
       - id: "13.1"
         title: "Random experiments"
-        covers: [math/probability/sample-spaces]
+        covers: [math/probability/discrete/sample-spaces]
       - id: "13.2"
         title: "Probability spaces"
-        covers: [math/probability/events]
+        covers: [math/probability/discrete/events]
       - id: "13.3"
         title: "Examples"
         # poker hands, balls and bins, birthday paradox. The coin tosses and Monty
@@ -138,43 +138,43 @@ chapters:
     points:
       - id: "14.1"
         title: "Conditional probability"
-        covers: [math/probability/conditional-probability]
+        covers: [math/probability/discrete/conditional-probability]
       - id: "14.3"
         title: "Bayes' rule and total probability"
-        covers: [math/probability/bayes-theorem]
+        covers: [math/probability/discrete/bayes-theorem]
   - num: 15
     title: "Random variables: distribution and expectation"
     points:
       - id: "15.1"
         title: "Random variables"
-        covers: [math/probability/random-variables]
+        covers: [math/probability/discrete/random-variables]
       - id: "15.2"
         title: "Bernoulli, binomial and hypergeometric distributions"
-        covers: [math/probability/binomial-distribution, math/probability/hypergeometric-distribution]
+        covers: [math/probability/discrete/binomial-distribution, math/probability/discrete/hypergeometric-distribution]
       - id: "15.4"
         title: "Expectation"
-        covers: [math/probability/expectation-and-variance]
+        covers: [math/probability/discrete/expectation-and-variance]
       - id: "15.4.3"
         title: "Applications of linearity"
-        covers: [math/probability/indicator-variables]
+        covers: [math/probability/discrete/indicator-variables]
   - num: 16
     title: "Random variables: variance and covariance"
     points:
       - id: "16.1"
         title: "Variance and the random walk"
-        covers: [math/probability/covariance-and-correlation]
+        covers: [math/probability/discrete/covariance-and-correlation]
       - id: "16.2"
         title: "Computing variance"
-        covers: [math/probability/uniform-distribution]
+        covers: [math/probability/discrete/uniform-distribution]
       - id: "16.4"
         title: "Covariance and correlation"
-        covers: [math/probability/covariance-and-correlation]
+        covers: [math/probability/discrete/covariance-and-correlation]
   - num: 17
     title: "Concentration inequalities"
     points:
       - id: "17.1"
         title: "Markov's inequality"
-        covers: [math/probability/concentration-inequalities]
+        covers: [math/probability/discrete/concentration-inequalities]
       - id: "17.2"
         title: "Chebyshev's inequality"
         covers: [thm-chebyshev-s-inequality]
@@ -183,16 +183,16 @@ chapters:
     points:
       - id: "18.1"
         title: "Hashing"
-        covers: [math/probability/hashing-and-load-balancing]
+        covers: [math/probability/discrete/hashing-and-load-balancing]
       - id: "18.2"
         title: "Load balancing"
-        covers: [math/probability/hashing-and-load-balancing]
+        covers: [math/probability/discrete/hashing-and-load-balancing]
   - num: 19
     title: "Geometric and Poisson distributions"
     points:
       - id: "19.1"
         title: "Geometric distribution"
-        covers: [math/probability/geometric-distribution, math/probability/coupon-collector]
+        covers: [math/probability/discrete/geometric-distribution, math/probability/discrete/coupon-collector]
       - id: "19.2"
         title: "Poisson distribution"
-        covers: [math/probability/poisson-distribution]
+        covers: [math/probability/discrete/poisson-distribution]

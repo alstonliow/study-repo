@@ -42,8 +42,14 @@ optimisation) are added in later batches.
 
 ### `math/probability`
 
-No branches yet. Knowledge points from 1058note chapter 9 sit directly under
-`math/probability/` until the P3 pilot shows whether branches are needed.
+| Branch | Content |
+|---|---|
+| `discrete` | Sample spaces, events, conditional probability, random variables, expectation and variance, discrete distributions, concentration, applications |
+| `continuous` | (planned, CS70 Note 20) Continuous random variables, exponential and normal distributions, central limit theorem |
+| `markov-chains` | (planned, CS70 Note 21) Finite Markov chains |
+
+The discrete notes moved from `math/probability/<note>` to
+`math/probability/discrete/<note>` on 2026-11-17 (old ids kept as aliases).
 
 ## 3. Mapping from 1058note chapters
 
@@ -61,10 +67,10 @@ migration (P3/P7), not here.
 | 06 Sequences & Series | `math/discrete/sequences` |
 | 07 Number Theory | `math/discrete/number-theory` |
 | 08 Counting & Combinatorics | `math/discrete/counting` |
-| 09 Probability | `math/probability` |
+| 09 Probability | `math/probability/discrete` |
 | 10 Graph Theory | `math/discrete/graph` |
 | 11 Notation summary | `meta/notation.md` (not a knowledge point) |
 
 The exercises volume (`FIT1058_course/exercises/chapters/`) follows the same
-mapping. Its chapters 09–10 (probability 1–2) map to `math/probability`, and
+mapping. Its chapters 09–10 (probability 1–2) map to `math/probability/discrete`, and
 11–12 (graph theory 1–2) map to `math/discrete/graph`.
