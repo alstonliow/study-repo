@@ -19,8 +19,10 @@ wanted changes in `meta/ideas.md`.
 |---|---|---|
 | `math/discrete` | active (first batch) | FIT1058 scope |
 | `math/probability` | active (first batch) | 1058note chapter 9 only, for now |
+| `cs/algorithms` | active | CS70 Note 4 (stable matching) |
+| `cs/theory` | active | CS70 Note 12 (computability) |
 
-Other fields (algorithms, programming, calculus, linear algebra, analysis,
+Other fields (programming, calculus, linear algebra, analysis,
 optimisation) are added in later batches.
 
 ## 2. Branches
@@ -50,6 +52,15 @@ optimisation) are added in later batches.
 
 The discrete notes moved from `math/probability/<note>` to
 `math/probability/discrete/<note>` on 2026-11-17 (old ids kept as aliases).
+
+### `cs`
+
+Added 2026-11-17 as the part "Computer Science" (CS70 Notes 4 and 12).
+
+| Branch | Content |
+|---|---|
+| `algorithms` | Design and analysis of algorithms; for now stable matching |
+| `theory` | Computability: self-reference, the halting problem, reductions, incompleteness |
 
 ## 3. Mapping from 1058note chapters
 

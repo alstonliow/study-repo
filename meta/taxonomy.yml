@@ -156,3 +156,15 @@ parts:
           - coupon-collector
           - concentration-inequalities
           - hashing-and-load-balancing
+  - title: Computer Science
+    branches:
+      - id: cs/algorithms
+        title: Algorithms
+        desc: Design and analysis of algorithms
+        notes:   # topic order on the website
+          - stable-matching
+      - id: cs/theory
+        title: Theory of Computation
+        desc: Computability, self-reference, undecidability
+        notes:   # topic order on the website
+          - computability

@@ -73,7 +73,7 @@ def main() -> int:
     summary_courses: dict[str, list[str]] = {}
     home = ["---", "title: Study Notes", "---", "",
             "Personal study notes, organised by topic rather than by course. "
-            "So far: discrete mathematics and discrete probability.", ""]
+            "So far: discrete mathematics, discrete probability, and first topics in computer science.", ""]
     for field, branches in BRANCHES:
         sec = {"section": field, "contents": []}
         rows = []

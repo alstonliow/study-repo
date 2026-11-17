@@ -127,6 +127,11 @@ nodes:
     title: Induction practice problems
     at:
       2020-fall: '3.6'
+- id: res-ucb-cs70-stable-matching
+  kind: note
+  title: Stable matching
+  at:
+    2020-fall: '4'
 - id: res-ucb-cs70-graph-theory
   kind: note
   title: 'Graph theory: an introduction'
@@ -288,6 +293,11 @@ nodes:
   title: Countability
   at:
     2020-fall: '11'
+- id: res-ucb-cs70-computability
+  kind: note
+  title: Self-reference and computability
+  at:
+    2020-fall: '12'
 - id: res-ucb-cs70-discrete-probability
   kind: note
   title: Discrete probability

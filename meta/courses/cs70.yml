@@ -333,6 +333,12 @@ chapters:
       - id: "3.2"
         title: "Strengthening the hypothesis and strong induction"
         covers: [math/discrete/proof/induction-examples]
+  - num: 4
+    title: "Stable matching"
+    points:
+      - id: "4"
+        title: "The propose-and-reject algorithm"
+        covers: [cs/algorithms/stable-matching]
   - num: 5
     title: "Graph theory"
     points:
@@ -405,6 +411,12 @@ chapters:
       - id: "11"
         title: "Countable and uncountable sets"
         covers: [math/discrete/functions/countable-sets, math/discrete/functions/cantor-diagonalization]
+  - num: 12
+    title: "Self-reference and computability"
+    points:
+      - id: "12"
+        title: "The halting problem"
+        covers: [cs/theory/computability]
   - num: 13
     title: "Discrete probability"
     points:
