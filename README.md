@@ -132,6 +132,29 @@ A tree
 The website numbers pages automatically. Within a branch, pages are ordered by
 their first source key.
 
+### Visualising a course
+
+Static figures first (website and PDF), then interactive widgets (website only).
+
+1. **Choose.** In each note pick 1–3 places where seeing the process helps
+   most: key steps of an algorithm, how a data structure changes, a DP table.
+2. **Simulate.** Run the algorithm in a short script on the note's own example
+   and record the state after each step, so every number in a figure is computed,
+   not typed by hand.
+3. **Generate.** Turn the states into TikZ with the shared styles only, as a
+   `fig-<folder>-<n>` div with a one-sentence caption (see "A figure"); round
+   coordinates to two decimals.
+4. **Preview and place.** Compile each figure on its own (the preamble is in
+   `build/tikz.py`), fix overlaps, then insert it after the block it illustrates.
+5. **Widgets.** For figures that read better step by step, register a widget in
+   `site/_assets/widgets.html` under the figure's id: a function from the inputs
+   to a list of frames (picture plus one sentence). Reuse the existing drawing
+   helpers (cells, trees, graphs, tables); let the reader enter their own input
+   where it makes sense. Every widget needs its static figure (`meta/SPEC.md` §5).
+6. **Verify.** Run `make check` (it also reports widgets attached to unknown
+   figures), `make test` and `make site`; look at a few PDF pages; in the browser,
+   step every widget to the end and try a bad input and the Example button.
+
 ### A course
 
 Add `meta/courses/<id>.yml` (format in `meta/SPEC.md` §13; see
