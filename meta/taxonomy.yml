@@ -201,6 +201,9 @@ parts:
         notes:   # topic order on the website
           - computability
           - complexity-classes
+          - np-complete-reductions
+          - approximation-algorithms
+          - fixed-parameter-algorithms
       - id: cs/data-structures
         title: Data Structures and Sorting
         desc: Sequences and sets, sorting, hashing, search trees, heaps
@@ -214,6 +217,13 @@ parts:
           - binary-trees
           - avl-trees
           - binary-heaps
+          - two-three-trees
+          - augmented-search-trees
+          - amortized-analysis
+          - union-find
+          - van-emde-boas
+          - skip-lists
+          - perfect-hashing
       - id: cs/graph-algorithms
         title: Graph Algorithms
         desc: Graph search, single-source and all-pairs shortest paths
@@ -224,6 +234,9 @@ parts:
           - bellman-ford
           - dijkstra
           - all-pairs-shortest-paths
+          - minimum-spanning-trees
+          - maximum-flow
+          - flow-applications
       - id: cs/dynamic-programming
         title: Dynamic Programming
         desc: Recursive algorithm design, subproblems, pseudopolynomial time
@@ -232,3 +245,25 @@ parts:
           - subproblem-design
           - more-dynamic-programs
           - pseudopolynomial-time
+          - interval-subproblems
+      - id: cs/algorithm-design
+        title: Algorithm Design Paradigms
+        desc: Greedy, divide and conquer, FFT, randomized algorithms, linear programming
+        notes:   # topic order on the website
+          - greedy-algorithms
+          - divide-and-conquer
+          - fast-fourier-transform
+          - randomized-algorithms
+          - linear-programming
+      - id: cs/models-of-computation
+        title: Other Models of Computation
+        desc: Distributed algorithms, external memory and cache-oblivious algorithms
+        notes:   # topic order on the website
+          - distributed-algorithms
+          - cache-oblivious-algorithms
+      - id: cs/cryptography
+        title: Cryptography
+        desc: Cryptographic hash functions, encryption, key exchange, signatures
+        notes:   # topic order on the website
+          - cryptographic-hash-functions
+          - public-key-cryptography

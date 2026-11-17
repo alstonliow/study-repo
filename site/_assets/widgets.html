@@ -59,6 +59,11 @@
   .wg svg .e.done { stroke: var(--defc); stroke-width: 2.2; opacity: 0.9; }
   .wg svg .e.dim { opacity: 0.18; }
   .wg svg marker path { fill: currentColor; }
+  .wg svg rect.wg-bar { fill: color-mix(in srgb, var(--notec) 12%, var(--bs-body-bg, #fff)); stroke: currentColor; stroke-width: 1; }
+  .wg svg rect.wg-bar.hl { fill: color-mix(in srgb, var(--thmc) 35%, var(--bs-body-bg, #fff)); stroke: var(--thmc); }
+  .wg svg rect.wg-bar.done { fill: color-mix(in srgb, var(--defc) 32%, var(--bs-body-bg, #fff)); stroke: var(--defc); }
+  .wg svg rect.wg-bar.dim { opacity: 0.3; }
+  .wg svg line { opacity: 0.55; }
   @media print { .wg { display: none; } }
 </style>
 <script>
@@ -483,6 +488,216 @@
     return F;
   }
 
+  // ---------- MIT 6.046 widgets ----------
+  function intervals(p) {
+    const iv = p.list.split(/[;,]/).map(s => s.trim()).filter(Boolean).map(s => { const m = s.match(/^(-?\d+)\s*[-–]\s*(-?\d+)$/); if (!m) throw new Error("write intervals as s-f, separated by commas"); const a = +m[1], b = +m[2]; if (a >= b) throw new Error(`need s < f in ${s}`); return [a, b]; });
+    limit(iv, 14, "intervals");
+    const lo = Math.min(...iv.map(x => x[0])), hi = Math.max(...iv.map(x => x[1])), sc = 520 / (hi - lo || 1), F = [];
+    const order = iv.map((x, i) => i).sort((a, b) => iv[a][1] - iv[b][1] || a - b);
+    const state = Array(iv.length).fill("");
+    const draw = (cur, note) => {
+      const H = iv.length * 24 + 30;
+      let s = `<svg viewBox="0 0 600 ${H}" width="100%" style="max-width:600px">`;
+      iv.forEach(([a, b], i) => { const cls = i === cur ? "hl" : state[i];
+        s += `<rect x="${(a - lo) * sc + 60}" y="${i * 24 + 4}" width="${(b - a) * sc}" height="16" rx="3" class="wg-bar ${cls}"/><text class="small" x="${(a - lo) * sc + 54}" y="${i * 24 + 12}" style="text-anchor:end">${a}–${b}</text>`; });
+      s += `<line x1="60" y1="${iv.length * 24 + 10}" x2="580" y2="${iv.length * 24 + 10}"/></svg>`;
+      F.push({ html: s, note });
+    };
+    draw(-1, "Sort the requests by finishing time.");
+    let t = -Infinity, k = 0;
+    for (const i of order) {
+      if (state[i] === "dim") continue;
+      draw(i, `Earliest-finishing remaining request: ${iv[i][0]}–${iv[i][1]}. Take it.`);
+      state[i] = "done"; k++; t = iv[i][1];
+      iv.forEach(([a, b], j) => { if (!state[j] && a < t) state[j] = "dim"; });
+      draw(-1, `Discard the requests that start before ${t}.`);
+    }
+    draw(-1, `Done: ${k} compatible requests, the maximum possible.`);
+    return F;
+  }
+
+  function unionFind(p) {
+    const ops = p.ops.split(/[;\n]/).map(s => s.trim()).filter(Boolean); limit(ops, 20, "operations");
+    const par = {}, rank = {}, F = [];
+    const ensure = x => { if (!(x in par)) { par[x] = x; rank[x] = 0; } };
+    const forest = (hl, note) => {
+      const kids = {}; for (const v in par) if (par[v] !== v) (kids[par[v]] = kids[par[v]] || []).push(v);
+      const pos = {}; let x = 0;
+      const place = (v, d) => { const ch = (kids[v] || []).sort(); if (!ch.length) { pos[v] = [x++ * 46, d * 52]; return; } ch.forEach(c => place(c, d + 1)); pos[v] = [(pos[ch[0]][0] + pos[ch[ch.length - 1]][0]) / 2, d * 52]; };
+      Object.keys(par).filter(v => par[v] === v).sort().forEach(r => { place(r, 0); x += 0.6; });
+      const E = Object.keys(par).filter(v => par[v] !== v).map(v => [v, par[v]]);
+      F.push({ html: Object.keys(par).length ? graph(pos, E, { directed: true, nodeCls: v => hl.includes(v) ? "hl" : par[v] === v ? "done" : "", under: v => par[v] === v ? "rank " + rank[v] : "" }) : "", note });
+    };
+    const find = (x, path) => { while (par[x] !== x) { path.push(x); x = par[x]; } return x; };
+    forest([], "Each operation: make a b c …, union x y, or find x.");
+    for (const op of ops) {
+      const [cmd, ...args] = op.split(/\s+/);
+      if (cmd === "make") { args.forEach(ensure); forest(args, `make_set: ${args.join(", ")}.`); }
+      else if (cmd === "find") {
+        const x = args[0]; ensure(x); const path = []; const r = find(x, path);
+        forest([...path, r], `find(${x}) walks ${[...path, r].join(" → ")}; the root is ${r}.`);
+        if (path.length > 1) { path.forEach(v => par[v] = r); forest([x], `Path compression: every node on the path now points to ${r}.`); }
+      } else if (cmd === "union") {
+        const [x, y] = args; ensure(x); ensure(y);
+        const a = find(x, []), b = find(y, []);
+        if (a === b) { forest([a], `${x} and ${y} are already in the same set.`); continue; }
+        const ra = rank[a], rb = rank[b];
+        const [hi, lo] = ra >= rb ? [a, b] : [b, a];
+        par[lo] = hi; if (ra === rb) rank[hi]++;
+        forest([lo, hi], `union(${x}, ${y}): roots ${a} (rank ${ra}) and ${b} (rank ${rb}); ${lo} goes under ${hi}${ra === rb ? `, whose rank grows to ${rank[hi]}` : ""}.`);
+      } else throw new Error(`unknown operation “${op}”`);
+    }
+    return F;
+  }
+
+  function twoThree(p) {
+    const keys = limit(nums(p.keys), 16, "keys"), F = [];
+    let root = null;
+    const draw = (hl, note) => {
+      if (!root) { F.push({ html: "", note }); return; }
+      const pos = new Map(); let x = 0, depth = 0;
+      (function place(n, d) { depth = Math.max(depth, d); if (!n.c.length) { pos.set(n, [x, d]); x += n.k.length * 26 + 22; return; } n.c.forEach(c => place(c, d + 1)); pos.set(n, [(pos.get(n.c[0])[0] + pos.get(n.c[n.c.length - 1])[0]) / 2, d]); })(root, 0);
+      let s = `<svg width="${x + 40}" height="${(depth + 1) * 56 + 10}">`;
+      const box = n => { const [px, d] = pos.get(n), w = n.k.length * 26 + 10; return [px + 10, d * 56 + 10, w]; };
+      for (const [n] of pos) for (const c of n.c) { const [a, b, w] = box(n), [c1, c2, w2] = box(c); s += `<line class="e" x1="${a + w / 2}" y1="${b + 26}" x2="${c1 + w2 / 2}" y2="${c2}"/>`; }
+      for (const [n] of pos) { const [a, b, w] = box(n); s += `<rect x="${a}" y="${b}" width="${w}" height="26" rx="4" class="wg-bar ${hl.includes(n) ? "hl" : ""}"/><text x="${a + w / 2}" y="${b + 13}">${n.k.join("  ")}</text>`; }
+      F.push({ html: s + "</svg>", note });
+    };
+    draw([], "An empty 2-3 tree.");
+    for (const k of keys) {
+      if (!root) { root = { k: [k], c: [] }; draw([root], `Insert ${k}: the tree is one leaf.`); continue; }
+      const path = []; let n = root;
+      while (true) { path.push(n); if (n.k.includes(k)) break; if (!n.c.length) break; let i = 0; while (i < n.k.length && k > n.k[i]) i++; n = n.c[i]; }
+      if (n.k.includes(k)) { draw([n], `${k} is already in the tree.`); continue; }
+      n.k.push(k); n.k.sort((a, b) => a - b); draw([n], `Insert ${k} into the leaf where the search ends.`);
+      for (let j = path.length - 1; j >= 0 && path[j].k.length === 3; j--) {
+        const v = path[j], [a, b, c] = v.k, L = { k: [a], c: v.c.slice(0, 2) }, R = { k: [c], c: v.c.slice(2) };
+        if (j === 0) { root = { k: [b], c: [L, R] }; draw([root], `The root holds ${a}, ${b}, ${c}: split it; ${b} becomes a new root and the tree grows by one level.`); }
+        else { const P = path[j - 1], idx = P.c.indexOf(v); P.c.splice(idx, 1, L, R); P.k.splice(idx, 0, b); draw([P], `A node holds ${a}, ${b}, ${c}: split it and send ${b} up to its parent.`); }
+      }
+    }
+    draw([], "Done: all leaves are at the same depth.");
+    return F;
+  }
+
+  function quicksortRandom(p) {
+    const A = limit(nums(p.array), 14, "items").slice(); let seed = Number(p.seed) || 1;
+    const rnd = k => { seed = (seed * 1103515245 + 12345) % 2147483648; return seed % k; };
+    const F = []; let comps = 0;
+    const show = (cls, note) => F.push({ html: row(A, cls, { idx: true }), note: note + ` <span class="wg-sub">comparisons so far: ${comps}</span>` });
+    show({}, "Start. Change the seed to see other random pivots.");
+    (function qs(lo, hi) {
+      if (hi - lo < 2) return;
+      const pi = lo + rnd(hi - lo), x = A[pi];
+      show(i => i === pi ? "hl" : i >= lo && i < hi ? "cmp" : "dim", `Sort A[${lo}..${hi - 1}]: random pivot ${fmt(x)}.`);
+      const L = [], G = []; for (let i = lo; i < hi; i++) if (i !== pi) { comps++; (A[i] < x ? L : G).push(A[i]); }
+      const res = [...L, x, ...G]; for (let i = lo; i < hi; i++) A[i] = res[i - lo];
+      const at = lo + L.length;
+      show(i => i === at ? "done" : i >= lo && i < hi ? "cmp" : "dim", `Partition: ${L.length} smaller to the left, ${G.length} larger to the right; ${fmt(x)} is in its final place.`);
+      qs(lo, at); qs(at + 1, hi);
+    })(0, A.length);
+    show(() => "done", `Sorted with ${comps} comparisons (2n ln n ≈ ${Math.round(2 * A.length * Math.log(Math.max(A.length, 1)))} on average).`);
+    return F;
+  }
+
+  const MSTG = { pos: { a: [0, 1], b: [2, 1.6], c: [4, 1], d: [0.6, -0.6], e: [2.4, -0.2], f: [4, -0.8] },
+    E: [["a","b",4],["a","d",2],["b","c",6],["b","e",3],["d","e",5],["c","e",4],["c","f",3],["e","f",7],["a","e",8],["b","d",9]] };
+  function mst(p) {
+    const P = place(MSTG.pos), E = MSTG.E, F = [], inT = new Set(), key = e => e[0] + e[1];
+    const pic = (cur, nodeCls, note) => F.push({ html: graph(P, E, { edgeCls: (a, b) => key([a, b]) === cur ? "hl" : inT.has(key([a, b])) ? "done" : "dim", nodeCls }), note });
+    if (p.alg === "kruskal") {
+      const comp = {}; for (const v in P) comp[v] = v;
+      const f = v => comp[v] === v ? v : (comp[v] = f(comp[v]));
+      pic(null, () => "", "Kruskal: take the edges in order of weight.");
+      for (const e of E.slice().sort((x, y) => x[2] - y[2])) {
+        if (f(e[0]) !== f(e[1])) { comp[f(e[0])] = f(e[1]); inT.add(key(e)); pic(key(e), () => "", `Edge ${e[0]}${e[1]} (${e[2]}) joins two components: keep it.`); }
+        else pic(key(e), () => "", `Edge ${e[0]}${e[1]} (${e[2]}) would close a cycle: skip it.`);
+      }
+    } else {
+      const T = new Set(["a"]);
+      pic(null, v => T.has(v) ? "done" : "", "Prim: grow a tree from a.");
+      while (T.size < Object.keys(P).length) {
+        const e = E.filter(e => T.has(e[0]) !== T.has(e[1])).sort((x, y) => x[2] - y[2])[0];
+        inT.add(key(e)); T.add(e[0]); T.add(e[1]);
+        pic(key(e), v => T.has(v) ? "done" : "", `Lightest edge leaving the tree: ${e[0]}${e[1]} (${e[2]}). Add it.`);
+      }
+    }
+    pic(null, () => "", `Minimum spanning tree of weight ${E.filter(e => inT.has(key(e))).reduce((s, e) => s + e[2], 0)}.`);
+    return F;
+  }
+
+  function edmondsKarp() {
+    const P = place({ s: [0, 0], a: [1.6, 1], b: [1.6, -1], c: [3.2, 1], d: [3.2, -1], t: [4.8, 0] });
+    const cap = { "s,a": 10, "s,b": 8, "a,b": 2, "a,c": 5, "b,d": 10, "c,b": 3, "c,t": 7, "d,c": 4, "d,t": 9 };
+    const E = Object.keys(cap).map(k => k.split(",")), f = {}; for (const k in cap) f[k] = 0;
+    const res = (u, v) => (cap[u + "," + v] || 0) - (f[u + "," + v] || 0) + (f[v + "," + u] || 0);
+    const F = []; let val = 0;
+    const pic = (path, note) => { const on = new Set(); for (let i = 0; i + 1 < path.length; i++) on.add(path[i] + "," + path[i + 1]);
+      F.push({ html: graph(P, E.map(([u, v]) => [u, v, `${f[u + "," + v]}/${cap[u + "," + v]}`]), { directed: true, edgeCls: (a, b) => on.has(a + "," + b) || on.has(b + "," + a) ? "hl" : f[a + "," + b] ? "done" : "" }), note }); };
+    pic([], "Labels are flow/capacity. Repeatedly push flow along a shortest augmenting path (BFS in the residual network).");
+    for (;;) {
+      const prev = { s: null }, q = ["s"];
+      while (q.length && !("t" in prev)) { const u = q.shift(); for (const v of Object.keys(P)) if (!(v in prev) && res(u, v) > 0) { prev[v] = u; q.push(v); } }
+      if (!("t" in prev)) break;
+      const path = []; for (let v = "t"; v !== null; v = prev[v]) path.unshift(v);
+      let b = Infinity; for (let i = 0; i + 1 < path.length; i++) b = Math.min(b, res(path[i], path[i + 1]));
+      pic(path, `Augmenting path ${path.join(" → ")} with residual capacity ${b}.`);
+      for (let i = 0; i + 1 < path.length; i++) { const u = path[i], v = path[i + 1], back = f[v + "," + u] || 0, c = Math.min(back, b); if (c) f[v + "," + u] -= c; if (b - c) f[u + "," + v] += b - c; }
+      val += b; pic([], `Flow value ${val}.`);
+    }
+    const S = new Set(["s"]), q = ["s"]; while (q.length) { const u = q.shift(); for (const v of Object.keys(P)) if (!S.has(v) && res(u, v) > 0) { S.add(v); q.push(v); } }
+    pic([], `No augmenting path: maximum flow ${val}. The vertices reachable in the residual network, {${[...S].join(", ")}}, give a cut of the same capacity.`);
+    return F;
+  }
+
+  function optimalBST(p) {
+    const w = limit(nums(p.w), 8, "keys"), n = w.length, F = [];
+    if (w.some(x => x < 0)) throw new Error("weights must be non-negative");
+    const e = Array.from({ length: n + 2 }, () => Array(n + 1).fill(null)), root = Array.from({ length: n + 1 }, () => Array(n + 1).fill(null));
+    const W = (i, j) => w.slice(i - 1, j).reduce((s, x) => s + x, 0);
+    for (let i = 1; i <= n + 1; i++) e[i][i - 1] = 0;
+    const tab = (hi, note) => F.push({ html: table(Array.from({ length: n }, (_, j) => "j=" + (j + 1)), Array.from({ length: n }, (_, i) => Array.from({ length: n }, (_, j) => j >= i ? (e[i + 1][j + 1] === null ? "" : `${e[i + 1][j + 1]} (r${root[i + 1][j + 1]})`) : "")), (i, j) => i === hi[0] - 1 && j === hi[1] - 1 ? "hl" : j < i ? "dim" : "", w.map((x, i) => `i=${i + 1} (w=${x})`)), note });
+    for (let len = 1; len <= n; len++) for (let i = 1; i + len - 1 <= n; i++) {
+      const j = i + len - 1; let best = Infinity, br = i;
+      for (let r = i; r <= j; r++) { const c = e[i][r - 1] + e[r + 1][j]; if (c < best) { best = c; br = r; } }
+      e[i][j] = best + W(i, j); root[i][j] = br;
+      tab([i, j], `e(${i},${j}) = W(${i},${j}) + min over roots = ${W(i, j)} + ${best} = ${e[i][j]}, with root ${br}.`);
+    }
+    const nodes = {}; (function build(i, j) { if (i > j) return null; const r = root[i][j]; nodes["k" + r] = { key: r, left: build(i, r - 1), right: build(r + 1, j) }; return "k" + r; })(1, n);
+    F.push({ html: tree(nodes, "k" + root[1][n], { under: v => "w=" + w[nodes[v].key - 1] }), note: `The optimal tree, cost e(1,${n}) = ${e[1][n]}.` });
+    return F;
+  }
+
+  function counter(p) {
+    const n = Number(p.n); if (!Number.isInteger(n) || n < 1 || n > 40) throw new Error("a number of increments from 1 to 40, please");
+    const bits = Array(6).fill(0), F = []; let total = 0;
+    F.push({ html: row(bits.slice().reverse(), {}, { label: "value 0" }), note: "Potential Φ = number of 1-bits = 0." });
+    for (let k = 1; k <= n; k++) {
+      let i = 0, cost = 0; const flipped = new Set();
+      while (bits[i] === 1) { bits[i] = 0; flipped.add(i); i++; cost++; }
+      bits[i] = 1; flipped.add(i); cost++; total += cost;
+      const phi = bits.reduce((s, b) => s + b, 0);
+      F.push({ html: row(bits.slice().reverse(), j => flipped.has(5 - j) ? "hl" : "", { label: "value " + (k % 64) }), note: `Increment ${k}: actual cost ${cost}, Φ = ${phi}, amortized cost ${cost} + ΔΦ = 2. Total cost so far ${total} ≤ 2·${k}.` });
+    }
+    return F;
+  }
+
+  function vertexCover() {
+    const P = place({ a: [0, 1], b: [1.5, 1], c: [3, 1], d: [0, -0.3], e: [1.5, -0.3], f: [3, -0.3] });
+    const E = [["a","b"],["b","c"],["a","d"],["b","e"],["c","f"],["d","e"],["e","f"]];
+    const C = new Set(), M = [], F = [];
+    const pic = (cur, note) => F.push({ html: graph(P, E, { nodeCls: v => C.has(v) ? "hl" : "", edgeCls: (a, b) => cur && a === cur[0] && b === cur[1] ? "hl" : M.some(m => m[0] === a && m[1] === b) ? "done" : (C.has(a) || C.has(b)) ? "dim" : "" }), note });
+    pic(null, "Pick any edge not yet covered, and put both ends in the cover.");
+    for (const e of E) {
+      if (C.has(e[0]) || C.has(e[1])) continue;
+      pic(e, `Edge ${e[0]}${e[1]} is uncovered: take ${e[0]} and ${e[1]}.`);
+      C.add(e[0]); C.add(e[1]); M.push(e);
+      pic(null, `Edges touching ${e[0]} or ${e[1]} are now covered (faded).`);
+    }
+    pic(null, `Cover of size ${C.size}. The ${M.length} picked edges form a matching, so any cover has at least ${M.length} vertices: the ratio is at most 2.`);
+    return F;
+  }
+
   // ---------- registry: figure id -> widget ----------
   const WIDGETS = {
     "fig-comparison-sorting-1": { title: "Try it: binary search", inputs: [{ name: "array", label: "array", value: "1 3 4 6 8 9 11 14 17" }, { name: "target", label: "find", value: "11", short: true }], run: binarySearch },
@@ -502,6 +717,15 @@
     "fig-dijkstra-1": { title: "Step through: Dijkstra's algorithm", run: dijkstra, speed: 1100 },
     "fig-recursive-algorithms-2": { title: "Try it: bowling by dynamic programming", inputs: [{ name: "values", label: "pin values", value: "3 -2 4 4 -1 2" }], run: bowling, speed: 1300 },
     "fig-subproblem-design-1": { title: "Try it: longest common subsequence", inputs: [{ name: "a", label: "A", value: "SNOWY", short: true }, { name: "b", label: "B", value: "SUNNY", short: true }], run: lcs },
+    "fig-greedy-algorithms-1": { title: "Try it: earliest-finish-time-first", inputs: [{ name: "list", label: "requests s-f", value: "0-6, 1-4, 3-5, 3-8, 4-7, 5-9, 6-10, 8-11" }], run: intervals },
+    "fig-union-find-1": { title: "Try it: union by rank and path compression", inputs: [{ name: "ops", label: "operations", value: "make a b c d e f; union a b; union c d; union a c; union e f; union e a; find d" }], run: unionFind, speed: 1300 },
+    "fig-two-three-trees-1": { title: "Try it: inserting into a 2-3 tree", inputs: [{ name: "keys", label: "insert", value: "10 20 5 15 25 30 35 40 12 18" }], run: twoThree, speed: 1200 },
+    "fig-randomized-algorithms-1": { title: "Try it: randomized quicksort", inputs: [{ name: "array", label: "array", value: "6 2 9 4 7 1 8 3 5" }, { name: "seed", label: "seed", value: "7", short: true }], run: quicksortRandom, speed: 1200 },
+    "fig-minimum-spanning-trees-1": { title: "Step through: Kruskal and Prim", inputs: [{ name: "alg", label: "algorithm", value: "kruskal", options: [["kruskal", "Kruskal"], ["prim", "Prim"]] }], run: mst, speed: 1100 },
+    "fig-maximum-flow-1": { title: "Step through: Edmonds–Karp", run: edmondsKarp, speed: 1300 },
+    "fig-interval-subproblems-1": { title: "Try it: optimal binary search tree", inputs: [{ name: "w", label: "weights", value: "10 8 9" }], run: optimalBST, speed: 1300 },
+    "fig-amortized-analysis-1": { title: "Try it: binary counter and its potential", inputs: [{ name: "n", label: "increments", value: "16", short: true }], run: counter, speed: 700 },
+    "fig-approximation-algorithms-1": { title: "Step through: 2-approximation for vertex cover", run: vertexCover, speed: 1200 },
     "fig-pseudopolynomial-time-1": { title: "Try it: subset sum table", inputs: [{ name: "array", label: "numbers", value: "2 5 9 14" }, { name: "target", label: "target", value: "16", short: true }], run: subsetSum, speed: 1300 },
   };
 

@@ -1,6 +1,6 @@
 ---
 title: "All-Pairs Shortest Paths: Johnson's Algorithm"
-sources: [mit6006-14, mit6006r-14]
+sources: [mit6006-14, mit6006r-14, mit6046-11]
 requires: [cs/graph-algorithms/bellman-ford, cs/graph-algorithms/dijkstra]
 status: draft
 ---
@@ -100,3 +100,33 @@ Johnson's algorithm solves APSP in $O(|V|^2\log|V|+|V|\cdot|E|)$ time.
 The proof uses no new induction: it *reduces* APSP with arbitrary weights to APSP with non-negative weights, and relies on the correctness of Bellman–Ford and Dijkstra. For dense graphs the bound is $O(|V|^3)$, which the simpler Floyd–Warshall algorithm also achieves (@thm-floyd-warshall).
 
 :::
+
+## All pairs by matrix multiplication
+
+<!-- Added 2026-11-17 from MIT 6.046 (Spring 2015), Lecture 11, in our own wording; proof written out in steps. -->
+
+Let $V=\{1,\dots,n\}$ and let $W$ be the $n\times n$ matrix with $W_{uu}=0$, $W_{uv}=w(u,v)$ for edges and $\infty$ otherwise. Let $D^{(m)}_{uv}$ be the least weight of a walk from $u$ to $v$ with at most $m$ edges, so $D^{(1)}=W$.
+
+::: {#def-min-plus-product .definition name="Min-plus product"}
+
+The *min-plus product* of $n\times n$ matrices $A$ and $B$ is $(A\otimes B)_{uv}=\min_k(A_{uk}+B_{kv})$: ordinary matrix multiplication with $+$ replaced by $\min$ and $\times$ by $+$.
+
+:::
+
+::: {#prp-shortest-paths-by-squaring .proposition name="Shortest paths by repeated squaring"}
+
+$D^{(a+b)}=D^{(a)}\otimes D^{(b)}$. Hence, if $G$ has no negative-weight cycle, $\delta=D^{(n-1)}$ is computed by $\lceil\log_2(n-1)\rceil$ squarings $W,W^{\otimes2},W^{\otimes4},\dots$, in $O(n^3\log n)$ time.
+
+:::
+
+::: {.proof}
+
+1. A walk from $u$ to $v$ with at most $a+b$ edges splits at some vertex $k$ into a walk with at most $a$ edges and one with at most $b$ (pad with the $0$-weight steps $W_{kk}=0$ if needed); conversely such pairs join into such a walk. Taking minima gives the product formula.
+
+2. Without negative cycles, shortest walks can be taken with at most $n-1$ edges (@lem-simple-shortest-paths), so $D^{(m)}=\delta$ for every $m\ge n-1$; squaring overshoots harmlessly.
+
+3. Each product takes $O(n^3)$ time, and there are $O(\log n)$ of them.
+
+:::
+
+The min-plus product has no subtraction, so Strassen's trick (@thm-strassen) does not apply directly. Floyd–Warshall (@thm-floyd-warshall) gets $O(n^3)$, and Johnson's algorithm $O(n^2\log n+n|E|)$; but the matrix view gives *transitive closure* (is there a path?) by Boolean matrix multiplication, which can use fast matrix multiplication, in $O(n^{\omega}\log n)$ time with $\omega<2.38$.

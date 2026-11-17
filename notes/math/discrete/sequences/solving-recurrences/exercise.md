@@ -119,3 +119,31 @@ Solve parts (a), (b), and (c) in **two ways**: drawing a recursion tree **and** 
 
 (d) $T(n)=T(n-2)+\Theta(n)$
 :::
+
+::: {.problem #prob-mit6046s15-1-q12 origin="external" source="mit6046s15-1-q12"}
+**Solving Recurrences**
+
+Give asymptotic upper and lower bounds for $T(n)$ in each of the following recurrences. Assume that $T(n)$ is constant for $n\le2$. Make your bounds as tight as possible, and justify your answers.
+
+(a) $T(n)=4T(n/4)+5n$
+
+(b) $T(n)=4T(n/5)+5n$
+
+(c) $T(n)=5T(n/4)+4n$
+
+(d) $T(n)=25T(n/5)+n^2$
+
+(e) $T(n)=4T(n/5)+\lg n$
+
+(f) $T(n)=4T(n/5)+\lg^5n\sqrt n$
+
+(g) $T(n)=4T(\sqrt n)+\lg^5n$
+
+(h) $T(n)=4T(\sqrt n)+\lg^2n$
+
+(i) $T(n)=T(\sqrt n)+5$
+
+(j) $T(n)=T(n/2)+2T(n/5)+T(n/10)+4n$
+
+*Note (these notes):* This is Exercise 1-2 of the problem set (an exercise not handed in); it is numbered after the problems here.
+:::

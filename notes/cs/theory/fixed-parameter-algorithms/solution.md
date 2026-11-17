@@ -1,0 +1,10 @@
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6046s15-9-q2" status="draft"}
+(a) Deleting a cycle cover $A$ leaves an acyclic graph $T-A$; fix a topological order of it. Suppose some $e=(u,v)\in A$ goes *forward* in this order. Then $T-(A-e)=(T-A)+e$ is still acyclic, so $A-e$ is a smaller cycle cover, contradicting minimality. So every edge of $A$ goes backward, and after reversing them, every edge of the tournament goes forward in the order: it is acyclic. (Conversely, the edges reversed to make $T$ acyclic form a cycle cover, so the problem asks whether at most $k$ reversals make $T$ acyclic.)
+
+(b) A tournament has a directed cycle iff it has a directed triangle (a shortest cycle in a tournament has length $3$: a chord of a longer shortest cycle would create a shorter one). Apply two rules. *Rule 1:* if an edge $e$ lies in more than $k$ triangles, put it in the cover (reverse it) and decrease $k$: the triangles through $e$ share no other edge (their third vertices differ), so without $e$ more than $k$ edges would be needed. *Rule 2:* delete a vertex that lies in no triangle: it can be placed in a topological order together with its in- and out-neighbours without creating cycles, so it does not affect the answer. When neither rule applies (or $k<0$, answer NO): if a cover $A$ with $|A|\le k$ exists, every vertex lies in a triangle, every triangle contains an edge of $A$, and each edge of $A$ is in at most $k$ triangles. So every vertex is an endpoint of an edge of $A$ ($2k$ vertices) or the third vertex of a triangle through it ($k\cdot k$): at most $k^2+2k$ vertices. If there are more, answer NO.
+
+(c) Kernelize as in (b) in polynomial time, then branch: find a directed triangle; one of its $3$ edges must be reversed; try all three, with $k-1$ (@thm-vertex-cover-branching uses the same idea). The search tree has at most $3^k$ leaves, each costing $O((k^2)^3)$ to find a triangle in the kernel: $O(3^kk^6+\mathrm{poly}(n))$, which is FPT.
+:::

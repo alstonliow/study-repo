@@ -13,7 +13,11 @@ source_prefix: mit6006
 outline_from: "MIT 6.006 Introduction to Algorithms, Spring 2020, Lectures 1-19 with recitations"
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
+exclude:
+  # Blocks from other courses' material in notes this course covers
+  - def-min-plus-product
+  - prp-shortest-paths-by-squaring
+  - prob-mit6046s15-6-q1
 
 chapters:
   - num: 1

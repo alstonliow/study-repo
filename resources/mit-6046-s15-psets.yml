@@ -1,0 +1,72 @@
+# MIT 6.046J Design and Analysis of Algorithms, Spring 2015, problem sets 1-10 (MIT OpenCourseWare,
+# CC BY-NC-SA), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6046/assignments. Locator = problem set number; a source key is
+# mit6046s15-7-q2 (problem set 7, Problem 7-2). The two exercises of problem set 1 (Exercise 1-1,
+# 1-2) are numbered q11 and q12; the other exercises only cite textbook exercises and are not
+# copied. Statements are copied as exercises (homework rule, meta/SPEC.md §10) without point
+# values; solutions are our own. Titles are our own short titles. Node ids are stable.
+id: res-mit-6046-s15-psets
+kind: homework
+title: MIT 6.046 Problem Sets (Spring 2015)
+status: draft
+courses: [mit6046]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2015-spring
+  current: true
+legacy_keys:
+  prefix: mit6046s15-
+  edition: 2015-spring
+  pattern: ^mit6046s15-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 6.046 S15 PS {section}
+  problem_label: 6.046 S15 PS {section} Q{n}
+nodes:
+- id: res-mit-6046-s15-psets-ps1
+  kind: homework
+  title: Asymptotics, recurrences, divide and conquer
+  at:
+    2015-spring: '1'
+- id: res-mit-6046-s15-psets-ps2
+  kind: homework
+  title: FFT and B-trees
+  at:
+    2015-spring: '2'
+- id: res-mit-6046-s15-psets-ps3
+  kind: homework
+  title: van Emde Boas variants
+  at:
+    2015-spring: '3'
+- id: res-mit-6046-s15-psets-ps4
+  kind: homework
+  title: Amortization and quicksort
+  at:
+    2015-spring: '4'
+- id: res-mit-6046-s15-psets-ps5
+  kind: homework
+  title: Skip lists and dynamic programming
+  at:
+    2015-spring: '5'
+- id: res-mit-6046-s15-psets-ps6
+  kind: homework
+  title: Shortest paths and spanning trees
+  at:
+    2015-spring: '6'
+- id: res-mit-6046-s15-psets-ps7
+  kind: homework
+  title: Network flow
+  at:
+    2015-spring: '7'
+- id: res-mit-6046-s15-psets-ps8
+  kind: homework
+  title: Linear programming and NP-completeness
+  at:
+    2015-spring: '8'
+- id: res-mit-6046-s15-psets-ps9
+  kind: homework
+  title: Approximation and fixed-parameter algorithms
+  at:
+    2015-spring: '9'
+- id: res-mit-6046-s15-psets-ps10
+  kind: homework
+  title: Distributed algorithms
+  at:
+    2015-spring: '10'

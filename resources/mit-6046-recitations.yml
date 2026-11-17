@@ -1,0 +1,74 @@
+# MIT 6.046J Design and Analysis of Algorithms, Spring 2015, recitation notes (MIT OpenCourseWare,
+# CC BY-NC-SA), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6046/recitation-notes (Recitation1-11). Locator = recitation number;
+# a source key is mit6046r-3. Titles are our own short titles. Node ids are stable.
+id: res-mit-6046-recitations
+kind: course-notes
+title: MIT 6.046 Recitation Notes (Spring 2015)
+status: draft
+courses: [mit6046]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2015-spring
+  current: true
+legacy_keys:
+  prefix: mit6046r-
+  edition: 2015-spring
+  pattern: ^mit6046r-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 6.046 R{section}
+  problem_label: 6.046 R{section} Q{n}
+nodes:
+- id: res-mit-6046-recitations-interval-scheduling-strassen
+  kind: recitation
+  title: Weighted interval scheduling and matrix multiplication
+  at:
+    2015-spring: '1'
+- id: res-mit-6046-recitations-b-trees
+  kind: recitation
+  title: 2-3 trees and B-trees
+  at:
+    2015-spring: '2'
+- id: res-mit-6046-recitations-union-find
+  kind: recitation
+  title: Union-find and amortization
+  at:
+    2015-spring: '3'
+- id: res-mit-6046-recitations-randomized-select
+  kind: recitation
+  title: Randomized select and quicksort
+  at:
+    2015-spring: '4'
+- id: res-mit-6046-recitations-dynamic-programming
+  kind: recitation
+  title: Dynamic programming
+  at:
+    2015-spring: '5'
+- id: res-mit-6046-recitations-greedy
+  kind: recitation
+  title: Greedy algorithms
+  at:
+    2015-spring: '6'
+- id: res-mit-6046-recitations-flow-matching
+  kind: recitation
+  title: Network flow and matching
+  at:
+    2015-spring: '7'
+- id: res-mit-6046-recitations-np-complete
+  kind: recitation
+  title: NP-complete problems
+  at:
+    2015-spring: '8'
+- id: res-mit-6046-recitations-tsp
+  kind: recitation
+  title: Approximating the travelling salesman
+  at:
+    2015-spring: '9'
+- id: res-mit-6046-recitations-distributed
+  kind: recitation
+  title: Distributed algorithms
+  at:
+    2015-spring: '10'
+- id: res-mit-6046-recitations-signatures
+  kind: recitation
+  title: Cryptographic primitives
+  at:
+    2015-spring: '11'

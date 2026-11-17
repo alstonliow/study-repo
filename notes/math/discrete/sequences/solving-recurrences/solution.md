@@ -135,3 +135,27 @@ $$x_n=2(-2)^n+3+\frac{n^2}6+\frac{7n}{18}.$$
 
 (d) $T(n)=\Theta(n^2)$. *Upper bound:* guess $T(n)\le cn^2$ and suppose $T(n)\le T(n-2)+an$ for large $n$. Then $T(n)\le c(n-2)^2+an=cn^2-(4c-a)n+4c\le cn^2$ when $4c>a$ and $n\ge2$ (large constants handle the base cases). *Lower bound:* guess $T(n)\ge c'n^2$ with $T(n)\ge T(n-2)+bn$. Then $T(n)\ge c'(n-2)^2+bn=c'n^2+(b-4c')n+4c'\ge c'n^2$ when $c'\le b/4$.
 :::
+
+::: {.solution for="prob-mit6046s15-1-q12" status="draft"}
+We use the master theorem (@thm-master-theorem) with $p=\log_ba$; for (g)–(i) substitute $m=\lg n$ and $S(m)=T(2^m)$, so $T(\sqrt n)=S(m/2)$.
+
+(a) $p=1$, $f=\Theta(n)$: case 2, $T=\Theta(n\lg n)$.
+
+(b) $p=\log_54<1$ and $f=\Theta(n)$, with $4f(n/5)=\frac45f(n)$ (regularity): case 3, $T=\Theta(n)$.
+
+(c) $p=\log_45>1$: case 1, $T=\Theta(n^{\log_45})$.
+
+(d) $p=2$, $f=\Theta(n^2)$: case 2, $T=\Theta(n^2\lg n)$.
+
+(e) $p=\log_54\approx0.86$, $f=\lg n=O(n^{p-\varepsilon})$: case 1, $T=\Theta(n^{\log_54})$.
+
+(f) $f=n^{1/2}\lg^5n=O(n^{p-\varepsilon})$ since $\frac12<0.86$: case 1, $T=\Theta(n^{\log_54})$.
+
+(g) $S(m)=4S(m/2)+m^5$: $p=2<5$, case 3, $S=\Theta(m^5)$, so $T=\Theta(\lg^5n)$.
+
+(h) $S(m)=4S(m/2)+m^2$: case 2, $S=\Theta(m^2\lg m)$, so $T=\Theta(\lg^2n\lg\lg n)$.
+
+(i) $S(m)=S(m/2)+5$: $S=\Theta(\lg m)$, so $T=\Theta(\lg\lg n)$.
+
+(j) The fractions add up to $\frac12+\frac25+\frac1{10}=1$, so every level of the recursion tree costs exactly $4n$ (until the pieces reach constant size), and there are $\Theta(\lg n)$ levels: $T=\Theta(n\lg n)$. (This is the Akra–Bazzi formula with $p=1$, @sec-math-discrete-sequences-solving-recurrences.)
+:::

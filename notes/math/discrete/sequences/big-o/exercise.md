@@ -82,3 +82,27 @@ the correct answers are $(f_2,\{f_1,f_3\})$ or $(f_2,\{f_3,f_1\})$.
 | $f_4=(\log n)^{6006}$ | $f_4=6006^{2^n}$ | $f_4=\binom n{n/6}$ | $f_4=7^{n^2}$ |
 | $f_5=\log\log(6006n)$ | $f_5=6006^{n^2}$ | $f_5=n^6$ | $f_5=n^{12+1/n}$ |
 :::
+
+::: {.problem #prob-mit6046s15-1-q11 origin="external" source="mit6046s15-1-q11"}
+**Asymptotic Growth**
+
+Sort all the functions below in increasing order of asymptotic (big-$O$) growth. If some have the same asymptotic growth, then be sure to indicate that. As usual, $\lg$ means base 2.
+
+1. $5n$
+2. $4\lg n$
+3. $4\lg\lg n$
+4. $n^4$
+5. $n^{1/2}\lg^4n$
+6. $(\lg n)^{5\lg n}$
+7. $n^{\lg n}$
+8. $5^n$
+9. $4^{n^4}$
+10. $4^{4^n}$
+11. $5^{5^n}$
+12. $5^{5n}$
+13. $n^{n^{1/5}}$
+14. $n^{n/4}$
+15. $(n/4)^{n/4}$
+
+*Note (these notes):* This is Exercise 1-1 of the problem set (an exercise not handed in); it is numbered after the problems here.
+:::

@@ -1,0 +1,167 @@
+# MIT 6.046 course scope (meta/SPEC.md §13), drafted by Claude for owner review.
+# Outline: the lectures of 6.046J Design and Analysis of Algorithms, Spring 2015 (resources
+# res-mit-6046-lectures and res-mit-6046-recitations); chapter = lecture number (lectures 19-20 and
+# 23-24 each form one chapter), points are our own short titles. Recitation topics are placed with
+# the lecture they support.
+# Rule (owner, as for the other courses): content in the 6.046 lecture or recitation notes is in
+# scope; content that is not is out of scope ("extra"). Shared notes are covered block by block.
+id: mit6046
+code: MIT 6.046
+name: "Design and Analysis of Algorithms"
+institution: MIT
+source_prefix: mit6046
+outline_from: "MIT 6.046J Design and Analysis of Algorithms, Spring 2015, Lectures 1-24 with recitations"
+status: draft  # draft until the owner has reviewed the mapping
+
+exclude:
+  # Blocks from other courses' material in notes this course covers
+  - prob-mit6006s20-6-q6
+
+chapters:
+  - num: 1
+    title: "Interval scheduling"
+    points:
+      - id: "1.1"
+        title: "Greedy interval scheduling"
+        covers: [cs/algorithm-design/greedy-algorithms]
+      - id: "1.2"
+        title: "Weighted interval scheduling"
+        covers: [exm-weighted-interval-scheduling]
+  - num: 2
+    title: "Divide and conquer"
+    points:
+      - id: "2.1"
+        title: "Convex hull, median, Strassen"
+        covers: [cs/algorithm-design/divide-and-conquer]
+      - id: "2.2"
+        title: "Master theorem"
+        covers: [thm-master-theorem, thm-master-theorem-special-case-extra, prob-mit6046s15-1-q12]
+      - id: "2.3"
+        title: "Asymptotic growth"
+        covers: [def-big-o, def-big-omega-big-theta-extra, prob-mit6046s15-1-q11]
+  - num: 3
+    title: "Fast Fourier transform"
+    points:
+      - id: "3.1"
+        title: "Polynomials and the FFT"
+        covers: [cs/algorithm-design/fast-fourier-transform, thm-interpolation]
+  - num: 4
+    title: "van Emde Boas trees"
+    points:
+      - id: "4.1"
+        title: "van Emde Boas trees"
+        covers: [cs/data-structures/van-emde-boas]
+  - num: 5
+    title: "Amortization"
+    points:
+      - id: "5.1"
+        title: "Amortized analysis"
+        covers: [cs/data-structures/amortized-analysis]
+      - id: "5.2"
+        title: "2-3 trees and B-trees"
+        covers: [cs/data-structures/two-three-trees]
+      - id: "5.3"
+        title: "Union-find"
+        covers: [cs/data-structures/union-find]
+  - num: 6
+    title: "Randomized algorithms"
+    points:
+      - id: "6.1"
+        title: "Verification, quicksort, selection"
+        covers: [cs/algorithm-design/randomized-algorithms]
+  - num: 7
+    title: "Skip lists"
+    points:
+      - id: "7.1"
+        title: "Skip lists"
+        covers: [cs/data-structures/skip-lists]
+  - num: 8
+    title: "Hashing"
+    points:
+      - id: "8.1"
+        title: "Universal and perfect hashing"
+        covers: [cs/data-structures/perfect-hashing, def-universal-hash-family, thm-universal-hash-family, thm-chain-length]
+  - num: 9
+    title: "Augmentation"
+    points:
+      - id: "9.1"
+        title: "Order statistics and range trees"
+        covers: [cs/data-structures/augmented-search-trees, def-subtree-augmentation]
+  - num: 10
+    title: "Dynamic programming"
+    points:
+      - id: "10.1"
+        title: "Interval subproblems"
+        covers: [cs/dynamic-programming/interval-subproblems, exm-coin-game]
+  - num: 11
+    title: "All-pairs shortest paths"
+    points:
+      - id: "11.1"
+        title: "Matrix multiplication, Floyd-Warshall, Johnson"
+        covers: [cs/graph-algorithms/all-pairs-shortest-paths, thm-floyd-warshall]
+  - num: 12
+    title: "Minimum spanning trees"
+    points:
+      - id: "12.1"
+        title: "Prim and Kruskal"
+        covers: [cs/graph-algorithms/minimum-spanning-trees]
+  - num: 13
+    title: "Network flow"
+    points:
+      - id: "13.1"
+        title: "Max-flow min-cut"
+        covers: [cs/graph-algorithms/maximum-flow]
+  - num: 14
+    title: "Flow applications"
+    points:
+      - id: "14.1"
+        title: "Matching and elimination"
+        covers: [cs/graph-algorithms/flow-applications]
+  - num: 15
+    title: "Linear programming"
+    points:
+      - id: "15.1"
+        title: "Linear programming"
+        covers: [cs/algorithm-design/linear-programming]
+  - num: 16
+    title: "NP-completeness"
+    points:
+      - id: "16.1"
+        title: "Reductions"
+        covers: [cs/theory/np-complete-reductions, def-np, def-polynomial-reduction, prp-np-complete-consequences]
+  - num: 17
+    title: "Approximation algorithms"
+    points:
+      - id: "17.1"
+        title: "Approximation algorithms"
+        covers: [cs/theory/approximation-algorithms]
+  - num: 18
+    title: "Fixed-parameter algorithms"
+    points:
+      - id: "18.1"
+        title: "Fixed-parameter algorithms"
+        covers: [cs/theory/fixed-parameter-algorithms]
+  - num: 19
+    title: "Distributed algorithms"
+    points:
+      - id: "19.1"
+        title: "Synchronous and asynchronous networks"
+        covers: [cs/models-of-computation/distributed-algorithms]
+  - num: 21
+    title: "Cryptographic hashing"
+    points:
+      - id: "21.1"
+        title: "Hash functions"
+        covers: [cs/cryptography/cryptographic-hash-functions]
+  - num: 22
+    title: "Encryption"
+    points:
+      - id: "22.1"
+        title: "Encryption, key exchange, signatures"
+        covers: [cs/cryptography/public-key-cryptography, def-rsa, thm-rsa-correct, def-diffie-hellman-scheme]
+  - num: 23
+    title: "Cache-oblivious algorithms"
+    points:
+      - id: "23.1"
+        title: "External memory and cache-oblivious algorithms"
+        covers: [cs/models-of-computation/cache-oblivious-algorithms]

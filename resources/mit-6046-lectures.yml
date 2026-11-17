@@ -1,0 +1,140 @@
+# MIT 6.046J Design and Analysis of Algorithms, Spring 2015, lecture notes (MIT OpenCourseWare,
+# CC BY-NC-SA), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6046/lecture-notes (lec01-lec24; lecture 14 has two files, 14A and 14B,
+# both at locator 14). Locator = lecture number; a source key is mit6046-7 (Lecture 7).
+# Titles are our own short titles. Node ids are stable.
+id: res-mit-6046-lectures
+kind: course-notes
+title: MIT 6.046 Lecture Notes (Spring 2015)
+status: draft
+courses: [mit6046]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2015-spring
+  current: true
+legacy_keys:
+  prefix: mit6046-
+  edition: 2015-spring
+  pattern: ^mit6046-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 6.046 L{section}
+  problem_label: 6.046 L{section} Q{n}
+nodes:
+- id: res-mit-6046-lectures-interval-scheduling
+  kind: lecture
+  title: Interval scheduling
+  at:
+    2015-spring: '1'
+- id: res-mit-6046-lectures-divide-and-conquer
+  kind: lecture
+  title: Divide and conquer
+  at:
+    2015-spring: '2'
+- id: res-mit-6046-lectures-fft
+  kind: lecture
+  title: Fast Fourier transform
+  at:
+    2015-spring: '3'
+- id: res-mit-6046-lectures-van-emde-boas
+  kind: lecture
+  title: van Emde Boas trees
+  at:
+    2015-spring: '4'
+- id: res-mit-6046-lectures-amortization
+  kind: lecture
+  title: Amortization
+  at:
+    2015-spring: '5'
+- id: res-mit-6046-lectures-randomized
+  kind: lecture
+  title: Randomized algorithms
+  at:
+    2015-spring: '6'
+- id: res-mit-6046-lectures-skip-lists
+  kind: lecture
+  title: Skip lists
+  at:
+    2015-spring: '7'
+- id: res-mit-6046-lectures-hashing
+  kind: lecture
+  title: Universal and perfect hashing
+  at:
+    2015-spring: '8'
+- id: res-mit-6046-lectures-augmentation
+  kind: lecture
+  title: Augmentation
+  at:
+    2015-spring: '9'
+- id: res-mit-6046-lectures-dynamic-programming
+  kind: lecture
+  title: Dynamic programming
+  at:
+    2015-spring: '10'
+- id: res-mit-6046-lectures-all-pairs
+  kind: lecture
+  title: All-pairs shortest paths
+  at:
+    2015-spring: '11'
+- id: res-mit-6046-lectures-mst
+  kind: lecture
+  title: Greedy algorithms and minimum spanning trees
+  at:
+    2015-spring: '12'
+- id: res-mit-6046-lectures-network-flow
+  kind: lecture
+  title: Network flow
+  at:
+    2015-spring: '13'
+- id: res-mit-6046-lectures-flow-applications
+  kind: lecture
+  title: Flow applications
+  at:
+    2015-spring: '14'
+- id: res-mit-6046-lectures-linear-programming
+  kind: lecture
+  title: Linear programming
+  at:
+    2015-spring: '15'
+- id: res-mit-6046-lectures-np-completeness
+  kind: lecture
+  title: NP-completeness
+  at:
+    2015-spring: '16'
+- id: res-mit-6046-lectures-approximation
+  kind: lecture
+  title: Approximation algorithms
+  at:
+    2015-spring: '17'
+- id: res-mit-6046-lectures-fixed-parameter
+  kind: lecture
+  title: Fixed-parameter algorithms
+  at:
+    2015-spring: '18'
+- id: res-mit-6046-lectures-distributed-1
+  kind: lecture
+  title: Distributed algorithms I
+  at:
+    2015-spring: '19'
+- id: res-mit-6046-lectures-distributed-2
+  kind: lecture
+  title: Distributed algorithms II
+  at:
+    2015-spring: '20'
+- id: res-mit-6046-lectures-crypto-hashing
+  kind: lecture
+  title: Cryptographic hashing
+  at:
+    2015-spring: '21'
+- id: res-mit-6046-lectures-encryption
+  kind: lecture
+  title: Encryption
+  at:
+    2015-spring: '22'
+- id: res-mit-6046-lectures-cache-oblivious-1
+  kind: lecture
+  title: Cache-oblivious algorithms I
+  at:
+    2015-spring: '23'
+- id: res-mit-6046-lectures-cache-oblivious-2
+  kind: lecture
+  title: Cache-oblivious algorithms II
+  at:
+    2015-spring: '24'

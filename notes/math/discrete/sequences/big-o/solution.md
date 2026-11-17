@@ -71,3 +71,16 @@ Compare logarithms where the functions grow fast.
 
 (d) $(f_5,f_2,f_1,f_3,f_4)$. $f_5=n^{12}\cdot n^{1/n}=\Theta(n^{12})$ since $n^{1/n}\to1$. The logarithms of the others are $7\sqrt n\log n$, $\Theta(n\log n)$ (since $n!\le n^n$, $f_1=\Theta(n^{n+4})$, with logarithm $(n+4)\log n$), $6n\log n$ (as $4^{3n\log n}=2^{6n\log n}$), and $n^2\log7$. Since $f_3/f_1=n^{5n-4}\to\infty$, $f_1=o(f_3)$.
 :::
+
+::: {.solution for="prob-mit6046s15-1-q11" status="draft"}
+Compare the base-2 logarithms of the fast-growing functions.
+
+$$4\lg\lg n\ \ll\ 4\lg n\ \ll\ n^{1/2}\lg^4n\ \ll\ 5n\ \ll\ n^4\ \ll\ (\lg n)^{5\lg n}\ \ll\ n^{\lg n}\ \ll\ n^{n^{1/5}}\ \ll\ 5^n\ \ll\ 5^{5n}\ \ll\ (n/4)^{n/4}\ \ll\ n^{n/4}\ \ll\ 4^{n^4}\ \ll\ 4^{4^n}\ \ll\ 5^{5^n},$$
+that is, the order $3,2,5,1,4,6,7,13,8,12,15,14,9,10,11$, with no two of the same growth.
+
+- $n^{1/2}\lg^4n=o(n)$, since $\lg^4n=o(n^{1/2})$.
+- $(\lg n)^{5\lg n}=2^{5\lg n\lg\lg n}=n^{5\lg\lg n}$, which beats every polynomial, and its logarithm $5\lg n\lg\lg n$ is $o(\lg^2n)$, the logarithm of $n^{\lg n}$.
+- $\lg n^{n^{1/5}}=n^{1/5}\lg n$ beats $\lg^2n$ but is $o(n)$, while $\lg5^n=n\lg5$ and $\lg5^{5n}=5n\lg5$.
+- $\lg(n/4)^{n/4}=\frac n4(\lg n-2)$ beats $5n\lg5$, and $(n/4)^{n/4}/n^{n/4}=4^{-n/4}\to0$.
+- $\lg4^{n^4}=2n^4$ beats $\frac n4\lg n$; then $\lg4^{4^n}=2\cdot4^n$ and $\lg5^{5^n}=5^n\lg5$.
+:::
