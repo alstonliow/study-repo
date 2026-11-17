@@ -2,7 +2,7 @@
 
 Layered layout, top to bottom (or left to right): a note sits one layer after
 its furthest prerequisite; the order inside a column is improved by a few barycentre sweeps.
-Nodes are links with data-item="<note id>", so site/progress.html can colour
+Nodes are links with data-item="<note id>", so site/_assets/progress.html can colour
 them by progress state. Used by make_site.py (branch pages, the global map and
 chapter summaries).
 """

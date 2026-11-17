@@ -1,9 +1,9 @@
-# Ideas (parked during the SPEC freeze)
+# Ideas
 
-Changes to structure, SPEC, taxonomy or notation that come up while the SPEC is
-frozen (`meta/SPEC.md` §9). Do not apply them now. They are reviewed and applied
-in one batch after the first 20 knowledge points are migrated.
+Changes to structure, SPEC, taxonomy or notation that come up while working but
+are not done right away. The owner reviews them in batches; nothing here is
+applied without approval (`meta/SPEC.md` §9).
 
 Format: one bullet per idea, with date and the file it would change.
 
-<!-- - 2026-11-13 · meta/taxonomy.md · Example: split `graph` into `graph/basics` and `graph/trees`. -->
+<!-- - 2026-11-13 · meta/taxonomy.yml · Example: split `graph` into `graph/basics` and `graph/trees`. -->

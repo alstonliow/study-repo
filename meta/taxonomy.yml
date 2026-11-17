@@ -26,6 +26,7 @@ parts:
           - injections-surjections-bijections
           - inverse-functions
           - composition
+          - iterated-functions
           - cryptosystems
           - counting
           - countable-sets
@@ -146,25 +147,26 @@ parts:
           - random-variables
           - expectation-and-variance
           - indicator-variables
+          - functions-of-random-variables
           - covariance-and-correlation
           - uniform-distribution
           - binomial-distribution
           - hypergeometric-distribution
           - poisson-distribution
           - geometric-distribution
-          - standard-distributions
           - coupon-collector
           - concentration-inequalities
           - hashing-and-load-balancing
       - id: math/probability/continuous
         title: Continuous Probability
-        desc: Densities, exponential and normal distributions, central limit theorem
+        desc: Densities, exponential and normal distributions, central limit theorem, overview of distributions
         notes:   # topic order on the website
           - continuous-random-variables
           - exponential-distribution
           - normal-distribution
           - central-limit-theorem
           - buffons-needle
+          - standard-distributions
       - id: math/probability/markov-chains
         title: Markov Chains
         desc: Finite Markov chains, invariant distributions, hitting times

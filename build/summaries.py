@@ -10,7 +10,7 @@ course (courses/<course>/chapter-<n>.qmd). A page has, in order:
 3. all exercises of its notes;
 4. synthesis problems from the branch's review/ folder.
 
-Every item carries data attributes for the filter bar (site/summary.html):
+Every item carries data attributes for the filter bar (site/_assets/summary.html):
 data-kind (def, result, exercise, synthesis), data-item (note or problem id),
 data-level. Rendering is delegated to make_site (`ctx`), so a summary looks
 exactly like the notes it comes from.
@@ -58,7 +58,7 @@ def item(note, d, ctx, courses: list[str] | None) -> str:
 
 def heading(note, ctx) -> str:
     """A plain sub-heading for a note, with a small link to it; the number is
-    marked so the course filter can switch it (site/filter.html)."""
+    marked so the course filter can switch it (site/_assets/filter.html)."""
     number = f'[{note.num}]{{.num data-note="{note.id}"}} ' if note.num else ""
     return f"### {number}{note.title} [→]({ctx.page_url(note.id)}){{.summary-src title=\"Open the note\"}}"
 

@@ -151,7 +151,7 @@ def main() -> int:
         page_courses[f"notes/{n.id}.html"] = n.courses
     page_courses.update(summary_courses)
 
-    # one data file for the page scripts (site/site-data.html): courses, scope,
+    # one data file for the page scripts (site/_assets/site-data.html): courses, scope,
     # course order, and the topics and exercises used by progress tracking
     import json
     (SITE / "site-data.json").write_text(json.dumps({
@@ -164,7 +164,7 @@ def main() -> int:
         # section numbers per outline (numbering.py): topic, and one map per course
         "numbers": {"topic": web.NUMBERING.as_data(),
                     **{c.id: outline.course(REPO, c).numbers() for c in REPO.courses}},
-        # for the Export page (site/export.html)
+        # for the Export page (export.qmd)
         "titles": {n.id: n.display_title for n in notes.values()},
         "branchTitles": {bid: f"{branch_num[bid]} {t}" for _, bs in REPO.parts for bid, t in bs if bid in branch_num},
         "reviews": sorted(REPO.reviews),

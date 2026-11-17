@@ -139,7 +139,7 @@ kinds (prefix, word, numbering, colour) is `build/kinds.py` (§16.7).
    `\begin{algorithm}`, `\caption{...}`, `\begin{algorithmic}`, then `\INPUT`,
    `\OUTPUT`, `\STATE`, `\IF{..}`/`\ELSIF{..}`/`\ELSE`/`\ENDIF`,
    `\WHILE{..}`/`\ENDWHILE`, `\FOR{..}`/`\ENDFOR`, `\RETURN`, `\COMMENT{..}`.
-   The website renders them as text with pseudocode.js (`site/pseudocode.html`);
+   The website renders them as text with pseudocode.js (`site/_assets/pseudocode.html`);
    they are not compiled to SVG. A PDF build must define `\INPUT` and `\OUTPUT`.
    **Figures with a caption** are a div with a `fig-` id holding the drawing,
    then the caption as the last paragraph. They are numbered per page

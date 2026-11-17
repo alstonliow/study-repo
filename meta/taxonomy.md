@@ -1,87 +1,70 @@
 ---
 title: Taxonomy
-version: 0.1
+version: 0.2
 status: draft
 ---
 
-# Taxonomy v0.1
+# Taxonomy v0.2
 
-Topic skeleton for `notes/`. Only the top two levels and the branches are fixed
-here. Leaf folders (knowledge points) are created when content is added
-(`meta/SPEC.md` §2).
+How `notes/` is organised by topic. The list of parts, branches and notes lives
+in one place only: [`taxonomy.yml`](taxonomy.yml) (titles, descriptions and the
+topic order used by the website and the PDFs). This file holds the rules and the
+history; it does not repeat the branch list.
 
-Changes to this file need the owner's approval. During the SPEC freeze, record
-wanted changes in `meta/ideas.md`.
+Changes need the owner's approval. Ideas for later go into `meta/ideas.md`.
 
-## 1. Top two levels
+## 1. Rules
 
-| Path | Status | Notes |
-|---|---|---|
-| `math/discrete` | active (first batch) | FIT1058 scope |
-| `math/probability` | active (first batch) | 1058note chapter 9 only, for now |
-| `cs/algorithms` | active | CS70 Note 4 (stable matching) |
-| `cs/theory` | active | CS70 Note 12 (computability) |
+1. A note id is its path under `notes/`: `<field>/<area>/<branch>/<note>`, for
+   example `math/discrete/sets/power-set` (`meta/SPEC.md` §2).
+2. Fields are the top folders (`math`, `cs`). A field is split into areas
+   (`math/discrete`, `math/probability`) or directly into branches
+   (`cs/algorithms`); branches may have sub-branches (`math/discrete/logic/predicate`).
+3. Every branch is listed in `taxonomy.yml` under a part (a book on the website and
+   in the PDFs), with its notes in topic order. `make check` fails on a note
+   that is not listed.
+4. Topic order is prerequisite order: a note never requires a later one.
+5. A new branch goes at the end of its part unless the owner decides otherwise, so
+   that existing chapter numbers do not change.
+6. Notes are moved or renamed only with `build/move_note.py`; the old id stays as
+   an alias.
 
-Other fields (programming, calculus, linear algebra, analysis,
-optimisation) are added in later batches.
+## 2. Fields
 
-## 2. Branches
-
-### `math/discrete`
-
-| Branch | Content |
+| Field | Parts in `taxonomy.yml` |
 |---|---|
-| `sets` | Sets, subsets, power set, set operations, Cartesian product, partitions |
-| `functions` | Functions, injections/surjections/bijections, inverses, composition |
-| `relations` | Binary relations and their properties, equivalence relations |
-| `proof` | Theorems and proofs, proof techniques, induction |
-| `logic/propositional` | Truth values, connectives, laws, normal forms |
-| `logic/predicate` | Predicates, quantifiers |
-| `sequences` | Sequences, recurrences, limits, big-O, sums and series |
-| `number-theory` | Divisibility, gcd, modular arithmetic, totient, Diffie–Hellman |
-| `counting` | Addition/multiplication principles, inclusion–exclusion, selection |
-| `graph` | Graphs, walks, connectivity, trees, planarity |
+| `math/discrete` | Discrete Mathematics |
+| `math/probability` | Probability |
+| `cs` | Computer Science |
 
-### `math/probability`
+Planned later: programming, calculus, linear algebra, analysis, optimisation.
 
-| Branch | Content |
+## 3. Where the sources went
+
+| Source | Target |
 |---|---|
-| `discrete` | Sample spaces, events, conditional probability, random variables, expectation and variance, discrete distributions, concentration, applications |
-| `continuous` | Continuous random variables, densities, exponential and normal distributions, central limit theorem, Buffon's needle (CS70 Note 20) |
-| `markov-chains` | Finite Markov chains, invariant distributions, periodicity and convergence, hitting times (CS70 Note 21) |
+| FIT1058 course notes, chapters 1–8 and 10 | `math/discrete/*` (functions and relations both come from chapter 2) |
+| FIT1058 course notes, chapter 9 | `math/probability/discrete` |
+| CS70 Notes 1–3, 5–7, 10, 11 | the matching `math/discrete` branches |
+| CS70 Notes 8–9 | `math/discrete/polynomials` |
+| CS70 Note 4 | `cs/algorithms` |
+| CS70 Note 12 | `cs/theory` |
+| CS70 Notes 13–19 | `math/probability/discrete` |
+| CS70 Note 20 | `math/probability/continuous` |
+| CS70 Note 21 | `math/probability/markov-chains` |
 
-The discrete notes moved from `math/probability/<note>` to
-`math/probability/discrete/<note>` on 2026-11-17 (old ids kept as aliases).
+Section-level placement is recorded in the resource files (`resources/`) and the
+course files (`meta/courses/`), not here.
 
-### `cs`
+## 4. History
 
-Added 2026-11-17 as the part "Computer Science" (CS70 Notes 4 and 12).
-
-| Branch | Content |
-|---|---|
-| `algorithms` | Design and analysis of algorithms; for now stable matching |
-| `theory` | Computability: self-reference, the halting problem, reductions, incompleteness |
-
-## 3. Mapping from 1058note chapters
-
-Source: `FIT1058_course/notes/chapters/`. Leaf names are decided per chapter during
-migration (P3/P7), not here.
-
-| 1058note chapter | Target |
-|---|---|
-| 01 Sets | `math/discrete/sets` |
-| 02 Functions, from "Definitions" to "Counting functions" | `math/discrete/functions` |
-| 02 Functions, from "Binary relations" to "Counting relations" | `math/discrete/relations` |
-| 03 Proofs | `math/discrete/proof` |
-| 04 Propositional Logic | `math/discrete/logic/propositional` |
-| 05 Predicate Logic | `math/discrete/logic/predicate` |
-| 06 Sequences & Series | `math/discrete/sequences` |
-| 07 Number Theory | `math/discrete/number-theory` |
-| 08 Counting & Combinatorics | `math/discrete/counting` |
-| 09 Probability | `math/probability/discrete` |
-| 10 Graph Theory | `math/discrete/graph` |
-| 11 Notation summary | `meta/notation.md` (not a knowledge point) |
-
-The exercises volume (`FIT1058_course/exercises/chapters/`) follows the same
-mapping. Its chapters 09–10 (probability 1–2) map to `math/probability/discrete`, and
-11–12 (graph theory 1–2) map to `math/discrete/graph`.
+- 2026-11-13: first skeleton, `math/discrete` and `math/probability` (FIT1058).
+- 2026-11-16: `math/probability/standard-distributions` split into one note per distribution.
+- 2026-11-17: probability split into sub-branches; the discrete notes moved from
+  `math/probability/<note>` to `math/probability/discrete/<note>` (aliases kept).
+- 2026-11-17: new branches `math/discrete/polynomials`, `math/probability/continuous`,
+  `math/probability/markov-chains`, and the part Computer Science (`cs/algorithms`,
+  `cs/theory`), all from CS70.
+- 2026-11-17: `covariance-and-correlation` and `composition` split;
+  `standard-distributions` moved to the end of `math/probability/continuous` as an
+  overview of all distributions.

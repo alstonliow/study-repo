@@ -80,3 +80,24 @@ Drawing $n=5$ balls from $N=20$, of which $B=8$ are black: $\mathrm{Hypergeometr
 The formula also follows by counting sets: there are $\binom Nn$ equally likely sets of $n$ balls, and $\binom Bk\binom{N-B}{n-k}$ of them contain exactly $k$ black balls. $\Pr(Y=k)>0$ only when $\max(0,n+B-N)\le k\le\min(n,B)$.
 
 :::
+
+::: {#prp-hypergeometric-mean-variance .proposition name="Mean and variance of the hypergeometric distribution"}
+
+If $Y\sim\mathrm{Hypergeometric}(N,B,n)$ and $p=\frac BN$, then
+$$E[Y]=np,\qquad \mathrm{Var}(Y)=np(1-p)\,\frac{N-n}{N-1}.$$
+
+:::
+
+::: {.proof}
+
+1. Number the draws $1,\dots,n$ and let $I_i$ indicate that draw $i$ is black, so $Y=I_1+\dots+I_n$. By symmetry each draw is equally likely to be any of the $N$ balls, so $\Pr(I_i=1)=p$, and $E[Y]=np$ by @thm-linearity-of-expectation.
+
+2. For $i\ne j$, draws $i$ and $j$ are both black with probability $\frac BN\cdot\frac{B-1}{N-1}$. So
+   $$\mathrm{Cov}(I_i,I_j)=\frac{B(B-1)}{N(N-1)}-p^2=-\frac{p(1-p)}{N-1}.$$
+
+3. Expanding $\mathrm{Var}(Y)$ as the sum of all covariances $\mathrm{Cov}(I_i,I_j)$ (@prp-covariance-properties), with $\mathrm{Var}(I_i)=p(1-p)$:
+   $$\mathrm{Var}(Y)=np(1-p)-n(n-1)\frac{p(1-p)}{N-1}=np(1-p)\,\frac{N-n}{N-1}.$$
+
+:::
+
+The factor $\frac{N-n}{N-1}<1$ (for $n>1$) is why drawing without replacement is more concentrated than the binomial $\mathrm{Bin}(n,p)$, and for $N$ much larger than $n$ the two distributions are almost the same.

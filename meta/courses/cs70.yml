@@ -4,7 +4,7 @@
 # checking the content against the notes. FIT1058-only examples and exercises
 # are therefore extra here, as the CS70 examples are extra for FIT1058
 # (strict rule for exercises too, confirmed by the owner on 2026-11-17).
-# Only the CS70 notes kept in raw/UCB_CS70 are mapped (Notes 10, 13-19).
+# All CS70 Notes 1-21 (kept locally in raw/UCB_CS70) are mapped.
 # Sections that cover none of our notes are left out (the exercise sections, whose
 # problems sit in the notes they practise).
 # Points use CS70's own numbering: chapter = CS70 note number, point = section.
@@ -461,7 +461,7 @@ chapters:
     points:
       - id: "16.1"
         title: "Variance and the random walk"
-        covers: [math/probability/discrete/covariance-and-correlation]
+        covers: [math/probability/discrete/functions-of-random-variables]
       - id: "16.2"
         title: "Computing variance"
         covers: [math/probability/discrete/uniform-distribution]

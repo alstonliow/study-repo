@@ -61,7 +61,7 @@ def library_url(rid: str) -> str:
 # ---------------------------------------------------------------- TikZ -> SVG
 def num(number: str, nid: str) -> str:
     """A number on the website, marked with its note so the course filter can
-    show the course's number instead (site/filter.html)."""
+    show the course's number instead (site/_assets/filter.html)."""
     return f'[{number}]{{.num data-note="{nid}"}}'
 
 
@@ -204,7 +204,7 @@ def transform(body: str, here) -> str:
     def raw_sub(m):
         ind = m.group(1)
         if tikz.is_algorithm(m.group(2)):
-            # algorithms are typeset in the browser by pseudocode.js (site/pseudocode.html)
+            # algorithms are typeset in the browser by pseudocode.js (site/_assets/pseudocode.html)
             src = html.escape(textwrap.dedent(m.group(2)), quote=False)
             return "\n".join(ind + l for l in ["```{=html}", f'<pre class="pseudocode">{src}</pre>', "```"])
         name = SVGS.get(textwrap.dedent(m.group(2)))

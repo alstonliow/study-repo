@@ -26,5 +26,6 @@ preview:
 	$(PYTHON) build/make_site.py
 	quarto preview site
 
+# Remove everything generated in site/ (keeps _quarto.yml, _assets/ and .gitignore)
 clean-site:
-	rm -rf site/_site site/notes site/courses site/tikz site/index.qmd site/_nav.yml site/_sidebar.yml site/site-data.json site/map.qmd site/downloads.qmd site/export.qmd site/library site/library.qmd site/pdf site/.quarto
+	find site -mindepth 1 -maxdepth 1 ! -name _quarto.yml ! -name _assets ! -name .gitignore -exec rm -rf {} +

@@ -211,7 +211,7 @@ GitHub (link at the bottom of the sidebar). Sync uses Supabase:
    secret under Authentication → Sign In / Providers → GitHub.
 3. Under Authentication → URL Configuration, set the Site URL to the website
    and add `http://localhost:4321/**` to the redirect URLs.
-4. Put the project URL and the **anon** key in `site/progress.html`. Never use
+4. Put the project URL and the **anon** key in `site/_assets/progress.html`. Never use
    the `service_role` key.
 5. After signing in once, turn off "Allow new users to sign up" so that no one
    else can create an account.
@@ -220,13 +220,15 @@ GitHub (link at the bottom of the sidebar). Sync uses Supabase:
 
 | Path | Contents |
 |---|---|
-| `notes/` | The notes (one folder per knowledge point) |
-| `meta/` | Specification, taxonomy (`taxonomy.md` + `taxonomy.yml`), notation, course files (`courses/`), relationship types (`relations.yml`), numbering formats (`numbering.yml`) |
+| `notes/` | The notes: one folder per knowledge point, `<field>/<area>/<branch>/<note>/` with `note.md` and optional `example.md`, `exercise.md`, `solution.md` |
+| `meta/` | Specification (`SPEC.md`), taxonomy (`taxonomy.yml`, the list of parts, branches and notes; `taxonomy.md`, its rules and history), notation, course files (`courses/`), relationship types (`relations.yml`), numbering formats (`numbering.yml`), parked ideas (`ideas.md`) |
 | `resources/` | One YAML file per resource (book, course notes, ...): its chapters and sections as nodes, editions, and the format of its source keys (`meta/SPEC.md` §17.12) |
-| `build/` | `model.py` (the one parser), registries (`kinds.py`, `sources.py`), `outline.py` and `numbering.py`, `refs.py`, `filters.py`, `transforms.py`; site (`make_site.py`, `web.py`, `summaries.py`, `graphs.py`, `tikz.py`), PDF (`make_pdf.py`, `book.py`), checks, `move_note.py`; `legacy/` holds the one-off LaTeX migration |
-| `site/` | Quarto website configuration; generated pages are not committed |
-| `legacy/` | Original LaTeX notes, kept until migration review is finished |
-| `.github/workflows/` | Builds and publishes the website on every push to `main` |
+| `build/` | `model.py` (the one parser), registries (`kinds.py`, `sources.py`), `outline.py` and `numbering.py`, `refs.py`, `filters.py`, `transforms.py`; site (`make_site.py`, `web.py`, `summaries.py`, `graphs.py`, `tikz.py`), PDF (`make_pdf.py`, `book.py`), shared figure styles (`figures.tex`), checks (`check.py`), `move_note.py` |
+| `site/` | Quarto website: `_quarto.yml` and `_assets/` (themes, styles, page scripts, Lua filter, favicon) are hand-written; everything else there is generated and not committed |
+| `tests/` | Tests of the build scripts on a small fixture (`make test`) |
+| `.github/workflows/` | Builds and publishes the website and the PDFs on every push to `main` |
+
+Local only, never committed: `raw/` (reference material: course notes and solutions, one folder per course), `out/` (built PDFs), `private/` (the private store).
 
 ## Building
 
@@ -237,6 +239,9 @@ distribution (`pdflatex`) and `pdftocairo` (Poppler) for the diagrams.
 make check     # validate notes (ids, references, YAML, problem/solution pairs)
 make site      # generate and render the website into site/_site/
 make preview   # live local preview
+make test      # type checks and tests of the build scripts
+make pdf       # PDFs into out/pdf/
+make clean-site  # remove the generated website files
 ```
 
 ## Sources and copyright

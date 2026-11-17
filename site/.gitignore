@@ -1,2 +1,9 @@
-/.quarto/
+# Everything in site/ is generated (build/make_site.py, quarto render) except
+# the files listed below; `make clean-site` removes the rest.
+/*
+!/.gitignore
+!/_quarto.yml
+!/_assets/
 **/*.quarto_ipynb
+
+/.quarto/
