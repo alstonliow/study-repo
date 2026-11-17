@@ -31,3 +31,15 @@ Two fair dice are thrown; the outcome is the ordered pair of numbers shown.
 (d) How many outcomes have both numbers $\le3$?
 (e) How many outcomes have neither number equal to 5?
 :::
+
+::: {.problem #prob-cs70hw-6-q6 origin="external" source="cs70hw-6-q6"}
+**Good Game.** Player will send 'GG' (Good Game) to the winner after each defeat in a 1v1 competitive game. Maru is a skilled Terran player in the Game. And he is 27 pts behind Player Sierral. Suppose Sierral has finished all of his games and Maru has 10 games to go. If Maru wins the $i$-th game, he will get $i$ pts.
+
+(a) What's the maximum number of GGs that Maru can send and have a higher points than Sierral?
+
+(b) How many different ways that Maru can defeat Sierral (earns more than 27 pts)?
+:::
+
+::: {.problem #prob-cs70hw-7-q2 origin="external" source="cs70hw-7-q2"}
+**Palindromes.** How many 5-digit palindromes are there? (A palindrome is a number that reads the same way forwards and backwards. For example, 27872 and 48484 are palindromes, but 28389 and 12541 are not.)
+:::

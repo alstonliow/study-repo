@@ -317,7 +317,8 @@ chapters:
     points:
       - id: "2.3"
         title: "Direct proof"
-        covers: [math/discrete/proof/theorems-and-proofs, math/discrete/proof/finding-proofs]
+        # HW1 Q7 (images and preimages) is in scope on its own; its note is not (owner, 2026-11-17).
+        covers: [math/discrete/proof/theorems-and-proofs, math/discrete/proof/finding-proofs, prob-cs70hw-1-q7]
       - id: "2.5"
         title: "Proof by contradiction"
         covers: [math/discrete/proof/contradiction]

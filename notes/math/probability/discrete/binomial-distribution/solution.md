@@ -41,3 +41,22 @@ probabilities below are $\binom{16}k/2^{16}$ summed over the relevant $k$.
     (c). Both bounds hold but are much larger than the exact values: about
     $3$ times too big for (b) and about $27$ times for (c).
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-11-q3" status="draft"}
+(a) Each of the $n$ planes survives day $1$ independently with probability $p$: $X_1\sim\mathrm{Bin}(n,p)$, $\Pr(X_1=k)=\binom nkp^k(1-p)^{n-k}$.
+
+(b) A plane is left after two days if it flies successfully on both days, with probability $p^2$, independently of the other planes. So $X_2\sim\mathrm{Bin}(n,p^2)$.
+
+(c) In the same way $X_t\sim\mathrm{Bin}(n,p^t)$.
+
+(d) $\Pr(X_t\ge1)=1-\Pr(X_t=0)=1-(1-p^t)^n$.
+
+(e) Not independent. $\Pr(A_1)=\Pr(B_1)=(1-p)^2$, while $A_1\cap B_1$ means planes $1,2,3$ all crash: $\Pr(A_1\cap B_1)=(1-p)^3\ne(1-p)^4$, since $0<1-p<1$.
+
+(f) $\Pr(B_2)=1-p$. $A_2$: plane $1$ crashes, exactly one of the other $n-1$ crashes: $\Pr(A_2)=(1-p)\cdot(n-1)(1-p)p^{n-2}$. $A_2\cap B_2$: planes $1,2$ crash and the rest fly: $(1-p)^2p^{n-2}$. Independence means $(1-p)^2p^{n-2}=(n-1)(1-p)^3p^{n-2}$, i.e. $(n-1)(1-p)=1$, so $n=1+\frac1{1-p}$ (which must be an integer).
+
+(g) Not independent. $\Pr(X_i=0)=(1-p^i)^n>0$ and $\Pr(X_j=n)=p^{jn}>0$, but $\Pr(X_i=0,X_j=n)=0$, since planes never come back.
+:::

@@ -76,3 +76,37 @@ independently.
 (b) For $n = 22$ the probability is about $0.476$, and for $n = 23$ it is
     about $0.507$. So the minimum is $n = 23$.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-9-q4" status="draft"}
+(a) $|\Omega|=2^5=32$ sequences.
+
+(b) Choose the positions of the heads: $\binom53=10$.
+
+(c) Swapping H and T is a bijection between sequences with $\ge3$ heads and sequences with $\le2$ heads (i.e. $\ge3$ tails), so each set has half of the $32$: $16$.
+
+(d) Each sequence has probability $\frac1{32}$, so both are $\frac1{32}$.
+
+(e) $1-\Pr(\text{TTTTT})=1-\frac1{32}=\frac{31}{32}$.
+
+(f) $\frac{16}{32}=\frac12$, by (c).
+
+(g) $\Pr(\text{HHHTT})=(\frac23)^3(\frac13)^2=\frac8{243}$ and $\Pr(\text{HHHHT})=(\frac23)^4\frac13=\frac{16}{243}$.
+
+(h) $1-(\frac13)^5=\frac{242}{243}$.
+
+(i) $\sum_{k=3}^5\binom5k(\frac23)^k(\frac13)^{5-k}=\frac{10\cdot8+5\cdot16+32}{243}=\frac{192}{243}=\frac{64}{81}$.
+:::
+
+::: {.solution for="prob-cs70hw-9-q5" status="draft"}
+All $5^7=78125$ assignments of balls to bins are equally likely.
+
+1. Choose the $3$ balls in bin $1$, and put the other $4$ in the other $4$ bins: $\frac{\binom73\cdot4^4}{5^7}=\frac{8960}{78125}\approx0.115$.
+
+2. Subtract the cases with $0$, $1$ or $2$ balls in bin $3$: $1-\frac{4^7+7\cdot4^6+21\cdot4^5}{5^7}=1-\frac{66560}{78125}=\frac{11565}{78125}\approx0.148$.
+
+3. Let $A_i$ be "bin $i$ has exactly $3$ balls". Three bins cannot each have $3$ of $7$ balls. Two bins: choose their $3+3$ balls and put the last ball in one of the other $3$ bins: $\binom73\binom43\cdot3=420$ assignments. By inclusion–exclusion (@thm-general-case),
+   $$\Pr\Bigl(\bigcup_iA_i\Bigr)=\frac{5\cdot8960-\binom52\cdot420}{78125}=\frac{40600}{78125}\approx0.520.$$
+:::

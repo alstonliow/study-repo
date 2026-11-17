@@ -64,3 +64,12 @@ Head lowers belief in Fair further, from $\frac13$ to $\frac15$.
 ::: {.solution for="prob-cs70-14-q2"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-10-q2" status="draft"}
+Let $G$ be "guilty" and $T$ "the test says guilty". Then $\Pr(G)=\frac1{100}$, $\Pr(T\mid G)=\frac45$ and $\Pr(T\mid\overline G)=1-\frac9{10}=\frac1{10}$. By Bayes' theorem (@thm-bayes-two-events),
+$$\Pr(G\mid T)=\frac{\frac1{100}\cdot\frac45}{\frac1{100}\cdot\frac45+\frac{99}{100}\cdot\frac1{10}}=\frac{0.008}{0.008+0.099}=\frac8{107}\approx0.075.$$
+Most positive tests come from the many innocent suspects.
+:::

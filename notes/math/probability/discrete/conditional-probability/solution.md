@@ -106,3 +106,43 @@ example, roll a die with $A = \{1\}$ and $B = \{2,3\}$.
 ::: {.solution for="prob-cs70-14-q5"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-9-q6" status="draft"}
+"Switching" means moving to a uniformly random unopened door other than your first pick. Staying wins with the probability that the first pick hides a car.
+
+(a) Staying wins with probability $\frac1n$. Switching wins only if the first pick was a goat (probability $\frac{n-1}n$); then the car is among the $n-2$ remaining closed doors, and you pick it with probability $\frac1{n-2}$. So switching wins with probability $\frac{n-1}{n(n-2)}$, larger than $\frac1n$ by the factor $\frac{n-1}{n-2}$.
+
+(b) Now only one other door stays closed, and it hides the car exactly when your first pick was a goat: switching wins with probability $\frac{n-1}n$, staying with $\frac1n$.
+
+(c) There are $n-1-j$ doors to switch to. By the law of total probability (@thm-law-of-total-probability), conditioning on the first pick,
+$$\Pr(\text{win by switching})=\frac kn\cdot\frac{k-1}{n-1-j}+\frac{n-k}n\cdot\frac k{n-1-j}=\frac kn\cdot\frac{n-1}{n-1-j},$$
+while staying wins with probability $\frac kn$. The ratio $\frac{n-1}{n-1-j}$ grows with $j$, so $j$ should be as large as allowed, $j=n-k-1$, giving the ratio $\frac{n-1}k$; this is largest for $k=1$. So $k=1$ and $j=n-2$, as in (b), with ratio $n-1$.
+:::
+
+::: {.solution for="prob-cs70hw-10-q1" status="draft"}
+(b) True. $A$ is the disjoint union of $A\cap B$ and $A\cap\overline B$, so
+$$\Pr(A\cap\overline B)=\Pr(A)-\Pr(A)\Pr(B)=\Pr(A)\bigl(1-\Pr(B)\bigr)=\Pr(A)\Pr(\overline B).$$
+
+(a) True. By (b), $A$ and $\overline B$ are independent; applying (b) again to the independent pair $\overline B,A$ shows that $\overline B$ and $\overline A$ are independent.
+
+(c) False in general. $\Pr(A\cap\overline A)=\Pr(\emptyset)=0$, while $\Pr(A)\Pr(\overline A)>0$ when $0<\Pr(A)<1$; for example a fair coin and $A=$ "heads". They are independent only when $\Pr(A)\in\{0,1\}$.
+
+(d) True. $A$ is independent of itself when $\Pr(A)=\Pr(A)^2$, i.e. $\Pr(A)\in\{0,1\}$; for example $A=B=\Omega$.
+:::
+
+::: {.solution for="prob-cs70hw-10-q3" status="draft"}
+The coin is fair, so each sequence of $m$ flips has probability $2^{-m}$.
+
+(a) The game ends at flip $5$ exactly when flips $3,4,5$ are THH (flip $3$ must be T, or it would have ended at flip $4$) and flips $1,2$ are not HH. That leaves TT, TH, HT: probability $\frac3{32}$.
+
+(b) Of the three equally likely sequences TTTHH, THTHH, HTTHH, two have three heads: $\frac23$.
+
+(c) Count sequences of $6$ flips with no run of three equal flips. Such a sequence is determined by its first flip and by its runs of length $1$ or $2$ summing to $6$; the number of such compositions of $6$ is the Fibonacci number $13$. So there are $2\cdot13=26$ sequences without a run of three, and the game stops within $6$ flips with probability $1-\frac{26}{64}=\frac{38}{64}=\frac{19}{32}$.
+:::
+
+::: {.solution for="prob-cs70hw-10-q4" status="draft"}
+Toss the coin twice. Output "heads" on HT, "tails" on TH, and on HH or TT discard the pair and start again. With $\Pr(\text{heads})=p$ and independent tosses, $\Pr(\text{HT})=p(1-p)=\Pr(\text{TH})$, so in each round where we stop, the two outputs are equally likely. A round stops with probability $2p(1-p)>0$ (for $0<p<1$), so with probability $1$ we stop after finitely many rounds, after $\frac1{2p(1-p)}$ rounds on average.
+:::

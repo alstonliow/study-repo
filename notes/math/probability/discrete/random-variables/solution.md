@@ -50,3 +50,24 @@ $z = x\oplus y$.
     The three variables are pairwise independent but not mutually
     independent.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-11-q1" status="draft"}
+(a) Sum the rows and columns (@def-joint-distribution): $\Pr(X=0,1,2)=\frac23,\frac19,\frac29$ and $\Pr(Y=0,1,2)=\frac49,\frac29,\frac13$.
+
+(b) $E[X]=\frac19+2\cdot\frac29=\frac59$ and $E[Y]=\frac29+2\cdot\frac13=\frac89$.
+
+(c) $E[X^2]=\frac19+4\cdot\frac29=1$, so $\mathrm{Var}(X)=1-\frac{25}{81}=\frac{56}{81}$. $E[Y^2]=\frac29+4\cdot\frac13=\frac{14}9$, so $\mathrm{Var}(Y)=\frac{14}9-\frac{64}{81}=\frac{62}{81}$.
+
+(d) $E[I]=\Pr(X=1)=\frac19$, $E[J]=\Pr(Y=1)=\frac29$, and $E[IJ]=\Pr(X=1,Y=1)=\frac19$.
+
+(e) $I_AI_B=I_{A\cap B}$, so $E[I_AI_B]=\Pr(A\cap B)$ (@prp-expectation-of-indicator).
+:::
+
+::: {.solution for="prob-cs70hw-11-q2" status="draft"}
+(a) No. Condition (1) says $X_i=-X_j$ with probability $1$ for each pair. Then with probability $1$ all three of $X_1=-X_2$, $X_2=-X_3$, $X_1=-X_3$ hold (an intersection of three events of probability $1$). But the first two give $X_1=X_3$, which together with the third forces $X_1=-X_1$, impossible for values $\pm1$.
+
+(b) Exactly the even $n$. The condition says $X_i=-X_{i-1}$ with probability $1$ around the cycle $1,2,\dots,n,1$. Going once around, $X_1=(-1)^nX_1$, which is impossible for odd $n$. For even $n$ take: with probability $\frac12$, $(X_1,\dots,X_n)=(1,-1,1,-1,\dots,1,-1)$, and with probability $\frac12$ the negative of this. Then each consecutive pair (including $X_n,X_1$) is $(1,-1)$ or $(-1,1)$ with probability $\frac12$ each, as required.
+:::

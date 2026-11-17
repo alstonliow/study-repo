@@ -53,3 +53,29 @@ be those that miss the value $i$. A surjection misses nothing.
 ::: {.solution for="prob-cs70-10-q3"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-6-q7" status="draft"}
+Groups are unlabelled.
+
+(a) The group containing $1$, together with any subset of the other $n-1$ elements, determines the division; the other group must be non-empty, so $g(n)=2^{n-1}-1$.
+
+(b) Look at element $n$. Either it forms a group alone, and the rest are split into $2$ groups: $g(n-1)$ ways; or it joins one of the $3$ groups of a division of $\{1,\dots,n-1\}$ into $3$ groups: $3f(n-1)$ ways. So
+$$f(n)=3f(n-1)+g(n-1),\qquad f(3)=1,$$
+and one checks by induction that $f(n)=\frac{3^{n-1}-2^n+1}2$ (true for $n=3$; and $3\cdot\frac{3^{n-2}-2^{n-1}+1}2+2^{n-2}-1=\frac{3^{n-1}-2^n+1}2$).
+
+(c) A surjection $\{1,\dots,7\}\to\{1,2,3\}$ is a division into $3$ non-empty groups (the preimages) together with a labelling of the groups by $1,2,3$: $3!\,f(7)=6\cdot301=1806$. Check by inclusion–exclusion (@thm-inclusion-exclusion): $3^7-3\cdot2^7+3\cdot1^7=2187-384+3=1806$.
+:::
+
+::: {.solution for="prob-cs70hw-7-q1" status="draft"}
+We take strings of length $5$, as the official solution does.
+
+1. Each of the $5$ positions has $3$ choices: $3^5=243$ strings.
+
+2. Let $E_A$ be the set of strings with no $A$, and similarly $E_B$, $E_C$. Then $|E_A|=2^5$, $|E_A\cap E_B|=1^5$ (all $C$), and $E_A\cap E_B\cap E_C=\emptyset$. By inclusion–exclusion (@thm-inclusion-exclusion),
+   $$|E_A\cup E_B\cup E_C|=3\cdot32-3\cdot1+0=93.$$
+
+3. So $243-93=150$ strings contain each letter at least once. (For length $n$: $3^n-3\cdot2^n+3$.)
+:::

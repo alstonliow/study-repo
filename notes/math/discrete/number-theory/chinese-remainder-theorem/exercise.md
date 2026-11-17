@@ -31,3 +31,23 @@ Prove that for any positive integer $k$, there exists $k$ consecutive positive i
 
 Hint: this is a Chinese Remainder Theorem problem
 :::
+
+::: {.problem #prob-cs70hw-5-q3 origin="external" source="cs70hw-5-q3"}
+**The CRT and Lagrange Interpolation.** Let $n_1, \ldots, n_k$ be pairwise co-prime, i.e. $n_i$ and $n_j$ are co-prime for all $i \ne j$. The Chinese Remainder Theorem (CRT) tells us that there exist solutions to the following system of congruences:
+$$\begin{aligned} x &\equiv a_1 \pmod{n_1} &&(1)\\ x &\equiv a_2 \pmod{n_2} &&(2)\\ &\ \ \vdots &&(\vdots)\\ x &\equiv a_k \pmod{n_k} &&(k)\end{aligned}$$
+and all solutions are equivalent $\pmod{n_1 n_2 \cdots n_k}$. For this problem, parts (a)-(c) will walk us through a proof of the Chinese Remainder Theorem. We will then use the CRT to revisit Lagrange interpolation.
+
+(a) We start by proving the $k = 2$ case: Prove that we can always find an integer $x_1$ that solves (1) and (2) with $a_1 = 1, a_2 = 0$. Similarly, prove that we can always find an integer $x_2$ that solves (1) and (2) with $a_1 = 0, a_2 = 1$.
+
+(b) Use part (a) to prove that we can always find at least one solution to (1) and (2) for any $a_1, a_2$. Furthermore, prove that all possible solutions are equivalent $\pmod{n_1 n_2}$.
+
+(c) Now we can tackle the case of arbitrary $k$: Use part (b) to prove that there exists a solution $x$ to (1)-(k) and that this solution is unique $\pmod{n_1 n_2 \cdots n_k}$.
+
+For polynomials $p_1(x)$, $p_2(x)$ and $q(x)$ we say that $p_1(x) \equiv p_2(x) \bmod q(x)$ if $p_1(x) - p_2(x)$ is of the form $q(x) \times m(x)$ for some polynomial $m(x)$.
+
+(d) Define the polynomials $x-a$ and $x-b$ to be co-prime if they have no common divisor of degree 1. Assuming that the CRT still holds when replacing $x$, $a_i$ and $n_i$ with polynomials (using the definition of co-prime polynomials just given), show that the system of congruences
+$$\begin{aligned} p(x) &\equiv y_1 \pmod{(x - x_1)} &&(1')\\ p(x) &\equiv y_2 \pmod{(x - x_2)} &&(2')\\ &\ \ \vdots &&(\vdots)\\ p(x) &\equiv y_k \pmod{(x - x_k)} &&(k')\end{aligned}$$
+has a unique solution $\pmod{(x - x_1) \cdots (x - x_k)}$ whenever the $x_i$ are pairwise distinct. What is the connection to Lagrange interpolation?
+
+Hint: To show that a unique solution exists, you may use the fact that the CRT has a unique solution when certain properties are satisfied.
+:::

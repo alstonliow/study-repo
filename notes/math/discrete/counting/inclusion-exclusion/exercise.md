@@ -23,3 +23,19 @@ Prove Theorem 10.3 using induction.
 
 *Note (these notes):* Theorem 10.3 of CS70 Note 10 is @thm-inclusion-exclusion.
 :::
+
+::: {.problem #prob-cs70hw-6-q7 origin="external" source="cs70hw-6-q7"}
+**Counting Functions.**
+
+(a) Compute $g(n)$, the number of ways to divide $\{1, 2, 3, \ldots, n\}$ into 2 non-empty groups.
+
+(b) Compute $f(n)$, the number of ways to divide $\{1, 2, 3, \ldots, n\}$ into 3 non-empty groups. (Hint: our calculation involves a recursive formula, and included $g$)
+
+(c) How many surjective functions $h: \{1, 2, 3, \ldots, 7\} \to \{1, 2, 3\}$? You may leave your answer in terms of $f$ and $g$ for partial credit, but also compute the actual number.
+:::
+
+::: {.problem #prob-cs70hw-7-q1 origin="external" source="cs70hw-7-q1"}
+**Strings.** How many different strings only contains $A, B, C$? And how many such strings contains at least one of each characters?
+
+*Note (these notes):* The length of the strings is missing from the statement; the official solution uses length $5$.
+:::

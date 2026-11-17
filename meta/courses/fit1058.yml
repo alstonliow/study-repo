@@ -31,6 +31,28 @@ exclude:
   - prob-cs70hw-4-q1
   - prob-cs70hw-4-q2
   - prob-cs70hw-4-q5
+  - prob-cs70hw-6-q5
+  - prob-cs70hw-6-q6
+  - prob-cs70hw-6-q7
+  - prob-cs70hw-7-q1
+  - prob-cs70hw-7-q2
+  - prob-cs70hw-7-q3
+  - prob-cs70hw-9-q4
+  - prob-cs70hw-9-q5
+  - prob-cs70hw-9-q6
+  - prob-cs70hw-10-q1
+  - prob-cs70hw-10-q2
+  - prob-cs70hw-10-q3
+  - prob-cs70hw-10-q4
+  - prob-cs70hw-10-q5
+  - prob-cs70hw-10-q6
+  - prob-cs70hw-10-q7
+  - prob-cs70hw-11-q1
+  - prob-cs70hw-11-q2
+  - prob-cs70hw-11-q3
+  - prob-cs70hw-12-q6
+  - prob-cs70hw-13-q2
+  - prob-cs70hw-13-q3
   # CS70 Notes 5-7 material (not in CN)
   - thm-kuratowski
   - rmk-planarity-kuratowski

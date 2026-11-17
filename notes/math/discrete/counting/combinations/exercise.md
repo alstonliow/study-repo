@@ -61,3 +61,36 @@ Provide a direct combinatorial proof of Corollary 10.1.
 
 *Note (these notes):* Corollary 10.1 of CS70 Note 10 is @cor-alternating-sum.
 :::
+
+::: {.problem #prob-cs70hw-6-q5 origin="external" source="cs70hw-6-q5"}
+**Maze.**
+
+(a) Given a $4 \times 4$ grid, how many different paths from $(0, 0)$ to $(4, 4)$ satisfy the following condition:
+
+- You can only go from $(x, y)$ to either $(x + 1, y)$ or $(x, y + 1)$
+
+(b) Given a $4 \times 4$ grid, how many different paths from $(0, 0)$ to $(4, 4)$ satisfy the following condition:
+
+- You can only go from $(x, y)$ to either $(x + 1, y)$ or $(x, y + 1)$
+- You cannot go to points $(x, y)$ where $y > x$, in other word, you cannot cross line $y = x$
+
+(c) How many sequences of 4 pairs of parentheses are mismatched? An example of a matched sequence of paretheses is ()()()(), while a mismatched sequence is )))(((.
+:::
+
+::: {.problem #prob-cs70hw-7-q3 origin="external" source="cs70hw-7-q3"}
+**Maze in general and Trees too!!!** Given an maze of sidelength $n$ where one starts at $(0, 0)$ and goes to $(n, n)$.
+
+(a) How many shortest paths are there that go from $(0, 0)$ to $(n, n)$?
+
+(b) Extending the width by 1, how many shortest paths are there that go from $(0, 0)$ to $(n-1, n+1)$.
+
+(c) Now consider shortest paths that meet the conditions which only use to points $(x, y)$ where $y \le x$. That is, the path cannot cross line $y = x$.
+
+  i. Give an expression using part (a) and (b), that counts the number of paths. (Hint: consider what happens after a shortest that crosses $y = x$ at $(i, i)$, that is, the remaining path starting from $(i, i + 1)$ and then continuing to $(n, n)$. If in the remainder of the path, one exchanges the y-direction moves with x-direction moves and vice versa, where does one end up?
+
+  ii. A different tack is to derive a recursive formula. We call these paths $n$-legal paths for a maze of sidelength $n$, and let $F_n$ be the number of $n$-legal paths. Consider a path, and let $i < n$ be the largest value where the path contains $(i, i)$, argue the number of paths is then $F_i * F_{n-i-1}$. (Hint: if $i = 0$, what are your first and last moves, and where is the remainder of the path allowed to go.)
+
+  iii. Give a recursive formula for the number of spanning trees of a complete graph $K_n$ for $n \ge 3$, where each non-root node has degree 3 or 1, and at most 1 node has degree 2? Two trees are different if and only if either left-subtree is different or right-subtree is different. (Notice something about your formula and the maze problem. Neat!)
+
+*Note (these notes):* Part (c)iii is unclear as stated; the solution counts binary trees by their left and right subtrees, as the official solution does.
+:::

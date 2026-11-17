@@ -49,3 +49,39 @@ probability that it is divisible by 3 but not by 9?
 (b) What is the minimum $n$ such that it is more likely than not that
     at least two share a birthday?
 :::
+
+::: {.problem #prob-cs70hw-9-q4 origin="external" source="cs70hw-9-q4"}
+**Five Up.** Say you toss a coin five times, and record the outcomes. For the three questions below, you can assume that order matters in the outcome, and that the probability of heads is some $p$ in $0 < p < 1$, but not that the coin is fair ($p = 0.5$).
+
+(a) What is the size of the sample space, $|\Omega|$?
+
+(b) How many elements of $\Omega$ have exactly three heads?
+
+(c) How many elements of $\Omega$ have three or more heads? (Hint: Argue by symmetry.)
+
+For the next three questions, you can assume that the coin is fair (i.e. heads comes up with $p = 0.5$, and tails otherwise).
+
+(d) What is the probability that you will observe the sequence HHHTT? What about HHHHT?
+
+(e) What is the chance of observing at least one head?
+
+(f) What about the chance of observing three or more heads?
+
+For the final three questions, you can instead assume the coin is biased so that it comes up heads with probability $p = \frac{2}{3}$.
+
+(g) What is the chance of observing the outcome HHHTT? What about HHHHT?
+
+(h) What about the chance of at least one head?
+
+(i) What about the chance of $\ge 3$ heads?
+:::
+
+::: {.problem #prob-cs70hw-9-q5 origin="external" source="cs70hw-9-q5"}
+**Ball-and-Bin Counting Problems.** Say you have 5 bins, and randomly throw 7 balls into them.
+
+1. What is the probability that the first bin has precisely 3 balls in it?
+
+2. What is the probability that the third bin has at least 3 balls in it?
+
+3. What is the probability that at least one of the bins has precisely 3 balls in it?
+:::

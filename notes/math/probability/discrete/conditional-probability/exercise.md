@@ -83,3 +83,41 @@ In the Monty Hall problem, show that $P[H_3 \mid C_1] = \frac{1}{2}$.
 
 *Note (these notes):* $C_i$, $P_i$ and $H_i$ are as in @exm-monty-hall-conditional.
 :::
+
+::: {.problem #prob-cs70hw-9-q6 origin="external" source="cs70hw-9-q6"}
+**Monty Hall's Revenge.** Due to a quirk of the television studio's recruitment process, Monty Hall has ended up drawing all the contestants for his game show from among the ranks of former CS70 students. Unfortunately for Monty, the former students' amazing probability skills have made his cars-and-goats gimmick unprofitable for the studio. Monty decides to up the stakes by asking his contestants to generalise to three new situations with a variable number of doors, goats, and cars:
+
+(a) There are $n$ doors for some $n > 2$. One has a car behind it, and the remaining $n - 1$ have goats. As in the ordinary Monty Hall problem, Monty will reveal one door with a goat behind it after you make your first selection. How would switching affect the odds that you select the car?
+
+(Hint: Think about the size of the sample space for the experiment where you always switch. How many of those outcomes are favorable?)
+
+(b) Again there are $n > 2$ doors, one with a car and $n - 1$ with goats, but this time Monty will reveal $n - 2$ doors with goats behind them instead of just one. How does switching affect the odds of winning in this modified scenario?
+
+(c) Finally, imagine there are $k < n-1$ cars and $n-k$ goats behind the $n > 2$ doors. After you make your first pick, Monty will reveal $j < n - k$ doors with goats. What values of $j, k$ maximize the relative improvement in your odds of winning if you choose to switch? (i.e. what $j, k$ maximizes the ratio between your odds of winning when you switch, and your odds of winning when you do not switch?)
+:::
+
+::: {.problem #prob-cs70hw-10-q1 origin="external" source="cs70hw-10-q1"}
+**Independent Complements.** Let $\Omega$ be a sample space, and let $A, B \subseteq \Omega$ be two independent events.
+
+(a) Prove or disprove: $\overline{A}$ and $\overline{B}$ must be independent.
+
+(b) Prove or disprove: $A$ and $\overline{B}$ must be independent.
+
+(c) Prove or disprove: $A$ and $\overline{A}$ must be independent.
+
+(d) Prove or disprove: It is possible that $A = B$.
+:::
+
+::: {.problem #prob-cs70hw-10-q3 origin="external" source="cs70hw-10-q3"}
+**Flipping Coins.** Consider the following scenarios, where we apply probability to a game of flipping coins. In the game, we flip one coin each round. The game will not stop until two consecutive heads appear.
+
+(a) What is the probability that the game ends by flipping exactly five coins?
+
+(b) Given that the game ends after flipping the fifth coin, what is the probability that three heads appear in the sequence?
+
+(c) If we change the rule that the game will not stop until three consecutive tails or three consecutive heads appear, what is the probability that the game stops by flipping at most six coins?
+:::
+
+::: {.problem #prob-cs70hw-10-q4 origin="external" source="cs70hw-10-q4"}
+**To Be Fair.** Suppose you have a biased coin with $P(\text{heads}) \ne 0.5$. How could you use this coin to simulate a fair coin? (Hint: Think about pairs of tosses.)
+:::

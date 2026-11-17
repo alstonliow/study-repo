@@ -39,3 +39,7 @@ Show (4) and (5).
 
 *Note (these notes):* In CS70 Note 14, (4) is the law of total probability for a partition $A_1,\dots,A_n$ of the sample space (@thm-law-of-total-probability) and (5) is Bayes' rule for such a partition (@thm-bayes-theorem).
 :::
+
+::: {.problem #prob-cs70hw-10-q2 origin="external" source="cs70hw-10-q2"}
+**Lie Detector.** A lie detector is known to be $4/5$ reliable when the person is guilty and $9/10$ reliable when the person is innocent. If a suspect is chosen from a group of suspects of which only $1/100$ have ever committed a crime, and the test indicates that the person is guilty, what is the probability that he is guilty?
+:::

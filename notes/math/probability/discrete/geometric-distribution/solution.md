@@ -15,3 +15,17 @@
     start, and we expect $80$ more. (Under this model the batter does not
     "get their eye in".)
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs70hw-13-q2" status="draft"}
+For $y\ge0$, $\Pr(X>y)=(1-p)^y$ (the first $y$ trials fail). Conditioning on $Y$ and using independence,
+$$\Pr(X>Y)=\sum_{y\ge0}\frac{e^{-\lambda}\lambda^y}{y!}(1-p)^y=e^{-\lambda}e^{\lambda(1-p)}=e^{-\lambda p}.$$
+:::
+
+::: {.solution for="prob-cs70hw-13-q3" status="draft"}
+For $k\ge0$, by independence,
+$$\Pr(\min\{X,Y\}>k)=\Pr(X>k)\Pr(Y>k)=(1-p)^k(1-q)^k=\bigl((1-p)(1-q)\bigr)^k.$$
+This is the tail of $\mathrm{Geom}(r)$ with $1-r=(1-p)(1-q)$, and the tails determine the distribution ($\Pr(Z=k)=\Pr(Z>k-1)-\Pr(Z>k)$). So $\min\{X,Y\}\sim\mathrm{Geom}(p+q-pq)$: running both experiments in parallel, a round succeeds unless both fail.
+:::
