@@ -27,6 +27,103 @@ Given strings $A$ and $B$, find a longest string that is a subsequence of both. 
 
 :::
 
+::: {#fig-subproblem-design-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] at (0.30,0.35) {\texttt{S}};
+\node[lab] at (0.90,0.35) {\texttt{U}};
+\node[lab] at (1.50,0.35) {\texttt{N}};
+\node[lab] at (2.10,0.35) {\texttt{N}};
+\node[lab] at (2.70,0.35) {\texttt{Y}};
+\node[lab] at (3.30,0.35) {\texttt{}};
+\node[lab] at (-0.30,-0.30) {\texttt{S}};
+\draw[hl cell] (0.00,0.00) rectangle (0.60,-0.60);
+\node[lab] at (0.30,-0.30) {\textbf{3}};
+\draw[cell frame] (0.60,0.00) rectangle (1.20,-0.60);
+\node[lab] at (0.90,-0.30) {2};
+\draw[cell frame] (1.20,0.00) rectangle (1.80,-0.60);
+\node[lab] at (1.50,-0.30) {2};
+\draw[cell frame] (1.80,0.00) rectangle (2.40,-0.60);
+\node[lab] at (2.10,-0.30) {2};
+\draw[cell frame] (2.40,0.00) rectangle (3.00,-0.60);
+\node[lab] at (2.70,-0.30) {1};
+\draw[cell frame] (3.00,0.00) rectangle (3.60,-0.60);
+\node[lab] at (3.30,-0.30) {0};
+\node[lab] at (-0.30,-0.90) {\texttt{N}};
+\draw[cell frame] (0.00,-0.60) rectangle (0.60,-1.20);
+\node[lab] at (0.30,-0.90) {2};
+\draw[hl cell] (0.60,-0.60) rectangle (1.20,-1.20);
+\node[lab] at (0.90,-0.90) {2};
+\draw[hl cell] (1.20,-0.60) rectangle (1.80,-1.20);
+\node[lab] at (1.50,-0.90) {\textbf{2}};
+\draw[cell frame] (1.80,-0.60) rectangle (2.40,-1.20);
+\node[lab] at (2.10,-0.90) {2};
+\draw[cell frame] (2.40,-0.60) rectangle (3.00,-1.20);
+\node[lab] at (2.70,-0.90) {1};
+\draw[cell frame] (3.00,-0.60) rectangle (3.60,-1.20);
+\node[lab] at (3.30,-0.90) {0};
+\node[lab] at (-0.30,-1.50) {\texttt{O}};
+\draw[cell frame] (0.00,-1.20) rectangle (0.60,-1.80);
+\node[lab] at (0.30,-1.50) {1};
+\draw[cell frame] (0.60,-1.20) rectangle (1.20,-1.80);
+\node[lab] at (0.90,-1.50) {1};
+\draw[cell frame] (1.20,-1.20) rectangle (1.80,-1.80);
+\node[lab] at (1.50,-1.50) {1};
+\draw[hl cell] (1.80,-1.20) rectangle (2.40,-1.80);
+\node[lab] at (2.10,-1.50) {1};
+\draw[cell frame] (2.40,-1.20) rectangle (3.00,-1.80);
+\node[lab] at (2.70,-1.50) {1};
+\draw[cell frame] (3.00,-1.20) rectangle (3.60,-1.80);
+\node[lab] at (3.30,-1.50) {0};
+\node[lab] at (-0.30,-2.10) {\texttt{W}};
+\draw[cell frame] (0.00,-1.80) rectangle (0.60,-2.40);
+\node[lab] at (0.30,-2.10) {1};
+\draw[cell frame] (0.60,-1.80) rectangle (1.20,-2.40);
+\node[lab] at (0.90,-2.10) {1};
+\draw[cell frame] (1.20,-1.80) rectangle (1.80,-2.40);
+\node[lab] at (1.50,-2.10) {1};
+\draw[hl cell] (1.80,-1.80) rectangle (2.40,-2.40);
+\node[lab] at (2.10,-2.10) {1};
+\draw[cell frame] (2.40,-1.80) rectangle (3.00,-2.40);
+\node[lab] at (2.70,-2.10) {1};
+\draw[cell frame] (3.00,-1.80) rectangle (3.60,-2.40);
+\node[lab] at (3.30,-2.10) {0};
+\node[lab] at (-0.30,-2.70) {\texttt{Y}};
+\draw[cell frame] (0.00,-2.40) rectangle (0.60,-3.00);
+\node[lab] at (0.30,-2.70) {1};
+\draw[cell frame] (0.60,-2.40) rectangle (1.20,-3.00);
+\node[lab] at (0.90,-2.70) {1};
+\draw[cell frame] (1.20,-2.40) rectangle (1.80,-3.00);
+\node[lab] at (1.50,-2.70) {1};
+\draw[hl cell] (1.80,-2.40) rectangle (2.40,-3.00);
+\node[lab] at (2.10,-2.70) {1};
+\draw[hl cell] (2.40,-2.40) rectangle (3.00,-3.00);
+\node[lab] at (2.70,-2.70) {\textbf{1}};
+\draw[cell frame] (3.00,-2.40) rectangle (3.60,-3.00);
+\node[lab] at (3.30,-2.70) {0};
+\node[lab] at (-0.30,-3.30) {\texttt{}};
+\draw[cell frame] (0.00,-3.00) rectangle (0.60,-3.60);
+\node[lab] at (0.30,-3.30) {0};
+\draw[cell frame] (0.60,-3.00) rectangle (1.20,-3.60);
+\node[lab] at (0.90,-3.30) {0};
+\draw[cell frame] (1.20,-3.00) rectangle (1.80,-3.60);
+\node[lab] at (1.50,-3.30) {0};
+\draw[cell frame] (1.80,-3.00) rectangle (2.40,-3.60);
+\node[lab] at (2.10,-3.30) {0};
+\draw[cell frame] (2.40,-3.00) rectangle (3.00,-3.60);
+\node[lab] at (2.70,-3.30) {0};
+\draw[hl cell] (3.00,-3.00) rectangle (3.60,-3.60);
+\node[lab] at (3.30,-3.30) {0};
+\end{tikzpicture}
+\end{center}
+```
+
+The table $x(i,j)$ for $A=\texttt{SNOWY}$ (rows) and $B=\texttt{SUNNY}$ (columns); the last row and column are the base cases $0$. It is filled from the bottom right. The highlighted cells trace a path from $x(0,0)=3$: a diagonal step at each bold match, otherwise a step towards the larger neighbour. The matches spell the common subsequence \texttt{SNY}.
+
+:::
+
 ::: {#lem-lcs-relation .lemma name="Why the LCS relation is right"}
 
 Let $a=A[i]$ and $b=B[j]$ be the first characters of the two suffixes.
@@ -59,6 +156,48 @@ The natural subproblem "a longest increasing subsequence of $A[i:]$" does not co
 3. *Order:* decreasing $i$. 4. *Base:* none needed (the option $1$ covers the end).
 5. *Original:* $\max_ix(i)$ (guess the first element), with parent pointers to recover a subsequence.
 6. *Time:* $|A|$ subproblems with $O(|A|)$ work each: $O(|A|^2)$. (With an augmented balanced search tree the work per subproblem drops to $O(\log|A|)$.)
+
+:::
+
+::: {#fig-subproblem-design-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.700,0.700);
+\node[lab] at (0.350,0.350) {$5$};
+\draw[hl cell] (0.700,0.000) rectangle (1.400,0.700);
+\node[lab] at (1.050,0.350) {$2$};
+\draw[cell frame] (1.400,0.000) rectangle (2.100,0.700);
+\node[lab] at (1.750,0.350) {$8$};
+\draw[cell frame] (2.100,0.000) rectangle (2.800,0.700);
+\node[lab] at (2.450,0.350) {$6$};
+\draw[hl cell] (2.800,0.000) rectangle (3.500,0.700);
+\node[lab] at (3.150,0.350) {$3$};
+\draw[hl cell] (3.500,0.000) rectangle (4.200,0.700);
+\node[lab] at (3.850,0.350) {$6$};
+\draw[hl cell] (4.200,0.000) rectangle (4.900,0.700);
+\node[lab] at (4.550,0.350) {$9$};
+\draw[cell frame] (4.900,0.000) rectangle (5.600,0.700);
+\node[lab] at (5.250,0.350) {$7$};
+\node[lab, anchor=east] at (-0.100,0.350) {$A$};
+\node[lab,tick] at (0.35,-0.3) {3};
+\node[lab,tick] at (1.05,-0.3) {4};
+\node[lab,tick] at (1.75,-0.3) {2};
+\node[lab,tick] at (2.45,-0.3) {2};
+\node[lab,tick] at (3.15,-0.3) {3};
+\node[lab,tick] at (3.85,-0.3) {2};
+\node[lab,tick] at (4.55,-0.3) {1};
+\node[lab,tick] at (5.25,-0.3) {1};
+\draw[->] (1.05,0.75) to[bend left=35] (3.15,0.75);
+\draw[->] (3.15,0.75) to[bend left=35] (3.85,0.75);
+\draw[->] (3.85,0.75) to[bend left=35] (4.55,0.75);
+\node[lab,tick, anchor=east] at (-0.1,-0.3) {$x(i)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Longest increasing subsequence of $5,2,8,6,3,6,9,7$. Under each item is $x(i)$, the length of a longest increasing subsequence starting there, computed from right to left. The maximum, $4$, is at $2$, and following the choices (arrows) gives $2,3,6,9$.
 
 :::
 

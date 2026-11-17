@@ -69,6 +69,52 @@ We show that for every edge $(u,v)$, the visit of $v$ finishes before the visit 
 
 :::
 
+::: {#fig-depth-first-search-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (a) at (0.00,0.80) {$a$};
+\node[small vertex] (b) at (1.50,0.80) {$b$};
+\node[small vertex] (c) at (3.00,0.80) {$c$};
+\node[small vertex] (d) at (0.00,-0.80) {$d$};
+\node[small vertex] (e) at (1.50,-0.80) {$e$};
+\node[small vertex] (f) at (3.00,-0.80) {$f$};
+\draw[->] (a) --  (b);
+\draw[->] (a) --  (d);
+\draw[->] (b) --  (c);
+\draw[->] (b) --  (e);
+\draw[->] (d) --  (e);
+\draw[->] (e) --  (f);
+\draw[->] (c) --  (f);
+\node[lab,tick] at (0.00,1.28) {1/12};
+\node[lab,tick] at (1.50,1.28) {2/9};
+\node[lab,tick] at (3.00,1.28) {3/6};
+\node[lab,tick] at (0.00,-1.28) {10/11};
+\node[lab,tick] at (1.50,-1.28) {7/8};
+\node[lab,tick] at (3.00,-1.28) {4/5};
+\node[small vertex] (ta) at (0.00,-2.6) {$a$};
+\node[small vertex] (td) at (1.00,-2.6) {$d$};
+\node[small vertex] (tb) at (2.00,-2.6) {$b$};
+\node[small vertex] (te) at (3.00,-2.6) {$e$};
+\node[small vertex] (tc) at (4.00,-2.6) {$c$};
+\node[small vertex] (tf) at (5.00,-2.6) {$f$};
+\draw[->] (ta) to[bend left=35] (tb);
+\draw[->] (ta) to[bend left=35] (td);
+\draw[->] (tb) to[bend left=35] (tc);
+\draw[->] (tb) to[bend left=35] (te);
+\draw[->] (td) to[bend left=35] (te);
+\draw[->] (te) to[bend left=35] (tf);
+\draw[->] (tc) to[bend left=35] (tf);
+\node[lab, anchor=east] at (-0.5,-2.6) {reverse finish:};
+\end{tikzpicture}
+\end{center}
+```
+
+Full-DFS on a DAG, starting at $a$ and taking neighbours in alphabetical order; each vertex is labelled start/finish time. Listing the vertices by decreasing finish time gives a,d,b,e,c,f, and every edge then points to the right: a topological order.
+
+:::
+
 ::: {#thm-dfs-cycle-detection .theorem name="Cycle detection"}
 
 A digraph has a directed cycle if and only if, in the reverse finishing order of Full-DFS, some edge goes backwards. If $G$ has a cycle, Full-DFS examines an edge from a vertex to an ancestor of it in the DFS tree, and this edge with the tree path between them is a cycle. Both can be checked in $O(|V|+|E|)$ time.

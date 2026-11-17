@@ -63,6 +63,44 @@ BFS computes $d(v)=\delta(s,v)$ for every vertex $v$ and a parent function $P$ a
 
 :::
 
+::: {#fig-breadth-first-search-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.55,-1.5) rectangle (0.55,1.5);
+\node[lab,tick] at (0.00,1.75) {$L_0$};
+\draw[faint] (1.05,-1.5) rectangle (2.15,1.5);
+\node[lab,tick] at (1.60,1.75) {$L_1$};
+\draw[faint] (2.65,-1.5) rectangle (3.75,1.5);
+\node[lab,tick] at (3.20,1.75) {$L_2$};
+\draw[faint] (4.25,-1.5) rectangle (5.35,1.5);
+\node[lab,tick] at (4.80,1.75) {$L_3$};
+\node[small vertex] (s) at (0.00,0.00) {$s$};
+\node[small vertex] (a) at (1.60,0.80) {$a$};
+\node[small vertex] (b) at (1.60,-0.80) {$b$};
+\node[small vertex] (c) at (3.20,0.80) {$c$};
+\node[small vertex] (d) at (3.20,-0.80) {$d$};
+\node[small vertex] (e) at (4.80,0.80) {$e$};
+\node[small vertex] (f) at (4.80,-0.80) {$f$};
+\draw[emph] (s) -- (a);
+\draw[emph] (s) -- (b);
+\draw[faint] (a) -- (b);
+\draw[emph] (a) -- (c);
+\draw[faint] (b) -- (c);
+\draw[emph] (b) -- (d);
+\draw[emph] (c) -- (e);
+\draw[faint] (d) -- (e);
+\draw[emph] (d) -- (f);
+\draw[faint] (e) -- (f);
+\end{tikzpicture}
+\end{center}
+```
+
+Breadth-first search from $s$ (neighbours taken in alphabetical order). Each box is a level set $L_i=\{v:\delta(s,v)=i\}$; bold edges are the parent edges $P(v)\to v$, which form a shortest-path tree. Every other edge joins the same or neighbouring levels.
+
+:::
+
 ::: {#rmk-breadth-first-search-queue .remark name="BFS with a queue"}
 
 BFS is usually written with one queue instead of separate levels: start with $s$ in the queue, and repeatedly remove the first vertex $u$ and append each unreached $v\in\operatorname{Adj}(u)$, setting $d(v)=d(u)+1$ and $P(v)=u$. The queue always holds the rest of one level followed by the start of the next, so vertices leave it in the order $L_0,L_1,\dots$, and the algorithm is the same.

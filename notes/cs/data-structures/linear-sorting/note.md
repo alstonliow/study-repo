@@ -25,6 +25,54 @@ To allow equal keys, each slot holds a sequence of items instead of a single ite
 
 :::
 
+::: {#fig-linear-sorting-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,1.200) rectangle (0.550,1.750);
+\node[lab] at (0.275,1.475) {$3a$};
+\draw[cell frame] (0.550,1.200) rectangle (1.100,1.750);
+\node[lab] at (0.825,1.475) {$1b$};
+\draw[cell frame] (1.100,1.200) rectangle (1.650,1.750);
+\node[lab] at (1.375,1.475) {$3c$};
+\draw[cell frame] (1.650,1.200) rectangle (2.200,1.750);
+\node[lab] at (1.925,1.475) {$0d$};
+\draw[cell frame] (2.200,1.200) rectangle (2.750,1.750);
+\node[lab] at (2.475,1.475) {$1e$};
+\node[lab, anchor=east] at (-0.100,1.475) {input};
+\draw[cell frame] (0.2,0) rectangle (0.75,0.55);
+\node[lab,tick] at (0.47,0.75) {key 0};
+\node[lab] at (0.47,-0.35) {$0d$};
+\draw[cell frame] (1.3,0) rectangle (1.85,0.55);
+\node[lab,tick] at (1.57,0.75) {key 1};
+\node[lab] at (1.57,-0.35) {$1b$};
+\node[lab] at (1.57,-0.8) {$1e$};
+\draw[cell frame] (2.40,0) rectangle (2.95,0.55);
+\node[lab,tick] at (2.67,0.75) {key 2};
+\draw[cell frame] (3.50,0) rectangle (4.05,0.55);
+\node[lab,tick] at (3.77,0.75) {key 3};
+\node[lab] at (3.77,-0.35) {$3a$};
+\node[lab] at (3.77,-0.8) {$3c$};
+\draw[cell frame] (0.000,-1.900) rectangle (0.550,-1.350);
+\node[lab] at (0.275,-1.625) {$0d$};
+\draw[cell frame] (0.550,-1.900) rectangle (1.100,-1.350);
+\node[lab] at (0.825,-1.625) {$1b$};
+\draw[cell frame] (1.100,-1.900) rectangle (1.650,-1.350);
+\node[lab] at (1.375,-1.625) {$1e$};
+\draw[cell frame] (1.650,-1.900) rectangle (2.200,-1.350);
+\node[lab] at (1.925,-1.625) {$3a$};
+\draw[cell frame] (2.200,-1.900) rectangle (2.750,-1.350);
+\node[lab] at (2.475,-1.625) {$3c$};
+\node[lab, anchor=east] at (-0.100,-1.625) {output};
+\end{tikzpicture}
+\end{center}
+```
+
+Counting sort of keys $3,1,3,0,1$ (letters tell equal keys apart). Each item is appended to the chain of its key in input order; reading the chains from key $0$ upwards gives $0d,1b,1e,3a,3c$, with equal keys in their input order (stable).
+
+:::
+
 ::: {#prp-counting-sort .proposition name="Counting sort"}
 
 Counting sort is a stable sort that runs in $\Theta(n+u)$ time.
@@ -88,6 +136,63 @@ Radix sort sorts $n$ items with keys in $\{0,\dots,u-1\}$, stably, in $O\bigl(n\
 2. Computing the digits takes $O(c)$ arithmetic operations per key. Each of the $c$ passes is a counting sort with $n$ items and digit range $n$, costing $\Theta(n+n)=\Theta(n)$.
 
 3. The total is $O(cn)$ with $c=O(1+\log_nu)$.
+
+:::
+
+::: {#fig-linear-sorting-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$32$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$03$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$44$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$42$};
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$22$};
+\node[lab, anchor=east] at (-0.100,0.275) {base $5$};
+\draw[cell frame] (0.000,-0.800) rectangle (0.550,-0.250);
+\node[lab] at (0.275,-0.525) {$32$};
+\draw[cell frame] (0.550,-0.800) rectangle (1.100,-0.250);
+\node[lab] at (0.825,-0.525) {$42$};
+\draw[cell frame] (1.100,-0.800) rectangle (1.650,-0.250);
+\node[lab] at (1.375,-0.525) {$22$};
+\draw[cell frame] (1.650,-0.800) rectangle (2.200,-0.250);
+\node[lab] at (1.925,-0.525) {$03$};
+\draw[cell frame] (2.200,-0.800) rectangle (2.750,-0.250);
+\node[lab] at (2.475,-0.525) {$44$};
+\node[lab, anchor=east] at (-0.100,-0.525) {by last digit};
+\draw[cell frame] (0.000,-1.600) rectangle (0.550,-1.050);
+\node[lab] at (0.275,-1.325) {$03$};
+\draw[cell frame] (0.550,-1.600) rectangle (1.100,-1.050);
+\node[lab] at (0.825,-1.325) {$22$};
+\draw[cell frame] (1.100,-1.600) rectangle (1.650,-1.050);
+\node[lab] at (1.375,-1.325) {$32$};
+\draw[cell frame] (1.650,-1.600) rectangle (2.200,-1.050);
+\node[lab] at (1.925,-1.325) {$42$};
+\draw[cell frame] (2.200,-1.600) rectangle (2.750,-1.050);
+\node[lab] at (2.475,-1.325) {$44$};
+\node[lab, anchor=east] at (-0.100,-1.325) {by first digit};
+\draw[cell frame] (0.000,-2.400) rectangle (0.550,-1.850);
+\node[lab] at (0.275,-2.125) {$3$};
+\draw[cell frame] (0.550,-2.400) rectangle (1.100,-1.850);
+\node[lab] at (0.825,-2.125) {$12$};
+\draw[cell frame] (1.100,-2.400) rectangle (1.650,-1.850);
+\node[lab] at (1.375,-2.125) {$17$};
+\draw[cell frame] (1.650,-2.400) rectangle (2.200,-1.850);
+\node[lab] at (1.925,-2.125) {$22$};
+\draw[cell frame] (2.200,-2.400) rectangle (2.750,-1.850);
+\node[lab] at (2.475,-2.125) {$24$};
+\node[lab, anchor=east] at (-0.100,-2.125) {keys};
+\end{tikzpicture}
+\end{center}
+```
+
+Radix sort of $17,3,24,22,12$ with base $n=5$: write the keys as two base-$5$ digits, sort stably by the last digit, then by the first. Stability keeps $32,42,22$ in order within the first digit's ties, so the result is sorted.
 
 :::
 

@@ -25,6 +25,42 @@ A *hash function* is a function $h:\{0,\dots,u-1\}\to\{0,\dots,m-1\}$, usually w
 
 :::
 
+::: {#fig-hashing-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0.0) rectangle (0.6,0.55);
+\node[lab,tick] at (-0.25,0.27) {0};
+\node[box] (c00) at (1.5,0.27) {$15$};
+\draw[->] (0.6,0.27) -- (c00);
+\draw[cell frame] (0,-0.65) rectangle (0.6,-0.10);
+\node[lab,tick] at (-0.25,-0.38) {1};
+\node[box] (c10) at (1.5,-0.38) {$26$};
+\draw[->] (0.6,-0.38) -- (c10);
+\draw[cell frame] (0,-1.3) rectangle (0.6,-0.75);
+\node[lab,tick] at (-0.25,-1.03) {2};
+\node[box] (c20) at (1.5,-1.03) {$12$};
+\draw[->] (0.6,-1.03) -- (c20);
+\node[box] (c21) at (3.1,-1.03) {$7$};
+\draw[->] (2.08,-1.03) -- (c21);
+\draw[cell frame] (0,-1.95) rectangle (0.6,-1.40);
+\node[lab,tick] at (-0.25,-1.68) {3};
+\draw[cell frame] (0,-2.6) rectangle (0.6,-2.05);
+\node[lab,tick] at (-0.25,-2.33) {4};
+\node[box] (c40) at (1.5,-2.33) {$19$};
+\draw[->] (0.6,-2.33) -- (c40);
+\node[box] (c41) at (3.1,-2.33) {$4$};
+\draw[->] (2.08,-2.33) -- (c41);
+\node[lab, anchor=west] at (5.6,-0.9) {$h(k)=k\bmod5$};
+\end{tikzpicture}
+\end{center}
+```
+
+A hash table of size $5$ with chaining, after inserting $12,7,19,4,26,15$ with $h(k)=k\bmod5$. Keys that collide share a chain; an operation scans only the chain at $h(k)$.
+
+:::
+
 When $m<u$, collisions are unavoidable by the pigeonhole principle (@thm-pigeonhole). An operation on key $k$ scans the chain at $h(k)$, so it costs $O(1)$ plus the length of that chain. For any *fixed* hash function and $u\ge nm$, some set of $n$ keys all hash to the same slot, giving chains of length $n$. The way out is to choose the hash function at random.
 
 ::: {#def-universal-hash-family .definition name="Universal hash family"}

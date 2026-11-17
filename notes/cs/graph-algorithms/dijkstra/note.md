@@ -43,6 +43,69 @@ If all weights are non-negative, Dijkstra's algorithm ends with $d(v)=\delta(s,v
 
 :::
 
+::: {#fig-dijkstra-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (s) at (0.00,0.00) {$s$};
+\node[small vertex] (a) at (1.60,0.80) {$a$};
+\node[small vertex] (b) at (3.20,0.80) {$b$};
+\node[small vertex] (c) at (1.60,-0.80) {$c$};
+\node[small vertex] (d) at (3.20,-0.80) {$d$};
+\draw[->] (s) -- node[edge label, pos=0.5] {$7$} (a);
+\draw[->] (s) -- node[edge label, pos=0.5] {$2$} (c);
+\draw[->] (c) -- node[edge label, pos=0.5] {$3$} (a);
+\draw[->] (a) -- node[edge label, pos=0.5] {$1$} (b);
+\draw[->] (c) -- node[edge label, pos=0.5] {$8$} (d);
+\draw[->] (a) -- node[edge label, pos=0.5] {$4$} (d);
+\draw[->] (b) to[bend left=25] node[edge label, pos=0.5] {$1$} (d);
+\draw[->] (d) to[bend left=25] node[edge label, pos=0.5] {$2$} (b);
+\node[lab,tick] at (5.00,1.30) {remove};
+\node[lab,tick] at (5.75,1.30) {$d(s)$};
+\node[lab,tick] at (6.50,1.30) {$d(a)$};
+\node[lab,tick] at (7.25,1.30) {$d(b)$};
+\node[lab,tick] at (8.00,1.30) {$d(c)$};
+\node[lab,tick] at (8.75,1.30) {$d(d)$};
+\node[lab,tick] at (5.00,0.88) {s};
+\node[lab,tick] at (5.75,0.88) {\textbf{0}};
+\node[lab,tick] at (6.50,0.88) {7};
+\node[lab,tick] at (7.25,0.88) {$\infty$};
+\node[lab,tick] at (8.00,0.88) {2};
+\node[lab,tick] at (8.75,0.88) {$\infty$};
+\node[lab,tick] at (5.00,0.46) {c};
+\node[lab,tick] at (5.75,0.46) {0};
+\node[lab,tick] at (6.50,0.46) {5};
+\node[lab,tick] at (7.25,0.46) {$\infty$};
+\node[lab,tick] at (8.00,0.46) {\textbf{2}};
+\node[lab,tick] at (8.75,0.46) {10};
+\node[lab,tick] at (5.00,0.04) {a};
+\node[lab,tick] at (5.75,0.04) {0};
+\node[lab,tick] at (6.50,0.04) {\textbf{5}};
+\node[lab,tick] at (7.25,0.04) {6};
+\node[lab,tick] at (8.00,0.04) {2};
+\node[lab,tick] at (8.75,0.04) {9};
+\node[lab,tick] at (5.00,-0.38) {b};
+\node[lab,tick] at (5.75,-0.38) {0};
+\node[lab,tick] at (6.50,-0.38) {5};
+\node[lab,tick] at (7.25,-0.38) {\textbf{6}};
+\node[lab,tick] at (8.00,-0.38) {2};
+\node[lab,tick] at (8.75,-0.38) {7};
+\node[lab,tick] at (5.00,-0.80) {d};
+\node[lab,tick] at (5.75,-0.80) {0};
+\node[lab,tick] at (6.50,-0.80) {5};
+\node[lab,tick] at (7.25,-0.80) {6};
+\node[lab,tick] at (8.00,-0.80) {2};
+\node[lab,tick] at (8.75,-0.80) {\textbf{7}};
+\draw[faint] (4.60,1.09) -- (9.15,1.09);
+\end{tikzpicture}
+\end{center}
+```
+
+Dijkstra's algorithm from $s$. Each row removes the vertex with the smallest estimate (its value, in bold, is final from then on) and relaxes its outgoing edges. The vertices leave the queue in the order s,c,a,b,d, in increasing distance.
+
+:::
+
 ::: {#prp-dijkstra-time .proposition name="Running time of Dijkstra"}
 
 With a changeable priority queue on $n$ items whose `build`, `delete_min` and `decrease_key` cost $B_n$, $M_n$ and $D_n$, Dijkstra's algorithm runs in $O\bigl(B_{|V|}+|V|\,M_{|V|}+|E|\,D_{|V|}\bigr)$ time. In particular:

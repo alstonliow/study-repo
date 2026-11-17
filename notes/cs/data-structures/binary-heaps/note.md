@@ -33,6 +33,78 @@ so no pointers are stored. The height is $\lfloor\log_2n\rfloor$.
 
 :::
 
+::: {#fig-binary-heaps-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.900) rectangle (0.550,1.450);
+\node[lab] at (0.275,1.175) {$9$};
+\node[lab,tick] at (0.275,0.720) {0};
+\draw[cell frame] (0.550,0.900) rectangle (1.100,1.450);
+\node[lab] at (0.825,1.175) {$7$};
+\node[lab,tick] at (0.825,0.720) {1};
+\draw[cell frame] (1.100,0.900) rectangle (1.650,1.450);
+\node[lab] at (1.375,1.175) {$8$};
+\node[lab,tick] at (1.375,0.720) {2};
+\draw[cell frame] (1.650,0.900) rectangle (2.200,1.450);
+\node[lab] at (1.925,1.175) {$3$};
+\node[lab,tick] at (1.925,0.720) {3};
+\draw[cell frame] (2.200,0.900) rectangle (2.750,1.450);
+\node[lab] at (2.475,1.175) {$5$};
+\node[lab,tick] at (2.475,0.720) {4};
+\draw[cell frame] (2.750,0.900) rectangle (3.300,1.450);
+\node[lab] at (3.025,1.175) {$6$};
+\node[lab,tick] at (3.025,0.720) {5};
+\draw[cell frame] (3.300,0.900) rectangle (3.850,1.450);
+\node[lab] at (3.575,1.175) {$2$};
+\node[lab,tick] at (3.575,0.720) {6};
+\draw[cell frame] (3.850,0.900) rectangle (4.400,1.450);
+\node[lab] at (4.125,1.175) {$1$};
+\node[lab,tick] at (4.125,0.720) {7};
+\draw[cell frame] (4.400,0.900) rectangle (4.950,1.450);
+\node[lab] at (4.675,1.175) {$0$};
+\node[lab,tick] at (4.675,0.720) {8};
+\draw[cell frame] (4.950,0.900) rectangle (5.500,1.450);
+\node[lab] at (5.225,1.175) {$4$};
+\node[lab,tick] at (5.225,0.720) {9};
+\node[small vertex] (q0) at (2.75,0.00) {$9$};
+\node[lab,tick] at (3.13,0.22) {0};
+\node[small vertex] (q1) at (0.95,-0.85) {$7$};
+\node[lab,tick] at (1.33,-0.63) {1};
+\draw (q0) -- (q1);
+\node[small vertex] (q2) at (4.55,-0.85) {$8$};
+\node[lab,tick] at (4.93,-0.63) {2};
+\draw (q0) -- (q2);
+\node[small vertex] (q3) at (0.05,-1.70) {$3$};
+\node[lab,tick] at (0.43,-1.48) {3};
+\draw (q1) -- (q3);
+\node[small vertex] (q4) at (1.85,-1.70) {$5$};
+\node[lab,tick] at (2.23,-1.48) {4};
+\draw (q1) -- (q4);
+\node[small vertex] (q5) at (3.65,-1.70) {$6$};
+\node[lab,tick] at (4.03,-1.48) {5};
+\draw (q2) -- (q5);
+\node[small vertex] (q6) at (5.45,-1.70) {$2$};
+\node[lab,tick] at (5.83,-1.48) {6};
+\draw (q2) -- (q6);
+\node[small vertex] (q7) at (-0.40,-2.55) {$1$};
+\node[lab,tick] at (-0.02,-2.33) {7};
+\draw (q3) -- (q7);
+\node[small vertex] (q8) at (0.50,-2.55) {$0$};
+\node[lab,tick] at (0.88,-2.33) {8};
+\draw (q3) -- (q8);
+\node[small vertex] (q9) at (1.40,-2.55) {$4$};
+\node[lab,tick] at (1.78,-2.33) {9};
+\draw (q4) -- (q9);
+\end{tikzpicture}
+\end{center}
+```
+
+An array of length $10$ and the complete binary tree it represents (small numbers are indices). The children of index $i$ are $2i+1$ and $2i+2$; this array is a max-heap.
+
+:::
+
 The formulas hold because depth $d$ occupies indices $2^d-1,\dots,2^{d+1}-2$, and the children of the $j$-th node at depth $d$ are the $(2j)$-th and $(2j+1)$-th nodes at depth $d+1$.
 
 ## Binary heaps
@@ -74,6 +146,113 @@ Both keep the max-heap property and take $O(\log n)$ time (amortized, because of
 
 :::
 
+::: {#fig-binary-heaps-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$9$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$7$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$8$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$3$};
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$5$};
+\draw[cell frame] (2.750,0.000) rectangle (3.300,0.550);
+\node[lab] at (3.025,0.275) {$6$};
+\draw[cell frame] (3.300,0.000) rectangle (3.850,0.550);
+\node[lab] at (3.575,0.275) {$2$};
+\draw[cell frame] (3.850,0.000) rectangle (4.400,0.550);
+\node[lab] at (4.125,0.275) {$1$};
+\draw[cell frame] (4.400,0.000) rectangle (4.950,0.550);
+\node[lab] at (4.675,0.275) {$0$};
+\draw[hl cell] (4.950,0.000) rectangle (5.500,0.550);
+\node[lab] at (5.225,0.275) {$10$};
+\node[lab, anchor=east] at (-0.100,0.275) {append};
+\draw[cell frame] (0.000,-0.800) rectangle (0.550,-0.250);
+\node[lab] at (0.275,-0.525) {$9$};
+\draw[cell frame] (0.550,-0.800) rectangle (1.100,-0.250);
+\node[lab] at (0.825,-0.525) {$7$};
+\draw[cell frame] (1.100,-0.800) rectangle (1.650,-0.250);
+\node[lab] at (1.375,-0.525) {$8$};
+\draw[cell frame] (1.650,-0.800) rectangle (2.200,-0.250);
+\node[lab] at (1.925,-0.525) {$3$};
+\draw[hl cell] (2.200,-0.800) rectangle (2.750,-0.250);
+\node[lab] at (2.475,-0.525) {$10$};
+\draw[cell frame] (2.750,-0.800) rectangle (3.300,-0.250);
+\node[lab] at (3.025,-0.525) {$6$};
+\draw[cell frame] (3.300,-0.800) rectangle (3.850,-0.250);
+\node[lab] at (3.575,-0.525) {$2$};
+\draw[cell frame] (3.850,-0.800) rectangle (4.400,-0.250);
+\node[lab] at (4.125,-0.525) {$1$};
+\draw[cell frame] (4.400,-0.800) rectangle (4.950,-0.250);
+\node[lab] at (4.675,-0.525) {$0$};
+\draw[hl cell] (4.950,-0.800) rectangle (5.500,-0.250);
+\node[lab] at (5.225,-0.525) {$5$};
+\node[lab, anchor=east] at (-0.100,-0.525) {swap};
+\draw[cell frame] (0.000,-1.600) rectangle (0.550,-1.050);
+\node[lab] at (0.275,-1.325) {$9$};
+\draw[hl cell] (0.550,-1.600) rectangle (1.100,-1.050);
+\node[lab] at (0.825,-1.325) {$10$};
+\draw[cell frame] (1.100,-1.600) rectangle (1.650,-1.050);
+\node[lab] at (1.375,-1.325) {$8$};
+\draw[cell frame] (1.650,-1.600) rectangle (2.200,-1.050);
+\node[lab] at (1.925,-1.325) {$3$};
+\draw[hl cell] (2.200,-1.600) rectangle (2.750,-1.050);
+\node[lab] at (2.475,-1.325) {$7$};
+\draw[cell frame] (2.750,-1.600) rectangle (3.300,-1.050);
+\node[lab] at (3.025,-1.325) {$6$};
+\draw[cell frame] (3.300,-1.600) rectangle (3.850,-1.050);
+\node[lab] at (3.575,-1.325) {$2$};
+\draw[cell frame] (3.850,-1.600) rectangle (4.400,-1.050);
+\node[lab] at (4.125,-1.325) {$1$};
+\draw[cell frame] (4.400,-1.600) rectangle (4.950,-1.050);
+\node[lab] at (4.675,-1.325) {$0$};
+\draw[cell frame] (4.950,-1.600) rectangle (5.500,-1.050);
+\node[lab] at (5.225,-1.325) {$5$};
+\node[lab, anchor=east] at (-0.100,-1.325) {swap};
+\draw[hl cell] (0.000,-2.400) rectangle (0.550,-1.850);
+\node[lab] at (0.275,-2.125) {$10$};
+\node[lab,tick] at (0.275,-2.580) {0};
+\draw[hl cell] (0.550,-2.400) rectangle (1.100,-1.850);
+\node[lab] at (0.825,-2.125) {$9$};
+\node[lab,tick] at (0.825,-2.580) {1};
+\draw[cell frame] (1.100,-2.400) rectangle (1.650,-1.850);
+\node[lab] at (1.375,-2.125) {$8$};
+\node[lab,tick] at (1.375,-2.580) {2};
+\draw[cell frame] (1.650,-2.400) rectangle (2.200,-1.850);
+\node[lab] at (1.925,-2.125) {$3$};
+\node[lab,tick] at (1.925,-2.580) {3};
+\draw[cell frame] (2.200,-2.400) rectangle (2.750,-1.850);
+\node[lab] at (2.475,-2.125) {$7$};
+\node[lab,tick] at (2.475,-2.580) {4};
+\draw[cell frame] (2.750,-2.400) rectangle (3.300,-1.850);
+\node[lab] at (3.025,-2.125) {$6$};
+\node[lab,tick] at (3.025,-2.580) {5};
+\draw[cell frame] (3.300,-2.400) rectangle (3.850,-1.850);
+\node[lab] at (3.575,-2.125) {$2$};
+\node[lab,tick] at (3.575,-2.580) {6};
+\draw[cell frame] (3.850,-2.400) rectangle (4.400,-1.850);
+\node[lab] at (4.125,-2.125) {$1$};
+\node[lab,tick] at (4.125,-2.580) {7};
+\draw[cell frame] (4.400,-2.400) rectangle (4.950,-1.850);
+\node[lab] at (4.675,-2.125) {$0$};
+\node[lab,tick] at (4.675,-2.580) {8};
+\draw[cell frame] (4.950,-2.400) rectangle (5.500,-1.850);
+\node[lab] at (5.225,-2.125) {$5$};
+\node[lab,tick] at (5.225,-2.580) {9};
+\node[lab, anchor=east] at (-0.100,-2.125) {swap};
+\end{tikzpicture}
+\end{center}
+```
+
+Inserting $10$ into the max-heap $9,7,8,3,5,6,2,1,0$: append it at index $9$, then swap it with its parent (indices $4$, $1$, $0$) while it is larger. Highlighted cells are the pair just swapped. Each swap moves one level up the tree, so there are $O(\log n)$ of them.
+
+:::
+
 ## Heap sort and linear-time build
 
 ::: {#def-heap-sort .definition name="Heap sort"}
@@ -97,6 +276,104 @@ Heapifying down at every index $i=n-1,n-2,\dots,0$ (from the leaves up) turns an
 2. *Time.* Heapifying down from a node of height $k$ costs $O(1+k)$. At most $\lceil n/2^{k+1}\rceil$ nodes have height $k$. So the total is
    $$O\Bigl(\sum_{k\ge0}\frac n{2^{k+1}}(1+k)\Bigr)=O\Bigl(n\sum_{k\ge0}\frac{k+1}{2^{k+1}}\Bigr)=O(2n)=O(n),$$
    using $\sum_{k\ge1}k/2^k=2$.
+
+:::
+
+::: {#fig-binary-heaps-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$2$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$9$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$4$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$7$};
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$1$};
+\draw[cell frame] (2.750,0.000) rectangle (3.300,0.550);
+\node[lab] at (3.025,0.275) {$8$};
+\draw[cell frame] (3.300,0.000) rectangle (3.850,0.550);
+\node[lab] at (3.575,0.275) {$6$};
+\draw[cell frame] (3.850,0.000) rectangle (4.400,0.550);
+\node[lab] at (4.125,0.275) {$3$};
+\node[lab, anchor=east] at (-0.100,0.275) {start};
+\draw[cell frame] (0.000,-0.800) rectangle (0.550,-0.250);
+\node[lab] at (0.275,-0.525) {$2$};
+\draw[cell frame] (0.550,-0.800) rectangle (1.100,-0.250);
+\node[lab] at (0.825,-0.525) {$9$};
+\draw[hl cell] (1.100,-0.800) rectangle (1.650,-0.250);
+\node[lab] at (1.375,-0.525) {$8$};
+\draw[cell frame] (1.650,-0.800) rectangle (2.200,-0.250);
+\node[lab] at (1.925,-0.525) {$7$};
+\draw[cell frame] (2.200,-0.800) rectangle (2.750,-0.250);
+\node[lab] at (2.475,-0.525) {$1$};
+\draw[hl cell] (2.750,-0.800) rectangle (3.300,-0.250);
+\node[lab] at (3.025,-0.525) {$4$};
+\draw[cell frame] (3.300,-0.800) rectangle (3.850,-0.250);
+\node[lab] at (3.575,-0.525) {$6$};
+\draw[cell frame] (3.850,-0.800) rectangle (4.400,-0.250);
+\node[lab] at (4.125,-0.525) {$3$};
+\node[lab, anchor=east] at (-0.100,-0.525) {down from 2};
+\draw[hl cell] (0.000,-1.600) rectangle (0.550,-1.050);
+\node[lab] at (0.275,-1.325) {$9$};
+\draw[hl cell] (0.550,-1.600) rectangle (1.100,-1.050);
+\node[lab] at (0.825,-1.325) {$2$};
+\draw[cell frame] (1.100,-1.600) rectangle (1.650,-1.050);
+\node[lab] at (1.375,-1.325) {$8$};
+\draw[cell frame] (1.650,-1.600) rectangle (2.200,-1.050);
+\node[lab] at (1.925,-1.325) {$7$};
+\draw[cell frame] (2.200,-1.600) rectangle (2.750,-1.050);
+\node[lab] at (2.475,-1.325) {$1$};
+\draw[cell frame] (2.750,-1.600) rectangle (3.300,-1.050);
+\node[lab] at (3.025,-1.325) {$4$};
+\draw[cell frame] (3.300,-1.600) rectangle (3.850,-1.050);
+\node[lab] at (3.575,-1.325) {$6$};
+\draw[cell frame] (3.850,-1.600) rectangle (4.400,-1.050);
+\node[lab] at (4.125,-1.325) {$3$};
+\node[lab, anchor=east] at (-0.100,-1.325) {down from 0};
+\draw[cell frame] (0.000,-2.400) rectangle (0.550,-1.850);
+\node[lab] at (0.275,-2.125) {$9$};
+\draw[hl cell] (0.550,-2.400) rectangle (1.100,-1.850);
+\node[lab] at (0.825,-2.125) {$7$};
+\draw[cell frame] (1.100,-2.400) rectangle (1.650,-1.850);
+\node[lab] at (1.375,-2.125) {$8$};
+\draw[hl cell] (1.650,-2.400) rectangle (2.200,-1.850);
+\node[lab] at (1.925,-2.125) {$2$};
+\draw[cell frame] (2.200,-2.400) rectangle (2.750,-1.850);
+\node[lab] at (2.475,-2.125) {$1$};
+\draw[cell frame] (2.750,-2.400) rectangle (3.300,-1.850);
+\node[lab] at (3.025,-2.125) {$4$};
+\draw[cell frame] (3.300,-2.400) rectangle (3.850,-1.850);
+\node[lab] at (3.575,-2.125) {$6$};
+\draw[cell frame] (3.850,-2.400) rectangle (4.400,-1.850);
+\node[lab] at (4.125,-2.125) {$3$};
+\node[lab, anchor=east] at (-0.100,-2.125) {down from 0};
+\draw[cell frame] (0.000,-3.200) rectangle (0.550,-2.650);
+\node[lab] at (0.275,-2.925) {$9$};
+\draw[cell frame] (0.550,-3.200) rectangle (1.100,-2.650);
+\node[lab] at (0.825,-2.925) {$7$};
+\draw[cell frame] (1.100,-3.200) rectangle (1.650,-2.650);
+\node[lab] at (1.375,-2.925) {$8$};
+\draw[hl cell] (1.650,-3.200) rectangle (2.200,-2.650);
+\node[lab] at (1.925,-2.925) {$3$};
+\draw[cell frame] (2.200,-3.200) rectangle (2.750,-2.650);
+\node[lab] at (2.475,-2.925) {$1$};
+\draw[cell frame] (2.750,-3.200) rectangle (3.300,-2.650);
+\node[lab] at (3.025,-2.925) {$4$};
+\draw[cell frame] (3.300,-3.200) rectangle (3.850,-2.650);
+\node[lab] at (3.575,-2.925) {$6$};
+\draw[hl cell] (3.850,-3.200) rectangle (4.400,-2.650);
+\node[lab] at (4.125,-2.925) {$2$};
+\node[lab, anchor=east] at (-0.100,-2.925) {down from 0};
+\end{tikzpicture}
+\end{center}
+```
+
+Building a max-heap from $2,9,4,7,1,8,6,3$ by heapifying down at indices $3,2,1,0$. Each row shows one swap (highlighted); nodes near the bottom move little, which is why the total is $O(n)$. The last row is a max-heap.
 
 :::
 

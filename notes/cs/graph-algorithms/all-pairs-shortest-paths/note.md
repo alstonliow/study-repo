@@ -31,6 +31,43 @@ $w'(\pi)=\sum_{i=1}^k\bigl(w(v_{i-1},v_i)+h(v_{i-1})-h(v_i)\bigr)=w(\pi)+h(v_0)-
 
 :::
 
+::: {#fig-all-pairs-shortest-paths-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (a) at (0,0.8) {$a$};
+\node[lab,tick] at (-0.85,0.8) {$h=-1$};
+\node[small vertex] (b) at (1.8,0.8) {$b$};
+\node[lab,tick] at (2.65,0.8) {$h=0$};
+\node[small vertex] (c) at (1.8,-0.8) {$c$};
+\node[lab,tick] at (2.65,-0.8) {$h=-3$};
+\node[small vertex] (d) at (0,-0.8) {$d$};
+\node[lab,tick] at (-0.85,-0.8) {$h=0$};
+\draw[->] (a) -- node[edge label, pos=0.5] {$2$} (b);
+\draw[->] (b) -- node[edge label, pos=0.5] {$-3$} (c);
+\draw[->] (a) -- node[edge label, pos=0.5] {$4$} (d);
+\draw[->] (d) -- node[edge label, pos=0.5] {$1$} (c);
+\draw[->] (c) -- node[edge label, pos=0.5] {$2$} (a);
+\node[small vertex] (a2) at (5.0,0.8) {$a$};
+\node[small vertex] (b2) at (6.8,0.8) {$b$};
+\node[small vertex] (c2) at (6.8,-0.8) {$c$};
+\node[small vertex] (d2) at (5.0,-0.8) {$d$};
+\draw[->] (a2) -- node[edge label, pos=0.5] {$1$} (b2);
+\draw[->] (b2) -- node[edge label, pos=0.5] {$0$} (c2);
+\draw[->] (a2) -- node[edge label, pos=0.5] {$3$} (d2);
+\draw[->] (d2) -- node[edge label, pos=0.5] {$4$} (c2);
+\draw[->] (c2) -- node[edge label, pos=0.5] {$0$} (a2);
+\draw[emph,->] (3.0,0) -- (4.3,0);
+\node[lab,tick] at (3.6,-0.35) {$w'=w+h(u)-h(v)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Johnson's reweighting. Left: a graph with a negative edge and the potentials $h(v)=\delta(x,v)$ from an added source $x$. Right: the new weights $w'(u,v)=w(u,v)+h(u)-h(v)$ are all non-negative, and every path between two given vertices changes weight by the same amount.
+
+:::
+
 We want $h$ with $w'(u,v)\ge0$, that is $h(v)\le h(u)+w(u,v)$ for every edge. This is the triangle inequality of @lem-shortest-path-properties, satisfied by $h(v)=\delta(x,v)$ for any vertex $x$ from which all distances are finite.
 
 ::: {#def-johnson .definition name="Johnson's algorithm"}

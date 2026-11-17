@@ -68,6 +68,32 @@ Every problem in $\mathrm P$ is in $\mathrm{NP}$, and every problem in $\mathrm{
 
 :::
 
+::: {#fig-complexity-classes-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[regionC] (0,0) ellipse (4.2 and 2.2);
+\draw[regionB] (-0.6,-0.2) ellipse (3.2 and 1.7);
+\draw[regionA] (-1.2,-0.4) ellipse (2.2 and 1.2);
+\draw[regionA] (-2.0,-0.6) ellipse (1.0 and 0.65);
+\node[lab] at (3.4,0.2) {$\mathrm R$};
+\node[lab] at (2.0,0.4) {$\mathrm{EXP}$};
+\node[lab] at (0.1,0.45) {$\mathrm{NP}$};
+\node[lab] at (-2.0,-0.6) {$\mathrm P$};
+\draw[hl] (0.02,-1.17) arc[start angle=-50, end angle=40, x radius=1.9, y radius=1.0];
+\node[lab,tick, anchor=east] at (0.45,-0.75) {NP-complete};
+\node[lab,tick] at (1.8,-0.35) {chess};
+\node[lab,tick] at (-2.0,-0.95) {shortest paths};
+\node[lab,tick] at (0,-2.55) {outside $\mathrm R$: the halting problem};
+\end{tikzpicture}
+\end{center}
+```
+
+The classes $\mathrm P\subseteq\mathrm{NP}\subseteq\mathrm{EXP}\subseteq\mathrm R$, drawn as most researchers believe them to be ($\mathrm P\ne\mathrm{NP}$; only $\mathrm P\ne\mathrm{EXP}$ and $\mathrm{EXP}\ne\mathrm R$ are proved). The NP-complete problems are the hardest problems in $\mathrm{NP}$, at its outer edge (for example SAT and subset sum).
+
+:::
+
 Whether $\mathrm P=\mathrm{NP}$ is open; most researchers believe $\mathrm P\ne\mathrm{NP}$, that is, finding solutions is harder than checking them. A proof either way earns one of the Millennium Prizes.
 
 ## Reductions and NP-completeness

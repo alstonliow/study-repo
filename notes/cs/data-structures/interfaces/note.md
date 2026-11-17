@@ -52,6 +52,38 @@ A *static array* of length $n$ is a block of $n$ consecutive words of memory. In
 
 :::
 
+::: {#fig-interfaces-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.800,0.800);
+\node[lab] at (0.400,0.400) {$x_0$};
+\draw[cell frame] (0.800,0.000) rectangle (1.600,0.800);
+\node[lab] at (1.200,0.400) {$x_1$};
+\draw[cell frame] (1.600,0.000) rectangle (2.400,0.800);
+\node[lab] at (2.000,0.400) {$x_2$};
+\draw[hl cell] (2.400,0.000) rectangle (3.200,0.800);
+\node[lab] at (2.800,0.400) {$x_3$};
+\draw[cell frame] (3.200,0.000) rectangle (4.000,0.800);
+\node[lab] at (3.600,0.400) {$x_4$};
+\draw[cell frame] (4.000,0.000) rectangle (4.800,0.800);
+\node[lab] at (4.400,0.400) {$x_5$};
+\node[lab,tick] at (0.40,-0.25) {$a$};
+\node[lab,tick] at (1.20,-0.25) {$a+1$};
+\node[lab,tick] at (2.00,-0.25) {$a+2$};
+\node[lab,tick] at (2.80,-0.25) {$a+3$};
+\node[lab,tick] at (3.60,-0.25) {$a+4$};
+\node[lab,tick] at (4.40,-0.25) {$a+5$};
+\node[lab, anchor=west] at (5.0,0.4) {\texttt{get\_at(3)} reads address $a+3$};
+\end{tikzpicture}
+\end{center}
+```
+
+A static array occupies consecutive words starting at address $a$; slot $i$ is at address $a+i$, so it is reached in $O(1)$ time.
+
+:::
+
 ::: {#rmk-interfaces-set-from-sequence .remark name="A set from a sequence"}
 
 Any sequence data structure gives a (slow) set: store the items in any order and answer `find(k)` and the order operations by scanning all $n$ items, in $O(n)$ time. Faster sets come from keeping the items sorted (@sec-cs-data-structures-comparison-sorting), from hashing (@sec-cs-data-structures-hashing), or from balanced search trees (@sec-cs-data-structures-avl-trees).

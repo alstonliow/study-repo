@@ -50,6 +50,64 @@ To compute $F_n$ (@def-fibonacci-sequence) use subproblems $F(i)$ for $0\le i\le
 
 :::
 
+::: {#fig-recursive-algorithms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab,tick] (f4) at (0.00,-2.48) {$F_1$};
+\node[lab,tick] (f5) at (0.48,-2.48) {$F_0$};
+\node[lab,tick] (f3) at (0.24,-1.86) {$F_2$};
+\draw[faint] (f3) -- (f4);
+\draw[faint] (f3) -- (f5);
+\node[lab,tick] (f6) at (0.96,-1.86) {$F_1$};
+\node[lab,tick] (f2) at (0.60,-1.24) {$F_3$};
+\draw[faint] (f2) -- (f3);
+\draw[faint] (f2) -- (f6);
+\node[lab,tick] (f8) at (1.44,-1.86) {$F_1$};
+\node[lab,tick] (f9) at (1.92,-1.86) {$F_0$};
+\node[lab,tick] (f7) at (1.68,-1.24) {$F_2$};
+\draw[faint] (f7) -- (f8);
+\draw[faint] (f7) -- (f9);
+\node[lab,tick] (f1) at (1.14,-0.62) {$F_4$};
+\draw[faint] (f1) -- (f2);
+\draw[faint] (f1) -- (f7);
+\node[lab,tick] (f12) at (2.40,-1.86) {$F_1$};
+\node[lab,tick] (f13) at (2.88,-1.86) {$F_0$};
+\node[lab,tick] (f11) at (2.64,-1.24) {$F_2$};
+\draw[faint] (f11) -- (f12);
+\draw[faint] (f11) -- (f13);
+\node[lab,tick] (f14) at (3.36,-1.24) {$F_1$};
+\node[lab,tick] (f10) at (3.00,-0.62) {$F_3$};
+\draw[faint] (f10) -- (f11);
+\draw[faint] (f10) -- (f14);
+\node[lab,tick] (f0) at (2.07,0.00) {$F_5$};
+\draw[faint] (f0) -- (f1);
+\draw[faint] (f0) -- (f10);
+\node[small vertex] (g0) at (5.04,-1.2) {$F_0$};
+\node[small vertex] (g1) at (5.94,-1.2) {$F_1$};
+\node[small vertex] (g2) at (6.84,-1.2) {$F_2$};
+\node[small vertex] (g3) at (7.74,-1.2) {$F_3$};
+\node[small vertex] (g4) at (8.64,-1.2) {$F_4$};
+\node[small vertex] (g5) at (9.54,-1.2) {$F_5$};
+\draw[->] (g1) -- (g2);
+\draw[->] (g0) to[bend right=40] (g2);
+\draw[->] (g2) -- (g3);
+\draw[->] (g1) to[bend right=40] (g3);
+\draw[->] (g3) -- (g4);
+\draw[->] (g2) to[bend right=40] (g4);
+\draw[->] (g4) -- (g5);
+\draw[->] (g3) to[bend right=40] (g5);
+\node[lab] at (7.29,0.1) {subproblem DAG: $6$ vertices};
+\node[lab] at (1.68,0.55) {call tree: $15$ calls};
+\end{tikzpicture}
+\end{center}
+```
+
+Computing $F_5$. Left: plain recursion makes $15$ calls, solving $F_3$ twice and $F_2$ three times. Right: the subproblem DAG, with an edge from $F_j$ to $F_i$ when $F_i$ uses $F_j$; with memoization each vertex is solved once, in a topological order.
+
+:::
+
 ::: {#def-dynamic-programming .definition name="Dynamic programming, memoization"}
 
 *Dynamic programming* is recursion in which subproblems are shared (the subproblem graph is a DAG in which some vertices have in-degree more than $1$), and each subproblem is solved only once. It is implemented
@@ -97,6 +155,45 @@ Pins $0,\dots,n-1$ stand in a row, pin $i$ with value $v_i$ (possibly negative).
 6. *Time:* $n+1$ subproblems with $O(1)$ work each, so $O(n)$.
 
 For values $3,-2,4,4,-1,2$ the best score is $21$: hit $3$ alone, skip $-2$, hit $4,4$ together, skip $-1$, hit $2$. The best score is the weight of a heaviest path from $B(0)$ to $B(n)$ in the subproblem DAG. A divide-and-conquer attempt (split in the middle, and either hit the two middle pins together or not) also works but takes $O(n^2)$ time and does not generalise as easily.
+
+:::
+
+::: {#fig-recursive-algorithms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (b0) at (0.0,0) {$B_0$};
+\node[lab,tick] at (0.0,-0.5) {21};
+\node[small vertex] (b1) at (1.5,0) {$B_1$};
+\node[lab,tick] at (1.5,-0.5) {18};
+\node[small vertex] (b2) at (3.0,0) {$B_2$};
+\node[lab,tick] at (3.0,-0.5) {18};
+\node[small vertex] (b3) at (4.5,0) {$B_3$};
+\node[lab,tick] at (4.5,-0.5) {6};
+\node[small vertex] (b4) at (6.0,0) {$B_4$};
+\node[lab,tick] at (6.0,-0.5) {2};
+\node[small vertex] (b5) at (7.5,0) {$B_5$};
+\node[lab,tick] at (7.5,-0.5) {2};
+\node[small vertex] (b6) at (9.0,0) {$B_6$};
+\node[lab,tick] at (9.0,-0.5) {0};
+\draw[->, hl] (b0) -- node[edge label] {$3$} (b1);
+\draw[->] (b0) to[bend left=45] node[edge label] {$-6$} (b2);
+\draw[->, hl] (b1) -- node[edge label] {$0$} (b2);
+\draw[->] (b1) to[bend left=45] node[edge label] {$-8$} (b3);
+\draw[->] (b2) -- node[edge label] {$4$} (b3);
+\draw[->, hl] (b2) to[bend left=45] node[edge label] {$16$} (b4);
+\draw[->] (b3) -- node[edge label] {$4$} (b4);
+\draw[->] (b3) to[bend left=45] node[edge label] {$-4$} (b5);
+\draw[->, hl] (b4) -- node[edge label] {$0$} (b5);
+\draw[->] (b4) to[bend left=45] node[edge label] {$-2$} (b6);
+\draw[->, hl] (b5) -- node[edge label] {$2$} (b6);
+\node[lab,tick, anchor=east] at (-0.4,-0.5) {$B(i)$:};
+\end{tikzpicture}
+\end{center}
+```
+
+The subproblem DAG of bowling for pin values $3,-2,4,4,-1,2$. A straight edge $B_i\to B_{i+1}$ handles pin $i$ alone (worth $\max\{v_i,0\}$: hit it or skip it); a curved edge $B_i\to B_{i+2}$ hits pins $i,i+1$ together (worth $v_iv_{i+1}$). The numbers under the vertices are $B(i)$, and the highlighted heaviest path from $B_0$ to $B_6$ has weight $21$.
 
 :::
 

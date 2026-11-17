@@ -23,6 +23,43 @@ The *traversal order* (in-order) of a subtree rooted at $X$ lists the traversal 
 
 :::
 
+::: {#fig-binary-trees-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (D) at (0.000,-1.800) {$D$};
+\node[small vertex] (B) at (0.800,-0.900) {$B$};
+\node[small vertex] (E) at (1.600,-1.800) {$E$};
+\node[small vertex] (A) at (2.400,0.000) {$A$};
+\node[small vertex] (C) at (3.200,-0.900) {$C$};
+\node[small vertex] (F) at (4.000,-1.800) {$F$};
+\draw (A)--(B);
+\draw (A)--(C);
+\draw (B)--(D);
+\draw (B)--(E);
+\draw (C)--(F);
+\node[lab,tick] at (0.00,-2.30) {1};
+\draw[faint] (0.00,-2.10) -- (0.00,-2.10);
+\node[lab,tick] at (0.80,-2.30) {2};
+\draw[faint] (0.80,-1.20) -- (0.80,-2.10);
+\node[lab,tick] at (1.60,-2.30) {3};
+\draw[faint] (1.60,-2.10) -- (1.60,-2.10);
+\node[lab,tick] at (2.40,-2.30) {4};
+\draw[faint] (2.40,-0.30) -- (2.40,-2.10);
+\node[lab,tick] at (3.20,-2.30) {5};
+\draw[faint] (3.20,-1.20) -- (3.20,-2.10);
+\node[lab,tick] at (4.00,-2.30) {6};
+\draw[faint] (4.00,-2.10) -- (4.00,-2.10);
+\node[lab, anchor=west] at (5.0,-2.3) {traversal order};
+\end{tikzpicture}
+\end{center}
+```
+
+The traversal order of a binary tree lists each node after its left subtree and before its right subtree. Dropping every node straight down onto a line gives the order $D,B,E,A,C,F$.
+
+:::
+
 Listing all $n$ nodes in traversal order by this recursion takes $O(n)$ time, as each node is visited once with $O(1)$ work. The traversal order is the "meaning" of the tree: below, it will be the sequence order or the sorted order of keys.
 
 ## Navigation and changes in $O(h)$ time
@@ -73,6 +110,42 @@ A *binary search tree* (set binary tree) is a binary tree whose traversal order 
 
 :::
 
+::: {#fig-binary-trees-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (k2) at (0.000,-1.800) {$2$};
+\node[small vertex] (k4) at (0.750,-0.900) {$4$};
+\node[small vertex] (k6) at (1.500,-1.800) {$6$};
+\node[small vertex] (k7) at (2.250,-2.700) {$7$};
+\node[small vertex, fill=accentLight, draw=accent] (k8) at (3.000,0.000) {$8$};
+\node[small vertex, fill=accentLight, draw=accent] (k10) at (3.750,-1.800) {$10$};
+\node[small vertex, fill=accentLight, draw=accent] (k11) at (4.500,-2.700) {$11$};
+\node[small vertex, fill=accentLight, draw=accent] (k13) at (5.250,-0.900) {$13$};
+\node[small vertex] (k15) at (6.000,-1.800) {$15$};
+\draw (k8)--(k4);
+\draw (k8)--(k13);
+\draw (k4)--(k2);
+\draw (k4)--(k6);
+\draw (k13)--(k10);
+\draw (k13)--(k15);
+\draw (k6)--(k7);
+\draw (k10)--(k11);
+\draw[hl] (k8) -- (k13);
+\draw[hl] (k13) -- (k10);
+\draw[hl] (k10) -- (k11);
+\node[lab, anchor=west] at (7.0,-0.3) {\texttt{find(11)}:};
+\node[lab, anchor=west] at (7.0,-0.8) {$11>8$, $11<13$,};
+\node[lab, anchor=west] at (7.0,-1.3) {$11>10$, found};
+\end{tikzpicture}
+\end{center}
+```
+
+Searching a binary search tree for $11$: at each node go left if the key is smaller and right if it is larger. The search follows one root-to-leaf path, so it takes $O(h)$ time.
+
+:::
+
 To `find(k)` in a binary search tree, start at the root: if $k$ is smaller than the current key go left, if larger go right, if equal return the item; falling off the tree means $k$ is absent. This is binary search on the tree and takes $O(h)$ time; `find_next`, `find_prev`, `insert` and `delete` follow the same pattern and also take $O(h)$.
 
 To use a tree as a *sequence*, let the traversal order be the sequence order. To reach the $i$-th node quickly, every node stores the size of its subtree.
@@ -86,6 +159,43 @@ Suppose every node $X$ stores $X.\mathrm{size}$, the number of nodes in its subt
 ::: {.proof}
 
 The traversal order of $X$'s subtree is the $n_L$ nodes of the left subtree, then $X$ at position $n_L$, then the right subtree. So each case returns the right node, by induction on the height. Each step goes down one level and does $O(1)$ work, so the time is $O(h)$.
+
+:::
+
+::: {#fig-binary-trees-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (D) at (0.000,-1.800) {$D$};
+\node[small vertex, fill=accentLight, draw=accent] (B) at (0.900,-0.900) {$B$};
+\node[small vertex] (G) at (1.800,-2.700) {$G$};
+\node[small vertex, fill=accentLight, draw=accent] (E) at (2.700,-1.800) {$E$};
+\node[small vertex, fill=accentLight, draw=accent] (A) at (3.600,0.000) {$A$};
+\node[small vertex] (C) at (4.500,-0.900) {$C$};
+\node[small vertex] (F) at (5.400,-1.800) {$F$};
+\draw (A)--(B);
+\draw (A)--(C);
+\draw (B)--(D);
+\draw (B)--(E);
+\draw (C)--(F);
+\draw (E)--(G);
+\node[lab,tick] at (0.42,-1.58) {1};
+\node[lab,tick] at (1.32,-0.68) {4};
+\node[lab,tick] at (2.22,-2.48) {1};
+\node[lab,tick] at (3.12,-1.58) {2};
+\node[lab,tick] at (4.02,0.22) {7};
+\node[lab,tick] at (4.92,-0.68) {2};
+\node[lab,tick] at (5.82,-1.58) {1};
+\node[lab, anchor=west] at (6.6,0) {\texttt{subtree\_at(3)} from $A$:};
+\node[lab, anchor=west] at (6.6,-0.5) {$n_L=4>3$: go left to $B$};
+\node[lab, anchor=west] at (6.6,-1.0) {$n_L=1<3$: go right to $E$, $i=1$};
+\node[lab, anchor=west] at (6.6,-1.5) {$n_L=1=i$: answer $E$};
+\end{tikzpicture}
+\end{center}
+```
+
+Each node is labelled with the size of its subtree. Finding the node at position $3$ (counting from $0$) in traversal order $D,B,G,E,A,C,F$ compares $i$ with the size of the left subtree at each step.
 
 :::
 

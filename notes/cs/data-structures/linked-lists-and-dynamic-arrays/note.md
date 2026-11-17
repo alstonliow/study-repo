@@ -25,6 +25,41 @@ A *(singly) linked list* stores each item in a *node* with two fields, `item` an
 
 :::
 
+::: {#fig-linked-lists-and-dynamic-arrays-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] (ha) at (-1.5,1.2) {head};
+\node[box] (na0) at (0.0,1.2) {$9$};
+\draw[->] (ha) -- (na0);
+\node[box] (na1) at (1.7,1.2) {$4$};
+\draw[->] (na0) -- (na1);
+\node[box] (na2) at (3.4,1.2) {$7$};
+\draw[->] (na1) -- (na2);
+\node[lab] (za) at (4.70,1.2) {none};
+\draw[->] (na2) -- (za);
+\node[lab] (hb) at (-1.5,0) {head};
+\node[hl box] (nb0) at (0.0,0) {$2$};
+\draw[->] (hb) -- (nb0);
+\node[box] (nb1) at (1.7,0) {$9$};
+\draw[->] (nb0) -- (nb1);
+\node[box] (nb2) at (3.4,0) {$4$};
+\draw[->] (nb1) -- (nb2);
+\node[box] (nb3) at (5.1,0) {$7$};
+\draw[->] (nb2) -- (nb3);
+\node[lab] (zb) at (6.40,0) {none};
+\draw[->] (nb3) -- (zb);
+\node[lab, anchor=west] at (7.0,1.2) {before};
+\node[lab, anchor=west] at (7.0,0) {after \texttt{insert\_first(2)}};
+\end{tikzpicture}
+\end{center}
+```
+
+Inserting at the front of a linked list: the new node points to the old head and becomes the head. Only two pointers change, whatever the length.
+
+:::
+
 Changing a few addresses changes the list, so `insert_first` and `delete_first` take $O(1)$ time: the new node points to the old head and becomes the head. But reaching item $i$ means following $i$ links, so `get_at(i)` and `set_at(i, x)` take $\Theta(i)$ time in the worst case.
 
 ## Dynamic arrays
@@ -58,6 +93,52 @@ Starting from an empty dynamic array, any sequence of $k$ `insert_last` operatio
 2. The total copying cost is at most a constant times $1+2+4+\dots+2^j=2^{j+1}-1<2k$ (geometric sum, @exm-well-ordering-geometric-sum).
 
 3. So the $k$ operations cost $O(k)+O(2k)=O(k)$ in total.
+
+:::
+
+::: {#fig-linked-lists-and-dynamic-arrays-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$1$};
+\node[lab, anchor=east] at (-0.100,0.275) {length 1};
+\draw[cell frame] (0.000,-0.850) rectangle (0.550,-0.300);
+\node[lab] at (0.275,-0.575) {$1$};
+\draw[hl cell] (0.550,-0.850) rectangle (1.100,-0.300);
+\node[lab] at (0.825,-0.575) {$2$};
+\node[lab, anchor=east] at (-0.100,-0.575) {length 2};
+\draw[cell frame] (0.000,-1.700) rectangle (0.550,-1.150);
+\node[lab] at (0.275,-1.425) {$1$};
+\draw[cell frame] (0.550,-1.700) rectangle (1.100,-1.150);
+\node[lab] at (0.825,-1.425) {$2$};
+\draw[cell frame] (1.100,-1.700) rectangle (1.650,-1.150);
+\node[lab] at (1.375,-1.425) {$3$};
+\draw[hl cell] (1.650,-1.700) rectangle (2.200,-1.150);
+\node[lab] at (1.925,-1.425) {$4$};
+\node[lab, anchor=east] at (-0.100,-1.425) {length 4};
+\draw[cell frame] (0.000,-2.550) rectangle (0.550,-2.000);
+\node[lab] at (0.275,-2.275) {$1$};
+\draw[cell frame] (0.550,-2.550) rectangle (1.100,-2.000);
+\node[lab] at (0.825,-2.275) {$2$};
+\draw[cell frame] (1.100,-2.550) rectangle (1.650,-2.000);
+\node[lab] at (1.375,-2.275) {$3$};
+\draw[cell frame] (1.650,-2.550) rectangle (2.200,-2.000);
+\node[lab] at (1.925,-2.275) {$4$};
+\draw[hl cell] (2.200,-2.550) rectangle (2.750,-2.000);
+\node[lab] at (2.475,-2.275) {$5$};
+\draw[cell frame] (2.750,-2.550) rectangle (3.300,-2.000);
+\draw[cell frame] (3.300,-2.550) rectangle (3.850,-2.000);
+\draw[cell frame] (3.850,-2.550) rectangle (4.400,-2.000);
+\node[lab, anchor=east] at (-0.100,-2.275) {length 8};
+\node[lab, anchor=west] at (4.8,-1.0) {each row is a new array:};
+\node[lab, anchor=west] at (4.8,-1.45) {the old items are copied over};
+\end{tikzpicture}
+\end{center}
+```
+
+Appending $1,2,\dots,5$ to a dynamic array. The array is reallocated only when full, at lengths $1,2,4,8$; the highlighted item is the one whose append triggered the copy (or, in the last row, the latest one). The copies cost $1+2+4<2\cdot5$ in total.
 
 :::
 

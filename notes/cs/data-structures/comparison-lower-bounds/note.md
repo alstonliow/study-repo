@@ -21,6 +21,40 @@ Fix a comparison algorithm and an input size $n$. Its *decision tree* is a roote
 
 :::
 
+::: {#fig-comparison-lower-bounds-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (r) at (0,0.0) {$a{<}b$};
+\node[box] (l) at (-3,-1.1) {$b{<}c$};
+\node[box] (rr) at (3,-1.1) {$a{<}c$};
+\node[hl box] (ll) at (-4.4,-2.2) {$abc$};
+\node[box] (lr) at (-1.6,-2.2) {$a{<}c$};
+\node[hl box] (rl) at (1.6,-2.2) {$bac$};
+\node[box] (rrr) at (4.4,-2.2) {$b{<}c$};
+\node[hl box] (lrl) at (-2.4,-3.3) {$acb$};
+\node[hl box] (lrr) at (-0.8,-3.3) {$cab$};
+\node[hl box] (rrl) at (3.6,-3.3) {$bca$};
+\node[hl box] (rrrr) at (5.2,-3.3) {$cba$};
+\draw (r) -- node[edge label] {yes} (l);
+\draw (r) -- node[edge label] {no} (rr);
+\draw (l) -- node[edge label] {yes} (ll);
+\draw (l) -- node[edge label] {no} (lr);
+\draw (rr) -- node[edge label] {yes} (rl);
+\draw (rr) -- node[edge label] {no} (rrr);
+\draw (lr) -- node[edge label] {yes} (lrl);
+\draw (lr) -- node[edge label] {no} (lrr);
+\draw (rrr) -- node[edge label] {yes} (rrl);
+\draw (rrr) -- node[edge label] {no} (rrrr);
+\end{tikzpicture}
+\end{center}
+```
+
+A decision tree for sorting three distinct items $a,b,c$ (the comparisons made by insertion sort). Internal nodes are comparisons and the $3!=6$ leaves are the possible outputs. Its height is $3=\lceil\log_26\rceil$, so no comparison sort does better on three items.
+
+:::
+
 ::: {#lem-binary-tree-leaves .lemma name="Leaves of a binary tree"}
 
 A rooted tree in which every node has at most $b$ children and the height is $h$ has at most $b^h$ leaves. So a binary tree with $L$ leaves has height at least $\lceil\log_2L\rceil$.

@@ -63,6 +63,77 @@ Build a DAG $G'$ with $|V|+1$ *levels*: a copy $v_k$ of every vertex $v$ for $k=
 
 :::
 
+::: {#fig-bellman-ford-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (a0) at (0.0,0.0) {$a_0$};
+\node[small vertex] (b0) at (1.8,0.0) {$b_0$};
+\node[small vertex] (c0) at (3.6,0.0) {$c_0$};
+\node[lab,tick] at (-0.9,0.0) {level 0};
+\node[small vertex] (a1) at (0.0,-1.1) {$a_1$};
+\node[small vertex] (b1) at (1.8,-1.1) {$b_1$};
+\node[small vertex] (c1) at (3.6,-1.1) {$c_1$};
+\node[lab,tick] at (-0.9,-1.1) {level 1};
+\node[small vertex] (a2) at (0.0,-2.2) {$a_2$};
+\node[small vertex] (b2) at (1.8,-2.2) {$b_2$};
+\node[small vertex] (c2) at (3.6,-2.2) {$c_2$};
+\node[lab,tick] at (-0.9,-2.2) {level 2};
+\node[small vertex] (a3) at (0.0,-3.30) {$a_3$};
+\node[small vertex] (b3) at (1.8,-3.30) {$b_3$};
+\node[small vertex] (c3) at (3.6,-3.30) {$c_3$};
+\node[lab,tick] at (-0.9,-3.30) {level 3};
+\draw[->, faint] (a0) -- (a1);
+\draw[->, faint] (b0) -- (b1);
+\draw[->, faint] (c0) -- (c1);
+\draw[->] (a0) -- node[edge label, pos=0.3] {$4$} (b1);
+\draw[->] (a0) -- node[edge label, pos=0.3] {$2$} (c1);
+\draw[->] (c0) -- node[edge label, pos=0.3] {$-1$} (b1);
+\draw[->] (b0) -- node[edge label, pos=0.3] {$3$} (c1);
+\draw[->, faint] (a1) -- (a2);
+\draw[->, faint] (b1) -- (b2);
+\draw[->, faint] (c1) -- (c2);
+\draw[->] (a1) -- node[edge label, pos=0.3] {$4$} (b2);
+\draw[->] (a1) -- node[edge label, pos=0.3] {$2$} (c2);
+\draw[->] (c1) -- node[edge label, pos=0.3] {$-1$} (b2);
+\draw[->] (b1) -- node[edge label, pos=0.3] {$3$} (c2);
+\draw[->, faint] (a2) -- (a3);
+\draw[->, faint] (b2) -- (b3);
+\draw[->, faint] (c2) -- (c3);
+\draw[->] (a2) -- node[edge label, pos=0.3] {$4$} (b3);
+\draw[->] (a2) -- node[edge label, pos=0.3] {$2$} (c3);
+\draw[->] (c2) -- node[edge label, pos=0.3] {$-1$} (b3);
+\draw[->] (b2) -- node[edge label, pos=0.3] {$3$} (c3);
+\node[lab,tick] at (5.60,0.30) {$k$};
+\node[lab,tick] at (6.70,0.30) {$\delta_k(a,a)$};
+\node[lab,tick] at (7.80,0.30) {$\delta_k(a,b)$};
+\node[lab,tick] at (8.90,0.30) {$\delta_k(a,c)$};
+\node[lab,tick] at (5.60,-0.12) {0};
+\node[lab,tick] at (6.70,-0.12) {0};
+\node[lab,tick] at (7.80,-0.12) {$\infty$};
+\node[lab,tick] at (8.90,-0.12) {$\infty$};
+\node[lab,tick] at (5.60,-0.54) {1};
+\node[lab,tick] at (6.70,-0.54) {0};
+\node[lab,tick] at (7.80,-0.54) {4};
+\node[lab,tick] at (8.90,-0.54) {2};
+\node[lab,tick] at (5.60,-0.96) {2};
+\node[lab,tick] at (6.70,-0.96) {0};
+\node[lab,tick] at (7.80,-0.96) {1};
+\node[lab,tick] at (8.90,-0.96) {2};
+\node[lab,tick] at (5.60,-1.38) {3};
+\node[lab,tick] at (6.70,-1.38) {0};
+\node[lab,tick] at (7.80,-1.38) {1};
+\node[lab,tick] at (8.90,-1.38) {2};
+\draw[faint] (5.20,0.09) -- (9.30,0.09);
+\end{tikzpicture}
+\end{center}
+```
+
+Graph duplication for a graph with edges $a\to b$ ($4$), $a\to c$ ($2$), $c\to b$ ($-1$), $b\to c$ ($3$). Level $k$ has a copy of every vertex; grey edges (weight $0$) mean "wait" and black edges copy the edges of $G$ one level down. Shortest paths from $a_0$ give the $k$-edge distances in the table. Here $|V|=3$ and $\delta_3=\delta_2$, so there is no witness and $\delta(a,\cdot)=\delta_2(a,\cdot)$.
+
+:::
+
 ::: {#thm-bellman-ford .theorem name="Bellman–Ford"}
 
 1. $\delta'(s_0,v_k)=\delta_k(s,v)$ for all $v$ and $k$.

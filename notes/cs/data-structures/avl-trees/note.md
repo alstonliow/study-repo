@@ -97,6 +97,84 @@ Let $A$ be the left subtree of $B$, of height $a$. Since the skew of $B$ is $2$,
 
 :::
 
+::: {#fig-avl-trees-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (b) at (0,0) {$B$};
+\node[small vertex] (f) at (0.9,-0.8) {$F$};
+\draw (b) -- (-0.5,-0.8);
+\draw (b)--(f);
+\draw (f) -- (0.45,-1.55);
+\draw (f) -- (1.35,-1.55);
+\draw (-0.50,-0.80) -- (-0.85,-1.80) -- (-0.15,-1.80) -- cycle;
+\node[lab,tick] at (-0.50,-1.55) {$A$};
+\draw (0.45,-1.55) -- (0.10,-2.55) -- (0.80,-2.55) -- cycle;
+\node[lab,tick] at (0.45,-2.30) {$D$};
+\draw (1.35,-1.55) -- (1.00,-2.95) -- (1.70,-2.95) -- cycle;
+\node[lab,tick] at (1.35,-2.70) {$G$};
+\draw[emph,->] (2.0,-0.9) -- (3.0,-0.9);
+\node[lab,tick] at (2.5,-0.6) {left at $B$};
+\node[small vertex] (f2) at (4.6,0) {$F$};
+\node[small vertex] (b2) at (3.7,-0.8) {$B$};
+\draw (f2)--(b2);
+\draw (b2) -- (3.25,-1.55);
+\draw (b2) -- (4.15,-1.55);
+\draw (f2) -- (5.1,-0.8);
+\draw (3.25,-1.55) -- (2.90,-2.55) -- (3.60,-2.55) -- cycle;
+\node[lab,tick] at (3.25,-2.30) {$A$};
+\draw (4.15,-1.55) -- (3.80,-2.55) -- (4.50,-2.55) -- cycle;
+\node[lab,tick] at (4.15,-2.30) {$D$};
+\draw (5.10,-0.80) -- (4.75,-2.20) -- (5.45,-2.20) -- cycle;
+\node[lab,tick] at (5.10,-1.95) {$G$};
+\node[lab] at (2.3,-3.2) {skew of $F$ is $1$: one rotation};
+\node[small vertex] (bb) at (7.0,0) {$B$};
+\node[small vertex] (ff) at (8.2,-0.8) {$F$};
+\node[small vertex] (dd) at (7.6,-1.6) {$D$};
+\draw (bb) -- (6.5,-0.8);
+\draw (bb)--(ff);
+\draw (ff)--(dd);
+\draw (ff) -- (8.7,-1.6);
+\draw (dd) -- (7.2,-2.3);
+\draw (dd) -- (8.0,-2.3);
+\draw (6.50,-0.80) -- (6.15,-1.80) -- (6.85,-1.80) -- cycle;
+\node[lab,tick] at (6.50,-1.55) {$A$};
+\draw (8.70,-1.60) -- (8.35,-2.60) -- (9.05,-2.60) -- cycle;
+\node[lab,tick] at (8.70,-2.35) {$G$};
+\draw (7.20,-2.30) -- (6.85,-3.05) -- (7.55,-3.05) -- cycle;
+\node[lab,tick] at (7.20,-2.80) {$C$};
+\draw (8.00,-2.30) -- (7.65,-3.05) -- (8.35,-3.05) -- cycle;
+\node[lab,tick] at (8.00,-2.80) {$E$};
+\draw[emph,->] (9.2,-0.9) -- (10.2,-0.9);
+\node[lab,tick] at (9.7,-0.6) {right at $F$,};
+\node[lab,tick] at (9.7,-1.2) {left at $B$};
+\node[small vertex] (d3) at (11.6,0) {$D$};
+\node[small vertex] (b3) at (10.80,-0.8) {$B$};
+\node[small vertex] (f3) at (12.4,-0.8) {$F$};
+\draw (d3)--(b3);
+\draw (d3)--(f3);
+\draw (b3) -- (10.45,-1.55);
+\draw (b3) -- (11.15,-1.55);
+\draw (f3) -- (12.05,-1.55);
+\draw (f3) -- (12.75,-1.55);
+\draw (10.45,-1.55) -- (10.10,-2.55) -- (10.80,-2.55) -- cycle;
+\node[lab,tick] at (10.45,-2.30) {$A$};
+\draw (11.15,-1.55) -- (10.80,-2.30) -- (11.50,-2.30) -- cycle;
+\node[lab,tick] at (11.15,-2.05) {$C$};
+\draw (12.05,-1.55) -- (11.70,-2.30) -- (12.40,-2.30) -- cycle;
+\node[lab,tick] at (12.05,-2.05) {$E$};
+\draw (12.75,-1.55) -- (12.40,-2.55) -- (13.10,-2.55) -- cycle;
+\node[lab,tick] at (12.75,-2.30) {$G$};
+\node[lab] at (9.4,-3.2) {skew of $F$ is $-1$: two rotations};
+\end{tikzpicture}
+\end{center}
+```
+
+The two cases of @lem-avl-local-rebalance, with subtree heights drawn to scale ($A$ has height $h$). Left: $B$ has skew $2$ and its right child $F$ has skew $1$; one left rotation balances both. Right: $F$ has skew $-1$; rotating right at $F$ and then left at $B$ lifts $D$ to the top.
+
+:::
+
 ::: {#thm-avl-global-rebalance .theorem name="Global rebalance"}
 
 After adding or removing a leaf in an AVL tree, the tree can be made an AVL tree again with $O(\log n)$ rotations, by repairing, from the bottom up, every ancestor of the changed leaf that is not height-balanced.

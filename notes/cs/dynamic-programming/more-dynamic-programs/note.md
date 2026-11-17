@@ -45,6 +45,26 @@ Computing all $d(u,v,k)$ in order of increasing $k$ gives $\delta(u,v)=d(u,v,|V|
 
 :::
 
+::: {#fig-more-dynamic-programs-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (u) at (0,0) {$u$};
+\node[small vertex, fill=accentLight, draw=accent] (k) at (2.5,1.1) {$k$};
+\node[small vertex] (v) at (5,0) {$v$};
+\draw[->, emph] (u) to[bend left=10] node[edge label] {$d(u,k,k-1)$} (k);
+\draw[->, emph] (k) to[bend left=10] node[edge label] {$d(k,v,k-1)$} (v);
+\draw[->] (u) to[bend right=15] node[edge label] {$d(u,v,k-1)$} (v);
+\node[lab,tick] at (2.5,-1.1) {intermediate vertices in $\{1,\dots,k-1\}$ on every path drawn};
+\end{tikzpicture}
+\end{center}
+```
+
+The Floyd–Warshall relation. A lightest path from $u$ to $v$ with intermediate vertices in $\{1,\dots,k\}$ either avoids $k$ (lower path) or passes through $k$ once, splitting into two paths that use only $\{1,\dots,k-1\}$ (upper path).
+
+:::
+
 This matches Johnson's algorithm (@thm-johnson) on dense graphs and is much simpler to implement. A negative entry $d(u,u,|V|)<0$ reveals a negative-weight cycle.
 
 ## Parenthesization
