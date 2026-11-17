@@ -184,6 +184,17 @@ kinds (prefix, word, numbering, colour) is `build/kinds.py` (§16.7).
      codomain), `map` (an arrow between elements).
 
    The website shows figures at 1.3 times their natural size.
+
+   **Interactive widgets (website only).** A captioned figure may get an
+   interactive step-through version on the website: a widget in
+   `site/_assets/widgets.html`, registered under the figure's id, appears right
+   below the caption. It replays the figure's example frame by frame (previous,
+   next, play, a slider) and may let the reader enter their own input. The note
+   itself is unchanged and the PDF shows only the static figure, so every
+   widget must have a static figure that tells the same story. Widgets are
+   written by hand in plain JavaScript (no libraries), use the theme colours of
+   `styles.css`, and are hidden in print. `make check` reports a widget whose
+   figure id does not exist.
 8. `example` blocks may carry `level="easy|medium|hard"`, filled in by the owner
    only.
 

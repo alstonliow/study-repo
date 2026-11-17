@@ -151,6 +151,12 @@ class TestCheck(Repo):
         r = self.check()
         self.assertEqual(r.returncode, 0, r.stdout)
 
+    def test_widget_for_unknown_figure(self):
+        w = self.root / "site" / "_assets" / "widgets.html"
+        w.parent.mkdir(parents=True, exist_ok=True)
+        w.write_text('<script>\nconst WIDGETS = {\n  "fig-nothing-1": { title: "x" },\n};\n</script>\n')
+        self.assertError("widget for unknown figure fig-nothing-1")
+
     def test_block_without_id(self):
         self.edit("notes/t/alpha/first/note.md", "#rmk-first-1 ", "")
         r = self.check()

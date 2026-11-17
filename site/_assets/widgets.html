@@ -1,0 +1,517 @@
+<!-- Interactive step-through widgets (website only; meta/SPEC.md §5, "Interactive widgets").
+     Each widget is attached to an existing captioned figure by its id and appears
+     right below the figure's caption. It replays an algorithm frame by frame on the
+     figure's example, and most accept the reader's own input. The PDF keeps only the
+     static figure. Widgets are registered in WIDGETS at the end of this file; pages
+     without a matching figure are not touched. Colours follow the theme variables
+     of styles.css, so light and dark themes both work. -->
+<style>
+  .wg { border: 1px solid var(--rule); border-radius: 6px; margin: 0.4rem 0 1.6rem; padding: 0.7rem 0.9rem 0.8rem;
+        font: 0.88rem/1.45 "Source Sans 3", system-ui, sans-serif; }
+  .wg-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.8rem; margin-bottom: 0.5rem; }
+  .wg-title { font-weight: 700; color: var(--defc); margin-right: auto; }
+  .wg-title::before { content: "▶ "; font-size: 0.75em; vertical-align: 1px; }
+  .wg-inputs { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; align-items: center; margin-bottom: 0.5rem; }
+  .wg-inputs label { white-space: nowrap; color: var(--notec); }
+  .wg-inputs input[type=text] { font: inherit; padding: 0.05rem 0.35rem; border: 1px solid var(--rule); border-radius: 3px;
+        background: transparent; color: inherit; width: 14rem; }
+  .wg-inputs input.short { width: 4rem; }
+  .wg-inputs select { font: inherit; border: 1px solid var(--rule); border-radius: 3px; background: transparent; color: inherit; }
+  .wg button { font: inherit; border: 1px solid var(--rule); border-radius: 3px; background: transparent; color: inherit;
+        padding: 0.05rem 0.55rem; cursor: pointer; }
+  .wg button:hover { border-color: var(--defc); color: var(--defc); }
+  .wg-controls { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; margin-top: 0.55rem; }
+  .wg-controls input[type=range] { flex: 1 1 8rem; min-width: 6rem; }
+  .wg-count { color: var(--notec); font-variant-numeric: tabular-nums; min-width: 4.5rem; text-align: right; }
+  .wg-stage { min-height: 3rem; overflow-x: auto; }
+  .wg-note { margin-top: 0.45rem; min-height: 2.6em; }
+  .wg-sub { margin-top: 0.2rem; color: var(--notec); font-variant-numeric: tabular-nums; }
+  .wg-error { color: var(--thmc); }
+  .wg-row { display: flex; align-items: flex-end; gap: 3px; margin: 0.25rem 0; }
+  .wg-rowlab { color: var(--notec); font-size: 0.8em; min-width: 5.5rem; text-align: right; margin-right: 0.4rem; align-self: center; }
+  .wg-cell { min-width: 2.1rem; height: 2.1rem; display: inline-flex; flex-direction: column; justify-content: center; align-items: center;
+        border: 1px solid var(--rule); border-radius: 3px; background: color-mix(in srgb, var(--notec) 8%, transparent);
+        font-variant-numeric: tabular-nums; position: relative; padding: 0 0.15rem; }
+  .wg-cell small { position: absolute; bottom: -1.15rem; font-size: 0.7em; color: var(--notec); }
+  .wg-row.idx { margin-bottom: 1.2rem; }
+  .wg-cell.hl { border-color: var(--thmc); background: color-mix(in srgb, var(--thmc) 28%, transparent); }
+  .wg-cell.cmp { border-color: var(--thmc); border-style: dashed; }
+  .wg-cell.done { border-color: var(--defc); background: color-mix(in srgb, var(--defc) 22%, transparent); }
+  .wg-cell.dim { opacity: 0.35; }
+  .wg-cell.empty { background: transparent; border-style: dotted; }
+  .wg-gap { width: 0.9rem; }
+  .wg table.wg-table { border-collapse: collapse; font-variant-numeric: tabular-nums; margin: 0.2rem 0; }
+  .wg-table td, .wg-table th { border: 1px solid var(--rule); padding: 0.1rem 0.45rem; text-align: center; min-width: 1.6rem; }
+  .wg-table th { color: var(--notec); font-weight: 600; }
+  .wg-table td.hl { background: color-mix(in srgb, var(--thmc) 28%, transparent); }
+  .wg-table td.done { background: color-mix(in srgb, var(--defc) 18%, transparent); }
+  .wg-table td.dim { color: var(--notec); }
+  .wg svg { display: block; overflow: visible; }
+  .wg svg .n circle { fill: color-mix(in srgb, var(--defc) 10%, var(--bs-body-bg, #fff)); stroke: currentColor; stroke-width: 1.2; }
+  .wg svg .n.hl circle { fill: color-mix(in srgb, var(--thmc) 35%, var(--bs-body-bg, #fff)); stroke: var(--thmc); stroke-width: 2; }
+  .wg svg .n.done circle { fill: color-mix(in srgb, var(--defc) 32%, var(--bs-body-bg, #fff)); stroke: var(--defc); }
+  .wg svg .n.dim { opacity: 0.4; }
+  .wg svg text { fill: currentColor; font: 14px "Source Sans 3", system-ui, sans-serif; text-anchor: middle; dominant-baseline: central; }
+  .wg svg text.small { font-size: 11px; fill: var(--notec); }
+  .wg svg text.wlab { font-size: 11.5px; paint-order: stroke; stroke: var(--bs-body-bg, #fff); stroke-width: 4px; }
+  .wg svg line, .wg svg path.e { stroke: currentColor; stroke-width: 1.1; fill: none; opacity: 0.55; }
+  .wg svg .e.hl { stroke: var(--thmc); stroke-width: 2.6; opacity: 1; }
+  .wg svg .e.done { stroke: var(--defc); stroke-width: 2.2; opacity: 0.9; }
+  .wg svg .e.dim { opacity: 0.18; }
+  .wg svg marker path { fill: currentColor; }
+  @media print { .wg { display: none; } }
+</style>
+<script>
+(function () {
+  "use strict";
+  // ---------- small helpers ----------
+  const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const INF = Infinity, fmt = x => x === INF ? "∞" : x === -INF ? "−∞" : String(x).replace("-", "−");
+  const nums = s => s.split(/[\s,]+/).filter(Boolean).map(t => { const v = Number(t); if (!Number.isInteger(v)) throw new Error("“" + t + "” is not an integer"); return v; });
+  let uid = 0;
+
+  function row(vals, cls = {}, opts = {}) {
+    let h = `<div class="wg-row${opts.idx ? " idx" : ""}">`;
+    if (opts.label !== undefined) h += `<span class="wg-rowlab">${opts.label}</span>`;
+    vals.forEach((v, i) => {
+      if (opts.gaps && opts.gaps.has(i)) h += `<span class="wg-gap"></span>`;
+      const c = typeof cls === "function" ? cls(i) : (cls[i] || "");
+      h += `<span class="wg-cell ${v === null || v === undefined ? "empty" : ""} ${c}">${v === null || v === undefined ? "" : esc(fmt(v))}${opts.idx ? `<small>${i}</small>` : ""}</span>`;
+    });
+    return h + "</div>";
+  }
+  function table(header, rows, cls = () => "", rowHead = null) {
+    let h = `<table class="wg-table"><tr>${rowHead ? "<th></th>" : ""}${header.map(x => `<th>${esc(x)}</th>`).join("")}</tr>`;
+    rows.forEach((r, i) => {
+      h += "<tr>" + (rowHead ? `<th>${esc(rowHead[i])}</th>` : "") + r.map((v, j) => `<td class="${cls(i, j)}">${esc(fmt(v))}</td>`).join("") + "</tr>";
+    });
+    return h + "</table>";
+  }
+  // graph: pos {v:[x,y]} (pixels), edges [[u,v,w]], directed, classes for nodes/edges, labels under nodes
+  function graph(pos, edges, o = {}) {
+    const R = 16, id = "wgm" + (++uid), xs = Object.values(pos).map(p => p[0]), ys = Object.values(pos).map(p => p[1]);
+    const W = Math.max(...xs) + 40, H = Math.max(...ys) + 44;
+    let s = `<svg width="${W}" height="${H}" viewBox="-20 -24 ${W + 20} ${H + 24}">`;
+    if (o.directed) s += `<defs><marker id="${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z"/></marker></defs>`;
+    const ec = o.edgeCls || (() => ""), nc = o.nodeCls || (() => ""), under = o.under || (() => "");
+    edges.forEach(([a, b, w]) => {
+      const [x1, y1] = pos[a], [x2, y2] = pos[b], dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy);
+      const two = o.directed && edges.some(e => e[0] === b && e[1] === a), off = two ? 7 : 0;
+      const nx = -dy / L * off, ny = dx / L * off;
+      const sx = x1 + dx / L * R + nx, sy = y1 + dy / L * R + ny, tx = x2 - dx / L * (R + 2) + nx, ty = y2 - dy / L * (R + 2) + ny;
+      s += `<path class="e ${ec(a, b)}" d="M${sx},${sy} L${tx},${ty}" ${o.directed ? `marker-end="url(#${id})"` : ""}/>`;
+      if (w !== undefined && w !== null) s += `<text class="wlab" x="${(sx + tx) / 2 + nx * 1.4}" y="${(sy + ty) / 2 + ny * 1.4}">${fmt(w)}</text>`;
+    });
+    for (const [v, [x, y]] of Object.entries(pos)) {
+      s += `<g class="n ${nc(v)}"><circle cx="${x}" cy="${y}" r="${R}"/><text x="${x}" y="${y}">${esc(v)}</text></g>`;
+      const u = under(v); if (u !== "") s += `<text class="small" x="${x}" y="${y + R + 11}">${esc(u)}</text>`;
+    }
+    return s + "</svg>";
+  }
+  // binary tree from nodes {id:{key,left,right}}: in-order layout
+  function tree(nodes, root, o = {}) {
+    if (root === null || root === undefined) return `<div class="wg-note">(empty tree)</div>`;
+    const pos = {}; let k = 0, depth = 0;
+    (function walk(v, d) { if (v === null || v === undefined) return; walk(nodes[v].left, d + 1); pos[v] = [k++ * 38, d * 52]; depth = Math.max(depth, d); walk(nodes[v].right, d + 1); })(root, 0);
+    const edges = []; for (const v in pos) for (const c of [nodes[v].left, nodes[v].right]) if (c !== null && c !== undefined) edges.push([v, c]);
+    const P = {}, lab = {}; for (const v in pos) { P[v] = pos[v]; }
+    const keyOf = v => nodes[v].key;
+    const svg = graph(P, edges, { nodeCls: o.nodeCls, edgeCls: o.edgeCls, under: o.under });
+    return svg.replace(/<text x="([\d.-]+)" y="([\d.-]+)">([^<]*)<\/text>/g, (m, x, y, v) => `<text x="${x}" y="${y}">${esc(keyOf(v))}</text>`);
+  }
+
+  // ---------- the widget frame ----------
+  function mount(anchor, spec) {
+    const box = document.createElement("div"); box.className = "wg";
+    const inputs = (spec.inputs || []).map(inp => inp.options
+      ? `<label>${inp.label} <select data-k="${inp.name}">${inp.options.map(o => `<option value="${o[0]}"${o[0] === inp.value ? " selected" : ""}>${o[1]}</option>`).join("")}</select></label>`
+      : `<label>${inp.label} <input type="text" class="${inp.short ? "short" : ""}" data-k="${inp.name}" value="${esc(inp.value)}"></label>`).join("");
+    box.innerHTML = `<div class="wg-head"><span class="wg-title">${spec.title}</span></div>` +
+      (inputs ? `<div class="wg-inputs">${inputs}<button data-a="run">Run</button><button data-a="example">Example</button></div>` : "") +
+      `<div class="wg-stage"></div><div class="wg-note"></div>
+       <div class="wg-controls"><button data-a="first" title="first step">⏮</button><button data-a="prev" title="previous step">◀</button>
+       <button data-a="play" title="play / pause">▶</button><button data-a="next" title="next step">▶|</button><button data-a="last" title="last step">⏭</button>
+       <input type="range" min="0" value="0"><span class="wg-count"></span></div>`;
+    anchor.after(box);
+    const stage = box.querySelector(".wg-stage"), note = box.querySelector(".wg-note"), range = box.querySelector("input[type=range]"),
+          count = box.querySelector(".wg-count"), playBtn = box.querySelector("[data-a=play]");
+    let frames = [], i = 0, timer = null;
+    const show = () => { const f = frames[i]; stage.innerHTML = f.html; note.innerHTML = f.note || ""; range.value = i; count.textContent = `${i + 1} / ${frames.length}`; };
+    const stop = () => { clearInterval(timer); timer = null; playBtn.textContent = "▶"; };
+    const params = () => { const p = {}; box.querySelectorAll("[data-k]").forEach(el => p[el.dataset.k] = el.value); return p; };
+    const run = () => {
+      stop();
+      try { frames = spec.run(params()); if (!frames.length) throw new Error("nothing to show"); }
+      catch (e) { frames = [{ html: "", note: `<span class="wg-error">${esc(e.message)}</span>` }]; }
+      i = 0; range.max = frames.length - 1; show();
+    };
+    box.addEventListener("click", ev => {
+      const a = ev.target.dataset && ev.target.dataset.a; if (!a) return;
+      if (a === "run") return run();
+      if (a === "example") { box.querySelectorAll("[data-k]").forEach(el => { const d = spec.inputs.find(x => x.name === el.dataset.k); el.value = d.value; }); return run(); }
+      if (a === "play") {
+        if (timer) return stop();
+        if (i >= frames.length - 1) i = 0;
+        playBtn.textContent = "❚❚"; timer = setInterval(() => { if (i >= frames.length - 1) return stop(); i++; show(); }, spec.speed || 900); return;
+      }
+      stop();
+      if (a === "first") i = 0; if (a === "last") i = frames.length - 1;
+      if (a === "prev") i = Math.max(0, i - 1); if (a === "next") i = Math.min(frames.length - 1, i + 1);
+      show();
+    });
+    range.addEventListener("input", () => { stop(); i = Number(range.value); show(); });
+    box.querySelectorAll("input[type=text]").forEach(el => el.addEventListener("keydown", e => { if (e.key === "Enter") run(); }));
+    run();
+  }
+
+  // ---------- algorithms (each returns a list of frames {html, note}) ----------
+  const limit = (a, n, what) => { if (a.length > n) throw new Error(`at most ${n} ${what}, please`); return a; };
+
+  function binarySearch(p) {
+    const A = limit(nums(p.array), 16, "items").slice().sort((x, y) => x - y), t = Number(p.target), F = [];
+    let lo = 0, hi = A.length;
+    F.push({ html: row(A, {}, { idx: true }), note: `Search for ${fmt(t)} in the sorted array (the input is sorted first).` });
+    while (lo < hi) {
+      const m = (lo + hi) >> 1;
+      F.push({ html: row(A, i => i === m ? "hl" : (i < lo || i >= hi ? "dim" : ""), { idx: true }), note: `Range [${lo}, ${hi - 1}]: compare ${fmt(t)} with the middle item A[${m}] = ${fmt(A[m])}.` });
+      if (A[m] === t) { F.push({ html: row(A, i => i === m ? "done" : "dim", { idx: true }), note: `Found at index ${m} after ${F.length - 1} comparisons.` }); return F; }
+      if (t < A[m]) hi = m; else lo = m + 1;
+    }
+    F.push({ html: row(A, () => "dim", { idx: true }), note: `The range is empty: ${fmt(t)} is absent (${F.length - 1} comparisons, at most ⌊log₂ n⌋ + 1).` });
+    return F;
+  }
+
+  function sorting(p) {
+    const A = limit(nums(p.array), 14, "items").slice(), n = A.length, F = [], alg = p.alg;
+    const snap = (cls, note, gaps) => F.push({ html: row(A.slice(), cls, { idx: true, gaps }), note });
+    snap({}, "Start.");
+    if (alg === "selection") {
+      for (let i = n - 1; i > 0; i--) {
+        let j = 0; for (let k = 1; k <= i; k++) if (A[k] > A[j]) j = k;
+        snap(k => k === j || k === i ? "hl" : k > i ? "done" : "", `A largest item of A[0..${i}] is ${fmt(A[j])} at index ${j}; swap it into position ${i}.`);
+        [A[i], A[j]] = [A[j], A[i]];
+        snap(k => k >= i ? "done" : "", `Positions ${i}..${n - 1} are now sorted and final.`);
+      }
+    } else if (alg === "insertion") {
+      for (let i = 1; i < n; i++) {
+        let j = i;
+        snap(k => k === j ? "hl" : k < i ? "done" : "", `Insert ${fmt(A[i])} into the sorted prefix A[0..${i - 1}].`);
+        while (j > 0 && A[j] < A[j - 1]) { [A[j], A[j - 1]] = [A[j - 1], A[j]]; j--; snap(k => k === j ? "hl" : k <= i ? "done" : "", `${fmt(A[j])} is smaller than its left neighbour: swap.`); }
+      }
+    } else {
+      (function ms(a, b) {
+        if (b - a < 2) return;
+        const c = Math.ceil((a + b) / 2);
+        ms(a, c); ms(c, b);
+        const L = A.slice(a, c), R = A.slice(c, b); let i = 0, j = 0;
+        snap(k => k >= a && k < b ? "cmp" : "", `Merge the sorted halves A[${a}..${c - 1}] = ${L.map(fmt).join(", ")} and A[${c}..${b - 1}] = ${R.map(fmt).join(", ")}.`);
+        for (let k = a; k < b; k++) A[k] = (j >= R.length || (i < L.length && L[i] <= R[j])) ? L[i++] : R[j++];
+        snap(k => k >= a && k < b ? "done" : "", `A[${a}..${b - 1}] is sorted.`);
+      })(0, n);
+    }
+    snap(() => "done", "Sorted.");
+    return F;
+  }
+
+  function radix(p) {
+    const A = limit(nums(p.array), 12, "items"), base = Number(p.base) || 10, F = [];
+    if (A.some(x => x < 0)) throw new Error("keys must be non-negative");
+    const u = Math.max(...A) + 1; let c = 1; while (base ** c < u) c++;
+    const digits = x => { let s = ""; for (let k = 0; k < c; k++) { s = (Math.floor(x / base ** k) % base).toString(base > 10 ? 36 : 10) + s; } return s; };
+    let cur = A.slice();
+    F.push({ html: row(cur.map(digits), {}, { label: "keys" }) + row(cur, {}, { label: "values" }), note: `Write each key with ${c} digit(s) in base ${base}.` });
+    for (let k = 0; k < c; k++) {
+      const d = x => Math.floor(x / base ** k) % base, buckets = Array.from({ length: base }, () => []);
+      cur.forEach(x => buckets[d(x)].push(x));
+      let h = "";
+      buckets.forEach((b, j) => { if (b.length) h += row(b.map(digits), {}, { label: `digit ${j}` }); });
+      F.push({ html: h, note: `Pass ${k + 1}: counting sort by digit ${k + 1} from the right. Items go into the chain of their digit, in their current order.` });
+      cur = buckets.flat();
+      F.push({ html: row(cur.map(digits), {}, { label: "keys" }) + row(cur, {}, { label: "values" }), note: `Read the chains in order. Stability keeps ties in the order of the previous pass.` });
+    }
+    F.push({ html: row(cur, () => "done", { label: "sorted" }), note: "Sorted after one stable pass per digit." });
+    return F;
+  }
+
+  function hashing(p) {
+    const K = limit(nums(p.keys), 16, "keys"), m = Number(p.m) || 7, F = [], T = Array.from({ length: m }, () => []);
+    if (m < 1 || m > 13) throw new Error("table size between 1 and 13, please");
+    const draw = (hk, note) => {
+      let h = ""; T.forEach((ch, j) => h += row(ch.length ? ch : [null], k => j === hk && k === ch.length - 1 ? "hl" : "", { label: `slot ${j}` }));
+      F.push({ html: h, note });
+    };
+    draw(-1, `An empty table of size ${m}, h(k) = k mod ${m}.`);
+    for (const k of K) {
+      const j = ((k % m) + m) % m, ch = T[j];
+      if (ch.includes(k)) { draw(-1, `${k} is already stored in slot ${j}.`); continue; }
+      ch.push(k); draw(j, `Insert ${k}: h(${k}) = ${j}; append to that chain${ch.length > 1 ? ` (collision, chain length ${ch.length})` : ""}.`);
+    }
+    const lens = T.map(c => c.length);
+    draw(-1, `Load factor ${K.length}/${m}; longest chain ${Math.max(...lens)}.`);
+    return F;
+  }
+
+  function dynArray(p) {
+    const n = Number(p.n), F = [];
+    if (!Number.isInteger(n) || n < 1 || n > 32) throw new Error("a number of appends from 1 to 32, please"); let cap = 0, size = 0, copies = 0;
+    for (let k = 1; k <= n; k++) {
+      if (size === cap) {
+        const old = cap; cap = Math.max(1, 2 * cap); copies += old;
+        F.push({ html: row(Array.from({ length: cap }, (_, i) => i < size ? i + 1 : null), i => i < size ? "cmp" : "", {}), note: `Full: allocate length ${cap} and copy ${old} item(s). Copies so far: ${copies}.` });
+      }
+      size++;
+      F.push({ html: row(Array.from({ length: cap }, (_, i) => i < size ? i + 1 : null), i => i === size - 1 ? "hl" : ""), note: `insert_last(${k}): ${size} item(s), length ${cap}. Total copies ${copies} < 2·${size}.` });
+    }
+    return F;
+  }
+
+  // binary search tree / AVL
+  function bst(p, avl) {
+    const keys = limit(nums(p.keys), 15, "keys"), F = [], nodes = {}; let root = null;
+    const h = v => v === null ? -1 : nodes[v].h, upd = v => { nodes[v].h = 1 + Math.max(h(nodes[v].left), h(nodes[v].right)); };
+    const skew = v => h(nodes[v].right) - h(nodes[v].left);
+    const pic = (cls, note) => F.push({ html: tree(nodes, root, { nodeCls: v => cls(v), under: avl ? (v => "skew " + fmt(skew(v))) : (() => "") }), note });
+    const parentOf = {};
+    const setChild = (par, old, nu) => { if (par === null) root = nu; else if (nodes[par].left === old) nodes[par].left = nu; else nodes[par].right = nu; if (nu !== null) parentOf[nu] = par; };
+    const rotL = x => { const y = nodes[x].right, par = parentOf[x]; nodes[x].right = nodes[y].left; if (nodes[y].left !== null) parentOf[nodes[y].left] = x; nodes[y].left = x; parentOf[x] = y; setChild(par, x, y); upd(x); upd(y); return y; };
+    const rotR = x => { const y = nodes[x].left, par = parentOf[x]; nodes[x].left = nodes[y].right; if (nodes[y].right !== null) parentOf[nodes[y].right] = x; nodes[y].right = x; parentOf[x] = y; setChild(par, x, y); upd(x); upd(y); return y; };
+    pic(() => "", avl ? "An empty AVL tree. Under each node: its skew." : "An empty binary search tree.");
+    for (const k of keys) {
+      const id = "k" + k; if (nodes[id]) { pic(v => v === id ? "hl" : "", `${k} is already in the tree.`); continue; }
+      let cur = root, par = null, path = [];
+      while (cur !== null) { path.push(cur); par = cur; cur = k < nodes[cur].key ? nodes[cur].left : nodes[cur].right; }
+      nodes[id] = { key: k, left: null, right: null, h: 0 }; parentOf[id] = par;
+      if (par === null) root = id; else if (k < nodes[par].key) nodes[par].left = id; else nodes[par].right = id;
+      for (let v = par; v !== null; v = parentOf[v]) upd(v);
+      pic(v => v === id ? "hl" : path.includes(v) ? "done" : "", `Insert ${k}: compare along the path (${path.map(v => nodes[v].key).join(" → ") || "empty tree"}), and add it as a new leaf.`);
+      if (!avl) continue;
+      for (let v = par; v !== null; v = parentOf[v]) {
+        upd(v); const s = skew(v);
+        if (Math.abs(s) < 2) continue;
+        pic(x => x === v ? "hl" : "", `Node ${nodes[v].key} has skew ${fmt(s)}: not height-balanced.`);
+        let top;
+        if (s === 2) {
+          const r = nodes[v].right;
+          if (skew(r) === -1) { rotR(r); pic(x => x === v ? "hl" : "", `Its right child has skew −1: first rotate right at ${nodes[r].key}.`); }
+          top = rotL(v); pic(x => x === top ? "done" : "", `Rotate left at ${nodes[v].key}.`);
+        } else {
+          const l = nodes[v].left;
+          if (skew(l) === 1) { rotL(l); pic(x => x === v ? "hl" : "", `Its left child has skew 1: first rotate left at ${nodes[l].key}.`); }
+          top = rotR(v); pic(x => x === top ? "done" : "", `Rotate right at ${nodes[v].key}.`);
+        }
+        v = top;
+      }
+    }
+    pic(() => "", `Done. Height ${h(root)} with ${Object.keys(nodes).length} keys.`);
+    return F;
+  }
+
+  // binary heap (max)
+  function heap(p, mode) {
+    const A = limit(nums(p.array), 15, "items").slice(), F = [];
+    const view = (n, cls) => {
+      const nodes = {}; for (let i = 0; i < n; i++) nodes["h" + i] = { key: A[i], left: 2 * i + 1 < n ? "h" + (2 * i + 1) : null, right: 2 * i + 2 < n ? "h" + (2 * i + 2) : null };
+      return tree(nodes, n ? "h0" : null, { nodeCls: v => cls(+v.slice(1)) }) + row(A, i => i >= n ? "dim" : cls(i), { idx: true });
+    };
+    if (mode === "build") {
+      const n = A.length; F.push({ html: view(n, () => ""), note: "Treat the whole array as a complete binary tree." });
+      for (let s = (n >> 1) - 1; s >= 0; s--) {
+        let i = s; F.push({ html: view(n, k => k === i ? "hl" : ""), note: `Heapify down from index ${s}.` });
+        for (;;) { const l = 2 * i + 1, r = l + 1; let b = i; if (l < n && A[l] > A[b]) b = l; if (r < n && A[r] > A[b]) b = r; if (b === i) break;
+          [A[i], A[b]] = [A[b], A[i]]; F.push({ html: view(n, k => k === b ? "hl" : k === i ? "cmp" : ""), note: `Swap with the larger child (index ${b}).` }); i = b; }
+      }
+      F.push({ html: view(n, () => "done"), note: "A max-heap: every node is at least its children." });
+    } else {
+      let n = 0; F.push({ html: view(0, () => ""), note: "Insert the items one by one (append, then heapify up), then delete the maximum." });
+      for (let s = 0; s < A.length; s++) {
+        n++; let i = s; F.push({ html: view(n, k => k === i ? "hl" : ""), note: `Append ${fmt(A[i])} at index ${i}.` });
+        while (i > 0 && A[(i - 1) >> 1] < A[i]) { const q = (i - 1) >> 1; [A[q], A[i]] = [A[i], A[q]]; F.push({ html: view(n, k => k === q ? "hl" : k === i ? "cmp" : ""), note: `Larger than its parent: swap up to index ${q}.` }); i = q; }
+      }
+      if (n) {
+        F.push({ html: view(n, k => k === 0 || k === n - 1 ? "hl" : ""), note: `delete_max: swap the root ${fmt(A[0])} with the last item.` });
+        [A[0], A[n - 1]] = [A[n - 1], A[0]]; n--; let i = 0;
+        F.push({ html: view(n, k => k === 0 ? "hl" : ""), note: `Remove ${fmt(A[n])} from the end; heapify down from the root.` });
+        for (;;) { const l = 2 * i + 1, r = l + 1; let b = i; if (l < n && A[l] > A[b]) b = l; if (r < n && A[r] > A[b]) b = r; if (b === i) break;
+          [A[i], A[b]] = [A[b], A[i]]; F.push({ html: view(n, k => k === b ? "hl" : k === i ? "cmp" : ""), note: `Smaller than a child: swap with the larger child (index ${b}).` }); i = b; }
+        F.push({ html: view(n, () => "done"), note: "A max-heap again." });
+      }
+    }
+    return F;
+  }
+
+  // ---------- graphs (fixed examples, the same as in the static figures) ----------
+  const S = 70; // pixels per unit of the figures' coordinates
+  const place = (pos, flipY = true) => { const P = {}, ys = Object.values(pos).map(p => p[1]), top = Math.max(...ys); for (const v in pos) P[v] = [pos[v][0] * S, (flipY ? top - pos[v][1] : pos[v][1]) * S]; return P; };
+
+  function bfs() {
+    const P = place({ s: [0, 0], a: [1.6, 0.8], b: [1.6, -0.8], c: [3.2, 0.8], d: [3.2, -0.8], e: [4.8, 0.8], f: [4.8, -0.8] });
+    const E = [["s","a"],["s","b"],["a","b"],["a","c"],["b","c"],["b","d"],["c","e"],["d","e"],["d","f"],["e","f"]];
+    const adj = {}; for (const v in P) adj[v] = E.filter(e => e.includes(v)).map(e => e[0] === v ? e[1] : e[0]).sort();
+    const d = { s: 0 }, par = {}, F = []; let level = ["s"];
+    const pic = (cur, note) => F.push({ html: graph(P, E, { nodeCls: v => v === cur ? "hl" : v in d ? "done" : "", edgeCls: (a, b) => par[b] === a || par[a] === b ? "done" : "", under: v => v in d ? "d=" + d[v] : "" }) , note });
+    pic(null, "Level 0 is {s}.");
+    while (level.length) {
+      const next = [];
+      for (const u of level) for (const v of adj[u]) if (!(v in d)) { d[v] = d[u] + 1; par[v] = u; next.push(v); pic(v, `Scanning ${u}: ${v} is new, so it joins level ${d[v]} with parent ${u}.`); }
+      if (next.length) pic(null, `Level ${d[next[0]]} = {${next.join(", ")}}.`);
+      level = next;
+    }
+    pic(null, "No new vertices: done. Blue edges form a shortest-path tree.");
+    return F;
+  }
+
+  function dfs() {
+    const P = place({ a: [0, 0.8], b: [1.5, 0.8], c: [3.0, 0.8], d: [0, -0.8], e: [1.5, -0.8], f: [3.0, -0.8] });
+    const E = [["a","b"],["a","d"],["b","c"],["b","e"],["d","e"],["e","f"],["c","f"]];
+    const out = {}; for (const v in P) out[v] = E.filter(e => e[0] === v).map(e => e[1]).sort();
+    const seen = new Set(), st = {}, fin = {}, F = [], order = [], par = {}; let t = 0, active = new Set();
+    const pic = (cur, note) => F.push({ html: graph(P, E, { directed: true, nodeCls: v => v === cur ? "hl" : v in fin ? "done" : seen.has(v) ? "cmp" : "", edgeCls: (a, b) => par[b] === a ? "done" : "", under: v => v in st ? `${st[v]}/${fin[v] || ""}` : "" }) + `<div class="wg-sub">finished: ${order.join(", ") || "—"}</div>`, note });
+    const visit = u => {
+      seen.add(u); st[u] = ++t; pic(u, `Start visiting ${u} at time ${t}.`);
+      for (const v of out[u]) if (!seen.has(v)) { par[v] = u; visit(v); }
+      fin[u] = ++t; order.push(u); pic(u, `${u} finishes at time ${t}: all its out-neighbours are done.`);
+    };
+    for (const v of Object.keys(P).sort()) if (!seen.has(v)) visit(v);
+    pic(null, `Reverse finishing order: ${order.slice().reverse().join(", ")} — a topological order.`);
+    return F;
+  }
+
+  const fmtRow = (vs, d) => vs.map(v => d[v]);
+
+  function dagRelax() {
+    const P = place({ s: [0, 0], a: [1.5, 0.7], b: [3.0, 0.7], c: [1.5, -0.7], d: [3.0, -0.7], t: [4.5, 0] });
+    const W = [["s","a",3],["s","c",1],["c","a",1],["a","b",2],["c","d",6],["a","d",-2],["b","t",4],["d","t",1],["b","d",1]];
+    const topo = ["s","c","a","b","d","t"], d = {}; topo.forEach(v => d[v] = INF); d.s = 0;
+    const F = [], hist = [];
+    const pic = (u, e, note) => F.push({ html: graph(P, W, { directed: true, nodeCls: v => v === u ? "hl" : topo.indexOf(v) < topo.indexOf(u) ? "done" : "", edgeCls: (a, b) => e && a === e[0] && b === e[1] ? "hl" : "", under: v => fmt(d[v]) }) + table(topo, hist.length ? hist : [fmtRow(topo, d)], (i, j) => ""), note });
+    pic(null, null, `Process the vertices in the topological order ${topo.join(", ")}; d(s) = 0, all others ∞.`);
+    for (const u of topo) {
+      for (const [a, b, w] of W.filter(e => e[0] === u)) {
+        const old = d[b]; if (d[a] + w < d[b]) d[b] = d[a] + w;
+        pic(u, [a, b], `Relax ${a}→${b} (weight ${fmt(w)}): ${fmt(d[a])} + ${fmt(w)} ${d[b] < old ? `< ${fmt(old)}, so d(${b}) = ${fmt(d[b])}` : `≥ ${fmt(old)}: no change`}.`);
+      }
+      hist.push(fmtRow(topo, d));
+    }
+    pic(null, null, "Every estimate equals the shortest-path weight.");
+    return F;
+  }
+
+  function bellmanFord() {
+    const P = place({ a: [0, 0], b: [2.2, 0.9], c: [2.2, -0.9] });
+    const W = [["a","b",4],["a","c",2],["c","b",-1],["b","c",3]], V = ["a","b","c"], F = [];
+    let d = { a: 0, b: INF, c: INF }; const hist = [V.map(v => d[v])];
+    const pic = (e, note) => F.push({ html: graph(P, W, { directed: true, edgeCls: (a, b) => e && a === e[0] && b === e[1] ? "hl" : "", under: v => "δ=" + fmt(d[v]) }) + table(V, hist, () => "", hist.map((_, k) => "k=" + k)), note });
+    pic(null, "δ₀: only a is reachable with 0 edges.");
+    for (let k = 1; k <= V.length; k++) {
+      const prev = { ...d }, cur = { ...d };
+      for (const [a, b, w] of W) { if (prev[a] + w < cur[b]) cur[b] = prev[a] + w; }
+      d = cur; hist.push(V.map(v => d[v]));
+      pic(null, `δ${"₀₁₂₃"[k] || k}: best walks with at most ${k} edges (each value uses the previous row and one more edge).`);
+    }
+    const last = hist[hist.length - 1], prev = hist[hist.length - 2], wit = V.filter((v, j) => last[j] < prev[j]);
+    pic(null, wit.length ? `Witnesses: ${wit.join(", ")} — a negative-weight cycle is reachable.` : `δ₃ = δ₂: no witness, so no negative-weight cycle; δ(a,·) = δ₂(a,·).`);
+    return F;
+  }
+
+  function dijkstra() {
+    const P = place({ s: [0, 0], a: [1.6, 0.8], b: [3.2, 0.8], c: [1.6, -0.8], d: [3.2, -0.8] });
+    const W = [["s","a",7],["s","c",2],["c","a",3],["a","b",1],["c","d",8],["a","d",4],["b","d",1],["d","b",2]];
+    const V = ["s","a","b","c","d"], d = {}, done = [], F = [], hist = [], rem = [];
+    V.forEach(v => d[v] = INF); d.s = 0;
+    const pic = (u, e, note) => F.push({ html: graph(P, W, { directed: true, nodeCls: v => v === u ? "hl" : done.includes(v) ? "done" : "", edgeCls: (a, b) => e && a === e[0] && b === e[1] ? "hl" : "", under: v => fmt(d[v]) }) +
+      `<div class="wg-sub">queue: ${V.filter(v => !done.includes(v)).sort((x, y) => d[x] - d[y]).map(v => `${v}(${fmt(d[v])})`).join("  ") || "empty"}</div>`, note });
+    pic(null, null, "All estimates ∞ except d(s) = 0; every vertex is in the queue.");
+    while (done.length < V.length) {
+      const u = V.filter(v => !done.includes(v)).sort((x, y) => d[x] - d[y] || (x < y ? -1 : 1))[0];
+      done.push(u); pic(u, null, `Remove ${u}: its estimate ${fmt(d[u])} is the smallest in the queue, so it is final.`);
+      for (const [a, b, w] of W.filter(e => e[0] === u)) {
+        const old = d[b]; if (d[a] + w < d[b]) d[b] = d[a] + w;
+        pic(u, [a, b], `Relax ${a}→${b}: ${fmt(d[a])} + ${w} ${d[b] < old ? `< ${fmt(old)}: decrease_key(${b}, ${d[b]})` : `≥ ${fmt(old)}: no change`}.`);
+      }
+    }
+    pic(null, null, `Done. Removal order ${done.join(", ")} is the order of distance from s.`);
+    return F;
+  }
+
+  // ---------- dynamic programming tables ----------
+  function lcs(p) {
+    const A = p.a.trim().toUpperCase(), B = p.b.trim().toUpperCase(), a = A.length, b = B.length, F = [];
+    if (!a || !b || a > 10 || b > 10) throw new Error("two strings of 1 to 10 letters, please");
+    const x = Array.from({ length: a + 1 }, () => Array(b + 1).fill(null));
+    for (let i = 0; i <= a; i++) x[i][b] = 0; for (let j = 0; j <= b; j++) x[a][j] = 0;
+    const pic = (cls, note) => F.push({ html: table([...B, "∅"], x.map(r => r.map(v => v === null ? "" : v)), cls, [...A, "∅"]), note });
+    pic((i, j) => i === a || j === b ? "done" : "", "Base cases: an empty suffix has LCS length 0.");
+    for (let i = a - 1; i >= 0; i--) for (let j = b - 1; j >= 0; j--) {
+      x[i][j] = A[i] === B[j] ? x[i + 1][j + 1] + 1 : Math.max(x[i + 1][j], x[i][j + 1]);
+      if (a * b <= 30 || (i === 0 && j === 0) || j === 0)
+        pic((r, c) => r === i && c === j ? "hl" : (A[i] === B[j] ? r === i + 1 && c === j + 1 : (r === i + 1 && c === j) || (r === i && c === j + 1)) ? "done" : "",
+          A[i] === B[j] ? `${A[i]} = ${B[j]}: x(${i},${j}) = 1 + x(${i + 1},${j + 1}) = ${x[i][j]}.` : `${A[i]} ≠ ${B[j]}: x(${i},${j}) = max(x(${i + 1},${j}), x(${i},${j + 1})) = ${x[i][j]}.`);
+    }
+    const path = new Set(); let i = 0, j = 0, s = "";
+    while (i < a && j < b) { path.add(i + "," + j); if (A[i] === B[j]) { s += A[i]; i++; j++; } else if (x[i + 1][j] >= x[i][j + 1]) i++; else j++; }
+    pic((r, c) => path.has(r + "," + c) ? "hl" : "", `Trace back from x(0,0) = ${x[0][0]}: a longest common subsequence is “${s}”.`);
+    return F;
+  }
+
+  function subsetSum(p) {
+    const A = limit(nums(p.array), 8, "numbers"), T = Number(p.target), n = A.length, F = [];
+    if (A.some(v => v <= 0) || !(T >= 0 && T <= 30)) throw new Error("positive numbers and a target from 0 to 30, please");
+    const x = Array.from({ length: n + 1 }, () => Array(T + 1).fill(null));
+    for (let t = 0; t <= T; t++) x[n][t] = t === 0;
+    const show = v => v === null ? "" : v ? "✓" : "·";
+    const pic = (cls, note) => F.push({ html: table([...Array(T + 1).keys()].map(String), x.map(r => r.map(show)), cls, [...A.map((v, i) => `a${i}=${v}`), "none"]), note });
+    pic((i, j) => i === n ? "done" : "", "Base row: with no items left, only t = 0 is reachable.");
+    for (let i = n - 1; i >= 0; i--) {
+      for (let t = 0; t <= T; t++) x[i][t] = t === 0 || x[i + 1][t] || (t >= A[i] && x[i + 1][t - A[i]]);
+      pic((r, c) => r === i ? (x[r][c] ? "hl" : "") : r > i && x[r][c] ? "done" : "", `Row a${i} = ${A[i]}: x(${i},t) is true if x(${i + 1},t) or x(${i + 1},t−${A[i]}) is.`);
+    }
+    pic((r, c) => r === 0 && c === T ? "hl" : x[r][c] ? "done" : "", `x(0,${T}) is ${x[0][T] ? "true: some subset sums to " + T : "false: no subset sums to " + T}. The table has (n+1)(T+1) cells.`);
+    return F;
+  }
+
+  function bowling(p) {
+    const v = limit(nums(p.values), 12, "pins"), n = v.length, B = Array(n + 2).fill(0), F = [], ch = [];
+    const pic = (i, note) => F.push({ html: row(v, k => k === i || (ch[i] === 2 && k === i + 1) ? "hl" : "", { label: "pins", idx: true }) + row(B.slice(0, n + 1), k => k === i ? "hl" : k > i ? "done" : "dim", { label: "B(i)", idx: true }), note });
+    pic(n, `B(${n}) = 0: no pins left.`);
+    for (let i = n - 1; i >= 0; i--) {
+      const o = [[B[i + 1], 0, "skip it"], [v[i] + B[i + 1], 1, `hit it alone (${v[i]})`]];
+      if (i + 1 < n) o.push([v[i] * v[i + 1] + B[i + 2], 2, `hit pins ${i},${i + 1} together (${v[i]}·${v[i + 1]} = ${v[i] * v[i + 1]})`]);
+      o.sort((x, y) => y[0] - x[0]); B[i] = o[0][0]; ch[i] = o[0][1];
+      pic(i, `B(${i}) = max over pin ${i}: ${o.map(z => `${z[2]} → ${z[0]}`).join("; ")}. Best: ${o[0][2]}.`);
+    }
+    pic(-1, `Best total score B(0) = ${B[0]}.`);
+    return F;
+  }
+
+  // ---------- registry: figure id -> widget ----------
+  const WIDGETS = {
+    "fig-comparison-sorting-1": { title: "Try it: binary search", inputs: [{ name: "array", label: "array", value: "1 3 4 6 8 9 11 14 17" }, { name: "target", label: "find", value: "11", short: true }], run: binarySearch },
+    "fig-comparison-sorting-2": { title: "Try it: selection, insertion and merge sort", inputs: [{ name: "array", label: "array", value: "7 3 5 1 4" }, { name: "alg", label: "algorithm", value: "insertion", options: [["selection", "selection sort"], ["insertion", "insertion sort"], ["merge", "merge sort"]] }], run: sorting },
+    "fig-comparison-sorting-3": { title: "Try it: merge sort", inputs: [{ name: "array", label: "array", value: "6 2 7 1 5 3 8 4" }, { name: "alg", label: "algorithm", value: "merge", options: [["merge", "merge sort"], ["insertion", "insertion sort"], ["selection", "selection sort"]] }], run: sorting },
+    "fig-linear-sorting-2": { title: "Try it: radix sort", inputs: [{ name: "array", label: "keys", value: "17 3 24 22 12" }, { name: "base", label: "base", value: "5", short: true }], run: radix, speed: 1300 },
+    "fig-hashing-1": { title: "Try it: hashing with chaining", inputs: [{ name: "keys", label: "keys", value: "12 7 19 4 26 15" }, { name: "m", label: "size m", value: "5", short: true }], run: hashing },
+    "fig-linked-lists-and-dynamic-arrays-2": { title: "Try it: appending to a dynamic array", inputs: [{ name: "n", label: "appends", value: "9", short: true }], run: dynArray, speed: 700 },
+    "fig-binary-trees-2": { title: "Try it: inserting into a binary search tree", inputs: [{ name: "keys", label: "insert", value: "8 4 13 2 6 10 15 7 11" }], run: p => bst(p, false) },
+    "fig-avl-trees-2": { title: "Try it: AVL insertions with rotations", inputs: [{ name: "keys", label: "insert", value: "1 2 3 4 5 6 7 10 9 8" }], run: p => bst(p, true), speed: 1200 },
+    "fig-binary-heaps-2": { title: "Try it: heap insert and delete_max", inputs: [{ name: "array", label: "insert", value: "9 7 8 3 5 6 2 1 0 10" }], run: p => heap(p, "insert") },
+    "fig-binary-heaps-3": { title: "Try it: building a heap in O(n)", inputs: [{ name: "array", label: "array", value: "2 9 4 7 1 8 6 3" }], run: p => heap(p, "build") },
+    "fig-breadth-first-search-1": { title: "Step through: breadth-first search", run: bfs },
+    "fig-depth-first-search-1": { title: "Step through: depth-first search and finishing order", run: dfs },
+    "fig-weighted-shortest-paths-1": { title: "Step through: DAG relaxation", run: dagRelax, speed: 1100 },
+    "fig-bellman-ford-1": { title: "Step through: Bellman–Ford, one edge count at a time", run: bellmanFord, speed: 1300 },
+    "fig-dijkstra-1": { title: "Step through: Dijkstra's algorithm", run: dijkstra, speed: 1100 },
+    "fig-recursive-algorithms-2": { title: "Try it: bowling by dynamic programming", inputs: [{ name: "values", label: "pin values", value: "3 -2 4 4 -1 2" }], run: bowling, speed: 1300 },
+    "fig-subproblem-design-1": { title: "Try it: longest common subsequence", inputs: [{ name: "a", label: "A", value: "SNOWY", short: true }, { name: "b", label: "B", value: "SUNNY", short: true }], run: lcs },
+    "fig-pseudopolynomial-time-1": { title: "Try it: subset sum table", inputs: [{ name: "array", label: "numbers", value: "2 5 9 14" }, { name: "target", label: "target", value: "16", short: true }], run: subsetSum, speed: 1300 },
+  };
+
+  function init() {
+    for (const [fid, spec] of Object.entries(WIDGETS)) {
+      const el = document.getElementById(fid); if (!el) continue;
+      const anchor = el.closest("p, figure, div.quarto-figure") || el;
+      try { mount(anchor, spec); } catch (e) { console.error("widget", fid, e); }
+    }
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
+</script>

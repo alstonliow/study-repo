@@ -308,6 +308,22 @@ def check_figures() -> None:
                 warnings.append(f"{rel(md)}:{line}: figure hard-codes {', '.join(found)}; use the shared styles")
 
 
+@rule("widgets", "interactive widgets are attached to existing figures")
+def check_widgets() -> None:
+    """Every widget in site/_assets/widgets.html names a figure that exists (meta/SPEC.md §5)."""
+    path = ROOT / "site" / "_assets" / "widgets.html"
+    if not path.exists():
+        return
+    figs = {d.id for n in REPO.all_notes for f in n.files.values() for d in f.divs if d.id}
+    for m in WIDGET_KEY.finditer(path.read_text(encoding="utf-8")):
+        if m.group(1) not in figs:
+            line = path.read_text(encoding="utf-8")[:m.start()].count("\n") + 1
+            errors.append(f"{rel(path)}:{line}: widget for unknown figure {m.group(1)}")
+
+
+WIDGET_KEY = re.compile(r'^\s*"(fig-[\w-]+)":\s*\{', re.M)
+
+
 @rule("files", "nothing from raw/, no PDFs or build artefacts")
 def check_forbidden_files() -> None:
     """Files that would be committed (tracked or untracked, not ignored)."""
