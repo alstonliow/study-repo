@@ -399,6 +399,12 @@ chapters:
       - id: "10.5"
         title: "Inclusion-exclusion"
         covers: [math/discrete/counting/inclusion-exclusion]
+  - num: 11
+    title: "Countability"
+    points:
+      - id: "11"
+        title: "Countable and uncountable sets"
+        covers: [math/discrete/functions/countable-sets, math/discrete/functions/cantor-diagonalization]
   - num: 13
     title: "Discrete probability"
     points:

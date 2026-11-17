@@ -283,6 +283,11 @@ nodes:
     title: Counting exercises
     at:
       2020-fall: '10.6'
+- id: res-ucb-cs70-countability
+  kind: note
+  title: Countability
+  at:
+    2020-fall: '11'
 - id: res-ucb-cs70-discrete-probability
   kind: note
   title: Discrete probability

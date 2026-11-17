@@ -28,6 +28,8 @@ parts:
           - composition
           - cryptosystems
           - counting
+          - countable-sets
+          - cantor-diagonalization
       - id: math/discrete/relations
         title: Relations
         desc: Binary relations, their properties, equivalence relations
