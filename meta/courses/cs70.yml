@@ -2,7 +2,8 @@
 # Rule (owner, same as FIT1058): content that is in the CS70 course notes is in
 # scope. Content that is not in them is out of scope ("extra"), decided by
 # checking the content against the notes. FIT1058-only examples and exercises
-# are therefore extra here, as the CS70 examples are extra for FIT1058.
+# are therefore extra here, as the CS70 examples are extra for FIT1058
+# (strict rule for exercises too, confirmed by the owner on 2026-11-17).
 # Only the CS70 notes kept in raw/UCB_CS70 are mapped (Notes 10, 13-19).
 # Sections that cover none of our notes are left out (Note 17 apart from
 # Chebyshev, Note 18 and the exercise sections).
