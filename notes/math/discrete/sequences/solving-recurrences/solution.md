@@ -85,3 +85,43 @@ $$r_n = \frac{3^{n-1}+1}2.$$
 (This also follows from rewriting the recurrence as
 $r_n - \frac12 = 3\bigl(r_{n-1} - \frac12\bigr)$.)
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-8-q1" status="draft"}
+Use the Akra–Bazzi formula (@sec-math-discrete-sequences-solving-recurrences): find $p$ with $\sum a_ib_i^p=1$, then $T(n)=\Theta\bigl(n^p(1+\int_1^n\frac{g(u)}{u^{p+1}}du)\bigr)$. The floors and the small additive terms are allowed perturbations.
+
+(a) $8\cdot2^{-p}=1$ gives $p=3$; $\int_1^nu^{-3}du=\Theta(1)$, so $T(n)=\Theta(n^3)$.
+
+(b) $2\cdot8^{-p}=1$ gives $p=\frac13$; $\int_1^nu^{-1/3}du=\Theta(n^{2/3})$, so $T(n)=\Theta(n)$.
+
+(c) $p$ solves $7\cdot20^{-p}+2\cdot8^{-p}=1$; at $p=1$ the left side is $\frac7{20}+\frac28=0.6<1$, so $p<1$. Then $\int_1^nu^{-p}du=\Theta(n^{1-p})$ and $T(n)=\Theta(n)$.
+
+(d) $2\cdot4^{-p}=1$ gives $p=\frac12$; $\int_1^n\frac{u^{1/2}}{u^{3/2}}du=\ln n$, so $T(n)=\Theta(\sqrt n\log n)$.
+
+(e) $3\cdot9^{-p}=1$ gives $p=\frac12$; with $g=1$, $\int_1^nu^{-3/2}du=\Theta(1)$, so $T(n)=\Theta(\sqrt n)$. (The perturbation $n^{1/9}$ is $O(n/\log^2n)$.)
+:::
+
+::: {.solution for="prob-mit6042f10-8-q2" status="draft"}
+(a) "$T(n)=O(n)$" is a statement about the whole function $T$, not about a single value $n$, so it cannot serve as the induction predicate $P(n)$: every single value is $O(1)$. Hidden in the step is a growing constant: if $T(n/2)\le c\frac n2$, the step only gives $T(n)\le(2c+1)n$, and the constant doubles at every level of the recursion.
+
+(b) The step would read: $T(n)=4T(n/2)+n\le4c\frac n2+n=(2c+1)n$, using $P(n/2)$ (when $n/2\ge n_0$). To finish we would need $(2c+1)n\le cn$, which is false for $c>0$. So the step fails and no contradiction is reached; the attempt proves nothing. (Also the hypothesis is not available when $n/2<n_0$.)
+
+(c) $4\cdot2^{-p}=1$ gives $p=2$, and $\int_1^nu^{-2}du=\Theta(1)$, so $T(n)=\Theta(n^2)$; in particular $T(n)\ne O(n)$.
+
+(d) For $a\ge1$, $b>1$: $T(n)=O(n)$ if and only if $a<b$. By Akra–Bazzi, $p=\log_ba$; if $a<b$ then $p<1$ and $T(n)=\Theta(n)$; if $a=b$ then $T(n)=\Theta(n\log n)$; if $a>b$ then $T(n)=\Theta(n^{\log_ba})$.
+
+Direct proof of sufficiency: let $a<b$ and $c=\max\bigl(\frac b{b-a},\ \max_{1\le n<b}\frac{T(n)}n\bigr)$. We show $T(n)\le cn$ by strong induction. For $n<b$ it holds by the choice of $c$. For $n\ge b$, $1\le\lfloor n/b\rfloor<n$, so
+$$T(n)=aT(\lfloor n/b\rfloor)+n\le ac\frac nb+n=\Bigl(\frac{ac}b+1\Bigr)n\le cn,$$
+because $c\ge\frac b{b-a}$ is equivalent to $\frac{ac}b+1\le c$.
+:::
+
+::: {.solution for="prob-mit6042f10-8-q4" status="draft"}
+(a) The characteristic equation $r^3-4r^2+r+6=0$ has the root $r=-1$, and $r^3-4r^2+r+6=(r+1)(r-2)(r-3)$. So $x_n=a(-1)^n+b2^n+c3^n$ (@thm-distinct-roots). The initial values give $a+b+c=3$, $-a+2b+3c=4$, $a+4b+9c=14$, whose solution is $a=b=c=1$:
+$$x_n=(-1)^n+2^n+3^n.$$
+
+(b) The homogeneous part $r^2+r-2=(r+2)(r-1)$ has roots $-2$ and $1$. Since $1$ is a root, try a particular solution $An^2+Bn$: substituting gives $A=\frac16$, $B=\frac7{18}$. So $x_n=c_1(-2)^n+c_2+\frac{n^2}6+\frac{7n}{18}$, and $x_0=5$, $x_1=-\frac49$ give $c_1=2$, $c_2=3$:
+$$x_n=2(-2)^n+3+\frac{n^2}6+\frac{7n}{18}.$$
+(Check: $x_2=-x_1+2x_0+2=\frac{112}9$, and the formula gives $8+3+\frac46+\frac{14}{18}=\frac{112}9$.)
+:::

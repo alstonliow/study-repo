@@ -39,3 +39,15 @@ $$h=\frac{\sigma^2+\sigma^4/\alpha^2}{(\alpha+\sigma^2/\alpha)^2}=\frac{\sigma^2
 
 (d) Markov: $\Pr(X\ge5)\le\frac35$. Chebyshev: $\Pr(X\ge5)\le\Pr(|X-3|\ge2)\le\frac24=\frac12$. Part (b), applied to $X-3$ (mean $0$, variance $2$) with $\alpha=2$: $\Pr(X\ge5)\le\frac2{4+2}=\frac13$, the best of the three.
 :::
+
+::: {.solution for="prob-mit6042f10-12-q4" status="draft"}
+Toss the coin $n$ times and guess "biased" if the fraction $\hat p$ of heads exceeds $\frac58$, the midpoint of $\frac12$ and $\frac34$, and "fair" otherwise. We want both kinds of error to have probability at most $0.05$, whichever coin was picked.
+
+1. *Fair coin:* $\hat p$ has mean $\frac12$ and variance $\frac1{4n}$. By Chebyshev (@thm-chebyshev-s-inequality), $\Pr(\hat p\ge\frac58)\le\Pr(|\hat p-\frac12|\ge\frac18)\le\frac{1/(4n)}{1/64}=\frac{16}n$.
+
+2. *Biased coin:* variance $\frac{3/16}n$, so $\Pr(\hat p\le\frac58)\le\frac{(3/16)/n}{1/64}=\frac{12}n$.
+
+3. Both are at most $0.05$ once $n\ge320$. So $320$ tosses certainly suffice.
+
+Chebyshev is pessimistic. With the normal approximation (central limit theorem), the error for the fair coin is about $\Pr\bigl(Z\ge\frac{1/8}{1/(2\sqrt n)}\bigr)=\Pr(Z\ge\frac{\sqrt n}4)$, which is $0.05$ when $\frac{\sqrt n}4\approx1.645$, i.e. $n\approx44$; the biased coin needs slightly fewer. So in practice about $44$ tosses are enough.
+:::

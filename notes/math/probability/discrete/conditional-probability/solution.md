@@ -146,3 +146,67 @@ The coin is fair, so each sequence of $m$ flips has probability $2^{-m}$.
 ::: {.solution for="prob-cs70hw-10-q4" status="draft"}
 Toss the coin twice. Output "heads" on HT, "tails" on TH, and on HH or TT discard the pair and start again. With $\Pr(\text{heads})=p$ and independent tosses, $\Pr(\text{HT})=p(1-p)=\Pr(\text{TH})$, so in each round where we stop, the two outputs are equally likely. A round stops with probability $2p(1-p)>0$ (for $0<p<1$), so with probability $1$ we stop after finitely many rounds, after $\frac1{2p(1-p)}$ rounds on average.
 :::
+
+::: {.solution for="prob-mit6042f10-10-q1" status="draft"}
+(a) Every value is non-negative, and
+$$\sum_{w\in S}\Pr_B\{w\}=\sum_{w\in B}\frac{\Pr\{w\}}{\Pr\{B\}}=\frac{\Pr\{B\}}{\Pr\{B\}}=1.$$
+So $\Pr_B$ is a probability function on outcomes (@def-probability-general-case), and events get the sum over their outcomes.
+
+(b) $\Pr_B\{A\}=\sum_{w\in A}\Pr_B\{w\}=\sum_{w\in A\cap B}\frac{\Pr\{w\}}{\Pr\{B\}}=\frac{\Pr\{A\cap B\}}{\Pr\{B\}}$, since outcomes outside $B$ contribute $0$. So $\Pr_B\{A\}=\Pr(A\mid B)$ (@def-conditional-probability).
+:::
+
+::: {.solution for="prob-mit6042f10-10-q6" status="draft"}
+(a) By symmetry the top card is black with probability $\frac{26}{52}=\frac12$.
+
+(b) Given that the first card was red, the remaining $51$ cards contain $26$ black ones in uniformly random order, so the next card is black with probability $\frac{26}{51}>\frac12$.
+
+(c) Given what has been seen, the remaining $r+b$ cards are in uniformly random order, so each of them, in particular the next one, is black with probability $\frac b{r+b}$.
+
+(d) No strategy wins with probability more than $\frac12$.
+
+1. A strategy decides to stop using only the cards seen so far. Given those cards, the remaining cards are in uniformly random order, so the next card and the *last* card of the deck have the same conditional probability $\frac b{r+b}$ of being black.
+
+2. So, conditioning on the moment the strategy stops and on the cards seen (@thm-law-of-total-probability), the probability of winning equals the probability that the last card of the deck is black.
+
+3. The strategy cannot influence the last card, which is black with probability $\frac12$. Every strategy wins with probability exactly $\frac12$.
+:::
+
+::: {.solution for="prob-mit6042f10-11-q1" status="draft"}
+All $8$ outcomes have probability $\frac18$.
+
+(a) $T=\{(G,G,E),(G,G,Y)\}$ and $O=\{(G,G,E),(G,G,Y),(G,B,E),(B,G,Y)\}$.
+
+(b) $T\subseteq O$, so $\Pr(T\mid O)=\frac{\Pr(T)}{\Pr(O)}=\frac{2/8}{4/8}=\frac12$.
+
+(c) The argument conditions on the wrong event. "A girl opened the door" is the event $O$, not "there is at least one girl" (which has $6$ outcomes, probability $\frac34$). Two-girl households always produce a girl at the door, while mixed households do so only half the time, so $O$ favours two-girl households more than "at least one girl" does.
+:::
+
+::: {.solution for="prob-mit6042f10-11-q4" status="draft"}
+Let $q=p^2+(1-p)^2$ be the probability that a round is discarded ($HH$ or $TT$).
+
+(a) The game ends with your win in round $j$ exactly when rounds $1,\dots,j-1$ are discarded and round $j$ is $TH$. By independence this has probability $q^{j-1}(1-p)p$, and the same holds for $HT$ with $p(1-p)$. Summing over $j=1,\dots,N$, $\Pr\{W\}=\Pr\{L\}=p(1-p)\frac{1-q^N}{1-q}$.
+
+(b) A tie means all $N$ rounds are discarded: $\Pr\{\text{tie}\}=q^N$. For $\frac12<p<1$, $q=1-2p(1-p)<1$, so $q^N\to0$. (Compare @prob-cs70hw-10-q4.)
+:::
+
+::: {.solution for="prob-mit6042f10-11-q5" status="draft"}
+(a) $\Pr(A\cap B)=\Pr(\emptyset)=0$, so independence $\Pr(A\cap B)=\Pr(A)\Pr(B)$ forces $\Pr(A)=0$ or $\Pr(B)=0$.
+
+(b) $\Pr(A\cap\overline B)=\Pr(A)-\Pr(A)\Pr(B)=\Pr(A)\Pr(\overline B)$. (This is @prob-cs70hw-10-q1 (b).)
+
+(c) Toss two fair coins. Let $A$ = "both tosses agree", $B$ = "first toss is H", $C$ = "second toss is H". Then $\Pr(A\cap B)=\Pr(HH)=\frac14=\Pr(A)\Pr(B)$, and likewise for $C$. But $B\cup C$ = "at least one H" has probability $\frac34$, and $\Pr(A\cap(B\cup C))=\Pr(HH)=\frac14\ne\frac12\cdot\frac34$.
+
+(d) Assume $\Pr(C)>0$ (if $\Pr(C)=0$, $C$ is independent of every event). By inclusion–exclusion for the conditional probability and the three independences,
+$$\Pr(A\cup B\mid C)=\Pr(A\mid C)+\Pr(B\mid C)-\Pr(A\cap B\mid C)=\Pr(A)+\Pr(B)-\Pr(A\cap B)=\Pr(A\cup B),$$
+which says that $C$ and $A\cup B$ are independent.
+:::
+
+::: {.solution for="prob-mit6042f10-11-q6" status="draft"}
+(a) That the three markers occur *mutually* independently, so that the probability of all three is the product.
+
+(b) Pairwise independence does not determine $\Pr(A\cap B\cap C)$; it only gives the upper bound $\Pr(A\cap B\cap C)\le\Pr(B\cap C)=\frac1{3000}\cdot\frac1{5000}=\frac1{15\,000\,000}$. In a world of several billion people, up to several hundred could have all three markers, so the markers alone cannot single out Joe.
+
+(c) Only $\Pr(A\cap B\cap C)\le\min(\Pr(A),\Pr(B),\Pr(C))=\frac1{5000}$, and it may be as small as $0$.
+
+(d) The product rule gives $\Pr(A\cap B\cap C)=\Pr(A)\Pr(B\mid A)\Pr(C\mid A\cap B)$ (@thm-chain-rule). The attorney replaced $\Pr(C\mid A\cap B)$ by $\Pr(C\mid A)$, which assumes that $B$ and $C$ are independent *given* $A$. The researcher only found that $B$ and $C$ are independent unconditionally, which does not imply conditional independence given $A$. So the probability is not determined by the data.
+:::

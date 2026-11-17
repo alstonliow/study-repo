@@ -1,0 +1,892 @@
+# MIT 6.042J Mathematics for Computer Science, textbook by Lehman, Leighton and Meyer
+# (edition of 2015-05-18, the reading for 6.042J Spring 2015 on MIT OpenCourseWare,
+# CC BY-NC-SA 4.0), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6042J/spring-2015-textbook. Locators are <chapter>.<section>;
+# a source key is mcs-14.4 (chapter 14, section 4) and mcs-14.4-q3 for a problem.
+# Titles are our own short titles. Node ids are stable: never renamed when a title or a locator changes.
+id: res-mit-6042j-mcs
+kind: textbook
+title: Mathematics for Computer Science (MIT 6.042J)
+status: draft
+courses: [mit6042j]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: '2015-05-18'
+  current: true
+legacy_keys:
+  prefix: mcs-
+  edition: '2015-05-18'
+  pattern: ^mcs-(?P<section>\d+(?:\.\d+)*)(?:-q(?P<n>\d+))?$
+  label: MCS {section}
+  problem_label: MCS {section} Q{n}
+nodes:
+- id: res-mit-6042j-mcs-proof
+  kind: chapter
+  title: Proofs
+  at:
+    '2015-05-18': '1'
+  nodes:
+  - id: res-mit-6042j-mcs-propositions
+    kind: section
+    title: Propositions
+    at:
+      '2015-05-18': '1.1'
+  - id: res-mit-6042j-mcs-predicates
+    kind: section
+    title: Predicates
+    at:
+      '2015-05-18': '1.2'
+  - id: res-mit-6042j-mcs-axiomatic-method
+    kind: section
+    title: The axiomatic method
+    at:
+      '2015-05-18': '1.3'
+  - id: res-mit-6042j-mcs-axioms
+    kind: section
+    title: Axioms and logical deductions
+    at:
+      '2015-05-18': '1.4'
+  - id: res-mit-6042j-mcs-proving-implications
+    kind: section
+    title: Proving an implication
+    at:
+      '2015-05-18': '1.5'
+  - id: res-mit-6042j-mcs-proving-iff
+    kind: section
+    title: Proving an if and only if
+    at:
+      '2015-05-18': '1.6'
+  - id: res-mit-6042j-mcs-proof-by-cases
+    kind: section
+    title: Proof by cases
+    at:
+      '2015-05-18': '1.7'
+  - id: res-mit-6042j-mcs-proof-by-contradiction
+    kind: section
+    title: Proof by contradiction
+    at:
+      '2015-05-18': '1.8'
+  - id: res-mit-6042j-mcs-good-proofs
+    kind: section
+    title: Writing good proofs
+    at:
+      '2015-05-18': '1.9'
+  - id: res-mit-6042j-mcs-proof-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '1.10'
+- id: res-mit-6042j-mcs-well-ordering
+  kind: chapter
+  title: Well ordering
+  at:
+    '2015-05-18': '2'
+  nodes:
+  - id: res-mit-6042j-mcs-well-ordering-proofs
+    kind: section
+    title: Proofs by well ordering
+    at:
+      '2015-05-18': '2.1'
+  - id: res-mit-6042j-mcs-well-ordering-template
+    kind: section
+    title: A template for well-ordering proofs
+    at:
+      '2015-05-18': '2.2'
+  - id: res-mit-6042j-mcs-factoring-into-primes
+    kind: section
+    title: Factoring into primes
+    at:
+      '2015-05-18': '2.3'
+  - id: res-mit-6042j-mcs-well-ordered-sets
+    kind: section
+    title: Well-ordered sets
+    at:
+      '2015-05-18': '2.4'
+- id: res-mit-6042j-mcs-logical-formulas
+  kind: chapter
+  title: Logical formulas
+  at:
+    '2015-05-18': '3'
+  nodes:
+  - id: res-mit-6042j-mcs-compound-propositions
+    kind: section
+    title: Compound propositions
+    at:
+      '2015-05-18': '3.1'
+  - id: res-mit-6042j-mcs-logic-in-programs
+    kind: section
+    title: Logic in programs
+    at:
+      '2015-05-18': '3.2'
+  - id: res-mit-6042j-mcs-equivalence-validity
+    kind: section
+    title: Equivalence and validity
+    at:
+      '2015-05-18': '3.3'
+  - id: res-mit-6042j-mcs-algebra-of-propositions
+    kind: section
+    title: Algebra of propositions
+    at:
+      '2015-05-18': '3.4'
+  - id: res-mit-6042j-mcs-sat
+    kind: section
+    title: Satisfiability
+    at:
+      '2015-05-18': '3.5'
+  - id: res-mit-6042j-mcs-predicate-formulas
+    kind: section
+    title: Predicate formulas
+    at:
+      '2015-05-18': '3.6'
+  - id: res-mit-6042j-mcs-logic-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '3.7'
+- id: res-mit-6042j-mcs-data-types
+  kind: chapter
+  title: Mathematical data types
+  at:
+    '2015-05-18': '4'
+  nodes:
+  - id: res-mit-6042j-mcs-sets
+    kind: section
+    title: Sets
+    at:
+      '2015-05-18': '4.1'
+  - id: res-mit-6042j-mcs-sequences
+    kind: section
+    title: Sequences
+    at:
+      '2015-05-18': '4.2'
+  - id: res-mit-6042j-mcs-functions
+    kind: section
+    title: Functions
+    at:
+      '2015-05-18': '4.3'
+  - id: res-mit-6042j-mcs-binary-relations
+    kind: section
+    title: Binary relations
+    at:
+      '2015-05-18': '4.4'
+  - id: res-mit-6042j-mcs-finite-cardinality
+    kind: section
+    title: Finite cardinality
+    at:
+      '2015-05-18': '4.5'
+- id: res-mit-6042j-mcs-induction
+  kind: chapter
+  title: Induction
+  at:
+    '2015-05-18': '5'
+  nodes:
+  - id: res-mit-6042j-mcs-ordinary-induction
+    kind: section
+    title: Ordinary induction
+    at:
+      '2015-05-18': '5.1'
+  - id: res-mit-6042j-mcs-strong-induction
+    kind: section
+    title: Strong induction
+    at:
+      '2015-05-18': '5.2'
+  - id: res-mit-6042j-mcs-induction-comparison
+    kind: section
+    title: Induction, strong induction and well ordering
+    at:
+      '2015-05-18': '5.3'
+  - id: res-mit-6042j-mcs-state-machines
+    kind: section
+    title: State machines and invariants
+    at:
+      '2015-05-18': '5.4'
+- id: res-mit-6042j-mcs-recursive-data-types
+  kind: chapter
+  title: Recursive data types
+  at:
+    '2015-05-18': '6'
+  nodes:
+  - id: res-mit-6042j-mcs-structural-induction
+    kind: section
+    title: Recursive definitions and structural induction
+    at:
+      '2015-05-18': '6.1'
+  - id: res-mit-6042j-mcs-matched-brackets
+    kind: section
+    title: Matched brackets
+    at:
+      '2015-05-18': '6.2'
+  - id: res-mit-6042j-mcs-recursive-functions
+    kind: section
+    title: Recursive functions on the naturals
+    at:
+      '2015-05-18': '6.3'
+  - id: res-mit-6042j-mcs-arithmetic-expressions
+    kind: section
+    title: Arithmetic expressions
+    at:
+      '2015-05-18': '6.4'
+  - id: res-mit-6042j-mcs-induction-in-cs
+    kind: section
+    title: Induction in computer science
+    at:
+      '2015-05-18': '6.5'
+- id: res-mit-6042j-mcs-infinite-sets
+  kind: chapter
+  title: Infinite sets
+  at:
+    '2015-05-18': '7'
+  nodes:
+  - id: res-mit-6042j-mcs-infinite-cardinality
+    kind: section
+    title: Infinite cardinality
+    at:
+      '2015-05-18': '7.1'
+  - id: res-mit-6042j-mcs-halting-problem
+    kind: section
+    title: The halting problem
+    at:
+      '2015-05-18': '7.2'
+  - id: res-mit-6042j-mcs-logic-of-sets
+    kind: section
+    title: The logic of sets
+    at:
+      '2015-05-18': '7.3'
+  - id: res-mit-6042j-mcs-does-it-work
+    kind: section
+    title: Foundations of set theory
+    at:
+      '2015-05-18': '7.4'
+- id: res-mit-6042j-mcs-number-theory
+  kind: chapter
+  title: Number theory
+  at:
+    '2015-05-18': '8'
+  nodes:
+  - id: res-mit-6042j-mcs-divisibility
+    kind: section
+    title: Divisibility
+    at:
+      '2015-05-18': '8.1'
+  - id: res-mit-6042j-mcs-gcd
+    kind: section
+    title: Greatest common divisor
+    at:
+      '2015-05-18': '8.2'
+  - id: res-mit-6042j-mcs-prime-mysteries
+    kind: section
+    title: Open problems about primes
+    at:
+      '2015-05-18': '8.3'
+  - id: res-mit-6042j-mcs-fundamental-theorem
+    kind: section
+    title: Unique factorisation
+    at:
+      '2015-05-18': '8.4'
+  - id: res-mit-6042j-mcs-turing-code-1
+    kind: section
+    title: Turing's code, first version
+    at:
+      '2015-05-18': '8.5'
+  - id: res-mit-6042j-mcs-modular-arithmetic
+    kind: section
+    title: Modular arithmetic
+    at:
+      '2015-05-18': '8.6'
+  - id: res-mit-6042j-mcs-remainder-arithmetic
+    kind: section
+    title: Remainder arithmetic
+    at:
+      '2015-05-18': '8.7'
+  - id: res-mit-6042j-mcs-turing-code-2
+    kind: section
+    title: Turing's code, second version
+    at:
+      '2015-05-18': '8.8'
+  - id: res-mit-6042j-mcs-inverses
+    kind: section
+    title: Multiplicative inverses and cancelling
+    at:
+      '2015-05-18': '8.9'
+  - id: res-mit-6042j-mcs-euler-theorem
+    kind: section
+    title: Euler's theorem
+    at:
+      '2015-05-18': '8.10'
+  - id: res-mit-6042j-mcs-rsa
+    kind: section
+    title: RSA
+    at:
+      '2015-05-18': '8.11'
+  - id: res-mit-6042j-mcs-sat-and-rsa
+    kind: section
+    title: SAT and RSA
+    at:
+      '2015-05-18': '8.12'
+  - id: res-mit-6042j-mcs-number-theory-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '8.13'
+- id: res-mit-6042j-mcs-digraphs
+  kind: chapter
+  title: Directed graphs and partial orders
+  at:
+    '2015-05-18': '9'
+  nodes:
+  - id: res-mit-6042j-mcs-digraph-degrees
+    kind: section
+    title: Vertex degrees
+    at:
+      '2015-05-18': '9.1'
+  - id: res-mit-6042j-mcs-digraph-walks
+    kind: section
+    title: Walks and paths
+    at:
+      '2015-05-18': '9.2'
+  - id: res-mit-6042j-mcs-adjacency-matrices
+    kind: section
+    title: Adjacency matrices
+    at:
+      '2015-05-18': '9.3'
+  - id: res-mit-6042j-mcs-walk-relations
+    kind: section
+    title: Walk relations
+    at:
+      '2015-05-18': '9.4'
+  - id: res-mit-6042j-mcs-dags-scheduling
+    kind: section
+    title: DAGs and scheduling
+    at:
+      '2015-05-18': '9.5'
+  - id: res-mit-6042j-mcs-partial-orders
+    kind: section
+    title: Partial orders
+    at:
+      '2015-05-18': '9.6'
+  - id: res-mit-6042j-mcs-set-containment
+    kind: section
+    title: Partial orders as set containment
+    at:
+      '2015-05-18': '9.7'
+  - id: res-mit-6042j-mcs-linear-orders
+    kind: section
+    title: Linear orders
+    at:
+      '2015-05-18': '9.8'
+  - id: res-mit-6042j-mcs-product-orders
+    kind: section
+    title: Product orders
+    at:
+      '2015-05-18': '9.9'
+  - id: res-mit-6042j-mcs-equivalence-relations
+    kind: section
+    title: Equivalence relations
+    at:
+      '2015-05-18': '9.10'
+  - id: res-mit-6042j-mcs-relational-properties
+    kind: section
+    title: Summary of relational properties
+    at:
+      '2015-05-18': '9.11'
+- id: res-mit-6042j-mcs-networks
+  kind: chapter
+  title: Communication networks
+  at:
+    '2015-05-18': '10'
+  nodes:
+  - id: res-mit-6042j-mcs-binary-tree-network
+    kind: section
+    title: Complete binary tree
+    at:
+      '2015-05-18': '10.1'
+  - id: res-mit-6042j-mcs-routing
+    kind: section
+    title: Routing problems
+    at:
+      '2015-05-18': '10.2'
+  - id: res-mit-6042j-mcs-diameter
+    kind: section
+    title: Network diameter
+    at:
+      '2015-05-18': '10.3'
+  - id: res-mit-6042j-mcs-switch-count
+    kind: section
+    title: Switch count
+    at:
+      '2015-05-18': '10.4'
+  - id: res-mit-6042j-mcs-latency
+    kind: section
+    title: Network latency
+    at:
+      '2015-05-18': '10.5'
+  - id: res-mit-6042j-mcs-congestion
+    kind: section
+    title: Congestion
+    at:
+      '2015-05-18': '10.6'
+  - id: res-mit-6042j-mcs-array-network
+    kind: section
+    title: Two-dimensional array
+    at:
+      '2015-05-18': '10.7'
+  - id: res-mit-6042j-mcs-butterfly
+    kind: section
+    title: Butterfly network
+    at:
+      '2015-05-18': '10.8'
+  - id: res-mit-6042j-mcs-benes
+    kind: section
+    title: Benes network
+    at:
+      '2015-05-18': '10.9'
+- id: res-mit-6042j-mcs-simple-graphs
+  kind: chapter
+  title: Simple graphs
+  at:
+    '2015-05-18': '11'
+  nodes:
+  - id: res-mit-6042j-mcs-adjacency-degrees
+    kind: section
+    title: Adjacency and degrees
+    at:
+      '2015-05-18': '11.1'
+  - id: res-mit-6042j-mcs-degree-demographics
+    kind: section
+    title: Counting with degrees
+    at:
+      '2015-05-18': '11.2'
+  - id: res-mit-6042j-mcs-common-graphs
+    kind: section
+    title: Common graphs
+    at:
+      '2015-05-18': '11.3'
+  - id: res-mit-6042j-mcs-isomorphism
+    kind: section
+    title: Isomorphism
+    at:
+      '2015-05-18': '11.4'
+  - id: res-mit-6042j-mcs-bipartite-matchings
+    kind: section
+    title: Bipartite graphs and matchings
+    at:
+      '2015-05-18': '11.5'
+  - id: res-mit-6042j-mcs-stable-marriage
+    kind: section
+    title: Stable matching
+    at:
+      '2015-05-18': '11.6'
+  - id: res-mit-6042j-mcs-colouring
+    kind: section
+    title: Colouring
+    at:
+      '2015-05-18': '11.7'
+  - id: res-mit-6042j-mcs-simple-walks
+    kind: section
+    title: Walks in simple graphs
+    at:
+      '2015-05-18': '11.8'
+  - id: res-mit-6042j-mcs-connectivity
+    kind: section
+    title: Connectivity
+    at:
+      '2015-05-18': '11.9'
+  - id: res-mit-6042j-mcs-forests-trees
+    kind: section
+    title: Forests and trees
+    at:
+      '2015-05-18': '11.10'
+  - id: res-mit-6042j-mcs-simple-graphs-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '11.11'
+- id: res-mit-6042j-mcs-planar-graphs
+  kind: chapter
+  title: Planar graphs
+  at:
+    '2015-05-18': '12'
+  nodes:
+  - id: res-mit-6042j-mcs-drawing-graphs
+    kind: section
+    title: Drawing graphs in the plane
+    at:
+      '2015-05-18': '12.1'
+  - id: res-mit-6042j-mcs-planar-definitions
+    kind: section
+    title: Definitions of planar graphs
+    at:
+      '2015-05-18': '12.2'
+  - id: res-mit-6042j-mcs-euler-formula
+    kind: section
+    title: Euler's formula
+    at:
+      '2015-05-18': '12.3'
+  - id: res-mit-6042j-mcs-edge-bound
+    kind: section
+    title: Bounding the number of edges
+    at:
+      '2015-05-18': '12.4'
+  - id: res-mit-6042j-mcs-k5-k33
+    kind: section
+    title: K5 and K3,3
+    at:
+      '2015-05-18': '12.5'
+  - id: res-mit-6042j-mcs-planar-colouring
+    kind: section
+    title: Colouring planar graphs
+    at:
+      '2015-05-18': '12.6'
+  - id: res-mit-6042j-mcs-polyhedra
+    kind: section
+    title: Classifying polyhedra
+    at:
+      '2015-05-18': '12.7'
+  - id: res-mit-6042j-mcs-planar-characterization
+    kind: section
+    title: Another characterisation
+    at:
+      '2015-05-18': '12.8'
+  - id: res-mit-6042j-mcs-planar-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '12.9'
+- id: res-mit-6042j-mcs-sums-asymptotics
+  kind: chapter
+  title: Sums and asymptotics
+  at:
+    '2015-05-18': '13'
+  nodes:
+  - id: res-mit-6042j-mcs-annuities
+    kind: section
+    title: Annuities and geometric sums
+    at:
+      '2015-05-18': '13.1'
+  - id: res-mit-6042j-mcs-sums-of-powers
+    kind: section
+    title: Sums of powers
+    at:
+      '2015-05-18': '13.2'
+  - id: res-mit-6042j-mcs-approximating-sums
+    kind: section
+    title: Approximating sums
+    at:
+      '2015-05-18': '13.3'
+  - id: res-mit-6042j-mcs-overhang
+    kind: section
+    title: Book stacking and harmonic numbers
+    at:
+      '2015-05-18': '13.4'
+  - id: res-mit-6042j-mcs-products
+    kind: section
+    title: Products and Stirling's formula
+    at:
+      '2015-05-18': '13.5'
+  - id: res-mit-6042j-mcs-double-sums
+    kind: section
+    title: Double sums
+    at:
+      '2015-05-18': '13.6'
+  - id: res-mit-6042j-mcs-asymptotic-notation
+    kind: section
+    title: Asymptotic notation
+    at:
+      '2015-05-18': '13.7'
+- id: res-mit-6042j-mcs-cardinality-rules
+  kind: chapter
+  title: Cardinality rules
+  at:
+    '2015-05-18': '14'
+  nodes:
+  - id: res-mit-6042j-mcs-bijection-rule
+    kind: section
+    title: Counting by bijection
+    at:
+      '2015-05-18': '14.1'
+  - id: res-mit-6042j-mcs-counting-sequences
+    kind: section
+    title: Counting sequences
+    at:
+      '2015-05-18': '14.2'
+  - id: res-mit-6042j-mcs-generalized-product
+    kind: section
+    title: Generalised product rule
+    at:
+      '2015-05-18': '14.3'
+  - id: res-mit-6042j-mcs-division-rule
+    kind: section
+    title: Division rule
+    at:
+      '2015-05-18': '14.4'
+  - id: res-mit-6042j-mcs-counting-subsets
+    kind: section
+    title: Counting subsets
+    at:
+      '2015-05-18': '14.5'
+  - id: res-mit-6042j-mcs-repetitions
+    kind: section
+    title: Sequences with repetitions
+    at:
+      '2015-05-18': '14.6'
+  - id: res-mit-6042j-mcs-poker-hands
+    kind: section
+    title: Poker hands
+    at:
+      '2015-05-18': '14.7'
+  - id: res-mit-6042j-mcs-pigeonhole
+    kind: section
+    title: Pigeonhole principle
+    at:
+      '2015-05-18': '14.8'
+  - id: res-mit-6042j-mcs-inclusion-exclusion
+    kind: section
+    title: Inclusion-exclusion
+    at:
+      '2015-05-18': '14.9'
+  - id: res-mit-6042j-mcs-combinatorial-proofs
+    kind: section
+    title: Combinatorial proofs
+    at:
+      '2015-05-18': '14.10'
+  - id: res-mit-6042j-mcs-cardinality-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '14.11'
+- id: res-mit-6042j-mcs-generating-functions
+  kind: chapter
+  title: Generating functions
+  at:
+    '2015-05-18': '15'
+  nodes:
+  - id: res-mit-6042j-mcs-infinite-series
+    kind: section
+    title: Infinite series
+    at:
+      '2015-05-18': '15.1'
+  - id: res-mit-6042j-mcs-counting-with-gfs
+    kind: section
+    title: Counting with generating functions
+    at:
+      '2015-05-18': '15.2'
+  - id: res-mit-6042j-mcs-partial-fractions
+    kind: section
+    title: Partial fractions
+    at:
+      '2015-05-18': '15.3'
+  - id: res-mit-6042j-mcs-linear-recurrences-gf
+    kind: section
+    title: Solving linear recurrences
+    at:
+      '2015-05-18': '15.4'
+  - id: res-mit-6042j-mcs-formal-power-series
+    kind: section
+    title: Formal power series
+    at:
+      '2015-05-18': '15.5'
+  - id: res-mit-6042j-mcs-gf-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '15.6'
+- id: res-mit-6042j-mcs-probability-spaces
+  kind: chapter
+  title: Events and probability spaces
+  at:
+    '2015-05-18': '16'
+  nodes:
+  - id: res-mit-6042j-mcs-lets-make-a-deal
+    kind: section
+    title: The Monty Hall game
+    at:
+      '2015-05-18': '16.1'
+  - id: res-mit-6042j-mcs-four-step-method
+    kind: section
+    title: The four-step method
+    at:
+      '2015-05-18': '16.2'
+  - id: res-mit-6042j-mcs-strange-dice
+    kind: section
+    title: Non-transitive dice
+    at:
+      '2015-05-18': '16.3'
+  - id: res-mit-6042j-mcs-birthday-principle
+    kind: section
+    title: The birthday principle
+    at:
+      '2015-05-18': '16.4'
+  - id: res-mit-6042j-mcs-set-theory-probability
+    kind: section
+    title: Probability and set theory
+    at:
+      '2015-05-18': '16.5'
+  - id: res-mit-6042j-mcs-probability-spaces-references
+    kind: section
+    title: References
+    at:
+      '2015-05-18': '16.6'
+- id: res-mit-6042j-mcs-conditional-probability
+  kind: chapter
+  title: Conditional probability
+  at:
+    '2015-05-18': '17'
+  nodes:
+  - id: res-mit-6042j-mcs-monty-hall-confusion
+    kind: section
+    title: Monty Hall revisited
+    at:
+      '2015-05-18': '17.1'
+  - id: res-mit-6042j-mcs-conditional-definition
+    kind: section
+    title: Definition and notation
+    at:
+      '2015-05-18': '17.2'
+  - id: res-mit-6042j-mcs-four-step-conditional
+    kind: section
+    title: Four steps for conditional probability
+    at:
+      '2015-05-18': '17.3'
+  - id: res-mit-6042j-mcs-tree-diagrams
+    kind: section
+    title: Why tree diagrams work
+    at:
+      '2015-05-18': '17.4'
+  - id: res-mit-6042j-mcs-total-probability
+    kind: section
+    title: Law of total probability
+    at:
+      '2015-05-18': '17.5'
+  - id: res-mit-6042j-mcs-simpsons-paradox
+    kind: section
+    title: Simpson's paradox
+    at:
+      '2015-05-18': '17.6'
+  - id: res-mit-6042j-mcs-independence
+    kind: section
+    title: Independence
+    at:
+      '2015-05-18': '17.7'
+  - id: res-mit-6042j-mcs-mutual-independence
+    kind: section
+    title: Mutual independence
+    at:
+      '2015-05-18': '17.8'
+- id: res-mit-6042j-mcs-random-variables
+  kind: chapter
+  title: Random variables
+  at:
+    '2015-05-18': '18'
+  nodes:
+  - id: res-mit-6042j-mcs-rv-examples
+    kind: section
+    title: Examples
+    at:
+      '2015-05-18': '18.1'
+  - id: res-mit-6042j-mcs-rv-independence
+    kind: section
+    title: Independence
+    at:
+      '2015-05-18': '18.2'
+  - id: res-mit-6042j-mcs-distribution-functions
+    kind: section
+    title: Distribution functions
+    at:
+      '2015-05-18': '18.3'
+  - id: res-mit-6042j-mcs-expectation
+    kind: section
+    title: Expectation
+    at:
+      '2015-05-18': '18.4'
+  - id: res-mit-6042j-mcs-linearity
+    kind: section
+    title: Linearity of expectation
+    at:
+      '2015-05-18': '18.5'
+- id: res-mit-6042j-mcs-deviation
+  kind: chapter
+  title: Deviation from the mean
+  at:
+    '2015-05-18': '19'
+  nodes:
+  - id: res-mit-6042j-mcs-markov-theorem
+    kind: section
+    title: Markov's theorem
+    at:
+      '2015-05-18': '19.1'
+  - id: res-mit-6042j-mcs-chebyshev-theorem
+    kind: section
+    title: Chebyshev's theorem
+    at:
+      '2015-05-18': '19.2'
+  - id: res-mit-6042j-mcs-variance-properties
+    kind: section
+    title: Properties of variance
+    at:
+      '2015-05-18': '19.3'
+  - id: res-mit-6042j-mcs-random-sampling
+    kind: section
+    title: Estimation by sampling
+    at:
+      '2015-05-18': '19.4'
+  - id: res-mit-6042j-mcs-confidence
+    kind: section
+    title: Confidence and probability
+    at:
+      '2015-05-18': '19.5'
+  - id: res-mit-6042j-mcs-sums-of-rvs
+    kind: section
+    title: Sums of random variables
+    at:
+      '2015-05-18': '19.6'
+  - id: res-mit-6042j-mcs-great-expectations
+    kind: section
+    title: Expectations of expectations
+    at:
+      '2015-05-18': '19.7'
+- id: res-mit-6042j-mcs-random-walks
+  kind: chapter
+  title: Random walks
+  at:
+    '2015-05-18': '20'
+  nodes:
+  - id: res-mit-6042j-mcs-gamblers-ruin
+    kind: section
+    title: Gambler's ruin
+    at:
+      '2015-05-18': '20.1'
+  - id: res-mit-6042j-mcs-walks-on-graphs
+    kind: section
+    title: Random walks on graphs
+    at:
+      '2015-05-18': '20.2'
+- id: res-mit-6042j-mcs-recurrences
+  kind: chapter
+  title: Recurrences
+  at:
+    '2015-05-18': '21'
+  nodes:
+  - id: res-mit-6042j-mcs-hanoi
+    kind: section
+    title: Towers of Hanoi
+    at:
+      '2015-05-18': '21.1'
+  - id: res-mit-6042j-mcs-merge-sort
+    kind: section
+    title: Merge sort
+    at:
+      '2015-05-18': '21.2'
+  - id: res-mit-6042j-mcs-linear-recurrences
+    kind: section
+    title: Linear recurrences
+    at:
+      '2015-05-18': '21.3'
+  - id: res-mit-6042j-mcs-divide-and-conquer
+    kind: section
+    title: Divide-and-conquer recurrences
+    at:
+      '2015-05-18': '21.4'
+  - id: res-mit-6042j-mcs-recurrence-feel
+    kind: section
+    title: A feel for recurrences
+    at:
+      '2015-05-18': '21.5'

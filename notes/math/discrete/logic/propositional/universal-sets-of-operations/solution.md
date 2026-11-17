@@ -138,3 +138,16 @@ This is a *proof by construction* (a constructive existence proof): it proves
 that such a set exists by exhibiting one, $\{\uparrow\}$. NOR,
 $\neg(P\vee Q)$, also works.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-1-q3" status="draft"}
+Write $\uparrow$ for nand: $P\uparrow Q\equiv\lnot(P\land Q)$.
+
+(a) (i) $A\land B\equiv\lnot(A\uparrow B)$. (ii) $A\lor B\equiv(\lnot A)\uparrow(\lnot B)$, since $\lnot(\lnot A\land\lnot B)\equiv A\lor B$ by De Morgan. (iii) $A\implies B\equiv\lnot A\lor B\equiv A\uparrow(\lnot B)$, since $\lnot(A\land\lnot B)\equiv\lnot A\lor B$.
+
+(b) $\lnot A\equiv A\uparrow A$, because $\lnot(A\land A)\equiv\lnot A$.
+
+(c) True: $A\uparrow(A\uparrow A)$, which is $\lnot(A\land\lnot A)$, always true. False: negate it with (b): $\bigl(A\uparrow(A\uparrow A)\bigr)\uparrow\bigl(A\uparrow(A\uparrow A)\bigr)$.
+:::

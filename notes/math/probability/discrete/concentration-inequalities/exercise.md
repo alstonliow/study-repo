@@ -41,3 +41,7 @@ Now we see the use of the bound proven in part (b) - it allows us to bound just 
 
 (d) Let's try out our new bound on a simple example. Suppose $X$ is a positively-valued random variable with $E[X] = 3$ and $\mathrm{Var}(X) = 2$. What bound would Markov's inequality give for $P[X \ge 5]$? What bound would Chebyshev's inequality give for $P[X \ge 5]$? What about for the bound we proved in part (b)? (Note: Recall that the bound from part (b) only applies for zero-mean random variables.)
 :::
+
+::: {.problem #prob-mit6042f10-12-q4 origin="external" source="mit6042f10-12-q4"}
+We have two coins: one is a fair coin and the other is a coin that produces heads with probability 3/4. One of the two coins is picked, and this coin is tossed $n$ times. Explain how to calculate the number of tosses to make us 95% confident which coin was chosen. You do not have to calculate the minimum value of $n$, though we'd be pleased if you did.
+:::

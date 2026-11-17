@@ -85,3 +85,17 @@ Using $\frac1{k+1}\binom{n-1}k=\frac1n\binom n{k+1}$, this sum equals $1-\bigl(1
 $$\Pr(\text{some }k\text{-clique})\le\binom nk2^{-k(k-1)/2}\le\bigl(n\,2^{-(k-1)/2}\bigr)^k.$$
 If $k-1\ge4\log_2n$, then $2^{-(k-1)/2}\le n^{-2}$, so the bound is at most $n^{-k}\le\frac1n$ (as $k\ge1$).
 :::
+
+::: {.solution for="prob-mit6042f10-10-q2" status="draft"}
+(a) Each rule comes from splitting an event into disjoint pieces.
+
+1. *Difference:* $A$ is the disjoint union of $A-B$ and $A\cap B$.
+2. *Complement:* $S$ is the disjoint union of $A$ and $\overline A$, and $\Pr\{S\}=1$.
+3. *Inclusion–exclusion:* $A\cup B$ is the disjoint union of $A$ and $B-A$, and $\Pr\{B-A\}=\Pr\{B\}-\Pr\{A\cap B\}$ by the difference rule.
+4. *Union bound:* by 3, since $\Pr\{A\cap B\}\ge0$.
+5. *Monotonicity:* if $A\subseteq B$, then $\Pr\{B\}=\Pr\{A\}+\Pr\{B-A\}\ge\Pr\{A\}$.
+
+(b) Induction on $n$. For $n=1$ there is nothing to prove. If it holds for $n$, then by the 2-event union bound
+$$\Pr\Bigl(\bigcup_{i=1}^{n+1}A_i\Bigr)\le\Pr\Bigl(\bigcup_{i=1}^nA_i\Bigr)+\Pr(A_{n+1})\le\sum_{i=1}^{n+1}\Pr(A_i).$$
+(@thm-union-bound)
+:::

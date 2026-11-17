@@ -149,3 +149,15 @@ $$\frac{2(n-1)}{n} = 2 - \frac2n < 2.$$
 
 (c) Strong induction on $n$. A binary tree with one leaf is the single vertex (a tree of height $>0$ has at least two leaves, one in each of $L$, $R$), with $1=2\cdot1-1$ vertices. If $n>1$, the root is not a leaf, so by (a) the $n$ leaves split as $a$ in $L$ and $b$ in $R$ with $a+b=n$, $a,b\ge1$. By the hypothesis $T$ has $1+(2a-1)+(2b-1)=2n-1$ vertices.
 :::
+
+::: {.solution for="prob-mit6042f10-5-q1" status="draft"}
+(a) Let $r$ be the root, with neighbours $u$ and $v$, and let $L$ be the component containing $u$. $L$ is a tree (a connected subgraph of a tree has no cycles). Only $u$ lost an edge. If $u$ had degree $1$, then $L=\{u\}$, a lone vertex, which is an SBTree. If $u$ had degree $3$, it now has degree $2$ and is the only vertex of $L$ of degree $2$; all other vertices of $L$ keep degree $3$ or $1$. So $L$ is an SBTree with root $u$, and the same holds for the component of $v$.
+
+(b) Claim: an SBTree with $l$ leaves has $2l-1$ vertices. Strong induction on $l$.
+
+1. An SBTree with more than one vertex has at least two leaves: by (a) it splits into two SBTrees, each with at least one leaf, and these are leaves of the whole tree (the root, of degree $2$, is not a leaf). So $l=1$ means the lone vertex: $1=2\cdot1-1$.
+
+2. If $l\ge2$, removing the root gives SBTrees with $l_1,l_2\ge1$ leaves, $l_1+l_2=l$. By the hypothesis they have $2l_1-1$ and $2l_2-1$ vertices, so the tree has $1+(2l_1-1)+(2l_2-1)=2l-1$.
+
+This is the same result as @prob-cs70hw-3-q2 (c), for the same kind of tree.
+:::

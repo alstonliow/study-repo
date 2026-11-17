@@ -94,3 +94,41 @@ Provide a direct combinatorial proof of Corollary 10.1.
 
 *Note (these notes):* Part (c)iii is unclear as stated; the solution counts binary trees by their left and right subtrees, as the official solution does.
 :::
+
+::: {.problem #prob-mit6042f10-9-q3 origin="external" source="mit6042f10-9-q3"}
+Be sure to show your work to receive full credit. In this problem we assume a standard card deck of 52 cards.
+
+(a) How many 5-card hands have a single pair and no 3-of-a-kind or 4-of-a-kind?
+
+(b) For fixed positive integers $n$ and $k$, how many nonnegative integer solutions $x_0, x_1, \ldots, x_k$ are there to the following equation?
+$$\sum_{i=0}^{k} x_i = n$$
+
+(c) For fixed positive integers $n$ and $k$, how many nonnegative integer solutions $x_0, x_1, \ldots, x_k$ are there to the following equation?
+$$\sum_{i=0}^{k} x_i \le n$$
+
+(d) How many simple undirected graphs are there with $n$ vertices?
+
+(e) How many directed graphs are there with $n$ vertices (self loops allowed)?
+
+(f) How many tournament graphs are there with $n$ vertices?
+
+(g) How many acyclic tournament graphs are there with $n$ vertices?
+
+(h) How many numbers are there that are in the range $[1..700]$ which are divisible by 2, 5 or 7?
+
+(i) In how many ways can you arrange $n$ books on $k$ bookshelf (assuming the order of books on a shelf matters?)
+
+(j) How about if there has to be at least 1 book at each bookshelf?
+
+*Note (these notes):* In (d)–(g) the vertices are labelled $1,\dots,n$; graphs are counted as sets of edges, not up to isomorphism.
+:::
+
+::: {.problem #prob-mit6042f10-9-q4 origin="external" source="mit6042f10-9-q4"}
+Give a combinatorial proof of the following theorem:
+$$n 2^{n-1} = \sum_{k=1}^{n} k \binom{n}{k}$$
+(Hint: Consider the set of all length-$n$ sequences of 0's, 1's and a single *.)
+:::
+
+::: {.problem #prob-mit6042f10-9-q5 origin="external" source="mit6042f10-9-q5"}
+At a congressional hearing, there are $2n$ members present. Exactly $n$ of them are Democrats and $n$ of them are Republicans. The members want to select a smaller subcommittee of size $n$ from within those present at the hearing. However, since the Democrats currently hold majority, they want there to be more Democrats then Republicans in the committee. In how many ways can you select such a committee? (Hint: Consider two cases: $n$ odd and $n$ even.)
+:::

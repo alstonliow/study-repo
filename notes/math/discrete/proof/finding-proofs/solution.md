@@ -320,3 +320,16 @@ closed under addition mod $26$. Restricting the keys breaks this closure.
 ::: {.solution for="prob-cs70-2-q1"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-1-q4" status="draft"}
+1. Weigh $4$ coins against $4$ others. If one side is lighter, the fake is among its $4$ coins; if they balance, it is among the $4$ coins not weighed. Either way $4$ suspects remain.
+
+2. Weigh two of the suspects against each other. If one is lighter, it is the fake.
+
+3. Otherwise the fake is one of the other two suspects: weigh them against each other, and the lighter one is the fake.
+
+(In fact $2$ weighings suffice for up to $9$ coins and $3$ for up to $27$: split into three groups and weigh two of them.)
+:::

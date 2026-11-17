@@ -94,3 +94,24 @@ which is equivalent to the logical expression $(\neg a \vee \neg
     gate, with only NAND gates? What does this tell you about
     NAND gates?
 :::
+
+::: {.problem #prob-mit6042f10-1-q3 origin="external" source="mit6042f10-1-q3"}
+The binary logical connectives $\land$ (*and*), $\lor$ (*or*), and $\implies$ (*implies*) appear often in not only computer programs, but also everyday speech. In computer chip designs, however, it is considerably easier to construct these out of another operation, *nand*, which is simpler to represent in a circuit. Here is the truth table for *nand*:
+
+| $P$ | $Q$ | $P$ nand $Q$ |
+|---|---|---|
+| true | true | false |
+| true | false | true |
+| false | true | true |
+| false | false | true |
+
+(a) For each of the following expressions, find an equivalent expression using only *nand* and $\lnot$ (*not*), as well as grouping parentheses to specify the order in which the operations apply. You may use $A$, $B$, and the operators any number of times.
+
+  (i) $A \land B$
+  (ii) $A \lor B$
+  (iii) $A \implies B$
+
+(b) It is actually possible to express each of the above using only *nand*, without needing to use $\lnot$. Find an equivalent expression for $(\lnot A)$ using only *nand* and grouping parentheses.
+
+(c) The constants true and false themselves may be expressed using only *nand*. Construct an expression using an arbitrary statement $A$ and *nand* that evaluates to true regardless of whether $A$ is true or false. Construct a second expression that always evaluates to false. Do not use the constants true and false themselves in your statements.
+:::

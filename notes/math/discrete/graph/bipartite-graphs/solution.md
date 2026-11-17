@@ -12,3 +12,14 @@ $2^k$.
 2. Different components do not constrain each other, so the choices
    multiply: $2^k$. The answer does not depend on $n$ or $m$.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-4-q1" status="draft"}
+1. Every vertex has at most one edge of $M_1$ and at most one of $M_2$, so its degree in $G'$ is at most $2$.
+
+2. Consider a cycle of $G'$. At each of its vertices the two cycle edges are different edges at the same vertex, so they cannot both be in $M_1$ or both in $M_2$: one is in $M_1\setminus M_2$ and the other in $M_2\setminus M_1$. So the edges of the cycle alternate between the two matchings, and its length is even.
+
+3. A graph with no odd cycle is bipartite (@sec-math-discrete-graph-bipartite-graphs). So $G'$ is bipartite.
+:::

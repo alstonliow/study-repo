@@ -85,3 +85,41 @@ For the final three questions, you can instead assume the coin is biased so that
 
 3. What is the probability that at least one of the bins has precisely 3 balls in it?
 :::
+
+::: {.problem #prob-mit6042f10-10-q3 origin="external" source="mit6042f10-10-q3"}
+Recall the strange dice from lecture:
+
+| A | B | C |
+|---|---|---|
+| 2, 6, 7 | 1, 5, 9 | 3, 4, 8 |
+
+In the book we proved that if we roll each die once, then die A beats B more often, die B beats die C more often, and die C beats die A more often. Thus, contrary to our intuition, the "beats" relation $>$ is not transitive. That is, we have $A > B > C > A$.
+
+We then looked at what happens if we roll each die twice, and add the result. In this problem we will show that the "beats" relation reverses in this game, that is, $A < B < C < A$, which is very counterintuitive!
+
+(a) Show that rolling die C twice is more likely to win than rolling die B twice.
+
+(b) Show that rolling die A twice is more likely to win that rolling die C twice.
+
+(c) Show that rolling die B twice is more likely to win than rolling die A twice.
+
+*Note (these notes):* The dice are drawn in the original as three faces each; each number appears on two opposite faces.
+:::
+
+::: {.problem #prob-mit6042f10-10-q4 origin="external" source="mit6042f10-10-q4"}
+Let's play a game! We repeatedly flip a fair coin. You have the sequence $HHT$, and I have the sequence $HTT$. If your sequence comes up first, then you win. If my sequence comes up first, then I win. For example, if the sequence of tosses is:
+$$TTHTHTHHT$$
+then you win. What is the probability that you win? It may come as a surprise that the answer is very different from 1/2.
+
+This problem is tricky, because the game could go on for an arbitrarily long time. Draw enough of the tree diagram to see a pattern, and then sum up the probabilities of the (infinitely many) outcomes in which you win.
+
+It turns out that for any sequence of three flips, there is another sequence that is likely to come up before it. So there is no sequence of three flips which turns up earliest! ... and given any sequence of three flips, knowing how to pick another sequence that comes up sooner more than half the time gives you a nice chance to fool people gambling at a bar :-)
+:::
+
+::: {.problem #prob-mit6042f10-10-q5 origin="external" source="mit6042f10-10-q5"}
+We're interested in the probability that a randomly chosen poker hand (5 cards from a standard 52-card deck) contains cards from at most two suits.
+
+(a) What is an appropriate sample space to use for this problem? What are the outcomes in the event, $E$, we are interested in? What are the probabilities of the individual outcomes in this sample space?
+
+(b) What is $\Pr(E)$?
+:::

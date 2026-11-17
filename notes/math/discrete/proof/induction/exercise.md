@@ -71,3 +71,23 @@ Prove for any natural number $n$ that $1^2 + 2^2 + 3^2 + \dots + n^2 = \frac{1}{
 
 (c) For all positive natural numbers $n$, $\frac{5}{4} \cdot 8^n + 3^{3n-1}$ is divisible by 19.
 :::
+
+::: {.problem #prob-mit6042f10-2-q4 origin="external" source="mit6042f10-2-q4"}
+Find the flaw in the following bogus proof that $a^n = 1$ for all nonnegative integers $n$, whenever $a$ is a nonzero real number.
+
+*Proof.* The bogus proof is by induction on $n$, with hypothesis
+$$P(n) ::= \forall k \le n.\ a^k = 1,$$
+where $k$ is a nonnegative integer valued variable.
+
+*Base Case:* $P(0)$ is equivalent to $a^0 = 1$, which is true by definition of $a^0$. (By convention, this holds even if $a = 0$.)
+
+*Inductive Step:* By induction hypothesis, $a^k = 1$ for all $k \in \mathbb{N}$ such that $k \le n$. But then
+$$a^{n+1} = \frac{a^n \cdot a^n}{a^{n-1}} = \frac{1 \cdot 1}{1} = 1,$$
+which implies that $P(n + 1)$ holds. It follows by induction that $P(n)$ holds for all $n \in \mathbb{N}$, and in particular, $a^n = 1$ holds for all $n \in \mathbb{N}$.
+:::
+
+::: {.problem #prob-mit6042f10-2-q5 origin="external" source="mit6042f10-2-q5"}
+Let the sequence $G_0, G_1, G_2, \ldots$ be defined recursively as follows: $G_0 = 0$, $G_1 = 1$, and $G_n = 5G_{n-1} - 6G_{n-2}$, for every $n \in \mathbb{N}$, $n \ge 2$.
+
+Prove that for all $n \in \mathbb{N}$, $G_n = 3^n - 2^n$.
+:::

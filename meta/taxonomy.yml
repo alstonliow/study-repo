@@ -39,6 +39,7 @@ parts:
           - properties
           - combining
           - equivalence-relations
+          - partial-orders
           - counting
       - id: math/discrete/proof
         title: Proof
@@ -51,6 +52,9 @@ parts:
           - induction
           - induction-examples
           - induction-extended-example
+          - well-ordering-proofs
+          - state-machines
+          - structural-induction
       - id: math/discrete/logic/propositional
         title: Propositional Logic
         desc: Connectives, laws of Boolean algebra, normal forms
@@ -82,6 +86,7 @@ parts:
           - limits
           - big-o
           - sums-and-series
+          - approximating-sums
       - id: math/discrete/number-theory
         title: Number Theory
         desc: Divisibility, gcd, modular arithmetic, Diffie–Hellman
@@ -108,6 +113,7 @@ parts:
           - selection
           - combinations
           - stars-and-bars
+          - generating-functions
       - id: math/discrete/graph
         title: Graph Theory
         desc: Paths, connectivity, trees, planarity
@@ -116,14 +122,18 @@ parts:
           - representing-graphs
           - special-graphs
           - degree
+          - isomorphism
           - walks-paths-cycles
+          - directed-graphs
           - connectivity
           - bipartite-graphs
           - euler-and-hamilton
           - trees
           - forests-and-spanning-trees
           - planarity
+          - colouring
           - games-on-graphs
+          - communication-networks
       - id: math/discrete/polynomials
         title: Polynomials and Codes
         desc: Roots and interpolation, finite fields, secret sharing, error-correcting codes
@@ -146,6 +156,7 @@ parts:
           - bayes-theorem
           - random-variables
           - expectation-and-variance
+          - conditional-expectation
           - indicator-variables
           - functions-of-random-variables
           - covariance-and-correlation
@@ -156,6 +167,7 @@ parts:
           - geometric-distribution
           - coupon-collector
           - concentration-inequalities
+          - chernoff-bounds
           - hashing-and-load-balancing
       - id: math/probability/continuous
         title: Continuous Probability

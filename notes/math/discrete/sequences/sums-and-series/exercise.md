@@ -33,3 +33,22 @@ $g_n=\sum_{i=1}^n\log i$.
 
 (e) Hence show that $n!=O\Bigl(\bigl(\frac ne\bigr)^n n\Bigr)$.
 :::
+
+::: {.problem #prob-mit6042f10-7-q1 origin="external" source="mit6042f10-7-q1"}
+Express
+$$\sum_{i=0}^{n} i^2 x^i$$
+as a closed-form function of $n$.
+:::
+
+::: {.problem #prob-mit6042f10-7-q2 origin="external" source="mit6042f10-7-q2"}
+(a) What is the product of the first $n$ odd powers of two: $\displaystyle\prod_{k=1}^{n} 2^{2k-1}$?
+
+(b) Find a closed expression for
+$$\sum_{i=0}^{n} \sum_{j=0}^{m} 3^{i+j}$$
+
+(c) Find a closed expression for
+$$\sum_{i=1}^{n} \sum_{j=1}^{n} (i + j)$$
+
+(d) Find a closed expression for
+$$\sum_{i=1}^{n} \sum_{j=1}^{n} 2^i \cdot 3^j$$
+:::

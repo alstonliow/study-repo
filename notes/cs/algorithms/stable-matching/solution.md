@@ -50,3 +50,15 @@ Here the $n$ applicants propose and the $n$ jobs reject.
 
 4. Steps 2 and 3 contradict each other.
 :::
+
+::: {.solution for="prob-mit6042f10-4-q5" status="draft"}
+The claim is false.
+
+1. Fix a boy $b$ and a girl $g$. If $g$ is not $b$'s last choice, there is a girl $g'\ne g$ whom $b$ likes less than $g$; if $b$ is not $g$'s last choice, there is a boy $b'\ne b$ whom $g$ likes less than $b$.
+
+2. If both hold, choose a matching (dating arrangement) that pairs $b$ with $g'$ and $b'$ with $g$; with $n\ge2$ the other people can be paired arbitrarily. In it, $b$ and $g$ prefer each other to their partners: a rogue couple, so the matching is unstable.
+
+3. So if every matching is stable, then for every pair $(b,g)$, either $g$ is $b$'s last choice or $b$ is $g$'s last choice.
+
+4. Each boy has one last choice and each girl has one, so at most $2n$ of the $n^2$ pairs satisfy this. For $n\ge3$, $n^2>2n$, a contradiction.
+:::

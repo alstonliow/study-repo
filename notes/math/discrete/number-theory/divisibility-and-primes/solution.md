@@ -85,3 +85,16 @@ digits of $n$, so $0\le r < 10^k$.
        zero), and $d\mid 0$. So $d\mid 10^k$, and hence $d$ has no prime
        factors other than $2$ and $5$.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-3-q6" status="draft"}
+(a) This is @exm-infinitely-many-primes: $n>1$ has a prime factor, which would be some $p_i$; but $p_i\mid n-p_1\cdots p_k=1$, impossible.
+
+(b) $p$ is odd, so $p\bmod4\in\{1,3\}$.
+
+(c) $n$ is odd, so all its prime factors are odd, hence $\equiv1$ or $3\pmod4$ by (b). If all were $\equiv1$, their product $n$ would be $\equiv1\pmod4$ (products of numbers $\equiv1$ are $\equiv1$). So some prime factor is $\equiv3\pmod4$.
+
+(d) $F\ne\emptyset$ since $3\in F$. Suppose $F=\{p_1,\dots,p_k\}$ is finite, and let $n=4p_1\cdots p_k-1\equiv3\pmod4$. By (c), $n$ has a prime factor in $F$, say $p_i$. But $p_i\mid4p_1\cdots p_k$, so $p_i\mid4p_1\cdots p_k-n=1$, a contradiction.
+:::

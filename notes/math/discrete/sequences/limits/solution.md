@@ -130,3 +130,18 @@ Write $\delta = 0.001$. All terms are at least $1$, so they are positive.
     for every $a$ there is an $\varepsilon>0$ such that for every $N$ some
     $n\ge N$ has $|a_n - a|\ge\varepsilon$. This is the negation of (f).
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-8-q3" status="draft"}
+Let $e_n=A_n-\sqrt2$.
+
+1. *$A_n\ge\sqrt2$ for all $n$.* $A_0=2$. If $A_n>0$, then by the AM–GM inequality $\frac{A_n}2+\frac1{A_n}\ge2\sqrt{\frac{A_n}2\cdot\frac1{A_n}}=\sqrt2$.
+
+2. *The error at least halves.* Putting over a common denominator,
+   $$e_{n+1}=\frac{A_n}2+\frac1{A_n}-\sqrt2=\frac{A_n^2-2\sqrt2A_n+2}{2A_n}=\frac{(A_n-\sqrt2)^2}{2A_n}=e_n\cdot\frac{e_n}{2A_n}\le\frac{e_n}2,$$
+   since $0\le e_n\le A_n$.
+
+3. By induction, $e_n\le\frac{e_0}{2^n}=\frac{2-\sqrt2}{2^n}\le\frac1{2^n}$, which is the claim.
+:::

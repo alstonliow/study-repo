@@ -118,3 +118,15 @@ predicate logic (without “!”)?
 
 (f) $(\forall x \in \mathbb{N})\ [\,(x > 1) \implies (\exists a, b \in \mathbb{N})\ ((a + b = 2x) \land P(a) \land P(b))\,]$
 :::
+
+::: {.problem #prob-mit6042f10-1-q1 origin="external" source="mit6042f10-1-q1"}
+Translate the following sentences from English to predicate logic. The domain that you are working over is $X$, the set of people. You may use the functions $S(x)$, meaning that "$x$ has been a student of 6.042," $A(x)$, meaning that "$x$ has gotten an 'A' in 6.042," $T(x)$, meaning that "$x$ is a TA of 6.042," and $E(x, y)$, meaning that "$x$ and $y$ are the same person."
+
+(a) There are people who have taken 6.042 and have gotten A's in 6.042
+
+(b) All people who are 6.042 TA's and have taken 6.042 got A's in 6.042
+
+(c) There are no people who are 6.042 TA's who did not get A's in 6.042.
+
+(d) There are at least three people who are TA's in 6.042 and have not taken 6.042
+:::

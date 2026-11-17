@@ -141,3 +141,13 @@ $$\exists! x\ P(x) \;\equiv\; \exists x\ \Big(P(x)\wedge\big(\forall y\ (P(y)\Ri
 
 (f) For every natural number $x>1$, $2x$ is the sum of two primes. (This is Goldbach's conjecture, still unproved.)
 :::
+
+::: {.solution for="prob-mit6042f10-1-q1" status="draft"}
+(a) $\exists x\,\bigl(S(x)\land A(x)\bigr)$.
+
+(b) $\forall x\,\bigl((T(x)\land S(x))\implies A(x)\bigr)$.
+
+(c) $\lnot\exists x\,\bigl(T(x)\land\lnot A(x)\bigr)$, equivalently $\forall x\,(T(x)\implies A(x))$.
+
+(d) $\exists x\,\exists y\,\exists z\,\bigl(\lnot E(x,y)\land\lnot E(y,z)\land\lnot E(x,z)\land Q(x)\land Q(y)\land Q(z)\bigr)$, where $Q(w)$ abbreviates $T(w)\land\lnot S(w)$. The three inequalities make the people distinct.
+:::

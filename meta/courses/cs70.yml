@@ -18,6 +18,51 @@ outline_from: "UC Berkeley CS 70 Course Notes (Fall 2020), Notes 1-21 (mapped ro
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 6.042J Fall 2010 problem sets (not in this course's material)
+  - prob-mit6042f10-1-q1
+  - prob-mit6042f10-1-q2
+  - prob-mit6042f10-1-q4
+  - prob-mit6042f10-1-q5
+  - prob-mit6042f10-1-q6
+  - prob-mit6042f10-2-q1
+  - prob-mit6042f10-2-q4
+  - prob-mit6042f10-2-q5
+  - prob-mit6042f10-3-q1
+  - prob-mit6042f10-3-q2
+  - prob-mit6042f10-3-q3
+  - prob-mit6042f10-3-q5
+  - prob-mit6042f10-4-q2
+  - prob-mit6042f10-4-q5
+  - prob-mit6042f10-5-q1
+  - prob-mit6042f10-5-q2
+  - prob-mit6042f10-5-q3
+  - prob-mit6042f10-5-q6
+  - prob-mit6042f10-9-q1
+  - prob-mit6042f10-9-q2
+  - prob-mit6042f10-9-q3
+  - prob-mit6042f10-9-q4
+  - prob-mit6042f10-9-q5
+  - prob-mit6042f10-10-q1
+  - prob-mit6042f10-10-q2
+  - prob-mit6042f10-10-q3
+  - prob-mit6042f10-10-q4
+  - prob-mit6042f10-10-q5
+  - prob-mit6042f10-10-q6
+  - prob-mit6042f10-11-q1
+  - prob-mit6042f10-11-q2
+  - prob-mit6042f10-11-q3
+  - prob-mit6042f10-11-q4
+  - prob-mit6042f10-11-q5
+  - prob-mit6042f10-11-q6
+  - prob-mit6042f10-12-q1
+  - prob-mit6042f10-12-q2
+  - prob-mit6042f10-12-q4
+  - prob-mit6042f10-12-q6
+  # MIT 6.042J material added 2026-11-17 (not in this course's notes)
+  - thm-bookkeeper-rule
+  - exm-platonic-solids
+  - exm-nontransitive-dice
+  - exm-simpsons-paradox
   # Notes 5-7: FIT1058 graph and number-theory material that CS70 Notes 5-7 do not have
   - def-complement
   - prp-basic-definitions-1

@@ -23,3 +23,18 @@
 ::: {.solution for="prob-cs70-2-q2"}
 <!-- TODO: solution -->
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-2-q1" status="draft"}
+The numbers are distinct, so every comparison is strict.
+
+(a) If $a_3>a_2$, then $a_1<a_2<a_3$ is a 3-chain. So $a_3<a_2$. Suppose $a_1<a_3<a_2$. If $a_4>a_3$, then $a_1<a_3<a_4$ is a 3-chain; if $a_4<a_3$, then $a_2>a_3>a_4$ is one. Both are impossible, so $a_3<a_1$.
+
+(b) Now $a_3<a_1<a_2$. If $a_4>a_2$, then $a_1<a_2<a_4$ is a 3-chain. If $a_4<a_3$, then $a_1>a_3>a_4$ is one. So $a_3<a_4<a_2$.
+
+(c) If $a_5>a_4$, then $a_3<a_4<a_5$ is a 3-chain; if $a_5<a_4$, then $a_2>a_4>a_5$ is one.
+
+(d) Suppose, for contradiction, that some sequence of five distinct integers has no 3-chain. If $a_1<a_2$, parts (a)–(c) produce a 3-chain, a contradiction. If $a_1>a_2$, the sequence $-a_1,\dots,-a_5$ has $-a_1<-a_2$, so it contains a 3-chain; its negation is a 3-chain of the original sequence (increasing and decreasing swap), again a contradiction.
+:::

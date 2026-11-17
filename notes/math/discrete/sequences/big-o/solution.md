@@ -44,3 +44,18 @@
 (g) $n^{1/n}\le e^{1/e} < 2$ for all $n\ge1$, so it is $O(1)$. (In fact
     $n^{1/n}\to1$.)
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-7-q5" status="draft"}
+(a) $f=O(g)$, $f=\Omega(g)$, $f=\Theta(g)$: $\log_2n=(\log_210)\log_{10}n$, a constant multiple, but not $f\sim g$ (the ratio is $\log_210\approx3.32$).
+
+(b) $f=o(g)$ and $f=O(g)$: $\frac{2^n}{10^n}=5^{-n}\to0$.
+
+(c) $f=o(g)$ and $f=O(g)$: $\frac0{17}=0$.
+
+(d) None. For integer $n$, the pairs $(f(n),g(n))$ cycle through $(2,1),(1,2),(0,1),(1,0)$. When $n\equiv3\pmod4$, $g(n)=0<f(n)=1$, so $f\ne O(g)$; when $n\equiv2\pmod4$, $f(n)=0<g(n)=1$, so $g\ne O(f)$, i.e. $f\ne\Omega(g)$. The others need one of these.
+
+(e) $f=\omega(g)$ and $f=\Omega(g)$: every exponential $c^n$ with $c>1$ eventually exceeds every polynomial, since $\frac{\ln(c^n)}{\ln(n^k)}=\frac{n\ln c}{k\ln n}\to\infty$.
+:::

@@ -28,3 +28,18 @@
    $\Pr(|S-7|\ge2\sigma)\le\frac1{2^2} = \frac14$. The bound holds, but it is
    far from the true value, because it applies to every distribution.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-12-q1" status="draft"}
+(a) You end with $2N$ or $0$, each with probability $\frac12$: $E=N$ and $\mathrm{Var}=E[X^2]-E[X]^2=\frac{(2N)^2}2-N^2=N^2$.
+
+(b) One share of each of the $N$ stocks: $X=\sum_{i=1}^N2B_i$ with independent $B_i\sim\mathrm{Bernoulli}(\frac12)$. Then $E[X]=N$ and, by @thm-variance-of-an-independent-sum, $\mathrm{Var}(X)=N\cdot4\cdot\frac14=N$.
+
+(c) Diversify: both strategies have the same expected value, but diversifying reduces the variance from $N^2$ to $N$ (and the chance of losing everything from $\frac12$ to $2^{-N}$).
+
+(d) $E=\frac72$ and $\mathrm{Var}=\frac{91}6-\frac{49}4=\frac{35}{12}$.
+
+(e) $E[X^3]=\frac{1+8+27+64+125+216}6=\frac{441}6=73.5$, $E[X^6]=\frac{1+64+729+4096+15625+46656}6=\frac{67171}6$, so $\mathrm{Var}(X^3)=\frac{67171}6-\Bigl(\frac{441}6\Bigr)^2=\frac{69515}{12}\approx5792.9$.
+:::

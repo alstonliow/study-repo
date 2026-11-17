@@ -112,3 +112,19 @@ You choose a number from $1$ to $6$; three fair dice are thrown, and you win if 
 2. By inclusion-exclusion (@thm-general-case) and independence of the dice,
    $$\Pr(A_1\cup A_2\cup A_3)=3\cdot\frac16-3\cdot\frac1{36}+\frac1{216}=\frac{91}{216}\approx0.42.$$
 :::
+
+<!-- Added 2026-11-17 from MIT 6.042J, Mathematics for Computer Science (2015), Section 17.6 (mcs-17.6); the numbers are our own. -->
+
+::: {#exm-simpsons-paradox .example name="Simpson's paradox" level="medium"}
+A university has two departments. Of the applicants:
+
+| | men admitted | women admitted |
+|---|---|---|
+| Department 1 | $80$ of $100$ ($80\%$) | $18$ of $20$ ($90\%$) |
+| Department 2 | $10$ of $50$ ($20\%$) | $40$ of $150$ ($27\%$) |
+| Total | $90$ of $150$ ($60\%$) | $58$ of $170$ ($34\%$) |
+
+In each department women are admitted at a higher rate, yet overall men are admitted at a much higher rate. In conditional probabilities, with $A$ = "admitted", $W$ = "woman" and $D_1,D_2$ the departments,
+$$\Pr(A\mid W\cap D_i)>\Pr(A\mid\overline W\cap D_i)\ \text{for }i=1,2,\qquad\text{but}\qquad\Pr(A\mid W)<\Pr(A\mid\overline W).$$
+There is no contradiction: by the law of total probability (@thm-law-of-total-probability), $\Pr(A\mid W)=\sum_i\Pr(A\mid W\cap D_i)\Pr(D_i\mid W)$ weights the departments differently for the two groups, and most women applied to the department that admits few applicants. Aggregated data can reverse a comparison that holds in every subgroup.
+:::

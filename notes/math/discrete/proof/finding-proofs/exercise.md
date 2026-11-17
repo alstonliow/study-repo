@@ -156,3 +156,7 @@ Generalize the proof of Theorem 2.2 so that it works for any positive integer $n
 
 *Note (these notes):* Theorem 2.2 of CS70 Note 2 is the direction ($\Leftarrow$) of @exm-digit-sum-nine.
 :::
+
+::: {.problem #prob-mit6042f10-1-q4 origin="external" source="mit6042f10-1-q4"}
+You have 12 coins and a balance scale, one of which is fake. All the real coins weigh the same, but the fake coin weighs less than the rest. All the coins visually appear the same, and the difference in weight is imperceptible to your senses. In at most 3 weighings, give a strategy that detects the fake coin. (Note: the scale in this problem is a scale with two dishes, which tips toward the side that is heavier. For clarification, do an image search for "balance scale").
+:::

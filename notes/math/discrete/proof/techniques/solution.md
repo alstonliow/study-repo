@@ -40,3 +40,15 @@ $$C^{(2)}(x) \le \frac32 x+1.$$
 
 (d) False. For $n=7$: $5\cdot7^3=1715$ but $7!=5040$. (It holds for $n=1,\dots,6$ and fails for every $n\ge7$.)
 :::
+
+::: {.solution for="prob-mit6042f10-1-q6" status="draft"}
+1. *Squares modulo $4$.* $(2i)^2=4i^2\equiv0$ and $(2j+1)^2=4(j^2+j)+1\equiv1\pmod4$.
+
+2. *Cases.* Let $k$ be the number of odd numbers among $w,x,y$, so $k\in\{0,1,2,3\}$. By step 1, $w^2+x^2+y^2\equiv k\pmod4$.
+
+3. If $k=0$, the sum is even, so $z^2$ is even and $z$ is even (an odd $z$ has an odd square).
+
+4. If $k=1$ or $k=3$, the sum is odd, so $z$ is odd. If $k=2$, then $z^2\equiv2\pmod4$, which no square is: this case is impossible.
+
+5. So $z$ is even exactly in case $k=0$, i.e. when $w$, $x$ and $y$ are all even.
+:::

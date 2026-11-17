@@ -155,3 +155,26 @@ In Pascal's triangle the summands lie along a diagonal, and the left-hand side s
 Pascal's triangle, rows $0$ to $5$. The blue diagonal $\binom11+\binom21+\binom31+\binom41=1+2+3+4$ sums to the red entry $\binom52=10$, the blade of the hockey stick
 
 :::
+
+## Arrangements with repeated letters
+
+<!-- Added 2026-11-17 from MIT 6.042J, Mathematics for Computer Science (2015), Section 14.6 (mcs-14.6), in our own wording. -->
+
+::: {#thm-bookkeeper-rule .theorem name="Bookkeeper rule (multinomial coefficients)"}
+
+Let $n=k_1+k_2+\dots+k_m$. The number of sequences of length $n$ that contain the letter $a_i$ exactly $k_i$ times, for $i=1,\dots,m$, is the *multinomial coefficient*
+$$\binom n{k_1,k_2,\dots,k_m}=\frac{n!}{k_1!\,k_2!\cdots k_m!}.$$
+
+:::
+
+::: {.proof}
+
+1. Label the copies of each letter to make all $n$ symbols distinct, $a_1^{(1)},\dots,a_1^{(k_1)},a_2^{(1)},\dots$: there are $n!$ arrangements of the labelled symbols.
+
+2. Erasing the labels maps these arrangements onto the sequences we want, and each sequence comes from exactly $k_1!\,k_2!\cdots k_m!$ labelled arrangements (permute the labels within each letter).
+
+3. By the division rule (@thm-division-rule) the number of sequences is $\frac{n!}{k_1!\cdots k_m!}$.
+
+:::
+
+For example, the letters of BOOKKEEPER (one B, two O, two K, three E, one P, one R) can be arranged in $\frac{10!}{1!\,2!\,2!\,3!\,1!\,1!}=151\,200$ ways. With $m=2$ the rule gives $\binom n{k,n-k}=\binom nk$, and the same labelling argument proves the multinomial theorem $(x_1+\dots+x_m)^n=\sum\binom n{k_1,\dots,k_m}x_1^{k_1}\cdots x_m^{k_m}$, the sum over all $k_1+\dots+k_m=n$.

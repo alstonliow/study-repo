@@ -43,3 +43,18 @@ Show (4) and (5).
 ::: {.problem #prob-cs70hw-10-q2 origin="external" source="cs70hw-10-q2"}
 **Lie Detector.** A lie detector is known to be $4/5$ reliable when the person is guilty and $9/10$ reliable when the person is innocent. If a suspect is chosen from a group of suspects of which only $1/100$ have ever committed a crime, and the test indicates that the person is guilty, what is the probability that he is guilty?
 :::
+
+::: {.problem #prob-mit6042f10-11-q2 origin="external" source="mit6042f10-11-q2"}
+Professor Plum, Mr. Green, and Miss Scarlet are all plotting to shoot Colonel Mustard. If one of these three has both an opportunity and the revolver, then that person shoots Colonel Mustard. Otherwise, Colonel Mustard escapes. Exactly one of the three has an opportunity with the following probabilities:
+$$\Pr\{\text{Plum has opportunity}\} = 1/6,\quad \Pr\{\text{Green has opportunity}\} = 2/6,\quad \Pr\{\text{Scarlet has opportunity}\} = 3/6$$
+Exactly one has the revolver with the following probabilities, regardless of who has an opportuntity:
+$$\Pr\{\text{Plum has revolver}\} = 4/8,\quad \Pr\{\text{Green has revolver}\} = 3/8,\quad \Pr\{\text{Scarlet has revolver}\} = 1/8$$
+
+(a) Draw a tree diagram for this problem. Indicate edge and outcome probabilities.
+
+(b) What is the probability that Colonel Mustard is shot?
+
+(c) What is the probability that Colonel Mustard is shot, given that Miss Scarlet does not have the revolver?
+
+(d) What is the probability that Mr. Green had an opportunity, given that Colonel Mustard was shot?
+:::

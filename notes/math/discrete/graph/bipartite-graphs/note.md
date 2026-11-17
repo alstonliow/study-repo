@@ -91,3 +91,19 @@ Combine the previous theorem with @thm-odd-closed-walk.
 $C_n$ is bipartite exactly when $n$ is even. $K_3$ (a triangle) is not bipartite, and neither is any graph containing a triangle.
 
 :::
+
+## Matchings
+
+<!-- Added 2026-11-17 from MIT 6.042J, Mathematics for Computer Science (2015), Section 11.5 (mcs-11.5), in our own wording. Hall's theorem itself is kept once, as @cor-cn-cor-22 (SPEC §7.8). -->
+
+::: {#def-matching .definition name="Matching"}
+
+A *matching* in a graph is a set of edges no two of which share a vertex. In a bipartite graph with parts $L$ and $R$, a matching *covers* $L$ if every vertex of $L$ is an endpoint of one of its edges. For $S\subseteq L$, let $N(S)\subseteq R$ be the set of vertices adjacent to some vertex of $S$.
+
+:::
+
+::: {#rmk-bipartite-graphs-hall .remark name="Hall's matching theorem"}
+
+A bipartite graph has a matching that covers $L$ if and only if $|N(S)|\ge|S|$ for every $S\subseteq L$. This is @cor-cn-cor-22 read in graph language: the edges form a relation $E\subseteq L\times R$, a matching covering $L$ is an injection $L\to R$ contained in $E$, and $E(S)=N(S)$. The condition is clearly necessary, since the vertices of $S$ need $|S|$ distinct partners in $N(S)$. A useful special case: if every vertex of $L$ has degree at least $d$ and every vertex of $R$ degree at most $d$ ($d\ge1$), then counting the edges leaving $S$ gives $d|S|\le d|N(S)|$, so a matching covering $L$ exists.
+
+:::

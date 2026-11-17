@@ -45,3 +45,15 @@ Some classifications are a matter of interpretation.
 
 3. Otherwise $B,C,D$ are three mutual strangers.
 :::
+
+::: {.solution for="prob-mit6042f10-1-q5" status="draft"}
+*Contrapositive:* if $r^{1/5}$ is rational, then $r$ is rational.
+
+Proof: suppose $r^{1/5}=\frac pq$ with integers $p,q$, $q\ne0$. Then $r=\bigl(r^{1/5}\bigr)^5=\frac{p^5}{q^5}$, a quotient of integers with $q^5\ne0$, so $r$ is rational. Since a statement and its contrapositive are equivalent, the original statement holds.
+:::
+
+::: {.solution for="prob-mit6042f10-9-q1" status="draft"}
+(a) Split $\{1,\dots,2n\}$ into the $n$ pairs $\{1,2\},\{3,4\},\dots,\{2n-1,2n\}$. By the pigeonhole principle (@thm-pigeonhole), two of the $n+1$ chosen numbers lie in the same pair, so they are consecutive, $k$ and $k+1$. Any common divisor divides $(k+1)-k=1$, so they are relatively prime.
+
+(b) A connected graph with $n\ge2$ vertices has no isolated vertex, so every degree lies in $\{1,\dots,n-1\}$. Then $n$ vertices take at most $n-1$ values, and two share a degree by the pigeonhole principle. (This is @thm-equal-degree.)
+:::

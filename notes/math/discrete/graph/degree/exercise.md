@@ -29,3 +29,22 @@ Let $d\in\mathbb{N}$. A graph is *$d$-regular* if every vertex has degree $d$.
 
 (f) Does a 6-regular planar graph exist? Justify your answer.
 :::
+
+::: {.problem #prob-mit6042f10-4-q2 origin="external" source="mit6042f10-4-q2"}
+Let $G = (V, E)$ be a graph. Recall that the degree of a vertex $v \in V$, denoted $d_v$, is the number of vertices $w$ such that there is an edge between $v$ and $w$.
+
+(a) Prove that
+$$2|E| = \sum_{v \in V} d_v.$$
+
+(b) At a 6.042 ice cream study session (where the ice cream is plentiful and it helps you study too) 111 students showed up. During the session, some students shook hands with each other (everybody being happy and content with the ice-cream and all). Turns out that the University of Chicago did another spectacular study here, and counted that each student shook hands with exactly 17 other students. Can you debunk this too?
+
+(c) And on a more dull note, how many edges does $K_n$, the complete graph on $n$ vertices, have?
+:::
+
+::: {.problem #prob-mit6042f10-5-q6 origin="external" source="mit6042f10-5-q6"}
+Let $G$ be a graph. In this problem we show every vertex of odd degree is connected to at least one other vertex of odd degree in $G$.
+
+(a) Let $v$ be an odd degree node. Consider the longest walk starting at $v$ that does not repeat any edges (though it may omit some). Let $w$ be the final node of that walk. Show that $w \ne v$.
+
+(b) Show that $w$ must also have odd degree.
+:::

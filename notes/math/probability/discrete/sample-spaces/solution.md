@@ -110,3 +110,44 @@ All $5^7=78125$ assignments of balls to bins are equally likely.
 3. Let $A_i$ be "bin $i$ has exactly $3$ balls". Three bins cannot each have $3$ of $7$ balls. Two bins: choose their $3+3$ balls and put the last ball in one of the other $3$ bins: $\binom73\binom43\cdot3=420$ assignments. By inclusion–exclusion (@thm-general-case),
    $$\Pr\Bigl(\bigcup_iA_i\Bigr)=\frac{5\cdot8960-\binom52\cdot420}{78125}=\frac{40600}{78125}\approx0.520.$$
 :::
+
+::: {.solution for="prob-mit6042f10-10-q3" status="draft"}
+Each die shows each of its three numbers with probability $\frac13$ (each number appears on two faces), so a pair of rolls gives $9$ equally likely ordered pairs, and two players' sums give $81$ equally likely combinations.
+
+The sums of two rolls (with multiplicities out of $9$) are:
+
+- $A$: $4\,(1),\ 8\,(2),\ 9\,(2),\ 12\,(1),\ 13\,(2),\ 14\,(1)$;
+- $B$: $2\,(1),\ 6\,(2),\ 10\,(3),\ 14\,(2),\ 18\,(1)$;
+- $C$: $6\,(1),\ 7\,(2),\ 8\,(1),\ 11\,(2),\ 12\,(2),\ 16\,(1)$.
+
+Counting the combinations in which one sum exceeds the other:
+
+(a) $C$ beats $B$ in $42$ of $81$ cases, $B$ beats $C$ in $37$, with $2$ ties: $\frac{42}{81}>\frac{37}{81}$.
+
+(b) $A$ beats $C$ in $44$ cases and $C$ beats $A$ in $33$ ($4$ ties).
+
+(c) $B$ beats $A$ in $42$ cases and $A$ beats $B$ in $37$ ($2$ ties).
+
+So with two rolls $C>B$, $A>C$ and $B>A$: each relation is reversed. (The counts were checked by computer.)
+:::
+
+::: {.solution for="prob-mit6042f10-10-q4" status="draft"}
+You win with probability $\frac23$.
+
+1. Tails before the first $H$ change nothing, so start at the first $H$.
+
+2. If the next flip is also $H$ (probability $\frac12$), you have $HH$, and you win for sure: from $HH$ the flips continue $H\dots HT$, and the first $T$ completes $HHT$ before $HTT$ can appear (an $HTT$ would need $HT$ first, but every $T$ after $HH$ completes your $HHT$ immediately).
+
+3. If the next flip is $T$, we have $HT$. Now a $T$ (probability $\frac12$) completes $HTT$ and I win; an $H$ (probability $\frac12$) puts us back at a fresh $H$.
+
+4. Let $w$ be your winning probability from a fresh $H$. Then $w=\frac12\cdot1+\frac12\cdot\frac12\cdot0+\frac12\cdot\frac12\cdot w$, so $\frac34w=\frac12$ and $w=\frac23$.
+
+Summing the tree directly gives the same: you win along $H(TH)^kH\dots$, with probability $\frac12\sum_{k\ge0}\bigl(\frac14\bigr)^k=\frac23$.
+:::
+
+::: {.solution for="prob-mit6042f10-10-q5" status="draft"}
+(a) The sample space is the set of all $5$-card subsets of the deck, $\binom{52}5=2\,598\,960$ outcomes, each with probability $1/\binom{52}5$. The event $E$ consists of the hands whose cards come from at most two suits.
+
+(b) One suit: $4\binom{13}5=5148$ hands. Exactly two suits: choose the suits ($\binom42=6$) and a hand from their $26$ cards that is not within a single suit: $\binom{26}5-2\binom{13}5=63\,206$, giving $379\,236$. So
+$$\Pr(E)=\frac{5148+379\,236}{2\,598\,960}=\frac{384\,384}{2\,598\,960}\approx0.148.$$
+:::

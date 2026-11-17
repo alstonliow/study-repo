@@ -1,0 +1,81 @@
+# MIT 6.042J Mathematics for Computer Science, Fall 2010 problem sets (MIT OpenCourseWare,
+# CC BY-NC-SA), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6042J/fall-2010/assignments. Locator = problem set number; a source key
+# is mit6042f10-4-q2 (problem set 4, problem 2). Problem statements are copied as exercises
+# (homework rule, meta/SPEC.md §10) without the point values; solutions are our own.
+# Titles are our own short titles (set from the problems' topics). Node ids are stable.
+id: res-mit-6042j-f10-psets
+kind: homework
+title: MIT 6.042J Problem Sets (Fall 2010)
+status: draft
+courses: [mit6042j]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2010-fall
+  current: true
+legacy_keys:
+  prefix: mit6042f10-
+  edition: 2010-fall
+  pattern: ^mit6042f10-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 6.042J F10 PS {section}
+  problem_label: 6.042J F10 PS {section} Q{n}
+nodes:
+- id: res-mit-6042j-f10-psets-ps1
+  kind: homework
+  title: Logic
+  at:
+    2010-fall: '1'
+- id: res-mit-6042j-f10-psets-ps2
+  kind: homework
+  title: Proofs and induction
+  at:
+    2010-fall: '2'
+- id: res-mit-6042j-f10-psets-ps3
+  kind: homework
+  title: Induction and invariants
+  at:
+    2010-fall: '3'
+- id: res-mit-6042j-f10-psets-ps4
+  kind: homework
+  title: Number theory
+  at:
+    2010-fall: '4'
+- id: res-mit-6042j-f10-psets-ps5
+  kind: homework
+  title: Number theory and RSA
+  at:
+    2010-fall: '5'
+- id: res-mit-6042j-f10-psets-ps6
+  kind: homework
+  title: Graphs
+  at:
+    2010-fall: '6'
+- id: res-mit-6042j-f10-psets-ps7
+  kind: homework
+  title: Graphs and matchings
+  at:
+    2010-fall: '7'
+- id: res-mit-6042j-f10-psets-ps8
+  kind: homework
+  title: Sums and asymptotics
+  at:
+    2010-fall: '8'
+- id: res-mit-6042j-f10-psets-ps9
+  kind: homework
+  title: Counting
+  at:
+    2010-fall: '9'
+- id: res-mit-6042j-f10-psets-ps10
+  kind: homework
+  title: Counting and generating functions
+  at:
+    2010-fall: '10'
+- id: res-mit-6042j-f10-psets-ps11
+  kind: homework
+  title: Probability
+  at:
+    2010-fall: '11'
+- id: res-mit-6042j-f10-psets-ps12
+  kind: homework
+  title: Random variables
+  at:
+    2010-fall: '12'

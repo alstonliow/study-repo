@@ -59,3 +59,17 @@ Prove each of the following.
     by looking only at some constant number of digits at the end of
     $n$?
 :::
+
+::: {.problem #prob-mit6042f10-3-q6 origin="external" source="mit6042f10-3-q6"}
+In one of the previous problems, you calculated square roots of numbers modulo primes equivalent to 3 modulo 4. In this problem you will prove that there are an infinite number of such primes!
+
+(a) As a warm-up, prove that there are an infinite number of prime numbers. (Hint: Suppose that the set $F$ of all prime numbers is finite, that is $F = \{p_1, p_2, \ldots, p_k\}$ and define $n = p_1 p_2 \cdots p_k + 1$.)
+
+(b) Prove that if $p$ is an odd prime, then $p \equiv 1 \pmod 4$ or $p \equiv 3 \pmod 4$.
+
+(c) Prove that if $n \equiv 3 \pmod 4$, then $n$ has a prime factor $p \equiv 3 \pmod 4$.
+
+(d) Let $F$ be the set of all primes $p$ such that $p \equiv 3 \pmod 4$. Prove by contradiction that $F$ has an infinte number of primes.
+
+(Hint: Suppose that $F$ is finite, that is $F = \{p_1, p_2, \ldots, p_k\}$ and define $n = 4p_1 p_2 \cdots p_k - 1$. Prove that there exists a prime $p_i \in F$ such that $p_i \mid n$.)
+:::

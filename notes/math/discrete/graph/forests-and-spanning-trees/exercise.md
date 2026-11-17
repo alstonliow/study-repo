@@ -46,3 +46,9 @@ following weighted graph.
     \end{center}
 ```
 :::
+
+::: {.problem #prob-mit6042f10-5-q4 origin="external" source="mit6042f10-5-q4"}
+(a) Suppose that $G$ is a simple, connected graph on $n$ nodes. Show that $G$ has exactly $n - 1$ edges iff $G$ is a tree.
+
+(b) Prove by induction that any connected graph has a spanning tree.
+:::

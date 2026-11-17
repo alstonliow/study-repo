@@ -19,3 +19,16 @@ For sparse graphs ($m$ about $n$) the lists are much smaller than the
 matrices. For dense graphs ($m$ about $n^2$) the adjacency matrix is the most
 compact.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-5-q5" status="draft"}
+(a) Every vertex has degree $4$; the only non-adjacent pairs are $\{1,5\}$, $\{2,3\}$ and $\{4,6\}$. So the graph is $K_6$ minus a perfect matching (the octahedron): take three "opposite" pairs $\{1,5\},\{2,3\},\{4,6\}$ and join every two vertices from different pairs.
+
+(b) The diameter is $2$. Adjacent vertices are at distance $1$. A non-adjacent pair, such as $1$ and $5$, has a common neighbour ($2$, for instance), so it is at distance $2$, and not $1$.
+
+(c) $1,2,4,3,5,6,1$ is a cycle (check the matrix: $12,24,43,35,56,61$ are edges). It passes through all $6$ vertices, and no cycle can be longer than the number of vertices.
+
+(d) Colour the opposite pairs alike: $\{1,5\}$ red, $\{2,3\}$ green, $\{4,6\}$ blue. Each colour class is a non-adjacent pair, so this is a $3$-colouring. Fewer colours are impossible because $1,2,4$ form a triangle, whose vertices need three different colours.
+:::

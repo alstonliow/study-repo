@@ -57,3 +57,22 @@ Prove the union bound (9).
 
 (e) Prove that the probability that the graph contains a $k$-clique, for $k \ge 4 \log n + 1$, is at most $1/n$. (The log is taken base 2). Hint: Apply the union bound and part (d).
 :::
+
+::: {.problem #prob-mit6042f10-10-q2 origin="external" source="mit6042f10-10-q2"}
+(a) Here are some handy rules for reasoning about probabilities that all follow directly from the Disjoint Sum Rule. Use Venn Diagrams, or another method, to prove them.
+
+$$\begin{aligned}
+\Pr\{A - B\} &= \Pr\{A\} - \Pr\{A \cap B\} && \text{(Difference Rule)}\\
+\Pr\{\overline{A}\} &= 1 - \Pr\{A\} && \text{(Complement Rule)}\\
+\Pr\{A \cup B\} &= \Pr\{A\} + \Pr\{B\} - \Pr\{A \cap B\} && \text{(Inclusion-Exclusion)}\\
+\Pr\{A \cup B\} &\le \Pr\{A\} + \Pr\{B\}. && \text{(2-event Union Bound)}\\
+\text{If } A \subseteq B, \text{ then } \Pr\{A\} &\le \Pr\{B\}. && \text{(Monotonicity)}
+\end{aligned}$$
+
+(b) Prove the following probabilistic identity, referred to as the Union Bound. You may assume the theorem that the probability of a union of disjoint sets is the sum of their probabilities.
+
+**Theorem.** Let $A_1, \ldots, A_n$ be a collection of events on some sample space. Then
+$$\Pr(A_1 \cup A_2 \cup \cdots \cup A_n) \le \sum_{i=1}^{n} \Pr(A_i).$$
+
+(Hint: Induction)
+:::

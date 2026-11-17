@@ -17,3 +17,9 @@ $$\operatorname{Collatz}^{(2)}(n) \le \tfrac32 n + 1.$$
 
 (d) $(\forall n \in \mathbb{Z}^+)\ 5n^3 > n!$. (Note: $\mathbb{Z}^+$ is the set of positive integers)
 :::
+
+::: {.problem #prob-mit6042f10-1-q6 origin="external" source="mit6042f10-1-q6"}
+Suppose that $w^2 + x^2 + y^2 = z^2$, where $w$, $x$, $y$, and $z$ always denote positive integers. (Hint: It may be helpful to represent even integers as $2i$ and odd integers as $2j + 1$, where $i$ and $j$ are integers)
+
+Prove the proposition: $z$ is even if and only if $w$, $x$, and $y$ are even. Do this by considering all the cases of $w$, $x$, $y$ being odd or even.
+:::

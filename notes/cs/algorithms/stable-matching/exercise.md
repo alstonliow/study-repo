@@ -27,3 +27,7 @@ Consequently, the notion of stability here should be adjusted a little bit to ca
 
 *Note (these notes):* In this problem the applicants propose to the jobs, the opposite of the notes; the results hold with the roles exchanged.
 :::
+
+::: {.problem #prob-mit6042f10-4-q5 origin="external" source="mit6042f10-4-q5"}
+Prove or disprove the following claim: for some $n \ge 3$ ($n$ boys and $n$ girls, for a total of $2n$ people), there exists a set of boys' and girls' preferences such that every dating arrangement is stable.
+:::

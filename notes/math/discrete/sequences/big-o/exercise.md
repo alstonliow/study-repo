@@ -48,3 +48,19 @@ Give the simplest big-O expression you can for each of the following.
 
 (g) $n^{1/n}$
 :::
+
+::: {.problem #prob-mit6042f10-7-q5 origin="external" source="mit6042f10-7-q5"}
+For each of the following six pairs of functions $f$ and $g$ (parts (a) through (f)), state which of these order-of-growth relations hold (more than one may hold, or none may hold):
+
+$f = o(g)$ $\quad f = O(g)$ $\quad f = \omega(g)$ $\quad f = \Omega(g)$ $\quad f = \Theta(g)$ $\quad f \sim g$
+
+| | $f(n)$ | $g(n)$ |
+|---|---|---|
+| (a) | $\log_2 n$ | $\log_{10} n$ |
+| (b) | $2^n$ | $10^n$ |
+| (c) | $0$ | $17$ |
+| (d) | $1 + \cos\left(\frac{\pi n}{2}\right)$ | $1 + \sin\left(\frac{\pi n}{2}\right)$ |
+| (e) | $1.0000000001^n$ | $n^{10000000000}$ |
+
+*Note (these notes):* The statement says six pairs but lists five, (a)–(e).
+:::

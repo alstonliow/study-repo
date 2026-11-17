@@ -37,3 +37,16 @@ After step 8 there are $5 = 6-1$ edges, so we stop ($ab$ is not needed). The
 minimum weight spanning tree is
 $$\{bd,\ cd,\ de,\ df,\ ac\},\qquad\text{total weight } 1+2+4+6+8 = 21.$$
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-5-q4" status="draft"}
+(a) If $G$ is a tree, it has $n-1$ edges (@thm-cn-thm-68). Conversely, let $G$ be connected with $n-1$ edges. By (b), $G$ has a spanning tree $T$, which has $n$ vertices and hence $n-1$ edges. So $T$ uses all edges of $G$, and $G=T$ is a tree.
+
+(b) Induction on the number $m$ of edges of a connected graph $G$.
+
+1. If $G$ has no cycle, it is itself a spanning tree. This includes $m=0$ (a single vertex).
+
+2. Otherwise let $e$ be an edge on a cycle. Removing $e$ keeps $G$ connected: any walk using $e$ can go around the rest of the cycle instead. The graph $G-e$ is connected with $m-1$ edges, so by the hypothesis it has a spanning tree, which is also a spanning tree of $G$.
+:::

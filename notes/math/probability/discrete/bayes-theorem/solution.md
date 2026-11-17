@@ -73,3 +73,13 @@ Let $G$ be "guilty" and $T$ "the test says guilty". Then $\Pr(G)=\frac1{100}$, $
 $$\Pr(G\mid T)=\frac{\frac1{100}\cdot\frac45}{\frac1{100}\cdot\frac45+\frac{99}{100}\cdot\frac1{10}}=\frac{0.008}{0.008+0.099}=\frac8{107}\approx0.075.$$
 Most positive tests come from the many innocent suspects.
 :::
+
+::: {.solution for="prob-mit6042f10-11-q2" status="draft"}
+(a) First level: who has the opportunity (Plum $\frac16$, Green $\frac26$, Scarlet $\frac36$); second level, below each: who has the revolver ($\frac48,\frac38,\frac18$). The $9$ outcomes have the product probabilities, for example (Green, Plum) has $\frac26\cdot\frac48=\frac8{48}$. Mustard is shot in the three outcomes where the same person has both.
+
+(b) $\Pr(\text{shot})=\frac16\cdot\frac48+\frac26\cdot\frac38+\frac36\cdot\frac18=\frac{4+6+3}{48}=\frac{13}{48}$.
+
+(c) Given that Scarlet does not have the revolver, it is with Plum or Green with probabilities $\frac47$ and $\frac37$, still independent of the opportunity. So $\Pr=\frac16\cdot\frac47+\frac26\cdot\frac37=\frac{10}{42}=\frac5{21}$.
+
+(d) By Bayes' theorem (@thm-bayes-two-events), $\Pr(\text{Green opportunity}\mid\text{shot})=\frac{(2/6)(3/8)}{13/48}=\frac{6/48}{13/48}=\frac6{13}$.
+:::

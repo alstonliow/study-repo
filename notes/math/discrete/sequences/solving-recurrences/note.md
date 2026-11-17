@@ -162,3 +162,13 @@ The sequence $1,1,1,\dots$ has generating function $\sum x^n = \dfrac{1}{1-x}$ (
 Multiply the recurrence by $x^n$ and sum over $n$; recognise each sum as a shifted or scaled copy of $G(x)$; solve the resulting equation for $G(x)$; then expand $G(x)$ as a power series (e.g. by partial fractions) and read off $a_n$ as the coefficient of $x^n$.
 
 :::
+
+<!-- Added 2026-11-17 from MIT 6.042J, Mathematics for Computer Science (2015), Section 21.4 (mcs-21.4), in our own wording. -->
+
+::: {#rmk-solving-recurrences-akra-bazzi .remark name="The Akra–Bazzi formula"}
+
+Many divide-and-conquer recurrences have the form $T(x)=g(x)+\sum_{i=1}^ka_iT(b_ix+h_i(x))$ for large $x$, with constants $a_i>0$ and $0<b_i<1$, a polynomially bounded $g$, and small perturbations $h_i(x)=O(x/\log^2x)$ (which cover floors and ceilings). Let $p$ be the real number with $\sum_ia_ib_i^p=1$. Then
+$$T(x)=\Theta\Bigl(x^p\Bigl(1+\int_1^x\frac{g(u)}{u^{p+1}}\,du\Bigr)\Bigr).$$
+For merge sort, $T(n)=2T(n/2)+n-1$: here $2\cdot(\frac12)^p=1$ gives $p=1$, and $\int_1^n\frac{u-1}{u^2}du=\Theta(\log n)$, so $T(n)=\Theta(n\log n)$, in agreement with @thm-master-theorem-special-case-extra. We state the formula without proof; it handles unequal pieces, such as $T(n)=T(n/3)+T(2n/3)+n$, where $p=1$ again and $T(n)=\Theta(n\log n)$.
+
+:::

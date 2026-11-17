@@ -14,3 +14,9 @@ Let $N=\binom n2$. The final edge set is a uniformly random $m$-subset of the $N
 $$E[I_T]=\frac{\binom{N-3}{m-3}}{\binom Nm}=\frac{m(m-1)(m-2)}{N(N-1)(N-2)},$$
 and by linearity the expected number of triangles is $\binom n3\frac{m(m-1)(m-2)}{N(N-1)(N-2)}$ (which is $0$ when $m<3$).
 :::
+
+::: {.solution for="prob-mit6042f10-12-q2" status="draft"}
+(a) A proposition is false only if all three of its terms are false; its three variables are different, so this has probability $\frac18$. With indicators $I_j$ for "proposition $j$ is true", $E[\sum_jI_j]=7\cdot\frac78=\frac{49}8$ by linearity (@thm-linearity-of-expectation).
+
+(b) The number of true propositions is an integer. If every assignment made at most $6$ propositions true, the expectation would be at most $6<\frac{49}8$. So some assignment makes all $7$ true. (This is the probabilistic method: a random variable takes some value at least its mean.)
+:::

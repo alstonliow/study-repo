@@ -46,3 +46,15 @@ Prove Lemma 2.2. (Hint: First try a direct proof. Then, try contraposition. Whic
 
 *Note (these notes):* Lemma 2.2 of CS70 Note 2: if $a^2$ is even, then $a$ is even. It is used in @exm-contradiction-1.
 :::
+
+::: {.problem #prob-mit6042f10-2-q1 origin="external" source="mit6042f10-2-q1"}
+Define a *3-chain* to be a (not necessarily contiguous) subsequence of three integers, which is either monotonically increasing or monotonically decreasing. We will show here that any sequence of five distinct integers will contain a 3-chain. Write the sequence as $a_1, a_2, a_3, a_4, a_5$. Note that a monotonically increasing sequences is one in which each term is greater than or equal to the previous term. Similarly, a monotonically decreasing sequence is one in which each term is less than or equal to the previous term. Lastly, a subsequence is a sequence derived from the original sequence by deleting some elements without changing the location of the remaining elements.
+
+(a) Assume that $a_1 < a_2$. Show that if there is no 3-chain in our sequence, then $a_3$ must be less than $a_1$. (Hint: consider $a_4$!)
+
+(b) Using the previous part, show that if $a_1 < a_2$ and there is no 3-chain in our sequence, then $a_3 < a_4 < a_2$.
+
+(c) Assuming that $a_1 < a_2$ and $a_3 < a_4 < a_2$, show that any value of $a_5$ must result in a 3-chain.
+
+(d) Using the previous parts, prove by contradiction that any sequence of five distinct integers must contain a 3-chain.
+:::

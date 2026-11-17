@@ -79,3 +79,15 @@ We take strings of length $5$, as the official solution does.
 
 3. So $243-93=150$ strings contain each letter at least once. (For length $n$: $3^n-3\cdot2^n+3$.)
 :::
+
+::: {.solution for="prob-mit6042f10-9-q2" status="draft"}
+The passwords are the $10!$ orderings of the ten digits. Let $A_1,A_2,A_3$ be the orderings containing $18062$, $6042$, $35876$.
+
+1. Treating a forbidden string of $k$ digits as one symbol leaves $11-k$ symbols: $|A_1|=6!=720$, $|A_2|=7!=5040$, $|A_3|=6!=720$.
+
+2. $A_1\cap A_2=\emptyset$: in $18062$ the $6$ is followed by $2$, in $6042$ by $0$, and each digit occurs once. $A_1\cap A_3=\emptyset$: the $8$ would be followed by $0$ and by $7$.
+
+3. $A_2\cap A_3$: the strings overlap only as $35876042$ (the $6$ ending $35876$ starts $6042$), an $8$-digit block, so $|A_2\cap A_3|=3!=6$. The triple intersection is empty.
+
+4. By inclusion–exclusion (@thm-inclusion-exclusion), $|A_1\cup A_2\cup A_3|=720+5040+720-6=6474$, and the answer is $10!-6474=3\,622\,326$ (checked by computer).
+:::

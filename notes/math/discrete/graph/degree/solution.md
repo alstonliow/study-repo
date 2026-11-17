@@ -52,3 +52,22 @@ $$8\cdot4 + 10\cdot1 + 4\cdot3 + 2\cdot2 = 32 + 10 + 12 + 4 = 58.$$
     $m\le 3n-6$. Equivalently, its average degree is $6$, contradicting
     Exercise 11(a).
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-4-q2" status="draft"}
+(a) Count pairs $(v,e)$ with $v$ an endpoint of the edge $e$. Each edge has $2$ endpoints, giving $2|E|$ pairs; each vertex $v$ lies on $d_v$ edges, giving $\sum_vd_v$ pairs. (@thm-handshake)
+
+(b) The handshakes form a graph with $111$ vertices of degree $17$. The degree sum would be $111\cdot17=1887$, which is odd, but by (a) it equals $2|E|$, an even number. So the claim is impossible.
+
+(c) Every vertex has degree $n-1$, so $2|E|=n(n-1)$ and $|E|=\frac{n(n-1)}2=\binom n2$.
+:::
+
+::: {.solution for="prob-mit6042f10-5-q6" status="draft"}
+A walk without repeated edges that cannot be extended uses up all edges at its last vertex.
+
+(a) Suppose $w=v$. The walk uses an even number of the edges at $v$: one to leave at the start, one to arrive at the end, and two for every time it passes through $v$ in between. Since $\deg v$ is odd, some edge at $v$ is unused, and the walk could be extended along it, contradicting its maximality. So $w\ne v$.
+
+(b) The walk uses an odd number of edges at $w$: two for every pass through $w$, plus one for the final arrival ($w\ne v$, so the walk did not start there). If $\deg w$ were even, an edge at $w$ would be unused, and again the walk could be extended. So $\deg w$ is odd, and the walk shows that $v$ is connected to the odd-degree vertex $w\ne v$.
+:::

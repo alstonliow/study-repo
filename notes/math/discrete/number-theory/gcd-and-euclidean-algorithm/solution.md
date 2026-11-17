@@ -42,3 +42,29 @@ For $n=0$ read $F_{-1}=1$, the value that keeps $F_1=F_0+F_{-1}$ true; then $\gc
 2. *Step:* suppose $\gcd(F_n,F_{n-1})=1$. Since $\gcd(a,b)=\gcd(a-b,b)$ (a common divisor of $a$ and $b$ divides $a-b$, and conversely),
    $$\gcd(F_{n+1},F_n)=\gcd(F_{n+1}-F_n,F_n)=\gcd(F_{n-1},F_n)=1.$$
 :::
+
+::: {.solution for="prob-mit6042f10-3-q2" status="draft"}
+(a) $b=ma$ gives $bc=(mc)a$.
+
+(b) $b=ma$ and $c=la$ give $sb+tc=(sm+tl)a$.
+
+(c) If $b=ma$ then $cb=m(ca)$. Conversely, if $cb=m(ca)$, cancel $c>0$: $b=ma$.
+
+(d) Let $d=\gcd(a,b)$.
+
+1. $kd$ divides $ka$ and $kb$ by (c), so it is a common divisor, and $kd\le\gcd(ka,kb)$.
+
+2. By Bézout (@thm-bezout), $d=sa+tb$ for some integers $s,t$, so $kd=s(ka)+t(kb)$. Every common divisor of $ka$ and $kb$ divides $kd$ by (b), so $\gcd(ka,kb)\le kd$.
+
+3. Hence $\gcd(ka,kb)=kd$.
+:::
+
+::: {.solution for="prob-mit6042f10-3-q5" status="draft"}
+Let $g=\gcd(x,y)$.
+
+(a) By induction on the number of moves, every number on the board is $x$, $y$ or a divisor of $g$. Initially only $x,y$ are there. A new number $d$ divides two numbers on the board. If they are $x$ and $y$, then $d\mid g$. Otherwise one of them is a divisor $e$ of $g$, and $d\mid e\mid g$.
+
+(b) At the end no move is possible. A divisor of $g$ not yet on the board would be a common divisor of $x$ and $y$, which are on the board, so it could be written: a contradiction.
+
+(c) By (a) and (b) the final board is exactly $\{x,y\}$ together with the divisors of $g$, whatever the players do. So the number of moves in the game is fixed: $m$ = the number of divisors of $g$ other than $x$ and $y$. Go first if $m$ is odd and second if $m$ is even; then you make the last move and your opponent cannot play.
+:::

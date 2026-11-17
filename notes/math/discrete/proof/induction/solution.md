@@ -118,3 +118,16 @@ The "theorem" is false, and the error is in step 4.
    $$a_{k+1}=8\cdot\tfrac54\cdot8^k+27\cdot3^{3k-1}=8a_k+19\cdot3^{3k-1}.$$
    Both terms are divisible by $19$, so $19\mid a_{k+1}$.
 :::
+
+::: {.solution for="prob-mit6042f10-2-q4" status="draft"}
+The inductive step fails for $n=0$, the step from $P(0)$ to $P(1)$. There the formula uses $a^{n-1}=a^{-1}$, but the hypothesis $P(0)$ only says $a^k=1$ for natural numbers $k\le0$, i.e. for $k=0$; it says nothing about $a^{-1}$. So $a^1=1$ is never established, and the chain of implications breaks at its first link. (For $n\ge1$ the step is valid, which is why the error is easy to miss.)
+:::
+
+::: {.solution for="prob-mit6042f10-2-q5" status="draft"}
+Strong induction on $n$.
+
+1. *Base cases:* $G_0=0=3^0-2^0$ and $G_1=1=3-2$.
+
+2. *Step:* let $n\ge2$ and suppose the formula holds for $n-1$ and $n-2$. Then
+   $$G_n=5(3^{n-1}-2^{n-1})-6(3^{n-2}-2^{n-2})=3^{n-2}(15-6)-2^{n-2}(10-6)=3^n-2^n.$$
+:::

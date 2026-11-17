@@ -134,3 +134,17 @@ Let $G$ be a connected multigraph (multiple edges and loops allowed).
 
 3. Each piece has at least one edge: a piece $z,a,\dots,b,z$ with no edge of $G$ would use the edge $\{z,a\}$ twice. The tour uses every edge of $G$ exactly once, so the $m$ walks cover each edge exactly once and no walk repeats an edge.
 :::
+
+::: {.solution for="prob-mit6042f10-5-q2" status="draft"}
+Label the corners $(i,j)$ with $1\le i\le N$, $1\le j\le M$.
+
+(a) Colour $(i,j)$ black if $i+j$ is even and white otherwise. Every block changes $i$ or $j$ by $1$, so it joins different colours: the grid is bipartite. A cycle in a bipartite graph alternates colours, so it has as many black as white vertices and even length. A Hamiltonian cycle would have $NM$ vertices, which is odd when $N$ and $M$ are odd. So no Hamiltonian cycle exists, and visiting all $133$ corners and returning takes at least $134$ minutes, more than $133$.
+
+(b)
+
+1. Say $N$ is even and $M\ge2$ (the other case is symmetric). Start at $(1,1)$, go along column $1$ down to $(N,1)$; then snake through columns $2,\dots,M$ in rows $N,N-1,\dots,1$: row $N$ from column $2$ to $M$, row $N-1$ from $M$ back to $2$, and so on. Since $N$ is even, row $1$ is traversed from column $M$ back to column $2$, ending at $(1,2)$, which is adjacent to the start $(1,1)$. Every corner is visited once.
+
+2. The snake ends at the left side only after an even number of rows; with $N$ and $M$ both odd it ends on the wrong side, and by (a) no other construction can succeed.
+
+3. Yes: the $20\times7$ grid has $140$ corners and a Hamiltonian cycle, so they can visit every corner and return in $140$ minutes, then disarm in $2$, within the $135+7=142$ minutes. It does not depend on where the bomb is, since the cycle passes through every corner and can be started anywhere.
+:::

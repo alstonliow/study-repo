@@ -34,3 +34,14 @@ For example, $3$ is a primitive root of $7$: its powers mod $7$ are
 $3, 2, 6, 4, 5, 1$, and $1$ first appears at the $6$th power. Mod $8$
 every odd $a$ has $a^2\equiv1$, so nothing reaches order $\varphi(8)=4$.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-3-q4" status="draft"}
+1. $\varphi(p^k)$ counts the numbers in $\{0,1,\dots,p^k-1\}$ coprime to $p^k$.
+
+2. The only prime factor of $p^k$ is $p$, so a number is coprime to $p^k$ exactly when $p$ does not divide it.
+
+3. The multiples of $p$ in the range are $0,p,2p,\dots,(p^{k-1}-1)p$: there are $p^{k-1}$ of them. So $\varphi(p^k)=p^k-p^{k-1}$. (This is @prp-totientpp.)
+:::

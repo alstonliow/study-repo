@@ -116,3 +116,11 @@ $|a_5-a|=|\frac15-\frac12|=\frac3{10}\ge\frac14$.
 (h) In general, what property must a sequence have for Una to have a
     winning strategy?
 :::
+
+::: {.problem #prob-mit6042f10-8-q3 origin="external" source="mit6042f10-8-q3"}
+Define the sequence of numbers $A_i$ by
+$$A_0 = 2, \qquad A_{n+1} = A_n/2 + 1/A_n \ (\text{for } n \ge 1)$$
+Prove that $A_n \le \sqrt{2} + 1/2^n$ for all $n \ge 0$.
+
+*Note (these notes):* The recurrence is meant for $n\ge0$, as the claim for all $n\ge0$ requires.
+:::

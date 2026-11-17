@@ -39,3 +39,9 @@ Prove Theorem 10.3 using induction.
 
 *Note (these notes):* The length of the strings is missing from the statement; the official solution uses length $5$.
 :::
+
+::: {.problem #prob-mit6042f10-9-q2 origin="external" source="mit6042f10-9-q2"}
+**Under Siege!** Fearing retribution for the many long hours his students spent completing problem sets, Prof. Leighton decides to convert his office into a reinforced bunker. His only remaining task is to set the 10-digit numeric password on his door. Knowing the students are a clever bunch, he is not going to pick any passwords containing the forbidden consecutive sequences "18062", "6042" or "35876" (his MIT extension).
+
+How many 10-digit passwords can he pick that don't contain forbidden sequences if each number $0, 1, \ldots, 9$ can only be chosen once (i.e. without replacement)?
+:::

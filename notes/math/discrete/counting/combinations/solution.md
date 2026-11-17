@@ -126,3 +126,42 @@ iii. Read the question as asking for the number $T_n$ of binary trees with $n$ n
 $$T_n=\sum_{i=0}^{n-1}T_iT_{n-1-i}.$$
 It is the same recursion with the same start as in (ii), so $T_n=F_n=\frac1{n+1}\binom{2n}n$, the Catalan numbers.
 :::
+
+::: {.solution for="prob-mit6042f10-9-q3" status="draft"}
+(a) Choose the rank of the pair ($13$), its two suits ($\binom42$), three other distinct ranks ($\binom{12}3$) and a suit for each ($4^3$): $13\cdot6\cdot220\cdot64=1\,098\,240$.
+
+(b) $k+1$ variables summing to $n$: by stars and bars (@thm-stars-and-bars), $\binom{n+k}k$.
+
+(c) Add a slack variable $x_{k+1}=n-\sum x_i\ge0$: now $k+2$ variables sum to $n$, giving $\binom{n+k+1}{k+1}$.
+
+(d) Each of the $\binom n2$ possible edges is present or not: $2^{\binom n2}$, for labelled vertices.
+
+(e) Each of the $n^2$ ordered pairs (including loops) is an edge or not: $2^{n^2}$.
+
+(f) Each of the $\binom n2$ pairs gets one of two directions: $2^{\binom n2}$.
+
+(g) An acyclic tournament is the order relation of a linear ordering of the vertices (its topological sort is unique, @thm-topological-sort), and every linear order gives one: $n!$.
+
+(h) Inclusion–exclusion: $350+140+100-70-50-20+10=460$.
+
+(i) Arrange the $n$ books and $k-1$ shelf dividers in a row, the dividers being identical: $\frac{(n+k-1)!}{(k-1)!}$.
+
+(j) Order the books ($n!$) and cut the sequence into $k$ non-empty consecutive parts by choosing $k-1$ of the $n-1$ gaps: $n!\binom{n-1}{k-1}$.
+:::
+
+::: {.solution for="prob-mit6042f10-9-q4" status="draft"}
+Count the length-$n$ sequences of $0$s, $1$s and exactly one $*$ in two ways.
+
+1. Choose the position of the $*$ ($n$ ways) and fill the other $n-1$ positions with $0$s and $1$s ($2^{n-1}$ ways): $n2^{n-1}$.
+
+2. Let $k$ be the number of positions that are not $0$ (the $1$s and the $*$), $1\le k\le n$. Choose these positions ($\binom nk$) and which of them holds the $*$ ($k$): $\sum_{k=1}^nk\binom nk$.
+
+Both count the same set, so they are equal.
+:::
+
+::: {.solution for="prob-mit6042f10-9-q5" status="draft"}
+There are $\binom{2n}n$ committees of size $n$. Swapping the roles of the parties (fix a pairing of Democrats with Republicans and exchange paired members) is a bijection between committees with more Democrats and committees with more Republicans, so these two kinds are equally many.
+
+- If $n$ is odd, there are no ties, and the answer is $\frac12\binom{2n}n$.
+- If $n$ is even, the ties have $\frac n2$ of each party: $\binom n{n/2}^2$ committees. The answer is $\frac12\Bigl(\binom{2n}n-\binom n{n/2}^2\Bigr)$.
+:::

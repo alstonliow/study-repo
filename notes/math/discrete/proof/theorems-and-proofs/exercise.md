@@ -22,3 +22,13 @@ previous chapters.
 
 *Note (these notes):* The vitamin is not part of these notes; the setup is the one stated here.
 :::
+
+::: {.problem #prob-mit6042f10-1-q5 origin="external" source="mit6042f10-1-q5"}
+Prove the following statement by proving its contrapositive: if $r$ is irrational, then $r^{1/5}$ is irrational. (Be sure to state the contrapositive explicitly.)
+:::
+
+::: {.problem #prob-mit6042f10-9-q1 origin="external" source="mit6042f10-9-q1"}
+(a) Show that of any $n + 1$ distinct numbers chosen from the set $\{1, 2, \ldots, 2n\}$, at least 2 must be relatively prime. (Hint: $\gcd(k, k + 1) = 1$.)
+
+(b) Show that any finite connected undirected graph with $n \ge 2$ vertices must have 2 vertices with the same degree.
+:::

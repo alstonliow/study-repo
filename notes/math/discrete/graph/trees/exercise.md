@@ -62,3 +62,22 @@ Complete the proof of the converse direction in Theorem 5.4 by proving, using in
 
 (c) Prove that all binary trees with $n$ leaves have $2n - 1$ vertices
 :::
+
+::: {.problem #prob-mit6042f10-5-q1 origin="external" source="mit6042f10-5-q1"}
+Recall that a tree is a connected acyclic graph. In particular, a single vertex is a tree. We define a *Splitting Binary Tree*, or *SBTree* for short, as either the lone vertex, or a tree with the following properties:
+
+1. exactly one node of degree 2 (called the *root*).
+2. every other node is of degree 3 or 1 (called *internal nodes* and *leaves*, respectively).
+
+For the case of one single vertex (see above), that vertex is considered to be a leaf. It is easier to understand the definition visually, so an example is shown in Figure 1. An example of a tree which is not an SBTree is shown in Figure 2.
+
+*Figure 1: Splitting Binary Tree: Node A is the root, B and E are internal nodes, and C, D, F, and G are leaves. Notice how all internal nodes have degree 3.*
+
+*Figure 2: This is an example of a tree which is NOT a Splitting Binary Tree. Notice how both A and C have degree 2, when a BSTree can only have one such node.*
+
+(a) Show if an SBTree has more than one vertex, then the induced subgraph obtained by removing the unique root consists of two disconnected SBTrees. You may assume that by removing the root you obtain two separate connected componenents, so all you need to prove is that those two components are SBTrees.
+
+(b) Prove that two SBTrees with the same number of leaves must also have the same total number of nodes. Hint: As a conjecture, guess an expression for the total number of nodes in terms of the number of leaves $N(l)$. Then use induction to prove that it holds for all trees with the same $l$
+
+*Note (these notes):* Figure 1: the edges are A–B, A–C, B–D, B–E, E–F, E–G. Figure 2: the edges are A–B, A–C, B–D, B–E, C–F. The figures are described rather than redrawn.
+:::

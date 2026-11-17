@@ -191,3 +191,16 @@ This is well defined because $A\cap C = \emptyset$.
    which sends $y\in B$ to $f^{-1}(y)$ and $y\in D$ to $g^{-1}(y)$. Checking
    on $A$ and $C$ separately shows both compositions are identities.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6042f10-6-q2" status="draft"}
+(a) Surjective only. Not injective: $f(0)=f(\pi)=0$. Surjective: $f$ is continuous, $f(\frac\pi2+2\pi k)=\frac\pi2+2\pi k\to\infty$ and $f(\frac{3\pi}2+2\pi k)=-(\frac{3\pi}2+2\pi k)\to-\infty$, so by the intermediate value theorem it takes every real value.
+
+(b) Bijective. It is strictly increasing ($x<y$ implies $x^{99}<y^{99}$, as $99$ is odd), hence injective; it is continuous and tends to $\pm\infty$ as $x\to\pm\infty$, hence surjective.
+
+(c) Injective only: $\tan^{-1}$ is strictly increasing, but its values lie in $(-\frac\pi2,\frac\pi2)$, so for instance $2$ is not a value.
+
+(d) Surjective only. Not injective: $f(2)=f(3)=2$. Surjective: $f(2^{k-1})=k$, since the divisors of $2^{k-1}$ are $1,2,\dots,2^{k-1}$.
+:::

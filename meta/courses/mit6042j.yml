@@ -1,0 +1,534 @@
+# MIT 6.042J course scope (meta/SPEC.md §13), drafted by Claude for owner review.
+# Outline: Mathematics for Computer Science (Lehman, Leighton, Meyer; 2015-05-18 edition),
+# the textbook of 6.042J Spring 2015 (resource res-mit-6042j-mcs). Chapters are the book's
+# chapters; points are the first section that covers each note. Titles are our own.
+# Rule (owner, as for FIT1058 and CS70): content that is in the textbook is in scope; content
+# that is not is out of scope ("extra"), decided by checking the content against the book.
+id: mit6042j
+code: MIT 6.042J
+name: "Mathematics for Computer Science"
+institution: MIT
+source_prefix: mcs-
+outline_from: "Mathematics for Computer Science, 2015 edition, Chapters 1-21"
+status: draft  # draft until the owner has reviewed the mapping
+
+exclude:
+  # Problems from FIT1058 and CS70 (none is from the textbook). Block-level audit of examples,
+  # remarks and results from other sources is still to be done (owner review); until then
+  # they count as in scope.
+  - prob-cs70hw-2-q4
+  - prob-cs70hw-2-q5
+  - prob-cs70hw-9-q1
+  - prob-cs70hw-9-q2
+  - prob-cs70hw-9-q3
+  - prob-counting-04
+  - prob-counting-08
+  - prob-counting-09
+  - prob-cs70-10-q1
+  - prob-cs70hw-6-q5
+  - prob-cs70hw-7-q3
+  - prob-cs70-10-q2
+  - prob-counting-05
+  - prob-counting-06
+  - prob-counting-07
+  - prob-cs70-10-q3
+  - prob-cs70hw-6-q7
+  - prob-cs70hw-7-q1
+  - prob-counting-02
+  - prob-counting-10
+  - prob-counting-11
+  - prob-counting-01
+  - prob-counting-03
+  - prob-cs70hw-6-q6
+  - prob-cs70hw-7-q2
+  - prob-cs70hw-8-q1
+  - prob-cs70hw-8-q3
+  - prob-cs70hw-8-q2
+  - prob-functions-09
+  - prob-functions-10
+  - prob-functions-11
+  - prob-functions-05
+  - prob-functions-06
+  - prob-functions-04
+  - prob-functions-07
+  - prob-functions-08
+  - prob-functions-12
+  - prob-functions-16
+  - prob-cs70hw-1-q7
+  - prob-functions-01
+  - prob-functions-02
+  - prob-functions-03
+  - prob-graph-1-01
+  - prob-graph-1-08
+  - prob-graph-1-03
+  - prob-graph-1-04
+  - prob-graph-2-13
+  - prob-graph-1-09
+  - prob-graph-1-10
+  - prob-graph-1-11
+  - prob-graph-1-12
+  - prob-cs70-5-q1
+  - prob-cs70hw-3-q3
+  - prob-graph-2-07
+  - prob-graph-2-08
+  - prob-graph-2-09
+  - prob-graph-2-10
+  - prob-graph-2-11
+  - prob-graph-2-12
+  - prob-cs70hw-3-q4
+  - prob-cs70hw-3-q5
+  - prob-graph-1-02
+  - prob-cs70hw-3-q6
+  - prob-graph-2-01
+  - prob-graph-2-02
+  - prob-graph-2-03
+  - prob-graph-2-04
+  - prob-graph-2-05
+  - prob-graph-2-06
+  - prob-cs70-5-q2
+  - prob-cs70-5-q3
+  - prob-cs70hw-3-q2
+  - prob-graph-1-05
+  - prob-graph-1-06
+  - prob-graph-1-07
+  - prob-cs70hw-3-q1
+  - prob-predicate-02
+  - prob-predicate-14
+  - prob-predicate-03
+  - prob-predicate-04
+  - prob-predicate-05
+  - prob-predicate-06
+  - prob-predicate-07
+  - prob-predicate-08
+  - prob-predicate-09
+  - prob-predicate-10
+  - prob-predicate-12
+  - prob-predicate-13
+  - prob-cs70hw-1-q2
+  - prob-predicate-01
+  - prob-predicate-11
+  - prob-propositional-03
+  - prob-propositional-06
+  - prob-propositional-09
+  - prob-propositional-11
+  - prob-propositional-12
+  - prob-propositional-04
+  - prob-propositional-05
+  - prob-propositional-07
+  - prob-propositional-08
+  - prob-propositional-13
+  - prob-propositional-14
+  - prob-propositional-17
+  - prob-propositional-20
+  - prob-propositional-01
+  - prob-propositional-02
+  - prob-propositional-15
+  - prob-propositional-16
+  - prob-propositional-21
+  - prob-propositional-10
+  - prob-cs70hw-1-q3
+  - prob-propositional-18
+  - prob-propositional-19
+  - prob-propositional-22
+  - prob-propositional-23
+  - prob-propositional-24
+  - prob-number-theory-01
+  - prob-number-theory-02
+  - prob-number-theory-05
+  - prob-number-theory-09
+  - prob-number-theory-14
+  - prob-number-theory-13
+  - prob-number-theory-12
+  - prob-cs70hw-4-q1
+  - prob-number-theory-03
+  - prob-number-theory-08
+  - prob-number-theory-10
+  - prob-number-theory-11
+  - prob-number-theory-15
+  - prob-cs70hw-4-q2
+  - prob-number-theory-16
+  - prob-cs70hw-4-q5
+  - prob-number-theory-04
+  - prob-number-theory-06
+  - prob-number-theory-07
+  - prob-cs70hw-1-q5
+  - prob-cs70hw-4-q6
+  - prob-cs70hw-5-q1
+  - prob-cs70hw-5-q2
+  - prob-proofs-14
+  - prob-cs70-2-q2
+  - prob-proofs-02
+  - prob-proofs-04
+  - prob-proofs-05
+  - prob-proofs-12
+  - prob-proofs-15
+  - prob-cs70-2-q1
+  - prob-proofs-06
+  - prob-proofs-07
+  - prob-proofs-08
+  - prob-proofs-09
+  - prob-proofs-13
+  - prob-cs70-3-q1
+  - prob-cs70hw-2-q1
+  - prob-proofs-10
+  - prob-proofs-11
+  - prob-cs70-3-q2
+  - prob-cs70-3-q3
+  - prob-cs70-3-q4
+  - prob-cs70-3-q5
+  - prob-cs70hw-2-q2
+  - prob-cs70hw-2-q3
+  - prob-proofs-01
+  - prob-cs70hw-1-q4
+  - prob-proofs-03
+  - prob-cs70hw-1-q6
+  - prob-functions-18
+  - prob-functions-19
+  - prob-functions-21
+  - prob-functions-22
+  - prob-functions-17
+  - prob-functions-20
+  - prob-sequences-01
+  - prob-sequences-11
+  - prob-sequences-12
+  - prob-sequences-07
+  - prob-sequences-08
+  - prob-sequences-09
+  - prob-sequences-10
+  - prob-sequences-02
+  - prob-sequences-03
+  - prob-sequences-04
+  - prob-sequences-05
+  - prob-sequences-06
+  - prob-sequences-13
+  - prob-sequences-14
+  - prob-sequences-15
+  - prob-sets-19
+  - prob-sets-20
+  - prob-sets-22
+  - prob-sets-04
+  - prob-sets-05
+  - prob-sets-07
+  - prob-sets-08
+  - prob-sets-01
+  - prob-sets-03
+  - prob-sets-06
+  - prob-sets-09
+  - prob-sets-10
+  - prob-sets-11
+  - prob-sets-12
+  - prob-sets-13
+  - prob-sets-14
+  - prob-sets-21
+  - prob-sets-02
+  - prob-sets-15
+  - prob-sets-16
+  - prob-sets-17
+  - prob-sets-18
+  - prob-probability-1-16
+  - prob-probability-1-17
+  - prob-probability-1-18
+  - prob-cs70-14-q2
+  - prob-cs70hw-10-q2
+  - prob-probability-2-04
+  - prob-probability-2-07
+  - prob-cs70hw-11-q3
+  - prob-cs70hw-12-q3
+  - prob-cs70hw-12-q4
+  - prob-cs70hw-12-q5
+  - prob-probability-1-10
+  - prob-probability-1-11
+  - prob-probability-1-13
+  - prob-probability-1-14
+  - prob-probability-1-15
+  - prob-cs70-14-q1
+  - prob-cs70-14-q3
+  - prob-cs70-14-q4
+  - prob-cs70-14-q5
+  - prob-cs70hw-9-q6
+  - prob-cs70hw-10-q1
+  - prob-cs70hw-10-q3
+  - prob-cs70hw-10-q4
+  - prob-probability-2-11
+  - prob-cs70hw-12-q1
+  - prob-cs70hw-12-q2
+  - prob-probability-1-08
+  - prob-probability-1-09
+  - prob-probability-1-12
+  - prob-cs70-14-q6
+  - prob-cs70hw-10-q5
+  - prob-cs70hw-10-q6
+  - prob-cs70hw-10-q7
+  - prob-probability-2-05
+  - prob-probability-2-06
+  - prob-cs70-16-q1
+  - prob-probability-2-09
+  - prob-cs70hw-13-q2
+  - prob-cs70hw-13-q3
+  - prob-cs70hw-13-q1
+  - prob-cs70hw-11-q4
+  - prob-cs70hw-11-q5
+  - prob-probability-2-01
+  - prob-probability-2-02
+  - prob-probability-2-03
+  - prob-cs70hw-11-q1
+  - prob-cs70hw-11-q2
+  - prob-probability-1-01
+  - prob-probability-1-02
+  - prob-probability-1-03
+  - prob-probability-1-04
+  - prob-probability-1-05
+  - prob-probability-1-06
+  - prob-probability-1-07
+  - prob-cs70hw-9-q4
+  - prob-cs70hw-9-q5
+  - prob-cs70-16-q2
+  - prob-cs70hw-15-q1
+  - prob-cs70hw-15-q2
+  - prob-cs70hw-15-q3
+  - prob-cs70hw-15-q4
+
+chapters:
+  - num: 1
+    title: "Proofs"
+    points:
+      - id: "1.1"
+        title: "Propositions"
+        covers: [math/discrete/logic/propositional/propositions]
+      - id: "1.2"
+        title: "Predicates"
+        covers: [math/discrete/logic/predicate/predicates]
+      - id: "1.3"
+        title: "The axiomatic method"
+        covers: [math/discrete/proof/theorems-and-proofs]
+      - id: "1.5"
+        title: "Proving implications"
+        covers: [math/discrete/proof/finding-proofs]
+      - id: "1.7"
+        title: "Proof by cases"
+        covers: [math/discrete/proof/techniques]
+      - id: "1.8"
+        title: "Proof by contradiction"
+        covers: [math/discrete/proof/contradiction]
+  - num: 2
+    title: "Well ordering"
+    points:
+      - id: "2.1"
+        title: "Proofs by well ordering"
+        covers: [math/discrete/proof/well-ordering-proofs]
+      - id: "2.3"
+        title: "Factoring into primes"
+        covers: [math/discrete/number-theory/divisibility-and-primes]
+  - num: 3
+    title: "Logical formulas"
+    points:
+      - id: "3.1"
+        title: "Compound propositions"
+        covers: [math/discrete/logic/propositional/connectives, math/discrete/logic/propositional/representing-statements]
+      - id: "3.3"
+        title: "Equivalence and validity"
+        covers: [math/discrete/logic/propositional/implication-and-equivalence, math/discrete/logic/propositional/tautologies]
+      - id: "3.4"
+        title: "Algebra of propositions"
+        covers: [math/discrete/logic/propositional/de-morgans-laws, math/discrete/logic/propositional/laws-of-boolean-algebra, math/discrete/logic/propositional/normal-forms, math/discrete/logic/propositional/universal-sets-of-operations]
+      - id: "3.6"
+        title: "Predicate formulas"
+        covers: [math/discrete/logic/predicate/quantifiers, math/discrete/logic/predicate/multiple-quantifiers, math/discrete/logic/predicate/logic-with-quantifiers]
+  - num: 4
+    title: "Mathematical data types"
+    points:
+      - id: "4.1"
+        title: "Sets"
+        covers: [math/discrete/sets/sets-and-elements, math/discrete/sets/cardinality-and-standard-sets, math/discrete/sets/subsets, math/discrete/sets/power-set, math/discrete/sets/set-operations, math/discrete/sets/symmetric-difference, math/discrete/sets/cartesian-product]
+      - id: "4.2"
+        title: "Sequences"
+        covers: [math/discrete/sequences/basic-sequences]
+      - id: "4.3"
+        title: "Functions"
+        covers: [math/discrete/functions/definitions, math/discrete/functions/special-functions, math/discrete/functions/composition]
+      - id: "4.4"
+        title: "Binary relations"
+        covers: [math/discrete/relations/binary-relations, math/discrete/functions/injections-surjections-bijections, math/discrete/functions/inverse-functions]
+      - id: "4.5"
+        title: "Finite cardinality"
+        covers: [math/discrete/functions/counting]
+  - num: 5
+    title: "Induction"
+    points:
+      - id: "5.1"
+        title: "Ordinary induction"
+        covers: [math/discrete/proof/induction, math/discrete/proof/induction-examples]
+      - id: "5.4"
+        title: "State machines"
+        covers: [math/discrete/proof/state-machines]
+  - num: 6
+    title: "Recursive data types"
+    points:
+      - id: "6.1"
+        title: "Structural induction"
+        covers: [math/discrete/proof/structural-induction]
+  - num: 7
+    title: "Infinite sets"
+    points:
+      - id: "7.1"
+        title: "Infinite cardinality"
+        covers: [math/discrete/functions/countable-sets, math/discrete/functions/cantor-diagonalization]
+      - id: "7.2"
+        title: "The halting problem"
+        covers: [cs/theory/computability]
+  - num: 8
+    title: "Number theory"
+    points:
+      - id: "8.1"
+        title: "Divisibility"
+        covers: [math/discrete/number-theory/remainders-and-parity]
+      - id: "8.2"
+        title: "Greatest common divisor"
+        covers: [math/discrete/number-theory/gcd-and-euclidean-algorithm, math/discrete/number-theory/extended-euclidean-algorithm, math/discrete/number-theory/coprimality]
+      - id: "8.6"
+        title: "Modular arithmetic"
+        covers: [math/discrete/number-theory/modular-arithmetic]
+      - id: "8.10"
+        title: "Euler's theorem"
+        covers: [math/discrete/number-theory/euler-totient, math/discrete/number-theory/modular-exponentiation]
+      - id: "8.11"
+        title: "RSA"
+        covers: [math/discrete/number-theory/rsa]
+  - num: 9
+    title: "Directed graphs and partial orders"
+    points:
+      - id: "9.1"
+        title: "Directed graphs"
+        covers: [math/discrete/graph/directed-graphs]
+      - id: "9.4"
+        title: "Walk relations"
+        covers: [math/discrete/relations/combining]
+      - id: "9.6"
+        title: "Partial orders"
+        covers: [math/discrete/relations/partial-orders, math/discrete/relations/properties]
+      - id: "9.10"
+        title: "Equivalence relations"
+        covers: [math/discrete/relations/equivalence-relations, math/discrete/sets/partitions]
+  - num: 10
+    title: "Communication networks"
+    points:
+      - id: "10"
+        title: "Communication networks"
+        covers: [math/discrete/graph/communication-networks]
+  - num: 11
+    title: "Simple graphs"
+    points:
+      - id: "11.1"
+        title: "Adjacency and degrees"
+        covers: [math/discrete/graph/basic-definitions, math/discrete/graph/degree]
+      - id: "11.3"
+        title: "Common graphs"
+        covers: [math/discrete/graph/special-graphs, math/discrete/graph/representing-graphs]
+      - id: "11.4"
+        title: "Isomorphism"
+        covers: [math/discrete/graph/isomorphism]
+      - id: "11.5"
+        title: "Bipartite graphs and matchings"
+        covers: [math/discrete/graph/bipartite-graphs, math/discrete/proof/induction-extended-example]
+      - id: "11.6"
+        title: "Stable matching"
+        covers: [cs/algorithms/stable-matching]
+      - id: "11.7"
+        title: "Colouring"
+        covers: [math/discrete/graph/colouring]
+      - id: "11.8"
+        title: "Walks in simple graphs"
+        covers: [math/discrete/graph/walks-paths-cycles, math/discrete/graph/euler-and-hamilton]
+      - id: "11.9"
+        title: "Connectivity"
+        covers: [math/discrete/graph/connectivity]
+      - id: "11.10"
+        title: "Forests and trees"
+        covers: [math/discrete/graph/trees, math/discrete/graph/forests-and-spanning-trees]
+  - num: 12
+    title: "Planar graphs"
+    points:
+      - id: "12.2"
+        title: "Planar graphs and Euler's formula"
+        covers: [math/discrete/graph/planarity]
+  - num: 13
+    title: "Sums and asymptotics"
+    points:
+      - id: "13.1"
+        title: "Sums"
+        covers: [math/discrete/sequences/sums-and-series, math/discrete/sequences/approximating-sums]
+      - id: "13.7"
+        title: "Asymptotic notation"
+        covers: [math/discrete/sequences/limits, math/discrete/sequences/big-o]
+  - num: 14
+    title: "Cardinality rules"
+    points:
+      - id: "14.2"
+        title: "Counting sequences"
+        covers: [math/discrete/counting/sum-and-product-rules, math/discrete/counting/selection]
+      - id: "14.5"
+        title: "Counting subsets"
+        covers: [math/discrete/counting/combinations]
+      - id: "14.6"
+        title: "Sequences with repetitions"
+        covers: [math/discrete/counting/stars-and-bars]
+      - id: "14.9"
+        title: "Inclusion-exclusion"
+        covers: [math/discrete/counting/inclusion-exclusion, math/discrete/counting/derangements]
+  - num: 15
+    title: "Generating functions"
+    points:
+      - id: "15.2"
+        title: "Generating functions"
+        covers: [math/discrete/counting/generating-functions]
+  - num: 16
+    title: "Events and probability spaces"
+    points:
+      - id: "16.2"
+        title: "The four-step method"
+        covers: [math/probability/discrete/sample-spaces, math/probability/discrete/events]
+  - num: 17
+    title: "Conditional probability"
+    points:
+      - id: "17.2"
+        title: "Conditional probability"
+        covers: [math/probability/discrete/conditional-probability, math/probability/discrete/bayes-theorem]
+  - num: 18
+    title: "Random variables"
+    points:
+      - id: "18.1"
+        title: "Random variables"
+        covers: [math/probability/discrete/random-variables, math/probability/discrete/uniform-distribution, math/probability/discrete/binomial-distribution, math/probability/discrete/geometric-distribution]
+      - id: "18.4"
+        title: "Expectation"
+        covers: [math/probability/discrete/expectation-and-variance, math/probability/discrete/conditional-expectation]
+      - id: "18.5"
+        title: "Linearity of expectation"
+        covers: [math/probability/discrete/indicator-variables, math/probability/discrete/coupon-collector]
+  - num: 19
+    title: "Deviation from the mean"
+    points:
+      - id: "19.1"
+        title: "Markov's and Chebyshev's theorems"
+        covers: [math/probability/discrete/concentration-inequalities]
+      - id: "19.3"
+        title: "Properties of variance"
+        covers: [math/probability/discrete/functions-of-random-variables, math/probability/discrete/covariance-and-correlation]
+      - id: "19.6"
+        title: "Sums of random variables"
+        covers: [math/probability/discrete/chernoff-bounds, math/probability/discrete/hashing-and-load-balancing]
+  - num: 20
+    title: "Random walks"
+    points:
+      - id: "20.1"
+        title: "Gambler's ruin"
+        covers: [math/probability/markov-chains/hitting-times]
+      - id: "20.2"
+        title: "Random walks on graphs"
+        covers: [math/probability/markov-chains/finite-markov-chains, math/probability/markov-chains/invariant-distributions]
+  - num: 21
+    title: "Recurrences"
+    points:
+      - id: "21.1"
+        title: "Recurrences"
+        covers: [math/discrete/sequences/solving-recurrences, math/discrete/sequences/fibonacci]
