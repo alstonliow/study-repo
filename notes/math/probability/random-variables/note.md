@@ -1,6 +1,6 @@
 ---
 title: "Random Variables and Distributions"
-sources: [fit1058-cn-10.1, fit1058-cn-10.2]
+sources: [fit1058-cn-10.1, fit1058-cn-10.2, cs70-15.3]
 requires: [math/probability/conditional-probability]
 status: draft
 ---
@@ -73,5 +73,31 @@ The distribution is symmetric about $7$, the most likely total.
 ```
 
 The distribution of the total $Z$ of two fair dice: symmetric about $7$, the most likely total
+
+:::
+
+## Joint distributions
+
+::: {#def-joint-distribution .definition name="Joint and marginal distributions"}
+
+The *joint distribution* of random variables $X$ and $Y$ on the same sample space gives, for every pair of values $(a,b)$, the probability
+$$\Pr(X=a,\ Y=b).$$
+The distribution of $X$ alone is then called its *marginal distribution*. It is found by adding over the values of $Y$:
+$$\Pr(X=a)=\sum_b \Pr(X=a,\ Y=b).$$
+The same applies to any finite number of random variables.
+
+:::
+
+::: {.proof name="Why the marginal formula holds"}
+
+1. The events $Y=b$, over all values $b$ of $Y$, are pairwise mutually exclusive and together cover the sample space.
+
+2. So the event $X=a$ is the disjoint union of the events $X=a,\ Y=b$, and its probability is the sum of theirs.
+
+:::
+
+::: {#rmk-random-variables-3 .remark name="Independence in these terms"}
+
+$X$ and $Y$ are independent (@def-independent-random-variables) exactly when the joint distribution is the product of the marginals. Random variables that are mutually independent and have the same distribution are called *i.i.d.* (independent and identically distributed); the results of repeated tosses of one coin are an example.
 
 :::

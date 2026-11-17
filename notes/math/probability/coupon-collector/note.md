@@ -1,6 +1,6 @@
 ---
 title: "The coupon collector's problem"
-sources: [fit1058-cn-10.11]
+sources: [fit1058-cn-10.11, cs70-19.1.2]
 requires: [math/probability/geometric-distribution]
 status: draft
 ---

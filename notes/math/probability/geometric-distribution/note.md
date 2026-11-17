@@ -72,6 +72,14 @@ Write $q=1-p$, so $0\le q<1$.
 
 :::
 
+::: {#rmk-geometric-distribution-first-step .remark name="The expectation from the first trial"}
+
+There is a quick way to see $E[X]=\frac1p$. If the first trial succeeds, $X=1$. If it fails, one trial is used up and the process starts again, so on average $1+E[X]$ trials are needed. Hence
+$$E[X]=p\cdot1+(1-p)\bigl(1+E[X]\bigr),$$
+which gives $pE[X]=1$. This argument assumes that $E[X]$ is finite; the proof above shows that it is.
+
+:::
+
 ::: {#rmk-standard-distributions-5 .remark name="Memoryless property"}
 
 Given that the first $t$ trials have all failed, the number of further trials needed is again $\mathrm{Geom}(p)$: past failures do not make success “due”. Examples include the number of loop iterations until a random stopping condition holds, the number of time intervals until a component fails, and the number of balls a cricket batter faces.

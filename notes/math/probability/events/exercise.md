@@ -15,3 +15,9 @@ $$\Pr(A_1\sqcup A_2\sqcup\cdots\sqcup A_n) = \sum_{k=1}^n\Pr(A_k).$$
 Determine the probability that a random permutation on a set of two elements
 is fixed-point-free. Then do the same for three elements, and then five.
 :::
+
+::: {.problem #prob-cs70-14-q6 origin="external" source="cs70-14.5-q6"}
+Prove the union bound (9).
+
+*Note (these notes):* (9) is @thm-union-bound.
+:::

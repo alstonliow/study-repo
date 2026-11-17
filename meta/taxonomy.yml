@@ -131,9 +131,14 @@ parts:
           - bayes-theorem
           - random-variables
           - expectation-and-variance
+          - indicator-variables
+          - covariance-and-correlation
           - uniform-distribution
           - binomial-distribution
+          - hypergeometric-distribution
           - poisson-distribution
           - geometric-distribution
           - standard-distributions
           - coupon-collector
+          - concentration-inequalities
+          - hashing-and-load-balancing

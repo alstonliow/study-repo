@@ -1,6 +1,6 @@
 ---
 title: Unordered Selection without Replacement
-sources: [fit1058-cn-8.8]
+sources: [fit1058-cn-8.8, cs70-10.4]
 requires: [math/discrete/counting/selection, math/discrete/sets/power-set]
 status: draft
 ---
@@ -52,6 +52,23 @@ $$
 Fix element $x\in A$, $|A|=n$. Every $r$-subset of $A$ either contains $x$ (choose the remaining $r-1$ from $A\setminus\{x\}$: $\binom{n-1}{r-1}$ ways) or excludes $x$ (choose all $r$ from $A\setminus\{x\}$: $\binom{n-1}{r}$ ways) -- exhaustive, mutually exclusive cases.
 :::
 
+::: {#thm-binomial-theorem .theorem name="Binomial theorem"}
+For all $n\in\mathbb{N}$ and all numbers $a,b$,
+$$
+(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^k b^{\,n-k}.
+$$
+:::
+
+::: {.proof}
+1. Write $(a+b)^n$ as the product of $n$ factors $f_1f_2\cdots f_n$, each equal to $a+b$.
+
+2. Multiplying out, each term of the expansion picks either $a$ or $b$ from every factor. So there are $2^n$ terms, one for each sequence of choices.
+
+3. A term equals $a^kb^{\,n-k}$ exactly when $a$ is picked from $k$ of the factors and $b$ from the other $n-k$. The term is fixed by the set of factors that give $a$.
+
+4. There are $\binom nk$ such sets (@prp-binomial-formula). So $a^kb^{\,n-k}$ appears $\binom nk$ times, and adding up over $k=0,\dots,n$ gives the formula.
+:::
+
 ::: {#cor-alternating-sum .corollary name="Alternating sum"}
 For $n\ge1$,
 $$
@@ -61,6 +78,13 @@ $$
 
 ::: {.proof}
 Let $|A|=n\ge1$ and fix $a\in A$. The map $X\mapsto X\triangle\{a\}$ (add $a$ if absent, remove it if present) is a bijection from the even-size subsets of $A$ to the odd-size ones. So there are equally many of each, i.e. $\sum_{k \text{ even}}\binom nk=\sum_{k \text{ odd}}\binom nk$, which is the claim.
+:::
+
+::: {.proof name="Second proof, from the binomial theorem"}
+Put $a=-1$ and $b=1$ in @thm-binomial-theorem: for $n\ge1$,
+$$
+0=(-1+1)^n=\sum_{k=0}^{n}\binom nk(-1)^k.
+$$
 :::
 
 ::: {#rmk-combinations-3 .remark name="Why $n\ge1$"}

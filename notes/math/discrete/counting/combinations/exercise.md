@@ -55,3 +55,9 @@ How many poker hands are there of each type:
     to the pair and to each other;
 (j) nothing: none of the types (b)--(i).
 :::
+
+::: {.problem #prob-cs70-10-q1 origin="external" source="cs70-10.6-q1"}
+Provide a direct combinatorial proof of Corollary 10.1.
+
+*Note (these notes):* Corollary 10.1 of CS70 Note 10 is @cor-alternating-sum.
+:::

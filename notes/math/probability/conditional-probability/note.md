@@ -1,6 +1,6 @@
 ---
 title: "Independence and Conditional Probability"
-sources: [fit1058-cn-9.7, fit1058-cn-9.8, cs70-13.3.7]
+sources: [fit1058-cn-9.7, fit1058-cn-9.8, cs70-13.3.7, cs70-14.1, cs70-14.4]
 requires: [math/probability/events]
 status: draft
 ---
@@ -37,6 +37,14 @@ Independence must be checked from the probabilities, not from intuition about â€
 
 $A_1,\dots,A_n$ are *mutually independent* if for *every* subset $\{i_1,\dots,i_k\}\subseteq\{1,\dots,n\}$,
 $$\Pr(A_{i_1}\cap\cdots\cap A_{i_k}) = \Pr(A_{i_1})\cdots\Pr(A_{i_k}).$$
+
+:::
+
+::: {#prp-mutual-independence-complements .proposition name="Mutual independence with complements"}
+
+$A_1,\dots,A_n$ are mutually independent exactly when
+$$\Pr(B_1\cap\cdots\cap B_n)=\Pr(B_1)\cdots\Pr(B_n)$$
+for every choice of $B_i\in\{A_i,\overline{A_i}\}$, $i=1,\dots,n$. The definition above asks for the product formula on every subset of at least two events; this form asks for it on all $n$ events at once, but with each event possibly replaced by its complement. Proving the equivalence is an exercise.
 
 :::
 
@@ -116,5 +124,38 @@ $A$ and $B$ are independent exactly when learning that $B$ happened does not cha
 ::: {#prp-multiplication-rule .proposition name="Multiplication rule"}
 
 $\Pr(A\cap B) = \Pr(B)\cdot\Pr(A\mid B)$.
+
+:::
+
+::: {.proof}
+
+If $\Pr(B)>0$, multiply both sides of @def-conditional-probability by $\Pr(B)$.
+
+:::
+
+::: {#thm-chain-rule .theorem name="Product rule (chain rule)"}
+
+For events $A_1,\dots,A_n$ with $\Pr(A_1\cap\cdots\cap A_{n-1})>0$,
+$$\Pr(A_1\cap\cdots\cap A_n)=\Pr(A_1)\,\Pr(A_2\mid A_1)\,\Pr(A_3\mid A_1\cap A_2)\cdots\Pr(A_n\mid A_1\cap\cdots\cap A_{n-1}).$$
+
+:::
+
+::: {.proof}
+
+We use induction on $n$.
+
+1. For $n=1$ both sides are $\Pr(A_1)$.
+
+2. Let $n\ge2$ and assume the formula for $n-1$ events. Put $C=A_1\cap\cdots\cap A_{n-1}$, so $\Pr(C)>0$.
+
+3. By @prp-multiplication-rule, $\Pr(A_1\cap\cdots\cap A_n)=\Pr(C\cap A_n)=\Pr(C)\,\Pr(A_n\mid C)$.
+
+4. Each intersection $A_1\cap\cdots\cap A_j$ with $j\le n-1$ contains $C$, so it has positive probability, and the induction hypothesis applies to $\Pr(C)$. Substituting it into step 3 gives the formula for $n$ events.
+
+:::
+
+::: {#rmk-conditional-probability-4 .remark name="Read it as a sequence of choices"}
+
+The product rule fits experiments that happen in stages, such as dealing cards one by one: multiply the probability of each stage given everything before it. With mutually independent events every conditional probability equals the unconditional one, and the rule becomes a plain product.
 
 :::

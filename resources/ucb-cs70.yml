@@ -208,6 +208,11 @@ nodes:
     title: Random variables
     at:
       2020-fall: '15.1'
+  - id: res-ucb-cs70-distributions
+    kind: section
+    title: 'Distributions: Bernoulli, binomial, hypergeometric'
+    at:
+      2020-fall: '15.2'
   - id: res-ucb-cs70-multiple-random-variables
     kind: section
     title: Multiple random variables and independence
@@ -224,12 +229,27 @@ nodes:
       title: Examples
       at:
         2020-fall: 15.4.1
+    - id: res-ucb-cs70-linearity-of-expectation
+      kind: subsection
+      title: Linearity of expectation
+      at:
+        2020-fall: 15.4.2
+    - id: res-ucb-cs70-linearity-applications
+      kind: subsection
+      title: Applications of linearity
+      at:
+        2020-fall: 15.4.3
 - id: res-ucb-cs70-variance-and-covariance
   kind: note
   title: 'Random variables: variance and covariance'
   at:
     2020-fall: '16'
   nodes:
+  - id: res-ucb-cs70-variance
+    kind: section
+    title: Variance and the random walk
+    at:
+      2020-fall: '16.1'
   - id: res-ucb-cs70-computing-variance
     kind: section
     title: Computing variance
@@ -240,6 +260,11 @@ nodes:
     title: Sums of independent random variables
     at:
       2020-fall: '16.3'
+  - id: res-ucb-cs70-covariance-and-correlation
+    kind: section
+    title: Covariance and correlation
+    at:
+      2020-fall: '16.4'
   - id: res-ucb-cs70-variance-exercises
     kind: section
     title: Variance exercises
@@ -256,6 +281,11 @@ nodes:
     title: Markov's inequality
     at:
       2020-fall: '17.1'
+  - id: res-ucb-cs70-chebyshev-inequality
+    kind: section
+    title: Chebyshev's inequality
+    at:
+      2020-fall: '17.2'
   - id: res-ucb-cs70-concentration-applications
     kind: section
     title: Applications

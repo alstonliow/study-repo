@@ -1,6 +1,6 @@
 ---
 title: "Bayes' Theorem"
-sources: [fit1058-cn-9.9]
+sources: [fit1058-cn-9.9, cs70-14.2, cs70-14.3.1]
 requires: [math/probability/conditional-probability, math/discrete/sets/partitions]
 status: draft
 ---

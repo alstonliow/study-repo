@@ -90,3 +90,19 @@ example, roll a die with $A = \{1\}$ and $B = \{2,3\}$.
    $$\Pr(\text{path from }M\text{ to }N) = 1 - \tfrac9{32} = \tfrac{23}{32}\approx 0.72.$$
    This is higher than in part 1, because $M$ and $N$ are joined directly.
 :::
+
+::: {.solution for="prob-cs70-14-q1"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-cs70-14-q3"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-cs70-14-q4"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-cs70-14-q5"}
+<!-- TODO: solution -->
+:::

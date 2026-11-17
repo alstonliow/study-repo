@@ -93,3 +93,7 @@ digits fixes the number, because the order is forced.
     $\binom{13}5 - 10 = 1{,}277$, with suits not all equal, $4^5 - 4 = 1{,}020$.
     The product is $1{,}277\cdot1{,}020 = 1{,}302{,}540$.
 :::
+
+::: {.solution for="prob-cs70-10-q1"}
+<!-- TODO: solution -->
+:::

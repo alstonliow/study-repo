@@ -60,3 +60,7 @@ tosses are independent:
 Compared with one toss (posterior $\frac13$ for Fair after a Head), a second
 Head lowers belief in Fair further, from $\frac13$ to $\frac15$.
 :::
+
+::: {.solution for="prob-cs70-14-q2"}
+<!-- TODO: solution -->
+:::

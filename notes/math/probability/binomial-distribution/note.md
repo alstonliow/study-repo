@@ -1,6 +1,6 @@
 ---
 title: "Binomial Distribution"
-sources: [fit1058-cn-10.8, cs70-13.3.1]
+sources: [fit1058-cn-10.8, cs70-13.3.1, cs70-15.2]
 requires: [math/probability/expectation-and-variance, math/discrete/counting/combinations]
 status: draft
 ---
@@ -11,6 +11,14 @@ status: draft
 ::: {#def-bernoulli-trial .definition name="Bernoulli trial"}
 
 A *Bernoulli trial* is a random experiment with two outcomes, “success” with probability $p$ and “failure” with probability $1-p$.
+
+:::
+
+::: {#def-bernoulli-distribution .definition name="Bernoulli distribution"}
+
+$X\sim\mathrm{Bernoulli}(p)$, for $0\le p\le1$, means that $X$ takes only the values $0$ and $1$, with
+$$\Pr(X=1)=p,\qquad \Pr(X=0)=1-p.$$
+It records the outcome of one Bernoulli trial: $1$ for success, $0$ for failure.
 
 :::
 
@@ -35,6 +43,12 @@ $$\Pr(X=k) = \binom{n}{k}p^k(1-p)^{n-k}, \qquad k=0,1,\dots,n.$$
 ::: {#rmk-standard-distributions-1 .remark name="Where the formula comes from"}
 
 $\binom nk$ counts the ways to choose which $k$ of the $n$ trials succeed (@sec-math-discrete-counting-combinations), and each such outcome has probability $p^k(1-p)^{n-k}$ by independence.
+
+:::
+
+::: {#rmk-binomial-distribution-2 .remark name="A probabilistic proof of the binomial theorem"}
+
+The probabilities of a distribution add up to $1$, so $\sum_{k=0}^{n}\binom nk p^k(1-p)^{n-k}=1$. This is the binomial theorem (@thm-binomial-theorem) for $a=p$ and $b=1-p$.
 
 :::
 

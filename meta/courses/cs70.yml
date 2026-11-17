@@ -5,8 +5,8 @@
 # are therefore extra here, as the CS70 examples are extra for FIT1058
 # (strict rule for exercises too, confirmed by the owner on 2026-11-17).
 # Only the CS70 notes kept in raw/UCB_CS70 are mapped (Notes 10, 13-19).
-# Sections that cover none of our notes are left out (Note 17 apart from
-# Chebyshev, Note 18 and the exercise sections).
+# Sections that cover none of our notes are left out (the exercise sections, whose
+# problems sit in the notes they practise).
 # Points use CS70's own numbering: chapter = CS70 note number, point = section.
 # Titles are our own short titles (the resource res-ucb-cs70 has the full tree).
 id: cs70
@@ -21,8 +21,6 @@ exclude:
   # counting: FIT1058 material that CS70 Note 10 does not have
   - rmk-selection-2                                  # Counting injections
   - prp-pascal-identity                              # Pascal's identity
-  - cor-alternating-sum                              # Alternating sum
-  - rmk-combinations-3                               # remark on the block above
   - cor-ie-dual                                      # Dual form of inclusion-exclusion
   - rmk-stars-and-bars-2                             # Four different counts (summary)
   # probability: FIT1058 material that CS70 Notes 13-19 do not have
@@ -151,23 +149,44 @@ chapters:
         title: "Random variables"
         covers: [math/probability/random-variables]
       - id: "15.2"
-        title: "Bernoulli and binomial distributions"
-        covers: [math/probability/binomial-distribution]
+        title: "Bernoulli, binomial and hypergeometric distributions"
+        covers: [math/probability/binomial-distribution, math/probability/hypergeometric-distribution]
       - id: "15.4"
         title: "Expectation"
         covers: [math/probability/expectation-and-variance]
+      - id: "15.4.3"
+        title: "Applications of linearity"
+        covers: [math/probability/indicator-variables]
   - num: 16
     title: "Random variables: variance and covariance"
     points:
+      - id: "16.1"
+        title: "Variance and the random walk"
+        covers: [math/probability/covariance-and-correlation]
       - id: "16.2"
         title: "Computing variance"
         covers: [math/probability/uniform-distribution]
+      - id: "16.4"
+        title: "Covariance and correlation"
+        covers: [math/probability/covariance-and-correlation]
   - num: 17
     title: "Concentration inequalities"
     points:
+      - id: "17.1"
+        title: "Markov's inequality"
+        covers: [math/probability/concentration-inequalities]
       - id: "17.2"
         title: "Chebyshev's inequality"
         covers: [thm-chebyshev-s-inequality]
+  - num: 18
+    title: "Applications: hashing and load balancing"
+    points:
+      - id: "18.1"
+        title: "Hashing"
+        covers: [math/probability/hashing-and-load-balancing]
+      - id: "18.2"
+        title: "Load balancing"
+        covers: [math/probability/hashing-and-load-balancing]
   - num: 19
     title: "Geometric and Poisson distributions"
     points:

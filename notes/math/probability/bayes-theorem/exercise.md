@@ -33,3 +33,9 @@ DoubleTail:
 
 (c) the first toss is Heads, the second is Tails.
 :::
+
+::: {.problem #prob-cs70-14-q2 origin="external" source="cs70-14.5-q2"}
+Show (4) and (5).
+
+*Note (these notes):* In CS70 Note 14, (4) is the law of total probability for a partition $A_1,\dots,A_n$ of the sample space (@thm-law-of-total-probability) and (5) is Bayes' rule for such a partition (@thm-bayes-theorem).
+:::

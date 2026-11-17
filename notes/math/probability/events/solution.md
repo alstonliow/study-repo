@@ -42,3 +42,7 @@ derangements of an $n$-set, so the probability is $D_n/n!$.
 
 The probabilities approach $1/e\approx 0.368$ as $n$ grows.
 :::
+
+::: {.solution for="prob-cs70-14-q6"}
+<!-- TODO: solution -->
+:::

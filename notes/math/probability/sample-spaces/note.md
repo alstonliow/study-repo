@@ -1,6 +1,6 @@
 ---
 title: "Probability and Sample Spaces"
-sources: [fit1058-cn-9.1, fit1058-cn-9.2, fit1058-cn-9.3]
+sources: [fit1058-cn-9.1, fit1058-cn-9.2, fit1058-cn-9.3, cs70-13.3.3, cs70-13.3.4]
 requires: [math/discrete/counting/sum-and-product-rules, math/discrete/sequences/sums-and-series]
 status: draft
 ---

@@ -61,3 +61,25 @@ $p=\frac12$.
 
 2.  What is the probability that there is a path from $M$ to $N$?
 :::
+
+::: {.problem #prob-cs70-14-q1 origin="external" source="cs70-14.5-q1"}
+Suppose five cards are dealt from a standard deck of playing cards. Let $A_i$ be the event that the $i$th card is an ace. Show that $P[A_i] = \frac{1}{13}$ for all $i = 1, \dots, 5$.
+:::
+
+::: {.problem #prob-cs70-14-q3 origin="external" source="cs70-14.5-q3"}
+Show that Definitions 14.4 and 14.5 of mutual independence are equivalent.
+
+*Note (these notes):* Definition 14.4 is @def-mutual-independence-events; Definition 14.5 is the form with complements in @prp-mutual-independence-complements.
+:::
+
+::: {.problem #prob-cs70-14-q4 origin="external" source="cs70-14.5-q4"}
+In the Monty Hall problem, find $P[C_1 \cap P_1 \cap H_3]$.
+
+*Note (these notes):* $C_i$, $P_i$ and $H_i$ are as in @exm-monty-hall-conditional.
+:::
+
+::: {.problem #prob-cs70-14-q5 origin="external" source="cs70-14.5-q5"}
+In the Monty Hall problem, show that $P[H_3 \mid C_1] = \frac{1}{2}$.
+
+*Note (these notes):* $C_i$, $P_i$ and $H_i$ are as in @exm-monty-hall-conditional.
+:::

@@ -49,3 +49,7 @@ be those that miss the value $i$. A surjection misses nothing.
 3. Evaluating:
    $$4096 - 4\cdot729 + 6\cdot64 - 4\cdot1 + 0 = 4096 - 2916 + 384 - 4 = 1560.$$
 :::
+
+::: {.solution for="prob-cs70-10-q3"}
+<!-- TODO: solution -->
+:::

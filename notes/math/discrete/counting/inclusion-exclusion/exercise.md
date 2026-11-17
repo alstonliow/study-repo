@@ -17,3 +17,9 @@ CSIRAC, SILLIAC and WREDAC.
 Use inclusion-exclusion to determine the number of surjections from
 $\{a,b,c,d,e,f\}$ to $\{1,2,3,4\}$.
 :::
+
+::: {.problem #prob-cs70-10-q3 origin="external" source="cs70-10.6-q3"}
+Prove Theorem 10.3 using induction.
+
+*Note (these notes):* Theorem 10.3 of CS70 Note 10 is @thm-inclusion-exclusion.
+:::

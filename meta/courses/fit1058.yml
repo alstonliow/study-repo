@@ -12,6 +12,42 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  - thm-binomial-theorem                             # Binomial theorem (CS70, not in CN)
+  - prob-cs70-10-q1                                  # CS70 exercise
+  - prob-cs70-10-q2                                  # CS70 exercise
+  - prob-cs70-10-q3                                  # CS70 exercise
+  - thm-chain-rule                                   # Product (chain) rule for n events (CS70)
+  - rmk-conditional-probability-4                    # remark on the block above
+  - prp-mutual-independence-complements              # Mutual independence with complements (CS70)
+  - exm-conditioning-balls-and-bins                  # CS70 example
+  - exm-two-aces                                     # CS70 example
+  - exm-pairwise-not-mutual                          # CS70 example
+  - exm-three-heads                                  # CS70 example
+  - exm-monty-hall-conditional                       # CS70 example
+  - exm-flush-product-rule                           # CS70 example
+  - exm-three-dice-game                              # CS70 example
+  - prob-cs70-14-q1                                  # CS70 exercise
+  - prob-cs70-14-q3                                  # CS70 exercise
+  - prob-cs70-14-q4                                  # CS70 exercise
+  - prob-cs70-14-q5                                  # CS70 exercise
+  - exm-medical-test                                 # CS70 example
+  - exm-tennis-opponent                              # CS70 example
+  - exm-two-bins-white-ball                          # CS70 example
+  - prob-cs70-14-q2                                  # CS70 exercise
+  - thm-union-bound                                  # Union bound (CS70)
+  - rmk-events-4                                     # remark on the block above
+  - prob-cs70-14-q6                                  # CS70 exercise
+  - exm-card-shuffling                               # CS70 example
+  - exm-flush                                        # CS70 example
+  - def-joint-distribution                           # Joint and marginal distributions (CS70)
+  - rmk-random-variables-3                           # remark on the block above
+  - def-bernoulli-distribution                       # Bernoulli distribution (CS70)
+  - rmk-binomial-distribution-2                      # Probabilistic binomial theorem (CS70)
+  - prob-cs70-16-q2                                  # CS70 exercise
+  - thm-sum-of-poissons                              # Sum of independent Poissons (CS70)
+  - rmk-poisson-distribution-sum                     # remark on the block above
+  - rmk-geometric-distribution-first-step            # First-step derivation (CS70)
+  - exm-cereal-cards                                 # CS70 example
   - exm-balls-and-bins                               # Balls and bins (CS70, not in CN)
   - exm-biased-coin-tosses                           # Biased coin tosses (CS70, not in CN)
   - exm-monty-hall                                   # Monty Hall (CS70, not in CN)

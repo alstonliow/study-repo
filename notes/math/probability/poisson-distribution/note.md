@@ -1,6 +1,6 @@
 ---
 title: "Poisson Distribution"
-sources: [fit1058-cn-10.9, cs70-19.2.1]
+sources: [fit1058-cn-10.9, cs70-19.2.1, cs70-19.2.2]
 requires: [math/probability/binomial-distribution]
 status: draft
 ---
@@ -97,5 +97,28 @@ $$\binom{n}{k}p^k(1-p)^{n-k} \to \frac{e^{-\mu}\mu^k}{k!}.$$
 ::: {#rmk-standard-distributions-3 .remark name="Approximating the binomial"}
 
 So $\mathrm{Bin}(n,p)$ with $n$ large, $p$ small and $np$ moderate is well approximated by $\mathrm{Poisson}(np)$: think of many trials, each with a small chance of a rare event.
+
+:::
+
+::: {#thm-sum-of-poissons .theorem name="Sum of independent Poisson variables"}
+
+If $X\sim\mathrm{Poisson}(\lambda)$ and $Y\sim\mathrm{Poisson}(\mu)$ are independent, then $X+Y\sim\mathrm{Poisson}(\lambda+\mu)$.
+
+:::
+
+::: {.proof}
+
+1. Fix $k\ge0$. Both variables take values in $\{0,1,2,\dots\}$, so $X+Y=k$ is the disjoint union of the events $X=j,\ Y=k-j$ for $j=0,\dots,k$.
+
+2. By independence (@def-independent-random-variables),
+   $$\Pr(X+Y=k)=\sum_{j=0}^{k}\frac{e^{-\lambda}\lambda^j}{j!}\cdot\frac{e^{-\mu}\mu^{k-j}}{(k-j)!}=\frac{e^{-(\lambda+\mu)}}{k!}\sum_{j=0}^{k}\binom kj\lambda^j\mu^{k-j}.$$
+
+3. By the binomial theorem (@thm-binomial-theorem) the sum is $(\lambda+\mu)^k$, so $\Pr(X+Y=k)=\dfrac{e^{-(\lambda+\mu)}(\lambda+\mu)^k}{k!}$.
+
+:::
+
+::: {#rmk-poisson-distribution-sum .remark name="Many summands"}
+
+By induction, a sum of $n$ independent Poisson variables with parameters $\lambda_1,\dots,\lambda_n$ is $\mathrm{Poisson}(\lambda_1+\cdots+\lambda_n)$. For example, calls arriving independently at two exchanges at average rates $2$ and $3$ per minute add up to a Poisson stream at rate $5$.
 
 :::

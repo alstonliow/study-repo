@@ -1,6 +1,6 @@
 ---
 title: "Events"
-sources: [fit1058-cn-9.4, fit1058-cn-9.5, fit1058-cn-9.6, cs70-13.3.5]
+sources: [fit1058-cn-9.4, fit1058-cn-9.5, fit1058-cn-9.6, cs70-13.3.5, cs70-14.4.3]
 requires: [math/probability/sample-spaces, math/discrete/counting/inclusion-exclusion]
 status: draft
 ---
@@ -146,5 +146,36 @@ $$\Pr\left(\bigcap_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<
 ::: {#rmk-events-3 .remark name="Proof and relation to counting"}
 
 This is the probability version of the dual form for set sizes (@cor-ie-dual), with the same proof. When all outcomes are equally likely, $\Pr(A) = |A|/|U|$, and both forms reduce to the counting versions: inclusion-exclusion for counting is a special case of inclusion-exclusion for probability.
+
+:::
+
+## The union bound
+
+::: {#thm-union-bound .theorem name="Union bound"}
+
+For any events $A_1,\dots,A_n$,
+$$\Pr(A_1\cup\cdots\cup A_n)\le\Pr(A_1)+\cdots+\Pr(A_n).$$
+Equality holds when the events are pairwise mutually exclusive.
+
+:::
+
+::: {.proof}
+
+We use induction on $n$.
+
+1. For $n=1$ both sides are $\Pr(A_1)$.
+
+2. For two events, inclusion-exclusion (@thm-general-case) gives $\Pr(A\cup B)=\Pr(A)+\Pr(B)-\Pr(A\cap B)\le\Pr(A)+\Pr(B)$, since $\Pr(A\cap B)\ge0$.
+
+3. Let $n\ge2$ and assume the bound for $n-1$ events. Apply step 2 to $A=A_1\cup\cdots\cup A_{n-1}$ and $B=A_n$, then the induction hypothesis to $\Pr(A)$:
+   $$\Pr(A_1\cup\cdots\cup A_n)\le\Pr(A_1\cup\cdots\cup A_{n-1})+\Pr(A_n)\le\sum_{i=1}^{n}\Pr(A_i).$$
+
+4. If the events are pairwise mutually exclusive, every intersection has probability $0$, so each step is an equality (@prp-events-1).
+
+:::
+
+::: {#rmk-events-4 .remark name="When to use it"}
+
+Inclusion-exclusion is exact but needs the probabilities of all $2^n-1$ intersections. The union bound needs only the single events. It overestimates, but it is often good enough to show that a union of rare events is still rare, as in hashing and load balancing.
 
 :::
