@@ -1,6 +1,6 @@
 ---
 title: "Induction: more examples"
-sources: [fit1058-cn-3.11]
+sources: [fit1058-cn-3.11, cs70-3.2]
 requires: [math/discrete/proof/induction]
 status: draft
 ---

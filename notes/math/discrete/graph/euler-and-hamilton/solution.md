@@ -107,3 +107,7 @@ Let $G$ be a connected multigraph (multiple edges and loops allowed).
    $G$ is Eulerian $\iff$ $H$ is Eulerian $\iff$ every vertex of $H$ has
    even degree $\iff$ every vertex of $G$ has even degree, using step 2.
 :::
+
+::: {.solution for="prob-cs70-5-q1"}
+<!-- TODO: solution -->
+:::

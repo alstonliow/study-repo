@@ -19,3 +19,7 @@
    really one and the same, so the conclusion does not follow. Indeed it is
    false: $\frac12\in\mathbb Q\setminus\mathbb Z$.
 :::
+
+::: {.solution for="prob-cs70-2-q2"}
+<!-- TODO: solution -->
+:::

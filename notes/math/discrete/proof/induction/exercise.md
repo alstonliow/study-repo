@@ -57,3 +57,7 @@ pieces by $n$ straight lines.
 
 5.  So with $n$ lines, repeated doubling gives $2^n$ pieces. “$\square$”
 :::
+
+::: {.problem #prob-cs70-3-q1 origin="external" source="cs70-3.6-q1"}
+Prove for any natural number $n$ that $1^2 + 2^2 + 3^2 + \dots + n^2 = \frac{1}{6}n(n + 1)(2n + 1)$.
+:::

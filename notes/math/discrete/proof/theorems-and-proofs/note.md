@@ -1,6 +1,6 @@
 ---
 title: "Theorems, Proofs and Logical Deduction"
-sources: [fit1058-cn-3.1, fit1058-cn-3.2]
+sources: [fit1058-cn-3.1, fit1058-cn-3.2, cs70-2.4]
 requires: [math/discrete/sets/power-set]
 status: draft
 ---
@@ -132,5 +132,37 @@ Both $P\Rightarrow Q$ and $\neg Q \Rightarrow \neg P$ are false in exactly one c
 ::: {#exm-affirming-the-consequent-in-the .example name="Affirming the consequent, in the wild"}
 
 “If it rains, the ground is wet. The ground is wet. Therefore it rained.” Invalid: the ground could be wet from a sprinkler.
+
+:::
+
+## Proof by contraposition
+
+::: {#rmk-theorems-and-proofs-contraposition .remark name="The pattern"}
+
+To prove $P\implies Q$, assume $\neg Q$ and deduce $\neg P$. This proves the contrapositive $\neg Q\implies\neg P$, which is logically equivalent to $P\implies Q$ (@thm-theorems-and-proofs-1). It helps when $\neg Q$ gives something concrete to work with and $P$ does not. Say at the start that the proof is by contraposition.
+
+:::
+
+::: {#exm-divisor-of-odd-number .example name="Divisors of an odd number are odd"}
+
+Claim: if $d\mid n$ and $n$ is odd, then $d$ is odd. Assuming "$n$ is odd" gives little to work with, so we prove the contrapositive: if $d$ is even, then $n$ is even. Write $d=2k$ and $n=d\,l$ for integers $k,l$. Then $n=2(kl)$ is even.
+
+:::
+
+::: {#thm-pigeonhole .theorem name="Pigeonhole principle"}
+
+If $n$ objects are placed in $k$ boxes and $n>k$, then some box contains at least two objects.
+
+:::
+
+::: {.proof}
+
+By contraposition. Suppose every box contains at most one object. Then the number of objects is at most the number of boxes, so $n\le k$.
+
+:::
+
+::: {#exm-hairs-on-heads .example name="Two people with the same number of hairs"}
+
+Nobody has more than $500\,000$ hairs on their head, but a city of more than $800\,000$ people has more people than possible hair counts $0,1,\dots,500\,000$. By @thm-pigeonhole, two residents have exactly the same number of hairs. The principle gives the conclusion without telling us who they are.
 
 :::

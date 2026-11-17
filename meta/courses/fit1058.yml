@@ -12,6 +12,47 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # CS70 Notes 5-7 material (not in CN)
+  - thm-kuratowski
+  - rmk-planarity-kuratowski
+  - rmk-trees-equivalent
+  - def-rooted-tree
+  - rmk-trees-rooted
+  - rmk-special-graphs-hypercube-recursive
+  - thm-hypercube-cut
+  - rmk-special-graphs-hypercube-network
+  - rmk-euler-and-hamilton-directed
+  - prp-ea-steps
+  - exm-no-inverse-twelve-mod-fifteen
+  - exm-solving-linear-congruence
+  - prob-cs70-5-q1
+  - prob-cs70-5-q2
+  - prob-cs70-5-q3
+  # CS70 Notes 1-3 material (not in CN)
+  - def-contradiction-propositional
+  - rmk-tautologies-excluded-middle
+  - rmk-theorems-and-proofs-contraposition
+  - exm-divisor-of-odd-number
+  - thm-pigeonhole
+  - exm-hairs-on-heads
+  - exm-false-proof-assume-claim
+  - exm-false-proof-divide-by-zero
+  - exm-false-proof-squaring-inequality
+  - exm-digit-sum-nine
+  - exm-checking-cases-is-not-proof
+  - exm-two-colourable-maps
+  - exm-strengthen-odd-squares
+  - exm-strengthen-reciprocal-squares
+  - exm-postage-four-five
+  - exm-binary-search-correct
+  - exm-all-horses-same-colour
+  - prob-cs70-2-q1
+  - prob-cs70-2-q2
+  - prob-cs70-3-q1
+  - prob-cs70-3-q2
+  - prob-cs70-3-q3
+  - prob-cs70-3-q4
+  - prob-cs70-3-q5
   - thm-binomial-theorem                             # Binomial theorem (CS70, not in CN)
   - prob-cs70-10-q1                                  # CS70 exercise
   - prob-cs70-10-q2                                  # CS70 exercise

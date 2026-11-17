@@ -1,6 +1,6 @@
 ---
 title: "The GCD and the Euclidean Algorithm"
-sources: [fit1058-cn-7.5, fit1058-cn-7.6]
+sources: [fit1058-cn-7.5, fit1058-cn-7.6, cs70-6.5]
 requires: [math/discrete/number-theory/remainders-and-parity]
 status: draft
 ---
@@ -137,5 +137,23 @@ Consecutive Fibonacci numbers are the worst case: every quotient is $1$, so each
 $$55=1\cdot34+21,\quad 34=1\cdot21+13,\quad 21=1\cdot13+8,\quad 13=1\cdot8+5,$$
 $$8=1\cdot5+3,\quad 5=1\cdot3+2,\quad 3=1\cdot2+1,\quad 2=2\cdot1.$$
 So $\gcd(55,34)=1$. In the same way, consecutive Fibonacci numbers are always coprime (Exercise 7.12).
+
+:::
+
+::: {#prp-ea-steps .proposition name="The Euclidean Algorithm is fast"}
+
+If $a\ge b>0$ and $a$ has $n$ bits, the Euclidean Algorithm makes at most $2n$ division steps.
+
+:::
+
+::: {.proof}
+
+1. One step replaces $(a,b)$ by $(b,\ a\bmod b)$. We show that after two steps the larger number is at most half of $a$.
+
+2. If $b\le\frac a2$, the larger number after one step is already $b\le\frac a2$, and it only decreases afterwards.
+
+3. If $b>\frac a2$, then $a=1\cdot b+(a-b)$, so $a\bmod b=a-b<\frac a2$, and after two steps the larger number is $a\bmod b<\frac a2$.
+
+4. Halving an $n$-bit number $n$ times leaves less than $1$, so the algorithm stops within $2n$ steps.
 
 :::

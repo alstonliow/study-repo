@@ -1,6 +1,6 @@
 ---
 title: "Euler tours and Hamiltonian cycles"
-sources: [fit1058-cn-11.11]
+sources: [fit1058-cn-11.11, cs70-5.2]
 requires: [math/discrete/graph/connectivity, math/discrete/graph/degree]
 status: draft
 ---
@@ -62,6 +62,12 @@ The four land masses of Königsberg are vertices and its seven bridges are edges
 ```
 
 Königsberg: the island $C$ has degree $5$, and $A$, $B$, $D$ have degree $3$, so no Euler tour exists
+
+:::
+
+::: {#rmk-euler-and-hamilton-directed .remark name="Directed graphs"}
+
+For a directed graph the same argument works with one change: a connected directed graph has a closed walk using every edge exactly once if and only if every vertex has in-degree equal to its out-degree. Arriving and leaving now use one incoming and one outgoing edge.
 
 :::
 

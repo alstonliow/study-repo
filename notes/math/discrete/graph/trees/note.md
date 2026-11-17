@@ -1,6 +1,6 @@
 ---
 title: "Trees"
-sources: [fit1058-cn-12.1, fit1058-cn-12.2]
+sources: [fit1058-cn-12.1, fit1058-cn-12.2, cs70-5.4.2]
 requires: [math/discrete/graph/connectivity]
 status: draft
 ---
@@ -137,5 +137,34 @@ By the Principle of Mathematical Induction, the claim holds for all $n$.
 ::: {#rmk-trees-4 .remark name="Using the edge count"}
 
 So a connected graph on $n$ vertices has at least $n-1$ edges, and has exactly $n-1$ if and only if it is a tree.
+
+:::
+
+## Equivalent definitions
+
+::: {#rmk-trees-equivalent .remark name="Four ways to say tree"}
+
+For a graph $G$ on $n$ vertices, the following are equivalent:
+
+1. $G$ is connected and has no cycles (@def-tree);
+2. $G$ is connected and has $n-1$ edges;
+3. $G$ is connected, and removing any edge disconnects it;
+4. $G$ has no cycles, and adding any edge between non-adjacent vertices creates a cycle.
+
+$1\iff3$ is CN Thm 66 (@thm-cn-thm-66), and $1\implies2$ is CN Thm 68 (@thm-cn-thm-68). The converse $2\implies1$ follows from the fact in the remark *Using the edge count* above that a connected graph has at least $n-1$ edges, which is an exercise below.
+
+:::
+
+## Rooted trees
+
+::: {#def-rooted-tree .definition name="Rooted tree"}
+
+A *rooted tree* is a tree with one vertex chosen as the *root*. The vertices at distance $k$ from the root form *level* $k$. The *leaves* are the vertices of degree $1$ other than the root, and the other non-root vertices are *internal*. The *depth* of the tree is the largest level that is not empty, that is, the length of a longest path from the root.
+
+:::
+
+::: {#rmk-trees-rooted .remark name="Where rooted trees appear"}
+
+Rooted trees describe hierarchies: a family tree, cell division (each level is one generation), the folders on a disk, and search trees, where each comparison moves one level down.
 
 :::

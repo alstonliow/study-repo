@@ -59,7 +59,7 @@ Enumerate $A = \{a_1,\dots,a_m\}$. $a_1$ has $n$ choices in $B$; $a_2$ must avoi
 
 ::: {#rmk-functions-counting-1 .remark}
 
-If $m > n$, the product includes a factor of $0$, correctly giving $0$ injections – consistent with the pigeonhole principle.
+If $m > n$, the product includes a factor of $0$, correctly giving $0$ injections – consistent with the pigeonhole principle (@thm-pigeonhole).
 
 :::
 

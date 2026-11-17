@@ -150,3 +150,9 @@ Let $G$ be the cryptosystem obtained from Caesar slide (Exercise 2.15) by
 restricting the keyspace to $K_G=\{\mathtt a,\mathtt b,\dots,\mathtt m\}$.
 Prove that $G$ is not idempotent.
 :::
+
+::: {.problem #prob-cs70-2-q1 origin="external" source="cs70-2.9-q1"}
+Generalize the proof of Theorem 2.2 so that it works for any positive integer $n$. (HINT: Suppose $n$ has $k$ digits, and write $a_i$ for the digits of $n$, so that $n = \sum_{i=0}^{k-1} (a_i \cdot 10^i)$.)
+
+*Note (these notes):* Theorem 2.2 of CS70 Note 2 is the direction ($\Leftarrow$) of @exm-digit-sum-nine.
+:::

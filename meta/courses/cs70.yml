@@ -14,10 +14,210 @@ code: CS70
 name: "Discrete Mathematics and Probability Theory"
 institution: UC Berkeley
 source_prefix: cs70-
-outline_from: "UC Berkeley CS 70 Course Notes (Fall 2020), Notes 10 and 13-19 only"
+outline_from: "UC Berkeley CS 70 Course Notes (Fall 2020), Notes 1-21 (mapped round by round)"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Notes 5-7: FIT1058 graph and number-theory material that CS70 Notes 5-7 do not have
+  - def-complement
+  - prp-basic-definitions-1
+  - def-wheel-graph
+  - def-subgraph
+  - exm-basic-definitions-1-2
+  - def-induced-subgraph
+  - fig-basic-definitions-3
+  - rmk-basic-definitions-3
+  - exm-basic-definitions-1
+  - cor-odd-degree
+  - cor-avg-degree
+  - rmk-degree-2
+  - thm-equal-degree
+  - rmk-degree-4
+  - rmk-degree-5
+  - exm-degree-1
+  - exm-degree-2
+  - exm-walks-paths-cycles-1
+  - exm-walks-paths-cycles-2
+  - lem-shortest-path
+  - def-distance
+  - thm-odd-closed-walk
+  - rmk-walks-paths-cycles-3
+  - thm-walks
+  - rmk-walks-paths-cycles-4
+  - exm-walks-paths-cycles-3
+  - exm-euler-and-hamilton-1
+  - thm-partition-into-trails
+  - thm-route-inspection-chinese-postman-extra
+  - rmk-euler-and-hamilton-3
+  - def-hamiltonian
+  - fig-euler-and-hamilton-2
+  - exm-euler-and-hamilton-2
+  - thm-dirac-extra
+  - rmk-euler-and-hamilton-4
+  - def-travelling-salesman-problem
+  - prp-euler-and-hamilton-1
+  - rmk-euler-and-hamilton-5
+  - rmk-planarity-3
+  - rmk-trees-2
+  - rmk-trees-3
+  - def-parity
+  - exm-remainders-and-parity-1-2
+  - rmk-remainders-and-parity-2
+  - exm-checking-a-product-mod-9
+  - prp-gcdsub
+  - rmk-gcd-and-euclidean-algorithm-2
+  - fig-gcd-and-euclidean-algorithm-1
+  - prp-gcdlcm
+  - exm-worst-case-of-the-ea
+  - thm-euler
+  - cor-expred
+  - rmk-modular-exponentiation-2
+  - exm-exponent-reduction
+  - prob-graph-1-01
+  - prob-graph-1-03
+  - prob-graph-1-04
+  - prob-graph-2-13
+  - prob-graph-1-05
+  - prob-graph-1-06
+  - prob-graph-1-07
+  - prob-graph-1-09
+  - prob-graph-1-10
+  - prob-graph-1-11
+  - prob-graph-1-12
+  - prob-graph-2-09
+  - prob-graph-2-10
+  - prob-graph-2-11
+  - prob-graph-2-12
+  - prob-graph-2-01
+  - prob-graph-2-02
+  - prob-graph-2-03
+  - prob-graph-2-04
+  - prob-graph-2-05
+  - prob-graph-2-06
+  - prob-number-theory-04
+  - prob-number-theory-06
+  - prob-number-theory-07
+  - prob-number-theory-03
+  - prob-number-theory-08
+  - prob-number-theory-10
+  - prob-number-theory-11
+  - prob-number-theory-15
+  - prob-number-theory-12
+  - prob-number-theory-13
+  - prob-number-theory-16
+  # Notes 1-3: FIT1058 logic and proof material that CS70 Notes 1-3 do not have
+  - def-generalized-n-ary-conjunction
+  - rmk-connectives-1
+  - rmk-connectives-2
+  - rmk-connectives-4
+  - rmk-connectives-5
+  - exm-translating-english-and
+  - exm-english-or-is-ambiguous
+  - fig-connectives-1
+  - rmk-implication-and-equivalence-3
+  - def-exclusive-or
+  - prp-implication-and-equivalence-1-2
+  - thm-generalized-xor-parity-cn-thm
+  - rmk-implication-and-equivalence-4
+  - fig-implication-and-equivalence-1
+  - prp-exportation-law
+  - thm-generalized-de-morgan-s-law-2
+  - rmk-de-morgans-laws-1
+  - rmk-de-morgans-laws-2
+  - rmk-de-morgans-laws-3
+  - rmk-de-morgans-laws-4
+  - fig-de-morgans-laws-1
+  - def-predicate-logic-expression-recursive
+  - rmk-quantifiers-1
+  - rmk-quantifiers-2
+  - def-bound-variable
+  - rmk-quantifiers-5
+  - rmk-quantifiers-7
+  - rmk-quantifiers-9
+  - rmk-quantifiers-10
+  - prp-general-fact
+  - def-predicate-logic-expression-complete-recursive
+  - rmk-multiple-quantifiers-3
+  - rmk-logic-with-quantifiers-1
+  - prp-distributes-over-distributes-over
+  - rmk-logic-with-quantifiers-2
+  - def-scope-of-a-quantified-variable
+  - exm-two-disjoint-scopes-same-variable
+  - exm-not-all-stars-are-visible
+  - exm-infinitely-many-primes-in-predicate
+  - exm-swapping-the-quantifiers-gives-a
+  - exm-translating-a-nested-quantifier-english
+  - rmk-logic-with-quantifiers-4
+  - exm-theorems-and-proofs-1
+  - rmk-theorems-and-proofs-2
+  - rmk-theorems-and-proofs-3
+  - rmk-theorems-and-proofs-4
+  - rmk-theorems-and-proofs-6
+  - exm-affirming-the-consequent-in-the
+  - exm-finding-proofs-1
+  - exm-proof-by-exhaustion
+  - rmk-finding-proofs-2
+  - rmk-finding-proofs-3
+  - rmk-finding-proofs-4
+  - rmk-finding-proofs-5
+  - rmk-finding-proofs-6
+  - rmk-finding-proofs-7
+  - rmk-finding-proofs-8
+  - exm-vacuous-proof
+  - rmk-finding-proofs-10
+  - rmk-finding-proofs-11
+  - rmk-contradiction-4
+  - exm-the-collatz-conjecture
+  - exm-difference-of-two-squares
+  - exm-ramanujan-s-taxicab-number-extra
+  - thm-generalized-de-morgan-s-law
+  - exm-interesting-numbers
+  - rmk-induction-2
+  - thm-well-ordering-mathematical-induction
+  - rmk-induction-4
+  - exm-harmonic-numbers
+  - def-depth-of-a-set-of
+  - exm-division-algorithm-existence-via-well
+  - def-simple-polygon-diagonal
+  - fig-induction-examples-1
+  - lem-every-simple-polygon-with-sides
+  - exm-round-robin-tournament-ranking
+  - prob-propositional-01
+  - prob-propositional-02
+  - prob-propositional-06
+  - prob-propositional-09
+  - prob-propositional-11
+  - prob-propositional-12
+  - prob-propositional-10
+  - prob-propositional-03
+  - prob-predicate-11
+  - prob-predicate-03
+  - prob-predicate-04
+  - prob-predicate-05
+  - prob-predicate-06
+  - prob-predicate-07
+  - prob-predicate-08
+  - prob-predicate-09
+  - prob-predicate-10
+  - prob-predicate-12
+  - prob-predicate-13
+  - prob-predicate-02
+  - prob-predicate-14
+  - prob-proofs-03
+  - prob-proofs-02
+  - prob-proofs-04
+  - prob-proofs-05
+  - prob-proofs-12
+  - prob-proofs-15
+  - prob-proofs-14
+  - prob-proofs-01
+  - prob-proofs-06
+  - prob-proofs-07
+  - prob-proofs-08
+  - prob-proofs-09
+  - prob-proofs-13
+  - prob-proofs-10
+  - prob-proofs-11
   # counting: FIT1058 material that CS70 Note 10 does not have
   - rmk-selection-2                                  # Counting injections
   - prp-pascal-identity                              # Pascal's identity
@@ -100,6 +300,75 @@ exclude:
   - prob-probability-2-11
 
 chapters:
+  - num: 1
+    title: "Propositional logic"
+    points:
+      - id: "1.1"
+        title: "Propositions and connectives"
+        covers: [math/discrete/logic/propositional/propositions, math/discrete/logic/propositional/connectives, math/discrete/logic/propositional/implication-and-equivalence, math/discrete/logic/propositional/tautologies, math/discrete/logic/propositional/de-morgans-laws]
+      - id: "1.2"
+        title: "Quantifiers"
+        covers: [math/discrete/logic/predicate/quantifiers, math/discrete/logic/predicate/multiple-quantifiers]
+      - id: "1.3"
+        title: "Negation"
+        covers: [math/discrete/logic/predicate/logic-with-quantifiers]
+  - num: 2
+    title: "Proofs"
+    points:
+      - id: "2.3"
+        title: "Direct proof"
+        covers: [math/discrete/proof/theorems-and-proofs, math/discrete/proof/finding-proofs]
+      - id: "2.5"
+        title: "Proof by contradiction"
+        covers: [math/discrete/proof/contradiction]
+      - id: "2.6"
+        title: "Proof by cases"
+        covers: [math/discrete/proof/techniques]
+  - num: 3
+    title: "Mathematical induction"
+    points:
+      - id: "3.1"
+        title: "Induction"
+        covers: [math/discrete/proof/induction]
+      - id: "3.2"
+        title: "Strengthening the hypothesis and strong induction"
+        covers: [math/discrete/proof/induction-examples]
+  - num: 5
+    title: "Graph theory"
+    points:
+      - id: "5.1"
+        title: "Graphs and formal definitions"
+        covers: [math/discrete/graph/basic-definitions, math/discrete/graph/degree, math/discrete/graph/walks-paths-cycles, math/discrete/graph/connectivity]
+      - id: "5.2"
+        title: "Eulerian tours"
+        covers: [math/discrete/graph/euler-and-hamilton]
+      - id: "5.3"
+        title: "Planar graphs"
+        covers: [math/discrete/graph/planarity]
+      - id: "5.4"
+        title: "Complete graphs, trees and hypercubes"
+        covers: [math/discrete/graph/special-graphs, math/discrete/graph/trees]
+  - num: 6
+    title: "Modular arithmetic"
+    points:
+      - id: "6.1"
+        title: "Computation and set representation"
+        covers: [math/discrete/number-theory/remainders-and-parity, math/discrete/number-theory/modular-arithmetic]
+      - id: "6.2"
+        title: "Exponentiation"
+        covers: [math/discrete/number-theory/modular-exponentiation]
+      - id: "6.5"
+        title: "Euclid's algorithm"
+        covers: [math/discrete/number-theory/gcd-and-euclidean-algorithm, math/discrete/number-theory/extended-euclidean-algorithm]
+      - id: "6.6"
+        title: "Chinese remainder theorem"
+        covers: [math/discrete/number-theory/chinese-remainder-theorem]
+  - num: 7
+    title: "Public-key cryptography: RSA"
+    points:
+      - id: "7"
+        title: "RSA"
+        covers: [math/discrete/number-theory/rsa]
   - num: 10
     title: "Counting"
     points:

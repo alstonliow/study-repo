@@ -43,3 +43,27 @@ Afterthoughts: try to prove $H_n\ge\log_e n$ directly by induction — where
 is the snag? Would the proof work for other bases? Can you prove
 $H_n\le(\log_e n)+1$?
 :::
+
+::: {.problem #prob-cs70-3-q2 origin="external" source="cs70-3.6-q2"}
+In real analysis, Bernoulli's Inequality is an inequality which approximates the exponentiations of $1 + x$. Prove this inequality, which states that $(1 + x)^n \ge 1 + nx$ if $n$ is a natural number and $1 + x > 0$.
+:::
+
+::: {.problem #prob-cs70-3-q3 origin="external" source="cs70-3.6-q3"}
+A common recursively defined function is the factorial, defined for a nonnegative number $n$ as $n! = n(n - 1)(n - 2)\dots1$, with base case $0! = 1$. Let us reinforce our understanding of the connection between recursion and induction by considering the following theorem involving factorials.
+
+Theorem: For all $n \in \mathbb{N}$, $n > 1 \implies n! < n^n$.
+
+Prove this theorem using induction. (Hint: In the Inductive Step, write $(n + 1)! = (n + 1) \cdot n!$, and use the Induction Hypothesis.)
+:::
+
+::: {.problem #prob-cs70-3-q4 origin="external" source="cs70-3.6-q4"}
+A celebrity at a party is someone whom everyone knows, yet who knows no one. Suppose that you are at a party with $n$ people. For any pair of people $A$ and $B$ at the party, you can ask $A$ if they know $B$ and receive an honest answer. Give a recursive algorithm to determine whether there is a celebrity at the party, and if so who, by asking at most $3n - 4$ questions. (Note: for the purpose of this question you are just visiting the party to ask questions. What you are trying to determine is whether the $n$ people actually attending the party include a celebrity.)
+
+Prove by induction that your algorithm always correctly identifies a celebrity if there is one, and that the number of questions is at most $3n - 4$.
+:::
+
+::: {.problem #prob-cs70-3-q5 origin="external" source="cs70-3.6-q5"}
+Use the proof of Theorem 3.6 to design an algorithm that, given any amount of postage of at least 12¢, outputs the numbers of 4¢ and 5¢ stamps that make up this postage. What's the largest number of 5¢ stamps your algorithm will ever use?
+
+*Note (these notes):* Theorem 3.6 of CS70 Note 3 is @exm-postage-four-five.
+:::

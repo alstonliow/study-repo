@@ -1,6 +1,6 @@
 # UC Berkeley CS 70 (Discrete Mathematics and Probability Theory) course notes, Fall 2020,
 # as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
-# Only the notes kept in raw/UCB_CS70 are listed (Notes 10, 13-19); their sections have
+# The notes kept in raw/UCB_CS70 (Notes 1-21) are added round by round; their sections have
 # short titles of our own. Locators are <note>.<section>[.<subsection>], so a source key
 # is cs70-13.3.5 (Note 13, section 3.5) and cs70-10.6-q3 for an exercise.
 # Node ids are stable: never renamed when a title or a locator changes.
@@ -19,6 +19,202 @@ legacy_keys:
   label: CS70 {section}
   problem_label: CS70 {section} Q{n}
 nodes:
+- id: res-ucb-cs70-propositional-logic
+  kind: note
+  title: Propositional logic
+  at:
+    2020-fall: '1'
+  nodes:
+  - id: res-ucb-cs70-propositions-and-connectives
+    kind: section
+    title: Propositions and connectives
+    at:
+      2020-fall: '1.1'
+  - id: res-ucb-cs70-quantifiers
+    kind: section
+    title: Quantifiers
+    at:
+      2020-fall: '1.2'
+  - id: res-ucb-cs70-negation
+    kind: section
+    title: Negation
+    at:
+      2020-fall: '1.3'
+- id: res-ucb-cs70-proofs
+  kind: note
+  title: Proofs
+  at:
+    2020-fall: '2'
+  nodes:
+  - id: res-ucb-cs70-proofs-introduction
+    kind: section
+    title: What a proof is
+    at:
+      2020-fall: '2.1'
+  - id: res-ucb-cs70-proof-notation
+    kind: section
+    title: Notation and basic facts
+    at:
+      2020-fall: '2.2'
+  - id: res-ucb-cs70-direct-proof
+    kind: section
+    title: Direct proof
+    at:
+      2020-fall: '2.3'
+  - id: res-ucb-cs70-proof-by-contraposition
+    kind: section
+    title: Proof by contraposition
+    at:
+      2020-fall: '2.4'
+  - id: res-ucb-cs70-proof-by-contradiction
+    kind: section
+    title: Proof by contradiction
+    at:
+      2020-fall: '2.5'
+  - id: res-ucb-cs70-proof-by-cases
+    kind: section
+    title: Proof by cases
+    at:
+      2020-fall: '2.6'
+  - id: res-ucb-cs70-proof-errors
+    kind: section
+    title: Common errors
+    at:
+      2020-fall: '2.7'
+  - id: res-ucb-cs70-proof-style
+    kind: section
+    title: Style and substance
+    at:
+      2020-fall: '2.8'
+  - id: res-ucb-cs70-proof-exercises
+    kind: section
+    title: Proof exercises
+    at:
+      2020-fall: '2.9'
+- id: res-ucb-cs70-induction
+  kind: note
+  title: Mathematical induction
+  at:
+    2020-fall: '3'
+  nodes:
+  - id: res-ucb-cs70-induction-basics
+    kind: section
+    title: Induction
+    at:
+      2020-fall: '3.1'
+  - id: res-ucb-cs70-strengthening-induction
+    kind: section
+    title: Strengthening the hypothesis
+    at:
+      2020-fall: '3.2'
+  - id: res-ucb-cs70-strong-induction
+    kind: section
+    title: Simple and strong induction
+    at:
+      2020-fall: '3.3'
+  - id: res-ucb-cs70-recursion-and-induction
+    kind: section
+    title: Recursion, programming and induction
+    at:
+      2020-fall: '3.4'
+  - id: res-ucb-cs70-false-induction-proofs
+    kind: section
+    title: False proofs
+    at:
+      2020-fall: '3.5'
+  - id: res-ucb-cs70-induction-practice-problems
+    kind: section
+    title: Induction practice problems
+    at:
+      2020-fall: '3.6'
+- id: res-ucb-cs70-graph-theory
+  kind: note
+  title: 'Graph theory: an introduction'
+  at:
+    2020-fall: '5'
+  nodes:
+  - id: res-ucb-cs70-graph-definitions
+    kind: section
+    title: Graphs and formal definitions
+    at:
+      2020-fall: '5.1'
+  - id: res-ucb-cs70-eulerian-tours
+    kind: section
+    title: Eulerian tours
+    at:
+      2020-fall: '5.2'
+  - id: res-ucb-cs70-planar-graphs
+    kind: section
+    title: Planar graphs
+    at:
+      2020-fall: '5.3'
+  - id: res-ucb-cs70-complete-graphs-trees-hypercubes
+    kind: section
+    title: Complete graphs, trees and hypercubes
+    at:
+      2020-fall: '5.4'
+    nodes:
+    - id: res-ucb-cs70-complete-graphs
+      kind: subsection
+      title: Complete graphs
+      at:
+        2020-fall: 5.4.1
+    - id: res-ucb-cs70-trees
+      kind: subsection
+      title: Trees
+      at:
+        2020-fall: 5.4.2
+    - id: res-ucb-cs70-hypercubes
+      kind: subsection
+      title: Hypercubes
+      at:
+        2020-fall: 5.4.3
+  - id: res-ucb-cs70-graph-practice-problems
+    kind: section
+    title: Graph practice problems
+    at:
+      2020-fall: '5.5'
+- id: res-ucb-cs70-modular-arithmetic
+  kind: note
+  title: Modular arithmetic
+  at:
+    2020-fall: '6'
+  nodes:
+  - id: res-ucb-cs70-modular-computation
+    kind: section
+    title: Computation and set representation
+    at:
+      2020-fall: '6.1'
+  - id: res-ucb-cs70-modular-exponentiation
+    kind: section
+    title: Exponentiation
+    at:
+      2020-fall: '6.2'
+  - id: res-ucb-cs70-modular-bijections
+    kind: section
+    title: Bijections
+    at:
+      2020-fall: '6.3'
+  - id: res-ucb-cs70-modular-inverses
+    kind: section
+    title: Inverses
+    at:
+      2020-fall: '6.4'
+  - id: res-ucb-cs70-euclids-algorithm
+    kind: section
+    title: 'Computing inverses: Euclid''s algorithm'
+    at:
+      2020-fall: '6.5'
+  - id: res-ucb-cs70-chinese-remainder-theorem
+    kind: section
+    title: Chinese remainder theorem
+    at:
+      2020-fall: '6.6'
+- id: res-ucb-cs70-rsa
+  kind: note
+  title: 'Public-key cryptography: RSA'
+  at:
+    2020-fall: '7'
 - id: res-ucb-cs70-counting
   kind: note
   title: Counting

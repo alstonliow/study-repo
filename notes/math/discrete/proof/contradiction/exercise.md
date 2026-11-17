@@ -40,3 +40,9 @@ Identify the errors in the following “theorem” and “proof”.
 
 16. Hence $\mathbb{Z}=\mathbb{Q}$. “$\square$”
 :::
+
+::: {.problem #prob-cs70-2-q2 origin="external" source="cs70-2.9-q2"}
+Prove Lemma 2.2. (Hint: First try a direct proof. Then, try contraposition. Which proof approach is better suited to proving this lemma?)
+
+*Note (these notes):* Lemma 2.2 of CS70 Note 2: if $a^2$ is even, then $a$ is even. It is used in @exm-contradiction-1.
+:::

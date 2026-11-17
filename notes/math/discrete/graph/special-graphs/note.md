@@ -1,6 +1,6 @@
 ---
 title: "Some special graphs"
-sources: [fit1058-cn-11.6]
+sources: [fit1058-cn-11.6, cs70-5.4.3]
 requires: [math/discrete/graph/basic-definitions]
 status: draft
 ---
@@ -145,5 +145,43 @@ $K_5$ (left) and $C_6$ (right)
 ```
 
 $K_{2,3}$ (left) and $Q_3$ (right)
+
+:::
+
+## The hypercube
+
+::: {#rmk-special-graphs-hypercube-recursive .remark name="The hypercube, built recursively"}
+
+$Q_n$ consists of two copies of $Q_{n-1}$: the *$0$-subcube* of strings $0x$ and the *$1$-subcube* of strings $1x$, for $x\in\{0,1\}^{n-1}$, with an edge from each $0x$ to the matching $1x$. This gives a second proof of $|E(Q_n)|=n2^{n-1}$: if $E(n)=|E(Q_n)|$, then $E(1)=1$ and $E(n)=2E(n-1)+2^{n-1}$, and induction gives $E(n)=2(n-1)2^{n-2}+2^{n-1}=n2^{n-1}$.
+
+:::
+
+::: {#thm-hypercube-cut .theorem name="The hypercube is hard to cut"}
+
+Let $S$ be a set of vertices of $Q_n$ with $|S|\le2^{n-1}$, and let $E_S$ be the set of edges with one end in $S$ and the other outside $S$. Then $|E_S|\ge|S|$.
+
+:::
+
+::: {.proof}
+
+By induction on $n$.
+
+1. For $n=1$, $Q_1$ is a single edge. If $|S|=0$ the claim is trivial; if $|S|=1$, the one edge leaves $S$.
+
+2. Let $n\ge2$ and assume the claim for $Q_{n-1}$. Split $S=S_0\cup S_1$ into its parts in the $0$-subcube and the $1$-subcube; each subcube has $2^{n-1}$ vertices.
+
+3. **Case $|S_0|,|S_1|\le2^{n-2}$.** Apply the hypothesis inside each subcube: at least $|S_0|$ edges of the $0$-subcube leave $S_0$, and at least $|S_1|$ edges of the $1$-subcube leave $S_1$. These edges all leave $S$, so $|E_S|\ge|S_0|+|S_1|=|S|$.
+
+4. **Case $|S_0|>2^{n-2}$** (the case $|S_1|>2^{n-2}$ is symmetric). Then $|S_1|=|S|-|S_0|<2^{n-2}$, so the hypothesis gives at least $|S_1|$ edges leaving $S_1$ in the $1$-subcube. In the $0$-subcube the complement $V_0\setminus S_0$ has fewer than $2^{n-2}$ vertices, so the hypothesis applied to it gives at least $2^{n-1}-|S_0|$ edges between $S_0$ and $V_0\setminus S_0$.
+
+5. Each vertex $0x\in S_0$ is joined to $1x$, and at most $|S_1|$ of these partners are in $S$, so at least $|S_0|-|S_1|$ edges between the subcubes leave $S$.
+
+6. Adding the three disjoint groups, $|E_S|\ge|S_1|+(2^{n-1}-|S_0|)+(|S_0|-|S_1|)=2^{n-1}\ge|S|$.
+
+:::
+
+::: {#rmk-special-graphs-hypercube-network .remark name="Why networks use hypercubes"}
+
+$K_n$ is very hard to cut but needs $\binom n2$ edges; a tree uses the fewest edges but falls apart when one edge is removed. $Q_n$ connects $2^n$ vertices with only $n$ edges per vertex, and by @thm-hypercube-cut cutting off any set of vertices costs at least as many edges as the set has vertices. A parallel computer with a million processors was built on $Q_{20}$ for this reason.
 
 :::

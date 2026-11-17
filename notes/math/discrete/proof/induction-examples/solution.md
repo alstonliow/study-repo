@@ -157,3 +157,19 @@ $H_n \ge \ln(n+1)$ for all $n\ge1$.
 
     :::
 :::
+
+::: {.solution for="prob-cs70-3-q2"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-cs70-3-q3"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-cs70-3-q4"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-cs70-3-q5"}
+<!-- TODO: solution -->
+:::

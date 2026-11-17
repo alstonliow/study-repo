@@ -89,10 +89,12 @@ parts:
           - extended-euclidean-algorithm
           - coprimality
           - modular-arithmetic
+          - chinese-remainder-theorem
           - euler-totient
           - modular-exponentiation
           - primitive-roots
           - diffie-hellman
+          - rsa
       - id: math/discrete/counting
         title: Counting
         desc: Counting rules, inclusion–exclusion, selections

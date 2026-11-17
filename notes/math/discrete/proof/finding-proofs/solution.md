@@ -316,3 +316,7 @@ We show that $G\circ G$ is not embeddable in $G$ (definitions as in Exercise
 The full Caesar slide is idempotent (Exercise 2.15) because its keyspace is
 closed under addition mod $26$. Restricting the keys breaks this closure.
 :::
+
+::: {.solution for="prob-cs70-2-q1"}
+<!-- TODO: solution -->
+:::

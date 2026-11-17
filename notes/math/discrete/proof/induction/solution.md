@@ -87,3 +87,7 @@ The "theorem" is false, and the error is in step 4.
    was actually proved. "It is clear from the cases so far" is extrapolation
    from a pattern, not a proof.
 :::
+
+::: {.solution for="prob-cs70-3-q1"}
+<!-- TODO: solution -->
+:::

@@ -124,3 +124,11 @@ adjacent degree-3 vertices with $4$ leaves.
 A tree with $n$ vertices has $n-1$ edges, so its average degree is
 $$\frac{2(n-1)}{n} = 2 - \frac2n < 2.$$
 :::
+
+::: {.solution for="prob-cs70-5-q2"}
+<!-- TODO: solution -->
+:::
+
+::: {.solution for="prob-cs70-5-q3"}
+<!-- TODO: solution -->
+:::

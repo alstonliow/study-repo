@@ -1,6 +1,6 @@
 ---
 title: "Planarity"
-sources: [fit1058-cn-12.5]
+sources: [fit1058-cn-12.5, cs70-5.3]
 requires: [math/discrete/graph/trees, math/discrete/graph/degree]
 status: draft
 ---
@@ -172,5 +172,19 @@ The vertices of every planar graph can be coloured with $4$ colours so that adja
 ::: {#rmk-planarity-5 .remark name="History"}
 
 Conjectured in 1852 and proved in 1976 by Appel and Haken. It was the first major theorem whose proof essentially needed a computer (to check about $1900$ configurations), which was controversial because no person could check it by hand.
+
+:::
+
+## Kuratowski's theorem
+
+::: {#thm-kuratowski .theorem name="Kuratowski's theorem"}
+
+A graph is planar if and only if it does not contain a *subdivision* of $K_5$ or of $K_{3,3}$, that is, a copy of one of these graphs in which edges may be replaced by paths that share no vertices except their ends.
+
+:::
+
+::: {#rmk-planarity-kuratowski .remark name="About the proof"}
+
+One direction is the easy one: $K_5$ and $K_{3,3}$ are not planar (@cor-cn-cor-74, @cor-cn-cor-75), and replacing edges by paths cannot help, so a graph containing a subdivision of either is not planar. The other direction, that every graph without such a subdivision can be drawn without crossings, is hard, and its proof is not given here. For example, the hypercube $Q_4$ is not planar because it contains a subdivision of $K_{3,3}$.
 
 :::

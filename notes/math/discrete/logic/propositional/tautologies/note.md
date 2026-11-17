@@ -1,6 +1,6 @@
 ---
 title: "Tautologies and Logical Equivalence"
-sources: [fit1058-cn-4.12, fit1058-cn-4.13]
+sources: [fit1058-cn-4.12, fit1058-cn-4.13, cs70-1.1]
 requires: [math/discrete/logic/propositional/implication-and-equivalence]
 status: draft
 ---
@@ -12,6 +12,18 @@ status: draft
 ::: {#def-tautology .definition name="Tautology"}
 
 A proposition that is true under every assignment of truth values (every row of its truth table is $T$).
+
+:::
+
+::: {#def-contradiction-propositional .definition name="Contradiction"}
+
+A propositional form that is false for every assignment of truth values is a *contradiction*. $P$ is a contradiction exactly when $\neg P$ is a tautology. For example, $P\wedge\neg P$ is a contradiction.
+
+:::
+
+::: {#rmk-tautologies-excluded-middle .remark name="Law of the excluded middle"}
+
+For every proposition $P$, exactly one of $P$ and $\neg P$ is true. So $P\vee\neg P$ is a tautology and $P\wedge\neg P$ is a contradiction. Proof by contradiction rests on this law (@sec-math-discrete-proof-contradiction).
 
 :::
 

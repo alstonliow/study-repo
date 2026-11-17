@@ -1,6 +1,6 @@
 ---
 title: "Finding Proofs"
-sources: [fit1058-cn-3.3, fit1058-cn-3.4, fit1058-cn-3.5, fit1058-cn-3.14]
+sources: [fit1058-cn-3.3, fit1058-cn-3.4, fit1058-cn-3.5, fit1058-cn-3.14, cs70-2.3]
 requires: [math/discrete/proof/theorems-and-proofs]
 status: draft
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Modular Exponentiation"
-sources: [fit1058-cn-7.13, fit1058-cn-7.14]
+sources: [fit1058-cn-7.13, fit1058-cn-7.14, cs70-7]
 requires: [math/discrete/number-theory/euler-totient]
 status: draft
 ---
@@ -86,6 +86,16 @@ If $p$ is prime and $p\nmid x$, then $x^{p-1}\equiv1\pmod p$.
 ::: {.proof}
 
 Take $n=p$ in @thm-euler, and use $\varphi(p)=p-1$ (@prp-totientpp).
+
+:::
+
+::: {.proof name="Second proof, by rearranging residues"}
+
+1. Since $p\nmid x$, multiplication by $x$ modulo $p$ is injective on $\{1,\dots,p-1\}$: if $ax\equiv bx$, multiply by $x^{-1}$ (@thm-inverse). None of the products is $0$, so $x,2x,\dots,(p-1)x$ are the numbers $1,\dots,p-1$ in some order, modulo $p$.
+
+2. Multiplying all of them in both forms, $x^{p-1}(p-1)!\equiv(p-1)!\pmod p$.
+
+3. $(p-1)!$ is a product of numbers coprime to $p$, so it has an inverse modulo $p$. Multiplying by it gives $x^{p-1}\equiv1$.
 
 :::
 
