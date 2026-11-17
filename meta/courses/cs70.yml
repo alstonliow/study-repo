@@ -1,0 +1,178 @@
+# CS70 course scope (meta/SPEC.md §13), drafted by Claude for owner review.
+# Rule (owner, same as FIT1058): content that is in the CS70 course notes is in
+# scope. Content that is not in them is out of scope ("extra"), decided by
+# checking the content against the notes. FIT1058-only examples and exercises
+# are therefore extra here, as the CS70 examples are extra for FIT1058.
+# Only the CS70 notes kept in raw/UCB_CS70 are mapped (Notes 10, 13-19).
+# Sections that cover none of our notes are left out (Note 17 apart from
+# Chebyshev, Note 18 and the exercise sections).
+# Points use CS70's own numbering: chapter = CS70 note number, point = section.
+# Titles are our own short titles (the resource res-ucb-cs70 has the full tree).
+id: cs70
+code: CS70
+name: "Discrete Mathematics and Probability Theory"
+institution: UC Berkeley
+source_prefix: cs70-
+outline_from: "UC Berkeley CS 70 Course Notes (Fall 2020), Notes 10 and 13-19 only"
+status: draft  # draft until the owner has reviewed the mapping
+
+exclude:
+  # counting: FIT1058 material that CS70 Note 10 does not have
+  - rmk-selection-2                                  # Counting injections
+  - prp-pascal-identity                              # Pascal's identity
+  - cor-alternating-sum                              # Alternating sum
+  - rmk-combinations-3                               # remark on the block above
+  - cor-ie-dual                                      # Dual form of inclusion-exclusion
+  - rmk-stars-and-bars-2                             # Four different counts (summary)
+  # probability: FIT1058 material that CS70 Notes 13-19 do not have
+  - rmk-sample-spaces-1                              # Three sources of randomness
+  - exm-infinite-sample-space                        # Infinite sample space
+  - prp-difference-and-monotonicity                  # Difference and monotonicity
+  - rmk-events-1                                     # remark on the block above
+  - thm-ie-probability-intersection                  # Inclusion-exclusion, intersection form
+  - rmk-events-3                                     # remark on the block above
+  - def-median                                       # Median
+  - rmk-expectation-and-variance-3                   # Median vs. mean
+  - def-mode                                         # Mode
+  - rmk-standard-distributions-4                     # Geometric: two conventions
+  - rmk-standard-distributions-5                     # Memoryless property
+  # FIT1058 worked examples whose content CS70 does not have
+  - exm-sum-rule-lists
+  - exm-product-rule-table
+  - exm-hockey-stick
+  - exm-stars-and-bars-encoding
+  - exm-ie-triple-member
+  - exm-derangement-cases
+  - exm-sample-spaces-1
+  - exm-events-1
+  - exm-events-1-2
+  - exm-events-2
+  - exm-conditional-probability-1
+  - exm-independence-can-be-subtle
+  - exm-network-reliability
+  - exm-conditional-probability-1-2
+  - exm-three-coins
+  - exm-expectation-and-variance-1-2                 # median example
+  - exm-expectation-and-variance-1-3                 # mode example
+  - exm-expectation-and-variance-2
+  - exm-standard-distributions-1                     # uniform examples
+  - exm-standard-distributions-1-2                   # binomial number example
+  - exm-standard-distributions-1-3                   # Poisson number example
+  - exm-standard-distributions-1-4                   # geometric number example
+  - exm-coupon-collector-1
+  # FIT1058 Course Notes exercises (CS70 has its own; none are in this repository yet)
+  - prob-counting-01
+  - prob-counting-02
+  - prob-counting-03
+  - prob-counting-04
+  - prob-counting-05
+  - prob-counting-06
+  - prob-counting-07
+  - prob-counting-08
+  - prob-counting-09
+  - prob-counting-10
+  - prob-counting-11
+  - prob-probability-1-01
+  - prob-probability-1-02
+  - prob-probability-1-03
+  - prob-probability-1-04
+  - prob-probability-1-05
+  - prob-probability-1-06
+  - prob-probability-1-08
+  - prob-probability-1-09
+  - prob-probability-1-10
+  - prob-probability-1-11
+  - prob-probability-1-12
+  - prob-probability-1-13
+  - prob-probability-1-14
+  - prob-probability-1-15
+  - prob-probability-1-16
+  - prob-probability-1-17
+  - prob-probability-1-18
+  - prob-probability-2-01
+  - prob-probability-2-02
+  - prob-probability-2-03
+  - prob-probability-2-04
+  - prob-probability-2-05
+  - prob-probability-2-06
+  - prob-probability-2-07
+  - prob-probability-2-08
+  - prob-probability-2-09
+  - prob-probability-2-11
+
+chapters:
+  - num: 10
+    title: "Counting"
+    points:
+      - id: "10.1"
+        title: "Counting sequences"
+        covers: [math/discrete/counting/sum-and-product-rules, math/discrete/counting/selection]
+      - id: "10.2"
+        title: "Counting sets"
+        covers: [math/discrete/counting/combinations]
+      - id: "10.3"
+        title: "Sampling with replacement"
+        covers: [math/discrete/counting/stars-and-bars]
+      - id: "10.4"
+        title: "Combinatorial proofs"
+        covers: [math/discrete/counting/derangements]
+      - id: "10.5"
+        title: "Inclusion-exclusion"
+        covers: [math/discrete/counting/inclusion-exclusion]
+  - num: 13
+    title: "Discrete probability"
+    points:
+      - id: "13.1"
+        title: "Random experiments"
+        covers: [math/probability/sample-spaces]
+      - id: "13.2"
+        title: "Probability spaces"
+        covers: [math/probability/events]
+      - id: "13.3"
+        title: "Examples"
+        # poker hands, balls and bins, birthday paradox. The coin tosses and Monty
+        # Hall examples are in scope through 15.2 and 14.1; listing them here would
+        # place their whole notes in this point (a note goes where it is first covered).
+        covers: [exm-poker-hands, exm-balls-and-bins, prob-probability-1-07]
+  - num: 14
+    title: "Conditional probability"
+    points:
+      - id: "14.1"
+        title: "Conditional probability"
+        covers: [math/probability/conditional-probability]
+      - id: "14.3"
+        title: "Bayes' rule and total probability"
+        covers: [math/probability/bayes-theorem]
+  - num: 15
+    title: "Random variables: distribution and expectation"
+    points:
+      - id: "15.1"
+        title: "Random variables"
+        covers: [math/probability/random-variables]
+      - id: "15.2"
+        title: "Bernoulli and binomial distributions"
+        covers: [math/probability/binomial-distribution]
+      - id: "15.4"
+        title: "Expectation"
+        covers: [math/probability/expectation-and-variance]
+  - num: 16
+    title: "Random variables: variance and covariance"
+    points:
+      - id: "16.2"
+        title: "Computing variance"
+        covers: [math/probability/uniform-distribution]
+  - num: 17
+    title: "Concentration inequalities"
+    points:
+      - id: "17.2"
+        title: "Chebyshev's inequality"
+        covers: [thm-chebyshev-s-inequality]
+  - num: 19
+    title: "Geometric and Poisson distributions"
+    points:
+      - id: "19.1"
+        title: "Geometric distribution"
+        covers: [math/probability/geometric-distribution, math/probability/coupon-collector]
+      - id: "19.2"
+        title: "Poisson distribution"
+        covers: [math/probability/poisson-distribution]

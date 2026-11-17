@@ -399,7 +399,8 @@ Selection: branches, course chapters, single knowledge points, and block types
 (definitions, results, proofs, examples, remarks, figures, exercises, synthesis
 problems); table of contents on or off. Exercises are numbered 1, 2, 3, ... per
 knowledge point, everywhere, with their source beside the number.
-`make pdf` builds the common versions (presets in `make_pdf.py`), which CI
+`make pdf` builds the common versions (presets in `make_pdf.py`; every course in
+`meta/courses/` gets the same three: full, summaries, exercises), which CI
 publishes on the website's PDF page.
 
 The website's **Export** page offers the same choices as checkboxes. It

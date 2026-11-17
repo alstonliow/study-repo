@@ -8,6 +8,7 @@ id: res-ucb-cs70
 kind: course-notes
 title: UC Berkeley CS 70 Course Notes
 status: draft
+courses: [cs70]     # association only: the courses that use this resource (not ownership)
 editions:
 - id: 2020-fall
   current: true

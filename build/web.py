@@ -497,7 +497,7 @@ def downloads_page() -> str:
         if not pdf.exists():
             continue
         shutil.copy2(pdf, dest / pdf.name)
-        desc = make_pdf.DESCRIPTIONS.get(name) or "Branch: " + name[len("branch-"):].replace("-", " ").capitalize()
+        desc = make_pdf.describe(name)
         extra = ""
         sol = src / f"{name}-solutions.pdf"
         if sol.exists():

@@ -80,17 +80,41 @@ TYPES = tuple(g for g, _ in kinds.GROUPS)
 # Common versions, built by CI and linked from the website's Downloads page.
 PRESETS = {
     "notes-book": dict(scope="book", solutions="end"),
-    "fit1058": dict(scope="course:fit1058", solutions="end", extra="omit"),
-    "fit1058-summaries": dict(scope="course:fit1058", only="summaries", solutions="none", extra="omit"),
-    "fit1058-exercises": dict(scope="course:fit1058", only="exercises", solutions="separate", extra="omit"),
+}
+# Every course gets the same three PDFs: <course id><suffix> (meta/courses/*.yml).
+COURSE_PRESETS = {
+    "": dict(solutions="end", extra="omit"),
+    "-summaries": dict(only="summaries", solutions="none", extra="omit"),
+    "-exercises": dict(only="exercises", solutions="separate", extra="omit"),
 }
 BRANCH_PRESETS = True   # plus one PDF per branch: branch-<last part of id>
 DESCRIPTIONS = {
     "notes-book": "All notes, every branch, solutions at the end",
-    "fit1058": "FIT1058 in course order, course content only, solutions at the end",
-    "fit1058-summaries": "FIT1058 chapter summaries: definitions, results and exercises",
-    "fit1058-exercises": "FIT1058 exercises only (solutions in a separate file)",
 }
+COURSE_DESCRIPTIONS = {
+    "": "{code} in course order, course content only, solutions at the end",
+    "-summaries": "{code} chapter summaries: definitions, results and exercises",
+    "-exercises": "{code} exercises only (solutions in a separate file)",
+}
+
+
+def course_preset(name: str):
+    """(course, suffix) when name is a course preset, else None."""
+    for c in load().courses:
+        for suffix in COURSE_PRESETS:
+            if name == c.id + suffix:
+                return c, suffix
+    return None
+
+
+def describe(name: str) -> str:
+    """The Downloads page's description of a preset."""
+    if name in DESCRIPTIONS:
+        return DESCRIPTIONS[name]
+    cp = course_preset(name)
+    if cp:
+        return COURSE_DESCRIPTIONS[cp[1]].format(code=cp[0].code)
+    return "Branch: " + name[len("branch-"):].replace("-", " ").capitalize()
 
 
 from book import Book  # noqa: E402
@@ -148,7 +172,7 @@ def parse(argv: list[str]) -> tuple[Options, list[str]]:
 
 def all_presets() -> list[str]:
     repo = load()
-    names = list(PRESETS)
+    names = list(PRESETS) + [c.id + s for c in repo.courses for s in COURSE_PRESETS]
     if BRANCH_PRESETS:
         names += [f"branch-{bid.rsplit('/', 1)[-1]}" for _, bs in repo.parts for bid, _ in bs
                   if repo.branch_members(bid)]
@@ -157,8 +181,13 @@ def all_presets() -> list[str]:
 
 def preset_options(name: str) -> Options:
     o = Options()
+    cp = course_preset(name)
     if name in PRESETS:
         for k, v in PRESETS[name].items():
+            setattr(o, k, v)
+    elif cp:
+        o.scope = f"course:{cp[0].id}"
+        for k, v in COURSE_PRESETS[cp[1]].items():
             setattr(o, k, v)
     elif name.startswith("branch-"):
         repo = load()
