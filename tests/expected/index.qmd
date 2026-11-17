@@ -2,7 +2,7 @@
 title: Study Notes
 ---
 
-Personal study notes, organised by topic rather than by course. So far: discrete mathematics, discrete probability, and first topics in computer science.
+Personal study notes, organised by topic rather than by course. So far: discrete mathematics, probability, and first topics in computer science.
 
 ::: {.contents-field}
 ## Testing

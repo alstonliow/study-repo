@@ -495,3 +495,27 @@ chapters:
       - id: "19.2"
         title: "Poisson distribution"
         covers: [math/probability/discrete/poisson-distribution]
+  - num: 20
+    title: "Continuous probability"
+    points:
+      - id: "20.1"
+        title: "Densities"
+        covers: [math/probability/continuous/continuous-random-variables]
+      - id: "20.3"
+        title: "Exponential distribution"
+        covers: [math/probability/continuous/exponential-distribution]
+      - id: "20.4"
+        title: "Normal distribution"
+        covers: [math/probability/continuous/normal-distribution]
+      - id: "20.5"
+        title: "Central limit theorem"
+        covers: [math/probability/continuous/central-limit-theorem]
+      - id: "20.6"
+        title: "Buffon's needle"
+        covers: [math/probability/continuous/buffons-needle]
+  - num: 21
+    title: "Finite Markov chains"
+    points:
+      - id: "21"
+        title: "Markov chains"
+        covers: [math/probability/markov-chains/finite-markov-chains, math/probability/markov-chains/invariant-distributions, math/probability/markov-chains/periodicity-and-convergence, math/probability/markov-chains/hitting-times]

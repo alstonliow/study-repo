@@ -624,3 +624,44 @@ nodes:
       title: Poisson as a limit of binomial
       at:
         2020-fall: 19.2.3
+- id: res-ucb-cs70-continuous-probability
+  kind: note
+  title: Continuous probability distributions
+  at:
+    2020-fall: '20'
+  nodes:
+  - id: res-ucb-cs70-continuous-uniform-space
+    kind: section
+    title: Uniform probability on an interval
+    at:
+      2020-fall: '20.1'
+  - id: res-ucb-cs70-continuous-random-variables
+    kind: section
+    title: Continuous random variables
+    at:
+      2020-fall: '20.2'
+  - id: res-ucb-cs70-exponential-distribution
+    kind: section
+    title: Exponential distribution
+    at:
+      2020-fall: '20.3'
+  - id: res-ucb-cs70-normal-distribution
+    kind: section
+    title: Normal distribution
+    at:
+      2020-fall: '20.4'
+  - id: res-ucb-cs70-central-limit-theorem
+    kind: section
+    title: Central limit theorem
+    at:
+      2020-fall: '20.5'
+  - id: res-ucb-cs70-buffons-needle
+    kind: section
+    title: Buffon's needle
+    at:
+      2020-fall: '20.6'
+- id: res-ucb-cs70-markov-chains
+  kind: note
+  title: Finite Markov chains
+  at:
+    2020-fall: '21'

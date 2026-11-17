@@ -156,6 +156,23 @@ parts:
           - coupon-collector
           - concentration-inequalities
           - hashing-and-load-balancing
+      - id: math/probability/continuous
+        title: Continuous Probability
+        desc: Densities, exponential and normal distributions, central limit theorem
+        notes:   # topic order on the website
+          - continuous-random-variables
+          - exponential-distribution
+          - normal-distribution
+          - central-limit-theorem
+          - buffons-needle
+      - id: math/probability/markov-chains
+        title: Markov Chains
+        desc: Finite Markov chains, invariant distributions, hitting times
+        notes:   # topic order on the website
+          - finite-markov-chains
+          - invariant-distributions
+          - periodicity-and-convergence
+          - hitting-times
   - title: Computer Science
     branches:
       - id: cs/algorithms

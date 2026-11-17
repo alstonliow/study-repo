@@ -47,8 +47,8 @@ optimisation) are added in later batches.
 | Branch | Content |
 |---|---|
 | `discrete` | Sample spaces, events, conditional probability, random variables, expectation and variance, discrete distributions, concentration, applications |
-| `continuous` | (planned, CS70 Note 20) Continuous random variables, exponential and normal distributions, central limit theorem |
-| `markov-chains` | (planned, CS70 Note 21) Finite Markov chains |
+| `continuous` | Continuous random variables, densities, exponential and normal distributions, central limit theorem, Buffon's needle (CS70 Note 20) |
+| `markov-chains` | Finite Markov chains, invariant distributions, periodicity and convergence, hitting times (CS70 Note 21) |
 
 The discrete notes moved from `math/probability/<note>` to
 `math/probability/discrete/<note>` on 2026-11-17 (old ids kept as aliases).
