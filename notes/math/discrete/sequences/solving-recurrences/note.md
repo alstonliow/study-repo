@@ -1,6 +1,6 @@
 ---
 title: "From recursive definitions to formulas"
-sources: [fit1058-cn-6.6]
+sources: [fit1058-cn-6.6, mit6006r-3]
 requires: [math/discrete/sequences/basic-sequences, math/discrete/proof/induction]
 status: draft
 ---
@@ -144,6 +144,36 @@ The geometric sum (@sec-math-discrete-sequences-sums-and-series) behaves differe
 For merge sort, $a=2$, $b=2$, $d=1$, so $a=b^d$ and $f(n)=\Theta(n\log n)$.
 
 :::
+
+<!-- Added 2026-11-17 from MIT 6.006 (Spring 2020), Recitation 3 (mit6006r-3), in our own wording; proof written out in steps. The polynomial case is @thm-master-theorem-special-case-extra. -->
+
+::: {#thm-master-theorem .theorem name="Master theorem" generalizes="thm-master-theorem-special-case-extra"}
+
+Let $T(n)=aT(n/b)+f(n)$ with $T(1)=\Theta(1)$, constants $a\ge1$ and $b>1$, and $f(n)\ge0$. Let $p=\log_ba$, so that $n^p=a^{\log_bn}$ is the number of leaves of the recursion tree.
+
+1. If $f(n)=O(n^{p-\varepsilon})$ for some constant $\varepsilon>0$, then $T(n)=\Theta(n^p)$ (the leaves dominate).
+2. If $f(n)=\Theta(n^p\log^kn)$ for some constant $k\ge0$, then $T(n)=\Theta(n^p\log^{k+1}n)$ (every level costs about the same).
+3. If $f(n)=\Omega(n^{p+\varepsilon})$ for some constant $\varepsilon>0$, and $af(n/b)\le cf(n)$ for some constant $c<1$ and all large $n$, then $T(n)=\Theta(f(n))$ (the root dominates).
+
+:::
+
+::: {.proof}
+
+We take $n=b^L$, so the recursion tree has levels $i=0,\dots,L$ with $L=\log_bn$; other $n$ only change constants.
+
+1. Level $i<L$ has $a^i$ calls on inputs of size $n/b^i$, so
+   $$T(n)=\Theta(a^L)+\sum_{i=0}^{L-1}a^if(n/b^i),\qquad a^L=n^p.$$
+
+2. *Case 1.* With $f(m)\le Cm^{p-\varepsilon}$ and $a=b^p$,
+   $a^if(n/b^i)\le Cn^{p-\varepsilon}b^{\varepsilon i}$. The geometric sum over $i<L$ is at most $Cn^{p-\varepsilon}\frac{b^{\varepsilon L}}{b^\varepsilon-1}=O(n^p)$, since $b^{\varepsilon L}=n^\varepsilon$. So the leaves, $\Theta(n^p)$, dominate.
+
+3. *Case 2.* Now $a^if(n/b^i)=\Theta\bigl(n^p\log^k(n/b^i)\bigr)=\Theta\bigl(n^p(L-i)^k\bigr)$ (logarithms to base $b$ change only constants). Summing, $\sum_{j=1}^Lj^k=\Theta(L^{k+1})$, so the sum is $\Theta(n^p\log^{k+1}n)$, which also dominates the leaves.
+
+4. *Case 3.* Applying $af(m/b)\le cf(m)$ repeatedly gives $a^if(n/b^i)\le c^if(n)$, so the sum is at most $\frac{f(n)}{1-c}$; it is at least its first term $f(n)$. The leaves cost $n^p=O(f(n))$. So $T(n)=\Theta(f(n))$.
+
+:::
+
+For example, $T(n)=2T(n/2)+n\log n$ has $p=1$ and $f(n)=\Theta(n\log n)$, case 2 with $k=1$: $T(n)=\Theta(n\log^2n)$. The theorem does not apply to every recurrence: $T(n)=2T(n/2)+n/\log n$ falls between the cases.
 
 ::: {#def-generating-function-extra .definition name="Generating function (extra)"}
 

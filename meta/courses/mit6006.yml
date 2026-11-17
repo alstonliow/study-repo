@@ -1,0 +1,147 @@
+# MIT 6.006 course scope (meta/SPEC.md §13), drafted by Claude for owner review.
+# Outline: the lectures of 6.006 Introduction to Algorithms, Spring 2020 (resources
+# res-mit-6006-lectures and res-mit-6006-recitations); chapter = lecture number, points are
+# our own short titles. Lecture 20 (course review) covers no note of its own.
+# Rule (owner, as for the other courses): content that is in the 6.006 lecture or recitation
+# notes is in scope; content that is not is out of scope ("extra"). Shared mathematical notes
+# are covered block by block (only the blocks 6.006 uses), not as whole notes.
+id: mit6006
+code: MIT 6.006
+name: "Introduction to Algorithms"
+institution: MIT
+source_prefix: mit6006
+outline_from: "MIT 6.006 Introduction to Algorithms, Spring 2020, Lectures 1-19 with recitations"
+status: draft  # draft until the owner has reviewed the mapping
+
+exclude: []
+
+chapters:
+  - num: 1
+    title: "Introduction"
+    points:
+      - id: "1.1"
+        title: "Problems, algorithms, the word-RAM"
+        covers: [cs/algorithms/problems-and-algorithms]
+      - id: "1.2"
+        title: "Asymptotic notation"
+        covers: [def-big-o, def-big-omega-big-theta-extra, prob-mit6006s20-1-q1]
+      - id: "1.3"
+        title: "Background (problem set 0)"
+        covers: [prob-mit6006s20-0-q1, prob-mit6006s20-0-q2, prob-mit6006s20-0-q3, prob-mit6006s20-0-q4, prob-mit6006s20-0-q5]
+  - num: 2
+    title: "Data structures"
+    points:
+      - id: "2.1"
+        title: "Sequence and set interfaces"
+        covers: [cs/data-structures/interfaces]
+      - id: "2.2"
+        title: "Linked lists, dynamic arrays, amortization"
+        covers: [cs/data-structures/linked-lists-and-dynamic-arrays]
+  - num: 3
+    title: "Sorting"
+    points:
+      - id: "3.1"
+        title: "Selection, insertion and merge sort"
+        covers: [cs/data-structures/comparison-sorting]
+      - id: "3.2"
+        title: "Solving recurrences"
+        covers: [thm-master-theorem, thm-master-theorem-special-case-extra, prob-mit6006s20-2-q1]
+  - num: 4
+    title: "Hashing"
+    points:
+      - id: "4.1"
+        title: "Comparison model and lower bounds"
+        covers: [cs/data-structures/comparison-lower-bounds]
+      - id: "4.2"
+        title: "Direct access arrays and hash tables"
+        covers: [cs/data-structures/hashing]
+  - num: 5
+    title: "Linear sorting"
+    points:
+      - id: "5.1"
+        title: "Counting sort and radix sort"
+        covers: [cs/data-structures/linear-sorting]
+  - num: 6
+    title: "Binary trees"
+    points:
+      - id: "6.1"
+        title: "Binary trees"
+        covers: [cs/data-structures/binary-trees]
+  - num: 7
+    title: "AVL trees"
+    points:
+      - id: "7.1"
+        title: "Rotations, height balance, augmentation"
+        covers: [cs/data-structures/avl-trees]
+  - num: 8
+    title: "Binary heaps"
+    points:
+      - id: "8.1"
+        title: "Priority queues and heaps"
+        covers: [cs/data-structures/binary-heaps]
+  - num: 9
+    title: "Breadth-first search"
+    points:
+      - id: "9.1"
+        title: "Graphs, representations, BFS"
+        covers: [cs/graph-algorithms/breadth-first-search, def-digraph]
+  - num: 10
+    title: "Depth-first search"
+    points:
+      - id: "10.1"
+        title: "DFS, components, topological sort"
+        covers: [cs/graph-algorithms/depth-first-search, def-dag, def-connected-graph-component]
+  - num: 11
+    title: "Weighted shortest paths"
+    points:
+      - id: "11.1"
+        title: "Weighted graphs and DAG relaxation"
+        covers: [cs/graph-algorithms/weighted-shortest-paths]
+  - num: 12
+    title: "Bellman-Ford"
+    points:
+      - id: "12.1"
+        title: "Negative weights and Bellman-Ford"
+        covers: [cs/graph-algorithms/bellman-ford]
+  - num: 13
+    title: "Dijkstra's algorithm"
+    points:
+      - id: "13.1"
+        title: "Dijkstra's algorithm"
+        covers: [cs/graph-algorithms/dijkstra]
+  - num: 14
+    title: "Johnson's algorithm"
+    points:
+      - id: "14.1"
+        title: "All-pairs shortest paths"
+        covers: [cs/graph-algorithms/all-pairs-shortest-paths]
+  - num: 15
+    title: "Recursive algorithms"
+    points:
+      - id: "15.1"
+        title: "SRT BOT and dynamic programming"
+        covers: [cs/dynamic-programming/recursive-algorithms]
+  - num: 16
+    title: "Dynamic programming subproblems"
+    points:
+      - id: "16.1"
+        title: "LCS, LIS, coin game"
+        covers: [cs/dynamic-programming/subproblem-design]
+  - num: 17
+    title: "Dynamic programming examples"
+    points:
+      - id: "17.1"
+        title: "Floyd-Warshall, parenthesization, fingering"
+        covers: [cs/dynamic-programming/more-dynamic-programs]
+  - num: 18
+    title: "Pseudopolynomial time"
+    points:
+      - id: "18.1"
+        title: "Rod cutting, subset sum, knapsack"
+        covers: [cs/dynamic-programming/pseudopolynomial-time]
+  - num: 19
+    title: "Complexity"
+    points:
+      - id: "19.1"
+        title: "P, NP and reductions"
+        covers: [cs/theory/complexity-classes]

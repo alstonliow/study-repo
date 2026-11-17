@@ -74,3 +74,9 @@ $$c_i = k\,m_i \bmod 26.$$
 
 (b) If $S = \sum_{i=1}^{19} i!$, then find the last digit of $S^2$.
 :::
+
+::: {.problem #prob-mit6006s20-0-q3 origin="external" source="mit6006s20-0-q3"}
+Let $A=600/6$ and $B=60\bmod42$. Are these statements True or False?
+
+Evaluate: (a) $A\equiv B\pmod2$ (b) $A\equiv B\pmod3$ (c) $A\equiv B\pmod4$
+:::

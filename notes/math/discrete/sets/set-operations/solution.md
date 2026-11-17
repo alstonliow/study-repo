@@ -194,3 +194,16 @@ Every element of $U$ is in exactly one of these, because each element is
 either in or out of each set. The assumption that all basic regions are
 nonempty makes every part nonempty, as a partition requires.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
+
+::: {.solution for="prob-mit6006s20-0-q1" status="draft"}
+For $i=0,\dots,4$ the values $i+\binom5i$ are $1,6,12,13,9$, so $A=\{1,6,9,12,13\}$ and $B=\{3,6,12,15\}$.
+
+(a) $A\cap B=\{6,12\}$.
+
+(b) $|A\cup B|=|A|+|B|-|A\cap B|=5+4-2=7$.
+
+(c) $A-B=\{1,9,13\}$, so $|A-B|=3$.
+:::

@@ -64,3 +64,21 @@ $f = o(g)$ $\quad f = O(g)$ $\quad f = \omega(g)$ $\quad f = \Omega(g)$ $\quad f
 
 *Note (these notes):* The statement says six pairs but lists five, (a)–(e).
 :::
+
+::: {.problem #prob-mit6006s20-1-q1 origin="external" source="mit6006s20-1-q1"}
+**Asymptotic behavior of functions**
+
+For each of the following sets of five functions, order them so that if $f_a$ appears before $f_b$ in your sequence, then $f_a=O(f_b)$. If $f_a=O(f_b)$ and $f_b=O(f_a)$ (meaning $f_a$ and $f_b$ could appear in either order), indicate this by enclosing $f_a$ and $f_b$ in a set with curly braces. For example, if the functions are:
+$$f_1=n,\qquad f_2=\sqrt n,\qquad f_3=n+\sqrt n,$$
+the correct answers are $(f_2,\{f_1,f_3\})$ or $(f_2,\{f_3,f_1\})$.
+
+**Note:** Recall that $a^{b^c}$ means $a^{(b^c)}$, not $(a^b)^c$, and that $\log$ means $\log_2$ unless a different base is specified explicitly. Stirling's approximation may help for comparing factorials.
+
+| a) | b) | c) | d) |
+|---|---|---|---|
+| $f_1=\log(n^n)$ | $f_1=2^n$ | $f_1=n^n$ | $f_1=n^{n+4}+n!$ |
+| $f_2=(\log n)^n$ | $f_2=6006^n$ | $f_2=\binom n{n-6}$ | $f_2=n^{7\sqrt n}$ |
+| $f_3=\log(n^{6006})$ | $f_3=2^{6006^n}$ | $f_3=(6n)!$ | $f_3=4^{3n\log n}$ |
+| $f_4=(\log n)^{6006}$ | $f_4=6006^{2^n}$ | $f_4=\binom n{n/6}$ | $f_4=7^{n^2}$ |
+| $f_5=\log\log(6006n)$ | $f_5=6006^{n^2}$ | $f_5=n^6$ | $f_5=n^{12+1/n}$ |
+:::

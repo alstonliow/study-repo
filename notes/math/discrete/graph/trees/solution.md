@@ -161,3 +161,15 @@ $$\frac{2(n-1)}{n} = 2 - \frac2n < 2.$$
 
 This is the same result as @prob-cs70hw-3-q2 (c), for the same kind of tree.
 :::
+
+::: {.solution for="prob-mit6006s20-0-q5" status="draft"}
+Induction on $n=|V|\ge1$.
+
+1. *Base case* $n=1$: there are no edges, so no cycle.
+
+2. *Inductive step.* Let $G$ be connected with $n+1\ge2$ vertices and $n$ edges, and assume the claim for $n$ vertices. The degrees sum to $2n<2(n+1)$ (@thm-handshake), so some vertex $v$ has degree at most $1$; since $G$ is connected with at least two vertices, $\deg v=1$.
+
+3. Removing $v$ and its edge leaves a graph $G'$ with $n$ vertices and $n-1$ edges. $G'$ is connected: a path between two vertices of $G'$ in $G$ cannot pass through $v$, which has only one neighbour. By the hypothesis $G'$ is acyclic.
+
+4. A cycle of $G$ cannot use $v$ (a vertex on a cycle has degree at least $2$), so it would be a cycle of $G'$. Hence $G$ is acyclic.
+:::

@@ -91,3 +91,9 @@ their general Venn diagram are nonempty (see Exercise 6). Then $A,B,C$ define
 a partition of $U$ into eight parts. What are those parts? Express each part
 in terms of one or more of $A,B,C$ using set operations.
 :::
+
+::: {.problem #prob-mit6006s20-0-q1 origin="external" source="mit6006s20-0-q1"}
+Let $A=\left\{i+\binom5i \;\middle|\; i\in\mathbb Z\text{ and }0\le i\le4\right\}$ and $B=\{3i\mid i\in\{1,2,4,5\}\}$.
+
+Evaluate: (a) $A\cap B$ (b) $|A\cup B|$ (c) $|A-B|$
+:::

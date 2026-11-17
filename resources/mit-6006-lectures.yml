@@ -1,0 +1,119 @@
+# MIT 6.006 Introduction to Algorithms, Spring 2020, lecture notes (MIT OpenCourseWare, CC BY-NC-SA),
+# as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6006/lecture-notes (lec1-lec20). Locator = lecture number; a source key is
+# mit6006-7 (Lecture 7). Titles are our own short titles. Node ids are stable.
+id: res-mit-6006-lectures
+kind: course-notes
+title: MIT 6.006 Lecture Notes (Spring 2020)
+status: draft
+courses: [mit6006]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2020-spring
+  current: true
+legacy_keys:
+  prefix: mit6006-
+  edition: 2020-spring
+  pattern: ^mit6006-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 6.006 L{section}
+  problem_label: 6.006 L{section} Q{n}
+nodes:
+- id: res-mit-6006-lectures-introduction
+  kind: lecture
+  title: Introduction
+  at:
+    2020-spring: '1'
+- id: res-mit-6006-lectures-data-structures
+  kind: lecture
+  title: Data structures
+  at:
+    2020-spring: '2'
+- id: res-mit-6006-lectures-sorting
+  kind: lecture
+  title: Sorting
+  at:
+    2020-spring: '3'
+- id: res-mit-6006-lectures-hashing
+  kind: lecture
+  title: Hashing
+  at:
+    2020-spring: '4'
+- id: res-mit-6006-lectures-linear-sorting
+  kind: lecture
+  title: Linear sorting
+  at:
+    2020-spring: '5'
+- id: res-mit-6006-lectures-binary-trees
+  kind: lecture
+  title: Binary trees
+  at:
+    2020-spring: '6'
+- id: res-mit-6006-lectures-avl-trees
+  kind: lecture
+  title: AVL trees
+  at:
+    2020-spring: '7'
+- id: res-mit-6006-lectures-binary-heaps
+  kind: lecture
+  title: Binary heaps
+  at:
+    2020-spring: '8'
+- id: res-mit-6006-lectures-bfs
+  kind: lecture
+  title: Breadth-first search
+  at:
+    2020-spring: '9'
+- id: res-mit-6006-lectures-dfs
+  kind: lecture
+  title: Depth-first search
+  at:
+    2020-spring: '10'
+- id: res-mit-6006-lectures-weighted-shortest-paths
+  kind: lecture
+  title: Weighted shortest paths
+  at:
+    2020-spring: '11'
+- id: res-mit-6006-lectures-bellman-ford
+  kind: lecture
+  title: Bellman-Ford
+  at:
+    2020-spring: '12'
+- id: res-mit-6006-lectures-dijkstra
+  kind: lecture
+  title: Dijkstra's algorithm
+  at:
+    2020-spring: '13'
+- id: res-mit-6006-lectures-johnson
+  kind: lecture
+  title: Johnson's algorithm
+  at:
+    2020-spring: '14'
+- id: res-mit-6006-lectures-recursive-algorithms
+  kind: lecture
+  title: Recursive algorithms
+  at:
+    2020-spring: '15'
+- id: res-mit-6006-lectures-dp-subproblems
+  kind: lecture
+  title: Dynamic programming subproblems
+  at:
+    2020-spring: '16'
+- id: res-mit-6006-lectures-dp-examples
+  kind: lecture
+  title: Dynamic programming examples
+  at:
+    2020-spring: '17'
+- id: res-mit-6006-lectures-pseudopolynomial
+  kind: lecture
+  title: Pseudopolynomial time
+  at:
+    2020-spring: '18'
+- id: res-mit-6006-lectures-complexity
+  kind: lecture
+  title: Complexity
+  at:
+    2020-spring: '19'
+- id: res-mit-6006-lectures-review
+  kind: lecture
+  title: Course review
+  at:
+    2020-spring: '20'

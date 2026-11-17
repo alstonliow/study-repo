@@ -125,3 +125,13 @@ $$x_n=(-1)^n+2^n+3^n.$$
 $$x_n=2(-2)^n+3+\frac{n^2}6+\frac{7n}{18}.$$
 (Check: $x_2=-x_1+2x_0+2=\frac{112}9$, and the formula gives $8+3+\frac46+\frac{14}{18}=\frac{112}9$.)
 :::
+
+::: {.solution for="prob-mit6006s20-2-q1" status="draft"}
+(a) $T(n)=\Theta(n^2)$. *Tree:* level $i$ has $4^i$ nodes of size $n/2^i$, costing at most $c\,4^i\cdot n/2^i=c\,2^in$; over $\log_2n$ levels this is $O(n^2)$, and the $4^{\log_2n}=n^2$ leaves cost $\Theta(n^2)$. *Master theorem* (@thm-master-theorem): $p=\log_24=2$ and $f(n)=O(n)=O(n^{2-\varepsilon})$, case 1.
+
+(b) $T(n)=O(n^4)$ and $T(n)=\Omega(n^{2\log_23})$ (note $2\log_23\approx3.17$); since the extra work is only bounded above, nothing tighter follows. *Master theorem:* $p=\log_{\sqrt2}3=2\log_23<4$. With $f(n)=\Theta(n^4)$ case 3 applies (regularity: $3(n/\sqrt2)^4=\frac34n^4$), giving the upper bound; with $f(n)=0$ case 1 gives the lower bound. *Tree:* level $i$ costs at most $3^i c(n/\sqrt2^{\,i})^4=cn^4(3/4)^i$, a decreasing geometric series summing to $O(n^4)$, and the $3^{\log_{\sqrt2}n}=n^{2\log_23}$ leaves give the lower bound.
+
+(c) $T(n)=\Theta(n\log^2n)$. *Tree:* level $i$ has $2^i$ nodes of size $n/2^i$, costing $2^i\cdot5\frac n{2^i}\log\frac n{2^i}=5n(\log n-i)$; summing over $i<\log n$ gives $5n\sum_{j=1}^{\log n}j=\Theta(n\log^2n)$. *Master theorem:* $p=1$, $f(n)=\Theta(n\log n)$, case 2 with $k=1$.
+
+(d) $T(n)=\Theta(n^2)$. *Upper bound:* guess $T(n)\le cn^2$ and suppose $T(n)\le T(n-2)+an$ for large $n$. Then $T(n)\le c(n-2)^2+an=cn^2-(4c-a)n+4c\le cn^2$ when $4c>a$ and $n\ge2$ (large constants handle the base cases). *Lower bound:* guess $T(n)\ge c'n^2$ with $T(n)\ge T(n-2)+bn$. Then $T(n)\ge c'(n-2)^2+bn=c'n^2+(b-4c')n+4c'\ge c'n^2$ when $c'\le b/4$.
+:::

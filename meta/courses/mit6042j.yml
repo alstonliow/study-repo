@@ -13,6 +13,14 @@ outline_from: "Mathematics for Computer Science, 2015 edition, Chapters 1-21"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 6.006 Spring 2020 problem sets (not in this course's material)
+  - prob-mit6006s20-0-q1
+  - prob-mit6006s20-0-q2
+  - prob-mit6006s20-0-q3
+  - prob-mit6006s20-0-q4
+  - prob-mit6006s20-0-q5
+  - prob-mit6006s20-1-q1
+  - prob-mit6006s20-2-q1
   # Problems from FIT1058 and CS70 (none is from the textbook). Block-level audit of examples,
   # remarks and results from other sources is still to be done (owner review); until then
   # they count as in scope.

@@ -105,3 +105,7 @@ Hint: Assign each marble a weight, and argue that at every step, the combined we
 
 *Note (these notes):* The official solution states that the final weight is $0$; it can also be $4$ (one green marble left), which does not change the answer because $4$ is even.
 :::
+
+::: {.problem #prob-mit6006s20-0-q4 origin="external" source="mit6006s20-0-q4"}
+Prove **by induction** that $\displaystyle\sum_{i=1}^ni^3=\left[\frac{n(n+1)}2\right]^2$, for any integer $n\ge1$.
+:::

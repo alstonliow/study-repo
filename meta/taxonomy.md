@@ -52,6 +52,7 @@ Planned later: programming, calculus, linear algebra, analysis, optimisation.
 | CS70 Notes 13–19 | `math/probability/discrete` |
 | CS70 Note 20 | `math/probability/continuous` |
 | CS70 Note 21 | `math/probability/markov-chains` |
+| MIT 6.006 lecture and recitation notes (Spring 2020) | `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming` (new branches); `cs/algorithms` (model of computation), `cs/theory` (complexity classes); the general master theorem in `math/discrete/sequences/solving-recurrences` |
 | MIT 6.042J textbook (MCS 2015), Chapters 1–21 | mostly existing branches; new notes in `proof` (well ordering, state machines, structural induction), `relations` (partial orders), `graph` (directed graphs, isomorphism, colouring, communication networks), `sequences` (approximating sums), `counting` (generating functions), `probability/discrete` (conditional expectation, Chernoff bounds) |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
@@ -70,3 +71,5 @@ course files (`meta/courses/`), not here.
   `standard-distributions` moved to the end of `math/probability/continuous` as an
   overview of all distributions.
 - 2026-11-17: MIT 6.042J (Mathematics for Computer Science) added as a course; 13 new notes placed in existing branches.
+- 2026-11-17: MIT 6.006 (Introduction to Algorithms) added as a course; new branches `cs/data-structures`,
+  `cs/graph-algorithms` and `cs/dynamic-programming` at the end of the part Computer Science; 21 new notes.

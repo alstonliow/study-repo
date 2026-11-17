@@ -152,3 +152,18 @@ not here.
 ## Probability (`math/probability`)
 
 <!-- TODO: 1058note chapter 11 has no probability section. Add symbols during migration of chapter 9. -->
+
+## Algorithms (`cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`)
+
+| Symbol | Meaning |
+|---|---|
+| $n$, $\lvert V\rvert$, $\lvert E\rvert$ | input size; numbers of vertices and edges |
+| $w$ | word size of the word-RAM (in graphs: the weight function $w(u,v)$) |
+| $\log$ | base $2$ unless another base is written; bases matter only inside exponents |
+| $\operatorname{Adj}^+(u)$, $\operatorname{Adj}^-(u)$ | out- and in-neighbours of $u$; $\operatorname{Adj}(u)=\operatorname{Adj}^+(u)$ |
+| $\deg^+(u)$, $\deg^-(u)$ | out- and in-degree |
+| $\delta(s,v)$ | distance: least weight (or length) of a walk from $s$ to $v$; $\pm\infty$ allowed |
+| $\delta_k(s,v)$ | least weight of a walk from $s$ to $v$ with at most $k$ edges |
+| $d(v)$ | an algorithm's current estimate of $\delta(s,v)$ |
+| $P(v)$ | parent pointer of $v$ in a search or shortest-path tree |
+| `operation(args)` | an operation of an interface (sequence, set, priority queue), in code font |

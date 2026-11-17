@@ -103,3 +103,19 @@ Find closed-form solutions to the following linear recurrences.
 
 (b) $x_n = -x_{n-1} + 2x_{n-2} + n$ $\quad(x_0 = 5, x_1 = -4/9)$
 :::
+
+::: {.problem #prob-mit6006s20-2-q1 origin="external" source="mit6006s20-2-q1"}
+**Solving recurrences**
+
+Derive solutions to the following recurrences. A solution should include the tightest upper and lower bounds that the recurrence will allow. Assume $T(1)=\Theta(1)$.
+
+Solve parts (a), (b), and (c) in **two ways**: drawing a recursion tree **and** applying Master Theorem. Solve part (d) **only by substitution**.
+
+(a) $T(n)=4\,T(\frac n2)+O(n)$
+
+(b) $T(n)=3\,T(\frac n{\sqrt2})+O(n^4)$
+
+(c) $T(n)=2\,T(\frac n2)+5n\log n$
+
+(d) $T(n)=T(n-2)+\Theta(n)$
+:::

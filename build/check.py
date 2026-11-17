@@ -138,8 +138,10 @@ def check_notes() -> None:
                 line = f.raw[:m.start()].count("\n") + 1
                 errors.append(f"{rel(md)}:{line}: invisible control character {m.group(0)!r} (corrupted text?)")
             if f.name in ("exercise.md", "solution.md"):
-                for m in re.finditer(r"^[ \t]*#{1,6} ", f.masked, re.M):
-                    line = f.masked[:m.start()].count("\n") + 1
+                # fenced code (a Python comment is not a heading) is blanked, line numbers kept
+                text = CODE_FENCE.sub(lambda m: "\n" * m.group(0).count("\n"), f.masked)
+                for m in re.finditer(r"^[ \t]*#{1,6} ", text, re.M):
+                    line = text[:m.start()].count("\n") + 1
                     errors.append(f"{rel(md)}:{line}: no headings inside problems or solutions; use **bold** text")
             for m in REF.finditer(f.text):
                 refs.append((md, m.group(1)))
@@ -281,6 +283,7 @@ def check_courses() -> None:
             print(f"info: {nid}: drawn from {c.code} material but outside its scope")
 
 
+CODE_FENCE = re.compile(r"^([ \t]*)(`{3,}|~{3,})[^\n]*\n.*?^\1\2[ \t]*$", re.S | re.M)
 RAW_LATEX = re.compile(r"^[ \t]*```\{=latex\}\n(.*?)\n[ \t]*```", re.S | re.M)
 HARD_CODED = re.compile(
     r"\b(?:defc|thmc|exc|notec|black|gray|red|blue|green)!\d+"      # colour mixes

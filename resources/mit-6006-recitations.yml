@@ -1,0 +1,114 @@
+# MIT 6.006 Introduction to Algorithms, Spring 2020, recitation notes (MIT OpenCourseWare, CC BY-NC-SA),
+# as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6006/lecture-notes (r01-r19). Locator = recitation number; a source key is
+# mit6006r-3 (Recitation 3). Titles are our own short titles. Node ids are stable.
+id: res-mit-6006-recitations
+kind: course-notes
+title: MIT 6.006 Recitation Notes (Spring 2020)
+status: draft
+courses: [mit6006]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2020-spring
+  current: true
+legacy_keys:
+  prefix: mit6006r-
+  edition: 2020-spring
+  pattern: ^mit6006r-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 6.006 R{section}
+  problem_label: 6.006 R{section} Q{n}
+nodes:
+- id: res-mit-6006-recitations-asymptotics
+  kind: recitation
+  title: Algorithms and asymptotics
+  at:
+    2020-spring: '1'
+- id: res-mit-6006-recitations-sequences-and-sets
+  kind: recitation
+  title: Sequence and set implementations
+  at:
+    2020-spring: '2'
+- id: res-mit-6006-recitations-sorting-and-recurrences
+  kind: recitation
+  title: Sorting and recurrences
+  at:
+    2020-spring: '3'
+- id: res-mit-6006-recitations-hashing
+  kind: recitation
+  title: Hashing
+  at:
+    2020-spring: '4'
+- id: res-mit-6006-recitations-linear-sorting
+  kind: recitation
+  title: Linear sorting
+  at:
+    2020-spring: '5'
+- id: res-mit-6006-recitations-binary-trees
+  kind: recitation
+  title: Binary trees
+  at:
+    2020-spring: '6'
+- id: res-mit-6006-recitations-balanced-trees
+  kind: recitation
+  title: Balanced binary trees
+  at:
+    2020-spring: '7'
+- id: res-mit-6006-recitations-binary-heaps
+  kind: recitation
+  title: Binary heaps
+  at:
+    2020-spring: '8'
+- id: res-mit-6006-recitations-bfs
+  kind: recitation
+  title: Graphs and breadth-first search
+  at:
+    2020-spring: '9'
+- id: res-mit-6006-recitations-dfs-and-topological-sort
+  kind: recitation
+  title: Depth-first search and topological sort
+  at:
+    2020-spring: '10'
+- id: res-mit-6006-recitations-weighted-shortest-paths
+  kind: recitation
+  title: Weighted shortest paths
+  at:
+    2020-spring: '11'
+- id: res-mit-6006-recitations-bellman-ford
+  kind: recitation
+  title: Bellman-Ford
+  at:
+    2020-spring: '12'
+- id: res-mit-6006-recitations-dijkstra
+  kind: recitation
+  title: Dijkstra's algorithm
+  at:
+    2020-spring: '13'
+- id: res-mit-6006-recitations-all-pairs
+  kind: recitation
+  title: All-pairs shortest paths
+  at:
+    2020-spring: '14'
+- id: res-mit-6006-recitations-dynamic-programming
+  kind: recitation
+  title: Dynamic programming
+  at:
+    2020-spring: '15'
+- id: res-mit-6006-recitations-dp-exercises
+  kind: recitation
+  title: Dynamic programming exercises
+  at:
+    2020-spring: '16'
+- id: res-mit-6006-recitations-dp-exercises-ii
+  kind: recitation
+  title: Dynamic programming exercises II
+  at:
+    2020-spring: '17'
+- id: res-mit-6006-recitations-subset-sum
+  kind: recitation
+  title: Subset sum and pseudopolynomial time
+  at:
+    2020-spring: '18'
+- id: res-mit-6006-recitations-complexity
+  kind: recitation
+  title: Complexity
+  at:
+    2020-spring: '19'

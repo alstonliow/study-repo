@@ -81,3 +81,7 @@ For the case of one single vertex (see above), that vertex is considered to be a
 
 *Note (these notes):* Figure 1: the edges are A–B, A–C, B–D, B–E, E–F, E–G. Figure 2: the edges are A–B, A–C, B–D, B–E, C–F. The figures are described rather than redrawn.
 :::
+
+::: {.problem #prob-mit6006s20-0-q5 origin="external" source="mit6006s20-0-q5"}
+Prove **by induction** that every connected undirected graph $G=(V,E)$ for which $|E|=|V|-1$ is acyclic.
+:::

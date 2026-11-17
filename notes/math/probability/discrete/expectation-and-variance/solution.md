@@ -43,3 +43,11 @@
 
 (e) $E[X^3]=\frac{1+8+27+64+125+216}6=\frac{441}6=73.5$, $E[X^6]=\frac{1+64+729+4096+15625+46656}6=\frac{67171}6$, so $\mathrm{Var}(X^3)=\frac{67171}6-\Bigl(\frac{441}6\Bigr)^2=\frac{69515}{12}\approx5792.9$.
 :::
+
+::: {.solution for="prob-mit6006s20-0-q2" status="draft"}
+(a) $X$ is the sum of three indicator variables, each with expectation $\frac12$, so $E[X]=\frac32$ by linearity.
+
+(b) $Y=D_1D_2$ with independent dice, $E[D_i]=\frac72$, so $E[Y]=E[D_1]E[D_2]=\frac{49}4=12.25$ (@thm-expectation-of-product).
+
+(c) By linearity, $E[X+Y]=\frac32+\frac{49}4=\frac{55}4=13.75$ (no independence of $X$ and $Y$ is needed).
+:::

@@ -34,3 +34,9 @@ Suppose the stock market contains $N$ types of stocks, which can be modelled by 
 
 (e) We change the rules of the game so that your payoff is the cube of the number that comes up. In that case, what is your expected payoff? What is its variance?
 :::
+
+::: {.problem #prob-mit6006s20-0-q2 origin="external" source="mit6006s20-0-q2"}
+Let $X$ be the random variable representing the number of heads seen after flipping a fair coin three times. Let $Y$ be the random variable representing the outcome of rolling two fair six-sided dice and multiplying their values. Please compute the following expected values.
+
+Evaluate: (a) $\mathrm E[X]$ (b) $\mathrm E[Y]$ (c) $\mathrm E[X+Y]$
+:::

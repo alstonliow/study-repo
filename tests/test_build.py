@@ -140,6 +140,17 @@ class TestCheck(Repo):
         self.edit("notes/t/alpha/first/exercise.md", 'origin="self" ', "")
         self.assertError("problem missing origin")
 
+    def test_heading_in_problem(self):
+        self.edit("notes/t/alpha/first/exercise.md", "Statement two.",
+                  "Statement two.\n\n# A heading")
+        self.assertError("no headings inside problems or solutions")
+
+    def test_comment_in_code_is_not_a_heading(self):
+        self.edit("notes/t/alpha/first/exercise.md", "Statement two.",
+                  "Statement two.\n\n```python\n# a comment\nx = 1\n```")
+        r = self.check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+
     def test_block_without_id(self):
         self.edit("notes/t/alpha/first/note.md", "#rmk-first-1 ", "")
         r = self.check()

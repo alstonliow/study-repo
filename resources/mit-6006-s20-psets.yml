@@ -1,0 +1,66 @@
+# MIT 6.006 Introduction to Algorithms, Spring 2020, problem sets 0-8 (MIT OpenCourseWare, CC BY-NC-SA),
+# as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_6006/assignments. Locator = problem set number; a source key is
+# mit6006s20-4-q2 (problem set 4, problem 4-2). Problem statements are copied as exercises
+# (homework rule, meta/SPEC.md §10) without the point values; solutions are our own.
+# Titles are our own short titles. Node ids are stable.
+id: res-mit-6006-s20-psets
+kind: homework
+title: MIT 6.006 Problem Sets (Spring 2020)
+status: draft
+courses: [mit6006]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 2020-spring
+  current: true
+legacy_keys:
+  prefix: mit6006s20-
+  edition: 2020-spring
+  pattern: ^mit6006s20-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 6.006 S20 PS {section}
+  problem_label: 6.006 S20 PS {section} Q{n}
+nodes:
+- id: res-mit-6006-s20-psets-ps0
+  kind: homework
+  title: Background
+  at:
+    2020-spring: '0'
+- id: res-mit-6006-s20-psets-ps1
+  kind: homework
+  title: Asymptotics and sequence data structures
+  at:
+    2020-spring: '1'
+- id: res-mit-6006-s20-psets-ps2
+  kind: homework
+  title: Recurrences and sorting
+  at:
+    2020-spring: '2'
+- id: res-mit-6006-s20-psets-ps3
+  kind: homework
+  title: Hashing and linear sorting
+  at:
+    2020-spring: '3'
+- id: res-mit-6006-s20-psets-ps4
+  kind: homework
+  title: Binary trees and heaps
+  at:
+    2020-spring: '4'
+- id: res-mit-6006-s20-psets-ps5
+  kind: homework
+  title: Graph search
+  at:
+    2020-spring: '5'
+- id: res-mit-6006-s20-psets-ps6
+  kind: homework
+  title: Weighted shortest paths
+  at:
+    2020-spring: '6'
+- id: res-mit-6006-s20-psets-ps7
+  kind: homework
+  title: Dynamic programming
+  at:
+    2020-spring: '7'
+- id: res-mit-6006-s20-psets-ps8
+  kind: homework
+  title: Dynamic programming and pseudopolynomial time
+  at:
+    2020-spring: '8'

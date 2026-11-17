@@ -12,6 +12,16 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # General master theorem, from MIT 6.006 (the Course Notes have only the polynomial case)
+  - thm-master-theorem
+  # MIT 6.006 Spring 2020 problem sets (not in this course's material)
+  - prob-mit6006s20-0-q1
+  - prob-mit6006s20-0-q2
+  - prob-mit6006s20-0-q3
+  - prob-mit6006s20-0-q4
+  - prob-mit6006s20-0-q5
+  - prob-mit6006s20-1-q1
+  - prob-mit6006s20-2-q1
   # MIT 6.042J Fall 2010 problem sets (not in this course's material)
   - prob-mit6042f10-1-q1
   - prob-mit6042f10-1-q2

@@ -202,3 +202,15 @@ Give a blue marble weight $1$, a green one $4$ and a red one $13$, and let $W=13
 
 4. The first player makes the last move exactly when the number of moves is odd. So **the first player wins if and only if $R+B$ is odd**, and the strategy does not matter: every sequence of legal moves has the same parity of length.
 :::
+
+::: {.solution for="prob-mit6006s20-0-q4" status="draft"}
+Let $P(n)$ be the claimed identity.
+
+1. *Base case* $n=1$: both sides equal $1$.
+
+2. *Inductive step.* Assume $P(n)$ for some $n\ge1$. Then
+   $$\sum_{i=1}^{n+1}i^3=\frac{n^2(n+1)^2}4+(n+1)^3=\frac{(n+1)^2\bigl(n^2+4n+4\bigr)}4=\left[\frac{(n+1)(n+2)}2\right]^2,$$
+   which is $P(n+1)$.
+
+3. By induction, $P(n)$ holds for all $n\ge1$.
+:::

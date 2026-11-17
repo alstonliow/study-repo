@@ -193,9 +193,42 @@ parts:
         title: Algorithms
         desc: Design and analysis of algorithms
         notes:   # topic order on the website
+          - problems-and-algorithms
           - stable-matching
       - id: cs/theory
         title: Theory of Computation
         desc: Computability, self-reference, undecidability
         notes:   # topic order on the website
           - computability
+          - complexity-classes
+      - id: cs/data-structures
+        title: Data Structures and Sorting
+        desc: Sequences and sets, sorting, hashing, search trees, heaps
+        notes:   # topic order on the website
+          - interfaces
+          - linked-lists-and-dynamic-arrays
+          - comparison-sorting
+          - comparison-lower-bounds
+          - hashing
+          - linear-sorting
+          - binary-trees
+          - avl-trees
+          - binary-heaps
+      - id: cs/graph-algorithms
+        title: Graph Algorithms
+        desc: Graph search, single-source and all-pairs shortest paths
+        notes:   # topic order on the website
+          - breadth-first-search
+          - depth-first-search
+          - weighted-shortest-paths
+          - bellman-ford
+          - dijkstra
+          - all-pairs-shortest-paths
+      - id: cs/dynamic-programming
+        title: Dynamic Programming
+        desc: Recursive algorithm design, subproblems, pseudopolynomial time
+        notes:   # topic order on the website
+          - recursive-algorithms
+          - subproblem-design
+          - more-dynamic-programs
+          - pseudopolynomial-time

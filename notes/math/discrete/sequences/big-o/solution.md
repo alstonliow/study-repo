@@ -59,3 +59,15 @@
 
 (e) $f=\omega(g)$ and $f=\Omega(g)$: every exponential $c^n$ with $c>1$ eventually exceeds every polynomial, since $\frac{\ln(c^n)}{\ln(n^k)}=\frac{n\ln c}{k\ln n}\to\infty$.
 :::
+
+::: {.solution for="prob-mit6006s20-1-q1" status="draft"}
+Compare logarithms where the functions grow fast.
+
+(a) $(f_5,f_3,f_4,f_1,f_2)$. Simplify: $f_1=n\log n$, $f_3=6006\log n=\Theta(\log n)$, $f_4=(\log n)^{6006}$, $f_5=\log\log n+O(1)$, and $f_2=2^{n\log\log n}$ is super-polynomial.
+
+(b) $(f_1,f_2,f_5,f_4,f_3)$. Writing everything as a power of $2$ with $c=\log6006$: the exponents are $n$, $cn$, $2^{cn}$, $c\,2^n$ and $cn^2$. They are ordered $n<cn<cn^2<c2^n<2^{cn}$, and a constant factor in an exponent matters ($6006^n\ne O(2^n)$).
+
+(c) $(\{f_2,f_5\},f_4,f_1,f_3)$. $f_2=\binom n6=\Theta(n^6)=\Theta(f_5)$. By Stirling, $\binom n{n/6}=2^{\Theta(n)}$ (about $2^{0.65n}$ up to polynomial factors), which beats every polynomial but is $o(n^n)$. Finally $\log(6n)!=\Theta(6n\log n)$ exceeds $\log n^n=n\log n$ by more than any constant, so $n^n=o((6n)!)$.
+
+(d) $(f_5,f_2,f_1,f_3,f_4)$. $f_5=n^{12}\cdot n^{1/n}=\Theta(n^{12})$ since $n^{1/n}\to1$. The logarithms of the others are $7\sqrt n\log n$, $\Theta(n\log n)$ (since $n!\le n^n$, $f_1=\Theta(n^{n+4})$, with logarithm $(n+4)\log n$), $6n\log n$ (as $4^{3n\log n}=2^{6n\log n}$), and $n^2\log7$. Since $f_3/f_1=n^{5n-4}\to\infty$, $f_1=o(f_3)$.
+:::

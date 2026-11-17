@@ -107,3 +107,13 @@ Last digits are residues modulo $10$.
 
 (b) For $i\ge5$, $i!$ is a multiple of $5!=120$, hence $\equiv0\pmod{10}$. So $S\equiv1+2+6+24=33\equiv3$ and $S^2\equiv9\pmod{10}$. The last digit is $9$.
 :::
+
+::: {.solution for="prob-mit6006s20-0-q3" status="draft"}
+$A=100$ and $B=18$, so $A-B=82=2\cdot41$.
+
+(a) True: $2\mid82$.
+
+(b) False: $82=3\cdot27+1$.
+
+(c) False: $82=4\cdot20+2$.
+:::
