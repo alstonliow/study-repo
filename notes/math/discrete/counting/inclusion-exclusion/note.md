@@ -48,7 +48,7 @@ $$
 Summing $|A|+|B|+|C|$ counts elements in exactly two sets twice, elements in all three sets three times. Subtracting all pairwise intersections fixes the double-count but now over-corrects triple-members (removed three times, once per pair, instead of the needed two). Adding back $|A\cap B\cap C|$ restores them to count $1$.
 :::
 
-::: {#thm-inclusion-exclusion .theorem name="General inclusion-exclusion"}
+::: {#thm-inclusion-exclusion .theorem name="General inclusion-exclusion" generalizes="thm-inclusion-exclusion-2"}
 For finite $A_1,\dots,A_n$:
 $$
 \left|\bigcup_{i=1}^n A_i\right| = \sum_{k=1}^n (-1)^{k+1} \sum_{1\le i_1<\cdots<i_k\le n} |A_{i_1}\cap\cdots\cap A_{i_k}|.

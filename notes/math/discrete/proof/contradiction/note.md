@@ -1,6 +1,6 @@
 ---
 title: "Proof by contradiction"
-sources: [fit1058-cn-3.9]
+sources: [fit1058-cn-3.9, fit1058-cn-7.2]
 requires: [math/discrete/proof/finding-proofs]
 status: draft
 ---
@@ -13,6 +13,8 @@ Assume the *negation* of the claim; reason from it to a contradiction (some stat
 
 :::
 
+<!-- Merged 2026-11-17 (one best version, SPEC §7.8): the statement and the contradiction framing are from CN 3.9; the steps follow the proof of @thm-infprimes from CN 7.2, which this note now carries for both. -->
+
 ::: {#exm-infinitely-many-primes .example name="Infinitely many primes"}
 
 There are infinitely many prime numbers.
@@ -21,9 +23,13 @@ There are infinitely many prime numbers.
 
 ::: {.proof}
 
-Suppose, for contradiction, that there are only finitely many primes $p_1,p_2,\dots,p_n$. Let
-$$q = p_1 p_2 \cdots p_n + 1.$$
-Since $q > p_i$ for every $i$, $q$ is not itself prime, so $q$ is composite and hence divisible by some prime. But for each $p_i$, dividing $q$ by $p_i$ leaves remainder $1$ (since $p_i$ divides $p_1\cdots p_n$ exactly), so $p_i \nmid q$. So $q$ is divisible by no prime at all – contradicting that $q$ is composite. Hence the assumption was false: there are infinitely many primes.
+1. Suppose, for contradiction, that there are only finitely many primes, $p_1,p_2,\dots,p_n$.
+
+2. Let $q=p_1p_2\cdots p_n+1$. Then $q>1$, so $q$ has a prime divisor (@thm-primefactexists), which must be one of the $p_i$.
+
+3. $p_i$ also divides $p_1p_2\cdots p_n$, so it divides the difference $q-p_1\cdots p_n=1$ (@prp-divlinear). No prime divides $1$, a contradiction.
+
+4. So the assumption is false: there are infinitely many primes.
 
 :::
 

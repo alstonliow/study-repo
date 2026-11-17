@@ -105,7 +105,6 @@ exclude:
   - exm-two-aces                                     # CS70 example
   - exm-pairwise-not-mutual                          # CS70 example
   - exm-three-heads                                  # CS70 example
-  - exm-monty-hall-conditional                       # CS70 example
   - exm-flush-product-rule                           # CS70 example
   - exm-three-dice-game                              # CS70 example
   - prob-cs70-14-q1                                  # CS70 exercise

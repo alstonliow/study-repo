@@ -75,13 +75,13 @@ Show that Definitions 14.4 and 14.5 of mutual independence are equivalent.
 ::: {.problem #prob-cs70-14-q4 origin="external" source="cs70-14.5-q4"}
 In the Monty Hall problem, find $P[C_1 \cap P_1 \cap H_3]$.
 
-*Note (these notes):* $C_i$, $P_i$ and $H_i$ are as in @exm-monty-hall-conditional.
+*Note (these notes):* $C_i$, $P_i$ and $H_i$ are as in @exm-monty-hall.
 :::
 
 ::: {.problem #prob-cs70-14-q5 origin="external" source="cs70-14.5-q5"}
 In the Monty Hall problem, show that $P[H_3 \mid C_1] = \frac{1}{2}$.
 
-*Note (these notes):* $C_i$, $P_i$ and $H_i$ are as in @exm-monty-hall-conditional.
+*Note (these notes):* $C_i$, $P_i$ and $H_i$ are as in @exm-monty-hall.
 :::
 
 ::: {.problem #prob-cs70hw-9-q6 origin="external" source="cs70hw-9-q6"}

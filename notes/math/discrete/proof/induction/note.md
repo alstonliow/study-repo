@@ -40,7 +40,7 @@ Induction as a row of dominoes: the base case knocks over $S(1)$, and the induct
 
 :::
 
-::: {#thm-generalized-de-morgan-s-law .theorem name="Generalized De Morgan's law, CN Thm 18"}
+::: {#thm-generalized-de-morgan-s-law .theorem name="Generalized De Morgan's law for sets"}
 
 For all $n \in \mathbb{N}$ and sets $A_1,\dots,A_n$:
 $$\overline{A_1 \cup A_2 \cup \cdots \cup A_n} = \overline{A_1} \cap \overline{A_2} \cap \cdots \cap \overline{A_n}.$$

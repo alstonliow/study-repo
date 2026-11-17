@@ -124,7 +124,7 @@ $A\cup B$ is the disjoint union of $A$ and $B\setminus A$, and $B\setminus A=B\s
 
 :::
 
-::: {#thm-general-case .theorem name="General case"}
+::: {#thm-general-case .theorem name="General case" generalizes="thm-inclusion-exclusion"}
 
 $$\Pr\left(\bigcup_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<i_k} \Pr(A_{i_1}\cap\cdots\cap A_{i_k}).$$
 

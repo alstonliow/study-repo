@@ -44,6 +44,19 @@ You should switch.
 
 **Lesson.** Work systematically. Name the sample space, give each outcome its
 probability, describe the event as a set of outcomes, and add up.
+
+**Second solution, with conditional probability.** <!-- Merged 2026-11-17 (SPEC §7.8): this part was a separate example adapted from CS70 Note 14 (cs70-14.1). -->
+Let $C_i$ be "you pick door $i$", $P_i$ "the prize is behind door $i$" and $H_i$ "the host opens door $i$".
+
+1. By @thm-chain-rule,
+   $$\Pr(C_1\cap P_2\cap H_3)=\Pr(C_1)\,\Pr(P_2\mid C_1)\,\Pr(H_3\mid C_1\cap P_2)=\tfrac13\cdot\tfrac13\cdot1=\tfrac19.$$
+   The host must open door $3$: door $1$ is yours and door $2$ hides the prize.
+
+2. Given $C_1$, the host opens door $3$ with probability $\frac12$ by symmetry, so $\Pr(C_1\cap H_3)=\frac13\cdot\frac12=\frac16$.
+
+3. Hence $\Pr(P_2\mid C_1\cap H_3)=\dfrac{1/9}{1/6}=\dfrac23$: after the host opens door $3$, switching to door $2$ wins with probability $\frac23$.
+
+Multiplying the three plain probabilities instead would give $\frac1{27}$, which is wrong because the events are not independent.
 :::
 
 <!-- The examples below are adapted (own wording) from UC Berkeley CS 70, Fall 2020, Note 14, §1 and §4 (source keys cs70-14.1, cs70-14.4, in note.md). -->
@@ -84,21 +97,8 @@ $$\Pr(A_1\cap A_2\cap A_3)=\Pr(A_1)\Pr(A_2)\Pr(A_3)=p^3,$$
 which is $\frac18$ for a fair coin. In the same way any sequence of $n$ tosses with $k$ heads has probability $p^k(1-p)^{n-k}$. This is why the sample space of coin tosses is given those probabilities.
 :::
 
-::: {#exm-monty-hall-conditional .example name="Monty Hall with conditional probability" level="medium"}
-In @exm-monty-hall, let $C_i$ be "you pick door $i$", $P_i$ "the prize is behind door $i$" and $H_i$ "the host opens door $i$".
 
-1. By @thm-chain-rule,
-   $$\Pr(C_1\cap P_2\cap H_3)=\Pr(C_1)\,\Pr(P_2\mid C_1)\,\Pr(H_3\mid C_1\cap P_2)=\tfrac13\cdot\tfrac13\cdot1=\tfrac19.$$
-   The host must open door $3$: door $1$ is yours and door $2$ hides the prize.
-
-2. Given $C_1$, the host opens door $3$ with probability $\frac12$ by symmetry, so $\Pr(C_1\cap H_3)=\frac13\cdot\frac12=\frac16$.
-
-3. Hence $\Pr(P_2\mid C_1\cap H_3)=\dfrac{1/9}{1/6}=\dfrac23$: after the host opens door $3$, switching to door $2$ wins with probability $\frac23$.
-
-Multiplying the three plain probabilities instead would give $\frac1{27}$, which is wrong because the events are not independent.
-:::
-
-::: {#exm-flush-product-rule .example name="A flush, card by card" level="medium"}
+::: {#exm-flush-product-rule .example name="A flush, card by card" level="medium" related="exm-flush"}
 The probability that a $5$-card hand is all Hearts is, by @thm-chain-rule with $A_i$ = "card $i$ is a Heart",
 $$\frac{13}{52}\cdot\frac{12}{51}\cdot\frac{11}{50}\cdot\frac{10}{49}\cdot\frac{9}{48}.$$
 Flushes in different suits are mutually exclusive, so the probability of a flush is $4$ times this, about $0.002$. This agrees with counting hands (@exm-flush).

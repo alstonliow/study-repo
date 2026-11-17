@@ -19,7 +19,7 @@ A valid assignment (every position filled, no applicant doubled) is exactly an *
 
 :::
 
-::: {#thm-necessity-cn-thm-20 .theorem name="Necessity, CN Thm 20"}
+::: {#thm-necessity-cn-thm-20 .theorem name="Necessity of the subset condition"}
 
 If $S$ contains an injection with domain $A$, then $|X| \le |S(X)|$ for every $X \subseteq A$.
 
@@ -31,7 +31,7 @@ An injection assigns distinct applicants to distinct positions, so the positions
 
 :::
 
-::: {#thm-sufficiency-cn-thm-21 .theorem name="Sufficiency, CN Thm 21"}
+::: {#thm-sufficiency-cn-thm-21 .theorem name="Sufficiency of the subset condition"}
 
 If $|X| \le |S(X)|$ for every $X \subseteq A$, then $S$ contains an injection with domain $A$.
 
@@ -74,7 +74,7 @@ Cases 1 and 2 are exhaustive, completing the inductive step. By induction, the t
 
 :::
 
-::: {#cor-cn-cor-22 .corollary name="CN Cor. 22"}
+::: {#cor-cn-cor-22 .corollary name="Injection criterion (Hall's theorem)"}
 
 $S \subseteq A\times B$ contains an injection with domain $A$ $\iff$ $|X|\le|S(X)|$ for every $X\subseteq A$.
 

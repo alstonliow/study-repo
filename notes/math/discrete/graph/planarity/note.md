@@ -57,7 +57,7 @@ A plane graph with $n=8$, $m=10$, $f=4$; indeed $n-m+f=8-10+4=2$
 
 :::
 
-::: {#thm-euler-s-theorem-cn-thm .theorem name="Euler's Theorem, CN Thm 71"}
+::: {#thm-euler-s-theorem-cn-thm .theorem name="Euler's formula"}
 
 Let $G$ be a connected plane graph with $n$ vertices, $m$ edges and $f$ faces. Then $n-m+f = 2$.
 
@@ -83,7 +83,7 @@ The inductive step used the fact that a cycle drawn in the plane separates the p
 
 :::
 
-::: {#cor-cn-cor-72 .corollary name="CN Cor 72"}
+::: {#cor-cn-cor-72 .corollary name="Edge bound for planar graphs"}
 
 For any simple planar graph with $n\ge3$ vertices and $m$ edges,  $m \le 3n-6$.
 
@@ -95,7 +95,7 @@ We may assume $G$ is connected, since adding edges between components keeps it p
 
 :::
 
-::: {#cor-cn-cor-73 .corollary name="CN Cor 73"}
+::: {#cor-cn-cor-73 .corollary name="$K_5$ is nonplanar"}
 
 $K_5$ is nonplanar.
 
@@ -103,11 +103,11 @@ $K_5$ is nonplanar.
 
 ::: {.proof}
 
-$K_5$ has $n=5$ and $m=10$, but $3n-6=9<10$, contradicting CN Cor 72.
+$K_5$ has $n=5$ and $m=10$, but $3n-6=9<10$, contradicting @cor-cn-cor-72.
 
 :::
 
-::: {#cor-cn-cor-74 .corollary name="CN Cor 74"}
+::: {#cor-cn-cor-74 .corollary name="Edge bound for triangle-free planar graphs"}
 
 For any triangle-free simple planar graph with $n\ge3$ vertices and $m$ edges,  $m\le2n-4$.
 
@@ -115,11 +115,11 @@ For any triangle-free simple planar graph with $n\ge3$ vertices and $m$ edges, �
 
 ::: {.proof}
 
-As for CN Cor 72, but now every face has at least $4$ sides, so $4f\le2m$. Then $2=n-m+f\le n-m+\frac12m$, giving $m\le2n-4$.
+As for @cor-cn-cor-72, but now every face has at least $4$ sides, so $4f\le2m$. Then $2=n-m+f\le n-m+\frac12m$, giving $m\le2n-4$.
 
 :::
 
-::: {#cor-cn-cor-75 .corollary name="CN Cor 75"}
+::: {#cor-cn-cor-75 .corollary name="$K_{3,3}$ is nonplanar"}
 
 $K_{3,3}$ is nonplanar.
 
@@ -127,7 +127,7 @@ $K_{3,3}$ is nonplanar.
 
 ::: {.proof}
 
-$K_{3,3}$ is bipartite, so it has no odd cycles and in particular no triangles. It has $n=6$ and $m=9$, but $2n-4=8<9$, contradicting CN Cor 74.
+$K_{3,3}$ is bipartite, so it has no odd cycles and in particular no triangles. It has $n=6$ and $m=9$, but $2n-4=8<9$, contradicting @cor-cn-cor-74.
 
 :::
 

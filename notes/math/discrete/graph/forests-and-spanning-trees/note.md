@@ -21,7 +21,7 @@ Each component of a forest is connected and has no cycles, so it is a tree.
 
 :::
 
-::: {#thm-cn-thm-69 .theorem name="CN Thm 69"}
+::: {#thm-cn-thm-69 .theorem name="Edges of a forest"}
 
 For every $n\in\mathbb{N}$, every forest with $n$ vertices and $k$ components has $n-k$ edges.
 
@@ -29,7 +29,7 @@ For every $n\in\mathbb{N}$, every forest with $n$ vertices and $k$ components ha
 
 ::: {.proof}
 
-Let the components be $F_1,\dots,F_k$, with $n_i$ vertices and $m_i$ edges. Each $F_i$ is a tree, so $m_i=n_i-1$ by CN Thm 68. Hence the number of edges is $\sum_i m_i = \sum_i (n_i-1) = n-k$.
+Let the components be $F_1,\dots,F_k$, with $n_i$ vertices and $m_i$ edges. Each $F_i$ is a tree, so $m_i=n_i-1$ by @thm-cn-thm-68. Hence the number of edges is $\sum_i m_i = \sum_i (n_i-1) = n-k$.
 
 :::
 
@@ -67,7 +67,7 @@ Every connected graph has a spanning tree.
 
 ::: {.proof}
 
-Delete edges one at a time, each time choosing an edge whose deletion leaves the graph connected, until no such edge remains. The result is connected, contains every vertex, and is minimal connected, so it is a tree by CN Thm 66.
+Delete edges one at a time, each time choosing an edge whose deletion leaves the graph connected, until no such edge remains. The result is connected, contains every vertex, and is minimal connected, so it is a tree by @thm-cn-thm-66.
 
 :::
 
@@ -146,7 +146,7 @@ In a connected graph with a weight (cost) $w(e)$ on each edge, a *minimum spanni
 \end{algorithm}
 ```
 
-::: {#thm-cn-thm-70 .theorem name="CN Thm 70"}
+::: {#thm-cn-thm-70 .theorem name="Kruskal's algorithm is optimal"}
 
 For every weighted graph $G$, Kruskal’s Greedy Algorithm finds a minimum weight spanning tree of $G$.
 

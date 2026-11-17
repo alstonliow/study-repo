@@ -30,7 +30,7 @@ $P \implies Q$ reads: “if $P$ then $Q$”; “$P$ only if $Q$”; “$P$ is su
 
 ## Equivalence
 
-::: {#def-equivalence-biconditional .definition name="Equivalence / biconditional"}
+::: {#def-equivalence-biconditional .definition name="Equivalence / biconditional" equivalent="def-biconditional"}
 
 $P \iff Q$ is true iff $P,Q$ have the same truth value.
 $$\begin{array}{cc|c}
@@ -82,7 +82,7 @@ $$P \oplus Q = \neg(P \iff Q).$$
 
 :::
 
-::: {#thm-generalized-xor-parity-cn-thm .theorem name="Generalized XOR parity, CN Thm 24"}
+::: {#thm-generalized-xor-parity-cn-thm .theorem name="Generalized XOR parity"}
 
 For all $n$ and propositions $P_1,\dots,P_n$: $P_1\oplus\cdots\oplus P_n$ is true iff an *odd* number of the $P_i$ are true.
 

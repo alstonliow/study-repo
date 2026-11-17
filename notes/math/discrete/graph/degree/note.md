@@ -95,7 +95,7 @@ For a directed graph, let $\deg^-(v)$ and $\deg^+(v)$ be the in-degree and out-d
 
 :::
 
-::: {#thm-equal-degree .theorem name="CN Thm 56"}
+::: {#thm-equal-degree .theorem name="Two vertices of equal degree"}
 
 In every graph with at least two vertices, there are two vertices with the same degree.
 

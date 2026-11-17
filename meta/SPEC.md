@@ -274,6 +274,25 @@ note of the branch does, unless the course excludes them.
    `\section`/`\subsection` from directory depth.
 7. Mechanical migration means convert and tag only. The author's wording is not
    rewritten.
+8. One best version per item (owner decision, 2026-11-17). When several
+   sources cover the same definition, theorem, proof or example, the notes keep
+   one block with the best version. Criteria, in order: correctness and rigour,
+   clarity, consistency with `meta/notation.md` and the surrounding notes,
+   brevity. If each source is better in some respect, the versions are combined.
+   - The merged block keeps one of the existing ids (ids are never renamed). A
+     block it replaces is removed only with the owner's approval, and every
+     reference to the removed id (`@` references, course `covers` and
+     `exclude`) is pointed to the kept id; blocks have no aliases.
+   - Every source is listed in the note's `sources`; a comment next to the block
+     records which part came from which source.
+   - Only content the sources share is merged. Material that only one source has
+     goes into its own block (a remark, example or corollary), so that course
+     scope (§13) stays exact per block.
+   - A note with a merged block has `status: draft` until the owner reviews it
+     (block-level status exists only for solutions), and merges are proposed
+     as a list before they are made.
+   - Rule 7 still holds for migration itself: a note is first migrated without
+     rewriting; merging is a separate, later step.
 
 ## 8. Granularity
 

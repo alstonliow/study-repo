@@ -85,7 +85,7 @@ If $v$ and $w$ are joined by a walk, the *distance* $d(v,w)$ is the length of a 
 
 :::
 
-::: {#thm-odd-closed-walk .theorem name="CN Thm 60"}
+::: {#thm-odd-closed-walk .theorem name="Odd closed walks and odd cycles"}
 
 A graph has a closed walk of odd length if and only if it has a cycle of odd length.
 

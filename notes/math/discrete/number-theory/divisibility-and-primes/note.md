@@ -105,7 +105,9 @@ There are infinitely many primes.
 
 ::: {.proof}
 
-Suppose, for contradiction, that the primes are exactly $p_1,\dots,p_k$, and let $N=p_1p_2\cdots p_k+1$. By @thm-primefactexists, $N$ has a prime divisor, which must be some $p_i$. But $p_i$ also divides $p_1\cdots p_k$, so by @prp-divlinear it divides $N-p_1\cdots p_k=1$, which is impossible for a prime. So no finite list contains all the primes.
+This is the proof of @exm-infinitely-many-primes, the standard example of a proof by contradiction (@sec-math-discrete-proof-contradiction); it uses @thm-primefactexists and @prp-divlinear from this note.
+
+<!-- Merged 2026-11-17 (SPEC §7.8): the full proof is kept once, in @exm-infinitely-many-primes. -->
 
 :::
 
@@ -127,9 +129,11 @@ To test whether $n$ is prime, it is enough to try dividing by the primes up to $
 
 :::
 
+<!-- Shortened 2026-11-17 (SPEC §7.8): the statement of the Prime Number Theorem is kept once, in @thm-prime-number-theorem (CS70 Note 7). -->
+
 ::: {#rmk-divisibility-and-primes-6 .remark name="Density of primes (extra)"}
 
-The Prime Number Theorem says that $\pi(x)$, the number of primes $\le x$, satisfies $\pi(x)\sim x/\ln x$. So primes thin out, but only slowly: an integer near $x$ is prime with probability about $1/\ln x$. This is why searching randomly for large primes (as needed in @sec-math-discrete-number-theory-diffie-hellman) is practical.
+Primes thin out, but only slowly: by the Prime Number Theorem (@thm-prime-number-theorem), an integer near $x$ is prime with probability about $1/\ln x$. This is why searching randomly for large primes (as needed in @sec-math-discrete-number-theory-diffie-hellman) is practical.
 
 :::
 

@@ -38,7 +38,7 @@ Rather than repeating the truth-table argument, the second law follows from the 
 
 :::
 
-::: {#thm-generalized-de-morgan-s-law-2 .theorem name="Generalized De Morgan's law, CN Thm 23"}
+::: {#thm-generalized-de-morgan-s-law-2 .theorem name="Generalized De Morgan's law for propositions" related="thm-generalized-de-morgan-s-law"}
 
 For all $n$:
 $$\neg(P_1 \vee \cdots \vee P_n) = \neg P_1 \wedge \cdots \wedge \neg P_n.$$

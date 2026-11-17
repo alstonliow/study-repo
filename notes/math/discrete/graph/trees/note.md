@@ -50,7 +50,7 @@ A connected graph $G$ is *minimal connected* if deleting any one of its edges di
 
 :::
 
-::: {#thm-cn-thm-66 .theorem name="CN Thm 66"}
+::: {#thm-cn-thm-66 .theorem name="Trees are minimal connected graphs"}
 
 A graph $G$ is a tree if and only if it is a minimal connected graph.
 
@@ -104,7 +104,7 @@ $P_4$ (left) and $K_{1,4}$ (right): the two extreme trees on $5$ vertices
 
 :::
 
-::: {#thm-cn-thm-67 .theorem name="CN Thm 67"}
+::: {#thm-cn-thm-67 .theorem name="Every tree has a leaf"}
 
 Every tree with at least two vertices has a leaf.
 
@@ -116,7 +116,7 @@ Take a longest path $v_0,\dots,v_k$ in the tree; $k\ge1$ since there is at least
 
 :::
 
-::: {#thm-cn-thm-68 .theorem name="CN Thm 68"}
+::: {#thm-cn-thm-68 .theorem name="Edges of a tree"}
 
 For every $n\in\mathbb{N}$, every tree on $n$ vertices has $n-1$ edges.
 
@@ -128,7 +128,7 @@ We use induction on $n$.
 
 **Base case** ($n=1$): The only tree on one vertex has $0=1-1$ edges.
 
-**Inductive step**: Let $k\ge1$ and assume every tree on $k$ vertices has $k-1$ edges. Let $T$ be a tree on $k+1$ vertices. By CN Thm 67, $T$ has a leaf $\ell$. Deleting $\ell$ and its one edge gives a graph $S$ that is still connected (no path between other vertices passes through a leaf) and still has no cycles, so $S$ is a tree on $k$ vertices. By the inductive hypothesis $S$ has $k-1$ edges, so $T$ has $(k-1)+1=k$ edges.
+**Inductive step**: Let $k\ge1$ and assume every tree on $k$ vertices has $k-1$ edges. Let $T$ be a tree on $k+1$ vertices. By @thm-cn-thm-67, $T$ has a leaf $\ell$. Deleting $\ell$ and its one edge gives a graph $S$ that is still connected (no path between other vertices passes through a leaf) and still has no cycles, so $S$ is a tree on $k$ vertices. By the inductive hypothesis $S$ has $k-1$ edges, so $T$ has $(k-1)+1=k$ edges.
 
 By the Principle of Mathematical Induction, the claim holds for all $n$.
 
@@ -151,7 +151,7 @@ For a graph $G$ on $n$ vertices, the following are equivalent:
 3. $G$ is connected, and removing any edge disconnects it;
 4. $G$ has no cycles, and adding any edge between non-adjacent vertices creates a cycle.
 
-$1\iff3$ is CN Thm 66 (@thm-cn-thm-66), and $1\implies2$ is CN Thm 68 (@thm-cn-thm-68). The converse $2\implies1$ follows from the fact in the remark *Using the edge count* above that a connected graph has at least $n-1$ edges, which is an exercise below.
+$1\iff3$ is @thm-cn-thm-66, and $1\implies2$ is @thm-cn-thm-68. The converse $2\implies1$ follows from the fact in the remark *Using the edge count* above that a connected graph has at least $n-1$ edges, which is an exercise below.
 
 :::
 
