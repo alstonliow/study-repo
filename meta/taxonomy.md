@@ -37,13 +37,28 @@ ids are not affected by this grouping.
 | Field | Part in `taxonomy.yml` | Branches (folders) |
 |---|---|---|
 | Mathematics | Discrete Mathematics | `math/discrete/*` |
-| Mathematics | Probability | `math/probability/*` |
+| Mathematics | Probability and Statistics | `math/probability/*` |
 | Computer Science | Algorithms | `cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`, `cs/algorithm-design`, `cs/models-of-computation` |
 | Computer Science | Theory of Computation | `cs/theory` (Computability and Complexity) |
 | Computer Science | Cryptography | `cs/cryptography` |
 
-Planned later in Mathematics: calculus, linear algebra, analysis, optimisation;
-in Computer Science: programming.
+### Planned structure
+
+Three fields, each split into parts. Folders are created only when content arrives,
+and knowledge goes where its content belongs, whichever course brings it (graph
+theory stays in `math/discrete/graph` whether FIT1058, 6.042J or CS154 uses it).
+
+| Field | Parts (in topic order) | Folders |
+|---|---|---|
+| Mathematics | Discrete Mathematics; Calculus; Linear Algebra; Probability and Statistics; later Numerical Analysis, Optimization, Information Theory | `math/discrete`, `math/calculus`, `math/linear-algebra`, `math/probability`, `math/statistics`, … |
+| Computer Science | Algorithms; Theory of Computation; Cryptography; later Systems (architecture, operating systems, databases, distributed systems) | `cs/*` |
+| Artificial Intelligence | later: Foundations (search and planning, probabilistic models), Machine Learning, Deep Learning, Reinforcement Learning, Vision, Language | `ai/*` |
+
+Calculus and Linear Algebra come before Probability and Statistics because
+continuous probability and statistics build on them. Knowledge parts of research
+methods (experimental design, statistical evaluation) go into statistics or machine
+learning; reading, reproducing and writing are practice, recorded privately, not
+a field. Course order for the next additions: MIT 18.06, 18.01/18.02, 6.041 with 18.05.
 
 ## 3. Where the sources went
 
@@ -87,3 +102,5 @@ course files (`meta/courses/`), not here.
   shown as Computability and Complexity. No id changed.
 - 2026-11-18: Cryptography made its own part under Computer Science (it was a branch of Theory of
   Computation). No id changed.
+- 2026-11-18: planned structure of three fields recorded; the part Probability renamed
+  Probability and Statistics.

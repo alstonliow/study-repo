@@ -145,7 +145,7 @@ parts:
           - secret-sharing
           - erasure-codes
           - reed-solomon-codes
-  - title: Probability
+  - title: Probability and Statistics
     field: Mathematics
     branches:
       - id: math/probability/discrete
