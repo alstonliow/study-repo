@@ -566,7 +566,7 @@ types that do not exist yet; implementation goes in phases (§17.10).
    how its id is formed, its schema (YAML fields), whether it is numbered and
    whether it can be placed in outlines. Block types are defined in
    `build/kinds.py` (§16.7). File-level types today: note (§2–§4) and review
-   folder (§6.3). Specified: resource and resource node (§17.12). Later:
+   folder (§6.3). Specified: resource and resource node (§17.12), project (§17.13). Later:
    others; each new type gets its
    own subsection here, with its schema, before any code (§17.10).
 3. Core fields of every file-level type: `id` (for notes, derived from the
@@ -735,9 +735,10 @@ types that do not exist yet; implementation goes in phases (§17.10).
 ### 17.9 Visibility and the privacy boundary
 
 1. Every entity is **public** or **private**. Private: personal content, that
-   is ideas, projects, goals, decisions, logs, personal reading records, and
-   anything else the owner marks private. Public: the study notes, problems
-   and solutions, as now.
+   is ideas, goals, decisions, logs, personal reading records, and anything
+   else the owner marks private. Public: the study notes, problems and
+   solutions, and projects, both course and personal (owner decision,
+   2026-11-19; §17.13).
 2. Visibility follows from where an entity is stored, never from a field that
    could be forgotten. Public entities are stored in this repository. Private
    entities are stored outside its public history. The first implementation
@@ -776,7 +777,8 @@ types that do not exist yet; implementation goes in phases (§17.10).
 3. **Resources**: specified in §17.12 (resource and resource node, hierarchy,
    `covers`, editions and locators, absorbing `meta/sources.yml`, the Library,
    the private store). The build order is in §17.12.8.
-4. **Further types** (ideas, projects, and others), one per round. Shared code
+4. **Further types** (ideas, projects, and others), one per round. Projects
+   specified in §17.13 (2026-11-19). Shared code
    is generalised only when two types need it.
 
 ### 17.11 Compatibility with v0.2
@@ -1031,3 +1033,95 @@ Phase 3 is built in three rounds, each reviewed and committed on its own:
 
 A resource file may also carry `courses: [<course id>]`. This only records
 which courses use the resource; it gives no ownership and no scope.
+
+### 17.13 Projects
+
+Approved by the owner on 2026-11-19. This is the schema of the second new
+entity type (§17.10, phase 4). It is written before any code, and it is
+built when the first real project appears (§17.1).
+
+#### 17.13.1 What a project is
+
+1. A **project** is a file-level entity: a piece of work the owner builds, such
+   as a course project, a personal program, a model or a write-up. It is not a
+   knowledge point. It has no place in the topic outline, no `requires` and no
+   note number.
+2. Projects are **public**, both course projects and personal ones (§17.9.1).
+   Private entities (ideas, goals, logs) may point to a project. A project
+   never points to a private entity.
+   - **When to publish** (owner decision, 2026-11-19): a project is published
+     as soon as it exists, with one exception. A project of a FIT unit (a
+     Monash course the owner takes for credit) is published only after the
+     unit has ended. Until then its project file stays in the private store
+     (`private/projects/<slug>/`, §17.9) and its code repository stays
+     private. Afterwards the folder moves to `projects/`, keeping its id, and
+     the repository is made public.
+3. A project records the work. It does not hold it: code, data and large
+   outputs live in **one Git repository per project** (owner decision,
+   2026-11-19), linked from the project with `repo`. There is no shared
+   monorepo, so each project can be private or public on its own
+   (item 2). This repository holds only the project file and its figures.
+4. A homework-sized task ("implement this function and analyse it") is not a
+   project. It stays a `problem` with a solution (§6). A project is work that
+   needs its own repository or spans several weeks.
+
+#### 17.13.2 Storage and ids
+
+1. One folder per project: `projects/<slug>/project.md`, a YAML header and a
+   Markdown write-up, with figures beside it. Visibility follows from the
+   location (§17.9.2).
+2. **id**: `prj-<slug>`. The slug names the work, never a course number,
+   year or position (§17.1). The `prj-` prefix keeps project ids apart from
+   note paths, block ids and resource ids, and makes them citable with `@`.
+3. Blocks inside the write-up (figures, remarks, claims) follow §5 and get
+   ids unique across the repository.
+
+#### 17.13.3 Schema
+
+```yaml
+id: prj-sentiment-classifier
+title: Sentiment classifier
+kind: course                  # course | personal
+status: draft                 # draft | reviewed: the write-up (as for notes)
+stage: active                 # planned | active | done | paused | dropped
+course: cs221                 # optional, a course id (meta/courses/)
+assignment: res-cs221-…-project   # optional, the resource node of the handout
+repo:                         # optional
+  url: https://github.com/<owner>/<repo>
+  commit: <sha>               # the version this write-up describes
+started: 2026-11-19           # optional
+finished:                     # optional
+relations:
+  applies: [ai/machine-learning/linear-classifiers, …]
+```
+
+1. `kind`, `course` and `assignment` only describe the project. A course's
+   scope still comes from its course file (§13).
+2. The handout of a course project is never copied (§10). It is a node of the
+   course's resource, with an own short title and a link, and the project
+   points to it with `assignment`.
+3. The write-up is in English and in the owner's own words: goal, approach,
+   design decisions, results, what was learnt. It follows the content rules
+   of notes (§5, `meta/notation.md`).
+
+#### 17.13.4 Relationships
+
+1. A project points to the knowledge it applies with **`applies`** (owner
+   decision, 2026-11-19): project → notes, blocks; shown at the target as
+   "applied in"; not symmetric; may form cycles. It is added to
+   `meta/relations.yml` in the build round with `from: [projects]` and
+   `to: [notes, blocks]`. Note pages then list the projects in their own
+   "Applied in" group in Connections (§17.6), apart from "Used by", so every
+   topic shows where it was put to work. `uses` stays between notes and
+   blocks.
+2. Knowledge that a project needs and no note covers yet is written as notes
+   in the usual way (and added to the course's `covers` when it is course
+   material). It is never written only inside the write-up.
+
+#### 17.13.5 Pages
+
+1. The website gets a **Projects** page: a list of projects (course and
+   personal, by stage), and one page per project rendered from
+   `project.md`, with its links, the notes it applies, and its backlinks.
+2. A course page lists the projects whose `course` is that course. Projects
+   are unnumbered (§17.8.2) and shown by title.
