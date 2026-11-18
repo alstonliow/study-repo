@@ -144,6 +144,15 @@ kinds (prefix, word, numbering, colour) is `build/kinds.py` (§16.7).
    `\WHILE{..}`/`\ENDWHILE`, `\FOR{..}`/`\ENDFOR`, `\RETURN`, `\COMMENT{..}`.
    The website renders them as text with pseudocode.js (`site/_assets/pseudocode.html`);
    they are not compiled to SVG. A PDF build must define `\INPUT` and `\OUTPUT`.
+   **Every algorithm has pseudocode and a figure** (owner rule, 2026-11-18).
+   An algorithm is a named procedure that a note states, such as Dijkstra, Prim
+   or merge sort; a note with several algorithms treats each one separately.
+   Each algorithm gets an `algorithmic` block in or right after the block that
+   states it. The prose description stays, and the pseudocode is added to it.
+   Each algorithm also gets at least one captioned static figure that runs it
+   on the note's own example. When nothing useful can be drawn, an `editor=`
+   remark says why. A widget stays optional (see below). This rule is checked
+   by review, not by `make check`.
    **Figures with a caption** are a div with a `fig-` id holding the drawing,
    then the caption as the last paragraph. They are numbered per page
    ("Figure 1") and referenced as `@fig-...`, also from other notes. Ids are
