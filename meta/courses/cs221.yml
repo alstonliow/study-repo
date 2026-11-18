@@ -3,7 +3,8 @@
 # res-stanford-cs221-lectures) in course order; chapter = lecture position, titles are our own.
 # Round 0 skeleton: covers list only existing notes that overlap; new notes (plan in the
 # side-session notes, owner-approved 2026-11-18) are added branch by branch in later rounds.
-# AI material goes to ai/*; logic material to math/discrete/logic. No homework (decided later).
+# AI material goes to ai/*; logic material to math/discrete/logic. Homework (res-stanford-cs221-hw): written
+# parts are exercises in the notes they practise; programming parts become coursework projects (SPEC §17.13.1).
 id: cs221
 code: Stanford CS221
 name: "Artificial Intelligence: Principles and Techniques"
@@ -13,7 +14,7 @@ outline_from: "Stanford CS221 lecture code (github.com/stanford-cs221/lectures, 
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
-  # Problems of other courses in shared notes (scope_excludes.py, 2026-11-18); CS221 has no homework.
+  # Problems of other courses in shared notes (scope_excludes.py, 2026-11-18); none needed for the CS221 homework (2026-11-19).
   - prob-cs70-14-q1
   - prob-cs70-14-q2
   - prob-cs70-14-q3

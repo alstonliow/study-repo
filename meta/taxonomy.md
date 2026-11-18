@@ -85,6 +85,7 @@ a field. Course order for the next additions: 6.041 with 18.05 (18.01, 18.06 and
 | MIT 18.02 lecture notes (Fall 2007), Lectures 1–33, and Supplementary Notes D, M, K, TA, LS, SD, N, P, I, CV, G, V1–V6, V8–V15 and E (exercises) | `math/calculus/multivariable/*` (new part and five branches); vectors, matrices and determinants from `math/linear-algebra/systems` and `determinants` |
 | MIT 6.042J textbook (MCS 2015), Chapters 1–21 | mostly existing branches; new notes in `proof` (well ordering, state machines, structural induction), `relations` (partial orders), `graph` (directed graphs, isomorphism, colouring, communication networks), `sequences` (approximating sums), `counting` (generating functions), `probability/discrete` (conditional expectation, Chernoff bounds) |
 | Stanford CS221 lecture code (commit 3ac2452), Lectures 1–20 | `ai/machine-learning` (seven notes), `ai/deep-learning` (five), `ai/search` (four), `ai/reinforcement-learning` (nine), `ai/games` (five), `ai/bayesian-networks` (six); logic gaps in `math/discrete/logic` (models and entailment, inference rules, first-order inference) |
+| Stanford CS221 homework (Autumn 2026), HW 1–7, written parts | 15 exercises with draft solutions in `ai/*` notes and `math/discrete/logic/propositional/inference-rules`; programming parts reserved for coursework projects |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
 course files (`meta/courses/`), not here.
@@ -137,3 +138,4 @@ course files (`meta/courses/`), not here.
 - 2026-11-18: Stanford CS221 round 6: `ai/games` from Lectures 13 and 15 (game trees, expectimax and minimax, alpha-beta pruning, evaluation functions, simultaneous zero-sum games, Nash equilibria); five notes, value-iteration and alpha-beta widgets.
 - 2026-11-18: Stanford CS221 round 7: `ai/bayesian-networks` from Lectures 16–18 (Bayesian networks and exact inference, rejection sampling, Gibbs sampling with a widget, conditional independence, parameter learning, EM); six notes.
 - 2026-11-18: Stanford CS221 round 8: logic gaps from Lectures 19–20 added to `math/discrete/logic` (models, entailment and satisfiability; modus ponens, definite clauses and resolution; first-order models, unification and modus ponens); three notes. All 20 technical lectures now covered.
+- 2026-11-19: Stanford CS221 homework: written parts of HW 1–7 added as 15 exercises (one per handout problem, parts kept together); programming, run-and-report and ethics parts left out (SPEC §17.13.1 item 4).

@@ -1061,9 +1061,20 @@ built when the first real project appears (§17.1).
    2026-11-19), linked from the project with `repo`. There is no shared
    monorepo, so each project can be private or public on its own
    (item 2). This repository holds only the project file and its figures.
-4. A homework-sized task ("implement this function and analyse it") is not a
-   project. It stays a `problem` with a solution (§6). A project is work that
-   needs its own repository or spans several weeks.
+4. **Coursework** (owner decision, 2026-11-19). A course homework is split by
+   the kind of work:
+   - Its *written* parts (derivations, calculations, proofs, short answers)
+     stay `problem` blocks with solutions in the notes they practise (§6).
+   - Its *programming* parts are not copied into notes: they depend on starter
+     code and a grader and do not read well as exercises. The whole homework's
+     programming work is one project with `kind: coursework`: the write-up in
+     our own words (goal, approach, design decisions, results), our own code
+     in the project's repository, the handout linked through `assignment`,
+     never copied. The written parts' `problem` blocks keep their usual
+     `source`; the project lists the knowledge it applies (§17.13.4).
+   - A homework with no programming part has no project.
+   Other work is a project when it needs its own repository or spans several
+   weeks.
 
 #### 17.13.2 Storage and ids
 
@@ -1081,7 +1092,7 @@ built when the first real project appears (§17.1).
 ```yaml
 id: prj-sentiment-classifier
 title: Sentiment classifier
-kind: course                  # course | personal
+kind: course                  # course | coursework | personal
 status: draft                 # draft | reviewed: the write-up (as for notes)
 stage: active                 # planned | active | done | paused | dropped
 course: cs221                 # optional, a course id (meta/courses/)

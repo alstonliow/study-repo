@@ -1,0 +1,65 @@
+# Stanford CS221 homework, Autumn 2026 (stanford-cs221.github.io/autumn2026), as a resource
+# (meta/SPEC.md §17.12). DRAFT for owner review. No licence is stated on the handouts.
+# Homework problems may be copied as exercises (owner decision, 2026-11-17; meta/SPEC.md §10);
+# starter code, graders and any official solutions are never copied. Kept locally in
+# raw/STANFORD_CS221/homework. Locator = homework number; a source key is cs221hw-3-q2
+# (HW 3, problem 2; one exercise per handout problem, its lettered parts kept together).
+# Titles are our own short titles. Node ids are stable: never renamed when a title or a locator changes.
+id: res-stanford-cs221-hw
+kind: homework
+title: Stanford CS221 Homework (Autumn 2026)
+status: draft
+courses: [cs221]
+url: https://stanford-cs221.github.io/autumn2026/
+editions:
+- id: 2026-autumn
+  current: true
+legacy_keys:
+  prefix: cs221hw-
+  edition: 2026-autumn
+  pattern: ^cs221hw-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: CS221 HW {section}
+  problem_label: CS221 HW {section} Q{n}
+nodes:
+- id: res-stanford-cs221-hw-foundations
+  kind: homework
+  title: "Foundations: linear algebra, gradients, optimisation"
+  url: https://stanford-cs221.github.io/autumn2026/assignments/hw1_foundations/index.html
+  at:
+    2026-autumn: '1'
+- id: res-stanford-cs221-hw-sentiment
+  kind: homework
+  title: Sentiment classification
+  url: https://stanford-cs221.github.io/autumn2026/assignments/hw2_sentiment/index.html
+  at:
+    2026-autumn: '2'
+- id: res-stanford-cs221-hw-route
+  kind: homework
+  title: Route planning
+  url: https://stanford-cs221.github.io/autumn2026/assignments/hw3_route/index.html
+  at:
+    2026-autumn: '3'
+- id: res-stanford-cs221-hw-mountaincar
+  kind: homework
+  title: Controlling mountain car
+  url: https://stanford-cs221.github.io/autumn2026/assignments/hw4_mountaincar/index.html
+  at:
+    2026-autumn: '4'
+- id: res-stanford-cs221-hw-pacman
+  kind: homework
+  title: Pac-Man
+  url: https://stanford-cs221.github.io/autumn2026/assignments/hw5_pacman/index.html
+  at:
+    2026-autumn: '5'
+- id: res-stanford-cs221-hw-bayesian
+  kind: homework
+  title: Bayesian networks
+  url: https://stanford-cs221.github.io/autumn2026/assignments/hw6_bayesian/index.html
+  at:
+    2026-autumn: '6'
+- id: res-stanford-cs221-hw-logic
+  kind: homework
+  title: From language to logic
+  url: https://stanford-cs221.github.io/autumn2026/assignments/hw7_logic/index.html
+  at:
+    2026-autumn: '7'
