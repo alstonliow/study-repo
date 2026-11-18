@@ -68,14 +68,18 @@ def main() -> int:
     stray = sorted({n.branch for n in notes.values()} - known)
     if stray:
         print(f"warning: branches not in BRANCHES: {stray}", file=sys.stderr)
-    sidebar = []
+    sidebar: list[dict] = []
     branch_items = {}
     summary_courses: dict[str, list[str]] = {}
     home = ["---", "title: Study Notes", "---", "",
             "Personal study notes, organised by topic rather than by course. "
             "So far: discrete mathematics, probability, and first topics in computer science.", ""]
-    for field, branches in BRANCHES:
-        sec = {"section": field, "contents": []}
+    part_secs = {}
+    for part, branches in BRANCHES:
+        in_field = bool(REPO.part_field.get(part))
+        if in_field and REPO.fields and part == next(ps for f, ps in REPO.fields if part in ps)[0]:
+            home += [f"## {REPO.part_field[part]}", ""]
+        sec = {"section": part, "contents": []}
         rows = []
         for bid, btitle in branches:
             members = REPO.branch_members(bid)
@@ -96,8 +100,11 @@ def main() -> int:
                                     "contents": [f"notes/{n.id}.qmd" for n in members]
                                     + [f"notes/{bid}/summary.qmd"]})
             rows.append((f"notes/{bid}/index.html", btitle, REPO.branch_desc.get(bid, ""), branch_num[bid]))
-        home += contents_block(field, rows)
-        sidebar.append(sec)
+        home += contents_block(part, rows, 3 if in_field else 2)
+        part_secs[part] = sec
+    for f, parts in REPO.fields:          # optional field level above the parts (SPEC §2.5)
+        secs = [part_secs[p] for p in parts if p in part_secs]
+        sidebar += [{"section": f, "contents": secs}] if f else secs
     # course pages: knowledge points in course order, grouped by the course's chapters
     if OUT_COURSES.exists():
         shutil.rmtree(OUT_COURSES)

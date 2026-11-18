@@ -20,8 +20,8 @@ Changes need the owner's approval. Ideas for later go into `meta/ideas.md`.
 2. Fields are the top folders (`math`, `cs`). A field is split into areas
    (`math/discrete`, `math/probability`) or directly into branches
    (`cs/algorithms`); branches may have sub-branches (`math/discrete/logic/predicate`).
-3. Every branch is listed in `taxonomy.yml` under a part (a book on the website and
-   in the PDFs), with its notes in topic order. `make check` fails on a note
+3. Every branch is listed in `taxonomy.yml` under a part, with its notes in topic
+   order; each part names its field (`field:`), which groups the parts on the website. `make check` fails on a note
    that is not listed.
 4. Topic order is prerequisite order: a note never requires a later one.
 5. A new branch goes at the end of its part unless the owner decides otherwise, so
@@ -29,15 +29,21 @@ Changes need the owner's approval. Ideas for later go into `meta/ideas.md`.
 6. Notes are moved or renamed only with `build/move_note.py`; the old id stays as
    an alias.
 
-## 2. Fields
+## 2. Fields and parts
 
-| Field | Parts in `taxonomy.yml` |
-|---|---|
-| `math/discrete` | Discrete Mathematics |
-| `math/probability` | Probability |
-| `cs` | Computer Science |
+The website shows three levels above the notes: field, part, branch. Folders and
+ids are not affected by this grouping.
 
-Planned later: programming, calculus, linear algebra, analysis, optimisation.
+| Field | Part in `taxonomy.yml` | Branches (folders) |
+|---|---|---|
+| Mathematics | Discrete Mathematics | `math/discrete/*` |
+| Mathematics | Probability | `math/probability/*` |
+| Computer Science | Algorithms | `cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`, `cs/algorithm-design`, `cs/models-of-computation` |
+| Computer Science | Theory of Computation | `cs/theory` (Computability and Complexity) |
+| Computer Science | Cryptography | `cs/cryptography` |
+
+Planned later in Mathematics: calculus, linear algebra, analysis, optimisation;
+in Computer Science: programming.
 
 ## 3. Where the sources went
 
@@ -76,3 +82,8 @@ course files (`meta/courses/`), not here.
   `cs/graph-algorithms` and `cs/dynamic-programming` at the end of the part Computer Science; 21 new notes.
 - 2026-11-18: MIT 6.046 (Design and Analysis of Algorithms) added as a course; new branches
   `cs/algorithm-design`, `cs/models-of-computation` and `cs/cryptography`; 23 new notes.
+- 2026-11-18: a field level (Mathematics, Computer Science) above the parts; the part
+  Computer Science split into Algorithms and Theory of Computation; the branch `cs/theory` is
+  shown as Computability and Complexity. No id changed.
+- 2026-11-18: Cryptography made its own part under Computer Science (it was a branch of Theory of
+  Computation). No id changed.

@@ -52,7 +52,10 @@ once approved.
    display title, one-line description) and, for each branch, the order of its
    notes (`notes:`, folder names). Every note is listed there; topic order on
    the website comes only from this list, never from source keys. The two files
-   are changed together. A part with `book: false` only groups the navigation:
+   are changed together. A part may name its `field:` (for example
+   `Mathematics`, `Computer Science`); parts of one field are listed together and
+   the website groups them under a collapsible field heading. The field is a
+   navigation level only: it changes no id and no number. A part with `book: false` only groups the navigation:
    it is not a book (§16.1, §17.7). Leaf folders are created only when content is added. No empty
    directories in advance.
 6. ids are not renamed without the owner's approval. When a knowledge point is split, the

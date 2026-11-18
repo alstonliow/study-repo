@@ -4,6 +4,7 @@
 # Change together with meta/taxonomy.md.
 parts:
   - title: Discrete Mathematics
+    field: Mathematics
     branches:
       - id: math/discrete/sets
         title: Sets
@@ -145,6 +146,7 @@ parts:
           - erasure-codes
           - reed-solomon-codes
   - title: Probability
+    field: Mathematics
     branches:
       - id: math/probability/discrete
         title: Discrete Probability
@@ -187,7 +189,8 @@ parts:
           - invariant-distributions
           - periodicity-and-convergence
           - hitting-times
-  - title: Computer Science
+  - title: Algorithms
+    field: Computer Science
     branches:
       - id: cs/algorithms
         title: Algorithms
@@ -195,15 +198,6 @@ parts:
         notes:   # topic order on the website
           - problems-and-algorithms
           - stable-matching
-      - id: cs/theory
-        title: Theory of Computation
-        desc: Computability, self-reference, undecidability
-        notes:   # topic order on the website
-          - computability
-          - complexity-classes
-          - np-complete-reductions
-          - approximation-algorithms
-          - fixed-parameter-algorithms
       - id: cs/data-structures
         title: Data Structures and Sorting
         desc: Sequences and sets, sorting, hashing, search trees, heaps
@@ -261,6 +255,21 @@ parts:
         notes:   # topic order on the website
           - distributed-algorithms
           - cache-oblivious-algorithms
+  - title: Theory of Computation
+    field: Computer Science
+    branches:
+      - id: cs/theory
+        title: Computability and Complexity
+        desc: Computability, self-reference, undecidability
+        notes:   # topic order on the website
+          - computability
+          - complexity-classes
+          - np-complete-reductions
+          - approximation-algorithms
+          - fixed-parameter-algorithms
+  - title: Cryptography
+    field: Computer Science
+    branches:
       - id: cs/cryptography
         title: Cryptography
         desc: Cryptographic hash functions, encryption, key exchange, signatures

@@ -532,7 +532,7 @@ def ctx():
                            block_courses=REPO.block_courses, review_courses=REPO.review_courses)
 
 
-def contents_block(heading: str, rows: list) -> list[str]:
+def contents_block(heading: str, rows: list, level: int = 2) -> list[str]:
     """A book-style contents list for the home page: (href, title, desc)."""
     import html
     items = "\n".join(
@@ -542,5 +542,5 @@ def contents_block(heading: str, rows: list) -> list[str]:
         + (f'<span class="contents-desc">{html.escape(desc)}</span>' if desc else "")
         + "</li>"
         for href, title, desc, num in rows)
-    return ["::: {.contents-field}", f"## {heading}", "", "```{=html}",
+    return ["::: {.contents-field}", f"{'#' * level} {heading}", "", "```{=html}",
             f'<ul class="contents-list">\n{items}\n</ul>', "```", ":::", ""]

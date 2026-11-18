@@ -337,6 +337,15 @@ class Repo:
         # parts with `book: false` only group the navigation; their chapters are not in a book (SPEC §17.7)
         self.unbooked = {p["title"] for p in tax.get("parts", []) if p.get("book", True) is False}
         self.bad_book_flags = [p["title"] for p in tax.get("parts", []) if not isinstance(p.get("book", True), bool)]
+        # optional `field:` above the parts (Mathematics, Computer Science): a navigation level only
+        self.part_field = {p["title"]: p.get("field", "") for p in tax.get("parts", [])}
+        self.fields: list[tuple[str, list[str]]] = []      # (field or "", consecutive part titles)
+        for title, _ in self.parts:
+            fld = self.part_field[title] if isinstance(self.part_field[title], str) else ""
+            if fld and self.fields and self.fields[-1][0] == fld:
+                self.fields[-1][1].append(title)
+            else:
+                self.fields.append((fld, [title]))
         self.branch_desc = {b["id"]: b.get("desc", "") for p in tax.get("parts", []) for b in p["branches"]}
         # explicit topic order of the notes in each branch (folder names)
         self.branch_order = {b["id"]: [str(x) for x in b.get("notes") or []]
@@ -471,6 +480,9 @@ class Repo:
     def taxonomy_problems(self) -> list[str]:
         """Notes missing from, or listed but absent in, meta/taxonomy.yml."""
         out = [f"part '{t}': book must be true or false" for t in self.bad_book_flags]
+        out += [f"part '{t}': field must be a text" for t, f in self.part_field.items() if not isinstance(f, str)]
+        seen = [fld for fld, _ in self.fields if fld]
+        out += [f"field '{fld}': its parts must be listed together" for fld in sorted({x for x in seen if seen.count(x) > 1})]
         for bid, slugs in self.branch_order.items():
             have = {n.slug for n in self.notes.values() if n.branch == bid}
             for s in slugs:

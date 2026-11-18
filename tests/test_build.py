@@ -157,6 +157,14 @@ class TestCheck(Repo):
         w.write_text('<script>\nconst WIDGETS = {\n  "fig-nothing-1": { title: "x" },\n};\n</script>\n')
         self.assertError("widget for unknown figure fig-nothing-1")
 
+    def test_parts_of_a_field_together(self):
+        self.edit("meta/taxonomy.yml", "  - title: Testing\n", "  - title: Testing\n    field: F\n")
+        r = self.check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        with open(self.root / "meta/taxonomy.yml", "a", encoding="utf-8") as fh:
+            fh.write("  - title: Mid\n    branches: []\n  - title: Extra\n    field: F\n    branches: []\n")
+        self.assertError("field 'F': its parts must be listed together")
+
     def test_block_without_id(self):
         self.edit("notes/t/alpha/first/note.md", "#rmk-first-1 ", "")
         r = self.check()
