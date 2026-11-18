@@ -12,7 +12,67 @@ source_prefix: cs221
 outline_from: "Stanford CS221 lecture code (github.com/stanford-cs221/lectures, commit 3ac2452), 20 technical lectures"
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
+exclude:
+  # Problems of other courses in shared notes (scope_excludes.py, 2026-11-18); CS221 has no homework.
+  - prob-cs70-14-q1
+  - prob-cs70-14-q2
+  - prob-cs70-14-q3
+  - prob-cs70-14-q4
+  - prob-cs70-14-q5
+  - prob-cs70hw-1-q3
+  - prob-cs70hw-10-q1
+  - prob-cs70hw-10-q2
+  - prob-cs70hw-10-q3
+  - prob-cs70hw-10-q4
+  - prob-cs70hw-9-q6
+  - prob-mit1802f07-4-q3
+  - prob-mit1802f07-5-q1
+  - prob-mit1802f07-5-q2
+  - prob-mit1802n-2c-q1
+  - prob-mit1802n-2c-q2
+  - prob-mit1802n-2c-q3
+  - prob-mit1802n-2c-q5
+  - prob-mit1802n-2d-q1
+  - prob-mit1802n-2d-q2
+  - prob-mit1802n-2d-q3
+  - prob-mit1802n-2d-q8
+  - prob-mit1802n-2d-q9
+  - prob-mit1802n-2e-q1
+  - prob-mit1802n-2e-q2
+  - prob-mit1802n-2e-q5
+  - prob-mit1802n-2e-q7
+  - prob-mit1802n-2e-q8
+  - prob-mit1806s10-6-q1
+  - prob-mit1806s10-6-q2
+  - prob-mit1806s10-6-q3
+  - prob-mit1806s10-6-q4
+  - prob-mit6042f10-10-q1
+  - prob-mit6042f10-10-q6
+  - prob-mit6042f10-11-q1
+  - prob-mit6042f10-11-q2
+  - prob-mit6042f10-11-q4
+  - prob-mit6042f10-11-q5
+  - prob-mit6042f10-11-q6
+  - prob-predicate-01
+  - prob-predicate-11
+  - prob-probability-1-10
+  - prob-probability-1-11
+  - prob-probability-1-13
+  - prob-probability-1-14
+  - prob-probability-1-15
+  - prob-probability-1-16
+  - prob-probability-1-17
+  - prob-probability-1-18
+  - prob-propositional-01
+  - prob-propositional-02
+  - prob-propositional-06
+  - prob-propositional-09
+  - prob-propositional-10
+  - prob-propositional-11
+  - prob-propositional-12
+  - prob-propositional-14
+  - prob-propositional-17
+  - prob-propositional-20
 
 chapters:
   - num: 1
@@ -20,31 +80,31 @@ chapters:
     points:
       - id: "1.1"
         title: "Tensors and einops"
-        covers: []
+        covers: [ai/deep-learning/tensors, ai/deep-learning/einsum]
   - num: 2
     title: "Linear regression"
     points:
       - id: "2.1"
         title: "Linear regression"
-        covers: [math/calculus/multivariable/differentiation/gradient, math/linear-algebra/orthogonality/least-squares]
+        covers: [ai/machine-learning/supervised-learning, ai/machine-learning/linear-regression, ai/machine-learning/gradient-descent, math/calculus/multivariable/differentiation/gradient, math/linear-algebra/orthogonality/least-squares]
   - num: 3
     title: "Linear classification"
     points:
       - id: "3.1"
         title: "Linear classification"
-        covers: []
+        covers: [ai/machine-learning/linear-classification, ai/machine-learning/logistic-regression, ai/machine-learning/softmax-regression, ai/machine-learning/text-representation]
   - num: 4
     title: "Backpropagation"
     points:
       - id: "4.1"
         title: "Backpropagation"
-        covers: [math/calculus/multivariable/differentiation/differentials-and-chain-rule]
+        covers: [ai/deep-learning/backpropagation, math/calculus/multivariable/differentiation/differentials-and-chain-rule]
   - num: 5
     title: "Deep learning"
     points:
       - id: "5.1"
         title: "Deep learning"
-        covers: []
+        covers: [ai/deep-learning/neural-networks, ai/deep-learning/training-deep-networks]
   - num: 6
     title: "Search problems"
     points:
@@ -62,76 +122,76 @@ chapters:
     points:
       - id: "8.1"
         title: "Markov decision processes"
-        covers: [math/probability/markov-chains/finite-markov-chains]
+        covers: [ai/reinforcement-learning/markov-decision-processes, ai/reinforcement-learning/policy-evaluation, ai/reinforcement-learning/value-iteration, math/probability/markov-chains/finite-markov-chains]
   - num: 9
     title: "Reinforcement learning"
     points:
       - id: "9.1"
         title: "Reinforcement learning"
-        covers: []
+        covers: [ai/reinforcement-learning/model-based-rl, ai/reinforcement-learning/model-free-rl]
   - num: 10
     title: "Function approximation"
     points:
       - id: "10.1"
         title: "Function approximation"
-        covers: []
+        covers: [ai/reinforcement-learning/function-approximation]
   - num: 11
     title: "Policy gradient"
     points:
       - id: "11.1"
         title: "Policy gradient"
-        covers: []
+        covers: [ai/reinforcement-learning/policy-gradient]
   - num: 12
     title: "Improving policy gradient"
     points:
       - id: "12.1"
         title: "Improving policy gradient"
-        covers: []
+        covers: [ai/reinforcement-learning/improving-policy-gradient]
   - num: 13
     title: "Games"
     points:
       - id: "13.1"
         title: "Games"
-        covers: []
+        covers: [ai/games/game-trees, ai/games/alpha-beta-pruning, ai/games/game-evaluation-functions]
   - num: 14
     title: "Temporal difference learning"
     points:
       - id: "14.1"
         title: "Temporal difference learning"
-        covers: []
+        covers: [ai/reinforcement-learning/td-learning, ai/games/game-evaluation-functions]
   - num: 15
     title: "Simultaneous games"
     points:
       - id: "15.1"
         title: "Simultaneous games"
-        covers: []
+        covers: [ai/games/simultaneous-games, ai/games/nash-equilibria]
   - num: 16
     title: "Bayesian networks"
     points:
       - id: "16.1"
         title: "Bayesian networks"
-        covers: [math/probability/discrete/conditional-probability, math/probability/discrete/bayes-theorem]
+        covers: [ai/bayesian-networks/bayesian-networks, ai/bayesian-networks/rejection-sampling, math/probability/discrete/conditional-probability, math/probability/discrete/bayes-theorem]
   - num: 17
     title: "Gibbs sampling"
     points:
       - id: "17.1"
         title: "Gibbs sampling"
-        covers: [math/probability/markov-chains/invariant-distributions]
+        covers: [ai/bayesian-networks/gibbs-sampling, ai/bayesian-networks/conditional-independence, math/probability/markov-chains/invariant-distributions]
   - num: 18
     title: "Learning Bayesian networks"
     points:
       - id: "18.1"
         title: "Learning Bayesian networks"
-        covers: []
+        covers: [ai/bayesian-networks/parameter-learning, ai/bayesian-networks/expectation-maximization]
   - num: 19
     title: "Propositional logic"
     points:
       - id: "19.1"
         title: "Propositional logic"
-        covers: [math/discrete/logic/propositional/propositions, math/discrete/logic/propositional/connectives, math/discrete/logic/propositional/implication-and-equivalence, math/discrete/logic/propositional/tautologies]
+        covers: [math/discrete/logic/propositional/propositions, math/discrete/logic/propositional/connectives, math/discrete/logic/propositional/implication-and-equivalence, math/discrete/logic/propositional/tautologies, math/discrete/logic/propositional/normal-forms, math/discrete/logic/propositional/models-and-entailment, math/discrete/logic/propositional/inference-rules]
   - num: 20
     title: "First-order logic"
     points:
       - id: "20.1"
         title: "First-order logic"
-        covers: [math/discrete/logic/predicate/predicates, math/discrete/logic/predicate/quantifiers]
+        covers: [math/discrete/logic/predicate/predicates, math/discrete/logic/predicate/quantifiers, math/discrete/logic/predicate/first-order-inference]

@@ -69,6 +69,8 @@ parts:
           - normal-forms
           - representing-statements
           - universal-sets-of-operations
+          - models-and-entailment
+          - inference-rules
       - id: math/discrete/logic/predicate
         title: Predicate Logic
         desc: Predicates and quantifiers
@@ -77,6 +79,7 @@ parts:
           - quantifiers
           - multiple-quantifiers
           - logic-with-quantifiers
+          - first-order-inference
       - id: math/discrete/sequences
         title: Sequences and Series
         desc: Recurrences, limits, big-O, sums and series
@@ -460,11 +463,11 @@ parts:
       - id: ai/machine-learning
         title: Machine Learning
         desc: Learning problems, linear regression and classification, gradient descent
-        notes: []   # topic order on the website
+        notes: [supervised-learning, linear-regression, gradient-descent, linear-classification, logistic-regression, softmax-regression, text-representation]   # topic order on the website
       - id: ai/deep-learning
         title: Deep Learning
         desc: Tensors, backpropagation, neural networks
-        notes: []   # topic order on the website
+        notes: [tensors, einsum, backpropagation, neural-networks, training-deep-networks]   # topic order on the website
       - id: ai/search
         title: Search
         desc: Search problems, beam search, uniform cost search and A*
@@ -472,12 +475,12 @@ parts:
       - id: ai/reinforcement-learning
         title: Reinforcement Learning
         desc: Markov decision processes, value iteration, Q-learning, policy gradient
-        notes: []   # topic order on the website
+        notes: [markov-decision-processes, policy-evaluation, value-iteration, model-based-rl, model-free-rl, function-approximation, policy-gradient, improving-policy-gradient, td-learning]   # topic order on the website
       - id: ai/games
         title: Games
         desc: Game trees, minimax, alpha-beta pruning, simultaneous games
-        notes: []   # topic order on the website
+        notes: [game-trees, alpha-beta-pruning, game-evaluation-functions, simultaneous-games, nash-equilibria]   # topic order on the website
       - id: ai/bayesian-networks
         title: Bayesian Networks
         desc: Bayesian networks, sampling-based inference, parameter learning
-        notes: []   # topic order on the website
+        notes: [bayesian-networks, rejection-sampling, gibbs-sampling, conditional-independence, parameter-learning, expectation-maximization]   # topic order on the website

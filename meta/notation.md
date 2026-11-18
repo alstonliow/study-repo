@@ -76,6 +76,9 @@ not here.
 | $\oplus$ | exclusive-or |
 | $\mid$ | Sheffer stroke (NAND) |
 | $\equiv$ (or $=$) | logical equivalence |
+| $w,\ \mathcal M(f)$ | a model (truth assignment); the set of models of $f$ |
+| $\mathcal I(f,w)$ | interpretation: truth value of $f$ in model $w$ |
+| $\text{KB}\models f,\ \text{KB}\vdash f$ | entailment (semantic), derivation (syntactic) |
 
 ## Predicate logic (`math/discrete/logic/predicate`)
 
