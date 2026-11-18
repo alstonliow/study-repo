@@ -96,9 +96,9 @@ class Book:
 
     # ---- pieces
     def note_body(self, note) -> str:
-        """note.md (+ example.md) without out-of-scope blocks, headings demoted."""
+        """note.md (+ example.md, code.md) without out-of-scope blocks, headings demoted."""
         parts = []
-        for k, text in enumerate((note.body, note.examples)):
+        for k, text in enumerate((note.body, note.examples, note.code)):
             text = text.strip()
             if not text:
                 continue
@@ -121,10 +121,10 @@ class Book:
                 del lines[a:b + 1]
             text = "\n".join(lines)
             text = re.sub(r"(?m)^(#{2,5}) ", r"#\1 ", text)   # ## -> ###
-            if k == 1:                                   # example.md
+            if k:                                        # example.md, code.md
                 if not self.filter.shows("example"):
                     continue
-                text = "### Examples\n\n" + text
+                text = ("### Examples\n\n", "### Code\n\n")[k - 1] + text
             parts.append(text)
         body = "\n\n".join(parts)
         for d in divs_in(body):

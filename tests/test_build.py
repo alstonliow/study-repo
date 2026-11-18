@@ -140,6 +140,26 @@ class TestCheck(Repo):
         self.edit("notes/t/alpha/first/exercise.md", 'origin="self" ', "")
         self.assertError("problem missing origin")
 
+    def code_md(self, text: str) -> None:
+        (self.root / "notes/t/alpha/first/code.md").write_text(text, encoding="utf-8")
+
+    def test_code_example_needs_origin(self):
+        self.code_md('::: {#exm-first-code-1 .example}\n```{.python .runnable}\nprint(1)\n```\n:::\n')
+        self.assertError("code example needs origin")
+
+    def test_copied_code_needs_source(self):
+        self.code_md('::: {#exm-first-code-1 .example origin="adapted"}\n```{.python}\nprint(1)\n```\n:::\n')
+        self.assertError("origin=adapted needs a source key")
+
+    def test_code_syntax_error(self):
+        self.code_md('::: {#exm-first-code-1 .example origin="self"}\n```{.python}\nprint(1\n```\n:::\n')
+        self.assertError("Python syntax error")
+
+    def test_code_example_ok(self):
+        self.code_md('::: {#exm-first-code-1 .example origin="self"}\n```{.python .runnable packages="numpy"}\nprint(1)\n```\n\n```text\n1\n```\n:::\n')
+        r = self.check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+
     def test_heading_in_problem(self):
         self.edit("notes/t/alpha/first/exercise.md", "Statement two.",
                   "Statement two.\n\n# A heading")

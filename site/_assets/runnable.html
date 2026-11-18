@@ -1,0 +1,84 @@
+<!-- Runnable Python code blocks (SPEC §5.9): ```{.python .runnable packages="numpy"}.
+     Adds Run / Edit / Reset under each block. Pyodide (pinned) loads from the CDN
+     on the first Run only; each run gets a fresh namespace. Hidden in print. -->
+<style>
+.run-bar { display: flex; gap: .4rem; margin: -.6rem 0 .8rem; }
+.run-edit { width: 100%; font-family: var(--bs-font-monospace); font-size: .875em;
+  border: 1px solid var(--bs-border-color); border-radius: .25rem; padding: .5rem; }
+.run-out { white-space: pre-wrap; margin: 0 0 1rem; }
+.run-out.err { color: var(--bs-danger); }
+@media print { .run-bar, .run-edit, .run-out { display: none !important; } }
+</style>
+<script>
+(() => {
+  const PYODIDE = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/";
+  let ready = null;                      // one Pyodide per page, loaded lazily
+  const loaded = new Set();
+  function pyodide() {
+    if (!ready) ready = new Promise((ok, fail) => {
+      const s = document.createElement("script");
+      s.src = PYODIDE + "pyodide.js";
+      s.onload = () => loadPyodide({ indexURL: PYODIDE }).then(async py => {
+        await py.loadPackage("micropip"); ok(py);
+      }, fail);
+      s.onerror = () => fail(new Error("could not load Pyodide"));
+      document.head.appendChild(s);
+    });
+    return ready;
+  }
+  let queue = Promise.resolve();         // runs share stdout, so one at a time
+  function run(code, packages, out) {
+    queue = queue.then(() => runNow(code, packages, out));
+  }
+  async function runNow(code, packages, out) {
+    out.className = "run-out"; out.hidden = false; out.textContent = "Loading Python…";
+    try {
+      const py = await pyodide();
+      const need = packages.filter(p => !loaded.has(p));
+      if (need.length) {
+        out.textContent = "Installing " + need.join(", ") + "…";
+        await py.pyimport("micropip").install(need);
+        need.forEach(p => loaded.add(p));
+      }
+      let text = "";
+      py.setStdout({ batched: s => { text += s + "\n"; } });
+      py.setStderr({ batched: s => { text += s + "\n"; } });
+      out.textContent = "Running…";
+      const ns = py.globals.get("dict")();
+      try { await py.runPythonAsync(code, { globals: ns }); } finally { ns.destroy(); }
+      out.textContent = text || "(no output)";
+    } catch (e) {
+      out.classList.add("err");
+      out.textContent = String(e.message || e).split("\n").filter(l => l.trim()).slice(-4).join("\n");
+    }
+  }
+  function button(label, onclick) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "btn btn-sm btn-outline-primary"; b.textContent = label;
+    b.onclick = onclick; return b;
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("pre.runnable").forEach(pre => {
+      const block = pre.closest("div.sourceCode") || pre;
+      const holder = pre.closest("[data-packages]") || block.querySelector("[data-packages]");
+      const packages = ((holder && holder.dataset.packages) || "").split(",").map(s => s.trim()).filter(Boolean);
+      const original = pre.querySelector("code").textContent;
+      const edit = document.createElement("textarea");
+      edit.className = "run-edit"; edit.hidden = true; edit.spellcheck = false;
+      const out = document.createElement("pre");
+      out.hidden = true;
+      const bar = document.createElement("div");
+      bar.className = "run-bar";
+      const code = () => edit.hidden ? original : edit.value;
+      bar.append(
+        button("Run", () => run(code(), packages, out)),
+        button("Edit", () => {
+          edit.value = code(); edit.rows = Math.min(30, edit.value.split("\n").length + 1);
+          edit.hidden = false; block.hidden = true;
+        }),
+        button("Reset", () => { edit.hidden = true; block.hidden = false; out.hidden = true; }));
+      block.after(edit, bar, out);
+    });
+  });
+})();
+</script>

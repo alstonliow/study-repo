@@ -17,6 +17,7 @@ from typing import TYPE_CHECKING
 import yaml
 
 import kinds
+from model import PAGE_FILES
 
 if TYPE_CHECKING:
     from model import Note, Repo
@@ -59,7 +60,7 @@ class Numbering:
 
     def _number_blocks(self, note: "Note") -> None:
         counters: dict[str, int] = {}
-        for name in ("note.md", "example.md"):          # page order
+        for name in PAGE_FILES:                         # page order
             f = note.files.get(name)
             if not f:
                 continue

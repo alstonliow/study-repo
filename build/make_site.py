@@ -45,7 +45,7 @@ def main() -> int:
     # compile drawings
     TIKZ.mkdir(parents=True, exist_ok=True)
     codes = sorted({textwrap.dedent(m.group(2)) for n in notes.values()
-                    for t in (n.body, n.examples, n.exercises, n.solutions) for m in RAW.finditer(t)
+                    for t in (n.body, n.examples, n.code, n.exercises, n.solutions) for m in RAW.finditer(t)
                     if not tikz.is_algorithm(m.group(2))})
     with ThreadPoolExecutor(max_workers=6) as pool:
         svgs = dict(zip(codes, pool.map(partial(tikz.compile_svg, tikz_dir=TIKZ), codes)))

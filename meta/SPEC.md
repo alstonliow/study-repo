@@ -75,6 +75,7 @@ once approved.
 |---|---|---|
 | `note.md` | yes | Definitions, theorems, proofs, remarks |
 | `example.md` | no | Worked examples |
+| `code.md` | no | Code examples (§5.9): `example` blocks built around code |
 | `exercise.md` | no | `problem` blocks (§6) |
 | `solution.md` | no | `solution` blocks paired with problems by id (§6) |
 
@@ -209,6 +210,35 @@ kinds (prefix, word, numbering, colour) is `build/kinds.py` (§16.7).
    figure id does not exist.
 8. `example` blocks may carry `level="easy|medium|hard"`, filled in by the owner
    only.
+9. **Code examples** (owner decision, 2026-11-18). Code that shows how a
+   definition or algorithm is used in practice goes into `code.md`, as
+   `example` blocks (`exm-` ids, numbered with the page's other examples, shown
+   under a "Code" heading after the examples). Code never replaces the
+   mathematics: the definition and, for an algorithm, the `algorithmic`
+   pseudocode (item 7) come first in `note.md`.
+   - Every block in `code.md` carries `origin`: `self` (our own code),
+     `external` (copied unchanged) or `adapted` (copied, then changed; a
+     comment in the block says what changed). `external` and `adapted` need a
+     `source` key that resolves to a resource node (§17.12). Only code under a
+     permissive licence (MIT, BSD, Apache) may be copied (§10). An `example`
+     block elsewhere may carry the same attributes.
+   - Code is self-contained: helpers of the original are inlined or dropped,
+     plotting code is dropped, names follow `meta/notation.md` where it does
+     not hurt the code. About 40 lines at most per code block; several small
+     examples beat one long one. The block names the libraries it needs.
+   - The printed output follows in a ```` ```text ```` block, so the page and
+     the PDF show the result without running anything.
+   - Code is Python in ```` ```{.python} ```` fences. A block that runs in the
+     browser is marked ```` ```{.python .runnable packages="numpy,einops"} ````
+     (`packages` optional): the website adds a Run button and an editor and
+     loads Pyodide (pinned version, from a CDN) on the first click only.
+     Code that needs a package Pyodide lacks (PyTorch, transformers, z3) is
+     not `.runnable`; where a short NumPy version teaches the same thing, it
+     follows as its own `adapted` block marked `.runnable`.
+   - Builds and CI never run code. `make check` only parses the Python of
+     `code.md` (syntax errors are errors) and checks `origin`/`source`.
+     Experiments whose results are plots are run once locally; the numbers go
+     into a static pgfplots/TikZ figure (item 7).
 
 ```markdown
 ::: {#def-tautology .definition}
@@ -344,6 +374,12 @@ Homework problems are allowed as exercises (owner decision, 2026-11-17): the
 statement is copied verbatim with `origin="external"` and a `source` key of a
 homework resource. Official homework solutions are never copied; solutions are
 written in our own words.
+
+Code under a permissive licence (MIT, BSD, Apache) may be copied in excerpts
+into `code.md` (owner decision, 2026-11-18; §5.9), with `origin="external"` or
+`"adapted"` and a `source` key. Only the code is copied, never the lecture
+prose around it. The resource file records the licence and copyright line, and
+`NOTICES.md` at the repository root lists every such resource with its notice.
 
 ## 11. Checks (`make check`)
 

@@ -276,6 +276,8 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
     parts = [body_text]
     if note.examples.strip():
         parts.append("## Examples\n\n" + wrap_scope(note.examples.strip(), note))
+    if note.code.strip():
+        parts.append("## Code\n\n" + wrap_scope(note.code.strip(), note))
     if note.exercises.strip():
         parts.append("## Exercises\n\n" + render_problems(note))
     conn = connections(note)

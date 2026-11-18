@@ -24,7 +24,8 @@ ROOT = Path(os.environ.get("STUDY_ROOT") or Path(__file__).resolve().parent.pare
 NOTES = ROOT / "notes"
 META = ROOT / "meta"
 
-NOTE_FILES = ("note.md", "example.md", "exercise.md", "solution.md")
+NOTE_FILES = ("note.md", "example.md", "code.md", "exercise.md", "solution.md")
+PAGE_FILES = ("note.md", "example.md", "code.md")   # page body, in page order (SPEC §5.9)
 REVIEW = "review"   # folder name for a branch's synthesis problems (SPEC §6.3)
 
 OPEN = re.compile(r"^(:{3,})\s*\{(.*)\}\s*$")
@@ -180,13 +181,14 @@ class Note:
         self.aliases = [str(a) for a in self.front.get("aliases") or []]   # old ids (SPEC §2.6)
         self.body = strip_comments(body)
         self.examples = self.files["example.md"].text if "example.md" in self.files else ""
+        self.code = self.files["code.md"].text if "code.md" in self.files else ""
         self.exercises = self.files["exercise.md"].text if "exercise.md" in self.files else ""
         self.solutions = self.files["solution.md"].text if "solution.md" in self.files else ""
 
         # labelled blocks of the page (note, examples, exercises): id -> name
         self.blocks: dict[str, str] = {}
         self.key_items: list[str] = []
-        for text in (self.body, self.examples, self.exercises):
+        for text in (self.body, self.examples, self.code, self.exercises):
             for line in text.splitlines():
                 m = OPEN.match(line)
                 if m:
@@ -231,11 +233,11 @@ class Note:
         return f"{self.num} {self.title}" if self.num else self.title
 
     def units(self) -> list[tuple[str | None, Div]]:
-        """Top-level blocks of the page body (note.md, then example.md) with the
+        """Top-level blocks of the page body (note.md, example.md, code.md) with the
         id that decides their scope: their own id, or for a proof the block
         just before it (SPEC §13.1)."""
         out: list[tuple[str | None, Div]] = []
-        for name in ("note.md", "example.md"):
+        for name in PAGE_FILES:
             if name not in self.files:
                 continue
             last: str | None = None

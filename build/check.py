@@ -8,6 +8,7 @@ Read-only: never modifies files and never runs git write commands.
 from __future__ import annotations
 
 import argparse
+import ast
 import re
 import subprocess
 import sys
@@ -19,6 +20,7 @@ from model import MATH, REF, ROOT, load
 
 REQUIRED_YAML = ["title", "sources", "requires", "status"]
 ALLOWED = {"status": {"draft", "done"}}
+PY_FENCE = re.compile(r"^```\{?\.?python([^\n]*)\n(.*?)^```", re.M | re.S)
 LEVELS = {"easy", "medium", "hard"}  # optional `level` on problem and example blocks
 FORBIDDEN_SUFFIXES = {".pdf", ".aux", ".log", ".toc", ".out", ".fls",
                       ".fdb_latexmk", ".synctex.gz"}
@@ -117,6 +119,14 @@ def check_notes() -> None:
                         errors.append(f"{where}: problem missing source")
                     elif not kv["source"]:
                         warnings.append(f"{where}: problem has empty source (TODO)")
+                if "example" in classes and d.depth == 0 and (md.name == "code.md" or "origin" in kv):
+                    origin = kv.get("origin")       # SPEC §5.9
+                    if origin not in {"self", "external", "adapted"}:
+                        errors.append(f"{where}: code example needs origin=\"self|external|adapted\"")
+                    elif origin != "self" and not kv.get("source"):
+                        errors.append(f"{where}: origin={origin} needs a source key")
+                elif md.name == "code.md" and d.depth == 0 and classes:
+                    errors.append(f"{where}: code.md holds only example blocks")
                 if "difficulty" in kv:
                     errors.append(f"{where}: use level=\"easy|medium|hard\" instead of difficulty")
                 if kv.get("level"):
@@ -137,6 +147,13 @@ def check_notes() -> None:
             for m in re.finditer(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]", f.raw):
                 line = f.raw[:m.start()].count("\n") + 1
                 errors.append(f"{rel(md)}:{line}: invisible control character {m.group(0)!r} (corrupted text?)")
+            if f.name == "code.md":   # Python is parsed, never run (SPEC §5.9)
+                for m in PY_FENCE.finditer(f.raw):
+                    try:
+                        ast.parse(m.group(2))
+                    except SyntaxError as exc:
+                        line = f.raw[:m.start(2)].count("\n") + (exc.lineno or 1)
+                        errors.append(f"{rel(md)}:{line}: Python syntax error ({exc.msg})")
             if f.name in ("exercise.md", "solution.md"):
                 # fenced code (a Python comment is not a heading) is blanked, line numbers kept
                 text = CODE_FENCE.sub(lambda m: "\n" * m.group(0).count("\n"), f.masked)
@@ -217,6 +234,9 @@ def check_sources() -> None:
     keys = [(n.files["note.md"].path, str(k)) for n in REPO.notes.values() for k in n.front.get("sources") or []]
     keys += [(n.files["exercise.md"].path, p.attrs.get("source", ""))
              for n in list(REPO.notes.values()) + list(REPO.reviews.values()) for p in n.problems]
+    keys += [(n.files[name].path, d.attrs.get("source", "")) for n in REPO.notes.values()
+             for name in ("note.md", "example.md", "code.md") if name in n.files
+             for d in n.files[name].divs if "example" in d.classes]
     for path, key in keys:
         if key:
             msg = REPO.sources.problems(key)

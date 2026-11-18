@@ -36,6 +36,7 @@ format:
       - _assets/export-builder.html
       - _assets/pseudocode.html
       - _assets/widgets.html
+      - _assets/runnable.html
     filters:
       - _assets/list-delims.lua
     grid:
