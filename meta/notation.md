@@ -190,6 +190,29 @@ not here.
 | $\sinh,\ \cosh$ | hyperbolic functions |
 | $(r,\theta)$ | polar coordinates |
 
+### Multivariable calculus (`math/calculus/multivariable`)
+
+<!-- Added 2026-11-18 with MIT 18.02. -->
+
+| Symbol | Meaning |
+|---|---|
+| $\mathbf{A},\ \mathbf{F},\ \mathbf{r}$ | vectors and vector fields (bold); $\mathbf{r}=\langle x,y,z\rangle$ is the position vector |
+| $\langle a_1,a_2,a_3\rangle=a_1\mathbf{i}+a_2\mathbf{j}+a_3\mathbf{k}$ | components; $\mathbf{i},\mathbf{j},\mathbf{k}$ are the unit coordinate vectors |
+| $\lvert\mathbf{A}\rvert,\ \operatorname{dir}\mathbf{A}$ | length (same as $\lVert\mathbf{A}\rVert$), direction $\mathbf{A}/\lvert\mathbf{A}\rvert$ |
+| $\overrightarrow{PQ}$ | vector from $P$ to $Q$ |
+| $\mathbf{A}\times\mathbf{B}$ | cross product |
+| $\hat{\mathbf{u}},\ \hat{\mathbf{T}},\ \hat{\mathbf{n}}$ | unit vector, unit tangent, unit normal |
+| $f_x,\ \frac{\partial f}{\partial x},\ f_{xy}$ | partial derivatives |
+| $\left(\frac{\partial f}{\partial x}\right)_{y}$ | partial derivative with $y$ held fixed |
+| $\nabla f,\ \frac{df}{ds}\big\vert_{\hat{\mathbf{u}}}$ | gradient, directional derivative |
+| $\frac{\partial(u,v)}{\partial(x,y)}$ | Jacobian determinant |
+| $dA,\ dV,\ dS,\ ds$ | area, volume, surface area and arclength elements |
+| $(r,\theta,z),\ (\rho,\phi,\theta)$ | cylindrical and spherical coordinates ($\phi$ measured down from the $z$-axis) |
+| $\int_C\mathbf{F}\cdot d\mathbf{r}=\int_CM\,dx+N\,dy$, $\oint_C$ | line integral (work), around a closed curve |
+| $\iint_S\mathbf{F}\cdot\hat{\mathbf{n}}\,dS=\iint_S\mathbf{F}\cdot d\mathbf{S}$ | flux through a surface |
+| $\operatorname{div}\mathbf{F}=\nabla\cdot\mathbf{F},\ \operatorname{curl}\mathbf{F}=\nabla\times\mathbf{F}$ | divergence, curl |
+| $\nabla^2u$ | Laplacian $u_{xx}+u_{yy}+u_{zz}$ |
+
 ## Probability (`math/probability`)
 
 <!-- TODO: 1058note chapter 11 has no probability section. Add symbols during migration of chapter 9. -->

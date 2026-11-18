@@ -12,3 +12,19 @@ Column $j$ of $AX$ is $A\mathbf{x}_j$ (@thm-four-ways-to-multiply), so the colum
 
 (c) $(AB)C$ is faster when $mnp+mpq<mnq+npq$. Dividing by $mnpq>0$ gives $\frac1q+\frac1n<\frac1p+\frac1m$.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words; owner to review, then remove status.
+     MIT 18.02 problem-set problems (prob-mit1802f07-*): no official solutions were available.
+     18.02 Notes exercises (prob-mit1802n-*): checked by computation (Python/sympy); official solutions (section S
+     of the 18.02 Notes) exist in raw/ but were not copied. -->
+
+::: {.solution for="prob-mit1802n-1f-q5" status="draft"}
+a) $A^2=\begin{pmatrix}1&1\\1&2\end{pmatrix}$, $A^3=\begin{pmatrix}1&2\\2&3\end{pmatrix}$, and in general $A^n=\begin{pmatrix}F_{n-1}&F_n\\F_n&F_{n+1}\end{pmatrix}$ with the Fibonacci numbers $F_0=0$, $F_1=1$, $F_{k+1}=F_k+F_{k-1}$. (Induction: multiplying by $A$ on the right sends the columns $(\mathbf{c}_1,\mathbf{c}_2)$ to $(\mathbf{c}_2,\mathbf{c}_1+\mathbf{c}_2)$.)
+
+b) $A^2=\begin{pmatrix}1&2\\0&1\end{pmatrix}$, $A^3=\begin{pmatrix}1&3\\0&1\end{pmatrix}$, $A^n=\begin{pmatrix}1&n\\0&1\end{pmatrix}$ (each multiplication adds $1$ to the corner).
+:::
+
+::: {.solution for="prob-mit1802n-1f-q8" status="draft"}
+$A$ times the $j$-th unit vector is the $j$-th column of $A$:
+$$A=\begin{pmatrix}2&-1&1\\3&0&1\\1&4&-1\end{pmatrix}.$$
+:::

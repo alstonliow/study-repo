@@ -270,6 +270,59 @@ parts:
           - linear-transformations
           - change-of-basis
           - pseudoinverse
+  - title: Multivariable Calculus
+    field: Mathematics
+    branches:
+      - id: math/calculus/multivariable/vectors
+        title: Vectors and Curves in Space
+        desc: Cross product and determinants, lines and planes, velocity and acceleration of moving points
+        notes:   # topic order on the website
+          - cross-product
+          - lines-and-planes
+          - vector-valued-functions
+      - id: math/calculus/multivariable/differentiation
+        title: Partial Differentiation
+        desc: Functions of several variables, partial derivatives, critical points, least squares, the chain rule, the gradient, Lagrange multipliers, non-independent variables, partial differential equations
+        notes:   # topic order on the website
+          - functions-of-several-variables
+          - partial-derivatives
+          - critical-points
+          - least-squares-fitting
+          - differentials-and-chain-rule
+          - gradient
+          - lagrange-multipliers
+          - non-independent-variables
+          - partial-differential-equations
+      - id: math/calculus/multivariable/multiple-integrals
+        title: Multiple Integrals
+        desc: Double integrals, polar coordinates, mass and moments, change of variables, triple integrals, spherical coordinates, gravitational attraction
+        notes:   # topic order on the website
+          - double-integrals
+          - polar-double-integrals
+          - mass-and-moments
+          - change-of-variables
+          - triple-integrals
+          - spherical-coordinates
+          - gravitational-attraction
+      - id: math/calculus/multivariable/line-integrals
+        title: Line Integrals and Green's Theorem
+        desc: Vector fields in the plane, work, conservative and gradient fields, Green's theorem, flux, simply connected regions
+        notes:   # topic order on the website
+          - vector-fields-and-line-integrals
+          - conservative-fields
+          - gradient-fields-and-potentials
+          - greens-theorem
+          - flux-and-normal-form-of-greens-theorem
+          - simply-connected-regions
+      - id: math/calculus/multivariable/vector-calculus-in-space
+        title: Vector Calculus in Space
+        desc: Surface integrals and flux, the divergence theorem, line integrals and curl in space, Stokes' theorem, div and curl in physics
+        notes:   # topic order on the website
+          - surface-integrals-and-flux
+          - divergence-theorem
+          - line-integrals-in-space
+          - stokes-theorem
+          - div-and-curl-in-physics
   - title: Probability and Statistics
     field: Mathematics
     branches:

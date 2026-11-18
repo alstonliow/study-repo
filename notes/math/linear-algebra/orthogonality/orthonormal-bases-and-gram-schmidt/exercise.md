@@ -33,3 +33,29 @@ The $n$ columns of $Q_1$ are an orthonormal basis for which fundamental subspace
 
 *Note (these notes):* Here $A$ is assumed to have independent columns.
 :::
+
+::: {.problem #prob-mit1802f07-1-q4 origin="external" source="mit1802f07-1-q4"}
+Orthogonal matrices are matrices $A$ that satisfy the identity $AA^T=I$ ($I$ is the identity matrix). An equivalent definition of the orthogonal matrix property is that $A^TA=I$ because the left and right inverses of a square matrix are the same (see 1G-9b). The equation $AA^T=I$ says that the rows of $A$ are perpendicular to each other and of unit length, whereas the equation $A^TA=I$ says that the columns of $A$ are perpendicular to each other and of unit length. The geometric significance of orthogonal matrices is that multiplication by an orthogonal matrix preserves lengths of vectors and the absolute values of angles between them:
+$$|A\mathbf{v}|=|\mathbf{v}|\ \text{ and }\ |\angle(A\mathbf{v},A\mathbf{w})|=|\angle(\mathbf{v},\mathbf{w})|.$$
+There are two types of orthogonal matrices, rotations and reflections.
+
+a) In 2-dimensional space, rotations are given by
+$$A_\theta=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix}$$
+Find $\mathbf{u}=A_\theta\hat{\imath}$ and $\mathbf{v}=A_\theta\hat{\jmath}$, and draw a picture of $\mathbf{u}$ and $\mathbf{v}$ for $\theta=\pi/4$.
+
+b) Use the addition formulas for sine and cosine to deduce that $A_{\theta_1}A_{\theta_2}=A_{\theta_1+\theta_2}$. Say in words what this matrix formula means about rotations.
+
+c) Calculate $A_\theta^{-1}$, and use this to verify that $A_\theta A_\theta^T=I$ (in other words, rotations are orthogonal matrices). Also verify that $A_\theta^{-1}=A_{-\theta}$, and give a geometric reason why this property holds.
+
+d) Find the four orthogonal $2\times2$ matrices with first entry $a_{11}=-1/\sqrt2$. Hint: try different signs. (See 1F-9 and 1F-10).
+
+e) Next to each of the matrices in your list in part (d), draw what the matrix does to the letter F in the plane. Explain how the sign of the determinant of the matrix is related to the appearance of the transformed F.
+:::
+
+::: {.problem #prob-mit1802n-1f-q9 origin="external" source="mit1802n-1f-q9"}
+A square $n\times n$ matrix is called **orthogonal** if $A\cdot A^T=I_n$. Show that this condition is equivalent to saying that
+
+a) each row of $A$ is a row vector of length 1,
+
+b) two different rows are orthogonal vectors.
+:::

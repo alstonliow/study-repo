@@ -36,3 +36,33 @@
 
 3. At $i=j$: $-(j-1)(7-j)+2j(7-j)-j(7-j-1)=(7-j)(-j+1+2j)-j(6-j)=(7-j)(j+1)-j(6-j)=7$. Hence $K\cdot(7K^{-1})=7I$.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words; owner to review, then remove status.
+     MIT 18.02 problem-set problems (prob-mit1802f07-*): no official solutions were available.
+     18.02 Notes exercises (prob-mit1802n-*): checked by computation (Python/sympy); official solutions (section S
+     of the 18.02 Notes) exist in raw/ but were not copied. -->
+
+::: {.solution for="prob-mit1802f07-1-q5" status="draft"}
+a) The four entries of $M\mathbf{X}$ are the total grams of flour, sugar, egg and butter needed for the assortment: entry $i$ is $\sum_jm_{ij}x_j$.
+
+b) $\mathbf{Y}=N(M\mathbf{X})=(NM)\mathbf{X}$ gives the grams of protein, carbohydrates and fat.
+
+c) $NM=\begin{pmatrix}2.85&5.82&5.65\\34.77&40.54&41.05\\8.92&10.00&19.04\end{pmatrix}$ is invertible, so $\mathbf{X}=A\mathbf{Y}$ with
+$$A=(NM)^{-1}\approx\begin{pmatrix}-0.4690&0.0705&-0.0128\\0.3839&-0.0050&-0.1031\\0.0181&-0.0304&0.1127\end{pmatrix}.$$
+
+d) $\mathbf{X}=A\begin{pmatrix}50\\300\\65\end{pmatrix}\approx\begin{pmatrix}-3.14\\10.99\\-0.89\end{pmatrix}$. The answer asks for a negative number of cookies and of croissants, which is impossible: these three pastries cannot provide exactly the recommended amounts. (Their protein content is too low relative to carbohydrates and fat; the exact solution compensates with negative amounts.)
+:::
+
+::: {.solution for="prob-mit1802n-1g-q3" status="draft"}
+$\det A=5$, and by cofactors (@thm-inverse-by-cofactors)
+$$A^{-1}=\frac15\begin{pmatrix}3&1&-2\\-1&3&-1\\1&2&1\end{pmatrix},\qquad\mathbf{x}=A^{-1}\mathbf{b}=\frac15\begin{pmatrix}0\\-5\\5\end{pmatrix}=\begin{pmatrix}0\\-1\\1\end{pmatrix}.$$
+:::
+
+::: {.solution for="prob-mit1802n-1g-q4" status="draft"}
+The matrix is the $A$ of Exercise 3, so $\mathbf{x}=A^{-1}\mathbf{y}$:
+$$x_1=\tfrac15(3y_1+y_2-2y_3),\qquad x_2=\tfrac15(-y_1+3y_2-y_3),\qquad x_3=\tfrac15(y_1+2y_2+y_3).$$
+:::
+
+::: {.solution for="prob-mit1802n-1g-q5" status="draft"}
+$(AB)(B^{-1}A^{-1})=A(BB^{-1})A^{-1}=AA^{-1}=I$ and $(B^{-1}A^{-1})(AB)=B^{-1}(A^{-1}A)B=B^{-1}B=I$. So $B^{-1}A^{-1}$ is the inverse of $AB$.
+:::

@@ -13,7 +13,31 @@ source_prefix: mit1806
 outline_from: "MIT 18.06 Linear Algebra (Strang), lectures 1-33 as in 18.06SC Fall 2011"
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
+exclude:
+  # MIT 18.02 (2026-11-18): 18.02 problems placed in Linear Algebra notes
+  - prob-mit1802f07-1-q2
+  - prob-mit1802f07-1-q4
+  - prob-mit1802f07-1-q5
+  - prob-mit1802n-1a-q1
+  - prob-mit1802n-1a-q11
+  - prob-mit1802n-1a-q5
+  - prob-mit1802n-1a-q6
+  - prob-mit1802n-1a-q7
+  - prob-mit1802n-1a-q8
+  - prob-mit1802n-1a-q9
+  - prob-mit1802n-1b-q1
+  - prob-mit1802n-1b-q11
+  - prob-mit1802n-1b-q12
+  - prob-mit1802n-1b-q13
+  - prob-mit1802n-1b-q14
+  - prob-mit1802n-1b-q2
+  - prob-mit1802n-1b-q5
+  - prob-mit1802n-1f-q5
+  - prob-mit1802n-1f-q8
+  - prob-mit1802n-1f-q9
+  - prob-mit1802n-1g-q3
+  - prob-mit1802n-1g-q4
+  - prob-mit1802n-1g-q5
 
 chapters:
   - num: 1

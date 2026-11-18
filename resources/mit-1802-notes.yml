@@ -1,0 +1,362 @@
+# MIT 18.02 Supplementary Notes and Exercises (Mattuck and others), the reading sections published with the
+# Fall 2007 course (MIT OpenCourseWare, CC BY-NC-SA), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_1802/fall-2007/readings. Locator = section of the Notes (D, M, K, TA, ..., V1-V15);
+# a source key is mit1802n-TA. Exercises (section E, solutions in section S) are keyed by exercise group and
+# number: mit1802n-2b-q3 is Exercise 2B-3 (locator 2b). Only the sections and exercise groups used are listed.
+# Section V7 is not among the readings. Titles are our own short titles.
+id: res-mit-1802-notes
+kind: course-notes
+title: MIT 18.02 Supplementary Notes (Fall 2007)
+status: draft
+courses:
+- mit1802
+editions:
+- id: 2007-fall
+  current: true
+legacy_keys:
+  prefix: mit1802n-
+  edition: 2007-fall
+  pattern: ^mit1802n-(?P<section>[A-Z]+\d*|[1-6][a-k])(?:-q(?P<n>\d+))?$
+  label: 18.02 Notes {section}
+  problem_label: 18.02 Notes Ex. {section}-{n}
+nodes:
+- id: res-mit-1802-notes-determinants
+  kind: section
+  title: Determinants
+  at:
+    2007-fall: D
+- id: res-mit-1802-notes-matrices
+  kind: section
+  title: Matrices and square systems
+  at:
+    2007-fall: M
+- id: res-mit-1802-notes-kepler
+  kind: section
+  title: Kepler's second law
+  at:
+    2007-fall: K
+- id: res-mit-1802-notes-tangent-approximation
+  kind: section
+  title: Partial derivatives and tangent approximation
+  at:
+    2007-fall: TA
+- id: res-mit-1802-notes-second-derivative-test
+  kind: section
+  title: Second derivative test
+  at:
+    2007-fall: SD
+- id: res-mit-1802-notes-least-squares
+  kind: section
+  title: Least-squares fitting
+  at:
+    2007-fall: LS
+- id: res-mit-1802-notes-non-independent-variables
+  kind: section
+  title: Non-independent variables
+  at:
+    2007-fall: N
+- id: res-mit-1802-notes-pdes
+  kind: section
+  title: Partial differential equations
+  at:
+    2007-fall: P
+- id: res-mit-1802-notes-iterated-integrals
+  kind: section
+  title: Limits of iterated integrals
+  at:
+    2007-fall: I
+- id: res-mit-1802-notes-changing-variables
+  kind: section
+  title: Changing variables in multiple integrals
+  at:
+    2007-fall: CV
+- id: res-mit-1802-notes-gravitation
+  kind: section
+  title: Gravitational attraction
+  at:
+    2007-fall: G
+- id: res-mit-1802-notes-plane-vector-fields
+  kind: section
+  title: Plane vector fields
+  at:
+    2007-fall: V1
+- id: res-mit-1802-notes-gradient-fields-plane
+  kind: section
+  title: Gradient fields and exact differentials
+  at:
+    2007-fall: V2
+- id: res-mit-1802-notes-flux-plane
+  kind: section
+  title: Flux in the plane
+  at:
+    2007-fall: V3
+- id: res-mit-1802-notes-green-normal-form
+  kind: section
+  title: Green's theorem for flux
+  at:
+    2007-fall: V4
+- id: res-mit-1802-notes-simply-connected
+  kind: section
+  title: Simply connected regions
+  at:
+    2007-fall: V5
+- id: res-mit-1802-notes-multiply-connected
+  kind: section
+  title: Multiply connected regions
+  at:
+    2007-fall: V6
+- id: res-mit-1802-notes-vector-fields-space
+  kind: section
+  title: Vector fields in space
+  at:
+    2007-fall: V8
+- id: res-mit-1802-notes-surface-integrals
+  kind: section
+  title: Surface integrals
+  at:
+    2007-fall: V9
+- id: res-mit-1802-notes-divergence-theorem
+  kind: section
+  title: Divergence theorem
+  at:
+    2007-fall: V10
+- id: res-mit-1802-notes-line-integrals-space
+  kind: section
+  title: Line integrals in space
+  at:
+    2007-fall: V11
+- id: res-mit-1802-notes-gradient-fields-space
+  kind: section
+  title: Gradient fields in space
+  at:
+    2007-fall: V12
+- id: res-mit-1802-notes-stokes-theorem
+  kind: section
+  title: Stokes' theorem
+  at:
+    2007-fall: V13
+- id: res-mit-1802-notes-topology
+  kind: section
+  title: Topological questions
+  at:
+    2007-fall: V14
+- id: res-mit-1802-notes-physics
+  kind: section
+  title: Relation to physics
+  at:
+    2007-fall: V15
+- id: res-mit-1802-notes-exercises-1a
+  kind: exercises
+  title: "Exercises 1A: Vectors"
+  at:
+    2007-fall: 1a
+- id: res-mit-1802-notes-exercises-1b
+  kind: exercises
+  title: "Exercises 1B: Dot product"
+  at:
+    2007-fall: 1b
+- id: res-mit-1802-notes-exercises-1c
+  kind: exercises
+  title: "Exercises 1C: Determinants"
+  at:
+    2007-fall: 1c
+- id: res-mit-1802-notes-exercises-1d
+  kind: exercises
+  title: "Exercises 1D: Cross product"
+  at:
+    2007-fall: 1d
+- id: res-mit-1802-notes-exercises-1e
+  kind: exercises
+  title: "Exercises 1E: Lines and planes"
+  at:
+    2007-fall: 1e
+- id: res-mit-1802-notes-exercises-1f
+  kind: exercises
+  title: "Exercises 1F: Matrix algebra"
+  at:
+    2007-fall: 1f
+- id: res-mit-1802-notes-exercises-1g
+  kind: exercises
+  title: "Exercises 1G: Square systems and inverses"
+  at:
+    2007-fall: 1g
+- id: res-mit-1802-notes-exercises-1h
+  kind: exercises
+  title: "Exercises 1H: Cramer's rule"
+  at:
+    2007-fall: 1h
+- id: res-mit-1802-notes-exercises-1i
+  kind: exercises
+  title: "Exercises 1I: Parametric curves"
+  at:
+    2007-fall: 1i
+- id: res-mit-1802-notes-exercises-1j
+  kind: exercises
+  title: "Exercises 1J: Derivatives of vector functions"
+  at:
+    2007-fall: 1j
+- id: res-mit-1802-notes-exercises-1k
+  kind: exercises
+  title: "Exercises 1K: Kepler's law"
+  at:
+    2007-fall: 1k
+- id: res-mit-1802-notes-exercises-2a
+  kind: exercises
+  title: "Exercises 2A: Partial derivatives"
+  at:
+    2007-fall: 2a
+- id: res-mit-1802-notes-exercises-2b
+  kind: exercises
+  title: "Exercises 2B: Tangent planes"
+  at:
+    2007-fall: 2b
+- id: res-mit-1802-notes-exercises-2c
+  kind: exercises
+  title: "Exercises 2C: Differentials"
+  at:
+    2007-fall: 2c
+- id: res-mit-1802-notes-exercises-2d
+  kind: exercises
+  title: "Exercises 2D: Gradient"
+  at:
+    2007-fall: 2d
+- id: res-mit-1802-notes-exercises-2e
+  kind: exercises
+  title: "Exercises 2E: Chain rule"
+  at:
+    2007-fall: 2e
+- id: res-mit-1802-notes-exercises-2f
+  kind: exercises
+  title: "Exercises 2F: Max-min problems"
+  at:
+    2007-fall: 2f
+- id: res-mit-1802-notes-exercises-2g
+  kind: exercises
+  title: "Exercises 2G: Least squares"
+  at:
+    2007-fall: 2g
+- id: res-mit-1802-notes-exercises-2h
+  kind: exercises
+  title: "Exercises 2H: Second derivative test"
+  at:
+    2007-fall: 2h
+- id: res-mit-1802-notes-exercises-2i
+  kind: exercises
+  title: "Exercises 2I: Lagrange multipliers"
+  at:
+    2007-fall: 2i
+- id: res-mit-1802-notes-exercises-2j
+  kind: exercises
+  title: "Exercises 2J: Non-independent variables"
+  at:
+    2007-fall: 2j
+- id: res-mit-1802-notes-exercises-2k
+  kind: exercises
+  title: "Exercises 2K: Partial differential equations"
+  at:
+    2007-fall: 2k
+- id: res-mit-1802-notes-exercises-3a
+  kind: exercises
+  title: "Exercises 3A: Double integrals"
+  at:
+    2007-fall: 3a
+- id: res-mit-1802-notes-exercises-3b
+  kind: exercises
+  title: "Exercises 3B: Polar coordinates"
+  at:
+    2007-fall: 3b
+- id: res-mit-1802-notes-exercises-3c
+  kind: exercises
+  title: "Exercises 3C: Applications of double integrals"
+  at:
+    2007-fall: 3c
+- id: res-mit-1802-notes-exercises-3d
+  kind: exercises
+  title: "Exercises 3D: Change of variables"
+  at:
+    2007-fall: 3d
+- id: res-mit-1802-notes-exercises-4a
+  kind: exercises
+  title: "Exercises 4A: Plane vector fields"
+  at:
+    2007-fall: 4a
+- id: res-mit-1802-notes-exercises-4b
+  kind: exercises
+  title: "Exercises 4B: Line integrals"
+  at:
+    2007-fall: 4b
+- id: res-mit-1802-notes-exercises-4c
+  kind: exercises
+  title: "Exercises 4C: Gradient fields"
+  at:
+    2007-fall: 4c
+- id: res-mit-1802-notes-exercises-4d
+  kind: exercises
+  title: "Exercises 4D: Green's theorem"
+  at:
+    2007-fall: 4d
+- id: res-mit-1802-notes-exercises-4e
+  kind: exercises
+  title: "Exercises 4E: Flux"
+  at:
+    2007-fall: 4e
+- id: res-mit-1802-notes-exercises-4f
+  kind: exercises
+  title: "Exercises 4F: Green's theorem for flux"
+  at:
+    2007-fall: 4f
+- id: res-mit-1802-notes-exercises-5a
+  kind: exercises
+  title: "Exercises 5A: Triple integrals"
+  at:
+    2007-fall: 5a
+- id: res-mit-1802-notes-exercises-5b
+  kind: exercises
+  title: "Exercises 5B: Spherical coordinates"
+  at:
+    2007-fall: 5b
+- id: res-mit-1802-notes-exercises-5c
+  kind: exercises
+  title: "Exercises 5C: Gravitation"
+  at:
+    2007-fall: 5c
+- id: res-mit-1802-notes-exercises-6a
+  kind: exercises
+  title: "Exercises 6A: Vector fields in space"
+  at:
+    2007-fall: 6a
+- id: res-mit-1802-notes-exercises-6b
+  kind: exercises
+  title: "Exercises 6B: Surface integrals"
+  at:
+    2007-fall: 6b
+- id: res-mit-1802-notes-exercises-6c
+  kind: exercises
+  title: "Exercises 6C: Divergence theorem"
+  at:
+    2007-fall: 6c
+- id: res-mit-1802-notes-exercises-6d
+  kind: exercises
+  title: "Exercises 6D: Line integrals in space"
+  at:
+    2007-fall: 6d
+- id: res-mit-1802-notes-exercises-6e
+  kind: exercises
+  title: "Exercises 6E: Gradient fields in space"
+  at:
+    2007-fall: 6e
+- id: res-mit-1802-notes-exercises-6f
+  kind: exercises
+  title: "Exercises 6F: Stokes' theorem"
+  at:
+    2007-fall: 6f
+- id: res-mit-1802-notes-exercises-6g
+  kind: exercises
+  title: "Exercises 6G: Topology"
+  at:
+    2007-fall: 6g
+- id: res-mit-1802-notes-exercises-6h
+  kind: exercises
+  title: "Exercises 6H: Physics"
+  at:
+    2007-fall: 6h

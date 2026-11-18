@@ -13,3 +13,13 @@ Suppose $A$ is $m$ by $n$, $B$ is $n$ by $p$, and $C$ is $p$ by $q$. Then the mu
 
 (c) Divide by $mnpq$ to show that $(AB)C$ is faster when $n^{-1}+q^{-1}<m^{-1}+p^{-1}$.
 :::
+
+::: {.problem #prob-mit1802n-1f-q5 origin="external" source="mit1802n-1f-q5"}
+a) Let $A=\begin{pmatrix}0&1\\1&1\end{pmatrix}$. Compute $A^2,A^3,A^n$.  b) Do the same for $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$.
+:::
+
+::: {.problem #prob-mit1802n-1f-q8 origin="external" source="mit1802n-1f-q8"}
+a) If $A\begin{pmatrix}1\\0\\0\end{pmatrix}=\begin{pmatrix}2\\3\\1\end{pmatrix}$, $A\begin{pmatrix}0\\1\\0\end{pmatrix}=\begin{pmatrix}-1\\0\\4\end{pmatrix}$, $A\begin{pmatrix}0\\0\\1\end{pmatrix}=\begin{pmatrix}1\\1\\-1\end{pmatrix}$, what is the $3\times3$ matrix $A$?
+
+*Note (these notes):* Only part (a) was assigned.
+:::

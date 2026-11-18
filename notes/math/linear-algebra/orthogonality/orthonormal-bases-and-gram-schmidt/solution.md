@@ -44,3 +44,26 @@
 
 2. The columns of $Q_2$ are orthonormal and orthogonal to those of $Q_1$, hence to $C(A)$. They lie in $C(A)^{\perp}=N(A^{\mathsf T})$, which has dimension $m-n$, so they are an orthonormal basis of the left nullspace.
 :::
+
+<!-- Solutions marked status="draft" were written by Claude in our own words; owner to review, then remove status.
+     MIT 18.02 problem-set problems (prob-mit1802f07-*): no official solutions were available.
+     18.02 Notes exercises (prob-mit1802n-*): checked by computation (Python/sympy); official solutions (section S
+     of the 18.02 Notes) exist in raw/ but were not copied. -->
+
+::: {.solution for="prob-mit1802f07-1-q4" status="draft"}
+a) $\mathbf{u}=\langle\cos\theta,\sin\theta\rangle$ and $\mathbf{v}=\langle-\sin\theta,\cos\theta\rangle$: $\hat\imath$ and $\hat\jmath$ turned counterclockwise by $\theta$. For $\theta=\pi/4$, $\mathbf{u}=\frac1{\sqrt2}\langle1,1\rangle$ and $\mathbf{v}=\frac1{\sqrt2}\langle-1,1\rangle$, unit vectors at $45^\circ$ and $135^\circ$.
+
+b) $A_{\theta_1}A_{\theta_2}=\begin{pmatrix}c_1c_2-s_1s_2&-(c_1s_2+s_1c_2)\\s_1c_2+c_1s_2&c_1c_2-s_1s_2\end{pmatrix}=\begin{pmatrix}\cos(\theta_1+\theta_2)&-\sin(\theta_1+\theta_2)\\\sin(\theta_1+\theta_2)&\cos(\theta_1+\theta_2)\end{pmatrix}$ (with $c_i=\cos\theta_i$, $s_i=\sin\theta_i$). Rotating by $\theta_2$ and then by $\theta_1$ is the same as rotating by $\theta_1+\theta_2$.
+
+c) $\det A_\theta=\cos^2\theta+\sin^2\theta=1$, so by the cofactor formula $A_\theta^{-1}=\begin{pmatrix}\cos\theta&\sin\theta\\-\sin\theta&\cos\theta\end{pmatrix}=A_\theta^T$; hence $A_\theta A_\theta^T=A_\theta A_\theta^{-1}=I$. Since $\cos(-\theta)=\cos\theta$ and $\sin(-\theta)=-\sin\theta$, this matrix is also $A_{-\theta}$: the rotation that undoes a rotation by $\theta$ is the rotation by $-\theta$.
+
+d) The first column is a unit vector with first entry $-\frac1{\sqrt2}$, so it is $\frac1{\sqrt2}\langle-1,\pm1\rangle$; the second column is a unit vector perpendicular to it, one of two opposite choices. The four matrices are
+$$\tfrac1{\sqrt2}\begin{pmatrix}-1&-1\\1&-1\end{pmatrix},\quad\tfrac1{\sqrt2}\begin{pmatrix}-1&1\\1&1\end{pmatrix},\quad\tfrac1{\sqrt2}\begin{pmatrix}-1&1\\-1&-1\end{pmatrix},\quad\tfrac1{\sqrt2}\begin{pmatrix}-1&-1\\-1&1\end{pmatrix},$$
+with determinants $1,-1,1,-1$. The first is the rotation $A_{3\pi/4}$, the third is $A_{-3\pi/4}$; the second and fourth are reflections (in the lines through the origin at angles $3\pi/8$ and $-3\pi/8$, i.e. $67.5^\circ$ and $-67.5^\circ$).
+
+e) (Drawings omitted.) The two rotations turn the F by $\pm135^\circ$; it still reads as an F. The two reflections produce a mirror-image F. A matrix with positive determinant keeps the orientation (counterclockwise stays counterclockwise), one with negative determinant reverses it, which is what makes the letter appear mirrored.
+:::
+
+::: {.solution for="prob-mit1802n-1f-q9" status="draft"}
+The $(i,j)$ entry of $AA^T$ is (row $i$ of $A$)$\cdot$(column $j$ of $A^T$) $=$ (row $i$)$\cdot$(row $j$). So $AA^T=I_n$ means: (row $i$)$\cdot$(row $i$)$=1$ for every $i$, i.e. (a), and (row $i$)$\cdot$(row $j$)$=0$ for $i\ne j$, i.e. (b).
+:::
