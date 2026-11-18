@@ -59,6 +59,81 @@ Start with $f=0$. While $G_f$ has an augmenting path $p$, push $c_f(p)$ along it
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Ford–Fulkerson method (Edmonds–Karp)}
+\begin{algorithmic}
+\INPUT Flow network $G=(V,E,c)$, source $s$, sink $t$
+\OUTPUT A maximum flow $f$
+\STATE $f(u,v)\gets0$ for all $u,v$
+\COMMENT{Edmonds–Karp: always take a shortest augmenting path, found by BFS}
+\WHILE{$G_f$ has a path $p$ from $s$ to $t$}
+    \STATE $c_f(p)\gets\min\{c(u,v)-f(u,v):(u,v)\in p\}$
+    \FOR{$(u,v)\in p$}
+        \STATE $f(u,v)\gets f(u,v)+c_f(p)$; $f(v,u)\gets f(v,u)-c_f(p)$
+    \ENDFOR
+\ENDWHILE
+\RETURN $f$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-maximum-flow-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (s0) at (0.00,0.00) {$s$};
+\node[small vertex] (a0) at (1.40,0.80) {$a$};
+\node[small vertex] (b0) at (1.40,-0.80) {$b$};
+\node[small vertex] (t0) at (2.80,0.00) {$t$};
+\draw[->, hl] (s0) -- node[edge label, pos=0.5] {$3$} (a0);
+\draw[->] (s0) -- node[edge label, pos=0.5] {$2$} (b0);
+\draw[->] (a0) -- node[edge label, pos=0.5] {$1$} (b0);
+\draw[->, hl] (a0) -- node[edge label, pos=0.5] {$2$} (t0);
+\draw[->] (b0) -- node[edge label, pos=0.5] {$3$} (t0);
+\node[lab,tick] at (1.40,1.55) {push $2$ along $s,a,t$};
+\node[small vertex] (s1) at (3.60,0.00) {$s$};
+\node[small vertex] (a1) at (5.00,0.80) {$a$};
+\node[small vertex] (b1) at (5.00,-0.80) {$b$};
+\node[small vertex] (t1) at (6.40,0.00) {$t$};
+\draw[->] (s1) to[bend left=25] node[edge label, pos=0.5] {$1$} (a1);
+\draw[->, hl] (s1) -- node[edge label, pos=0.5] {$2$} (b1);
+\draw[->] (a1) to[bend left=25] node[edge label, pos=0.5] {$2$} (s1);
+\draw[->] (a1) -- node[edge label, pos=0.5] {$1$} (b1);
+\draw[->, hl] (b1) -- node[edge label, pos=0.5] {$3$} (t1);
+\draw[->] (t1) -- node[edge label, pos=0.5] {$2$} (a1);
+\node[lab,tick] at (5.00,1.55) {push $2$ along $s,b,t$};
+\node[small vertex] (s2) at (7.20,0.00) {$s$};
+\node[small vertex] (a2) at (8.60,0.80) {$a$};
+\node[small vertex] (b2) at (8.60,-0.80) {$b$};
+\node[small vertex] (t2) at (10.00,0.00) {$t$};
+\draw[->, hl] (s2) to[bend left=25] node[edge label, pos=0.5] {$1$} (a2);
+\draw[->] (a2) to[bend left=25] node[edge label, pos=0.5] {$2$} (s2);
+\draw[->, hl] (a2) -- node[edge label, pos=0.5] {$1$} (b2);
+\draw[->] (b2) -- node[edge label, pos=0.5] {$2$} (s2);
+\draw[->, hl] (b2) to[bend left=25] node[edge label, pos=0.5] {$1$} (t2);
+\draw[->] (t2) -- node[edge label, pos=0.5] {$2$} (a2);
+\draw[->] (t2) to[bend left=25] node[edge label, pos=0.5] {$2$} (b2);
+\node[lab,tick] at (8.60,1.55) {push $1$ along $s,a,b,t$};
+\node[small vertex] (s3) at (10.80,0.00) {$s$};
+\node[small vertex] (a3) at (12.20,0.80) {$a$};
+\node[small vertex] (b3) at (12.20,-0.80) {$b$};
+\node[small vertex] (t3) at (13.60,0.00) {$t$};
+\draw[->] (a3) -- node[edge label, pos=0.5] {$3$} (s3);
+\draw[->] (b3) -- node[edge label, pos=0.5] {$2$} (s3);
+\draw[->] (b3) -- node[edge label, pos=0.5] {$1$} (a3);
+\draw[->] (t3) -- node[edge label, pos=0.5] {$2$} (a3);
+\draw[->] (t3) -- node[edge label, pos=0.5] {$3$} (b3);
+\node[lab,tick] at (12.20,1.55) {no augmenting path};
+\end{tikzpicture}
+\end{center}
+```
+
+Ford–Fulkerson on @exm-max-flow-small, choosing shortest augmenting paths as Edmonds–Karp does. Each panel is the residual network $G_f$ (labels are residual capacities) with the augmenting path highlighted. After pushing $2$, $2$ and $1$ units, $t$ is unreachable from $s$, and the flow of value $5$ is maximum; the vertices reachable from $s$, here only $s$, give the minimum cut of @fig-maximum-flow-1.
+
+:::
+
 ::: {#thm-max-flow-min-cut .theorem name="Max-flow min-cut"}
 
 For a flow $f$ the following are equivalent:

@@ -23,6 +23,21 @@ The *traversal order* (in-order) of a subtree rooted at $X$ lists the traversal 
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Traversal order of the subtree of $X$}
+\begin{algorithmic}
+\INPUT A node $X$ (or none)
+\OUTPUT The nodes of $X$'s subtree in traversal order
+\IF{$X$ is not none}
+    \STATE list the traversal order of $X.\mathrm{left}$
+    \STATE output $X$
+    \STATE list the traversal order of $X.\mathrm{right}$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-binary-trees-1}
 
 ```{=latex}
@@ -83,6 +98,68 @@ Both take $O(h)$ time. The last node and the predecessor are symmetric.
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{First node and successor}
+\begin{algorithmic}
+\STATE \textbf{first}$(X)$:
+\WHILE{$X.\mathrm{left}$ is not none}
+    \STATE $X\gets X.\mathrm{left}$
+\ENDWHILE
+\RETURN $X$
+\STATE \textbf{successor}$(X)$:
+\IF{$X.\mathrm{right}$ is not none}
+    \RETURN first$(X.\mathrm{right})$
+\ENDIF
+\WHILE{$X.\mathrm{parent}$ is not none and $X=X.\mathrm{parent}.\mathrm{right}$}
+    \STATE $X\gets X.\mathrm{parent}$
+\ENDWHILE
+\RETURN $X.\mathrm{parent}$ \COMMENT{none if $X$ was last}
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-binary-trees-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex, fill=accentLight, draw=accent] (pD) at (0.00,-1.70) {$D$};
+\node[small vertex] (pB) at (0.75,-0.85) {$B$};
+\node[small vertex] (pG) at (1.50,-2.55) {$G$};
+\node[small vertex] (pE) at (2.25,-1.70) {$E$};
+\node[small vertex] (pA) at (3.00,0.00) {$A$};
+\node[small vertex] (pC) at (3.75,-0.85) {$C$};
+\node[small vertex] (pF) at (4.50,-1.70) {$F$};
+\draw[hl] (pA)--(pB);
+\draw[] (pA)--(pC);
+\draw[hl] (pB)--(pD);
+\draw[] (pB)--(pE);
+\draw[] (pE)--(pG);
+\draw[] (pC)--(pF);
+\node[small vertex] (qD) at (5.20,-1.70) {$D$};
+\node[small vertex] (qB) at (5.95,-0.85) {$B$};
+\node[small vertex, fill=accentLight, draw=accent] (qG) at (6.70,-2.55) {$G$};
+\node[small vertex] (qE) at (7.45,-1.70) {$E$};
+\node[small vertex, fill=accentLight, draw=accent] (qA) at (8.20,0.00) {$A$};
+\node[small vertex] (qC) at (8.95,-0.85) {$C$};
+\node[small vertex] (qF) at (9.70,-1.70) {$F$};
+\draw[hl, dashed] (qA)--(qB);
+\draw[] (qA)--(qC);
+\draw[] (qB)--(qD);
+\draw[hl] (qB)--(qE);
+\draw[hl] (qE)--(qG);
+\draw[] (qC)--(qF);
+\node[lab] at (2.25,0.60) {first$(A)=D$};
+\node[lab] at (7.45,0.60) {successor$(B)=G$, successor$(E)=A$};
+\end{tikzpicture}
+\end{center}
+```
+
+Navigation in the tree of @fig-binary-trees-3 (traversal order $D,B,G,E,A,C,F$). Left: the first node of $A$'s subtree is reached by going left until there is no left child. Right: $B$ has a right child, so its successor is the first node of that subtree, $G$ (highlighted edges); $E$ has no right child, so its successor is found by walking up until the step comes from a left child, which happens at $A$ (dashed edge).
+
+:::
+
 The tree changes only at leaves, which keeps the operations simple.
 
 ::: {#prp-binary-tree-insert-delete .proposition name="Inserting and deleting"}
@@ -99,6 +176,72 @@ Both keep the traversal order of the other items and take $O(h)$ time.
 1. *Insert.* If $X$ has no right child, a new right child of $X$ comes right after $X$ and before everything that followed $X$. Otherwise the successor $S$ is the first node of $X$'s right subtree, so it has no left child, and a new left child of $S$ comes right before $S$, hence right after $X$. Finding $S$ takes $O(h)$.
 
 2. *Delete.* If $X$ has a left child, its predecessor $P$ lies in that subtree, below $X$. Swapping the items of $X$ and $P$ puts the item to be deleted in $P$; removing it from there leaves the other items in the same order, because $X$ and $P$ were adjacent in the order. Each recursive call moves to a strictly deeper node, so after at most $h$ steps we reach a leaf. The case of a right child is symmetric.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Insert after and delete}
+\begin{algorithmic}
+\STATE \textbf{insert\_after}$(X,Y)$:
+\IF{$X.\mathrm{right}$ is none}
+    \STATE make $Y$ the right child of $X$
+\ELSE
+    \STATE make $Y$ the left child of successor$(X)$ \COMMENT{it has no left child}
+\ENDIF
+\STATE \textbf{delete}$(X)$:
+\IF{$X$ is a leaf}
+    \STATE detach $X$ from its parent
+\ELSE
+    \IF{$X.\mathrm{left}$ is not none}
+        \STATE $Y\gets$ predecessor$(X)$
+    \ELSE
+        \STATE $Y\gets$ successor$(X)$
+    \ENDIF
+    \STATE swap the items of $X$ and $Y$; delete$(Y)$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-binary-trees-5}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (pD) at (0.00,-1.70) {$D$};
+\node[small vertex] (pB) at (0.75,-0.85) {$B$};
+\node[small vertex, fill=accentLight, draw=accent] (pY) at (1.50,-3.40) {$Y$};
+\node[small vertex] (pG) at (2.25,-2.55) {$G$};
+\node[small vertex] (pE) at (3.00,-1.70) {$E$};
+\node[small vertex] (pA) at (3.75,0.00) {$A$};
+\node[small vertex] (pC) at (4.50,-0.85) {$C$};
+\node[small vertex] (pF) at (5.25,-1.70) {$F$};
+\draw[] (pA)--(pB);
+\draw[] (pA)--(pC);
+\draw[] (pB)--(pD);
+\draw[] (pB)--(pE);
+\draw[] (pE)--(pG);
+\draw[] (pC)--(pF);
+\draw[hl] (pG)--(pY);
+\node[small vertex] (qD) at (6.00,-1.70) {$D$};
+\node[small vertex] (qB) at (6.75,-0.85) {$B$};
+\node[small vertex, fill=accentLight, draw=accent] (qG) at (7.50,-1.70) {$G$};
+\node[small vertex, fill=accentLight, draw=accent] (qE) at (8.25,0.00) {$E$};
+\node[small vertex] (qC) at (9.00,-0.85) {$C$};
+\node[small vertex] (qF) at (9.75,-1.70) {$F$};
+\draw[] (qE)--(qB);
+\draw[] (qE)--(qC);
+\draw[] (qB)--(qD);
+\draw[] (qB)--(qG);
+\draw[] (qC)--(qF);
+\node[lab] at (2.60,0.60) {insert\_after$(B,Y)$};
+\node[lab] at (7.90,0.60) {delete$(A)$ from the original};
+\end{tikzpicture}
+\end{center}
+```
+
+Changes to the tree of @fig-binary-trees-3. Left: $B$ has a right child, so $Y$ goes in as the left child of the successor of $B$, $G$; the order becomes $D,B,Y,G,E,A,C,F$. Right: deleting $A$ from the original tree. $A$ has a left child, so its item is swapped with that of its predecessor $E$; the node now holding $A$ has a left child, so the item is swapped again with its predecessor $G$, a leaf, which is removed. The traversal order of the other items, $D,B,G,E,C,F$, is kept.
 
 :::
 
@@ -148,6 +291,26 @@ Searching a binary search tree for $11$: at each node go left if the key is smal
 
 To `find(k)` in a binary search tree, start at the root: if $k$ is smaller than the current key go left, if larger go right, if equal return the item; falling off the tree means $k$ is absent. This is binary search on the tree and takes $O(h)$ time; `find_next`, `find_prev`, `insert` and `delete` follow the same pattern and also take $O(h)$.
 
+```{=latex}
+\begin{algorithm}
+\caption{Find in a binary search tree}
+\begin{algorithmic}
+\INPUT Root $X$ of a binary search tree, key $k$
+\OUTPUT The node with key $k$, or none
+\WHILE{$X$ is not none}
+    \IF{$k=X.\mathrm{key}$}
+        \RETURN $X$
+    \ELSIF{$k<X.\mathrm{key}$}
+        \STATE $X\gets X.\mathrm{left}$
+    \ELSE
+        \STATE $X\gets X.\mathrm{right}$
+    \ENDIF
+\ENDWHILE
+\RETURN none
+\end{algorithmic}
+\end{algorithm}
+```
+
 To use a tree as a *sequence*, let the traversal order be the sequence order. To reach the $i$-th node quickly, every node stores the size of its subtree.
 
 ::: {#prp-subtree-at .proposition name="The $i$-th node"}
@@ -161,6 +324,26 @@ Suppose every node $X$ stores $X.\mathrm{size}$, the number of nodes in its subt
 The traversal order of $X$'s subtree is the $n_L$ nodes of the left subtree, then $X$ at position $n_L$, then the right subtree. So each case returns the right node, by induction on the height. Each step goes down one level and does $O(1)$ work, so the time is $O(h)$.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{The $i$-th node of the subtree of $X$}
+\begin{algorithmic}
+\INPUT A node $X$ with subtree sizes, an index $0\le i<X.\mathrm{size}$
+\OUTPUT The $i$-th node in traversal order of $X$'s subtree
+\WHILE{true}
+    \STATE $n_L\gets$ size of $X.\mathrm{left}$ ($0$ if none)
+    \IF{$i<n_L$}
+        \STATE $X\gets X.\mathrm{left}$
+    \ELSIF{$i=n_L$}
+        \RETURN $X$
+    \ELSE
+        \STATE $i\gets i-n_L-1$; $X\gets X.\mathrm{right}$
+    \ENDIF
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-binary-trees-3}
 

@@ -41,6 +41,59 @@ Because an algorithm has a fixed size but must handle inputs of every size, it h
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Birthday matching}
+\begin{algorithmic}
+\INPUT Students $1,\dots,n$ with birthdays $b_1,\dots,b_n$
+\OUTPUT A pair with the same birthday, or "none"
+\STATE $R\gets$ empty record
+\FOR{$k=1$ to $n$}
+    \IF{some student $j$ in $R$ has $b_j=b_k$}
+        \RETURN $(j,k)$
+    \ENDIF
+    \STATE add student $k$ to $R$
+\ENDFOR
+\RETURN "none"
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-problems-and-algorithms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab,anchor=west] at (0.00,0.00) {$k=1$: Ann, 3/4};
+\node[lab,tick,anchor=west] at (3.60,0.00) {record:};
+\node[lab,anchor=west] at (0.00,-0.85) {$k=2$: Bo, 7/9};
+\node[lab,tick,anchor=west] at (3.60,-0.85) {record:};
+\node[box] at (5.50,-0.85) {Ann};
+\node[lab,anchor=west] at (0.00,-1.70) {$k=3$: Cy, 1/1};
+\node[lab,tick,anchor=west] at (3.60,-1.70) {record:};
+\node[box] at (5.50,-1.70) {Ann};
+\node[box] at (6.80,-1.70) {Bo};
+\node[lab,anchor=west] at (0.00,-2.55) {$k=4$: Di, 11/2};
+\node[lab,tick,anchor=west] at (3.60,-2.55) {record:};
+\node[box] at (5.50,-2.55) {Ann};
+\node[box] at (6.80,-2.55) {Bo};
+\node[box] at (8.10,-2.55) {Cy};
+\node[lab,anchor=west] at (0.00,-3.40) {$k=5$: Ed, 7/9};
+\node[lab,tick,anchor=west] at (3.60,-3.40) {record:};
+\node[box] at (5.50,-3.40) {Ann};
+\node[hl box] at (6.80,-3.40) {Bo};
+\node[box] at (8.10,-3.40) {Cy};
+\node[box] at (9.40,-3.40) {Di};
+\node[lab,anchor=west] at (0.00,-4.30) {Ed's birthday $7/9$ is in the record (Bo): return (Bo, Ed).};
+\end{tikzpicture}
+\end{center}
+```
+
+Birthday matching on five students. Each student is looked up in the record of the students before them and then added. The first four birthdays are all different; Ed's matches Bo's (highlighted), and the pair is returned. With the record searched from the start, step $k$ costs $\Theta(k)$.
+
+:::
+
+
 ## Efficiency
 
 We measure the running time of an algorithm by the number of fixed-time operations it performs, as a function of the input size, and compare functions with asymptotic notation (@def-big-o, @def-big-omega-big-theta-extra). An algorithm is *efficient* if its running time is bounded by a polynomial in the input size.

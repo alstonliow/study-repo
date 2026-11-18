@@ -58,6 +58,78 @@ The algorithm stops on the first day with no rejection; then each candidate acce
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Propose-and-reject}
+\begin{algorithmic}
+\INPUT Preference lists of $n$ jobs and $n$ candidates
+\OUTPUT A stable matching
+\STATE each job's list $\gets$ its full preference list
+\WHILE{true}
+    \STATE each job makes an offer to the first candidate on its list \COMMENT{morning}
+    \STATE each candidate keeps her best offer and rejects the others \COMMENT{afternoon}
+    \IF{nobody was rejected}
+        \RETURN the pairs (job, candidate holding its offer)
+    \ENDIF
+    \STATE each rejected job crosses the candidate off its list \COMMENT{evening}
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-stable-matching-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (j01) at (0.00,0.00) {$1$};
+\node[small vertex] (j02) at (0.00,-0.80) {$2$};
+\node[small vertex] (j03) at (0.00,-1.60) {$3$};
+\node[small vertex] (c0a) at (1.40,0.00) {$a$};
+\node[small vertex] (c0b) at (1.40,-0.80) {$b$};
+\node[small vertex] (c0c) at (1.40,-1.60) {$c$};
+\draw[->, dashed] (j01)--(c0a);
+\draw[->, hl] (j02)--(c0a);
+\draw[->, hl] (j03)--(c0b);
+\node[lab,tick] at (0.70,0.60) {day 1};
+\node[small vertex] (j11) at (2.60,0.00) {$1$};
+\node[small vertex] (j12) at (2.60,-0.80) {$2$};
+\node[small vertex] (j13) at (2.60,-1.60) {$3$};
+\node[small vertex] (c1a) at (4.00,0.00) {$a$};
+\node[small vertex] (c1b) at (4.00,-0.80) {$b$};
+\node[small vertex] (c1c) at (4.00,-1.60) {$c$};
+\draw[->, hl] (j11)--(c1b);
+\draw[->, dashed] (j13)--(c1b);
+\draw[->, hl] (j12)--(c1a);
+\node[lab,tick] at (3.30,0.60) {day 2};
+\node[small vertex] (j21) at (5.20,0.00) {$1$};
+\node[small vertex] (j22) at (5.20,-0.80) {$2$};
+\node[small vertex] (j23) at (5.20,-1.60) {$3$};
+\node[small vertex] (c2a) at (6.60,0.00) {$a$};
+\node[small vertex] (c2b) at (6.60,-0.80) {$b$};
+\node[small vertex] (c2c) at (6.60,-1.60) {$c$};
+\draw[->, hl] (j21)--(c2b);
+\draw[->, dashed] (j22)--(c2a);
+\draw[->, hl] (j23)--(c2a);
+\node[lab,tick] at (5.90,0.60) {day 3};
+\node[small vertex] (j31) at (7.80,0.00) {$1$};
+\node[small vertex] (j32) at (7.80,-0.80) {$2$};
+\node[small vertex] (j33) at (7.80,-1.60) {$3$};
+\node[small vertex] (c3a) at (9.20,0.00) {$a$};
+\node[small vertex] (c3b) at (9.20,-0.80) {$b$};
+\node[small vertex] (c3c) at (9.20,-1.60) {$c$};
+\draw[->, hl] (j31)--(c3b);
+\draw[->, hl] (j32)--(c3c);
+\draw[->, hl] (j33)--(c3a);
+\node[lab,tick] at (8.50,0.60) {day 4};
+\end{tikzpicture}
+\end{center}
+```
+
+The run of @exm-propose-and-reject-run, one panel per day: jobs on the left, candidates on the right. Highlighted arrows are offers held on a string, dashed ones are rejected. On day $4$ nobody is rejected, so the algorithm stops with $\{(1,b),(2,c),(3,a)\}$.
+
+:::
+
 ::: {#lem-propose-and-reject-halts .lemma name="The algorithm halts"}
 
 The algorithm stops after at most $n^2+1$ days.

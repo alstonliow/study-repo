@@ -25,6 +25,28 @@ Let $A[0],\dots,A[n-1]$ be sorted increasingly. To find key $k$, compare $k$ wit
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Binary search}
+\begin{algorithmic}
+\INPUT Sorted array $A[0..n-1]$, key $k$
+\OUTPUT An index $m$ with $A[m]=k$, or "absent"
+\STATE $lo\gets0$; $hi\gets n$ \COMMENT{search $A[lo..hi-1]$}
+\WHILE{$lo<hi$}
+    \STATE $m\gets lo+\lfloor(hi-lo)/2\rfloor$
+    \IF{$k=A[m]$}
+        \RETURN $m$
+    \ELSIF{$k<A[m]$}
+        \STATE $hi\gets m$
+    \ELSE
+        \STATE $lo\gets m+1$
+    \ENDIF
+\ENDWHILE
+\RETURN "absent"
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-comparison-sorting-1}
 
 ```{=latex}
@@ -116,11 +138,41 @@ Trying all $n!$ permutations and checking each in $\Theta(n)$ time ("permutation
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Selection sort}
+\begin{algorithmic}
+\INPUT Array $A[0..n-1]$
+\OUTPUT $A$ sorted in place
+\FOR{$i=n-1$ down to $1$}
+    \STATE $j\gets$ an index of a largest item of $A[0..i]$
+    \STATE swap $A[j]$ and $A[i]$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#def-insertion-sort .definition name="Insertion sort"}
 
 *Insertion sort* of $A[0..i]$: if $i>0$, insertion sort $A[0..i-1]$, then *insert* $A[i]$: while it is smaller than its left neighbour, swap it with that neighbour.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Insertion sort}
+\begin{algorithmic}
+\INPUT Array $A[0..n-1]$
+\OUTPUT $A$ sorted in place
+\FOR{$i=1$ to $n-1$}
+    \STATE $j\gets i$
+    \WHILE{$j>0$ and $A[j]<A[j-1]$}
+        \STATE swap $A[j]$ and $A[j-1]$; $j\gets j-1$
+    \ENDWHILE
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#thm-selection-insertion-sort .theorem name="Selection and insertion sort"}
 
@@ -272,6 +324,29 @@ Selection sort makes only $O(n)$ swaps, which matters if moving an item is expen
 *Merge sort* of $A[a..b-1]$: if it has at least two items, let $c=\lceil(a+b)/2\rceil$, merge sort $A[a..c-1]$ and $A[c..b-1]$, copy the two sorted halves to arrays $L$ and $R$, and *merge* them back into $A[a..b-1]$: repeatedly move the smaller of the first remaining items of $L$ and $R$ (the one from $L$ on a tie) to the next slot of $A$, until both are empty.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Merge sort of $A[a..b-1]$}
+\begin{algorithmic}
+\INPUT Array $A$, indices $a\le b$
+\OUTPUT $A[a..b-1]$ sorted
+\IF{$b-a\ge2$}
+    \STATE $c\gets\lceil(a+b)/2\rceil$
+    \STATE merge sort $A[a..c-1]$; merge sort $A[c..b-1]$
+    \STATE $L\gets$ copy of $A[a..c-1]$; $R\gets$ copy of $A[c..b-1]$
+    \STATE $i\gets0$; $j\gets0$ \COMMENT{merge}
+    \FOR{$k=a$ to $b-1$}
+        \IF{$j=|R|$ or ($i<|L|$ and $L[i]\le R[j]$)}
+            \STATE $A[k]\gets L[i]$; $i\gets i+1$ \COMMENT{ties from $L$: stable}
+        \ELSE
+            \STATE $A[k]\gets R[j]$; $j\gets j+1$
+        \ENDIF
+    \ENDFOR
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#thm-merge-sort .theorem name="Merge sort" related="exm-merge-sort-extra"}
 

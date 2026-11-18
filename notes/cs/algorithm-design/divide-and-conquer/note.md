@@ -25,6 +25,23 @@ Sort the points by $x$-coordinate once. To find the hull of a set, split it at t
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Divide-and-conquer convex hull}
+\begin{algorithmic}
+\INPUT Points $S$ sorted by $x$-coordinate
+\OUTPUT $\mathrm{CH}(S)$, corners in clockwise order
+\IF{$|S|\le3$}
+    \RETURN the hull, by brute force
+\ENDIF
+\STATE split $S$ at the median $x$-coordinate into $A$ (left) and $B$ (right)
+\STATE $\mathrm{CH}(A)\gets$ hull of $A$; $\mathrm{CH}(B)\gets$ hull of $B$ \COMMENT{recursively}
+\STATE $(a_i,b_j)\gets$ upper tangent; $(a_k,b_m)\gets$ lower tangent
+\RETURN $\mathrm{CH}(A)$ from $a_i$ round to $a_k$, then $\mathrm{CH}(B)$ from $b_m$ round to $b_j$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-divide-and-conquer-1}
 
 ```{=latex}
@@ -73,6 +90,28 @@ Let $L$ be the vertical line between $A$ and $B$, and for a segment from $a\in A
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Upper tangent by two fingers}
+\begin{algorithmic}
+\INPUT Hulls $\mathrm{CH}(A)$ and $\mathrm{CH}(B)$ on either side of a vertical line $L$
+\OUTPUT The upper tangent $(a,b)$
+\STATE $a\gets$ rightmost point of $A$; $b\gets$ leftmost point of $B$
+\STATE $\mathit{moved}\gets$ true
+\WHILE{$\mathit{moved}$}
+    \STATE $\mathit{moved}\gets$ false
+    \WHILE{$y(a,\text{clockwise neighbour of }b)>y(a,b)$}
+        \STATE $b\gets$ clockwise neighbour of $b$; $\mathit{moved}\gets$ true
+    \ENDWHILE
+    \WHILE{$y(\text{counter-clockwise neighbour of }a,b)>y(a,b)$}
+        \STATE $a\gets$ counter-clockwise neighbour of $a$; $\mathit{moved}\gets$ true
+    \ENDWHILE
+\ENDWHILE
+\RETURN $(a,b)$
+\end{algorithmic}
+\end{algorithm}
+```
+
 So $T(n)=2T(n/2)+O(n)=O(n\log n)$, which is optimal: sorting reduces to the convex hull (put the numbers on a parabola).
 
 ## Median finding in linear time
@@ -93,6 +132,28 @@ So $T(n)=2T(n/2)+O(n)=O(n\log n)$, which is optimal: sorting reduces to the conv
 4. if $i=k$ return $x$; if $i<k$ return `select(B, i)`; otherwise return `select(C, i-k)`.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Median of medians: select$(S,i)$}
+\begin{algorithmic}
+\INPUT A set $S$ of $n$ distinct numbers, a rank $1\le i\le n$
+\OUTPUT The element of rank $i$ in $S$
+\IF{$n\le5$}
+    \RETURN the element of rank $i$, by sorting
+\ENDIF
+\STATE split $S$ into groups of $5$; $M\gets$ the medians of the groups
+\STATE $x\gets$ select$(M,\lceil|M|/2\rceil)$ \COMMENT{the median of the medians}
+\STATE $B\gets\{y\in S:y<x\}$; $C\gets\{y\in S:y>x\}$; $k\gets|B|+1$
+\IF{$i=k$}
+    \RETURN $x$
+\ELSIF{$i<k$}
+    \RETURN select$(B,i)$
+\ENDIF
+\RETURN select$(C,i-k)$
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-divide-and-conquer-2}
 
@@ -196,5 +257,72 @@ Seven block products suffice, so two $n\times n$ matrices can be multiplied in $
 2. Expanding shows $C_{11}=M_1+M_4-M_5+M_7$, $C_{12}=M_3+M_5$, $C_{21}=M_2+M_4$ and $C_{22}=M_1-M_2+M_3+M_6$.
 
 3. That is $7$ products of half-size matrices and $O(n^2)$ additions: $T(n)=7T(n/2)+O(n^2)=O(n^{\log_27})$ by case 1 of the master theorem.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Strassen's algorithm}
+\begin{algorithmic}
+\INPUT $n\times n$ matrices $A$ and $B$, $n$ a power of $2$
+\OUTPUT $C=AB$
+\IF{$n=1$}
+    \RETURN $(a_{11}b_{11})$
+\ENDIF
+\STATE split $A$ and $B$ into four $\frac n2\times\frac n2$ blocks each
+\STATE compute $M_1,\dots,M_7$ as in the proof, each by a recursive call on half-size matrices
+\STATE $C_{11}\gets M_1+M_4-M_5+M_7$; $C_{12}\gets M_3+M_5$
+\STATE $C_{21}\gets M_2+M_4$; $C_{22}\gets M_1-M_2+M_3+M_6$
+\RETURN $C$ assembled from its four blocks
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-divide-and-conquer-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$1$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$2$};
+\draw[cell frame] (0.000,-0.550) rectangle (0.550,0.000);
+\node[lab] at (0.275,-0.275) {$3$};
+\draw[cell frame] (0.550,-0.550) rectangle (1.100,0.000);
+\node[lab] at (0.825,-0.275) {$4$};
+\node[lab,tick] at (0.55,0.85) {$A$};
+\draw[cell frame] (1.600,0.000) rectangle (2.150,0.550);
+\node[lab] at (1.875,0.275) {$5$};
+\draw[cell frame] (2.150,0.000) rectangle (2.700,0.550);
+\node[lab] at (2.425,0.275) {$6$};
+\draw[cell frame] (1.600,-0.550) rectangle (2.150,0.000);
+\node[lab] at (1.875,-0.275) {$7$};
+\draw[cell frame] (2.150,-0.550) rectangle (2.700,0.000);
+\node[lab] at (2.425,-0.275) {$8$};
+\node[lab,tick] at (2.15,0.85) {$B$};
+\node[lab,anchor=west] at (3.60,0.55) {$M_1=(1+4)(5+8)=65$};
+\node[lab,anchor=west] at (3.60,0.13) {$M_2=(3+4)\cdot5=35$};
+\node[lab,anchor=west] at (3.60,-0.29) {$M_3=1\cdot(6-8)=-2$};
+\node[lab,anchor=west] at (3.60,-0.71) {$M_4=4\cdot(7-5)=8$};
+\node[lab,anchor=west] at (3.60,-1.13) {$M_5=(1+2)\cdot8=24$};
+\node[lab,anchor=west] at (3.60,-1.55) {$M_6=(3-1)(5+6)=22$};
+\node[lab,anchor=west] at (3.60,-1.97) {$M_7=(2-4)(7+8)=-30$};
+\draw[hl cell] (8.600,0.000) rectangle (9.300,0.700);
+\node[lab] at (8.950,0.350) {$19$};
+\draw[hl cell] (9.300,0.000) rectangle (10.000,0.700);
+\node[lab] at (9.650,0.350) {$22$};
+\draw[hl cell] (8.600,-0.700) rectangle (9.300,0.000);
+\node[lab] at (8.950,-0.350) {$43$};
+\draw[hl cell] (9.300,-0.700) rectangle (10.000,0.000);
+\node[lab] at (9.650,-0.350) {$50$};
+\node[lab,tick] at (9.30,0.95) {$C=AB$};
+\node[lab,tick,anchor=west] at (8.00,-1.40) {$C_{11}=M_1+M_4-M_5+M_7$, $C_{12}=M_3+M_5$};
+\node[lab,tick,anchor=west] at (8.00,-1.80) {$C_{21}=M_2+M_4$, $C_{22}=M_1-M_2+M_3+M_6$};
+\end{tikzpicture}
+\end{center}
+```
+
+Strassen's seven products on $2\times2$ matrices, where every block is a number. The products $M_1,\dots,M_7$ combine to $C=19,22;43,50$, the same as the definition gives ($1\cdot5+2\cdot7=19$, and so on), with $7$ multiplications instead of $8$. For larger $n$ the same formulas apply to $\frac n2\times\frac n2$ blocks.
 
 :::

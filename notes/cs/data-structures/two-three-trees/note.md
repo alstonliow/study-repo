@@ -31,6 +31,23 @@ A 2-3 tree of height $h$ (edges from the root to a leaf) has between $2^h$ and $
 
 Searching works as in a binary search tree, comparing with one or two keys per node: $O(\log n)$ time.
 
+```{=latex}
+\begin{algorithm}
+\caption{Search in a 2-3 tree}
+\begin{algorithmic}
+\INPUT Root $X$ of a 2-3 tree, key $k$
+\OUTPUT Whether $k$ is stored
+\WHILE{$X$ is not none}
+    \IF{$k$ is a key of $X$}
+        \RETURN yes
+    \ENDIF
+    \STATE $X\gets$ the child of $X$ whose key range contains $k$ \COMMENT{none at a leaf}
+\ENDWHILE
+\RETURN no
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#prp-two-three-insert .proposition name="Insertion by splitting"}
 
 To insert a key, search down to the leaf where it belongs and add it there. If a node now holds three keys $a<b<c$, *split* it: $a$ and $c$ become two separate nodes (sharing the four children, two each) and $b$ moves up into the parent. Repeat at the parent if it overflows; if the root splits, the middle key becomes a new root. Insertion takes $O(\log n)$ time and keeps all leaves at the same depth.
@@ -46,6 +63,24 @@ To insert a key, search down to the leaf where it belongs and add it there. If a
 3. Only a split of the root adds a level, and it adds it above every leaf at once. Each split takes $O(1)$ time and happens at most once per level: $O(\log n)$ in total.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Insert in a 2-3 tree}
+\begin{algorithmic}
+\INPUT 2-3 tree, new key $k$
+\STATE $X\gets$ the leaf reached by searching for $k$; add $k$ to $X$
+\WHILE{$X$ holds three keys $a<b<c$}
+    \STATE split $X$ into a node with $a$ and a node with $c$, giving each two of $X$'s children
+    \IF{$X$ is the root}
+        \STATE make a new root holding $b$ with these two children \COMMENT{the tree grows at the top}
+        \RETURN
+    \ENDIF
+    \STATE move $b$ into $X.\mathrm{parent}$, between the two new nodes; $X\gets X.\mathrm{parent}$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-two-three-trees-1}
 

@@ -23,6 +23,28 @@ A *changeable priority queue* stores items with keys and distinct ids, and suppo
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Dijkstra's algorithm}
+\begin{algorithmic}
+\INPUT Graph $G=(V,E,w)$ with $w\ge0$, source $s$
+\OUTPUT $d(v)=\delta(s,v)$ for every $v\in V$
+\STATE $d(s)\gets0$; $d(v)\gets\infty$ for every $v\ne s$
+\STATE $Q\gets$ changeable priority queue of $V$ keyed by $d$
+\WHILE{$Q$ is not empty}
+    \STATE $u\gets Q.\mathrm{delete\_min}()$
+    \FOR{$v\in\operatorname{Adj}(u)$}
+        \IF{$d(v)>d(u)+w(u,v)$}
+            \STATE $d(v)\gets d(u)+w(u,v)$
+            \STATE $Q.\mathrm{decrease\_key}(v,d(v))$
+        \ENDIF
+    \ENDFOR
+\ENDWHILE
+\RETURN $d$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#thm-dijkstra .theorem name="Dijkstra's algorithm"}
 
 If all weights are non-negative, Dijkstra's algorithm ends with $d(v)=\delta(s,v)$ for every vertex $v$.

@@ -21,6 +21,26 @@ To search for $x$, start at the sentinel of the top list. Move right while the n
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Search in a skip list}
+\begin{algorithmic}
+\INPUT Skip list, key $x$
+\OUTPUT The node of $L_0$ holding $x$ or its predecessor
+\STATE $p\gets$ the sentinel of the top list
+\WHILE{true}
+    \WHILE{$p.\mathrm{next}$ is not none and $p.\mathrm{next}.\mathrm{key}\le x$}
+        \STATE $p\gets p.\mathrm{next}$
+    \ENDWHILE
+    \IF{$p$ is in $L_0$}
+        \RETURN $p$
+    \ENDIF
+    \STATE $p\gets p.\mathrm{down}$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-skip-lists-1}
 
 ```{=latex}
@@ -48,6 +68,81 @@ A skip list on $1,3,4,6,8,9,12$. Searching for $8$ (highlighted) moves right on 
 :::
 
 Inserting $x$ is a search followed by splicing $x$ into $L_0$ and, after each head of the coin, into the next list up, in $O(1)$ per list. Deleting removes $x$ from every list that holds it. So all operations cost about as much as a search.
+
+```{=latex}
+\begin{algorithm}
+\caption{Insert in a skip list}
+\begin{algorithmic}
+\INPUT Skip list, new key $x$
+\STATE search for $x$, remembering in each list $L_i$ the last node $p_i$ visited
+\STATE splice $x$ into $L_0$ after $p_0$; $i\gets0$
+\WHILE{a fair coin comes up heads}
+    \STATE $i\gets i+1$
+    \IF{$L_i$ does not exist}
+        \STATE create $L_i$ with a sentinel; $p_i\gets$ that sentinel
+    \ENDIF
+    \STATE splice $x$ into $L_i$ after $p_i$, pointing down to its copy in $L_{i-1}$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-skip-lists-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab,tick] at (-1.30,0.00) {$L_0$};
+\node[box] (s0) at (0,0) {$-\infty$};
+\node[box] (n1_0) at (1.40,0) {$1$};
+\draw[->] (s0)--(n1_0);
+\node[box] (n3_0) at (2.80,0) {$3$};
+\draw[->] (n1_0)--(n3_0);
+\node[box] (n4_0) at (4.20,0) {$4$};
+\draw[->] (n3_0)--(n4_0);
+\node[box] (n6_0) at (5.60,0) {$6$};
+\draw[->] (n4_0)--(n6_0);
+\node[hl box] (n7_0) at (7.00,0) {$7$};
+\draw[->, hl] (n6_0)--(n7_0);
+\node[box] (n8_0) at (8.40,0) {$8$};
+\draw[->] (n7_0)--(n8_0);
+\node[box] (n9_0) at (9.80,0) {$9$};
+\draw[->] (n8_0)--(n9_0);
+\node[box] (n12_0) at (11.20,0) {$12$};
+\draw[->] (n9_0)--(n12_0);
+\node[lab,tick] at (-1.30,1.00) {$L_1$};
+\node[box] (s1) at (0,1) {$-\infty$};
+\node[box] (n3_1) at (2.80,1) {$3$};
+\draw[->] (s1)--(n3_1);
+\node[box] (n6_1) at (5.60,1) {$6$};
+\draw[->] (n3_1)--(n6_1);
+\node[hl box] (n7_1) at (7.00,1) {$7$};
+\draw[->, hl] (n6_1)--(n7_1);
+\node[box] (n9_1) at (9.80,1) {$9$};
+\draw[->] (n7_1)--(n9_1);
+\node[box] (n12_1) at (11.20,1) {$12$};
+\draw[->] (n9_1)--(n12_1);
+\node[lab,tick] at (-1.30,2.00) {$L_2$};
+\node[box] (s2) at (0,2) {$-\infty$};
+\node[box] (n6_2) at (5.60,2) {$6$};
+\draw[->] (s2)--(n6_2);
+\node[hl box] (n7_2) at (7.00,2) {$7$};
+\draw[->, hl] (n6_2)--(n7_2);
+\node[box] (n12_2) at (11.20,2) {$12$};
+\draw[->] (n7_2)--(n12_2);
+\node[lab,tick] at (-1.30,3.00) {$L_3$};
+\node[box] (s3) at (0,3) {$-\infty$};
+\node[box] (n6_3) at (5.60,3) {$6$};
+\draw[->] (s3)--(n6_3);
+\draw[hl,->] (s3)--(n6_3); \draw[hl,->] (n6_3)--(n6_2); \draw[hl,->] (n6_2)--(n6_1); \draw[hl,->] (n6_1)--(n6_0);
+\node[lab,tick] at (7.00,-0.75) {coin: H, H, T};
+\end{tikzpicture}
+\end{center}
+```
+
+Inserting $7$ into the skip list of @fig-skip-lists-1. The search for $7$ (highlighted path) stops at $6$ in every list, so $6$ is the node to splice after. $7$ goes into $L_0$; the coin then shows heads, heads, tails, so $7$ is also spliced into $L_1$ and $L_2$ after $6$, and the promotion stops.
+
+:::
 
 ::: {#lem-skip-list-levels .lemma name="Few levels"}
 

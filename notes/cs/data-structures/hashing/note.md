@@ -25,6 +25,24 @@ A *hash function* is a function $h:\{0,\dots,u-1\}\to\{0,\dots,m-1\}$, usually w
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Hash table with chaining}
+\begin{algorithmic}
+\STATE \textbf{find}$(k)$:
+\RETURN the item with key $k$ in the chain $T[h(k)]$, or none
+\STATE \textbf{insert}$(x)$:
+\IF{the chain $T[h(x.\mathrm{key})]$ has an item with key $x.\mathrm{key}$}
+    \STATE replace it by $x$
+\ELSE
+    \STATE add $x$ to the chain $T[h(x.\mathrm{key})]$
+\ENDIF
+\STATE \textbf{delete}$(k)$:
+\STATE remove the item with key $k$ from the chain $T[h(k)]$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-hashing-1}
 
 ```{=latex}

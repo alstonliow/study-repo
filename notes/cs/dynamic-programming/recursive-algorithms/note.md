@@ -50,6 +50,25 @@ To compute $F_n$ (@def-fibonacci-sequence) use subproblems $F(i)$ for $0\le i\le
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Fibonacci with a memo: $F(i)$}
+\begin{algorithmic}
+\INPUT An integer $i\ge0$; a memo $M$, empty at the start
+\OUTPUT $F_i$
+\IF{$i$ is a key of $M$}
+    \RETURN $M[i]$
+\ENDIF
+\IF{$i\le1$}
+    \STATE $M[i]\gets i$
+\ELSE
+    \STATE $M[i]\gets F(i-1)+F(i-2)$
+\ENDIF
+\RETURN $M[i]$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-recursive-algorithms-1}
 
 ```{=latex}
@@ -143,6 +162,24 @@ Subproblems $\delta(s,v)$ for $v\in V$; relation $\delta(s,v)=\min\bigl(\{\delta
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Shortest paths in a DAG, bottom up}
+\begin{algorithmic}
+\INPUT Weighted DAG $G=(V,E,w)$, source $s$
+\OUTPUT $\delta(s,v)$ for every $v\in V$
+\FOR{$v\in V$ in topological order}
+    \IF{$v=s$}
+        \STATE $\delta(s,v)\gets0$
+    \ELSE
+        \STATE $\delta(s,v)\gets\min\bigl(\{\delta(s,u)+w(u,v):u\in\operatorname{Adj}^-(v)\}\cup\{\infty\}\bigr)$
+    \ENDIF
+\ENDFOR
+\RETURN $\delta(s,\cdot)$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#exm-bowling .example name="Bowling"}
 
 Pins $0,\dots,n-1$ stand in a row, pin $i$ with value $v_i$ (possibly negative). One throw knocks down either one pin $i$, scoring $v_i$, or two neighbouring pins $i,i+1$, scoring $v_iv_{i+1}$; a pin can be hit only once, and pins may be left standing. Maximise the total score.
@@ -157,6 +194,24 @@ Pins $0,\dots,n-1$ stand in a row, pin $i$ with value $v_i$ (possibly negative).
 For values $3,-2,4,4,-1,2$ the best score is $21$: hit $3$ alone, skip $-2$, hit $4,4$ together, skip $-1$, hit $2$. The best score is the weight of a heaviest path from $B(0)$ to $B(n)$ in the subproblem DAG. A divide-and-conquer attempt (split in the middle, and either hit the two middle pins together or not) also works but takes $O(n^2)$ time and does not generalise as easily.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Bowling}
+\begin{algorithmic}
+\INPUT Pin values $v_0,\dots,v_{n-1}$
+\OUTPUT The best total score $B(0)$
+\STATE $B(n)\gets0$
+\FOR{$i=n-1$ down to $0$}
+    \STATE $B(i)\gets\max\{B(i+1),\ v_i+B(i+1)\}$
+    \IF{$i+1<n$}
+        \STATE $B(i)\gets\max\{B(i),\ v_iv_{i+1}+B(i+2)\}$
+    \ENDIF
+\ENDFOR
+\RETURN $B(0)$
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-recursive-algorithms-2}
 

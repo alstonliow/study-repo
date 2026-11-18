@@ -146,6 +146,131 @@ Both keep the max-heap property and take $O(\log n)$ time (amortized, because of
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Max-heap insert and delete\_max}
+\begin{algorithmic}
+\INPUT Max-heap $Q[0..n-1]$
+\STATE \textbf{insert}$(x)$:
+\STATE $Q[n]\gets x$; $i\gets n$; $n\gets n+1$ \COMMENT{heapify up}
+\WHILE{$i>0$ and $Q[i]>Q[\mathrm{parent}(i)]$}
+    \STATE swap $Q[i]$ and $Q[\mathrm{parent}(i)]$; $i\gets\mathrm{parent}(i)$
+\ENDWHILE
+\STATE \textbf{delete\_max}$()$:
+\STATE swap $Q[0]$ and $Q[n-1]$; $x\gets Q[n-1]$; $n\gets n-1$
+\STATE heapify down from $0$
+\RETURN $x$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-binary-heaps-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$5$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$9$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$8$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$3$};
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$7$};
+\draw[cell frame] (2.750,0.000) rectangle (3.300,0.550);
+\node[lab] at (3.025,0.275) {$6$};
+\draw[cell frame] (3.300,0.000) rectangle (3.850,0.550);
+\node[lab] at (3.575,0.275) {$2$};
+\draw[cell frame] (3.850,0.000) rectangle (4.400,0.550);
+\node[lab] at (4.125,0.275) {$1$};
+\draw[cell frame] (4.400,0.000) rectangle (4.950,0.550);
+\node[lab] at (4.675,0.275) {$0$};
+\draw[hl cell] (4.950,0.000) rectangle (5.500,0.550);
+\node[lab] at (5.225,0.275) {$10$};
+\node[lab,tick,anchor=west] at (5.80,0.28) {swap root and last};
+\draw[cell frame] (0.000,-0.750) rectangle (0.550,-0.200);
+\node[lab] at (0.275,-0.475) {$5$};
+\draw[cell frame] (0.550,-0.750) rectangle (1.100,-0.200);
+\node[lab] at (0.825,-0.475) {$9$};
+\draw[cell frame] (1.100,-0.750) rectangle (1.650,-0.200);
+\node[lab] at (1.375,-0.475) {$8$};
+\draw[cell frame] (1.650,-0.750) rectangle (2.200,-0.200);
+\node[lab] at (1.925,-0.475) {$3$};
+\draw[cell frame] (2.200,-0.750) rectangle (2.750,-0.200);
+\node[lab] at (2.475,-0.475) {$7$};
+\draw[cell frame] (2.750,-0.750) rectangle (3.300,-0.200);
+\node[lab] at (3.025,-0.475) {$6$};
+\draw[cell frame] (3.300,-0.750) rectangle (3.850,-0.200);
+\node[lab] at (3.575,-0.475) {$2$};
+\draw[cell frame] (3.850,-0.750) rectangle (4.400,-0.200);
+\node[lab] at (4.125,-0.475) {$1$};
+\draw[cell frame] (4.400,-0.750) rectangle (4.950,-0.200);
+\node[lab] at (4.675,-0.475) {$0$};
+\node[lab,tick,anchor=west] at (5.80,-0.47) {remove $10$};
+\draw[hl cell] (0.000,-1.500) rectangle (0.550,-0.950);
+\node[lab] at (0.275,-1.225) {$9$};
+\draw[hl cell] (0.550,-1.500) rectangle (1.100,-0.950);
+\node[lab] at (0.825,-1.225) {$5$};
+\draw[cell frame] (1.100,-1.500) rectangle (1.650,-0.950);
+\node[lab] at (1.375,-1.225) {$8$};
+\draw[cell frame] (1.650,-1.500) rectangle (2.200,-0.950);
+\node[lab] at (1.925,-1.225) {$3$};
+\draw[cell frame] (2.200,-1.500) rectangle (2.750,-0.950);
+\node[lab] at (2.475,-1.225) {$7$};
+\draw[cell frame] (2.750,-1.500) rectangle (3.300,-0.950);
+\node[lab] at (3.025,-1.225) {$6$};
+\draw[cell frame] (3.300,-1.500) rectangle (3.850,-0.950);
+\node[lab] at (3.575,-1.225) {$2$};
+\draw[cell frame] (3.850,-1.500) rectangle (4.400,-0.950);
+\node[lab] at (4.125,-1.225) {$1$};
+\draw[cell frame] (4.400,-1.500) rectangle (4.950,-0.950);
+\node[lab] at (4.675,-1.225) {$0$};
+\node[lab,tick,anchor=west] at (5.80,-1.23) {swap indices $0,1$};
+\draw[cell frame] (0.000,-2.250) rectangle (0.550,-1.700);
+\node[lab] at (0.275,-1.975) {$9$};
+\draw[hl cell] (0.550,-2.250) rectangle (1.100,-1.700);
+\node[lab] at (0.825,-1.975) {$7$};
+\draw[cell frame] (1.100,-2.250) rectangle (1.650,-1.700);
+\node[lab] at (1.375,-1.975) {$8$};
+\draw[cell frame] (1.650,-2.250) rectangle (2.200,-1.700);
+\node[lab] at (1.925,-1.975) {$3$};
+\draw[hl cell] (2.200,-2.250) rectangle (2.750,-1.700);
+\node[lab] at (2.475,-1.975) {$5$};
+\draw[cell frame] (2.750,-2.250) rectangle (3.300,-1.700);
+\node[lab] at (3.025,-1.975) {$6$};
+\draw[cell frame] (3.300,-2.250) rectangle (3.850,-1.700);
+\node[lab] at (3.575,-1.975) {$2$};
+\draw[cell frame] (3.850,-2.250) rectangle (4.400,-1.700);
+\node[lab] at (4.125,-1.975) {$1$};
+\draw[cell frame] (4.400,-2.250) rectangle (4.950,-1.700);
+\node[lab] at (4.675,-1.975) {$0$};
+\node[lab,tick,anchor=west] at (5.80,-1.98) {swap indices $1,4$};
+\end{tikzpicture}
+\end{center}
+```
+
+`delete_max` on the heap built in @fig-binary-heaps-2. The maximum $10$ is swapped to the end and removed; then $5$ is heapified down, each time swapping with the larger child (highlighted pair), until both children are smaller. The result is the heap we started from in @fig-binary-heaps-2.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Heapify down from $i$}
+\begin{algorithmic}
+\INPUT Array $Q[0..n-1]$, a max-heap except possibly between $Q[i]$ and its children
+\WHILE{true}
+    \STATE $c\gets$ the index of a larger child of $i$ (none if $\mathrm{left}(i)\ge n$)
+    \IF{$c$ is none or $Q[i]\ge Q[c]$}
+        \RETURN
+    \ENDIF
+    \STATE swap $Q[i]$ and $Q[c]$; $i\gets c$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-binary-heaps-2}
 
 ```{=latex}
@@ -261,6 +386,112 @@ Inserting $10$ into the max-heap $9,7,8,3,5,6,2,1,0$: append it at index $9$, th
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Heap sort}
+\begin{algorithmic}
+\INPUT Array $A[0..n-1]$
+\OUTPUT $A$ sorted in place
+\FOR{$s=1$ to $n$}
+    \STATE heapify up from $s-1$ in the heap $A[0..s-1]$ \COMMENT{insert $A[s-1]$}
+\ENDFOR
+\FOR{$s=n$ down to $2$}
+    \STATE swap $A[0]$ and $A[s-1]$ \COMMENT{the maximum goes to its final place}
+    \STATE heapify down from $0$ in the heap $A[0..s-2]$
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-binary-heaps-5}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$2$};
+\node[lab,tick] at (0.275,-0.180) {0};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$9$};
+\node[lab,tick] at (0.825,-0.180) {1};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$4$};
+\node[lab,tick] at (1.375,-0.180) {2};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$7$};
+\node[lab,tick] at (1.925,-0.180) {3};
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$1$};
+\node[lab,tick] at (2.475,-0.180) {4};
+\node[lab,tick,anchor=west] at (3.05,0.28) {input};
+\draw[cell frame] (0.000,-0.720) rectangle (0.550,-0.170);
+\node[lab] at (0.275,-0.445) {$9$};
+\draw[cell frame] (0.550,-0.720) rectangle (1.100,-0.170);
+\node[lab] at (0.825,-0.445) {$7$};
+\draw[cell frame] (1.100,-0.720) rectangle (1.650,-0.170);
+\node[lab] at (1.375,-0.445) {$4$};
+\draw[cell frame] (1.650,-0.720) rectangle (2.200,-0.170);
+\node[lab] at (1.925,-0.445) {$2$};
+\draw[cell frame] (2.200,-0.720) rectangle (2.750,-0.170);
+\node[lab] at (2.475,-0.445) {$1$};
+\draw[emph] (2.75,-0.80) -- (2.75,-0.09);
+\node[lab,tick,anchor=west] at (3.05,-0.44) {after inserting all: a max-heap};
+\draw[cell frame] (0.000,-1.440) rectangle (0.550,-0.890);
+\node[lab] at (0.275,-1.165) {$7$};
+\draw[cell frame] (0.550,-1.440) rectangle (1.100,-0.890);
+\node[lab] at (0.825,-1.165) {$2$};
+\draw[cell frame] (1.100,-1.440) rectangle (1.650,-0.890);
+\node[lab] at (1.375,-1.165) {$4$};
+\draw[cell frame] (1.650,-1.440) rectangle (2.200,-0.890);
+\node[lab] at (1.925,-1.165) {$1$};
+\draw[hl cell] (2.200,-1.440) rectangle (2.750,-0.890);
+\node[lab] at (2.475,-1.165) {$9$};
+\draw[emph] (2.20,-1.52) -- (2.20,-0.81);
+\node[lab,tick,anchor=west] at (3.05,-1.17) {move max to index $4$, heapify down};
+\draw[cell frame] (0.000,-2.160) rectangle (0.550,-1.610);
+\node[lab] at (0.275,-1.885) {$4$};
+\draw[cell frame] (0.550,-2.160) rectangle (1.100,-1.610);
+\node[lab] at (0.825,-1.885) {$2$};
+\draw[cell frame] (1.100,-2.160) rectangle (1.650,-1.610);
+\node[lab] at (1.375,-1.885) {$1$};
+\draw[hl cell] (1.650,-2.160) rectangle (2.200,-1.610);
+\node[lab] at (1.925,-1.885) {$7$};
+\draw[hl cell] (2.200,-2.160) rectangle (2.750,-1.610);
+\node[lab] at (2.475,-1.885) {$9$};
+\draw[emph] (1.65,-2.24) -- (1.65,-1.53);
+\node[lab,tick,anchor=west] at (3.05,-1.89) {move max to index $3$, heapify down};
+\draw[cell frame] (0.000,-2.880) rectangle (0.550,-2.330);
+\node[lab] at (0.275,-2.605) {$2$};
+\draw[cell frame] (0.550,-2.880) rectangle (1.100,-2.330);
+\node[lab] at (0.825,-2.605) {$1$};
+\draw[hl cell] (1.100,-2.880) rectangle (1.650,-2.330);
+\node[lab] at (1.375,-2.605) {$4$};
+\draw[hl cell] (1.650,-2.880) rectangle (2.200,-2.330);
+\node[lab] at (1.925,-2.605) {$7$};
+\draw[hl cell] (2.200,-2.880) rectangle (2.750,-2.330);
+\node[lab] at (2.475,-2.605) {$9$};
+\draw[emph] (1.10,-2.96) -- (1.10,-2.25);
+\node[lab,tick,anchor=west] at (3.05,-2.60) {move max to index $2$, heapify down};
+\draw[cell frame] (0.000,-3.600) rectangle (0.550,-3.050);
+\node[lab] at (0.275,-3.325) {$1$};
+\draw[hl cell] (0.550,-3.600) rectangle (1.100,-3.050);
+\node[lab] at (0.825,-3.325) {$2$};
+\draw[hl cell] (1.100,-3.600) rectangle (1.650,-3.050);
+\node[lab] at (1.375,-3.325) {$4$};
+\draw[hl cell] (1.650,-3.600) rectangle (2.200,-3.050);
+\node[lab] at (1.925,-3.325) {$7$};
+\draw[hl cell] (2.200,-3.600) rectangle (2.750,-3.050);
+\node[lab] at (2.475,-3.325) {$9$};
+\draw[emph] (0.55,-3.68) -- (0.55,-2.97);
+\node[lab,tick,anchor=west] at (3.05,-3.32) {move max to index $1$, heapify down};
+\end{tikzpicture}
+\end{center}
+```
+
+Heap sort of $2,9,4,7,1$ in place. The bold bar separates the heap prefix from the sorted suffix (highlighted). Inserting the items one by one gives the max-heap $9,7,4,2,1$; then each step swaps the maximum $A[0]$ to the end of the heap, shrinks the heap by one and heapifies down. This is priority queue sort with the queue living inside the array.
+
+:::
+
 Heap sort is in place and runs in $O(n\log n)$ time; it is not stable. Building the heap can even be done in linear time.
 
 ::: {#thm-build-heap .theorem name="Building a heap in $O(n)$ time"}
@@ -278,6 +509,19 @@ Heapifying down at every index $i=n-1,n-2,\dots,0$ (from the leaves up) turns an
    using $\sum_{k\ge1}k/2^k=2$.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Build a max-heap in $O(n)$}
+\begin{algorithmic}
+\INPUT Array $Q[0..n-1]$
+\OUTPUT $Q$ rearranged into a max-heap
+\FOR{$i=n-1$ down to $0$}
+    \STATE heapify down from $i$ \COMMENT{leaves need no work}
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-binary-heaps-3}
 

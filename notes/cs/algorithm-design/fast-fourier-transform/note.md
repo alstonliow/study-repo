@@ -55,6 +55,24 @@ This computes the DFT in $O(n\log n)$ time.
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{FFT$(a,\omega)$}
+\begin{algorithmic}
+\INPUT Coefficients $a=(a_0,\dots,a_{n-1})$, $n$ a power of $2$; a primitive $n$-th root of unity $\omega$ ($\omega_n$ for the DFT)
+\OUTPUT $y_k=A(\omega^k)$ for $k=0,\dots,n-1$
+\IF{$n=1$}
+    \RETURN $(a_0)$
+\ENDIF
+\STATE $e\gets$ FFT$((a_0,a_2,\dots,a_{n-2}),\omega^2)$; $o\gets$ FFT$((a_1,a_3,\dots,a_{n-1}),\omega^2)$
+\FOR{$k=0$ to $n/2-1$}
+    \STATE $y_k\gets e_k+\omega^ko_k$; $y_{k+n/2}\gets e_k-\omega^ko_k$
+\ENDFOR
+\RETURN $y$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-fast-fourier-transform-1}
 
 ```{=latex}
@@ -115,9 +133,108 @@ Let $V$ be the $n\times n$ matrix with entries $V_{jk}=\omega_n^{jk}$, so that t
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Inverse DFT}
+\begin{algorithmic}
+\INPUT Values $y_k=A(\omega_n^k)$, $k=0,\dots,n-1$
+\OUTPUT The coefficients $a$ of $A$
+\STATE $a\gets$ FFT$(y,\omega_n^{-1})$
+\RETURN $a/n$ \COMMENT{divide every entry by $n$}
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#cor-fast-polynomial-multiplication .corollary name="Fast polynomial multiplication"}
 
 Two polynomials of degree less than $n$ can be multiplied in $O(n\log n)$ time: pad both to length $N\ge2n$ (a power of $2$), apply the FFT to each, multiply the $N$ values pointwise, and apply the inverse FFT.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Polynomial multiplication by FFT}
+\begin{algorithmic}
+\INPUT Coefficients $a$ and $b$ of two polynomials of degree less than $n$
+\OUTPUT The coefficients $c$ of their product
+\STATE $N\gets$ the least power of $2$ with $N\ge2n$; pad $a$ and $b$ with zeros to length $N$
+\STATE $\hat a\gets$ FFT$(a,\omega_N)$; $\hat b\gets$ FFT$(b,\omega_N)$
+\FOR{$k=0$ to $N-1$}
+    \STATE $\hat c_k\gets\hat a_k\hat b_k$
+\ENDFOR
+\RETURN the inverse DFT of $\hat c$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-fast-fourier-transform-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (1.150,1.150);
+\node[lab] at (0.575,0.575) {$1$};
+\draw[cell frame] (1.150,0.000) rectangle (2.300,1.150);
+\node[lab] at (1.725,0.575) {$1$};
+\draw[cell frame] (2.300,0.000) rectangle (3.450,1.150);
+\node[lab] at (2.875,0.575) {$0$};
+\draw[cell frame] (3.450,0.000) rectangle (4.600,1.150);
+\node[lab] at (4.025,0.575) {$0$};
+\node[lab, anchor=east] at (-0.100,0.575) {$a$};
+\draw[cell frame] (0.000,-0.750) rectangle (1.150,0.400);
+\node[lab] at (0.575,-0.175) {$1$};
+\draw[cell frame] (1.150,-0.750) rectangle (2.300,0.400);
+\node[lab] at (1.725,-0.175) {$2$};
+\draw[cell frame] (2.300,-0.750) rectangle (3.450,0.400);
+\node[lab] at (2.875,-0.175) {$0$};
+\draw[cell frame] (3.450,-0.750) rectangle (4.600,0.400);
+\node[lab] at (4.025,-0.175) {$0$};
+\node[lab, anchor=east] at (-0.100,-0.175) {$b$};
+\draw[cell frame] (0.000,-1.500) rectangle (1.150,-0.350);
+\node[lab] at (0.575,-0.925) {$2$};
+\draw[cell frame] (1.150,-1.500) rectangle (2.300,-0.350);
+\node[lab] at (1.725,-0.925) {$1+i$};
+\draw[cell frame] (2.300,-1.500) rectangle (3.450,-0.350);
+\node[lab] at (2.875,-0.925) {$0$};
+\draw[cell frame] (3.450,-1.500) rectangle (4.600,-0.350);
+\node[lab] at (4.025,-0.925) {$1-i$};
+\node[lab, anchor=east] at (-0.100,-0.925) {$\hat a=\mathrm{FFT}(a)$};
+\draw[cell frame] (0.000,-2.250) rectangle (1.150,-1.100);
+\node[lab] at (0.575,-1.675) {$3$};
+\draw[cell frame] (1.150,-2.250) rectangle (2.300,-1.100);
+\node[lab] at (1.725,-1.675) {$1+2i$};
+\draw[cell frame] (2.300,-2.250) rectangle (3.450,-1.100);
+\node[lab] at (2.875,-1.675) {$-1$};
+\draw[cell frame] (3.450,-2.250) rectangle (4.600,-1.100);
+\node[lab] at (4.025,-1.675) {$1-2i$};
+\node[lab, anchor=east] at (-0.100,-1.675) {$\hat b=\mathrm{FFT}(b)$};
+\draw[cell frame] (0.000,-3.000) rectangle (1.150,-1.850);
+\node[lab] at (0.575,-2.425) {$6$};
+\draw[cell frame] (1.150,-3.000) rectangle (2.300,-1.850);
+\node[lab] at (1.725,-2.425) {$-1+3i$};
+\draw[cell frame] (2.300,-3.000) rectangle (3.450,-1.850);
+\node[lab] at (2.875,-2.425) {$0$};
+\draw[cell frame] (3.450,-3.000) rectangle (4.600,-1.850);
+\node[lab] at (4.025,-2.425) {$-1-3i$};
+\node[lab, anchor=east] at (-0.100,-2.425) {$\hat c=\hat a\hat b$};
+\draw[hl cell] (0.000,-3.750) rectangle (1.150,-2.600);
+\node[lab] at (0.575,-3.175) {$1$};
+\draw[hl cell] (1.150,-3.750) rectangle (2.300,-2.600);
+\node[lab] at (1.725,-3.175) {$3$};
+\draw[hl cell] (2.300,-3.750) rectangle (3.450,-2.600);
+\node[lab] at (2.875,-3.175) {$2$};
+\draw[hl cell] (3.450,-3.750) rectangle (4.600,-2.600);
+\node[lab] at (4.025,-3.175) {$0$};
+\node[lab, anchor=east] at (-0.100,-3.175) {$c=\frac14\mathrm{FFT}(\hat c,\omega^{-1})$};
+\node[lab,tick] at (0.57,0.95) {$k=0$};
+\node[lab,tick] at (1.72,0.95) {$k=1$};
+\node[lab,tick] at (2.88,0.95) {$k=2$};
+\node[lab,tick] at (4.02,0.95) {$k=3$};
+\end{tikzpicture}
+\end{center}
+```
+
+Multiplying $1+x$ by $1+2x$ with $N=4$ and $\omega_4=i$. The FFT gives the values at $1,i,-1,-i$; the products of the values are the values of the product; the inverse transform (an FFT with $\omega^{-1}=-i$, then division by $4$) recovers the coefficients $1,3,2,0$: the product is $1+3x+2x^2$.
 
 :::
 

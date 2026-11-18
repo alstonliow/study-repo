@@ -29,6 +29,66 @@ Given $n\times n$ matrices $A,B,C$ (over the integers, or any field), choose a v
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Freivalds' check}
+\begin{algorithmic}
+\INPUT $n\times n$ matrices $A,B,C$; a number $k$ of trials
+\OUTPUT "yes" if probably $AB=C$, "no" if certainly $AB\ne C$
+\FOR{$j=1$ to $k$}
+    \STATE choose $r\in\{0,1\}^n$ uniformly at random
+    \IF{$A(Br)\ne Cr$}
+        \RETURN "no"
+    \ENDIF
+\ENDFOR
+\RETURN "yes"
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-randomized-algorithms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$19$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$22$};
+\draw[cell frame] (0.000,-0.550) rectangle (0.550,0.000);
+\node[lab] at (0.275,-0.275) {$43$};
+\draw[hl cell] (0.550,-0.550) rectangle (1.100,0.000);
+\node[lab] at (0.825,-0.275) {$51$};
+\node[lab,tick] at (0.55,0.85) {$C$ ($AB$ has $50$ here)};
+\node[lab,tick] at (2.60,0.75) {$r$};
+\node[lab,tick] at (3.90,0.75) {$A(Br)$};
+\node[lab,tick] at (5.20,0.75) {$Cr$};
+\node[lab,tick] at (6.50,0.75) {answer};
+\draw[faint] (2.1,0.55) -- (7.1,0.55);
+\node[lab,tick] at (2.60,0.30) {$(0,0)$};
+\node[lab,tick] at (3.90,0.30) {$(0,0)$};
+\node[lab,tick] at (5.20,0.30) {$(0,0)$};
+\node[lab,tick] at (6.50,0.30) {yes};
+\node[lab,tick] at (2.60,-0.12) {$(0,1)$};
+\node[lab,tick] at (3.90,-0.12) {$(22,50)$};
+\node[lab,tick] at (5.20,-0.12) {$(22,51)$};
+\node[lab,tick] at (6.50,-0.12) {\textbf{no}};
+\node[lab,tick] at (2.60,-0.54) {$(1,0)$};
+\node[lab,tick] at (3.90,-0.54) {$(19,43)$};
+\node[lab,tick] at (5.20,-0.54) {$(19,43)$};
+\node[lab,tick] at (6.50,-0.54) {yes};
+\node[lab,tick] at (2.60,-0.96) {$(1,1)$};
+\node[lab,tick] at (3.90,-0.96) {$(41,93)$};
+\node[lab,tick] at (5.20,-0.96) {$(41,94)$};
+\node[lab,tick] at (6.50,-0.96) {\textbf{no}};
+\end{tikzpicture}
+\end{center}
+```
+
+Freivalds' check with the $A$ and $B$ of @fig-divide-and-conquer-3 and a wrong $C$ (one entry off by $1$). Of the four vectors $r\in\{0,1\}^2$, exactly the two with $r_2=1$ expose the error, so one trial answers ``no'' with probability $\frac12$, and $k$ trials miss the error with probability $2^{-k}$.
+
+:::
+
 Repeating with $k$ independent vectors makes the error probability at most $2^{-k}$, still in $O(kn^2)$ time, much faster than multiplying $A$ and $B$.
 
 ## Randomized quicksort
@@ -38,6 +98,22 @@ Repeating with $k$ independent vectors makes the error probability at most $2^{-
 *Quicksort* of an array of distinct items: if it has at most one item, stop. Otherwise choose a *pivot* $x$, partition the other items into $L=\{y<x\}$ and $G=\{y>x\}$ in $O(n)$ time, and sort $L$ and $G$ recursively. In *randomized quicksort* the pivot is chosen uniformly at random among the current items.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Randomized quicksort}
+\begin{algorithmic}
+\INPUT An array $S$ of distinct items
+\OUTPUT $S$ sorted
+\IF{$|S|\le1$}
+    \RETURN $S$
+\ENDIF
+\STATE $x\gets$ an item of $S$ chosen uniformly at random
+\STATE $L\gets\{y\in S:y<x\}$; $G\gets\{y\in S:y>x\}$
+\RETURN quicksort$(L)$, then $x$, then quicksort$(G)$
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-randomized-algorithms-1}
 
@@ -96,6 +172,78 @@ Randomized quicksort makes at most $2n\ln n$ comparisons in expectation on any i
 ::: {#def-randomized-select .definition name="Randomized select"}
 
 `rselect(S, i)`: choose a random pivot $x$, partition into $L$ and $G$, let $k=|L|+1$; return $x$ if $i=k$, `rselect(L, i)` if $i<k$, and `rselect(G, i-k)` otherwise.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{rselect$(S,i)$}
+\begin{algorithmic}
+\INPUT A set $S$ of distinct numbers, a rank $1\le i\le|S|$
+\OUTPUT The element of rank $i$ in $S$
+\STATE $x\gets$ an element of $S$ chosen uniformly at random
+\STATE $L\gets\{y\in S:y<x\}$; $G\gets\{y\in S:y>x\}$; $k\gets|L|+1$
+\IF{$i=k$}
+    \RETURN $x$
+\ELSIF{$i<k$}
+    \RETURN rselect$(L,i)$
+\ENDIF
+\RETURN rselect$(G,i-k)$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-randomized-algorithms-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$6$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$2$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$9$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$4$};
+\draw[hl cell] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$7$};
+\draw[cell frame] (2.750,0.000) rectangle (3.300,0.550);
+\node[lab] at (3.025,0.275) {$1$};
+\draw[cell frame] (3.300,0.000) rectangle (3.850,0.550);
+\node[lab] at (3.575,0.275) {$8$};
+\draw[cell frame] (3.850,0.000) rectangle (4.400,0.550);
+\node[lab] at (4.125,0.275) {$3$};
+\draw[cell frame] (4.400,0.000) rectangle (4.950,0.550);
+\node[lab] at (4.675,0.275) {$5$};
+\node[lab,tick,anchor=west] at (5.25,0.28) {$i=5$, pivot $7$, $k=7$: recurse on $L$};
+\draw[cell frame] (0.000,-0.900) rectangle (0.550,-0.350);
+\node[lab] at (0.275,-0.625) {$6$};
+\draw[hl cell] (0.550,-0.900) rectangle (1.100,-0.350);
+\node[lab] at (0.825,-0.625) {$2$};
+\draw[cell frame] (1.100,-0.900) rectangle (1.650,-0.350);
+\node[lab] at (1.375,-0.625) {$4$};
+\draw[cell frame] (1.650,-0.900) rectangle (2.200,-0.350);
+\node[lab] at (1.925,-0.625) {$1$};
+\draw[cell frame] (2.200,-0.900) rectangle (2.750,-0.350);
+\node[lab] at (2.475,-0.625) {$3$};
+\draw[cell frame] (2.750,-0.900) rectangle (3.300,-0.350);
+\node[lab] at (3.025,-0.625) {$5$};
+\node[lab,tick,anchor=west] at (5.25,-0.62) {$i=5$, pivot $2$, $k=2$: recurse on $G$ with $i=3$};
+\draw[cell frame] (0.000,-1.800) rectangle (0.550,-1.250);
+\node[lab] at (0.275,-1.525) {$6$};
+\draw[cell frame] (0.550,-1.800) rectangle (1.100,-1.250);
+\node[lab] at (0.825,-1.525) {$4$};
+\draw[cell frame] (1.100,-1.800) rectangle (1.650,-1.250);
+\node[lab] at (1.375,-1.525) {$3$};
+\draw[hl cell] (1.650,-1.800) rectangle (2.200,-1.250);
+\node[lab] at (1.925,-1.525) {$5$};
+\node[lab,tick,anchor=west] at (5.25,-1.52) {$i=3$, pivot $5$, $k=3$: return $x$};
+\end{tikzpicture}
+\end{center}
+```
+
+One run of `rselect` for the median (rank $5$) of the items of @fig-randomized-algorithms-1, with random pivots $7$, $2$ and $5$ (highlighted). Each call partitions around the pivot and recurses into one side only; the third pivot has rank $k=i$ in its call, so the answer is $5$. Unlike quicksort, only one side is ever processed.
 
 :::
 

@@ -15,6 +15,23 @@ status: draft
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Depth-first search: $\mathrm{visit}(u)$}
+\begin{algorithmic}
+\INPUT Graph $G=(V,E)$ as adjacency lists, a vertex $u$; parent table $P$
+\COMMENT{DFS from $s$: leave every $P(v)$ unset, set $P(s)\gets$ none and call $\mathrm{visit}(s)$}
+\FOR{$v\in\operatorname{Adj}(u)$}
+    \IF{$P(v)$ is not set}
+        \STATE $P(v)\gets u$
+        \STATE $\mathrm{visit}(v)$
+    \ENDIF
+\ENDFOR
+\STATE the visit of $u$ finishes \COMMENT{append $u$ to the finishing order}
+\end{algorithmic}
+\end{algorithm}
+```
+
 DFS follows a walk as far as it can, then backs up to the most recent vertex with an unexplored edge. Unlike BFS its parent tree need not consist of shortest paths, but it reaches the same vertices.
 
 ::: {#thm-dfs .theorem name="Depth-first search"}
@@ -37,6 +54,23 @@ DFS from $s$ visits exactly the vertices reachable from $s$, and for each such $
 
 To explore every vertex, not only those reachable from one source, use *Full-DFS*: while some vertex is unvisited, pick one, $s$, and run DFS from $s$, keeping the parent table between runs (a vertex visited in an earlier run is not visited again). *Full-BFS* is the same with BFS. Both visit every vertex once and run in $O(|V|+|E|)$ time.
 
+```{=latex}
+\begin{algorithm}
+\caption{Full-DFS}
+\begin{algorithmic}
+\INPUT Graph $G=(V,E)$ as adjacency lists
+\OUTPUT Parent table $P$ (a DFS forest) and the finishing order
+\STATE leave $P(v)$ unset for every $v\in V$
+\FOR{$s\in V$}
+    \IF{$P(s)$ is not set}
+        \STATE $P(s)\gets$ none \COMMENT{$s$ is the root of a new run}
+        \STATE $\mathrm{visit}(s)$ \COMMENT{$P$ is kept between runs}
+    \ENDIF
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#prp-connected-components-algorithm .proposition name="Connected components in linear time"}
 
 For an undirected graph, Full-DFS (or Full-BFS) finds the connected components (@def-connected-graph-component): the vertices visited in one run form one component. So the components, and whether the graph is connected, can be found in $O(|V|+|E|)$ time.
@@ -46,6 +80,58 @@ For an undirected graph, Full-DFS (or Full-BFS) finds the connected components (
 ::: {.proof}
 
 A run from $s$ visits exactly the vertices reachable from $s$ (@thm-dfs), which in an undirected graph is the component of $s$. A vertex visited in an earlier run lies in an earlier component, and a later run starts at an unvisited vertex, so each run produces a new component and every component is produced.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Connected components}
+\begin{algorithmic}
+\INPUT Undirected graph $G=(V,E)$ as adjacency lists
+\OUTPUT A component number $c(v)$ for every vertex
+\STATE $k\gets0$; leave $c(v)$ unset for every $v\in V$
+\FOR{$s\in V$}
+    \IF{$c(s)$ is not set}
+        \STATE $k\gets k+1$
+        \STATE run DFS (or BFS) from $s$, setting $c(v)\gets k$ for each vertex $v$ it visits
+    \ENDIF
+\ENDFOR
+\RETURN $c$ \COMMENT{$G$ is connected exactly when $k=1$}
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-depth-first-search-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[regionA] (-0.45,-0.85) rectangle (1.45,1.05);
+\draw[regionB] (1.95,-0.85) rectangle (3.85,1.05);
+\draw[regionC] (4.35,-0.85) rectangle (5.25,1.05);
+\node[small vertex] (a) at (0.00,0.60) {$a$};
+\node[small vertex] (b) at (1.00,0.60) {$b$};
+\node[small vertex] (c) at (0.50,-0.40) {$c$};
+\node[small vertex] (d) at (2.40,0.60) {$d$};
+\node[small vertex] (e) at (3.40,0.60) {$e$};
+\node[small vertex] (f) at (2.40,-0.40) {$f$};
+\node[small vertex] (g) at (3.40,-0.40) {$g$};
+\node[small vertex] (h) at (4.80,0.10) {$h$};
+\draw[emph] (a) -- (b);
+\draw[faint] (a) -- (c);
+\draw[emph] (b) -- (c);
+\draw[emph] (d) -- (e);
+\draw[faint] (d) -- (f);
+\draw[emph] (e) -- (g);
+\draw[emph] (f) -- (g);
+\node[lab,tick] at (0.50,1.30) {run 1 from $a$};
+\node[lab,tick] at (2.90,1.30) {run 2 from $d$};
+\node[lab,tick] at (4.80,1.30) {run 3 from $h$};
+\end{tikzpicture}
+\end{center}
+```
+
+Connected components by Full-DFS, starting runs in alphabetical order. Each run visits one component (shaded), and bold edges are its DFS tree edges. Three runs, so the graph has three components and is not connected.
 
 :::
 
@@ -68,6 +154,18 @@ We show that for every edge $(u,v)$, the visit of $v$ finishes before the visit 
 2. If $v$ is visited before $u$: $u$ is not reachable from $v$, since otherwise the walk from $v$ to $u$ plus the edge $(u,v)$ would give a closed walk and hence a cycle. So $u$ is not visited during the visit of $v$, which finishes before $u$ is visited at all.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Topological sort by DFS}
+\begin{algorithmic}
+\INPUT DAG $G=(V,E)$ as adjacency lists
+\OUTPUT The vertices in a topological order
+\STATE run Full-DFS on $G$, recording the finishing order $F$
+\RETURN $F$ reversed
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-depth-first-search-1}
 
@@ -128,5 +226,51 @@ A digraph has a directed cycle if and only if, in the reverse finishing order of
 2. Let $C=(v_0,v_1,\dots,v_k,v_0)$ be a cycle, named so that $v_0$ is the first vertex of $C$ that Full-DFS visits. All of $C$ is reachable from $v_0$ and unvisited when the visit of $v_0$ starts, so, as in the proof of @thm-dfs, all of $C$ is visited during the visit of $v_0$; in particular $v_k$ is, and $v_0$ is an ancestor of $v_k$ in the DFS tree.
 
 3. While visiting $v_k$, DFS examines the edge $(v_k,v_0)$, whose head is an ancestor still being visited. Recording which vertices are currently being visited (the current DFS path) detects such an edge in $O(1)$ time, and the parent pointers from $v_k$ up to $v_0$ give the cycle.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Cycle detection: $\mathrm{visit}(u)$ in Full-DFS}
+\begin{algorithmic}
+\INPUT Digraph $G=(V,E)$ as adjacency lists, a vertex $u$; the set $A$ of vertices whose visit is in progress
+\COMMENT{Full-DFS calls this visit; if it never returns a cycle, $G$ has none}
+\STATE add $u$ to $A$
+\FOR{$v\in\operatorname{Adj}(u)$}
+    \IF{$v\in A$}
+        \RETURN the cycle: parent pointers from $u$ back to $v$, reversed, then the edge $(u,v)$
+    \ELSIF{$P(v)$ is not set}
+        \STATE $P(v)\gets u$; $\mathrm{visit}(v)$
+    \ENDIF
+\ENDFOR
+\STATE remove $u$ from $A$ \COMMENT{the visit of $u$ finishes}
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-depth-first-search-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex, fill=accentLight, draw=accent] (a) at (0.00,0.80) {$a$};
+\node[small vertex, fill=accentLight, draw=accent] (b) at (1.50,0.80) {$b$};
+\node[small vertex, fill=accentLight, draw=accent] (c) at (3.00,0.80) {$c$};
+\node[small vertex] (d) at (0.00,-0.80) {$d$};
+\node[small vertex] (e) at (1.50,-0.80) {$e$};
+\node[small vertex, fill=accentLight, draw=accent] (f) at (3.00,-0.80) {$f$};
+\draw[->, hl] (a) -- (b);
+\draw[->, faint] (a) -- (d);
+\draw[->, hl] (b) -- (c);
+\draw[->, faint] (b) -- (e);
+\draw[->, faint] (d) -- (e);
+\draw[->, faint] (e) -- (f);
+\draw[->, hl] (c) -- (f);
+\draw[->, hl, dashed] (f) -- (b);
+\end{tikzpicture}
+\end{center}
+```
+
+The DAG of @fig-depth-first-search-1 with an extra edge $f\to b$. Full-DFS from $a$ (alphabetical) is visiting $a,b,c,f$ (highlighted, the set $A$) when it examines $f\to b$ (dashed). Since $b\in A$, the tree path $b,c,f$ and the edge $f\to b$ form the cycle $b,c,f,b$.
 
 :::

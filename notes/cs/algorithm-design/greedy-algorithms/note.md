@@ -25,6 +25,24 @@ Repeat: choose the request with the earliest finishing time, add it to the sched
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Earliest-finish-time-first}
+\begin{algorithmic}
+\INPUT Requests $[s(i),f(i))$, $i=1,\dots,n$
+\OUTPUT A largest set $R$ of compatible requests
+\STATE sort the requests so that $f(1)\le\dots\le f(n)$
+\STATE $R\gets\emptyset$; $t\gets-\infty$ \COMMENT{finishing time of the last chosen request}
+\FOR{$i=1$ to $n$}
+    \IF{$s(i)\ge t$}
+        \STATE $R\gets R\cup\{i\}$; $t\gets f(i)$
+    \ENDIF
+\ENDFOR
+\RETURN $R$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#thm-earliest-finish .theorem name="Earliest finish is optimal"}
 
 Earliest-finish-time-first returns a largest set of compatible requests.
@@ -80,6 +98,58 @@ One machine must run $n$ jobs with processing times $t_1,\dots,t_n$, one after t
 2. Suppose some order has a longer job immediately before a shorter one, $t_{\pi(r)}>t_{\pi(r+1)}$. Swapping them changes the sum by $(n-r+1)(t_{\pi(r+1)}-t_{\pi(r)})+(n-r)(t_{\pi(r)}-t_{\pi(r+1)})=t_{\pi(r+1)}-t_{\pi(r)}<0$ (an exchange argument).
 
 3. So an optimal order has no such adjacent pair, that is, it is sorted by processing time.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Shortest processing time first}
+\begin{algorithmic}
+\INPUT Processing times $t_1,\dots,t_n$
+\OUTPUT An order of the jobs minimising $\sum_iC_i$, and that sum
+\STATE sort the jobs so that $t_{\pi(1)}\le\dots\le t_{\pi(n)}$
+\STATE $T\gets0$; $\Sigma\gets0$
+\FOR{$j=1$ to $n$}
+    \STATE $T\gets T+t_{\pi(j)}$ \COMMENT{completion time of job $\pi(j)$}
+    \STATE $\Sigma\gets\Sigma+T$
+\ENDFOR
+\RETURN $\pi$, $\Sigma$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-greedy-algorithms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab,anchor=east] at (-0.20,0.25) {given order};
+\draw[box] (0.00,0.00) rectangle (3.60,0.50);
+\node[lab] at (1.80,0.25) {$J_1$};
+\node[lab,tick] at (3.60,-0.20) {$4$};
+\draw[box] (3.60,0.00) rectangle (4.50,0.50);
+\node[lab] at (4.05,0.25) {$J_2$};
+\node[lab,tick] at (4.50,-0.20) {$5$};
+\draw[box] (4.50,0.00) rectangle (7.20,0.50);
+\node[lab] at (5.85,0.25) {$J_3$};
+\node[lab,tick] at (7.20,-0.20) {$8$};
+\node[lab,anchor=west] at (7.50,0.25) {$\sum C_i=17$};
+\node[lab,anchor=east] at (-0.20,-0.95) {shortest first};
+\draw[box] (0.00,-1.20) rectangle (0.90,-0.70);
+\node[lab] at (0.45,-0.95) {$J_2$};
+\node[lab,tick] at (0.90,-1.40) {$1$};
+\draw[box] (0.90,-1.20) rectangle (3.60,-0.70);
+\node[lab] at (2.25,-0.95) {$J_3$};
+\node[lab,tick] at (3.60,-1.40) {$4$};
+\draw[box] (3.60,-1.20) rectangle (7.20,-0.70);
+\node[lab] at (5.40,-0.95) {$J_1$};
+\node[lab,tick] at (7.20,-1.40) {$8$};
+\node[lab,anchor=west] at (7.50,-0.95) {$\sum C_i=13$};
+\end{tikzpicture}
+\end{center}
+```
+
+Three jobs $J_1,J_2,J_3$ with processing times $4,1,3$ (small numbers are completion times). In the given order the completion times are $4,5,8$, summing to $17$; shortest first gives $1,4,8$, summing to $13$, the minimum. Every job waits for all jobs before it, so short jobs should go first.
 
 :::
 

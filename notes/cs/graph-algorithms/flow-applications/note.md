@@ -27,6 +27,19 @@ Let $G$ be bipartite with parts $L$ and $R$ (@def-bipartite). Direct every edge 
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Maximum bipartite matching by flow}
+\begin{algorithmic}
+\INPUT Bipartite graph $G$ with parts $L$ and $R$
+\OUTPUT A maximum matching $M$
+\STATE build a network: edges $s\to u$ ($u\in L$), $u\to v$ ($\{u,v\}\in E$, $u\in L$), $v\to t$ ($v\in R$), all of capacity $1$
+\STATE $f\gets$ an integral maximum flow (Ford–Fulkerson)
+\RETURN $M=\{\{u,v\}:u\in L,\ v\in R,\ f(u,v)=1\}$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-flow-applications-1}
 
 ```{=latex}
@@ -72,6 +85,59 @@ Assume $x$ wins all its remaining games, reaching $W=w_x+\sum_jg_{xj}$. Build a 
 Then $x$ is *not* eliminated exactly when the maximum flow saturates every edge out of $s$, that is, has value $\sum_{\{i,j\}}g_{ij}$. Indeed, an integral flow assigns the winner of every remaining game so that no team passes $W$. If the flow is smaller, the minimum cut names a set $R$ of teams whose wins plus games among themselves force some team of $R$ above $W$: $\frac{\sum_{i\in R}w_i+\sum_{i,j\in R}g_{ij}}{|R|}>W$.
 
 For example, with three other teams on $70,69,68$ wins and $2$ games left between each pair of them, a team with $68$ wins and $4$ games left reaches $W=72$; the three others must share $6$ more wins among $207$, an average of $71$, so they can all stay at or below $72$ and the team is not eliminated. With $W=70$ it would be, because $\frac{207+6}{3}=71>70$.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Baseball elimination}
+\begin{algorithmic}
+\INPUT Wins $w_i$, remaining games $g_{ij}$, a team $x$
+\OUTPUT Whether $x$ is eliminated
+\STATE $W\gets w_x+\sum_jg_{xj}$
+\IF{$w_i>W$ for some team $i$}
+    \RETURN eliminated
+\ENDIF
+\STATE build a network: $s\to\{i,j\}$ of capacity $g_{ij}$, $\{i,j\}\to i$ and $\{i,j\}\to j$ of capacity $\infty$, $i\to t$ of capacity $W-w_i$ (teams $i,j\ne x$)
+\STATE $f\gets$ a maximum flow
+\IF{$|f|=\sum_{\{i,j\}}g_{ij}$}
+    \RETURN not eliminated
+\ENDIF
+\RETURN eliminated
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-flow-applications-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (s) at (0.00,0.00) {$s$};
+\node[small vertex] (t) at (5.60,0.00) {$t$};
+\node[box] (p12) at (1.80,1.10) {$1,2$};
+\node[box] (p13) at (1.80,0.00) {$1,3$};
+\node[box] (p23) at (1.80,-1.10) {$2,3$};
+\node[small vertex] (v1) at (3.80,1.10) {$1$};
+\node[small vertex] (v2) at (3.80,0.00) {$2$};
+\node[small vertex] (v3) at (3.80,-1.10) {$3$};
+\draw[->, emph] (s) -- node[edge label, pos=0.5] {$2/2$} (p12);
+\draw[->] (p12) -- node[edge label, pos=0.3] {$1$} (v1);
+\draw[->] (p12) -- node[edge label, pos=0.3] {$1$} (v2);
+\draw[->, emph] (s) -- node[edge label, pos=0.5] {$2/2$} (p13);
+\draw[->] (p13) -- node[edge label, pos=0.3] {$1$} (v1);
+\draw[->] (p13) -- node[edge label, pos=0.3] {$1$} (v3);
+\draw[->, emph] (s) -- node[edge label, pos=0.5] {$2/2$} (p23);
+\draw[->] (p23) -- node[edge label, pos=0.3] {$1$} (v2);
+\draw[->] (p23) -- node[edge label, pos=0.3] {$1$} (v3);
+\draw[->] (v1) -- node[edge label, pos=0.5] {$2/2$} (t);
+\draw[->] (v2) -- node[edge label, pos=0.5] {$2/3$} (t);
+\draw[->] (v3) -- node[edge label, pos=0.5] {$2/4$} (t);
+\end{tikzpicture}
+\end{center}
+```
+
+The network for the example with $W=72$ (labels are flow/capacity; the middle edges have capacity $\infty$ and show their flow). The other teams have $70$, $69$ and $68$ wins, each pair of them has $2$ games left, and team $i$ may win at most $72-w_i$ more. The flow shown saturates every edge out of $s$ (value $6$): each of the three teams wins $2$ of the remaining games and ends at or below $72$, so the team is not eliminated.
 
 :::
 

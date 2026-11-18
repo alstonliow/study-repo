@@ -41,6 +41,63 @@ Grow one tree from a start vertex $s$. Keep every vertex $v$ not yet in the tree
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Prim's algorithm}
+\begin{algorithmic}
+\INPUT Connected weighted graph $G=(V,E,w)$, start vertex $s$
+\OUTPUT A minimum spanning tree, as parent pointers $P$
+\STATE $d(s)\gets0$; $d(v)\gets\infty$ for every $v\ne s$; $P(v)\gets$ none for every $v$
+\STATE $Q\gets$ changeable priority queue of $V$ keyed by $d$
+\WHILE{$Q$ is not empty}
+    \STATE $u\gets Q.\mathrm{delete\_min}()$ \COMMENT{add $u$ and the edge $\{P(u),u\}$ to the tree}
+    \FOR{$v\in\operatorname{Adj}(u)$}
+        \IF{$v\in Q$ and $w(u,v)<d(v)$}
+            \STATE $d(v)\gets w(u,v)$; $P(v)\gets u$
+            \STATE $Q.\mathrm{decrease\_key}(v,d(v))$
+        \ENDIF
+    \ENDFOR
+\ENDWHILE
+\RETURN $P$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-minimum-spanning-trees-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (a) at (0.00,1.00) {$a$};
+\node[small vertex] (b) at (2.00,1.60) {$b$};
+\node[small vertex] (c) at (4.00,1.00) {$c$};
+\node[small vertex] (d) at (0.60,-0.60) {$d$};
+\node[small vertex] (e) at (2.40,-0.20) {$e$};
+\node[small vertex] (f) at (4.00,-0.80) {$f$};
+\draw[hl] (a) -- node[edge label, pos=0.5] {$4$} (b);
+\draw[hl] (a) -- node[edge label, pos=0.5] {$2$} (d);
+\draw[faint] (b) -- node[edge label, pos=0.5] {$6$} (c);
+\draw[hl] (b) -- node[edge label, pos=0.5] {$3$} (e);
+\draw[faint] (d) -- node[edge label, pos=0.5] {$5$} (e);
+\draw[hl] (c) -- node[edge label, pos=0.5] {$4$} (e);
+\draw[hl] (c) -- node[edge label, pos=0.5] {$3$} (f);
+\draw[faint] (e) -- node[edge label, pos=0.5] {$7$} (f);
+\draw[faint] (a) -- node[edge label, pos=0.5] {$8$} (e);
+\draw[faint] (b) -- node[edge label, pos=0.5] {$9$} (d);
+\node[lab,tick] at (-0.45,1.00) {1};
+\node[lab,tick] at (0.15,-0.60) {2};
+\node[lab,tick] at (2.00,2.02) {3};
+\node[lab,tick] at (2.45,-0.62) {4};
+\node[lab,tick] at (4.45,1.00) {5};
+\node[lab,tick] at (4.45,-0.80) {6};
+\end{tikzpicture}
+\end{center}
+```
+
+Prim's algorithm from $a$ on the graph of @fig-minimum-spanning-trees-1. Small numbers give the order in which vertices leave the queue, with the key at that moment: $a, d\,(2), b\,(4), e\,(3), c\,(4), f\,(3)$. Each key is the weight of the highlighted edge that joins the vertex to the tree, so the tree is the same as Kruskal's, of weight $16$. The key of $e$ drops from $8$ to $5$ to $3$ before $e$ is removed.
+
+:::
+
 ::: {#thm-prim .theorem name="Prim's algorithm"}
 
 Prim's algorithm returns an MST. With a binary heap it runs in $O(|E|\log|V|)$ time, and with a Fibonacci heap in $O(|E|+|V|\log|V|)$.
@@ -62,6 +119,25 @@ Prim's algorithm returns an MST. With a binary heap it runs in $O(|E|\log|V|)$ t
 Sort the edges by weight. Start with every vertex in its own component (a union-find structure, @def-union-find). For each edge $\{u,v\}$ in order: if `find(u)` $\ne$ `find(v)`, add the edge and `union(u, v)`; otherwise skip it (it would close a cycle).
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Kruskal's algorithm}
+\begin{algorithmic}
+\INPUT Connected weighted graph $G=(V,E,w)$
+\OUTPUT A minimum spanning tree $T$
+\STATE sort $E$ by weight
+\STATE $T\gets\emptyset$; make a union-find structure with each vertex in its own set
+\FOR{$\{u,v\}\in E$ in order of weight}
+    \IF{$\mathrm{find}(u)\ne\mathrm{find}(v)$}
+        \STATE $T\gets T\cup\{\{u,v\}\}$
+        \STATE $\mathrm{union}(u,v)$
+    \ENDIF
+\ENDFOR
+\RETURN $T$
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#thm-kruskal .theorem name="Kruskal's algorithm" related="thm-cn-thm-70"}
 

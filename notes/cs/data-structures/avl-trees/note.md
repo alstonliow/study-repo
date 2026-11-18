@@ -17,6 +17,20 @@ Let $D$ be a node with left child $B$, let $A$ and $C$ be the left and right sub
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Right rotation at $D$}
+\begin{algorithmic}
+\INPUT A node $D$ with left child $B$
+\STATE $C\gets B.\mathrm{right}$
+\STATE put $B$ in $D$'s place under $D$'s old parent (or as the root)
+\STATE $B.\mathrm{right}\gets D$; $D.\mathrm{parent}\gets B$
+\STATE $D.\mathrm{left}\gets C$; if $C$ is not none, $C.\mathrm{parent}\gets D$
+\STATE recompute the augmentations of $D$, then $B$ \COMMENT{left rotation: mirror image}
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-avl-trees-1}
 
 ```{=latex}
@@ -96,6 +110,26 @@ Let $A$ be the left subtree of $B$, of height $a$. Since the skew of $B$ is $2$,
 3. Nodes inside $A,C,E,G$ are unchanged, so the whole subtree is height-balanced.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Rebalance$(B)$}
+\begin{algorithmic}
+\INPUT A node $B$ of skew $\pm2$ whose subtrees are height-balanced
+\IF{skew$(B)=2$}
+    \IF{skew$(B.\mathrm{right})=-1$}
+        \STATE right rotation at $B.\mathrm{right}$
+    \ENDIF
+    \STATE left rotation at $B$
+\ELSIF{skew$(B)=-2$}
+    \IF{skew$(B.\mathrm{left})=1$}
+        \STATE left rotation at $B.\mathrm{left}$
+    \ENDIF
+    \STATE right rotation at $B$
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-avl-trees-2}
 
@@ -188,6 +222,72 @@ After adding or removing a leaf in an AVL tree, the tree can be made an AVL tree
 2. *Insertion.* The new leaf is in the subtree of the heavy child of $X$ and made that child one taller. A balanced node whose height just grew because of one new leaf below it has skew $\pm1$, not $0$. So the heavy child has skew $1$ or $-1$, and in both cases the lemma reduces the height of $X$'s subtree by one, back to its height before the insertion, so no ancestor of $X$ changes height or skew: one repair suffices.
 
 3. *Deletion.* The repair can lower the height of $X$'s subtree by one, which may unbalance an ancestor. Repeat at the next unbalanced ancestor; each repair costs $O(1)$ rotations, and there are $O(\log n)$ ancestors.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{AVL insert or delete with global rebalance}
+\begin{algorithmic}
+\INPUT AVL tree with stored heights; a leaf $X$ just added, or the parent $X$ of a leaf just removed
+\WHILE{$X$ is not none}
+    \STATE recompute $X.\mathrm{height}$ from its children
+    \IF{$|$skew$(X)|=2$}
+        \STATE rebalance$(X)$ \COMMENT{$X$ may now be lower; continue from the new subtree root}
+        \STATE $X\gets$ the root of the rebalanced subtree
+    \ENDIF
+    \STATE $X\gets X.\mathrm{parent}$
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-avl-trees-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (p1) at (0.00,-0.85) {$1$};
+\node[small vertex] (p2) at (0.70,0.00) {$2$};
+\node[small vertex] (p3) at (1.40,-1.70) {$3$};
+\node[small vertex] (p4) at (2.10,-0.85) {$4$};
+\node[small vertex] (p5) at (2.80,-1.70) {$5$};
+\node[small vertex, fill=accentLight, draw=accent] (p6) at (3.50,-2.55) {$6$};
+\draw[] (p2)--(p1);
+\draw[] (p2)--(p4);
+\draw[] (p4)--(p3);
+\draw[] (p4)--(p5);
+\draw[hl] (p5)--(p6);
+\node[lab,tick] at (0.38,-0.60) {$0$};
+\node[lab,tick] at (1.08,0.25) {$+2$};
+\node[lab,tick] at (1.78,-1.45) {$0$};
+\node[lab,tick] at (2.48,-0.60) {$+1$};
+\node[lab,tick] at (3.18,-1.45) {$+1$};
+\node[lab,tick] at (3.88,-2.30) {$0$};
+\node[small vertex] (q1) at (5.60,-1.70) {$1$};
+\node[small vertex, fill=accentLight, draw=accent] (q2) at (6.30,-0.85) {$2$};
+\node[small vertex] (q3) at (7.00,-1.70) {$3$};
+\node[small vertex, fill=accentLight, draw=accent] (q4) at (7.70,0.00) {$4$};
+\node[small vertex] (q5) at (8.40,-0.85) {$5$};
+\node[small vertex] (q6) at (9.10,-1.70) {$6$};
+\draw[] (q4)--(q2);
+\draw[] (q4)--(q5);
+\draw[] (q2)--(q1);
+\draw[] (q2)--(q3);
+\draw[] (q5)--(q6);
+\node[lab,tick] at (5.98,-1.45) {$0$};
+\node[lab,tick] at (6.68,-0.60) {$0$};
+\node[lab,tick] at (7.38,-1.45) {$0$};
+\node[lab,tick] at (8.08,0.25) {$0$};
+\node[lab,tick] at (8.78,-0.60) {$+1$};
+\node[lab,tick] at (9.48,-1.45) {$0$};
+\draw[emph,->] (4.1,-1.2) -- (5.1,-1.2);
+\node[lab,tick] at (4.60,-0.90) {left rotation at $2$};
+\end{tikzpicture}
+\end{center}
+```
+
+Inserting $6$ into the AVL tree $2(1,4(3,5))$ (small numbers are skews). Walking up from the new leaf, $5$ and $4$ get skew $1$, and $2$ gets skew $2$: the lowest unbalanced node. Its right child $4$ has skew $1$, so one left rotation at $2$ repairs it (case 1 of @lem-avl-local-rebalance), and the subtree is back to its old height, so no ancestor needs work.
 
 :::
 

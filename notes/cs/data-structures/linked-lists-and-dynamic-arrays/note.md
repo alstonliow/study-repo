@@ -62,6 +62,19 @@ Inserting at the front of a linked list: the new node points to the old head and
 
 Changing a few addresses changes the list, so `insert_first` and `delete_first` take $O(1)$ time: the new node points to the old head and becomes the head. But reaching item $i$ means following $i$ links, so `get_at(i)` and `set_at(i, x)` take $\Theta(i)$ time in the worst case.
 
+```{=latex}
+\begin{algorithm}
+\caption{Linked list insert\_first and delete\_first}
+\begin{algorithmic}
+\STATE \textbf{insert\_first}$(x)$:
+\STATE $N\gets$ new node; $N.\mathrm{item}\gets x$; $N.\mathrm{next}\gets\mathrm{head}$; $\mathrm{head}\gets N$
+\STATE \textbf{delete\_first}$()$:
+\STATE $x\gets\mathrm{head}.\mathrm{item}$; $\mathrm{head}\gets\mathrm{head}.\mathrm{next}$
+\RETURN $x$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ## Dynamic arrays
 
 A dynamic array keeps the fast reads of an array and makes the operations at the end fast as well, by allocating more room than it needs.
@@ -71,6 +84,20 @@ A dynamic array keeps the fast reads of an array and makes the operations at the
 A *dynamic array* stores the $n$ items in the first $n$ slots of a static array of some length $m\ge n$. `insert_last(x)` writes $x$ into slot $n$ if $n<m$; if the array is full ($n=m$), it first allocates a new array of length $2m$ (length $1$ if $m=0$), copies the items over, and frees the old one. `delete_last()` simply forgets the last item. Python's `list` is a dynamic array.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Dynamic array insert\_last}
+\begin{algorithmic}
+\INPUT Static array $A$ of length $m$ holding $n$ items; new item $x$
+\IF{$n=m$}
+    \STATE $B\gets$ new static array of length $\max\{1,2m\}$
+    \STATE copy $A[0..n-1]$ to $B[0..n-1]$; $A\gets B$; $m\gets\max\{1,2m\}$
+\ENDIF
+\STATE $A[n]\gets x$; $n\gets n+1$
+\end{algorithmic}
+\end{algorithm}
+```
 
 A single `insert_last` can take $\Theta(n)$ time, but such expensive steps are rare. To capture this we average over a sequence of operations.
 
@@ -165,6 +192,78 @@ Let a dynamic array double when full and, after a deletion, reallocate to length
 3. That reallocation copies at most $m$ items, which is $O(m/4)$, so it can be charged at $O(1)$ to each of the at least $m/4$ operations since the previous one. Every operation is charged by at most one reallocation, so $k$ operations cost $O(k)$ in total.
 
 4. Between reallocations $m/4\le n\le m$, so $m\le4n$.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Dynamic array delete\_last with shrinking}
+\begin{algorithmic}
+\INPUT Static array $A$ of length $m$ holding $n\ge1$ items
+\STATE $x\gets A[n-1]$; $n\gets n-1$
+\IF{$n<m/4$}
+    \STATE reallocate $A$ to length $2n$, copying the $n$ items; $m\gets2n$
+\ENDIF
+\RETURN $x$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-linked-lists-and-dynamic-arrays-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$x_0$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$x_1$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$x_2$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$x_3$};
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$x_4$};
+\draw[cell frame] (2.750,0.000) rectangle (3.300,0.550);
+\node[lab] at (3.025,0.275) {$x_5$};
+\draw[cell frame] (3.300,0.000) rectangle (3.850,0.550);
+\node[lab] at (3.575,0.275) {$x_6$};
+\draw[cell frame] (3.850,0.000) rectangle (4.400,0.550);
+\node[lab] at (4.125,0.275) {$x_7$};
+\node[lab,tick,anchor=west] at (4.70,0.28) {start: full};
+\draw[cell frame] (0.000,-0.720) rectangle (0.550,-0.170);
+\node[lab] at (0.275,-0.445) {$x_0$};
+\draw[cell frame] (0.550,-0.720) rectangle (1.100,-0.170);
+\node[lab] at (0.825,-0.445) {$x_1$};
+\draw[cell frame] (1.100,-0.720) rectangle (1.650,-0.170);
+\draw[cell frame] (1.650,-0.720) rectangle (2.200,-0.170);
+\draw[cell frame] (2.200,-0.720) rectangle (2.750,-0.170);
+\draw[cell frame] (2.750,-0.720) rectangle (3.300,-0.170);
+\draw[cell frame] (3.300,-0.720) rectangle (3.850,-0.170);
+\draw[cell frame] (3.850,-0.720) rectangle (4.400,-0.170);
+\node[lab,tick,anchor=west] at (4.70,-0.44) {after $6$ deletes: $n=2=m/4$, no shrink};
+\draw[cell frame] (0.000,-1.440) rectangle (0.550,-0.890);
+\node[lab] at (0.275,-1.165) {$x_0$};
+\draw[cell frame] (0.550,-1.440) rectangle (1.100,-0.890);
+\node[lab,tick,anchor=west] at (4.70,-1.17) {delete: $n=1<m/4$, reallocate to $2n=2$};
+\draw[cell frame] (0.000,-2.160) rectangle (0.550,-1.610);
+\node[lab] at (0.275,-1.885) {$x_0$};
+\draw[cell frame] (0.550,-2.160) rectangle (1.100,-1.610);
+\node[lab] at (0.825,-1.885) {$x_1$};
+\node[lab,tick,anchor=west] at (4.70,-1.89) {insert: room left};
+\draw[cell frame] (0.000,-2.880) rectangle (0.550,-2.330);
+\node[lab] at (0.275,-2.605) {$x_0$};
+\draw[cell frame] (0.550,-2.880) rectangle (1.100,-2.330);
+\node[lab] at (0.825,-2.605) {$x_1$};
+\draw[cell frame] (1.100,-2.880) rectangle (1.650,-2.330);
+\node[lab] at (1.375,-2.605) {$x_2$};
+\draw[cell frame] (1.650,-2.880) rectangle (2.200,-2.330);
+\node[lab,tick,anchor=west] at (4.70,-2.60) {insert: full, double to $4$};
+\end{tikzpicture}
+\end{center}
+```
+
+Deleting from a full array of length $8$ (empty cells are unused room). It shrinks only when fewer than a quarter of the slots are used, and then to twice the number of items, so the array is half full afterwards. One more insertion fits without copying, and a later doubling is again far away: inserts and deletes at the boundary cannot cause a copy each time.
 
 :::
 

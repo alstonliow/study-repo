@@ -35,13 +35,17 @@
   function fallback() {
     document.querySelectorAll("pre.pseudocode").forEach(p => p.classList.add("ps-fallback"));
   }
-  function render() {
+  function render(attempt) {
+    attempt = attempt || 0;
     try {
       window.pseudocode.renderClass("pseudocode", OPTIONS);
       // MathJax 3+: add the styles for the maths pseudocode.js just converted
       const doc = window.MathJax && MathJax.startup && MathJax.startup.document;
       if (doc) { doc.clear(); doc.updateDocument(); }
     } catch (e) {
+      // MathJax 4 loads some glyph data on demand; a synchronous conversion that needs
+      // it throws a "retry" error carrying a promise. Wait for it and render the rest.
+      if (e && e.retry && attempt < 20) { e.retry.then(() => render(attempt + 1), fallback); return; }
       console.warn("pseudocode.js:", e);
       fallback();
     }

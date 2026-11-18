@@ -63,6 +63,27 @@ Build a DAG $G'$ with $|V|+1$ *levels*: a copy $v_k$ of every vertex $v$ for $k=
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Bellman–Ford by graph duplication}
+\begin{algorithmic}
+\INPUT Weighted digraph $G=(V,E,w)$, source $s$
+\OUTPUT $d(v)=\delta(s,v)$ for every $v\in V$
+\STATE build $G'$ with vertices $v_k$ ($v\in V$, $0\le k\le|V|$), edges $(v_{k-1},v_k)$ of weight $0$ and $(u_{k-1},v_k)$ of weight $w(u,v)$
+\STATE run DAG relaxation on $G'$ from $s_0$, giving $\delta'$
+\FOR{$v\in V$}
+    \STATE $d(v)\gets\delta'(s_0,v_{|V|-1})$
+\ENDFOR
+\FOR{$u\in V$}
+    \IF{$\delta'(s_0,u_{|V|})<\delta'(s_0,u_{|V|-1})$}
+        \STATE $d(v)\gets-\infty$ for every $v$ reachable from $u$ in $G$ \COMMENT{$u$ is a witness}
+    \ENDIF
+\ENDFOR
+\RETURN $d$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-bellman-ford-1}
 
 ```{=latex}
@@ -154,5 +175,64 @@ Graph duplication for a graph with edges $a\to b$ ($4$), $a\to c$ ($2$), $c\to b
 ::: {#rmk-bellman-ford-practice .remark name="The usual implementation"}
 
 Only two levels of $G'$ are needed at a time, so $O(|V|)$ space suffices. The traditional form keeps one estimate per vertex and relaxes every edge of $G$ in each of $|V|-1$ rounds; a further round that still lowers some estimate reveals a negative-weight cycle. Its estimates are no longer exactly the $k$-edge distances, so its proof is less direct, but it has the same $O(|V|\cdot|E|)$ time. A shortest walk from $s_0$ to $v_{|V|}$ for a witness $v$ has $|V|+1$ vertices, so it repeats a vertex of $G$, and the repeated part is a negative-weight cycle that can be returned.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Bellman–Ford, the usual implementation}
+\begin{algorithmic}
+\INPUT Weighted digraph $G=(V,E,w)$, source $s$
+\OUTPUT $d(v)=\delta(s,v)$, or a report of a negative-weight cycle
+\STATE $d(s)\gets0$; $d(v)\gets\infty$ for every $v\ne s$
+\FOR{$i=1$ to $|V|-1$}
+    \FOR{$(u,v)\in E$}
+        \STATE relax $(u,v)$
+    \ENDFOR
+\ENDFOR
+\FOR{$(u,v)\in E$}
+    \IF{$d(v)>d(u)+w(u,v)$}
+        \RETURN "negative-weight cycle reachable from $s$"
+    \ENDIF
+\ENDFOR
+\RETURN $d$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-bellman-ford-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (a) at (0.00,0.00) {$a$};
+\node[small vertex] (b) at (1.80,0.80) {$b$};
+\node[small vertex] (c) at (1.80,-0.80) {$c$};
+\draw[->] (a) -- node[edge label, pos=0.5] {$4$} (b);
+\draw[->] (a) -- node[edge label, pos=0.5] {$2$} (c);
+\draw[->] (b) to[bend left=40] node[edge label, pos=0.5] {$3$} (c);
+\draw[->] (c) to[bend left=40] node[edge label, pos=0.5] {$-1$} (b);
+\node[lab,tick] at (3.60,1.00) {after};
+\node[lab,tick] at (4.70,1.00) {$d(a)$};
+\node[lab,tick] at (5.40,1.00) {$d(b)$};
+\node[lab,tick] at (6.10,1.00) {$d(c)$};
+\draw[faint] (3.1,0.8) -- (6.5,0.8);
+\node[lab,tick] at (3.60,0.55) {start};
+\node[lab,tick] at (4.70,0.55) {$0$};
+\node[lab,tick] at (5.40,0.55) {$\infty$};
+\node[lab,tick] at (6.10,0.55) {$\infty$};
+\node[lab,tick] at (3.60,0.10) {round 1};
+\node[lab,tick] at (4.70,0.10) {$0$};
+\node[lab,tick] at (5.40,0.10) {$\mathbf{1}$};
+\node[lab,tick] at (6.10,0.10) {$\mathbf{2}$};
+\node[lab,tick] at (3.60,-0.35) {round 2};
+\node[lab,tick] at (4.70,-0.35) {$0$};
+\node[lab,tick] at (5.40,-0.35) {$1$};
+\node[lab,tick] at (6.10,-0.35) {$2$};
+\end{tikzpicture}
+\end{center}
+```
+
+The usual Bellman–Ford on the graph of @fig-bellman-ford-1 from $a$, relaxing the edges in the order $a\to b$, $a\to c$, $b\to c$, $c\to b$ in each of the $|V|-1=2$ rounds (bold: changed). Round $1$ already reaches $d(b)=1$, a two-edge walk, so the estimates run ahead of the $k$-edge distances. Round $2$ changes nothing, and the final check finds no edge to relax, so there is no negative-weight cycle.
 
 :::

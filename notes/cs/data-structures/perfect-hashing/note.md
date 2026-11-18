@@ -42,6 +42,29 @@ A search computes $j=h_1(x)$, then looks in slot $h_{2,j}(x)$ of table $j$: two 
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Two-level perfect hashing}
+\begin{algorithmic}
+\STATE \textbf{build}$(S)$, for a set $S$ of $n$ keys:
+\STATE draw $h_1$ from a universal family into $n$ slots; $n_j\gets|\{x\in S:h_1(x)=j\}|$
+\WHILE{$\sum_jn_j^2>cn$}
+    \STATE draw a new $h_1$ and recount the $n_j$
+\ENDWHILE
+\FOR{$j=0$ to $n-1$}
+    \STATE draw $h_{2,j}$ from a universal family into $n_j^2$ slots
+    \WHILE{two keys of slot $j$ collide under $h_{2,j}$}
+        \STATE draw a new $h_{2,j}$
+    \ENDWHILE
+    \STATE store each key $x$ of slot $j$ at $T_j[h_{2,j}(x)]$
+\ENDFOR
+\STATE \textbf{search}$(x)$:
+\STATE $j\gets h_1(x)$
+\RETURN whether $T_j[h_{2,j}(x)]=x$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#fig-perfect-hashing-1}
 
 ```{=latex}

@@ -43,6 +43,30 @@ For a source $s$, a *parent* function $P$ assigns to each vertex $v\ne s$ reacha
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Breadth-first search}
+\begin{algorithmic}
+\INPUT Graph $G=(V,E)$ as adjacency lists, source $s$
+\OUTPUT Distances $d$ and parents $P$
+\STATE $d(v)\gets\infty$ and $P(v)\gets$ none for every $v\in V$
+\STATE $d(s)\gets0$; $L_0\gets[s]$; $i\gets0$
+\WHILE{$L_i$ is not empty}
+    \STATE $L_{i+1}\gets[\,]$
+    \FOR{$u\in L_i$}
+        \FOR{$v\in\operatorname{Adj}(u)$}
+            \IF{$d(v)=\infty$}
+                \STATE $d(v)\gets i+1$; $P(v)\gets u$; append $v$ to $L_{i+1}$
+            \ENDIF
+        \ENDFOR
+    \ENDFOR
+    \STATE $i\gets i+1$
+\ENDWHILE
+\RETURN $d,P$
+\end{algorithmic}
+\end{algorithm}
+```
+
 ::: {#thm-bfs .theorem name="Breadth-first search"}
 
 BFS computes $d(v)=\delta(s,v)$ for every vertex $v$ and a parent function $P$ as in @def-shortest-path-tree. It runs in $O(|V|+|E|)$ time.
@@ -106,3 +130,24 @@ Breadth-first search from $s$ (neighbours taken in alphabetical order). Each box
 BFS is usually written with one queue instead of separate levels: start with $s$ in the queue, and repeatedly remove the first vertex $u$ and append each unreached $v\in\operatorname{Adj}(u)$, setting $d(v)=d(u)+1$ and $P(v)=u$. The queue always holds the rest of one level followed by the start of the next, so vertices leave it in the order $L_0,L_1,\dots$, and the algorithm is the same.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Breadth-first search with a queue}
+\begin{algorithmic}
+\INPUT Graph $G=(V,E)$ as adjacency lists, source $s$
+\OUTPUT Distances $d$ and parents $P$
+\STATE $d(v)\gets\infty$ and $P(v)\gets$ none for every $v\in V$
+\STATE $d(s)\gets0$; $Q\gets$ queue holding $s$
+\WHILE{$Q$ is not empty}
+    \STATE $u\gets$ remove the first vertex of $Q$
+    \FOR{$v\in\operatorname{Adj}(u)$}
+        \IF{$d(v)=\infty$}
+            \STATE $d(v)\gets d(u)+1$; $P(v)\gets u$; append $v$ to $Q$
+        \ENDIF
+    \ENDFOR
+\ENDWHILE
+\RETURN $d,P$
+\end{algorithmic}
+\end{algorithm}
+```

@@ -23,6 +23,77 @@ A rod of integer length $L$ is to be cut into pieces of integer lengths; a piece
 
 :::
 
+```{=latex}
+\begin{algorithm}
+\caption{Rod cutting}
+\begin{algorithmic}
+\INPUT Length $L$ and values $v(1),\dots,v(L)$
+\OUTPUT The best total value $x(L)$
+\STATE $x(0)\gets0$
+\FOR{$\ell=1$ to $L$}
+    \STATE $x(\ell)\gets\max\{v(p)+x(\ell-p):1\le p\le\ell\}$ \COMMENT{record the best $p$}
+\ENDFOR
+\RETURN $x(L)$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-pseudopolynomial-time-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.550,0.900) rectangle (1.250,1.600);
+\node[lab] at (0.900,1.250) {$1$};
+\draw[cell frame] (1.250,0.900) rectangle (1.950,1.600);
+\node[lab] at (1.600,1.250) {$2$};
+\draw[cell frame] (1.950,0.900) rectangle (2.650,1.600);
+\node[lab] at (2.300,1.250) {$3$};
+\draw[cell frame] (2.650,0.900) rectangle (3.350,1.600);
+\node[lab] at (3.000,1.250) {$9$};
+\draw[cell frame] (3.350,0.900) rectangle (4.050,1.600);
+\node[lab] at (3.700,1.250) {$11$};
+\node[lab, anchor=east] at (0.450,1.250) {$v(\ell)$};
+\draw[cell frame] (0.000,0.000) rectangle (0.700,0.700);
+\node[lab] at (0.350,0.350) {$0$};
+\draw[cell frame] (0.700,0.000) rectangle (1.400,0.700);
+\node[lab] at (1.050,0.350) {$1$};
+\draw[cell frame] (1.400,0.000) rectangle (2.100,0.700);
+\node[lab] at (1.750,0.350) {$2$};
+\draw[cell frame] (2.100,0.000) rectangle (2.800,0.700);
+\node[lab] at (2.450,0.350) {$3$};
+\draw[cell frame] (2.800,0.000) rectangle (3.500,0.700);
+\node[lab] at (3.150,0.350) {$9$};
+\draw[hl cell] (3.500,0.000) rectangle (4.200,0.700);
+\node[lab] at (3.850,0.350) {$11$};
+\node[lab, anchor=east] at (-0.100,0.350) {$x(\ell)$};
+\draw[cell frame] (0.000,-0.900) rectangle (0.700,-0.200);
+\draw[cell frame] (0.700,-0.900) rectangle (1.400,-0.200);
+\node[lab] at (1.050,-0.550) {$1$};
+\draw[cell frame] (1.400,-0.900) rectangle (2.100,-0.200);
+\node[lab] at (1.750,-0.550) {$2$};
+\draw[cell frame] (2.100,-0.900) rectangle (2.800,-0.200);
+\node[lab] at (2.450,-0.550) {$3$};
+\draw[cell frame] (2.800,-0.900) rectangle (3.500,-0.200);
+\node[lab] at (3.150,-0.550) {$4$};
+\draw[cell frame] (3.500,-0.900) rectangle (4.200,-0.200);
+\node[lab] at (3.850,-0.550) {$5$};
+\node[lab, anchor=east] at (-0.100,-0.550) {best $p$};
+\node[lab,tick] at (0.35,1.85) {$0$};
+\node[lab,tick] at (1.05,1.85) {$1$};
+\node[lab,tick] at (1.75,1.85) {$2$};
+\node[lab,tick] at (2.45,1.85) {$3$};
+\node[lab,tick] at (3.15,1.85) {$4$};
+\node[lab,tick] at (3.85,1.85) {$5$};
+\node[lab,tick,anchor=east] at (-0.10,1.85) {$\ell$};
+\end{tikzpicture}
+\end{center}
+```
+
+Rod cutting for $L=5$ with values $1,2,3,9,11$, filled by increasing $\ell$. For example $x(4)=\max\{1+x(3),\,2+x(2),\,3+x(1),\,9+x(0)\}=9$. The answer is $x(5)=11$ with best first piece $p=5$: the rod is sold whole.
+
+:::
+
 The input consists of $L+1$ numbers ($L$ and the $L$ values), so $O(L^2)$ is a polynomial in the input size: rod cutting is solved in polynomial time.
 
 ## Subset sum
@@ -39,6 +110,26 @@ Given positive integers $a_0,\dots,a_{n-1}$ and a target $T$, is there a subset 
 Bottom up computes all $(n+1)(T+1)$ entries; top down computes only those reachable from $x(0,T)$, which can be far fewer.
 
 :::
+
+```{=latex}
+\begin{algorithm}
+\caption{Subset sum}
+\begin{algorithmic}
+\INPUT Positive integers $a_0,\dots,a_{n-1}$ and a target $T$
+\OUTPUT Whether some subset sums to $T$
+\STATE $x(n,0)\gets$ yes; $x(n,t)\gets$ no for $1\le t\le T$
+\FOR{$i=n-1$ down to $0$}
+    \FOR{$t=0$ to $T$}
+        \STATE $x(i,t)\gets x(i+1,t)$
+        \IF{$t\ge a_i$ and $x(i+1,t-a_i)$}
+            \STATE $x(i,t)\gets$ yes
+        \ENDIF
+    \ENDFOR
+\ENDFOR
+\RETURN $x(0,T)$
+\end{algorithmic}
+\end{algorithm}
+```
 
 ::: {#fig-pseudopolynomial-time-1}
 
@@ -166,6 +257,132 @@ The subset sum table for $2,5,9,14$: row $i$, column $t$ is shaded when some sub
 Items $i=0,\dots,n-1$ have integer sizes $s_i$ and values $v_i$, and a knapsack has capacity $S$. Choose items of total size at most $S$ and largest total value. With subproblems $x(i,c)$, the best value from items $i,\dots,n-1$ with capacity $c$:
 $$x(i,c)=\max\bigl\{x(i+1,c),\ v_i+x(i+1,c-s_i)\ \text{(if }s_i\le c)\bigr\},\qquad x(n,c)=0,$$
 and the answer $x(0,S)$, in $O(nS)$ time. Rod cutting is the *unbounded* version, where each piece length may be used any number of times (relation $x(c)=\max_i\{v_i+x(c-s_i)\}$), and subset sum is the case $v_i=s_i$ with the question whether the value $S$ is reached.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{0-1 knapsack}
+\begin{algorithmic}
+\INPUT Sizes $s_i$ and values $v_i$, $i=0,\dots,n-1$; capacity $S$
+\OUTPUT The largest total value $x(0,S)$
+\STATE $x(n,c)\gets0$ for $0\le c\le S$
+\FOR{$i=n-1$ down to $0$}
+    \FOR{$c=0$ to $S$}
+        \STATE $x(i,c)\gets x(i+1,c)$
+        \IF{$s_i\le c$}
+            \STATE $x(i,c)\gets\max\{x(i,c),\ v_i+x(i+1,c-s_i)\}$
+        \ENDIF
+    \ENDFOR
+\ENDFOR
+\RETURN $x(0,S)$
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#fig-pseudopolynomial-time-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$1$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$1$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$4$};
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$5$};
+\draw[cell frame] (2.750,0.000) rectangle (3.300,0.550);
+\node[lab] at (3.025,0.275) {$7$};
+\draw[cell frame] (3.300,0.000) rectangle (3.850,0.550);
+\node[lab] at (3.575,0.275) {$8$};
+\draw[hl cell] (3.850,0.000) rectangle (4.400,0.550);
+\node[lab] at (4.125,0.275) {$9$};
+\node[lab,tick,anchor=east] at (-0.050,0.275) {$(1,1)$};
+\draw[cell frame] (0.000,-0.550) rectangle (0.550,0.000);
+\node[lab] at (0.275,-0.275) {$0$};
+\draw[cell frame] (0.550,-0.550) rectangle (1.100,0.000);
+\node[lab] at (0.825,-0.275) {$0$};
+\draw[cell frame] (1.100,-0.550) rectangle (1.650,0.000);
+\node[lab] at (1.375,-0.275) {$0$};
+\draw[cell frame] (1.650,-0.550) rectangle (2.200,0.000);
+\node[lab] at (1.925,-0.275) {$4$};
+\draw[cell frame] (2.200,-0.550) rectangle (2.750,0.000);
+\node[lab] at (2.475,-0.275) {$5$};
+\draw[cell frame] (2.750,-0.550) rectangle (3.300,0.000);
+\node[lab] at (3.025,-0.275) {$7$};
+\draw[cell frame] (3.300,-0.550) rectangle (3.850,0.000);
+\node[lab] at (3.575,-0.275) {$7$};
+\draw[hl cell] (3.850,-0.550) rectangle (4.400,0.000);
+\node[lab] at (4.125,-0.275) {$9$};
+\node[lab,tick,anchor=east] at (-0.050,-0.275) {$(3,4)$};
+\draw[cell frame] (0.000,-1.100) rectangle (0.550,-0.550);
+\node[lab] at (0.275,-0.825) {$0$};
+\draw[cell frame] (0.550,-1.100) rectangle (1.100,-0.550);
+\node[lab] at (0.825,-0.825) {$0$};
+\draw[cell frame] (1.100,-1.100) rectangle (1.650,-0.550);
+\node[lab] at (1.375,-0.825) {$0$};
+\draw[cell frame] (1.650,-1.100) rectangle (2.200,-0.550);
+\node[lab] at (1.925,-0.825) {$0$};
+\draw[hl cell] (2.200,-1.100) rectangle (2.750,-0.550);
+\node[lab] at (2.475,-0.825) {$5$};
+\draw[cell frame] (2.750,-1.100) rectangle (3.300,-0.550);
+\node[lab] at (3.025,-0.825) {$7$};
+\draw[cell frame] (3.300,-1.100) rectangle (3.850,-0.550);
+\node[lab] at (3.575,-0.825) {$7$};
+\draw[cell frame] (3.850,-1.100) rectangle (4.400,-0.550);
+\node[lab] at (4.125,-0.825) {$7$};
+\node[lab,tick,anchor=east] at (-0.050,-0.825) {$(4,5)$};
+\draw[hl cell] (0.000,-1.650) rectangle (0.550,-1.100);
+\node[lab] at (0.275,-1.375) {$0$};
+\draw[cell frame] (0.550,-1.650) rectangle (1.100,-1.100);
+\node[lab] at (0.825,-1.375) {$0$};
+\draw[cell frame] (1.100,-1.650) rectangle (1.650,-1.100);
+\node[lab] at (1.375,-1.375) {$0$};
+\draw[cell frame] (1.650,-1.650) rectangle (2.200,-1.100);
+\node[lab] at (1.925,-1.375) {$0$};
+\draw[cell frame] (2.200,-1.650) rectangle (2.750,-1.100);
+\node[lab] at (2.475,-1.375) {$0$};
+\draw[cell frame] (2.750,-1.650) rectangle (3.300,-1.100);
+\node[lab] at (3.025,-1.375) {$7$};
+\draw[cell frame] (3.300,-1.650) rectangle (3.850,-1.100);
+\node[lab] at (3.575,-1.375) {$7$};
+\draw[cell frame] (3.850,-1.650) rectangle (4.400,-1.100);
+\node[lab] at (4.125,-1.375) {$7$};
+\node[lab,tick,anchor=east] at (-0.050,-1.375) {$(5,7)$};
+\draw[hl cell] (0.000,-2.200) rectangle (0.550,-1.650);
+\node[lab] at (0.275,-1.925) {$0$};
+\draw[cell frame] (0.550,-2.200) rectangle (1.100,-1.650);
+\node[lab] at (0.825,-1.925) {$0$};
+\draw[cell frame] (1.100,-2.200) rectangle (1.650,-1.650);
+\node[lab] at (1.375,-1.925) {$0$};
+\draw[cell frame] (1.650,-2.200) rectangle (2.200,-1.650);
+\node[lab] at (1.925,-1.925) {$0$};
+\draw[cell frame] (2.200,-2.200) rectangle (2.750,-1.650);
+\node[lab] at (2.475,-1.925) {$0$};
+\draw[cell frame] (2.750,-2.200) rectangle (3.300,-1.650);
+\node[lab] at (3.025,-1.925) {$0$};
+\draw[cell frame] (3.300,-2.200) rectangle (3.850,-1.650);
+\node[lab] at (3.575,-1.925) {$0$};
+\draw[cell frame] (3.850,-2.200) rectangle (4.400,-1.650);
+\node[lab] at (4.125,-1.925) {$0$};
+\node[lab,tick,anchor=east] at (-0.050,-1.925) {$i=n$};
+\node[lab,tick] at (0.275,0.730) {$0$};
+\node[lab,tick] at (0.825,0.730) {$1$};
+\node[lab,tick] at (1.375,0.730) {$2$};
+\node[lab,tick] at (1.925,0.730) {$3$};
+\node[lab,tick] at (2.475,0.730) {$4$};
+\node[lab,tick] at (3.025,0.730) {$5$};
+\node[lab,tick] at (3.575,0.730) {$6$};
+\node[lab,tick] at (4.125,0.730) {$7$};
+\end{tikzpicture}
+\end{center}
+```
+
+The table $x(i,c)$ for items (size, value) $(1,1),(3,4),(4,5),(5,7)$ and capacity $S=7$ (row $i$, column $c$), filled from the bottom row $x(n,c)=0$. The answer is $x(0,7)=9$. The highlighted cells follow the choices: the first item is skipped, the items of sizes $3$ and $4$ are taken, and the last does not fit.
 
 :::
 
