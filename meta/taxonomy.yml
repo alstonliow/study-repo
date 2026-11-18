@@ -454,3 +454,30 @@ parts:
         notes:   # topic order on the website
           - cryptographic-hash-functions
           - public-key-cryptography
+  - title: Artificial Intelligence
+    field: Artificial Intelligence
+    branches:
+      - id: ai/machine-learning
+        title: Machine Learning
+        desc: Learning problems, linear regression and classification, gradient descent
+        notes: []   # topic order on the website
+      - id: ai/deep-learning
+        title: Deep Learning
+        desc: Tensors, backpropagation, neural networks
+        notes: []   # topic order on the website
+      - id: ai/search
+        title: Search
+        desc: Search problems, beam search, uniform cost search and A*
+        notes: []   # topic order on the website
+      - id: ai/reinforcement-learning
+        title: Reinforcement Learning
+        desc: Markov decision processes, value iteration, Q-learning, policy gradient
+        notes: []   # topic order on the website
+      - id: ai/games
+        title: Games
+        desc: Game trees, minimax, alpha-beta pruning, simultaneous games
+        notes: []   # topic order on the website
+      - id: ai/bayesian-networks
+        title: Bayesian Networks
+        desc: Bayesian networks, sampling-based inference, parameter learning
+        notes: []   # topic order on the website

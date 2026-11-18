@@ -44,6 +44,7 @@ ids are not affected by this grouping.
 | Computer Science | Algorithms | `cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`, `cs/algorithm-design`, `cs/models-of-computation` |
 | Computer Science | Theory of Computation | `cs/theory` (Computability and Complexity) |
 | Computer Science | Cryptography | `cs/cryptography` |
+| Artificial Intelligence | Artificial Intelligence | `ai/machine-learning`, `ai/deep-learning`, `ai/search`, `ai/reinforcement-learning`, `ai/games`, `ai/bayesian-networks` (one part for now, split into parts when more AI courses arrive; owner decision, 2026-11-18) |
 
 ### Planned structure
 

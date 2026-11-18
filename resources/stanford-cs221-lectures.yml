@@ -1,0 +1,144 @@
+# Stanford CS221 Artificial Intelligence lecture code (github.com/stanford-cs221/lectures), as a resource
+# (meta/SPEC.md §17.12). DRAFT for owner review. MIT licence; notice reproduced in NOTICES.md (SPEC §10).
+# Kept locally in raw/STANFORD_CS221 (sparse clone at the pinned commit). Each lecture is an executable
+# Python file. Locator = lecture position in course order (1-20); a source key is cs221-7.
+# welcome, history and society are not listed (no knowledge points). Titles are our own short titles.
+id: res-stanford-cs221-lectures
+kind: course-notes
+title: Stanford CS221 Lectures (2025)
+status: draft
+courses: [cs221]
+url: https://github.com/stanford-cs221/lectures
+licence: MIT
+copyright: Copyright 2025 Stanford University
+editions:
+- id: 3ac2452
+  commit: 3ac2452edabb91d6e5a6a256949a97f758dc388b
+  current: true
+legacy_keys:
+  prefix: cs221-
+  edition: 3ac2452
+  pattern: ^cs221-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: CS221 L{section}
+  problem_label: CS221 L{section} Q{n}
+nodes:
+- id: res-stanford-cs221-lectures-tensors
+  kind: lecture
+  title: Tensors and einops
+  file: tensors.py
+  at:
+    3ac2452: '1'
+- id: res-stanford-cs221-lectures-linear-regression
+  kind: lecture
+  title: Linear regression
+  file: linear_regression.py
+  at:
+    3ac2452: '2'
+- id: res-stanford-cs221-lectures-linear-classification
+  kind: lecture
+  title: Linear classification
+  file: linear_classification.py
+  at:
+    3ac2452: '3'
+- id: res-stanford-cs221-lectures-backpropagation
+  kind: lecture
+  title: Backpropagation
+  file: backpropagation.py
+  at:
+    3ac2452: '4'
+- id: res-stanford-cs221-lectures-deep-learning
+  kind: lecture
+  title: Deep learning
+  file: deep_learning.py
+  at:
+    3ac2452: '5'
+- id: res-stanford-cs221-lectures-search
+  kind: lecture
+  title: Search problems
+  file: search.py
+  at:
+    3ac2452: '6'
+- id: res-stanford-cs221-lectures-ucs-astar
+  kind: lecture
+  title: Uniform cost search and A*
+  file: ucs_astar.py
+  at:
+    3ac2452: '7'
+- id: res-stanford-cs221-lectures-mdp
+  kind: lecture
+  title: Markov decision processes
+  file: mdp.py
+  at:
+    3ac2452: '8'
+- id: res-stanford-cs221-lectures-reinforcement-learning
+  kind: lecture
+  title: Reinforcement learning
+  file: reinforcement_learning.py
+  at:
+    3ac2452: '9'
+- id: res-stanford-cs221-lectures-function-approximation
+  kind: lecture
+  title: Function approximation
+  file: function_approximation.py
+  at:
+    3ac2452: '10'
+- id: res-stanford-cs221-lectures-policy-gradient
+  kind: lecture
+  title: Policy gradient
+  file: policy_gradient.py
+  at:
+    3ac2452: '11'
+- id: res-stanford-cs221-lectures-improved-policy-gradient
+  kind: lecture
+  title: Improving policy gradient
+  file: improved_policy_gradient.py
+  at:
+    3ac2452: '12'
+- id: res-stanford-cs221-lectures-games
+  kind: lecture
+  title: Games
+  file: games.py
+  at:
+    3ac2452: '13'
+- id: res-stanford-cs221-lectures-td-learning
+  kind: lecture
+  title: Temporal difference learning
+  file: td_learning.py
+  at:
+    3ac2452: '14'
+- id: res-stanford-cs221-lectures-simultaneous-games
+  kind: lecture
+  title: Simultaneous games
+  file: simultaneous_games.py
+  at:
+    3ac2452: '15'
+- id: res-stanford-cs221-lectures-bayes
+  kind: lecture
+  title: Bayesian networks
+  file: bayes.py
+  at:
+    3ac2452: '16'
+- id: res-stanford-cs221-lectures-gibbs-sampling
+  kind: lecture
+  title: Gibbs sampling
+  file: gibbs_sampling.py
+  at:
+    3ac2452: '17'
+- id: res-stanford-cs221-lectures-bayes-learning
+  kind: lecture
+  title: Learning Bayesian networks
+  file: bayes_learning.py
+  at:
+    3ac2452: '18'
+- id: res-stanford-cs221-lectures-propositional-logic
+  kind: lecture
+  title: Propositional logic
+  file: propositional_logic.py
+  at:
+    3ac2452: '19'
+- id: res-stanford-cs221-lectures-first-order-logic
+  kind: lecture
+  title: First-order logic
+  file: first_order_logic.py
+  at:
+    3ac2452: '20'
