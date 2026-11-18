@@ -172,6 +172,55 @@
   // ---------- algorithms (each returns a list of frames {html, note}) ----------
   const limit = (a, n, what) => { if (a.length > n) throw new Error(`at most ${n} ${what}, please`); return a; };
 
+  // ---------- templates: a new widget supplies data and step notes only ----------
+  // Marks: hl (current, terracotta), done (finished, blue), dim (out of play).
+  const markOf = (s, k) => (s.hl || []).includes(k) ? "hl" : (s.done || []).includes(k) ? "done" : (s.dim || []).includes(k) ? "dim" : "";
+
+  // arrayFrames([{ a: [3, 1, 2], hl: [0], done: [2], dim: [], gaps: [1], note: "..." }, ...])
+  // One row of cells per step; `gaps` puts a divider before those indices.
+  function arrayFrames(steps, opts = {}) {
+    return steps.map(s => ({ html: row(s.a, i => markOf(s, i), { idx: opts.idx !== false, gaps: new Set(s.gaps || []) }), note: s.note || "" }));
+  }
+
+  // dpFrames({ rows: n, cols: m, rowHead: [...], colHead: [...],
+  //            base: (i, j) => value or undefined,         // filled before the first step
+  //            order: [[i, j], ...],                       // cells in evaluation order
+  //            step: (i, j, x) => ({ v, deps: [[i, j]], note }),   // x = table so far
+  //            show: v => text, every: k,                  // optional: format, record every k-th cell
+  //            final: x => ({ path: [[i, j]], note }) })    // optional trace-back frame
+  function dpFrames(d) {
+    const x = Array.from({ length: d.rows }, (_, i) => Array.from({ length: d.cols }, (_, j) => { const b = d.base ? d.base(i, j) : undefined; return b === undefined ? null : b; }));
+    const show = d.show || (v => v), F = [], key = (i, j) => i + "," + j;
+    const pic = (cls, note) => F.push({ html: table(d.colHead || [...Array(d.cols).keys()].map(String), x.map(r => r.map(v => v === null ? "" : show(v))), cls, d.rowHead || [...Array(d.rows).keys()].map(String)), note });
+    pic((i, j) => x[i][j] !== null ? "done" : "", d.baseNote || "Base cases.");
+    d.order.forEach(([i, j], k) => {
+      const r = d.step(i, j, x); x[i][j] = r.v;
+      const deps = new Set((r.deps || []).map(([a, b]) => key(a, b)));
+      if (!d.every || k % d.every === 0 || k === d.order.length - 1)
+        pic((a, b) => a === i && b === j ? "hl" : deps.has(key(a, b)) ? "done" : "", r.note || "");
+    });
+    if (d.final) { const f = d.final(x), on = new Set((f.path || []).map(([a, b]) => key(a, b))); pic((a, b) => on.has(key(a, b)) ? "hl" : "", f.note || ""); }
+    return F;
+  }
+  // rows from bottom to top, each left to right (and the other three orders)
+  const cellsOrder = (rows, cols, rowsDown = false, colsRight = true, skip = () => false) => {
+    const out = [], R = [...Array(rows).keys()], C = [...Array(cols).keys()];
+    for (const i of rowsDown ? R : R.reverse()) for (const j of colsRight ? C : [...C].reverse()) if (!skip(i, j)) out.push([i, j]);
+    return out;
+  };
+
+  // graphFrames({ pos: place({...}), edges: [["a","b",w]], directed },
+  //             [{ hl: ["a"], done: ["b"], dim: [], edges: { "a-b": "hl" }, under: { a: "d=0" }, note }, ...])
+  // Edge marks are keyed "u-v" (either direction for undirected graphs) and persist only within a step.
+  function graphFrames(G, steps) {
+    return steps.map(s => ({
+      html: graph(G.pos, G.edges, { directed: G.directed,
+        nodeCls: v => markOf(s, v),
+        edgeCls: (a, b) => (s.edges || {})[a + "-" + b] || (!G.directed && (s.edges || {})[b + "-" + a]) || "",
+        under: v => (s.under || {})[v] ?? "" }),
+      note: s.note || "" }));
+  }
+
   function binarySearch(p) {
     const A = limit(nums(p.array), 16, "items").slice().sort((x, y) => x - y), t = Number(p.target), F = [];
     let lo = 0, hi = A.length;
