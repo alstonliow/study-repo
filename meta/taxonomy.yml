@@ -84,10 +84,7 @@ parts:
           - basic-sequences
           - solving-recurrences
           - fibonacci
-          - limits
           - big-o
-          - sums-and-series
-          - approximating-sums
       - id: math/discrete/number-theory
         title: Number Theory
         desc: Divisibility, gcd, modular arithmetic, Diffie–Hellman
@@ -145,17 +142,19 @@ parts:
           - secret-sharing
           - erasure-codes
           - reed-solomon-codes
-  - title: Calculus
+  - title: Single Variable Calculus
     field: Mathematics
     branches:
-      - id: math/calculus/limits
-        title: Functions, Limits and Continuity
-        desc: Graphs and symmetry of functions, limits, continuity
+      - id: math/calculus/single-variable/limits
+        title: Sequences, Functions and Limits
+        desc: Limits of sequences, sums and series, graphs and symmetry of functions, limits, continuity
         notes:   # topic order on the website
+          - limits-of-sequences
+          - sums-and-series
           - functions-and-graphs
           - limits-of-functions
           - continuity
-      - id: math/calculus/differentiation
+      - id: math/calculus/single-variable/differentiation
         title: Differentiation
         desc: The derivative, differentiation rules, chain rule, implicit differentiation, exponentials and logarithms
         notes:   # topic order on the website
@@ -165,7 +164,7 @@ parts:
           - chain-rule
           - implicit-differentiation
           - exponentials-and-logarithms
-      - id: math/calculus/applications-of-derivatives
+      - id: math/calculus/single-variable/applications-of-derivatives
         title: Applications of Differentiation
         desc: Approximation, curve sketching, optimization, related rates, Newton's method, the mean value theorem, L'Hôpital's rule
         notes:   # topic order on the website
@@ -176,7 +175,7 @@ parts:
           - newtons-method
           - mean-value-theorem
           - lhopitals-rule
-      - id: math/calculus/integrals
+      - id: math/calculus/single-variable/integrals
         title: The Definite Integral
         desc: Antiderivatives, separable differential equations, Riemann sums, the fundamental theorems
         notes:   # topic order on the website
@@ -184,7 +183,7 @@ parts:
           - separable-differential-equations
           - definite-integral
           - fundamental-theorem
-      - id: math/calculus/integration-techniques
+      - id: math/calculus/single-variable/integration-techniques
         title: Techniques of Integration
         desc: Trigonometric integrals and substitutions, partial fractions, integration by parts
         notes:   # topic order on the website
@@ -192,7 +191,7 @@ parts:
           - trigonometric-substitution
           - partial-fractions
           - integration-by-parts
-      - id: math/calculus/applications-of-integrals
+      - id: math/calculus/single-variable/applications-of-integrals
         title: Applications of Integration
         desc: Areas, volumes, average value and work, numerical integration, arclength and surface area, polar coordinates
         notes:   # topic order on the website
@@ -202,11 +201,12 @@ parts:
           - numerical-integration
           - parametric-curves-and-arclength
           - polar-coordinates
-      - id: math/calculus/series
+      - id: math/calculus/single-variable/series
         title: Improper Integrals and Series
-        desc: Improper integrals, convergence tests for series, power and Taylor series
+        desc: Improper integrals, approximating sums by integrals, convergence tests, power and Taylor series
         notes:   # topic order on the website
           - improper-integrals
+          - approximating-sums
           - infinite-series
           - taylor-series
   - title: Linear Algebra

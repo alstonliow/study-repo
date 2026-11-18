@@ -563,28 +563,28 @@ chapters:
         covers: [math/discrete/sequences/fibonacci]
       - id: "6.8"
         title: "Limits of infinite sequences"
-        covers: [math/discrete/sequences/limits]
+        covers: [math/calculus/single-variable/limits/limits-of-sequences]
       - id: "6.9"
         title: "Big-O notation"
         covers: [math/discrete/sequences/big-o]
       - id: "6.10"
         title: "Sums and summation"
-        covers: [math/discrete/sequences/sums-and-series]
+        covers: [math/calculus/single-variable/limits/sums-and-series]
       - id: "6.11"
         title: "Finite series"
-        covers: [math/discrete/sequences/sums-and-series]
+        covers: [math/calculus/single-variable/limits/sums-and-series]
       - id: "6.12"
         title: "Finite arithmetic series"
-        covers: [math/discrete/sequences/sums-and-series]
+        covers: [math/calculus/single-variable/limits/sums-and-series]
       - id: "6.13"
         title: "Finite geometric series"
-        covers: [math/discrete/sequences/sums-and-series]
+        covers: [math/calculus/single-variable/limits/sums-and-series]
       - id: "6.14"
         title: "Infinite geometric series"
-        covers: [math/discrete/sequences/sums-and-series]
+        covers: [math/calculus/single-variable/limits/sums-and-series]
       - id: "6.15"
         title: "Harmonic numbers"
-        covers: [math/discrete/sequences/sums-and-series]
+        covers: [math/calculus/single-variable/limits/sums-and-series]
   - num: 7
     title: "Number Theory"
     points:

@@ -135,7 +135,7 @@ $$f(n) = \begin{cases}
 
 Let $n=b^k$. Unrolling the recurrence $k$ times gives
 $$f(n) = a^kf(1) + cn^d\sum_{i=0}^{k-1}\left(\frac{a}{b^d}\right)^i.$$
-The geometric sum (@sec-math-discrete-sequences-sums-and-series) behaves differently according to whether the ratio $a/b^d$ is less than, equal to, or greater than $1$, giving the three cases. Also $a^k=a^{\log_b n}=n^{\log_b a}$.
+The geometric sum (@sec-math-calculus-single-variable-limits-sums-and-series) behaves differently according to whether the ratio $a/b^d$ is less than, equal to, or greater than $1$, giving the three cases. Also $a^k=a^{\log_b n}=n^{\log_b a}$.
 
 :::
 
@@ -183,7 +183,7 @@ The *generating function* of a sequence $(a_n)_{n=0}^{\infty}$ is the formal pow
 
 ::: {#exm-extra .example name="Extra"}
 
-The sequence $1,1,1,\dots$ has generating function $\sum x^n = \dfrac{1}{1-x}$ (@sec-math-discrete-sequences-sums-and-series).
+The sequence $1,1,1,\dots$ has generating function $\sum x^n = \dfrac{1}{1-x}$ (@sec-math-calculus-single-variable-limits-sums-and-series).
 
 :::
 

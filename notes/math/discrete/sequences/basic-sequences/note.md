@@ -135,6 +135,6 @@ $(a_n)$ is *harmonic* if $(1/a_n)$ is arithmetic.
 
 ::: {#exm-basic-sequences-1-4 .example}
 
-$(1/n : n\in\mathbb{N})$, i.e. $1,\frac12,\frac13,\dots$, is harmonic, since $1,2,3,\dots$ is arithmetic. Its partial sums are the harmonic numbers (@sec-math-discrete-sequences-sums-and-series).
+$(1/n : n\in\mathbb{N})$, i.e. $1,\frac12,\frac13,\dots$, is harmonic, since $1,2,3,\dots$ is arithmetic. Its partial sums are the harmonic numbers (@sec-math-calculus-single-variable-limits-sums-and-series).
 
 :::

@@ -1,7 +1,9 @@
 # MIT 18.01 Supplementary Notes (Jerison and Mattuck), the reading sections published with the Fall 2006
 # course (MIT OpenCourseWare, CC BY-NC-SA), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
 # Kept locally in raw/MIT_1801/fall-2006/readings. Locator = section letter of the Notes (G, C, MVT, ...);
-# a source key is mit1801n-G. Only the sections the notes cite are listed. Titles are our own short titles.
+# a source key is mit1801n-G. Exercises of section E are keyed by exercise group and number:
+# mit1801n-1a-q3 is Exercise 1A-3 (locator 1a). Only the sections and exercise groups used are listed.
+# Titles are our own short titles.
 id: res-mit-1801-notes
 kind: course-notes
 title: MIT 18.01 Supplementary Notes (Fall 2006)
@@ -14,8 +16,9 @@ editions:
 legacy_keys:
   prefix: mit1801n-
   edition: 2006-fall
-  pattern: ^mit1801n-(?P<section>[A-Z]+)$
+  pattern: ^mit1801n-(?P<section>[A-Z]+|[1-7][a-j])(?:-q(?P<n>\d+))?$
   label: 18.01 Notes {section}
+  problem_label: 18.01 Notes Ex. {section}-{n}
 nodes:
 - id: res-mit-1801-notes-graphing
   kind: section
@@ -57,3 +60,213 @@ nodes:
   title: Improper integrals
   at:
     2006-fall: INT
+- id: res-mit-1801-notes-exercises-1a
+  kind: exercises
+  title: "Exercises 1A: Graphing"
+  at:
+    2006-fall: 1a
+- id: res-mit-1801-notes-exercises-1b
+  kind: exercises
+  title: "Exercises 1B: Velocity and rates"
+  at:
+    2006-fall: 1b
+- id: res-mit-1801-notes-exercises-1c
+  kind: exercises
+  title: "Exercises 1C: Slope and derivative"
+  at:
+    2006-fall: 1c
+- id: res-mit-1801-notes-exercises-1d
+  kind: exercises
+  title: "Exercises 1D: Limits and continuity"
+  at:
+    2006-fall: 1d
+- id: res-mit-1801-notes-exercises-1e
+  kind: exercises
+  title: "Exercises 1E: Differentiation formulas"
+  at:
+    2006-fall: 1e
+- id: res-mit-1801-notes-exercises-1f
+  kind: exercises
+  title: "Exercises 1F: Chain rule and implicit differentiation"
+  at:
+    2006-fall: 1f
+- id: res-mit-1801-notes-exercises-1g
+  kind: exercises
+  title: "Exercises 1G: Higher derivatives"
+  at:
+    2006-fall: 1g
+- id: res-mit-1801-notes-exercises-1h
+  kind: exercises
+  title: "Exercises 1H: Exponentials and logarithms: algebra"
+  at:
+    2006-fall: 1h
+- id: res-mit-1801-notes-exercises-1i
+  kind: exercises
+  title: "Exercises 1I: Exponentials and logarithms: calculus"
+  at:
+    2006-fall: 1i
+- id: res-mit-1801-notes-exercises-1j
+  kind: exercises
+  title: "Exercises 1J: Trigonometric functions"
+  at:
+    2006-fall: 1j
+- id: res-mit-1801-notes-exercises-2a
+  kind: exercises
+  title: "Exercises 2A: Approximation"
+  at:
+    2006-fall: 2a
+- id: res-mit-1801-notes-exercises-2b
+  kind: exercises
+  title: "Exercises 2B: Curve sketching"
+  at:
+    2006-fall: 2b
+- id: res-mit-1801-notes-exercises-2c
+  kind: exercises
+  title: "Exercises 2C: Max-min problems"
+  at:
+    2006-fall: 2c
+- id: res-mit-1801-notes-exercises-2e
+  kind: exercises
+  title: "Exercises 2E: Related rates"
+  at:
+    2006-fall: 2e
+- id: res-mit-1801-notes-exercises-2g
+  kind: exercises
+  title: "Exercises 2G: Mean value theorem"
+  at:
+    2006-fall: 2g
+- id: res-mit-1801-notes-exercises-3a
+  kind: exercises
+  title: "Exercises 3A: Differentials and antiderivatives"
+  at:
+    2006-fall: 3a
+- id: res-mit-1801-notes-exercises-3b
+  kind: exercises
+  title: "Exercises 3B: Definite integrals"
+  at:
+    2006-fall: 3b
+- id: res-mit-1801-notes-exercises-3c
+  kind: exercises
+  title: "Exercises 3C: First fundamental theorem"
+  at:
+    2006-fall: 3c
+- id: res-mit-1801-notes-exercises-3d
+  kind: exercises
+  title: "Exercises 3D: Second fundamental theorem"
+  at:
+    2006-fall: 3d
+- id: res-mit-1801-notes-exercises-3e
+  kind: exercises
+  title: "Exercises 3E: Change of variables, estimating integrals"
+  at:
+    2006-fall: 3e
+- id: res-mit-1801-notes-exercises-3f
+  kind: exercises
+  title: "Exercises 3F: Separable differential equations"
+  at:
+    2006-fall: 3f
+- id: res-mit-1801-notes-exercises-3g
+  kind: exercises
+  title: "Exercises 3G: Numerical integration"
+  at:
+    2006-fall: 3g
+- id: res-mit-1801-notes-exercises-4a
+  kind: exercises
+  title: "Exercises 4A: Areas between curves"
+  at:
+    2006-fall: 4a
+- id: res-mit-1801-notes-exercises-4b
+  kind: exercises
+  title: "Exercises 4B: Volumes by slicing"
+  at:
+    2006-fall: 4b
+- id: res-mit-1801-notes-exercises-4c
+  kind: exercises
+  title: "Exercises 4C: Volumes by shells"
+  at:
+    2006-fall: 4c
+- id: res-mit-1801-notes-exercises-4d
+  kind: exercises
+  title: "Exercises 4D: Average value"
+  at:
+    2006-fall: 4d
+- id: res-mit-1801-notes-exercises-4e
+  kind: exercises
+  title: "Exercises 4E: Parametric equations"
+  at:
+    2006-fall: 4e
+- id: res-mit-1801-notes-exercises-4f
+  kind: exercises
+  title: "Exercises 4F: Arclength"
+  at:
+    2006-fall: 4f
+- id: res-mit-1801-notes-exercises-4g
+  kind: exercises
+  title: "Exercises 4G: Surface area"
+  at:
+    2006-fall: 4g
+- id: res-mit-1801-notes-exercises-4h
+  kind: exercises
+  title: "Exercises 4H: Polar coordinate graphs"
+  at:
+    2006-fall: 4h
+- id: res-mit-1801-notes-exercises-4i
+  kind: exercises
+  title: "Exercises 4I: Area in polar coordinates"
+  at:
+    2006-fall: 4i
+- id: res-mit-1801-notes-exercises-4j
+  kind: exercises
+  title: "Exercises 4J: Other applications"
+  at:
+    2006-fall: 4j
+- id: res-mit-1801-notes-exercises-5a
+  kind: exercises
+  title: "Exercises 5A: Inverse trigonometric and hyperbolic functions"
+  at:
+    2006-fall: 5a
+- id: res-mit-1801-notes-exercises-5b
+  kind: exercises
+  title: "Exercises 5B: Direct substitution"
+  at:
+    2006-fall: 5b
+- id: res-mit-1801-notes-exercises-5c
+  kind: exercises
+  title: "Exercises 5C: Trigonometric integrals"
+  at:
+    2006-fall: 5c
+- id: res-mit-1801-notes-exercises-5d
+  kind: exercises
+  title: "Exercises 5D: Inverse substitution"
+  at:
+    2006-fall: 5d
+- id: res-mit-1801-notes-exercises-5e
+  kind: exercises
+  title: "Exercises 5E: Partial fractions"
+  at:
+    2006-fall: 5e
+- id: res-mit-1801-notes-exercises-5f
+  kind: exercises
+  title: "Exercises 5F: Integration by parts"
+  at:
+    2006-fall: 5f
+- id: res-mit-1801-notes-exercises-6a
+  kind: exercises
+  title: "Exercises 6A: Indeterminate forms"
+  at:
+    2006-fall: 6a
+- id: res-mit-1801-notes-exercises-6b
+  kind: exercises
+  title: "Exercises 6B: Improper integrals"
+  at:
+    2006-fall: 6b
+- id: res-mit-1801-notes-exercises-7a
+  kind: exercises
+  title: "Exercises 7A: Series: basic definitions"
+  at:
+    2006-fall: 7a
+- id: res-mit-1801-notes-exercises-7b
+  kind: exercises
+  title: "Exercises 7B: Convergence tests"
+  at:
+    2006-fall: 7b

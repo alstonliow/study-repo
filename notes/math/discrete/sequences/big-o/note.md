@@ -1,7 +1,7 @@
 ---
 title: "Big-O notation"
 sources: [fit1058-cn-6.9]
-requires: [math/discrete/sequences/limits]
+requires: [math/discrete/sequences/basic-sequences]
 status: draft
 ---
 
@@ -58,7 +58,7 @@ An algorithm has *worst-case time complexity* $O(g(n))$ if, on every input of si
 
 ::: {#exm-linear-search-extra .example name="Linear search (extra)"}
 
-To search a list of $n$ items for a target, compare with each item in turn until it is found or the list ends. In the worst case (target absent or last) this takes $n$ comparisons, $\Theta(n)$; in the best case (target first) it takes $1$. If the target is present and equally likely to be in each position, the average is $\frac{1+2+\cdots+n}{n}=\frac{n+1}{2}=\Theta(n)$ comparisons (@sec-math-discrete-sequences-sums-and-series).
+To search a list of $n$ items for a target, compare with each item in turn until it is found or the list ends. In the worst case (target absent or last) this takes $n$ comparisons, $\Theta(n)$; in the best case (target first) it takes $1$. If the target is present and equally likely to be in each position, the average is $\frac{1+2+\cdots+n}{n}=\frac{n+1}{2}=\Theta(n)$ comparisons (@sec-math-calculus-single-variable-limits-sums-and-series).
 
 :::
 

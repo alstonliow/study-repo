@@ -50,6 +50,6 @@ Expected throws to see each new face of a die: $1, \tfrac65, \tfrac64, \tfrac63,
 
 ::: {#rmk-coupon-collector-1 .remark name="The last few are expensive"}
 
-Since $H_n\approx\ln n$ (@sec-math-discrete-sequences-sums-and-series), collecting all $n$ types takes about $n\ln n$ draws, not about $n$. The early types come quickly; the last one alone takes $n$ draws on average.
+Since $H_n\approx\ln n$ (@sec-math-calculus-single-variable-limits-sums-and-series), collecting all $n$ types takes about $n\ln n$ draws, not about $n$. The early types come quickly; the last one alone takes $n$ draws on average.
 
 :::

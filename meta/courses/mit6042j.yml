@@ -467,10 +467,10 @@ chapters:
     points:
       - id: "13.1"
         title: "Sums"
-        covers: [math/discrete/sequences/sums-and-series, math/discrete/sequences/approximating-sums]
+        covers: [math/calculus/single-variable/limits/sums-and-series, math/calculus/single-variable/series/approximating-sums]
       - id: "13.7"
         title: "Asymptotic notation"
-        covers: [math/discrete/sequences/limits, math/discrete/sequences/big-o]
+        covers: [math/calculus/single-variable/limits/limits-of-sequences, math/discrete/sequences/big-o]
   - num: 14
     title: "Cardinality rules"
     points:

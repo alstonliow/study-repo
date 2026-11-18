@@ -1,7 +1,7 @@
 ---
 title: "Probability and Sample Spaces"
 sources: [fit1058-cn-9.1, fit1058-cn-9.2, fit1058-cn-9.3, cs70-13.3.3, cs70-13.3.4]
-requires: [math/discrete/counting/sum-and-product-rules, math/discrete/sequences/sums-and-series]
+requires: [math/discrete/counting/sum-and-product-rules, math/calculus/single-variable/limits/sums-and-series]
 aliases: [math/probability/sample-spaces]   # old ids (moved)
 status: draft
 ---
@@ -51,7 +51,7 @@ Always $\Pr(\emptyset)=0$ and $\Pr(U)=1$. The equally likely case is $\Pr(x)=1/|
 
 ::: {#exm-infinite-sample-space .example name="Infinite sample space"}
 
-Let $U=\mathbb{N}$ with $\Pr(n)=1/2^n$. This is a valid assignment, since $\sum_{n\ge1}1/2^n=\frac{1/2}{1-1/2}=1$ (@sec-math-discrete-sequences-sums-and-series). Then
+Let $U=\mathbb{N}$ with $\Pr(n)=1/2^n$. This is a valid assignment, since $\sum_{n\ge1}1/2^n=\frac{1/2}{1-1/2}=1$ (@sec-math-calculus-single-variable-limits-sums-and-series). Then
 $$\Pr(\text{odd}) = \sum_{k=1}^\infty \frac{1}{2^{2k-1}} = \frac{1/2}{1-1/4} = \frac{2}{3}.$$
 
 :::
