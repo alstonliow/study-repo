@@ -1,13 +1,32 @@
 <!-- Runnable Python code blocks (SPEC §5.9): ```{.python .runnable packages="numpy"}.
-     Adds Run / Edit / Reset under each block. Pyodide (pinned) loads from the CDN
-     on the first Run only; each run gets a fresh namespace. Hidden in print. -->
+     Wraps each block in a cell with a Run / Edit / Reset bar and an output panel.
+     Pyodide (pinned) loads from the CDN on the first Run only; each run gets a
+     fresh namespace; runs are queued. Ctrl/Cmd+Enter runs while editing.
+     Colours come from the theme variables of styles.css. Hidden bar in print. -->
 <style>
-.run-bar { display: flex; gap: .4rem; margin: -.6rem 0 .8rem; }
-.run-edit { width: 100%; font-family: var(--bs-font-monospace); font-size: .875em;
-  border: 1px solid var(--bs-border-color); border-radius: .25rem; padding: .5rem; }
-.run-out { white-space: pre-wrap; margin: 0 0 1rem; }
-.run-out.err { color: var(--bs-danger); }
-@media print { .run-bar, .run-edit, .run-out { display: none !important; } }
+.run-cell { border: 1px solid var(--rule); border-radius: 6px; margin: 1rem 0; overflow: hidden; }
+.run-cell div.sourceCode, .run-cell pre.sourceCode { margin: 0 !important; border: 0 !important; border-radius: 0 !important; }
+.run-edit { display: block; width: 100%; border: 0; resize: vertical; padding: .6rem .8rem; margin: 0;
+  font-family: var(--bs-font-monospace); font-size: .875em; line-height: 1.5; tab-size: 4;
+  background: color-mix(in srgb, var(--accent) var(--tint), transparent); color: inherit; outline: none; }
+.run-bar { display: flex; align-items: center; gap: .35rem; padding: .3rem .5rem;
+  border-top: 1px solid var(--rule); background: var(--sidebg); font-size: .8rem; }
+.run-bar button { font: inherit; line-height: 1.4; padding: .15rem .6rem; border-radius: 4px; cursor: pointer;
+  border: 1px solid var(--rule); background: transparent; color: inherit; }
+.run-bar button:hover { border-color: var(--accent); color: var(--accent); }
+.run-bar button.run-go { background: var(--accent); border-color: var(--accent); color: var(--sidebg); font-weight: 600; }
+.run-bar button.run-go:hover { filter: brightness(1.1); color: var(--sidebg); }
+.run-bar button:disabled { opacity: .6; cursor: wait; }
+.run-meta { margin-left: auto; opacity: .65; font-family: var(--bs-font-monospace); }
+.run-out { border-top: 1px solid var(--rule); padding: .5rem .8rem; }
+.run-out::before { content: "Output"; display: block; font-size: .7rem; letter-spacing: .06em;
+  text-transform: uppercase; opacity: .6; margin-bottom: .2rem; }
+.run-out pre { margin: 0; padding: 0; border: 0; background: none; white-space: pre-wrap;
+  font-size: .85em; max-height: 24rem; overflow: auto; }
+.run-out.busy pre { opacity: .65; font-style: italic; }
+.run-out.err { border-left: 3px solid var(--bs-danger); }
+.run-out.err pre { color: var(--bs-danger); }
+@media print { .run-bar, .run-edit, .run-out { display: none !important; } .run-cell { border: 0; } }
 </style>
 <script>
 (() => {
@@ -21,41 +40,45 @@
       s.onload = () => loadPyodide({ indexURL: PYODIDE }).then(async py => {
         await py.loadPackage("micropip"); ok(py);
       }, fail);
-      s.onerror = () => fail(new Error("could not load Pyodide"));
+      s.onerror = () => { ready = null; fail(new Error("Could not load Python (offline?)")); };
       document.head.appendChild(s);
     });
     return ready;
   }
   let queue = Promise.resolve();         // runs share stdout, so one at a time
-  function run(code, packages, out) {
-    queue = queue.then(() => runNow(code, packages, out));
+  function run(cell) {
+    cell.go.disabled = true;
+    queue = queue.then(() => runNow(cell)).finally(() => { cell.go.disabled = false; });
   }
-  async function runNow(code, packages, out) {
-    out.className = "run-out"; out.hidden = false; out.textContent = "Loading Python…";
+  async function runNow({ code, packages, out, text }) {
+    const show = (msg, cls) => { out.className = "run-out " + (cls || ""); out.hidden = false; text.textContent = msg; };
+    show(ready ? "Running…" : "Loading Python (first run only)…", "busy");
     try {
       const py = await pyodide();
       const need = packages.filter(p => !loaded.has(p));
       if (need.length) {
-        out.textContent = "Installing " + need.join(", ") + "…";
+        show("Installing " + need.join(", ") + "…", "busy");
         await py.pyimport("micropip").install(need);
         need.forEach(p => loaded.add(p));
       }
-      let text = "";
-      py.setStdout({ batched: s => { text += s + "\n"; } });
-      py.setStderr({ batched: s => { text += s + "\n"; } });
-      out.textContent = "Running…";
+      let buf = "";
+      py.setStdout({ batched: s => { buf += s + "\n"; } });
+      py.setStderr({ batched: s => { buf += s + "\n"; } });
+      show("Running…", "busy");
       const ns = py.globals.get("dict")();
-      try { await py.runPythonAsync(code, { globals: ns }); } finally { ns.destroy(); }
-      out.textContent = text || "(no output)";
+      const t0 = performance.now();
+      try { await py.runPythonAsync(code(), { globals: ns }); } finally { ns.destroy(); }
+      show(buf.replace(/\n$/, "") || "(no output)");
+      out.title = `ran in ${Math.round(performance.now() - t0)} ms`;
     } catch (e) {
-      out.classList.add("err");
-      out.textContent = String(e.message || e).split("\n").filter(l => l.trim()).slice(-4).join("\n");
+      const lines = String(e.message || e).split("\n").filter(l => l.trim());
+      const own = lines.findIndex(l => l.includes('File "<exec>"'));   // drop Pyodide's own frames
+      show((own >= 0 ? lines.slice(own) : lines.slice(-4)).join("\n"), "err");
     }
   }
-  function button(label, onclick) {
+  function button(label, title, onclick) {
     const b = document.createElement("button");
-    b.type = "button"; b.className = "btn btn-sm btn-outline-primary"; b.textContent = label;
-    b.onclick = onclick; return b;
+    b.type = "button"; b.textContent = label; b.title = title; b.onclick = onclick; return b;
   }
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("pre.runnable").forEach(pre => {
@@ -63,21 +86,35 @@
       const holder = pre.closest("[data-packages]") || block.querySelector("[data-packages]");
       const packages = ((holder && holder.dataset.packages) || "").split(",").map(s => s.trim()).filter(Boolean);
       const original = pre.querySelector("code").textContent;
+      const box = document.createElement("div");
+      box.className = "run-cell";
+      block.before(box);
       const edit = document.createElement("textarea");
       edit.className = "run-edit"; edit.hidden = true; edit.spellcheck = false;
-      const out = document.createElement("pre");
+      const out = document.createElement("div");
       out.hidden = true;
+      const text = out.appendChild(document.createElement("pre"));
       const bar = document.createElement("div");
       bar.className = "run-bar";
-      const code = () => edit.hidden ? original : edit.value;
-      bar.append(
-        button("Run", () => run(code(), packages, out)),
-        button("Edit", () => {
-          edit.value = code(); edit.rows = Math.min(30, edit.value.split("\n").length + 1);
-          edit.hidden = false; block.hidden = true;
+      const cell = { packages, out, text, code: () => edit.hidden ? original : edit.value };
+      cell.go = button("▶ Run", "Run this code in your browser", () => run(cell));
+      cell.go.className = "run-go";
+      const meta = document.createElement("span");
+      meta.className = "run-meta";
+      meta.textContent = ["Python", ...packages].join(" · ");
+      const editing = on => { edit.hidden = !on; block.hidden = on; };
+      bar.append(cell.go,
+        button("Edit", "Change the code, then run it", () => {
+          if (edit.hidden) { edit.value = cell.code(); edit.rows = Math.min(30, edit.value.split("\n").length + 1); }
+          editing(true); edit.focus();
         }),
-        button("Reset", () => { edit.hidden = true; block.hidden = false; out.hidden = true; }));
-      block.after(edit, bar, out);
+        button("Reset", "Back to the original code", () => { editing(false); out.hidden = true; }),
+        meta);
+      edit.addEventListener("keydown", e => {
+        if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); run(cell); }
+        if (e.key === "Tab" && !e.shiftKey) { e.preventDefault(); edit.setRangeText("    ", edit.selectionStart, edit.selectionEnd, "end"); }
+      });
+      box.append(block, edit, bar, out);
     });
   });
 })();
