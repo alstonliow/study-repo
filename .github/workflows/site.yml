@@ -3,10 +3,21 @@
 # This workflow only reads the repository; it never commits or pushes.
 name: Publish site
 
+# Speed: PDFs are slow (about 15 minutes), so a push does not rebuild them. They are
+# rebuilt every Monday and when the workflow is run by hand with "Build PDFs" ticked;
+# other runs reuse the last PDFs from the cache, so the Downloads page keeps working.
+# A commit whose message contains [skip ci] does not trigger this workflow at all.
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "0 3 * * 1"   # Mondays 03:00 UTC
   workflow_dispatch:
+    inputs:
+      pdfs:
+        description: "Build PDFs"
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -34,14 +45,17 @@ jobs:
         with:
           version: 1.11.9
 
+      # The apt packages are cached: a plain apt-get install sometimes took over 30
+      # minutes when the Ubuntu mirror was slow. Change "version" to refresh the cache.
       - name: Install TeX (for TikZ -> SVG) and pdftocairo
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
-            texlive-latex-base texlive-latex-recommended texlive-latex-extra \
-            texlive-pictures texlive-science texlive-fonts-recommended \
-            texlive-xetex fonts-lmodern lmodern \
-            poppler-utils
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: >-
+            texlive-latex-base texlive-latex-recommended texlive-latex-extra
+            texlive-pictures texlive-science texlive-fonts-recommended
+            texlive-xetex fonts-lmodern lmodern poppler-utils
+          execute_install_scripts: true
+          version: "1"
 
       - name: Restore compiled drawings
         uses: actions/cache@v4
@@ -56,10 +70,30 @@ jobs:
       - name: Check notes
         run: make check
 
+      - name: Decide whether to build PDFs
+        id: pdfs
+        run: echo "build=${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.pdfs) }}" >> "$GITHUB_OUTPUT"
+
+      - name: Restore last PDFs
+        if: steps.pdfs.outputs.build != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: out/pdf
+          key: pdfs-${{ github.run_id }}
+          restore-keys: pdfs-
+
       # PDFs are optional: if LaTeX fails, the website is still published
       - name: Build PDFs
+        if: steps.pdfs.outputs.build == 'true'
         run: make pdf
         continue-on-error: true
+
+      - name: Save PDFs
+        if: steps.pdfs.outputs.build == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: out/pdf
+          key: pdfs-${{ github.run_id }}
 
       - name: Build site
         run: make site
