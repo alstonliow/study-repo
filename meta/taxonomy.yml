@@ -145,6 +145,67 @@ parts:
           - secret-sharing
           - erasure-codes
           - reed-solomon-codes
+  - title: Linear Algebra
+    field: Mathematics
+    branches:
+      - id: math/linear-algebra/systems
+        title: Systems of Equations
+        desc: Vectors, elimination, matrix multiplication and inverses, A = LU, transposes and permutations
+        notes:   # topic order on the website
+          - vectors-and-dot-products
+          - geometry-of-linear-equations
+          - elimination
+          - matrix-multiplication
+          - inverse-matrices
+          - lu-factorization
+          - transposes-and-permutations
+      - id: math/linear-algebra/vector-spaces
+        title: Vector Spaces
+        desc: Subspaces, nullspace, solving Ax = b, basis and dimension, the four fundamental subspaces
+        notes:   # topic order on the website
+          - vector-spaces-and-subspaces
+          - nullspace
+          - solving-ax-b
+          - independence-basis-dimension
+          - four-fundamental-subspaces
+          - matrix-spaces-and-rank-one
+          - incidence-matrices
+      - id: math/linear-algebra/orthogonality
+        title: Orthogonality
+        desc: Orthogonal subspaces, projections, least squares, Gram–Schmidt, Fourier series
+        notes:   # topic order on the website
+          - orthogonal-subspaces
+          - projections
+          - least-squares
+          - orthonormal-bases-and-gram-schmidt
+          - fourier-series
+      - id: math/linear-algebra/determinants
+        title: Determinants
+        desc: Properties, formulas and cofactors, Cramer's rule, inverses and volume
+        notes:   # topic order on the website
+          - properties-of-determinants
+          - determinant-formulas
+          - cramers-rule-and-volume
+      - id: math/linear-algebra/eigenvalues
+        title: Eigenvalues
+        desc: Eigenvalues, diagonalization, differential equations, Markov matrices, symmetric and complex matrices, Jordan form
+        notes:   # topic order on the website
+          - eigenvalues-and-eigenvectors
+          - diagonalization
+          - linear-differential-equations
+          - markov-matrices
+          - symmetric-matrices
+          - complex-matrices
+          - similar-matrices-and-jordan-form
+      - id: math/linear-algebra/positive-definite
+        title: Positive Definite Matrices and SVD
+        desc: Positive definite matrices, singular value decomposition, linear transformations, change of basis, pseudoinverse
+        notes:   # topic order on the website
+          - positive-definite-matrices
+          - singular-value-decomposition
+          - linear-transformations
+          - change-of-basis
+          - pseudoinverse
   - title: Probability and Statistics
     field: Mathematics
     branches:

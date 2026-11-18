@@ -37,6 +37,7 @@ ids are not affected by this grouping.
 | Field | Part in `taxonomy.yml` | Branches (folders) |
 |---|---|---|
 | Mathematics | Discrete Mathematics | `math/discrete/*` |
+| Mathematics | Linear Algebra | `math/linear-algebra/*` (systems, vector spaces, orthogonality, determinants, eigenvalues, positive definite matrices and SVD) |
 | Mathematics | Probability and Statistics | `math/probability/*` |
 | Computer Science | Algorithms | `cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`, `cs/algorithm-design`, `cs/models-of-computation` |
 | Computer Science | Theory of Computation | `cs/theory` (Computability and Complexity) |
@@ -58,7 +59,7 @@ Calculus and Linear Algebra come before Probability and Statistics because
 continuous probability and statistics build on them. Knowledge parts of research
 methods (experimental design, statistical evaluation) go into statistics or machine
 learning; reading, reproducing and writing are practice, recorded privately, not
-a field. Course order for the next additions: MIT 18.06, 18.01/18.02, 6.041 with 18.05.
+a field. Course order for the next additions: 18.01/18.02, 6.041 with 18.05 (18.06 done).
 
 ## 3. Where the sources went
 
@@ -75,6 +76,7 @@ a field. Course order for the next additions: MIT 18.06, 18.01/18.02, 6.041 with
 | CS70 Note 21 | `math/probability/markov-chains` |
 | MIT 6.006 lecture and recitation notes (Spring 2020) | `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming` (new branches); `cs/algorithms` (model of computation), `cs/theory` (complexity classes); the general master theorem in `math/discrete/sequences/solving-recurrences` |
 | MIT 6.046 lecture and recitation notes (Spring 2015) | `cs/algorithm-design`, `cs/models-of-computation`, `cs/cryptography` (new branches); further notes in `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming` and `cs/theory`; a matrix-multiplication section in `all-pairs-shortest-paths` |
+| MIT 18.06SC lecture summaries (Fall 2011), Lectures 1–33 | `math/linear-algebra/*` (new part and six branches); the linear-algebra side of Markov matrices, the Fourier matrix and incidence matrices, linked to the existing notes |
 | MIT 6.042J textbook (MCS 2015), Chapters 1–21 | mostly existing branches; new notes in `proof` (well ordering, state machines, structural induction), `relations` (partial orders), `graph` (directed graphs, isomorphism, colouring, communication networks), `sequences` (approximating sums), `counting` (generating functions), `probability/discrete` (conditional expectation, Chernoff bounds) |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
@@ -104,3 +106,6 @@ course files (`meta/courses/`), not here.
   Computation). No id changed.
 - 2026-11-18: planned structure of three fields recorded; the part Probability renamed
   Probability and Statistics.
+- 2026-11-18: MIT 18.06 (Linear Algebra) added as a course; new part Linear Algebra (field Mathematics,
+  between Discrete Mathematics and Probability and Statistics) with six branches and 34 notes; homework from
+  the Spring 2010 problem sets (128 problems).

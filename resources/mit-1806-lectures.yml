@@ -1,0 +1,177 @@
+# MIT 18.06SC Linear Algebra, Fall 2011, lecture summaries (MIT OpenCourseWare, CC BY-NC-SA), as a
+# resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_1806/sc-fall-2011 (session summaries Ses1.1-Ses3.8). Locator = lecture
+# number of Strang's 18.06 lectures (Session 1.k = Lecture k, 2.k = Lecture 13+k, 3.1-3.7 =
+# Lectures 25-31, 3.8 = Lecture 33; Lectures 13, 24b, 32 and 34 are reviews and are not listed).
+# A source key is mit1806-15. Titles are our own short titles. Node ids are stable.
+id: res-mit-1806-lectures
+kind: course-notes
+title: MIT 18.06SC Lecture Summaries (Fall 2011)
+status: draft
+courses:
+- mit1806
+editions:
+- id: 2011-fall
+  current: true
+legacy_keys:
+  prefix: mit1806-
+  edition: 2011-fall
+  pattern: ^mit1806-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 18.06 L{section}
+  problem_label: 18.06 L{section} Q{n}
+nodes:
+- id: res-mit-1806-lectures-geometry-of-linear-equations
+  kind: lecture
+  title: The geometry of linear equations
+  at:
+    2011-fall: '1'
+- id: res-mit-1806-lectures-elimination
+  kind: lecture
+  title: Elimination with matrices
+  at:
+    2011-fall: '2'
+- id: res-mit-1806-lectures-multiplication-and-inverses
+  kind: lecture
+  title: Multiplication and inverse matrices
+  at:
+    2011-fall: '3'
+- id: res-mit-1806-lectures-lu
+  kind: lecture
+  title: Factorization into A = LU
+  at:
+    2011-fall: '4'
+- id: res-mit-1806-lectures-transposes-permutations-spaces
+  kind: lecture
+  title: Transposes, permutations, vector spaces
+  at:
+    2011-fall: '5'
+- id: res-mit-1806-lectures-column-space-nullspace
+  kind: lecture
+  title: Column space and nullspace
+  at:
+    2011-fall: '6'
+- id: res-mit-1806-lectures-solving-ax-0
+  kind: lecture
+  title: Solving Ax = 0
+  at:
+    2011-fall: '7'
+- id: res-mit-1806-lectures-solving-ax-b
+  kind: lecture
+  title: Solving Ax = b
+  at:
+    2011-fall: '8'
+- id: res-mit-1806-lectures-independence-basis-dimension
+  kind: lecture
+  title: Independence, basis and dimension
+  at:
+    2011-fall: '9'
+- id: res-mit-1806-lectures-four-subspaces
+  kind: lecture
+  title: The four fundamental subspaces
+  at:
+    2011-fall: '10'
+- id: res-mit-1806-lectures-matrix-spaces
+  kind: lecture
+  title: Matrix spaces, rank one, small-world graphs
+  at:
+    2011-fall: '11'
+- id: res-mit-1806-lectures-graphs-networks
+  kind: lecture
+  title: Graphs, networks, incidence matrices
+  at:
+    2011-fall: '12'
+- id: res-mit-1806-lectures-orthogonal-subspaces
+  kind: lecture
+  title: Orthogonal vectors and subspaces
+  at:
+    2011-fall: '14'
+- id: res-mit-1806-lectures-projections
+  kind: lecture
+  title: Projections onto subspaces
+  at:
+    2011-fall: '15'
+- id: res-mit-1806-lectures-least-squares
+  kind: lecture
+  title: Projection matrices and least squares
+  at:
+    2011-fall: '16'
+- id: res-mit-1806-lectures-gram-schmidt
+  kind: lecture
+  title: Orthogonal matrices and Gram–Schmidt
+  at:
+    2011-fall: '17'
+- id: res-mit-1806-lectures-determinant-properties
+  kind: lecture
+  title: Properties of determinants
+  at:
+    2011-fall: '18'
+- id: res-mit-1806-lectures-determinant-formulas
+  kind: lecture
+  title: Determinant formulas and cofactors
+  at:
+    2011-fall: '19'
+- id: res-mit-1806-lectures-cramer-inverse-volume
+  kind: lecture
+  title: Cramer's rule, inverse matrix, volume
+  at:
+    2011-fall: '20'
+- id: res-mit-1806-lectures-eigenvalues
+  kind: lecture
+  title: Eigenvalues and eigenvectors
+  at:
+    2011-fall: '21'
+- id: res-mit-1806-lectures-diagonalization
+  kind: lecture
+  title: Diagonalization and powers
+  at:
+    2011-fall: '22'
+- id: res-mit-1806-lectures-differential-equations
+  kind: lecture
+  title: Differential equations and exp(At)
+  at:
+    2011-fall: '23'
+- id: res-mit-1806-lectures-markov-fourier
+  kind: lecture
+  title: Markov matrices, Fourier series
+  at:
+    2011-fall: '24'
+- id: res-mit-1806-lectures-symmetric-positive-definite
+  kind: lecture
+  title: Symmetric matrices and positive definiteness
+  at:
+    2011-fall: '25'
+- id: res-mit-1806-lectures-complex-fft
+  kind: lecture
+  title: Complex matrices, fast Fourier transform
+  at:
+    2011-fall: '26'
+- id: res-mit-1806-lectures-positive-definite-minima
+  kind: lecture
+  title: Positive definite matrices and minima
+  at:
+    2011-fall: '27'
+- id: res-mit-1806-lectures-similar-jordan
+  kind: lecture
+  title: Similar matrices and Jordan form
+  at:
+    2011-fall: '28'
+- id: res-mit-1806-lectures-svd
+  kind: lecture
+  title: Singular value decomposition
+  at:
+    2011-fall: '29'
+- id: res-mit-1806-lectures-linear-transformations
+  kind: lecture
+  title: Linear transformations and their matrices
+  at:
+    2011-fall: '30'
+- id: res-mit-1806-lectures-change-of-basis
+  kind: lecture
+  title: Change of basis, image compression
+  at:
+    2011-fall: '31'
+- id: res-mit-1806-lectures-pseudoinverse
+  kind: lecture
+  title: Left and right inverses, pseudoinverse
+  at:
+    2011-fall: '33'

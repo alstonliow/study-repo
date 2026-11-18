@@ -1,0 +1,73 @@
+# MIT 18.06 Linear Algebra, Spring 2010, problem sets 1-10 (MIT OpenCourseWare, CC BY-NC-SA), as a
+# resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_1806/spring-2010/assignments. Locator = problem set number; a source key
+# is mit1806s10-4-q3 (problem set 4, third problem in the set's order). The problems are exercises
+# from Strang, Introduction to Linear Algebra (4th ed.), as printed in the problem sets; they are
+# copied as exercises (homework rule, owner decision 2026-11-18) without point values; solutions
+# are our own. Titles are our own short titles. Node ids are stable.
+id: res-mit-1806-s10-psets
+kind: homework
+title: MIT 18.06 Problem Sets (Spring 2010)
+status: draft
+courses:
+- mit1806
+editions:
+- id: 2010-spring
+  current: true
+legacy_keys:
+  prefix: mit1806s10-
+  edition: 2010-spring
+  pattern: ^mit1806s10-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: 18.06 S10 PS {section}
+  problem_label: 18.06 S10 PS {section} Q{n}
+nodes:
+- id: res-mit-1806-s10-psets-ps1
+  kind: homework
+  title: Vectors, linear combinations, elimination
+  at:
+    2010-spring: '1'
+- id: res-mit-1806-s10-psets-ps2
+  kind: homework
+  title: Inverses, LU, transposes, vector spaces
+  at:
+    2010-spring: '2'
+- id: res-mit-1806-s10-psets-ps3
+  kind: homework
+  title: Column space, nullspace, Ax = b
+  at:
+    2010-spring: '3'
+- id: res-mit-1806-s10-psets-ps4
+  kind: homework
+  title: Independence, basis, the four subspaces, graphs
+  at:
+    2010-spring: '4'
+- id: res-mit-1806-s10-psets-ps5
+  kind: homework
+  title: Orthogonality and projections
+  at:
+    2010-spring: '5'
+- id: res-mit-1806-s10-psets-ps6
+  kind: homework
+  title: Least squares, Gram–Schmidt, determinants
+  at:
+    2010-spring: '6'
+- id: res-mit-1806-s10-psets-ps7
+  kind: homework
+  title: 'Determinants: cofactors, Cramer, volume'
+  at:
+    2010-spring: '7'
+- id: res-mit-1806-s10-psets-ps8
+  kind: homework
+  title: Eigenvalues and diagonalization
+  at:
+    2010-spring: '8'
+- id: res-mit-1806-s10-psets-ps9
+  kind: homework
+  title: Differential equations, Markov matrices, symmetric matrices
+  at:
+    2010-spring: '9'
+- id: res-mit-1806-s10-psets-ps10
+  kind: homework
+  title: Positive definite matrices, similar matrices, SVD, linear transformations
+  at:
+    2010-spring: '10'

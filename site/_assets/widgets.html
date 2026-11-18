@@ -474,6 +474,59 @@
     return F;
   }
 
+  // ---------- linear algebra (MIT 18.06) ----------
+  const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; };
+  const fr = (n, d = 1) => { if (d < 0) { n = -n; d = -d; } const g = gcd(n, d); return [n / g, d / g]; };
+  const fsub = (a, b) => fr(a[0] * b[1] - b[0] * a[1], a[1] * b[1]), fmul = (a, b) => fr(a[0] * b[0], a[1] * b[1]), fdiv = (a, b) => fr(a[0] * b[1], a[1] * b[0]);
+  const fstr = a => a[1] === 1 ? String(a[0]) : `${a[0]}/${a[1]}`;
+  const matrix = (s, maxR, maxC) => {
+    const rows = s.split(";").map(r => nums(r)).filter(r => r.length);
+    if (!rows.length || rows.some(r => r.length !== rows[0].length)) throw new Error("rows must have equal length, separated by ;");
+    if (rows.length > maxR || rows[0].length > maxC) throw new Error(`at most ${maxR} rows and ${maxC} columns, please`);
+    if (rows.flat().some(v => Math.abs(v) > 99)) throw new Error("entries from −99 to 99, please");
+    return rows;
+  };
+
+  function elimination(p) {
+    const M = matrix(p.m, 4, 5).map(r => r.map(v => fr(v))), m = M.length, n = M[0].length, F = [];
+    const pic = (cls, note) => F.push({ html: table([...Array(n).keys()].map(j => j === n - 1 && p.aug !== "no" ? "b" : `col ${j + 1}`), M.map(r => r.map(fstr)), cls, M.map((_, i) => `row ${i + 1}`)), note });
+    pic(() => "", "The augmented matrix [A b]. Elimination works column by column.");
+    let r = 0;
+    for (let c = 0; c < n - 1 && r < m; c++) {
+      let k = r; while (k < m && M[k][c][0] === 0) k++;
+      if (k === m) { pic((i, j) => j === c && i >= r ? "dim" : "", `Column ${c + 1} has no nonzero entry at or below row ${r + 1}: no pivot here, a free column.`); continue; }
+      if (k !== r) { [M[k], M[r]] = [M[r], M[k]]; pic((i, j) => i === r || i === k ? "hl" : "", `Zero in the pivot position: exchange rows ${r + 1} and ${k + 1}.`); }
+      for (let i = r + 1; i < m; i++) {
+        if (M[i][c][0] === 0) continue;
+        const l = fdiv(M[i][c], M[r][c]);
+        M[i] = M[i].map((v, j) => fsub(v, fmul(l, M[r][j])));
+        pic((a, b) => a === r && b === c ? "hl" : a === i ? "done" : "", `Pivot ${fstr(M[r][c])} in row ${r + 1}. Multiplier ℓ = ${fstr(l)}: row ${i + 1} − (${fstr(l)})·row ${r + 1}.`);
+      }
+      r++;
+    }
+    const zero = M.slice(r).some(row => row.slice(0, n - 1).every(v => v[0] === 0) && row[n - 1][0] !== 0);
+    pic((i, j) => j === i && i < r ? "hl" : "", `Done: ${r} pivot${r === 1 ? "" : "s"}. ` + (zero ? "A zero row has a nonzero right side (0 = c): no solution." : r === n - 1 ? "Back substitution gives the unique solution." : "Free variables remain: infinitely many solutions (if consistent)."));
+    return F;
+  }
+
+  function gramSchmidt(p) {
+    const V = matrix(p.v, 4, 4), k = V.length, d = V[0].length, F = [], Q = [];
+    const dot = (a, b) => a.reduce((s, x, i) => s + x * b[i], 0), r3 = x => Math.abs(x) < 5e-10 ? "0" : (Math.round(x * 1000) / 1000).toString();
+    const show = (rows, labels, cls, note) => F.push({ html: table([...Array(d).keys()].map(j => `x${j + 1}`), rows.map(r => r.map(r3)), cls, labels), note });
+    show(V, V.map((_, i) => `a${i + 1}`), () => "", "The input vectors a1, a2, … (one per row).");
+    for (let i = 0; i < k; i++) {
+      let A = V[i].slice(); const coef = [];
+      Q.forEach(q => { const c = dot(q, V[i]); coef.push(c); A = A.map((x, j) => x - c * q[j]); });
+      const L = Math.sqrt(dot(A, A));
+      if (L < 1e-9) { show([...Q, A], [...Q.map((_, j) => `q${j + 1}`), `A${i + 1}`], (r) => r === Q.length ? "dim" : "done", `a${i + 1} is a combination of the earlier vectors: what is left is 0, so the vectors are dependent. Skip it.`); continue; }
+      const q = A.map(x => x / L); Q.push(q);
+      show([...Q.slice(0, -1), A, q], [...Q.slice(0, -1).map((_, j) => `q${j + 1}`), `A${i + 1}`, `q${Q.length}`], r => r === Q.length ? "hl" : r === Q.length - 1 ? "" : "done",
+        coef.length ? `A${i + 1} = a${i + 1} − ${coef.map((c, j) => `(${r3(c)})q${j + 1}`).join(" − ")}; length ${r3(L)}. Divide to get q${Q.length}.` : `q1 = a1 / ‖a1‖ = a1 / ${r3(L)}.`);
+    }
+    show(Q, Q.map((_, j) => `q${j + 1}`), () => "done", `Orthonormal: every qᵢ·qⱼ is 0 and every ‖qᵢ‖ = 1. They span the same space as the a's (dimension ${Q.length}).`);
+    return F;
+  }
+
   function bowling(p) {
     const v = limit(nums(p.values), 12, "pins"), n = v.length, B = Array(n + 2).fill(0), F = [], ch = [];
     const pic = (i, note) => F.push({ html: row(v, k => k === i || (ch[i] === 2 && k === i + 1) ? "hl" : "", { label: "pins", idx: true }) + row(B.slice(0, n + 1), k => k === i ? "hl" : k > i ? "done" : "dim", { label: "B(i)", idx: true }), note });
@@ -700,6 +753,8 @@
 
   // ---------- registry: figure id -> widget ----------
   const WIDGETS = {
+    "fig-elimination-1": { title: "Try it: elimination on [A b]", inputs: [{ name: "m", label: "rows (; between)", value: "1 1 1 6; 2 3 5 23; 4 0 5 19" }], run: elimination, speed: 1300 },
+    "fig-orthonormal-bases-and-gram-schmidt-1": { title: "Try it: Gram–Schmidt", inputs: [{ name: "v", label: "vectors (; between)", value: "1 1 0; 1 0 1; 0 1 1" }], run: gramSchmidt, speed: 1400 },
     "fig-comparison-sorting-1": { title: "Try it: binary search", inputs: [{ name: "array", label: "array", value: "1 3 4 6 8 9 11 14 17" }, { name: "target", label: "find", value: "11", short: true }], run: binarySearch },
     "fig-comparison-sorting-2": { title: "Try it: selection, insertion and merge sort", inputs: [{ name: "array", label: "array", value: "7 3 5 1 4" }, { name: "alg", label: "algorithm", value: "insertion", options: [["selection", "selection sort"], ["insertion", "insertion sort"], ["merge", "merge sort"]] }], run: sorting },
     "fig-comparison-sorting-3": { title: "Try it: merge sort", inputs: [{ name: "array", label: "array", value: "6 2 7 1 5 3 8 4" }, { name: "alg", label: "algorithm", value: "merge", options: [["merge", "merge sort"], ["insertion", "insertion sort"], ["selection", "selection sort"]] }], run: sorting },

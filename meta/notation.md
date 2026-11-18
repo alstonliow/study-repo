@@ -149,6 +149,30 @@ not here.
 | $\mid$ (number theory) | divides ($a\mid b$) |
 | $\Rightarrow$ (proof steps) | logical consequence within a proof |
 
+## Linear algebra (`math/linear-algebra`)
+
+<!-- Added 2026-11-18 with MIT 18.06. -->
+
+| Symbol | Meaning |
+|---|---|
+| $\mathbf{x},\ \mathbf{b},\ \mathbf{0}$ | column vectors (bold lowercase); $x_i$ is a component |
+| $A,\ I,\ E_{ij},\ P,\ Q$ | matrices (capital); identity, elimination, permutation or projection, orthogonal |
+| $a_{ij}$ | entry in row $i$, column $j$ |
+| $A^{\mathsf T},\ A^{-1},\ A^{+}$ | transpose, inverse, pseudoinverse |
+| $A^{\mathsf H}=\bar{A}^{\mathsf T}$ | conjugate transpose (complex matrices) |
+| $\mathbf{v}\cdot\mathbf{w}=\mathbf{v}^{\mathsf T}\mathbf{w}$ | dot product |
+| $\lVert\mathbf{v}\rVert$ | length (Euclidean norm) |
+| $\mathbb{R}^n,\ \mathbb{C}^n$ | real and complex column vectors with $n$ components |
+| $C(A),\ N(A),\ C(A^{\mathsf T}),\ N(A^{\mathsf T})$ | column space, nullspace, row space, left nullspace |
+| $\operatorname{rank}A=r$ | rank (number of pivots) |
+| $\dim V,\ V^{\perp}$ | dimension, orthogonal complement |
+| $\det A=\lvert A\rvert$ | determinant |
+| $C_{ij}$ | cofactor |
+| $\lambda,\ \mathbf{x}$ | eigenvalue, eigenvector ($A\mathbf{x}=\lambda\mathbf{x}$) |
+| $\Lambda,\ S$ | diagonal eigenvalue matrix, eigenvector matrix ($A=S\Lambda S^{-1}$) |
+| $\sigma_i,\ \Sigma,\ U,\ V$ | singular values and the SVD $A=U\Sigma V^{\mathsf T}$ |
+| $\operatorname{tr}A$ | trace |
+
 ## Probability (`math/probability`)
 
 <!-- TODO: 1058note chapter 11 has no probability section. Add symbols during migration of chapter 9. -->

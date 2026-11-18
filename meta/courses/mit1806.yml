@@ -1,0 +1,207 @@
+# MIT 18.06 course scope (meta/SPEC.md §13), drafted by Claude for owner review.
+# Outline: the lectures of 18.06 Linear Algebra as recorded in 18.06SC (Fall 2011) (resource
+# res-mit-1806-lectures); chapter = lecture number (review lectures 13, 24b, 32, 34 omitted),
+# points are our own short titles. Homework: the Spring 2010 problem sets (res-mit-1806-s10-psets);
+# each problem lives in the note it practises and is covered with that note.
+# A note taught over two lectures (nullspace: 6-7; positive definite: 25 and 27) is covered at
+# its first lecture only.
+id: mit1806
+code: MIT 18.06
+name: "Linear Algebra"
+institution: MIT
+source_prefix: mit1806
+outline_from: "MIT 18.06 Linear Algebra (Strang), lectures 1-33 as in 18.06SC Fall 2011"
+status: draft  # draft until the owner has reviewed the mapping
+
+exclude: []
+
+chapters:
+  - num: 1
+    title: "The geometry of linear equations"
+    points:
+      - id: "1.1"
+        title: "Vectors and dot products"
+        covers: [math/linear-algebra/systems/vectors-and-dot-products]
+      - id: "1.2"
+        title: "Row and column pictures"
+        covers: [math/linear-algebra/systems/geometry-of-linear-equations]
+  - num: 2
+    title: "Elimination with matrices"
+    points:
+      - id: "2.1"
+        title: "Elimination"
+        covers: [math/linear-algebra/systems/elimination]
+  - num: 3
+    title: "Multiplication and inverse matrices"
+    points:
+      - id: "3.1"
+        title: "Matrix multiplication"
+        covers: [math/linear-algebra/systems/matrix-multiplication]
+      - id: "3.2"
+        title: "Inverses"
+        covers: [math/linear-algebra/systems/inverse-matrices]
+  - num: 4
+    title: "Factorization into A = LU"
+    points:
+      - id: "4.1"
+        title: "A = LU"
+        covers: [math/linear-algebra/systems/lu-factorization]
+  - num: 5
+    title: "Transposes, permutations, spaces"
+    points:
+      - id: "5.1"
+        title: "Transposes and permutations"
+        covers: [math/linear-algebra/systems/transposes-and-permutations]
+      - id: "5.2"
+        title: "Vector spaces"
+        covers: [math/linear-algebra/vector-spaces/vector-spaces-and-subspaces]
+  - num: 6
+    title: "Column space and nullspace"
+    points:
+      - id: "6.1"
+        title: "Nullspace"
+        covers: [math/linear-algebra/vector-spaces/nullspace]
+  - num: 8
+    title: "Solving Ax = b"
+    points:
+      - id: "8.1"
+        title: "Complete solution"
+        covers: [math/linear-algebra/vector-spaces/solving-ax-b]
+  - num: 9
+    title: "Independence, basis and dimension"
+    points:
+      - id: "9.1"
+        title: "Basis and dimension"
+        covers: [math/linear-algebra/vector-spaces/independence-basis-dimension]
+  - num: 10
+    title: "The four fundamental subspaces"
+    points:
+      - id: "10.1"
+        title: "Four subspaces"
+        covers: [math/linear-algebra/vector-spaces/four-fundamental-subspaces]
+  - num: 11
+    title: "Matrix spaces and rank one"
+    points:
+      - id: "11.1"
+        title: "Matrix spaces, rank one"
+        covers: [math/linear-algebra/vector-spaces/matrix-spaces-and-rank-one]
+  - num: 12
+    title: "Graphs and networks"
+    points:
+      - id: "12.1"
+        title: "Incidence matrices"
+        covers: [math/linear-algebra/vector-spaces/incidence-matrices]
+  - num: 14
+    title: "Orthogonal subspaces"
+    points:
+      - id: "14.1"
+        title: "Orthogonal complements"
+        covers: [math/linear-algebra/orthogonality/orthogonal-subspaces]
+  - num: 15
+    title: "Projections"
+    points:
+      - id: "15.1"
+        title: "Projections"
+        covers: [math/linear-algebra/orthogonality/projections]
+  - num: 16
+    title: "Least squares"
+    points:
+      - id: "16.1"
+        title: "Least squares"
+        covers: [math/linear-algebra/orthogonality/least-squares]
+  - num: 17
+    title: "Gram–Schmidt"
+    points:
+      - id: "17.1"
+        title: "Orthogonal matrices, Gram–Schmidt"
+        covers: [math/linear-algebra/orthogonality/orthonormal-bases-and-gram-schmidt]
+  - num: 18
+    title: "Properties of determinants"
+    points:
+      - id: "18.1"
+        title: "Properties"
+        covers: [math/linear-algebra/determinants/properties-of-determinants]
+  - num: 19
+    title: "Determinant formulas"
+    points:
+      - id: "19.1"
+        title: "Big formula, cofactors"
+        covers: [math/linear-algebra/determinants/determinant-formulas]
+  - num: 20
+    title: "Cramer's rule and volume"
+    points:
+      - id: "20.1"
+        title: "Inverse, Cramer, volume"
+        covers: [math/linear-algebra/determinants/cramers-rule-and-volume]
+  - num: 21
+    title: "Eigenvalues and eigenvectors"
+    points:
+      - id: "21.1"
+        title: "Eigenvalues"
+        covers: [math/linear-algebra/eigenvalues/eigenvalues-and-eigenvectors]
+  - num: 22
+    title: "Diagonalization"
+    points:
+      - id: "22.1"
+        title: "Diagonalization and powers"
+        covers: [math/linear-algebra/eigenvalues/diagonalization]
+  - num: 23
+    title: "Differential equations"
+    points:
+      - id: "23.1"
+        title: "exp(At)"
+        covers: [math/linear-algebra/eigenvalues/linear-differential-equations]
+  - num: 24
+    title: "Markov matrices, Fourier series"
+    points:
+      - id: "24.1"
+        title: "Markov matrices"
+        covers: [math/linear-algebra/eigenvalues/markov-matrices]
+      - id: "24.2"
+        title: "Fourier series"
+        covers: [math/linear-algebra/orthogonality/fourier-series]
+  - num: 25
+    title: "Symmetric matrices"
+    points:
+      - id: "25.1"
+        title: "Spectral theorem"
+        covers: [math/linear-algebra/eigenvalues/symmetric-matrices]
+      - id: "25.2"
+        title: "Positive definiteness"
+        covers: [math/linear-algebra/positive-definite/positive-definite-matrices]
+  - num: 26
+    title: "Complex matrices, FFT"
+    points:
+      - id: "26.1"
+        title: "Complex matrices, Fourier matrix"
+        covers: [math/linear-algebra/eigenvalues/complex-matrices]
+  - num: 28
+    title: "Similar matrices and Jordan form"
+    points:
+      - id: "28.1"
+        title: "Similar matrices"
+        covers: [math/linear-algebra/eigenvalues/similar-matrices-and-jordan-form]
+  - num: 29
+    title: "Singular value decomposition"
+    points:
+      - id: "29.1"
+        title: "SVD"
+        covers: [math/linear-algebra/positive-definite/singular-value-decomposition]
+  - num: 30
+    title: "Linear transformations"
+    points:
+      - id: "30.1"
+        title: "Linear transformations"
+        covers: [math/linear-algebra/positive-definite/linear-transformations]
+  - num: 31
+    title: "Change of basis"
+    points:
+      - id: "31.1"
+        title: "Change of basis, compression"
+        covers: [math/linear-algebra/positive-definite/change-of-basis]
+  - num: 33
+    title: "Left and right inverses"
+    points:
+      - id: "33.1"
+        title: "Pseudoinverse"
+        covers: [math/linear-algebra/positive-definite/pseudoinverse]
