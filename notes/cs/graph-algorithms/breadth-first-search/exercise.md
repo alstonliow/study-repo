@@ -55,3 +55,7 @@ We represent an $n\times n$ board configuration $B$ using a length-$n$ tuple of 
 
 *Note (these notes):* The original shows an example puzzle with an 8-move solution as a sequence of pictures; it is not reproduced.
 :::
+
+::: {.problem #prob-mit6006r-9-q2 origin="external" source="mit6006r-9-q2"}
+Given an unweighted graph $G=(V,E)$, find a shortest path from $s$ to $t$ having an odd number of edges.
+:::

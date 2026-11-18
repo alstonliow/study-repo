@@ -63,3 +63,44 @@ def short_company(C, P, n, k):
 
 It was checked against brute force over all subsequences on small random inputs.
 :::
+
+::: {.solution for="prob-mit6006r-15-q1" status="draft"}
+*Subproblems.* $x(i)$ = the maximum number of rounds the player can still win when the next round starts with card $c_i$, for $1\le i\le n+1$. A round is played only when at least $5$ cards remain.
+
+*Win test.* For a round starting at $i$ and the choice $h\in\{0,1\}$ (hit or not), let
+$$w(i,h)=\begin{cases}1 & \text{if } c_{i+2}+c_{i+3}+h\,c_{i+4}\le 21 \text{ and } c_{i+2}+c_{i+3}+h\,c_{i+4}>c_i+c_{i+1},\\ 0 & \text{otherwise.}\end{cases}$$
+
+*Relation.* If $n-i+1<5$, then $x(i)=0$. Otherwise
+$$x(i)=\max\{\,w(i,0)+x(i+4),\; w(i,1)+x(i+5)\,\},$$
+With at least $5$ cards left there is always a card to hit, and $i+5\le n+1$.
+
+*Order and answer.* $x(i)$ depends only on larger indices, so compute $i=n+1,n,\dots,1$; the answer is $x(1)$. Store the maximizing choice to recover the hits.
+
+*Time.* $O(n)$ subproblems, $O(1)$ work each: $O(n)$.
+:::
+
+::: {.solution for="prob-mit6006r-15-q2" status="draft"}
+*Subproblems.* $x(i)$ = the minimum total badness for setting the suffix of words $i,\dots,n$, for $1\le i\le n+1$.
+
+*Relation.* The first line of the suffix holds words $i,\dots,j-1$ for some $j>i$:
+$$x(i)=\min_{i<j\le n+1}\bigl\{\,b(i,j-1)+x(j)\,\bigr\}.$$
+
+*Base.* $x(n+1)=0$.
+
+*Order and answer.* Compute $i=n+1,\dots,1$; the answer is $x(1)$. Store the minimizing $j$ to recover the line breaks.
+
+*Time.* With prefix sums $P_k=w_1+\dots+w_k$ (computed once in $O(n)$), $w_i+\dots+w_j=P_j-P_{i-1}$, so each $b(i,j)$ costs $O(1)$. There are $O(n)$ subproblems with $O(n)$ choices each: $O(n^2)$.
+:::
+
+::: {.solution for="prob-mit6046r-5-q1" status="draft"}
+1. *Order.* Sort the blocks by length, then width, both non-increasing: $O(n\log n)$. In any valid tower each block has $l$ and $w$ no larger than the block below it, so reading the tower from bottom to top gives the blocks in an order consistent with this sorted order (blocks with equal bases can be swapped freely). So we may assume a tower uses the blocks in increasing sorted index from bottom to top.
+
+2. *Subproblems.* $H[i]$ = the height of the tallest tower whose *top* block is $B_i$.
+
+3. *Relation.* The block under $B_i$, if any, is some earlier $B_j$ with a larger-or-equal base:
+$$H[i]=h_i+\max\Bigl(\{0\}\cup\{H[j]: j<i,\ l_i\le l_j,\ w_i\le w_j\}\Bigr).$$
+
+4. *Answer.* $\max_i H[i]$, computed for $i=1,\dots,n$ in order.
+
+*Time.* $O(n)$ choices for each of $n$ subproblems: $O(n^2)$.
+:::

@@ -16,3 +16,13 @@ Let $G$ be the weighted digraph of locations and transitions, and $\bar G$ the s
 
 To detect a negative-weight cycle anywhere in a graph, add a vertex $x$ with a $0$-weight edge to every location and run Bellman–Ford from $x$ (@thm-bellman-ford): a cycle exists iff some vertex gets weight $-\infty$. Do this for $G$ and for $\bar G$, and answer "conservative" iff neither has one. Each run takes $O(|V|\cdot|E|)=O(n\cdot n)=O(n^2)$ time.
 :::
+
+::: {.solution for="prob-mit6006r-12-q1" status="draft"}
+1. *Graph.* Intersections are vertices; each road gives a directed edge per direction of travel, with weight equal to *minus* its fun in that direction. Maximizing fun is now minimizing weight, and a loop of ever-increasing fun is a negative-weight cycle.
+
+2. Run Bellman–Ford from each of the three homes $a,b,c$. Every road is reachable from every home, so a fun loop exists if and only if Bellman–Ford reports a negative cycle (one run already suffices to detect it). If so, report the loop.
+
+3. Otherwise all distances $\delta(a,v),\delta(b,v),\delta(c,v)$ are finite. Choose the meeting point $v$ minimizing $\delta(a,v)+\delta(b,v)+\delta(c,v)$; its total fun is minus that sum.
+
+Three Bellman–Ford runs and one $O(|V|)$ scan: $O(|V|\,|E|)$ time.
+:::

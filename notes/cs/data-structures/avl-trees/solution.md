@@ -83,3 +83,12 @@ def tastiest_slice(toppings):
 
 It was checked against brute force over all points $(x_i,y_j)$ on random inputs.
 :::
+
+::: {.solution for="prob-mit6006r-7-q3" status="draft"}
+Store the bits in a Sequence AVL tree (traversal order = sequence order), augmented at every node with `size` (number of nodes in its subtree, already used by sequence trees) and `ones` (number of $1$ bits in its subtree). Both are computed in $O(1)$ from the children, so they are maintained through rotations at no extra asymptotic cost.
+
+- `flip(i)`: find the node at index $i$ with `subtree_at(i)` in $O(\log n)$, flip its bit, then walk up to the root recomputing `ones` at each ancestor: $O(\log n)$.
+- `count_ones_upto(i)`: walk down from the root as in `subtree_at(i)`, keeping a running total. Let $L$ be the size of the left subtree of the current node. If $i<L$, go left. Otherwise add the left child's `ones` plus the current bit; if $i=L$ stop, else go right with $i\leftarrow i-L-1$. One step per level, so $O(\log n)$.
+
+(The sequence never changes length, so a static balanced tree built once in $O(n)$, or an array-based segment tree, works as well.)
+:::

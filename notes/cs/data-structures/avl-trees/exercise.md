@@ -116,3 +116,10 @@ def tastiest_slice(toppings):
     return (X, Y, T)
 ```
 :::
+
+::: {.problem #prob-mit6006r-7-q3 origin="external" source="mit6006r-7-q3"}
+Maintain a sequence of $n$ bits that supports two operations, each in $O(\log n)$ time:
+
+- `flip(i)`: flip the bit at index $i$
+- `count_ones_upto(i)`: return the number of bits in the prefix up to index $i$ that are one
+:::

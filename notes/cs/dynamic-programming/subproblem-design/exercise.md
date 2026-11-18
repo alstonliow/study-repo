@@ -63,3 +63,26 @@ def short_company(C, P, n, k):
 
 *Note (these notes):* Problem Set 7 begins: "Please solve each of the following problems using dynamic programming. For each problem, be sure to define a set of subproblems, relate the subproblems recursively, argue the relation is acyclic, provide base cases, construct a solution to the original problem from the subproblems, and analyze running time. Correct but inefficient dynamic programs will be awarded significant partial credit."
 :::
+
+::: {.problem #prob-mit6006r-15-q1 origin="external" source="mit6006r-15-q1"}
+**Simplified Blackjack**
+
+We define a simplified version of the game blackjack between one player and a dealer. A deck of cards is an ordered sequence of $n$ cards $D=(c_1,\dots,c_n)$, where each card $c_i$ is an integer between $1$ and $10$ inclusive (unlike in real blackjack, aces will always have value $1$). Blackjack is played in rounds. In one round, the dealer will draw the top two cards from the deck (initially $c_1$ and $c_2$), then the player will draw the next two cards (initially $c_3$ and $c_4$), and then the player may either choose to draw or not draw one additional card (a hit).
+
+The player wins the round if the value of the player's hand (i.e., the sum of cards drawn by the player in the round) is $\le 21$ and exceeds the value of the dealer's hand; otherwise, the player loses the round. The game ends when a round ends with fewer than $5$ cards remaining in the deck. Given a deck of $n$ cards with a known order, describe an $O(n)$-time algorithm to determine the maximum number of rounds the player can win by playing simplified blackjack with the deck.
+:::
+
+::: {.problem #prob-mit6006r-15-q2 origin="external" source="mit6006r-15-q2"}
+**Text Justification**
+
+Text Justification is the problem of fitting a sequence of $n$ space separated words into a column of lines with constant width $s$, to minimize the amount of white-space between words. Each word can be represented by its width $w_i<s$. A good way to minimize white space in a line is to minimize *badness* of a line. Assuming a line contains words from $w_i$ to $w_j$, the badness of the line is defined as $b(i,j)=(s-(w_i+\dots+w_j))^3$ if $s>(w_i+\dots+w_j)$, and $b(i,j)=\infty$ otherwise. A good text justification would then partition words into lines to minimize the sum total of badness over all lines containing words. The cubic power heavily penalizes large white space in a line. Microsoft Word uses a greedy algorithm to justify text that puts as many words into a line as it can before moving to the next line. This algorithm can lead to some really bad lines. LaTeX on the other hand formats text to minimize this measure of white space using a dynamic program. Describe an $O(n^2)$ algorithm to fit $n$ words into a column of width $s$ that minimizes the sum of badness over all lines.
+:::
+
+::: {.problem #prob-mit6046r-5-q1 origin="external" source="mit6046r-5-q1"}
+**Rectangular blocks**
+
+Given a set of $n$ rectangular three-dimensional blocks, where block $B_i$ has length $l_i$, width $w_i$, and height $h_i$, all real numbers, find the maximum height of a tower of blocks that is as tall as possible, using any subset of the blocks, such that the tower respects the following constraints:
+
+1. Blocks cannot be rotated: the length always refers to the east-west direction, the width is always north-south, and the height is always up-down.
+2. Block $B_i$ can be stacked on top of block $B_j$ only if $l_i\le l_j$ and $w_i\le w_j$, that is, the two dimensions of the base of block $B_i$ are no greater than those of block $B_j$.
+:::

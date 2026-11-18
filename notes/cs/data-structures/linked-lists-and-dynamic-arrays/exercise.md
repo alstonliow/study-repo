@@ -29,3 +29,7 @@ In Lecture 2, we described a singly linked list. In this problem, you will imple
 
 (d) Implement the operations above in the `Doubly_Linked_List_Seq` class in the provided code template; do not modify the `Doubly_Linked_List_Node` class. You can download the code template including some test cases from the website.
 :::
+
+::: {.problem #prob-mit6006r-2-q1 origin="external" source="mit6006r-2-q1"}
+Suppose the next pointer of the last node of a linked list points to an earlier node in the list, creating a cycle. Given a pointer to the head of the list (without knowing its size), describe a linear-time algorithm to find the number of nodes in the cycle. Can you do this while using only constant additional space outside of the original linked list?
+:::

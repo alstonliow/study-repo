@@ -43,3 +43,7 @@ Some intersections connect to many roads, but the average number of roads at any
 
 Given LightQueen's map, describe an $O(n^2\log n)$-time algorithm to return a fastest route to the race that keeps a strictly positive amount of gas in her tank at all times (if such a route exists).
 :::
+
+::: {.problem #prob-mit6006r-13-q2 origin="external" source="mit6006r-13-q2"}
+CIA officer Mary Cathison needs to drive to meet with an informant across an unwelcome city. Some roads in the city are equipped with government surveillance cameras, and Mary will be detained if cameras from more than one road observe her car on the way to her informant. Mary has a map describing the length of each road and the locations and ranges of surveillance cameras. Help Mary find the shortest drive to reach her informant, being seen by at most one surveillance camera along the way.
+:::

@@ -17,3 +17,27 @@ A schedule for a subset of the tasks describes when each of the tasks in the sub
 
 The problem is to produce a schedule for a subset of the tasks that returns the greatest possible amount of profit. State this problem as a decision problem and show that it is NP-complete. In showing this, you may reduce from any problem that has been shown, in class or in CLRS, to be NP-complete.
 :::
+
+::: {.problem #prob-mit6046r-8-q1 origin="external" source="mit6046r-8-q1"}
+**Hamiltonian Cycle**: Given a directed graph $G=(V,E)$, is there a cycle that visits every vertex exactly once?
+
+**Hamiltonian Path**: Given a directed graph $G=(V,E)$, is there a path that visits every vertex exactly once?
+
+Given that Hamiltonian Cycle is NP-Complete, we prove that Hamiltonian Path is NP-Complete.
+:::
+
+::: {.problem #prob-mit6046r-8-q2 origin="external" source="mit6046r-8-q2"}
+**3DM**: Given $3$ disjoint sets $X,Y,Z$, which each contain $n$ elements, and triples $T\subset X\times Y\times Z$, is there a a subset $S\subset T$ such that each element $a\in X\cup Y\cup Z$ is in exactly one $s\in S$.
+
+**4-Partition**: Given $n$ integers $\{a_1,a_2,\dots,a_n\}$ is there a partition into $\frac n4$ subsets of $4$ elements each with the same sum $t=A/\frac n4$. Each integer $a_i\in(\frac t5,\frac t3)$ (which ensures that each subset has exactly $4$ elements).
+
+Given that 3DM is NP-Complete, we prove that 4-Partition is NP-Complete.
+:::
+
+::: {.problem #prob-mit6046r-8-q5 origin="external" source="mit6046r-8-q5"}
+**Prove Max2SAT is NP-Complete: Reducing from Clique**
+
+Clique$(G,k)$: Given graph $G=(V,E)$ and integer $k$, is there a set of vertices $U\subseteq V$ with $|U|\ge k$ that form a complete graph ($k$-clique)?
+
+Max2SAT$(C,X,k)$: Given a CNF formula consisting of clauses $C=\{c_1,c_2,\dots c_n\}$ and literals $X=\{x_1,x_2,\dots x_k\}$ such that each clause involves exactly two literals, does there exist an assignment of TRUE/FALSE to the literals such that at least $k$ clauses are satisfied?
+:::

@@ -40,3 +40,11 @@ To receive power, a building in Fallmeadow must be connected to a single solar f
 | `power_off(b_j)` | Remove power from the building with name $b_j$ in $O(\log n)$ time. |
 | `customers(s_i)` | Return the names of all buildings supplied by the farm at address $s_i$ in $O(k)$ time, where $k$ is the number of building names returned. |
 :::
+
+::: {.problem #prob-mit6006r-8-q4 origin="external" source="mit6006r-8-q4"}
+**Proximate Sorting**: An array of distinct integers is $k$-proximate if every integer of the array is at most $k$ places away from its place in the array after being sorted, i.e., if the $i$th integer of the unsorted input array is the $j$th largest integer contained in the array, then $|i-j|\le k$. In this problem, we will show how to sort a $k$-proximate array faster than $\Theta(n\log n)$.
+
+(a) Prove that insertion sort (as presented in this class, without any changes) will sort a $k$-proximate array in $O(nk)$ time.
+
+(b) $\Theta(nk)$ is asymptotically faster than $\Theta(n^2)$ when $k=o(n)$, but is not asymptotically faster than $\Theta(n\log n)$ when $k=\omega(\log n)$. Describe an algorithm to sort a $k$-proximate array in $O(n\log k)$ time, which can be faster (but no slower) than $\Theta(n\log n)$.
+:::

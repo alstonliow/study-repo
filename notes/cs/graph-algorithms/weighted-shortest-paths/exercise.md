@@ -9,3 +9,7 @@ Superspy Bames Jond is fleeing the alpine mountain lair of Silvertoe, the evil t
 
 Given Bames' map and dynamite data, describe an $O(n)$-time algorithm to find the minimum distance she must ski to reach the snowmobile (possibly detonating the dynamite along the way).
 :::
+
+::: {.problem #prob-mit6006r-11-q2 origin="external" source="mit6006r-11-q2"}
+You have been recruited by MIT to take part in a new part time student initiative where you will take only one class per term. You don't care about graduating; all you really want to do is to take 19.854, Advanced Quantum Machine Learning on the Blockchain: Neural Interfaces, but are concerned because of its formidable set of prerequisites. MIT professors will allow you take any class as long as you have taken at least one of the class's prerequisites prior to taking the class. But passing a class without all the prerequsites is difficult. From a survey of your peers, you know for each class and prerequisite pair, how many hours of stress the class will demand. Given a list of classes, prerequisites, and surveyed stress values, describe a linear time algorithm to find a sequence of classes that minimizes the amount of stress required to take 19.854, never taking more than one prerequisite for any class. You may assume that every class is offered every semester.
+:::

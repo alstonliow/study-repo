@@ -35,3 +35,9 @@ In part (d), the prizes are represented by a rooted binary tree $T$, with root v
 
 (d) Give an algorithm that returns a set $S$ of at most $m$ prizes for which $\sum_{s\in S}s.value$ is maximum, subject to the new constraint that, for any $s\in S$ that is associated with a non-root node $u$ of $T$, the prize at node $u.parent$ is also in $S$. (This implies that the selected prizes must be associated with nodes that form a connected subtree of $T$ rooted at $r$.)
 :::
+
+::: {.problem #prob-mit6046r-5-q2 origin="external" source="mit6046r-5-q2"}
+**Counting Boolean Parenthesizations**
+
+Given a boolean expression consisting of a string of the symbols True, False, AND, OR, and XOR, count the number of ways to parenthesize the expression such that it will evaluate to True. For example, there are $2$ ways to parenthesize True AND False XOR True such that it evaluates to True.
+:::

@@ -26,3 +26,24 @@ and symmetrically for $b$, with zero base cases. The answer is $\max_{0\le i\le 
 $$f(u,j)=u.value+\max_{a+b\le j-1}\{f(u.left,a)+f(u.right,b)\},\qquad f(u,0)=-\infty\text{ for }u\ne\text{nil},$$
 where $a=0$ means the left child is not taken (value $0$). The answer is $\max\{0,f(r,m)\}$. There are $nm$ subproblems with $O(m)$ work each: $O(nm^2)$ time, $O(nm)$ space.
 :::
+
+::: {.solution for="prob-mit6046r-5-q2" status="draft"}
+Number the operands $1,\dots,m$ and let $\mathrm{op}_k$ be the operator between operands $k$ and $k+1$.
+
+1. *Subproblems.* For $1\le i\le j\le m$: $T[i,j]$ and $F[i,j]$ = the number of parenthesizations of operands $i..j$ that evaluate to True and to False. Let $N[i,j]=T[i,j]+F[i,j]$.
+
+2. *Base.* $T[i,i]=1,F[i,i]=0$ if operand $i$ is True, and the reverse if it is False.
+
+3. *Relation.* The last operator applied is some $\mathrm{op}_k$ with $i\le k<j$; write $L=[i,k]$ and $R=[k+1,j]$. Sum over $k$ the number of True results:
+   - AND: $T[L]\,T[R]$;
+   - OR: $N[L]\,N[R]-F[L]\,F[R]$;
+   - XOR: $T[L]\,F[R]+F[L]\,T[R]$.
+
+   and set $F[i,j]=\sum_k N[L]\,N[R]-T[i,j]$.
+
+4. *Order and answer.* By increasing $j-i$; the answer is $T[1,m]$.
+
+*Time.* $O(m^2)$ subproblems with $O(m)$ splits each: $O(m^3)$.
+
+*Check on the example.* $(\text{T AND F})\text{ XOR T}=\text{F XOR T}=\text{T}$ and $\text{T AND }(\text{F XOR T})=\text{T AND T}=\text{T}$: both parenthesizations give True, so the count is $2$.
+:::

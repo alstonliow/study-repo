@@ -47,3 +47,7 @@ Describe an $O(m^3n)$-time algorithm to restore Capt. Jerk's logs based on the a
 
 *Note (these notes):* Problem Set 8 begins: "Please solve each of the following problems using dynamic programming. For each problem, be sure to define a set of subproblems, relate the subproblems recursively, argue the relation is acyclic, provide base cases, construct a solution from the subproblems, and analyze running time. Correct but inefficient dynamic programs will be awarded significant partial credit. For each problem below, please indicate whether the requested running time is either: (1) polynomial, (2) pseudopolynomial, or (3) exponential in the size of the input."
 :::
+
+::: {.problem #prob-mit6006r-18-q2 origin="external" source="mit6006r-18-q2"}
+**Close Partition** - Given a set of $n$ positive integers $A$, describe an algorithm to find a partition of $A$ into two non-intersecting subsets $A_1$ and $A_2$ such that the difference between their respective sums are minimized.
+:::

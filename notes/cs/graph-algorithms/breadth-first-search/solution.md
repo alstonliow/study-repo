@@ -62,3 +62,15 @@ def solve_tilt(B, t):
     return None                        # no configuration with a slider on t
 ```
 :::
+
+::: {.solution for="prob-mit6006r-9-q2" status="draft"}
+Build a graph $G'$ with two copies $(v,0)$ and $(v,1)$ of each vertex, where the second coordinate is the parity of the number of edges used so far. For each edge $(u,v)\in E$ add edges $(u,0)\to(v,1)$ and $(u,1)\to(v,0)$ (both directions for an undirected graph). $G'$ has $2|V|$ vertices and $2|E|$ edges.
+
+1. A path from $(s,0)$ to $(t,1)$ in $G'$ projects to a walk from $s$ to $t$ in $G$ with the same number of edges, and that number is odd, because each edge flips the parity. Conversely, every odd $s$–$t$ walk lifts to such a path.
+
+2. So run BFS from $(s,0)$ in $G'$. If $(t,1)$ is unreachable there is no odd path. Otherwise follow parent pointers back from $(t,1)$ and drop the parity bits.
+
+Running time $O(|V|+|E|)$.
+
+As in this course, "path" here may repeat vertices: the shortest odd walk can go once around an odd cycle. Asking for a shortest odd *simple* path is a different, harder problem.
+:::

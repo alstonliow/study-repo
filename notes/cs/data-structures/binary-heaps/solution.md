@@ -39,3 +39,21 @@ The result is a min-heap.
 - `power_off(b)`: look $b$ up in $G$, unlink its node from the farm's list in $O(1)$, remove $b$ from $G$, and raise the farm's key by $d$ with a heapify up. $O(\log n)$ *expected amortized*.
 - `customers(s)`: find the farm in $F$ ($O(1)$ expected) and list its buildings: $O(k)$ *expected* (worst case once the record is found).
 :::
+
+::: {.solution for="prob-mit6006r-8-q4" status="draft"}
+Write $r(x)$ for the sorted position of item $x$, so the item at index $i$ has $|i-r(A[i])|\le k$.
+
+(a)
+
+1. Insertion sort spends $O(1)$ per swap plus $O(n)$ overall, and the number of swaps equals the number of *inversions* (pairs $s<t$ with $A[s]>A[t]$).
+
+2. Fix $t$ and count the $s<t$ with $A[s]>A[t]$. Every such $A[s]$ has rank above $r(A[t])\ge t-k$, so $r(A[s])>t-k$ and hence $s\ge r(A[s])-k>t-2k$. So $s\in(t-2k,t)$: fewer than $2k$ choices.
+
+3. Summing over $t$, there are fewer than $2kn$ inversions, so insertion sort takes $O(nk)$ time.
+
+(b) Keep a min-heap of at most $k+1$ items. Insert $A[0],\dots,A[k]$. Then for $j=0,1,\dots,n-1$: delete the minimum and write it to output position $j$, and insert $A[j+k+1]$ if it exists.
+
+*Correctness.* The item $x$ with $r(x)=j$ sits at an index $i\le j+k$, so it has been inserted by the time output position $j$ is filled. All smaller items were output before (by induction), so $x$ is the minimum of the heap at that moment.
+
+*Time.* The heap never holds more than $k+1$ items, so each of the $n$ inserts and $n$ deletions costs $O(\log k)$: $O(n\log k)$ in total. Since $k<n$, this is never slower than $O(n\log n)$.
+:::

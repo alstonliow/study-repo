@@ -18,6 +18,8 @@ exclude:
   - def-min-plus-product
   - prp-shortest-paths-by-squaring
   - prob-mit6046s15-6-q1
+  # 6.046 recitation problem in a 6.006 note
+  - prob-mit6046r-5-q1
 
 chapters:
   - num: 1

@@ -92,7 +92,7 @@ chapters:
     points:
       - id: "10.1"
         title: "Interval subproblems"
-        covers: [cs/dynamic-programming/interval-subproblems, exm-coin-game]
+        covers: [cs/dynamic-programming/interval-subproblems, exm-coin-game, prob-mit6046r-5-q1]
   - num: 11
     title: "All-pairs shortest paths"
     points:

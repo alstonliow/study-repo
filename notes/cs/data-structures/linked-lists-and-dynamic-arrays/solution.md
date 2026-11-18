@@ -76,3 +76,17 @@ class Doubly_Linked_List_Seq:
         L2.head = L2.tail = None
 ```
 :::
+
+::: {.solution for="prob-mit6006r-2-q1" status="draft"}
+Yes, with two pointers and $O(1)$ extra space (Floyd's "tortoise and hare").
+
+1. Start pointers $p$ and $q$ at the head. Repeat: move $p$ one node and $q$ two nodes, until $p=q$.
+
+2. *They meet.* Once both pointers are on the cycle (of length $c$), the gap from $p$ forward to $q$ shrinks by exactly $1$ each step, so it reaches $0$ within $c$ steps.
+
+3. *Linear time.* Let $\mu$ be the number of nodes before the cycle. $p$ enters the cycle after $\mu$ steps and the pointers meet at most $c$ steps later, so phase 1 takes at most $\mu+c=n$ steps.
+
+4. From the meeting node $v$, walk $p$ forward and count the steps until it returns to $v$; the count is $c$. This takes $c\le n$ further steps.
+
+Only two pointers and a counter are stored, so the extra space is $O(1)$ and the time is $O(n)$.
+:::

@@ -22,3 +22,13 @@ Routes that keep gas positive correspond exactly to paths from $(s,g)$, with the
 
 *Algorithm.* All weights are positive, so run Dijkstra from $(s,g)$ with a binary heap (@prp-dijkstra-time), in $O(n^2\log(n^2))=O(n^2\log n)$ time, take the state $(t,\gamma)$ with the smallest distance, and follow parent pointers to recover the route (or report that none exists if all are $\infty$).
 :::
+
+::: {.solution for="prob-mit6006r-13-q2" status="draft"}
+1. *Preprocess.* From the camera locations and ranges, mark each road as watched or not (one check per road–camera pair; with $c$ cameras this is $O(c|E|)$, or $O(|E|)$ if each camera lists the roads it sees).
+
+2. *Graph with state.* Make two copies $v_0,v_1$ of each intersection $v$, where the index is the number of watched roads used so far. For an unwatched road $u\to v$ of length $\ell$ add $u_0\to v_0$ and $u_1\to v_1$ of weight $\ell$. For a watched road add only $u_0\to v_1$ (a second watched road would get her detained). Two-way roads give an edge in each direction.
+
+3. Paths from $s_0$ to $t_0$ or $t_1$ are exactly the drives seen by at most one camera, with the same length. Lengths are nonnegative, so run Dijkstra from $s_0$ and return the shorter of $\delta(s_0,t_0)$ and $\delta(s_0,t_1)$, read back through parent pointers.
+
+The new graph has $2|V|$ vertices and at most $2|E|$ edges, so the search takes $O(|E|+|V|\log|V|)$ with a Fibonacci heap ($O(|E|\log|V|)$ with a binary heap), plus the preprocessing.
+:::
