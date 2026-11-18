@@ -145,6 +145,70 @@ parts:
           - secret-sharing
           - erasure-codes
           - reed-solomon-codes
+  - title: Calculus
+    field: Mathematics
+    branches:
+      - id: math/calculus/limits
+        title: Functions, Limits and Continuity
+        desc: Graphs and symmetry of functions, limits, continuity
+        notes:   # topic order on the website
+          - functions-and-graphs
+          - limits-of-functions
+          - continuity
+      - id: math/calculus/differentiation
+        title: Differentiation
+        desc: The derivative, differentiation rules, chain rule, implicit differentiation, exponentials and logarithms
+        notes:   # topic order on the website
+          - derivative
+          - differentiation-rules
+          - trigonometric-derivatives
+          - chain-rule
+          - implicit-differentiation
+          - exponentials-and-logarithms
+      - id: math/calculus/applications-of-derivatives
+        title: Applications of Differentiation
+        desc: Approximation, curve sketching, optimization, related rates, Newton's method, the mean value theorem, L'Hôpital's rule
+        notes:   # topic order on the website
+          - linear-and-quadratic-approximation
+          - curve-sketching
+          - optimization
+          - related-rates
+          - newtons-method
+          - mean-value-theorem
+          - lhopitals-rule
+      - id: math/calculus/integrals
+        title: The Definite Integral
+        desc: Antiderivatives, separable differential equations, Riemann sums, the fundamental theorems
+        notes:   # topic order on the website
+          - antiderivatives
+          - separable-differential-equations
+          - definite-integral
+          - fundamental-theorem
+      - id: math/calculus/integration-techniques
+        title: Techniques of Integration
+        desc: Trigonometric integrals and substitutions, partial fractions, integration by parts
+        notes:   # topic order on the website
+          - trigonometric-integrals
+          - trigonometric-substitution
+          - partial-fractions
+          - integration-by-parts
+      - id: math/calculus/applications-of-integrals
+        title: Applications of Integration
+        desc: Areas, volumes, average value and work, numerical integration, arclength and surface area, polar coordinates
+        notes:   # topic order on the website
+          - area-between-curves
+          - volumes
+          - average-value-and-work
+          - numerical-integration
+          - parametric-curves-and-arclength
+          - polar-coordinates
+      - id: math/calculus/series
+        title: Improper Integrals and Series
+        desc: Improper integrals, convergence tests for series, power and Taylor series
+        notes:   # topic order on the website
+          - improper-integrals
+          - infinite-series
+          - taylor-series
   - title: Linear Algebra
     field: Mathematics
     branches:

@@ -173,6 +173,23 @@ not here.
 | $\sigma_i,\ \Sigma,\ U,\ V$ | singular values and the SVD $A=U\Sigma V^{\mathsf T}$ |
 | $\operatorname{tr}A$ | trace |
 
+## Calculus (`math/calculus`)
+
+<!-- Added 2026-11-18 with MIT 18.01. -->
+
+| Symbol | Meaning |
+|---|---|
+| $\lim_{x\to a}f(x),\ \lim_{x\to a^\pm}f(x)$ | limit, one-sided limits |
+| $f'(x),\ \frac{dy}{dx},\ Df$ | derivative |
+| $f'',\ f^{(n)},\ \frac{d^ny}{dx^n}$ | higher derivatives |
+| $\Delta x,\ \Delta f,\ dx,\ dy$ | increments, differentials |
+| $\int f(x)\,dx,\ \int_a^bf(x)\,dx$ | indefinite and definite integral |
+| $F(x)\big\vert_a^b$ | $F(b)-F(a)$ |
+| $e,\ \ln x$ | base of the natural logarithm, natural logarithm |
+| $\sin^{-1},\ \cos^{-1},\ \tan^{-1}$ | inverse trigonometric functions |
+| $\sinh,\ \cosh$ | hyperbolic functions |
+| $(r,\theta)$ | polar coordinates |
+
 ## Probability (`math/probability`)
 
 <!-- TODO: 1058note chapter 11 has no probability section. Add symbols during migration of chapter 9. -->

@@ -1,0 +1,59 @@
+# MIT 18.01 Supplementary Notes (Jerison and Mattuck), the reading sections published with the Fall 2006
+# course (MIT OpenCourseWare, CC BY-NC-SA), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/MIT_1801/fall-2006/readings. Locator = section letter of the Notes (G, C, MVT, ...);
+# a source key is mit1801n-G. Only the sections the notes cite are listed. Titles are our own short titles.
+id: res-mit-1801-notes
+kind: course-notes
+title: MIT 18.01 Supplementary Notes (Fall 2006)
+status: draft
+courses:
+- mit1801
+editions:
+- id: 2006-fall
+  current: true
+legacy_keys:
+  prefix: mit1801n-
+  edition: 2006-fall
+  pattern: ^mit1801n-(?P<section>[A-Z]+)$
+  label: 18.01 Notes {section}
+nodes:
+- id: res-mit-1801-notes-graphing
+  kind: section
+  title: Graphing functions
+  at:
+    2006-fall: G
+- id: res-mit-1801-notes-continuity
+  kind: section
+  title: Continuity and discontinuity
+  at:
+    2006-fall: C
+- id: res-mit-1801-notes-mean-value-theorem
+  kind: section
+  title: Mean value theorem
+  at:
+    2006-fall: MVT
+- id: res-mit-1801-notes-definite-integral
+  kind: section
+  title: Properties of the definite integral
+  at:
+    2006-fall: PI
+- id: res-mit-1801-notes-fundamental-theorem
+  kind: section
+  title: Second fundamental theorem
+  at:
+    2006-fall: FT
+- id: res-mit-1801-notes-cover-up
+  kind: section
+  title: Cover-up method
+  at:
+    2006-fall: F
+- id: res-mit-1801-notes-average-value
+  kind: section
+  title: Average value
+  at:
+    2006-fall: AV
+- id: res-mit-1801-notes-improper-integrals
+  kind: section
+  title: Improper integrals
+  at:
+    2006-fall: INT

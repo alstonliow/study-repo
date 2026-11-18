@@ -800,8 +800,83 @@
     return F;
   }
 
+  // ---------- calculus: function plots ----------
+  const CALC_F = {
+    sq: { f: x => x * x, F: x => x ** 3 / 3, tex: "x²" },
+    sqrt: { f: x => Math.sqrt(x), F: x => 2 / 3 * x ** 1.5, tex: "√x", min: 0 },
+    sin: { f: Math.sin, F: x => -Math.cos(x), tex: "sin x" },
+    exp: { f: Math.exp, F: Math.exp, tex: "eˣ" },
+    inv: { f: x => 1 / x, F: Math.log, tex: "1/x", min: 1e-9 },
+  };
+  const cfmt = (v, d = 6) => Number(v.toFixed(d)).toString();
+  function plotSVG(f, a, b, shapes, opts = {}) {
+    const W = 360, H = 200, pad = 18, xs = [], N = 120;
+    const lo = opts.x0 ?? a, hi = opts.x1 ?? b;
+    for (let i = 0; i <= N; i++) { const x = lo + (hi - lo) * i / N, y = f(x); if (Number.isFinite(y)) xs.push([x, y]); }
+    const ys = xs.map(p => p[1]).concat(opts.ys || [], [0]);
+    let y0 = Math.min(...ys), y1 = Math.max(...ys); if (y1 - y0 < 1e-9) y1 = y0 + 1;
+    const X = x => pad + (x - lo) / (hi - lo) * (W - 2 * pad), Y = y => H - pad - (y - y0) / (y1 - y0) * (H - 2 * pad);
+    const path = xs.map((p, i) => (i ? "L" : "M") + X(p[0]).toFixed(1) + " " + Y(p[1]).toFixed(1)).join(" ");
+    const body = shapes({ X, Y });
+    return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}"><line x1="${pad}" y1="${Y(0)}" x2="${W - pad}" y2="${Y(0)}" stroke="currentColor" stroke-opacity=".4"/>${body}<path d="${path}" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`;
+  }
+
+  function riemann(p) {
+    const c = CALC_F[p.f], a = Number(p.a), b = Number(p.b), N = Number(p.n), rule = p.rule;
+    if (!c) throw new Error("choose a function");
+    if (!Number.isFinite(a) || !Number.isFinite(b) || !(a < b)) throw new Error("numbers a < b, please");
+    if (c.min !== undefined && a < c.min) throw new Error(c.min === 0 ? `${c.tex} needs a ≥ 0` : `${c.tex} needs a > 0`);
+    if (b - a > 20) throw new Error("an interval of length at most 20, please");
+    if (!Number.isInteger(N) || N < 1 || N > 64) throw new Error("n from 1 to 64, please");
+    const exact = c.F(b) - c.F(a), F = [];
+    for (let n = 1; ; n = Math.min(2 * n, N)) {
+      const h = (b - a) / n; let s = 0; const pieces = [];
+      for (let i = 0; i < n; i++) {
+        const l = a + i * h, r = l + h;
+        const yl = c.f(l), yr = c.f(r), ym = c.f(l + h / 2);
+        const y = rule === "left" ? yl : rule === "right" ? yr : ym;
+        if (rule === "trap") { s += (yl + yr) / 2 * h; pieces.push([l, r, yl, yr]); } else { s += y * h; pieces.push([l, r, y, y]); }
+      }
+      const svg = plotSVG(c.f, a, b, ({ X, Y }) => pieces.map(([l, r, u, v]) =>
+        `<polygon points="${X(l)},${Y(0)} ${X(l)},${Y(u)} ${X(r)},${Y(v)} ${X(r)},${Y(0)}" fill="var(--defc)" fill-opacity=".25" stroke="var(--defc)" stroke-width=".8"/>`).join(""),
+        { ys: pieces.flatMap(q => [q[2], q[3]]) });
+      F.push({ html: svg, note: `n = ${n}: sum = ${cfmt(s)}; exact integral = ${cfmt(exact)}; error = ${cfmt(s - exact, 8)}.` });
+      if (n === N) break;
+    }
+    return F;
+  }
+
+  const NEWTON_F = {
+    sq3: { f: x => x * x - 3, d: x => 2 * x, tex: "x² − 3" },
+    cube9: { f: x => x ** 3 - 9, d: x => 3 * x * x, tex: "x³ − 9" },
+    cos: { f: x => Math.cos(x) - x, d: x => -Math.sin(x) - 1, tex: "cos x − x" },
+    cbrt: { f: x => Math.cbrt(x), d: x => 1 / (3 * Math.cbrt(x) ** 2), tex: "x^(1/3)" },
+  };
+  function newton(p) {
+    const c = NEWTON_F[p.f], x0 = Number(p.x0), K = Number(p.steps);
+    if (!c) throw new Error("choose a function");
+    if (!Number.isFinite(x0) || Math.abs(x0) > 50) throw new Error("a starting point between −50 and 50, please");
+    if (!Number.isInteger(K) || K < 1 || K > 10) throw new Error("1 to 10 steps, please");
+    const xs = [x0], F = [];
+    for (let k = 0; k < K; k++) {
+      const x = xs[k], d = c.d(x);
+      if (!Number.isFinite(d) || Math.abs(d) < 1e-12) { F.push({ html: "", note: `Step ${k + 1}: f′(x${k}) = 0, the tangent is flat; the method stops.` }); break; }
+      xs.push(x - c.f(x) / d);
+      const all = xs.slice(), lo = Math.min(...all), hi = Math.max(...all), m = (hi - lo) * 0.25 + 0.5;
+      const svg = plotSVG(c.f, lo - m, hi + m, ({ X, Y }) => all.slice(0, -1).map((u, i) =>
+        `<line x1="${X(u)}" y1="${Y(0)}" x2="${X(u)}" y2="${Y(c.f(u))}" stroke="currentColor" stroke-dasharray="3 3" stroke-opacity=".5"/>` +
+        `<line x1="${X(u)}" y1="${Y(c.f(u))}" x2="${X(all[i + 1])}" y2="${Y(0)}" stroke="var(--thmc)" stroke-width="${i === k ? 2 : 1}"/>`).join("") +
+        `<circle cx="${X(all[k + 1])}" cy="${Y(0)}" r="3.5" fill="var(--thmc)"/>`);
+      F.push({ html: svg, note: `x${k + 1} = x${k} − f(x${k})/f′(x${k}) = ${cfmt(xs[k + 1], 10)};  f(x${k + 1}) = ${cfmt(c.f(xs[k + 1]), 10)}.` });
+      if (!Number.isFinite(xs[k + 1]) || Math.abs(xs[k + 1]) > 1e6) break;
+    }
+    return F;
+  }
+
   // ---------- registry: figure id -> widget ----------
   const WIDGETS = {
+    "fig-definite-integral-1": { title: "Try it: Riemann sums and the trapezoidal rule", inputs: [{ name: "f", label: "f(x)", value: "sq", options: [["sq", "x²"], ["sqrt", "√x"], ["sin", "sin x"], ["exp", "eˣ"], ["inv", "1/x"]] }, { name: "a", label: "a", value: "0", short: true }, { name: "b", label: "b", value: "2", short: true }, { name: "n", label: "up to n", value: "32", short: true }, { name: "rule", label: "rule", value: "left", options: [["left", "left endpoints"], ["right", "right endpoints"], ["mid", "midpoints"], ["trap", "trapezoids"]] }], run: riemann, speed: 1300 },
+    "fig-newtons-method-1": { title: "Try it: Newton's method", inputs: [{ name: "f", label: "f(x)", value: "sq3", options: [["sq3", "x² − 3"], ["cube9", "x³ − 9"], ["cos", "cos x − x"], ["cbrt", "x^(1/3) (fails)"]] }, { name: "x0", label: "x₀", value: "3", short: true }, { name: "steps", label: "steps", value: "5", short: true }], run: newton, speed: 1300 },
     "fig-elimination-1": { title: "Try it: elimination on [A b]", inputs: [{ name: "m", label: "rows (; between)", value: "1 1 1 6; 2 3 5 23; 4 0 5 19" }], run: elimination, speed: 1300 },
     "fig-orthonormal-bases-and-gram-schmidt-1": { title: "Try it: Gram–Schmidt", inputs: [{ name: "v", label: "vectors (; between)", value: "1 1 0; 1 0 1; 0 1 1" }], run: gramSchmidt, speed: 1400 },
     "fig-comparison-sorting-1": { title: "Try it: binary search", inputs: [{ name: "array", label: "array", value: "1 3 4 6 8 9 11 14 17" }, { name: "target", label: "find", value: "11", short: true }], run: binarySearch },
