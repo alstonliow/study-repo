@@ -1,11 +1,13 @@
 ---
 title: "Dijkstra's Algorithm"
-sources: [mit6006-13, mit6006r-13]
+sources: [mit6006-13, mit6006r-13, cs221-7]
 requires: [cs/graph-algorithms/weighted-shortest-paths, cs/data-structures/binary-heaps]
 status: draft
 ---
 
 <!-- Added 2026-11-17 from MIT 6.006 (Spring 2020), Lecture 13 and Recitation 13, in our own wording; proofs written out in steps. -->
+
+<!-- Merged 2026-11-18 with Stanford CS221 Lecture 7 (uniform cost search; owner decision): def-dijkstra and thm-dijkstra are the shared core of both algorithms (this MIT 6.006 version kept: more concise, uses the relaxation lemmas); the search-problem variant (lazy frontier, early stop, backpointers, optimality of the returned solution) is in @sec-ai-search-uniform-cost-search. -->
 
 When all weights are non-negative, shortest paths can be found much faster than by Bellman–Ford, by growing a "ball" around the source as BFS does.
 

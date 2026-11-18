@@ -1,11 +1,13 @@
 ---
 title: "Uniform Cost Search"
 sources: [cs221-7]
-requires: [ai/search/search-problems, cs/data-structures/binary-heaps]
+requires: [ai/search/search-problems, cs/graph-algorithms/dijkstra]
 status: draft
 ---
 
 <!-- Added 2026-11-18 from Stanford CS221 (lecture code, commit 3ac2452), Lecture 7 (uniform cost search and its correctness), in our own wording; proof written out in steps. UCS is Dijkstra's algorithm (@sec-cs-graph-algorithms-dijkstra) run lazily on a search problem; blocks are marked related, merge proposed to the owner. -->
+
+<!-- Merged 2026-11-18 with @sec-cs-graph-algorithms-dijkstra (owner decision): the shared core, the algorithm on an explicit graph and its correctness proof, is kept once in def-dijkstra and thm-dijkstra (MIT 6.006 version, judged more concise; it uses the existing relaxation lemmas). What only CS221 has stays here: lazy frontier, stopping at the first end state, backpointers, and the optimality of the returned solution (old proof steps 1-6 removed, step 7 kept in the new proof). -->
 
 Dynamic programming computes future costs from the end states back to the start, which needs an order in which every state comes after its successors; with cycles there is none. Uniform cost search instead computes costs from the start, in increasing order, and so needs no such order. It requires all costs to be non-negative.
 
@@ -17,7 +19,7 @@ For a state $s$ of a search problem, $\text{PastCost}(s)$ is the minimum cost of
 
 ::: {#def-uniform-cost-search .definition name="Uniform cost search" related="def-dijkstra"}
 
-*Uniform cost search* (UCS) on a search problem with non-negative costs keeps every state in one of three sets: *explored* (its past cost is known), *frontier* (seen, with a tentative cost called its *priority*), and *unexplored*. Initially the frontier holds $s_{\text{start}}$ with priority $0$. Repeatedly, it removes a frontier state $s$ of minimum priority and moves it to the explored set; if $\text{IsEnd}(s)$, it stops and returns the solution traced back through stored backpointers. Otherwise, for each action $a$ with $s'=\text{Succ}(s,a)$ not explored, it sets the priority of $s'$ to $\text{priority}(s)+\text{Cost}(s,a)$ if $s'$ is unexplored or this value is smaller than its current priority, and records $(s,a)$ as the backpointer of $s'$. If the frontier becomes empty, there is no solution.
+*Uniform cost search* (UCS) is Dijkstra's algorithm (@def-dijkstra) run on the graph of a search problem with non-negative costs, whose vertices are the states and whose edges are $s\to\text{Succ}(s,a)$ with weight $\text{Cost}(s,a)$, with three changes. The graph is never built: a state enters the priority queue, the *frontier*, only when it is first reached, so states are *explored* (removed with their past cost known), in the frontier (with a tentative cost, its *priority*), or *unexplored*. UCS stops as soon as it removes an end state. And for each state it records the action that last lowered its priority (a *backpointer*), so that the solution can be traced back from the end state. If the frontier becomes empty, there is no solution.
 
 :::
 
@@ -46,7 +48,7 @@ For a state $s$ of a search problem, $\text{PastCost}(s)$ is the minimum cost of
 
 ::: {#thm-uniform-cost-search .theorem name="Correctness of uniform cost search" related="thm-dijkstra"}
 
-If all costs are non-negative, then whenever UCS moves a state $s$ from the frontier to the explored set,
+If all costs are non-negative, UCS removes states from the frontier in order of non-decreasing priority, and whenever it removes a state $s$,
 
 $$
 \text{priority}(s)=\text{PastCost}(s).
@@ -58,23 +60,11 @@ In particular, the solution UCS returns has minimum cost.
 
 ::: {.proof}
 
-1. The priority of a frontier state is always the cost of an actual path to it, namely the backpointer path, so $\text{priority}(s)\ge\text{PastCost}(s)$ at all times. It remains to show $\text{priority}(s)\le\text{cost}(\pi)$ for every path $\pi$ from $s_{\text{start}}$ to $s$, at the moment $s$ is removed.
+1. Leaving unexplored states out of the frontier is the same as keeping them in it with priority $\infty$: such a state is never the minimum while a state of finite priority remains, and it gets a finite priority exactly when UCS first reaches it. Stopping early only cuts off later removals. So up to the moment UCS stops, it removes the same states in the same order as Dijkstra's algorithm on the graph of the search problem, and by @thm-dijkstra each has $\text{priority}(s)=\delta(s_{\text{start}},s)=\text{PastCost}(s)$ when removed.
 
-2. We use induction on the order of removal. The first state removed is $s_{\text{start}}$, with priority $0=\text{PastCost}(s_{\text{start}})$ since costs are non-negative.
+2. Priorities are removed in non-decreasing order: when $s$ is removed with the minimum priority $p$, every update sets a priority to $p+\text{Cost}(s,a)\ge p$, so the minimum of the frontier never drops below $p$.
 
-3. Now let $s\ne s_{\text{start}}$ be removed, and assume every state explored earlier has priority equal to its past cost. Take any path $\pi$ from $s_{\text{start}}$ to $s$. It starts in the explored set and ends outside it, so it has a first edge $(t,u)$ with $t$ explored and $u$ not explored.
-
-4. When $t$ was explored, UCS considered the edge $(t,u)$, so afterwards $u$ is in the frontier with $\text{priority}(u)\le\text{priority}(t)+\text{Cost}(t,u)$; priorities only decrease, so this still holds.
-
-5. The part of $\pi$ up to $t$ costs at least $\text{PastCost}(t)=\text{priority}(t)$ (induction hypothesis), and the part after $u$ costs at least $0$. Therefore
-$$
-\text{cost}(\pi)\ \ge\ \text{priority}(t)+\text{Cost}(t,u)\ \ge\ \text{priority}(u)\ \ge\ \text{priority}(s),
-$$
-the last step because $s$ has minimum priority in the frontier.
-
-6. So $\text{priority}(s)\le\text{cost}(\pi)$ for every such $\pi$, hence $\text{priority}(s)=\text{PastCost}(s)$.
-
-7. Suppose UCS stops at an end state $s$, and let $\pi$ be a path to any end state $e$. If $e=s$, $\text{cost}(\pi)\ge\text{priority}(s)$ by step 6. Otherwise $e$ has not been explored, since UCS stops at the first end state it explores; so $\pi$ leaves the set explored before $s$, and steps 3 to 5 give $\text{cost}(\pi)\ge\text{priority}(s)$ again. Hence the returned solution, of cost $\text{priority}(s)$, has minimum cost.
+3. Suppose UCS stops at an end state $s$, and let $e$ be any end state. If $e=s$ there is nothing to show. Otherwise $e$ was not removed before $s$, since UCS stops at the first end state it removes. If $\text{PastCost}(e)<\text{PastCost}(s)$, Dijkstra's order (step 2, applied to the full run) would remove $e$ before $s$, a contradiction. So $\text{PastCost}(e)\ge\text{PastCost}(s)$, and the returned solution, the backpointer path of cost $\text{priority}(s)=\text{PastCost}(s)$, has minimum cost.
 
 :::
 

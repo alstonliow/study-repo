@@ -116,7 +116,7 @@ chapters:
     points:
       - id: "7.1"
         title: "Uniform cost search and A*"
-        covers: [ai/search/uniform-cost-search, ai/search/a-star-search]
+        covers: [def-dijkstra, thm-dijkstra, ai/search/uniform-cost-search, ai/search/a-star-search]
   - num: 8
     title: "Markov decision processes"
     points:
