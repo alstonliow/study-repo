@@ -50,13 +50,13 @@ chapters:
     points:
       - id: "6.1"
         title: "Search problems"
-        covers: []
+        covers: [ai/search/search-problems, ai/search/approximate-search]
   - num: 7
     title: "Uniform cost search and A*"
     points:
       - id: "7.1"
         title: "Uniform cost search and A*"
-        covers: [cs/graph-algorithms/dijkstra]
+        covers: [ai/search/uniform-cost-search, ai/search/a-star-search]
   - num: 8
     title: "Markov decision processes"
     points:

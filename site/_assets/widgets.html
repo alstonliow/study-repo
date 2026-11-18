@@ -487,6 +487,35 @@
     return F;
   }
 
+  // ---------- search (CS221) ----------
+  function ucsDiamond(p) {
+    const c = limit(nums(p.costs), 5, "costs");
+    if (c.length !== 5) throw new Error("give five costs: A–B, B–C, C–D, A–C, B–D");
+    if (c.some(x => x < 0)) throw new Error("uniform cost search needs non-negative costs");
+    const names = [["A","B"],["B","C"],["C","D"],["A","C"],["B","D"]], E = names.map(([a, b], i) => [a, b, c[i]]);
+    const P = place({ A: [0, 0], B: [1.5, 0.9], C: [1.5, -0.9], D: [3, 0] });
+    const pr = { A: 0 }, back = {}, done = [], F = [];
+    const front = () => Object.keys(pr).filter(v => !done.includes(v)).sort((x, y) => pr[x] - pr[y] || (x < y ? -1 : 1));
+    const pic = (u, note, path = []) => F.push({ html: graph(P, E, {
+        nodeCls: v => v === u ? "hl" : done.includes(v) ? "done" : pr[v] === undefined ? "dim" : "",
+        edgeCls: (a, b) => path.some(([x, y]) => (x === a && y === b) || (x === b && y === a)) ? "hl" : "",
+        under: v => pr[v] === undefined ? "" : fmt(pr[v]) }) +
+      `<div class="wg-sub">frontier: ${front().map(v => `${v}(${fmt(pr[v])})`).join("  ") || "empty"}</div>`, note });
+    pic(null, "Start A has priority 0; it is the only state in the frontier.");
+    while (front().length) {
+      const u = front()[0]; done.push(u);
+      if (u === "D") {
+        const path = []; for (let v = "D"; v !== "A"; v = back[v]) path.unshift([back[v], v]);
+        pic(u, `Remove the end state D with priority ${pr.D} = PastCost(D). Solution: A→${path.map(e => e[1]).join("→")}.`, path);
+        return F;
+      }
+      const ch = [];
+      for (const [a, b, w] of E) for (const [x, y] of [[a, b], [b, a]]) if (x === u && !done.includes(y) && (pr[y] === undefined || pr[u] + w < pr[y])) { ch.push(`${y}: ${fmt(pr[y] ?? INF)} → ${pr[u] + w}`); pr[y] = pr[u] + w; back[y] = u; }
+      pic(u, `Explore ${u} (past cost ${pr[u]}). ${ch.length ? "Update " + ch.join(", ") + "." : "No priority improves."}`);
+    }
+    return F;
+  }
+
   // ---------- dynamic programming tables ----------
   function lcs(p) {
     const A = p.a.trim().toUpperCase(), B = p.b.trim().toUpperCase(), a = A.length, b = B.length, F = [];
@@ -959,6 +988,7 @@
     "fig-interval-subproblems-1": { title: "Try it: optimal binary search tree", inputs: [{ name: "w", label: "weights", value: "10 8 9" }], run: optimalBST, speed: 1300 },
     "fig-amortized-analysis-1": { title: "Try it: binary counter and its potential", inputs: [{ name: "n", label: "increments", value: "16", short: true }], run: counter, speed: 700 },
     "fig-approximation-algorithms-1": { title: "Step through: 2-approximation for vertex cover", run: vertexCover, speed: 1200 },
+    "fig-uniform-cost-search-1": { title: "Try it: uniform cost search", inputs: [{ name: "costs", label: "costs A–B, B–C, C–D, A–C, B–D", value: "1 1 1 100 100" }], run: ucsDiamond, speed: 1300 },
     "fig-pseudopolynomial-time-1": { title: "Try it: subset sum table", inputs: [{ name: "array", label: "numbers", value: "2 5 9 14" }, { name: "target", label: "target", value: "16", short: true }], run: subsetSum, speed: 1300 },
   };
 

@@ -84,6 +84,7 @@ a field. Course order for the next additions: 6.041 with 18.05 (18.01, 18.06 and
 | MIT 18.01 lecture notes (Fall 2006), Lectures 1–37, and Supplementary Notes sections G, C, MVT, PI, FT, F, AV, INT and E (exercises) | `math/calculus/single-variable/*` (new part and seven branches) |
 | MIT 18.02 lecture notes (Fall 2007), Lectures 1–33, and Supplementary Notes D, M, K, TA, LS, SD, N, P, I, CV, G, V1–V6, V8–V15 and E (exercises) | `math/calculus/multivariable/*` (new part and five branches); vectors, matrices and determinants from `math/linear-algebra/systems` and `determinants` |
 | MIT 6.042J textbook (MCS 2015), Chapters 1–21 | mostly existing branches; new notes in `proof` (well ordering, state machines, structural induction), `relations` (partial orders), `graph` (directed graphs, isomorphism, colouring, communication networks), `sequences` (approximating sums), `counting` (generating functions), `probability/discrete` (conditional expectation, Chernoff bounds) |
+| Stanford CS221 lecture code (commit 3ac2452), Lectures 6–7 | `ai/search` (four notes); other lectures in later rounds |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
 course files (`meta/courses/`), not here.
@@ -127,3 +128,5 @@ course files (`meta/courses/`), not here.
 - 2026-11-18: MIT 18.02 (Multivariable Calculus) added as a course; new part Multivariable Calculus (field Mathematics,
   after Linear Algebra, owner decision) with five branches and 29 notes; homework from the Fall 2007 problem sets,
   Part B (36 problems), and the 184 Supplementary Notes exercises assigned in Part A or Part B.
+- 2026-11-18: Stanford CS221 round 1: `ai/search` filled from Lectures 6–7 (search problems, exhaustive search and
+  dynamic programming, best-of-n and beam search, uniform cost search, A* and relaxations); four notes, five figures, one widget.

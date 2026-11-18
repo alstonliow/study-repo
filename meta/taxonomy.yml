@@ -468,7 +468,7 @@ parts:
       - id: ai/search
         title: Search
         desc: Search problems, beam search, uniform cost search and A*
-        notes: []   # topic order on the website
+        notes: [search-problems, approximate-search, uniform-cost-search, a-star-search]   # topic order on the website
       - id: ai/reinforcement-learning
         title: Reinforcement Learning
         desc: Markov decision processes, value iteration, Q-learning, policy gradient
