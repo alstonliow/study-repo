@@ -60,6 +60,26 @@ $$w=a\Big(x+\frac b{2a}y\Big)^2+\Big(c-\frac{b^2}{4a}\Big)y^2=\frac1{4a}\Big(4a^
 
 :::
 
+::: {#fig-critical-points-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \r in {0.4,0.8,1.2} \draw[emph] (0,0) circle (\r);
+\fill[ink] (0,0) circle[pt]; \node[lab] at (0,-1.6) {minimum: $x^2+y^2$};
+\begin{scope}[xshift=4cm]
+\foreach \c in {0.3,0.9} {\draw[emph, domain=-1:1, samples=30] plot ({sqrt(\c+\x*\x)},\x); \draw[emph, domain=-1:1, samples=30] plot ({-sqrt(\c+\x*\x)},\x);
+\draw[hl, domain=-1:1, samples=30] plot (\x,{sqrt(\c+\x*\x)}); \draw[hl, domain=-1:1, samples=30] plot (\x,{-sqrt(\c+\x*\x)});}
+\fill[ink] (0,0) circle[pt]; \node[lab] at (0,-1.6) {saddle: $x^2-y^2$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Level curves near a critical point: closed ovals around a minimum, hyperbolas through a saddle (positive levels solid, negative levels highlighted).
+
+:::
+
 ::: {#thm-second-derivative-test-two-variables .theorem name="Second derivative test"}
 
 Let $(x_0,y_0)$ be a critical point of $f$, whose second partial derivatives are continuous, and put

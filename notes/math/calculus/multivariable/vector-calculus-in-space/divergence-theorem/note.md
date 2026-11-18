@@ -14,6 +14,23 @@ $$\operatorname{div}\mathbf{F}=\nabla\cdot\mathbf{F}=P_x+Q_y+R_z .$$
 
 :::
 
+::: {#fig-divergence-theorem-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] plot[smooth cycle] coordinates {(0,0) (2,-0.5) (3.2,0.8) (2.2,2) (0.4,1.6)};
+\draw[emph] plot[smooth cycle] coordinates {(0,0) (2,-0.5) (3.2,0.8) (2.2,2) (0.4,1.6)};
+\draw[->, hl] (3.2,0.8) -- (4,0.8) node[lab, right] {$\hat{\mathbf n}$}; \draw[->, hl] (2,-0.5) -- (2.1,-1.3); \draw[->, hl] (0.4,1.6) -- (-0.2,2.2);
+\node[lab] at (1.6,0.8) {$D$}; \node[lab] at (2.9,1.9) {$S$};
+\end{tikzpicture}
+\end{center}
+```
+
+A solid $D$ with closed boundary surface $S$ (in cross-section); the unit normal $\hat{\mathbf n}$ points out of $D$.
+
+:::
+
 ::: {#thm-divergence-theorem .theorem name="Divergence theorem (Gauss–Green)"}
 
 Let $S$ be a closed surface bounding the solid $D$, with outward normal, and let $\mathbf{F}$ have continuous partial derivatives on all of $D$. Then

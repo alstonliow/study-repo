@@ -25,6 +25,22 @@ The function $f$ is called a **potential** of the field $\nabla f$.
 
 In @exm-line-integral-sector the field $\langle y,x\rangle$ is $\nabla(xy)$, so each piece can be computed from the values of $xy$ at its ends, and the closed curve gives $0$.
 
+::: {#fig-conservative-fields-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[ink] (0,0) circle[pt] node[lab, below left] {$P_0$}; \fill[ink] (4,1.5) circle[pt] node[lab, above right] {$P_1$};
+\draw[->, emph] (0,0) .. controls (1,2) and (3,2.5) .. (4,1.5) node[lab, pos=0.5, above] {$C_1$};
+\draw[->, hl] (0,0) .. controls (1.5,-1) and (3,0) .. (4,1.5) node[lab, pos=0.5, below right] {$C_2$};
+\end{tikzpicture}
+\end{center}
+```
+
+For a conservative field the work along $C_1$ and $C_2$ is the same, because it depends only on the endpoints $P_0$ and $P_1$.
+
+:::
+
 ::: {#def-conservative-field .definition name="Path independent and conservative"}
 
 A field $\mathbf{F}$ on a region is **path independent** if $\int_C\mathbf{F}\cdot d\mathbf{r}$ depends only on the endpoints of $C$, and **conservative** if $\oint_C\mathbf{F}\cdot d\mathbf{r}=0$ for every closed curve $C$ in the region. The expression $M\,dx+N\,dy$ is an **exact differential** if it equals $df$ for some $f$.

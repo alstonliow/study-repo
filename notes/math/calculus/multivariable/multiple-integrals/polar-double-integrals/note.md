@@ -9,6 +9,25 @@ status: draft
 
 Polar coordinates $x=r\cos\theta$, $y=r\sin\theta$ (@def-polar-coordinates) help when the region or the integrand is simpler in $r$ and $\theta$, typically when it involves $x^2+y^2=r^2$.
 
+::: {#fig-polar-double-integrals-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.3,0) -- (3.3,0) node[lab, right] {$x$}; \draw[->, faint] (0,-0.3) -- (0,3.3) node[lab, above] {$y$};
+\fill[tintA] (30:2) arc (30:45:2) -- (45:2.6) arc (45:30:2.6) -- cycle;
+\draw[emph] (30:2) arc (30:45:2) -- (45:2.6) arc (45:30:2.6) -- cycle;
+\draw[faint] (0,0) -- (30:2); \draw[faint] (0,0) -- (45:2);
+\node[lab] at (37.5:3) {$\Delta A\approx r\,\Delta r\,\Delta\theta$};
+\draw[faint] (30:0.7) arc (30:45:0.7) node[lab, right] at (37.5:0.7) {$\Delta\theta$};
+\end{tikzpicture}
+\end{center}
+```
+
+The polar area element is almost a rectangle with sides $\Delta r$ and $r\,\Delta\theta$.
+
+:::
+
 ::: {#thm-polar-area-element .theorem name="Area element in polar coordinates"}
 
 $$dA=r\,dr\,d\theta,\qquad\text{so}\qquad\iint_Rf\,dA=\iint_Rf(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta .$$

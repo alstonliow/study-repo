@@ -15,6 +15,25 @@ but on the circle of radius $a$, counterclockwise, $\mathbf{F}=\hat{\mathbf{T}}/
 
 :::
 
+::: {#fig-simply-connected-regions-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0,0) circle (1.3); \draw[emph, ->] (0.8,0) arc (0:350:0.8); \node[lab] at (0,-1.6) {simply connected};
+\begin{scope}[xshift=4cm]
+\fill[tintA, even odd rule] (0,0) circle (1.3) (0,0) circle (0.35);
+\draw[emph] (0,0) circle (0.35); \draw[hl, ->] (0.8,0) arc (0:350:0.8);
+\node[lab] at (0,-1.6) {not simply connected};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+A loop in a disk can be shrunk to a point inside the region; a loop around the hole of an annulus cannot.
+
+:::
+
 ::: {#def-simply-connected-plane .definition name="Simply connected region"}
 
 A region $D$ of the plane is **simply connected** if the interior of every closed curve lying in $D$ is also contained in $D$ (informally: $D$ has no holes).

@@ -31,6 +31,23 @@ Is $\mathbf{v}=\langle1,2,-1\rangle$ parallel or perpendicular to the plane $x+y
 
 :::
 
+::: {#fig-lines-and-planes-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0,0) -- (4,0) -- (5,1.5) -- (1,1.5) -- cycle; \draw[faint] (0,0) -- (4,0) -- (5,1.5) -- (1,1.5) -- cycle;
+\fill[ink] (2.5,0.75) circle[pt] node[lab, below] {$P_0$};
+\draw[->, hl] (2.5,0.75) -- (2.5,2.3) node[lab, above] {$\mathbf N$};
+\draw[->, emph] (2.5,0.75) -- (3.8,1.2) node[lab, right] {$\overrightarrow{P_0P}$};
+\end{tikzpicture}
+\end{center}
+```
+
+A point $P$ lies on the plane through $P_0$ with normal $\mathbf N$ exactly when $\mathbf N\cdot\overrightarrow{P_0P}=0$.
+
+:::
+
 ::: {#def-parametric-line .definition name="Parametric equations of a line"}
 
 The line through $Q_0$ in the direction $\mathbf{v}\ne\mathbf{0}$ is the path of the moving point

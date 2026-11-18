@@ -9,6 +9,22 @@ status: draft
 
 A **vector field in space** is $\mathbf{F}=P\,\mathbf{i}+Q\,\mathbf{j}+R\,\mathbf{k}$ with $P,Q,R$ functions of $x,y,z$: force fields (gravity $-c\langle x,y,z\rangle/\rho^3$, electric and magnetic fields), velocity fields of fluids, gradient fields.
 
+::: {#fig-surface-integrals-and-flux-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) circle (1.6); \draw[faint, dashed] (0,0) ellipse (1.6 and 0.45);
+\foreach \a in {30,90,150,250,320} \draw[->, hl] (\a:1.6) -- (\a:2.4);
+\node[lab] at (45:2.6) {$\hat{\mathbf n}$}; \node[lab] at (0.3,0.9) {$S$};
+\end{tikzpicture}
+\end{center}
+```
+
+On the sphere of radius $a$ the outward unit normal is $\hat{\mathbf n}=\langle x,y,z\rangle/a$; flux adds up $\mathbf F\cdot\hat{\mathbf n}\,dS$ over $S$.
+
+:::
+
 ::: {#def-flux-surface .definition name="Flux through a surface"}
 
 Let $S$ be a surface with a chosen unit normal $\hat{\mathbf{n}}$ (one of the two sides counts as positive). The **flux** of $\mathbf{F}$ through $S$ is the surface integral

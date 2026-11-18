@@ -9,6 +9,23 @@ status: draft
 
 A closed curve $C$ bounding a region $R$ is **positively oriented** when $R$ lies on the left as one travels along $C$ (counterclockwise for the outer boundary).
 
+::: {#fig-greens-theorem-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] plot[smooth cycle] coordinates {(0,0) (2,-0.4) (3.4,0.6) (2.8,2) (1,1.8)};
+\draw[emph] plot[smooth cycle] coordinates {(0,0) (2,-0.4) (3.4,0.6) (2.8,2) (1,1.8)};
+\draw[->, emph] (1.4,-0.3) -- (1.6,-0.36); \draw[->, emph] (2,1.98) -- (1.8,1.96);
+\node[lab] at (1.7,0.8) {$R$}; \node[lab] at (3.6,1.6) {$C$};
+\end{tikzpicture}
+\end{center}
+```
+
+Green's theorem: $C$ is the boundary of $R$, traversed counterclockwise, so $R$ is on the left.
+
+:::
+
 ::: {#thm-greens-theorem .theorem name="Green's theorem"}
 
 Let $C$ be a positively oriented closed curve bounding the region $R$, and let $\mathbf{F}=M\,\mathbf{i}+N\,\mathbf{j}$ have continuous partial derivatives on all of $R$ (including $C$). Then

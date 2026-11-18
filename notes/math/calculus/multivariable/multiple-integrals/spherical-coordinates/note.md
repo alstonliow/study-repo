@@ -7,6 +7,25 @@ status: draft
 
 <!-- Added 2026-11-18 from MIT 18.02 (Fall 2007), Lecture 26 and Supplementary Notes I.4, CV.4, in our own wording. Numbers checked in Python (sympy). -->
 
+::: {#fig-spherical-coordinates-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (0,0) -- (0,3) node[lab, above] {$z$}; \draw[->, faint] (0,0) -- (3,0) node[lab, right] {$y$}; \draw[->, faint] (0,0) -- (-1.4,-1.4) node[lab, below left] {$x$};
+\draw[emph] (0,0) -- (1.6,2.2) node[lab, above right] {$P$}; \fill[ink] (1.6,2.2) circle[pt];
+\draw[faint, dashed] (1.6,2.2) -- (1.6,-0.6) -- (0,0);
+\draw[hl] (0,0.8) arc (90:54:0.8); \node[lab] at (0.3,1.1) {$\varphi$};
+\draw[hl] (-0.5,-0.5) arc (225:340:0.7); \node[lab] at (0.1,-0.9) {$\theta$};
+\node[lab] at (0.6,1.4) {$\rho$};
+\end{tikzpicture}
+\end{center}
+```
+
+Spherical coordinates: $\rho$ is the distance to the origin, $\varphi$ the angle down from the positive $z$-axis, and $\theta$ the polar angle of the projection to the $xy$-plane.
+
+:::
+
 ::: {#def-spherical-coordinates .definition name="Spherical coordinates"}
 
 **Spherical coordinates** $(\rho,\phi,\theta)$: $\rho\ge0$ is the distance to the origin, $\phi\in[0,\pi]$ the angle down from the positive $z$-axis, $\theta$ the same angle as in cylindrical coordinates. Then

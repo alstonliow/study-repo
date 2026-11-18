@@ -16,6 +16,23 @@ $$\frac{dw}{dt}=\nabla w\cdot\frac{d\mathbf{r}}{dt}.$$
 
 :::
 
+::: {#fig-gradient-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \r in {0.6,1.2,1.8} \draw[emph] (0,0) circle (\r);
+\fill[ink] (1.06,0.85) circle[pt] node[lab, below left] {$P$};
+\draw[->, hl] (1.06,0.85) -- (1.76,1.41) node[lab, above right] {$\nabla f$};
+\draw[faint, dashed] (0.5,1.55) -- (1.62,0.15);
+\end{tikzpicture}
+\end{center}
+```
+
+Level curves of $f=x^2+y^2$. At each point the gradient is perpendicular to the level curve (dashed tangent line) and points towards larger values.
+
+:::
+
 ::: {#thm-gradient-normal-to-level-surface .theorem name="The gradient is normal to level surfaces"}
 
 At a point $P$ of the level surface $w=c$, the gradient $\nabla w(P)$ is perpendicular to the surface: it is perpendicular to the velocity of every curve through $P$ inside the surface.

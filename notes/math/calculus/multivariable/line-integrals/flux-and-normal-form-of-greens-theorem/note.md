@@ -7,6 +7,24 @@ status: draft
 
 <!-- Added 2026-11-18 from MIT 18.02 (Fall 2007), Lecture 23 and Supplementary Notes V3, V4, in our own wording. Numbers checked in Python (sympy). -->
 
+::: {#fig-flux-and-normal-form-of-greens-theorem-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) .. controls (1,1.5) and (3,1.5) .. (4,0.5) node[lab, right] {$C$};
+\fill[ink] (2,1.12) circle[pt];
+\draw[->, hl] (2,1.12) -- (3,1.12) node[lab, right] {$\mathbf T$};
+\draw[->, hl] (2,1.12) -- (2,0.12) node[lab, below] {$\hat{\mathbf n}$};
+\draw[->, emph] (2,1.12) -- (2.8,0.3) node[lab, below right] {$\mathbf F$};
+\end{tikzpicture}
+\end{center}
+```
+
+Flux counts the normal component $\mathbf F\cdot\hat{\mathbf n}$ along $C$; $\hat{\mathbf n}$ is $\mathbf T$ turned $90^\circ$ clockwise.
+
+:::
+
 ::: {#def-flux-plane .definition name="Flux across a plane curve"}
 
 Let $C$ be a curve with unit tangent $\hat{\mathbf{T}}$ (in its direction of travel), and let $\hat{\mathbf{n}}$ be $\hat{\mathbf{T}}$ turned $90^\circ$ clockwise, i.e. pointing to the right of the direction of travel. The **flux** of $\mathbf{F}$ across $C$ is

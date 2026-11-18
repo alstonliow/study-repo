@@ -9,6 +9,24 @@ status: draft
 
 Stokes' theorem is the analogue in space of Green's theorem for work, as the divergence theorem is the analogue of Green's theorem for flux.
 
+::: {#fig-stokes-theorem-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (-2,0) arc (180:360:2 and 0.6) .. controls (2,2) and (-2,2) .. (-2,0);
+\draw[emph] (-2,0) .. controls (-2,2) and (2,2) .. (2,0);
+\draw[emph] (0,0) ellipse (2 and 0.6); \draw[->, emph] (-0.1,-0.6) -- (0.1,-0.6);
+\draw[->, hl] (0,1.5) -- (0,2.4) node[lab, above] {$\hat{\mathbf n}$};
+\node[lab] at (0.6,1) {$S$}; \node[lab] at (2.2,-0.4) {$C$};
+\end{tikzpicture}
+\end{center}
+```
+
+Compatible orientation: with $\hat{\mathbf n}$ pointing up, walking along $C$ in the arrow direction keeps $S$ on the left (right-hand rule).
+
+:::
+
 ::: {#def-compatible-orientation .definition name="Compatible orientations"}
 
 Let $S$ be a two-sided surface with boundary curve $C$. An orientation of $C$ and a unit normal $\hat{\mathbf{n}}$ of $S$ are **compatible** if, walking along $C$ in its direction with the body along $\hat{\mathbf{n}}$, the surface $S$ is on the left. (Right-hand rule: thumb along $C$, index finger pointing into $S$, then the middle finger points along $\hat{\mathbf{n}}$.)

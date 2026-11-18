@@ -19,6 +19,23 @@ To compute $f_x$, treat every variable except $x$ as a constant and differentiat
 
 Geometrically, the slice of the graph by the plane $y=y_0$ is the curve $z=f(x,y_0)$; $f_x(x_0,y_0)$ is the slope of its tangent line. Likewise $f_y$ is the slope of the slice $x=x_0$.
 
+::: {#fig-partial-derivatives-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.3,0) -- (4,0) node[lab, right] {$x$}; \draw[->, faint] (0,-0.3) -- (0,2.5) node[lab, above] {$y$};
+\draw[emph, domain=0.2:3.6, samples=40] plot (\x,{0.25*\x*\x-0.3*\x+0.6});
+\fill[ink] (2,1) circle[pt] node[lab, above left] {$(x_0,f(x_0,y_0))$};
+\draw[hl] (1,0.3) -- (3.2,1.84) node[lab, right] {slope $f_x(x_0,y_0)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The slice $y=y_0$ of the graph $z=f(x,y)$ is a curve $z=f(x,y_0)$; its slope at $x_0$ is $f_x(x_0,y_0)$. The slice $x=x_0$ gives $f_y$ the same way.
+
+:::
+
 ::: {#def-tangent-plane-graph .definition name="Tangent plane to a graph"}
 
 The tangent plane to the graph $z=f(x,y)$ at $(x_0,y_0,z_0)$, $z_0=f(x_0,y_0)$, is
