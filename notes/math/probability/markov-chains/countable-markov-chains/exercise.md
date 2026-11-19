@@ -22,3 +22,63 @@ $$n!\sim\sqrt{2\pi n}\Bigl(\frac ne\Bigr)^n.$$
 
 (e) Use part (d) to show that the random walk for any $d>3$ is also transient.
 :::
+
+::: {.problem #prob-eecs126hw-7-q1 origin="external" source="eecs126hw-7-q1"}
+**Markov Chains with Countably Infinite State Space.**
+
+(a) Consider a Markov chain with state space $\mathbb Z_{>0}$ and transition probability graph:
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (1) at (0,0) {$1$};
+\node[lab] at (1.5,0) {$\cdots$};
+\node[small vertex] (i) at (3,0) {$i$};
+\node[small vertex] (j) at (5.4,0) {$i+1$};
+\node[lab] at (6.9,0) {$\cdots$};
+\draw[->] (1) to[bend left=30] node[lab,tick,above] {$\frac14$} (1.2,0.25);
+\draw[->] (1.2,-0.25) to[bend left=30] node[lab,tick,below] {$\frac12$} (1);
+\draw[->] (1) to[loop below] node[lab,tick,below] {$\frac34$} (1);
+\draw[->] (1.8,0.25) to[bend left=30] node[lab,tick,above] {$\frac{i-1}{2(i-1)+2}$} (i);
+\draw[->] (i) to[bend left=30] node[lab,tick,below] {$\frac12$} (1.8,-0.25);
+\draw[->] (i) to[bend left=30] node[lab,tick,above] {$\frac{i}{2i+2}$} (j);
+\draw[->] (j) to[bend left=30] node[lab,tick,below] {$\frac12$} (i);
+\draw[->] (i) to[loop below] node[lab,tick,below] {$\frac{1}{2i+2}$} (i);
+\draw[->] (j) to[loop below] node[lab,tick,below] {$\frac{1}{2(i+1)+2}$} (j);
+\draw[->] (j) to[bend left=30] node[lab,tick,above] {$\frac{i+1}{2(i+1)+2}$} (6.6,0.25);
+\draw[->] (6.6,-0.25) to[bend left=30] node[lab,tick,below] {$\frac12$} (j);
+\end{tikzpicture}
+\end{center}
+```
+
+Show that this Markov chain has no stationary distribution.
+
+(b) Consider a Markov chain with state space $\mathbb Z_{>0}$ and transition probability graph:
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (1) at (0,0) {$1$};
+\node[lab] at (1.5,0) {$\cdots$};
+\node[small vertex] (i) at (3,0) {$i$};
+\node[small vertex] (j) at (5.4,0) {$i+1$};
+\node[lab] at (6.9,0) {$\cdots$};
+\draw[->] (1) to[bend left=30] node[lab,tick,above] {$a$} (1.2,0.25);
+\draw[->] (1.2,-0.25) to[bend left=30] node[lab,tick,below] {$b$} (1);
+\draw[->] (1) to[loop below] node[lab,tick,below] {$1-a$} (1);
+\draw[->] (1.8,0.25) to[bend left=30] node[lab,tick,above] {$a$} (i);
+\draw[->] (i) to[bend left=30] node[lab,tick,below] {$b$} (1.8,-0.25);
+\draw[->] (i) to[bend left=30] node[lab,tick,above] {$a$} (j);
+\draw[->] (j) to[bend left=30] node[lab,tick,below] {$b$} (i);
+\draw[->] (i) to[loop below] node[lab,tick,below] {$1-a-b$} (i);
+\draw[->] (j) to[loop below] node[lab,tick,below] {$1-a-b$} (j);
+\draw[->] (j) to[bend left=30] node[lab,tick,above] {$a$} (6.6,0.25);
+\draw[->] (6.6,-0.25) to[bend left=30] node[lab,tick,below] {$b$} (j);
+\end{tikzpicture}
+\end{center}
+```
+
+Assume that $0<a<b$ and $0<a+b\le1$. Show that the probability distribution given by
+$$\pi(i)=\Bigl(\frac ab\Bigr)^{i-1}\Bigl(1-\frac ab\Bigr),\quad\text{for }i\in\mathbb Z_{>0},$$
+is a stationary distribution of this Markov chain.
+:::

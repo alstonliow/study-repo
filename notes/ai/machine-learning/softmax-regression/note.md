@@ -1,6 +1,6 @@
 ---
 title: "Softmax and Cross Entropy"
-sources: [cs221-3]
+sources: [cs221-3, eecs126-7]
 requires: [ai/machine-learning/logistic-regression]
 status: draft
 ---
@@ -57,9 +57,15 @@ $$
 H(p,q)\ \ge\ H(p),
 $$
 
-with equality if and only if $q=p$. So for a fixed target, the cross entropy is smallest when the prediction equals the target.
+with equality if and only if $q=p$. Equivalently, in terms of the relative entropy $D(p\,\|\,q)=H(p,q)-H(p)$ (@def-relative-entropy),
+$$
+D(p\,\|\,q)\ \ge\ 0 .
+$$
+So for a fixed target, the cross entropy is smallest when the prediction equals the target.
 
 :::
+
+<!-- Merged 2026-11-19 (owner decision): this block also replaces thm-gibbs-inequality from UC Berkeley EECS126 (note "Information Theory Introduction"), which stated the D(p||q) >= 0 form with the same proof. Statement and proof are the CS221 version; the D(p||q) form was added from EECS126. -->
 
 ::: {.proof}
 

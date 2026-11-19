@@ -66,3 +66,23 @@ $$a=1+\tfrac13a+\tfrac23b,\qquad b=1+\tfrac16\cdot0+\tfrac36b+\tfrac26a,$$
 since after a useful roll, $1$ face finishes, $3$ faces are useful but do not finish, and $2$ are useless.
 3. The first gives $a=\frac32+b$; substituting in the second, $\frac b6=\frac32$, so $b=9$ and $a=\frac{21}2$. (A simulation gives $10.51$.)
 :::
+
+::: {.solution for="prob-eecs126hw-4-q1" status="draft"}
+(a) $\{0,1\}$ and $\{4,5\}$ are closed communicating classes, hence recurrent; $\{2,3\}$ is transient (it leaks to $1$ and to $4$ and never returns).
+
+(b) Reaching $0$ before $5$ means entering $\{0,1\}$ before $\{4,5\}$ (once in a closed class, the chain stays there and hits every state of it). With $h_i$ the probability from $i$ (@thm-first-step-hitting-probability): $h_2=\frac12+\frac12h_3$, $h_3=\frac12h_2$, so $h_2=\frac23$ (and $h_3=\frac13$).
+
+(c) On $\{0,1\}$ balance $\pi(0)\alpha=\pi(1)\beta$ gives $\mu=\bigl(\frac{\beta}{\alpha+\beta},\frac{\alpha}{\alpha+\beta},0,0,0,0\bigr)$; on $\{4,5\}$, $\nu=\bigl(0,0,0,0,\frac{q}{p+q},\frac{p}{p+q}\bigr)$. A stationary distribution puts no mass on transient states, so the stationary distributions are exactly $\lambda\mu+(1-\lambda)\nu$, $\lambda\in[0,1]$.
+
+(d) Yes. The chain is absorbed in $\{0,1\}$ with probability $w=\frac23\gamma+\frac13(1-\gamma)=\frac{1+\gamma}3$, and each closed class is aperiodic (self-loops), so within it the distribution converges (@thm-markov-convergence). The limit is $w\mu+(1-w)\nu$.
+:::
+
+::: {.solution for="prob-eecs126hw-5-q4" status="draft"}
+(a) The answer is $18$ moves. The grid is symmetric about the diagonal through the start and the stairs, so squares in mirror positions have the same mean time. Let $t_A$ be for the start corner, $t_B$ for its two neighbours, $t_C$ for the centre, $t_D$ for the two other corners and $t_E$ for the two neighbours of the stairs. First-step analysis (@thm-first-step-hitting-time):
+$$t_A=1+t_B,\quad t_B=1+\tfrac13(t_A+t_C+t_D),\quad t_C=1+\tfrac12(t_B+t_E),\quad t_D=1+\tfrac12(t_B+t_E),\quad t_E=1+\tfrac13(t_C+t_D).$$
+Then $t_C=t_D$, $t_E=1+\frac23t_C$, $t_C=\frac32+\frac12t_B+\frac13t_C$ gives $t_C=\frac94+\frac34t_B$, and $t_B=1+\frac13(1+t_B)+\frac23t_C$ gives $t_B=17$. So $t_C=t_D=15$, $t_E=11$ and $t_A=18$.
+
+(b) The answer is $\frac25$. Reflecting the grid in its middle column swaps the two stairs, so $h(x)+h(x')=1$ for mirror squares $x,x'$; in particular $h=\frac12$ on the middle column. With $a$ the start corner and $d$ the square below it (next to the bad stairs):
+$$a=\tfrac12\bigl(\tfrac12+d\bigr),\qquad d=\tfrac13\bigl(a+\tfrac12+0\bigr).$$
+So $a=\frac14+\frac16a+\frac1{12}$, $a=\frac25$ (and $d=\frac3{10}$).
+:::

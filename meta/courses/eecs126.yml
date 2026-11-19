@@ -179,7 +179,7 @@ chapters:
   points:
   - id: '8.1'
     title: Entropy
-    covers: [math/probability/information-theory/entropy]
+    covers: [math/probability/information-theory/entropy, thm-gibbs-inequality]
   - id: '8.2'
     title: Source coding
     covers: [math/probability/information-theory/source-coding]

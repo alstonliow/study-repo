@@ -78,7 +78,7 @@ $$H(X)\le L<H(X)+1.$$
 
 ::: {.proof}
 
-1. *Bounds.* Lengths $\ell(x)=\lceil\log_2\frac1{p(x)}\rceil$ satisfy Kraft's inequality $\sum_x2^{-\ell(x)}\le1$, so a prefix code with these lengths exists, and its mean length is below $H(X)+1$. Conversely for any prefix code, with $q(x)=2^{-\ell(x)}/\sum_y2^{-\ell(y)}$, Gibbs' inequality (@thm-relative-entropy-nonnegative) gives $L-H(X)=D(p\,\|\,q)-\log_2\sum_y2^{-\ell(y)}\ge0$.
+1. *Bounds.* Lengths $\ell(x)=\lceil\log_2\frac1{p(x)}\rceil$ satisfy Kraft's inequality $\sum_x2^{-\ell(x)}\le1$, so a prefix code with these lengths exists, and its mean length is below $H(X)+1$. Conversely for any prefix code, with $q(x)=2^{-\ell(x)}/\sum_y2^{-\ell(y)}$, Gibbs' inequality (@thm-gibbs-inequality) gives $L-H(X)=D(p\,\|\,q)-\log_2\sum_y2^{-\ell(y)}\ge0$.
 
 2. *Exchange.* Some optimal code has the two least likely symbols $a,b$ as sibling leaves at maximal depth: in an optimal tree every internal node has two children, the deepest level has two siblings, and swapping $a,b$ into them does not increase $L$.
 

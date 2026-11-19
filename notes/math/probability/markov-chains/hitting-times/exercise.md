@@ -55,3 +55,95 @@ Help Jonathan evaluate the consequences of his incessant drinking!
 
 [Hint: You can model this process as a Markov chain with 3 states. Choose your states according to the outcome of last roll. For example, assign one state if it is outcome was 1 or 5 (which is useless if you want the product to be 12). If the outcome was 2,3,4 or 6, it's useful and can be assigned another state. Assign third state to the case when the product last two outcomes was 12.]
 :::
+
+::: {.problem #prob-eecs126hw-4-q1 origin="external" source="eecs126hw-4-q1"}
+**Reducible Markov Chain.** Consider the following Markov chain, for $\alpha,\beta,p,q\in(0,1)$.
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (0) at (0.0,0) {$0$};
+\node[small vertex] (1) at (1.6,0) {$1$};
+\node[small vertex] (2) at (3.2,0) {$2$};
+\node[small vertex] (3) at (4.800000000000001,0) {$3$};
+\node[small vertex] (4) at (6.4,0) {$4$};
+\node[small vertex] (5) at (8.0,0) {$5$};
+\draw[->] (0) to[loop above] node[lab,tick,above] {$1-\alpha$} (0);
+\draw[->] (1) to[loop above] node[lab,tick,above] {$1-\beta$} (1);
+\draw[->] (4) to[loop above] node[lab,tick,above] {$1-p$} (4);
+\draw[->] (5) to[loop above] node[lab,tick,above] {$1-q$} (5);
+\draw[->] (0) to[bend left=30] node[lab,tick,above] {$\alpha$} (1);
+\draw[->] (1) to[bend left=30] node[lab,tick,below] {$\beta$} (0);
+\draw[->] (2)--node[lab,tick,above] {$1/2$} (1);
+\draw[->] (2) to[bend left=30] node[lab,tick,above] {$1/2$} (3);
+\draw[->] (3) to[bend left=30] node[lab,tick,below] {$1/2$} (2);
+\draw[->] (3)--node[lab,tick,above] {$1/2$} (4);
+\draw[->] (4) to[bend left=30] node[lab,tick,above] {$p$} (5);
+\draw[->] (5) to[bend left=30] node[lab,tick,below] {$q$} (4);
+\end{tikzpicture}
+\end{center}
+```
+
+(a) Find all the recurrent and transient classes.
+
+(b) Given that we start in state $2$, what is the probability that we will reach state $0$ before state $5$?
+
+(c) What are all of the possible stationary distributions of this chain? Hint: Consider the recurrent classes.
+
+(d) Suppose we start in the initial distribution $\pi_0:=\begin{bmatrix}0&0&\gamma&1-\gamma&0&0\end{bmatrix}$ for some $\gamma\in[0,1]$. Does the distribution of the chain converge, and if so, to what?
+:::
+
+::: {.problem #prob-eecs126hw-5-q4 origin="external" source="eecs126hw-5-q4"}
+**Twitch Plays Pokemon.** You wake up one day and are surprised to see that it is 2014, when the world was peaceful. You immediately start playing Twitch Plays Pokemon. Suddenly, you realized that you may be able to analyze Twitch Plays Pokemon.
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.0,0.0) rectangle (1.2,0.6);
+\draw[cell frame] (1.2,0.0) rectangle (2.4,0.6);
+\draw[cell frame] (2.4,0.0) rectangle (3.5999999999999996,0.6);
+\draw[cell frame] (0.0,-0.6) rectangle (1.2,0.0);
+\draw[cell frame] (1.2,-0.6) rectangle (2.4,0.0);
+\draw[cell frame] (2.4,-0.6) rectangle (3.5999999999999996,0.0);
+\draw[cell frame] (0.0,-1.2) rectangle (1.2,-0.6);
+\draw[cell frame] (1.2,-1.2) rectangle (2.4,-0.6);
+\draw[cell frame] (2.4,-1.2) rectangle (3.5999999999999996,-0.6);
+\node[lab] at (0.6,0.3) {You};
+\node[lab] at (3.0,-0.9) {Stairs};
+\end{tikzpicture}
+\end{center}
+```
+
+Figure 1: Part (a)
+
+(a) The player in the top left corner performs a random walk on the 8 checkered squares and the square containing the stairs. At every step the player is equally likely to move to any of the squares in the four cardinal directions (North, West, East, South) if there is a square in that direction. Find the expected number of moves until the player reaches the stairs in Figure 1.
+
+[Hint: Use symmetry to reduce the number of states in your Markov chain]
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.0,0.0) rectangle (1.2,0.6);
+\draw[cell frame] (1.2,0.0) rectangle (2.4,0.6);
+\draw[cell frame] (2.4,0.0) rectangle (3.5999999999999996,0.6);
+\draw[cell frame] (0.0,-0.6) rectangle (1.2,0.0);
+\draw[cell frame] (1.2,-0.6) rectangle (2.4,0.0);
+\draw[cell frame] (2.4,-0.6) rectangle (3.5999999999999996,0.0);
+\draw[cell frame] (0.0,-1.2) rectangle (1.2,-0.6);
+\draw[cell frame] (1.2,-1.2) rectangle (2.4,-0.6);
+\draw[cell frame] (2.4,-1.2) rectangle (3.5999999999999996,-0.6);
+\node[lab] at (0.6,0.3) {You};
+\node[lab] at (0.6,-0.9) {Stairs};
+\node[lab] at (3.0,-0.9) {Stairs};
+\end{tikzpicture}
+\end{center}
+```
+
+Figure 2: Part (b)
+
+(b) The player randomly walks in the same way as in the previous part. Find the probability that the player reaches the stairs in the bottom right corner in Figure 2.
+
+[Hint: For each squared box, assign a variable that denotes the probability of reaching the "good" stairs. Use symmetry again to reduce the number of such variables.]
+
+Hint: For both problems use symmetry to reduce the number of states and variables. The equations are very reasonable to solve by hand.
+:::

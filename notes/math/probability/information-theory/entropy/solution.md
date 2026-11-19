@@ -29,7 +29,7 @@ $$-I(X;Y)=E\Bigl[\log\frac{p(X)p(Y)}{p(X,Y)}\Bigr]\le\log\sum_{x,y:p(x,y)>0}p(x)
 ::: {.solution for="prob-eecs126hw-10-q4" status="draft"}
 (a) With $X\sim p$, by Jensen for the strictly concave $\log$,
 $$-D(p\|q)=E\Bigl[\log\frac{q(X)}{p(X)}\Bigr]\le\log E\Bigl[\frac{q(X)}{p(X)}\Bigr]=\log\sum_{x:p(x)>0}q(x)\le0.$$
-Equality needs $q/p$ constant on the support of $p$ and $\sum_{p(x)>0}q(x)=1$, which together force $q=p$. (This is @thm-relative-entropy-nonnegative.)
+Equality needs $q/p$ constant on the support of $p$ and $\sum_{p(x)>0}q(x)=1$, which together force $q=p$. (This is @thm-gibbs-inequality.)
 
 (b) We take the state space finite. Irreducibility gives $\pi(i)>0$ for all $i$. Let $h=\mu/\pi$ and $\hat P(j,i)=\pi(i)P(i,j)/\pi(j)$, a transition matrix (rows sum to $1$ because $\pi P=\pi$) which is irreducible because $P$ is.
 

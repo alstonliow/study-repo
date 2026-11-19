@@ -349,6 +349,8 @@ exclude:
   - prob-probability-2-09
   - prob-probability-2-11
   # EECS126 integration (2026-11-19): its problems and new blocks in shared notes
+  - prob-eecs126hw-4-q1
+  - prob-eecs126hw-5-q4
   - prob-eecs126d-5-q2
   - prob-eecs126hw-1-q1
   - prob-eecs126hw-1-q2

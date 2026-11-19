@@ -28,3 +28,11 @@ The terms $\frac{n!}{i!j!k!3^n}$ are a probability distribution (multinomial), s
 
 (e) Look at the first three coordinates of the walk in $\mathbb Z^d$. They change only at the steps that move along $e_1,e_2,e_3$ (each step with probability $\frac3d$), and at those steps they move like the walk of (d). Each visit of that three-dimensional walk to the origin lasts a geometric number of steps of mean $\frac d3$, so the expected number of times $n$ with the first three coordinates zero is finite. Returns of $S_n$ to the origin are among those times, so $E[N]<\infty$ and the walk is transient.
 :::
+
+::: {.solution for="prob-eecs126hw-7-q1" status="draft"}
+Both chains move only between neighbours, so they are birth–death chains. For such a chain, a stationary $\pi$ must balance the flow across each cut between $i$ and $i+1$: summing $\pi P=\pi$ over the states $1,\dots,i$ gives $\pi(i)P(i,i+1)=\pi(i+1)P(i+1,i)$.
+
+(a) From $i$ the chain moves up with probability $\frac{i}{2i+2}$, down with $\frac12$ (for $i\ge2$) and stays with $\frac1{2i+2}$; state $1$ moves up with $\frac14$. The cut equations give $\pi(i+1)=\pi(i)\cdot\frac{i/(2i+2)}{1/2}=\pi(i)\frac{i}{i+1}$, so $\pi(i)=\frac{\pi(1)}{i}$. Since $\sum_i\frac1i=\infty$, the only solution is $\pi=0$: there is no stationary distribution (the chain is null recurrent or transient, @thm-positive-recurrence-invariant).
+
+(b) Here the cut equations are $\pi(i)a=\pi(i+1)b$, satisfied by $\pi(i)\propto(a/b)^{i-1}$, and the given $\pi$ sums to $1$ because $a/b<1$. Detailed balance implies stationarity (@thm-detailed-balance-invariant).
+:::

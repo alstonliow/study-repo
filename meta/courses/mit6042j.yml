@@ -299,6 +299,8 @@ exclude:
   - prob-cs70hw-15-q3
   - prob-cs70hw-15-q4
   # EECS126 integration (2026-11-19): its problems and new blocks in shared notes
+  - prob-eecs126hw-4-q1
+  - prob-eecs126hw-5-q4
   - lem-hoeffding
   - prob-eecs126d-5-q2
   - prob-eecs126hw-1-q1

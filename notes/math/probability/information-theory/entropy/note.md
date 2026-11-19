@@ -33,23 +33,9 @@ $$I(X;Y)=D\bigl(p_{X,Y}\,\|\,p_Xp_Y\bigr)=\sum_{x,y}p(x,y)\log_2\frac{p(x,y)}{p(
 
 :::
 
-::: {#thm-relative-entropy-nonnegative .theorem name="Relative entropy is non-negative" related="thm-gibbs-inequality"}
+<!-- Merged 2026-11-19 (owner decision): the former block thm-relative-entropy-nonnegative now lives in @thm-gibbs-inequality (Softmax and Cross Entropy), which states both forms. -->
 
-$$D(p\,\|\,q)\ge0,$$
-with equality if and only if $p=q$.
-
-:::
-
-This is Gibbs' inequality (@thm-gibbs-inequality) in another form: $D(p\,\|\,q)=H(p,q)-H(p)$ with $H(p,q)$ the cross-entropy, in bits.
-
-::: {.proof}
-
-1. Sum over $x$ with $p(x)>0$. Since $\ln u\le u-1$ for $u>0$, with equality only at $u=1$,
-   $$-D(p\,\|\,q)\ln2=\sum_xp(x)\ln\frac{q(x)}{p(x)}\le\sum_xp(x)\Bigl(\frac{q(x)}{p(x)}-1\Bigr)=\sum_{x:p(x)>0}q(x)-1\le0.$$
-
-2. Equality needs $q(x)=p(x)$ wherever $p(x)>0$, and then $\sum q=1$ forces $q=0$ elsewhere.
-
-:::
+Relative entropy is never negative: $D(p\,\|\,q)\ge0$, with equality if and only if $p=q$. This is Gibbs' inequality (@thm-gibbs-inequality), since $D(p\,\|\,q)=H(p,q)-H(p)$ with $H(p,q)$ the cross entropy; the base of the logarithm does not matter.
 
 ::: {#thm-entropy-properties .theorem name="Properties of entropy"}
 
@@ -63,11 +49,11 @@ For discrete $X,Y$ with $X$ taking at most $n$ values:
 
 ::: {.proof}
 
-1. Each term $p\log\frac1p$ is non-negative. With $u$ uniform on the $n$ values, $D(p\,\|\,u)=\log_2n-H(X)\ge0$ by @thm-relative-entropy-nonnegative, with equality only for $p=u$.
+1. Each term $p\log\frac1p$ is non-negative. With $u$ uniform on the $n$ values, $D(p\,\|\,u)=\log_2n-H(X)\ge0$ by @thm-gibbs-inequality, with equality only for $p=u$.
 
 2. $\log\frac1{p(x,y)}=\log\frac1{p(x)}+\log\frac1{p(y\mid x)}$; take expectations.
 
-3. $\log\frac{p(x,y)}{p(x)p(y)}=\log\frac1{p(y)}-\log\frac1{p(y\mid x)}$; taking expectations gives $I(X;Y)=H(Y)-H(Y\mid X)$, and the chain rule gives the second form. $I(X;Y)\ge0$ by @thm-relative-entropy-nonnegative, with equality iff $p_{X,Y}=p_Xp_Y$.
+3. $\log\frac{p(x,y)}{p(x)p(y)}=\log\frac1{p(y)}-\log\frac1{p(y\mid x)}$; taking expectations gives $I(X;Y)=H(Y)-H(Y\mid X)$, and the chain rule gives the second form. $I(X;Y)\ge0$ by @thm-gibbs-inequality, with equality iff $p_{X,Y}=p_Xp_Y$.
 
 :::
 
