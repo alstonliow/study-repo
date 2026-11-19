@@ -67,7 +67,8 @@ def parse(path: Path) -> Project:
     m = FRONT.match(path.read_text(encoding="utf-8"))
     if not m:
         problems.append("missing YAML header (--- ... ---)")
-        d, body = {}, ""
+        d: dict = {}
+        body = ""
     else:
         try:
             d = yaml.safe_load(m.group(1)) or {}

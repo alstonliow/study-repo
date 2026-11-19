@@ -463,19 +463,19 @@ parts:
       - id: ai/machine-learning
         title: Machine Learning
         desc: Learning problems, linear regression and classification, gradient descent
-        notes: [supervised-learning, linear-regression, gradient-descent, linear-classification, logistic-regression, softmax-regression, text-representation]   # topic order on the website
+        notes: [supervised-learning, generalization, linear-regression, gradient-descent, linear-classification, perceptron, logistic-regression, softmax-regression, text-representation, decision-trees]   # topic order on the website
       - id: ai/deep-learning
         title: Deep Learning
         desc: Tensors, backpropagation, neural networks
-        notes: [tensors, einsum, backpropagation, neural-networks, training-deep-networks]   # topic order on the website
+        notes: [tensors, einsum, backpropagation, neural-networks, training-deep-networks, attention-and-transformers, language-models]   # topic order on the website
       - id: ai/search
         title: Search
         desc: Search problems, beam search, uniform cost search and A*
-        notes: [search-problems, approximate-search, uniform-cost-search, a-star-search]   # topic order on the website
+        notes: [search-problems, tree-and-graph-search, approximate-search, uniform-cost-search, a-star-search]   # topic order on the website
       - id: ai/reinforcement-learning
         title: Reinforcement Learning
         desc: Markov decision processes, value iteration, Q-learning, policy gradient
-        notes: [markov-decision-processes, policy-evaluation, value-iteration, model-based-rl, model-free-rl, function-approximation, policy-gradient, improving-policy-gradient, td-learning]   # topic order on the website
+        notes: [markov-decision-processes, policy-evaluation, value-iteration, policy-iteration, model-based-rl, model-free-rl, exploration, function-approximation, policy-gradient, improving-policy-gradient, td-learning]   # topic order on the website
       - id: ai/games
         title: Games
         desc: Game trees, minimax, alpha-beta pruning, simultaneous games
@@ -483,4 +483,16 @@ parts:
       - id: ai/bayesian-networks
         title: Bayesian Networks
         desc: Bayesian networks, sampling-based inference, parameter learning
-        notes: [bayesian-networks, rejection-sampling, gibbs-sampling, conditional-independence, parameter-learning, expectation-maximization]   # topic order on the website
+        notes: [bayesian-networks, variable-elimination, rejection-sampling, likelihood-weighting, gibbs-sampling, conditional-independence, parameter-learning, naive-bayes, expectation-maximization]   # topic order on the website
+      - id: ai/constraint-satisfaction
+        title: Constraint Satisfaction
+        desc: Constraint satisfaction problems, backtracking, arc consistency, tree-structured CSPs, local search
+        notes: [constraint-satisfaction-problems, backtracking-search, arc-consistency, tree-structured-csps, local-search]   # topic order on the website
+      - id: ai/decision-theory
+        title: Decision Theory
+        desc: Utilities and rational preferences, decision networks, value of information
+        notes: [utilities, decision-networks, value-of-information]   # topic order on the website
+      - id: ai/temporal-models
+        title: Temporal Models
+        desc: Hidden Markov models, filtering, particle filtering
+        notes: [hidden-markov-models, particle-filtering]   # topic order on the website

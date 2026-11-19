@@ -14,6 +14,27 @@ outline_from: "Stanford CS221 lecture code (github.com/stanford-cs221/lectures, 
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # CS188 blocks added to shared notes, and CS188 problems in CS221's scope (scope_excludes.py, 2026-11-19).
+  - def-d-separation
+  - def-heuristic-dominance
+  - def-multi-agent-game-tree
+  - exm-a-star-graph-inconsistent
+  - exm-d-separation-alarm
+  - exm-eight-puzzle-heuristics
+  - exm-multi-agent-game-tree
+  - exm-tabular-td-learning
+  - prob-cs188d-1-q2
+  - prob-cs188d-11-q1
+  - prob-cs188hw-1-q1
+  - prob-cs188hw-1-q2
+  - prob-cs188hw-10-q1
+  - prob-cs188hw-3-q1
+  - prob-cs188hw-4-q1
+  - prob-cs188hw-5-q2
+  - prob-cs188hw-6-q1
+  - rmk-a-star-search-3
+  - rmk-game-trees-modelling
+  - thm-a-star-tree-admissible
   # Problems of other courses in shared notes (scope_excludes.py, 2026-11-18); none needed for the CS221 homework (2026-11-19).
   - prob-cs70-14-q1
   - prob-cs70-14-q2

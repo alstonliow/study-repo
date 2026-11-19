@@ -1,6 +1,6 @@
 ---
 title: "Conditional Independence in Bayesian Networks"
-sources: [cs221-17, cs221-18]
+sources: [cs221-17, cs221-18, cs188-14]
 requires: [ai/bayesian-networks/gibbs-sampling]
 status: draft
 ---
@@ -106,3 +106,31 @@ Testing $C\perp A\mid H$ in the diagnosis network: $H$ is shaded, the parents $C
 Every variable is conditionally independent of all the others given its Markov blanket (@def-markov-blanket): after moralization, its neighbours are exactly its Markov blanket. This is why Gibbs sampling needs only the Markov blanket (@prp-gibbs-markov-blanket).
 
 :::
+
+<!-- Added 2026-11-19 from UC Berkeley CS188 (Fall 2025), Lecture 14 (causal chains, common causes, common effects, active and inactive triples, d-separation, structure implications), in our own wording; the example uses the alarm network. -->
+
+::: {#def-d-separation .definition name="Active triples, d-separation" related="def-moralization-test"}
+
+Let $C$ be a set of observed variables. Three consecutive variables $X - M - Y$ on an undirected path in the DAG form an *active triple* if
+
+- $X\to M\to Y$, $X\leftarrow M\leftarrow Y$ or $X\leftarrow M\to Y$, and $M\notin C$; or
+- $X\to M\leftarrow Y$ (a *v-structure*), and $M$ or some descendant of $M$ is in $C$.
+
+Otherwise the triple is *inactive*. A path is *active* if all its consecutive triples are active. Variables $A$ and $B$ are *d-separated* by $C$ if no path between them is active; then $A\perp B\mid C$ in every Bayesian network with this graph. For sets of variables, every pair must be d-separated.
+
+:::
+
+A single inactive triple blocks a path; independence needs every path blocked. The test is the moralization test (@def-moralization-test) in another form, and like it, it is *sound* (d-separation implies independence) but only *complete* in the sense that when $A$ and $B$ are not d-separated, some choice of tables makes them dependent; particular tables can have extra independences.
+
+::: {#exm-d-separation-alarm .example name="Reading the alarm network"}
+
+Extend the alarm network of @exm-bayesian-network-alarm (burglary $B$ and earthquake $E$ cause the alarm $A$) with two neighbours, John $J$ and Mary $M$, who may call when they hear the alarm: edges $A\to J$ and $A\to M$.
+
+- $B\perp E$: the only path $B\to A\leftarrow E$ is a v-structure with nothing observed. Yes.
+- $B\perp E\mid J$: the same triple is active, because $J$ is a descendant of $A$. No: a call makes burglary and earthquake compete as explanations.
+- $J\perp M\mid A$: the path $J\leftarrow A\to M$ has its common cause observed. Yes.
+- $B\perp M$: the path $B\to A\to M$ is an active chain. No.
+
+:::
+
+Listing all independences a graph guarantees describes exactly the set of distributions it can represent: a chain $X\to Y\to Z$ guarantees $X\perp Z\mid Y$, a fully connected graph guarantees nothing and can represent every distribution, and adding edges can only remove guaranteed independences. The arrows need not be causal: $X\to Y$ and $Y\to X$ represent the same distributions, though networks drawn along causal directions tend to be simpler.

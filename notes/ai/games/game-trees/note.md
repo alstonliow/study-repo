@@ -1,6 +1,6 @@
 ---
 title: "Game Trees, Expectimax and Minimax"
-sources: [cs221-13]
+sources: [cs221-13, cs188-6, cs188-7]
 requires: [ai/reinforcement-learning/policy-evaluation]
 status: draft
 ---
@@ -132,3 +132,25 @@ If some states belong to a *chance* player with a known policy $\pi_{\text{coin}
 For example, if after the agent picks a bin a fair coin decides whether to move one bin to the left (with wrap-around), the minimax opponent still picks the smaller number, and the expectiminimax value is $\max\bigl(\tfrac{-50-5}{2},\tfrac{1-50}{2},\tfrac{-5+1}{2}\bigr)=-2$, from choosing C. The same recipe handles more players or extra turns: write the recurrence for who controls each state. Games with hidden information (poker), with non-opposed utilities, or with simultaneous moves are not game trees of this kind (@sec-ai-games-simultaneous-games).
 
 A game is *solved* when the outcome of perfect play (both players following minimax policies) is known: tic-tac-toe, Nim and Connect Four are solved from every position, checkers and Othello from the start, while chess and Go are not, even though programs play them better than people.
+
+<!-- Added 2026-11-19 from UC Berkeley CS188 (Fall 2025), Lecture 6 (minimax as adversarial search) and Lecture 7 (expectimax, modelling assumptions, mixed layers, multi-agent utilities), in our own wording; the example values were checked by hand and by a short Python computation. -->
+
+::: {#def-multi-agent-game-tree .definition name="Game trees with several utilities"}
+
+In a turn-based game with players $1,\dots,k$ whose interests are not opposed, each end state carries a vector $(U_1(s),\dots,U_k(s))$ of utilities, one per player. The value of a state is a vector too: at an end state it is the utility vector, and at a state where player $p$ moves it is the value of the child whose $p$-th component is largest.
+
+:::
+
+Minimax is the special case $k=2$, $U_2=-U_1$: maximising $U_2$ is minimising $U_1$. With general utilities the players may cooperate or compete, depending only on the numbers.
+
+::: {#exm-multi-agent-game-tree .example name="Cooperation without agreement"}
+
+Player 1 chooses $L$ or $R$, then player 2 chooses one of two end states. Under $L$ the utility vectors are $(3,3)$ and $(1,2)$, under $R$ they are $(4,0)$ and $(2,1)$. Player 2 picks $(3,3)$ under $L$ and $(2,1)$ under $R$, so player 1 compares first components $3$ and $2$ and chooses $L$. The outcome $(3,3)$ is good for both, although neither player cares about the other; the state $(4,0)$, best for player 1, is never reached, because player 2 would not choose it.
+
+:::
+
+::: {#rmk-game-trees-modelling .remark name="Which model of the opponent?"}
+
+Expectimax needs a probabilistic model of the other agents, and minimax assumes the worst. Each can fail: a minimax agent facing a random opponent plays too cautiously (in a game where it could win by taking a risk, it may hold back forever), and an expectimax agent facing an adversary walks into traps. The value of $(\pi_{\text{exptmax}},\pi_{\min})$ in the chain of inequalities above is the price of wrongly assuming randomness. Expectimax also prunes poorly: a chance node's value depends on every child, so without bounds on the utilities no child can be skipped; with known bounds, such as utilities in $[0,10]$, a partly evaluated chance node can sometimes be bounded well enough to prune.
+
+:::

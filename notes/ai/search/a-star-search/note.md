@@ -1,6 +1,6 @@
 ---
 title: "A* Search and Relaxed Problems"
-sources: [cs221-7]
+sources: [cs221-7, cs188-3]
 requires: [ai/search/uniform-cost-search]
 status: draft
 ---
@@ -244,3 +244,55 @@ which is consistency of $h$.
 :::
 
 So several relaxations can be combined: the maximum of their heuristics is consistent and, being larger, gives a bound in @prp-a-star-explores at least as tight as each of them.
+
+<!-- Added 2026-11-19 from UC Berkeley CS188 (Fall 2025), Lecture 3 (A* tree search with admissible heuristics, dominance, the 8-puzzle, graph search and consistency), in our own wording; numbers checked by a short Python computation. CS188 states A* directly on the fringe ordered by f = g + h rather than through modified costs; both views give the same order of exploration. -->
+
+::: {#rmk-a-star-search-3 .remark}
+
+Equivalently, A\* is tree or graph search (@def-tree-search) whose fringe is ordered by $f(n)=g(n)+h(n)$, the cost $g(n)$ of the plan to node $n$ plus the heuristic at its state: along any plan the modified costs telescope to $g(n)+h(n)-h(s_{\text{start}})$, and $h(s_{\text{start}})$ is the same for every node.
+
+:::
+
+::: {#thm-a-star-tree-admissible .theorem name="A* tree search with an admissible heuristic"}
+
+If $h$ is admissible, every action costs at least some $\varepsilon>0$, every state has finitely many actions and a solution exists, A\* tree search (no closed set) returns a minimum-cost solution.
+
+:::
+
+::: {.proof}
+
+1. Let $A$ be a node of an optimal end state, with plan cost $C^{*}=g(A)$, and let $B$ be a node of an end state with $g(B)>C^{*}$. We show that $A$ is removed from the fringe before $B$.
+2. Suppose $B$ is on the fringe. Until $A$ is removed, some node $n$ on the path from the root to $A$ is on the fringe: the root is there at the start, and whenever such an $n$ is removed and expanded, its child on that path is added.
+3. Admissibility gives $h(n)\le$ the cost of the remaining part of $A$'s plan, so $f(n)=g(n)+h(n)\le g(A)=C^{*}$.
+4. At end states $h=0$ (admissibility with $\text{FutureCost}=0$), so $f(B)=g(B)>C^{*}\ge f(n)$. Hence $n$ is removed before $B$.
+5. Applying step 4 repeatedly, every node on the path to $A$, and finally $A$ itself (with $f(A)=C^{*}<f(B)$), is removed before $B$. Only finitely many nodes have $g\le C^{*}$ (their depth is at most $C^{*}/\varepsilon$ and the branching is finite), and every node removed before $A$ has $f\le C^{*}$, hence $g\le C^{*}$; so the search removes $A$ after finitely many steps.
+6. So the first end node removed has cost $C^{*}$, and tree search returns its plan.
+
+:::
+
+::: {#def-heuristic-dominance .definition name="Dominance"}
+
+A heuristic $h_a$ *dominates* $h_c$ if $h_a(s)\ge h_c(s)$ for every state $s$.
+
+:::
+
+Among admissible heuristics, a dominating one gives a bound in @prp-a-star-explores at least as tight, so A\* explores no more states. The heuristics form a semi-lattice under dominance: the trivial heuristic $h=0$ is at the bottom, $\text{FutureCost}$ is at the top, and the maximum of two heuristics (@thm-max-heuristic) dominates both. The trade-off is the cost of computing $h$: $\text{FutureCost}$ itself is perfect but as hard as the problem.
+
+::: {#exm-eight-puzzle-heuristics .example name="Heuristics for the 8-puzzle"}
+
+Eight tiles numbered $1,\dots,8$ and a blank sit in a $3\times3$ grid; an action slides a tile next to the blank into it, at cost $1$. Two relaxations give two consistent heuristics (@thm-relaxation-consistent):
+
+- if a tile may jump to any square, each misplaced tile needs one move: $h_1(s)=$ number of tiles not on their goal square;
+- if a tile may slide onto an occupied square, each tile needs as many moves as its Manhattan distance to its goal square: $h_2(s)=$ the sum of these distances.
+
+A tile not on its goal square has Manhattan distance at least $1$, so $h_2$ dominates $h_1$. With the goal $\begin{smallmatrix}\square&1&2\\3&4&5\\6&7&8\end{smallmatrix}$ and the state $\begin{smallmatrix}4&1&2\\7&3&5\\\square&6&8\end{smallmatrix}$, the misplaced tiles are $4,7,3,6$, so $h_1=4$, their distances are $2,2,1,1$, so $h_2=6$, and the true cost is $16$ moves (found by breadth-first search). Both are far below the truth, $h_2$ less so.
+
+:::
+
+With graph search, admissibility is no longer enough: a state reached first by an expensive plan is closed, and a cheaper plan to it arriving later is discarded.
+
+::: {#exm-a-star-graph-inconsistent .example name="Graph search with an inconsistent heuristic"}
+
+Take actions $S\xrightarrow{1}A$, $S\xrightarrow{1}B$, $A\xrightarrow{1}C$, $B\xrightarrow{2}C$, $C\xrightarrow{3}G$ with end state $G$, and $h(S,A,B,C,G)=(2,4,1,1,0)$. The future costs are $(5,4,5,3,0)$, so $h$ is admissible, but $h(A)=4>\text{Cost}(A,C)+h(C)=2$, so it is not consistent. A\* graph search removes $S$ ($f=2$), $B$ ($f=2$), $C$ via $B$ ($g=3$, $f=4$), then $A$ ($f=5$); the child $C$ of $A$, with $g=2$, is discarded because $C$ is closed, and the search returns $S,B,C,G$ of cost $6$ instead of $S,A,C,G$ of cost $5$. With a consistent heuristic this cannot happen (@thm-a-star-correct): the first time a state is removed, its plan is already cheapest.
+
+:::

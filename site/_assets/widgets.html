@@ -1040,7 +1040,61 @@
     return F;
   }
 
+  // N-queens by backtracking with forward checking (CS188 L4). Columns are variables, rows values.
+  function queensFC(p) {
+    const n = Math.round(limit(nums(p.n), 1, "board size")[0]);
+    if (!(n >= 4 && n <= 8)) throw new Error("the board size must be between 4 and 8");
+    const F = [], q = Array(n).fill(0), cap = 400;
+    const ok = (c, r, a) => a.every((rr, cc) => !rr || cc === c || (rr !== r && Math.abs(rr - r) !== Math.abs(cc - c)));
+    const doms = a => a.map((r, c) => r ? [r] : [...Array(n).keys()].map(x => x + 1).filter(x => ok(c, x, a)));
+    const pic = (a, note, bad = -1) => {
+      const D = doms(a), rows = [];
+      for (let r = n; r >= 1; r--) rows.push(a.map((v, c) => v === r ? "Q" : ""));
+      F.push({ html: table([...Array(n).keys()].map(c => "Q" + (c + 1)), rows, (i, c) => { const r = n - i; return a[c] === r ? "hl" : (a[c] || D[c].includes(r)) ? (c === bad ? "hl" : "") : "dim"; }, [...Array(n).keys()].map(i => String(n - i))), note });
+    };
+    pic(q, "Empty board. Grey squares are values removed by forward checking; Q marks a queen.");
+    const solve = c => {
+      if (c === n) return true;
+      for (let r = 1; r <= n; r++) {
+        if (F.length > cap) throw new Error("too many steps to show; try a smaller board");
+        if (!ok(c, r, q)) continue;
+        q[c] = r; const D = doms(q), empty = D.findIndex((d, k) => !q[k] && d.length === 0);
+        if (empty >= 0) { pic(q, `Q${c + 1} = ${r}: forward checking empties the domain of Q${empty + 1}; try the next row.`, empty); q[c] = 0; continue; }
+        pic(q, `Q${c + 1} = ${r}.`);
+        if (solve(c + 1)) return true;
+        q[c] = 0; pic(q, `Every row of Q${c + 2} failed: backtrack and change Q${c + 1}.`);
+      }
+      return false;
+    };
+    solve(0);
+    F.push({ html: F[F.length - 1].html, note: `Solution (${q.join(", ")}) after ${F.length - 1} steps.` });
+    return F;
+  }
+
+  // Forward algorithm on a two-state weather HMM (CS188 L18).
+  function forwardWeather(p) {
+    const [stay, pr, ps] = limit(reals(p.probs), 3, "probabilities");
+    if (![stay, pr, ps].every(x => x >= 0 && x <= 1)) throw new Error("probabilities must be in [0, 1]");
+    const ev = limit(p.ev.trim().toUpperCase().split(/\s+/).filter(Boolean), 12, "days");
+    if (!ev.length || !ev.every(e => e === "U" || e === "N")) throw new Error("evidence: U (umbrella) or N (none), separated by spaces");
+    const r3 = x => Math.round(x * 1000) / 1000, F = [], hist = [];
+    let b = 0.5;
+    const pic = (note, hl) => F.push({ html: table(["day", "evidence", "predicted P(rain)", "belief P(rain)"], hist.map(h => [h.d, h.e, h.pred, h.bel]), (i, j) => i === hist.length - 1 && j === hl ? "hl" : ""), note });
+    ev.forEach((e, t) => {
+      const pred = t === 0 ? b : stay * b + (1 - stay) * (1 - b);
+      hist.push({ d: t + 1, e: e === "U" ? "umbrella" : "none", pred: r3(pred), bel: "" });
+      pic(t === 0 ? "Day 1 starts from the prior P(rain) = 0.5." : `Elapse time: ${stay} · ${r3(b)} + ${r3(1 - stay)} · ${r3(1 - b)} = ${r3(pred)}.`, 2);
+      const lr = e === "U" ? pr : 1 - pr, ls = e === "U" ? ps : 1 - ps, z = lr * pred + ls * (1 - pred);
+      if (z === 0) throw new Error("this evidence has probability 0 under the model");
+      b = lr * pred / z; hist[t].bel = r3(b);
+      pic(`Observe ${e === "U" ? "an umbrella" : "no umbrella"}: weigh rain by ${r3(lr)} and sun by ${r3(ls)}, then normalise.`, 3);
+    });
+    return F;
+  }
+
   const WIDGETS = {
+    "fig-backtracking-search-1": { title: "Try it: n-queens by backtracking with forward checking", inputs: [{ name: "n", label: "board size n", value: "4", short: true }], run: queensFC, speed: 1000 },
+    "fig-hidden-markov-models-1": { title: "Try it: the forward algorithm", inputs: [{ name: "probs", label: "P(stay), P(U | rain), P(U | sun)", value: "0.7 0.8 0.3" }, { name: "ev", label: "evidence (U or N per day)", value: "U U N" }], run: forwardWeather, speed: 1100 },
     "fig-gibbs-sampling-1": { title: "Try it: Gibbs sampling on the telephone chain", inputs: [{ name: "eps", label: "flip probability", value: "0.2", short: true }, { name: "m", label: "sweeps", value: "1000", short: true }], run: gibbsTelephone, speed: 1100 },
     "fig-alpha-beta-pruning-1": { title: "Try it: alpha-beta pruning (a max root over min nodes)", inputs: [{ name: "leaves", label: "leaves of each min node, groups separated by |", value: "9 7 | 6 4 9 | 8 3" }], run: alphaBetaTwoLevel, speed: 1300 },
     "fig-value-iteration-1": { title: "Try it: value iteration on the flaky tram", inputs: [{ name: "n", label: "locations n", value: "10", short: true }, { name: "p", label: "failure probability p", value: "0.4", short: true }], run: valueIterTram, speed: 1000 },

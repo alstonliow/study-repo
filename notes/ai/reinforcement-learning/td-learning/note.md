@@ -1,6 +1,6 @@
 ---
 title: "Temporal Difference Learning"
-sources: [cs221-14]
+sources: [cs221-14, cs188-10]
 requires: [ai/reinforcement-learning/function-approximation]
 status: draft
 ---
@@ -72,5 +72,15 @@ The value table during the rollout of @exm-td-learning-1, after each transition;
 ::: {#rmk-td-learning-1 .remark name="Learning evaluation functions by self-play"}
 
 In a two-player game (@sec-ai-games-game-trees) there are no rewards until the end, transitions are given by $\text{Succ}$, and the opponent minimizes what the agent maximizes. With one value function $V_\theta(s)=\theta\cdot\boldsymbol\phi(s)$ or $\text{MLP}_\theta(\boldsymbol\phi(s))$ shared by both players (*self-play*), the agent plays $\operatorname{arg\,max}_aV_\theta(\text{Succ}(s,a))$, the opponent $\operatorname{arg\,min}_a$, and TD learning on the resulting games learns an evaluation function. Samuel's checkers program (1959) did this with hand-made features and a linear function; TD-Gammon (1992) learned backgammon, a game with dice, with a neural network and simple features to expert level; AlphaGo Zero (2017) combined self-play with a value network and tree search.
+
+:::
+
+<!-- Added 2026-11-19 from UC Berkeley CS188 (Fall 2025), Lecture 10 (TD value learning for a fixed policy, exponential moving average), in our own wording; the numbers are our own. -->
+
+::: {#exm-tabular-td-learning .example name="Tabular TD learning as a running average" related="def-model-free-monte-carlo"}
+
+With indicator features, TD learning keeps a table $\hat V$ and on each transition moves $\hat V(s_t)$ a fraction $\eta$ of the way towards the sample $r_t+\gamma\hat V(s_{t+1})$: $\hat V(s_t)\gets(1-\eta)\hat V(s_t)+\eta\,(r_t+\gamma\hat V(s_{t+1}))$. After samples $x_1,\dots,x_n$ of the same state, this *exponential moving average* equals $(1-\eta)^{n}\hat V_0+\sum_{k=1}^{n}\eta(1-\eta)^{n-k}x_k$: recent samples weigh more, which suits targets that themselves improve over time, and decreasing $\eta$ makes the average converge.
+
+For a fixed policy with $\gamma=1$, $\eta=\tfrac12$, all values initially $0$ except $\hat V(D)=8$, suppose the agent observes $B\xrightarrow{-2}C$ and then $C\xrightarrow{-2}D$. The first update gives $\hat V(B)=\tfrac12\cdot0+\tfrac12(-2+0)=-1$, the second $\hat V(C)=\tfrac12\cdot0+\tfrac12(-2+8)=3$. Unlike direct evaluation (model-free Monte Carlo, @def-model-free-monte-carlo), TD learns from each transition at once and uses the connection between states; but $B$ learns nothing about $D$ until $C$'s estimate has improved and $B$ is visited again. TD estimates values only, so turning them into a policy still needs the model (@def-policy-extraction), which is why Q-learning is used to act.
 
 :::

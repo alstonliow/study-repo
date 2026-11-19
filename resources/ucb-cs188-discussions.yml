@@ -1,0 +1,77 @@
+# UC Berkeley CS188 Introduction to Artificial Intelligence, Fall 2025, discussion worksheets
+# (inst.eecs.berkeley.edu/~cs188/fa25; no licence stated), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/UCB_CS188/fa25/discussions (disc01-11 with solutions). Used like recitations (owner decision,
+# 2026-11-19): hard problems become exercises with our own solutions; the printed solutions are never copied.
+# The exam-prep worksheets (examprep01-11) are past exam problems and are not used.
+# Locator = discussion number; a source key is cs188d-3-q2 (Discussion 3, problem 2, in handout order).
+# Titles are our own short titles. Node ids are stable.
+id: res-ucb-cs188-discussions
+kind: course-notes
+title: UC Berkeley CS188 Discussion Worksheets (Fall 2025)
+status: draft
+courses: [cs188]
+editions:
+- id: 2025-fall
+  current: true
+legacy_keys:
+  prefix: cs188d-
+  edition: 2025-fall
+  pattern: ^cs188d-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: CS188 D{section}
+  problem_label: CS188 D{section} Q{n}
+nodes:
+- id: res-ucb-cs188-discussions-search
+  kind: recitation
+  title: Search and heuristics
+  at:
+    2025-fall: '1'
+- id: res-ucb-cs188-discussions-csps
+  kind: recitation
+  title: Constraint satisfaction
+  at:
+    2025-fall: '2'
+- id: res-ucb-cs188-discussions-games
+  kind: recitation
+  title: Games
+  at:
+    2025-fall: '3'
+- id: res-ucb-cs188-discussions-mdps
+  kind: recitation
+  title: Markov decision processes
+  at:
+    2025-fall: '4'
+- id: res-ucb-cs188-discussions-rl
+  kind: recitation
+  title: Reinforcement learning
+  at:
+    2025-fall: '5'
+- id: res-ucb-cs188-discussions-bayes-nets
+  kind: recitation
+  title: Bayesian network representation
+  at:
+    2025-fall: '6'
+- id: res-ucb-cs188-discussions-variable-elimination
+  kind: recitation
+  title: Variable elimination
+  at:
+    2025-fall: '7'
+- id: res-ucb-cs188-discussions-hmms
+  kind: recitation
+  title: Hidden Markov models
+  at:
+    2025-fall: '8'
+- id: res-ucb-cs188-discussions-particle-filtering-naive-bayes
+  kind: recitation
+  title: Particle filtering and naive Bayes
+  at:
+    2025-fall: '9'
+- id: res-ucb-cs188-discussions-perceptron-neural-nets
+  kind: recitation
+  title: Perceptron and neural networks
+  at:
+    2025-fall: '10'
+- id: res-ucb-cs188-discussions-optimization-neural-nets
+  kind: recitation
+  title: Optimization and neural networks
+  at:
+    2025-fall: '11'

@@ -14,3 +14,11 @@ This is a neat feature if you think about your day-to-day life; you might be on 
 
 *Note (these notes):* Only the written parts of this handout problem are given here; its programming parts are left out (SPEC §17.13.1, item 4).
 :::
+
+::: {.problem #prob-cs188hw-1-q1 origin="external" source="cs188hw-1-q1"}
+**Robot in a Factory.** Suppose a factory floor has width $W$ and length $L$. There are $P$ packages on the factory floor at the start. The robot is able to move North, South, East, or West on the floor.
+
+1. For this subquestion only, the position of the robot is known, and it wants to pick up all $P$ packages in the factory. However, the robot can move North at most 2 times overall.
+
+   What is the minimal size of the state space for this problem? Write your answer in the box as a product of terms that reference problem quantities (such as, but not limited to, $W$, $L$, and $P$). You may also use constants as part of your expression. For each term in your expression, also state the information it encodes. For example, you might write "$4 \times WL$" and write "number of directions" under the first term and "robot's position" under the second term. You will receive partial credit for a complete but non-minimal state space.
+:::

@@ -1,0 +1,17 @@
+<!-- Solutions marked status="draft" were written by Claude in our own words, 
+     no official solutions were available. Owner to review, then remove status. -->
+
+::: {.solution for="prob-cs188hw-3-q1" status="draft"}
+Write $s=\text{left}+\text{right}$ for a leaf's value. The leaves have $s(A)=4$, $s(B)=12$, $s(C)=9+X$, $s(D)=13$, $s(E)=1+Y$, $s(F)=6$, $s(G)=8$, $s(H)=7$, with $X,Y\in\{1,\dots,9\}$.
+
+1. **12.** Bob's nodes take maxima: $\max(4,12)=12$; $\max(9+X,13)\ge13$; $\max(1+Y,6)\in[6,10]$; $\max(8,7)=8$. The left Eve node is $\min(12,\ge13)=12$; the right one is $\min(\max(1+Y,6),8)\le8$. Alice takes $\max(12,\le8)=12$, whatever $X$ and $Y$ are.
+2. **6, 7, 8.** The right minimiser is $\min(\max(1+Y,6),8)$: $6$ for $Y\le5$, $7$ for $Y=6$, $8$ for $Y\ge7$.
+3. **G and H.** Alpha-beta (@def-alpha-beta-pruning) from left to right: the first Bob node returns $12$ without pruning, so the left Eve node has $\beta=12$. At Alice, after the left Eve node, $\alpha=12$. Under the right Eve node, the first Bob node returns $\max(1+Y,6)\le10<12=\alpha$, so the right Eve node's value is already below $\alpha$ and its second child, the Bob node with leaves $G,H$, is pruned for every $X,Y$.
+4. **D.** In the second Bob node, after $C$ the Bob node's value is at least $9+X$; it is pruned when $9+X>\beta=12$, that is $X\ge4$ (not on equality: $X=3$ gives $12$ and $D$ is still examined). So $D$ is pruned for $X\ge4$ and not for $X\le3$. No other node depends on $X,Y$: $A,B$ are the first leaves, and $E,F$ must be seen to bound the right Eve node.
+5. **True.** Alice always chooses the left Eve node: every option there has $s\ge12$, while every option on the right has $s\le10$. On the left, the old Eve picks $B$ (the smaller $s$) and gets its middle score $m_B$. The new Eve switches to Bob's choice $c\in\{C,D\}$ only if $m_c-s(c)>m_B-12$, which with $s(c)\ge13$ forces $m_c>m_B$. Bob's choice does not depend on Eve's scores. So her score never decreases.
+6. **True.** Under the old strategy Eve picks the minimum $s$ at each of her nodes; any other choice gives Alice and Bob at least as much at that node, and Alice's maximum over her two options can only rise.
+7. **B, C, D.** Alice always goes left (step 5). There Bob picks $B$ over $A$ and $D$ or $C$ depending on $X$ ($D$ for $X\le3$, $C$ for $X\ge5$, a tie at $X=4$); Eve may pick $B$ or Bob's choice depending on her middle scores. Leaves $E,F,G,H$ are never reached and $A$ never chosen.
+8. **Yes, because scores are bounded between 1 and 9.** The game is not zero-sum, so ordinary alpha-beta does not apply, but bounds allow pruning. For example, Eve's utility $m-s$ is at most $9-2=7$; if the first child she examines achieves $7$ (middle $9$, left and right $1$), no later child can do strictly better, so her choice, and its value $s=2$ for Alice and Bob, is fixed, and her other children need not be examined.
+9. **Yes.** Bob's utility $b+\frac{a+e}{2}$ is at most $18$, reached only by the leaf $(9,9,9)$. If $A=(9,9,9)$, Bob picks $A$ without looking at $B$, so $B$ is pruned; Alice's utility of $A$ is then $18$, also her maximum, so the right Bob node is pruned too. Bounds make this possible even though Alice and Bob maximise different quantities.
+10. **Yes.** Now Bob's utility $b-\frac{a+e}{2}$ is at most $9-1=8$, reached only by leaves $(1,e,9)$ with $e=1$. If $A=(1,1,9)$, Bob picks $A$ whatever $B$ is, so $B$ is pruned. The same bound argument works for any utilities with known maxima; "not directly adversarial" rules out alpha-beta pruning, not pruning by bounds.
+:::
