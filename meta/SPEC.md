@@ -76,7 +76,7 @@ once approved.
 | `note.md` | yes | Definitions, theorems, proofs, remarks |
 | `example.md` | no | Worked examples |
 | `code.md` | no | Code examples (§5.9): `example` blocks built around code |
-| `exercise.md` | no | `problem` blocks (§6) |
+| `exercise.md` | no | `problem` blocks (§6), written and coding (§6.4) |
 | `solution.md` | no | `solution` blocks paired with problems by id (§6) |
 
 Examples and exercises are not knowledge points of their own. They live in the
@@ -235,8 +235,10 @@ kinds (prefix, word, numbering, colour) is `build/kinds.py` (§16.7).
      Code that needs a package Pyodide lacks (PyTorch, transformers, z3) is
      not `.runnable`; where a short NumPy version teaches the same thing, it
      follows as its own `adapted` block marked `.runnable`.
-   - Builds and CI never run code. `make check` only parses the Python of
-     `code.md` (syntax errors are errors) and checks `origin`/`source`.
+   - Builds and CI never run the code of `code.md`. `make check` only parses
+     it (syntax errors are errors) and checks `origin`/`source`. The one code
+     that checks do run is the solution of a coding exercise against its
+     tests (§6.4, item 8).
      Experiments whose results are plots are run once locally; the numbers go
      into a static pgfplots/TikZ figure (item 7).
 
@@ -267,13 +269,14 @@ for every assignment of truth values.
 | Attribute | Required | Rule |
 |---|---|---|
 | id (`#prob-...`) | yes | Unique across the repository |
-| `origin` | yes | `self` (written by the owner) or `external` (textbook, unit, open course) |
+| `origin` | yes | `self` (written by the owner) or `external` (textbook, unit, open course); a coding exercise also allows `adapted` (§6.4) |
 | `source` | yes | Source key. If unknown: empty value plus a TODO comment; never guessed |
 | `level` | no | `easy`, `medium` or `hard`, filled in by the owner only; omitted if unknown |
 | `tags` | no | Comma-separated, lowercase, hyphenated |
 
 1. Problem statements are copied verbatim. They are never paraphrased,
-   shortened or "improved".
+   shortened or "improved". (A coding exercise is never `external`; its
+   statement is our own, §6.4 item 3.)
 2. `origin="external"` must be accurate, so that external statements can be
    replaced by citations in bulk if a takedown is ever needed.
 
@@ -297,6 +300,10 @@ for every assignment of truth values.
    The owner removes the attribute after review.
 5. Source keys for course-note exercises: `fit1058-cn-<exercise section>-q<n>`,
    e.g. `fit1058-cn-8.10-q5`. Note sources: `fit1058-cn-<section>`.
+6. A problem marked `solution="withheld"` has no solution in this repository
+   on purpose, because its source's licence forbids publishing solutions
+   (§10). `make check` does not warn about it, and a `solution` for it is an
+   error.
 
 ### 6.3 Synthesis problems (`review/`)
 
@@ -305,6 +312,87 @@ Problems that combine several knowledge points of a branch live in
 §6.1–6.2. A review folder holds nothing else and is not a knowledge point: it is
 not listed in `meta/taxonomy.yml`. Its problems belong to a course when some
 note of the branch does, unless the course excludes them.
+
+### 6.4 Coding exercises
+
+DRAFT for owner review (2026-11-19). Replaces coursework projects
+(§17.13.1 item 4).
+
+A **coding exercise** is a problem whose answer is a short program. It is how
+the programming parts of homework enter the notes: each algorithm of a
+homework becomes a coding exercise in the note it practises, next to that
+note's written exercises.
+
+````markdown
+::: {#prob-ucs-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-route" packages="numpy"}
+Statement in our own words: what the function takes, returns and must do.
+
+```{.python .starter}
+def ucs(start, succ, is_goal):
+    """Return (cost, path) of a cheapest path from start to a goal state."""
+    ...
+```
+
+```{.python .tests}
+assert ucs("A", succ_small, lambda s: s == "C") == (2, ["A", "B", "C"])
+assert ucs("A", succ_small, lambda s: s == "A") == (0, ["A"])
+```
+:::
+````
+
+1. **Form.** A `problem` block with the extra class `.coding`. It holds the
+   statement, then exactly one `{.python .starter}` fence and one
+   `{.python .tests}` fence, in that order. `packages` (optional) names the
+   Pyodide packages the code needs, as for `.runnable` (§5.9). All §6.1
+   attributes apply (`level`, `tags`).
+2. **Size and placement.** One exercise is one function or one small class
+   that carries one idea: an algorithm, an update rule, an estimator. The
+   solution is about 40 lines at most. It goes in the `exercise.md` of the
+   note whose knowledge it practises, numbered with that note's other
+   exercises. A homework that touches several notes gives several exercises.
+   A course's frameworks, graphical interfaces, data loading and glue code
+   are left out; the exercise must run on its own in Pyodide with tiny data
+   written inline.
+3. **Origin and statement.** `origin` is `self` (our own task) or `adapted`
+   (a task taken from a homework or a course project and restated as one
+   self-contained function). `adapted` needs a `source` that resolves to the
+   handout's resource node. The statement is written in our own words, never
+   copied from the handout: the handout speaks of the course's framework and
+   files, which the exercise does not have, and handouts often state no
+   licence (§10).
+4. **Starter.** Our own signature and docstring, with `...` or `pass` for
+   the body, plus small helpers the tests need. A course's skeleton code is
+   never copied unless its licence is permissive (§10); then the exercise is
+   `adapted` and the resource records the licence.
+5. **Tests.** Our own: plain `assert` statements or `test_*` functions on
+   small, deterministic inputs, including edge cases. They print nothing
+   when they pass. Names follow `meta/notation.md` where it does not hurt
+   the code (§5.9).
+6. **Solution.** In `solution.md`, as for every problem (§6.2): one
+   `{.python}` fence with the complete code that replaces the starter,
+   optionally followed by numbered steps that explain the approach.
+   `status="draft"` until the owner reviews it. When the source forbids
+   published solutions, the problem is `solution="withheld"` (§6.2 item 6)
+   and the owner's code stays in a private repository.
+7. **Website.** The exercise shows a **Code** badge. Its editor opens with
+   the starter; **Run tests** runs the editor's code and then the tests in
+   Pyodide and shows each test as passed or failed; **Reset** restores the
+   starter. The reader's code is kept in the browser (localStorage, per
+   exercise) so it is still there on the next visit; it is a convenience,
+   not a record. Done is marked with the usual progress marks (§17.9.4),
+   never automatically. The solution is collapsed like every other. The
+   Exercises section of a page gets a filter: **All**, **Written**, **Code**.
+   The `source` link leads to the handout, so the full assignment is one
+   click away.
+8. **Checks.** `make check` parses the starter, tests and solution (syntax
+   errors are errors), then runs each solution followed by its tests in a
+   fresh CPython process with a time limit of 10 seconds: a failing test is
+   an error. It also runs the starter followed by the tests, which must fail,
+   so that tests that test nothing are caught. Only packages on a fixed
+   list (NumPy for now) are allowed. CI runs the same check. This is the
+   only code that builds and CI run (§5.9); it is always our own code.
+9. **PDF.** The statement and the starter are printed; the tests are not.
+   The solution code is printed with the other solutions.
 
 ## 7. Writing conventions
 
@@ -381,6 +469,14 @@ into `code.md` (owner decision, 2026-11-18; §5.9), with `origin="external"` or
 prose around it. The resource file records the licence and copyright line, and
 `NOTICES.md` at the repository root lists every such resource with its notice.
 
+Some course code is free to use only if solutions are not published (UC
+Berkeley CS188's projects, whose licence asks that solutions are not
+distributed or published).
+Problems from such a source are `solution="withheld"` (§6.2 item 6): no
+solution in this repository, on the website or in a PDF, and the owner's own
+code for them stays in a private repository. The resource file records the
+condition. (DRAFT, 2026-11-19.)
+
 ## 11. Checks (`make check`)
 
 `build/check.py` must report:
@@ -401,6 +497,9 @@ prose around it. The resource file records the licence and copyright line, and
    name a course that does not cover them (warning: provenance without scope).
 11. Relationships (§17.5.8), and old ids (aliases) used in `requires`,
    `relations` or `@sec-` references (§17.3.3).
+12. Coding exercises (§6.4): form, `origin`/`source`, packages; each
+   solution passes its tests and each starter fails them; `withheld`
+   problems have no solution (DRAFT, 2026-11-19).
 
 All checks run on the model built by `build/model.py`, the single parser of
 notes, blocks and course files. `make test` runs the build scripts on a small
@@ -430,6 +529,8 @@ institution: Monash University
 source_prefix: fit1058-     # provenance keys from this course's own material
 outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft               # draft | confirmed (owner reviewed the mapping)
+coursework_repo:            # optional: the owner's full homework code (§13 item 7)
+  url: https://github.com/<owner>/<repo>
 exclude: [exm-x, rmk-y]     # blocks inside covered notes that are out of scope
 chapters:
   - num: 1
@@ -460,6 +561,22 @@ chapters:
    course order, and folds blocks outside their scope into a one-line
    "Beyond <code>" summary that can be opened. Progress marks are shared across
    courses.
+6. **Courses are grouped by field** (DRAFT, 2026-11-19). The course filter
+   lists courses under the fields of `meta/taxonomy.yml` (Mathematics,
+   Computer Science, Artificial Intelligence), each group collapsible, groups
+   in taxonomy order and courses by `code` inside a group. A course's field is
+   derived, never written: the field that holds most of the notes its
+   `covers` reaches (a covered block counts for its note); a tie goes to the
+   field that comes first in the taxonomy. The Courses page uses the same
+   groups.
+7. **Coursework repository** (DRAFT, 2026-11-19). The owner's complete code
+   for a course's programming homework, framework and glue code included,
+   lives in one repository per course, one folder per homework. It is linked
+   from the course file with `coursework_repo` and shown on the course page.
+   It is not an entity and has no page of its own. The algorithms in it reach
+   the notes as coding exercises (§6.4). A course whose code may not be
+   published (§10) keeps this repository private and the course file does not
+   link it.
 
 ## 14. Chapter summaries
 
@@ -1040,6 +1157,9 @@ Approved by the owner on 2026-11-19. This is the schema of the second new
 entity type (§17.10, phase 4). It is written before any code, and it is
 built when the first real project appears (§17.1).
 
+Revision (DRAFT for owner review, 2026-11-19): coursework is no longer a
+project (item 4); projects are shown by field of knowledge (§17.13.5).
+
 #### 17.13.1 What a project is
 
 1. A **project** is a file-level entity: a piece of work the owner builds, such
@@ -1060,32 +1180,31 @@ built when the first real project appears (§17.1).
    outputs live in **one Git repository per project** (owner decision,
    2026-11-19), linked from the project with `repo`. There is no shared
    monorepo, so each project can be private or public on its own
-   (item 2). The one exception is coursework (item 4): the coursework of one
-   course shares one repository, one folder per homework, and each project's
-   `repo.url` points to its folder. This repository holds only the project
-   file and its figures.
-4. **Coursework** (owner decision, 2026-11-19). A course homework is split by
-   the kind of work:
+   (item 2). This repository holds only the project file and its figures.
+4. **Coursework is not a project** (owner decision, 2026-11-19, replacing
+   the coursework projects of the same day). A course homework is split by
+   the kind of work, and neither kind is a project:
    - Its *written* parts (derivations, calculations, proofs, short answers)
      stay `problem` blocks with solutions in the notes they practise (§6).
-   - Its *programming* parts are not copied into notes: they depend on starter
-     code and a grader and do not read well as exercises. The whole homework's
-     programming work is one project with `kind: coursework`: our own code in
-     the course's coursework repository (item 3), the handout linked through
-     `assignment`, never copied. The write-up in our own words may be short
-     (a few lines on the goal and approach) or empty at first; its main job
-     is to record `applies` and link the code. The written parts' `problem`
-     blocks keep their usual `source`; the project lists the knowledge it
-     applies (§17.13.4).
-   - A homework with no programming part has no project.
-   - **Coursework and course projects are told apart** (owner decision,
-     2026-11-19): `kind: coursework` is the programming part of a homework
-     (fill-in functions run by a grader, such as Stanford CS221's homework);
-     `kind: course` is a course's own project, larger and spread over weeks
-     (such as a UC Berkeley project or a final project). A course project
-     has its own repository and a full write-up.
-   Other work is a project when it needs its own repository or spans several
-   weeks.
+   - Its *programming* parts become **coding exercises** (§6.4): each
+     algorithm, restated as one self-contained function, is a problem in the
+     note it practises. The owner's full code, framework and glue included,
+     lives in the course's coursework repository (§13 item 7).
+   This holds for every assignment that fills in functions of a course's
+   framework and is checked by a grader, whatever the course calls it
+   ("homework", "lab", "project"): Stanford CS221's homework, UC Berkeley
+   CS188's Pac-Man projects and EECS126's labs are all coursework.
+5. **What is a project.** A project is work of the owner's own design, with
+   its own repository and a full write-up: a course's open-ended project
+   (`kind: course`, for example a final project where the owner chooses the
+   problem and the method), or a personal one (`kind: personal`). Other work
+   is a project when it needs its own repository or spans several weeks.
+6. **Migration** (DRAFT): the 21 coursework projects (`prj-cs188-*`,
+   `prj-cs221-*`, `prj-eecs126-*`, all `stage: planned` with empty
+   write-ups) are removed with the owner's approval; their ids are not
+   reused (§5). Their `applies` lists guide where the coding exercises go.
+   Their `assignment` nodes stay in the resource files and become the
+   `source` of those exercises.
 
 #### 17.13.2 Storage and ids
 
@@ -1103,7 +1222,7 @@ built when the first real project appears (§17.1).
 ```yaml
 id: prj-sentiment-classifier
 title: Sentiment classifier
-kind: course                  # course | coursework | personal
+kind: course                  # course | personal (coursework is not a project, §17.13.1 item 4)
 status: draft                 # draft | reviewed: the write-up (as for notes)
 stage: active                 # planned | active | done | paused | dropped
 course: cs221                 # optional, a course id (meta/courses/)
@@ -1143,7 +1262,15 @@ relations:
 #### 17.13.5 Pages
 
 1. The website gets a **Projects** page: a list of projects (course and
-   personal, by stage), and one page per project rendered from
-   `project.md`, with its links, the notes it applies, and its backlinks.
+   personal), and one page per project rendered from `project.md`, with its
+   links, the notes it applies, and its backlinks.
+   - **Grouped by knowledge** (DRAFT, 2026-11-19), like the notes: part as
+     heading, branch as subheading, in taxonomy order; each row shows kind,
+     course and stage. A project's branch is derived from `applies`, never
+     written: the branch that holds most of the notes it applies (a block
+     counts for its note; the longest matching branch id wins); a tie goes
+     to the branch that comes first in the taxonomy. A project has no place
+     in the topic outline itself and no number (§17.13.1 item 1).
+   - A branch's page lists the projects grouped under it.
 2. A course page lists the projects whose `course` is that course. Projects
    are unnumbered (§17.8.2) and shown by title.
