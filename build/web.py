@@ -58,6 +58,11 @@ def library_url(rid: str) -> str:
     return f"/library/{rid[len('res-'):]}.qmd"
 
 
+def project_url(pid: str) -> str:
+    """A project's page (SPEC §17.13.5)."""
+    return f"/projects/{pid[len('prj-'):]}/index.qmd"
+
+
 # ---------------------------------------------------------------- TikZ -> SVG
 def num(number: str, nid: str) -> str:
     """A number on the website, marked with its note so the course filter can
@@ -91,6 +96,9 @@ def link_for(ref: str, here) -> str:
     if rr:                                   # resources and their nodes live in the Library
         res, _ = rr
         return f"[{res.label(ref)}]({library_url(res.id)}{'' if ref == res.id else '#' + ref})"
+    prj = REPO.projects.get(ref)
+    if prj:                                  # projects are unnumbered, shown by title (SPEC §17.13.5)
+        return f"[{prj.title}]({project_url(prj.id)})"
     t = RESOLVER.find(ref)
     if t is None:
         return "@" + ref
@@ -245,13 +253,16 @@ def connections(note: Note) -> str:
     @-references, so labels follow numbering and the course filter."""
     def label(eid: str) -> str:
         return "This topic" if eid == note.id else at(eid)
-    rel_rows, ref_rows = [], []
+    rel_rows, ref_rows, applied_rows = [], [], []
     for eid in relations.page_entities(note):
         if eid != note.id:                                     # the note's own are in the meta line
             for l in GRAPH.outgoing(eid):
                 rel_rows.append(f"- {label(eid)} *{GRAPH.word(l, True)}* {at(l.other)}")
         for l in GRAPH.incoming(eid):
             if l.name == "requires":                           # shown as "Leads to"
+                continue
+            if l.name == "applies":                            # its own group (SPEC §17.13.4)
+                applied_rows.append(f"- {label(eid)} ← {at(l.other)}")
                 continue
             rel_rows.append(f"- {label(eid)} *{GRAPH.word(l, False)}* {at(l.other)}")
         sources: list[str] = []
@@ -261,11 +272,13 @@ def connections(note: Note) -> str:
                 sources.append(src)
         if sources:
             ref_rows.append(f"- {label(eid)} ← " + ", ".join(at(s) for s in sources))
-    if not rel_rows and not ref_rows:
+    if not rel_rows and not ref_rows and not applied_rows:
         return ""
     out = ["## Connections", "", "::: {.connections}"]
     if rel_rows:
         out += ["**Relationships**", ""] + rel_rows + [""]
+    if applied_rows:
+        out += ["**Applied in**", ""] + applied_rows + [""]
     if ref_rows:
         out += ["**Referenced by**", ""] + ref_rows + [""]
     return "\n".join(out + [":::"])
@@ -472,6 +485,56 @@ def library_page() -> str:
             "[Books, course notes and other resources the notes are built on. Each page shows a resource's "
             "chapters and sections, the topics each one teaches, and the notes and exercises that cite it.]"
             "{.summary-intro}\n\n" + ("\n".join(rows) if rows else "*No resources yet.*") + "\n")
+
+
+# ---------------------------------------------------------------- Projects (SPEC §17.13.5)
+def project_info(prj) -> str:
+    """'Coursework · CS221 · active · draft': kind, course, stage, write-up status."""
+    course = next((c.code for c in REPO.courses if c.id == prj.course), prj.course)
+    return " · ".join(x for x in [prj.kind.capitalize(), course, prj.stage,
+                                  "draft" if prj.status == "draft" else ""] if x)
+
+
+def project_page(prj) -> str:
+    """One project: details, links (assignment, code), the notes it applies and
+    its backlinks, then the write-up."""
+    dates = " – ".join(x for x in [prj.started, prj.finished] if x)
+    lines = ["---", yaml.safe_dump({"title": prj.title}, allow_unicode=True).strip(), "---", "",
+             "[" + " · ".join(x for x in [project_info(prj), dates] if x) + "]{.note-meta}", ""]
+    nowhere = SimpleNamespace(id=prj.id, blocks={})
+    links = []
+    if prj.assignment:
+        links.append("Assignment: " + link_for(prj.assignment, nowhere))
+    if prj.repo.get("url"):
+        commit = prj.repo.get("commit", "")
+        links.append(f"Code: <{prj.repo['url']}>" + (f" at `{commit[:12]}`" if commit else ""))
+    own = node_links(prj.id)
+    if own:
+        links.append(own)
+    if links:
+        lines += ["[" + " · ".join(links) + "]{.node-links}", ""]
+    return "\n".join(lines) + "\n" + link_refs(prj.body.strip(), nowhere) + "\n"
+
+
+def project_rows(projects) -> list[str]:
+    return [f"- [{p.title}]({project_url(p.id)}) [{project_info(p)}]{{.toc-desc}}"
+            for p in sorted(projects, key=lambda p: p.title.lower())]
+
+
+@page("projects.qmd", nav="Projects")
+def projects_page() -> str:
+    """The Projects page: public projects by stage (private ones never, SPEC §17.9)."""
+    from projects import STAGES
+    out = ["---", "title: Projects", "---", "",
+           "[Course projects, coursework and personal projects: what was built, how, and which topics "
+           "it puts to work. Each project's code is in its own repository.]{.summary-intro}", ""]
+    for stage in STAGES:
+        rows = project_rows(p for p in REPO.projects.values() if p.stage == stage)
+        if rows:
+            out += [f"## {stage.capitalize()}", ""] + rows + [""]
+    if not REPO.projects:
+        out += ["*No projects yet.*", ""]
+    return "\n".join(out)
 
 
 @page("export.qmd", nav="Export")

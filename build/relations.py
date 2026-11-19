@@ -31,7 +31,7 @@ class RelType:
     inverse: str
     symmetric: bool
     acyclic: bool
-    between: frozenset[str]          # "notes", "blocks", "resources", "nodes"
+    between: frozenset[str]          # "notes", "blocks", "resources", "nodes", "projects"
     sources: frozenset[str] = frozenset()   # allowed at the source end (default: between)
     targets: frozenset[str] = frozenset()   # allowed at the target end (default: between)
 
@@ -84,6 +84,7 @@ class Graph:
         self.cited_by: dict[str, list[Link]] = {}           # node id -> notes and problems citing it
         self._collect_relations()
         self._collect_resource_relations()
+        self._collect_project_relations()
         self._collect_references()
         self._collect_citations()
         self.forward: dict[str, list[Link]] = {}
@@ -155,6 +156,18 @@ class Graph:
                         for item in value if isinstance(value, list) else [value]:
                             self._add(source, key, item, f"{where} ({source})")
 
+    def _collect_project_relations(self) -> None:
+        """Relationships written in a project's `relations:` (applies: [...]), SPEC §17.13.4."""
+        for prj in self.repo.projects.values():
+            where = str(prj.path.relative_to(self.repo.root)) if prj.path.is_relative_to(self.repo.root) else str(prj.path)
+            for rtype, items in prj.relations.items():
+                if rtype not in self.types or rtype == "requires":
+                    self.problems.append(("error", f"{where}: unknown relationship type '{rtype}' "
+                                                   "(see meta/relations.yml)"))
+                    continue
+                for item in items if isinstance(items, list) else [items]:
+                    self._add(prj.id, str(rtype), item, where)
+
     def _collect_citations(self) -> None:
         """Citations (SPEC §17.12.5): source keys of notes and problems, resolved
         to resource nodes. Provenance, not relationships."""
@@ -190,6 +203,9 @@ class Graph:
                 continue
             if r.source == r.target:
                 out.append(("error", f"{r.where}: {r.source} {r.type} itself"))
+                continue
+            if r.source in ents and ents[r.source].visibility == "public" and ents[r.target].visibility != "public":
+                out.append(("error", f"{r.where}: public {r.source} {r.type} private '{r.target}' (SPEC §17.9.3)"))
                 continue
             if r.source in ents and ents[r.source].level not in t.sources:
                 out.append(("error", f"{r.where}: {r.type} is only from {' and '.join(sorted(t.sources))}, "

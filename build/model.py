@@ -15,6 +15,7 @@ from typing import Any
 
 import yaml
 
+import projects as project_files
 import resources as resource_files
 from sources import Sources
 from kinds import SUMMARY_PREFIXES as KEY_PREFIXES
@@ -30,7 +31,7 @@ REVIEW = "review"   # folder name for a branch's synthesis problems (SPEC §6.3)
 
 OPEN = re.compile(r"^(:{3,})\s*\{(.*)\}\s*$")
 CLOSE = re.compile(r"^(:{3,})\s*$")
-REF = re.compile(r"(?<![\w@])@((?:def|thm|prp|lem|cor|exm|prob|fig|rmk|clm|rem|sec|res)-[A-Za-z0-9-]*[A-Za-z0-9])")
+REF = re.compile(r"(?<![\w@])@((?:def|thm|prp|lem|cor|exm|prob|fig|rmk|clm|rem|sec|res|prj)-[A-Za-z0-9-]*[A-Za-z0-9])")
 RAW = re.compile(r"^([ \t]*)```\{=latex\}\n(.*?)\n[ \t]*```", re.S | re.M)
 COMMENT = re.compile(r"<!--.*?-->", re.S)
 MATH = re.compile(r"\$\$.*?\$\$|(?<![\\$])\$[^$\n]+?\$", re.S)   # display and inline maths
@@ -257,16 +258,16 @@ class Entity:
     """One row of the entity index (SPEC §17.3.5): a thin view over notes,
     review folders and blocks, not a class of its own."""
     id: str
-    type: str          # "note", "review", "resource", "resource-node", or a block kind prefix ("def", ...)
+    type: str          # "note", "review", "resource", "resource-node", "project", or a block kind prefix ("def", ...)
     holder: str        # the note or review folder that holds it (itself for a note)
     title: str
     visibility: str = "public"   # everything is public until a private store exists (SPEC §17.9)
 
     @property
     def level(self) -> str:
-        """The word meta/relations.yml uses in `between`: notes, blocks, resources, nodes."""
+        """The word meta/relations.yml uses in `between`: notes, blocks, resources, nodes, projects."""
         return {"note": "notes", "review": "notes", "resource": "resources",
-                "resource-node": "nodes"}.get(self.type, "blocks")
+                "resource-node": "nodes", "project": "projects"}.get(self.type, "blocks")
 
 
 @dataclass
@@ -334,6 +335,10 @@ class Repo:
                       for bid in n.blocks}
         self.alias_of = {a: n.id for n in self.notes.values() for a in n.aliases}   # old id -> current id
         self.resources = resource_files.load(root)                     # SPEC §17.12
+        self.projects = project_files.load(root)                       # SPEC §17.13 (public only)
+        # labelled blocks in project write-ups (SPEC §17.13.2.3): project id -> block ids
+        self.project_blocks = {p.id: [d.id for d in divs_in(p.body, str(p.path)) if d.id]
+                               for p in self.projects.values()}
         self.entities = self._index()
         self.parts = [(p["title"], [(b["id"], b["title"]) for b in p["branches"]]) for p in tax.get("parts", [])]
         # parts with `book: false` only group the navigation; their chapters are not in a book (SPEC §17.7)
@@ -372,6 +377,8 @@ class Repo:
             out.setdefault(r.id, Entity(r.id, "resource", r.id, r.title, r.visibility))
             for node in r.nodes.values():
                 out.setdefault(node.id, Entity(node.id, "resource-node", r.id, node.title, r.visibility))
+        for p in self.projects.values():
+            out.setdefault(p.id, Entity(p.id, "project", p.id, p.title, p.visibility))
         return out
 
     # ------------------------------------------------------------ scope (SPEC §13)

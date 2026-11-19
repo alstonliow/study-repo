@@ -185,7 +185,7 @@ def check_notes() -> None:
                 errors.append(f"{rel(md)}: broken reference @{r}")
         elif r.split("-", 1)[0] in ("rmk", "clm", "rem"):
             errors.append(f"{rel(md)}: @{r}: remarks and claims are not cross-referenced (SPEC §5.1)")
-        elif r not in block_ids and not (r.startswith("res-") and r in REPO.entities):
+        elif r not in block_ids and not (r.startswith(("res-", "prj-")) and r in REPO.entities):
             errors.append(f"{rel(md)}: broken reference @{r}")
     if legacy:
         warnings.append(f"{legacy} reference(s) to not-yet-migrated sections (@sec-legacy-*)")
@@ -226,6 +226,47 @@ def check_resources() -> None:
             seen[eid] = where
     nodes = sum(len(r.nodes) for r in REPO.resources.values())
     print(f"resources: {len(REPO.resources)} ({nodes} nodes)")
+
+
+@rule("projects", "project files: schema, course, assignment, block ids, references")
+def check_projects() -> None:
+    """Project files (SPEC §17.13): the schema, a known course, an assignment that
+    is a resource node, ids unique across the repository, @-references that
+    resolve. `applies` targets are checked with the other relationships."""
+    others = {n.id for n in REPO.all_notes} | set(REPO.owner) | {e for e in REPO.entities
+                                                                 if not e.startswith("prj-")}
+    courses = {c.id for c in REPO.courses}
+    seen: dict[str, str] = {}
+    for p in REPO.projects.values():
+        where = rel(p.path)
+        for msg in p.problems:
+            errors.append(f"{where}: {msg}")
+        if p.id in others:
+            errors.append(f"{where}: '{p.id}' is also the id of another entity")
+        if p.course and p.course not in courses:
+            errors.append(f"{where}: course '{p.course}' is not a course in meta/courses/")
+        if p.assignment:
+            e = REPO.entities.get(p.assignment)
+            if e is None:
+                errors.append(f"{where}: assignment unknown id '{p.assignment}'")
+            elif e.type != "resource-node":
+                errors.append(f"{where}: assignment '{p.assignment}' must be a resource node, not a {e.type}")
+            elif e.visibility != "public" and p.visibility == "public":
+                errors.append(f"{where}: public project points to private '{p.assignment}' (SPEC §17.9.3)")
+        for bid in REPO.project_blocks.get(p.id, []):
+            if bid in others or bid in REPO.entities:
+                errors.append(f"{where}: duplicate id '{bid}' (also a note, block or entity)")
+            elif bid in seen:
+                errors.append(f"{where}: duplicate id '{bid}' (also {seen[bid]})")
+            seen[bid] = where
+        text = MATH.sub("", re.sub(r"<!--.*?-->", "", p.body, flags=re.S))
+        for m in REF.finditer(text):
+            r = m.group(1)
+            ok = (r in REPO.entities or r in seen) if not r.startswith("sec-") else \
+                r[4:] in {n.id.replace("/", "-") for n in REPO.notes.values()}
+            if not ok:
+                errors.append(f"{where}: broken reference @{r}")
+    print(f"projects: {len(REPO.projects)}")
 
 
 @rule("sources", "source keys resolve to a resource node (legacy keys)")

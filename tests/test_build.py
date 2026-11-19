@@ -43,7 +43,8 @@ def generate(root: Path) -> Path:
     return site
 
 
-GENERATED = ["notes", "courses", "library", "library.qmd", "index.qmd", "_nav.yml", "site-data.json"]
+GENERATED = ["notes", "courses", "library", "library.qmd", "projects", "projects.qmd", "index.qmd",
+             "_nav.yml", "site-data.json"]
 
 
 def copy_generated(site: Path, dest: Path) -> None:
@@ -451,7 +452,7 @@ class TestRelations(Repo):
         self.add_relations("relations:\n  uses: [t/alpha/second]")
         self.edit(self.THIRD, '{#prp-third .proposition name="Not covered"}',
                   '{#prp-third .proposition name="Not covered" uses="def-widget"}')
-        self.assertCheck(0, "relationships: 2 typed")
+        self.assertCheck(0, "relationships: 4 typed")
         site = generate(self.root)
         third = (site / "notes/t/beta/third.qmd").read_text()
         self.assertIn("Uses: [1.2 Second note](/notes/t/alpha/second.qmd)", third)
@@ -728,6 +729,89 @@ def update_expected() -> None:
         print(f"updated {EXPECTED.relative_to(HERE.parent)}; review the diff before committing")
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+
+
+class TestProjects(Repo):
+    """Projects (SPEC §17.13): loader, checks, pages and the "Applied in" group."""
+
+    PRJ = "projects/demo-tool/project.md"
+
+    def assertCheck(self, text: str) -> str:
+        r = self.check()
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn(text, r.stdout)
+        return r.stdout
+
+    def test_loader(self):
+        out = subprocess.run([PY, "-c", "import model; r = model.Repo(); p = r.projects['prj-demo-tool']; "
+                              "print(p.kind, p.stage, p.started, r.entities[p.id].level, p.problems)"],
+                             cwd=BUILD, capture_output=True, text=True, env=dict(os.environ, STUDY_ROOT=str(self.root)))
+        self.assertEqual(out.stdout.strip(), "coursework active 2026-01-05 projects []", out.stderr)
+
+    def test_private_store_is_never_read(self):
+        priv = self.root / "private/projects/secret-work"
+        priv.mkdir(parents=True)
+        (priv / "project.md").write_text("---\nid: prj-secret-work\ntitle: Secret\n---\n")
+        self.assertEqual(self.check().returncode, 0)
+        site = generate(self.root)
+        self.assertNotIn("secret", (site / "projects.qmd").read_text().lower())
+        self.assertFalse((site / "projects/secret-work").exists())
+
+    def test_bad_schema(self):
+        self.edit(self.PRJ, "id: prj-demo-tool", "id: prj-other")
+        self.edit(self.PRJ, "kind: coursework", "kind: homework")
+        self.edit(self.PRJ, "stage: active", "stage: active\nowner: me")
+        self.edit(self.PRJ, "commit: 0123abc", "commit: latest")
+        self.edit(self.PRJ, "started: 2026-01-05", "started: 2026-01-05\nfinished: 2025-12-01")
+        out = self.assertCheck("must match the folder name (prj-demo-tool)")
+        for text in ("kind 'homework' not in course | coursework | personal", "unknown field 'owner'",
+                     "commit 'latest' must be a commit sha", "finished 2025-12-01 is before started"):
+            self.assertIn(text, out)
+
+    def test_missing_fields(self):
+        self.edit(self.PRJ, "status: draft\n", "")
+        self.assertCheck("missing field 'status'")
+
+    def test_unknown_course_and_assignment(self):
+        self.edit(self.PRJ, "course: demo", "course: nosuch")
+        self.edit(self.PRJ, "assignment: res-demo-widgets", "assignment: res-demo")
+        out = self.assertCheck("course 'nosuch' is not a course")
+        self.assertIn("assignment 'res-demo' must be a resource node, not a resource", out)
+
+    def test_unknown_applies_target_and_wrong_end(self):
+        self.edit(self.PRJ, "applies: [t/alpha/first, thm-gadget]", "applies: [t/alpha/nosuch, res-demo]\n  uses: [t/alpha/first]")
+        out = self.assertCheck("applies unknown id 't/alpha/nosuch'")
+        self.assertIn("applies is only to blocks and notes, not resources ('res-demo')", out)
+        self.assertIn("uses is only from blocks and notes, not projects ('prj-demo-tool')", out)
+
+    def test_notes_cannot_apply(self):
+        self.edit("notes/t/alpha/second/note.md", '{#thm-gadget .theorem name="Gadget theorem"}',
+                  '{#thm-gadget .theorem name="Gadget theorem" applies="thm-widget"}')
+        self.assertCheck("applies is only from projects, not blocks ('thm-gadget')")
+
+    def test_public_project_never_points_to_private(self):
+        code = ("import model, relations; r = model.Repo(); r.entities['t/alpha/first'].visibility = 'private'; "
+                "print([m for _, m in relations.Graph(r).check()])")
+        out = subprocess.run([PY, "-c", code], cwd=BUILD, capture_output=True, text=True,
+                             env=dict(os.environ, STUDY_ROOT=str(self.root)))
+        self.assertIn("public prj-demo-tool applies private 't/alpha/first'", out.stdout, out.stderr)
+
+    def test_broken_reference_in_write_up(self):
+        self.edit(self.PRJ, "@thm-gadget", "@thm-nosuch")
+        self.assertCheck("broken reference @thm-nosuch")
+
+    def test_pages(self):
+        site = generate(self.root)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("**Applied in**\n\n- This topic ← [Demo tool](/projects/demo-tool/index.qmd)", first)
+        self.assertNotIn("*applied in*", first)                  # not mixed with "Used by"
+        page = (site / "projects/demo-tool/index.qmd").read_text()
+        self.assertIn("Assignment: [DEMO 1.1 Widgets](/library/demo.qmd#res-demo-widgets)", page)
+        self.assertIn("Applies: [1.1 First note](/notes/t/alpha/first.qmd)", page)
+        self.assertIn("A tool that puts [Theorem", page)
+        self.assertIn("## Active\n\n- [Demo tool](/projects/demo-tool/index.qmd)", (site / "projects.qmd").read_text())
+        self.assertIn("## Projects", (site / "courses/demo.qmd").read_text())
 
 
 if __name__ == "__main__":

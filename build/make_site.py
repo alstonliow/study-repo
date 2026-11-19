@@ -137,6 +137,9 @@ def main() -> int:
                 extra = f" ({nprob} exercise{'s' if nprob != 1 else ''})" if nprob else ""
                 pts = ", ".join("§" + x for x in points_of.get(n.id, []))
                 lines.append(f"- [{n.display_title}](/notes/{n.id}.qmd){extra} [{pts}]{{.note-keys}}")
+        prows = web.project_rows(p for p in REPO.projects.values() if p.course == c.id)
+        if prows:                                   # SPEC §17.13.5
+            lines += ["", "## Projects", ""] + prows
         (OUT_COURSES / f"{c.id}.qmd").write_text("\n".join(lines) + "\n", encoding="utf-8")
         # chapter summaries: in-scope content only (outline.course puts each
         # branch's synthesis problems in the last chapter that uses the branch)
@@ -201,6 +204,14 @@ def main() -> int:
     lib.mkdir(parents=True)
     for res in REPO.resources.values():
         (lib / f"{res.slug}.qmd").write_text(web.resource_page(res), encoding="utf-8")
+    # one page per project, with the files beside project.md (figures), SPEC §17.13.5
+    prj_dir = SITE / "projects"
+    if prj_dir.exists():
+        shutil.rmtree(prj_dir)
+    for prj in REPO.projects.values():
+        dest = prj_dir / prj.slug
+        shutil.copytree(prj.path.parent, dest, ignore=shutil.ignore_patterns("project.md"))
+        (dest / "index.qmd").write_text(web.project_page(prj), encoding="utf-8")
     old = SITE / "_sidebar.yml"
     if old.exists():
         old.unlink()

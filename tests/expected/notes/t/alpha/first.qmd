@@ -62,6 +62,10 @@ Statement two.
 ## Connections
 
 ::: {.connections}
+**Applied in**
+
+- This topic ← [Demo tool](/projects/demo-tool/index.qmd)
+
 **Referenced by**
 
 - This topic ← [Definition [2.1.1]{.num data-note="t/beta/third"}](/notes/t/beta/third.qmd#def-third)

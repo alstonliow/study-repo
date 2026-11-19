@@ -17,3 +17,7 @@ Knowledge points used by DEMO100, in course order. The course filter at the bott
 [Chapter summary →](/courses/demo/chapter-2.qmd){.chapter-summary-link}
 
 - [2.1 Third note](/notes/t/beta/third.qmd) [§2.1]{.note-keys}
+
+## Projects
+
+- [Demo tool](/projects/demo-tool/index.qmd) [Coursework · DEMO100 · active · draft]{.toc-desc}

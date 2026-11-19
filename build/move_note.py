@@ -103,9 +103,11 @@ def main(argv: list[str]) -> int:
                           head, count=1, flags=re.M)
         edit(path, "---\n" + head + "\n---\n" + text[m.end():])
 
-    # 3. course files
+    # 3. course and project files
     for c in repo.courses:
         edit(c.path, replace_ids(c.path.read_text(encoding="utf-8"), moved))
+    for prj in repo.projects.values():                          # applies and @-references (SPEC §17.13)
+        edit(prj.path, replace_ids(changes.get(prj.path, prj.path.read_text(encoding="utf-8")), moved))
 
     # 4. taxonomy: branch ids, and note order lists
     tax_path = META / "taxonomy.yml"

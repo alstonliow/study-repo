@@ -23,6 +23,10 @@ This remark is excluded by the demo course.
 ## Connections
 
 ::: {.connections}
+**Applied in**
+
+- [Theorem [1.2.1]{.num data-note="t/alpha/second"}](#thm-gadget) ← [Demo tool](/projects/demo-tool/index.qmd)
+
 **Referenced by**
 
 - This topic ← [Remark (Aside)](/notes/t/alpha/first.qmd#rmk-first-1)
