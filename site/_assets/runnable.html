@@ -2,7 +2,11 @@
      Wraps each block in a cell with a Run / Edit / Reset bar and an output panel.
      Pyodide (pinned) loads from the CDN on the first Run only; each run gets a
      fresh namespace; runs are queued. Ctrl/Cmd+Enter runs while editing.
-     Colours come from the theme variables of styles.css. Hidden bar in print. -->
+     Colours come from the theme variables of styles.css. Hidden bar in print.
+     Coding exercises (SPEC §6.4): a .problem-group[data-kind="code"] gets an
+     editor that starts from the starter (the reader's code is kept per exercise
+     in localStorage), Run tests (each test passed / failed) and Reset. Pages
+     with coding exercises get an All / Written / Code filter above them. -->
 <style>
 .run-cell { border: 1px solid var(--rule); border-radius: 6px; margin: 1rem 0; overflow: hidden; }
 .run-cell div.sourceCode, .run-cell pre.sourceCode { margin: 0 !important; border: 0 !important; border-radius: 0 !important; }
@@ -27,6 +31,24 @@
 .run-out.err { border-left: 3px solid var(--bs-danger); }
 .run-out.err pre { color: var(--bs-danger); }
 @media print { .run-bar, .run-edit, .run-out { display: none !important; } .run-cell { border: 0; } }
+.code-badge { margin-left: 0.6em; font-size: 0.72em; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid currentColor; border-radius: 3px; padding: 0 .35em; }
+.coding-cell { margin: .8rem 0; }
+.coding-cell .run-edit { min-height: 8rem; }
+.coding-tests > details > summary { cursor: pointer; font-size: .85em; color: var(--notec); margin: .3rem 0; }
+.coding-results { list-style: none; margin: 0; padding: 0; font-family: var(--bs-font-monospace); font-size: .85em; }
+.coding-results li { padding: .05rem 0; white-space: pre-wrap; }
+.coding-results li.ok::before { content: "\2713  "; color: var(--bs-success); font-weight: 700; }
+.coding-results li.bad::before { content: "\2717  "; color: var(--bs-danger); font-weight: 700; }
+.coding-results li.bad .msg { color: var(--bs-danger); }
+.coding-total { margin-top: .3rem; font-size: .85em; font-weight: 600; }
+.exercise-kind-filter { display: flex; gap: .35rem; margin: .4rem 0 1rem; font-size: .8rem; }
+.exercise-kind-filter button { font: inherit; padding: .1rem .7rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--rule); background: transparent; color: inherit; }
+.exercise-kind-filter button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--sidebg); }
+.kind-hidden { display: none !important; }
+@media print { .exercise-kind-filter, .coding-cell .run-bar, .coding-cell .run-edit, .coding-cell .run-out { display: none !important; }
+  .coding-starter { display: block !important; } }
 </style>
 <script>
 (() => {
@@ -116,6 +138,154 @@
       });
       box.append(block, edit, bar, out);
     });
+  });
+  // ------------------------------------------------ coding exercises (SPEC §6.4)
+  // HARNESS is the twin of build/coding.py (HARNESS): run the code, then the tests;
+  // top-level statements of the tests are one test, then each test_* function.
+  const HARNESS = `
+import json
+ns = {"__name__": "__exercise__"}
+out = []
+def fail(e):
+    return f"{type(e).__name__}: {e}" if str(e) else type(e).__name__
+try:
+    exec(compile(__code, "<code>", "exec"), ns)
+except BaseException as e:
+    out.append(["(your code)", False, fail(e)])
+else:
+    try:
+        exec(compile(__tests, "<tests>", "exec"), ns)
+        top = None
+    except BaseException as e:
+        top = fail(e)
+    tests = [v for k, v in ns.items() if k.startswith("test_") and callable(v)
+             and getattr(getattr(v, "__code__", None), "co_filename", "") == "<tests>"]
+    if top is not None or not tests:
+        out.append(["(top level)", top is None, top or ""])
+    for t in tests:
+        try:
+            t()
+            out.append([t.__name__, True, ""])
+        except BaseException as e:
+            out.append([t.__name__, False, fail(e)])
+json.dumps(out)
+`;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
+    del(k) { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
+  };
+  async function runTests(cell) {
+    const { edit, tests, packages, out, list, total } = cell;
+    const show = (msg, cls) => { out.hidden = false; out.className = "run-out " + (cls || ""); total.textContent = msg; };
+    list.replaceChildren();
+    show(ready ? "Running tests…" : "Loading Python (first run only)…", "busy");
+    try {
+      const py = await pyodide();
+      const need = packages.filter(p => !loaded.has(p));
+      if (need.length) {
+        show("Installing " + need.join(", ") + "…", "busy");
+        await py.pyimport("micropip").install(need);
+        need.forEach(p => loaded.add(p));
+      }
+      let buf = "";
+      py.setStdout({ batched: s => { buf += s + "\n"; } });
+      py.setStderr({ batched: s => { buf += s + "\n"; } });
+      const ns = py.globals.get("dict")();
+      ns.set("__code", edit.value); ns.set("__tests", tests);
+      let res;
+      try { res = JSON.parse(await py.runPythonAsync(HARNESS, { globals: ns })); } finally { ns.destroy(); }
+      for (const [name, ok, msg] of res) {
+        const li = document.createElement("li");
+        li.className = ok ? "ok" : "bad";
+        li.append(name);
+        if (msg) { const m = document.createElement("span"); m.className = "msg"; m.textContent = "  " + msg; li.append(m); }
+        list.append(li);
+      }
+      const good = res.filter(r => r[1]).length;
+      show(good === res.length ? `All ${res.length} tests passed.` : `${good} of ${res.length} tests passed.`,
+           good === res.length ? "" : "err");
+      if (buf.trim()) total.textContent += "\nOutput:\n" + buf.replace(/\n$/, "");
+    } catch (e) {
+      show(String(e.message || e).split("\n").filter(l => l.trim()).slice(-4).join("\n"), "err");
+    }
+  }
+  function codingCell(group) {
+    const pid = group.dataset.item;
+    const starterBox = group.querySelector(".coding-starter");
+    const testsBox = group.querySelector(".coding-tests");
+    if (!starterBox || !testsBox) return;
+    const starter = starterBox.querySelector("code").textContent;
+    const tests = testsBox.querySelector("code").textContent;
+    const packages = (group.dataset.packages || "").split(",").map(s => s.trim()).filter(Boolean);
+    const key = "study-code:" + pid;
+    const box = document.createElement("div");
+    box.className = "run-cell coding-cell";
+    const edit = document.createElement("textarea");
+    edit.className = "run-edit"; edit.spellcheck = false;
+    edit.value = store.get(key) ?? starter;
+    edit.rows = Math.min(30, Math.max(starter.split("\n").length, edit.value.split("\n").length) + 1);
+    edit.setAttribute("aria-label", "Your code");
+    const out = document.createElement("div");
+    out.hidden = true;
+    const list = out.appendChild(document.createElement("ul"));
+    list.className = "coding-results";
+    const total = out.appendChild(document.createElement("pre"));
+    total.className = "coding-total";
+    const cell = { edit, tests, packages, out, list, total };
+    const bar = document.createElement("div");
+    bar.className = "run-bar";
+    cell.go = button("▶ Run tests", "Run your code, then the tests, in your browser", () => {
+      cell.go.disabled = true;
+      queue = queue.then(() => runTests(cell)).finally(() => { cell.go.disabled = false; });
+    });
+    cell.go.className = "run-go";
+    const meta = document.createElement("span");
+    meta.className = "run-meta";
+    meta.textContent = ["Python", ...packages].join(" · ");
+    bar.append(cell.go, button("Reset", "Back to the starter code (your code is discarded)", () => {
+      edit.value = starter; store.del(key); out.hidden = true;
+    }), meta);
+    edit.addEventListener("input", () => {
+      if (edit.value === starter) store.del(key); else store.set(key, edit.value);
+    });
+    edit.addEventListener("keydown", e => {
+      if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) { e.preventDefault(); cell.go.click(); }
+      if (e.key === "Tab" && !e.shiftKey) { e.preventDefault(); edit.setRangeText("    ", edit.selectionStart, edit.selectionEnd, "end"); edit.dispatchEvent(new Event("input")); }
+    });
+    box.append(edit, bar, out);
+    starterBox.hidden = true;                 // shown again in print
+    starterBox.before(box);
+    // the tests: folded under a summary line
+    const det = document.createElement("details");
+    const sum = det.appendChild(document.createElement("summary"));
+    sum.textContent = "Tests";
+    while (testsBox.firstChild) det.append(testsBox.firstChild);
+    testsBox.append(det);
+  }
+  function kindFilter() {
+    const groups = [...document.querySelectorAll(".problem-group[data-kind]")];
+    if (!groups.some(g => g.dataset.kind === "code")) return;
+    const bar = document.createElement("div");
+    bar.className = "exercise-kind-filter";
+    bar.setAttribute("role", "group");
+    bar.setAttribute("aria-label", "Show exercises");
+    const choices = [["all", "All"], ["written", "Written"], ["code", "Code"]];
+    const buttons = choices.map(([k, label]) => {
+      const b = button(label, `Show ${label.toLowerCase()} exercises`, () => pick(k));
+      b.dataset.kind = k; return b;
+    });
+    function pick(k) {
+      buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kind === k)));
+      groups.forEach(g => g.classList.toggle("kind-hidden", k !== "all" && g.dataset.kind !== k));
+    }
+    bar.append(...buttons);
+    groups[0].before(bar);
+    pick("all");
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.problem-group[data-kind="code"]').forEach(codingCell);
+    kindFilter();
   });
 })();
 </script>

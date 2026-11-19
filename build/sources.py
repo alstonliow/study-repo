@@ -30,8 +30,8 @@ class Sources:
     def resolve(self, key: str) -> "Resolution | None":
         if key in self.node_of:
             from resources import Resolution
-            res = self.node_of[key]
-            return Resolution(res.id, res.current, key, res.locator(key), None)
+            owner = self.node_of[key]
+            return Resolution(owner.id, owner.current, key, owner.locator(key), None)
         r = self.find(key)
         res = r.resolve(key) if r else None
         return None if res is None or isinstance(res, str) else res

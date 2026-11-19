@@ -315,7 +315,7 @@ note of the branch does, unless the course excludes them.
 
 ### 6.4 Coding exercises
 
-DRAFT for owner review (2026-11-19). Replaces coursework projects
+Approved by the owner on 2026-11-19. Replaces coursework projects
 (§17.13.1 item 4).
 
 A **coding exercise** is a problem whose answer is a short program. It is how
@@ -475,7 +475,7 @@ distributed or published).
 Problems from such a source are `solution="withheld"` (§6.2 item 6): no
 solution in this repository, on the website or in a PDF, and the owner's own
 code for them stays in a private repository. The resource file records the
-condition. (DRAFT, 2026-11-19.)
+condition. (Owner decision, 2026-11-19.)
 
 ## 11. Checks (`make check`)
 
@@ -499,7 +499,7 @@ condition. (DRAFT, 2026-11-19.)
    `relations` or `@sec-` references (§17.3.3).
 12. Coding exercises (§6.4): form, `origin`/`source`, packages; each
    solution passes its tests and each starter fails them; `withheld`
-   problems have no solution (DRAFT, 2026-11-19).
+   problems have no solution (owner decision, 2026-11-19).
 
 All checks run on the model built by `build/model.py`, the single parser of
 notes, blocks and course files. `make test` runs the build scripts on a small
@@ -561,7 +561,7 @@ chapters:
    course order, and folds blocks outside their scope into a one-line
    "Beyond <code>" summary that can be opened. Progress marks are shared across
    courses.
-6. **Courses are grouped by field** (DRAFT, 2026-11-19). The course filter
+6. **Courses are grouped by field** (owner decision, 2026-11-19). The course filter
    lists courses under the fields of `meta/taxonomy.yml` (Mathematics,
    Computer Science, Artificial Intelligence), each group collapsible, groups
    in taxonomy order and courses by `code` inside a group. A course's field is
@@ -569,7 +569,7 @@ chapters:
    `covers` reaches (a covered block counts for its note); a tie goes to the
    field that comes first in the taxonomy. The Courses page uses the same
    groups.
-7. **Coursework repository** (DRAFT, 2026-11-19). The owner's complete code
+7. **Coursework repository** (owner decision, 2026-11-19). The owner's complete code
    for a course's programming homework, framework and glue code included,
    lives in one repository per course, one folder per homework. It is linked
    from the course file with `coursework_repo` and shown on the course page.
@@ -1157,7 +1157,7 @@ Approved by the owner on 2026-11-19. This is the schema of the second new
 entity type (§17.10, phase 4). It is written before any code, and it is
 built when the first real project appears (§17.1).
 
-Revision (DRAFT for owner review, 2026-11-19): coursework is no longer a
+Revision approved by the owner on 2026-11-19: coursework is no longer a
 project (item 4); projects are shown by field of knowledge (§17.13.5).
 
 #### 17.13.1 What a project is
@@ -1199,7 +1199,7 @@ project (item 4); projects are shown by field of knowledge (§17.13.5).
    (`kind: course`, for example a final project where the owner chooses the
    problem and the method), or a personal one (`kind: personal`). Other work
    is a project when it needs its own repository or spans several weeks.
-6. **Migration** (DRAFT): the 21 coursework projects (`prj-cs188-*`,
+6. **Migration** (approved 2026-11-19): the 21 coursework projects (`prj-cs188-*`,
    `prj-cs221-*`, `prj-eecs126-*`, all `stage: planned` with empty
    write-ups) are removed with the owner's approval; their ids are not
    reused (§5). Their `applies` lists guide where the coding exercises go.
@@ -1264,7 +1264,7 @@ relations:
 1. The website gets a **Projects** page: a list of projects (course and
    personal), and one page per project rendered from `project.md`, with its
    links, the notes it applies, and its backlinks.
-   - **Grouped by knowledge** (DRAFT, 2026-11-19), like the notes: part as
+   - **Grouped by knowledge** (owner decision, 2026-11-19), like the notes: part as
      heading, branch as subheading, in taxonomy order; each row shows kind,
      course and stage. A project's branch is derived from `applies`, never
      written: the branch that holds most of the notes it applies (a block

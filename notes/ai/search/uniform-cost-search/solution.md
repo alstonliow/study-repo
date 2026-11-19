@@ -22,3 +22,42 @@ $$n+\frac{m(m+1)}{2}.$$
 2. False. The action may lie on no path from the start to the end, and with a negative cost UCS is no longer guaranteed to be correct at all.
 3. False. Adding $1$ to every action adds the number of steps to each path's cost, which favours paths with fewer edges. Example: a path of two edges of cost $1$ (total $2$) beats a single edge of cost $3$, but after the change they cost $4$ and $4$, and with a single edge of cost $2.5$ instead, the single edge wins ($3.5<4$).
 :::
+
+::: {.solution for="prob-ucs-route-code" status="draft"}
+```{.python}
+import heapq
+from itertools import count
+
+
+def ucs(start, succ, is_end):
+    """Return (cost, path) of a cheapest path from start to an end state,
+    or None if no end state is reachable."""
+    tie = count()                      # states need not be comparable
+    frontier = [(0, next(tie), start)]
+    best = {start: 0}                  # lowest priority seen so far
+    back = {start: None}               # backpointers
+    explored = set()
+    while frontier:
+        p, _, s = heapq.heappop(frontier)
+        if s in explored:              # an outdated entry: s was lowered later
+            continue
+        explored.add(s)
+        if is_end(s):
+            path = []
+            while s is not None:
+                path.append(s)
+                s = back[s]
+            return p, path[::-1]
+        for t, c in succ(s):
+            if t not in explored and p + c < best.get(t, float("inf")):
+                best[t] = p + c
+                back[t] = s
+                heapq.heappush(frontier, (p + c, next(tie), t))
+    return None
+```
+
+1. The frontier is a binary heap of entries (priority, counter, state). Instead of lowering a priority in place, a new entry is pushed and the outdated one is skipped when it is removed; this is the same algorithm as @def-uniform-cost-search.
+2. The counter breaks ties, so that states themselves are never compared (two `frozenset`s, for example, do not have a total order).
+3. A state is explored when it is first removed; its priority is then its past cost (@thm-uniform-cost-search). The end test happens at removal, not when a state is first reached: stopping at the first push would return the path $A\to B\to D$ of cost $6$ in the small test graph.
+4. For waypoints nothing changes in the search: the state records which waypoints have been visited, so reaching the same location with a different set of visited waypoints is a different state.
+:::

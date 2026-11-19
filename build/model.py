@@ -112,6 +112,60 @@ def sort_key(sources: list) -> tuple:
     return (999,)
 
 
+# ---------------------------------------------------------------- coding exercises (SPEC §6.4)
+FENCE = re.compile(r"^(`{3,})[ \t]*(\{[^}\n]*\}|[\w-]+)?[ \t]*\n(.*?)\n?^\1[ \t]*$", re.M | re.S)
+
+
+def fences(text: str) -> list[tuple[list[str], dict, str, int, int]]:
+    """Backtick code fences: (classes, attributes, code, start, end offsets).
+    ```python counts as the class python."""
+    out = []
+    for m in FENCE.finditer(text):
+        info = m.group(2) or ""
+        a = attrs_of(info[1:-1]) if info.startswith("{") else {"classes": [info] if info else []}
+        out.append((a["classes"], a, m.group(3), m.start(), m.end()))
+    return out
+
+
+@dataclass
+class Coding:
+    """A coding exercise: a problem block with the class .coding (SPEC §6.4)."""
+    statement: str            # the body without the starter and tests fences
+    starter: str
+    tests: str
+    packages: list[str]
+    problems: list[str]       # form errors found while parsing
+
+
+def parse_coding(attrs: dict, body: str) -> Coding:
+    """Statement, the one {.python .starter} fence, the one {.python .tests} fence
+    (in that order) and `packages` of a .coding problem."""
+    fs = fences(body)
+    starters = [f for f in fs if "starter" in f[0]]
+    tests = [f for f in fs if "tests" in f[0]]
+    problems = []
+    for name, found in (("starter", starters), ("tests", tests)):
+        if len(found) != 1:
+            problems.append(f"needs exactly one {{.python .{name}}} fence (found {len(found)})")
+        elif "python" not in found[0][0]:
+            problems.append(f"the .{name} fence must be {{.python .{name}}}")
+    if starters and tests and starters[0][3] > tests[0][3]:
+        problems.append("the starter fence must come before the tests fence")
+    statement = body
+    for f in sorted(starters[:1] + tests[:1], key=lambda f: -f[3]):
+        statement = statement[:f[3]] + statement[f[4]:]
+    if not statement.strip():
+        problems.append("has no statement")
+    packages = [x.strip() for x in attrs.get("packages", "").split(",") if x.strip()]
+    return Coding(re.sub(r"\n{3,}", "\n\n", statement).strip(), starters[0][2] if starters else "",
+                  tests[0][2] if tests else "", packages, problems)
+
+
+def solution_code(body: str) -> list[str]:
+    """The Python fences of a solution ({.python} or python): a coding exercise's solution has one."""
+    return [code for classes, _, code, _, _ in fences(body) if "python" in classes]
+
+
 # ---------------------------------------------------------------- model
 @dataclass
 class Div:
@@ -203,6 +257,10 @@ class Note:
         self.problem_sources = [p.attrs.get("source", "") for p in self.problems]
         self.solution_divs = [Div("solution.md", 0, a, 0, b) for a, b in top_level_divs(self.solutions)
                               if "solution" in a["classes"]]
+        # coding exercises (SPEC §6.4): problem id -> Coding, and the code of their solutions
+        self.coding = {p.id: parse_coding(p.attrs, p.body) for p in self.problems if p.has("coding") and p.id}
+        self.solution_code = {d.attrs.get("for"): solution_code(d.body) for d in self.solution_divs
+                              if d.attrs.get("for") in self.coding}
         self.num = ""   # display number, set by the site build
         self.courses: list[str] = []   # course ids whose scope includes this note (set by the site build)
 

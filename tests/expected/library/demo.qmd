@@ -9,7 +9,7 @@ title: Demo course notes
 ::: {#res-demo-widgets .resource-node}
 [1.1]{.node-loc} **Widgets**
 
-[Cited by: [1.1 First note](/notes/t/alpha/first.qmd), [Exercise [1.1.1]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-01), [Exercise [1.1.2]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-02)]{.node-links}
+[Cited by: [1.1 First note](/notes/t/alpha/first.qmd), [Exercise [1.1.1]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-01), [Exercise [1.1.2]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-02), [Exercise [1.1.4]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-withheld)]{.node-links}
 :::
 
 ::: {#res-demo-gadgets .resource-node}
@@ -20,5 +20,7 @@ title: Demo course notes
 
 ::: {#res-demo-basics-exercises .resource-node}
 [1.10]{.node-loc} **Basics exercises**
+
+[Cited by: [Exercise [1.1.3]{.num data-note="t/alpha/first"}](/notes/t/alpha/first.qmd#prob-first-code)]{.node-links}
 :::
 

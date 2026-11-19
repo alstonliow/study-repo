@@ -111,6 +111,26 @@ class TestSite(Repo):
         self.assertEqual(data["pages"]["notes/t/beta/third.html"], ["demo"])
 
 
+class TestCoding(Repo):
+    def test_page_has_editor_data_and_badge(self):
+        page = (generate(self.root) / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn('data-item="prob-first-code" data-level="" data-kind="code" data-packages=""', page)
+        self.assertIn('data-item="prob-first-01" data-level="medium" data-kind="written"', page)
+        self.assertIn("[Code]{.code-badge}", page)
+        self.assertIn("::: {.coding-starter}", page)
+        self.assertIn("::: {.coding-tests}", page)
+        self.assertIn("[DEMO 1.10 Basics exercises]{.problem-source}", page)   # a node id as source
+        self.assertIn("{.solution-withheld}", page)
+
+    def test_pdf_prints_starter_not_tests(self):
+        r = run("make_pdf.py", self.root, "--markdown-only", "--name", "t")
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        md = (self.root / "out/pdf/t.qmd").read_text()
+        self.assertIn('def double(x):\n    """Return 2 * x."""\n    ...', md)
+        self.assertNotIn("def test_zero", md)
+        self.assertIn("return 2 * x", md[md.index("# Solutions"):])
+
+
 class TestCheck(Repo):
     def test_fixture_is_clean(self):
         r = self.check()
@@ -160,6 +180,47 @@ class TestCheck(Repo):
         self.code_md('::: {#exm-first-code-1 .example origin="self"}\n```{.python .runnable packages="numpy"}\nprint(1)\n```\n\n```text\n1\n```\n:::\n')
         r = self.check()
         self.assertEqual(r.returncode, 0, r.stdout)
+
+    # coding exercises (SPEC §6.4) and withheld solutions (§6.2 item 6)
+    EX = "notes/t/alpha/first/exercise.md"
+    SOL = "notes/t/alpha/first/solution.md"
+
+    def test_coding_solution_runs(self):
+        r = self.check()
+        self.assertIn("coding: 1 exercises, 1 solutions run against their tests", r.stdout)
+        self.assertNotIn("prob-first-withheld", r.stdout)          # withheld: no warning
+
+    def test_coding_wrong_solution(self):
+        self.edit(self.SOL, "return 2 * x", "return x + 2")
+        self.assertError("solution of 'prob-first-code' does not pass its tests: failed: test_zero")
+
+    def test_coding_starter_must_fail(self):
+        self.edit(self.EX, '"""Return 2 * x."""\n    ...', '"""Return 2 * x."""\n    return x * 2')
+        self.assertError("the starter of 'prob-first-code' passes its tests")
+
+    def test_coding_is_never_external(self):
+        self.edit(self.EX, 'coding origin="adapted"', 'coding origin="external"')
+        self.assertError("a coding exercise has origin self or adapted")
+
+    def test_coding_needs_one_tests_fence(self):
+        self.edit(self.EX, "{.python .tests}", "{.python}")
+        self.assertError("needs exactly one {.python .tests} fence (found 0)")
+
+    def test_coding_syntax_error(self):
+        self.edit(self.SOL, "return 2 * x", "return 2 * (x")
+        self.assertError("solution of 'prob-first-code': Python syntax error")
+
+    def test_coding_packages_allowed_only(self):
+        self.edit(self.EX, 'coding origin="adapted"', 'coding packages="torch" origin="adapted"')
+        self.assertError("package 'torch' is not allowed")
+
+    def test_coding_undeclared_import(self):
+        self.edit(self.SOL, "    return 2 * x", "    import numpy\n    return 2 * x")
+        self.assertError("solution of 'prob-first-code' imports numpy")
+
+    def test_withheld_with_solution_is_an_error(self):
+        self.edit(self.SOL, 'for="prob-first-code"', 'for="prob-first-withheld"')
+        self.assertError("'prob-first-withheld' is solution=\"withheld\" and must have no solution")
 
     def test_heading_in_problem(self):
         self.edit("notes/t/alpha/first/exercise.md", "Statement two.",

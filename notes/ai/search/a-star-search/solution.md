@@ -22,3 +22,44 @@ A heuristic is admissible if $h(s)\le$ the true cost from $s$ (@def-admissible-h
 
 (e) An inadmissible heuristic can be much closer to the true cost on most states (for example $d_{\text{Manhattan}}$ itself here), so A\* expands far fewer nodes and finds a good, often optimal, plan faster; this trades guaranteed optimality for speed.
 :::
+
+::: {.solution for="prob-a-star-route-code" status="draft"}
+```{.python}
+import heapq
+from itertools import count
+
+
+def a_star(start, succ, is_end, h):
+    """Return (cost, path, explored) for a cheapest path from start to an
+    end state, or None if no end state is reachable."""
+    tie = count()
+    frontier = [(0, next(tie), start)]      # priority = modified past cost
+    best = {start: 0}
+    back = {start: None}
+    explored = set()
+    while frontier:
+        p, _, s = heapq.heappop(frontier)
+        if s in explored:
+            continue
+        explored.add(s)
+        if is_end(s):
+            path = [s]
+            while back[path[-1]] is not None:
+                path.append(back[path[-1]])
+            path.reverse()
+            cost = p - h(s) + h(start)      # undo the telescoping penalties
+            return cost, path, len(explored)
+        for t, c in succ(s):
+            q = p + c + h(t) - h(s)         # modified cost (consistency: >= p)
+            if t not in explored and q < best.get(t, float("inf")):
+                best[t] = q
+                back[t] = s
+                heapq.heappush(frontier, (q, next(tie), t))
+    return None
+```
+
+1. This is uniform cost search (@prob-ucs-route-code) on the modified costs $\text{Cost}'(s,a)=\text{Cost}(s,a)+h(s')-h(s)$. A consistent heuristic makes every modified cost non-negative, so UCS is correct on them (@thm-a-star-correct).
+2. Along a path the penalties telescope: its modified cost is its original cost plus $h(\text{end})-h(s_{\text{start}})$. So the original cost is recovered as $p-h(s)+h(s_{\text{start}})$, where $p$ is the modified cost at which the end state $s$ is removed.
+3. The modified priority of a state is its past cost plus $h$ minus the constant $h(s_{\text{start}})$, so ordering by $\text{PastCost}+h$ gives the same order.
+4. On the line with $h(s)=10-s$, a step right has modified cost $0$ and a step left $2$, so only $0,1,\dots,10$ are explored (@exm-a-star-line); with $h=0$ the search also wanders to the left.
+:::

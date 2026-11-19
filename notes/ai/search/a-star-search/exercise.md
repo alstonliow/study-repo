@@ -212,3 +212,67 @@ As an example: if at timestep $t$ the agent's current velocity is 2, by taking t
 
 *Note (these notes):* The handout refers to a maze picture that is not present in the PDF; the questions do not depend on it.
 :::
+
+::: {#prob-a-star-route-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-route"}
+Implement A\* search (@def-a-star-search) as a function `a_star(start, succ, is_end, h)`.
+
+- `start`, `succ` and `is_end` describe a search problem as in @prob-ucs-route-code: `succ(s)` returns a list of pairs `(t, c)`, one for each action from `s`, leading to state `t` at cost `c >= 0`.
+- `h(s)` is a consistent heuristic (@def-consistent-heuristic): a number that estimates the cheapest cost from `s` to an end state.
+
+Return a triple `(cost, path, explored)`: `path` is the list of states of a minimum-cost path from `start` to an end state, `cost` is its cost under the *original* costs, and `explored` is the number of distinct states removed from the frontier, the end state included. Return `None` if no end state can be reached.
+
+You may run uniform cost search on the modified costs, as in the definition, or order the frontier by past cost plus heuristic; both explore the same states.
+
+```{.python .starter}
+import heapq
+
+
+def a_star(start, succ, is_end, h):
+    """Return (cost, path, explored) for a cheapest path from start to an
+    end state, or None if no end state is reachable."""
+    ...
+```
+
+```{.python .tests}
+import math
+
+
+def line(lo, hi):
+    """States lo..hi on a line; a step left or right costs 1."""
+    return lambda s: [(t, 1) for t in (s - 1, s + 1) if lo <= t <= hi]
+
+
+def test_line_with_heuristic():
+    cost, path, explored = a_star(0, line(-10, 10), lambda s: s == 10, lambda s: 10 - s)
+    assert cost == 10, "the cost must be the original cost, not the modified one"
+    assert path == list(range(11))
+    assert explored == 11, f"explored {explored} states; A* should explore only 0..10"
+
+
+def test_line_without_heuristic():
+    cost, path, explored = a_star(0, line(-10, 10), lambda s: s == 10, lambda s: 0)
+    assert (cost, path) == (10, list(range(11)))
+    assert explored >= 20, "with h = 0, A* is UCS and also explores the left half"
+
+
+def test_road_map():
+    # cities in the plane; roads cost their length, h is the straight-line distance
+    xy = {"S": (0, 0), "A": (3, 5), "B": (6, 0), "D": (-4, 0), "G": (9, 4)}
+    roads = {"S": ["A", "B", "D"], "A": ["S", "G"], "B": ["S", "G"], "D": ["S", "G"], "G": ["A", "B", "D"]}
+    succ = lambda s: [(t, math.dist(xy[s], xy[t])) for t in roads[s]]
+    h = lambda s: math.dist(xy[s], xy["G"])
+    cost, path, explored = a_star("S", succ, lambda s: s == "G", h)
+    assert path == ["S", "B", "G"]
+    assert math.isclose(cost, 11.0)
+    assert "D" not in path and explored <= 4
+
+
+def test_unreachable():
+    g = {"A": [("B", 1)], "B": [], "C": []}
+    assert a_star("A", lambda s: g[s], lambda s: s == "C", lambda s: 0) is None
+
+
+def test_start_is_end():
+    assert a_star(5, line(0, 9), lambda s: s == 5, lambda s: abs(5 - s)) == (0, [5], 1)
+```
+:::

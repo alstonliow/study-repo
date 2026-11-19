@@ -57,6 +57,7 @@ def check_notes() -> None:
     refs: list[tuple[Path, str]] = []
     requires: list[tuple[Path, str]] = []
     missing_ids: list[str] = []
+    withheld: set[str] = set()          # problems whose source forbids published solutions (SPEC §6.2 item 6)
 
     for branch, rv in REPO.reviews.items():
         if branch not in REPO.branch_order:
@@ -113,8 +114,17 @@ def check_notes() -> None:
                         problems[bid] = md
                     if not kv.get("origin"):
                         errors.append(f"{where}: problem missing origin")
+                    elif "coding" in classes:          # SPEC §6.4 item 3: never external
+                        if kv["origin"] not in {"self", "adapted"}:
+                            errors.append(f"{where}: a coding exercise has origin self or adapted")
+                        elif kv["origin"] == "adapted" and not kv.get("source"):
+                            errors.append(f"{where}: origin=adapted needs the source of the handout")
                     elif kv["origin"] not in {"self", "external"}:
                         errors.append(f"{where}: origin must be self or external")
+                    if "solution" in kv and kv["solution"] != "withheld":
+                        errors.append(f"{where}: solution=\"{kv['solution']}\" is not allowed (only withheld)")
+                    elif kv.get("solution") == "withheld" and bid:
+                        withheld.add(bid)
                     if "source" not in kv:
                         errors.append(f"{where}: problem missing source")
                     elif not kv["source"]:
@@ -193,7 +203,10 @@ def check_notes() -> None:
         warnings.append(f"{len(missing_ids)} block(s) without an id (SPEC §5.1), e.g. {missing_ids[0]}")
 
     for pid, md in problems.items():
-        if pid not in solutions:
+        if pid in withheld:
+            if pid in solutions:
+                errors.append(f"{rel(solutions[pid])}: '{pid}' is solution=\"withheld\" and must have no solution")
+        elif pid not in solutions:
             warnings.append(f"{rel(md)}: problem '{pid}' has no solution")
         elif pid in empty_solutions:
             warnings.append(f"{rel(md)}: problem '{pid}' has an empty solution (TODO)")
@@ -206,6 +219,67 @@ def check_notes() -> None:
     print(f"notes: {len(ids)} knowledge points, {len(block_ids)} labelled blocks, "
           f"{len(problems)} problems, {len(solutions) - len(empty_solutions)} solutions "
           f"({len(empty_solutions)} empty)")
+
+
+@rule("coding", "coding exercises: form, packages; solutions pass the tests, starters fail them")
+def check_coding() -> None:
+    """Coding exercises (SPEC §6.4 item 8, §11 item 12): parse starter, tests and
+    solution; run solution + tests (must pass) and starter + tests (must fail),
+    each in a fresh CPython process with a time limit."""
+    from concurrent.futures import ThreadPoolExecutor
+    import coding
+    jobs = []          # (where, pid, what, code, tests)
+    count = 0
+    for note in REPO.all_notes + list(REPO.reviews.values()):
+        if not note.coding:
+            continue
+        ex = note.files["exercise.md"]
+        line = {d.id: d.line for d in ex.divs if d.id}
+        for pid, c in note.coding.items():
+            count += 1
+            where = f"{rel(ex.path)}:{line.get(pid, 0)}"
+            for msg in c.problems:
+                errors.append(f"{where}: coding exercise {msg}")
+            for pkg in c.packages:
+                if pkg not in coding.ALLOWED_PACKAGES:
+                    errors.append(f"{where}: package '{pkg}' is not allowed (allowed: {', '.join(sorted(coding.ALLOWED_PACKAGES))})")
+            sols = note.solution_code.get(pid)
+            withheld = next(p for p in note.problems if p.id == pid).attrs.get("solution") == "withheld"
+            if sols is not None and len(sols) != 1 and not withheld:
+                errors.append(f"{rel(note.files['solution.md'].path)}: solution for '{pid}' needs exactly one "
+                              f"{{.python}} fence (found {len(sols)})")
+            parts = [("starter", c.starter), ("tests", c.tests)] + ([("solution", sols[0])] if sols and len(sols) == 1 else [])
+            ok = True
+            for what, code in parts:
+                try:
+                    bad = coding.disallowed(code, c.packages)
+                except SyntaxError as exc:
+                    errors.append(f"{where}: {what} of '{pid}': Python syntax error ({exc.msg}, line {exc.lineno})")
+                    ok = False
+                    continue
+                if bad:
+                    errors.append(f"{where}: {what} of '{pid}' imports {', '.join(sorted(bad))} "
+                                  "(only the standard library and declared, allowed packages)")
+                    ok = False
+            if c.problems or not ok:
+                continue
+            jobs.append((where, pid, "starter", c.starter, c.tests))
+            if sols and len(sols) == 1:
+                jobs.append((where, pid, "solution", sols[0], c.tests))
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = list(pool.map(lambda j: coding.run(j[3], j[4]), jobs))
+    ran = 0
+    for (where, pid, what, _, _), r in zip(jobs, results):
+        if what == "solution":
+            ran += 1
+            if not r.passed:
+                errors.append(f"{where}: solution of '{pid}' does not pass its tests: {r.summary()}")
+        elif r.passed:
+            errors.append(f"{where}: the starter of '{pid}' passes its tests, so the tests test nothing")
+        elif r.error:
+            errors.append(f"{where}: starter of '{pid}' + tests: {r.error}")
+    if count:
+        print(f"coding: {count} exercises, {ran} solutions run against their tests")
 
 
 @rule("resources", "resource files: ids, nodes, editions, locators")

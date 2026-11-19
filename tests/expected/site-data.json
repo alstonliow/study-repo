@@ -68,7 +68,9 @@
  "notes": {
   "t/alpha/first": [
    "prob-first-01",
-   "prob-first-02"
+   "prob-first-02",
+   "prob-first-code",
+   "prob-first-withheld"
   ],
   "t/alpha/second": [],
   "t/beta/third": []

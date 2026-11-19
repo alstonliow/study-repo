@@ -2,7 +2,7 @@
 title: 1 Alpha
 ---
 
-[First test branch. 2 topics · 2 exercises]{.branch-intro}
+[First test branch. 2 topics · 4 exercises]{.branch-intro}
 
 ::: {.branch-toc}
 - [1.1]{.toc-num} [First note](/notes/t/alpha/first.qmd) [Widget · Widget theorem]{.toc-desc}

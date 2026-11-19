@@ -49,7 +49,7 @@ Gadgets follow from [Definition [1.1.1]{.num data-note="t/alpha/first"}](/notes/
 
 ### [1.1]{.num data-note="t/alpha/first"} First note [→](/notes/t/alpha/first.qmd){.summary-src title="Open the note"}
 
-:::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium"}
+:::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium" data-kind="written"}
 ::: {#prob-first-01 .problem}
 [Exercise 1]{.problem-title}[from 1.1 First note · DEMO 1.1 Q1]{.problem-source} [medium]{.level-badge .level-medium}
 
@@ -62,7 +62,7 @@ Show that a widget is a widget.
 
 ::::
 
-:::: {.problem-group data-courses="demo" data-item="prob-first-02" data-level=""}
+:::: {.problem-group data-courses="demo" data-item="prob-first-02" data-level="" data-kind="written"}
 ::: {#prob-first-02 .problem}
 [Exercise 2]{.problem-title}[from 1.1 First note · DEMO 1.1 Q2]{.problem-source}
 
@@ -71,12 +71,61 @@ Statement two.
 
 ::::
 
+:::: {.problem-group data-courses="demo" data-item="prob-first-code" data-level="" data-kind="code" data-packages=""}
+::: {#prob-first-code .problem}
+[Exercise 3]{.problem-title}[from 1.1 First note · DEMO 1.10 Basics exercises]{.problem-source}[Code]{.code-badge}
+
+Write `double(x)` that returns twice `x`.
+
+::: {.coding-starter}
+```python
+def double(x):
+    """Return 2 * x."""
+    ...
+```
+:::
+
+::: {.coding-tests}
+```python
+def test_small():
+    assert double(2) == 4
+
+
+def test_zero():
+    assert double(0) == 0
+```
+:::
+:::
+
+::: {.callout-tip collapse="true" appearance="simple" title="Draft solution (not yet reviewed)"}
+```{.python}
+def double(x):
+    """Return 2 * x."""
+    return 2 * x
+```
+
+1. Multiply by two.
+:::
+
+::::
+
+:::: {.problem-group data-courses="demo" data-item="prob-first-withheld" data-level="" data-kind="written"}
+::: {#prob-first-withheld .problem}
+[Exercise 4]{.problem-title}[from 1.1 First note · DEMO 1.1 Q3]{.problem-source}
+
+Statement three, whose source forbids published solutions.
+:::
+
+[Solution withheld: the source asks that solutions are not published.]{.solution-withheld}
+
+::::
+
 
 ## Synthesis problems
 
 [Problems that combine several topics of the chapter.]{.summary-intro}
 
-:::: {.problem-group .synthesis data-courses="demo" data-item="prob-alpha-review-01" data-level="hard"}
+:::: {.problem-group .synthesis data-courses="demo" data-item="prob-alpha-review-01" data-level="hard" data-kind="written"}
 ::: {#prob-alpha-review-01 .problem}
 [Review 1.1]{.problem-title}[]{.problem-source} [hard]{.level-badge .level-hard}
 

@@ -149,8 +149,12 @@ class Book:
             # textbook layout: "Exercise n" on the left, source and level small on the right
             side = " · ".join(x for x in (label, lv) if x)
             head = (f"\\exercisehead{{{word}}}{{{num}}}{{{transforms.tex_escape(side)}}}")
+            body = p.body.strip()
+            coding = note.coding.get(pid)
+            if coding:                    # statement and starter; the tests are not printed (SPEC §6.4)
+                body = f"{coding.statement}\n\n```python\n{coding.starter}\n```"
             stmt = (f"[]{{#{pid}}}\n```{{=latex}}\n{head}\n```\n\n"
-                    f"{self.no_headings(p.body.strip())}\n")
+                    f"{self.no_headings(body)}\n")
             self.printed.add(pid)
             out.append(stmt)
             sol = sols.get(pid)
@@ -163,7 +167,7 @@ class Book:
             elif self.o.solutions == "end":
                 self.solutions_end.append(f"**{full}.**\n\n{text}")
             else:
-                self.solutions_only.append(f"**{full}.**\n\n{p.body.strip()}\n\n{text}")
+                self.solutions_only.append(f"**{full}.**\n\n{body}\n\n{text}")
         return "\n\n".join(out)
 
     def statements_of(self, note) -> str:
