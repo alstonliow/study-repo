@@ -45,3 +45,13 @@ Help Jonathan evaluate the consequences of his incessant drinking!
 
 *Note (these notes):* The figure of the straw is not reproduced.
 :::
+
+::: {.problem #prob-eecs126hw-1-q4 origin="external" source="eecs126hw-1-q4"}
+**Random Walk on a Circle.** Suppose we have $n$ points labeled $\{1,2,\dots,n\}$ around a circle. An ant starts at point $1$, and at each second has an equal probability of moving clockwise or counterclockwise to an adjacent point. For each point $k\in\{2,3,\dots,n\}$, find the probability that the first time the ant lands at $k$, it has visited all other points already.
+:::
+
+::: {.problem #prob-eecs126d-5-q2 origin="external" source="eecs126d-5-q2"}
+**Product of Rolls of a Die.** A fair die with labels (1 to 6) is rolled until the product of the last two rolls is 12. What is the expected number of rolls?
+
+[Hint: You can model this process as a Markov chain with 3 states. Choose your states according to the outcome of last roll. For example, assign one state if it is outcome was 1 or 5 (which is useless if you want the product to be 12). If the outcome was 2,3,4 or 6, it's useful and can be assigned another state. Assign third state to the case when the product last two outcomes was 12.]
+:::

@@ -58,3 +58,21 @@ $$\Pr\{\text{Plum has revolver}\} = 4/8,\quad \Pr\{\text{Green has revolver}\} =
 
 (d) What is the probability that Mr. Green had an opportunity, given that Colonel Mustard was shot?
 :::
+
+::: {.problem #prob-eecs126hw-1-q3 origin="external" source="eecs126hw-1-q3"}
+**Expanding the NBA.** The NBA is looking to expand to another city. In order to decide which city will receive a new team, the commissioner interviews potential owners from each of the $N$ potential cities ($N$ is a positive integer), one at a time. Unfortunately, the owners would like to know immediately after the interview whether their city will receive the team or not. The commissioner decides to use the following strategy: she will interview the first $m$ owners and reject all of them ($m\in\{1,\dots,N\}$). After the $m$th owner is interviewed, she will pick the first city that is better than all previous cities. The cities are interviewed in a uniformly random order. What is the probability that the best city is selected? Assume that the commissioner has an objective method of scoring each city and that each city receives a unique score.
+
+You should arrive at an exact answer for the probability in terms of a summation. Approximate your answer using $\sum_{i=1}^{n}i^{-1}\approx\ln n$ and find the optimal value of $m$ that maximizes the probability that the best city is selected. You can also say $\ln(n-1)\approx\ln n$.
+
+Hint: Consider the events $B_i=\{i\text{-th city is the best}\}$ and $A=\{\text{best city is chosen}\}$.
+:::
+
+::: {.problem #prob-eecs126hw-2-q1 origin="external" source="eecs126hw-2-q1"}
+**Among Us.** In the game of Among Us, there are 9 players. 4 of them are imposters and 5 of them are crewmates. There is also a deck of 17 cards containing 11 "sabotage" cards and 6 "task" cards. Imposters want to play sabotage cards, and crewmates want to play task cards. Here's how the play proceeds.
+
+- A captain and a first mate are chosen uniformly at random from the 9 players.
+- The captain draws 3 cards from the deck and gives 2 to the first mate, discarding the third.
+- The first mate chooses one to play.
+
+Now suppose you are the first mate, but the captain gave you 2 sabotage cards. Being a crewmate, you wonder, did the captain just happen to have 3 sabotage cards, or was the captain an imposter who secretly discarded a task card. In this scenario, what's the probability that the captain is an imposter? Let's assume that imposter captains always try to discard task cards, and crewmate captains always try to discard sabotage cards.
+:::

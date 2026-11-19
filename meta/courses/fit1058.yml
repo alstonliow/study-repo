@@ -274,6 +274,15 @@ exclude:
   - def-asymmetric                                   # Asymmetric relation (CN only names it)
   - prp-properties-1                                 # Asymmetric implies antisymmetric and irreflexive
   - exm-division-algorithm-existence-via-well        # Division algorithm via well-ordering
+  # EECS126 integration (2026-11-19): its problems and new blocks in shared notes
+  - prob-eecs126hw-1-q1
+  - prob-eecs126hw-1-q2
+  - prob-eecs126hw-1-q3
+  - prob-eecs126hw-1-q5
+  - prob-eecs126hw-2-q1
+  - prob-eecs126hw-2-q3
+  - prob-eecs126hw-2-q5
+  - prob-eecs126hw-7-q3
 
 chapters:
   - num: 1

@@ -42,3 +42,11 @@ Suppose $X\sim\mathrm{Bin}(16,0.5)$.
 
 (g) Are the random variables $X_i$ and $X_j$, where $i < j$, independent? Recall that two random variables $X$ and $Y$ are independent if $P[X = k_1 \cap Y = k_2] = P[X = k_1]P[Y = k_2]$ for all $k_1$ and $k_2$. Prove your answer using this definition.
 :::
+
+::: {.problem #prob-eecs126hw-2-q3 origin="external" source="eecs126hw-2-q3"}
+**Compact Arrays.** Consider an array of $n$ entries, where $n$ is a positive integer. Each entry is chosen uniformly randomly from $\{0,\dots,9\}$. We want to make the array more compact, by putting all of the non-zero entries together at the front of the array. As an example, suppose we have the array
+$$[6,4,0,0,5,3,0,5,1,3].$$
+After making the array compact, it now looks like
+$$[6,4,5,3,5,1,3,0,0,0].$$
+Let $i$ be a fixed positive integer in $\{1,\dots,n\}$. Suppose that the $i$th entry of the array is non-zero (assume that the array is indexed starting from 1). Let $X$ be a random variable which is equal to the index that the $i$th entry has been moved after making the array compact. Calculate $E[X]$ and $\operatorname{var}(X)$.
+:::

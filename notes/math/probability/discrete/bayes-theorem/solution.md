@@ -83,3 +83,19 @@ Most positive tests come from the many innocent suspects.
 
 (d) By Bayes' theorem (@thm-bayes-two-events), $\Pr(\text{Green opportunity}\mid\text{shot})=\frac{(2/6)(3/8)}{13/48}=\frac{6/48}{13/48}=\frac6{13}$.
 :::
+
+::: {.solution for="prob-eecs126hw-1-q3" status="draft"}
+1. $\Pr(B_i)=1/N$. If $i\le m$ the best city is rejected. If $i>m$, the best city is chosen iff no city among positions $m+1,\dots,i-1$ beats all earlier ones, i.e. iff the best of the first $i-1$ cities is among the first $m$, which has probability $m/(i-1)$.
+2. By the law of total probability (@thm-law-of-total-probability),
+$$\Pr(A)=\sum_{i=m+1}^{N}\frac1N\cdot\frac{m}{i-1}=\frac mN\sum_{j=m}^{N-1}\frac1j\approx\frac mN\ln\frac Nm.$$
+3. With $x=m/N$, $x\ln(1/x)$ has derivative $\ln(1/x)-1$, zero at $x=1/e$. So $m\approx N/e$, and the success probability is about $1/e\approx0.37$.
+:::
+
+::: {.solution for="prob-eecs126hw-2-q1" status="draft"}
+The answer is $\tfrac34$.
+
+1. You are a crewmate, so the captain is one of the other $8$ players: $4$ imposters and $4$ crewmates, prior $\Pr(I)=\tfrac12$.
+2. Of the $\binom{17}{3}=680$ hands, $\binom{11}3=165$ have three sabotage cards and $\binom{11}2\cdot6=330$ have exactly two.
+3. An imposter passes two sabotage cards whenever he holds at least two, $\Pr(2S\mid I)=\frac{495}{680}$; a crewmate does so only with three, $\Pr(2S\mid C)=\frac{165}{680}$.
+4. By Bayes' theorem (@thm-bayes-two-events), $\Pr(I\mid2S)=\frac{495}{495+165}=\frac34$.
+:::

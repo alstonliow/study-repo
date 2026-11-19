@@ -20,3 +20,11 @@ and by linearity the expected number of triangles is $\binom n3\frac{m(m-1)(m-2)
 
 (b) The number of true propositions is an integer. If every assignment made at most $6$ propositions true, the expectation would be at most $6<\frac{49}8$. So some assignment makes all $7$ true. (This is the probabilistic method: a random variable takes some value at least its mean.)
 :::
+
+::: {.solution for="prob-eecs126hw-2-q2" status="draft"}
+The answer is $np$.
+
+1. By linearity, the expected number lit is $\sum_{i=1}^n\Pr(X_i\ge i)$, where $X_i\sim\operatorname{Bin}(n,p)$ is the number of switches on in row $i$.
+2. All rows have the same distribution, so this equals $\sum_{i=1}^{n}\Pr(X\ge i)$ for one $X\sim\operatorname{Bin}(n,p)$.
+3. For a variable with values in $\{0,\dots,n\}$, $X=\sum_{i=1}^n\mathbf 1\{X\ge i\}$, so the sum is $E[X]=np$.
+:::

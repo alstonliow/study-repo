@@ -298,6 +298,21 @@ exclude:
   - prob-cs70hw-15-q2
   - prob-cs70hw-15-q3
   - prob-cs70hw-15-q4
+  # EECS126 integration (2026-11-19): its problems and new blocks in shared notes
+  - lem-hoeffding
+  - prob-eecs126d-5-q2
+  - prob-eecs126hw-1-q1
+  - prob-eecs126hw-1-q2
+  - prob-eecs126hw-1-q3
+  - prob-eecs126hw-1-q4
+  - prob-eecs126hw-1-q5
+  - prob-eecs126hw-2-q1
+  - prob-eecs126hw-2-q2
+  - prob-eecs126hw-2-q3
+  - prob-eecs126hw-2-q5
+  - prob-eecs126hw-3-q5
+  - prob-eecs126hw-6-q2
+  - thm-hoeffding-inequality
 
 chapters:
   - num: 1

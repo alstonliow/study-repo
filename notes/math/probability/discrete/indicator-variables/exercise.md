@@ -32,3 +32,7 @@ Suppose that we assign true/false values to the variables $x_1, \ldots, x_9$ ind
 
 (b) Use your answer to prove that there exists an assignment to the variables that makes all of the propositions true.
 :::
+
+::: {.problem #prob-eecs126hw-2-q2 origin="external" source="eecs126hw-2-q2"}
+**Lightbulbs.** Consider an $n\times n$ array of switches. Each row $i$ of switches corresponds to a single lightbulb $L_i$, so that $L_i$ lights up if at least $i$ switches in row $i$ are flipped on. All of the switches start in the "off" position, and each are flipped "on" with probability $p$, independently of all others. What is the expected number of lightbulbs that will be lit up? Express your answer in closed form without any summations.
+:::

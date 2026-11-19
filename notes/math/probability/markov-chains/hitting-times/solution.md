@@ -48,3 +48,21 @@ $$\begin{aligned}
 
 (d) Under $\pi$, the number of boba is $\mathrm{Bin}(2,p)$, so the long-run average number in the straw is $2p$.
 :::
+
+::: {.solution for="prob-eecs126hw-1-q4" status="draft"}
+The answer is $\frac1{n-1}$ for every $k$.
+
+1. Cut the circle at $k$ and unroll it into a path $0,1,\dots,n$, where both ends $0$ and $n$ are $k$ and $1$, $n-1$ are its two neighbours. Before first reaching $k$, the ant moves on this path.
+2. Before reaching $k$ the ant must reach one of $k$'s neighbours, say position $1$ (the other case is symmetric); it has not yet visited $k$. At that moment, all other points have been visited exactly when the ant later reaches position $n-1$ before position $0$.
+3. By the fresh start property and gambler's ruin (@exm-gamblers-ruin), from $1$ a fair walk reaches $n-1$ before $0$ with probability $\frac1{n-1}$, regardless of which neighbour was reached first.
+:::
+
+::: {.solution for="prob-eecs126d-5-q2" status="draft"}
+The answer is $\frac{21}2$.
+
+1. The products equal to $12$ are $2\cdot6$, $6\cdot2$, $3\cdot4$, $4\cdot3$: after any useful roll ($2,3,4,6$) exactly one face of the next roll finishes. Let $a$ be the expected number of further rolls from the start or after a useless roll ($1$ or $5$), and $b$ after a useful roll that did not finish.
+2. First-step equations (@thm-first-step-hitting-time):
+$$a=1+\tfrac13a+\tfrac23b,\qquad b=1+\tfrac16\cdot0+\tfrac36b+\tfrac26a,$$
+since after a useful roll, $1$ face finishes, $3$ faces are useful but do not finish, and $2$ are useless.
+3. The first gives $a=\frac32+b$; substituting in the second, $\frac b6=\frac32$, so $b=9$ and $a=\frac{21}2$. (A simulation gives $10.51$.)
+:::

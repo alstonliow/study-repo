@@ -220,3 +220,15 @@ which is more than 1 over the number of people in the world. This, plus the fact
 $$\Pr[A \cap B \cap C] = \Pr[A] \cdot \Pr[B \mid A] \cdot \Pr[C \mid A] = \frac{1}{1000} \cdot \frac{1}{2} \cdot \frac{1}{3} = \frac{1}{6{,}000}.$$
 Called as a witness, the MIT researcher points out that this is not necessarily true and that in fact he himself does not know what the probability is. What is wrong with the defence attorney's reasoning? (We assume that the MIT researcher published correct information and that, since he took 6.042, he knows what he is talking about.)
 :::
+
+::: {.problem #prob-eecs126hw-1-q1 origin="external" source="eecs126hw-1-q1"}
+**Coin Flipping & Symmetry.** Alice and Bob have $2n+1$ fair coins (where $n\ge1$), each coin with probability of heads equal to $1/2$. Bob tosses $n+1$ coins, while Alice tosses the remaining $n$ coins. Assuming independent coin tosses, show that the probability that, after all coins have been tossed, Bob will have gotten more heads than Alice is $1/2$.
+
+Hint: Consider the event $A=\{\text{more heads in the first }n+1\text{ tosses than the last }n\text{ tosses}\}$.
+:::
+
+::: {.problem #prob-eecs126hw-1-q5 origin="external" source="eecs126hw-1-q5"}
+**Superhero Basketball.** Superman and Captain America are playing a game of basketball. At the end of the game, Captain America scored $n$ points and Superman scored $m$ points, where $n>m$ are positive integers. Supposing that each basket counts for exactly one point, what is the probability that after the start of the game (when they are initially tied), Captain America was always strictly ahead of Superman? (Assume that all sequences of baskets which result in the final score of $n$ baskets for Captain America and $m$ baskets for Superman are equally likely.)
+
+Hint: Think about symmetry. First, try to figure out which is more likely: there was a tie and Superman scored the first point, or there was a tie and Captain America scored the first point?
+:::

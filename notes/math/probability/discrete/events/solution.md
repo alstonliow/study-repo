@@ -99,3 +99,11 @@ If $k-1\ge4\log_2n$, then $2^{-(k-1)/2}\le n^{-2}$, so the bound is at most $n^{
 $$\Pr\Bigl(\bigcup_{i=1}^{n+1}A_i\Bigr)\le\Pr\Bigl(\bigcup_{i=1}^nA_i\Bigr)+\Pr(A_{n+1})\le\sum_{i=1}^{n+1}\Pr(A_i).$$
 (@thm-union-bound)
 :::
+
+::: {.solution for="prob-eecs126hw-1-q2" status="draft"}
+Let $A_i$ be the event that passenger $i$ sits in their own seat.
+
+1. For a set $S$ of $k$ passengers, $\Pr(\bigcap_{i\in S}A_i)=(N-k)!/N!$, and there are $\binom Nk$ such sets, so the $k$-th inclusion–exclusion term is $\binom Nk\frac{(N-k)!}{N!}=\frac1{k!}$.
+2. Hence $\Pr(\bigcup_iA_i)=\sum_{k=1}^N(-1)^{k+1}/k!$ and
+$$\Pr(\text{no one in their seat})=\sum_{k=0}^{N}\frac{(-1)^k}{k!}\xrightarrow[N\to\infty]{}e^{-1}\approx0.368.$$
+:::

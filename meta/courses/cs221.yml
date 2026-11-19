@@ -95,6 +95,12 @@ exclude:
   - prob-propositional-14
   - prob-propositional-17
   - prob-propositional-20
+  # EECS126 integration (2026-11-19): its problems and new blocks in shared notes
+  - prob-eecs126hw-1-q1
+  - prob-eecs126hw-1-q3
+  - prob-eecs126hw-1-q5
+  - prob-eecs126hw-2-q1
+  - prob-eecs126hw-3-q5
 
 chapters:
   - num: 1

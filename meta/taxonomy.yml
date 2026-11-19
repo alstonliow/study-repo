@@ -352,6 +352,7 @@ parts:
           - concentration-inequalities
           - chernoff-bounds
           - hashing-and-load-balancing
+          - random-graphs
       - id: math/probability/continuous
         title: Continuous Probability
         desc: Densities, exponential and normal distributions, central limit theorem, overview of distributions
@@ -362,6 +363,9 @@ parts:
           - central-limit-theorem
           - buffons-needle
           - standard-distributions
+          - joint-distributions
+          - transforms
+          - modes-of-convergence
       - id: math/probability/markov-chains
         title: Markov Chains
         desc: Finite Markov chains, invariant distributions, hitting times
@@ -370,6 +374,29 @@ parts:
           - invariant-distributions
           - periodicity-and-convergence
           - hitting-times
+          - countable-markov-chains
+          - reversible-markov-chains
+      - id: math/probability/random-processes
+        title: Random Processes
+        desc: Poisson processes, continuous-time Markov chains, queues
+        notes:   # topic order on the website
+          - poisson-process
+          - continuous-time-markov-chains
+      - id: math/probability/information-theory
+        title: Information Theory
+        desc: Entropy, mutual information, source coding, Huffman codes, channel capacity
+        notes:   # topic order on the website
+          - entropy
+          - source-coding
+          - channel-capacity
+      - id: math/probability/estimation
+        title: Estimation and Detection
+        desc: Hypothesis testing, linear and MMSE estimation, jointly Gaussian vectors, Kalman filter
+        notes:   # topic order on the website
+          - hypothesis-testing
+          - linear-estimation
+          - jointly-gaussian
+          - kalman-filter
   - title: Algorithms
     field: Computer Science
     branches:
@@ -494,5 +521,5 @@ parts:
         notes: [utilities, decision-networks, value-of-information]   # topic order on the website
       - id: ai/temporal-models
         title: Temporal Models
-        desc: Hidden Markov models, filtering, particle filtering
-        notes: [hidden-markov-models, particle-filtering]   # topic order on the website
+        desc: Hidden Markov models, filtering, Viterbi algorithm, particle filtering
+        notes: [hidden-markov-models, particle-filtering, viterbi-algorithm]   # topic order on the website

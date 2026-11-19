@@ -76,3 +76,9 @@ $$\Pr(A_1 \cup A_2 \cup \cdots \cup A_n) \le \sum_{i=1}^{n} \Pr(A_i).$$
 
 (Hint: Induction)
 :::
+
+::: {.problem #prob-eecs126hw-1-q2 origin="external" source="eecs126hw-1-q2"}
+**Passengers on a Plane.** There are $N$ passengers in a plane with $N$ assigned seats ($N$ is a positive integer), but after boarding, the passengers take the seats randomly. Assuming all seating arrangements are equally likely, what is the probability that no passenger is in their assigned seat? Compute the probability when $N\to\infty$.
+
+Hint: Use the inclusion-exclusion principle and the power series $e^x=\sum_{j=0}^{\infty}x^j/j!$.
+:::

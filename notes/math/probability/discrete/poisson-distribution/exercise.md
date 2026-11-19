@@ -20,3 +20,38 @@ visible meteors per minute.
 Hint: Recall the binomial theorem.
 $$(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^k y^{n-k}$$
 :::
+
+::: {.problem #prob-eecs126hw-7-q3 origin="external" source="eecs126hw-7-q3"}
+**Balls and Bins: Poisson Convergence.** Consider throwing $m$ balls into $n$ bins uniformly at random. In this question, we will show that the number of empty bins converges to a Poisson limit, under the condition that $n\exp(-m/n)\to\lambda\in(0,\infty)$.
+
+(a) Let $p_k(m,n)$ denote the probability that exactly $k$ bins are empty after throwing $m$ balls into $n$ bins uniformly at random. Show that
+$$p_0(m,n)=\sum_{j=0}^{n}(-1)^j\binom nj\Bigl(1-\frac jn\Bigr)^m.$$
+(Hint: Use the Inclusion-Exclusion Principle.)
+
+(b) Show that
+$$p_k(m,n)=\binom nk\Bigl(1-\frac kn\Bigr)^mp_0(m,n-k).\tag{1}$$
+
+(c) Show that
+$$\binom nk\Bigl(1-\frac kn\Bigr)^m\le\frac{\lambda^k}{k!}\tag{2}$$
+as $m,n\to\infty$ (such that $n\exp(-m/n)\to\lambda$).
+
+(d) Show that
+$$\binom nk\Bigl(1-\frac kn\Bigr)^m\ge\frac{\lambda^k}{k!}\tag{3}$$
+as $m,n\to\infty$ (such that $n\exp(-m/n)\to\lambda$). This is the hard part of the proof. To help you out, we have outlined a plan of attack:
+
+i. Show that
+$$\binom nk\Bigl(1-\frac kn\Bigr)^m\ge\Bigl(1-\frac kn\Bigr)^{k+m}\frac{n^k}{k!}.$$
+
+ii. Show that
+$$\ln\Bigl\{n^k\Bigl(1-\frac kn\Bigr)^m\Bigr\}\to k\ln\lambda$$
+as $m,n\to\infty$ (such that $n\exp(-m/n)\to\lambda$). You may use the inequality $\ln(1-x)\ge-x-x^2$ for $0\le x\le1/2$.
+
+iii. Show that
+$$\Bigl(1-\frac kn\Bigr)^k\to1$$
+as $m,n\to\infty$ (such that $n\exp(-m/n)\to\lambda$). Conclude that (3) holds.
+
+(e) Now, show that
+$$p_0(m,n)\to\exp(-\lambda).$$
+(Try using the results you have already proven.) Conclude that
+$$p_k(m,n)\to\frac{\lambda^k\exp(-\lambda)}{k!}.$$
+:::

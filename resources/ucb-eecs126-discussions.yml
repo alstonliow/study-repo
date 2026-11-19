@@ -1,0 +1,86 @@
+# UC Berkeley EECS126 Probability and Random Processes, Fall 2021, discussion worksheets
+# (inst.eecs.berkeley.edu/~ee126/fa21; no licence stated), as a resource (meta/SPEC.md §17.12). DRAFT for owner review.
+# Kept locally in raw/UCB_EECS126/discussion (dis1-13 with solutions). Used like recitations: hard problems become
+# exercises with our own solutions; the printed solutions are never copied; warm-ups are skipped.
+# Locator = discussion number; a source key is eecs126d-3-q2 (Discussion 3, problem 2, in handout order).
+# Titles are our own short titles. Node ids are stable.
+id: res-ucb-eecs126-discussions
+kind: course-notes
+title: UC Berkeley EECS126 Discussion Worksheets (Fall 2021)
+status: draft
+courses: [eecs126]
+editions:
+- id: 2021-fall
+  current: true
+legacy_keys:
+  prefix: eecs126d-
+  edition: 2021-fall
+  pattern: ^eecs126d-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: EECS126 D{section}
+  problem_label: EECS126 D{section} Q{n}
+nodes:
+- id: res-ucb-eecs126-discussions-probability-review
+  kind: recitation
+  title: Probability review
+  at:
+    2021-fall: '1'
+- id: res-ucb-eecs126-discussions-discrete-distributions
+  kind: recitation
+  title: Discrete distributions and sampling
+  at:
+    2021-fall: '2'
+- id: res-ucb-eecs126-discussions-poisson
+  kind: recitation
+  title: Poisson random variables
+  at:
+    2021-fall: '3'
+- id: res-ucb-eecs126-discussions-markov-chains
+  kind: recitation
+  title: Markov chains and convergence
+  at:
+    2021-fall: '4'
+- id: res-ucb-eecs126-discussions-concentration
+  kind: recitation
+  title: Concentration
+  at:
+    2021-fall: '5'
+- id: res-ucb-eecs126-discussions-limit-theorems
+  kind: recitation
+  title: Hitting times, confidence intervals, transforms
+  at:
+    2021-fall: '6'
+- id: res-ucb-eecs126-discussions-random-walks-poisson-process
+  kind: recitation
+  title: Random walks and Poisson processes
+  at:
+    2021-fall: '7'
+- id: res-ucb-eecs126-discussions-poisson-queues
+  kind: recitation
+  title: Merging, splitting, queues
+  at:
+    2021-fall: '8'
+- id: res-ucb-eecs126-discussions-ctmcs
+  kind: recitation
+  title: CTMCs and estimation
+  at:
+    2021-fall: '9'
+- id: res-ucb-eecs126-discussions-information-theory
+  kind: recitation
+  title: Entropy and Huffman codes
+  at:
+    2021-fall: '10'
+- id: res-ucb-eecs126-discussions-hypothesis-testing
+  kind: recitation
+  title: Hypothesis testing
+  at:
+    2021-fall: '11'
+- id: res-ucb-eecs126-discussions-gaussians
+  kind: recitation
+  title: Gaussian random variables
+  at:
+    2021-fall: '12'
+- id: res-ucb-eecs126-discussions-estimation
+  kind: recitation
+  title: LLSE, MMSE, Kalman
+  at:
+    2021-fall: '13'

@@ -210,3 +210,20 @@ which says that $C$ and $A\cup B$ are independent.
 
 (d) The product rule gives $\Pr(A\cap B\cap C)=\Pr(A)\Pr(B\mid A)\Pr(C\mid A\cap B)$ (@thm-chain-rule). The attorney replaced $\Pr(C\mid A\cap B)$ by $\Pr(C\mid A)$, which assumes that $B$ and $C$ are independent *given* $A$. The researcher only found that $B$ and $C$ are independent unconditionally, which does not imply conditional independence given $A$. So the probability is not determined by the data.
 :::
+
+::: {.solution for="prob-eecs126hw-1-q1" status="draft"}
+Let $B$ and $A$ be the numbers of heads of Bob and Alice.
+
+1. Bob has more tails than Alice iff $n+1-B>n-A$, iff $B\le A$. So exactly one of "Bob has more heads" ($B\ge A+1$) and "Bob has more tails" happens.
+2. Swapping heads and tails on every coin is a bijection of outcomes that preserves probabilities (the coins are fair) and maps the first event onto the second, so they have equal probability.
+3. Two complementary events of equal probability each have probability $\tfrac12$.
+:::
+
+::: {.solution for="prob-eecs126hw-1-q5" status="draft"}
+The answer is $\frac{n-m}{n+m}$ (the ballot theorem).
+
+1. Call a sequence bad if the score is tied at some time after the start. Captain America is always strictly ahead iff the sequence is good.
+2. Every sequence starting with a Superman basket is bad: Superman leads first and Captain America leads at the end, so the difference passes through $0$.
+3. Bad sequences starting with a Captain America basket are in bijection with sequences starting with a Superman basket: swap the scorers of every basket up to the first tie. This preserves the final score and the first tie.
+4. So $\Pr(\text{bad})=2\Pr(\text{Superman scores first})=\frac{2m}{n+m}$, and $\Pr(\text{good})=1-\frac{2m}{n+m}=\frac{n-m}{n+m}$.
+:::

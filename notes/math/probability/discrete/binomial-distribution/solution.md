@@ -60,3 +60,9 @@ probabilities below are $\binom{16}k/2^{16}$ summed over the relevant $k$.
 
 (g) Not independent. $\Pr(X_i=0)=(1-p^i)^n>0$ and $\Pr(X_j=n)=p^{jn}>0$, but $\Pr(X_i=0,X_j=n)=0$, since planes never come back.
 :::
+
+::: {.solution for="prob-eecs126hw-2-q3" status="draft"}
+1. The $i$th entry moves to position $X=1+Y$, where $Y$ is the number of non-zero entries among the first $i-1$.
+2. The entries are independent, so conditioning on entry $i$ does not affect the others, and $Y\sim\operatorname{Bin}(i-1,\tfrac9{10})$.
+3. Hence $E[X]=1+\tfrac9{10}(i-1)$ and $\operatorname{var}(X)=\operatorname{var}(Y)=\tfrac{9}{100}(i-1)$.
+:::

@@ -1,0 +1,59 @@
+# UC Berkeley EECS126 Probability and Random Processes, Fall 2021, programming labs (Jupyter notebooks), as a resource
+# (meta/SPEC.md §17.12). DRAFT for owner review. Kept locally in raw/UCB_EECS126/labs (skeleton and solution zips).
+# No licence is stated in the lab files, so starter code is not copied anywhere until the owner checks (SPEC §17.13).
+# Lab 0 (a Jupyter tutorial) is not used. Locator = lab number. No problems or source keys come from here;
+# projects point to these nodes with `assignment`. Titles are our own short titles. Node ids are stable.
+id: res-ucb-eecs126-labs
+kind: homework
+title: UC Berkeley EECS126 Labs (Fall 2021)
+status: draft
+courses: [eecs126]
+editions:
+- id: 2021-fall
+  current: true
+nodes:
+- id: res-ucb-eecs126-labs-simulation
+  kind: project
+  title: Programming for probability
+  at:
+    2021-fall: '1'
+- id: res-ucb-eecs126-labs-fountain-codes
+  kind: project
+  title: Fountain codes
+  at:
+    2021-fall: '2'
+- id: res-ucb-eecs126-labs-sketching
+  kind: project
+  title: Matrix sketching
+  at:
+    2021-fall: '3'
+- id: res-ucb-eecs126-labs-mcmc
+  kind: project
+  title: Markov chain Monte Carlo
+  at:
+    2021-fall: '4'
+- id: res-ucb-eecs126-labs-random-graphs
+  kind: project
+  title: Random graphs
+  at:
+    2021-fall: '5'
+- id: res-ucb-eecs126-labs-pocket-planet
+  kind: project
+  title: Pocket planet
+  at:
+    2021-fall: '6'
+- id: res-ucb-eecs126-labs-guess-my-word
+  kind: project
+  title: Guess my word
+  at:
+    2021-fall: '7'
+- id: res-ucb-eecs126-labs-hypothesis-testing
+  kind: project
+  title: Hypothesis testing
+  at:
+    2021-fall: '8'
+- id: res-ucb-eecs126-labs-kalman
+  kind: project
+  title: Kalman filtering
+  at:
+    2021-fall: '9'

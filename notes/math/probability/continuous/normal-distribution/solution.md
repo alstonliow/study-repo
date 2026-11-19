@@ -16,3 +16,27 @@ the CDF of $\mathrm{Exp}(\frac12)$.
 
 3. So $(R,\Theta)$ has the same joint distribution as the polar coordinates of $(N_1,N_2)$, and therefore $(R\cos\Theta,R\sin\Theta)$ has the distribution of $(N_1,N_2)$. In particular $N=R\cos\Theta\sim N(0,1)$.
 :::
+
+::: {.solution for="prob-eecs126hw-3-q4" status="draft"}
+(a) The density of $Z=X_1+X_2$ is
+$$f_Z(z)=\int_{-\infty}^{\infty}\frac{1}{2\pi}e^{-\frac{x^2+(z-x)^2}{2}}\,dx.$$
+Complete the square: $x^2+(z-x)^2=2(x-\tfrac z2)^2+\tfrac{z^2}{2}$. Hence
+$$f_Z(z)=\frac1{2\pi}e^{-z^2/4}\int e^{-(x-z/2)^2}\,dx=\frac{\sqrt\pi}{2\pi}e^{-z^2/4}=\frac{1}{\sqrt{2\pi\cdot2}}e^{-z^2/(2\cdot2)},$$
+the $N(0,2)$ density.
+
+(b) For odd $n$, $x^n\phi(x)$ is odd and integrable, so $E[X^n]=0$. For $n\ge2$, integrating by parts with $\phi'(x)=-x\phi(x)$,
+$$E[X^n]=\int x^{n-1}\cdot x\phi(x)\,dx=\bigl[-x^{n-1}\phi(x)\bigr]_{-\infty}^{\infty}+(n-1)\int x^{n-2}\phi(x)\,dx=(n-1)E[X^{n-2}].$$
+With $E[X^0]=1$, for even $n=2k$: $E[X^{2k}]=(2k-1)(2k-3)\cdots1=\frac{(2k)!}{2^kk!}$ (e.g. $1,3,15$ for $n=2,4,6$).
+:::
+
+::: {.solution for="prob-eecs126hw-6-q5" status="draft"}
+(a) $\hat I_{ij}=\frac1d\sum_{k=1}^{d}S_{ki}S_{kj}$, a sum of $d$ independent terms.
+
+- $i=j$: $E[S_{ki}^2]=1$ and $\operatorname{Var}(S_{ki}^2)=3-1=2$, so $E[\hat I_{ii}]=1$ and $\operatorname{Var}(\hat I_{ii})=\frac{2d}{d^2}=\frac2d$.
+- $i\ne j$: $E[S_{ki}S_{kj}]=0$ and $E[S_{ki}^2S_{kj}^2]=1$, so $E[\hat I_{ij}]=0$ and $\operatorname{Var}(\hat I_{ij})=\frac1d$.
+
+(b) $\hat I_{ij}=\sum_kS_{ki}S_{kj}$.
+
+- $i=j$: column $i$ has exactly one entry $\pm1$, so $\hat I_{ii}=1$ always: mean $1$, variance $0$.
+- $i\ne j$: the product is non-zero only if columns $i$ and $j$ chose the same row (probability $\frac1d$), and then it is $\pm1$ with equal probability, independently. So $E[\hat I_{ij}]=0$ and $\operatorname{Var}(\hat I_{ij})=E[\hat I_{ij}^2]=\frac1d$.
+:::
