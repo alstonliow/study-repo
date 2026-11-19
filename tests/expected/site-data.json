@@ -4,9 +4,11 @@
    "id": "demo",
    "code": "DEMO100",
    "name": "Demo course",
-   "status": "draft"
+   "status": "draft",
+   "field": ""
   }
  ],
+ "fields": [],
  "pages": {
   "courses/demo.html": [
    "demo"

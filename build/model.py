@@ -292,6 +292,8 @@ class Course:
         self.outline_from = d.get("outline_from", "")
         self.status = d.get("status", "draft")
         self.exclude = [str(x) for x in d.get("exclude") or []]
+        # optional link to the owner's homework code (§13 item 7): {url: https://...}
+        self.coursework_repo = d.get("coursework_repo")
         self.chapters = []     # [{"num", "title", "points": [Point]}]
         for ch in d.get("chapters") or []:
             pts = [Point(str(p["id"]), p.get("title", ""), ch.get("num"), [str(c) for c in p.get("covers") or []])
@@ -303,6 +305,12 @@ class Course:
         self.parts: set[str] = set()       # blocks covered one by one
         self.excluded: set[str] = set(self.exclude)
         self.order: list[tuple[str, Point]] = []   # notes in course order, with their first point
+        self.field = ""        # derived field of knowledge (§13 item 6), set by resolve_courses()
+
+    @property
+    def coursework_url(self) -> str:
+        r = self.coursework_repo
+        return str(r.get("url") or "") if isinstance(r, dict) else ""
 
     @property
     def points(self) -> list[Point]:
@@ -408,6 +416,24 @@ class Repo:
                     c.problems.append(("error", f"exclude: unknown block '{b}'"))
                 elif self.owner[b] not in c.whole:
                     c.problems.append(("warning", f"exclude: '{b}' is not inside a covered note"))
+            c.field = self.course_field(c)
+
+    def course_field(self, c: Course) -> str:
+        """The field holding most of the notes c's `covers` reaches (a covered block
+        counts for its note); a tie goes to the field first in taxonomy order (§13 item 6)."""
+        part_of = {b: t for t, bs in self.parts for b, _ in bs}
+        count: dict[str, int] = {}
+        for nid, _ in c.order:
+            n = self.notes.get(nid)
+            fld = self.part_field.get(part_of.get(n.branch, ""), "") if n else ""
+            if isinstance(fld, str) and fld:
+                count[fld] = count.get(fld, 0) + 1
+        ranked = self.field_order()
+        return max(ranked, key=lambda f: (count.get(f, 0), -ranked.index(f))) if count else ""
+
+    def field_order(self) -> list[str]:
+        """Fields in taxonomy order, each once."""
+        return list(dict.fromkeys(f for f, _ in self.fields if f))
 
     def in_scope(self, c: Course, nid: str, bid: str | None = None) -> bool:
         """Is block `bid` of note `nid` (or the note itself, bid=None) in course c?"""

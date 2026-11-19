@@ -234,3 +234,4 @@ nav.page-navigation .pagination-link i { font-size: 1.3rem; color: var(--notec);
 .st-figure { margin: 1.4em 0; }
 .st-figure p:has(> .fig-label) { text-align: center; color: var(--notec); font-size: 0.9em; margin-top: 0.4em; }
 .st-figure .fig-label strong { color: var(--bs-body-color); font-weight: 600; }
+.solution-withheld { display: block; color: var(--notec); font-size: 0.85em; font-style: italic; margin: 0.3rem 0 0.8rem; }

@@ -334,6 +334,14 @@ def check_courses() -> None:
             (errors if level == "error" else warnings).append(f"{where}: {msg}")
         if c.status not in ("draft", "confirmed"):
             errors.append(f"{where}: status must be draft or confirmed")
+        if c.coursework_repo is not None:           # §13 item 7: optional {url: https://...}
+            r = c.coursework_repo
+            if not isinstance(r, dict) or set(r) != {"url"}:
+                errors.append(f"{where}: coursework_repo must be a mapping with only 'url'")
+            elif not str(r["url"] or "").startswith("https://"):
+                errors.append(f"{where}: coursework_repo.url must be an https URL")
+        if not c.field and REPO.field_order():
+            warnings.append(f"{where}: no field of knowledge (its covers reach no note in a field)")
         outside = [n.id for n in REPO.notes.values()
                    if c.source_prefix and any(str(k).startswith(c.source_prefix) for k in n.front.get("sources") or [])
                    and not REPO.in_scope(c, n.id)]

@@ -110,13 +110,15 @@ def main() -> int:
         shutil.rmtree(OUT_COURSES)
     OUT_COURSES.mkdir(parents=True)
     page_courses = {}
-    course_rows = []
+    course_rows: dict[str, list] = {}   # field -> home page rows (SPEC §13 item 6)
     course_order: dict[str, list] = {}  # course id -> [{"title": chapter heading, "num", "pages": [note html paths]}]
     for c in REPO.courses:
         label = c.code + (f" – {c.name}" if c.name else "")
         lines = ["---", yaml.safe_dump({"title": label}, allow_unicode=True).strip(), "---", "",
                  f"Knowledge points used by {c.code}, in course order. "
                  "The course filter at the bottom of the sidebar shows only this course's content.", ""]
+        if c.coursework_url:                        # SPEC §13 item 7
+            lines += [f"Coursework code: [{c.coursework_url}]({c.coursework_url}){{.coursework-repo}}", ""]
         points_of: dict[str, list[str]] = {}
         for p in c.points:
             for ref in p.covers:
@@ -153,10 +155,16 @@ def main() -> int:
                 chap.notes, chap.reviews, ctx(), page, course=c,
                 in_scope=filters.Filter(REPO, course=c, omit_extra=True).in_scope), encoding="utf-8")
             summary_courses[page] = [c.id]
-        course_rows.append((f"courses/{c.id}.html", c.code, c.name or "Knowledge points in course order", ""))
+        course_rows.setdefault(c.field, []).append(
+            (c.code, (f"courses/{c.id}.html", c.code, c.name or "Knowledge points in course order", "")))
         page_courses[f"courses/{c.id}.html"] = [c.id]
-    if course_rows:
-        home += contents_block("Courses", course_rows)
+    if list(course_rows) == [""]:          # no fields in the taxonomy: one flat list
+        home += contents_block("Courses", [r for _, r in course_rows[""]])
+    elif course_rows:                      # grouped by field, taxonomy order, by code inside
+        home += ["## Courses", ""]
+        for f in REPO.field_order() + [""]:
+            if course_rows.get(f):
+                home += contents_block(f or "Other", [r for _, r in sorted(course_rows[f], key=lambda x: x[0])], 3)
     for n in notes.values():
         page_courses[f"notes/{n.id}.html"] = n.courses
     page_courses.update(summary_courses)
@@ -165,7 +173,9 @@ def main() -> int:
     # course order, and the topics and exercises used by progress tracking
     import json
     (SITE / "site-data.json").write_text(json.dumps({
-        "courses": [{"id": c.id, "code": c.code, "name": c.name, "status": c.status} for c in REPO.courses],
+        "courses": [{"id": c.id, "code": c.code, "name": c.name, "status": c.status, "field": c.field}
+                    for c in REPO.courses],
+        "fields": REPO.field_order(),
         "pages": page_courses, "order": course_order,
         "branches": branch_items,
         "notes": {n.id: [pr.id for pr in n.problems] for n in notes.values()},

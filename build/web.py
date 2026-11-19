@@ -24,7 +24,7 @@ import refs
 import relations
 from transforms import (add_example_levels, caption_figures, fix_claims, level_badge, title_blocks,
                         wrap_plain_ids)
-from model import (MATH, RAW, REF, ROOT, Note, Repo, divs_in, fence_for, top_level_divs)
+from model import (MATH, RAW, REF, ROOT, Coding, Note, Repo, divs_in, fence_for, top_level_divs)
 
 SITE = Path(os.environ.get("STUDY_SITE") or ROOT / "site").resolve()   # tests write elsewhere
 OUT_NOTES = SITE / "notes"
@@ -147,6 +147,8 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
             continue
         src = a.get("source", "")
         src_label = REPO.sources.label(src) if src else ""
+        if REPO.sources.url(src):        # a handout cited by its node id links to the handout (SPEC §6.4)
+            src_label = f"[{src_label}]({REPO.sources.url(src)})"
         f = fence_for(body)
         badge = level_badge(a.get("level"))
         is_review = note.id not in REPO.notes
@@ -154,9 +156,16 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
         shown = NUMBERING.exercise(note, pid, on_page=True) if is_review else str(num)
         where = [f"from {note.display_title}"] if origin and not is_review else []
         side = " · ".join(where + ([src_label] if src_label else []))
+        coding = note.coding.get(pid)
+        if coding:                    # statement, starter, tests (SPEC §6.4); runnable.html adds the editor
+            badge += "[Code]{.code-badge}"
+            body = coding_body(coding)
         group = [f"{f} {{#{pid} .problem}}\n[{word} {shown}]{{.problem-title}}"
                  f"[{side}]{{.problem-source}}{badge}\n\n{body.strip()}\n{f}\n"]
-        if sols.get(pid, "").strip():   # empty TODO stubs are not shown
+        if a.get("solution") == "withheld":
+            group.append("[Solution withheld: the source asks that solutions are not published.]"
+                         "{.solution-withheld}\n")
+        elif sols.get(pid, "").strip():   # empty TODO stubs are not shown
             sb = sols[pid]
             f2 = fence_for(sb)
             title = "Draft solution (not yet reviewed)" if pid in draft else "Solution"
@@ -166,8 +175,19 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
         fo = fence_for(inner)
         cs = " ".join(courses_of(pid))
         lv = a.get("level", "")
-        out.append(f'{fo} {{.problem-group data-courses="{cs}" data-item="{pid}" data-level="{lv}"}}\n{inner}\n{fo}\n')
+        kind = f'data-kind="code" data-packages="{",".join(coding.packages)}"' if coding else 'data-kind="written"'
+        out.append(f'{fo} {{.problem-group data-courses="{cs}" data-item="{pid}" data-level="{lv}" {kind}}}\n'
+                   f'{inner}\n{fo}\n')
     return "\n".join(out)
+
+
+def coding_body(c: Coding) -> str:
+    """A coding exercise on the website: the statement, then the starter and the
+    tests in marked divs that site/_assets/runnable.html turns into an editor."""
+    starter = f"```python\n{c.starter}\n```"
+    tests = f"```python\n{c.tests}\n```"
+    return (f"{c.statement}\n\n::: {{.coding-starter}}\n{starter}\n:::\n\n"
+            f"::: {{.coding-tests}}\n{tests}\n:::\n")
 
 
 def wrap_scope(text: str, note: Note) -> str:

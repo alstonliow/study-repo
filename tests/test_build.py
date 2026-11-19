@@ -199,6 +199,11 @@ class TestCheck(Repo):
         self.edit("meta/courses/demo.yml", "covers: [def-third]", "covers: [def-gone]")
         self.assertError("unknown note or block 'def-gone'")
 
+    def test_coursework_repo_must_be_https(self):
+        self.edit("meta/courses/demo.yml", "status: draft", "status: draft\n"
+                  "coursework_repo:\n  url: http://example.org/demo-hw")
+        self.assertError("coursework_repo.url must be an https URL")
+
     def test_alias_clash(self):
         self.edit("notes/t/beta/third/note.md", "requires: [t/alpha/first]",
                   "requires: [t/alpha/first]\naliases: [t/alpha/first]")
@@ -309,6 +314,33 @@ class TestPages(Repo):
         data = json.loads((site / "site-data.json").read_text())
         self.assertEqual(data["order"]["demo"][0]["summary"], "courses/demo/chapter-1.html")
 
+
+    def split_fields(self):
+        """Put t/beta under a first field Zeta and t/alpha under a second field Alpha."""
+        self.edit("meta/taxonomy.yml", "      - id: t/beta\n        title: Beta\n        desc: Second test branch\n"
+                  "        notes:\n          - third\n", "")
+        self.edit("meta/taxonomy.yml", "parts:\n  - title: Testing\n",
+                  "parts:\n  - title: Later\n    field: Zeta\n    branches:\n"
+                  "      - id: t/beta\n        title: Beta\n        desc: Second test branch\n"
+                  "        notes:\n          - third\n  - title: Testing\n    field: Alpha\n")
+
+    def test_course_field_is_majority_of_covered_notes(self):
+        self.split_fields()
+        data = json.loads((generate(self.root) / "site-data.json").read_text())
+        self.assertEqual(data["fields"], ["Zeta", "Alpha"])
+        self.assertEqual(data["courses"][0]["field"], "Alpha")     # first, second vs third
+
+    def test_course_field_tie_goes_to_first_field(self):
+        self.split_fields()
+        self.edit("meta/courses/demo.yml", "covers: [t/alpha/second]", "covers: [t/alpha/first]")
+        data = json.loads((generate(self.root) / "site-data.json").read_text())
+        self.assertEqual(data["courses"][0]["field"], "Zeta")      # first vs third: tie
+
+    def test_coursework_repo_link(self):
+        self.edit("meta/courses/demo.yml", "status: draft", "status: draft\n"
+                  "coursework_repo:\n  url: https://example.org/demo-hw")
+        page = (generate(self.root) / "courses/demo.qmd").read_text()
+        self.assertIn("Coursework code: [https://example.org/demo-hw]", page)
 
 class TestPdf(Repo):
     def assemble(self, *args) -> str:
