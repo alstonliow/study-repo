@@ -1060,19 +1060,30 @@ built when the first real project appears (§17.1).
    outputs live in **one Git repository per project** (owner decision,
    2026-11-19), linked from the project with `repo`. There is no shared
    monorepo, so each project can be private or public on its own
-   (item 2). This repository holds only the project file and its figures.
+   (item 2). The one exception is coursework (item 4): the coursework of one
+   course shares one repository, one folder per homework, and each project's
+   `repo.url` points to its folder. This repository holds only the project
+   file and its figures.
 4. **Coursework** (owner decision, 2026-11-19). A course homework is split by
    the kind of work:
    - Its *written* parts (derivations, calculations, proofs, short answers)
      stay `problem` blocks with solutions in the notes they practise (§6).
    - Its *programming* parts are not copied into notes: they depend on starter
      code and a grader and do not read well as exercises. The whole homework's
-     programming work is one project with `kind: coursework`: the write-up in
-     our own words (goal, approach, design decisions, results), our own code
-     in the project's repository, the handout linked through `assignment`,
-     never copied. The written parts' `problem` blocks keep their usual
-     `source`; the project lists the knowledge it applies (§17.13.4).
+     programming work is one project with `kind: coursework`: our own code in
+     the course's coursework repository (item 3), the handout linked through
+     `assignment`, never copied. The write-up in our own words may be short
+     (a few lines on the goal and approach) or empty at first; its main job
+     is to record `applies` and link the code. The written parts' `problem`
+     blocks keep their usual `source`; the project lists the knowledge it
+     applies (§17.13.4).
    - A homework with no programming part has no project.
+   - **Coursework and course projects are told apart** (owner decision,
+     2026-11-19): `kind: coursework` is the programming part of a homework
+     (fill-in functions run by a grader, such as Stanford CS221's homework);
+     `kind: course` is a course's own project, larger and spread over weeks
+     (such as a UC Berkeley project or a final project). A course project
+     has its own repository and a full write-up.
    Other work is a project when it needs its own repository or spans several
    weeks.
 
