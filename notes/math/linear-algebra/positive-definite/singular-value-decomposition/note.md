@@ -20,7 +20,7 @@ $$A\mathbf{v}_i=\sigma_i\mathbf{u}_i\quad(i\le r),\qquad A\mathbf{v}_i=\mathbf{0
 
 ::: {.proof}
 
-1. $A^{\mathsf T}A$ is symmetric and positive semidefinite ($\mathbf{x}^{\mathsf T}A^{\mathsf T}A\mathbf{x}=\lVert A\mathbf{x}\rVert^2\ge0$), so by @thm-spectral-theorem it has orthonormal eigenvectors $\mathbf{v}_1,\dots,\mathbf{v}_n$ with eigenvalues $\lambda_i\ge0$, ordered decreasingly. It has rank $r$ (@thm-ata-invertible), so exactly $r$ of them are positive. Set $\sigma_i=\sqrt{\lambda_i}$.
+1. $A^{\mathsf T}A$ is symmetric and positive semidefinite ($\mathbf{x}^{\mathsf T}A^{\mathsf T}A\mathbf{x}=\lVert A\mathbf{x}\rVert^2\ge0$), so by @cor-real-symmetric-orthogonally-diagonalisable it has orthonormal eigenvectors $\mathbf{v}_1,\dots,\mathbf{v}_n$ with eigenvalues $\lambda_i\ge0$, ordered decreasingly. It has rank $r$ (@thm-ata-invertible), so exactly $r$ of them are positive. Set $\sigma_i=\sqrt{\lambda_i}$.
 
 2. For $i\le r$ let $\mathbf{u}_i=A\mathbf{v}_i/\sigma_i$. These are orthonormal: $\mathbf{u}_i^{\mathsf T}\mathbf{u}_j=\mathbf{v}_i^{\mathsf T}A^{\mathsf T}A\mathbf{v}_j/(\sigma_i\sigma_j)=\lambda_j\mathbf{v}_i^{\mathsf T}\mathbf{v}_j/(\sigma_i\sigma_j)$, which is $1$ for $i=j$ and $0$ otherwise.
 

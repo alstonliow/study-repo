@@ -8,7 +8,7 @@
 
 3. Singular values $\sigma_1=\phi=\frac{1+\sqrt5}2$ and $\sigma_2=\frac1\phi=\frac{\sqrt5-1}2$. From $A\mathbf{v}=\sigma\mathbf{u}$: $\mathbf{u}_1=A\mathbf{v}_1/\sigma_1=\mathbf{v}_1$, and $\mathbf{u}_2=A\mathbf{v}_2/\sigma_2=-\mathbf{v}_2$ (because the eigenvalue is negative).
 
-4. So $V=[\mathbf{v}_1\ \mathbf{v}_2]$, $U=[\mathbf{v}_1\ {-\mathbf{v}_2}]$, $\Sigma=\operatorname{diag}(\phi,1/\phi)$, and $U\Sigma V^{\mathsf T}=\phi\mathbf{v}_1\mathbf{v}_1^{\mathsf T}-\frac1\phi\mathbf{v}_2\mathbf{v}_2^{\mathsf T}=A$ by the spectral theorem (@thm-spectral-theorem). Check: $\sigma_1\sigma_2=1=\lvert\det A\rvert$.
+4. So $V=[\mathbf{v}_1\ \mathbf{v}_2]$, $U=[\mathbf{v}_1\ {-\mathbf{v}_2}]$, $\Sigma=\operatorname{diag}(\phi,1/\phi)$, and $U\Sigma V^{\mathsf T}=\phi\mathbf{v}_1\mathbf{v}_1^{\mathsf T}-\frac1\phi\mathbf{v}_2\mathbf{v}_2^{\mathsf T}=A$ by the spectral theorem (@cor-real-symmetric-orthogonally-diagonalisable). Check: $\sigma_1\sigma_2=1=\lvert\det A\rvert$.
 :::
 
 ::: {.solution for="prob-mit1806s10-10-q8" status="draft"}

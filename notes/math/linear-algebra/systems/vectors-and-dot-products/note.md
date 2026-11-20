@@ -53,32 +53,17 @@ The *length* of $\mathbf{v}$ is $\lVert\mathbf{v}\rVert=\sqrt{\mathbf{v}\cdot\ma
 
 The dot product is symmetric, $\mathbf{v}\cdot\mathbf{w}=\mathbf{w}\cdot\mathbf{v}$, and linear in each argument: $(c\mathbf{u}+d\mathbf{v})\cdot\mathbf{w}=c\,\mathbf{u}\cdot\mathbf{w}+d\,\mathbf{v}\cdot\mathbf{w}$.
 
-::: {#thm-cauchy-schwarz .theorem name="Cauchy–Schwarz and triangle inequalities"}
+<!-- Merged 2026-11-20 (owner): the block thm-cauchy-schwarz was removed in favour of thm-cauchy-schwarz-inner-product (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-For all $\mathbf{v},\mathbf{w}\in\mathbb{R}^n$,
-$$\lvert\mathbf{v}\cdot\mathbf{w}\rvert\le\lVert\mathbf{v}\rVert\,\lVert\mathbf{w}\rVert
-\qquad\text{and}\qquad
-\lVert\mathbf{v}+\mathbf{w}\rVert\le\lVert\mathbf{v}\rVert+\lVert\mathbf{w}\rVert.$$
-
-:::
-
-::: {.proof}
-
-1. If $\mathbf{w}=\mathbf{0}$ both sides of the first inequality are $0$. Otherwise, for every real $t$,
-   $$0\le\lVert\mathbf{v}-t\mathbf{w}\rVert^2=\lVert\mathbf{v}\rVert^2-2t\,\mathbf{v}\cdot\mathbf{w}+t^2\lVert\mathbf{w}\rVert^2.$$
-
-2. Choose $t=\mathbf{v}\cdot\mathbf{w}/\lVert\mathbf{w}\rVert^2$. The right side becomes $\lVert\mathbf{v}\rVert^2-(\mathbf{v}\cdot\mathbf{w})^2/\lVert\mathbf{w}\rVert^2\ge0$, which rearranges to $(\mathbf{v}\cdot\mathbf{w})^2\le\lVert\mathbf{v}\rVert^2\lVert\mathbf{w}\rVert^2$.
-
-3. For the triangle inequality, expand and apply step 2:
-   $$\lVert\mathbf{v}+\mathbf{w}\rVert^2=\lVert\mathbf{v}\rVert^2+2\,\mathbf{v}\cdot\mathbf{w}+\lVert\mathbf{w}\rVert^2\le\lVert\mathbf{v}\rVert^2+2\lVert\mathbf{v}\rVert\lVert\mathbf{w}\rVert+\lVert\mathbf{w}\rVert^2=(\lVert\mathbf{v}\rVert+\lVert\mathbf{w}\rVert)^2.$$
-
-:::
+**Cauchy–Schwarz and triangle inequalities.** For all $\mathbf{v},\mathbf{w}\in\mathbb{R}^n$,
+$$\lvert\mathbf{v}\cdot\mathbf{w}\rvert\le\lVert\mathbf{v}\rVert\,\lVert\mathbf{w}\rVert\qquad\text{and}\qquad\lVert\mathbf{v}+\mathbf{w}\rVert\le\lVert\mathbf{v}\rVert+\lVert\mathbf{w}\rVert.$$
+The first follows from $0\le\lVert\mathbf v-t\mathbf w\rVert^2$ with the best $t=\mathbf v\cdot\mathbf w/\lVert\mathbf w\rVert^2$, the second by expanding $\lVert\mathbf v+\mathbf w\rVert^2$. Proofs for every inner product: @thm-cauchy-schwarz-inner-product and @cor-triangle-inequality-inner-product.
 
 ::: {#def-angle-between-vectors .definition name="Angle between vectors"}
 
 For nonzero $\mathbf{v},\mathbf{w}$ the *angle* $\theta\in[0,\pi]$ between them is defined by
 $$\cos\theta=\frac{\mathbf{v}\cdot\mathbf{w}}{\lVert\mathbf{v}\rVert\,\lVert\mathbf{w}\rVert}.$$
-By @thm-cauchy-schwarz the right side lies in $[-1,1]$, so $\theta$ exists. In $\mathbb{R}^2$ it agrees with the usual angle, by the formula $\cos(\beta-\alpha)=\cos\beta\cos\alpha+\sin\beta\sin\alpha$.
+By @thm-cauchy-schwarz-inner-product the right side lies in $[-1,1]$, so $\theta$ exists. In $\mathbb{R}^2$ it agrees with the usual angle, by the formula $\cos(\beta-\alpha)=\cos\beta\cos\alpha+\sin\beta\sin\alpha$.
 
 :::
 

@@ -31,7 +31,7 @@ For a real symmetric $n\times n$ matrix $S$ the following are equivalent:
 
 ::: {.proof}
 
-1. **(1)⇔(2).** By the spectral theorem (@thm-spectral-theorem), with $\mathbf{y}=Q^{\mathsf T}\mathbf{x}$, $\mathbf{x}^{\mathsf T}S\mathbf{x}=\mathbf{y}^{\mathsf T}\Lambda\mathbf{y}=\sum\lambda_iy_i^2$. As $\mathbf{x}$ runs over nonzero vectors, so does $\mathbf{y}$. The sum is always positive iff every $\lambda_i>0$ (take $\mathbf{y}=\mathbf{e}_i$ for the converse).
+1. **(1)⇔(2).** By the spectral theorem (@cor-real-symmetric-orthogonally-diagonalisable), with $\mathbf{y}=Q^{\mathsf T}\mathbf{x}$, $\mathbf{x}^{\mathsf T}S\mathbf{x}=\mathbf{y}^{\mathsf T}\Lambda\mathbf{y}=\sum\lambda_iy_i^2$. As $\mathbf{x}$ runs over nonzero vectors, so does $\mathbf{y}$. The sum is always positive iff every $\lambda_i>0$ (take $\mathbf{y}=\mathbf{e}_i$ for the converse).
 
 2. **(1)⇒(4).** Each $S_k$ is positive definite (use vectors $\mathbf{x}$ whose last $n-k$ entries are $0$), so by (2) its eigenvalues are positive and $\det S_k$, their product (@thm-trace-determinant-eigenvalues), is positive.
 

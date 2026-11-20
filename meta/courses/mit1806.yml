@@ -39,13 +39,14 @@ exclude:
   - prob-mit1802n-1g-q4
   - prob-mit1802n-1g-q5
 
+# 2026-11-20: eleven points also cover the Cambridge IB Linear Algebra blocks that replaced merged 18.06 blocks (owner).
 chapters:
   - num: 1
     title: "The geometry of linear equations"
     points:
       - id: "1.1"
         title: "Vectors and dot products"
-        covers: [math/linear-algebra/systems/vectors-and-dot-products]
+        covers: [math/linear-algebra/systems/vectors-and-dot-products, thm-cauchy-schwarz-inner-product, cor-triangle-inequality-inner-product]
       - id: "1.2"
         title: "Row and column pictures"
         covers: [math/linear-algebra/systems/geometry-of-linear-equations]
@@ -96,7 +97,7 @@ chapters:
     points:
       - id: "9.1"
         title: "Basis and dimension"
-        covers: [math/linear-algebra/vector-spaces/independence-basis-dimension]
+        covers: [math/linear-algebra/vector-spaces/independence-basis-dimension, prp-basis-iff-unique-expression, thm-dimension-invariant]
   - num: 10
     title: "The four fundamental subspaces"
     points:
@@ -108,7 +109,7 @@ chapters:
     points:
       - id: "11.1"
         title: "Matrix spaces, rank one"
-        covers: [math/linear-algebra/vector-spaces/matrix-spaces-and-rank-one]
+        covers: [math/linear-algebra/vector-spaces/matrix-spaces-and-rank-one, thm-dimension-of-sum-and-intersection]
   - num: 12
     title: "Graphs and networks"
     points:
@@ -138,13 +139,13 @@ chapters:
     points:
       - id: "17.1"
         title: "Orthogonal matrices, Gram–Schmidt"
-        covers: [math/linear-algebra/orthogonality/orthonormal-bases-and-gram-schmidt]
+        covers: [math/linear-algebra/orthogonality/orthonormal-bases-and-gram-schmidt, thm-gram-schmidt-abstract]
   - num: 18
     title: "Properties of determinants"
     points:
       - id: "18.1"
         title: "Properties"
-        covers: [math/linear-algebra/determinants/properties-of-determinants]
+        covers: [math/linear-algebra/determinants/properties-of-determinants, thm-determinant-multiplicative]
   - num: 19
     title: "Determinant formulas"
     points:
@@ -156,7 +157,7 @@ chapters:
     points:
       - id: "20.1"
         title: "Inverse, Cramer, volume"
-        covers: [math/linear-algebra/determinants/cramers-rule-and-volume]
+        covers: [math/linear-algebra/determinants/cramers-rule-and-volume, thm-adjugate]
   - num: 21
     title: "Eigenvalues and eigenvectors"
     points:
@@ -168,7 +169,7 @@ chapters:
     points:
       - id: "22.1"
         title: "Diagonalization and powers"
-        covers: [math/linear-algebra/eigenvalues/diagonalization]
+        covers: [math/linear-algebra/eigenvalues/diagonalization, lem-eigenspaces-independent, thm-diagonalizable-iff-eigenspaces]
   - num: 23
     title: "Differential equations"
     points:
@@ -189,7 +190,7 @@ chapters:
     points:
       - id: "25.1"
         title: "Spectral theorem"
-        covers: [math/linear-algebra/eigenvalues/symmetric-matrices]
+        covers: [math/linear-algebra/eigenvalues/symmetric-matrices, lem-self-adjoint-eigenvalues, cor-real-symmetric-orthogonally-diagonalisable]
       - id: "25.2"
         title: "Positive definiteness"
         covers: [math/linear-algebra/positive-definite/positive-definite-matrices, thm-second-derivative-test-several]  # merged block (owner, 2026-11-20)
@@ -204,7 +205,7 @@ chapters:
     points:
       - id: "28.1"
         title: "Similar matrices"
-        covers: [math/linear-algebra/eigenvalues/similar-matrices-and-jordan-form]
+        covers: [math/linear-algebra/eigenvalues/similar-matrices-and-jordan-form, thm-jordan-normal-form]
   - num: 29
     title: "Singular value decomposition"
     points:
@@ -216,13 +217,13 @@ chapters:
     points:
       - id: "30.1"
         title: "Linear transformations"
-        covers: [math/linear-algebra/positive-definite/linear-transformations]
+        covers: [math/linear-algebra/positive-definite/linear-transformations, thm-linear-map-from-basis, def-matrix-of-linear-map]
   - num: 31
     title: "Change of basis"
     points:
       - id: "31.1"
         title: "Change of basis, compression"
-        covers: [math/linear-algebra/positive-definite/change-of-basis]
+        covers: [math/linear-algebra/positive-definite/change-of-basis, prp-endomorphism-change-of-basis]
   - num: 33
     title: "Left and right inverses"
     points:

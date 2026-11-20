@@ -42,7 +42,7 @@ chapters:
     covers: [def-orthogonal-matrix, prob-mit1802n-1f-q9, prob-mit1802f07-1-q4]
   - id: '3.3'
     title: Inverse matrix by cofactors
-    covers: [def-inverse-matrix, thm-inverse-by-cofactors, prob-mit1802n-1g-q3, prob-mit1802n-1g-q4, prob-mit1802n-1g-q5,
+    covers: [def-inverse-matrix, thm-adjugate, prob-mit1802n-1g-q3, prob-mit1802n-1g-q4, prob-mit1802n-1g-q5,
       prob-mit1802f07-1-q5]
 - num: 4
   title: Equations of planes and square systems

@@ -1,11 +1,13 @@
 ---
 title: "Bases, the Steinitz Exchange Lemma and Dimension"
-sources: [camib-la-1]
+sources: [camib-la-1, mit1806-9, mit1806-11]
 requires: [math/linear-algebra/abstract-vector-spaces/vector-spaces-over-a-field, math/linear-algebra/vector-spaces/independence-basis-dimension]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 1.2, in our own wording; examples ours; proofs written out in steps. MIT 18.06 proves that dimension is well defined for subspaces of R^n via elimination (thm-dimension-well-defined) and states the dimension of a sum (thm-dimension-of-sum); the exchange-lemma versions here work over any field and carry related=. Merges proposed to the owner. -->
+
+<!-- Merged 2026-11-20 (owner): prp-basis-unique-coordinates, thm-dimension-well-defined (18.06 L9) and thm-dimension-of-sum (L11) merged into prp-basis-iff-unique-expression, thm-dimension-invariant and thm-dimension-of-sum-and-intersection; the 18.06 elimination argument for dimension is kept as a pointer paragraph there. -->
 
 Throughout, $V$ is a vector space over a field $F$ (@def-vector-space-over-field).
 
@@ -22,7 +24,7 @@ Let $S\subseteq V$.
 
 The span $\langle S\rangle$ is the smallest subspace of $V$ containing $S$. Sums are always finite: in $F[t]$ the monomials $1,t,t^2,\dots$ form a basis, but in the space $F^{\mathbb N}$ of all sequences the unit sequences $e_1,e_2,\dots$ are independent and span only the sequences with finitely many non-zero terms.
 
-::: {#prp-basis-iff-unique-expression .proposition name="Bases give unique coordinates" generalizes="prp-basis-unique-coordinates"}
+::: {#prp-basis-iff-unique-expression .proposition name="Bases give unique coordinates"}
 
 Vectors $e_1,\dots,e_n$ form a basis of $V$ if and only if every $v\in V$ can be written as $v=\sum_i\lambda_ie_i$ for exactly one $(\lambda_1,\dots,\lambda_n)\in F^n$.
 
@@ -78,7 +80,7 @@ Induction on $k$: we show that for $0\le k\le m$, after renumbering, $k\le n$ an
 
 :::
 
-::: {#thm-dimension-invariant .theorem name="Dimension is well defined" generalizes="thm-dimension-well-defined"}
+::: {#thm-dimension-invariant .theorem name="Dimension is well defined"}
 
 If $V$ is finite-dimensional, all bases of $V$ are finite and have the same number of elements, the *dimension* $\dim V=\dim_FV$.
 
@@ -114,7 +116,7 @@ Let $\dim V=n$.
 
 :::
 
-::: {#thm-dimension-of-sum-and-intersection .theorem name="Dimension of a sum" generalizes="thm-dimension-of-sum"}
+::: {#thm-dimension-of-sum-and-intersection .theorem name="Dimension of a sum"}
 
 If $U,W$ are subspaces of a finite-dimensional space $V$, then
 $$\dim(U+W)+\dim(U\cap W)=\dim U+\dim W.$$

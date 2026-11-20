@@ -23,7 +23,7 @@ If $B=M^{-1}AM$, then $A$ and $B$ have the same characteristic polynomial, hence
 
 ::: {.proof}
 
-1. $\det(B-\lambda I)=\det(M^{-1}(A-\lambda I)M)=\det M^{-1}\det(A-\lambda I)\det M=\det(A-\lambda I)$, by the product rule (@thm-product-rule-determinants).
+1. $\det(B-\lambda I)=\det(M^{-1}(A-\lambda I)M)=\det M^{-1}\det(A-\lambda I)\det M=\det(A-\lambda I)$, by the product rule (@thm-determinant-multiplicative).
 
 2. Trace and determinant are read off the characteristic polynomial (@thm-trace-determinant-eigenvalues).
 
@@ -39,13 +39,9 @@ A *Jordan block* $J_k(\lambda)$ is the $k\times k$ matrix with $\lambda$ on the 
 
 :::
 
-::: {#thm-jordan-form .theorem name="Jordan form"}
+<!-- Merged 2026-11-20 (owner): the block thm-jordan-form was removed in favour of thm-jordan-normal-form (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-Every square matrix $A$ is similar to a block-diagonal matrix
-$$J=M^{-1}AM=\begin{bmatrix}J_{k_1}(\lambda_1)&&\\&\ddots&\\&&J_{k_s}(\lambda_s)\end{bmatrix},$$
-unique up to the order of the blocks. The number of blocks for an eigenvalue $\lambda$ is the number of independent eigenvectors for $\lambda$. $A$ is diagonalizable exactly when every block is $1\times1$.
-
-:::
+**Jordan form.** Every square complex matrix $A$ is similar to a block-diagonal matrix $J=M^{-1}AM$ of Jordan blocks $J_{k_1}(\lambda_1),\dots,J_{k_s}(\lambda_s)$, unique up to the order of the blocks. The number of blocks for $\lambda$ is the number of independent eigenvectors for $\lambda$, and $A$ is diagonalizable exactly when every block is $1\times1$. Statement and proof: @thm-jordan-normal-form.
 
 ::: {#prp-jordan-block-properties .proposition name="Eigenvectors of a Jordan block"}
 

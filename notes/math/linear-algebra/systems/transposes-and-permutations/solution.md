@@ -22,5 +22,5 @@ Applying it three times returns every row to its place, so $P^3=I$, while $P\neq
 
 6. **$Q^{\mathsf T}=Q^{-1}$: a group.** $(Q_1Q_2)^{\mathsf T}=Q_2^{\mathsf T}Q_1^{\mathsf T}=Q_2^{-1}Q_1^{-1}=(Q_1Q_2)^{-1}$, and $(Q^{-1})^{\mathsf T}=(Q^{\mathsf T})^{\mathsf T}=Q=(Q^{-1})^{-1}$.
 
-7. **Two more:** the invertible upper triangular matrices; the matrices with determinant $1$ (by the product rule, @thm-product-rule-determinants). Also the nonzero multiples $cI$ of the identity.
+7. **Two more:** the invertible upper triangular matrices; the matrices with determinant $1$ (by the product rule, @thm-determinant-multiplicative). Also the nonzero multiples $cI$ of the identity.
 :::

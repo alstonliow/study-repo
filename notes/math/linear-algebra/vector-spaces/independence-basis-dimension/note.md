@@ -66,37 +66,13 @@ A *basis* of a vector space $V$ is a list of vectors that is linearly independen
 
 :::
 
-::: {#prp-basis-unique-coordinates .proposition name="Coordinates in a basis are unique"}
+<!-- Merged 2026-11-20 (owner): the block prp-basis-unique-coordinates was removed in favour of prp-basis-iff-unique-expression (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-If $\mathbf{v}_1,\dots,\mathbf{v}_k$ is a basis of $V$, every $\mathbf{v}\in V$ is exactly one combination $c_1\mathbf{v}_1+\dots+c_k\mathbf{v}_k$.
+**Coordinates are unique.** If $\mathbf{v}_1,\dots,\mathbf{v}_k$ is a basis of $V$, every $\mathbf{v}\in V$ is exactly one combination $c_1\mathbf{v}_1+\dots+c_k\mathbf{v}_k$: a combination exists because the basis spans, and two different ones would subtract to a non-trivial combination equal to $\mathbf{0}$. This is @prp-basis-iff-unique-expression, which also proves the converse.
 
-:::
+<!-- Merged 2026-11-20 (owner): the block thm-dimension-well-defined was removed in favour of thm-dimension-invariant (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-::: {.proof}
-
-1. A combination exists because the basis spans $V$.
-
-2. If two combinations give $\mathbf{v}$, subtracting gives a combination equal to $\mathbf{0}$ with coefficients $c_i-d_i$. By independence all $c_i-d_i=0$.
-
-:::
-
-::: {#thm-dimension-well-defined .theorem name="All bases have the same size"}
-
-If $\mathbf{v}_1,\dots,\mathbf{v}_m$ and $\mathbf{w}_1,\dots,\mathbf{w}_n$ are both bases of $V$, then $m=n$. This common number is the *dimension* $\dim V$.
-
-:::
-
-::: {.proof}
-
-1. Suppose $n>m$. Each $\mathbf{w}_j$ is a combination of the $\mathbf{v}$'s: $\mathbf{w}_j=\sum_ia_{ij}\mathbf{v}_i$. Collect the coefficients in the $m\times n$ matrix $A=[a_{ij}]$.
-
-2. Since $n>m$, there is $\mathbf{c}\ne\mathbf{0}$ with $A\mathbf{c}=\mathbf{0}$ (@cor-more-unknowns-than-equations).
-
-3. Then $\sum_jc_j\mathbf{w}_j=\sum_i\big(\sum_ja_{ij}c_j\big)\mathbf{v}_i=\sum_i(A\mathbf{c})_i\mathbf{v}_i=\mathbf{0}$, a nontrivial combination of the $\mathbf{w}$'s. This contradicts their independence.
-
-4. By symmetry $m>n$ is impossible too, so $m=n$.
-
-:::
+**All bases have the same size.** If $\mathbf{v}_1,\dots,\mathbf{v}_m$ and $\mathbf{w}_1,\dots,\mathbf{w}_n$ are both bases of $V$, then $m=n$, and this number is the *dimension* $\dim V$. For subspaces of $\mathbb R^m$ one can see it by elimination: if $n>m$, the $m\times n$ matrix of coefficients of the $\mathbf w$'s in terms of the $\mathbf v$'s has a non-zero null vector (@cor-more-unknowns-than-equations), which gives a dependence among the $\mathbf w$'s. The proof over any field, by the Steinitz exchange lemma, is @thm-dimension-invariant.
 
 ::: {#cor-basis-from-independent-set .corollary name="Bases in a space of known dimension"}
 
@@ -106,7 +82,7 @@ In a space of dimension $d$: any $d$ independent vectors form a basis; any $d$ v
 
 ::: {.proof}
 
-1. Step 3 of the proof of @thm-dimension-well-defined shows: if $m$ vectors span $V$, then any $n>m$ vectors of $V$ are dependent. With a basis of size $d$ this gives "more than $d$ vectors are dependent".
+1. By @thm-steinitz-exchange, if $m$ vectors span $V$, then any $n>m$ vectors of $V$ are dependent. With a basis of size $d$ this gives "more than $d$ vectors are dependent".
 
 2. If $d$ independent vectors did not span, adding a vector outside their span would keep them independent (a dependence would have to use the new vector, which would then lie in the span). That gives $d+1$ independent vectors, contradicting step 1.
 

@@ -32,7 +32,7 @@ For $n=2$ this gives $ad-bc$. For $n=3$ there are six terms:
 $$\begin{vmatrix}a_{11}&a_{12}&a_{13}\\a_{21}&a_{22}&a_{23}\\a_{31}&a_{32}&a_{33}\end{vmatrix}
 =a_{11}a_{22}a_{33}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}.$$
 
-The big formula also proves that the determinant exists: it is linear in each row, gives $1$ for $I$, and exchanging two rows changes the sign of every term. Together with uniqueness (step 3 in the proof of @thm-product-rule-determinants), the three properties define exactly one function.
+The big formula also proves that the determinant exists: it is linear in each row, gives $1$ for $I$, and exchanging two rows changes the sign of every term. Together with uniqueness (by @thm-determinant-consequences, elimination turns any function with the three properties into $\pm$ the product of the pivots), the three properties define exactly one function.
 
 ::: {#def-cofactor .definition name="Minor and cofactor"}
 

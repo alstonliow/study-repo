@@ -23,7 +23,7 @@ A *metric space* is a pair $(X,d)$ of a set and a metric on it.
 
 ::: {#exm-metric-spaces .example name="Metric spaces"}
 
-1. $\mathbb R$ with $d(x,y)=|x-y|$, and $\mathbb R^n$ with the Euclidean metric $d_2(x,y)=\|x-y\|_2=\bigl(\sum_i(x_i-y_i)^2\bigr)^{1/2}$; its triangle inequality is @thm-cauchy-schwarz.
+1. $\mathbb R$ with $d(x,y)=|x-y|$, and $\mathbb R^n$ with the Euclidean metric $d_2(x,y)=\|x-y\|_2=\bigl(\sum_i(x_i-y_i)^2\bigr)^{1/2}$; its triangle inequality is @cor-triangle-inequality-inner-product.
 2. Any set $X$ with the *discrete metric*: $d(x,y)=1$ if $x\ne y$ and $d(x,x)=0$.
 3. Binary strings of length $n$ with the *Hamming distance*: the number of positions in which two strings differ. If $x$ and $z$ differ in position $i$, then $y$ differs in position $i$ from $x$ or from $z$, which gives the triangle inequality.
 4. The continuous functions $C[a,b]$ with the *uniform metric* $d_\infty(f,g)=\sup_{x\in[a,b]}|f(x)-g(x)|$. The supremum is finite by @thm-extreme-value-proof, and $|f(x)-h(x)|\le|f(x)-g(x)|+|g(x)-h(x)|\le d_\infty(f,g)+d_\infty(g,h)$ for each $x$ gives the triangle inequality.

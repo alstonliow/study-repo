@@ -7,23 +7,11 @@ status: draft
 
 <!-- Added 2026-11-18 from MIT 18.06SC (Fall 2011), Lecture 20, in our own wording; proofs written out in steps. -->
 
-::: {#thm-inverse-by-cofactors .theorem name="Formula for the inverse"}
+<!-- Merged 2026-11-20 (owner): the block thm-inverse-by-cofactors was removed in favour of thm-adjugate (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-If $\det A\neq0$, then
+**Formula for the inverse.** If $\det A\neq0$, then
 $$A^{-1}=\frac1{\det A}\,C^{\mathsf T},$$
-where $C=[C_{ij}]$ is the matrix of cofactors (@def-cofactor).
-
-:::
-
-::: {.proof}
-
-1. Entry $(i,i)$ of $AC^{\mathsf T}$ is $\sum_ja_{ij}C_{ij}=\det A$, the cofactor expansion along row $i$ (@thm-cofactor-expansion).
-
-2. For $i\neq k$, entry $(i,k)$ is $\sum_ja_{ij}C_{kj}$. This is the cofactor expansion along row $k$ of the matrix obtained from $A$ by replacing row $k$ with row $i$ (the cofactors $C_{kj}$ do not involve row $k$). That matrix has two equal rows, so the sum is $0$.
-
-3. Hence $AC^{\mathsf T}=(\det A)\,I$; divide by $\det A$.
-
-:::
+where $C=[C_{ij}]$ is the matrix of cofactors (@def-cofactor): row $i$ of $A$ times the cofactors of row $i$ is $\det A$, and times the cofactors of another row it is the determinant of a matrix with two equal rows, $0$. $C^{\mathsf T}$ is the adjugate; see @thm-adjugate.
 
 For $2\times2$ this is the familiar $\frac1{ad-bc}\begin{bmatrix}d&-b\\-c&a\end{bmatrix}$.
 
@@ -41,7 +29,7 @@ where $B_j$ is $A$ with column $j$ replaced by $\mathbf{b}$.
 
 2. Expanding $\det X_j$ along row $j$ (which has the single entry $x_j$ on the diagonal, after the other rows reduce to rows of $I$) gives $\det X_j=x_j$.
 
-3. The product rule (@thm-product-rule-determinants) gives $\det A\cdot x_j=\det B_j$.
+3. The product rule (@thm-determinant-multiplicative) gives $\det A\cdot x_j=\det B_j$.
 
 :::
 

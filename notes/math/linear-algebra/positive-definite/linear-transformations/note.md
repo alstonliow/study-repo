@@ -21,26 +21,13 @@ Linear: projection onto a line in $\mathbb{R}^2$; rotation by $\theta$; $T(\math
 
 :::
 
-::: {#prp-linear-map-determined-by-basis .proposition name="A linear map is determined by a basis"}
+<!-- Merged 2026-11-20 (owner): the block prp-linear-map-determined-by-basis was removed in favour of thm-linear-map-from-basis (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-If $\mathbf{v}_1,\dots,\mathbf{v}_n$ is a basis of $V$, then $T$ is determined by $T(\mathbf{v}_1),\dots,T(\mathbf{v}_n)$, and these may be chosen freely in $W$.
+**A linear map is determined by a basis.** If $\mathbf{v}_1,\dots,\mathbf{v}_n$ is a basis of $V$, then $T$ is determined by $T(\mathbf{v}_1),\dots,T(\mathbf{v}_n)$, and these may be chosen freely in $W$: linearity forces $T(\sum c_i\mathbf v_i)=\sum c_iT(\mathbf v_i)$. See @thm-linear-map-from-basis.
 
-:::
+<!-- Merged 2026-11-20 (owner): the block def-matrix-of-linear-transformation was removed in favour of def-matrix-of-linear-map (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-::: {.proof}
-
-1. Every $\mathbf{v}$ is uniquely $\sum c_i\mathbf{v}_i$ (@prp-basis-unique-coordinates), so linearity forces $T(\mathbf{v})=\sum c_iT(\mathbf{v}_i)$.
-
-2. Conversely, defining $T(\sum c_i\mathbf{v}_i)=\sum c_i\mathbf{w}_i$ for any chosen $\mathbf{w}_i$ gives a linear map, because the coordinates of $a\mathbf{v}+b\mathbf{v}'$ are $a\mathbf{c}+b\mathbf{c}'$.
-
-:::
-
-::: {#def-matrix-of-linear-transformation .definition name="Matrix of a linear transformation"}
-
-Choose a basis $\mathbf{v}_1,\dots,\mathbf{v}_n$ of $V$ (input) and $\mathbf{w}_1,\dots,\mathbf{w}_m$ of $W$ (output). The *matrix* of $T$ in these bases is the $m\times n$ matrix $A$ whose column $j$ holds the output coordinates of $T(\mathbf{v}_j)$:
-$$T(\mathbf{v}_j)=a_{1j}\mathbf{w}_1+\dots+a_{mj}\mathbf{w}_m.$$
-
-:::
+**The matrix of $T$.** Choose a basis $\mathbf{v}_1,\dots,\mathbf{v}_n$ of $V$ (input) and $\mathbf{w}_1,\dots,\mathbf{w}_m$ of $W$ (output). The *matrix* of $T$ in these bases is the $m\times n$ matrix $A$ whose column $j$ holds the output coordinates of $T(\mathbf{v}_j)$, that is, $T(\mathbf{v}_j)=a_{1j}\mathbf{w}_1+\dots+a_{mj}\mathbf{w}_m$ (@def-matrix-of-linear-map).
 
 ::: {#thm-matrix-represents-transformation .theorem name="Coordinates transform by the matrix"}
 

@@ -4,7 +4,7 @@
 ::: {.solution for="prob-mit1806s10-7-q4" status="draft"}
 1. Computing each $C_{ij}=(-1)^{i+j}\det M_{ij}$:
    $$C=\begin{bmatrix}6&-3&0\\3&1&-1\\-6&2&1\end{bmatrix},\qquad AC^{\mathsf T}=\begin{bmatrix}3&0&0\\0&3&0\\0&0&3\end{bmatrix}=(\det A)I,$$
-   so $\det A=3$ (@thm-inverse-by-cofactors).
+   so $\det A=3$ (@thm-adjugate).
 
 2. The entry $4$ sits in position $(1,3)$, whose cofactor is $C_{13}=0$. Expanding along row 1, $\det A=a_{11}C_{11}+a_{12}C_{12}+a_{13}C_{13}$, and $C_{13}$ does not involve row 1. So any value of $a_{13}$ gives the same determinant.
 :::

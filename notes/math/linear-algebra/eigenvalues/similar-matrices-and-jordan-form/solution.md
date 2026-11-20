@@ -33,7 +33,7 @@
 :::
 
 ::: {.solution for="prob-mit1806s10-10-q4" status="draft"}
-1. By @thm-jordan-form, $A=MJM^{-1}$ where every block is $J_k(0)$ with $k\le n$.
+1. By @thm-jordan-normal-form, $A=MJM^{-1}$ where every block is $J_k(0)$ with $k\le n$.
 
 2. $J_k(0)$ shifts the standard basis: $J_k(0)\mathbf{e}_1=\mathbf{0}$ and $J_k(0)\mathbf{e}_j=\mathbf{e}_{j-1}$. So $J_k(0)^k$ sends every $\mathbf{e}_j$ to $\mathbf{0}$, and $J_k(0)^k=0$; hence also $J_k(0)^n=0$.
 

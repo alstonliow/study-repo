@@ -54,7 +54,7 @@ d) $\mathbf{X}=A\begin{pmatrix}50\\300\\65\end{pmatrix}\approx\begin{pmatrix}-3.
 :::
 
 ::: {.solution for="prob-mit1802n-1g-q3" status="draft"}
-$\det A=5$, and by cofactors (@thm-inverse-by-cofactors)
+$\det A=5$, and by cofactors (@thm-adjugate)
 $$A^{-1}=\frac15\begin{pmatrix}3&1&-2\\-1&3&-1\\1&2&1\end{pmatrix},\qquad\mathbf{x}=A^{-1}\mathbf{b}=\frac15\begin{pmatrix}0\\-5\\5\end{pmatrix}=\begin{pmatrix}0\\-1\\1\end{pmatrix}.$$
 :::
 

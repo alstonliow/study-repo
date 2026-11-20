@@ -1,13 +1,15 @@
 ---
 title: "Gram–Schmidt and Orthogonal Complements"
-sources: [camib-la-8]
+sources: [camib-la-8, mit1806-17]
 requires: [math/linear-algebra/inner-product-spaces/inner-products]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 8.2, in our own wording; examples ours (checked with sympy); proofs written out in steps. MIT 18.06 runs Gram-Schmidt on vectors of R^m (def-gram-schmidt) and proves that row space and nullspace are orthogonal complements (thm-fundamental-theorem-orthogonality); the abstract versions here carry generalizes= or related=. Merge of the Gram-Schmidt blocks proposed to the owner. -->
 
-::: {#thm-gram-schmidt-abstract .theorem name="Gram–Schmidt process" generalizes="def-gram-schmidt"}
+<!-- Merged 2026-11-20 (owner): def-gram-schmidt and thm-gram-schmidt (18.06 L17, the process for vectors of R^m and its correctness) merged into thm-gram-schmidt-abstract (same formula and induction). -->
+
+::: {#thm-gram-schmidt-abstract .theorem name="Gram–Schmidt process"}
 
 Let $v_1,v_2,\dots$ be a finite or infinite sequence of linearly independent vectors in an inner product space $V$. Define recursively
 $$w_k=v_k-\sum_{i<k}\langle v_k,e_i\rangle e_i,\qquad e_k=\frac{w_k}{\lVert w_k\rVert}.$$

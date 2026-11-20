@@ -9,47 +9,15 @@ status: draft
 
 Symmetric matrices ($S^{\mathsf T}=S$, @def-symmetric-matrix) are the most important matrices in applications, and their eigenvalues and eigenvectors are as good as possible.
 
-::: {#thm-symmetric-real-eigenvalues .theorem name="Real eigenvalues, orthogonal eigenvectors"}
+<!-- Merged 2026-11-20 (owner): the block thm-symmetric-real-eigenvalues was removed in favour of lem-self-adjoint-eigenvalues (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-Let $S$ be a real symmetric matrix.
+**Real eigenvalues, orthogonal eigenvectors.** A real symmetric matrix $S$ has only real eigenvalues, and eigenvectors for different eigenvalues are orthogonal. In short: $\bar{\mathbf x}^{\mathsf T}S\mathbf x$ equals both $\lambda\lVert\mathbf x\rVert^2$ and $\bar\lambda\lVert\mathbf x\rVert^2$. See @lem-self-adjoint-eigenvalues, which proves it for every self-adjoint map.
 
-1. Every eigenvalue of $S$ is real.
-2. Eigenvectors for different eigenvalues are orthogonal.
+<!-- Merged 2026-11-20 (owner): the block thm-spectral-theorem was removed in favour of cor-real-symmetric-orthogonally-diagonalisable (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-:::
-
-::: {.proof}
-
-1. Let $S\mathbf{x}=\lambda\mathbf{x}$ with $\mathbf{x}\in\mathbb{C}^n$ nonzero. Take complex conjugates: $S\bar{\mathbf{x}}=\bar\lambda\bar{\mathbf{x}}$, since $S$ is real.
-
-2. Compute $\bar{\mathbf{x}}^{\mathsf T}S\mathbf{x}$ in two ways: it equals $\lambda\,\bar{\mathbf{x}}^{\mathsf T}\mathbf{x}$, and, using $S^{\mathsf T}=S$, it equals $(S\bar{\mathbf{x}})^{\mathsf T}\mathbf{x}=\bar\lambda\,\bar{\mathbf{x}}^{\mathsf T}\mathbf{x}$.
-
-3. $\bar{\mathbf{x}}^{\mathsf T}\mathbf{x}=\sum\lvert x_i\rvert^2>0$, so $\lambda=\bar\lambda$ is real.
-
-4. If $S\mathbf{x}=\lambda\mathbf{x}$ and $S\mathbf{y}=\mu\mathbf{y}$ with $\lambda\neq\mu$, then $\lambda\,\mathbf{y}^{\mathsf T}\mathbf{x}=\mathbf{y}^{\mathsf T}S\mathbf{x}=(S\mathbf{y})^{\mathsf T}\mathbf{x}=\mu\,\mathbf{y}^{\mathsf T}\mathbf{x}$, so $(\lambda-\mu)\mathbf{y}^{\mathsf T}\mathbf{x}=0$ and $\mathbf{y}^{\mathsf T}\mathbf{x}=0$.
-
-:::
-
-::: {#thm-spectral-theorem .theorem name="Spectral theorem"}
-
-Every real symmetric matrix can be factored as
+**Spectral theorem.** Every real symmetric matrix can be factored as
 $$S=Q\Lambda Q^{\mathsf T}=\lambda_1\mathbf{q}_1\mathbf{q}_1^{\mathsf T}+\dots+\lambda_n\mathbf{q}_n\mathbf{q}_n^{\mathsf T},$$
-with $Q$ orthogonal (@def-orthogonal-matrix) and $\Lambda$ real diagonal. The columns $\mathbf{q}_i$ are orthonormal eigenvectors.
-
-:::
-
-::: {.proof}
-
-1. Induction on $n$; $n=1$ is clear. Take a real eigenvalue $\lambda_1$ (@thm-symmetric-real-eigenvalues) and a real unit eigenvector $\mathbf{q}_1$ (solve $(S-\lambda_1I)\mathbf{x}=\mathbf{0}$ over $\mathbb{R}$ and normalise).
-
-2. Extend $\mathbf{q}_1$ to an orthonormal basis $\mathbf{q}_1,\dots,\mathbf{q}_n$ of $\mathbb{R}^n$ (Gram–Schmidt, @thm-gram-schmidt) and let $Q_1$ have these columns. Then $Q_1^{\mathsf T}SQ_1$ is symmetric, and its first column is $Q_1^{\mathsf T}S\mathbf{q}_1=\lambda_1Q_1^{\mathsf T}\mathbf{q}_1=\lambda_1\mathbf{e}_1$. By symmetry its first row is $\lambda_1\mathbf{e}_1^{\mathsf T}$:
-   $$Q_1^{\mathsf T}SQ_1=\begin{bmatrix}\lambda_1&\mathbf{0}^{\mathsf T}\\\mathbf{0}&S'\end{bmatrix}.$$
-
-3. $S'$ is symmetric of size $n-1$; by induction $S'=Q'\Lambda'Q'^{\mathsf T}$. Then $Q=Q_1\begin{bmatrix}1&0\\0&Q'\end{bmatrix}$ is orthogonal (a product of orthogonal matrices) and $Q^{\mathsf T}SQ=\operatorname{diag}(\lambda_1,\Lambda')$.
-
-4. The second form is columns times rows (@thm-four-ways-to-multiply) applied to $(Q\Lambda)Q^{\mathsf T}$.
-
-:::
+with $Q$ orthogonal (@def-orthogonal-matrix), $\Lambda$ real diagonal, and the columns $\mathbf q_i$ orthonormal eigenvectors. The proof splits off one real unit eigenvector at a time: @cor-real-symmetric-orthogonally-diagonalisable and @thm-spectral-theorem-self-adjoint.
 
 Each $\mathbf{q}_i\mathbf{q}_i^{\mathsf T}$ is the projection onto the line through $\mathbf{q}_i$ (@prp-projection-with-orthonormal-columns). So every symmetric matrix is a combination of perpendicular projections, weighted by its eigenvalues.
 
@@ -91,7 +59,7 @@ For a symmetric matrix with nonzero pivots (no row exchanges needed), the number
 
 1. Write $S=LDL^{\mathsf T}$ (@prp-symmetric-ldlt) and consider $S_t=L_tDL_t^{\mathsf T}$, where $L_t$ has the off-diagonal entries of $L$ multiplied by $t\in[0,1]$. Each $S_t$ is symmetric with pivots $D$, so $\det S_t=\det D\neq0$.
 
-2. As $t$ goes from $1$ to $0$, the eigenvalues of $S_t$ move continuously and are real (@thm-symmetric-real-eigenvalues); none can cross $0$, because $\det S_t\ne0$.
+2. As $t$ goes from $1$ to $0$, the eigenvalues of $S_t$ move continuously and are real (@lem-self-adjoint-eigenvalues); none can cross $0$, because $\det S_t\ne0$.
 
 3. At $t=0$, $S_0=D$, whose eigenvalues are the pivots. So the sign pattern of the eigenvalues of $S=S_1$ matches the pivots.
 

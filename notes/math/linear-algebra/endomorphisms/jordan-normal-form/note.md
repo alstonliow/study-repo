@@ -1,11 +1,13 @@
 ---
 title: "Multiplicities of Eigenvalues and Jordan Normal Form"
-sources: [camib-la-6]
+sources: [camib-la-6, mit1806-28]
 requires: [math/linear-algebra/endomorphisms/cayley-hamilton]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 6.4, in our own wording; examples ours (checked with sympy); proofs written out in steps. MIT 18.06 states the Jordan form without proof (thm-jordan-form, def-jordan-block); here the statement is the same, uniqueness is proved below and existence in math/linear-algebra/endomorphisms/generalized-eigenspaces. Merge proposed to the owner. -->
+
+<!-- Merged 2026-11-20 (owner): thm-jordan-form (18.06 L28, stated without proof) merged into thm-jordan-normal-form, which gained its sentence on block counts and diagonalisability. -->
 
 Not every endomorphism is diagonalisable. The Jordan normal form is the best substitute over $\mathbb C$: a block diagonal matrix with one eigenvalue per block and $1$s just above the diagonal. Throughout, $\alpha\in\operatorname{End}(V)$, $\dim V=n$, and $\lambda$ is an eigenvalue of $\alpha$.
 
@@ -55,13 +57,13 @@ with Jordan blocks $J_m(\lambda)$ (@def-jordan-block) on the diagonal; the $\lam
 
 :::
 
-::: {#thm-jordan-normal-form .theorem name="Jordan normal form theorem" generalizes="thm-jordan-form"}
+::: {#thm-jordan-normal-form .theorem name="Jordan normal form theorem"}
 
-Every $A\in\operatorname{Mat}_n(\mathbb C)$ is similar to a matrix in Jordan normal form, which is unique up to the order of the blocks. More generally, this holds over any field $F$ for every $A$ whose characteristic polynomial splits over $F$.
+Every $A\in\operatorname{Mat}_n(\mathbb C)$ is similar to a matrix in Jordan normal form, which is unique up to the order of the blocks. More generally, this holds over any field $F$ for every $A$ whose characteristic polynomial splits over $F$. For each eigenvalue $\lambda$, the number of blocks $J_m(\lambda)$ is the number of independent eigenvectors for $\lambda$, and $A$ is diagonalisable exactly when every block is $1\times1$.
 
 :::
 
-Existence is proved in @sec-math-linear-algebra-endomorphisms-generalized-eigenspaces (@thm-jordan-normal-form-existence); uniqueness follows from the next theorem, because it computes the number of blocks of each size from $\alpha$ alone.
+Existence is proved in @sec-math-linear-algebra-endomorphisms-generalized-eigenspaces (@thm-jordan-normal-form-existence); the block counts are @thm-jordan-block-count with $r=1$, and diagonalisability is @cor-diagonalisable-iff-multiplicities; uniqueness follows from the next theorem, because it computes the number of blocks of each size from $\alpha$ alone.
 
 ::: {#thm-jordan-block-count .theorem name="Counting Jordan blocks"}
 

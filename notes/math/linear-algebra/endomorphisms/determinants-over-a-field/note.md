@@ -1,11 +1,13 @@
 ---
 title: "Determinants over a Field and Volume Forms"
-sources: [camib-la-5]
+sources: [camib-la-5, mit1806-18, mit1806-20]
 requires: [math/linear-algebra/linear-maps/equivalence-and-rank]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Chapter 5, in our own wording; examples ours (checked with sympy); proofs written out in steps. MIT 18.06 defines the determinant by three row properties over R (def-determinant-properties) and derives the big formula, product rule, cofactors and the inverse formula; the versions here start from the permutation formula, work over any field (including characteristic 2, where "swapping changes the sign" no longer implies "equal rows give 0") and carry generalizes= or related=. Merges proposed to the owner. -->
+
+<!-- Merged 2026-11-20 (owner): thm-product-rule-determinants (18.06 L18) merged into thm-determinant-multiplicative; thm-inverse-by-cofactors (L20) merged into thm-adjugate, which gained the cofactor form adj A = C^T. -->
 
 The sign of a permutation is taken from group theory: there is a unique map $\varepsilon:S_n\to\{\pm1\}$ with $\varepsilon(\sigma\tau)=\varepsilon(\sigma)\varepsilon(\tau)$ and $\varepsilon(\tau)=-1$ for every transposition $\tau$; $\varepsilon(\sigma)=(-1)^{k}$ when $\sigma$ is a product of $k$ transpositions. Columns of $A$ are written $A^{(1)},\dots,A^{(n)}$.
 
@@ -78,7 +80,7 @@ $$d(A^{(1)},\dots,A^{(n)})=\sum_{i_1,\dots,i_n}a_{i_11}\cdots a_{i_nn}\,d(e_{i_1
 
 :::
 
-::: {#thm-determinant-multiplicative .theorem name="The determinant is multiplicative" generalizes="thm-product-rule-determinants"}
+::: {#thm-determinant-multiplicative .theorem name="The determinant is multiplicative"}
 
 For $A,B\in\operatorname{Mat}_n(F)$, $\det(AB)=\det A\det B$.
 
@@ -137,11 +139,11 @@ $$\det\begin{bmatrix}A&C\\0&B\end{bmatrix}=\det A\,\det B.$$
 
 By induction, a block upper triangular matrix has determinant the product of the determinants of its diagonal blocks.
 
-::: {#thm-adjugate .theorem name="The adjugate" generalizes="thm-inverse-by-cofactors"}
+::: {#thm-adjugate .theorem name="The adjugate"}
 
 Let $\hat A_{ij}$ be $A$ with row $i$ and column $j$ deleted, and let $\operatorname{adj}A$ be the matrix with $(\operatorname{adj}A)_{ij}=(-1)^{i+j}\det\hat A_{ji}$. Then
 $$(\operatorname{adj}A)\,A=A\,(\operatorname{adj}A)=(\det A)\,I.$$
-In particular $A^{-1}=\frac1{\det A}\operatorname{adj}A$ when $\det A\ne0$.
+In particular $A^{-1}=\frac1{\det A}\operatorname{adj}A$ when $\det A\ne0$. In terms of the cofactors $C_{ij}=(-1)^{i+j}\det\hat A_{ij}$ (@def-cofactor), $\operatorname{adj}A=C^{\mathsf T}$.
 
 :::
 

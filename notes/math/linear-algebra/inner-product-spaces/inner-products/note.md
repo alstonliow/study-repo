@@ -1,11 +1,13 @@
 ---
 title: "Inner Product Spaces"
-sources: [camib-la-8]
+sources: [camib-la-8, mit1806-1]
 requires: [math/linear-algebra/bilinear-forms/hermitian-forms, math/linear-algebra/orthogonality/fourier-series]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 8.1, in our own wording; examples ours; proofs written out in steps. MIT 18.06 has the dot product on R^n with Cauchy-Schwarz (thm-cauchy-schwarz), the complex inner product on C^n (def-complex-inner-product) and the inner product of functions (def-function-inner-product); the abstract versions here carry generalizes= or related=. Merge of the Cauchy-Schwarz blocks proposed to the owner. -->
+
+<!-- Merged 2026-11-20 (owner): thm-cauchy-schwarz (18.06 L1, Cauchy-Schwarz and triangle inequality for the dot product) merged into thm-cauchy-schwarz-inner-product and cor-triangle-inequality-inner-product. -->
 
 An inner product adds lengths and angles to a vector space. Here $F=\mathbb R$ or $\mathbb C$; for $F=\mathbb R$ the complex conjugations below do nothing.
 
@@ -30,7 +32,7 @@ So it is a positive definite symmetric bilinear form (real case) or Hermitian fo
 
 :::
 
-::: {#thm-cauchy-schwarz-inner-product .theorem name="Cauchy–Schwarz inequality" generalizes="thm-cauchy-schwarz"}
+::: {#thm-cauchy-schwarz-inner-product .theorem name="Cauchy–Schwarz inequality"}
 
 In an inner product space, $\lvert\langle u,v\rangle\rvert\le\lVert u\rVert\,\lVert v\rVert$ for all $u,v$, with equality if and only if $u$ and $v$ are linearly dependent.
 

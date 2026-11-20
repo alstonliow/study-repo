@@ -76,21 +76,9 @@ If $PA=LU$, then $\det A=\pm(\text{product of the pivots})$, with the sign $+$ f
 
 :::
 
-::: {#thm-product-rule-determinants .theorem name="Product rule"}
+<!-- Merged 2026-11-20 (owner): the block thm-product-rule-determinants was removed in favour of thm-determinant-multiplicative (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-For $n\times n$ matrices, $\det(AB)=\det A\cdot\det B$.
-
-:::
-
-::: {.proof}
-
-1. If $\det B=0$, $B$ is singular, so $B\mathbf{x}=\mathbf{0}$ for some $\mathbf{x}\ne\mathbf{0}$; then $AB\mathbf{x}=\mathbf{0}$ and $AB$ is singular, so both sides are $0$.
-
-2. Otherwise consider $D(A)=\det(AB)/\det B$ as a function of $A$. Row $i$ of $AB$ is (row $i$ of $A$)$\,B$, so $D$ is linear in each row of $A$, changes sign when two rows of $A$ are exchanged, and $D(I)=1$.
-
-3. The properties determine the function uniquely: by @thm-determinant-consequences any function with them equals $\pm$(product of pivots) after elimination. Hence $D(A)=\det A$.
-
-:::
+**Product rule.** For $n\times n$ matrices, $\det(AB)=\det A\cdot\det B$. The idea: for fixed $B$ with $\det B\ne0$, $A\mapsto\det(AB)/\det B$ has the three defining properties, and only $\det$ has them. The proof over any field is @thm-determinant-multiplicative.
 
 ::: {#cor-determinant-inverse-transpose .corollary name="Inverse and transpose"}
 
@@ -100,7 +88,7 @@ $\det A^{-1}=1/\det A$ and $\det A^{\mathsf T}=\det A$. Consequently every prope
 
 ::: {.proof}
 
-1. $\det A\cdot\det A^{-1}=\det(AA^{-1})=\det I=1$ by @thm-product-rule-determinants.
+1. $\det A\cdot\det A^{-1}=\det(AA^{-1})=\det I=1$ by @thm-determinant-multiplicative.
 
 2. Write $PA=LU$. Then $A^{\mathsf T}P^{\mathsf T}=U^{\mathsf T}L^{\mathsf T}$, and by the product rule $\det A\det P=\det L\det U$ and $\det A^{\mathsf T}\det P^{\mathsf T}=\det U^{\mathsf T}\det L^{\mathsf T}$.
 

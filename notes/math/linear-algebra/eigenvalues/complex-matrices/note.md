@@ -33,7 +33,7 @@ A Hermitian matrix has real eigenvalues, and eigenvectors for different eigenval
 
 1. If $S\mathbf{z}=\lambda\mathbf{z}$, then $\mathbf{z}^{\mathsf H}S\mathbf{z}=\lambda\lVert\mathbf{z}\rVert^2$. This number equals its own conjugate, since $(\mathbf{z}^{\mathsf H}S\mathbf{z})^{\mathsf H}=\mathbf{z}^{\mathsf H}S^{\mathsf H}\mathbf{z}=\mathbf{z}^{\mathsf H}S\mathbf{z}$. So $\lambda$ is real.
 
-2. Orthogonality follows as in step 4 of @thm-symmetric-real-eigenvalues with $\mathsf H$ in place of $\mathsf T$.
+2. Orthogonality follows as in step 3 of @lem-self-adjoint-eigenvalues with $\mathsf H$ in place of $\mathsf T$.
 
 3. $\lVert Q\mathbf{z}\rVert^2=\mathbf{z}^{\mathsf H}Q^{\mathsf H}Q\mathbf{z}=\lVert\mathbf{z}\rVert^2$. If $Q\mathbf{z}=\lambda\mathbf{z}$ then $\lVert\mathbf{z}\rVert=\lvert\lambda\rvert\lVert\mathbf{z}\rVert$, so $\lvert\lambda\rvert=1$.
 

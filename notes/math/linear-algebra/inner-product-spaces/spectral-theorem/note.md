@@ -1,15 +1,17 @@
 ---
 title: "The Spectral Theorem"
-sources: [camib-la-8]
+sources: [camib-la-8, mit1806-25]
 requires: [math/linear-algebra/inner-product-spaces/adjoints-and-isometries, math/linear-algebra/endomorphisms/eigenvalues-of-endomorphisms]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 8.4, in our own wording; examples ours (checked with sympy); proofs written out in steps. MIT 18.06 proves the spectral theorem for real symmetric matrices (thm-symmetric-real-eigenvalues, thm-spectral-theorem) and states the Hermitian and unitary facts (thm-hermitian-real-eigenvalues); the versions here are for self-adjoint and unitary maps on any finite-dimensional inner product space and carry generalizes=. Merges proposed to the owner. -->
 
+<!-- Merged 2026-11-20 (owner): thm-symmetric-real-eigenvalues and thm-spectral-theorem (18.06 L25) merged into lem-self-adjoint-eigenvalues and cor-real-symmetric-orthogonally-diagonalisable, which gained the rank-one form sum lambda_i q_i q_i^T. -->
+
 Throughout, $V$ is a finite-dimensional inner product space over $F=\mathbb R$ or $\mathbb C$, and $\alpha\in\operatorname{End}(V)$.
 
-::: {#lem-self-adjoint-eigenvalues .lemma name="Eigenvalues of a self-adjoint map" generalizes="thm-symmetric-real-eigenvalues"}
+::: {#lem-self-adjoint-eigenvalues .lemma name="Eigenvalues of a self-adjoint map"}
 
 If $\alpha$ is self-adjoint, then
 
@@ -40,7 +42,7 @@ If $v\in W^\perp$ and $w\in W$, then $\langle\alpha^*v,w\rangle=\langle v,\alpha
 
 :::
 
-::: {#thm-spectral-theorem-self-adjoint .theorem name="Spectral theorem for self-adjoint maps" generalizes="thm-spectral-theorem"}
+::: {#thm-spectral-theorem-self-adjoint .theorem name="Spectral theorem for self-adjoint maps"}
 
 If $\alpha\in\operatorname{End}(V)$ is self-adjoint, then $V$ has an orthonormal basis of eigenvectors of $\alpha$, and all eigenvalues are real. Equivalently, $V$ is the orthogonal direct sum of the eigenspaces of $\alpha$.
 
@@ -62,14 +64,15 @@ Induction on $n=\dim V$; $n=0$ is trivial.
 
 ::: {#cor-real-symmetric-orthogonally-diagonalisable .corollary name="Matrix forms"}
 
-1. For every real symmetric $A$ there is $P\in O(n)$ with $P^{\mathsf T}AP=P^{-1}AP$ diagonal and real.
+1. For every real symmetric $A$ there is $P\in O(n)$ with $P^{\mathsf T}AP=P^{-1}AP=\Lambda$ diagonal and real. Equivalently, with $\mathbf q_i$ the columns of $P$ (orthonormal eigenvectors),
+$$A=P\Lambda P^{\mathsf T}=\lambda_1\mathbf q_1\mathbf q_1^{\mathsf T}+\dots+\lambda_n\mathbf q_n\mathbf q_n^{\mathsf T}.$$
 2. For every Hermitian $A$ there is $P\in U(n)$ with $P^{\mathsf H}AP=P^{-1}AP$ diagonal and real.
 
 :::
 
 ::: {.proof}
 
-Apply @thm-spectral-theorem-self-adjoint to $\mathbf x\mapsto A\mathbf x$ on $\mathbb R^n$ or $\mathbb C^n$ with the standard inner product, and let the columns of $P$ be the orthonormal eigenvectors. $P$ is orthogonal or unitary by @thm-isometry-characterisations.
+Apply @thm-spectral-theorem-self-adjoint to $\mathbf x\mapsto A\mathbf x$ on $\mathbb R^n$ or $\mathbb C^n$ with the standard inner product, and let the columns of $P$ be the orthonormal eigenvectors. $P$ is orthogonal or unitary by @thm-isometry-characterisations. The sum of rank-one matrices is $(P\Lambda)P^{\mathsf T}$ multiplied as columns times rows (@thm-four-ways-to-multiply).
 
 :::
 

@@ -33,7 +33,7 @@ $$\Bigl\|\int_a^bf\Bigr\|_2\le\int_a^b\|f(t)\|_2\,dt.$$
 
 2. By linearity, $\|v\|_2^2=\sum_iv_i\int_a^bf_i=\int_a^b\langle v,f(t)\rangle\,dt$.
 
-3. By @thm-cauchy-schwarz and monotonicity of the integral (@prp-integral-monotone), this is at most $\int_a^b\|v\|_2\|f(t)\|_2\,dt=\|v\|_2\int_a^b\|f\|_2$. Divide by $\|v\|_2>0$.
+3. By @thm-cauchy-schwarz-inner-product and monotonicity of the integral (@prp-integral-monotone), this is at most $\int_a^b\|v\|_2\|f(t)\|_2\,dt=\|v\|_2\int_a^b\|f\|_2$. Divide by $\|v\|_2>0$.
 
 :::
 

@@ -1,11 +1,13 @@
 ---
 title: "Linear Maps and Isomorphisms"
-sources: [camib-la-2]
+sources: [camib-la-2, mit1806-30]
 requires: [math/linear-algebra/abstract-vector-spaces/bases-and-dimension, math/linear-algebra/positive-definite/linear-transformations]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 2.1, in our own wording; examples ours; proofs written out in steps. MIT 18.06 introduces linear transformations of R^n (def-linear-transformation, prp-linear-map-determined-by-basis); the versions here work over any field and carry generalizes=. -->
+
+<!-- Merged 2026-11-20 (owner): prp-linear-map-determined-by-basis (18.06 L30) merged into thm-linear-map-from-basis (same two-step proof). -->
 
 Linear maps are the maps between vector spaces that respect the structure. Following the Cambridge course, they are written with Greek letters $\alpha,\beta$, and $U,V,W$ are vector spaces over the same field $F$.
 
@@ -38,7 +40,7 @@ The linear maps $U\to V$ form a set $\mathcal L(U,V)$. A linear map is an *isomo
 
 :::
 
-::: {#thm-linear-map-from-basis .theorem name="A linear map is free on a basis" generalizes="prp-linear-map-determined-by-basis"}
+::: {#thm-linear-map-from-basis .theorem name="A linear map is free on a basis"}
 
 Let $e_1,\dots,e_n$ be a basis of $U$ and $v_1,\dots,v_n$ any vectors of $V$. There is exactly one linear map $\alpha:U\to V$ with $\alpha(e_i)=v_i$ for all $i$.
 

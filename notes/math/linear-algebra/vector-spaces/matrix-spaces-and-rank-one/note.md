@@ -22,25 +22,11 @@ Note $\dim S+\dim U=12=\dim(S+U)+\dim(S\cap U)$.
 
 :::
 
-::: {#thm-dimension-of-sum .theorem name="Dimension of a sum of subspaces"}
+<!-- Merged 2026-11-20 (owner): the block thm-dimension-of-sum was removed in favour of thm-dimension-of-sum-and-intersection (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-For finite-dimensional subspaces $V$ and $W$ of a vector space,
-$$\dim(V+W)+\dim(V\cap W)=\dim V+\dim W,$$
-where $V+W=\{\mathbf{v}+\mathbf{w}:\mathbf{v}\in V,\mathbf{w}\in W\}$.
-
-:::
-
-::: {.proof}
-
-1. Take a basis $\mathbf{u}_1,\dots,\mathbf{u}_k$ of $V\cap W$ and extend it to a basis $\mathbf{u}_i,\mathbf{v}_1,\dots,\mathbf{v}_p$ of $V$ and to a basis $\mathbf{u}_i,\mathbf{w}_1,\dots,\mathbf{w}_q$ of $W$ (extension works as in step 2 of @cor-basis-from-independent-set).
-
-2. The list $\mathbf{u}_i,\mathbf{v}_j,\mathbf{w}_l$ spans $V+W$.
-
-3. It is independent: if $\sum a_i\mathbf{u}_i+\sum b_j\mathbf{v}_j+\sum c_l\mathbf{w}_l=\mathbf{0}$, then $\sum c_l\mathbf{w}_l=-\sum a_i\mathbf{u}_i-\sum b_j\mathbf{v}_j$ lies in $V\cap W$, so it is a combination of the $\mathbf{u}_i$. Independence of the basis of $W$ forces all $c_l=0$, and then independence of the basis of $V$ forces all $a_i,b_j=0$.
-
-4. Counting, $\dim(V+W)=k+p+q=(k+p)+(k+q)-k$.
-
-:::
+**Dimension of a sum.** For finite-dimensional subspaces $V$ and $W$ of a vector space, with $V+W=\{\mathbf{v}+\mathbf{w}\}$,
+$$\dim(V+W)+\dim(V\cap W)=\dim V+\dim W.$$
+The proof (extend a basis of $V\cap W$ to bases of $V$ and of $W$, and check that the combined list is a basis of $V+W$) is @thm-dimension-of-sum-and-intersection.
 
 ::: {#exm-solution-space-of-ode .example name="Solutions of a differential equation"}
 

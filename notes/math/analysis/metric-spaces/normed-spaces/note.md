@@ -28,7 +28,7 @@ The metric axioms follow from the norm axioms; for the triangle inequality, $\|u
 1. On $\mathbb R^n$: $\|x\|_1=\sum_i|x_i|$, $\|x\|_2=\bigl(\sum_ix_i^2\bigr)^{1/2}$ and $\|x\|_\infty=\max_i|x_i|$.
 2. On $C[a,b]$: the *uniform norm* $\|f\|_\infty=\sup_{[a,b]}|f|$ and $\|f\|_1=\int_a^b|f|$, giving the metrics $d_\infty$ and $d_1$ of @exm-metric-spaces.
 
-For $\|\cdot\|_1$ and $\|\cdot\|_\infty$ all axioms are immediate. For $\|\cdot\|_2$ the triangle inequality is @thm-cauchy-schwarz; more generally it holds for every norm coming from an inner product.
+For $\|\cdot\|_1$ and $\|\cdot\|_\infty$ all axioms are immediate. For $\|\cdot\|_2$ the triangle inequality is @cor-triangle-inequality-inner-product; more generally it holds for every norm coming from an inner product.
 
 :::
 
@@ -40,7 +40,7 @@ An *inner product* on a real vector space $V$ is a function $\langle\cdot,\cdot\
 
 Examples: the dot product on $\mathbb R^n$, and $\langle f,g\rangle=\int_a^bfg$ on $C[a,b]$ (@def-function-inner-product).
 
-::: {#thm-inner-product-norm .theorem name="Cauchy–Schwarz; an inner product gives a norm" generalizes="thm-cauchy-schwarz"}
+::: {#thm-inner-product-norm .theorem name="Cauchy–Schwarz; an inner product gives a norm" related="thm-cauchy-schwarz-inner-product"}
 
 For an inner product, $|\langle v,w\rangle|\le\|v\|\,\|w\|$ where $\|v\|=\sqrt{\langle v,v\rangle}$, and $\|\cdot\|$ is a norm.
 
@@ -111,7 +111,7 @@ Any two norms on a finite-dimensional real vector space are Lipschitz equivalent
 
 1. *Reduce to $\mathbb R^n$.* Lipschitz equivalence is an equivalence relation, so it is enough to show every norm $\|\cdot\|$ is equivalent to one fixed norm. Choosing a basis $e_1,\dots,e_n$ identifies $V$ with $\mathbb R^n$; we compare $\|\cdot\|$ with $\|\cdot\|_2$ on the coordinates.
 
-2. *Upper bound.* For $x=\sum x_ie_i$, by the triangle inequality and @thm-cauchy-schwarz,
+2. *Upper bound.* For $x=\sum x_ie_i$, by the triangle inequality and @thm-cauchy-schwarz-inner-product,
 $$\|x\|\le\sum_i|x_i|\,\|e_i\|\le\Bigl(\sum_i\|e_i\|^2\Bigr)^{1/2}\|x\|_2=B\|x\|_2.$$
 In particular $\bigl|\|x\|-\|y\|\bigr|\le\|x-y\|\le B\|x-y\|_2$, so $\|\cdot\|$ is continuous with respect to $\|\cdot\|_2$.
 

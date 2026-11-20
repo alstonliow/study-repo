@@ -35,7 +35,7 @@ $$\|A\|=\sup\{\|Ax\|:x\in\mathbb R^n,\ \|x\|\le1\}.$$
 
 3. $\|BAx\|\le\|B\|\|Ax\|\le\|B\|\|A\|\|x\|$; apply part 1.
 
-4. $|a_{ij}|=|(Ae_j)_i|\le\|Ae_j\|\le\|A\|$. For the upper bound, by @thm-cauchy-schwarz $(Ax)_i^2=\bigl(\sum_ja_{ij}x_j\bigr)^2\le\bigl(\sum_ja_{ij}^2\bigr)\|x\|^2$; sum over $i$.
+4. $|a_{ij}|=|(Ae_j)_i|\le\|Ae_j\|\le\|A\|$. For the upper bound, by @thm-cauchy-schwarz-inner-product $(Ax)_i^2=\bigl(\sum_ja_{ij}x_j\bigr)^2\le\bigl(\sum_ja_{ij}^2\bigr)\|x\|^2$; sum over $i$.
 
 :::
 
@@ -85,7 +85,7 @@ Let $f:[a,b]\to\mathbb R^m$ be continuous, differentiable on $(a,b)$, with $\|f'
 
 2. By @thm-mean-value, $g(b)-g(a)=(b-a)\,v\cdot f'(t)$ for some $t\in(a,b)$. The left side is $v\cdot v=\|v\|^2$.
 
-3. By @thm-cauchy-schwarz, $\|v\|^2\le(b-a)\|v\|\|f'(t)\|\le(b-a)M\|v\|$. Divide by $\|v\|$ if $v\ne0$.
+3. By @thm-cauchy-schwarz-inner-product, $\|v\|^2\le(b-a)\|v\|\|f'(t)\|\le(b-a)M\|v\|$. Divide by $\|v\|$ if $v\ne0$.
 
 :::
 

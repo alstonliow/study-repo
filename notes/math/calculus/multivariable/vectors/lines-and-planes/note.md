@@ -81,7 +81,7 @@ Let $A$ be a $3\times3$ matrix whose rows $\mathbf{N}_1,\mathbf{N}_2,\mathbf{N}_
 
 ::: {.proof}
 
-1. If $\det A\ne0$ then $A$ is invertible (@thm-inverse-by-cofactors); multiplying $A\mathbf{x}=\mathbf{b}$ by $A^{-1}$ shows that $A^{-1}\mathbf{b}$ is the only possible solution, and it is one.
+1. If $\det A\ne0$ then $A$ is invertible (@thm-adjugate); multiplying $A\mathbf{x}=\mathbf{b}$ by $A^{-1}$ shows that $A^{-1}\mathbf{b}$ is the only possible solution, and it is one.
 
 2. If $\det A=0$ the parallelepiped with edges $\mathbf{N}_1,\mathbf{N}_2,\mathbf{N}_3$ has volume $0$ (@thm-triple-product), so the normals lie in one plane through the origin. A non-zero vector $\mathbf{w}$ perpendicular to that plane (for instance $\mathbf{N}_1\times\mathbf{N}_2$ if it is not $\mathbf{0}$) is parallel to all three planes of the system.
 

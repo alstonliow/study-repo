@@ -12,7 +12,7 @@
 ::: {.solution for="prob-mit1806s10-8-q7" status="draft"}
 1. The hidden assumption is that $\mathbf{x}$ is real. An eigenvector for a complex $\lambda$ has complex components, and then $\mathbf{x}^{\mathsf T}A\mathbf{x}$ and $\mathbf{x}^{\mathsf T}\mathbf{x}$ need not be real, and $\mathbf{x}^{\mathsf T}\mathbf{x}$ can even be $0$.
 
-2. Test: $A\mathbf{x}=(-1,i)=i\,(i,1)$, so $\lambda=i$. But $\mathbf{x}^{\mathsf T}\mathbf{x}=i^2+1=0$ and $\mathbf{x}^{\mathsf T}A\mathbf{x}=i\cdot(-1)+1\cdot i=0$: the "formula" is $0/0$. The correct tool is $\bar{\mathbf{x}}^{\mathsf T}\mathbf{x}>0$, which proves realness only when $A$ is symmetric (@thm-symmetric-real-eigenvalues).
+2. Test: $A\mathbf{x}=(-1,i)=i\,(i,1)$, so $\lambda=i$. But $\mathbf{x}^{\mathsf T}\mathbf{x}=i^2+1=0$ and $\mathbf{x}^{\mathsf T}A\mathbf{x}=i\cdot(-1)+1\cdot i=0$: the "formula" is $0/0$. The correct tool is $\bar{\mathbf{x}}^{\mathsf T}\mathbf{x}>0$, which proves realness only when $A$ is symmetric (@lem-self-adjoint-eigenvalues).
 :::
 
 ::: {.solution for="prob-mit1806s10-8-q8" status="draft"}

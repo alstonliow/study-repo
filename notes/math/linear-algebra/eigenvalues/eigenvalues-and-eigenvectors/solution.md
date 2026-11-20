@@ -2,7 +2,7 @@
      against the official answers; not copied. Owner to review, then remove status. -->
 
 ::: {.solution for="prob-mit1806s10-7-q8" status="draft"}
-(a) The eigenvalues are distinct, so $B=S\Lambda S^{-1}$ with $\Lambda=\operatorname{diag}(0,1,2)$ (@thm-distinct-eigenvalues-independent). Multiplying by invertible matrices does not change the rank, so $\operatorname{rank}B=\operatorname{rank}\Lambda=2$.
+(a) The eigenvalues are distinct, so $B=S\Lambda S^{-1}$ with $\Lambda=\operatorname{diag}(0,1,2)$ (@lem-eigenspaces-independent). Multiplying by invertible matrices does not change the rank, so $\operatorname{rank}B=\operatorname{rank}\Lambda=2$.
 
 (b) $\det B^{\mathsf T}B=(\det B)^2=(0\cdot1\cdot2)^2=0$.
 

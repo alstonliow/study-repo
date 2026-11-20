@@ -43,23 +43,9 @@ One vector, two coordinate systems. In the basis $\mathbf w_1,\mathbf w_2$ (grid
 
 :::
 
-::: {#thm-change-of-basis-similar .theorem name="Change of basis gives a similar matrix"}
+<!-- Merged 2026-11-20 (owner): the block thm-change-of-basis-similar was removed in favour of prp-endomorphism-change-of-basis (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-If a linear transformation $T:\mathbb{R}^n\to\mathbb{R}^n$ has matrix $A$ in one basis and $B$ in another, and $M$ converts coordinates in the second basis to coordinates in the first, then
-$$B=M^{-1}AM.$$
-In particular $A$ and $B$ are similar (@def-similar-matrices) and share their eigenvalues.
-
-:::
-
-::: {.proof}
-
-1. Start with second-basis coordinates $\mathbf{d}$. Then $M\mathbf{d}$ are the first-basis coordinates of the same vector.
-
-2. Applying $T$ in the first basis gives $AM\mathbf{d}$, and converting back gives $M^{-1}AM\mathbf{d}$.
-
-3. These are the second-basis coordinates of $T(\mathbf{v})$, which by @thm-matrix-represents-transformation are also $B\mathbf{d}$. Since $\mathbf{d}$ is arbitrary, $B=M^{-1}AM$.
-
-:::
+**Change of basis gives a similar matrix.** If $T:\mathbb{R}^n\to\mathbb{R}^n$ has matrix $A$ in one basis and $B$ in another, and $M$ converts coordinates in the second basis to coordinates in the first, then $B=M^{-1}AM$: convert to first-basis coordinates, apply $A$, convert back. So $A$ and $B$ are similar (@def-similar-matrices) and share their eigenvalues. See @prp-endomorphism-change-of-basis, and @thm-change-of-basis-two-spaces for different input and output bases.
 
 Choosing the eigenvectors as the basis gives $B=\Lambda$, as in @exm-matrix-of-projection. Choosing $\mathbf{v}$'s for the input and $\mathbf{u}$'s for the output, from the SVD (@thm-svd), gives the diagonal matrix $\Sigma$ even for rectangular $A$.
 

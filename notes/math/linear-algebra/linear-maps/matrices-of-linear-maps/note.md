@@ -1,15 +1,17 @@
 ---
 title: "Matrices of Linear Maps"
-sources: [camib-la-2]
+sources: [camib-la-2, mit1806-30]
 requires: [math/linear-algebra/linear-maps/linear-maps-and-isomorphisms]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 2.2, in our own wording; examples ours (checked with sympy); proofs written out in steps. MIT 18.06 defines the matrix of a transformation (def-matrix-of-linear-transformation) and states that it computes the map; the versions here prove that composition is matrix multiplication and that L(U,V) is isomorphic to a matrix space. Merge proposed to the owner. -->
 
+<!-- Merged 2026-11-20 (owner): def-matrix-of-linear-transformation (18.06 L30) merged into def-matrix-of-linear-map (same definition). -->
+
 Once bases are chosen, a linear map between finite-dimensional spaces is the same thing as a matrix. Let $U$ have basis $\mathcal B=(e_1,\dots,e_m)$ and $V$ basis $\mathcal C=(f_1,\dots,f_n)$; write $[u]_{\mathcal B}\in F^m$ for the coordinate column of $u$.
 
-::: {#def-matrix-of-linear-map .definition name="Matrix of a linear map" generalizes="def-matrix-of-linear-transformation"}
+::: {#def-matrix-of-linear-map .definition name="Matrix of a linear map"}
 
 The *matrix* of $\alpha\in\mathcal L(U,V)$ with respect to $\mathcal B$ and $\mathcal C$ is the $n\times m$ matrix $A=[\alpha]_{\mathcal B,\mathcal C}$ defined by
 $$\alpha(e_j)=\sum_{i=1}^na_{ij}f_i\qquad(j=1,\dots,m).$$

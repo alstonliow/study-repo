@@ -1,11 +1,13 @@
 ---
 title: "Trace, Determinant and Eigenvalues of an Endomorphism"
-sources: [camib-la-6]
+sources: [camib-la-6, mit1806-31, mit1806-22]
 requires: [math/linear-algebra/endomorphisms/determinants-over-a-field]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 6.1, in our own wording; examples ours (checked with sympy); proofs written out in steps. MIT 18.06 covers similar matrices, eigenvalues and diagonalization for real and complex matrices (def-similar-matrices, def-eigenvalue, thm-distinct-eigenvalues-independent, thm-diagonalization); the basis-free versions here carry generalizes=. Merges proposed to the owner. -->
+
+<!-- Merged 2026-11-20 (owner): thm-change-of-basis-similar (18.06 L31) merged into prp-endomorphism-change-of-basis; thm-distinct-eigenvalues-independent (L22) merged into lem-eigenspaces-independent, its "n distinct eigenvalues give a diagonalisable matrix" part added to thm-diagonalizable-iff-eigenspaces. -->
 
 An *endomorphism* of $V$ is a linear map $\alpha:V\to V$; they form the space $\operatorname{End}(V)=\mathcal L(V,V)$, and $\iota$ denotes the identity. Throughout, $V$ is finite-dimensional over $F$ with $\dim V=n$, and an endomorphism is represented using the same basis $\mathcal B$ for input and output: $[\alpha]_{\mathcal B}=[\alpha]_{\mathcal B,\mathcal B}$.
 
@@ -66,7 +68,7 @@ $\lambda$ is an eigenvalue $\iff$ $\ker(\alpha-\lambda\iota)\ne\{0\}$ $\iff$ $\a
 
 The eigenvalues must lie in $F$. Rotation by $\frac\pi2$ of $\mathbb R^2$ has $\chi(t)=t^2+1$ and no real eigenvalues; as an endomorphism of $\mathbb C^2$ it has eigenvalues $\pm i$.
 
-::: {#lem-eigenspaces-independent .lemma name="Eigenspaces form a direct sum" generalizes="thm-distinct-eigenvalues-independent"}
+::: {#lem-eigenspaces-independent .lemma name="Eigenspaces form a direct sum"}
 
 If $\lambda_1,\dots,\lambda_k$ are distinct eigenvalues of $\alpha$, then $E(\lambda_1)+\dots+E(\lambda_k)$ is a direct sum.
 
@@ -96,6 +98,8 @@ Let $\lambda_1,\dots,\lambda_k$ be the distinct eigenvalues of $\alpha$. The fol
 2. $V=E(\lambda_1)\oplus\dots\oplus E(\lambda_k)$;
 3. $\sum_i\dim E(\lambda_i)=n$.
 
+In particular, if $\alpha$ has $n=\dim V$ distinct eigenvalues, it is diagonalisable.
+
 :::
 
 ::: {.proof}
@@ -105,6 +109,8 @@ Let $\lambda_1,\dots,\lambda_k$ be the distinct eigenvalues of $\alpha$. The fol
 2. (2)⇒(1): concatenating bases of the $E(\lambda_i)$ gives a basis of $V$ (@prp-direct-sum-criteria) made of eigenvectors.
 
 3. (2)⇔(3): the sum is direct by @lem-eigenspaces-independent, so its dimension is $\sum\dim E(\lambda_i)$ (@prp-direct-sum-criteria), and a subspace of dimension $n$ is $V$.
+
+4. With $n$ distinct eigenvalues each $\dim E(\lambda_i)\ge1$, so the sum in (3) is at least $n$, hence equal to $n$.
 
 :::
 

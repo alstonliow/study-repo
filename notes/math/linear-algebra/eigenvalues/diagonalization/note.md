@@ -24,21 +24,9 @@ $$AS=S\Lambda,\qquad A=S\Lambda S^{-1},\qquad A^k=S\Lambda^kS^{-1}.$$
 
 :::
 
-::: {#thm-distinct-eigenvalues-independent .theorem name="Distinct eigenvalues give independent eigenvectors"}
+<!-- Merged 2026-11-20 (owner): the block thm-distinct-eigenvalues-independent was removed in favour of lem-eigenspaces-independent (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-Eigenvectors belonging to different eigenvalues are linearly independent. In particular, if the $n$ eigenvalues of $A$ are distinct, $A$ is diagonalizable.
-
-:::
-
-::: {.proof}
-
-1. Suppose the claim is false, and take a shortest dependent list $\mathbf{x}_1,\dots,\mathbf{x}_k$ of eigenvectors with distinct eigenvalues: $c_1\mathbf{x}_1+\dots+c_k\mathbf{x}_k=\mathbf{0}$ with all $c_i\neq0$ (otherwise a shorter list would be dependent), and $k\ge2$ since eigenvectors are nonzero.
-
-2. Apply $A-\lambda_kI$: $(A-\lambda_kI)\mathbf{x}_i=(\lambda_i-\lambda_k)\mathbf{x}_i$, so $\sum_{i<k}c_i(\lambda_i-\lambda_k)\mathbf{x}_i=\mathbf{0}$.
-
-3. The coefficients $c_i(\lambda_i-\lambda_k)$ are nonzero for $i<k$, which gives a shorter dependent list, a contradiction.
-
-:::
+**Distinct eigenvalues give independent eigenvectors.** Eigenvectors belonging to different eigenvalues are linearly independent (@lem-eigenspaces-independent). In particular, if the $n$ eigenvalues of $A$ are distinct, $A$ is diagonalizable (@thm-diagonalizable-iff-eigenspaces).
 
 ::: {#rmk-diagonalization-1 .remark name="Repeated eigenvalues"}
 

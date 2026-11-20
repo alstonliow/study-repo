@@ -55,13 +55,11 @@ and the normal equations become $\hat{\mathbf{x}}=Q^{\mathsf T}\mathbf{b}$.
 
 :::
 
-::: {#def-gram-schmidt .definition name="Gram–Schmidt process"}
+<!-- Merged 2026-11-20 (owner): the block def-gram-schmidt was removed in favour of thm-gram-schmidt-abstract (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
-Given independent vectors $\mathbf{a}_1,\dots,\mathbf{a}_n$, define for $k=1,\dots,n$
+**The Gram–Schmidt process.** Given independent vectors $\mathbf{a}_1,\dots,\mathbf{a}_n$, put for $k=1,\dots,n$
 $$\mathbf{A}_k=\mathbf{a}_k-\sum_{j<k}(\mathbf{q}_j^{\mathsf T}\mathbf{a}_k)\,\mathbf{q}_j,\qquad \mathbf{q}_k=\frac{\mathbf{A}_k}{\lVert\mathbf{A}_k\rVert}.$$
-Each step subtracts from $\mathbf{a}_k$ its projection onto the span of the earlier $\mathbf{q}$'s and normalises what is left.
-
-:::
+Each step subtracts from $\mathbf{a}_k$ its projection onto the span of the earlier $\mathbf{q}$'s and normalises what is left. The $\mathbf q_k$ are orthonormal and $\mathbf q_1,\dots,\mathbf q_k$ span the same space as $\mathbf a_1,\dots,\mathbf a_k$; this is @thm-gram-schmidt-abstract (with the dot product $\langle\mathbf a,\mathbf q\rangle=\mathbf q^{\mathsf T}\mathbf a$), which also gives the pseudocode.
 
 ::: {#fig-orthonormal-bases-and-gram-schmidt-1}
 
@@ -86,23 +84,7 @@ One Gram–Schmidt step: subtract from $\mathbf a_2$ its projection on $\mathbf 
 
 :::
 
-::: {#thm-gram-schmidt .theorem name="Gram–Schmidt produces an orthonormal basis"}
-
-The vectors $\mathbf{q}_1,\dots,\mathbf{q}_n$ of @def-gram-schmidt are orthonormal, and for each $k$ they span the same space as $\mathbf{a}_1,\dots,\mathbf{a}_k$.
-
-:::
-
-::: {.proof}
-
-1. Induction on $k$. Assume $\mathbf{q}_1,\dots,\mathbf{q}_{k-1}$ are orthonormal and span the same space as $\mathbf{a}_1,\dots,\mathbf{a}_{k-1}$.
-
-2. $\mathbf{A}_k\ne\mathbf{0}$: otherwise $\mathbf{a}_k$ would be a combination of the $\mathbf{q}_j$, $j<k$, hence of $\mathbf{a}_1,\dots,\mathbf{a}_{k-1}$, contradicting independence. So $\mathbf{q}_k$ is defined.
-
-3. For $i<k$, $\mathbf{q}_i^{\mathsf T}\mathbf{A}_k=\mathbf{q}_i^{\mathsf T}\mathbf{a}_k-\mathbf{q}_i^{\mathsf T}\mathbf{a}_k=0$, using orthonormality of the earlier vectors.
-
-4. $\mathbf{q}_k$ is a combination of $\mathbf{a}_k$ and the earlier $\mathbf{q}$'s, and $\mathbf{a}_k$ is a combination of $\mathbf{q}_k$ and the earlier $\mathbf{q}$'s; so the spans agree.
-
-:::
+<!-- Merged 2026-11-20 (owner): the block thm-gram-schmidt was removed in favour of thm-gram-schmidt-abstract (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
 ::: {#thm-qr-factorization .theorem name="A = QR"}
 
@@ -112,7 +94,7 @@ If $A$ is $m\times n$ with independent columns, then $A=QR$, where $Q$ is $m\tim
 
 ::: {.proof}
 
-1. Run Gram–Schmidt on the columns of $A$. By @thm-gram-schmidt, $\mathbf{a}_k$ is a combination of $\mathbf{q}_1,\dots,\mathbf{q}_k$, namely $\mathbf{a}_k=\sum_{j\le k}(\mathbf{q}_j^{\mathsf T}\mathbf{a}_k)\mathbf{q}_j$.
+1. Run Gram–Schmidt on the columns of $A$. By @thm-gram-schmidt-abstract, $\mathbf{a}_k$ is a combination of $\mathbf{q}_1,\dots,\mathbf{q}_k$, namely $\mathbf{a}_k=\sum_{j\le k}(\mathbf{q}_j^{\mathsf T}\mathbf{a}_k)\mathbf{q}_j$.
 
 2. So $A=QR$ with $r_{jk}=\mathbf{q}_j^{\mathsf T}\mathbf{a}_k$ for $j\le k$ and $r_{jk}=0$ for $j>k$, i.e. $R=Q^{\mathsf T}A$ is upper triangular.
 

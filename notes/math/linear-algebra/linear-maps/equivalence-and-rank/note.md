@@ -9,7 +9,7 @@ status: draft
 
 Let $\alpha:U\to V$ with $\dim U=m$, $\dim V=n$. Changing the bases of $U$ and $V$ changes the matrix of $\alpha$; this note finds how, and what is left unchanged.
 
-::: {#thm-change-of-basis-two-spaces .theorem name="Change of basis" generalizes="thm-change-of-basis-similar"}
+::: {#thm-change-of-basis-two-spaces .theorem name="Change of basis"}
 
 Let $\mathcal B,\mathcal B'$ be bases of $U$ and $\mathcal C,\mathcal C'$ bases of $V$. Let $P\in\operatorname{GL}_m(F)$ be the matrix whose column $j$ is $[e_j']_{\mathcal B}$, and $Q\in\operatorname{GL}_n(F)$ the matrix whose column $j$ is $[f_j']_{\mathcal C}$. Then
 $$[\alpha]_{\mathcal B',\mathcal C'}=Q^{-1}\,[\alpha]_{\mathcal B,\mathcal C}\,P.$$
