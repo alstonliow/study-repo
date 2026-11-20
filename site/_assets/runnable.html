@@ -5,8 +5,8 @@
      Colours come from the theme variables of styles.css. Hidden bar in print.
      Coding exercises (SPEC §6.4): a .problem-group[data-kind="code"] gets an
      editor that starts from the starter (the reader's code is kept per exercise
-     in localStorage), Run tests (each test passed / failed) and Reset. Pages
-     with coding exercises get an All / Written / Code filter above them.
+     in localStorage), Run tests (each test passed / failed) and Reset. The
+     exercise filter bar (summary.html) offers Written / Code.
      The solution of a coding exercise opens on the approach (the numbered
      steps); its code is folded under "Show the code", with "Run tests on it"
      and "Load into editor" (asks before replacing the reader's own code). -->
@@ -45,17 +45,12 @@
 .coding-results li.bad::before { content: "\2717  "; color: var(--bs-danger); font-weight: 700; }
 .coding-results li.bad .msg { color: var(--bs-danger); }
 .coding-total { margin-top: .3rem; font-size: .85em; font-weight: 600; }
-.exercise-kind-filter { display: flex; gap: .35rem; margin: .4rem 0 1rem; font-size: .8rem; }
-.exercise-kind-filter button { font: inherit; padding: .1rem .7rem; border-radius: 999px; cursor: pointer;
-  border: 1px solid var(--rule); background: transparent; color: inherit; }
-.exercise-kind-filter button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--sidebg); }
-.kind-hidden { display: none !important; }
 .sol-label { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; opacity: .6; margin: .2rem 0 .3rem; }
 details.sol-code { margin: .6rem 0 .2rem; }
 details.sol-code > summary { cursor: pointer; font-size: .85em; font-weight: 600; color: var(--accent); margin: .2rem 0 .4rem; }
 details.sol-code .run-cell { margin: .4rem 0 0; }
 @media print { details.sol-code > summary, details.sol-code .run-bar, details.sol-code .run-out { display: none !important; } }
-@media print { .exercise-kind-filter, .coding-cell .run-bar, .coding-cell .run-edit, .coding-cell .run-out { display: none !important; }
+@media print { .coding-cell .run-bar, .coding-cell .run-edit, .coding-cell .run-out { display: none !important; }
   .coding-starter { display: block !important; } }
 </style>
 <script>
@@ -319,29 +314,8 @@ json.dumps(out)
     det.append(box);
   }
   window.addEventListener("beforeprint", () => document.querySelectorAll("details.sol-code").forEach(d => { d.open = true; }));
-  function kindFilter() {
-    const groups = [...document.querySelectorAll(".problem-group[data-kind]")];
-    if (!groups.some(g => g.dataset.kind === "code")) return;
-    const bar = document.createElement("div");
-    bar.className = "exercise-kind-filter";
-    bar.setAttribute("role", "group");
-    bar.setAttribute("aria-label", "Show exercises");
-    const choices = [["all", "All"], ["written", "Written"], ["code", "Code"]];
-    const buttons = choices.map(([k, label]) => {
-      const b = button(label, `Show ${label.toLowerCase()} exercises`, () => pick(k));
-      b.dataset.kind = k; return b;
-    });
-    function pick(k) {
-      buttons.forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kind === k)));
-      groups.forEach(g => g.classList.toggle("kind-hidden", k !== "all" && g.dataset.kind !== k));
-    }
-    bar.append(...buttons);
-    groups[0].before(bar);
-    pick("all");
-  }
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.problem-group[data-kind="code"]').forEach(codingCell);
-    kindFilter();
   });
 })();
 </script>

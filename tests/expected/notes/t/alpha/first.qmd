@@ -36,7 +36,7 @@ An example with $x$ and $y$, and [Definition [1.1.1]{.num data-note="t/alpha/fir
 
 ## Exercises
 
-:::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium" data-kind="written"}
+:::: {.problem-group data-courses="demo" data-item="prob-first-01" data-level="medium" data-kind="written" data-source="res-demo" data-source-label="Demo course notes"}
 ::: {#prob-first-01 .problem}
 [Exercise 1]{.problem-title}[DEMO 1.1 Q1]{.problem-source} [medium]{.level-badge .level-medium}
 
@@ -49,7 +49,7 @@ Show that a widget is a widget.
 
 ::::
 
-:::: {.problem-group data-courses="demo" data-item="prob-first-02" data-level="" data-kind="written"}
+:::: {.problem-group data-courses="demo" data-item="prob-first-02" data-level="" data-kind="written" data-source="res-demo" data-source-label="Demo course notes"}
 ::: {#prob-first-02 .problem}
 [Exercise 2]{.problem-title}[DEMO 1.1 Q2]{.problem-source}
 
@@ -58,7 +58,7 @@ Statement two.
 
 ::::
 
-:::: {.problem-group data-courses="demo" data-item="prob-first-code" data-level="" data-kind="code" data-packages=""}
+:::: {.problem-group data-courses="demo" data-item="prob-first-code" data-level="" data-kind="code" data-packages="" data-source="res-demo" data-source-label="Demo course notes"}
 ::: {#prob-first-code .problem}
 [Exercise 3]{.problem-title}[DEMO 1.10 Basics exercises]{.problem-source}[Code]{.code-badge}
 
@@ -96,7 +96,7 @@ def double(x):
 
 ::::
 
-:::: {.problem-group data-courses="demo" data-item="prob-first-withheld" data-level="" data-kind="written"}
+:::: {.problem-group data-courses="demo" data-item="prob-first-withheld" data-level="" data-kind="written" data-source="res-demo" data-source-label="Demo course notes"}
 ::: {#prob-first-withheld .problem}
 [Exercise 4]{.problem-title}[DEMO 1.1 Q3]{.problem-source}
 

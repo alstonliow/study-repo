@@ -176,7 +176,11 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
         cs = " ".join(courses_of(pid))
         lv = a.get("level", "")
         kind = f'data-kind="code" data-packages="{",".join(coding.packages)}"' if coding else 'data-kind="written"'
-        out.append(f'{fo} {{.problem-group data-courses="{cs}" data-item="{pid}" data-level="{lv}" {kind}}}\n'
+        res = REPO.sources.resolve(src) if src else None     # the exercise filter groups by resource
+        rid = res.resource if res else ""
+        rlabel = REPO.resources[rid].title.replace('"', "'") if rid in REPO.resources else "Other"
+        out.append(f'{fo} {{.problem-group data-courses="{cs}" data-item="{pid}" data-level="{lv}" {kind} '
+                   f'data-source="{rid}" data-source-label="{rlabel}"}}\n'
                    f'{inner}\n{fo}\n')
     return "\n".join(out)
 
