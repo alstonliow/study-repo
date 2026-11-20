@@ -1,0 +1,42 @@
+# Cambridge Part IB Metric and Topological Spaces, Easter 2015, lecture notes (lectures by J. Rasmussen; unofficial notes
+# taken by Dexter Chua, https://dec41.user.srcf.net/h/IB_E/metric_and_topological_spaces), as a resource (meta/SPEC.md §17.12).
+# DRAFT for owner review. No licence is stated, so the notes are kept only locally in raw/CAM_IB_ANALYSIS_TOPOLOGY/2015
+# (metric_and_topological_spaces.pdf) and never copied; all study notes are in our own words.
+# Locator = section number of the notes (1-4); a source key is camib-at-m2. Node titles are our own short titles.
+# Node ids are stable. Written by hand alongside res-cam-ib-analysis-ii-notes (course camib-at, chapters 7-10).
+id: res-cam-ib-metric-topology-notes
+kind: course-notes
+title: Cambridge IB Metric and Topological Spaces Lecture Notes (Easter 2015)
+status: draft
+courses:
+- camib-at
+editions:
+- id: 2015-easter
+  current: true
+legacy_keys:
+  prefix: camib-at-m
+  edition: 2015-easter
+  pattern: ^camib-at-m(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: IB Metric and Topological Spaces §{section}
+  problem_label: IB Metric and Topological Spaces §{section} Q{n}
+nodes:
+- id: res-cam-ib-metric-topology-notes-metric-spaces
+  kind: section
+  title: Metric spaces and norms
+  at:
+    2015-easter: '1'
+- id: res-cam-ib-metric-topology-notes-topological-spaces
+  kind: section
+  title: Topological spaces
+  at:
+    2015-easter: '2'
+- id: res-cam-ib-metric-topology-notes-connectedness
+  kind: section
+  title: Connectedness
+  at:
+    2015-easter: '3'
+- id: res-cam-ib-metric-topology-notes-compactness
+  kind: section
+  title: Compactness
+  at:
+    2015-easter: '4'

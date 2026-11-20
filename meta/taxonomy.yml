@@ -371,12 +371,50 @@ parts:
           - exponential-and-trigonometric-functions
       - id: math/analysis/real/integration
         title: The Riemann Integral
-        desc: Upper and lower sums, Riemann's criterion, properties of the integral, integrable functions, uniform continuity, the fundamental theorem
+        desc: Upper and lower sums, Riemann's criterion, properties of the integral, integrable functions, uniform continuity, the fundamental theorem, Lebesgue's criterion
         notes:   # topic order on the website
           - riemann-integral
           - properties-of-the-integral
           - integrable-functions
           - fundamental-theorem-of-calculus
+          - lebesgue-criterion
+      - id: math/analysis/real/uniform-convergence
+        title: Uniform Convergence
+        desc: Pointwise and uniform convergence, uniformly Cauchy sequences, limits of continuous, integrable and differentiable functions, the Weierstrass M-test, power series, Weierstrass approximation
+        notes:   # topic order on the website
+          - uniform-convergence
+          - limits-integrals-derivatives
+          - series-of-functions
+          - weierstrass-approximation
+      - id: math/analysis/metric-spaces
+        title: Metric Spaces
+        desc: Metrics and norms, equivalence of norms in finite dimensions, open and closed sets, completeness, sequential compactness, continuous maps, the contraction mapping theorem, Picard–Lindelöf
+        notes:   # topic order on the website
+          - metric-spaces
+          - normed-spaces
+          - open-and-closed-sets
+          - completeness
+          - compact-metric-spaces
+          - continuous-maps
+          - contraction-mapping
+          - picard-lindelof
+      - id: math/analysis/topology
+        title: Topological Spaces
+        desc: Topologies, continuity and homeomorphisms, Hausdorff spaces, closure and interior, subspace, product and quotient topologies, connectedness, compactness
+        notes:   # topic order on the website
+          - topological-spaces
+          - closure-and-interior
+          - subspace-product-quotient
+          - connectedness
+          - compact-spaces
+      - id: math/analysis/differentiation
+        title: Differentiation in Several Variables
+        desc: The derivative as a linear map, partial derivatives, the operator norm, the chain rule, the mean value inequality, the inverse function theorem, second derivatives and Taylor's theorem
+        notes:   # topic order on the website
+          - derivative-of-maps
+          - chain-rule-and-mean-value
+          - inverse-function-theorem
+          - second-derivatives
   - title: Probability and Statistics
     field: Mathematics
     branches:
