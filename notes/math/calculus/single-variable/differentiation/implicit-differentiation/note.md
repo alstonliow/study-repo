@@ -40,20 +40,10 @@ For a rational number $a=m/n$ and $x>0$, $\dfrac{d}{dx}x^{a}=ax^{a-1}$.
 
 ## Derivatives of inverse functions
 
-::: {#thm-inverse-function-derivative .theorem name="Derivative of an inverse"}
-
-If $y=f(x)$ has a differentiable inverse $x=g(y)$ and $f'(x)\neq0$, then
+*Derivative of an inverse* (@thm-inverse-differentiable): if $y=f(x)$ has an inverse $x=g(y)$ and $f'(x)\neq0$, then
 $$g'(y)=\frac1{f'(x)},\qquad\text{that is}\qquad \frac{dx}{dy}=\frac{1}{dy/dx}.$$
+If $g$ is known to be differentiable, this is the chain rule applied to $f(g(y))=y$.
 
-:::
-
-::: {.proof}
-
-1. Differentiate $f(g(y))=y$ with respect to $y$ using @thm-derivative-chain-rule: $f'(g(y))\,g'(y)=1$.
-
-2. Divide by $f'(g(y))=f'(x)\neq0$.
-
-:::
 
 Geometrically, reflecting in $y=x$ (@prp-graph-of-inverse) turns a slope $m$ into $1/m$.
 

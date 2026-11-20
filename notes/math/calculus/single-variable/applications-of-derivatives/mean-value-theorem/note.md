@@ -16,7 +16,7 @@ If $f$ is continuous on $[a,b]$, differentiable on $(a,b)$, and $f(a)=f(b)$, the
 
 ::: {.proof}
 
-1. By @thm-extreme-value, $f$ has a maximum and a minimum on $[a,b]$.
+1. By @thm-extreme-value-proof, $f$ has a maximum and a minimum on $[a,b]$.
 
 2. If both occur at endpoints, they are equal (since $f(a)=f(b)$), so $f$ is constant and $f'=0$ everywhere.
 

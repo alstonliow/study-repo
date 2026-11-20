@@ -51,22 +51,12 @@ Sums, products and quotients (where the denominator is not $0$) of functions con
 
 :::
 
-::: {#thm-intermediate-value .theorem name="Intermediate value theorem"}
+Two theorems about continuous functions on a closed interval $[a,b]$ are used throughout: the *intermediate value theorem* (@thm-intermediate-value-proof: $f$ takes every value between $f(a)$ and $f(b)$) and the *extreme value theorem* (@thm-extreme-value-proof: $f$ attains a largest and a smallest value). Both are proved in @sec-math-analysis-real-continuity-extreme-and-intermediate-values.
 
-If $f$ is continuous on $[a,b]$ and $y$ lies between $f(a)$ and $f(b)$, then $f(c)=y$ for some $c\in[a,b]$.
-
-:::
-
-::: {#thm-extreme-value .theorem name="Extreme value theorem"}
-
-A function continuous on a closed bounded interval $[a,b]$ attains a largest and a smallest value there.
-
-:::
-
-Both theorems depend on the completeness of $\mathbb R$; we use them without proof. Both fail without continuity ($1/x$ on $[-1,1]$) or, for the second, on open intervals ($x$ on $(0,1)$ has no maximum).
+Both depend on the completeness of $\mathbb R$. Both fail without continuity ($1/x$ on $[-1,1]$) or, for the second, on open intervals ($x$ on $(0,1)$ has no maximum).
 
 ::: {#exm-ivt-root .example name="Locating a root"}
 
-$p(x)=x^3-x-1$ has $p(1)=-1<0<5=p(2)$, so by @thm-intermediate-value it has a root in $(1,2)$; halving the interval repeatedly (bisection) pins it down to $1.3247\ldots$.
+$p(x)=x^3-x-1$ has $p(1)=-1<0<5=p(2)$, so by @thm-intermediate-value-proof it has a root in $(1,2)$; halving the interval repeatedly (bisection) pins it down to $1.3247\ldots$.
 
 :::

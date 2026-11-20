@@ -1,11 +1,11 @@
 ---
 title: "Complex Power Series and the Radius of Convergence"
-sources: [cama1-6]
+sources: [cama1-6, mit1801-37]
 requires: [math/analysis/real/series/convergence-tests, math/analysis/real/sequences/limsup-and-liminf, math/calculus/single-variable/series/taylor-series]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Section 6 (introduction), in our own wording; proofs written out in steps. @def-power-series asserts that a radius of convergence exists; this note proves it, for complex power series. -->
+<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Section 6 (introduction), in our own wording; proofs written out in steps. Single-variable calculus asserts that a radius of convergence exists; this note proves it, for complex power series. Merged 2026-11-20 (owner): the 18.01 definition (former id def-power-series, MIT 18.01 Lecture 37) was removed; @def-radius-of-convergence is the single version, with the real case noted after it. -->
 
 A *complex power series* is $\sum_{n=0}^\infty a_nz^n$ with $a_n,z\in\mathbb C$; where it converges it defines a function of $z$. Its set of convergence is always a disc, up to the boundary circle, by the following lemma.
 
@@ -27,11 +27,11 @@ If $\sum a_nz^n$ converges and $|w|<|z|$, then $\sum a_nw^n$ converges absolutel
 
 Equivalently, if $\sum a_nz^n$ diverges and $|w|>|z|$, then $\sum a_nw^n$ diverges.
 
-::: {#def-radius-of-convergence .definition name="Radius of convergence" related="def-power-series"}
+::: {#def-radius-of-convergence .definition name="Radius of convergence"}
 
 The *radius of convergence* of $\sum a_nz^n$ is
 $$R=\sup\Bigl\{|z|:\sum a_nz^n\text{ converges}\Bigr\}\in[0,\infty],$$
-with $R=\infty$ if the set is unbounded. The open disc $\{z:|z|<R\}$ is the *disc of convergence*.
+with $R=\infty$ if the set is unbounded. The open disc $\{z:|z|<R\}$ is the *disc of convergence*. For a real power series $\sum a_nx^n$ with real $x$, the disc meets the real line in the interval $(-R,R)$.
 
 :::
 

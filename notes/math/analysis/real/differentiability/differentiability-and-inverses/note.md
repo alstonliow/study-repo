@@ -1,11 +1,11 @@
 ---
 title: "Limits of Functions and Differentiability"
-sources: [cama1-5]
+sources: [cama1-5, mit1801-5]
 requires: [math/analysis/real/continuity/extreme-and-intermediate-values, math/calculus/single-variable/differentiation/differentiation-rules]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Sections 5.1, 5.2 and 5.4, in our own wording; proofs written out in steps. The derivative and the rules of differentiation, with proofs, are in @sec-math-calculus-single-variable-differentiation-derivative, @sec-math-calculus-single-variable-differentiation-differentiation-rules and @sec-math-calculus-single-variable-differentiation-chain-rule; this note adds the little-o view of the derivative and the differentiability of inverse functions. -->
+<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Sections 5.1, 5.2 and 5.4, in our own wording; proofs written out in steps. The derivative and the rules of differentiation, with proofs, are in @sec-math-calculus-single-variable-differentiation-derivative, @sec-math-calculus-single-variable-differentiation-differentiation-rules and @sec-math-calculus-single-variable-differentiation-chain-rule; this note adds the little-o view of the derivative and the differentiability of inverse functions. Merged 2026-11-20 (owner): "Derivative of an inverse" from MIT 18.01 Lecture 5 (former id thm-inverse-function-derivative) was removed; @thm-inverse-differentiable is the single version, and its chain-rule proof (from 18.01) is kept after it. -->
 
 ## Limits of functions
 
@@ -53,7 +53,7 @@ The same view generalises directly to functions of several variables, where the 
 
 ## Inverse functions
 
-::: {#thm-inverse-differentiable .theorem name="Differentiability of the inverse" related="thm-inverse-function-derivative"}
+::: {#thm-inverse-differentiable .theorem name="Differentiability of the inverse"}
 
 Let $f:[a,b]\to[c,d]$ be continuous, strictly increasing, with $f(a)=c$, $f(b)=d$, differentiable on $(a,b)$ with $f'$ never $0$ there. Then the inverse $g$ is differentiable at every $y\in(c,d)$, and
 $$g'(y)=\frac1{f'(g(y))}.$$
@@ -71,7 +71,7 @@ $$\frac{g(y+k)-g(y)}{k}=\frac{h}{f(x+h)-f(x)}=\left(\frac{f(x+h)-f(x)}{h}\right)
 
 :::
 
-Unlike @thm-inverse-function-derivative, this does not assume that $g$ is differentiable; it proves it. For example $x^{1/q}$ is the inverse of $x^q$ on $(0,\infty)$, so its derivative is $\frac{1}{q(x^{1/q})^{q-1}}=\frac1qx^{1/q-1}$; by the chain rule $x^{p/q}=(x^{1/q})^p$ then has derivative $\frac pqx^{p/q-1}$.
+The theorem does not assume that $g$ is differentiable; it proves it. If $g$ is already known to be differentiable, the formula follows in one line by differentiating $f(g(y))=y$ with the chain rule (@thm-derivative-chain-rule): $f'(g(y))\,g'(y)=1$. In Leibniz notation, $\frac{dx}{dy}=\frac{1}{dy/dx}$. For example $x^{1/q}$ is the inverse of $x^q$ on $(0,\infty)$, so its derivative is $\frac{1}{q(x^{1/q})^{q-1}}=\frac1qx^{1/q-1}$; by the chain rule $x^{p/q}=(x^{1/q})^p$ then has derivative $\frac pqx^{p/q-1}$.
 
 ## Complex differentiability
 

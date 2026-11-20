@@ -1,11 +1,11 @@
 ---
 title: "Convergence Tests and Complex Series"
-sources: [cama1-3]
+sources: [cama1-3, mit1801-36]
 requires: [math/analysis/real/series/absolute-convergence]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Sections 3.3 and 3.4, in our own wording; proofs written out in steps. The condensation test is in @sec-math-analysis-real-series-series-and-comparison. -->
+<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Sections 3.3 and 3.4, in our own wording; proofs written out in steps. The condensation test is in @sec-math-analysis-real-series-series-and-comparison. Merged 2026-11-20 (owner): the 18.01 ratio test (former id thm-ratio-test, MIT 18.01 Lecture 36) was removed; @thm-ratio-test-general is the single version, and its divergence part 3 with proof comes from 18.01. -->
 
 ## Alternating series
 
@@ -33,12 +33,13 @@ For example $1-\frac1{\sqrt[3]2}+\frac1{\sqrt[3]3}-\cdots$ converges, though $\s
 
 ## The ratio test
 
-::: {#thm-ratio-test-general .theorem name="Ratio test (general form)" related="thm-ratio-test"}
+::: {#thm-ratio-test-general .theorem name="Ratio test (general form)"}
 
 Let $a_n\ne0$ for all $n$ (real or complex).
 
 1. If there are $c<1$ and $N$ with $\dfrac{|a_{n+1}|}{|a_n|}\le c$ for all $n\ge N$, then $\sum a_n$ converges absolutely.
 2. In particular, if $\dfrac{|a_{n+1}|}{|a_n|}\to\rho<1$, then $\sum a_n$ converges absolutely.
+3. If $\dfrac{|a_{n+1}|}{|a_n|}\to\rho>1$, then $\sum a_n$ diverges.
 
 :::
 
@@ -49,6 +50,8 @@ Let $a_n\ne0$ for all $n$ (real or complex).
 2. $\sum_k c^k|a_N|$ is a convergent geometric series (@thm-convergence-condition), so $\sum|a_n|$ converges by @thm-comparison-test, and $\sum a_n$ converges by @thm-absolute-implies-convergence.
 
 3. If the ratios tend to $\rho<1$, take $\varepsilon=\frac{1-\rho}2$: eventually the ratios are at most $\frac{1+\rho}2<1$, and part 1 applies with $c=\frac{1+\rho}2$.
+
+4. If the ratios tend to $\rho>1$, then eventually $|a_{n+1}|>|a_n|$, so $|a_n|$ is eventually increasing and positive, hence $a_n\not\to0$ and the series diverges (@thm-nth-term-test).
 
 :::
 

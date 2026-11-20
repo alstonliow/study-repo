@@ -10,13 +10,10 @@ status: draft
 
 <!-- Added 2026-11-18 from MIT 18.01 (Fall 2006), Lecture 37, in our own wording; proofs written out in steps. Numbers checked in Python. -->
 
-::: {#def-power-series .definition name="Power series, radius of convergence"}
+A *power series* is $\sum_{n=0}^\infty a_nx^n$. It has a *radius of convergence* $R\in[0,\infty]$ (@def-radius-of-convergence): it converges for $\lvert x\rvert<R$ and diverges for $\lvert x\rvert>R$, while at $x=\pm R$ anything can happen (@thm-radius-of-convergence).
 
-A power series is $\sum_{n=0}^\infty a_nx^n$. There is $R\in[0,\infty]$, the radius of convergence, such that the series converges for $\lvert x\rvert<R$ and diverges for $\lvert x\rvert>R$; at $x=\pm R$ anything can happen.
 
-:::
-
-The geometric series $\sum x^n=\frac1{1-x}$ has $R=1$. Inside the radius of convergence, power series can be added, multiplied, substituted into, and differentiated and integrated term by term, like polynomials (we use this without proof).
+The geometric series $\sum x^n=\frac1{1-x}$ has $R=1$. Inside the radius of convergence, power series can be added, multiplied, substituted into, and differentiated and integrated term by term, like polynomials (proved for differentiation in @thm-power-series-differentiable).
 
 ::: {#exm-series-from-geometric .example name="Series from the geometric series"}
 
@@ -58,15 +55,12 @@ and for $\lvert x\rvert<1$, $(1+x)^r=1+rx+\frac{r(r-1)}{2!}x^2+\frac{r(r-1)(r-2)
 
 :::
 
-::: {#thm-taylor-remainder .theorem name="Taylor's formula with remainder"}
-
-If $f^{(n+1)}$ is continuous between $a$ and $x$, then
+*Taylor's formula with remainder* (@thm-taylor-lagrange): if $f$ is $n+1$ times differentiable between $a$ and $x$, then
 $$f(x)=\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k+R_n(x),\qquad R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$$
 for some $c$ between $a$ and $x$.
 
-:::
 
-We use the remainder formula without proof (it follows from repeated use of the mean value theorem). It shows the series for $e^x$, $\sin x$, $\cos x$ converge to the functions: the remainders are at most $\frac{M\lvert x\rvert^{n+1}}{(n+1)!}\to0$.
+The formula is proved in @sec-math-analysis-real-differentiability-taylors-theorem, from repeated use of Rolle's theorem. It shows the series for $e^x$, $\sin x$, $\cos x$ converge to the functions: the remainders are at most $\frac{M\lvert x\rvert^{n+1}}{(n+1)!}\to0$.
 
 ::: {#exm-compute-e .example name="Computing $e$"}
 

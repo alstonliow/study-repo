@@ -1,15 +1,15 @@
 ---
 title: "Extreme and Intermediate Values"
-sources: [cama1-4]
+sources: [cama1-4, mit1801-2]
 requires: [math/analysis/real/continuity/continuous-functions, math/analysis/real/sequences/monotone-sequences]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Section 4.1, in our own wording; proofs written out in steps. The extreme and intermediate value theorems are stated without proof in @sec-math-calculus-single-variable-limits-continuity; here they are proved from completeness. -->
+<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Section 4.1, in our own wording; proofs written out in steps. Merged 2026-11-20 (owner): the statements of the two theorems formerly in @sec-math-calculus-single-variable-limits-continuity (MIT 18.01, former ids thm-extreme-value and thm-intermediate-value, which had no proofs) were removed; these blocks are the single versions. Statements and proofs from the Cambridge notes; the IVT statement allows $f(a)>f(b)$ as the 18.01 version did. -->
 
 Both theorems fail over $\mathbb Q$: $f(x)=x^2-2$ is continuous on $[0,2]\cap\mathbb Q$, negative at $0$ and positive at $2$, yet never $0$ there; and $1/(x^2-2)$ is continuous on $[0,2]\cap\mathbb Q$ but unbounded. So their proofs must use completeness, through Bolzano–Weierstrass or suprema.
 
-::: {#thm-extreme-value-proof .theorem name="Extreme value theorem" related="thm-extreme-value"}
+::: {#thm-extreme-value-proof .theorem name="Extreme value theorem"}
 
 If $f:[a,b]\to\mathbb R$ is continuous, then $f$ is bounded and attains its bounds: there are $x,y\in[a,b]$ with
 $$f(x)=\sup_{[a,b]}f,\qquad f(y)=\inf_{[a,b]}f.$$
@@ -32,7 +32,7 @@ $$f(x)=\sup_{[a,b]}f,\qquad f(y)=\inf_{[a,b]}f.$$
 
 Both hypotheses are needed: $f(x)=1/x$ is continuous on $(0,1]$ but unbounded; $f(x)=x$ on $[0,1)$ is bounded but never reaches $\sup f=1$.
 
-::: {#thm-intermediate-value-proof .theorem name="Intermediate value theorem" related="thm-intermediate-value"}
+::: {#thm-intermediate-value-proof .theorem name="Intermediate value theorem"}
 
 If $f:[a,b]\to\mathbb R$ is continuous and $f(a)<c<f(b)$ (or $f(a)>c>f(b)$), then $f(x)=c$ for some $x\in(a,b)$.
 

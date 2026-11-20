@@ -72,18 +72,7 @@ If $a_n,b_n>0$ and $a_n/b_n\to L$ with $0<L<\infty$, then $\sum a_n$ and $\sum b
 
 :::
 
-::: {#thm-ratio-test .theorem name="Ratio test"}
+The *ratio test* (@thm-ratio-test-general): if $a_n>0$ and $a_{n+1}/a_n\to L$, then $\sum a_n$ converges if $L<1$ and diverges if $L>1$; there is no conclusion if $L=1$.
 
-If $a_n>0$ and $a_{n+1}/a_n\to L$, then $\sum a_n$ converges if $L<1$ and diverges if $L>1$ (no conclusion if $L=1$).
-
-:::
-
-::: {.proof}
-
-1. If $L<1$, pick $r$ with $L<r<1$. For $n\ge N$, $a_{n+1}\le ra_n$, so $a_{N+k}\le a_Nr^k$ and the tail is bounded by a convergent geometric series.
-
-2. If $L>1$, eventually $a_{n+1}>a_n$, so $a_n\not\to0$.
-
-:::
 
 For example $\sum\frac{n^2}{2^n}$ converges, since the ratio tends to $\frac12$.

@@ -16,7 +16,7 @@ If $f$ is continuous on $[a,b]$, its largest and smallest values on $[a,b]$ occu
 
 ::: {.proof}
 
-1. The extreme values exist by @thm-extreme-value.
+1. The extreme values exist by @thm-extreme-value-proof.
 
 2. Suppose the maximum occurs at an interior point $c$ where $f'(c)$ exists. For $h>0$ small, $f(c+h)-f(c)\le0$, so $\frac{f(c+h)-f(c)}h\le0$ and, letting $h\to0^+$, $f'(c)\le0$.
 

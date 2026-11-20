@@ -26,9 +26,9 @@ If $f$ is continuous on $[a,b]$, then $\operatorname{Ave}(f)=f(c)$ for some $c\i
 
 ::: {.proof}
 
-1. With $m\le f\le M$ (smallest and largest values, @thm-extreme-value), @prp-integral-properties gives $m\le\operatorname{Ave}(f)\le M$.
+1. With $m\le f\le M$ (smallest and largest values, @thm-extreme-value-proof), @prp-integral-properties gives $m\le\operatorname{Ave}(f)\le M$.
 
-2. By @thm-intermediate-value, $f$ takes the value $\operatorname{Ave}(f)$ somewhere.
+2. By @thm-intermediate-value-proof, $f$ takes the value $\operatorname{Ave}(f)$ somewhere.
 
 :::
 

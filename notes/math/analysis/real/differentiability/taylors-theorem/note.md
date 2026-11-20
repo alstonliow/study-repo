@@ -1,11 +1,11 @@
 ---
 title: "Local Inverses and Taylor's Theorem"
-sources: [cama1-5]
+sources: [cama1-5, mit1801-37]
 requires: [math/analysis/real/differentiability/differentiability-and-inverses, math/calculus/single-variable/applications-of-derivatives/mean-value-theorem]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Section 5.3, in our own wording; proofs written out in steps. Rolle's theorem, the mean value theorem and its consequences are already proved in @sec-math-calculus-single-variable-applications-of-derivatives-mean-value-theorem; Taylor's formula is stated there without proof in @thm-taylor-remainder. -->
+<!-- Added 2026-11-20 from Cambridge Part IA Analysis I (Lent 2015 lecture notes), Section 5.3, in our own wording; proofs written out in steps. Rolle's theorem, the mean value theorem and its consequences are already proved in @sec-math-calculus-single-variable-applications-of-derivatives-mean-value-theorem; Merged 2026-11-20 (owner): Taylor's formula with remainder from MIT 18.01 Lecture 37 (former id thm-taylor-remainder, no proof) was removed; @thm-taylor-lagrange is the single version, with the 18.01 $R_n$ notation added after it. -->
 
 The mean value theorem (@thm-mean-value) is the bridge from information about $f'$ to information about $f$: for instance $f'>0$ on an interval makes $f$ strictly increasing (@cor-sign-of-derivative). This note uses it twice more: to invert functions locally, and, through a higher-order Rolle's theorem, to prove Taylor's theorem.
 
@@ -54,7 +54,7 @@ The polynomial $Q_k(x)=\frac{(x-a)^k}{k!}$ satisfies $Q_k^{(j)}(a)=1$ if $j=k$ a
 $$P(x)=\sum_{k=0}^{n-1}f^{(k)}(a)\frac{(x-a)^k}{k!}$$
 has the same first $n-1$ derivatives at $a$ as $f$, and the same value. It is the *Taylor polynomial* of degree $n-1$ of $f$ at $a$.
 
-::: {#thm-taylor-lagrange .theorem name="Taylor's theorem with Lagrange remainder" related="thm-taylor-remainder"}
+::: {#thm-taylor-lagrange .theorem name="Taylor's theorem with Lagrange remainder"}
 
 Let $f$ be $n$ times differentiable on an open interval containing $a$ and $a+h$ ($h\ne0$). Then
 $$f(a+h)=\sum_{k=0}^{n-1}\frac{f^{(k)}(a)}{k!}h^k+\frac{f^{(n)}(x)}{n!}h^n$$
@@ -75,6 +75,8 @@ The added term has derivatives of order $<n$ equal to $0$ at $a$, so $p^{(k)}(a)
 4. For $h<0$, apply steps 1–3 to $t\mapsto f(-t)$ at the point $-a$, whose $k$-th derivative is $(-1)^kf^{(k)}(-t)$.
 
 :::
+
+With $n+1$ in place of $n$ and $x=a+h$, this is the form used in single-variable calculus: $f(x)=\sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k+R_n(x)$ with $R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}$ for some $c$ between $a$ and $x$.
 
 If $|f^{(n)}|\le C$ near $a$, the remainder is at most $\frac{C}{n!}|h|^n$, which is $o(h^{n-1})$: the Taylor polynomial is then the best polynomial approximation of degree $n-1$ near $a$. Whether the full Taylor series converges to $f$ depends on how the remainder behaves as $n\to\infty$.
 
