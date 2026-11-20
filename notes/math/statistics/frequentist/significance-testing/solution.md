@@ -37,3 +37,17 @@ Under $H_0$ the number of heads $X$ is binomial$(250,0.5)$, symmetric about $125
 
 (b) A type II error is not rejecting when $\theta=2.5$: $P(0.1<x<1.9\mid\theta=2.5)=\frac{1.8}{2.5}=0.72$.
 :::
+
+::: {.solution for="prob-mit1805s22-9-q2" status="draft"}
+$\theta$ is the probability of heads; small $\theta$ means bias toward tails.
+
+(a) Under $H_0$ the number of heads $X$ is binomial$(12,0.5)$, and small $X$ favours $H_A$. $P(X\le2)=\frac{79}{4096}\approx0.019$ and $P(X\le3)=\frac{299}{4096}\approx0.073$, so the rejection region at $\alpha=0.05$ is $X\le2$. The p-value is $P(X\le3)\approx0.073>0.05$: Erika does not reject $H_0$. (Sketch: the symmetric binomial pmf on $0,\dots,12$ with the bars at $0,1,2$ marked.)
+
+(b) Now the statistic is the number of tails $Y$ before the third head, negative binomial: $P(Y=y)=\binom{y+2}2(0.5)^{y+3}$ under $H_0$. Many tails favour $H_A$. $P(Y\ge y)$ is the probability that the first $y+2$ flips contain at most $2$ heads: $P(Y\ge8)=\frac{56}{1024}\approx0.055$ and $P(Y\ge9)=\frac{67}{2048}\approx0.033$. So the rejection region is $Y\ge9$, the p-value is $\approx0.033$, and Ruthi rejects $H_0$. (Sketch: a right-skewed pmf with its mode at $1$–$2$ and the tail $y\ge9$ marked.)
+
+(c) No. A p-value is the probability of outcomes at least as extreme under the experiment that was actually run, which requires the stopping rule. "Stopped when bored" is not a specified random experiment, so the null distribution, and hence the p-value, is undefined.
+
+(d) Experiment 1: $L_1(\theta)=\binom{12}3\theta^3(1-\theta)^9$. Experiment 2: $L_2(\theta)=\binom{11}2\theta^3(1-\theta)^9$ (the last flip must be the third head). They are proportional. With prior Beta$(n,m)$ both posteriors are Beta$(n+3,m+9)$ (@thm-beta-binomial-update): identical.
+
+(e) The likelihood principle says that two experiments whose likelihood functions are proportional carry the same evidence about $\theta$. Bayesian inference obeys it automatically, as (d) shows. Frequentist significance tests do not: (a) and (b) reach opposite conclusions from the same data because p-values depend on the stopping rule, i.e. on outcomes that might have occurred but did not, and (c) shows that without a stopping rule no p-value exists. The voltmeter story makes the same point: a frequentist analysis can change because of what the instrument *would* have done in readings that were never taken.
+:::

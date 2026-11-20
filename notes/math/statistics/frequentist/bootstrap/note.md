@@ -52,12 +52,6 @@ $$\bigl[\hat\theta-q_{1-\alpha/2},\ \hat\theta-q_{\alpha/2}\bigr].$$
 \end{algorithm}
 ```
 
-::: {#rmk-bootstrap-1 .remark editor="TODO: add a static figure (histogram of the bootstrap differences of @exm-bootstrap-mean with the two quantiles marked); deferred to save tokens in the 18.05 round."}
-
-A figure for this algorithm is still to be drawn.
-
-:::
-
 ::: {#prp-bootstrap-interval-derivation .proposition name="Why the endpoints are reversed"}
 
 If $\delta=\hat\theta-\theta$ had exactly the quantiles $q_{\alpha/2}$ and $q_{1-\alpha/2}$, the interval of @def-empirical-bootstrap-interval would contain $\theta$ with probability $1-\alpha$.
@@ -81,6 +75,44 @@ If $\delta=\hat\theta-\theta$ had exactly the quantiles $q_{\alpha/2}$ and $q_{1
 The data $30,37,36,43,42,43,43,46,41,42$ have $\bar x=40.3$. In one run of $B=1000$ resamples, the $0.1$- and $0.9$-quantiles of $\delta^*=\bar x^*-\bar x$ were $-1.9$ and $1.8$, so the $80\%$ bootstrap interval for the mean is
 $$[40.3-1.8,\ 40.3+1.9]=[38.5,\ 42.2].$$
 Another run gives slightly different numbers; larger $B$ reduces this simulation noise but not the error of the bootstrap principle itself, which depends on $n$.
+
+:::
+
+::: {#fig-bootstrap-1}
+
+```{=latex}
+\begin{tikzpicture}
+\draw[fill=neutral] (-2.750,0) rectangle (-2.475,0.024);
+\draw[fill=neutral] (-2.475,0) rectangle (-2.200,0.048);
+\draw[fill=neutral] (-2.200,0) rectangle (-1.925,0.096);
+\draw[fill=neutral] (-1.925,0) rectangle (-1.650,0.132);
+\draw[fill=neutral] (-1.650,0) rectangle (-1.375,0.240);
+\draw[fill=neutral] (-1.375,0) rectangle (-1.100,0.516);
+\draw[fill=neutral] (-1.100,0) rectangle (-0.825,0.792);
+\draw[fill=primarySoft] (-0.825,0) rectangle (-0.550,0.948);
+\draw[fill=primarySoft] (-0.550,0) rectangle (-0.275,1.296);
+\draw[fill=primarySoft] (-0.275,0) rectangle (0.000,1.512);
+\draw[fill=primarySoft] (0.000,0) rectangle (0.275,1.536);
+\draw[fill=primarySoft] (0.275,0) rectangle (0.550,1.656);
+\draw[fill=primarySoft] (0.550,0) rectangle (0.825,1.356);
+\draw[fill=neutral] (0.825,0) rectangle (1.100,0.888);
+\draw[fill=neutral] (1.100,0) rectangle (1.375,0.588);
+\draw[fill=neutral] (1.375,0) rectangle (1.650,0.288);
+\draw[fill=neutral] (1.650,0) rectangle (1.925,0.072);
+\draw[fill=neutral] (1.925,0) rectangle (2.200,0.012);
+\draw[->] (-3.47,0) -- (2.92,0) node[lab, right] {$\delta^*$};
+\draw (-3.30,0) -- (-3.30,-0.08) node[lab, below] {$-6$};
+\draw (-2.20,0) -- (-2.20,-0.08) node[lab, below] {$-4$};
+\draw (-1.10,0) -- (-1.10,-0.08) node[lab, below] {$-2$};
+\draw (0.00,0) -- (0.00,-0.08) node[lab, below] {$0$};
+\draw (1.10,0) -- (1.10,-0.08) node[lab, below] {$2$};
+\draw (2.20,0) -- (2.20,-0.08) node[lab, below] {$4$};
+\draw[dashed, emph] (-1.045,0) -- (-1.045,2.01) node[lab, above] {$q_{0.1}=-1.9$};
+\draw[dashed, emph] (0.990,0) -- (0.990,2.01) node[lab, above] {$q_{0.9}=1.8$};
+\end{tikzpicture}
+```
+
+Histogram of the $1000$ bootstrap differences $\delta^*=\bar x^*-\bar x$ of @exm-bootstrap-mean (bins of width $0.5$). The dashed lines are the $0.1$- and $0.9$-quantiles; the $80\%$ interval is $[\bar x-q_{0.9},\ \bar x-q_{0.1}]=[38.5,\ 42.2]$.
 
 :::
 

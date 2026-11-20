@@ -47,3 +47,25 @@ One generates a number $x$ from a uniform distribution on the interval $[0, \the
 
 (b) Compute the probability of a type II error if the true value of $\theta$ is 2.5.
 :::
+
+::: {.problem #prob-mit1805s22-9-q2 origin="external" source="mit1805s22-9-q2"}
+Jerry took a JP Licks token and asked Jon to perform a test at significance level $\alpha = 0.05$ to investigate whether the coin is fair or biased toward tails (the side that says 'Token'). Jon recorded the following data
+
+THTTHTTTTTTH
+
+showing 3 heads and 9 tails.
+
+Before Jon could compute the one-sided $p$-value for $H_0 : \theta = 0.5$ versus $H_A : \theta < 0.5$, he needed to take Aviva to the playground.
+
+(a) Erika believes that Jon's intention was to count the number of heads in twelve flips. Let's call this Experiment 1. Compute the rejection region and $p$-value. Sketch the null-distribution and rejection region. What does Erika conclude?
+
+(b) Ruthi believes that Jon's intention was to stop after the third heads and report the number of tails, e.g., in the data the third head came on flip 12 so the number of tails is 9. Let's call this Experiment 2. Compute and sketch the corresponding null-distribution, rejection region, and $p$-value. What does Ruthi conclude? Hint: if a counting argument eludes you, google "negative binomial distribution".
+
+The R functions dnbinom, pnbinom, etc. might be helpful. For example, dnbinom(5, 3, 0.2) gives the probability of seeing 5 tails before the third head in a sequence of tosses of a coin with probability 0.2 of heads.
+
+(c) Jerry actually told Jon to count the number of heads in 100 flips (Experiment 3), so Jerry figures that Jon must have gotten bored and quit right after the 12th flip. Strictly speaking, can Jerry compute a $p$-value from Jon's partial data? Why or why not?
+
+(d) Let's reexamine the same data from the Bayesian perspective. What is the likelihood function in Experiment 1? What is the likelihood function in Experiment 2? How are these likelihood functions related? Given the prior Beta$(n,m)$, find the posterior in each case. How are they related?
+
+(e) Read <https://en.wikipedia.org/wiki/Likelihood_principle>, appreciate the voltmeter story, and summarize the main points we are getting at via the earlier parts of this problem regarding frequentist and Bayesian experiments.
+:::
