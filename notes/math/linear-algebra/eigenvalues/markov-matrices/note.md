@@ -57,3 +57,22 @@ The eigenvalues are $1$ and $0.7$ (the trace is $1.7$). The eigenvector for $1$ 
 $$\mathbf{u}_k=\tfrac13(2,1)+\tfrac13(0.7)^k(1,-1)\to(\tfrac23,\tfrac13).$$
 
 :::
+
+::: {#fig-markov-matrices-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[ball] (A) at (0,0) {$A$};
+\node[ball] (B) at (3.2,0) {$B$};
+\draw[->] (A) to[bend left=25] node[edge label, above] {$0.1$} (B);
+\draw[->] (B) to[bend left=25] node[edge label, below] {$0.2$} (A);
+\draw[->] (A) to[out=150, in=210, looseness=6] node[edge label, left] {$0.9$} (A);
+\draw[->] (B) to[out=30, in=-30, looseness=6] node[edge label, right] {$0.8$} (B);
+\end{tikzpicture}
+\end{center}
+```
+
+The two cities of @exm-markov-two-states. The numbers leaving each city add to $1$ (a column of the Markov matrix). In the steady state $(\frac23,\frac13)$ the two flows balance: $0.1\cdot\frac23=0.2\cdot\frac13$.
+
+:::

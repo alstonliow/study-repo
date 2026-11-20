@@ -17,6 +17,26 @@ is a *linear combination* of $\mathbf{v}_1,\dots,\mathbf{v}_k$. Addition and sca
 
 :::
 
+::: {#fig-vectors-and-dot-products-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->] (-0.4,0) -- (4.3,0); \draw[->] (0,-0.4) -- (0,2.9);
+\draw[faint, dashed] (3,0.9) -- (3.6,2.5) -- (0.6,1.6);
+\draw[->, emph, primary] (0,0) -- (2,0.6) node[lab, below right] {$\mathbf v$};
+\draw[->, emph, primary, dashed] (2,0.6) -- (3,0.9);
+\node[lab, below] at (2.9,0.85) {$1.5\,\mathbf v$};
+\draw[->, emph, accent] (0,0) -- (0.6,1.6) node[lab, left] {$\mathbf w$};
+\draw[->, hl] (0,0) -- (3.6,2.5) node[lab, above right] {$1.5\,\mathbf v+\mathbf w$};
+\end{tikzpicture}
+\end{center}
+```
+
+A linear combination $c\mathbf v+d\mathbf w$ with $c=1.5$, $d=1$: scale each vector, then add by the parallelogram rule. Letting $c$ and $d$ range over all real numbers fills the whole plane.
+
+:::
+
 ::: {#exm-linear-combinations-of-two-vectors .example name="All combinations of two vectors"}
 
 The combinations $c\,(1,0,1)+d\,(0,1,1)=(c,d,c+d)$ fill a plane through $\mathbf{0}$ in $\mathbb{R}^3$: the plane $z=x+y$. The combinations of a single nonzero vector fill a line; the combinations of three vectors not in one plane fill all of $\mathbb{R}^3$.

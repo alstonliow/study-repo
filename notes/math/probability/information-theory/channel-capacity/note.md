@@ -31,6 +31,29 @@ The *binary erasure channel* $\operatorname{BEC}(p)$ has input $X\in\{0,1\}$ and
 
 :::
 
+::: {#fig-channel-capacity-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (x0) at (0,1.6) {$0$};
+\node[small vertex] (x1) at (0,0) {$1$};
+\node[small vertex] (y0) at (3.6,1.9) {$0$};
+\node[small vertex, fill=accentLight, draw=accent] (ye) at (3.6,0.8) {$e$};
+\node[small vertex] (y1) at (3.6,-0.3) {$1$};
+\draw[map] (x0) -- node[edge label, above] {$1-p$} (y0);
+\draw[map] (x0) -- node[edge label, pos=0.35, above right] {$p$} (ye);
+\draw[map] (x1) -- node[edge label, pos=0.35, below right] {$p$} (ye);
+\draw[map] (x1) -- node[edge label, below] {$1-p$} (y1);
+\node[lab] at (0,2.4) {input $X$}; \node[lab] at (3.6,2.6) {output $Y$};
+\end{tikzpicture}
+\end{center}
+```
+
+The binary erasure channel $\operatorname{BEC}(p)$: each bit arrives intact with probability $1-p$ or is replaced by the erasure symbol $e$ with probability $p$. The receiver always knows which bits were lost; the capacity is $1-p$ (@thm-bec-capacity).
+
+:::
+
 ::: {#thm-bec-capacity .theorem name="Capacity of the binary erasure channel"}
 
 The capacity of $\operatorname{BEC}(p)$ is $1-p$ bits per use, and every rate $R<1-p$ is achieved by random linear codes.

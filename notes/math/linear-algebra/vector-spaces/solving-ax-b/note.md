@@ -27,6 +27,26 @@ A *particular solution* is found by setting all free variables to $0$ and solvin
 
 :::
 
+::: {#fig-solving-ax-b-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->] (-1.6,0) -- (3.4,0); \draw[->] (0,-0.9) -- (0,2.8);
+\draw[emph, primary] (-1.5,-0.75) -- (3.2,1.6) node[lab, right] {$N(A)$};
+\draw[emph, accent] (-1.4,1.25) -- (2.6,3.25) node[lab, right] {$\mathbf x_p+N(A)$};
+\draw[->, emph] (0,0) -- (-0.4,1.6) node[lab, left] {$\mathbf x_p$};
+\draw[->, emph, primary] (0,0) -- (1.6,0.8) node[lab, below right] {$\mathbf x_n$};
+\draw[faint, dashed] (-0.4,1.6) -- (1.2,2.4) -- (1.6,0.8);
+\draw[->, hl] (0,0) -- (1.2,2.4) node[lab, above left] {$\mathbf x$};
+\end{tikzpicture}
+\end{center}
+```
+
+The complete solution $\mathbf x=\mathbf x_p+\mathbf x_n$: the solutions of $A\mathbf x=\mathbf b$ are the nullspace shifted by one particular solution. For $\mathbf b\neq\mathbf 0$ the shifted copy misses $\mathbf 0$, so it is not a subspace.
+
+:::
+
 ::: {#exm-complete-solution .example name="A complete solution"}
 
 For $A$ of @exm-nullspace-three-by-four, row 3 of $A$ is row 1 plus row 2, so $A\mathbf{x}=\mathbf{b}$ is solvable only if $b_3=b_1+b_2$. For $\mathbf{b}=(1,4,5)$:

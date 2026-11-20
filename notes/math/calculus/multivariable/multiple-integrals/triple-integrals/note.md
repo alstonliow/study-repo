@@ -37,6 +37,30 @@ since a small box with base area $\Delta A=r\,\Delta r\,\Delta\theta$ and height
 
 :::
 
+::: {#fig-triple-integrals-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x={(-0.45cm,-0.35cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}, scale=1.2]
+\draw[->] (0,0,0) -- (2.6,0,0) node[lab, below left] {$x$};
+\draw[->] (0,0,0) -- (0,3,0) node[lab, right] {$y$};
+\draw[->] (0,0,0) -- (0,0,2.6) node[lab, above] {$z$};
+\draw[faint, dashed] plot[domain=-20:110, samples=50] ({2.4*cos(\x)},{2.4*sin(\x)},0);
+\draw[emph, primary] (0,0,0) -- node[lab, below right] {$r$} (1.377,1.966,0);
+\draw[dashed] (1.377,1.966,0) -- node[lab, right] {$z$} (1.377,1.966,1.8);
+\draw[faint] (0,0,1.8) -- (1.377,1.966,1.8);
+\draw plot[domain=0:55, samples=20] ({0.7*cos(\x)},{0.7*sin(\x)},0);
+\node[lab] at (1.0,0.5,0) {$\theta$};
+\node[hl dot] at (1.377,1.966,1.8) {};
+\node[lab, above right] at (1.377,1.966,1.8) {$(r,\theta,z)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Cylindrical coordinates: polar coordinates $(r,\theta)$ of the point's shadow in the $xy$-plane, together with its height $z$.
+
+:::
+
 ::: {#exm-cone-moment .example name="Moment of inertia of a cone"}
 
 The solid cone between $z=ar$ and $z=b$ ($a,b>0$, $\delta=1$). For fixed $z$ the slice is the disk $r\le z/a$, and $0\le z\le b$:

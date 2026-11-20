@@ -34,6 +34,26 @@ Both terms decay, so $\mathbf{u}(t)\to\mathbf{0}$.
 
 :::
 
+::: {#fig-linear-differential-equations-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=3]
+\draw[->] (-0.3,0) -- (1.25,0) node[lab, right] {$u_1$};
+\draw[->] (0,-0.55) -- (0,0.85) node[lab, above] {$u_2$};
+\draw[faint, dashed] (-0.2,-0.2) -- (0.8,0.8) node[lab, above] {$\mathbf x_1=(1,1)$};
+\draw[faint, dashed] (-0.25,0.25) -- (0.5,-0.5) node[lab, right] {$\mathbf x_2=(1,-1)$};
+\draw[hl, ->] plot[domain=0:3, samples=80] ({0.5*exp(-\x)+0.5*exp(-3*\x)},{0.5*exp(-\x)-0.5*exp(-3*\x)});
+\node[dot] at (1,0) {};
+\node[lab, below] at (1,0) {$\mathbf u(0)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The solution of @exm-two-tanks in the $(u_1,u_2)$-plane. It starts at $(1,0)$; the $e^{-3t}$ part along $\mathbf x_2$ dies out first, so the path turns towards the slower eigenvector $\mathbf x_1$ and then decays to $\mathbf 0$ along it.
+
+:::
+
 ::: {#thm-stability-of-linear-systems .theorem name="Stability"}
 
 For diagonalizable $A$, every solution of $\frac{d\mathbf{u}}{dt}=A\mathbf{u}$ tends to $\mathbf{0}$ if and only if every eigenvalue has negative real part. If some $\operatorname{Re}\lambda>0$, some solutions blow up. A steady state $\mathbf{u}(t)\to c\,\mathbf{x}_1$ occurs when $\lambda_1=0$ and all other eigenvalues have negative real part.

@@ -15,6 +15,25 @@ The columns of $A^{\mathsf T}$ are the rows of $A$. A column vector $\mathbf{x}$
 
 :::
 
+::: {#fig-transposes-and-permutations-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\foreach \i/\j/\v in {1/1/1,1/2/2,1/3/3,2/1/4,2/2/5,2/3/6} \draw[cell frame] (\j-1,-\i) rectangle node[lab] {$\v$} (\j,-\i+1);
+\foreach \j/\v in {1/1,2/2,3/3} \draw[hl cell] (\j-1,-1) rectangle node[lab] {$\v$} (\j,0);
+\draw[map] (3.4,-1) -- (4.6,-1);
+\foreach \i/\j/\v in {1/1/1,2/1/2,3/1/3,1/2/4,2/2/5,3/2/6} \draw[cell frame] (4.8+\j,-\i+0.5) rectangle node[lab] {$\v$} (5.8+\j,-\i+1.5);
+\foreach \i/\v in {1/1,2/2,3/3} \draw[hl cell] (5.8,-\i+0.5) rectangle node[lab] {$\v$} (6.8,-\i+1.5);
+\node[lab] at (1.5,-2.6) {$A$}; \node[lab] at (6.8,-3.1) {$A^{\mathsf T}$};
+\end{tikzpicture}
+\end{center}
+```
+
+The transpose turns rows into columns: row $1$ of $A$ (highlighted) becomes column $1$ of $A^{\mathsf T}$, so $(A^{\mathsf T})_{ij}=A_{ji}$ and a $2\times3$ matrix becomes $3\times2$.
+
+:::
+
 ::: {#prp-transpose-rules .proposition name="Rules for transposes"}
 
 Whenever the operations are defined,

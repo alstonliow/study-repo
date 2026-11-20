@@ -62,6 +62,27 @@ Let $T$ project $\mathbb{R}^2$ onto the line through $\mathbf{q}_1=\frac1{\sqrt2
 
 :::
 
+::: {#fig-linear-transformations-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+\draw[->] (-1.4,0) -- (2.4,0); \draw[->] (0,-0.6) -- (0,2.2);
+\draw[emph, primary] (-0.6,-0.6) -- (2.1,2.1);
+\draw[faint, dashed] (0.4,1.8) -- (1.1,1.1);
+\draw[->, emph] (0,0) -- (0.4,1.8) node[lab, above] {$\mathbf v$};
+\draw[->, hl] (0,0) -- (1.1,1.1) node[lab, right] {$T(\mathbf v)$};
+\draw[->, emph, accent] (0,0) -- (-0.707,0.707) node[lab, above left] {$\mathbf q_2\mapsto\mathbf 0$};
+\draw[->, emph, primary] (0,0) -- (0.707,0.707);
+\node[lab, primary, below right] at (0.6,0.6) {$\mathbf q_1\mapsto\mathbf q_1$};
+\end{tikzpicture}
+\end{center}
+```
+
+Projection onto the line through $\mathbf q_1$ (@exm-matrix-of-projection). In the basis $\mathbf q_1,\mathbf q_2$ the map keeps the first coordinate and sends the second to zero, so its matrix is $\begin{bmatrix}1&0\\0&0\end{bmatrix}$.
+
+:::
+
 ::: {#exm-matrix-of-derivative .example name="Matrix of the derivative"}
 
 On polynomials of degree $\le2$ with basis $1,x,x^2$ (input) and $1,x$ (output), $\frac{d}{dx}$ sends $1\mapsto0$, $x\mapsto1$, $x^2\mapsto2x$. Its matrix is

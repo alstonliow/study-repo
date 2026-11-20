@@ -64,6 +64,29 @@ Every $\mathbf{x}\in\mathbb{R}^n$ is uniquely $\mathbf{x}=\mathbf{x}_r+\mathbf{x
 
 :::
 
+::: {#fig-orthogonal-subspaces-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[emph, accent] (0,-1.5) -- (0,0);
+\fill[tintA] (-2.2,-0.6) -- (1.4,-0.6) -- (2.4,0.6) -- (-1.2,0.6) -- cycle;
+\draw[primary] (-2.2,-0.6) -- (1.4,-0.6) -- (2.4,0.6) -- (-1.2,0.6) -- cycle;
+\draw[emph, accent] (0,0) -- (0,2.4) node[lab, above] {$C(A^{\mathsf T})$};
+\node[lab, primary] at (2.6,0.2) {$N(A)$};
+\draw[faint, dashed] (1.3,0.3) -- (1.3,1.7) -- (0,1.4);
+\draw[->, emph] (0,0) -- (1.3,0.3) node[lab, below right] {$\mathbf x_n$};
+\draw[->, emph] (0,0) -- (0,1.4) node[lab, left] {$\mathbf x_r$};
+\draw[->, hl] (0,0) -- (1.3,1.7) node[lab, above right] {$\mathbf x$};
+\draw (0.22,0.05) -- (0.22,0.27) -- (0,0.22);
+\end{tikzpicture}
+\end{center}
+```
+
+Row space and nullspace as orthogonal complements in $\mathbb R^3$, as in @exm-orthogonal-complement-of-a-line: a line and the plane perpendicular to it. Every $\mathbf x$ splits as $\mathbf x_r+\mathbf x_n$ with $\mathbf x_r$ in the row space and $\mathbf x_n$ in the nullspace.
+
+:::
+
 ::: {#thm-ata-invertible .theorem name="When A^T A is invertible"}
 
 $N(A^{\mathsf T}A)=N(A)$. Hence $A^{\mathsf T}A$ has the same rank as $A$, and $A^{\mathsf T}A$ is invertible exactly when the columns of $A$ are independent.

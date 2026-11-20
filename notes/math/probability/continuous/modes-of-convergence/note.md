@@ -63,6 +63,26 @@ The weak law of large numbers (@thm-law-of-large-numbers) is convergence in prob
 
 :::
 
+::: {#fig-modes-of-convergence-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (as) at (0,0) {almost surely};
+\node[box] (pr) at (4.2,0) {in probability};
+\node[box] (di) at (8.4,0) {in distribution};
+\draw[-{Implies}, double, double distance=1.6pt, emph] (as) -- (pr);
+\draw[-{Implies}, double, double distance=1.6pt, emph] (pr) -- (di);
+\draw[->, dashed, accent] (pr) to[bend left=30] node[edge label, below=2pt] {fails: example 1} (as);
+\draw[->, dashed, accent] (di) to[bend left=30] node[edge label, below=2pt] {fails: example 2} (pr);
+\end{tikzpicture}
+\end{center}
+```
+
+The modes of convergence: each implies the next (@thm-convergence-implications), and the two parts of @exm-convergence-counterexamples show that neither implication can be reversed.
+
+:::
+
 ::: {#lem-borel-cantelli .lemma name="Borel–Cantelli"}
 
 Let $A_1,A_2,\dots$ be events.

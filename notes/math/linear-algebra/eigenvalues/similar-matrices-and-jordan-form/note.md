@@ -61,6 +61,24 @@ $J_k(\lambda)-\lambda I$ has rank $k-1$, so $J_k(\lambda)$ has exactly one indep
 
 :::
 
+::: {#fig-similar-matrices-and-jordan-form-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (e3) at (0,0) {$\mathbf e_3$};
+\node[box] (e2) at (2.4,0) {$\mathbf e_2$};
+\node[box] (e1) at (4.8,0) {$\mathbf e_1$};
+\node[hl box] (z) at (7.2,0) {$\mathbf 0$};
+\foreach \a/\b in {e3/e2,e2/e1,e1/z} \draw[map] (\a) -- node[edge label, above=3pt] {$N$} (\b);
+\end{tikzpicture}
+\end{center}
+```
+
+For $N=J_3(\lambda)-\lambda I$: $N\mathbf e_3=\mathbf e_2$, $N\mathbf e_2=\mathbf e_1$ and $N\mathbf e_1=\mathbf 0$, a single chain. Only the multiples of $\mathbf e_1$ are eigenvectors, and $N$ has rank $2=k-1$.
+
+:::
+
 ::: {#exm-jordan-four-by-four .example name="Same eigenvalues, not similar"}
 
 The $4\times4$ matrices

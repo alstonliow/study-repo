@@ -6,7 +6,10 @@
      Coding exercises (SPEC §6.4): a .problem-group[data-kind="code"] gets an
      editor that starts from the starter (the reader's code is kept per exercise
      in localStorage), Run tests (each test passed / failed) and Reset. Pages
-     with coding exercises get an All / Written / Code filter above them. -->
+     with coding exercises get an All / Written / Code filter above them.
+     The solution of a coding exercise opens on the approach (the numbered
+     steps); its code is folded under "Show the code", with "Run tests on it"
+     and "Load into editor" (asks before replacing the reader's own code). -->
 <style>
 .run-cell { border: 1px solid var(--rule); border-radius: 6px; margin: 1rem 0; overflow: hidden; }
 .run-cell div.sourceCode, .run-cell pre.sourceCode { margin: 0 !important; border: 0 !important; border-radius: 0 !important; }
@@ -47,6 +50,11 @@
   border: 1px solid var(--rule); background: transparent; color: inherit; }
 .exercise-kind-filter button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--sidebg); }
 .kind-hidden { display: none !important; }
+.sol-label { font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; opacity: .6; margin: .2rem 0 .3rem; }
+details.sol-code { margin: .6rem 0 .2rem; }
+details.sol-code > summary { cursor: pointer; font-size: .85em; font-weight: 600; color: var(--accent); margin: .2rem 0 .4rem; }
+details.sol-code .run-cell { margin: .4rem 0 0; }
+@media print { details.sol-code > summary, details.sol-code .run-bar, details.sol-code .run-out { display: none !important; } }
 @media print { .exercise-kind-filter, .coding-cell .run-bar, .coding-cell .run-edit, .coding-cell .run-out { display: none !important; }
   .coding-starter { display: block !important; } }
 </style>
@@ -176,7 +184,7 @@ json.dumps(out)
     del(k) { try { localStorage.removeItem(k); } catch (e) { /* private mode */ } },
   };
   async function runTests(cell) {
-    const { edit, tests, packages, out, list, total } = cell;
+    const { tests, packages, out, list, total } = cell;
     const show = (msg, cls) => { out.hidden = false; out.className = "run-out " + (cls || ""); total.textContent = msg; };
     list.replaceChildren();
     show(ready ? "Running tests…" : "Loading Python (first run only)…", "busy");
@@ -192,7 +200,7 @@ json.dumps(out)
       py.setStdout({ batched: s => { buf += s + "\n"; } });
       py.setStderr({ batched: s => { buf += s + "\n"; } });
       const ns = py.globals.get("dict")();
-      ns.set("__code", edit.value); ns.set("__tests", tests);
+      ns.set("__code", cell.code()); ns.set("__tests", tests);
       let res;
       try { res = JSON.parse(await py.runPythonAsync(HARNESS, { globals: ns })); } finally { ns.destroy(); }
       for (const [name, ok, msg] of res) {
@@ -232,7 +240,7 @@ json.dumps(out)
     list.className = "coding-results";
     const total = out.appendChild(document.createElement("pre"));
     total.className = "coding-total";
-    const cell = { edit, tests, packages, out, list, total };
+    const cell = { edit, tests, packages, out, list, total, code: () => edit.value };
     const bar = document.createElement("div");
     bar.className = "run-bar";
     cell.go = button("▶ Run tests", "Run your code, then the tests, in your browser", () => {
@@ -262,7 +270,55 @@ json.dumps(out)
     sum.textContent = "Tests";
     while (testsBox.firstChild) det.append(testsBox.firstChild);
     testsBox.append(det);
+    solutionPanel(group, cell, starter, key);
   }
+  // The solution: approach first, code folded, with Run tests on it / Load into editor.
+  function solutionPanel(group, mine, starter, key) {
+    const body = group.querySelector(".callout .callout-body");
+    const src = body && body.querySelector("div.sourceCode");
+    if (!src) return;
+    const code = src.querySelector("code").textContent;
+    const block = src.closest(".code-copy-outer-scaffold") || src;
+    const steps = [];
+    for (let n = block.nextElementSibling; n; n = n.nextElementSibling) steps.push(n);
+    if (steps.length) {
+      const label = document.createElement("div");
+      label.className = "sol-label"; label.textContent = "Approach";
+      block.before(label, ...steps);
+    }
+    const det = document.createElement("details");
+    det.className = "sol-code";
+    const sum = det.appendChild(document.createElement("summary"));
+    sum.textContent = steps.length ? "Show the code" : "Show the solution code";
+    block.before(det);
+    const box = document.createElement("div");
+    box.className = "run-cell";
+    const out = document.createElement("div");
+    out.hidden = true;
+    const list = out.appendChild(document.createElement("ul"));
+    list.className = "coding-results";
+    const total = out.appendChild(document.createElement("pre"));
+    total.className = "coding-total";
+    const cell = { tests: mine.tests, packages: mine.packages, out, list, total, code: () => code };
+    const bar = document.createElement("div");
+    bar.className = "run-bar";
+    cell.go = button("▶ Run tests on it", "Run this solution, then the tests, in your browser", () => {
+      cell.go.disabled = true;
+      queue = queue.then(() => runTests(cell)).finally(() => { cell.go.disabled = false; });
+    });
+    cell.go.className = "run-go";
+    bar.append(cell.go, button("Load into editor", "Put this solution in the editor above", () => {
+      const e = mine.edit;
+      if (e.value !== starter && e.value !== code &&
+          !confirm("Replace your code in the editor with the solution? Your code is discarded.")) return;
+      e.value = code; store.set(key, code); mine.out.hidden = true;
+      e.rows = Math.min(30, code.split("\n").length + 1);
+      e.scrollIntoView({ block: "center", behavior: "smooth" }); e.focus();
+    }));
+    box.append(block, bar, out);
+    det.append(box);
+  }
+  window.addEventListener("beforeprint", () => document.querySelectorAll("details.sol-code").forEach(d => { d.open = true; }));
   function kindFilter() {
     const groups = [...document.querySelectorAll(".problem-group[data-kind]")];
     if (!groups.some(g => g.dataset.kind === "code")) return;

@@ -57,6 +57,25 @@ On a connected undirected graph, move from a vertex $v$ to a uniformly random ne
 
 :::
 
+::: {#fig-reversible-markov-chains-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[hl ball] (c) at (0,0) {$c$};
+\foreach \a/\n in {90/1,210/2,330/3} \node[small vertex] (l\n) at (\a:1.8) {};
+\foreach \n in {1,2,3} { \draw[->] (c) to[bend left=12] (l\n); \draw[->] (l\n) to[bend left=12] (c); }
+\node[lab, left] at (-0.45,0.35) {$\pi(c)=\frac12$};
+\foreach \a/\n in {90/1,210/2,330/3} \node[lab] at (\a:2.45) {$\frac16$};
+\node[edge label] at (0.55,1.0) {$\frac13$}; \node[edge label] at (-0.05,1.1) {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+Random walk on a star with three leaves (@exm-random-walk-on-graph). From the centre each leaf is chosen with probability $\frac13$; from a leaf the walk returns with probability $1$. The stationary probabilities are proportional to the degrees: $\frac36$ for the centre and $\frac16$ for each leaf.
+
+:::
+
 ::: {#rmk-reversible-markov-chains-trees .remark name="Trees and birth–death chains"}
 
 Every chain whose transition graph (edges where $P(i,j)>0$) is a tree is reversible: a tree has no cycles of length more than two, so Kolmogorov's criterion holds trivially. Birth–death chains (@exm-birth-death-chain) are the main example; this is why their balance equations reduce to $\pi(i)p_i=\pi(i+1)q_{i+1}$.

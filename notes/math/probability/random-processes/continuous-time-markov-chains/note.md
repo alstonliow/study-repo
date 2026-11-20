@@ -66,6 +66,24 @@ With $\lambda=1$ and $\mu=2$ the server is idle half the time and the mean numbe
 
 :::
 
+::: {#fig-continuous-time-markov-chains-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \i/\l in {0/0,1/1,2/n,3/n+1} \node[small vertex] (s\i) at (2.2*\i,0) {$\l$};
+\node[lab] at (1.1+2.2*1.0,0) {$\cdots$};
+\node[lab] (s4) at (8.6,0) {$\cdots$};
+\foreach \i/\j in {0/1,2/3,3/4} { \draw[->] (s\i) to[bend left=30] node[edge label, above, pos=0.3] {$\lambda$} (s\j); \draw[->] (s\j) to[bend left=30] node[edge label, below, pos=0.3] {$\mu$} (s\i); }
+\draw[accent, dashed, emph] (5.5,-1.1) -- (5.5,1.1) node[lab, above] {cut};
+\end{tikzpicture}
+\end{center}
+```
+
+The M/M/1 queue as a birth–death chain (@exm-mm1-queue): arrivals at rate $\lambda$, services at rate $\mu$. In equilibrium the flow across the cut between $n$ and $n+1$ is the same in both directions, $\pi(n)\lambda=\pi(n+1)\mu$.
+
+:::
+
 ::: {#rmk-ctmc-hitting-times .remark name="Hitting times"}
 
 First-step analysis (@thm-first-step-hitting-time) works in continuous time with the mean holding time added: if $\beta(i)$ is the expected time to reach a set $A$ from $i\notin A$, then $\beta(i)=\frac{1}{q(i)}+\sum_{j\ne i}\frac{q(i,j)}{q(i)}\beta(j)$, with $\beta=0$ on $A$.

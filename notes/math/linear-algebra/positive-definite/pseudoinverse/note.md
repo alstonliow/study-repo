@@ -66,3 +66,24 @@ $$A^{+}=\frac15\mathbf{u}\mathbf{u}^{\mathsf T}=\frac1{25}\begin{bmatrix}1&2\\2&
 For $\mathbf{b}=(5,0)$: $A^{+}\mathbf{b}=\frac15(1,2)$, and $A\,A^{+}\mathbf{b}=(1,2)$ is the projection of $\mathbf{b}$ onto the line $C(A)$.
 
 :::
+
+::: {#fig-pseudoinverse-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->] (-1,0) -- (5.8,0) node[lab, right] {$x_1$};
+\draw[->] (0,-0.8) -- (0,3.2) node[lab, above] {$x_2$};
+\draw[emph, primary] (-0.4,-0.8) -- (1.5,3) node[lab, above right] {$C(A)=C(A^{\mathsf T})$};
+\draw[faint, dashed] (5,0) -- (1,2);
+\draw[->, emph] (0,0) -- (5,0); \node[lab, below] at (5,0) {$\mathbf b$};
+\draw[->, hl] (0,0) -- (1,2) node[lab, left] {$AA^{+}\mathbf b$};
+\node[hl dot] at (0.2,0.4) {};
+\node[lab, right] at (0.25,0.3) {$A^{+}\mathbf b$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-pseudoinverse-rank-one: for this symmetric rank one $A$ the row space and the column space are the same line through $(1,2)$. $\mathbf b=(5,0)$ projects onto $C(A)$ at $(1,2)$, and $A^{+}\mathbf b=\frac15(1,2)$ is the shortest $\mathbf x$ with $A\mathbf x=(1,2)$.
+
+:::

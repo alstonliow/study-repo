@@ -37,6 +37,28 @@ For a closed surface $S$ enclosing the solid $D$, the flux of $\mathbf{E}$ out o
 
 :::
 
+::: {#fig-div-and-curl-in-physics-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\fill[tintA] plot[smooth cycle] coordinates {(-2,0) (-1.2,1.3) (0.6,1.5) (2.1,0.6) (1.7,-1.1) (-0.3,-1.4)};
+\draw[emph, primary] plot[smooth cycle] coordinates {(-2,0) (-1.2,1.3) (0.6,1.5) (2.1,0.6) (1.7,-1.1) (-0.3,-1.4)};
+\foreach \a in {0,45,...,315} \draw[->, accent] (\a:0.25) -- (\a:1.05);
+\node[hl dot] at (0,0) {};
+\node[lab] at (0.42,-0.18) {$q$};
+\draw[->, emph] (2.07,0.62) -- (2.75,0.95) node[lab, right] {$\hat{\mathbf n}$};
+\draw[->, emph] (-1.2,1.3) -- (-1.65,1.85) node[lab, above] {$\hat{\mathbf n}$};
+\node[lab, primary] at (1.6,-1.5) {$S$};
+\node[lab, accent] at (0.75,0.3) {$\mathbf E$};
+\end{tikzpicture}
+\end{center}
+```
+
+Gauss's law (@prp-gauss-law): the flux of the electric field $\mathbf E$ out of a closed surface $S$ depends only on the charge enclosed by $S$, not on the shape of $S$.
+
+:::
+
 ::: {#prp-faraday-law .proposition name="Faraday's law of induction"}
 
 For a closed curve $C$ bounding a surface $S$, compatibly oriented,

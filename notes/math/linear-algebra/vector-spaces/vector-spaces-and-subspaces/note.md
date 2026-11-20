@@ -48,6 +48,27 @@ The subspaces of $\mathbb{R}^3$ are: $\{\mathbf{0}\}$; every line through $\math
 
 :::
 
+::: {#fig-vector-spaces-and-subspaces-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x={(-0.5cm,-0.4cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}, scale=1.2]
+\fill[tintA] (-1.5,-1.5,0) -- (1.5,-1.5,0) -- (1.5,2,0) -- (-1.5,2,0) -- cycle;
+\draw[primary] (-1.5,-1.5,0) -- (1.5,-1.5,0) -- (1.5,2,0) -- (-1.5,2,0) -- cycle;
+\draw[faint] (0,0,0) -- (2.2,0,0); \draw[faint] (0,0,0) -- (0,2.6,0); \draw[faint] (0,0,0) -- (0,0,2.3);
+\draw[emph, accent] (-0.5,-0.9,-0.7) -- (1.1,2,1.54) node[lab, above right] {line through $\mathbf 0$};
+\draw[emph, muted, dashed] (1,1.8,1.3) -- (-1,-1.2,1.3) node[lab, left] {line missing $\mathbf 0$};
+\node[hl dot] at (0,0,0) {};
+\node[lab, below left] at (0,0,0) {$\{\mathbf 0\}$};
+\node[lab, primary] at (1.3,2.1,0) {plane through $\mathbf 0$};
+\end{tikzpicture}
+\end{center}
+```
+
+Subspaces of $\mathbb R^3$ (@exm-subspaces-of-r3): $\{\mathbf 0\}$, lines and planes through $\mathbf 0$, and $\mathbb R^3$. The dashed line misses the origin, so it is not a subspace.
+
+:::
+
 ::: {#prp-intersection-of-subspaces .proposition name="Intersection of subspaces"}
 
 If $S$ and $T$ are subspaces of $V$, then $S\cap T$ is a subspace. The union $S\cup T$ is in general not a subspace.

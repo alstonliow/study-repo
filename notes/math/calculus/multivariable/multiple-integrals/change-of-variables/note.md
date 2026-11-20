@@ -43,6 +43,35 @@ where $\frac{\partial(x,y)}{\partial(u,v)}=1\Big/\frac{\partial(u,v)}{\partial(x
 
 :::
 
+::: {#fig-change-of-variables-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+\draw[->] (-0.2,0) -- (2.4,0) node[lab, right] {$x$};
+\draw[->] (0,-0.2) -- (0,2.2) node[lab, above] {$y$};
+\fill[tintA] (0.8,0.7) rectangle (1.6,1.4);
+\draw[emph, primary] (0.8,0.7) rectangle (1.6,1.4);
+\node[lab, below] at (1.2,0.7) {$\Delta x$};
+\node[lab, left] at (0.8,1.05) {$\Delta y$};
+\draw[->, muted] (2.6,1.1) to[bend left=20] node[lab, above] {$(u,v)$} (3.6,1.1);
+\begin{scope}[xshift=4cm]
+\draw[->] (-0.2,0) -- (2.8,0) node[lab, right] {$u$};
+\draw[->] (0,-0.2) -- (0,2.2) node[lab, above] {$v$};
+\fill[tintB] (0.5,0.5) -- (1.6,0.85) -- (2.0,1.8) -- (0.9,1.45) -- cycle;
+\draw[emph, accent] (0.5,0.5) -- (1.6,0.85) -- (2.0,1.8) -- (0.9,1.45) -- cycle;
+\draw[->, ink] (0.5,0.5) -- (1.6,0.85); \draw[->, ink] (0.5,0.5) -- (0.9,1.45);
+\node[lab, below right] at (1.05,0.65) {$\langle u_x,v_x\rangle\Delta x$};
+\node[lab, above] at (0.9,1.45) {$\langle u_y,v_y\rangle\Delta y$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+A small rectangle of area $\Delta x\,\Delta y$ is mapped by $(u,v)$ to approximately a parallelogram spanned by $\langle u_x,v_x\rangle\Delta x$ and $\langle u_y,v_y\rangle\Delta y$. Its area is the absolute value of the Jacobian times $\Delta x\,\Delta y$, which is @thm-change-of-variables.
+
+:::
+
 ::: {#exm-linear-change-of-variables .example name="A linear change"}
 
 $u=3x-2y$, $v=x+y$: $\dfrac{\partial(u,v)}{\partial(x,y)}=\begin{vmatrix}3&-2\\1&1\end{vmatrix}=5$, so $du\,dv=5\,dx\,dy$: the unit square goes to a parallelogram of area $5$.

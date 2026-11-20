@@ -49,3 +49,29 @@ $$F_z=Gm\delta\int_0^{2\pi}\!\!\int_0^{\pi/2}\!\!\int_0^{2a\cos\phi}\cos\phi\sin
 4. With $M=\frac43\pi a^3\delta$ this is $GMm/a^2$, the attraction of a point mass $M$ at the centre, distance $a$ away. (The case of a mass at distance greater than $a$ is similar, with harder limits.)
 
 :::
+
+::: {#fig-gravitational-attraction-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+\fill[tintA] (0,1.5) circle (1.5);
+\draw[emph, primary] (0,1.5) circle (1.5);
+\draw[->] (-2.2,0) -- (2.2,0);
+\draw[->] (0,0) -- (0,3.6) node[lab, above] {$z$};
+\fill[ink] (0,1.5) circle[pt];
+\draw[faint] (0,1.5) -- node[lab, above, pos=0.6] {$a$} (-1.5,1.5);
+\draw[hl] (0,0) -- node[lab, below right, pos=0.55] {$\rho=2a\cos\phi$} (1.409,2.013);
+\draw[dashed] (1.409,2.013) -- (0,3);
+\fill[ink] (0,3) circle[pt];
+\draw (0,0.6) arc[start angle=90, end angle=55, radius=0.6];
+\node[lab] at (0.2,0.85) {$\phi$};
+\node[hl dot] at (0,0) {};
+\node[lab, below left] at (0,0) {$m$};
+\end{tikzpicture}
+\end{center}
+```
+
+Cross-section of the proof of @thm-newton-shell. The ball of radius $a$ sits on the $xy$-plane with the mass $m$ at the origin; a ray at angle $\phi$ from the $z$-axis leaves the ball at $\rho=2a\cos\phi$, because the triangle with the top pole has a right angle at the far point.
+
+:::

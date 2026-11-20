@@ -56,6 +56,24 @@ Every column is a multiple of $\mathbf{u}$ and every row is a multiple of $\math
 
 :::
 
+::: {#fig-matrix-spaces-and-rank-one-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.62]
+\foreach \i in {1,2,3} \draw[cell frame, fill=primaryLight] (0,-\i) rectangle node[tick] {$u_{\i}$} (1,-\i+1);
+\foreach \j in {1,...,4} \draw[cell frame, fill=accentLight] (0.4+\j,-1) rectangle node[tick] {$v_{\j}$} (1.4+\j,-2);
+\node[lab] at (6.9,-1.5) {$=$};
+\foreach \i in {1,2,3} \foreach \j in {1,...,4} \draw[cell frame, fill=primarySoft] (6.1+1.3*\j,-\i) rectangle node[tick] {$u_{\i}v_{\j}$} (7.4+1.3*\j,-\i+1);
+\node[lab] at (0.5,-3.6) {$\mathbf u$}; \node[lab] at (3.4,-2.6) {$\mathbf v^{\mathsf T}$}; \node[lab] at (10.1,-3.6) {$\mathbf u\mathbf v^{\mathsf T}$};
+\end{tikzpicture}
+\end{center}
+```
+
+A rank one matrix $\mathbf u\mathbf v^{\mathsf T}$ ($3\times4$ here). Its $(i,j)$ entry is $u_iv_j$: column $j$ is $v_j\mathbf u$ and row $i$ is $u_i\mathbf v^{\mathsf T}$.
+
+:::
+
 ::: {#prp-rank-one-iff .proposition name="Rank one matrices"}
 
 A matrix has rank $1$ if and only if it has the form $\mathbf{u}\mathbf{v}^{\mathsf T}$ with nonzero $\mathbf{u},\mathbf{v}$. A matrix of rank $r$ is a sum of $r$ rank one matrices.

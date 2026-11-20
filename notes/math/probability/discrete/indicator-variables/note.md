@@ -56,6 +56,24 @@ Let $X_n$ be the number of fixed points (@def-fixed-point) of a permutation of $
 
 :::
 
+::: {#fig-indicator-variables-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \i in {1,...,5} { \node[small vertex] (a\i) at (1.3*\i,1.6) {$\i$}; \node[small vertex] (b\i) at (1.3*\i,0) {$\i$}; }
+\foreach \i/\j in {1/2,2/1,4/5,5/4} \draw[map] (a\i) -- (b\j);
+\draw[map, hl] (a3) -- (b3);
+\node[small vertex, fill=accentLight, draw=accent] at (b3) {$3$};
+\node[lab, left] at (0.7,1.6) {student}; \node[lab, left] at (0.7,0) {homework};
+\end{tikzpicture}
+\end{center}
+```
+
+A permutation of $5$ items with one fixed point (highlighted). The indicator $I_i$ is $1$ when item $i$ is sent to itself, which happens with probability $\frac1n$; adding the $n$ indicators gives an expected number of fixed points of $1$.
+
+:::
+
 ::: {#rmk-indicator-variables-2 .remark name="Handing back homework"}
 
 If $n$ students' homework is handed back at random, on average exactly one student gets their own, whatever the size of the class. Compare @sec-math-discrete-counting-derangements, which counts the permutations with no fixed point.

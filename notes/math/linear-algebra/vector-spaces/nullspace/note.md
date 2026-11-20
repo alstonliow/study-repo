@@ -75,6 +75,26 @@ and $N(A)$ is the plane of all $c\,\mathbf{s}_1+d\,\mathbf{s}_2$ in $\mathbb{R}^
 
 :::
 
+::: {#fig-nullspace-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+\foreach \i/\j/\v in {1/1/1,1/2/2,1/3/0,1/4/1,2/1/0,2/2/0,2/3/1,2/4/2,3/1/0,3/2/0,3/3/0,3/4/0} \draw[cell frame] (\j-1,-\i) rectangle node[lab] {$\v$} (\j,-\i+1);
+\foreach \j in {2,4} \fill[tintB] (\j-1,-3) rectangle (\j,0);
+\draw[hl cell] (0,-1) rectangle node[lab] {$1$} (1,0);
+\draw[hl cell] (2,-2) rectangle node[lab] {$1$} (3,-1);
+\draw[emph, primary] (0,0) -- (0,-1) -- (2,-1) -- (2,-2) -- (4,-2);
+\foreach \j/\t in {1/pivot,2/free,3/pivot,4/free} \node[tick] at (\j-0.5,0.35) {\t};
+\node[lab, left] at (-0.2,-1.5) {$R=$};
+\end{tikzpicture}
+\end{center}
+```
+
+The reduced matrix $R$ of @exm-nullspace-three-by-four. The staircase separates the pivots (highlighted, columns $1$ and $3$) from the zeros below; the shaded columns $2$ and $4$ have no pivot, so $x_2$ and $x_4$ are free and give the special solutions.
+
+:::
+
 ::: {#prp-nullspace-matrix .proposition name="The nullspace matrix"}
 
 If the pivot columns come first, $R=\begin{bmatrix}I&F\\0&0\end{bmatrix}$ with $F$ of size $r\times(n-r)$. Then the special solutions are the columns of

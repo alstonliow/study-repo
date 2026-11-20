@@ -95,6 +95,52 @@ $$\binom{n}{k}p^k(1-p)^{n-k} \to \frac{e^{-\mu}\mu^k}{k!}.$$
 
 :::
 
+::: {#fig-poisson-distribution-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-0.4,0) -- (6.6,0) node[lab, right] {$k$};
+\draw[->] (-0.3,0) -- (-0.3,2.6) node[lab, above] {probability};
+\fill[primaryStrong] (-0.225,0) rectangle (0.225,1.083);
+\node[tick, below] at (0.000,0) {$0$};
+\fill[primaryStrong] (0.525,0) rectangle (0.975,2.165);
+\node[tick, below] at (0.750,0) {$1$};
+\fill[primaryStrong] (1.275,0) rectangle (1.725,2.165);
+\node[tick, below] at (1.500,0) {$2$};
+\fill[primaryStrong] (2.025,0) rectangle (2.475,1.444);
+\node[tick, below] at (2.250,0) {$3$};
+\fill[primaryStrong] (2.775,0) rectangle (3.225,0.722);
+\node[tick, below] at (3.000,0) {$4$};
+\fill[primaryStrong] (3.525,0) rectangle (3.975,0.289);
+\node[tick, below] at (3.750,0) {$5$};
+\fill[primaryStrong] (4.275,0) rectangle (4.725,0.096);
+\node[tick, below] at (4.500,0) {$6$};
+\fill[primaryStrong] (5.025,0) rectangle (5.475,0.027);
+\node[tick, below] at (5.250,0) {$7$};
+\fill[primaryStrong] (5.775,0) rectangle (6.225,0.007);
+\node[tick, below] at (6.000,0) {$8$};
+\node[hl dot] at (0.000,0.973) {};
+\node[hl dot] at (0.750,2.161) {};
+\node[hl dot] at (1.500,2.281) {};
+\node[hl dot] at (2.250,1.521) {};
+\node[hl dot] at (3.000,0.718) {};
+\node[hl dot] at (3.750,0.255) {};
+\node[hl dot] at (4.500,0.071) {};
+\node[hl dot] at (5.250,0.016) {};
+\node[hl dot] at (6.000,0.003) {};
+\draw (-0.24,0.800) -- (-0.36,0.800) node[tick, left] {$0.1$};
+\draw (-0.24,1.600) -- (-0.36,1.600) node[tick, left] {$0.2$};
+\fill[primaryStrong] (4.4,2.3) rectangle (4.6,2.5); \node[lab, right] at (4.6,2.4) {$\operatorname{Poisson}(2)$};
+\node[hl dot] at (4.5,2.0) {}; \node[lab, right] at (4.6,2.0) {$\operatorname{Bin}(20,0.1)$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\operatorname{Bin}(20,0.1)$ (dots) against its Poisson limit with the same mean $\mu=np=2$ (bars). Already for $n=20$ the two are close (@thm-poisson-as-a-limit-of).
+
+:::
+
 ::: {#rmk-standard-distributions-3 .remark name="Approximating the binomial"}
 
 So $\mathrm{Bin}(n,p)$ with $n$ large, $p$ small and $np$ moderate is well approximated by $\mathrm{Poisson}(np)$: think of many trials, each with a small chance of a rare event.

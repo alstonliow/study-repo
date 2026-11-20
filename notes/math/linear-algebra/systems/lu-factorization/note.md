@@ -32,6 +32,28 @@ where $U$ is the upper triangular result of elimination and $L$ is lower triangu
 
 :::
 
+::: {#fig-lu-factorization-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (1.6,1.6); \node[lab] at (0.8,0.8) {$A$};
+\node[lab] at (2.05,0.8) {$=$};
+\fill[primaryLight] (2.5,1.6) -- (2.5,0) -- (4.1,0) -- cycle;
+\draw[rule] (2.5,0) rectangle (4.1,1.6); \draw[primary] (2.5,1.6) -- (4.1,0);
+\node[lab] at (3.0,0.5) {$\ell_{ij}$}; \node[tick] at (3.6,1.25) {$0$};
+\fill[accentLight] (4.5,1.6) -- (6.1,1.6) -- (6.1,0) -- cycle;
+\draw[rule] (4.5,0) rectangle (6.1,1.6); \draw[accent] (4.5,1.6) -- (6.1,0);
+\node[lab] at (5.6,1.1) {$u_{ij}$}; \node[tick] at (5.0,0.35) {$0$};
+\node[lab, below] at (3.3,-0.05) {$L$}; \node[lab, below] at (5.3,-0.05) {$U$};
+\end{tikzpicture}
+\end{center}
+```
+
+The shapes in $A=LU$: $L$ is lower triangular with $1$s on its diagonal and the multipliers $\ell_{ij}$ below it, and $U$ is upper triangular with the pivots on its diagonal.
+
+:::
+
 The opposite product $E=E_{n,n-1}\cdots E_{21}$ mixes the multipliers; in @exm-elimination-three-by-three, $E$ has entry $(3,1)$ equal to $-12$, not $-4$. That is why $L$, not $E$, is the matrix to keep.
 
 ::: {#exm-lu-three-by-three .example name="LU of the 3 by 3 example"}

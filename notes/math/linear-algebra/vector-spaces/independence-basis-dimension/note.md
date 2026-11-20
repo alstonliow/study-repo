@@ -15,6 +15,29 @@ Otherwise they are *dependent*.
 
 :::
 
+::: {#fig-independence-basis-dimension-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\fill[tintA] (0,0) -- (1.6,0.4) -- (2.0,1.8) -- (0.4,1.4) -- cycle;
+\draw[->, emph, primary] (0,0) -- (1.6,0.4) node[lab, below right] {$\mathbf v_1$};
+\draw[->, emph, accent] (0,0) -- (0.4,1.4) node[lab, left] {$\mathbf v_2$};
+\node[lab] at (1,-0.7) {independent};
+\begin{scope}[xshift=4cm]
+\draw[faint, dashed] (-0.6,-0.3) -- (2.6,1.3);
+\draw[->, hl] (0,0) -- (1.6,0.8) node[lab, above left] {$\mathbf v_2=2\mathbf v_1$};
+\draw[->, emph, primary] (0,0) -- (0.8,0.4) node[lab, below right] {$\mathbf v_1$};
+\node[lab] at (1,-0.7) {dependent: $2\mathbf v_1-\mathbf v_2=\mathbf 0$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Two vectors in the plane. Independent vectors (left) span a parallelogram and all of $\mathbb R^2$; dependent vectors (right) lie on one line, and a nontrivial combination gives $\mathbf 0$.
+
+:::
+
 ::: {#prp-independence-and-nullspace .proposition name="Independence of columns"}
 
 The columns of $A$ are independent if and only if $N(A)=\{\mathbf{0}\}$, if and only if $\operatorname{rank}A=n$ (no free variables).

@@ -67,3 +67,23 @@ In particular $E[X\mid Y]=L[X\mid Y]$: for jointly Gaussian variables the MMSE e
 Let $X,Y$ be standard normal and jointly Gaussian with correlation $\rho$. Then $E[X\mid Y]=\rho Y$ and $\operatorname{Var}(X\mid Y)=1-\rho^2$. With $\rho=0.8$ and $Y=1$, $X$ is $N(0.8,0.36)$ given the observation.
 
 :::
+
+::: {#fig-jointly-gaussian-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->] (-2.8,0) -- (2.9,0) node[lab, right] {$x$};
+\draw[->] (0,-2.8) -- (0,2.9) node[lab, above] {$y$};
+\foreach \c/\s in {0.6/tintA,1.2/tintA,1.8/tintA} \fill[\s, rotate=45] (0,0) ellipse ({\c*1.342} and {\c*0.447});
+\foreach \c in {0.6,1.2,1.8} \draw[primary, rotate=45] (0,0) ellipse ({\c*1.342} and {\c*0.447});
+\draw[hl] (-2.24,-2.8) -- (2.24,2.8) node[lab, above] {$x=0.8\,y$};
+\draw[faint, dashed] (-2.6,1.25) -- (2.6,1.25) node[lab, right] {$Y=1.25$};
+\node[hl dot] at (1,1.25) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Contours of the joint density of two standard normals with correlation $\rho=0.8$ (@exm-jointly-gaussian-pair). Conditioning on $Y=y$ cuts along a horizontal line; the conditional mean $E[X\mid Y=y]=0.8y$ lies on the highlighted line, which joins the points where the horizontal lines touch the contours.
+
+:::

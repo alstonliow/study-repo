@@ -30,6 +30,45 @@ $$\Pr(X=k) = \binom{n}{k}p^k(1-p)^{n-k}, \qquad k=0,1,\dots,n.$$
 
 :::
 
+::: {#fig-binomial-distribution-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\draw[->] (-0.4,0) -- (8.3,0) node[lab, right] {$k$};
+\draw[->] (-0.3,0) -- (-0.3,2.4) node[lab, above] {$\Pr(X=k)$};
+\fill[primaryStrong] (-0.225,0) rectangle (0.225,0.226);
+\node[tick, below] at (0.000,0) {$0$};
+\fill[primaryStrong] (0.525,0) rectangle (0.975,0.968);
+\node[tick, below] at (0.750,0) {$1$};
+\fill[primaryStrong] (1.275,0) rectangle (1.725,1.868);
+\node[tick, below] at (1.500,0) {$2$};
+\fill[primaryStrong] (2.025,0) rectangle (2.475,2.135);
+\node[tick, below] at (2.250,0) {$3$};
+\fill[primaryStrong] (2.775,0) rectangle (3.225,1.601);
+\node[tick, below] at (3.000,0) {$4$};
+\fill[primaryStrong] (3.525,0) rectangle (3.975,0.823);
+\node[tick, below] at (3.750,0) {$5$};
+\fill[primaryStrong] (4.275,0) rectangle (4.725,0.294);
+\node[tick, below] at (4.500,0) {$6$};
+\fill[primaryStrong] (5.025,0) rectangle (5.475,0.072);
+\node[tick, below] at (5.250,0) {$7$};
+\fill[primaryStrong] (5.775,0) rectangle (6.225,0.012);
+\node[tick, below] at (6.000,0) {$8$};
+\fill[primaryStrong] (6.525,0) rectangle (6.975,0.001);
+\node[tick, below] at (6.750,0) {$9$};
+\fill[primaryStrong] (7.275,0) rectangle (7.725,0.000);
+\node[tick, below] at (7.500,0) {$10$};
+\draw (-0.24,0.800) -- (-0.36,0.800) node[tick, left] {$0.1$};
+\draw (-0.24,1.600) -- (-0.36,1.600) node[tick, left] {$0.2$};
+\end{tikzpicture}
+\end{center}
+```
+
+The probabilities of $\operatorname{Bin}(10,0.3)$. They peak near the mean $np=3$; the largest is $\Pr(X=3)\approx0.27$.
+
+:::
+
 ```{=latex}
 \begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
   \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}

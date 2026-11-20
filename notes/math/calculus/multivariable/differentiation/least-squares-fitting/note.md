@@ -37,6 +37,28 @@ For $(0,1),(1,1),(2,3)$: $\sum x_i=3$, $\sum x_i^2=5$, $\sum y_i=5$, $\sum x_iy_
 
 :::
 
+::: {#fig-least-squares-fitting-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+\draw[->] (-0.4,0) -- (2.7,0) node[lab, right] {$x$};
+\draw[->] (0,-0.2) -- (0,3.6) node[lab, above] {$y$};
+\foreach \x in {1,2} \draw (\x,0.06) -- (\x,-0.06) node[tick, below] {$\x$};
+\foreach \y in {1,2,3} \draw (0.06,\y) -- (-0.06,\y) node[tick, left] {$\y$};
+\draw[emph, primary] (-0.3,0.367) -- (2.6,3.267) node[lab, right] {$y=x+\frac23$};
+\draw[hl] (0,1) -- (0,0.667);
+\draw[hl] (1,1) -- (1,1.667);
+\draw[hl] (2,3) -- (2,2.667);
+\foreach \p in {(0,1),(1,1),(2,3)} \fill[ink] \p circle[pt];
+\end{tikzpicture}
+\end{center}
+```
+
+The least-squares line of @exm-least-squares-line-calculus. $D(a,b)$ is the sum of the squares of the vertical deviations (highlighted) between the data points and the line $y=ax+b$; the line $y=x+\frac23$ makes it smallest.
+
+:::
+
 ::: {#rmk-least-squares-fitting-1 .remark name="Other laws"}
 
 - An exponential law $y=ce^{ax}$ becomes linear after taking logarithms: $\ln y=ax+b$ with $b=\ln c$. Fit a line to the points $(x_i,\ln y_i)$. (This minimises the deviations of $\ln y$, not of $y$.) Moore's law, the exponential growth of the number of transistors on a chip, is found this way, as a straight line on a log plot.

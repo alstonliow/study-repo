@@ -52,6 +52,32 @@ $$\frac{\partial w}{\partial u}=f_x\frac{\partial x}{\partial u}+f_y\frac{\parti
 
 :::
 
+::: {#fig-differentials-and-chain-rule-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (w) at (0,0) {$w$};
+\node[box] (x) at (-1.6,-1.4) {$x$};
+\node[box] (y) at (1.6,-1.4) {$y$};
+\node[box] (u1) at (-2.4,-2.8) {$u$};
+\node[box] (v1) at (-0.8,-2.8) {$v$};
+\node[box] (u2) at (0.8,-2.8) {$u$};
+\node[box] (v2) at (2.4,-2.8) {$v$};
+\draw[hl] (w) -- node[edge label, left=2pt] {$f_x$} (x);
+\draw[hl] (w) -- node[edge label, right=2pt] {$f_y$} (y);
+\draw[hl] (x) -- node[edge label, left=2pt] {$\frac{\partial x}{\partial u}$} (u1);
+\draw (x) -- (v1);
+\draw[hl] (y) -- node[edge label, left=2pt] {$\frac{\partial y}{\partial u}$} (u2);
+\draw (y) -- (v2);
+\end{tikzpicture}
+\end{center}
+```
+
+Dependency diagram for $w=f(x,y)$ with $x=x(u,v)$, $y=y(u,v)$. Each path from $w$ down to $u$ contributes the product of the derivatives along it; the two highlighted paths add up to $\partial w/\partial u=f_x\,\partial x/\partial u+f_y\,\partial y/\partial u$.
+
+:::
+
 The $\partial x$'s in these formulas may not be "cancelled": $\frac{\partial w}{\partial x}\frac{\partial x}{\partial u}$ alone is not $\frac{\partial w}{\partial u}$.
 
 ::: {#exm-chain-rule-polar .example name="Polar coordinates"}

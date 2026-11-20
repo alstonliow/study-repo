@@ -15,6 +15,34 @@ $X\sim\mathrm{Unif}(a,b)$ means $X$ takes each integer value in $[a,b]$ with the
 
 :::
 
+::: {#fig-uniform-distribution-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.4,0) node[lab, right] {$k$};
+\draw[->] (0.15,0) -- (0.15,2.0) node[lab, above] {$\Pr(X=k)$};
+\fill[primaryStrong] (0.525,0) rectangle (0.975,1.333);
+\node[tick, below] at (0.750,0) {$1$};
+\fill[primaryStrong] (1.275,0) rectangle (1.725,1.333);
+\node[tick, below] at (1.500,0) {$2$};
+\fill[primaryStrong] (2.025,0) rectangle (2.475,1.333);
+\node[tick, below] at (2.250,0) {$3$};
+\fill[primaryStrong] (2.775,0) rectangle (3.225,1.333);
+\node[tick, below] at (3.000,0) {$4$};
+\fill[primaryStrong] (3.525,0) rectangle (3.975,1.333);
+\node[tick, below] at (3.750,0) {$5$};
+\fill[primaryStrong] (4.275,0) rectangle (4.725,1.333);
+\node[tick, below] at (4.500,0) {$6$};
+\draw (0.21,1.333) -- (0.09,1.333) node[tick, left] {$\frac16$};
+\end{tikzpicture}
+\end{center}
+```
+
+A fair die roll is $\operatorname{Unif}(1,6)$: each of the $b-a+1=6$ values has probability $\frac16$.
+
+:::
+
 ```{=latex}
 \begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
   \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}

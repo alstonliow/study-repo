@@ -49,6 +49,31 @@ $$f(x_1,y_1)=\int_0^{x_1}M(x,0)\,dx+\int_0^{y_1}N(x_1,y)\,dy+c .$$
 
 :::
 
+::: {#fig-gradient-fields-and-potentials-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+\draw[->] (-0.4,0) -- (3.4,0) node[lab, right] {$x$};
+\draw[->] (0,-0.4) -- (0,2.5) node[lab, above] {$y$};
+\draw[hl, ->] (0,0) -- (1.4,0);
+\draw[hl] (1.3,0) -- (2.6,0);
+\draw[hl, ->] (2.6,0) -- (2.6,1.1);
+\draw[hl] (2.6,1.0) -- (2.6,1.9);
+\fill[ink] (0,0) circle[pt] node[lab, below left] {$(0,0)$};
+\fill[ink] (2.6,0) circle[pt] node[lab, below] {$(x_1,0)$};
+\fill[ink] (2.6,1.9) circle[pt] node[lab, above right] {$(x_1,y_1)$};
+\node[lab] at (1.3,-0.35) {$\int M(x,0)\,dx$};
+\node[lab, right] at (2.7,0.95) {$\int N(x_1,y)\,dy$};
+\draw[faint, dashed] (0,0) .. controls (0.6,1.6) and (1.6,0.8) .. (2.6,1.9);
+\end{tikzpicture}
+\end{center}
+```
+
+Finding a potential by a line integral (@prp-finding-potential). Any path from the origin gives the same value; the highlighted one, along the $x$-axis and then vertically, splits the integral into two single-variable integrals. The dashed path would give the same answer.
+
+:::
+
 ::: {#exm-finding-potential .example name="Both methods on one field"}
 
 $\mathbf{F}=(4x^2+8xy)\,\mathbf{i}+(3y^2+4x^2)\,\mathbf{j}$.

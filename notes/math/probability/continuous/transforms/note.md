@@ -19,6 +19,27 @@ which is defined for every $t$ since $|e^{itX}|=1$.
 
 :::
 
+::: {#fig-transforms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[xscale=1.6, yscale=0.8]
+\draw[->] (-2.2,0) -- (1.4,0) node[lab, right] {$s$};
+\draw[->] (0,-0.2) -- (0,4.6) node[lab, above] {$M_X(s)$};
+\draw[faint, dashed] (1,0) -- (1,4.5); \node[tick, below] at (1,0) {$1$};
+\draw[emph, primary] plot[domain=-2.1:0.77, samples=60] (\x,{1/(1-\x)});
+\draw[accent] (-1,0) -- (0.9,1.9);
+\node[hl dot] at (0,1) {};
+\node[lab, left] at (-0.05,1.15) {$M_X(0)=1$};
+\node[lab, below right] at (0.35,1.1) {slope $E[X]=1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The moment generating function of $X\sim\operatorname{Exp}(1)$ is $M_X(s)=1/(1-s)$, finite only for $s<1$. Every MGF passes through $(0,1)$, and its slope there is $E[X]$.
+
+:::
+
 ::: {#thm-transform-properties .theorem name="Properties of transforms"}
 
 1. If $X$ and $Y$ are independent, $M_{X+Y}(s)=M_X(s)M_Y(s)$ and $\varphi_{X+Y}(t)=\varphi_X(t)\varphi_Y(t)$.

@@ -380,7 +380,10 @@ assert ucs("A", succ_small, lambda s: s == "A") == (0, ["A"])
    starter. The reader's code is kept in the browser (localStorage, per
    exercise) so it is still there on the next visit; it is a convenience,
    not a record. Done is marked with the usual progress marks (§17.9.4),
-   never automatically. The solution is collapsed like every other. The
+   never automatically. The solution is collapsed like every other; when
+   opened it shows the numbered steps first (the approach) and folds the
+   code under **Show the code**, with **Run tests on it** and **Load into
+   editor** (which asks before replacing the reader's own code). The
    Exercises section of a page gets a filter: **All**, **Written**, **Code**.
    The `source` link leads to the handout, so the full assignment is one
    click away.

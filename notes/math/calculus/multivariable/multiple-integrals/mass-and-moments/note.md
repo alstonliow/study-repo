@@ -49,3 +49,23 @@ This is $\frac{\pi a^4}2+\pi a^2\cdot a^2$: the moment about the centre plus mas
 The upper half of the unit disk, $\delta=1$: $M=\frac\pi2$, $\bar x=0$ by symmetry, and $\iint y\,dA=\int_0^\pi\!\int_0^1r\sin\theta\cdot r\,dr\,d\theta=\frac13\cdot2=\frac23$, so $\bar y=\dfrac{2/3}{\pi/2}=\dfrac4{3\pi}\approx0.42$.
 
 :::
+
+::: {#fig-mass-and-moments-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.4]
+\fill[tintA] (2,0) arc[start angle=0, end angle=180, radius=2] -- cycle;
+\draw[emph, primary] (2,0) arc[start angle=0, end angle=180, radius=2] -- cycle;
+\draw[->] (-2.4,0) -- (2.5,0) node[lab, right] {$x$};
+\draw[->] (0,-0.2) -- (0,2.4) node[lab, above] {$y$};
+\node[tick, below] at (2,0) {$1$}; \node[tick, below] at (-2,0) {$-1$};
+\node[hl dot] at (0,0.849) {};
+\node[lab, right] at (0.1,0.849) {$(\bar x,\bar y)=\big(0,\tfrac4{3\pi}\big)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The centroid of the upper half disk (@exm-centroid-half-disk) lies on the axis of symmetry, at height $4/(3\pi)\approx0.42$: below the middle height $\frac12$, because more of the area lies near the diameter.
+
+:::

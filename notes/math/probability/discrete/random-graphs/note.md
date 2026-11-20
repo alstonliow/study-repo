@@ -43,6 +43,47 @@ Let $p=p(n)=\lambda\dfrac{\ln n}{n}$ for a constant $\lambda>0$.
 
 :::
 
+::: {#fig-random-graphs-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\coordinate (v0) at (1.72,0.53);
+\coordinate (v1) at (1.08,1.44);
+\coordinate (v2) at (0.03,1.80);
+\coordinate (v3) at (-1.04,1.47);
+\coordinate (v4) at (-1.70,0.58);
+\coordinate (v5) at (-1.72,-0.53);
+\coordinate (v6) at (-1.08,-1.44);
+\coordinate (v7) at (-0.03,-1.80);
+\coordinate (v8) at (1.04,-1.47);
+\coordinate (v9) at (1.70,-0.58);
+\draw[emph] (v0) -- (v1);
+\draw[emph] (v0) -- (v7);
+\draw[emph] (v1) -- (v2);
+\draw[emph] (v1) -- (v8);
+\draw[emph] (v2) -- (v7);
+\draw[emph] (v3) -- (v5);
+\draw[emph] (v5) -- (v8);
+\draw[emph] (v5) -- (v9);
+\node[small vertex] at (v0) {};
+\node[small vertex] at (v1) {};
+\node[small vertex] at (v2) {};
+\node[small vertex] at (v3) {};
+\node[small vertex, fill=accentLight, draw=accent] at (v4) {};
+\node[small vertex] at (v5) {};
+\node[small vertex, fill=accentLight, draw=accent] at (v6) {};
+\node[small vertex] at (v7) {};
+\node[small vertex] at (v8) {};
+\node[small vertex] at (v9) {};
+\end{tikzpicture}
+\end{center}
+```
+
+A sample of $G(10,0.25)$ with 8 edges. The two highlighted vertices are isolated, so the graph is not connected. Near the threshold of @thm-connectivity-threshold, isolated vertices are the typical obstacle to connectivity.
+
+:::
+
 We prove part 2 and the matching statement for isolated vertices, which is the heart of part 1: when $\lambda>1$ there are no isolated vertices, and one shows separately (by bounding the expected number of small components) that no other obstacle to connectivity survives.
 
 ::: {.proof}

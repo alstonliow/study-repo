@@ -77,3 +77,20 @@ If $p\ne\tfrac12$ then $4p(1-p)<1$, the series converges, and the walk is transi
 On $\{0,1,2,\dots\}$ move up with probability $p$ and down with probability $q=1-p$ (staying at $0$ instead of going down). The balance equations $\pi(i)p=\pi(i+1)q$ give $\pi(i)=\pi(0)(p/q)^i$. If $p<q$ this sums to a distribution, $\pi(i)=(1-\rho)\rho^i$ with $\rho=p/q$, and the chain is positive recurrent; if $p\ge q$ there is no invariant distribution.
 
 :::
+
+::: {#fig-countable-markov-chains-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\foreach \i in {0,...,3} \node[small vertex] (s\i) at (1.8*\i,0) {$\i$};
+\node[lab] (s4) at (7.2,0) {$\cdots$};
+\foreach \i/\j in {0/1,1/2,2/3,3/4} { \draw[->] (s\i) to[bend left=30] node[edge label, above] {$p$} (s\j); \draw[->] (s\j) to[bend left=30] node[edge label, below] {$q$} (s\i); }
+\draw[->] (s0) to[out=200, in=160, looseness=6] node[edge label, left] {$q$} (s0);
+\end{tikzpicture}
+\end{center}
+```
+
+The reflected random walk of @exm-birth-death-chain. Up with probability $p$, down with probability $q$, and at $0$ a down step stays put. When $p<q$ the drift towards $0$ makes the chain positive recurrent with $\pi(i)=(1-\rho)\rho^i$.
+
+:::

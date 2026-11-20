@@ -17,6 +17,47 @@ is a *Poisson process of rate $\lambda$*. The $T_n$ are the *arrival times* and 
 
 :::
 
+::: {#fig-poisson-process-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->] (0,0) -- (6.6,0) node[lab, right] {$t$};
+\draw[->] (0,0) -- (0,3.6);
+\draw[emph, primary] (0,0.0) -- (0.6,0.0);
+\draw[faint, dashed] (0.6,0.0) -- (0.6,0.45);
+\draw[emph, primary] (0.6,0.45) -- (1.1,0.45);
+\draw[faint, dashed] (1.1,0.45) -- (1.1,0.9);
+\draw[emph, primary] (1.1,0.9) -- (2.4,0.9);
+\draw[faint, dashed] (2.4,0.9) -- (2.4,1.35);
+\draw[emph, primary] (2.4,1.35) -- (2.9,1.35);
+\draw[faint, dashed] (2.9,1.35) -- (2.9,1.8);
+\draw[emph, primary] (2.9,1.8) -- (3.2,1.8);
+\draw[faint, dashed] (3.2,1.8) -- (3.2,2.25);
+\draw[emph, primary] (3.2,2.25) -- (4.6,2.25);
+\draw[faint, dashed] (4.6,2.25) -- (4.6,2.7);
+\draw[emph, primary] (4.6,2.7) -- (5.5,2.7);
+\draw[faint, dashed] (5.5,2.7) -- (5.5,3.15);
+\draw[emph, primary] (5.5,3.15) -- (6.2,3.15) node[lab, right] {$N(t)$};
+\fill[ink] (0.6,0) circle[pt];
+\fill[ink] (1.1,0) circle[pt];
+\fill[ink] (2.4,0) circle[pt];
+\fill[ink] (2.9,0) circle[pt];
+\fill[ink] (3.2,0) circle[pt];
+\fill[ink] (4.6,0) circle[pt];
+\fill[ink] (5.5,0) circle[pt];
+\node[tick, below] at (0.6,0) {$T_1$}; \node[tick, below] at (1.1,0) {$T_2$}; \node[tick, below] at (2.4,0) {$T_3$};
+\draw[decorate, decoration={brace, mirror, amplitude=3pt}, accent] (0,-0.45) -- node[lab, below=2pt] {$S_1$} (0.6,-0.45);
+\draw[decorate, decoration={brace, mirror, amplitude=3pt}, accent] (1.1,-0.45) -- node[lab, below=2pt] {$S_3$} (2.4,-0.45);
+\foreach \k in {1,2,3} \node[tick, left] at (0,{\k*0.9}) {$\pgfmathparse{int(2*\k)}\pgfmathresult$};
+\end{tikzpicture}
+\end{center}
+```
+
+A path of a Poisson process: arrivals $T_1<T_2<\dots$ on the time axis, separated by independent $\operatorname{Exp}(\lambda)$ gaps $S_n$, and the count $N(t)$, which jumps by $1$ at each arrival.
+
+:::
+
 ::: {#thm-poisson-process-counts .theorem name="Counts of a Poisson process"}
 
 For a Poisson process of rate $\lambda$:

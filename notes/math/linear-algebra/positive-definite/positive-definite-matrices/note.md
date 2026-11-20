@@ -68,3 +68,23 @@ with the pivots as coefficients and the multipliers inside the squares.
 For positive definite $S$, the set $\mathbf{x}^{\mathsf T}S\mathbf{x}=1$ is an ellipse (ellipsoid). Its axes point along the eigenvectors and have half-lengths $1/\sqrt{\lambda_i}$: in the coordinates $\mathbf{y}=Q^{\mathsf T}\mathbf{x}$ the equation is $\sum\lambda_iy_i^2=1$.
 
 :::
+
+::: {#fig-positive-definite-matrices-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=2.2]
+\draw[->] (-1.2,0) -- (1.3,0) node[lab, right] {$x_1$};
+\draw[->] (0,-1.1) -- (0,1.2) node[lab, above] {$x_2$};
+\fill[tintA, rotate=45] (0,0) ellipse (0.577 and 1);
+\draw[emph, primary, rotate=45] (0,0) ellipse (0.577 and 1);
+\draw[->, hl] (0,0) -- (45:0.577);
+\node[lab, right] at (45:0.6) {$\frac1{\sqrt3}$};
+\draw[->, hl] (0,0) -- (135:1) node[lab, above left] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The ellipse $\mathbf x^{\mathsf T}S\mathbf x=1$ for $S=\begin{bmatrix}2&1\\1&2\end{bmatrix}$ with eigenvalues $3$ and $1$. The axes follow the eigenvectors $(1,1)$ and $(-1,1)$, and the larger eigenvalue gives the shorter half-axis $1/\sqrt3$.
+
+:::

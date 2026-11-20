@@ -71,3 +71,24 @@ $$F_k=\frac{\lambda_1^k-\lambda_2^k}{\sqrt5}.$$
 Since $\lvert\lambda_2\rvert<1$, $F_k$ is the integer nearest to $\lambda_1^k/\sqrt5$, and $F_{k+1}/F_k\to\lambda_1$. For example $F_{10}=55$ and $\lambda_1^{10}/\sqrt5\approx55.004$.
 
 :::
+
+::: {#fig-diagonalization-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.38]
+\draw[->] (-4.5,0) -- (14.5,0) node[lab, right] {$F_{k+1}$};
+\draw[->] (0,-2) -- (0,9.5) node[lab, above] {$F_k$};
+\draw[emph, primary] (-3.2,-2) -- (14,8.65) node[lab, right] {$(\lambda_1,1)$};
+\draw[emph, muted, dashed] (1.24,-2) -- (-4.3,6.96) node[lab, above] {$(\lambda_2,1)$};
+\draw[faint] (1,0) -- (1,1) -- (2,1) -- (3,2) -- (5,3) -- (8,5) -- (13,8);
+\foreach \p/\k in {(1,0)/0,(1,1)/1,(2,1)/2,(3,2)/3,(5,3)/4,(8,5)/5,(13,8)/6} \node[hl dot] at \p {};
+\node[lab, below] at (1,0) {$\mathbf u_0$};
+\node[lab, below right] at (13,8) {$\mathbf u_6$};
+\end{tikzpicture}
+\end{center}
+```
+
+The vectors $\mathbf u_k=(F_{k+1},F_k)$ of @exm-fibonacci-by-eigenvalues. The component along $(\lambda_2,1)$ shrinks like $\lambda_2^k$, so the points line up along the eigenvector $(\lambda_1,1)$ and $F_{k+1}/F_k\to\lambda_1$.
+
+:::

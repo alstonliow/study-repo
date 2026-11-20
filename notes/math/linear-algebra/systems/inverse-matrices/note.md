@@ -66,6 +66,24 @@ To compute $A^{-1}$ for an $n\times n$ matrix $A$, apply elimination to the $n\t
 
 :::
 
+::: {#fig-inverse-matrices-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (a) at (0,0) {$\begin{bmatrix}A & I\end{bmatrix}$};
+\node[box] (b) at (3.9,0) {$\begin{bmatrix}U & \ast\end{bmatrix}$};
+\node[hl box] (c) at (7.8,0) {$\begin{bmatrix}I & A^{-1}\end{bmatrix}$};
+\draw[map] (a) -- node[edge label, above=4pt, align=center] {eliminate\\downwards} (b);
+\draw[map] (b) -- node[edge label, above=4pt, align=center] {upwards, divide\\by pivots} (c);
+\end{tikzpicture}
+\end{center}
+```
+
+Gauss–Jordan elimination works on the whole $n\times2n$ matrix. When the left half has become $I$, every row operation has been applied to $I$ as well, so the right half is $A^{-1}$.
+
+:::
+
 ::: {#thm-gauss-jordan-correct .theorem name="Gauss–Jordan computes the inverse"}
 
 If Gauss–Jordan turns $[A\ I]$ into $[I\ X]$, then $X=A^{-1}$.

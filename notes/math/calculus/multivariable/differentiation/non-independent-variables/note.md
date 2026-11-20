@@ -63,3 +63,23 @@ A triangle with sides $a,b$ enclosing the angle $\theta$ has area $A=\frac12ab\s
 - By differentials: $da=0$ and $da=\cos\theta\,db-b\sin\theta\,d\theta$ give $db=b\tan\theta\,d\theta$; then $dA=\frac12ab\cos\theta\,d\theta+\frac12a\sin\theta\,db=\big(\frac12ab\cos\theta+\frac12ab\sin\theta\tan\theta\big)d\theta=\frac12ab\sec\theta\,d\theta$. With $b=a\sec\theta$ this is $\frac12a^2\sec^2\theta$ again.
 
 :::
+
+::: {#fig-non-independent-variables-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\coordinate (O) at (0,0); \coordinate (A) at (3.2,0); \coordinate (B) at (3.2,2.1);
+\fill[tintA] (O) -- (A) -- (B) -- cycle;
+\draw[emph] (O) -- node[lab, below] {$a$} (A) -- (B) -- node[lab, above left] {$b$} cycle;
+\draw (3.0,0) -- (3.0,0.2) -- (3.2,0.2);
+\draw (0.7,0) arc[start angle=0, end angle=33.3, radius=0.7];
+\node[lab] at (0.95,0.27) {$\theta$};
+\node[lab] at (2.3,0.75) {$A$};
+\end{tikzpicture}
+\end{center}
+```
+
+The triangle of @exm-right-triangle-area. Its area $A=\frac12ab\sin\theta$ is a function of three variables, but keeping the right angle imposes $a=b\cos\theta$, so only two are independent and $\partial A/\partial\theta$ depends on which of $a$, $b$ is held fixed.
+
+:::

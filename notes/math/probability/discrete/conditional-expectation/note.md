@@ -49,6 +49,25 @@ This is the mean of the geometric distribution (@prp-standard-distributions-1-4)
 
 :::
 
+::: {#fig-conditional-expectation-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (r) at (0,0) {hour $1$};
+\node[box] (f) at (3.6,0.9) {fails: $C=1$};
+\node[hl box] (s) at (3.6,-0.9) {survives: $C=1+C'$};
+\draw[map] (r) -- node[edge label, above left] {$p$} (f);
+\draw[map] (r) -- node[edge label, below left] {$1-p$} (s);
+\node[lab, right, align=left] at (6.1,-0.9) {$C'$ has the same\\distribution as $C$};
+\end{tikzpicture}
+\end{center}
+```
+
+Conditioning on the first hour in @exm-mean-time-to-failure. After a survival the process starts afresh, so the remaining time $C'$ has mean $m$, which gives $m=p\cdot1+(1-p)(1+m)$.
+
+:::
+
 ::: {#exm-conditional-expectation-two-children .example name="Waiting for a pattern"}
 
 Flip a fair coin until heads appears twice in a row, and let $T$ be the number of flips. Let $a=E[T]$ and $b$ the expected number of further flips when the last flip was heads. Conditioning on the next flip:

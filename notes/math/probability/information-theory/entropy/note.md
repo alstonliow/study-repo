@@ -24,6 +24,25 @@ If $X$ takes three values with probabilities $\tfrac12,\tfrac14,\tfrac14$, then 
 
 :::
 
+::: {#fig-entropy-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=3]
+\draw[->] (0,0) -- (1.15,0) node[lab, right] {$p$};
+\draw[->] (0,0) -- (0,1.2) node[lab, above] {$h(p)$};
+\draw[emph, primary] plot[domain=0.001:0.999, samples=100] (\x,{-(\x*ln(\x)+(1-\x)*ln(1-\x))/ln(2)});
+\draw[faint, dashed] (0.5,0) -- (0.5,1) -- (0,1);
+\node[tick, below] at (0.5,0) {$\frac12$}; \node[tick, below] at (1,0) {$1$}; \node[tick, left] at (0,1) {$1$};
+\node[hl dot] at (0.5,1) {};
+\end{tikzpicture}
+\end{center}
+```
+
+The binary entropy $h(p)$ of a $\operatorname{Bernoulli}(p)$ variable, in bits. It is $0$ when the outcome is certain and largest, $1$ bit, for a fair coin.
+
+:::
+
 ::: {#def-relative-entropy .definition name="Relative entropy, mutual information"}
 
 The *relative entropy* (Kullback–Leibler divergence) between PMFs $p$ and $q$ is

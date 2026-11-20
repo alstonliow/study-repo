@@ -26,6 +26,28 @@ Let $(X,Y)$ be uniform on the triangle $0\le y\le x\le1$, which has area $\tfrac
 
 :::
 
+::: {#fig-joint-distributions-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=2.6]
+\fill[tintA] (0,0) -- (1,0) -- (1,1) -- cycle;
+\draw[emph, primary] (0,0) -- (1,0) -- (1,1) -- cycle;
+\draw[->] (-0.1,0) -- (1.25,0) node[lab, right] {$x$};
+\draw[->] (0,-0.1) -- (0,1.2) node[lab, above] {$y$};
+\draw[hl] (0.65,0) -- (0.65,0.65);
+\node[tick, below] at (0.65,0) {$x$}; \node[tick, below] at (1,0) {$1$}; \node[tick, left] at (0,1) {$1$};
+\node[lab, right] at (0.67,0.42) {$Y\mid X=x$};
+\node[lab, primary] at (0.62,0.82) {$y=x$};
+\node[lab] at (0.8,0.2) {$f=2$};
+\end{tikzpicture}
+\end{center}
+```
+
+The joint density of @exm-joint-density-triangle is $2$ on the triangle. Given $X=x$, the slice (highlighted) is the segment $0\le y\le x$, and $Y$ is uniform on it, so $E[Y\mid X=x]=x/2$.
+
+:::
+
 ::: {#thm-change-of-variables-density .theorem name="Change of variables"}
 
 Let $(X,Y)$ have joint density $f_{X,Y}$ supported on an open set $D$, and let $g:D\to g(D)$ be one-to-one and continuously differentiable with non-zero Jacobian determinant $J_g$. Then $(U,V)=g(X,Y)$ has density

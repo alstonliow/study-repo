@@ -34,6 +34,27 @@ $$X-\hat X\perp Z\quad\text{for every }Z\in\mathcal S.$$
 
 :::
 
+::: {#fig-linear-estimation-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\fill[tintA] (-2,-0.7) -- (2.2,-0.7) -- (3,0.6) -- (-1.2,0.6) -- cycle;
+\draw[primary] (-2,-0.7) -- (2.2,-0.7) -- (3,0.6) -- (-1.2,0.6) -- cycle;
+\node[lab, primary] at (2.6,-0.45) {$\mathcal S$};
+\draw[->, emph] (0,0) -- (1.4,2.1) node[lab, above] {$X$};
+\draw[->, hl] (0,0) -- (1.4,0.1) node[lab, below right] {$\hat X$};
+\draw[dashed] (1.4,0.1) -- node[lab, right] {$X-\hat X$} (1.4,2.1);
+\draw (1.4,0.35) -- (1.2,0.34) -- (1.2,0.09);
+\draw[->, emph, secondary] (0,0) -- (-1.1,0.3) node[lab, above] {$Z$};
+\end{tikzpicture}
+\end{center}
+```
+
+The projection theorem: the best estimate $\hat X$ in the subspace $\mathcal S$ is the foot of the perpendicular from $X$, so the error $X-\hat X$ is orthogonal to every $Z$ in $\mathcal S$. Lengths are measured by $\sqrt{E[Z^2]}$.
+
+:::
+
 ::: {#thm-llse .theorem name="Linear least squares estimate"}
 
 The best estimate of $X$ of the form $a+bY$ (with $\operatorname{Var}(Y)>0$) is

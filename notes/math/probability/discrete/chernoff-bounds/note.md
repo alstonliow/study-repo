@@ -29,6 +29,25 @@ $$\Pr\bigl(T\ge c\,E[T]\bigr)\le e^{-\beta(c)\,E[T]},\qquad\beta(c)=c\ln c-c+1.$
 
 :::
 
+::: {#fig-chernoff-bounds-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[xscale=1.8, yscale=1.8]
+\draw[->] (0.8,0) -- (3.4,0) node[lab, right] {$c$};
+\draw[->] (1,-0.1) -- (1,1.55) node[lab, above] {$\beta(c)$};
+\draw[emph, primary] plot[domain=1:3.2, samples=60] (\x,{\x*ln(\x)-\x+1});
+\foreach \c in {2,3} \draw (\c,0.04) -- (\c,-0.04) node[tick, below] {$\c$};
+\node[tick, below] at (1,0) {$1$};
+\node[hl dot] at (2,0.386) {}; \node[lab, above left] at (2,0.386) {$\beta(2)\approx0.39$};
+\end{tikzpicture}
+\end{center}
+```
+
+The exponent $\beta(c)=c\ln c-c+1$ in @thm-chernoff-bound. It is $0$ at $c=1$ and grows faster than linearly, so for a fixed factor $c>1$ the bound $e^{-\beta(c)E[T]}$ decays exponentially in $E[T]$.
+
+:::
+
 $\beta(c)>0$ for $c>1$ ($\beta(1)=0$ and $\beta'(c)=\ln c>0$), and for example $\beta(2)\approx0.386$, $\beta(3)\approx1.296$.
 
 ::: {#exm-chernoff-coin .example name="Many heads"}

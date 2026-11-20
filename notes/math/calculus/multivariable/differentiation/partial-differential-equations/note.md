@@ -52,6 +52,26 @@ solves the wave equation $w_{xx}=\frac1{c^2}w_{tt}$.
 
 :::
 
+::: {#fig-partial-differential-equations-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+\draw[->] (-0.6,0) -- (5.4,0) node[lab, right] {$x$};
+\draw[emph, primary] plot[domain=-0.5:2.6, samples=60] (\x, {1.3*exp(-3*(\x-1)^2)});
+\draw[emph, accent] plot[domain=1.7:4.8, samples=60] (\x, {1.3*exp(-3*(\x-3.2)^2)});
+\node[lab, primary] at (1,1.6) {$t=0$};
+\node[lab, accent] at (3.2,1.6) {time $t$};
+\draw[->, muted] (1.25,0.7) -- node[lab, above] {$ct$} (2.95,0.7);
+\draw[faint, dashed] (1,0) -- (1,1.3); \draw[faint, dashed] (3.2,0) -- (3.2,1.3);
+\end{tikzpicture}
+\end{center}
+```
+
+A travelling wave $w=g(x-ct)$: the graph at time $t$ is the graph at time $0$ shifted right by $ct$, so the profile moves with speed $c$ without changing shape.
+
+:::
+
 The graph of $g(x-ct)$ at time $t$ is the graph of $g$ shifted by $ct$: a wave moving right with speed $c$; $f(x+ct)$ moves left.
 
 ::: {#exm-heat-equation-solution .example name="A decaying temperature"}

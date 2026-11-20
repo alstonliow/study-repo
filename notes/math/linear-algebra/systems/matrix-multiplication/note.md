@@ -15,6 +15,27 @@ The number of columns of $A$ must equal the number of rows of $B$.
 
 :::
 
+::: {#fig-matrix-multiplication-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\foreach \i in {1,2,3} \foreach \j in {1,...,4} \draw[cell frame] (\j-1,-\i) rectangle (\j,-\i+1);
+\foreach \j in {1,...,4} \draw[hl cell] (\j-1,-2) rectangle (\j,-1);
+\foreach \i in {1,...,4} \foreach \j in {1,2,3} \draw[cell frame] (4.5+\j,1.5-\i) rectangle (5.5+\j,2.5-\i);
+\foreach \i in {1,...,4} \draw[hl cell] (7.5,1.5-\i) rectangle (8.5,2.5-\i);
+\node[lab] at (9.5,-1.5) {$=$};
+\foreach \i in {1,2,3} \foreach \j in {1,2,3} \draw[cell frame] (9.5+\j,-\i) rectangle (10.5+\j,-\i+1);
+\draw[hl cell] (12.5,-2) rectangle (13.5,-1);
+\node[lab] at (2,-3.7) {$A$ ($3\times4$)}; \node[lab] at (7,-3.7) {$B$ ($4\times3$)}; \node[lab] at (12,-3.7) {$AB$ ($3\times3$)};
+\end{tikzpicture}
+\end{center}
+```
+
+Entry $(i,j)$ of $AB$ is the dot product of row $i$ of $A$ with column $j$ of $B$ (here $i=2$, $j=3$). This needs the number of columns of $A$ to equal the number of rows of $B$.
+
+:::
+
 ::: {#thm-four-ways-to-multiply .theorem name="Four ways to see AB"}
 
 Let $A$ be $m\times n$ with columns $\mathbf{a}_k$ and $B$ be $n\times p$ with rows $\mathbf{b}_k^{\mathsf T}$.

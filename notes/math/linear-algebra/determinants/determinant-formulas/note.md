@@ -41,6 +41,25 @@ $$C_{ij}=(-1)^{i+j}\det M_{ij}.$$
 
 :::
 
+::: {#fig-determinant-formulas-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+\foreach \i in {1,3,4} \foreach \j in {1,2,4} \draw[cell frame, fill=primaryLight] (\j-1,-\i) rectangle (\j,-\i+1);
+\foreach \j in {1,...,4} \draw[hl cell] (\j-1,-2) rectangle (\j,-1);
+\foreach \i in {1,3,4} \draw[hl cell] (2,-\i) rectangle (3,-\i+1);
+\node[lab] at (2.5,-1.5) {$a_{23}$};
+\node[lab, left] at (-0.1,-1.5) {row $2$};
+\node[lab, above] at (2.5,0.05) {column $3$};
+\end{tikzpicture}
+\end{center}
+```
+
+The minor $M_{23}$ of a $4\times4$ matrix: delete row $2$ and column $3$ (highlighted). The remaining $3\times3$ entries (shaded) form $M_{23}$, and $C_{23}=(-1)^{2+3}\det M_{23}$.
+
+:::
+
 ::: {#thm-cofactor-expansion .theorem name="Cofactor expansion"}
 
 For every row $i$,

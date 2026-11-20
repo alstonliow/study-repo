@@ -64,3 +64,23 @@ So $f=x^2y+yz^3-z^4+c$. Alternatively, integrate $\mathbf{F}$ from the origin al
 The velocity field of a rotation about the $z$-axis with angular velocity $\omega$ is $\mathbf{v}=\langle-\omega y,\omega x,0\rangle$, and $\nabla\times\mathbf{v}=\langle0,0,2\omega\rangle$. In general the curl of a velocity field measures its rotating part: its direction is the axis of rotation and its length is twice the angular velocity.
 
 :::
+
+::: {#fig-line-integrals-in-space-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->] (-2.4,0) -- (2.4,0) node[lab, right] {$x$};
+\draw[->] (0,-2.4) -- (0,2.4) node[lab, above] {$y$};
+\draw[faint] (0,0) circle (0.9); \draw[faint] (0,0) circle (1.8);
+\foreach \ang in {0,60,...,300} \draw[->, accent, emph] (\ang:0.9) -- ++(\ang+90:0.3);
+\foreach \ang in {0,36,...,324} \draw[->, accent, emph] (\ang:1.8) -- ++(\ang+90:0.6);
+\node[hollow dot, scale=1.6] at (0,0) {}; \fill[ink] (0,0) circle[pt];
+\node[lab, below right] at (0.1,-0.05) {$\nabla\times\mathbf v$};
+\end{tikzpicture}
+\end{center}
+```
+
+The rotation field $\mathbf v=\langle-\omega y,\omega x,0\rangle$ seen from above (@exm-curl-rotation). The speed grows with the distance from the axis, and $\nabla\times\mathbf v=\langle0,0,2\omega\rangle$ points out of the page, along the axis of rotation.
+
+:::

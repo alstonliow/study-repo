@@ -17,6 +17,44 @@ $$\Pr(X=k) = (1-p)^{k-1}p, \qquad k=1,2,3,\dots$$
 
 :::
 
+::: {#fig-geometric-distribution-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (8.3,0) node[lab, right] {$k$};
+\draw[->] (0.15,0) -- (0.15,2.6) node[lab, above] {$\Pr(X=k)$};
+\fill[primaryStrong] (0.525,0) rectangle (0.975,2.400);
+\node[tick, below] at (0.750,0) {$1$};
+\fill[primaryStrong] (1.275,0) rectangle (1.725,1.680);
+\node[tick, below] at (1.500,0) {$2$};
+\fill[primaryStrong] (2.025,0) rectangle (2.475,1.176);
+\node[tick, below] at (2.250,0) {$3$};
+\fill[primaryStrong] (2.775,0) rectangle (3.225,0.823);
+\node[tick, below] at (3.000,0) {$4$};
+\fill[primaryStrong] (3.525,0) rectangle (3.975,0.576);
+\node[tick, below] at (3.750,0) {$5$};
+\fill[primaryStrong] (4.275,0) rectangle (4.725,0.403);
+\node[tick, below] at (4.500,0) {$6$};
+\fill[primaryStrong] (5.025,0) rectangle (5.475,0.282);
+\node[tick, below] at (5.250,0) {$7$};
+\fill[primaryStrong] (5.775,0) rectangle (6.225,0.198);
+\node[tick, below] at (6.000,0) {$8$};
+\fill[primaryStrong] (6.525,0) rectangle (6.975,0.138);
+\node[tick, below] at (6.750,0) {$9$};
+\fill[primaryStrong] (7.275,0) rectangle (7.725,0.097);
+\node[tick, below] at (7.500,0) {$10$};
+\draw (0.21,0.800) -- (0.09,0.800) node[tick, left] {$0.1$};
+\draw (0.21,1.600) -- (0.09,1.600) node[tick, left] {$0.2$};
+\draw (0.21,2.400) -- (0.09,2.400) node[tick, left] {$0.3$};
+\end{tikzpicture}
+\end{center}
+```
+
+The probabilities of $\operatorname{Geom}(0.3)$ decrease geometrically: each bar is $0.7$ times the previous one, starting from $\Pr(X=1)=p=0.3$.
+
+:::
+
 ```{=latex}
 \begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
   \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}

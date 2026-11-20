@@ -60,6 +60,27 @@ $$S=3\cdot\frac12\begin{bmatrix}1&1\\1&1\end{bmatrix}+1\cdot\frac12\begin{bmatri
 
 :::
 
+::: {#fig-symmetric-matrices-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\draw[->] (-3.3,0) -- (3.4,0) node[lab, right] {$x_1$};
+\draw[->] (0,-2.6) -- (0,2.8) node[lab, above] {$x_2$};
+\draw[faint] (0,0) circle (1);
+\draw[emph, primary, rotate=45] (0,0) ellipse (3 and 1);
+\draw[->, hl] (0,0) -- (45:3) node[lab, above right] {$S\mathbf q_1=3\mathbf q_1$};
+\draw[->, emph] (0,0) -- (45:1);
+\node[lab, above left] at (45:0.8) {$\mathbf q_1$};
+\draw[->, emph, accent] (0,0) -- (-45:1) node[lab, below right] {$S\mathbf q_2=\mathbf q_2$};
+\end{tikzpicture}
+\end{center}
+```
+
+$S=\begin{bmatrix}2&1\\1&2\end{bmatrix}$ maps the unit circle (faint) to an ellipse. Its axes lie along the orthonormal eigenvectors $\mathbf q_1,\mathbf q_2$ and are stretched by the eigenvalues $3$ and $1$.
+
+:::
+
 ::: {#prp-signs-of-pivots-and-eigenvalues .proposition name="Signs of pivots and eigenvalues"}
 
 For a symmetric matrix with nonzero pivots (no row exchanges needed), the number of positive pivots equals the number of positive eigenvalues.

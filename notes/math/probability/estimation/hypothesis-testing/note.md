@@ -66,8 +66,53 @@ Under $H_0$, $Y\sim N(0,1)$; under $H_1$, $Y\sim N(1,1)$. Then $L(y)=e^{y-1/2}$ 
 
 :::
 
+::: {#fig-hypothesis-testing-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[xscale=1.2, yscale=5]
+\fill[tintB] plot[domain=1.645:4, samples=40] (\x,{exp(-(\x-1)^2/2)/sqrt(2*pi)}) -- (4,0) -- (1.645,0) -- cycle;
+\fill[accent] plot[domain=1.645:3.5, samples=40] (\x,{exp(-(\x)^2/2)/sqrt(2*pi)}) -- (3.5,0) -- (1.645,0) -- cycle;
+\draw[emph, primary] plot[domain=-3:3.5, samples=80] (\x,{exp(-(\x)^2/2)/sqrt(2*pi)});
+\draw[emph, secondary] plot[domain=-2:4, samples=80] (\x,{exp(-(\x-1)^2/2)/sqrt(2*pi)});
+\draw[->] (-3.2,0) -- (4.4,0) node[lab, right] {$y$};
+\draw[dashed] (1.645,0) -- (1.645,0.46) node[lab, above] {$t\approx1.645$};
+\node[lab, primary] at (-1.3,0.36) {$H_0$: $N(0,1)$};
+\node[lab, secondary] at (2.8,0.36) {$H_1$: $N(1,1)$};
+\node[lab] at (2.75,0.13) {$\mathrm{PCD}\approx0.26$};
+\draw[->, accent] (2.6,-0.07) node[lab, right] {$\mathrm{PFA}=0.05$} -- (1.95,0.02);
+\end{tikzpicture}
+\end{center}
+```
+
+The test of @exm-neyman-pearson-gaussian decides $1$ when $Y>t$. The dark area under the $H_0$ density is the false-alarm probability $0.05$; the shaded area under the $H_1$ density is the probability of correct detection.
+
+:::
+
 ::: {#rmk-hypothesis-testing-roc .remark name="The ROC curve"}
 
 Plotting the best $\mathrm{PCD}$ against $\mathrm{PFA}=\beta$ for all $\beta$ gives the *receiver operating characteristic*. It is concave and increasing, from $(0,0)$ to $(1,1)$; the further it bends towards $(0,1)$, the easier the two hypotheses are to tell apart.
+
+:::
+
+::: {#fig-hypothesis-testing-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (3.4,0) node[lab, right] {$\mathrm{PFA}$};
+\draw[->] (0,0) -- (0,3.4) node[lab, above] {$\mathrm{PCD}$};
+\draw[faint, dashed] (0,0) -- (3,3);
+\draw[faint] (3,0) -- (3,3) -- (0,3);
+\node[tick, below] at (3,0) {$1$}; \node[tick, left] at (0,3) {$1$};
+\draw[emph, primary] (0.000,0.000) -- (0.075,0.506) -- (0.150,0.779) -- (0.225,0.990) -- (0.300,1.167) -- (0.375,1.321) -- (0.450,1.456) -- (0.525,1.578) -- (0.600,1.689) -- (0.675,1.790) -- (0.750,1.883) -- (0.825,1.969) -- (0.900,2.048) -- (0.975,2.123) -- (1.050,2.192) -- (1.125,2.257) -- (1.200,2.317) -- (1.275,2.374) -- (1.350,2.427) -- (1.425,2.477) -- (1.500,2.524) -- (1.575,2.568) -- (1.650,2.610) -- (1.725,2.648) -- (1.800,2.685) -- (1.875,2.719) -- (1.950,2.751) -- (2.025,2.781) -- (2.100,2.809) -- (2.175,2.835) -- (2.250,2.859) -- (2.325,2.881) -- (2.400,2.902) -- (2.475,2.920) -- (2.550,2.937) -- (2.625,2.953) -- (2.700,2.966) -- (2.775,2.978) -- (2.850,2.988) -- (2.925,2.995) -- (3.000,3.000);
+\node[hl dot] at (0.15,0.78) {};
+\node[lab, right] at (0.2,0.7) {$(0.05,0.26)$};
+\node[lab, primary] at (2.1,1.3) {$N(0,1)$ vs $N(1,1)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The ROC curve of @exm-neyman-pearson-gaussian. The marked point is the test with $\mathrm{PFA}=0.05$; the dashed diagonal is what guessing achieves, and curves closer to the corner $(0,1)$ belong to easier problems.
 
 :::

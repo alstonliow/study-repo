@@ -48,6 +48,28 @@ For every $n\times n$ matrix $A$:
 
 :::
 
+::: {#fig-properties-of-determinants-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\draw[->] (-0.3,0) -- (5.7,0);
+\draw[->] (0,-0.3) -- (0,2.4);
+\fill[tintA] (0,0) -- (2,0) -- (3.2,1.8) -- (1.2,1.8) -- cycle;
+\draw[emph, primary] (0,0) -- (2,0) -- (3.2,1.8) -- (1.2,1.8) -- cycle;
+\draw[emph, accent, dashed] (2,0) -- (5.2,1.8) -- (3.2,1.8);
+\draw[->, emph] (0,0) -- node[lab, below] {$\mathbf r_1$} (2,0);
+\draw[->, emph] (0,0) -- node[lab, left] {$\mathbf r_2$} (1.2,1.8);
+\draw[->, emph, accent] (0,0) -- (3.2,1.8) node[lab, above] {$\mathbf r_2+\mathbf r_1$};
+\draw[faint, dashed] (5.5,0) -- (5.5,1.8); \node[lab, right] at (5.5,0.9) {same height};
+\end{tikzpicture}
+\end{center}
+```
+
+For a $2\times2$ matrix with rows $\mathbf r_1,\mathbf r_2$, $\lvert\det\rvert$ is the area of the parallelogram they span. Adding $\mathbf r_1$ to $\mathbf r_2$ slides the top side along itself (dashed): same base, same height, same area, matching the rule that this row operation leaves the determinant unchanged.
+
+:::
+
 ::: {#cor-determinant-pivots .corollary name="Determinant from the pivots"}
 
 If $PA=LU$, then $\det A=\pm(\text{product of the pivots})$, with the sign $+$ for an even number of row exchanges and $-$ for an odd number.

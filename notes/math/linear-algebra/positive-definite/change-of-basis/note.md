@@ -23,6 +23,26 @@ If the basis is orthonormal, $\mathbf{c}=W^{\mathsf T}\mathbf{x}$, i.e. $c_i=\ma
 
 :::
 
+::: {#fig-change-of-basis-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.0]
+\foreach \a in {0,1,2} \draw[faint] ({2*\a},{0.5*\a}) -- ({2*\a+1},{0.5*\a+3});
+\foreach \b in {0,1,2} \draw[faint] ({0.5*\b},{1.5*\b}) -- ({0.5*\b+4},{1.5*\b+1});
+\draw[->] (-0.4,0) -- (5.2,0); \draw[->] (0,-0.4) -- (0,3.6);
+\draw[dashed] (3,0.75) -- (3.5,2.25) -- (0.5,1.5);
+\draw[->, emph, primary] (0,0) -- (2,0.5) node[lab, below right] {$\mathbf w_1$};
+\draw[->, emph, primary] (0,0) -- (0.5,1.5) node[lab, left] {$\mathbf w_2$};
+\draw[->, hl] (0,0) -- (3.5,2.25) node[lab, above right] {$\mathbf x=1.5\,\mathbf w_1+\mathbf w_2$};
+\end{tikzpicture}
+\end{center}
+```
+
+One vector, two coordinate systems. In the basis $\mathbf w_1,\mathbf w_2$ (grid lines) the vector $\mathbf x$ has coordinates $\mathbf c=(1.5,1)$, since $\mathbf x=W\mathbf c$; its standard coordinates are the entries of $\mathbf x$ itself.
+
+:::
+
 ::: {#thm-change-of-basis-similar .theorem name="Change of basis gives a similar matrix"}
 
 If a linear transformation $T:\mathbb{R}^n\to\mathbb{R}^n$ has matrix $A$ in one basis and $B$ in another, and $M$ converts coordinates in the second basis to coordinates in the first, then

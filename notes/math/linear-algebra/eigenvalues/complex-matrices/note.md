@@ -46,6 +46,31 @@ $$F_4=\begin{bmatrix}1&1&1&1\\1&i&i^2&i^3\\1&i^2&i^4&i^6\\1&i^3&i^6&i^9\end{bmat
 
 :::
 
+::: {#fig-complex-matrices-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.6]
+\draw[->] (-1.4,0) -- (1.7,0) node[lab, right] {$\mathrm{Re}$};
+\draw[->] (0,-1.4) -- (0,1.5) node[lab, above] {$\mathrm{Im}$};
+\draw[faint] (0,0) circle (1);
+\foreach \k in {0,...,7} \fill[ink] (45*\k:1) circle[pt];
+\draw[->, accent, emph] (0,0) -- (45:0.94);
+\node[hl dot] at (45:1) {};
+\draw (0.35,0) arc[start angle=0, end angle=45, radius=0.35];
+\node[tick] at (22:0.55) {$\frac{2\pi}8$};
+\node[lab, above right] at (45:1) {$w$};
+\node[lab, right] at (0.08,1.1) {$w^2=i$};
+\node[lab, above left] at (180:1) {$w^4=-1$};
+\node[lab, below right] at (0:1) {$w^8=1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The powers of $w=e^{2\pi i/8}$ are the eighth roots of unity, equally spaced on the unit circle; they are the entries of $F_8$. Multiplying by $w$ turns by the angle $2\pi/8$.
+
+:::
+
 ::: {#thm-fourier-matrix-orthogonal .theorem name="The columns of F are orthogonal"}
 
 $F_n^{\mathsf H}F_n=nI$. Hence $F_n/\sqrt n$ is unitary and $F_n^{-1}=\frac1n\bar F_n$.
