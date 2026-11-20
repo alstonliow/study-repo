@@ -40,3 +40,50 @@ m) $-\frac1{2(x+2)^2}\Big|_0^\infty=0+\frac18=\frac18$.
 ::: {.solution for="prob-mit1801n-6b-q8" status="draft"}
 $\int_0^xe^{-t^2}dt$ increases to $\frac{\sqrt\pi}2>0$ (and is at least $\int_0^1e^{-t^2}dt>0$ for $x\ge1$), while $e^{x^2}\to\infty$. So the product tends to $+\infty$.
 :::
+
+::: {.solution for="prob-cama1s-4-q5" status="draft"}
+Both converge.
+
+(i) $|\sin y| \le |y|$, so $0 \le \sin^2(1/x) \le 1/x^2$, and $\int_1^\infty x^{-2}\,dx = 1$. By comparison the integral converges.
+
+(ii)
+
+1. On $[0,1]$ the integrand is continuous (as $p > 0$), so $\int_0^1$ is an ordinary integral.
+
+2. For $x \ge 1$, $x^{p+2}e^{-x^q} \to 0$ as $x \to \infty$ (put $y = x^q$: it is $y^{(p+2)/q}e^{-y}$, and $e^y$ grows faster than any power). So there is $X$ with $x^pe^{-x^q} \le x^{-2}$ for $x \ge X$.
+
+3. By comparison with $\int_X^\infty x^{-2}\,dx$, $\int_1^\infty x^pe^{-x^q}\,dx$ converges. So the whole integral converges.
+:::
+
+::: {.solution for="prob-cama1s-4-q6" status="draft"}
+(a)
+
+1. Let $|F| \le M$. Since $F' = f$ (fundamental theorem of calculus) and $g$ is $C^1$, integration by parts on $[a,R]$ gives
+$$\int_a^R fg = F(R)g(R) - \int_a^R F(x)g'(x)\,dx.$$
+
+2. $|F(R)g(R)| \le M|g(R)| \to 0$.
+
+3. $g$ is monotone, so $g'$ has constant sign and $\int_a^R |g'| = |g(R) - g(a)| \to |g(a)|$. Hence $\int_a^\infty |Fg'| \le M|g(a)|$ converges, and $\int_a^\infty Fg'$ converges absolutely.
+
+4. So $\int_a^R fg$ has a limit as $R \to \infty$.
+
+5. For $\int_1^\infty x^{-1/2}\sin x\,dx$: $f = \sin$ is continuous with $F(x) = \cos 1 - \cos x$, so $|F| \le 2$; $g(x) = x^{-1/2}$ is decreasing, $C^1$, and tends to $0$.
+
+(b) *For $\int|f|$:*
+
+1. $L < 1$: choose $r \in (L, 1)$. For $x \ge X$, $|f(x)|^{1/x} < r$, so $|f(x)| < r^x$, and $\int_X^\infty r^x\,dx$ converges. So $\int_a^\infty|f|$ converges.
+
+2. $L > 1$: for large $x$, $|f(x)| > 1$, so $\int_X^R|f| \ge R - X \to \infty$. It diverges.
+
+3. $L = 1$: no conclusion. $f(x) = 1/x^2$ on $[1,\infty)$ has $|f(x)|^{1/x} = e^{-2\log x/x} \to 1$ and $\int_1^\infty f$ converges; $f = 1$ has $L = 1$ and diverges.
+
+*For $\int f$:*
+
+4. $L < 1$: converges, since absolute convergence implies convergence.
+
+5. $L = 1$: no conclusion, by the same two examples.
+
+6. $L > 1$: if $f$ is continuous, then $f$ has no zeros for large $x$ (as $|f| > 1$), so by the intermediate value theorem it has constant sign there and $\int f$ diverges like $\int |f|$. Without continuity it can converge. Let $f(x) = \sigma(x)e^{2x}$, where on each $[n, n+1)$ we cut the interval into $2K_n$ consecutive pieces of equal $e^{2x}$-mass $\mu_n = e^{2n}(e^2 - 1)/(4K_n)$, with $K_n$ chosen so that $\mu_n \le 1/n$, and $\sigma = +1, -1, +1, \ldots$ alternately on the pieces. Then $f$ is integrable on bounded intervals, $|f(x)|^{1/x} = e^2$, $\int_n^{n+1}f = 0$, and $|\int_n^tf| \le \mu_n \le 1/n$ for $t \in [n, n+1]$. So $\int_a^R f$ converges as $R \to \infty$.
+
+(c) No, even for continuous $f$. Let $f$ be $0$ except for a triangular spike of height $1$ and base $[n - n^{-2}, n + n^{-2}]$ at each integer $n \ge 2$. Then $f \ge 0$ is continuous, $\int_1^R f \le \sum_n n^{-2}$ is bounded and increasing in $R$, so the integral converges, but $f(n) = 1$ for all $n$.
+:::

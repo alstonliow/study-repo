@@ -11,7 +11,17 @@ source_prefix: mit1801
 outline_from: MIT 18.01 Single Variable Calculus (Jerison), Fall 2006 lectures
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
+exclude:
+  # Cambridge IA Analysis I example-sheet problems in shared notes (scope_excludes.py, 2026-11-20).
+  - prob-cama1s-2-q10
+  - prob-cama1s-2-q12
+  - prob-cama1s-2-q13
+  - prob-cama1s-3-q2
+  - prob-cama1s-3-q3
+  - prob-cama1s-3-q4
+  - prob-cama1s-3-q5
+  - prob-cama1s-4-q5
+  - prob-cama1s-4-q6
 
 chapters:
 - num: 1

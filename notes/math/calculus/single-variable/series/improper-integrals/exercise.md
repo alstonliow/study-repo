@@ -40,3 +40,19 @@ c) $\displaystyle\lim_{x\to\infty}e^{x^2}\int_0^xe^{-t^2}dt$
 
 *Note (these notes):* Only part (c) was assigned.
 :::
+
+::: {.problem #prob-cama1s-4-q5 origin="external" source="cama1s-4-q5"}
+Do these improper integrals converge?
+$$\text{(i)} \int_1^\infty \sin^2(1/x)\,dx, \qquad \text{(ii)} \int_0^\infty x^p\exp(-x^q)\,dx,$$
+where $p, q > 0$. [You may assume familiar results about the continuity and differentiability properties of the exponential and logarithm.]
+:::
+
+::: {.problem #prob-cama1s-4-q6 origin="external" source="cama1s-4-q6"}
+This question concerns tests for determining convergence of improper integrals over an unbounded domain. Let $f : [a,\infty) \to \mathbb{R}$ be integrable on $[a,R]$ for every $R \geq a$.
+
+(a) (Dirichlet test) Suppose $f$ is continuous. Let $F(x) = \int_a^x f(t)\,dt$ for $x \in [a,\infty)$ and assume $F$ is bounded ($\sup_{x\geq a}|F(x)| < \infty$). Let $g : [a,\infty) \to \mathbb{R}$ be monotone, continuously differentiable, and satisfy $g(x) \to 0$ as $x \to \infty$. Show that the improper integral $\int_a^\infty fg$ converges. Deduce that $\int_1^\infty x^{-1/2}\sin x\,dx$ converges.
+
+(b) (Root test) Suppose $L = \lim_{x\to\infty}|f(x)|^{1/x}$ exists. What can you say about the convergence of the improper integral $\int_a^\infty |f|$ for $L > 1$, $L < 1$ and $L = 1$? ($\star$) What about $\int_a^\infty f$? Justify your answers. [You may assume the familiar properties of the exponential function.]
+
+(c) ($\star$) Does the $n$th term test hold for improper integrals: if $f \geq 0$ and the improper integral $\int_a^\infty f$ converges, must $f(x) \to 0$ as $x \to \infty$? What if $f$ is continuous?
+:::

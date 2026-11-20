@@ -19,3 +19,16 @@ c) $y=x/\ln x$
 
 *Note (these notes):* Only part (c) was assigned.
 :::
+
+::: {.problem #prob-cama1s-3-q4 origin="external" source="cama1s-3-q4"}
+This question guides you through the proof and application of l'Hôpital's rule. Suppose that $f, g : [a,b] \to \mathbb{R}$ are continuous and differentiable on $(a,b)$. Suppose that $f(a) = g(a) = 0$, that $g'(x)$ does not vanish near $a$ and $f'(x)/g'(x) \to \ell$ as $x \to a$.
+
+(a) Show that $f(x)/g(x) \to \ell$ as $x \to a$. This is l'Hôpital's rule.
+
+(b) Use the rule with $g(x) = x - a$ to show that if $f'(x) \to \ell$ as $x \to a$, then $f$ is differentiable at $a$ with $f'(a) = \ell$.
+
+(c) Find a pair of functions $f$ and $g$ as above for which $\lim_{x\to a} f(x)/g(x)$ exists, but $\lim_{x\to a} f'(x)/g'(x)$ does not.
+
+(d) Investigate the limit as $x \to 1$ of
+$$\frac{x - (n+1)x^{n+1} + nx^{n+2}}{(1-x)^2}.$$
+:::

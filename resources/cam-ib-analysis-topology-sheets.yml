@@ -1,0 +1,43 @@
+# Cambridge Part IB Analysis and Topology example sheets 1-4, Michaelmas 2024 (academic year 2024-25, DPMMS), as a
+# resource (meta/SPEC.md §17.12). DRAFT for owner review. From https://www.dpmms.cam.ac.uk/study/IB/AnalysisandTopology/
+# (24sheet1.pdf, 24sheet2.pdf, 24sheet3-v2.pdf, 24sheet4-v2 copy.pdf; no 2025-26 sheets were online on 2026-11-20);
+# no licence is stated, so the sheets are kept only locally in raw/CAM_IB_ANALYSIS_TOPOLOGY/example-sheets
+# (sheet1.pdf ... sheet4.pdf). Locator = sheet number; a source key is camib-ats-3-q5 (question numbers as printed).
+# Only the "Problems" sections (including the optional extras) are added as exercises (statements verbatim,
+# solutions our own); the "Exercises" warm-ups are skipped. Titles are our own.
+id: res-cam-ib-analysis-topology-sheets
+kind: homework
+title: Cambridge IB Analysis and Topology Example Sheets (2024-25)
+status: draft
+courses:
+- camib-at
+editions:
+- id: 2024-25
+  current: true
+legacy_keys:
+  prefix: camib-ats-
+  edition: 2024-25
+  pattern: ^camib-ats-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: IB Analysis and Topology Sheet {section}
+  problem_label: IB Analysis and Topology Sheet {section} Q{n}
+nodes:
+- id: res-cam-ib-analysis-topology-sheets-metrics-and-uniform-convergence
+  kind: homework
+  title: "Metrics, open sets, uniform convergence"
+  at:
+    2024-25: '1'
+- id: res-cam-ib-analysis-topology-sheets-completeness-and-compactness
+  kind: homework
+  title: "Uniform continuity, completeness, contractions"
+  at:
+    2024-25: '2'
+- id: res-cam-ib-analysis-topology-sheets-topological-spaces
+  kind: homework
+  title: "Topological spaces, products, quotients"
+  at:
+    2024-25: '3'
+- id: res-cam-ib-analysis-topology-sheets-connectedness-and-differentiation
+  kind: homework
+  title: "Connectedness, derivatives, series of functions"
+  at:
+    2024-25: '4'

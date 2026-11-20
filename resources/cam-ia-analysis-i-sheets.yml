@@ -1,0 +1,42 @@
+# Cambridge Part IA Analysis I example sheets 1-4, Lent 2026 (academic year 2025-26, DPMMS), as a resource
+# (meta/SPEC.md §17.12). DRAFT for owner review. From https://www.dpmms.cam.ac.uk/study/IA/AnalysisI/previous.html
+# (26sheet1.pdf ... 26sheet4.pdf); no licence is stated, so the sheets are kept only locally in
+# raw/CAM_IA_ANALYSIS_I/example-sheets (sheet1.pdf ... sheet4.pdf). Locator = sheet number; a source key is
+# cama1s-2-q7 (question numbers as printed). Only the "Problems" sections are added as exercises (statements
+# verbatim, solutions our own); the "Exercises" warm-ups (1a-1e on each sheet) are skipped. Titles are our own.
+id: res-cam-ia-analysis-i-sheets
+kind: homework
+title: Cambridge IA Analysis I Example Sheets (2025-26)
+status: draft
+courses:
+- cama1
+editions:
+- id: 2025-26
+  current: true
+legacy_keys:
+  prefix: cama1s-
+  edition: 2025-26
+  pattern: ^cama1s-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: IA Analysis I Sheet {section}
+  problem_label: IA Analysis I Sheet {section} Q{n}
+nodes:
+- id: res-cam-ia-analysis-i-sheets-sequences-and-series
+  kind: homework
+  title: "Sequences and series"
+  at:
+    2025-26: '1'
+- id: res-cam-ia-analysis-i-sheets-continuity-and-derivatives
+  kind: homework
+  title: "Continuity and derivatives"
+  at:
+    2025-26: '2'
+- id: res-cam-ia-analysis-i-sheets-mean-value-and-integration
+  kind: homework
+  title: "Mean value theorems and integration"
+  at:
+    2025-26: '3'
+- id: res-cam-ia-analysis-i-sheets-power-series-and-integrals
+  kind: homework
+  title: "Power series and integrals"
+  at:
+    2025-26: '4'

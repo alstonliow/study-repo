@@ -319,6 +319,9 @@ exclude:
   - prob-flush-enumeration-code
   - prob-palindrome-hands-code
   - prob-run-of-heads-code
+  # Cambridge IA Analysis I example-sheet problems in shared notes (scope_excludes.py, 2026-11-20).
+  - prob-cama1s-4-q11
+  - prob-cama1s-4-q12
 
 chapters:
   - num: 1

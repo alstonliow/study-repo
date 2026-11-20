@@ -20,7 +20,7 @@ chapters:
   - id: '1.1'
     title: Ordered fields and suprema
     covers: [def-field, def-ordered-field, lem-square-nonnegative, def-supremum-infimum, exm-supremum-in-q,
-      def-least-upper-bound-property, def-real-numbers]
+      def-least-upper-bound-property, def-real-numbers, prob-cama1s-1-q4]
   - id: '1.2'
     title: The Archimedean property
     covers: [thm-archimedean-property, rmk-ordered-fields-and-completeness-2]
@@ -73,7 +73,7 @@ chapters:
       thm-derivative-product-rule, thm-quotient-rule, thm-derivative-chain-rule, math/analysis/real/differentiability/differentiability-and-inverses]
   - id: '5.2'
     title: Mean value theorems and Taylor's theorem
-    covers: [thm-rolle, thm-mean-value, cor-sign-of-derivative, math/analysis/real/differentiability/taylors-theorem]
+    covers: [thm-rolle, thm-mean-value, cor-sign-of-derivative, math/analysis/real/differentiability/taylors-theorem, prob-cama1s-2-q10, prob-cama1s-2-q12, prob-cama1s-2-q13, prob-cama1s-3-q2, prob-cama1s-3-q3, prob-cama1s-3-q4, prob-cama1s-3-q5]
 - num: 6
   title: Power series
   points:
@@ -97,10 +97,10 @@ chapters:
     covers: [math/analysis/real/integration/properties-of-the-integral]
   - id: '7.3'
     title: Integrable functions
-    covers: [math/analysis/real/integration/integrable-functions]
+    covers: [math/analysis/real/integration/integrable-functions, prob-cama1s-3-q13]
   - id: '7.4'
     title: The fundamental theorem
-    covers: [thm-substitution-definite, math/analysis/real/integration/fundamental-theorem-of-calculus]
+    covers: [thm-substitution-definite, math/analysis/real/integration/fundamental-theorem-of-calculus, prob-cama1s-4-q11, prob-cama1s-4-q12]
   - id: '7.5'
     title: Improper integrals and the integral test
-    covers: [def-improper-integral, thm-p-integrals, thm-integral-test]
+    covers: [def-improper-integral, thm-p-integrals, thm-integral-test, prob-cama1s-4-q5, prob-cama1s-4-q6]

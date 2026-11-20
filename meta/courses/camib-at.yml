@@ -12,7 +12,9 @@ outline_from: Cambridge Part IB Analysis II (Michaelmas 2015, N. Wickramasekera)
   Analysis and Topology
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
+exclude:
+  # Cambridge IA Analysis I example-sheet problems in shared notes (scope_excludes.py, 2026-11-20).
+  - prob-cama1s-3-q13
 
 chapters:
 - num: 1
@@ -30,7 +32,7 @@ chapters:
   points:
   - id: '2.1'
     title: The Weierstrass M-test
-    covers: [def-uniform-convergence-series, thm-weierstrass-m-test, exm-series-of-functions-1]
+    covers: [def-uniform-convergence-series, thm-weierstrass-m-test, exm-series-of-functions-1, prob-camib-ats-4-q14, prob-camib-ats-4-q15]
   - id: '2.2'
     title: Power series
     covers: [thm-power-series-uniform, exm-power-series-not-uniform, cor-power-series-termwise-integration,
@@ -55,10 +57,10 @@ chapters:
   points:
   - id: '4.1'
     title: Norms
-    covers: [def-norm, exm-norms, def-lipschitz-equivalent-norms, exm-norms-not-equivalent]
+    covers: [def-norm, exm-norms, def-lipschitz-equivalent-norms, exm-norms-not-equivalent, prob-camib-ats-2-q11]
   - id: '4.2'
     title: Convergence and Bolzano–Weierstrass
-    covers: [prp-convergence-coordinatewise, thm-bolzano-weierstrass-rn]
+    covers: [prp-convergence-coordinatewise, thm-bolzano-weierstrass-rn, prob-camib-ats-1-q14]
   - id: '4.3'
     title: Cauchy sequences and completeness
     covers: [def-cauchy-sequence-metric, prp-cauchy-sequences-metric, thm-rn-complete]
@@ -74,26 +76,26 @@ chapters:
   - id: '5.1'
     title: Metrics and convergence
     covers: [def-metric-space, exm-metric-spaces, def-metric-subspace, def-convergence-metric, prp-limit-unique-metric,
-      def-lipschitz-equivalent-metrics, exm-metric-spaces-bounded-metric]
+      def-lipschitz-equivalent-metrics, exm-metric-spaces-bounded-metric, prob-camib-ats-1-q6, prob-camib-ats-1-q7]
   - id: '5.2'
     title: Open and closed sets
     covers: [math/analysis/metric-spaces/open-and-closed-sets]
   - id: '5.3'
     title: Completeness
-    covers: [exm-incomplete-spaces, thm-closed-subspace-complete, thm-bounded-functions-complete]
+    covers: [exm-incomplete-spaces, thm-closed-subspace-complete, thm-bounded-functions-complete, prob-camib-ats-2-q5, prob-camib-ats-2-q8]
   - id: '5.4'
     title: Compactness
-    covers: [thm-compact-complete-bounded, exm-closed-bounded-not-compact, def-totally-bounded, thm-compact-iff-complete-totally-bounded]
+    covers: [thm-compact-complete-bounded, exm-closed-bounded-not-compact, def-totally-bounded, thm-compact-iff-complete-totally-bounded, prob-camib-ats-2-q13]
   - id: '5.5'
     title: Continuous functions
     covers: [def-continuity-metric, prp-sequential-continuity-metric, thm-continuity-open-sets, exm-continuous-maps-1,
-      thm-continuous-image-compact, cor-extreme-value-compact, def-uniform-continuity-metric, thm-uniform-continuity-compact-metric]
+      thm-continuous-image-compact, cor-extreme-value-compact, def-uniform-continuity-metric, thm-uniform-continuity-compact-metric, prob-camib-ats-2-q6, prob-camib-ats-2-q7]
   - id: '5.6'
     title: The contraction mapping theorem
     covers: [math/analysis/metric-spaces/contraction-mapping]
   - id: '5.7'
     title: The Picard–Lindelöf theorem
-    covers: [thm-picard-lindelof, exm-picard-iterates-exponential, rmk-picard-lindelof-hypotheses]
+    covers: [thm-picard-lindelof, exm-picard-iterates-exponential, rmk-picard-lindelof-hypotheses, prob-camib-ats-2-q10]
 - num: 6
   title: Differentiation in several variables
   points:
@@ -102,7 +104,7 @@ chapters:
     covers: [math/analysis/differentiation/derivative-of-maps]
   - id: '6.2'
     title: Operator norm and chain rule
-    covers: [def-operator-norm, prp-operator-norm-properties, thm-chain-rule-several-variables]
+    covers: [def-operator-norm, prp-operator-norm-properties, thm-chain-rule-several-variables, prob-camib-ats-4-q11]
   - id: '6.3'
     title: Mean value inequalities and C1 maps
     covers: [thm-mean-value-inequality-curves, thm-mean-value-inequality, cor-zero-derivative-constant,
@@ -137,7 +139,7 @@ chapters:
   - id: '9.1'
     title: Connected spaces
     covers: [def-connected, prp-connected-two-valued, thm-connected-subsets-of-r, prp-continuous-image-connected,
-      thm-intermediate-value-topological, exm-connectedness-invariant]
+      thm-intermediate-value-topological, exm-connectedness-invariant, prob-camib-ats-4-q6, prob-camib-ats-4-q7, prob-camib-ats-4-q8, prob-camib-ats-4-q9]
   - id: '9.2'
     title: Path-connectedness
     covers: [def-path-connected, prp-path-connected-connected, exm-topologists-sine-curve, prp-open-connected-path-connected]
@@ -150,7 +152,7 @@ chapters:
   - id: '10.1'
     title: Compact spaces
     covers: [def-compact-space, exm-compact-spaces, prp-compact-closed-subsets, prp-continuous-image-compact-topological,
-      prp-compact-hausdorff-homeomorphism, thm-heine-borel-interval]
+      prp-compact-hausdorff-homeomorphism, thm-heine-borel-interval, prob-camib-ats-3-q14, prob-camib-ats-3-q15, prob-camib-ats-4-q17]
   - id: '10.2'
     title: Products and Heine–Borel
     covers: [thm-product-compact, thm-heine-borel-rn-compact]

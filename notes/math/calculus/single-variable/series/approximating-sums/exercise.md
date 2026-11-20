@@ -43,3 +43,19 @@ This problem continues the study of the asymptotics of factorials.
 
 (c) Show that $n! = \Omega(2^n)$
 :::
+
+::: {.problem #prob-cama1s-4-q11 origin="external" source="cama1s-4-q11"}
+Let $f(x) = \log(1 - x^2)$. [In what follows, the bounds $8x^2/3$ and $1/9n^2$ are not best possible; they are merely good enough for the conclusion.]
+
+(a) Use the mean value theorem to show that $|f(x)| \leqslant 8x^2/3$ for $0 \leqslant x \leqslant 1/2$.
+
+(b) Now let $I_n = \int_{n-1/2}^{n+1/2}\log x\,dx - \log n$ for $n \in \mathbb{N}$. Show that $I_n = \int_0^{1/2}f(t/n)\,dt$ and hence that $|I_n| \leqslant 1/9n^2$.
+
+(c) By considering $\sum_{j=1}^n I_j$, deduce that $e^nn!/n^{n+1/2} \to \ell$ for some constant $\ell$.
+:::
+
+::: {.problem #prob-cama1s-4-q12 origin="external" source="cama1s-4-q12"}
+Let $I_n = \int_0^{\pi/2}\cos^n x$. Prove that $nI_n = (n-1)I_{n-2}$, and hence $\frac{2n}{2n+1} \leqslant \frac{I_{2n+1}}{I_{2n}} \leqslant 1$. Deduce Wallis's Product:
+$$\frac\pi2 = \lim_{n\to\infty}\frac{2\cdot2\cdot4\cdot4\cdots2n\cdot2n}{1\cdot3\cdot3\cdot5\cdots(2n-1)\cdot(2n+1)} = \lim_{n\to\infty}\frac{2^{4n}}{2n+1}\binom{2n}{n}^{-2}.$$
+By taking note of the previous exercise, prove that $e^nn!/n^{n+1/2} \to \sqrt{2\pi}$ (Stirling's formula).
+:::

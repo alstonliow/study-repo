@@ -28,3 +28,19 @@ $y'=\frac{\ln x-1}{(\ln x)^2}$: on $(0,1)$ it is negative, so $y$ decreases from
 
 $y''=\frac{2-\ln x}{x(\ln x)^3}$: concave down on $(0,1)$, concave up on $(1,e^2)$, concave down after $e^2$; inflection point $(e^2,e^2/2)$.
 :::
+
+::: {.solution for="prob-cama1s-3-q4" status="draft"}
+(a)
+
+1. Choose $\eta > 0$ with $g' \ne 0$ on $(a, a+\eta)$. For $x \in (a, a+\eta)$, $g(x) \ne 0$: otherwise Rolle's theorem on $[a,x]$ would give a zero of $g'$.
+
+2. By Cauchy's mean value theorem on $[a,x]$ there is $\xi_x \in (a,x)$ with $\dfrac{f(x)}{g(x)} = \dfrac{f(x) - f(a)}{g(x) - g(a)} = \dfrac{f'(\xi_x)}{g'(\xi_x)}$.
+
+3. As $x \to a$, $\xi_x \to a$, so $f'(\xi_x)/g'(\xi_x) \to \ell$.
+
+(b) Apply (a) to $F(x) = f(x) - f(a)$ and $g(x) = x - a$ (so $g' = 1$): $\dfrac{f(x) - f(a)}{x - a} \to \ell$, which says $f'(a) = \ell$.
+
+(c) $a = 0$, $f(x) = x^2\sin(1/x)$ with $f(0) = 0$, and $g(x) = x$, on $[0,1]$. Then $f(x)/g(x) = x\sin(1/x) \to 0$, but $f'(x)/g'(x) = 2x\sin(1/x) - \cos(1/x)$ has no limit.
+
+(d) The limit is $n(n+1)/2$. Let $N(x)$ be the numerator. Then $N(1) = 1 - (n+1) + n = 0$ and $N'(x) = 1 - (n+1)^2x^n + n(n+2)x^{n+1}$, so $N'(1) = 0$. Also $N''(x) = -n(n+1)^2x^{n-1} + n(n+1)(n+2)x^n$, so $N''(1) = n(n+1)$. The denominator $D(x) = (1-x)^2$ has $D(1) = D'(1) = 0$ and $D'' = 2$. Applying the rule twice (with $D' = -2(1-x) \ne 0$ near $1$; for $x \to 1^-$, and similarly from the right) gives $N(x)/D(x) \to N''(1)/2 = n(n+1)/2$. (Indeed the expression equals $\sum_{k=1}^n kx^k$ for $x \ne 1$.)
+:::
