@@ -1307,6 +1307,8 @@ public counterparts.
    | `private/resources/<slug>.yml` | private resources (§17.12.3) |
    | `private/zh/<note-id>/` | Chinese versions of public notes (§17.15.4) |
    | `private/meta/glossary.yml` | English–Chinese term pairs (§17.15.5) |
+   | `private/bank/<node>/` | the question bank (§17.15.10) |
+   | `private/meta/problem-types.yml` | problem types (§17.15.11) |
    | `private/raw/` | the owner's reference material (textbook photos and the like); read-only, like `raw/` |
 
 2. **ids.** Private notes are named by content like public ones (§2.8,
@@ -1385,9 +1387,11 @@ in any public file or build.
 6. **Exercises.** Textbook exercises and past UEC exam problems may be added
    to the private store only (exception to §10, owner decision, 2026-11-20):
    statement verbatim, `origin="external"`, `source` resolving to the private
-   resource. Official answers and worked solutions are never copied; solutions
-   are written in our own words (`status="draft"` until the owner reviews
-   them). Textbook prose is never copied; notes are written in our own words.
+   resource. They go in the question bank (item 10), never in a note's
+   `exercise.md`. Official answers, the textbook's answer section and teacher's
+   manuals are never copied; solutions are written in our own words
+   (`status="draft"` until the owner reviews them). Textbook prose is never
+   copied; notes are written in our own words.
 7. **Filters.**
    - The course filter (§13 item 5) gets the UEC group from item 2.
    - The exercise filter bar (§14) gains a **Year** facet (built 2026-11-20),
@@ -1411,7 +1415,60 @@ in any public file or build.
    2. Course `field:` override and the Year facet.
    3. UEC skeleton: textbook resources and the three course outlines mapped
       to existing notes, with a list of gaps for the owner.
-   4. UEC content: private notes for the gaps, textbook exercises with draft
-      solutions; past papers once the owner has chosen the years.
-   5. Chinese: `.zh.md` versions, glossary and its checks, the language
+   4. Question bank and problem types (items 10–11): the folders, the
+      `practises` relationship, `problem-types.yml`, their checks and the
+      private 题库 pages.
+   5. UEC content, one textbook chapter per round, starting with S1
+      chapter 1 as a pilot: outline, knowledge points mapped to notes (private
+      notes for the gaps), problem types, and every section's exercises and
+      the chapter's review exercises in the bank with draft solutions. Past
+      papers once the owner has chosen the years.
+   6. Chinese: `.zh.md` versions, glossary and its checks, the language
       switch on private pages, `--lang zh` PDFs and the private Export page.
+10. **Question bank (题库)** (owner decision, 2026-11-20). Problems kept for
+    choosing from when making handouts, not for study pages.
+    - **Storage.** One folder per resource node the problems come from:
+      `private/bank/<node-slug>/bank.md` with the problems and `solution.md`
+      with their solutions, paired by id as in §6.2. `<node-slug>` is the
+      node id without `res-`, for example a textbook section or one year's
+      paper. A bank folder is not a note: it has no YAML header, no page in
+      the topic outline and no number.
+    - **Problems** follow §6.1 (id, `origin`, `source`, optional `level`,
+      statement verbatim) and add:
+      - `practises="<note id> ..."`: the notes the problem practises, at least
+        one (a relationship, item 12);
+      - `type="pt-..."`: its problem type (item 11), optional until the
+        chapter's types are set.
+    - **Where they appear.** Only in a private build: a 题库 page per course
+      chapter, in textbook order, grouped by section, with filters by
+      problem type, level and source (textbook exercises, review exercises,
+      past papers, by year), and the Export page, which picks bank problems
+      by section, note or type. Never in a note's Exercises section, a
+      summary page, the course chapter pages or any other page.
+    - A note's page in a private build shows only a count with a link
+      ("题库：12 题") to the bank page filtered to that note.
+    - Review exercises (总复习题) are bank problems whose source is the
+      chapter's review node, so they can be chosen on their own.
+11. **Problem types (题型)**: a new private entity type (owner decision,
+    2026-11-20). Schema, in `private/meta/problem-types.yml`:
+
+    ```yaml
+    - id: pt-intersection-of-two-lines     # pt-<slug>, named by content
+      title: Intersection of two lines
+      title_zh: 求两直线的交点
+      note: math/coordinate-geometry/straight-lines   # the one note it belongs to
+    ```
+
+    - ids follow §17.3; titles are our own short titles, never copied.
+    - The order in the file is the order shown under a note (on the 题库
+      page and in the Export page). Types are not numbered and have no page
+      of their own.
+    - Checks: unique ids that clash with nothing else, a known `note`, every
+      `type=` on a bank problem names a type, and the type's note is among
+      the problem's `practises`.
+    - Types are private: a public file never names one.
+12. **`practises`**: a new relationship type in `meta/relations.yml`
+    (inverse "practised in"), from blocks to notes and blocks. It is written
+    on bank problems; public problems may use it later. Like every
+    relationship, a public block never practises a private note.
+
