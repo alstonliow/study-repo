@@ -40,3 +40,12 @@ Let $X$ be the random variable representing the number of heads seen after flipp
 
 Evaluate: (a) $\mathrm E[X]$ (b) $\mathrm E[Y]$ (c) $\mathrm E[X+Y]$
 :::
+
+::: {.problem #prob-mit6041f10-3-q3 origin="external" source="mit6041f10-3-q3"}
+(a) Let $X$ be a random variable that takes nonnegative integer values. Show that
+$$\mathbf{E}[X] = \sum_{k=1}^{\infty} \mathbf{P}(X \geq k).$$
+Hint: Express the right-hand side of the above formula as a double summation then interchange the order of the summations.
+(b) Use the formula in the previous part to find the expectation of a random variable $Y$ whose PMF is defined as follows:
+$$p_Y(y) = \frac{1}{b-a+1}, \qquad y = a, a+1, \ldots, b$$
+where $a$ and $b$ are nonnegative integers with $b > a$. Note that for $y = a, a+1, \ldots, b$, $p_Y(y)$ does not depend explicitly on $y$ since it is a uniform PMF.
+:::

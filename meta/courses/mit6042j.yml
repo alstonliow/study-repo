@@ -322,6 +322,35 @@ exclude:
   # Cambridge IA Analysis I example-sheet problems in shared notes (scope_excludes.py, 2026-11-20).
   - prob-cama1s-4-q11
   - prob-cama1s-4-q12
+  # MIT 6.041 integration (2026-11-20): MIT 6.041 problems and blocks in shared notes
+  - def-probability-axioms
+  - prob-mit6041f10-1-q1
+  - prob-mit6041f10-1-q2
+  - prob-mit6041f10-1-q3
+  - prob-mit6041f10-1-q4
+  - prob-mit6041f10-1-q5
+  - prob-mit6041f10-1-q6
+  - prob-mit6041f10-2-q1
+  - prob-mit6041f10-2-q2
+  - prob-mit6041f10-2-q3
+  - prob-mit6041f10-2-q4
+  - prob-mit6041f10-2-q5
+  - prob-mit6041f10-3-q1
+  - prob-mit6041f10-3-q2
+  - prob-mit6041f10-3-q3
+  - prob-mit6041f10-3-q4
+  - prob-mit6041f10-3-q5
+  - prob-mit6041f10-4-q1
+  - prob-mit6041f10-4-q2
+  - prob-mit6041f10-4-q3
+  - prob-mit6041f10-4-q4
+  - prob-mit6041f10-4-q5
+  - prob-mit6041f10-6-q3
+  - prob-mit6041f10-8-q1
+  - prob-mit6041f10-8-q3
+  - prob-mit6041f10-9-q2
+  - prob-mit6041f10-9-q3
+  - rmk-probability-axioms-models
 
 chapters:
   - num: 1

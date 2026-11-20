@@ -147,3 +147,32 @@ Figure 2: Part (b)
 
 Hint: For both problems use symmetry to reduce the number of states and variables. The equations are very reasonable to solve by hand.
 :::
+
+::: {.problem #prob-mit6041f10-8-q3 origin="external" source="mit6041f10-8-q3"}
+As flu season is upon us, we wish to have a Markov chain that models the spread of a flu virus. Assume a population of $n$ individuals. At the beginning of each day, each individual is either infected or susceptible (capable of contracting the flu). Suppose that each pair $(i, j)$, $i \neq j$, independently comes into contact with one another during the daytime with probability $p$. Whenever an infected individual comes into contact with a susceptible individual, he/she infects him/her. In addition, assume that overnight, any individual who has been infected for at least 24 hours will recover with probability $0 < q < 1$ and return to being susceptible, independently of everything else (i.e., assume that a newly infected individual will spend at least one restless night battling the flu).
+
+(a) Suppose that there are $m$ infected individuals at daybreak. What is the distribution of the number of new infections by day end?
+(b) Draw a Markov chain with as few states as possible to model the spread of the flu for $n = 2$. In epidemiology, this is called an SIS (Susceptible-Infected-Susceptible) model.
+(c) Identify all recurrent states.
+
+Due to the nature of the flu virus, individuals almost always develop immunity after contracting the virus. Consequently, we improve our model and assume that individuals become infected at most one time. Thus, we consider individuals as either infected, susceptible, or recovered.
+
+(d) Draw a Markov chain to model the spread of the flu for $n = 2$. In epidemiology, this is called an SIR (Susceptible-Infected-Recovered) model.
+(e) Identify all recurrent states.
+:::
+
+::: {.problem #prob-mit6041f10-9-q3 origin="external" source="mit6041f10-9-q3"}
+Assume that a fair coin is tossed repeatedly, with the tosses being independent. We want to determine the expected number of tosses necessary to first observe a head directly followed by a tail. To do so, we define a Markov chain with states $S$, $H$, $T$, $HT$, where $S$ is a starting state, $H$ indicates a head on the current toss, $T$ indicates a tail on the current toss (without heads on the previous toss), and $HT$ indicates heads followed by tails over the last two tosses. This Markov chain is illustrated below:
+
+[Figure: the chain on $S$, $H$, $T$, $HT$ with transition probabilities $1/2$.]
+
+We can find the expected number of tosses necessary to first observe a heads directly followed by tails by solving a mean first passage time problem for this Markov chain.
+
+(a) What is the expected number of tosses necessary to first observe a head directly followed by tails?
+(b) Assuming we have just observed a head followed by a tail, what is the expected number of additional tosses until we again observe a head followed directly by a tail?
+
+Next, we want to answer the same questions for the event tails directly followed by tails. Set up a different Markov chain from which we could calculate the expected number of tosses necessary to first observe tails directly followed by tails.
+
+(c) What is the expected number of tosses necessary to first observe a tail directly followed by a tail?
+(d) Assuming we have just observed a tail followed by a tail, what is the expected number of additional tosses until we again observe a tail followed directly by a tail? Note that the number of additional tosses could be as little as one, if tails were to come up again.
+:::

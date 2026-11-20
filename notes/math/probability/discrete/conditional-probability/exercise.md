@@ -232,3 +232,22 @@ Hint: Consider the event $A=\{\text{more heads in the first }n+1\text{ tosses th
 
 Hint: Think about symmetry. First, try to figure out which is more likely: there was a tie and Superman scored the first point, or there was a tie and Captain America scored the first point?
 :::
+
+::: {.problem #prob-mit6041f10-2-q2 origin="external" source="mit6041f10-2-q2"}
+You have a fair five-sided die. The sides of the die are numbered from 1 to 5. Each die roll is independent of all others, and all faces are equally likely to come out on top when the die is rolled. Suppose you roll the die twice.
+
+(a) Let event $A$ to be "the total of two rolls is 10", event $B$ be "at least one roll resulted in 5", and event $C$ be "at least one roll resulted in 1".
+  i. Is event $A$ independent of event $B$?
+  ii. Is event $A$ independent of event $C$?
+(b) Let event $D$ be "the total of two rolls is 7", event $E$ be "the difference between the two roll outcomes is exactly 1", and event $F$ be "the second roll resulted in a higher number than the first roll".
+  i. Are events $E$ and $F$ independent?
+  ii. Are events $E$ and $F$ independent given event $D$?
+:::
+
+::: {.problem #prob-mit6041f10-2-q5 origin="external" source="mit6041f10-2-q5"}
+In solving this problem, feel free to browse problems 43-45 in Chapter 1 of the text for ideas. If you need to, you may quote the results of these problems.
+
+(a) Suppose that $A$, $B$, and $C$ are independent. Use the definition of independence to show that $A$ and $B \cup C$ are independent.
+(b) Prove that if $A_1, \ldots, A_n$ are independent events, then
+$$\mathbf{P}(A_1 \cup A_2 \cup \ldots \cup A_n) = 1 - \prod_{i=1}^{n} (1 - \mathbf{P}(A_i)).$$
+:::

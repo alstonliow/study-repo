@@ -91,3 +91,9 @@ def test_uses_the_generator():
     assert a == b, "the same seed must give the same estimate"
 ```
 :::
+
+::: {.problem #prob-mit6041f10-9-q2 origin="external" source="mit6041f10-9-q2"}
+Demonstrate that the Chebyshev inequality is tight, that is, for every $\mu$, $\sigma > 0$, and $c \geq \sigma$, construct a random variable $X$ with mean $\mu$ and standard deviation $\sigma$ such that
+$$\mathbf{P}(|X - \mu| \geq c) = \frac{\sigma^2}{c^2}.$$
+Hint: You should be able to do this with a discrete random variable that takes on only 3 distinct values with nonzero probability.
+:::

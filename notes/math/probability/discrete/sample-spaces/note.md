@@ -1,6 +1,6 @@
 ---
 title: "Probability and Sample Spaces"
-sources: [fit1058-cn-9.1, fit1058-cn-9.2, fit1058-cn-9.3, cs70-13.3.3, cs70-13.3.4]
+sources: [fit1058-cn-9.1, fit1058-cn-9.2, fit1058-cn-9.3, cs70-13.3.3, cs70-13.3.4, mit6041-1]
 requires: [math/discrete/counting/sum-and-product-rules, math/calculus/single-variable/limits/sums-and-series]
 aliases: [math/probability/sample-spaces]   # old ids (moved)
 status: draft
@@ -88,5 +88,23 @@ The total is $8$ for the outcomes $(2,6),(3,5),(4,4),(5,3),(6,2)$, so $\Pr(\text
 ```
 
 The $36$ equally likely outcomes $(d_1,d_2)$ of two dice; the $5$ with total $8$ are shaded, so $\Pr(\text{total is }8)=5/36$
+
+:::
+
+<!-- Added 2026-11-20 from MIT 6.041 (Fall 2010), Lecture 1, in our own wording. -->
+
+::: {#def-probability-axioms .definition name="Probability axioms" generalizes="def-probability-general-case"}
+
+A *probability law* on a sample space $\Omega$ assigns to every event $A\subseteq\Omega$ a number $\Pr(A)$ such that
+
+1. (nonnegativity) $\Pr(A)\ge0$;
+2. (normalisation) $\Pr(\Omega)=1$;
+3. (countable additivity) if $A_1,A_2,\dots$ are pairwise disjoint, then $\Pr(A_1\cup A_2\cup\cdots)=\sum_i\Pr(A_i)$.
+
+:::
+
+::: {#rmk-probability-axioms-models .remark name="Discrete and continuous models"}
+
+For a countable $\Omega$ the axioms say exactly that $\Pr(A)=\sum_{x\in A}\Pr(x)$ with nonnegative outcome probabilities summing to $1$, as in @def-probability-general-case. For an uncountable $\Omega$, such as two numbers chosen uniformly from $[0,1]$, single outcomes have probability $0$ and probabilities come from areas or lengths: $\Pr(A)$ is the area of $A\subseteq[0,1]^2$. Then not every subset can be given a probability; one restricts to a suitable family of events, which is the subject of measure theory.
 
 :::

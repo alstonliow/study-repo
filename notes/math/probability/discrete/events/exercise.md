@@ -82,3 +82,22 @@ $$\Pr(A_1 \cup A_2 \cup \cdots \cup A_n) \le \sum_{i=1}^{n} \Pr(A_i).$$
 
 Hint: Use the inclusion-exclusion principle and the power series $e^x=\sum_{j=0}^{\infty}x^j/j!$.
 :::
+
+::: {.problem #prob-mit6041f10-1-q1 origin="external" source="mit6041f10-1-q1"}
+Express each of the following events in terms of the events $A$, $B$ and $C$ as well as the operations of complementation, union and intersection:
+
+(a) at least one of the events $A$, $B$, $C$ occurs;
+(b) at most one of the events $A$, $B$, $C$ occurs;
+(c) none of the events $A$, $B$, $C$ occurs;
+(d) all three events $A$, $B$, $C$ occur;
+(e) exactly one of the events $A$, $B$, $C$ occurs;
+(f) events $A$ and $B$ occur, but not $C$;
+(g) either event $A$ occurs or, if not, then $B$ also does not occur.
+
+In each case draw the corresponding Venn diagrams.
+:::
+
+::: {.problem #prob-mit6041f10-1-q6 origin="external" source="mit6041f10-1-q6"}
+Prove that for any three events $A$, $B$ and $C$, we have
+$$\mathbf{P}(A \cap B \cap C) \geq \mathbf{P}(A) + \mathbf{P}(B) + \mathbf{P}(C) - 2.$$
+:::

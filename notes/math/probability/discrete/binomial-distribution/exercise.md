@@ -50,3 +50,23 @@ After making the array compact, it now looks like
 $$[6,4,5,3,5,1,3,0,0,0].$$
 Let $i$ be a fixed positive integer in $\{1,\dots,n\}$. Suppose that the $i$th entry of the array is non-zero (assume that the array is indexed starting from 1). Let $X$ be a random variable which is equal to the index that the $i$th entry has been moved after making the array compact. Calculate $E[X]$ and $\operatorname{var}(X)$.
 :::
+
+::: {.problem #prob-mit6041f10-4-q2 origin="external" source="mit6041f10-4-q2"}
+The newest invention of the 6.041/6.431 staff is a three-sided die with faces numbered 1, 2, and 3. The PMF for the result of any one roll of this die is
+$$p_X(x) = \begin{cases} 1/2, & \text{if } x = 1,\\ 1/4, & \text{if } x = 2,\\ 1/4, & \text{if } x = 3,\\ 0, & \text{otherwise.}\end{cases}$$
+Consider a sequence of six independent rolls of this die, and let $X_i$ be the random variable corresponding to the $i$th roll.
+
+(a) What is the probability that exactly three of the rolls have result equal to 3?
+(b) What is the probability that the first roll is 1, given that exactly two of the six rolls have result of 1?
+(c) We are told that exactly three of the rolls resulted in 1 and exactly three resulted in 2. Given this information, what is the probability that the sequence of rolls is 121212?
+(d) Conditioned on the event that at least one roll resulted in 3, find the conditional PMF of the number of 3's.
+:::
+
+::: {.problem #prob-mit6041f10-4-q4 origin="external" source="mit6041f10-4-q4"}
+Consider 10 independent tosses of a biased coin with a probability of heads of $p$.
+
+(a) Let $A$ be the event that there are 6 heads in the first 8 tosses. Let $B$ be the event that the 9th toss results in heads. Show that events $A$ and $B$ are independent.
+(b) Find the probability that there are 3 heads in the first 4 tosses and 2 heads in the last 3 tosses.
+(c) Given that there were 4 heads in the first 7 tosses, find the probability that the 2nd head occurred during the 4th trial.
+(d) Find the probability that there are 5 heads in the first 8 tosses and 3 heads in the last 5 tosses.
+:::

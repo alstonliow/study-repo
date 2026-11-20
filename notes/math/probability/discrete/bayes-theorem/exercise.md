@@ -76,3 +76,31 @@ Hint: Consider the events $B_i=\{i\text{-th city is the best}\}$ and $A=\{\text{
 
 Now suppose you are the first mate, but the captain gave you 2 sabotage cards. Being a crewmate, you wonder, did the captain just happen to have 3 sabotage cards, or was the captain an imposter who secretly discarded a task card. In this scenario, what's the probability that the captain is an imposter? Let's assume that imposter captains always try to discard task cards, and crewmate captains always try to discard sabotage cards.
 :::
+
+::: {.problem #prob-mit6041f10-2-q1 origin="external" source="mit6041f10-2-q1"}
+Most mornings, Victor checks the weather report before deciding whether to carry an umbrella. If the forecast is "rain," the probability of actually having rain that day is 80%. On the other hand, if the forecast is "no rain," the probability of it actually raining is equal to 10%. During fall and winter the forecast is "rain" 70% of the time and during summer and spring it is 20%.
+
+(a) One day, Victor missed the forecast and it rained. What is the probability that the forecast was "rain" if it was during the winter? What is the probability that the forecast was "rain" if it was during the summer?
+(b) The probability of Victor missing the morning forecast is equal to 0.2 on any day in the year. If he misses the forecast, Victor will flip a fair coin to decide whether to carry an umbrella. On any day of a given season he sees the forecast, if it says "rain" he will always carry an umbrella, and if it says "no rain," he will not carry an umbrella. Are the events "Victor is carrying an umbrella," and "The forecast is no rain" independent? Does your answer depend on the season?
+(c) Victor is carrying an umbrella and it is not raining. What is the probability that he saw the forecast? Does it depend on the season?
+:::
+
+::: {.problem #prob-mit6041f10-2-q3 origin="external" source="mit6041f10-2-q3"}
+The local widget factory is having a blowout widget sale. Everything must go, old and new. The factory has 500 old widgets, and 1500 new widgets in stock. The problem is that 15% of the old widgets are defective, and 5% of the new ones are defective as well. You can assume that widgets are selected at random when an order comes in. You are the first customer since the sale was announced.
+
+(a) You flip a fair coin once to decide whether to buy old or new widgets. You order two widgets of the same type, chosen based on the outcome of the coin toss. What is the probability that they will both be defective?
+(b) Given that both widgets turn out to be defective, what is the probability that they were old widgets?
+:::
+
+::: {.problem #prob-mit6041f10-2-q4 origin="external" source="mit6041f10-2-q4"}
+Oscar has lost his dog in either forest A (with a priori probability 0.4) or in forest B (with a priori probability 0.6).
+
+On any given day, if the dog is in A and Oscar spends a day searching for it in A, the conditional probability that he will find the dog that day is 0.25. Similarly, if the dog is in B and Oscar spends a day looking for it there, the conditional probability that he will find the dog that day is 0.15.
+
+The dog cannot go from one forest to the other. Oscar can search only in the daytime, and he can travel from one forest to the other only at night.
+
+(a) In which forest should Oscar look to maximize the probability he finds his dog on the first day of the search?
+(b) Given that Oscar looked in A on the first day but didn't find his dog, what is the probability that the dog is in A?
+(c) If Oscar flips a fair coin to determine where to look on the first day and finds the dog on the first day, what is the probability that he looked in A?
+(d) If the dog is alive and not found by the $N$th day of the search, it will die that evening with probability $\frac{N}{N+2}$. Oscar has decided to look in A for the first two days. What is the probability that he will find a live dog for the first time on the second day?
+:::

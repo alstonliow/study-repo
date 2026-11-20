@@ -500,7 +500,9 @@ parts:
           - buffons-needle
           - standard-distributions
           - joint-distributions
+          - derived-distributions
           - transforms
+          - iterated-expectations
           - modes-of-convergence
       - id: math/probability/markov-chains
         title: Markov Chains
@@ -514,8 +516,9 @@ parts:
           - reversible-markov-chains
       - id: math/probability/random-processes
         title: Random Processes
-        desc: Poisson processes, continuous-time Markov chains, queues
+        desc: Bernoulli and Poisson processes, continuous-time Markov chains, queues
         notes:   # topic order on the website
+          - bernoulli-process
           - poisson-process
           - continuous-time-markov-chains
       - id: math/probability/information-theory
@@ -527,10 +530,12 @@ parts:
           - channel-capacity
       - id: math/probability/estimation
         title: Estimation and Detection
-        desc: Hypothesis testing, linear and MMSE estimation, jointly Gaussian vectors, Kalman filter
+        desc: Hypothesis testing, linear and MMSE estimation, Bayesian and classical estimation, jointly Gaussian vectors, Kalman filter
         notes:   # topic order on the website
           - hypothesis-testing
           - linear-estimation
+          - bayesian-inference
+          - classical-estimation
           - jointly-gaussian
           - kalman-filter
   - title: Algorithms

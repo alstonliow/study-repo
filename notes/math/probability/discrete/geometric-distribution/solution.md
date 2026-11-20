@@ -29,3 +29,11 @@ For $k\ge0$, by independence,
 $$\Pr(\min\{X,Y\}>k)=\Pr(X>k)\Pr(Y>k)=(1-p)^k(1-q)^k=\bigl((1-p)(1-q)\bigr)^k.$$
 This is the tail of $\mathrm{Geom}(r)$ with $1-r=(1-p)(1-q)$, and the tails determine the distribution ($\Pr(Z=k)=\Pr(Z>k-1)-\Pr(Z>k)$). So $\min\{X,Y\}\sim\mathrm{Geom}(p+q-pq)$: running both experiments in parallel, a round succeeds unless both fail.
 :::
+
+::: {.solution for="prob-mit6041f10-4-q3" status="draft"}
+1. For $1\le i\le n-1$, independence gives $\Pr(X=i,X+Y=n)=\Pr(X=i)\Pr(Y=n-i)=(1-p)^{i-1}p\,(1-p)^{n-i-1}p=p^2(1-p)^{n-2}$, which does not depend on $i$.
+
+2. $X+Y=n$ forces $X\in\{1,\dots,n-1\}$, so $\Pr(X+Y=n)=(n-1)p^2(1-p)^{n-2}$.
+
+3. Dividing, $\Pr(X=i\mid X+Y=n)=\frac1{n-1}$.
+:::

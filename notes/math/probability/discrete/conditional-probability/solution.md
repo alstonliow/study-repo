@@ -227,3 +227,33 @@ The answer is $\frac{n-m}{n+m}$ (the ballot theorem).
 3. Bad sequences starting with a Captain America basket are in bijection with sequences starting with a Superman basket: swap the scorers of every basket up to the first tie. This preserves the final score and the first tie.
 4. So $\Pr(\text{bad})=2\Pr(\text{Superman scores first})=\frac{2m}{n+m}$, and $\Pr(\text{good})=1-\frac{2m}{n+m}=\frac{n-m}{n+m}$.
 :::
+
+::: {.solution for="prob-mit6041f10-2-q2" status="draft"}
+There are $25$ equally likely ordered pairs.
+
+(a) $A=\{(5,5)\}$, so $\Pr(A)=1/25$; $\Pr(B)=\Pr(C)=1-(4/5)^2=9/25$.
+  i. $A\subseteq B$, so $\Pr(A\cap B)=1/25\ne\Pr(A)\Pr(B)=9/625$: not independent.
+  ii. $A\cap C=\emptyset$, so $\Pr(A\cap C)=0\ne\Pr(A)\Pr(C)$: not independent.
+
+(b) i. $E$ has the $8$ pairs $(i,i\pm1)$, so $\Pr(E)=8/25$; $F$ has $\binom52=10$ pairs, $\Pr(F)=10/25$; $E\cap F=\{(1,2),(2,3),(3,4),(4,5)\}$ has probability $4/25$. Since $\frac{8}{25}\cdot\frac{10}{25}=\frac{3.2}{25}\ne\frac4{25}$, they are not independent.
+  ii. $D=\{(2,5),(3,4),(4,3),(5,2)\}$. Given $D$: $E\cap D=\{(3,4),(4,3)\}$, $F\cap D=\{(2,5),(3,4)\}$, $E\cap F\cap D=\{(3,4)\}$, so $\Pr(E\mid D)=\Pr(F\mid D)=\frac12$ and $\Pr(E\cap F\mid D)=\frac14=\frac12\cdot\frac12$. They are conditionally independent given $D$.
+:::
+
+::: {.solution for="prob-mit6041f10-2-q5" status="draft"}
+(a)
+
+1. By distributivity, $A\cap(B\cup C)=(A\cap B)\cup(A\cap C)$, and the intersection of these two is $A\cap B\cap C$.
+
+2. Inclusion-exclusion and independence give
+$$\Pr(A\cap(B\cup C))=\Pr(A)\Pr(B)+\Pr(A)\Pr(C)-\Pr(A)\Pr(B)\Pr(C).$$
+
+3. The right side is $\Pr(A)\bigl(\Pr(B)+\Pr(C)-\Pr(B)\Pr(C)\bigr)=\Pr(A)\Pr(B\cup C)$, again by inclusion-exclusion and independence of $B$ and $C$.
+
+(b)
+
+1. If $A_1,\dots,A_n$ are independent, so are $A_1^c,\dots,A_n^c$: for any subfamily, replacing one event by its complement keeps the product rule, since $\Pr(A^c\cap G)=\Pr(G)-\Pr(A\cap G)=(1-\Pr(A))\Pr(G)$ when $G$ is an intersection of the others; repeat one event at a time.
+
+2. By De Morgan, $(A_1\cup\dots\cup A_n)^c=A_1^c\cap\dots\cap A_n^c$, whose probability is $\prod_i(1-\Pr(A_i))$ by step 1.
+
+3. Taking complements gives the formula.
+:::

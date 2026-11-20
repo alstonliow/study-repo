@@ -61,3 +61,13 @@ In low dimension the thin shell is a small part of the cube, so one expects "mos
 3. So $\limsup_nP(T>n)\le P(|Z|\le K)$ for every $K$, and letting $K\to0$ gives $\lim_nP(T>n)=0$.
 4. $\{T=\infty\}\subseteq\{T>n\}$ for every $n$, so $P(T=\infty)=0$.
 :::
+
+::: {.solution for="prob-mit6041f10-9-q1" status="draft"}
+All three converge in probability.
+
+(a) $E[X]=0$ and $\mathrm{Var}(X)=\frac13$, so by the weak law of large numbers (@thm-law-of-large-numbers) $U_i\to0$; directly, Chebyshev gives $\Pr(|U_i|\ge\varepsilon)\le\frac1{3i\varepsilon^2}\to0$.
+
+(b) $W_i\le1$ always, and for $0<\varepsilon<2$, $\Pr(W_i\le1-\varepsilon)=\bigl(1-\frac\varepsilon2\bigr)^i\to0$. So $W_i\to1$.
+
+(c) $E|X|=\frac12$, so by independence $E|V_i|=2^{-i}$, and Markov's inequality gives $\Pr(|V_i|\ge\varepsilon)\le\frac{2^{-i}}\varepsilon\to0$. So $V_i\to0$.
+:::

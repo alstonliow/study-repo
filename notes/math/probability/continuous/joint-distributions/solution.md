@@ -23,3 +23,24 @@ The density is $A$ on $[1,2]\times[1,3]$ and on $[3,4]\times[1,3]$, $2A$ on $[2,
 
 (c) $E[X\mid Y]=2.5=E[X]$ is constant, so $E[XY]=E\bigl[Y\,E[X\mid Y]\bigr]=2.5\,E[Y]=E[X]E[Y]$ and $\operatorname{cov}(X,Y)=0$, although $X$ and $Y$ are not independent (@def-marginal-conditional-density).
 :::
+
+::: {.solution for="prob-mit6041f10-5-q1" status="draft"}
+(a) $\int_1^2\int_x^2ax\,dy\,dx=a\int_1^2x(2-x)\,dx=a\bigl[x^2-\tfrac{x^3}3\bigr]_1^2=\tfrac{2a}3$, so $a=\frac32$.
+
+(b) For $1\le y\le2$, $f_Y(y)=\int_1^y\frac32x\,dx=\frac34(y^2-1)$, and $0$ otherwise.
+
+(c) Given $Y=\frac32$, $f_{X\mid Y}(x\mid\frac32)\propto x$ on $[1,\frac32]$. So
+$$E\Bigl[\frac1X\Bigm|Y=\tfrac32\Bigr]=\frac{\int_1^{3/2}\frac1x\cdot x\,dx}{\int_1^{3/2}x\,dx}=\frac{1/2}{5/8}=\frac45.$$
+:::
+
+::: {.solution for="prob-mit6041f10-5-q5" status="draft"}
+The quadrilateral is the parallelogram $\{0\le x\le1,\ x\le y\le x+1\}$ of area $1$, so $f_{X,Y}=1$ there.
+
+(a) No. The support is not a product set: for example $f_X(0.9)f_Y(0.1)>0$ but $f_{X,Y}(0.9,0.1)=0$.
+
+(b) For $0\le x\le1$ the vertical section has length $1$, so $X$ is uniform on $[0,1]$. For $0\le y\le1$ the horizontal section is $0\le x\le y$, so $f_Y(y)=y$; for $1\le y\le2$ it is $y-1\le x\le1$, so $f_Y(y)=2-y$.
+
+(c) Given $X=x$, $Y$ is uniform on $[x,x+1]$, so $Y=X+U$ with $U$ uniform on $[0,1]$ and independent of $X$. Then $X+Y=2X+U$ and $E[X+Y]=1+\frac12=\frac32$.
+
+(d) $\mathrm{Var}(2X+U)=4\cdot\frac1{12}+\frac1{12}=\frac5{12}$.
+:::

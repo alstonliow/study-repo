@@ -132,3 +132,9 @@ $$n 2^{n-1} = \sum_{k=1}^{n} k \binom{n}{k}$$
 ::: {.problem #prob-mit6042f10-9-q5 origin="external" source="mit6042f10-9-q5"}
 At a congressional hearing, there are $2n$ members present. Exactly $n$ of them are Democrats and $n$ of them are Republicans. The members want to select a smaller subcommittee of size $n$ from within those present at the hearing. However, since the Democrats currently hold majority, they want there to be more Democrats then Republicans in the committee. In how many ways can you select such a committee? (Hint: Consider two cases: $n$ odd and $n$ even.)
 :::
+
+::: {.problem #prob-mit6041f10-3-q5 origin="external" source="mit6041f10-3-q5"}
+Let $n \geq 2$ be an integer. Show that
+$$\sum_{k=2}^{n} \binom{n}{k} k(k-1) = n(n-1)2^{n-2}.$$
+Hint: As one way of solving the problem, following from Example 1.31 in the text, think of a committee that includes a chair and a vice-chair.
+:::

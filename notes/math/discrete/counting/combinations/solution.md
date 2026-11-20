@@ -165,3 +165,13 @@ There are $\binom{2n}n$ committees of size $n$. Swapping the roles of the partie
 - If $n$ is odd, there are no ties, and the answer is $\frac12\binom{2n}n$.
 - If $n$ is even, the ties have $\frac n2$ of each party: $\binom n{n/2}^2$ committees. The answer is $\frac12\Bigl(\binom{2n}n-\binom n{n/2}^2\Bigr)$.
 :::
+
+::: {.solution for="prob-mit6041f10-3-q5" status="draft"}
+Count the ways to choose, from $n$ people, a committee together with a chair and a different vice-chair, both members of the committee.
+
+1. First the committee: for size $k$ there are $\binom nk$ committees and then $k(k-1)$ ways to pick chair and vice-chair. Summing over $k$ gives the left side ($k\ge2$ is needed for two officers).
+
+2. First the officers: $n$ choices of chair, $n-1$ of vice-chair, and each of the other $n-2$ people is in the committee or not, $2^{n-2}$ ways. This gives the right side.
+
+3. Both count the same set, so they are equal.
+:::

@@ -99,3 +99,18 @@ def test_sketch_of_identity_is_unbiased():
     assert abs(off.var() - 1 / d) < 0.03
 ```
 :::
+
+::: {.problem #prob-mit6041f10-5-q4 origin="external" source="mit6041f10-5-q4"}
+Signal Classification: Consider the communication of binary-valued messages over some transmission medium. Specifically, any message transmitted between locations is one of two possible symbols, 0 or 1. Each symbol occurs with equal probability. It is also known that any numerical value sent over this wire is subject to distortion; namely, if the value $X$ is transmitted, the value $Y$ received at the other end is described by $Y = X + N$ where the random variable $N$ represents additive noise that is independent of $X$. The noise $N$ is normally distributed with mean $\mu = 0$ and variance $\sigma^2 = 4$.
+
+(a) Suppose the transmitter encodes the symbol 0 with the value $X = -2$ and the symbol 1 with the value $X = 2$. At the other end, the received message is decoded according to the following rules:
+  - If $Y \geq 0$, then conclude the symbol 1 was sent.
+  - If $Y < 0$. then conclude the symbol 0 was sent.
+
+  Determine the probability of error for this encoding/decoding scheme. Reduce your calculations to a single numerical value.
+(b) In an effort to reduce the probability of error, the following modifications are made. The transmitter encodes the symbols with a repeated scheme. The symbol 0 is encoded with the vector $X = [-2, -2, -2]^\intercal$ and the symbol 1 is encoded with the vector $X = [2, 2, 2]^\intercal$. The vector $Y = [Y_1, Y_2, Y_3]^\intercal$ received at the other end is described by $Y = X + N$. The vector $N = [N_1, N_2, N_3]^\intercal$ represents the noise vector where each $N_i$ is a random variable assumed to be normally distributed with mean $\mu = 0$ and variance $\sigma^2 = 4$. Assume each $N_i$ is independent of each other and independent of the $X_i$'s. Each component value of $Y$ is decoded with the same rule as in part (a). The receiver then uses a majority rule to determine which symbol was sent. The receiver's decoding rules are:
+  - If 2 or more components of $Y$ are greater than 0, then conclude the symbol 1 was sent.
+  - If 2 or more components of $Y$ are less than 0, then conclude the symbol 0 was sent.
+
+  Determine the probability of error for this modified encoding/decoding scheme. Reduce your calculations to a single numerical value.
+:::

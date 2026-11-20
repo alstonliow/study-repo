@@ -286,6 +286,27 @@ exclude:
   # EECS126 lab coding exercises (2026-11-20) in shared notes
   - prob-flush-enumeration-code
   - prob-palindrome-hands-code
+  # MIT 6.041 integration (2026-11-20): MIT 6.041 problems and blocks in shared notes
+  - def-probability-axioms
+  - prob-mit6041f10-1-q1
+  - prob-mit6041f10-1-q2
+  - prob-mit6041f10-1-q3
+  - prob-mit6041f10-1-q4
+  - prob-mit6041f10-1-q5
+  - prob-mit6041f10-1-q6
+  - prob-mit6041f10-2-q1
+  - prob-mit6041f10-2-q2
+  - prob-mit6041f10-2-q3
+  - prob-mit6041f10-2-q4
+  - prob-mit6041f10-2-q5
+  - prob-mit6041f10-3-q1
+  - prob-mit6041f10-3-q2
+  - prob-mit6041f10-3-q3
+  - prob-mit6041f10-3-q5
+  - prob-mit6041f10-4-q2
+  - prob-mit6041f10-4-q3
+  - prob-mit6041f10-4-q4
+  - rmk-probability-axioms-models
 
 chapters:
   - num: 1

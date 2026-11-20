@@ -205,3 +205,65 @@ def palindrome_probability(k, r=13, s=4):
 2. The function `count(i, left, odd)` adds these weights over all count vectors, choosing $c_i$ for one rank at a time. It tracks the cards still to choose and how many ranks so far have an odd count, and stops a branch as soon as two ranks are odd.
 3. The probability is the total weight of the symmetric groups divided by $\binom{rs}{k}$, the weight of all groups. The recursion visits at most $(s+1)^r$ partial vectors and in practice far fewer, because of the two bounds.
 :::
+
+::: {.solution for="prob-mit6041f10-1-q2" status="draft"}
+The sample space has $2^3=8$ equally likely sequences, so each event has probability (number of its sequences)$/8$.
+
+(a) One sequence: $1/8$.
+(b) One sequence: $1/8$.
+(c) HHT, HTH, THH: $3/8$.
+(d) With three tosses heads $\ge$ tails means at least two heads: HHH and the three sequences of (c), so $4/8=1/2$.
+:::
+
+::: {.solution for="prob-mit6041f10-1-q3" status="draft"}
+Outcomes are ordered pairs $(i,j)$, $1\le i,j\le4$, with $\Pr(i,j)=c(i+j)$.
+
+1. Normalise: $\sum_{i,j}(i+j)=2\cdot4\cdot(1+2+3+4)=80$, so $c=1/80$.
+
+2. (a) Even sums are $2,4,6,8$, reached by $1,3,3,1$ pairs, total weight $2\cdot1+4\cdot3+6\cdot3+8\cdot1=40$. So $\Pr(\text{even})=40/80=1/2$.
+
+3. (b) The outcomes $(2,3)$ and $(3,2)$ each have weight $5$, so the probability is $10/80=1/8$.
+:::
+
+::: {.solution for="prob-mit6041f10-1-q4" status="draft"}
+Let $x$ be Alice's number and $y$ Bob's; the sample space is the square $[0,2]^2$ of area $4$, and $\Pr(E)=\text{area}(E)/4$.
+
+1. $B^c$ is the square $[0,1/3]^2$ of area $1/9$, so $\Pr(B)=1-\frac{1/9}4=\frac{35}{36}$.
+
+2. $C$ is the diagonal $y=x$, a line segment of area $0$, so $\Pr(C)=0$.
+
+3. $A\cap D$ is $\{x>1/3\}$ intersected with two triangles. Below the diagonal: $y<x-1/3$, which already forces $x>1/3$; it is the triangle with legs $5/3$, area $\frac12(5/3)^2=25/18$. Above the diagonal: $y>x+1/3$ and $x>1/3$, the triangle with vertices $(1/3,2/3)$, $(1/3,2)$, $(5/3,2)$, legs $4/3$, area $\frac12(4/3)^2=16/18$.
+
+4. So $\Pr(A\cap D)=\frac{41/18}4=\frac{41}{72}$.
+:::
+
+::: {.solution for="prob-mit6041f10-1-q5" status="draft"}
+The board has area $100\pi$.
+
+(a) The inner disk has area $\pi$, so the probability is $\pi/(100\pi)=0.01$.
+
+(b) The ring between radii $1$ and $3$ has area $9\pi-\pi=8\pi$, so the probability is $0.08$.
+
+(c) John lands in the right half with probability $2/3$ and the left half with probability $1/3$, uniformly within each half (area $50\pi$). Every scoring region is a disk or ring centred at the centre, so it is cut exactly in half by the vertical diameter. For a region of area $a$,
+$$\Pr=\frac23\cdot\frac{a/2}{50\pi}+\frac13\cdot\frac{a/2}{50\pi}=\frac a{100\pi},$$
+the same as for Mike: $0.01$ for 50 points and $0.08$ for 30 points.
+:::
+
+::: {.solution for="prob-mit6041f10-3-q1" status="draft"}
+The $n!$ assignments of hats to persons are equally likely.
+
+(a) Only one assignment works: $1/n!$.
+
+(b) The first $m$ persons are fixed and the other $n-m$ hats go anywhere: $(n-m)!/n!$.
+
+(c) The first $m$ persons receive the $m$ hats of the last $m$ persons in some order ($m!$ ways) and the remaining $n-m$ hats go to the rest ($(n-m)!$ ways): $\frac{m!\,(n-m)!}{n!}=1/\binom nm$.
+
+(d) Whatever hats they get, those are $m$ distinct hats, each clean with probability $1-p$ independently of the assignment: $(1-p)^m$.
+
+(e) Every person picks up exactly one hat, so this is the probability that exactly $m$ of the $n$ hats are clean: $\binom nm(1-p)^mp^{n-m}$.
+:::
+
+::: {.solution for="prob-mit6041f10-3-q2" status="draft"}
+Fix Alice's 4 cards. Bob's hand is one of $\binom{52}8$ equally likely sets, and it contains Alice's cards exactly when its other 4 cards come from the remaining 48. So
+$$\Pr(\text{Alice wins})=\frac{\binom{48}4}{\binom{52}8}=\frac2{7735}\approx2.6\times10^{-4}.$$
+:::

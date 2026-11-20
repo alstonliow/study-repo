@@ -107,3 +107,25 @@ Let $A_i$ be the event that passenger $i$ sits in their own seat.
 2. Hence $\Pr(\bigcup_iA_i)=\sum_{k=1}^N(-1)^{k+1}/k!$ and
 $$\Pr(\text{no one in their seat})=\sum_{k=0}^{N}\frac{(-1)^k}{k!}\xrightarrow[N\to\infty]{}e^{-1}\approx0.368.$$
 :::
+
+::: {.solution for="prob-mit6041f10-1-q1" status="draft"}
+Write $E_1=A\cap B^c\cap C^c$, $E_2=A^c\cap B\cap C^c$, $E_3=A^c\cap B^c\cap C$ for "only $A$", "only $B$", "only $C$".
+
+(a) $A\cup B\cup C$.
+(b) At most one means none or exactly one: $E_1\cup E_2\cup E_3\cup(A^c\cap B^c\cap C^c)$.
+(c) $A^c\cap B^c\cap C^c=(A\cup B\cup C)^c$.
+(d) $A\cap B\cap C$.
+(e) $E_1\cup E_2\cup E_3$.
+(f) $A\cap B\cap C^c$.
+(g) $A\cup(A^c\cap B^c)$, which simplifies to $A\cup B^c$.
+
+In the Venn diagrams shade, respectively: everything inside the three circles; the region outside all circles together with the three "only one circle" regions; the region outside all circles; the central triple overlap; the three "only one circle" regions; the part of $A\cap B$ outside $C$; circle $A$ together with everything outside $B$.
+:::
+
+::: {.solution for="prob-mit6041f10-1-q6" status="draft"}
+1. By De Morgan, $(A\cap B\cap C)^c=A^c\cup B^c\cup C^c$, so $\Pr(A\cap B\cap C)=1-\Pr(A^c\cup B^c\cup C^c)$.
+
+2. By the union bound (@thm-union-bound), $\Pr(A^c\cup B^c\cup C^c)\le\Pr(A^c)+\Pr(B^c)+\Pr(C^c)=3-\Pr(A)-\Pr(B)-\Pr(C)$.
+
+3. Combining, $\Pr(A\cap B\cap C)\ge1-3+\Pr(A)+\Pr(B)+\Pr(C)=\Pr(A)+\Pr(B)+\Pr(C)-2$.
+:::

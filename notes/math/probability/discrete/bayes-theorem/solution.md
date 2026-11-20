@@ -99,3 +99,39 @@ The answer is $\tfrac34$.
 3. An imposter passes two sabotage cards whenever he holds at least two, $\Pr(2S\mid I)=\frac{495}{680}$; a crewmate does so only with three, $\Pr(2S\mid C)=\frac{165}{680}$.
 4. By Bayes' theorem (@thm-bayes-two-events), $\Pr(I\mid2S)=\frac{495}{495+165}=\frac34$.
 :::
+
+::: {.solution for="prob-mit6041f10-2-q1" status="draft"}
+Let $F$ be "forecast is rain", $R$ "it rains", $M$ "Victor misses the forecast", $U$ "he carries an umbrella", and $f=\Pr(F)$: $0.7$ in winter, $0.2$ in summer. Missing the forecast is independent of the weather and the forecast.
+
+(a) Missing the forecast tells nothing, so by Bayes' theorem
+$$\Pr(F\mid R)=\frac{0.8f}{0.8f+0.1(1-f)}.$$
+Winter: $\frac{0.56}{0.59}\approx0.949$. Summer: $\frac{0.16}{0.24}=\frac23$.
+
+(b) Given forecast "no rain", he carries an umbrella only if he missed the forecast and the coin said so: $\Pr(U\mid F^c)=0.2\cdot0.5=0.1$. Overall $\Pr(U)=0.1+0.8f$, which is $0.66$ in winter and $0.26$ in summer. Since $\Pr(U\mid F^c)\ne\Pr(U)$ in both seasons, the events are dependent in every season (they would be independent only if $f=0$).
+
+(c) Split $U\cap R^c$ on $M$:
+
+1. Saw the forecast: he carries only if it said rain, and then it stays dry with probability $0.2$: $\Pr(M^c\cap U\cap R^c)=0.8\cdot f\cdot0.2$.
+2. Missed it: $\Pr(M\cap U\cap R^c)=0.2\cdot0.5\cdot\Pr(R^c)$ with $\Pr(R^c)=0.2f+0.9(1-f)$.
+3. Winter: $0.112$ and $0.1\cdot0.41=0.041$, so $\Pr(M^c\mid U\cap R^c)=\frac{0.112}{0.153}\approx0.732$. Summer: $0.032$ and $0.1\cdot0.76=0.076$, so $\frac{0.032}{0.108}\approx0.296$.
+
+It depends on the season.
+:::
+
+::: {.solution for="prob-mit6041f10-2-q3" status="draft"}
+There are $75$ defective old widgets out of $500$ and $75$ defective new ones out of $1500$; two widgets are drawn without replacement.
+
+(a) $\Pr(\text{both defective}\mid\text{old})=\frac{75}{500}\cdot\frac{74}{499}\approx0.02224$ and $\Pr(\text{both defective}\mid\text{new})=\frac{75}{1500}\cdot\frac{74}{1499}\approx0.002468$. By total probability the answer is $\frac12(0.02224+0.002468)\approx0.01236$. (Drawing with replacement would give $\frac12(0.15^2+0.05^2)=0.0125$, nearly the same.)
+
+(b) By Bayes' theorem, $\Pr(\text{old}\mid\text{both defective})=\frac{0.02224}{0.02224+0.002468}\approx0.900$.
+:::
+
+::: {.solution for="prob-mit6041f10-2-q4" status="draft"}
+(a) Looking in A finds the dog with probability $0.4\cdot0.25=0.1$, looking in B with probability $0.6\cdot0.15=0.09$. Look in A.
+
+(b) $\Pr(\text{in }A\mid\text{not found in }A)=\frac{0.4\cdot0.75}{0.4\cdot0.75+0.6\cdot1}=\frac{0.3}{0.9}=\frac13$.
+
+(c) $\Pr(\text{looked in }A\mid\text{found})=\frac{0.5\cdot0.1}{0.5\cdot0.1+0.5\cdot0.09}=\frac{10}{19}\approx0.526$.
+
+(d) He must have: the dog in A ($0.4$), no find on day 1 ($0.75$), the dog surviving the first evening ($1-\frac13=\frac23$), and a find on day 2 ($0.25$). The product is $0.4\cdot0.75\cdot\frac23\cdot0.25=0.05$.
+:::

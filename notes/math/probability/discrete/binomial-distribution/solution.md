@@ -66,3 +66,26 @@ probabilities below are $\binom{16}k/2^{16}$ summed over the relevant $k$.
 2. The entries are independent, so conditioning on entry $i$ does not affect the others, and $Y\sim\operatorname{Bin}(i-1,\tfrac9{10})$.
 3. Hence $E[X]=1+\tfrac9{10}(i-1)$ and $\operatorname{var}(X)=\operatorname{var}(Y)=\tfrac{9}{100}(i-1)$.
 :::
+
+::: {.solution for="prob-mit6041f10-4-q2" status="draft"}
+(a) The number of 3's is $\mathrm{Bin}(6,\frac14)$: $\binom63(\frac14)^3(\frac34)^3=\frac{135}{1024}\approx0.132$.
+
+(b) Given exactly two 1's, every choice of the two positions is equally likely (each sequence with two 1's in given places has the same probability). The first roll is one of them in $\binom51$ of the $\binom62$ choices: $\frac5{15}=\frac13$.
+
+(c) Every sequence of three 1's and three 2's has the same probability $(\frac12)^3(\frac14)^3$, so given the counts they are equally likely: $1/\binom63=\frac1{20}$.
+
+(d) Let $K\sim\mathrm{Bin}(6,\frac14)$. $\Pr(K\ge1)=1-(\frac34)^6=\frac{3367}{4096}$, so for $k=1,\dots,6$
+$$\Pr(K=k\mid K\ge1)=\frac{\binom6k(1/4)^k(3/4)^{6-k}}{1-(3/4)^6},$$
+which is $\frac{1458}{3367},\frac{1215}{3367},\frac{540}{3367},\frac{135}{3367},\frac{18}{3367},\frac1{3367}$.
+:::
+
+::: {.solution for="prob-mit6041f10-4-q4" status="draft"}
+(a) $A$ is determined by tosses $1$–$8$ and $B$ by toss $9$. The tosses are independent, so $\Pr(A\cap B)=\binom86p^6(1-p)^2\cdot p=\Pr(A)\Pr(B)$.
+
+(b) Tosses $1$–$4$ and $8$–$10$ do not overlap, so the probability is $\binom43p^3(1-p)\cdot\binom32p^2(1-p)=12p^5(1-p)^2$.
+
+(c) Given 4 heads in 7 tosses, all $\binom74=35$ placements are equally likely. The second head is at toss 4 when tosses $1$–$3$ hold exactly one head ($3$ ways), toss 4 is a head, and tosses $5$–$7$ hold two heads ($3$ ways). The probability is $\frac9{35}$.
+
+(d) The windows $1$–$8$ and $6$–$10$ overlap in tosses $6,7,8$. Let $k$ be the number of heads there; then tosses $1$–$5$ have $5-k$ heads and tosses $9,10$ have $3-k$, so $1\le k\le3$. Summing,
+$$\sum_{k=1}^3\binom5{5-k}\binom3k\binom2{3-k}p^{8-k}(1-p)^{2+k}=15p^7(1-p)^3+60p^6(1-p)^4+10p^5(1-p)^5.$$
+:::

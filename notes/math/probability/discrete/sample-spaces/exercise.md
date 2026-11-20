@@ -242,3 +242,61 @@ def _reference_count(k):
     return poly[(k, 0)] + poly[(k, 1)]
 ```
 :::
+
+::: {.problem #prob-mit6041f10-1-q2 origin="external" source="mit6041f10-1-q2"}
+You flip a fair coin 3 times, determine the probability of the below events. Assume all sequences are equally likely.
+
+(a) Three heads: HHH
+(b) The sequence head, tail, head: HTH
+(c) Any sequence with 2 heads and 1 tail
+(d) Any sequence where the number of heads is greater than or equal to the number of tails
+:::
+
+::: {.problem #prob-mit6041f10-1-q3 origin="external" source="mit6041f10-1-q3"}
+Bob has a peculiar pair of four-sided dice. When he rolls the dice, the probability of any particular outcome is proportional to the sum of the results of each die. All outcomes that result in a particular sum are equally likely.
+
+(a) What is the probability of the sum being even?
+(b) What is the probability of Bob rolling a 2 and a 3, in any order?
+:::
+
+::: {.problem #prob-mit6041f10-1-q4 origin="external" source="mit6041f10-1-q4"}
+Alice and Bob each choose at random a number in the interval $[0, 2]$. We assume a uniform probability law under which the probability of an event is proportional to its area. Consider the following events:
+
+$A$ : The magnitude of the difference of the two numbers is greater than $1/3$.
+$B$ : At least one of the numbers is greater than $1/3$.
+$C$ : The two numbers are equal.
+$D$ : Alice's number is greater than $1/3$.
+
+Find the probabilities $\mathbf{P}(B)$, $\mathbf{P}(C)$, and $\mathbf{P}(A \cap D)$.
+:::
+
+::: {.problem #prob-mit6041f10-1-q5 origin="external" source="mit6041f10-1-q5"}
+Mike and John are playing a friendly game of darts where the dart board is a disk with radius of 10in.
+
+Whenever a dart falls within 1in of the center, 50 points are scored. If the point of impact is between 1 and 3in from the center, 30 points are scored, if it is at a distance of 3 to 5in 20 points are scored and if it is further that 5in, 10 points are scored.
+
+Assume that both players are skilled enough to be able to throw the dart within the boundaries of the board.
+
+Mike can place the dart uniformly on the board (i.e., the probability of the dart falling in a given region is proportional to its area).
+
+(a) What is the probability that Mike scores 50 points on one throw?
+(b) What is the probability of him scoring 30 points on one throw?
+(c) John is right handed and is twice more likely to throw in the right half of the board than in the left half. Across each half, the dart falls uniformly in that region. Answer the previous questions for John's throw.
+:::
+
+::: {.problem #prob-mit6041f10-3-q1 origin="external" source="mit6041f10-3-q1"}
+The hats of $n$ persons are thrown into a box. The persons then pick up their hats at random (i.e., so that every assignment of the hats to the persons is equally likely). What is the probability that
+
+(a) every person gets his or her hat back?
+(b) the first $m$ persons who picked hats get their own hats back?
+(c) everyone among the first $m$ persons to pick up the hats gets back a hat belonging to one of the last $m$ persons to pick up the hats?
+
+Now assume, in addition, that every hat thrown into the box has probability $p$ of getting dirty (independently of what happens to the other hats or who has dropped or picked it up). What is the probability that
+
+(d) the first $m$ persons will pick up clean hats?
+(e) exactly $m$ persons will pick up clean hats?
+:::
+
+::: {.problem #prob-mit6041f10-3-q2 origin="external" source="mit6041f10-3-q2"}
+Alice plays with Bob the following game. First Alice randomly chooses 4 cards out of a 52-card deck, memorizes them, and places them back into the deck. Then Bob randomly chooses 8 cards out of the same deck. Alice wins if Bob's cards include all cards selected by her. What is the probability of this happening?
+:::

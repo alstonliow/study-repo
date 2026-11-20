@@ -37,3 +37,18 @@ Assume all random choices during the grading process are independent.
 
 (c) What is the expected score on a 6.042 final exam?
 :::
+
+::: {.problem #prob-mit6041f10-4-q1 origin="external" source="mit6041f10-4-q1"}
+Random variables $X$ and $Y$ have the joint PMF
+$$p_{X,Y}(x,y) = \begin{cases} c(x^2 + y^2), & \text{if } x \in \{1, 2, 4\} \text{ and } y \in \{1, 3\},\\ 0, & \text{otherwise.}\end{cases}$$
+
+(a) What is the value of the constant $c$?
+(b) What is $\mathbf{P}(Y < X)$?
+(c) What is $\mathbf{P}(Y > X)$?
+(d) What is $\mathbf{P}(Y = X)$?
+(e) What is $\mathbf{P}(Y = 3)$?
+(f) Find the marginal PMFs $p_X(x)$ and $p_Y(y)$.
+(g) Find the expectations $\mathbf{E}[X]$, $\mathbf{E}[Y]$ and $\mathbf{E}[XY]$.
+(h) Find the variances $\mathrm{var}(X)$, $\mathrm{var}(Y)$ and $\mathrm{var}(X + Y)$.
+(i) Let $A$ denote the event $X \geq Y$. Find $\mathbf{E}[X \mid A]$ and $\mathrm{var}(X \mid A)$.
+:::

@@ -51,3 +51,16 @@
 
 (c) By linearity, $E[X+Y]=\frac32+\frac{49}4=\frac{55}4=13.75$ (no independence of $X$ and $Y$ is needed).
 :::
+
+::: {.solution for="prob-mit6041f10-3-q3" status="draft"}
+(a)
+
+1. Write $\Pr(X\ge k)=\sum_{j\ge k}\Pr(X=j)$, so $\sum_{k\ge1}\Pr(X\ge k)=\sum_{k\ge1}\sum_{j\ge k}\Pr(X=j)$.
+
+2. All terms are nonnegative, so the order of summation may be swapped. For fixed $j$ the index $k$ runs over $1,\dots,j$, giving $\sum_{j\ge1}j\Pr(X=j)$.
+
+3. Adding the term $j=0$, which is $0$, this is $E[X]$.
+
+(b) For $k\le a$, $\Pr(Y\ge k)=1$; for $a<k\le b$, $\Pr(Y\ge k)=\frac{b-k+1}{b-a+1}$; for $k>b$ it is $0$. Hence
+$$E[Y]=a+\frac{1}{b-a+1}\sum_{k=a+1}^b(b-k+1)=a+\frac{(b-a)(b-a+1)/2}{b-a+1}=\frac{a+b}2.$$
+:::

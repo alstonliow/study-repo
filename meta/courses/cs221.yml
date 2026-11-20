@@ -106,6 +106,13 @@ exclude:
   - prob-eecs126hw-3-q5
   # UC Berkeley CS188 coding exercises (SPEC §6.4) in shared notes (2026-11-20).
   - prob-visit-all-heuristic-code
+  # MIT 6.041 integration (2026-11-20): MIT 6.041 problems and blocks in shared notes
+  - prob-mit6041f10-2-q1
+  - prob-mit6041f10-2-q2
+  - prob-mit6041f10-2-q3
+  - prob-mit6041f10-2-q4
+  - prob-mit6041f10-2-q5
+  - prob-mit6041f10-8-q1
 
 chapters:
   - num: 1

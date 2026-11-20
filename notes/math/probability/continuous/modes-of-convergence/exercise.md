@@ -69,3 +69,11 @@ which is the $\epsilon$-boundary of a ball with radius $\sqrt{n/3}$ centered at 
 
 Hint: Let $T$ be the first time that the walk leaves the interval $[-a,a]$, and show that $\lim_{n\to\infty}P(T>n)=0$.
 :::
+
+::: {.problem #prob-mit6041f10-9-q1 origin="external" source="mit6041f10-9-q1"}
+Random variable $X$ is uniformly distributed between $-1.0$ and $1.0$. Let $X_1, X_2, \ldots$, be independent identically distributed random variables with the same distribution as $X$. Determine which, if any, of the following sequences (all with $i = 1, 2, \ldots$) are convergent in probability. Fully justify your answers. Include the limits if they exist.
+
+(a) $U_i = \dfrac{X_1 + X_2 + \ldots + X_i}{i}$
+(b) $W_i = \max(X_1, \ldots, X_i)$
+(c) $V_i = X_1 \cdot X_2 \cdot \ldots \cdot X_i$
+:::

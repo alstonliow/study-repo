@@ -74,3 +74,14 @@ def mean_flips_until_run(k, trials, rng):
 2. The trials are independent, so the sample mean has mean $E[T]$ and variance $\operatorname{Var}(T)/\text{trials}$ (@prp-sample-mean). For $k=3$, $\operatorname{Var}(T)=142$, so $20\,000$ trials give a standard error of about $0.08$.
 3. For $k=0$ no toss is needed and the estimate is exactly $0$.
 :::
+
+::: {.solution for="prob-mit6041f10-9-q2" status="draft"}
+Let $a=\sigma^2/c^2\in(0,1]$ and let
+$$X=\begin{cases}\mu-c&\text{with probability }a/2,\\\mu&\text{with probability }1-a,\\\mu+c&\text{with probability }a/2.\end{cases}$$
+
+1. By symmetry $E[X]=\mu$.
+
+2. $\mathrm{Var}(X)=c^2\cdot\frac a2+c^2\cdot\frac a2=ac^2=\sigma^2$.
+
+3. $|X-\mu|\ge c$ exactly when $X\ne\mu$, which has probability $a=\sigma^2/c^2$: equality in Chebyshev's inequality.
+:::

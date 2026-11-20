@@ -40,3 +40,21 @@ $$P\bigl(X_i=\min_{1\le k\le n}X_k\bigr)=\frac{\lambda_i}{\sum_{j=1}^{n}\lambda_
 
 (c) Find $\operatorname{cov}(X,Y)$.
 :::
+
+::: {.problem #prob-mit6041f10-5-q1 origin="external" source="mit6041f10-5-q1"}
+Random variables $X$ and $Y$ are distributed according to the joint PDF
+$$f_{X,Y}(x,y) = \begin{cases} ax, & \text{if } 1 \leq x \leq y \leq 2,\\ 0, & \text{otherwise.}\end{cases}$$
+
+(a) Evaluate the constant $a$.
+(b) Determine the marginal PDF $f_Y(y)$.
+(c) Determine the expected value of $\frac{1}{X}$, given that $Y = \frac{3}{2}$.
+:::
+
+::: {.problem #prob-mit6041f10-5-q5 origin="external" source="mit6041f10-5-q5"}
+The random variables $X$ and $Y$ are described by a joint PDF which is constant within the unit area quadrilateral with vertices $(0, 0)$, $(0, 1)$, $(1, 2)$, and $(1, 1)$.
+
+(a) Are $X$ and $Y$ independent?
+(b) Find the marginal PDFs of $X$ and $Y$.
+(c) Find the expected value of $X + Y$.
+(d) Find the variance of $X + Y$.
+:::

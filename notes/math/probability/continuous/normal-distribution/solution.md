@@ -59,3 +59,11 @@ def count_sketch(A, h, sign, d):
 2. `np.add.at` performs these additions without buffering, so rows that collide in the same $h(j)$ are summed. Plain fancy assignment `C[h] += ...` would keep only one of them.
 3. With $A=I$ the diagonal of $S^{\mathsf T}S$ is $\sigma_j^2=1$ exactly. An off-diagonal entry is $\sigma_i\sigma_j\mathbf 1[h(i)=h(j)]$, with mean $0$ and variance $1/d$.
 :::
+
+::: {.solution for="prob-mit6041f10-5-q4" status="draft"}
+(a) By symmetry the error probability is the same for both symbols. If $1$ is sent, an error occurs when $2+N<0$, that is $N/2<-1$, where $N/2$ is standard normal:
+$$\varepsilon=\Pr(Z<-1)=1-\Phi(1)\approx0.1587.$$
+
+(b) Each component is decoded wrongly with probability $\varepsilon$, independently. Majority decoding fails when at least two of the three components fail:
+$$3\varepsilon^2(1-\varepsilon)+\varepsilon^3\approx0.0675.$$
+:::

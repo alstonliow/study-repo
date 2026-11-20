@@ -86,3 +86,38 @@ Then $t_C=t_D$, $t_E=1+\frac23t_C$, $t_C=\frac32+\frac12t_B+\frac13t_C$ gives $t
 $$a=\tfrac12\bigl(\tfrac12+d\bigr),\qquad d=\tfrac13\bigl(a+\tfrac12+0\bigr).$$
 So $a=\frac14+\frac16a+\frac1{12}$, $a=\frac25$ (and $d=\frac3{10}$).
 :::
+
+::: {.solution for="prob-mit6041f10-8-q3" status="draft"}
+Everyone infected at daybreak has been infected for at least a night, so tonight they may recover; those infected today may not.
+
+(a) A susceptible person escapes all $m$ infected people with probability $(1-p)^m$, independently of the other susceptibles. The number of new infections is $\mathrm{Bin}\bigl(n-m,\,1-(1-p)^m\bigr)$.
+
+(b) State = number infected at daybreak, $0$, $1$ or $2$.
+
+1. From $0$: nobody can be infected, $0\to0$ with probability $1$.
+2. From $1$: with probability $p$ the other person is infected today and cannot recover tonight, while the first recovers with probability $q$: $1\to2$ with probability $p(1-q)$ and $1\to1$ with probability $pq$. With probability $1-p$ there is no contact: $1\to0$ with probability $(1-p)q$, $1\to1$ with probability $(1-p)(1-q)$. So $\Pr(1\to1)=pq+(1-p)(1-q)$.
+3. From $2$: both may recover independently: $2\to0$ with probability $q^2$, $2\to1$ with probability $2q(1-q)$, $2\to2$ with probability $(1-q)^2$.
+
+(c) State $0$ is absorbing and reachable from $1$ and $2$, which therefore are transient. The only recurrent state is $0$.
+
+(d) Write a state as the multiset of the two people's conditions, from $\{S,I,R\}$: $SS$, $SI$, $SR$, $II$, $IR$, $RR$.
+
+1. $SS$, $SR$ and $RR$ have no infected person and stay put with probability $1$.
+2. $SI$: contact (probability $p$) and the infected one recovers ($q$): $SI\to IR$ with probability $pq$; contact and no recovery: $SI\to II$ with probability $p(1-q)$; no contact and recovery: $SI\to SR$ with probability $(1-p)q$; otherwise $SI\to SI$, probability $(1-p)(1-q)$.
+3. $II\to RR$ with probability $q^2$, $II\to IR$ with probability $2q(1-q)$, $II\to II$ with probability $(1-q)^2$.
+4. $IR\to RR$ with probability $q$, $IR\to IR$ with probability $1-q$.
+
+(e) The recurrent states are the absorbing states $SS$, $SR$, $RR$; the others lead to an absorbing state with no way back, so they are transient.
+:::
+
+::: {.solution for="prob-mit6041f10-9-q3" status="draft"}
+Let $m_s$ be the expected number of further tosses to reach the target from state $s$; first-step analysis (@thm-first-step-hitting-time) gives linear equations.
+
+(a) From $H$: a tail finishes, a head stays in $H$: $m_H=1+\frac12m_H$, so $m_H=2$. From $T$: a head leads to $H$, a tail stays: $m_T=1+\frac12m_H+\frac12m_T$, so $m_T=4$. From $S$: $m_S=1+\frac12m_H+\frac12m_T=4$.
+
+(b) Right after $HT$ the last toss is a tail, which is the situation of state $T$: $4$ more tosses on average.
+
+(c) For $TT$ use states $S$, $H$ (last toss a head), $T$ (last toss a tail, not preceded by a tail) and $TT$. Then $m_T=1+\frac12m_H$ and $m_H=1+\frac12m_H+\frac12m_T$. Substituting, $m_H=6$, $m_T=4$, and $m_S=1+\frac12(m_H+m_T)=6$.
+
+(d) After $TT$ one more tail repeats the pattern; a head moves to $H$. So the expected number is $1+\frac12\cdot0+\frac12m_H=4$. (Equivalently, it is the state $T$ value.)
+:::

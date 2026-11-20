@@ -23,3 +23,8 @@ $1.25\%$, independently.
 ::: {.problem #prob-cs70hw-13-q3 origin="external" source="cs70hw-13-q3"}
 **Exploring the Geometric Distribution.** Suppose $X \sim \mathrm{Geometric}(p)$ and $Y \sim \mathrm{Geometric}(q)$ are independent. Find the distribution of $\min\{X, Y\}$ and justify your answer.
 :::
+
+::: {.problem #prob-mit6041f10-4-q3 origin="external" source="mit6041f10-4-q3"}
+Suppose that $X$ and $Y$ are independent, identically distributed, geometric random variables with parameter $p$. Show that
+$$\mathbf{P}(X = i \mid X + Y = n) = \frac{1}{n-1}, \qquad \text{for } i = 1, 2, \ldots, n-1.$$
+:::

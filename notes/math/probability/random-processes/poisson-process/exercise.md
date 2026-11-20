@@ -57,3 +57,38 @@ is exponential and determine its parameter. Hint: Consider Poisson thinning.
 
 (c) Find the expected time that you wait until you make a U-turn.
 :::
+
+::: {.problem #prob-mit6041f10-7-q3 origin="external" source="mit6041f10-7-q3"}
+Let $T_1$ and $T_2$ be exponential random variables with parameter $\lambda$, and let $S$ be an exponential random variable with parameter $\mu$. We assume that all three of these random variables are independent. Derive an expression for the expected value of $\min\{T_1 + T_2, S\}$. Hint: See Problem 6.19 in the text.
+:::
+
+::: {.problem #prob-mit6041f10-7-q4 origin="external" source="mit6041f10-7-q4"}
+A single dot is placed on a very long length of yarn at the textile mill. The yarn is then cut into lengths requested by different customers. The lengths are independent of each other, but all distributed according to the PDF $f_L(\ell)$. Let $R$ be be the length of yarn purchased by that customer whose purchase included the dot. Determine the expected value of $R$ in the following cases:
+
+(a) $f_L(\ell) = \lambda e^{-\lambda\ell}, \quad \ell \geq 0$
+(b) $f_L(\ell) = \dfrac{\lambda^3 \ell^2 e^{-\lambda\ell}}{2}, \quad \ell \geq 0$
+(c) $f_L(\ell) = \ell e^{\ell}, \quad 0 \leq \ell \leq 1$
+:::
+
+::: {.problem #prob-mit6041f10-7-q5 origin="external" source="mit6041f10-7-q5"}
+Consider a Poisson process of rate $\lambda$. Let random variable $N$ be the number of arrivals in $(0, t]$ and $M$ be the number of arrivals in $(0, t + s]$, where $t, s \geq 0$.
+
+(a) Find the conditional PMF of $M$ given $N$, $p_{M|N}(m|n)$, for $m \geq n$.
+(b) Find the joint PMF of $N$ and $M$, $p_{N,M}(n, m)$.
+(c) Find the conditional PMF of $N$ given $M$, $p_{N|M}(n|m)$, for $n \leq m$, using your answer to part (b).
+(d) Rederive your answer to part (c) without using part (b). As a hint, consider what kind of distribution the $k$th arrival time has if we are given the event $\{M = m\}$, where $k \leq m$.
+(e) Find $\mathbf{E}[NM]$.
+:::
+
+::: {.problem #prob-mit6041f10-7-q6 origin="external" source="mit6041f10-7-q6"}
+The interarrival times for cars passing a checkpoint are independent random variables with PDF
+$$f_T(t) = \begin{cases} 2e^{-2t}, & \text{for } t > 0,\\ 0, & \text{otherwise,}\end{cases}$$
+where the interarrival times are measured in minutes. The successive experimental values of the durations of these interarrival times are recorded on small computer cards. The recording operation occupies a negligible time period following each arrival. Each card has space for three entries. As soon as a card is filled, it is replaced by the next card.
+
+(a) Determine the mean and the third moment of the interarrival times.
+(b) Given that no car has arrived in the last four minutes, determine the PMF for random variable $K$, the number of cars to arrive in the next six minutes.
+(c) Determine the PDF and the expected value for the total time required to use up the first dozen computer cards.
+(d) Consider the following two experiments:
+  i. Pick a card at random from a group of completed cards and note the total time, $Y$, the card was in service. Find $\mathbf{E}[Y]$ and $\mathrm{var}(Y)$.
+  ii. Come to the corner at a random time. When the card in use at the time of your arrival is completed, note the total time it was in service (the time from the start of its service to its completion). Call this time $W$. Determine $\mathbf{E}[W]$ and $\mathrm{var}(W)$.
+:::

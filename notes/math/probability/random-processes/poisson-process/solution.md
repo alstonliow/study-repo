@@ -73,3 +73,52 @@ $$E[G\mid G\le\tau]=\frac{1}{1-e^{-\lambda\tau}}\int_0^\tau\lambda te^{-\lambda 
 $$E[\text{wait}]=E[N]\,E[G\mid G\le\tau]+\tau=\frac{e^{\lambda\tau}-1}{\lambda}-\tau+\tau=\frac{e^{\lambda\tau}-1}{\lambda},$$
 using $(e^{\lambda\tau}-1)\frac{e^{-\lambda\tau}}{1-e^{-\lambda\tau}}=1$.
 :::
+
+::: {.solution for="prob-mit6041f10-7-q3" status="draft"}
+1. Race $T_1$ against $S$. Their minimum is $\operatorname{Exp}(\lambda+\mu)$ (@prp-min-of-exponentials), with mean $\frac1{\lambda+\mu}$, and $T_1$ wins with probability $\frac\lambda{\lambda+\mu}$.
+
+2. If $S$ wins, the minimum is reached. If $T_1$ wins, memorylessness (@prp-exponential-memoryless) says the remaining part of $S$ is again $\operatorname{Exp}(\mu)$, independent of the past, and it races $T_2$: the extra time has mean $\frac1{\lambda+\mu}$.
+
+3. Hence
+$$E[\min\{T_1+T_2,S\}]=\frac1{\lambda+\mu}+\frac\lambda{\lambda+\mu}\cdot\frac1{\lambda+\mu}=\frac{2\lambda+\mu}{(\lambda+\mu)^2}.$$
+:::
+
+::: {.solution for="prob-mit6041f10-7-q4" status="draft"}
+The dot is equally likely to fall anywhere along the yarn, so a piece is hit with probability proportional to its length: $f_R(r)=\frac{rf_L(r)}{E[L]}$ (random incidence). Hence
+$$E[R]=\frac{E[L^2]}{E[L]}.$$
+
+(a) $E[L]=\frac1\lambda$, $E[L^2]=\frac2{\lambda^2}$, so $E[R]=\frac2\lambda$, twice the mean piece.
+
+(b) $L$ is Erlang of order 3: $E[L]=\frac3\lambda$, $E[L^2]=\frac3{\lambda^2}+\frac9{\lambda^2}=\frac{12}{\lambda^2}$, so $E[R]=\frac4\lambda$.
+
+(c) Integration by parts gives $E[L]=\int_0^1\ell^2e^\ell\,d\ell=e-2$ and $E[L^2]=\int_0^1\ell^3e^\ell\,d\ell=6-2e$, so $E[R]=\frac{6-2e}{e-2}\approx0.784$.
+:::
+
+::: {.solution for="prob-mit6041f10-7-q5" status="draft"}
+(a) $M-N$ counts arrivals in $(t,t+s]$, which is $\mathrm{Poisson}(\lambda s)$ and independent of $N$:
+$$p_{M\mid N}(m\mid n)=e^{-\lambda s}\frac{(\lambda s)^{m-n}}{(m-n)!},\qquad m\ge n.$$
+
+(b) $p_{N,M}(n,m)=e^{-\lambda t}\frac{(\lambda t)^n}{n!}\,e^{-\lambda s}\frac{(\lambda s)^{m-n}}{(m-n)!}$ for $0\le n\le m$.
+
+(c) Divide by $p_M(m)=e^{-\lambda(t+s)}\frac{(\lambda(t+s))^m}{m!}$:
+$$p_{N\mid M}(n\mid m)=\binom mn\Bigl(\frac t{t+s}\Bigr)^n\Bigl(\frac s{t+s}\Bigr)^{m-n},$$
+binomial with $m$ trials and success probability $\frac t{t+s}$.
+
+(d) Given $M=m$, the $m$ arrival times in $(0,t+s]$ are distributed as $m$ independent uniform points (@thm-poisson-arrivals-uniform). Each lands in $(0,t]$ with probability $\frac t{t+s}$, independently, so $N$ given $M=m$ is binomial as in (c).
+
+(e) $E[NM]=E[N^2]+E[N(M-N)]=\lambda t+(\lambda t)^2+\lambda t\cdot\lambda s$, using independence of $N$ and $M-N$.
+:::
+
+::: {.solution for="prob-mit6041f10-7-q6" status="draft"}
+Arrivals form a Poisson process of rate $2$ per minute.
+
+(a) For $T\sim\operatorname{Exp}(2)$, $E[T^k]=k!/2^k$: mean $\frac12$ minute and third moment $\frac68=\frac34$.
+
+(b) By memorylessness the past four empty minutes do not matter: $K\sim\mathrm{Poisson}(12)$, $p_K(k)=e^{-12}\frac{12^k}{k!}$.
+
+(c) Twelve cards hold $36$ interarrival times, so the time is Erlang of order $36$ and rate $2$:
+$$f(x)=\frac{2^{36}x^{35}e^{-2x}}{35!},\quad x\ge0,\qquad\text{mean }18\text{ minutes.}$$
+
+(d) i. A card is in service for three interarrival times: $Y$ is Erlang of order 3, $E[Y]=\frac32$, $\mathrm{Var}(Y)=\frac34$.
+  ii. A random time is more likely to fall in a long card period: $W$ has density $\frac{yf_Y(y)}{E[Y]}$, which is Erlang of order 4 and rate 2. So $E[W]=2$ and $\mathrm{Var}(W)=1$. (Equivalently: the interarrival time containing your arrival is Erlang of order 2, plus the other two entries of the card.)
+:::
