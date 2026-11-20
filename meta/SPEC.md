@@ -1417,7 +1417,10 @@ in any public file or build.
       to existing notes, with a list of gaps for the owner.
    4. Question bank and problem types (items 10–11): the folders, the
       `practises` relationship, `problem-types.yml`, their checks and the
-      private 题库 pages.
+      private 题库 pages (built 2026-11-20; choosing bank problems on the
+      Export page comes with round 6). A bank folder belongs to a course
+      chapter when its resource lists the course under `courses:` and its
+      node's top-level node has the chapter's number as locator.
    5. UEC content, one textbook chapter per round, starting with S1
       chapter 1 as a pilot: outline, knowledge points mapped to notes (private
       notes for the gaps), problem types, and every section's exercises and

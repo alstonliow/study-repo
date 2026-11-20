@@ -132,7 +132,7 @@ class Graph:
                         continue
                     for item in items if isinstance(items, list) else [items]:
                         self._add(n.id, str(rtype), item, where)
-        for n in list(repo.notes.values()) + list(repo.reviews.values()):
+        for n in list(repo.notes.values()) + list(repo.reviews.values()) + list(repo.banks.values()):
             for f in n.files.values():
                 if f.name == "solution.md":
                     continue
@@ -172,7 +172,7 @@ class Graph:
         """Citations (SPEC §17.12.5): source keys of notes and problems, resolved
         to resource nodes. Provenance, not relationships."""
         repo = self.repo
-        for n in list(repo.notes.values()) + list(repo.reviews.values()):
+        for n in list(repo.notes.values()) + list(repo.reviews.values()) + list(repo.banks.values()):
             keys = [(n.id, str(k)) for k in n.front.get("sources") or []]
             keys += [(p.id, p.attrs.get("source", "")) for p in n.problems if p.id]
             for source, key in keys:
@@ -260,7 +260,7 @@ class Graph:
     def _collect_references(self) -> None:
         repo = self.repo
         sec = {n.sec_label: n.id for n in repo.notes.values()}
-        for n in list(repo.notes.values()) + list(repo.reviews.values()):
+        for n in list(repo.notes.values()) + list(repo.reviews.values()) + list(repo.banks.values()):
             for f in n.files.values():
                 lines = f.masked.split("\n")
                 owner_of_line: list[str] = [n.id] * len(lines)

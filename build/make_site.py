@@ -127,10 +127,14 @@ def main() -> int:
                     points_of[nid].append(p.id)
         course_order[c.id] = []
         co = outline.course(REPO, c)
+        banks = {int(k): v for k, v in REPO.bank_chapters(c).items()}   # private build only (SPEC §17.15.10)
         for chap in co.chapters:
             heading = f"Chapter {chap.num}" + (f" · {chap.title}" if chap.title else "")
             summary = f"courses/{c.id}/chapter-{chap.num}"
             lines += ["", f"## {heading}", "", f"[Chapter summary →](/{summary}.qmd){{.chapter-summary-link}}", ""]
+            nbank = sum(len(b.problems) for b in banks.get(int(chap.num), []))
+            if nbank:
+                lines += [f"[题库 ({nbank}) →]({web.bank_url(c.id, chap.num)}){{.chapter-summary-link}}", ""]
             course_order[c.id].append({"title": heading, "num": int(chap.num),
                                        "pages": [f"notes/{n.id}.html" for n in chap.notes],
                                        "summary": summary + ".html"})
@@ -146,6 +150,10 @@ def main() -> int:
         # chapter summaries: in-scope content only (outline.course puts each
         # branch's synthesis problems in the last chapter that uses the branch)
         (OUT_COURSES / c.id).mkdir(exist_ok=True)
+        for cdict in (ch for ch in c.chapters if int(ch["num"]) in banks):
+            num = int(cdict["num"])
+            (OUT_COURSES / c.id / f"bank-{num}.qmd").write_text(web.bank_page(c, cdict, banks[num]), encoding="utf-8")
+            page_courses[f"courses/{c.id}/bank-{num}.html"] = [c.id]
         for chap in co.chapters:
             page = f"courses/{c.id}/chapter-{chap.num}.html"
             (OUT_COURSES / c.id / f"chapter-{chap.num}.qmd").write_text(summaries.page(

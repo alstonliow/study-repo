@@ -50,7 +50,12 @@
     ["hidden", "Hidden"], ["collapsed", "Collapsed"], ["expanded", "Expanded"]] };
   const KIND = { key: "kind", label: "Show", type: "check", options: [
     ["def", "Definitions"], ["result", "Results"], ["exercise", "Exercises"], ["synthesis", "Synthesis"]] };
-  const PER_PAGE = ["source", "year"];   // facets whose values differ per page (lists of values switched off)
+  // question bank pages only (SPEC §17.15.10): problem type, set, and the notes a problem practises
+  const PTYPE = { key: "ptype", label: "题型", type: "check", options: [] };
+  const SET = { key: "set", label: "Set", type: "check", options: [] };
+  const TOPIC = { key: "topic", label: "Topic", type: "check", options: [] };
+  const SET_LABELS = { exercises: "Exercises", review: "Review exercises", paper: "Past papers" };
+  const PER_PAGE = ["source", "year", "ptype", "set", "topic"];   // facets whose values differ per page (lists of values switched off)
   const DEFAULT = { kind: ["def", "result", "exercise", "synthesis"], type: ["written", "code"],
                     level: ["easy", "medium", "hard", ""], state: ["new", "learned", "reviewing", "mastered"],
                     solutions: "collapsed" };
@@ -61,12 +66,15 @@
     let s;
     try { s = Object.assign({}, DEFAULT, JSON.parse(localStorage.getItem(key) || "{}")); }
     catch (e) { s = Object.assign({}, DEFAULT); }
-    s.source = [];
-    s.year = [];
+    PER_PAGE.forEach(k => { s[k] = []; });
+    // ?topic=<note id> (a note's 题库 link): only that note's problems
+    const topic = new URLSearchParams(location.search).get("topic");
+    if (topic) s.topic = [...new Set([...document.querySelectorAll("main .problem-group")]
+      .flatMap(g => (g.dataset.topics || "").split(" ").filter(Boolean)))].filter(t => t !== topic);
     return s;
   }
   function save(key, s) {
-    const { source, year, ...kept } = s;
+    const kept = Object.fromEntries(Object.entries(s).filter(([k]) => !PER_PAGE.includes(k)));
     try { localStorage.setItem(key, JSON.stringify(kept)); } catch (e) { /* private mode */ }
   }
 
@@ -77,7 +85,9 @@
   function groupOk(el, s) {
     return s.level.includes(el.dataset.level || "") && s.state.includes(stateOf(el.dataset.item)) &&
            s.type.includes(el.dataset.kind === "code" ? "code" : "written") &&
-           !s.source.includes(el.dataset.source || "") && !s.year.includes(el.dataset.year || "");
+           !s.source.includes(el.dataset.source || "") && !s.year.includes(el.dataset.year || "") &&
+           !s.ptype.includes(el.dataset.ptype || "") && !s.set.includes(el.dataset.set || "") &&
+           ((el.dataset.topics || "").split(" ").filter(Boolean).some(t => !s.topic.includes(t)) || !el.dataset.topics);
   }
 
   function apply(box, s, summary) {
@@ -133,6 +143,16 @@
       out.push(Object.assign({}, SOURCE, { options: [...sources].sort((a, b) => a[1].localeCompare(b[1])) }));
     if (years.length > 1)
       out.push(Object.assign({}, YEAR, { options: years.map(y => [y, y || "Undated"]) }));
+    const ptypes = new Map(), sets = new Set(), topics = new Map();
+    probs.forEach(g => {
+      ptypes.set(g.dataset.ptype || "", g.dataset.ptypeLabel || "No type");
+      if (g.dataset.set) sets.add(g.dataset.set);
+      const ids = (g.dataset.topics || "").split(" ").filter(Boolean), labels = (g.dataset.topicLabels || "").split("|");
+      ids.forEach((t, i) => topics.set(t, labels[i] || t));
+    });
+    if (ptypes.size > 1) out.push(Object.assign({}, PTYPE, { options: [...ptypes] }));
+    if (sets.size > 1) out.push(Object.assign({}, SET, { options: [...sets].map(x => [x, SET_LABELS[x] || x]) }));
+    if (topics.size > 1) out.push(Object.assign({}, TOPIC, { options: [...topics] }));
     if (kinds.size > 1) out.push(TYPE);
     if (summary || probs.some(g => g.dataset.level)) out.push(LEVEL);
     out.push(STATE, SOLUTIONS);
@@ -175,7 +195,8 @@
     reset.textContent = "Reset";
     reset.className = "btn btn-sm btn-link p-0";
     reset.addEventListener("click", () => {
-      s = Object.assign({}, DEFAULT, { source: [], year: [] }); save(key, s); box.innerHTML = ""; build(box, key, summary);
+      history.replaceState(null, "", location.pathname + location.hash);   // drops ?topic=
+      s = Object.assign({}, DEFAULT, Object.fromEntries(PER_PAGE.map(k => [k, []]))); save(key, s); box.innerHTML = ""; build(box, key, summary);
     });
     box.appendChild(reset);
     box.hidden = false;

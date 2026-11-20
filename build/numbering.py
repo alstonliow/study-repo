@@ -84,7 +84,8 @@ class Numbering:
         return fmt.format(section=self.section.get(note.id, "?"), n=n)
 
     def exercise_word(self, note: "Note") -> str:
-        return self.formats.review_word if note.id not in self.repo.notes else kinds.word("prob-")
+        review = note.id not in self.repo.notes and not getattr(note, "bank", False)   # bank: plain "Exercise"
+        return self.formats.review_word if review else kinds.word("prob-")
 
     # ---- labels
     def label(self, block_id: str, holder: "Note", here=None, wrap=None) -> str:

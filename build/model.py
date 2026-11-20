@@ -29,6 +29,7 @@ META = ROOT / "meta"
 PRIVATE = os.environ.get("STUDY_PRIVATE") == "1"
 
 NOTE_FILES = ("note.md", "example.md", "code.md", "exercise.md", "solution.md")
+BANK_FILES = ("bank.md", "solution.md")   # a question bank folder (SPEC §17.15.10)
 PAGE_FILES = ("note.md", "example.md", "code.md")   # page body, in page order (SPEC §5.9)
 REVIEW = "review"   # folder name for a branch's synthesis problems (SPEC §6.3)
 
@@ -213,13 +214,15 @@ class SourceFile:
 class Note:
     """One knowledge point (a folder under notes/)."""
 
-    def __init__(self, folder: Path, base: Path = NOTES, visibility: str = "public"):
+    def __init__(self, folder: Path, base: Path = NOTES, visibility: str = "public", bank: bool = False):
         self.folder = folder
-        self.id = str(folder.relative_to(base))
+        # a bank folder (SPEC §17.15.10) is read like a review folder; its id is bank/<node slug>
+        self.bank = bank
+        self.id = ("bank/" if bank else "") + str(folder.relative_to(base))
         self.visibility = visibility     # follows from the store it was read from (SPEC §17.9.2)
         self.dir = str(folder.relative_to(ROOT)) if folder.is_relative_to(ROOT) else f"notes/{self.id}"
         self.files: dict[str, SourceFile] = {}
-        for name in NOTE_FILES:
+        for name in BANK_FILES if bank else NOTE_FILES:
             p = folder / name
             if p.exists():
                 self.files[name] = SourceFile(name, p, p.read_text(encoding="utf-8"))
@@ -242,7 +245,8 @@ class Note:
         self.body = strip_comments(body)
         self.examples = self.files["example.md"].text if "example.md" in self.files else ""
         self.code = self.files["code.md"].text if "code.md" in self.files else ""
-        self.exercises = self.files["exercise.md"].text if "exercise.md" in self.files else ""
+        ex = "bank.md" if bank else "exercise.md"
+        self.exercises = self.files[ex].text if ex in self.files else ""
         self.solutions = self.files["solution.md"].text if "solution.md" in self.files else ""
 
         # labelled blocks of the page (note, examples, exercises): id -> name
@@ -329,7 +333,7 @@ class Entity:
     @property
     def level(self) -> str:
         """The word meta/relations.yml uses in `between`: notes, blocks, resources, nodes, projects."""
-        return {"note": "notes", "review": "notes", "resource": "resources",
+        return {"note": "notes", "review": "notes", "bank": "banks", "resource": "resources",
                 "resource-node": "nodes", "project": "projects"}.get(self.type, "blocks")
 
 
@@ -420,6 +424,14 @@ class Repo:
                     self.all_notes.append(n)
         self.notes: dict[str, Note] = {}
         self.clashes: list[str] = []      # private ids that equal public ones (SPEC §17.14.2)
+        # the question bank (SPEC §17.15.10): bank/<node slug> -> folder, private only
+        bdir = pdir / "bank"
+        self.banks: dict[str, Note] = {}
+        if self.private and bdir.is_dir():
+            for f in sorted(p for p in bdir.iterdir() if p.is_dir()):
+                b = Note(f, bdir, "private", bank=True)
+                self.banks[b.id] = b
+        self.problem_types = load_problem_types(pdir) if self.private else {}   # SPEC §17.15.11
         for n in self.all_notes:
             if not n.has_note:
                 continue
@@ -480,6 +492,12 @@ class Repo:
                 out.setdefault(node.id, Entity(node.id, "resource-node", r.id, node.title, r.visibility))
         for p in self.projects.values():
             out.setdefault(p.id, Entity(p.id, "project", p.id, p.title, p.visibility))
+        for b in self.banks.values():
+            out.setdefault(b.id, Entity(b.id, "bank", b.id, "Question bank", "private"))
+            for bid, name in b.blocks.items():
+                out.setdefault(bid, Entity(bid, bid.split("-", 1)[0], b.id, name, "private"))
+        for t in self.problem_types.values():
+            out.setdefault(t.id, Entity(t.id, "problem-type", t.id, t.title, "private"))
         return out
 
     # ------------------------------------------------------------ scope (SPEC §13)
@@ -523,6 +541,32 @@ class Repo:
                 count[fld] = count.get(fld, 0) + 1
         ranked = self.field_order()
         return max(ranked, key=lambda f: (count.get(f, 0), -ranked.index(f))) if count else ""
+
+    def bank_node(self, bank: Note):
+        """(resource, node) a bank folder is named after (SPEC §17.15.10), or None."""
+        nid = "res-" + bank.id.split("/", 1)[1]
+        return next(((r, r.nodes[nid]) for r in self.resources.values() if nid in r.nodes), None)
+
+    def bank_chapters(self, c: Course) -> dict[int, list[Note]]:
+        """Bank folders of course c by chapter number: a folder belongs to chapter n
+        when its resource lists c under `courses:` and its node's top-level node
+        has locator n in the current edition. Folders in resource node order."""
+        out: dict[int, list[tuple[int, Note]]] = {}
+        nums = {str(ch["num"]): ch["num"] for ch in c.chapters}
+        for b in self.banks.values():
+            found = self.bank_node(b)
+            if not found:
+                continue
+            r, node = found
+            if c.id not in (r.meta.get("courses") or []):
+                continue
+            top = node
+            while top.parent in r.nodes:
+                top = r.nodes[top.parent]
+            num = nums.get(r.locator(top.id))
+            if num is not None:
+                out.setdefault(num, []).append((list(r.nodes).index(node.id), b))
+        return {n: [b for _, b in sorted(v, key=lambda x: x[0])] for n, v in out.items()}
 
     def field_order(self) -> list[str]:
         """Fields in taxonomy order, each once, then fields named only by a course's
@@ -627,6 +671,43 @@ class Repo:
             elif n.slug not in self.branch_order[n.branch]:
                 out.append(f"{n.id}: not listed under its branch in meta/taxonomy.yml (notes:)")
         return out
+
+
+@dataclass
+class ProblemType:
+    """A problem type (题型, SPEC §17.15.11): private/meta/problem-types.yml."""
+    id: str
+    title: str
+    title_zh: str
+    note: str
+    problems: list[str] = field(default_factory=list)    # found while loading
+
+
+PT_ID = re.compile(r"pt-[a-z0-9]+(?:-[a-z0-9]+)*")
+
+
+def load_problem_types(pdir: Path) -> dict[str, ProblemType]:
+    path = pdir / "meta" / "problem-types.yml"
+    out: dict[str, ProblemType] = {}
+    if not path.exists():
+        return out
+    for k, d in enumerate(yaml.safe_load(path.read_text(encoding="utf-8")) or []):
+        d = d if isinstance(d, dict) else {}
+        t = ProblemType(str(d.get("id", "")), str(d.get("title", "") or ""), str(d.get("title_zh", "") or ""),
+                        str(d.get("note", "") or ""))
+        if not PT_ID.fullmatch(t.id):
+            t.problems.append(f"entry {k + 1}: id '{t.id}' must be pt- and lowercase words joined by hyphens")
+        if set(d) - {"id", "title", "title_zh", "note"}:
+            t.problems.append(f"{t.id}: unknown field(s) {', '.join(sorted(set(d) - {'id', 'title', 'title_zh', 'note'}))}")
+        for key in ("title", "title_zh", "note"):
+            if not getattr(t, key):
+                t.problems.append(f"{t.id}: missing {key}")
+        if t.id in out:
+            t.problems.append(f"{t.id}: id used twice")
+            out[f"{t.id}#{k}"] = t
+        else:
+            out[t.id] = t
+    return out
 
 
 def merge_parts(public: list[dict], private: list[dict]) -> list[dict]:

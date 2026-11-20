@@ -46,7 +46,20 @@ def setup(repo: Repo) -> Repo:
     NUMBERING = numbering.build(repo)
     GRAPH = relations.Graph(repo)
     SVGS.clear()
+    BANK_LINKS.clear()
+    for c in repo.courses:
+        for num, banks in repo.bank_chapters(c).items():
+            count: dict[str, int] = {}
+            for b in banks:
+                for p in b.problems:
+                    for t in set(str(p.attrs.get("practises", "")).split()):
+                        count[t] = count.get(t, 0) + 1
+            for t, k in count.items():
+                BANK_LINKS.setdefault(t, []).append((c.id, c.code, num, k))
     return repo
+
+
+BANK_LINKS: dict[str, list[tuple[str, str, int, int]]] = {}   # note id -> (course, code, chapter, count)
 
 
 def page_url(nid: str) -> str:
@@ -151,7 +164,7 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
             src_label = f"[{src_label}]({REPO.sources.url(src)})"
         f = fence_for(body)
         badge = level_badge(a.get("level"))
-        is_review = note.id not in REPO.notes
+        is_review = note in REPO.reviews.values()
         word = NUMBERING.exercise_word(note)
         shown = NUMBERING.exercise(note, pid, on_page=True) if is_review else str(num)
         where = [f"from {note.display_title}"] if origin and not is_review else []
@@ -181,10 +194,51 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
         rlabel = REPO.resources[rid].title.replace('"', "'") if rid in REPO.resources else "Other"
         year = REPO.resources[rid].year_of(res.node) if res and rid in REPO.resources else ""
         ydata = f' data-year="{year}"' if year else ""          # Year facet (SPEC §17.15.7)
+        if note.bank:                                            # bank facets (SPEC §17.15.10)
+            ydata += bank_data(a, res)
         out.append(f'{fo} {{.problem-group data-courses="{cs}" data-item="{pid}" data-level="{lv}" {kind} '
                    f'data-source="{rid}" data-source-label="{rlabel}"{ydata}}}\n'
                    f'{inner}\n{fo}\n')
     return "\n".join(out)
+
+
+def bank_data(a: dict, res) -> str:
+    """Data attributes of a bank problem for the 题库 page filters: problem type,
+    set (the kind of its source node: exercises, review, paper) and the notes it
+    practises, with their labels."""
+    def q(x: str) -> str:
+        return x.replace('"', "'").replace("|", "/")
+    out = ""
+    pt = REPO.problem_types.get(a.get("type", ""))
+    if pt:
+        out += f' data-ptype="{pt.id}" data-ptype-label="{q(pt.title_zh)} ({q(pt.title)})"'
+    r = REPO.resources.get(res.resource) if res else None
+    node = r.nodes.get(res.node) if r and res else None
+    if node and node.kind:
+        out += f' data-set="{node.kind}"'
+    topics = [t for t in str(a.get("practises", "")).split() if t in REPO.notes]
+    if topics:
+        out += (f' data-topics="{" ".join(topics)}"'
+                f' data-topic-labels="{"|".join(q(REPO.notes[t].display_title) for t in topics)}"')
+    return out
+
+
+def bank_page(c, chap, banks: list) -> str:
+    """One course chapter's 题库 page (SPEC §17.15.10): its bank folders in
+    textbook order, one section each, with the exercise filter bar."""
+    title = f"题库 · {c.code} Chapter {chap['num']}" + (f" · {chap['title']}" if chap["title"] else "")
+    lines = ["---", yaml.safe_dump({"title": title}, allow_unicode=True).strip(), "---", "",
+             "[Textbook exercises, review exercises and past papers for this chapter, for choosing "
+             "problems for handouts. Private build only.]{.note-meta}", ""]
+    for b in banks:
+        found = REPO.bank_node(b)
+        heading = found[0].label(found[1].id) if found else b.id
+        lines += [f"## {heading}", "", transform(render_problems(b, courses_of=lambda pid: []), b), ""]
+    return "\n".join(lines) + "\n"
+
+
+def bank_url(cid: str, num) -> str:
+    return f"/courses/{cid}/bank-{num}.qmd"
 
 
 def coding_body(c: Coding) -> str:
@@ -287,6 +341,8 @@ def connections(note: Note) -> str:
         for l in GRAPH.incoming(eid):
             if l.name == "requires":                           # shown as "Leads to"
                 continue
+            if l.name == "practises":                          # a count link in the meta line instead
+                continue
             if l.name == "applies":                            # its own group (SPEC §17.13.4)
                 applied_rows.append(f"- {label(eid)} ← {at(l.other)}")
                 continue
@@ -294,6 +350,8 @@ def connections(note: Note) -> str:
         sources: list[str] = []
         for l in GRAPH.referenced_by.get(eid, []):
             src = l.other if l.other in REPO.entities else l.holder
+            if l.holder.startswith("bank/"):                   # bank pages are not linked from notes
+                continue
             if src not in sources:
                 sources.append(src)
         if sources:
@@ -335,6 +393,10 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
         meta.append("Leads to: " + ", ".join(f"[{notes[r].display_title}]({page_url(r)})" for r in nexts))
     for word, targets in note_relations(note):
         meta.append(f"{word.capitalize()}: " + ", ".join(link_refs(at(x), note) for x in targets))
+    bank = BANK_LINKS.get(note.id)
+    if bank:                                    # private build: count of bank problems (SPEC §17.15.10)
+        meta.append("题库: " + ", ".join(f"[{code} Ch {num}: {k}]({bank_url(cid, num)}?topic={note.id})"
+                                        for cid, code, num, k in bank))
     if note.front.get("status") == "draft":
         meta.append("Status: draft")
     front: dict[str, object] = {"title": note.display_title}

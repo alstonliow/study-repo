@@ -66,9 +66,9 @@ def check_notes() -> None:
         if extra:
             errors.append(f"{rv.id}: a review folder holds only exercise.md and solution.md (found {', '.join(extra)})")
 
-    for note in REPO.all_notes + list(REPO.reviews.values()):
+    for note in REPO.all_notes + list(REPO.reviews.values()) + list(REPO.banks.values()):
         nid = note.id
-        is_review = note in REPO.reviews.values()
+        is_review = note in REPO.reviews.values() or note.bank
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*", nid):
             errors.append(f"{nid}: folder names must be lowercase words joined by hyphens")
         if is_review:
@@ -106,7 +106,7 @@ def check_notes() -> None:
                       and not NO_ID_CLASSES & set(classes) and classes[0] not in ("tikz-figure",)):
                     missing_ids.append(where)
                 if "problem" in classes:
-                    if md.name != "exercise.md":
+                    if md.name != ("bank.md" if note.bank else "exercise.md"):
                         errors.append(f"{where}: problem block outside exercise.md")
                     if not bid:
                         errors.append(f"{where}: problem without id")
@@ -164,7 +164,7 @@ def check_notes() -> None:
                     except SyntaxError as exc:
                         line = f.raw[:m.start(2)].count("\n") + (exc.lineno or 1)
                         errors.append(f"{rel(md)}:{line}: Python syntax error ({exc.msg})")
-            if f.name in ("exercise.md", "solution.md"):
+            if f.name in ("exercise.md", "bank.md", "solution.md"):
                 # fenced code (a Python comment is not a heading) is blanked, line numbers kept
                 text = CODE_FENCE.sub(lambda m: "\n" * m.group(0).count("\n"), f.masked)
                 for m in re.finditer(r"^[ \t]*#{1,6} ", text, re.M):
@@ -440,6 +440,50 @@ def check_private() -> None:
     print(f"private store: {len(private_notes)} notes, "
           f"{sum(1 for c in REPO.courses if c.visibility == 'private')} courses, "
           f"{sum(1 for r in REPO.resources.values() if r.visibility == 'private')} resources")
+
+
+@rule("bank", "question bank and problem types (private build only)")
+def check_bank() -> None:
+    """The question bank and problem types (SPEC §17.15.10–11). Problems,
+    solutions and references in bank folders are checked with the notes;
+    `practises` targets with the other relationships."""
+    if not REPO.private:
+        return
+    nodes = {nid for r in REPO.resources.values() for nid in r.nodes}
+    others = set(REPO.entities) - set(REPO.problem_types)
+    for t in REPO.problem_types.values():
+        errors.extend(f"private/meta/problem-types.yml: {m}" for m in t.problems)
+        if t.id in others:
+            errors.append(f"private/meta/problem-types.yml: '{t.id}' is also the id of another entity")
+        if t.note and t.note not in REPO.notes:
+            errors.append(f"private/meta/problem-types.yml: {t.id}: unknown note '{t.note}'")
+    for b in REPO.banks.values():
+        slug = b.id.split("/", 1)[1]
+        if "res-" + slug not in nodes:
+            errors.append(f"{b.dir}: a bank folder is named after a resource node; 'res-{slug}' is none")
+        if "bank.md" not in b.files:
+            errors.append(f"{b.dir}: missing bank.md")
+        extra = sorted({p.name for p in b.folder.iterdir()} - {"bank.md", "solution.md"})
+        if extra:
+            errors.append(f"{b.dir}: a bank folder holds only bank.md and solution.md (found {', '.join(extra)})")
+        for pr in b.problems:
+            where = f"{b.dir}/bank.md: {pr.id}"
+            practises = str(pr.attrs.get("practises", "")).split()
+            if not practises:
+                errors.append(f"{where}: a bank problem needs practises=\"<note id> ...\"")
+            ptype = pr.attrs.get("type", "")
+            if ptype:
+                pt = REPO.problem_types.get(ptype)
+                if pt is None:
+                    errors.append(f"{where}: unknown problem type '{ptype}'")
+                elif pt.note and pt.note not in practises:
+                    errors.append(f"{where}: type {ptype} belongs to {pt.note}, which is not in practises")
+    for n in list(REPO.notes.values()) + list(REPO.reviews.values()):
+        for pr in n.problems if n.visibility == "public" else []:
+            if str(pr.attrs.get("type", "")).startswith("pt-"):
+                errors.append(f"{n.dir}/exercise.md: {pr.id}: problem types are private (SPEC §17.15.11)")
+    nprob = sum(len(b.problems) for b in REPO.banks.values())
+    print(f"question bank: {len(REPO.banks)} folders, {nprob} problems, {len(REPO.problem_types)} problem types")
 
 
 @rule("taxonomy", "every note listed in meta/taxonomy.yml")

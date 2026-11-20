@@ -970,6 +970,50 @@ chapters:
         title: "Private and public"
         covers: [t/alpha/first, p/gamma/fourth]
 """,
+    "private/resources/tbook.yml": """id: res-tbook
+kind: book
+title: Tutoring textbook
+status: draft
+courses: [tut]
+editions:
+  - id: "2024"
+    current: true
+nodes:
+  - id: res-tbook-basics
+    kind: chapter
+    title: Basics
+    at: {"2024": "1"}
+    nodes:
+      - id: res-tbook-widgets-ex
+        kind: exercises
+        title: Widget exercises
+        at: {"2024": "1.1"}
+      - id: res-tbook-review
+        kind: review
+        title: Review
+        at: {"2024": "1.R"}
+""",
+    "private/meta/problem-types.yml": """- id: pt-count-widgets
+  title: Count widgets
+  title_zh: 数小部件
+  note: t/alpha/first
+""",
+    "private/bank/tbook-widgets-ex/bank.md": """::: {.problem #prob-tb-1 origin="external" source="res-tbook-widgets-ex" practises="t/alpha/first" type="pt-count-widgets"}
+How many widgets are there?
+:::
+
+::: {.problem #prob-tb-2 origin="external" source="res-tbook-widgets-ex" practises="p/gamma/fourth"}
+Build a private widget.
+:::
+""",
+    "private/bank/tbook-widgets-ex/solution.md": """::: {.solution for="prob-tb-1" status="draft"}
+1. Count them.
+:::
+""",
+    "private/bank/tbook-review/bank.md": """::: {.problem #prob-tb-r1 origin="external" source="res-tbook-review" practises="t/alpha/first"}
+Review the widgets.
+:::
+""",
 }
 
 
@@ -1000,7 +1044,8 @@ class TestPrivate(Repo):
     def test_private_check_is_clean(self):
         r = self.private_check()
         self.assertEqual(r.returncode, 0, r.stdout)
-        self.assertIn("private store: 1 notes, 1 courses, 0 resources", r.stdout)
+        self.assertIn("private store: 1 notes, 1 courses, 1 resources", r.stdout)
+        self.assertIn("question bank: 2 folders, 3 problems, 1 problem types", r.stdout)
 
     def test_private_site(self):
         site = generate(self.root, private=True)
@@ -1037,6 +1082,56 @@ class TestPrivate(Repo):
     def test_private_id_clash(self):
         self.edit("private/notes/p/gamma/fourth/note.md", "#def-fourth", "#def-widget")
         self.assertPrivateError("duplicate id 'def-widget'")
+
+    def test_bank_pages(self):
+        site = generate(self.root, private=True)
+        bank = (site / "courses/tut/bank-1.qmd").read_text()
+        self.assertLess(bank.index("## Tutoring textbook 1.1 Widget exercises"), bank.index("## Tutoring textbook 1.R Review"))
+        self.assertIn('data-ptype="pt-count-widgets" data-ptype-label="数小部件 (Count widgets)" data-set="exercises" '
+                      'data-topics="t/alpha/first" data-topic-labels="1.1 First note"', bank)
+        self.assertIn('data-set="review"', bank)
+        self.assertIn("Draft solution", bank)
+        self.assertIn("[Exercise 1]{.problem-title}", bank)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("题库: [TUT1 Ch 1: 2](/courses/tut/bank-1.qmd?topic=t/alpha/first)", first)
+        self.assertNotIn("prob-tb-1", first)                 # never among a note's exercises
+        self.assertNotIn("practised in", first)
+        self.assertIn("[题库 (3) →](/courses/tut/bank-1.qmd)", (site / "courses/tut.qmd").read_text())
+
+    def test_public_build_has_no_bank(self):
+        site = generate(self.root)
+        self.assertFalse((site / "courses/tut").exists())
+        self.assertNotIn("题库", (site / "notes/t/alpha/first.qmd").read_text())
+
+    def test_bank_problem_needs_practises(self):
+        self.edit("private/bank/tbook-review/bank.md", ' practises="t/alpha/first"', "")
+        self.assertPrivateError("a bank problem needs practises")
+
+    def test_bank_unknown_type(self):
+        self.edit("private/bank/tbook-review/bank.md", 'practises="t/alpha/first"',
+                  'practises="t/alpha/first" type="pt-nothing"')
+        self.assertPrivateError("unknown problem type 'pt-nothing'")
+
+    def test_bank_type_note_not_practised(self):
+        self.edit("private/bank/tbook-widgets-ex/bank.md", 'practises="p/gamma/fourth"',
+                  'practises="p/gamma/fourth" type="pt-count-widgets"')
+        self.assertPrivateError("type pt-count-widgets belongs to t/alpha/first, which is not in practises")
+
+    def test_bank_folder_must_be_a_node(self):
+        (self.root / "private/bank/tbook-review").rename(self.root / "private/bank/tbook-nothing")
+        self.assertPrivateError("'res-tbook-nothing' is none")
+
+    def test_bank_practises_unknown_note(self):
+        self.edit("private/bank/tbook-review/bank.md", 'practises="t/alpha/first"', 'practises="t/alpha/gone"')
+        self.assertPrivateError("practises unknown id 't/alpha/gone'")
+
+    def test_problem_type_unknown_note(self):
+        self.edit("private/meta/problem-types.yml", "note: t/alpha/first", "note: t/alpha/gone")
+        self.assertPrivateError("pt-count-widgets: unknown note 't/alpha/gone'")
+
+    def test_public_problem_with_type(self):
+        self.edit("notes/t/alpha/first/exercise.md", 'source="demo-1.1-q2"', 'source="demo-1.1-q2" type="pt-count-widgets"')
+        self.assertPrivateError("problem types are private")
 
     def test_course_field_must_be_text(self):
         self.edit("private/meta/courses/tut.yml", "field: Tutoring", "field: [Tutoring]")
