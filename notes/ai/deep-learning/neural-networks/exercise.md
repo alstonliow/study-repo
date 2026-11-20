@@ -80,3 +80,60 @@ $$\mathbf{W}^{(1)} = \begin{bmatrix} 1.0 & 0.5 \\ -0.5 & 1.0 \end{bmatrix}, \qua
 
 *Note (these notes):* Only the written parts of this handout problem are given here; its programming parts are left out (SPEC §17.13.1, item 4).
 :::
+
+::: {#prob-mlp-average-embedding-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-sentiment" packages="numpy"}
+Classify texts with a one-hidden-layer MLP (@def-multi-layer-perceptron) on averaged word embeddings. Write `mlp_probs(texts, emb, W1, b1, W2, b2)`.
+
+- `emb` maps words to vectors of shape `(d,)`. Tokenize a text by lower-casing it and splitting it on whitespace. Its input $\mathbf x$ is the average of the embeddings of its tokens that are in `emb`, or the zero vector if none is.
+- The network computes $\mathbf h=\operatorname{ReLU}(W_1\mathbf x+\mathbf b_1)$ with $W_1$ of shape `(m, d)`, then the logits $\mathbf z=W_2\mathbf h+\mathbf b_2$ with $W_2$ of shape `(K, m)`.
+- Return an array of shape `(len(texts), K)` whose row `i` is $\operatorname{softmax}(\mathbf z)$ for text `i`.
+
+```{.python .starter}
+import numpy as np
+
+
+def mlp_probs(texts, emb, W1, b1, W2, b2):
+    """Class probabilities of an MLP on the average word embedding of each text."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+emb = {"good": np.array([1.0, 0.0]), "bad": np.array([-1.0, 0.0]), "plot": np.array([0.0, 2.0])}
+W1, b1 = np.array([[1.0, 0.0], [-1.0, 0.0], [0.0, 1.0]]), np.zeros(3)
+W2, b2 = np.array([[0.0, 2.0, 0.0], [2.0, 0.0, 0.0]]), np.array([0.0, 0.0])
+
+
+def softmax(z):
+    e = np.exp(z - z.max())
+    return e / e.sum()
+
+
+def test_hand_example():
+    P = mlp_probs(["Good plot", "bad"], emb, W1, b1, W2, b2)
+    # "good plot": x = (0.5, 1), h = (0.5, 0, 1), z = (0, 1)
+    # "bad":       x = (-1, 0),  h = (0, 1, 0),   z = (2, 0)
+    assert P.shape == (2, 2)
+    assert np.allclose(P[0], softmax(np.array([0.0, 1.0])))
+    assert np.allclose(P[1], softmax(np.array([2.0, 0.0])))
+
+
+def test_unknown_words_and_empty_text():
+    P = mlp_probs(["unknown words only", "", "good ???"], emb, W1, b1, W2, b2 + [0.0, 1.0])
+    assert np.allclose(P[0], softmax(np.array([0.0, 1.0])))
+    assert np.allclose(P[1], P[0])
+    assert np.allclose(P[2], mlp_probs(["good"], emb, W1, b1, W2, b2 + [0.0, 1.0])[0])
+
+
+def test_relu_and_rows_sum_to_one():
+    rng = np.random.default_rng(3)
+    big = {w: rng.normal(size=4) for w in "abcdef"}
+    A1, c1, A2, c2 = rng.normal(size=(5, 4)), rng.normal(size=5), rng.normal(size=(3, 5)), rng.normal(size=3)
+    texts = ["a b c", "d e f f", "a"]
+    P = mlp_probs(texts, big, A1, c1, A2, c2)
+    assert P.shape == (3, 3) and np.allclose(P.sum(axis=1), 1)
+    x = (big["d"] + big["e"] + 2 * big["f"]) / 4
+    assert np.allclose(P[1], softmax(A2 @ np.maximum(A1 @ x + c1, 0) + c2))
+```
+:::

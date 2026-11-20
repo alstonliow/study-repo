@@ -41,3 +41,55 @@ be the sign of $Y$. Find $E[WX\mid Y]$. Is the LLSE the same as the MMSE?
 $$\begin{pmatrix}4&1&0\\1&4&1\\0&1&4\end{pmatrix}$$
 and mean vector $[0,2,0]$. Compute $E[(\sin X)Y(\sin Z)]$. Hint: Condition on $(X,Z)$.
 :::
+
+::: {#prob-gaussian-fusion-code .problem .coding origin="adapted" source="res-ucb-eecs126-labs-kalman" packages="numpy"}
+A vector $X$ has prior $N(\hat x_1,\Sigma_1)$, and a sensor reports $Y=X+W$ with $W\sim N(0,\Sigma_2)$ independent of $X$. Write `fuse(x1, S1, x2, S2)` that returns the mean and covariance of $X$ given $Y=\hat x_2$ (@thm-jointly-gaussian-conditional), as NumPy arrays. This is the update step of the Kalman filter (@thm-kalman-filter). The tests check it against the "add the precisions" form and show that the plain average $(\hat x_1+\hat x_2)/2$ is a poor estimate when the covariances differ.
+
+```{.python .starter}
+import numpy as np
+
+
+def fuse(x1, S1, x2, S2):
+    """X has prior N(x1, S1); we observe Y = X + W with W ~ N(0, S2) independent of X,
+    and Y = x2. Return (mean, covariance) of X given Y = x2."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+
+def test_scalar():
+    x, S = fuse([0.0], [[1.0]], [2.0], [[1.0]])
+    assert np.allclose(x, [1.0]) and np.allclose(S, [[0.5]])
+    x, S = fuse([0.0], [[1.0]], [3.0], [[2.0]])
+    assert np.allclose(x, [1.0]) and np.allclose(S, [[2 / 3]])
+
+
+def test_precision_form():
+    # the same answer as adding precisions: S = (S1^-1 + S2^-1)^-1, x = S (S1^-1 x1 + S2^-1 x2)
+    rng = np.random.default_rng(0)
+    for _ in range(5):
+        M1, M2 = rng.normal(size=(3, 3)), rng.normal(size=(3, 3))
+        S1, S2 = M1 @ M1.T + 0.1 * np.eye(3), M2 @ M2.T + 0.1 * np.eye(3)
+        x1, x2 = rng.normal(size=3), rng.normal(size=3)
+        P1, P2 = np.linalg.inv(S1), np.linalg.inv(S2)
+        S = np.linalg.inv(P1 + P2)
+        xf, Sf = fuse(x1, S1, x2, S2)
+        assert np.allclose(Sf, S) and np.allclose(xf, S @ (P1 @ x1 + P2 @ x2))
+
+
+def test_correlated_noise_is_not_averaged():
+    # the unweighted average ignores the covariances
+    S1 = np.array([[4.0, 1.0], [1.0, 0.81]])
+    S2 = np.array([[0.25, -0.4], [-0.4, 9.0]])
+    x, S = fuse(np.array([3.0, 5.0]), S1, np.array([2.0, 7.0]), S2)
+    assert not np.allclose(x, [2.5, 6.0])
+    assert np.all(np.linalg.eigvalsh(S1 - S) > -1e-12) and np.all(np.linalg.eigvalsh(S2 - S) > -1e-12)
+
+
+def test_useless_measurement():
+    x, S = fuse([1.0, 2.0], np.eye(2), [9.0, 9.0], 1e12 * np.eye(2))
+    assert np.allclose(x, [1.0, 2.0], atol=1e-9) and np.allclose(S, np.eye(2), atol=1e-9)
+```
+:::

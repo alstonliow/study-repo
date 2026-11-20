@@ -41,3 +41,65 @@ The cross-entropy loss measures the difference between a model's predicted proba
 
 *Note (these notes):* Only the written parts of this handout problem are given here; its programming parts are left out (SPEC §17.13.1, item 4).
 :::
+
+::: {#prob-softmax-regression-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-sentiment" packages="numpy"}
+Train a multiclass linear classifier with the cross entropy loss (@def-cross-entropy-loss) by full-batch gradient descent. Write two functions.
+
+- `softmax(Z)`: the softmax (@def-softmax) of each row of a 2-D array `Z`. It must not overflow for large entries; use @prp-softmax-shift.
+- `train_softmax_regression(X, y, K, eta, epochs)`: `X` has shape `(n, d)`, `y` holds class labels in `0, ..., K-1`. Start from $W=0$ (shape `(K, d)`) and $\mathbf b=\mathbf 0$ (shape `(K,)`), and take `epochs` gradient steps of size `eta` on the mean training loss $\frac1n\sum_i -\log\operatorname{softmax}(W\mathbf x_i+\mathbf b)_{y_i}$. Return `(W, b)`.
+
+```{.python .starter}
+import numpy as np
+
+
+def softmax(Z):
+    """Row-wise softmax of a 2-D array, without overflow."""
+    ...
+
+
+def train_softmax_regression(X, y, K, eta, epochs):
+    """Full-batch gradient descent on the mean cross entropy loss; return (W, b)."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+
+def mean_loss(W, b, X, y):
+    P = softmax(X @ W.T + b)
+    return -np.mean(np.log(P[np.arange(len(y)), y]))
+
+
+def test_softmax():
+    P = softmax(np.array([[0.0, np.log(3.0)], [1000.0, 1000.0], [-1000.0, 0.0]]))
+    assert np.allclose(P, [[0.25, 0.75], [0.5, 0.5], [0.0, 1.0]])
+    assert np.all(np.isfinite(P))
+
+
+def test_first_step():
+    # from W = 0 every class has probability 1/K
+    X = np.array([[1.0, 0.0], [0.0, 1.0], [1.0, 1.0]])
+    y = np.array([0, 1, 2])
+    W, b = train_softmax_regression(X, y, 3, 0.3, 1)
+    Y = np.eye(3)[y]
+    assert np.allclose(W, -0.3 * (1 / 3 - Y).T @ X / 3)
+    assert np.allclose(b, -0.3 * (1 / 3 - Y).mean(axis=0))
+
+
+def test_learns_separable_data():
+    X = np.array([[2.0, 0.0], [3.0, 1.0], [0.0, 2.0], [1.0, 3.0], [-2.0, -2.0], [-3.0, -1.0]])
+    y = np.array([0, 0, 1, 1, 2, 2])
+    W, b = train_softmax_regression(X, y, 3, 0.5, 300)
+    assert W.shape == (3, 2) and b.shape == (3,)
+    assert np.array_equal(np.argmax(X @ W.T + b, axis=1), y)
+    zero = mean_loss(np.zeros((3, 2)), np.zeros(3), X, y)
+    assert mean_loss(W, b, X, y) < 0.1 < zero
+
+
+def test_large_features_stay_finite():
+    X = np.array([[500.0], [-500.0]])
+    W, b = train_softmax_regression(X, np.array([0, 1]), 2, 1.0, 20)
+    assert np.all(np.isfinite(W)) and np.all(np.isfinite(b))
+```
+:::

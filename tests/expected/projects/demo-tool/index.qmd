@@ -2,7 +2,7 @@
 title: Demo tool
 ---
 
-[Coursework · DEMO100 · active · draft · 2026-01-05]{.note-meta}
+[Course · DEMO100 · active · draft · 2026-01-05]{.note-meta}
 
 [Assignment: [DEMO 1.1 Widgets](/library/demo.qmd#res-demo-widgets) · Code: <https://example.org/demo-tool> at `0123abc` · Applies: [1.1 First note](/notes/t/alpha/first.qmd), [Theorem [1.2.1]{.num data-note="t/alpha/second"}](/notes/t/alpha/second.qmd#thm-gadget)]{.node-links}
 

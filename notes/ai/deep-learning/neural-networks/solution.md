@@ -33,3 +33,27 @@ Because both ReLUs are inactive, their derivative is $0$, so no gradient reaches
 
 **(d)** Positive words (amazing $[0.8,0.6]$, love $[0.9,0.4]$) sit together in the first quadrant, negative words (scared, hate, angry) together in the third, and neutral words (this, about, of) at or near the origin. So direction encodes polarity and distance from the origin roughly encodes strength: similar meanings get nearby vectors. Bag-of-words gives every word its own orthogonal axis, so "love" is as far from "amazing" as from "hate"; embeddings share statistical strength between related words and generalise to words the classifier saw rarely.
 :::
+
+::: {.solution for="prob-mlp-average-embedding-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def mlp_probs(texts, emb, W1, b1, W2, b2):
+    """Class probabilities of an MLP on the average word embedding of each text."""
+    d = W1.shape[1]
+    X = np.zeros((len(texts), d))
+    for i, text in enumerate(texts):
+        vecs = [emb[t] for t in text.lower().split() if t in emb]
+        if vecs:
+            X[i] = np.mean(vecs, axis=0)
+    H = np.maximum(X @ W1.T + b1, 0)           # hidden units, one row per text
+    Z = H @ W2.T + b2                          # logits
+    E = np.exp(Z - Z.max(axis=1, keepdims=True))
+    return E / E.sum(axis=1, keepdims=True)
+```
+
+1. Averaging the embeddings turns a text of any length into one vector of shape `(d,)`; it is the bag-of-words vector of the text multiplied by the matrix whose rows are the embeddings.
+2. With one text per row of `X`, the layer $W_1\mathbf x+\mathbf b_1$ for all texts at once is `X @ W1.T + b1`; `np.maximum(·, 0)` is the ReLU.
+3. The softmax subtracts the row maximum before exponentiating, so large logits do not overflow.
+:::

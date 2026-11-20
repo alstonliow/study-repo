@@ -26,3 +26,31 @@ $$\mathbf p\approx[0.705,\ 0.259,\ 0.035].$$
 $$\frac{\partial\,\text{Loss}_{\text{CE}}}{\partial z_k}=p_k-y_k.$$
 5. Intuition: the gradient is the prediction error. For the true class $p_k-1<0$, so gradient descent raises its logit; for every other class $p_k>0$, so their logits are lowered, each in proportion to how much probability it wrongly took. When the prediction is already right ($\mathbf p=\mathbf y$), the gradient vanishes and nothing changes.
 :::
+
+::: {.solution for="prob-softmax-regression-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def softmax(Z):
+    """Row-wise softmax of a 2-D array, without overflow."""
+    E = np.exp(Z - Z.max(axis=1, keepdims=True))
+    return E / E.sum(axis=1, keepdims=True)
+
+
+def train_softmax_regression(X, y, K, eta, epochs):
+    """Full-batch gradient descent on the mean cross entropy loss; return (W, b)."""
+    n, d = X.shape
+    W, b = np.zeros((K, d)), np.zeros(K)
+    Y = np.eye(K)[y]                           # one-hot targets, shape (n, K)
+    for _ in range(epochs):
+        G = softmax(X @ W.T + b) - Y           # dLoss/dlogits for each example
+        W -= eta * G.T @ X / n
+        b -= eta * G.mean(axis=0)
+    return W, b
+```
+
+1. Subtracting the row maximum leaves the softmax unchanged (@prp-softmax-shift) and makes every exponent at most $0$, so `np.exp` cannot overflow.
+2. The gradient of the loss of one example with respect to its logits is $\operatorname{softmax}(\mathbf z)-\mathbf e_y$ (@thm-cross-entropy-gradient). By the chain rule its gradient with respect to $W$ is the outer product of this vector with $\mathbf x$, and with respect to $\mathbf b$ the vector itself.
+3. Stacking the examples as rows, the mean of the outer products is `G.T @ X / n`, one matrix product instead of a loop.
+:::

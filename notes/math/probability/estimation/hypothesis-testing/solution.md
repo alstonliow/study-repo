@@ -58,3 +58,30 @@ $$r(y)=\begin{cases}1,&1<y\le2,\\1\text{ with probability }\gamma,&0\le y\le1,\\
 3. The false alarm probability is $\gamma P(0\le Y\le1\mid X=0)=\frac\gamma2$, so $\gamma=\min(2\beta,1)$.
 4. The miss probability is $(1-\gamma)P(0\le Y\le1\mid X=1)=\frac{1-\gamma}2=\max(\frac12-\beta,0)$. For $\beta\ge\frac12$ there are no misses; deciding $1$ also on $[-1,0)$ would only add false alarms.
 :::
+
+::: {.solution for="prob-neyman-pearson-code" status="draft"}
+```{.python}
+def neyman_pearson(p0, p1, beta):
+    """Most powerful test of level beta for an observation y in 0..len(p0)-1 with
+    PMF p0 under hypothesis 0 and p1 under hypothesis 1. Return the list r of
+    rejection probabilities: on observing y, decide 1 with probability r[y]."""
+    def ratio(y):                       # likelihood ratio, inf where p0 is 0
+        return p1[y] / p0[y] if p0[y] > 0 else (float("inf") if p1[y] > 0 else 0.0)
+    r = [0.0] * len(p0)
+    budget = beta                       # false-alarm probability still allowed
+    for y in sorted(range(len(p0)), key=ratio, reverse=True):
+        if ratio(y) == 0:               # rejecting here adds no detection
+            break
+        if p0[y] <= budget:
+            r[y] = 1.0
+            budget -= p0[y]
+        else:
+            r[y] = budget / p0[y]       # randomise on the boundary
+            break
+    return r
+```
+
+1. Rejecting at $y$ with probability $r_y$ costs $r_yp_0(y)$ of false alarm and gains $r_yp_1(y)$ of detection, so the best outcomes to reject are those with the largest gain per cost, $L(y)=p_1(y)/p_0(y)$. An outcome with $p_0(y)=0$ costs nothing and is taken first.
+2. Fill the budget $\beta$ in that order. The first outcome that no longer fits gets $r_y=(\text{remaining budget})/p_0(y)$, which makes $\mathrm{PFA}=\beta$, and everything after it gets $0$. This is the likelihood ratio test of @thm-neyman-pearson, with $\lambda$ the ratio at that outcome and $\gamma$ its $r_y$ (when several outcomes share that ratio, any split of the leftover budget between them gives the same $\mathrm{PCD}$).
+3. For the binomial example $L(y)=(p_1(1-p_0)/(p_0(1-p_1)))^{y}\cdot\text{const}$ increases in $y$, so the test rejects large $y$ and randomises at one value. For the mixtures it does not, and the test rejects around both peaks of $p_1$.
+:::

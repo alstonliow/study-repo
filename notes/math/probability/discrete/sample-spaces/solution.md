@@ -151,3 +151,57 @@ Summing the tree directly gives the same: you win along $H(TH)^kH\dots$, with pr
 (b) One suit: $4\binom{13}5=5148$ hands. Exactly two suits: choose the suits ($\binom42=6$) and a hand from their $26$ cards that is not within a single suit: $\binom{26}5-2\binom{13}5=63\,206$, giving $379\,236$. So
 $$\Pr(E)=\frac{5148+379\,236}{2\,598\,960}=\frac{384\,384}{2\,598\,960}\approx0.148.$$
 :::
+
+::: {.solution for="prob-flush-enumeration-code" status="draft"}
+```{.python}
+from fractions import Fraction
+from itertools import combinations, product
+
+
+def flush_probability(r, s, k):
+    """Exact probability (a Fraction) that k cards drawn from a deck of r ranks
+    and s suits are all of one suit but their ranks are not k consecutive values."""
+    deck = list(product(range(r), range(s)))      # card = (rank, suit)
+    total = favourable = 0
+    for hand in combinations(deck, k):            # equally likely outcomes
+        total += 1
+        ranks = sorted(rank for rank, _ in hand)
+        one_suit = len({suit for _, suit in hand}) == 1
+        straight = ranks == list(range(ranks[0], ranks[0] + k))
+        if one_suit and not straight:
+            favourable += 1
+    return Fraction(favourable, total)
+```
+
+1. The sample space is the set of $k$-subsets of the $rs$ cards, all equally likely, so the probability is the number of flushes divided by the number of hands (@def-probability-equally-likely-case).
+2. A hand is one suit when its set of suits has one element, and a run when its sorted ranks are $m,m+1,\dots,m+k-1$ for its smallest rank $m$.
+3. Check against a count: choose the suit ($s$ ways) and $k$ ranks that are not one of the $r-k+1$ runs, so the answer is $s\bigl(\binom rk-(r-k+1)\bigr)/\binom{rs}{k}$; the tests use this formula.
+:::
+
+::: {.solution for="prob-palindrome-hands-code" status="draft"}
+```{.python}
+from fractions import Fraction
+from math import comb
+
+
+def palindrome_probability(k, r=13, s=4):
+    """Exact probability (a Fraction) that the ranks of k cards drawn from a deck
+    of r ranks and s suits can be laid out as a palindrome."""
+    def count(i, left, odd):
+        # hands using ranks i..r-1 with `left` cards still to choose,
+        # where `odd` ranks so far have an odd number of cards
+        if i == r:
+            return 1 if left == 0 and odd <= 1 else 0
+        total = 0
+        for c in range(min(s, left) + 1):         # c cards of rank i
+            o = odd + c % 2
+            if o <= 1:
+                total += comb(s, c) * count(i + 1, left - c, o)
+        return total
+    return Fraction(count(0, k, 0), comb(r * s, k))
+```
+
+1. By the product rule, a hand with rank counts $c$ is fixed by choosing, for each rank $i$, which $c_i$ of its $s$ suits appear, so the group has $\prod_i\binom{s}{c_i}$ hands.
+2. The function `count(i, left, odd)` adds these weights over all count vectors, choosing $c_i$ for one rank at a time. It tracks the cards still to choose and how many ranks so far have an odd count, and stops a branch as soon as two ranks are odd.
+3. The probability is the total weight of the symmetric groups divided by $\binom{rs}{k}$, the weight of all groups. The recursion visits at most $(s+1)^r$ partial vectors and in practice far fewer, because of the two bounds.
+:::

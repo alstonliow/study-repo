@@ -18,7 +18,7 @@ from pathlib import Path
 import yaml
 
 ID = re.compile(r"prj-[a-z0-9]+(?:-[a-z0-9]+)*")
-KINDS = ("course", "coursework", "personal")
+KINDS = ("course", "personal")             # coursework is not a project (SPEC §17.13.1 item 4)
 STATUSES = ("draft", "reviewed")
 STAGES = ("planned", "active", "done", "paused", "dropped")
 FIELDS = {"id", "title", "kind", "status", "stage", "course", "assignment", "repo",

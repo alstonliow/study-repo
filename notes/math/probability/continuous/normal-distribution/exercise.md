@@ -42,3 +42,60 @@ Note that for sufficiently large $d$, the matrix $\hat I$ is close to the identi
 
 Note: You can use the fact that the fourth moment of a standard Gaussian is 3 without proof.
 :::
+
+::: {#prob-count-sketch-code .problem .coding origin="adapted" source="res-ucb-eecs126-labs-sketching" packages="numpy"}
+A *count sketch* $S$ is a $d\times n$ matrix with one nonzero entry in each column: $S_{h(j),j}=\sigma_j\in\{-1,+1\}$ for a row $h(j)\in\{0,\dots,d-1\}$. When the $h(j)$ are uniform and the $\sigma_j$ are fair signs, all independent, $E[S^{\mathsf T}S]=I$ (@prob-eecs126hw-6-q5). So $(SA)^{\mathsf T}(SA)$ estimates $A^{\mathsf T}A$ from a $d\times m$ matrix instead of an $n\times m$ one.
+
+Write `count_sketch(A, h, sign, d)` that returns $SA$ for given arrays `h` and `sign`, without forming $S$. Row $j$ of $A$, times $\sigma_j$, is added to row $h(j)$ of the result, which takes time $O(nm)$; a Gaussian sketch with $S_{ij}\sim N(0,1/d)$ would need $O(dnm)$. The tests take $A=I$, so that the result is $S$ itself, and check the mean and variance of $S^{\mathsf T}S$ found in that problem.
+
+```{.python .starter}
+import numpy as np
+
+
+def count_sketch(A, h, sign, d):
+    """Return C = S A for the d x n count sketch S with S[h[j], j] = sign[j]
+    and all other entries 0, without forming S (time O(n m) for A of shape n x m)."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+
+def explicit(h, sign, d):
+    S = np.zeros((d, len(h)))
+    S[h, np.arange(len(h))] = sign
+    return S
+
+
+def test_matches_explicit_matrix():
+    rng = np.random.default_rng(0)
+    A = rng.normal(size=(7, 3))
+    h = np.array([0, 2, 2, 1, 0, 2, 1])
+    sign = np.array([1, -1, 1, 1, -1, -1, 1])
+    assert np.allclose(count_sketch(A, h, sign, 3), explicit(h, sign, 3) @ A)
+
+
+def test_collisions_add_up():
+    A = np.array([[1.0, 2.0], [3.0, 4.0]])
+    assert np.allclose(count_sketch(A, [0, 0], [1, 1], 2), [[4, 6], [0, 0]])
+    assert np.allclose(count_sketch(A, [1, 1], [1, -1], 2), [[0, 0], [-2, -2]])
+
+
+def test_sketch_of_identity_is_unbiased():
+    # S = count_sketch(I): E[S^T S] = I, the diagonal is exactly 1, Var of off-diagonal = 1/d
+    rng = np.random.default_rng(1)
+    n, d, trials = 6, 4, 4000
+    prods = []
+    for _ in range(trials):
+        h = rng.integers(0, d, size=n)
+        sign = rng.choice([-1, 1], size=n)
+        S = count_sketch(np.eye(n), h, sign, d)
+        prods.append(S.T @ S)
+    prods = np.array(prods)
+    assert np.allclose(prods[:, np.arange(n), np.arange(n)], 1)
+    assert np.allclose(prods.mean(axis=0), np.eye(n), atol=0.05)
+    off = prods[:, 0, 1]
+    assert abs(off.var() - 1 / d) < 0.03
+```
+:::

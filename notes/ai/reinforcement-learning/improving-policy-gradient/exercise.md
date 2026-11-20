@@ -18,3 +18,64 @@ ii. Now compute the update with the baseline $b = -2$, the expected reward under
 
 *Note (these notes):* Only the written parts of this handout problem are given here; its programming parts are left out (SPEC §17.13.1, item 4).
 :::
+
+::: {#prob-bootstrapped-policy-gradient-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-mountaincar" packages="numpy"}
+Replace the utility of the whole rollout in a policy gradient step by the bootstrapped advantage of each step (@def-advantage, @def-actor-critic). The policy is the softmax policy with linear scores of @prob-reinforce-code: $\pi_\theta(a\mid s)\propto\exp(\boldsymbol\theta_a\cdot\boldsymbol\phi(s))$, with $\theta$ of shape `(A, d)`.
+
+Write `bootstrapped_update(theta, phi, rollout, V, gamma, eta)`.
+
+- `rollout` is a list of tuples `(s, a, r, t, end)`: step $i$ went from state $s_i$ with action $a_i$ and reward $r_i$ to state $t_i$, and `end` says whether $t_i$ is an end state.
+- `V(s)` is a critic's value estimate $\hat V(s)$. The advantage estimate of step $i$ is $\hat A_i=r_i+\gamma\hat V(t_i)-\hat V(s_i)$, with $\hat V(t_i)$ replaced by $0$ if $t_i$ is an end state.
+- Return the parameters after the step $\theta\gets\theta+\eta\sum_i\gamma^i\hat A_i\,\nabla_\theta\log\pi_\theta(a_i\mid s_i)$. Do not change `theta`.
+
+```{.python .starter}
+import numpy as np
+
+
+def bootstrapped_update(theta, phi, rollout, V, gamma, eta):
+    """Policy gradient step weighted by the bootstrapped advantage of each step."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+phi = lambda s: np.array([1.0, s])
+
+
+def glp(theta, s, a):
+    z = theta @ phi(s)
+    p = np.exp(z - z.max())
+    p /= p.sum()
+    return np.outer(np.eye(len(p))[a] - p, phi(s))
+
+
+def test_hand_step():
+    theta = np.zeros((2, 2))
+    V = lambda s: 2.0 * s
+    rollout = [(1.0, 1, 1.0, 2.0, False)]      # A = 1 + 0.5 * 4 - 2 = 1
+    new = bootstrapped_update(theta, phi, rollout, V, 0.5, 1.0)
+    assert np.allclose(new, [[-0.5, -0.5], [0.5, 0.5]])
+    assert not theta.any(), "theta was modified"
+
+
+def test_weights_and_end_state():
+    rng = np.random.default_rng(8)
+    theta = rng.normal(size=(3, 2))
+    V = lambda s: s * s
+    rollout = [(0.5, 2, 1.0, -1.0, False), (-1.0, 0, 0.0, 2.0, False), (2.0, 1, 3.0, 9.0, True)]
+    gamma, eta = 0.9, 0.05
+    adv = [1.0 + 0.9 * 1.0 - 0.25, 0.0 + 0.9 * 4.0 - 1.0, 3.0 - 4.0]
+    expected = theta + eta * sum(gamma ** i * A * glp(theta, s, a)
+                                 for i, (A, (s, a, _, _, _)) in enumerate(zip(adv, rollout)))
+    assert np.allclose(bootstrapped_update(theta, phi, rollout, V, gamma, eta), expected)
+
+
+def test_consistent_critic_gives_no_update():
+    # if r + gamma V(t) = V(s) at every step, every advantage is 0
+    V = lambda s: 10.0 - s
+    rollout = [(0.0, 0, 1.0, 1.0, False), (1.0, 1, 1.0, 2.0, False)]
+    theta = np.ones((2, 2))
+    assert np.allclose(bootstrapped_update(theta, phi, rollout, V, 1.0, 1.0), theta)
+```
+:::

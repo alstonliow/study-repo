@@ -38,3 +38,65 @@ Using the Neyman-Pearson formulation of hypothesis testing, find the optimal ran
 $$\min_{\text{randomized }r:[-1,2]\to\{0,1\}}P\bigl(r(Y)=0\mid X=1\bigr)\quad\text{s.t.}\quad P\bigl(r(Y)=1\mid X=0\bigr)\le\beta,$$
 where $\beta\in[0,1]$ is a given upper bound on the false positive probability.
 :::
+
+::: {#prob-neyman-pearson-code .problem .coding origin="adapted" source="res-ucb-eecs126-labs-hypothesis-testing"}
+An observation $Y\in\{0,\dots,m-1\}$ has PMF $p_0$ under hypothesis $0$ and $p_1$ under hypothesis $1$. Write `neyman_pearson(p0, p1, beta)`, which returns the most powerful test with $\mathrm{PFA}\le\beta$ (@def-neyman-pearson-problem, @thm-neyman-pearson). The result is a list `r` of rejection probabilities: on observing $y$, decide $1$ with probability `r[y]`.
+
+Build it greedily. Take the outcomes in decreasing order of the likelihood ratio, where $p_1(y)/p_0(y)=\infty$ when $p_0(y)=0<p_1(y)$, and reject each one fully while the false-alarm budget allows. Randomise at the first outcome that does not fit. Outcomes with $p_1(y)=0$ are never rejected. The tests compare with every deterministic test on a small example and include a case where the best rejection region is not a threshold in $y$.
+
+```{.python .starter}
+def neyman_pearson(p0, p1, beta):
+    """Most powerful test of level beta for an observation y in 0..len(p0)-1 with
+    PMF p0 under hypothesis 0 and p1 under hypothesis 1. Return the list r of
+    rejection probabilities: on observing y, decide 1 with probability r[y]."""
+    ...
+```
+
+```{.python .tests}
+from itertools import product
+from math import comb
+
+
+def binom(n, p):
+    return [comb(n, k) * p ** k * (1 - p) ** (n - k) for k in range(n + 1)]
+
+
+def pfa(r, p0):
+    return sum(a * b for a, b in zip(r, p0))
+
+
+def test_binomial_threshold():
+    p0, p1 = binom(10, 0.4), binom(10, 0.6)
+    r = neyman_pearson(p0, p1, 0.1)
+    assert abs(pfa(r, p0) - 0.1) < 1e-12
+    # increasing likelihood ratio: reject large y, randomise at one y only
+    assert r[:6] == [0] * 6 and r[7:] == [1] * 4 and 0 < r[6] < 1
+    assert abs(pfa(r, p1) - 0.4841) < 1e-4
+
+
+def test_beats_every_deterministic_test():
+    p0 = [0.3, 0.1, 0.25, 0.05, 0.2, 0.1]
+    p1 = [0.05, 0.3, 0.1, 0.2, 0.05, 0.3]
+    for beta in [0.05, 0.15, 0.3, 0.5]:
+        r = neyman_pearson(p0, p1, beta)
+        assert pfa(r, p0) <= beta + 1e-12
+        best = max(pfa(s, p1) for s in product([0, 1], repeat=6) if pfa(s, p0) <= beta + 1e-12)
+        assert pfa(r, p1) >= best - 1e-12
+
+
+def test_two_peaks_need_no_threshold():
+    # mixtures: the rejection region is not of the form {y >= c}
+    p0 = [(a + b) / 2 for a, b in zip(binom(10, 0.1), binom(10, 0.7))]
+    p1 = [(a + b) / 2 for a, b in zip(binom(10, 0.3), binom(10, 0.9))]
+    r = neyman_pearson(p0, p1, 0.1)
+    assert abs(pfa(r, p0) - 0.1) < 1e-12
+    assert r[3] == 1 and r[5] == 0 and r[10] == 1
+
+
+def test_extreme_levels():
+    p0, p1 = [0.5, 0.5, 0.0], [0.2, 0.3, 0.5]
+    assert neyman_pearson(p0, p1, 0.0) == [0, 0, 1]   # free detection where p0 = 0
+    r = neyman_pearson(p0, p1, 1.0)
+    assert pfa(r, p1) == 1
+```
+:::

@@ -103,6 +103,8 @@ exclude:
   - prob-probability-2-08
   - prob-probability-2-09
   - prob-probability-2-11
+  # UC Berkeley CS188 coding exercises (SPEC §6.4) in shared notes (2026-11-20).
+  - prob-hmm-filtering-code
 
 chapters:
 - num: 1

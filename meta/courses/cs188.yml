@@ -22,6 +22,20 @@ exclude:
   - prob-cs221hw-4-q4
   - prob-cs221hw-5-q1
   - prob-cs221hw-5-q3
+  # Stanford CS221 coding exercises (SPEC §6.4) in notes shared with CS221 (2026-11-20).
+  - prob-a-star-route-code
+  - prob-alpha-beta-code
+  - prob-backpropagation-gradient-check-code
+  - prob-fourier-features-code
+  - prob-gibbs-sampling-code
+  - prob-gradient-descent-least-squares-code
+  - prob-linear-q-learning-code
+  - prob-mlp-average-embedding-code
+  - prob-model-based-estimate-code
+  - prob-rejection-sampling-code
+  - prob-softmax-regression-code
+  - prob-ucs-route-code
+  - prob-value-iteration-code
 
 chapters:
 - num: 2

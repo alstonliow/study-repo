@@ -51,3 +51,26 @@ Toss the coin $n$ times and guess "biased" if the fraction $\hat p$ of heads exc
 
 Chebyshev is pessimistic. With the normal approximation (central limit theorem), the error for the fair coin is about $\Pr\bigl(Z\ge\frac{1/8}{1/(2\sqrt n)}\bigr)=\Pr(Z\ge\frac{\sqrt n}4)$, which is $0.05$ when $\frac{\sqrt n}4\approx1.645$, i.e. $n\approx44$; the biased coin needs slightly fewer. So in practice about $44$ tosses are enough.
 :::
+
+::: {.solution for="prob-run-of-heads-code" status="draft"}
+```{.python}
+import random
+
+
+def mean_flips_until_run(k, trials, rng):
+    """Monte Carlo estimate of the expected number of fair coin flips until
+    k heads in a row first appear. rng is a random.Random; use rng.random()."""
+    total = 0
+    for _ in range(trials):
+        flips = run = 0
+        while run < k:
+            flips += 1
+            run = run + 1 if rng.random() < 0.5 else 0
+        total += flips
+    return total / trials
+```
+
+1. One trial tosses until the current run of heads reaches $k$: a head adds one to the run, a tail resets it to $0$. The number of tosses is one sample of $T$.
+2. The trials are independent, so the sample mean has mean $E[T]$ and variance $\operatorname{Var}(T)/\text{trials}$ (@prp-sample-mean). For $k=3$, $\operatorname{Var}(T)=142$, so $20\,000$ trials give a standard error of about $0.08$.
+3. For $k=0$ no toss is needed and the estimate is exactly $0$.
+:::

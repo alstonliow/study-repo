@@ -14,3 +14,39 @@ since the one degree-one packet is used up and new ones come only from degree $2
 
 (c) $E[D]=\frac1n+\sum_{d=2}^{n}\frac{d}{d(d-1)}=\frac1n+H_{n-1}\approx\ln n$, where $H_{n-1}=\sum_{j=1}^{n-1}\frac1j$.
 :::
+
+::: {.solution for="prob-peeling-decoder-code" status="draft"}
+```{.python}
+def peel(n, packets):
+    """Peeling decoder. Chunks are numbered 0..n-1 and hold ints. Each packet is
+    a pair (indices, value): value is the XOR of the chunks at those indices.
+    Return a list of length n with each chunk's value, or None where unknown."""
+    chunks = [None] * n
+    pending = [[set(ix), v] for ix, v in packets]
+    ripple = [p for p in pending if len(p[0]) == 1]
+    holding = {}                                  # chunk -> packets that contain it
+    for p in pending:
+        for i in p[0]:
+            holding.setdefault(i, []).append(p)
+    while ripple:
+        ix, v = ripple.pop()
+        if len(ix) != 1:                          # emptied by an earlier peel
+            continue
+        i = ix.pop()
+        if chunks[i] is not None:
+            continue
+        chunks[i] = v
+        for p in holding.get(i, []):              # peel chunk i off every packet
+            if i in p[0]:
+                p[0].discard(i)
+                p[1] ^= v
+                if len(p[0]) == 1:
+                    ripple.append(p)
+    return chunks
+```
+
+1. Copy each packet as a mutable pair [set, value], and index the packets by the chunks they contain.
+2. The *ripple* is a stack of packets that have one unknown index. Popping one gives a chunk $x_i$ (if not already known); then $x_i$ is XOR-ed out of every packet holding $i$, and any packet left with one index joins the ripple.
+3. A popped packet whose set has meanwhile become empty, or whose chunk is already known, is skipped. Each index is removed from each packet at most once, so the total work is proportional to $\sum|I|$.
+4. Decoding stops exactly when no packet has one unknown index, as the last test checks. Some chunks can then stay unknown even though the packets determine them, since peeling never combines two packets of degree two or more.
+:::

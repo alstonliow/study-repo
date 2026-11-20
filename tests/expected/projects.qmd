@@ -2,8 +2,8 @@
 title: Projects
 ---
 
-[Course projects, coursework and personal projects: what was built, how, and which topics it puts to work. Each project's code is in its own repository.]{.summary-intro}
+[Course projects and personal projects: what was built, how, and which topics it puts to work. Each project's code is in its own repository.]{.summary-intro}
 
 ## Active
 
-- [Demo tool](/projects/demo-tool/index.qmd) [Coursework · DEMO100 · active · draft]{.toc-desc}
+- [Demo tool](/projects/demo-tool/index.qmd) [Course · DEMO100 · active · draft]{.toc-desc}

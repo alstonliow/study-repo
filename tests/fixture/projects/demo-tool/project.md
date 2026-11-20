@@ -1,7 +1,7 @@
 ---
 id: prj-demo-tool
 title: Demo tool
-kind: coursework
+kind: course
 status: draft
 stage: active
 course: demo

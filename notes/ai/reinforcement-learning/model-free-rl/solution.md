@@ -9,3 +9,31 @@ Values were checked by value iteration in Python.
 3. **$(B,\text{Left})=1$, $(B,\text{Right})=100$, $(C,\text{Left})=0$, $(C,\text{Right})=100$.** Q-learning (@def-q-learning) on replayed data converges to the optimal Q-values of the MDP the data describes, here deterministic: $Q(\text{X1},\text{Exit})=1$, $Q(A,\text{Left})=1$, $Q(B,\text{Left})=\max_aQ(A,a)=1$ (the untried $Q(A,\text{Right})$ stays $0$); along the other episode every Q-value becomes $100$. $(C,\text{Left})$ never occurs in the data, so it keeps its initial value $0$.
 4. **False.** With features $f(s)$ that ignore the action, $Q(s,a)=\mathbf w\cdot f(s)$ is the same for every action in a state (@def-q-function-approximation). But the optimal Q-values differ between actions, for instance $Q^*(D,\text{Right})=50$ and $Q^*(D,\text{Left})=\frac12V^*(C)=12.5$ in part 1, so no such weights represent them.
 :::
+
+::: {.solution for="prob-tabular-q-learning-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+class QLearning:
+    def __init__(self, S, A, gamma, eta):
+        self.Q = np.zeros((S, A))
+        self.A, self.gamma, self.eta = A, gamma, eta
+
+    def act(self, s, epsilon, rng):
+        """Epsilon-greedy action in state s."""
+        if rng.random() < epsilon:
+            return rng.randrange(self.A)
+        return int(np.argmax(self.Q[s]))
+
+    def update(self, s, a, r, t, end):
+        """Move Q[s, a] towards r + gamma * max_a' Q[t, a'] (just r if t is an end state)."""
+        target = r if end else r + self.gamma * self.Q[t].max()
+        self.Q[s, a] += self.eta * (target - self.Q[s, a])
+```
+
+1. `act` first decides whether to explore, so a random action is taken with probability $\epsilon$ and the greedy one otherwise. The random action may also be the greedy one, which is why in the frequency test the greedy action has probability $0.6+0.4/4=0.7$.
+2. `np.argmax` returns the first maximal index, the smallest tied action.
+3. `update` is $\hat Q(s,a)\gets(1-\eta)\hat Q(s,a)+\eta\,\text{target}$. The target uses the greedy value of $t$, not the action the policy will take there; this is what makes Q-learning off-policy.
+4. In the chain test the updates converge to $Q_{\text{opt}}$: moving right from state $s$ is worth $\gamma^{2-s}$, staying is worth $\gamma$ times the value of $s$.
+:::

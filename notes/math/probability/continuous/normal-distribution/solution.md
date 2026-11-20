@@ -40,3 +40,22 @@ With $E[X^0]=1$, for even $n=2k$: $E[X^{2k}]=(2k-1)(2k-3)\cdots1=\frac{(2k)!}{2^
 - $i=j$: column $i$ has exactly one entry $\pm1$, so $\hat I_{ii}=1$ always: mean $1$, variance $0$.
 - $i\ne j$: the product is non-zero only if columns $i$ and $j$ chose the same row (probability $\frac1d$), and then it is $\pm1$ with equal probability, independently. So $E[\hat I_{ij}]=0$ and $\operatorname{Var}(\hat I_{ij})=E[\hat I_{ij}^2]=\frac1d$.
 :::
+
+::: {.solution for="prob-count-sketch-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def count_sketch(A, h, sign, d):
+    """Return C = S A for the d x n count sketch S with S[h[j], j] = sign[j]
+    and all other entries 0, without forming S (time O(n m) for A of shape n x m)."""
+    A = np.asarray(A, dtype=float)
+    C = np.zeros((d, A.shape[1]))
+    np.add.at(C, np.asarray(h), np.asarray(sign)[:, None] * A)   # row j of A goes to row h[j]
+    return C
+```
+
+1. $(SA)_{r,:}=\sum_j S_{rj}A_{j,:}=\sum_{j:\,h(j)=r}\sigma_jA_{j,:}$, so each row of $A$ contributes to exactly one row of the sketch.
+2. `np.add.at` performs these additions without buffering, so rows that collide in the same $h(j)$ are summed. Plain fancy assignment `C[h] += ...` would keep only one of them.
+3. With $A=I$ the diagonal of $S^{\mathsf T}S$ is $\sigma_j^2=1$ exactly. An off-diagonal entry is $\sigma_i\sigma_j\mathbf 1[h(i)=h(j)]$, with mean $0$ and variance $1/d$.
+:::

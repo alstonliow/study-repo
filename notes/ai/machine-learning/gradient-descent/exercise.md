@@ -141,3 +141,58 @@ Now we observe the following dataset in which the outputs $y$ are binary. Furthe
 
 *Note (these notes):* The four contour plots are redrawn for a function of the same shape, $f(x,y)=-(x^2/2+2y^2)$, with paths of the same kinds as in the handout (A: smooth approach, B: a loop around the maximum, C: shrinking zigzag, D: growing zigzag; in D the steps leaving the plot are clipped).
 :::
+
+::: {#prob-gradient-descent-least-squares-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-foundations" packages="numpy"}
+Run gradient descent (@def-gradient-descent) on the least-squares loss
+$$F(\mathbf w)=\tfrac12\lVert A\mathbf w-\mathbf b\rVert^2 .$$
+
+Write `least_squares_gd(A, b, w0, eta, steps)`, where `A` has shape `(n, d)`, `b` shape `(n,)` and `w0` shape `(d,)`. Take `steps` steps of size `eta` from `w0`, using the gradient of $F$ in closed form, and return the pair `(w, losses)`: the final point and the list of the `steps + 1` values $F(\mathbf w_0),\dots,F(\mathbf w_{\text{steps}})$. Do not change `w0`.
+
+```{.python .starter}
+import numpy as np
+
+
+def least_squares_gd(A, b, w0, eta, steps):
+    """Gradient descent on 0.5 * ||A w - b||^2; return (w, losses)."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+
+def test_one_step():
+    A = np.array([[1.0, 0.0], [0.0, 2.0]])
+    b = np.array([1.0, 2.0])
+    w, losses = least_squares_gd(A, b, np.zeros(2), 0.1, 1)
+    # the gradient at 0 is -A^T b = (-1, -4)
+    assert np.allclose(w, [0.1, 0.4])
+    assert np.isclose(losses[0], 2.5)
+    assert np.isclose(losses[1], 0.5 * (0.9 ** 2 + 1.2 ** 2))
+
+
+def test_zero_steps():
+    A = np.eye(2)
+    w0 = np.array([1.0, -1.0])
+    w, losses = least_squares_gd(A, np.zeros(2), w0, 0.5, 0)
+    assert np.allclose(w, w0) and len(losses) == 1 and np.isclose(losses[0], 1.0)
+
+
+def test_converges_to_least_squares():
+    rng = np.random.default_rng(1)
+    A, b = rng.normal(size=(20, 3)), rng.normal(size=20)
+    eta = 1 / np.linalg.norm(A, 2) ** 2          # 1 / L for this F
+    w0 = np.zeros(3)
+    w, losses = least_squares_gd(A, b, w0, eta, 2000)
+    assert np.allclose(w, np.linalg.lstsq(A, b, rcond=None)[0], atol=1e-6)
+    assert len(losses) == 2001
+    assert all(x >= y - 1e-12 for x, y in zip(losses, losses[1:]))
+    assert np.all(w0 == 0), "w0 was modified"
+
+
+def test_too_large_step_diverges():
+    A = np.array([[1.0]])
+    w, losses = least_squares_gd(A, np.array([0.0]), np.array([1.0]), 3.0, 5)
+    assert np.isclose(w[0], (-2.0) ** 5) and losses[-1] > losses[0]
+```
+:::

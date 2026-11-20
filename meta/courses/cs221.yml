@@ -4,7 +4,8 @@
 # Round 0 skeleton: covers list only existing notes that overlap; new notes (plan in the
 # side-session notes, owner-approved 2026-11-18) are added branch by branch in later rounds.
 # AI material goes to ai/*; logic material to math/discrete/logic. Homework (res-stanford-cs221-hw): written
-# parts are exercises in the notes they practise; programming parts become coursework projects (SPEC §17.13.1).
+# parts are exercises in the notes they practise; programming parts are coding exercises in those notes (SPEC §6.4),
+# and the owner's full homework code is in the coursework repository (SPEC §13 item 7).
 id: cs221
 code: Stanford CS221
 name: "Artificial Intelligence: Principles and Techniques"
@@ -12,6 +13,8 @@ institution: Stanford
 source_prefix: cs221
 outline_from: "Stanford CS221 lecture code (github.com/stanford-cs221/lectures, commit 3ac2452), 20 technical lectures"
 status: draft  # draft until the owner has reviewed the mapping
+coursework_repo:
+  url: https://github.com/alstonliow/cs221-homework
 
 exclude:
   # CS188 blocks added to shared notes, and CS188 problems in CS221's scope (scope_excludes.py, 2026-11-19).
@@ -101,6 +104,8 @@ exclude:
   - prob-eecs126hw-1-q5
   - prob-eecs126hw-2-q1
   - prob-eecs126hw-3-q5
+  # UC Berkeley CS188 coding exercises (SPEC §6.4) in shared notes (2026-11-20).
+  - prob-visit-all-heuristic-code
 
 chapters:
   - num: 1

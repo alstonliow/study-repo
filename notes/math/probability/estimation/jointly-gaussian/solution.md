@@ -46,3 +46,23 @@ The answer is $0$.
 2. By the tower property, $E[\sin X\,Y\sin Z]=E\bigl[\sin X\sin Z\,(2+\tfrac{X+Z}4)\bigr]$.
 3. $X$ and $Z$ are uncorrelated and jointly Gaussian, hence independent, and each is symmetric about $0$, so $E[\sin X]=E[\sin Z]=0$. Every term factors with one of these: $E[\sin X]E[\sin Z]$, $E[X\sin X]E[\sin Z]$, $E[\sin X]E[Z\sin Z]$.
 :::
+
+::: {.solution for="prob-gaussian-fusion-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def fuse(x1, S1, x2, S2):
+    """X has prior N(x1, S1); we observe Y = X + W with W ~ N(0, S2) independent of X,
+    and Y = x2. Return (mean, covariance) of X given Y = x2."""
+    x1, S1, x2, S2 = (np.atleast_1d(np.asarray(a, dtype=float)) for a in (x1, S1, x2, S2))
+    S1, S2 = np.atleast_2d(S1), np.atleast_2d(S2)
+    K = np.linalg.solve(S1 + S2, S1).T          # K = S1 (S1 + S2)^{-1}; both are symmetric
+    return x1 + K @ (x2 - x1), S1 - K @ S1
+```
+
+1. $(X,Y)$ is jointly Gaussian with $\mu_Y=\hat x_1$, $\Sigma_Y=\Sigma_1+\Sigma_2$ and $\Sigma_{XY}=\operatorname{Cov}(X,X+W)=\Sigma_1$.
+2. By @thm-jointly-gaussian-conditional, with the gain $K=\Sigma_1(\Sigma_1+\Sigma_2)^{-1}$,
+$$E[X\mid Y=\hat x_2]=\hat x_1+K(\hat x_2-\hat x_1),\qquad\operatorname{Cov}(X\mid Y)=\Sigma_1-K\Sigma_1.$$
+3. `np.linalg.solve(S1 + S2, S1)` is $(\Sigma_1+\Sigma_2)^{-1}\Sigma_1$, whose transpose is $K$, since both matrices are symmetric; solving is more accurate than inverting.
+:::

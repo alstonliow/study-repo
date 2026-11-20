@@ -283,6 +283,9 @@ exclude:
   - prob-eecs126hw-2-q3
   - prob-eecs126hw-2-q5
   - prob-eecs126hw-7-q3
+  # EECS126 lab coding exercises (2026-11-20) in shared notes
+  - prob-flush-enumeration-code
+  - prob-palindrome-hands-code
 
 chapters:
   - num: 1

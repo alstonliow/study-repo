@@ -840,7 +840,7 @@ class TestProjects(Repo):
         out = subprocess.run([PY, "-c", "import model; r = model.Repo(); p = r.projects['prj-demo-tool']; "
                               "print(p.kind, p.stage, p.started, r.entities[p.id].level, p.problems)"],
                              cwd=BUILD, capture_output=True, text=True, env=dict(os.environ, STUDY_ROOT=str(self.root)))
-        self.assertEqual(out.stdout.strip(), "coursework active 2026-01-05 projects []", out.stderr)
+        self.assertEqual(out.stdout.strip(), "course active 2026-01-05 projects []", out.stderr)
 
     def test_private_store_is_never_read(self):
         priv = self.root / "private/projects/secret-work"
@@ -853,12 +853,12 @@ class TestProjects(Repo):
 
     def test_bad_schema(self):
         self.edit(self.PRJ, "id: prj-demo-tool", "id: prj-other")
-        self.edit(self.PRJ, "kind: coursework", "kind: homework")
+        self.edit(self.PRJ, "kind: course", "kind: homework")
         self.edit(self.PRJ, "stage: active", "stage: active\nowner: me")
         self.edit(self.PRJ, "commit: 0123abc", "commit: latest")
         self.edit(self.PRJ, "started: 2026-01-05", "started: 2026-01-05\nfinished: 2025-12-01")
         out = self.assertCheck("must match the folder name (prj-demo-tool)")
-        for text in ("kind 'homework' not in course | coursework | personal", "unknown field 'owner'",
+        for text in ("kind 'homework' not in course | personal", "unknown field 'owner'",
                      "commit 'latest' must be a commit sha", "finished 2025-12-01 is before started"):
             self.assertIn(text, out)
 

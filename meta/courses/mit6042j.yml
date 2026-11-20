@@ -315,6 +315,10 @@ exclude:
   - prob-eecs126hw-3-q5
   - prob-eecs126hw-6-q2
   - thm-hoeffding-inequality
+  # EECS126 lab coding exercises (2026-11-20) in shared notes
+  - prob-flush-enumeration-code
+  - prob-palindrome-hands-code
+  - prob-run-of-heads-code
 
 chapters:
   - num: 1

@@ -43,3 +43,27 @@ and $Q_R>Q_L$ iff $5.375p>2.625$; both beat Up ($-2.5$) for $p>0$. (If staying i
 7. **$V(A)=25$, $V(C)=25$.** Without Left, the two best actions at $C$ are Down ($100$) and Right ($-50$), so $V(C)=\frac12\cdot100+\frac12\cdot(-50)=25$, and $A$ still goes Right: $V(A)=0+25=25$.
 8. **$V(A)=99$, $\pi(A)=$ Down.** Going Right is now worth $25$, while Down to $B$ ($-1$) and then Right to $D$ ($+100$) is worth $99$.
 :::
+
+::: {.solution for="prob-value-iteration-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def value_iteration(T, R, end, gamma, tol=1e-10):
+    """Return (V, pi) for the MDP with transition array T and reward array R."""
+    V = np.zeros(T.shape[0])
+    while True:
+        # Q[s, a] = sum_t T[s, a, t] (R[s, a, t] + gamma V[t])
+        Q = np.einsum("sat,sat->sa", T, R + gamma * V)
+        new = np.where(end, 0.0, Q.max(axis=1))
+        done = np.max(np.abs(new - V)) < tol
+        V = new
+        if done:
+            return V, np.argmax(Q, axis=1)
+```
+
+1. `R + gamma * V` broadcasts $V$ over the last axis, so entry $(s,a,t)$ is $\text{Reward}(s,a,t)+\gamma V(t)$; weighting by $T$ and summing over $t$ gives all Q-values at once.
+2. End states are reset to $0$ in every iteration, as in the definition.
+3. `np.argmax` returns the first maximal index, which is the smallest tied action. The policy is computed from the Q-values of the last iteration, which agree with the returned $V$ up to the tolerance.
+4. In the tests, `best_by_brute_force` checks the result independently: for each of the $2^S$ deterministic policies it solves the linear equations $V=r_\pi+\gamma P_\pi V$ of policy evaluation and keeps the best value of each state.
+:::

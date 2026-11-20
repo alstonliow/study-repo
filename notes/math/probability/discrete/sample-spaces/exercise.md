@@ -123,3 +123,122 @@ We're interested in the probability that a randomly chosen poker hand (5 cards f
 
 (b) What is $\Pr(E)$?
 :::
+
+::: {#prob-flush-enumeration-code .problem .coding origin="adapted" source="res-ucb-eecs126-labs-simulation"}
+A deck has $r$ ranks $0,\dots,r-1$ and $s$ suits, with one card of each rank and suit. A hand of $k$ cards is drawn at random, so all $\binom{rs}{k}$ hands are equally likely (@def-probability-equally-likely-case). Call a hand a *flush* if all its cards have the same suit and its ranks are not $k$ consecutive numbers (a run such as $3,4,5$).
+
+Write `flush_probability(r, s, k)`. It returns the probability of a flush as an exact `Fraction`, found by listing every hand (`itertools.combinations`) and counting the flushes. A real deck ($r=13$, $s=4$, $k=5$) already has about 2.6 million hands, so the tests use small decks.
+
+```{.python .starter}
+from fractions import Fraction
+from itertools import combinations, product
+
+
+def flush_probability(r, s, k):
+    """Exact probability (a Fraction) that k cards drawn from a deck of r ranks
+    and s suits are all of one suit but their ranks are not k consecutive values."""
+    ...
+```
+
+```{.python .tests}
+from fractions import Fraction
+from math import comb
+
+
+def formula(r, s, k):
+    # choose a suit, then k ranks that are not one of the r-k+1 runs
+    return Fraction(s * (comb(r, k) - (r - k + 1)), comb(r * s, k))
+
+
+def test_two_cards():
+    # 5 ranks, 2 suits: 20 same-suit pairs, 8 of them adjacent ranks
+    assert flush_probability(5, 2, 2) == Fraction(12, 45)
+
+
+def test_returns_exact_fraction():
+    assert isinstance(flush_probability(4, 2, 2), Fraction)
+
+
+def test_against_formula():
+    for r, s, k in [(6, 3, 3), (7, 2, 4), (8, 4, 3), (5, 4, 5)]:
+        assert flush_probability(r, s, k) == formula(r, s, k), (r, s, k)
+
+
+def test_single_card_is_a_straight():
+    assert flush_probability(4, 3, 1) == 0
+
+
+def test_one_suit_deck():
+    # every hand is one suit; only the non-runs count
+    assert flush_probability(6, 1, 3) == Fraction(comb(6, 3) - 4, comb(6, 3))
+```
+:::
+
+::: {#prob-palindrome-hands-code .problem .coding origin="adapted" source="res-ucb-eecs126-labs-simulation"}
+A deck has $r$ ranks and $s$ suits, with one card of each rank and suit, and a hand of $k$ cards is drawn at random. Call the hand *symmetric* if its cards can be laid in a row whose ranks read the same from both ends. This holds exactly when at most one rank occurs an odd number of times in the hand.
+
+Write `palindrome_probability(k, r=13, s=4)` that returns the probability of a symmetric hand as an exact `Fraction`. Listing hands is hopeless for a full deck ($\binom{52}{9}\approx3.7\times10^{9}$). Instead, group the hands by their *rank counts* $(c_0,\dots,c_{r-1})$ with $0\le c_i\le s$ and $\sum_i c_i=k$. These groups are not equally likely, but the group with counts $c$ holds exactly $\prod_i\binom{s}{c_i}$ hands. The tests include $k=9$ on a full deck.
+
+```{.python .starter}
+from fractions import Fraction
+from math import comb
+
+
+def palindrome_probability(k, r=13, s=4):
+    """Exact probability (a Fraction) that the ranks of k cards drawn from a deck
+    of r ranks and s suits can be laid out as a palindrome."""
+    ...
+```
+
+```{.python .tests}
+from collections import Counter
+from fractions import Fraction
+from itertools import combinations, product
+from math import comb
+
+
+def brute_force(k, r, s):
+    deck = list(product(range(r), range(s)))
+    good = total = 0
+    for hand in combinations(deck, k):
+        total += 1
+        odd = sum(c % 2 for c in Counter(rank for rank, _ in hand).values())
+        good += odd <= 1
+    return Fraction(good, total)
+
+
+def test_small_decks():
+    for k, r, s in [(3, 4, 3), (4, 4, 3), (5, 5, 2), (6, 3, 4)]:
+        assert palindrome_probability(k, r, s) == brute_force(k, r, s), (k, r, s)
+
+
+def test_one_and_two_cards():
+    assert palindrome_probability(1) == 1
+    assert palindrome_probability(2) == Fraction(13 * comb(4, 2), comb(52, 2))
+
+
+def test_too_many_odd_ranks():
+    # 3 ranks, 1 suit, 2 cards: always two different ranks
+    assert palindrome_probability(2, 3, 1) == 0
+
+
+def test_full_deck_fast():
+    # C(52, 9) hands are far too many to list; count rank patterns instead
+    p = palindrome_probability(9)
+    assert isinstance(p, Fraction) and 0 < p < Fraction(1, 10)
+    assert p == Fraction(_reference_count(9), comb(52, 9))
+
+
+def _reference_count(k):
+    # generating function: product over ranks of (even part + y * odd part)
+    poly = {(0, 0): 1}                      # (cards, odd ranks) -> count
+    for _ in range(13):
+        new = Counter()
+        for (n, o), w in poly.items():
+            for c in range(5):
+                if n + c <= k and o + c % 2 <= 1:
+                    new[(n + c, o + c % 2)] += w * comb(4, c)
+        poly = new
+    return poly[(k, 0)] + poly[(k, 1)]
+```
+:::

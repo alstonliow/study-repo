@@ -121,3 +121,67 @@ Now consider a scenario where instead of getting one general student feedback as
 
 *Note (these notes):* Both networks are redrawn here; the dashed edge stands for the omitted time steps.
 :::
+
+::: {#prob-hmm-filtering-code .problem .coding origin="adapted" source="res-ucb-cs188-projects-tracking" solution="withheld" packages="numpy"}
+Implement exact filtering in a hidden Markov model (@def-hmm) with the forward algorithm (@thm-forward-algorithm). Write `filter_beliefs(prior, T, O, evidence)`.
+
+- The states are `0, ..., n-1` and the observations `0, ..., m-1`.
+- `prior` has shape `(n,)`: `prior[x]` $=P(X_1=x)$.
+- `T` has shape `(n, n)`: `T[x, y]` $=P(X_{t+1}=y\mid X_t=x)$.
+- `O` has shape `(n, m)`: `O[x, e]` $=P(E_t=e\mid X_t=x)$.
+- `evidence` is the list $e_1,\dots,e_k$ with $k\ge1$; assume each has positive probability given the earlier ones.
+
+Return an array of shape `(k, n)` whose row $t-1$ is the belief $B_t$ (@def-filtering). The first observation updates the prior directly; every later one comes after one elapse-time step.
+
+```{.python .starter}
+import numpy as np
+
+
+def filter_beliefs(prior, T, O, evidence):
+    """Beliefs B_1, ..., B_k of the HMM (prior, T, O) as rows of a (k, n) array."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+# the weather of the example: 0 = rain, 1 = sun; observation 0 = umbrella, 1 = none
+prior = np.array([0.5, 0.5])
+T = np.array([[0.7, 0.3], [0.3, 0.7]])
+O = np.array([[0.8, 0.2], [0.3, 0.7]])
+
+
+def test_umbrella_example():
+    B = filter_beliefs(prior, T, O, [0, 0, 1])
+    assert B.shape == (3, 2)
+    assert np.allclose(B[0], [8 / 11, 3 / 11])
+    assert np.allclose(B[1], [104 / 131, 27 / 131])
+    assert np.isclose(B[2, 0], 0.316, atol=1e-3)
+    assert np.allclose(B.sum(axis=1), 1.0)
+
+
+def test_first_belief_uses_prior_only():
+    B = filter_beliefs(np.array([0.9, 0.1]), T, O, [1])
+    expected = np.array([0.9 * 0.2, 0.1 * 0.7])
+    assert np.allclose(B[0], expected / expected.sum())
+
+
+def test_uninformative_observations_follow_the_chain():
+    # with O constant, filtering is prediction: B_t = prior T^(t-1)
+    O_flat = np.full((3, 2), 0.5)
+    T3 = np.array([[0.5, 0.5, 0.0], [0.0, 0.5, 0.5], [0.5, 0.0, 0.5]])
+    p = np.array([1.0, 0.0, 0.0])
+    B = filter_beliefs(p, T3, O_flat, [0, 1, 0, 0])
+    for t in range(4):
+        assert np.allclose(B[t], p @ np.linalg.matrix_power(T3, t))
+
+
+def test_impossible_state_stays_impossible():
+    # observation 1 is impossible in state 2, so the belief of state 2 is 0 after it
+    O3 = np.array([[0.5, 0.5], [0.5, 0.5], [1.0, 0.0]])
+    T3 = np.full((3, 3), 1 / 3)
+    B = filter_beliefs(np.full(3, 1 / 3), T3, O3, [0, 1, 1])
+    assert np.allclose(B[1], [0.5, 0.5, 0.0]) and np.allclose(B[2], [0.5, 0.5, 0.0])
+    assert np.allclose(B[0], [0.25, 0.25, 0.5])
+```
+:::

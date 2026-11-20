@@ -45,3 +45,49 @@ Now we see the use of the bound proven in part (b) - it allows us to bound just 
 ::: {.problem #prob-mit6042f10-12-q4 origin="external" source="mit6042f10-12-q4"}
 We have two coins: one is a fair coin and the other is a coin that produces heads with probability 3/4. One of the two coins is picked, and this coin is tossed $n$ times. Explain how to calculate the number of tosses to make us 95% confident which coin was chosen. You do not have to calculate the minimum value of $n$, though we'd be pleased if you did.
 :::
+
+::: {#prob-run-of-heads-code .problem .coding origin="adapted" source="res-ucb-eecs126-labs-simulation"}
+Let $T$ be the number of tosses of a fair coin until $k$ heads in a row first appear. Write `mean_flips_until_run(k, trials, rng)`. It simulates $T$ independently `trials` times and returns the sample mean, an estimate of $E[T]$ (@thm-law-of-large-numbers). Draw each toss as `rng.random() < 0.5` (heads), where `rng` is a `random.Random`, so a fixed seed gives a fixed result.
+
+The tests compare with the exact value $E[T]=2^{k+1}-2$ and allow five standard errors (@prp-sample-mean).
+
+```{.python .starter}
+import random
+
+
+def mean_flips_until_run(k, trials, rng):
+    """Monte Carlo estimate of the expected number of fair coin flips until
+    k heads in a row first appear. rng is a random.Random; use rng.random()."""
+    ...
+```
+
+```{.python .tests}
+import random
+
+
+def exact(k):
+    return 2 ** (k + 1) - 2
+
+
+def test_one_head():
+    # geometric(1/2): mean 2, standard deviation sqrt(2); 5 standard errors is 0.07
+    est = mean_flips_until_run(1, 10_000, random.Random(1))
+    assert abs(est - exact(1)) < 0.07, est
+
+
+def test_three_heads():
+    # the waiting time has standard deviation about 11.9; 5 standard errors is 0.42
+    est = mean_flips_until_run(3, 20_000, random.Random(2))
+    assert abs(est - exact(3)) < 0.42, est
+
+
+def test_no_heads_needed():
+    assert mean_flips_until_run(0, 100, random.Random(3)) == 0
+
+
+def test_uses_the_generator():
+    a = mean_flips_until_run(2, 500, random.Random(4))
+    b = mean_flips_until_run(2, 500, random.Random(4))
+    assert a == b, "the same seed must give the same estimate"
+```
+:::

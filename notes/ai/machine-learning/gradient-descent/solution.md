@@ -17,3 +17,25 @@ $$\theta^*=\frac{\sum_{i=1}^n w_ix_i}{\sum_{i=1}^n w_i}.$$
 5. **Zero training error, and overfitting.** Three ReLU layers of width $10$ can represent exclusive or (@sec-ai-deep-learning-neural-networks) and have hundreds of parameters for four examples, so training can fit them exactly; with so little data such a fit says little about new data (@def-overfitting). It certainly does not underfit, and zero test error on unseen data cannot be expected.
 6. **The first and the third.** Choosing the more probable label is the rule; with two labels it means $P(y'=1\mid\boldsymbol x')\ge0.5$ (ties broken towards $1$). The second and fourth conditions hold for every probability ($P\ge0$ and $P(1-P)\ge0$), so they always predict $1$.
 :::
+
+::: {.solution for="prob-gradient-descent-least-squares-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def least_squares_gd(A, b, w0, eta, steps):
+    """Gradient descent on 0.5 * ||A w - b||^2; return (w, losses)."""
+    w = np.array(w0, dtype=float)              # a copy, so w0 is unchanged
+    losses = []
+    for _ in range(steps + 1):
+        r = A @ w - b                          # residual
+        losses.append(0.5 * float(r @ r))
+        if len(losses) <= steps:
+            w = w - eta * (A.T @ r)
+    return w, losses
+```
+
+1. Expanding $F(\mathbf w)=\tfrac12(A\mathbf w-\mathbf b)^\top(A\mathbf w-\mathbf b)$ gives $\nabla F(\mathbf w)=A^\top(A\mathbf w-\mathbf b)$, the transpose of $A$ applied to the residual.
+2. Each pass records $F$ at the current point and then steps, except after the last record, so the list has `steps + 1` values.
+3. $F$ is $L$-smooth with $L=\lVert A\rVert_2^2$, the largest eigenvalue of $A^\top A$; with $\eta=1/L$ the loss never increases (@thm-descent-lemma). In the last test $\eta=3>2/L=2$, and each step multiplies $w$ by $1-3=-2$.
+:::

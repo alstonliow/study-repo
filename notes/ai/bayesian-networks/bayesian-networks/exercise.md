@@ -38,3 +38,48 @@ c.  $\mathbb{P}(\text{Rain} = 1 \mid \text{WetGrass} = 1) > \mathbb{P}(\text{Rai
 
 *Note (these notes):* Only the written parts of this handout problem are given here; its programming parts are left out (SPEC §17.13.1, item 4).
 :::
+
+::: {#prob-bn-joint-probability-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-bayesian"}
+A Bayesian network (@def-bayesian-network) is stored as a dict `net` that maps each variable to a pair `(parents, cpt)`, the variables in a topological order. `parents` is a tuple of variables, and `cpt` maps each tuple of parent values to a dict from the variable's values to their probabilities:
+
+```python
+net = {"B": ((), {(): {0: 0.9, 1: 0.1}}),
+       "A": (("B",), {(0,): {0: 0.8, 1: 0.2}, (1,): {0: 0.3, 1: 0.7}})}
+```
+
+Write `joint_probability(net, x)`, where `x` is a full assignment, a dict from every variable to a value. Return $P(X=x)$, the product of the local conditional probabilities. A value missing from a row of a `cpt` has probability $0$.
+
+```{.python .starter}
+def joint_probability(net, x):
+    """P(X = x) for a full assignment x (dict variable -> value)."""
+    ...
+```
+
+```{.python .tests}
+import itertools
+
+net = {
+    "B": ((), {(): {0: 0.9, 1: 0.1}}),
+    "E": ((), {(): {0: 0.8, 1: 0.2}}),
+    "A": (("B", "E"), {(0, 0): {0: 0.95, 1: 0.05}, (0, 1): {0: 0.6, 1: 0.4},
+                       (1, 0): {0: 0.1, 1: 0.9}, (1, 1): {0: 0.05, 1: 0.95}}),
+    "J": (("A",), {(0,): {0: 0.9, 1: 0.1}, (1,): {0: 0.3, 1: 0.7}}),
+}
+
+
+def test_hand_values():
+    assert abs(joint_probability(net, {"B": 1, "E": 0, "A": 1, "J": 1}) - 0.1 * 0.8 * 0.9 * 0.7) < 1e-12
+    assert abs(joint_probability(net, {"J": 0, "A": 0, "E": 1, "B": 0}) - 0.9 * 0.2 * 0.6 * 0.9) < 1e-12
+
+
+def test_sums_to_one():
+    total = sum(joint_probability(net, dict(zip("BEAJ", v))) for v in itertools.product([0, 1], repeat=4))
+    assert abs(total - 1) < 1e-12
+
+
+def test_missing_value_has_probability_zero():
+    sparse = {"X": ((), {(): {"a": 1.0}}), "Y": (("X",), {("a",): {"u": 0.5, "v": 0.5}})}
+    assert joint_probability(sparse, {"X": "a", "Y": "w"}) == 0
+    assert joint_probability(sparse, {"X": "a", "Y": "v"}) == 0.5
+```
+:::

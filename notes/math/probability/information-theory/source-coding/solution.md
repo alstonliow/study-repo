@@ -17,3 +17,26 @@ $$P(B_n)\le P(B_n\cap A)+P(A^c)\le|B_n|\,2^{-n(H-\epsilon)}+P(A^c)\le2^{-n\delta
 $$E[L_n]\le P(A)\bigl(2+n(H+\epsilon)\bigr)+P(A^c)\bigl(1+n\lceil\log_2|\mathcal X|\rceil\bigr).$$
 Dividing by $n$ and using $P(A^c)\to0$ from (b), $\limsup_nE[L_n]/n\le H+\epsilon$. (See also @thm-source-coding.)
 :::
+
+::: {.solution for="prob-guessing-tree-code" status="draft"}
+```{.python}
+def guess_counts(freqs):
+    """freqs[i] > 0 is the weight of the i-th word in alphabetical order. Build the
+    search tree by repeatedly merging the adjacent pair of nodes with the smallest
+    total weight (the leftmost such pair on ties). Return, for each word, its depth
+    in the tree: the number of questions needed to identify it."""
+    nodes = [(f, [i]) for i, f in enumerate(freqs)]     # (weight, words below)
+    depth = [0] * len(freqs)
+    while len(nodes) > 1:
+        k = min(range(len(nodes) - 1), key=lambda j: nodes[j][0] + nodes[j + 1][0])
+        (a, wa), (b, wb) = nodes[k], nodes[k + 1]
+        for i in wa + wb:                               # every word below moves one level down
+            depth[i] += 1
+        nodes[k:k + 2] = [(a + b, wa + wb)]
+    return depth
+```
+
+1. Each node is stored as (weight, words below it). A merge replaces two adjacent nodes by one, so the list stays in alphabetical order.
+2. A merge puts both nodes one level deeper, so it adds one to the depth of every word below them. After $n-1$ merges one node is left and the depths are final.
+3. The question at a node is whether the secret comes after the last word of the left subtree, so the depths are the question counts. The depths are the codeword lengths of a prefix code, so the mean depth is at least the entropy (@thm-source-coding). The greedy tree need not be the best order-preserving tree: merging the cheapest adjacent pair is a heuristic, not an optimality guarantee.
+:::

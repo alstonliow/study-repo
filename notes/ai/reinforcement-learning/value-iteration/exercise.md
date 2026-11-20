@@ -133,3 +133,79 @@ Pacman starts in state $A$. The reward for entering each state is reflected in t
 
 *Note (these notes):* Grids redrawn; highlighted squares are exit states.
 :::
+
+::: {#prob-value-iteration-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-mountaincar" packages="numpy"}
+Implement value iteration (@def-value-iteration) for an MDP given by arrays. Write `value_iteration(T, R, end, gamma, tol=1e-10)`.
+
+- States are `0, ..., S-1` and actions `0, ..., A-1`; every action is available in every state.
+- `T[s, a, t]` is the probability of moving from `s` to `t` with action `a`, and `R[s, a, t]` the reward of that move; both arrays have shape `(S, A, S)`.
+- `end` is a boolean array of shape `(S,)`: end states have value $0$.
+- Iterate from $V^{(0)}=0$ until the largest change of a value is below `tol`. Return `(V, pi)`: the values, an array of shape `(S,)`, and the greedy policy, an integer array of shape `(S,)` (for end states any action). Among tied actions take the smallest.
+
+```{.python .starter}
+import numpy as np
+
+
+def value_iteration(T, R, end, gamma, tol=1e-10):
+    """Return (V, pi) for the MDP with transition array T and reward array R."""
+    ...
+```
+
+```{.python .tests}
+import itertools
+import numpy as np
+
+
+def number_line(n, p, left, right):
+    """States 0..n-1 on a line; 0 and n-1 are end states. Action 0 tries to
+    move left, action 1 right; it succeeds with probability p, else the move
+    goes the other way. Entering 0 pays `left`, entering n-1 pays `right`,
+    every other move costs 1."""
+    T, R = np.zeros((n, 2, n)), np.full((n, 2, n), -1.0)
+    R[:, :, 0], R[:, :, n - 1] = left, right
+    for s in range(1, n - 1):
+        T[s, 0, s - 1] += p
+        T[s, 0, s + 1] += 1 - p
+        T[s, 1, s + 1] += p
+        T[s, 1, s - 1] += 1 - p
+    end = np.zeros(n, dtype=bool)
+    end[[0, n - 1]] = True
+    return T, R, end
+
+
+def best_by_brute_force(T, R, end, gamma):
+    """Optimal values: evaluate every deterministic policy exactly."""
+    S = len(end)
+    best = np.full(S, -np.inf)
+    for pi in itertools.product(range(T.shape[1]), repeat=S):
+        P = np.array([T[s, pi[s]] for s in range(S)])
+        r = np.array([P[s] @ R[s, pi[s]] for s in range(S)])
+        P[end], r[end] = 0, 0
+        best = np.maximum(best, np.linalg.solve(np.eye(S) - gamma * P, r))
+    return best
+
+
+def test_number_line():
+    for p, left, right, gamma in [(0.8, 10, 50, 1.0), (0.7, 20, 5, 0.9), (1.0, 3, 30, 0.5)]:
+        T, R, end = number_line(6, p, left, right)
+        V, pi = value_iteration(T, R, end, gamma)
+        assert np.allclose(V, best_by_brute_force(T, R, end, gamma), atol=1e-6)
+        assert V[0] == 0 and V[-1] == 0
+
+
+def test_greedy_policy():
+    T, R, end = number_line(5, 0.9, 1, 100)
+    V, pi = value_iteration(T, R, end, 1.0)
+    assert list(pi[1:4]) == [1, 1, 1]
+    T, R, end = number_line(5, 0.9, 100, 1)
+    assert list(value_iteration(T, R, end, 1.0)[1][1:4]) == [0, 0, 0]
+
+
+def test_ties_take_smallest_action():
+    # one state, two identical actions that loop with reward 1
+    T = np.ones((1, 2, 1))
+    R = np.ones((1, 2, 1))
+    V, pi = value_iteration(T, R, np.array([False]), 0.5)
+    assert np.isclose(V[0], 2.0) and pi[0] == 0
+```
+:::

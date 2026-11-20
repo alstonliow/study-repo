@@ -276,3 +276,106 @@ def test_start_is_end():
     assert a_star(5, line(0, 9), lambda s: s == 5, lambda s: abs(5 - s)) == (0, [5], 1)
 ```
 :::
+
+::: {#prob-visit-all-heuristic-code .problem .coding origin="adapted" source="res-ucb-cs188-projects-search" solution="withheld"}
+An agent in a grid maze must visit a set of target cells, in any order, for example the four corners of the maze or every cell that holds food. It moves one cell north, south, east or west per step, at cost $1$, and cannot enter a wall. A state is a pair `(pos, left)`: `pos = (x, y)` is the agent's cell and `left` is the `frozenset` of targets not yet visited. Entering a target removes it from `left`; the end states are those with `left` empty.
+
+Write a heuristic `visit_all_heuristic(s)` for this problem that
+
+- is consistent (@def-consistent-heuristic) and therefore admissible (@prp-consistent-admissible), on every maze;
+- is $0$ at end states;
+- is at least the Manhattan distance from `pos` to the farthest target in `left`.
+
+The heuristic gets only the state, not the walls. A relaxed problem (@def-relaxed-search-problem, @thm-relaxation-consistent) suggests consistent choices, and the maximum of consistent heuristics is consistent (@thm-max-heuristic). A larger heuristic makes A\* explore fewer states; try to beat the farthest-target bound when few targets are left.
+
+```{.python .starter}
+def visit_all_heuristic(s):
+    """Consistent lower bound on the number of moves needed from s = (pos, left)
+    to visit every cell in left."""
+    ...
+```
+
+```{.python .tests}
+from collections import deque
+
+
+def maze_problem(rows, targets):
+    """rows: strings, '#' a wall; row 0 is the top, (x, y) = (column, row)."""
+    free = {(x, y) for y, r in enumerate(rows) for x, ch in enumerate(r) if ch != "#"}
+
+    def succ(s):
+        (x, y), left = s
+        out = []
+        for p in [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]:
+            if p in free:
+                out.append((p, left - {p}))
+        return out
+    return free, succ
+
+
+def true_costs(free, succ, targets):
+    """Exact cost to the end for every state, by BFS backwards from the end states."""
+    import itertools
+    states = [(p, frozenset(c)) for p in free for k in range(len(targets) + 1)
+              for c in itertools.combinations(sorted(targets), k) if p not in c]
+    pred = {s: [] for s in states}
+    for s in states:
+        for t in succ(s):
+            pred[t].append(s)
+    dist = {s: 0 for s in states if not s[1]}
+    queue = deque(dist)
+    while queue:
+        t = queue.popleft()
+        for s in pred[t]:
+            if s not in dist:
+                dist[s] = dist[t] + 1
+                queue.append(s)
+    return states, dist
+
+
+def check(rows, targets):
+    free, succ = maze_problem(rows, targets)
+    states, dist = true_costs(free, succ, targets)
+    for s in states:
+        h = visit_all_heuristic(s)
+        pos, left = s
+        if not left:
+            assert h == 0, f"h{s} = {h}, expected 0 at an end state"
+        far = max((abs(pos[0] - q[0]) + abs(pos[1] - q[1]) for q in left), default=0)
+        assert h >= far, f"h{s} = {h} is below the farthest-target distance {far}"
+        if s in dist:
+            assert h <= dist[s], f"h{s} = {h} exceeds the true cost {dist[s]}"
+        for t in succ(s):
+            assert h <= 1 + visit_all_heuristic(t), f"not consistent on {s} -> {t}"
+
+
+def test_corners_open_room():
+    rows = ["......", "......", "......", "......"]
+    check(rows, {(0, 0), (5, 0), (0, 3), (5, 3)})
+
+
+def test_corners_with_walls():
+    rows = ["#######",
+            "#.....#",
+            "#.###.#",
+            "#.#...#",
+            "#.....#",
+            "#######"]
+    check(rows, {(1, 1), (5, 1), (1, 4), (5, 4)})
+
+
+def test_scattered_food():
+    rows = ["#########",
+            "#...#...#",
+            "#.#.#.#.#",
+            "#.......#",
+            "#########"]
+    check(rows, {(1, 1), (3, 2), (7, 1), (5, 3), (2, 3)})
+
+
+def test_single_target_is_tight():
+    # with one target left and no walls in the way, the Manhattan distance is exact
+    assert visit_all_heuristic(((2, 2), frozenset({(5, 6)}))) == 7
+    assert visit_all_heuristic(((2, 2), frozenset())) == 0
+```
+:::

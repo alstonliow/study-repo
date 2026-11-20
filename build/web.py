@@ -509,7 +509,7 @@ def library_page() -> str:
 
 # ---------------------------------------------------------------- Projects (SPEC §17.13.5)
 def project_info(prj) -> str:
-    """'Coursework · CS221 · active · draft': kind, course, stage, write-up status."""
+    """'Course · CS221 · active · draft': kind, course, stage, write-up status."""
     course = next((c.code for c in REPO.courses if c.id == prj.course), prj.course)
     return " · ".join(x for x in [prj.kind.capitalize(), course, prj.stage,
                                   "draft" if prj.status == "draft" else ""] if x)
@@ -546,7 +546,7 @@ def projects_page() -> str:
     """The Projects page: public projects by stage (private ones never, SPEC §17.9)."""
     from projects import STAGES
     out = ["---", "title: Projects", "---", "",
-           "[Course projects, coursework and personal projects: what was built, how, and which topics "
+           "[Course projects and personal projects: what was built, how, and which topics "
            "it puts to work. Each project's code is in its own repository.]{.summary-intro}", ""]
     for stage in STAGES:
         rows = project_rows(p for p in REPO.projects.values() if p.stage == stage)

@@ -21,3 +21,29 @@ $$\frac{\partial s}{\partial B_{kj}}=\sum_i A_{ik}\quad(\text{column sum } k \te
 The column sums of $A$ are $6,6,9$, the same for every $j$:
 $$\frac{\partial s}{\partial B}=\begin{pmatrix}6&6\\6&6\\9&9\end{pmatrix}=(A^\top\mathbf 1_m)\,\mathbf 1_p^\top.$$
 :::
+
+::: {.solution for="prob-backpropagation-gradient-check-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def numerical_gradient(f, w, h=1e-5):
+    """Central-difference estimate of the gradient of f at w (same shape as w)."""
+    w = np.array(w, dtype=float)               # a private copy
+    g = np.zeros_like(w)
+    for i in np.ndindex(w.shape):
+        old = w[i]
+        w[i] = old + h
+        up = f(w)
+        w[i] = old - h
+        down = f(w)
+        w[i] = old
+        g[i] = (up - down) / (2 * h)
+    return g
+```
+
+1. `np.ndindex` runs over every index of an array of any shape, so the same loop serves vectors and matrices.
+2. Working on a copy keeps the caller's array untouched; restoring `w[i]` after each pair of calls keeps the other coordinates at their original values.
+3. The central difference has error $O(h^2)$ for smooth $f$ (the $h^1$ terms of the two Taylor expansions cancel), against $O(h)$ for the one-sided difference, so $h=10^{-5}$ gives about ten correct digits before rounding errors dominate.
+4. Comparing this estimate with a backward pass at a few random points catches most mistakes in hand-written gradients, as in the third test.
+:::

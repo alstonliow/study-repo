@@ -210,3 +210,99 @@ Eve is fed up with Alice and Bob teaming up and quits the game. Alice and Bob co
 
 *Note (these notes):* Figures redrawn; Bob's nodes in Figure 1 have children $(A,B)$, $(C,D)$, $(E,F)$, $(G,H)$, and the leaves show (left, middle, right) values with Eve's middle value hidden.
 :::
+
+::: {#prob-alpha-beta-code .problem .coding origin="adapted" source="res-stanford-cs221-hw-pacman"}
+Add alpha-beta pruning (@def-alpha-beta-pruning) to the depth-limited minimax of @prob-depth-limited-minimax-code. Write `alphabeta(game, s, depth)` with the same game interface and depth rule (agent 0 maximizes, all other agents minimize, `depth` counts rounds). It must return the same pair `(value, action)` as minimax, the first best action among ties, while skipping every branch that cannot change the result. Stop examining the actions of a state as soon as its value is known to lie outside the interval $(\alpha,\beta)$.
+
+```{.python .starter}
+def alphabeta(game, s, depth):
+    """Minimax value and action of s with alpha-beta pruning: (value, action)."""
+    ...
+```
+
+```{.python .tests}
+import random
+
+
+class Tree:
+    """Nested-list game: numbers are end states, lists hold children; states are
+    paths; agents 0..k-1 move in turn; evaluate(s) = mean of the leaves below s.
+    `calls` counts calls of utility and evaluate."""
+    def __init__(self, tree, k=2):
+        self.tree, self.k, self.calls = tree, k, 0
+    def node(self, s):
+        t = self.tree
+        for i in s:
+            t = t[i]
+        return t
+    def agent(self, s):
+        return len(s) % self.k
+    def is_end(self, s):
+        return not isinstance(self.node(s), list)
+    def utility(self, s):
+        self.calls += 1
+        return self.node(s)
+    def actions(self, s):
+        return list(range(len(self.node(s))))
+    def succ(self, s, a):
+        return s + (a,)
+    def evaluate(self, s):
+        self.calls += 1
+        leaves = []
+        def walk(t):
+            if isinstance(t, list):
+                for c in t:
+                    walk(c)
+            else:
+                leaves.append(t)
+        walk(self.node(s))
+        return sum(leaves) / len(leaves)
+
+
+def reference(g, s, depth):
+    """Plain minimax with the same rules."""
+    if g.is_end(s):
+        return g.utility(s), None
+    i = g.agent(s)
+    if i == 0 and depth == 0:
+        return g.evaluate(s), None
+    best = None
+    for a in g.actions(s):
+        t = g.succ(s, a)
+        v = reference(g, t, depth - 1 if g.agent(t) == 0 and i != 0 else depth)[0]
+        if best is None or (v > best[0] if i == 0 else v < best[0]):
+            best = (v, a)
+    return best
+
+
+def random_tree(rng, height, branching):
+    if height == 0:
+        return rng.randint(-20, 20)
+    return [random_tree(rng, height - 1, branching) for _ in range(rng.randint(1, branching))]
+
+
+def test_textbook_example_prunes():
+    g = Tree([[3, 12, 8], [2, 4, 6], [14, 5, 2]])
+    assert alphabeta(g, (), 1) == (3, 0)
+    assert g.calls == 7                        # the leaves 4 and 6 are never examined
+
+
+def test_agrees_with_minimax_on_random_trees():
+    rng = random.Random(9)
+    pruned = 0
+    for trial in range(200):
+        k = rng.choice([2, 3])
+        t = random_tree(rng, rng.randint(1, 6), 4)
+        depth = rng.randint(0, 3)
+        g, ref = Tree(t, k), Tree(t, k)
+        assert alphabeta(g, (), depth) == reference(ref, (), depth), (t, k, depth)
+        assert g.calls <= ref.calls
+        pruned += ref.calls - g.calls
+    assert pruned > 0
+
+
+def test_ties_keep_first_action():
+    g = Tree([[5, 6], [5, 9], [4, 7]])
+    assert alphabeta(g, (), 1) == (5, 0)
+```
+:::

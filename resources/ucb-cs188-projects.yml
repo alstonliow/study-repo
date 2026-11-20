@@ -1,14 +1,16 @@
 # UC Berkeley CS188 Fall 2025 programming projects (the Berkeley Pac-Man AI projects, ai.berkeley.edu), as a
 # resource (meta/SPEC.md §17.12). DRAFT for owner review. Kept locally in raw/UCB_CS188/fa25/projects (zips).
 # Licence (in every source file): free for educational use provided solutions are not distributed or published,
-# the notice is kept and UC Berkeley is credited; so solution code is never published (SPEC §17.13).
-# Locator = project number. No problems or source keys come from here; projects point to these nodes with `assignment`.
+# the notice is kept and UC Berkeley is credited. So every coding exercise from here is solution="withheld"
+# (SPEC §6.2 item 6, §10): no solution in this repository, and the owner's code stays in a private repository.
+# Locator = project number. No source keys come from here; coding exercises (SPEC §6.4) cite these nodes as `source`.
 # Titles are our own short titles. Node ids are stable.
 id: res-ucb-cs188-projects
 kind: homework
 title: UC Berkeley CS188 Projects (Fall 2025)
 status: draft
 courses: [cs188]
+licence: educational use only; solutions must not be distributed or published
 editions:
 - id: 2025-fall
   current: true

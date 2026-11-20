@@ -15,3 +15,41 @@ Write $s=\text{left}+\text{right}$ for a leaf's value. The leaves have $s(A)=4$,
 9. **Yes.** Bob's utility $b+\frac{a+e}{2}$ is at most $18$, reached only by the leaf $(9,9,9)$. If $A=(9,9,9)$, Bob picks $A$ without looking at $B$, so $B$ is pruned; Alice's utility of $A$ is then $18$, also her maximum, so the right Bob node is pruned too. Bounds make this possible even though Alice and Bob maximise different quantities.
 10. **Yes.** Now Bob's utility $b-\frac{a+e}{2}$ is at most $9-1=8$, reached only by leaves $(1,e,9)$ with $e=1$. If $A=(1,1,9)$, Bob picks $A$ whatever $B$ is, so $B$ is pruned. The same bound argument works for any utilities with known maxima; "not directly adversarial" rules out alpha-beta pruning, not pruning by bounds.
 :::
+
+::: {.solution for="prob-alpha-beta-code" status="draft"}
+```{.python}
+import math
+
+
+def alphabeta(game, s, depth, alpha=-math.inf, beta=math.inf):
+    """Minimax value and action of s with alpha-beta pruning: (value, action)."""
+    if game.is_end(s):
+        return game.utility(s), None
+    i = game.agent(s)
+    if i == 0 and depth == 0:
+        return game.evaluate(s), None
+    best_value, best_action = (-math.inf if i == 0 else math.inf), None
+    for a in game.actions(s):
+        t = game.succ(s, a)
+        next_depth = depth - 1 if game.agent(t) == 0 and i != 0 else depth
+        v, _ = alphabeta(game, t, next_depth, alpha, beta)
+        if i == 0:
+            if v > best_value or best_action is None:
+                best_value, best_action = v, a
+            if best_value >= beta:
+                break                          # a minimizer above avoids this state
+            alpha = max(alpha, best_value)
+        else:
+            if v < best_value or best_action is None:
+                best_value, best_action = v, a
+            if best_value <= alpha:
+                break                          # a maximizer above avoids this state
+            beta = min(beta, best_value)
+    return best_value, best_action
+```
+
+1. $\alpha$ is the best value the maximizer is already guaranteed on the path from the root, $\beta$ the best value for the minimizers. A state whose value is at most $\alpha$ or at least $\beta$ will not be chosen above it, so its remaining actions are skipped. All opponents minimize the same utility, so with several opponents they share $\beta$.
+2. Below a pruned branch the returned number is only a bound on the true value, but it is a bound on the wrong side of $\alpha$ or $\beta$, so the parent's choice is the same as with exact values (@thm-alpha-beta-correct). At the root $\alpha=-\infty$ and $\beta=\infty$, so the root value is exact.
+3. A later root action can only replace the current one with a strictly larger value. Its subtree is searched with $\alpha$ equal to the current best, so if its true value merely ties, it returns at most $\alpha$ and is not chosen: the first best action is kept.
+4. The two extra parameters have defaults, so the call `alphabeta(game, s, depth)` works as required.
+:::

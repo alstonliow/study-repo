@@ -31,3 +31,69 @@ Intuitively, a good degree distribution needs to occasionally have prolific pack
 
 In practice, the ideal soliton distribution does not perform very well because it is not enough to design the distribution to work well in expectation.
 :::
+
+::: {#prob-peeling-decoder-code .problem .coding origin="adapted" source="res-ucb-eecs126-labs-fountain-codes"}
+A *fountain code* sends data over an erasure channel (@def-binary-erasure-channel) without feedback. The data is cut into $n$ chunks $x_0,\dots,x_{n-1}$ (integers here). Each packet carries a random set $I$ of chunk indices and the XOR $\bigoplus_{i\in I}x_i$. Erased packets are simply missing, and the receiver decodes from whatever arrives.
+
+Write `peel(n, packets)`, the *peeling decoder*. Each packet is a pair `(indices, value)`. A packet whose set has one index $i$ gives $x_i$. Then XOR $x_i$ out of the value of every packet that contains $i$ and remove $i$ from its set. This may leave new packets with one index, so repeat until none is left. Return the list of decoded chunks, with `None` for the chunks that stay unknown, and do not change the input. Peel each chunk once, so that the work is proportional to the total size of the packets.
+
+```{.python .starter}
+def peel(n, packets):
+    """Peeling decoder. Chunks are numbered 0..n-1 and hold ints. Each packet is
+    a pair (indices, value): value is the XOR of the chunks at those indices.
+    Return a list of length n with each chunk's value, or None where unknown."""
+    ...
+```
+
+```{.python .tests}
+import random
+
+
+def test_singletons_only():
+    assert peel(3, [({2}, 7), ({0}, 5)]) == [5, None, 7]
+
+
+def test_chain_needs_several_passes():
+    x = [9, 4, 6, 1]
+    packets = [({2, 3}, x[2] ^ x[3]), ({1, 2}, x[1] ^ x[2]), ({0, 1}, x[0] ^ x[1]), ({0}, x[0])]
+    assert peel(4, packets) == x
+
+
+def test_stuck_without_a_singleton():
+    # three packets of degree 2 on a cycle: no packet ever has one unknown chunk
+    packets = [({0, 1}, 3), ({1, 2}, 5), ({0, 2}, 6)]
+    assert peel(3, packets) == [None, None, None]
+
+
+def test_redundant_packets_and_empty_input():
+    assert peel(2, []) == [None, None]
+    assert peel(2, [({0}, 1), ({0}, 1), ({0, 1}, 3), ({1}, 2)]) == [1, 2]
+
+
+def test_does_not_modify_input():
+    packets = [({0}, 1), ({0, 1}, 3)]
+    peel(2, packets)
+    assert packets == [({0}, 1), ({0, 1}, 3)]
+
+
+def test_random_fountain_code():
+    rng = random.Random(126)
+    n = 60
+    x = [rng.randrange(256) for _ in range(n)]
+    # ideal soliton degrees: 1 with probability 1/n, d with probability 1/(d(d-1))
+    weights = [1 / n] + [1 / (d * (d - 1)) for d in range(2, n + 1)]
+    packets = []
+    for _ in range(3 * n):
+        ix = rng.sample(range(n), rng.choices(range(1, n + 1), weights)[0])
+        v = 0
+        for i in ix:
+            v ^= x[i]
+        packets.append((set(ix), v))
+    out = peel(n, packets)
+    assert all(o is None or o == xi for o, xi in zip(out, x)), "a decoded chunk is wrong"
+    known = {i for i, o in enumerate(out) if o is not None}
+    for ix, _ in packets:                          # peeling must not stop early
+        assert len(set(ix) - known) != 1, "a packet with one unknown chunk is left"
+    assert len(known) > n // 2
+```
+:::
