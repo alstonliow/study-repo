@@ -179,8 +179,10 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
         res = REPO.sources.resolve(src) if src else None     # the exercise filter groups by resource
         rid = res.resource if res else ""
         rlabel = REPO.resources[rid].title.replace('"', "'") if rid in REPO.resources else "Other"
+        year = REPO.resources[rid].year_of(res.node) if res and rid in REPO.resources else ""
+        ydata = f' data-year="{year}"' if year else ""          # Year facet (SPEC §17.15.7)
         out.append(f'{fo} {{.problem-group data-courses="{cs}" data-item="{pid}" data-level="{lv}" {kind} '
-                   f'data-source="{rid}" data-source-label="{rlabel}"}}\n'
+                   f'data-source="{rid}" data-source-label="{rlabel}"{ydata}}}\n'
                    f'{inner}\n{fo}\n')
     return "\n".join(out)
 

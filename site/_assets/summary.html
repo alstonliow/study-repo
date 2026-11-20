@@ -40,6 +40,7 @@
   // (build/summaries.py). Note pages with two or more exercises get the same bar
   // above their exercises, with only the facets that page can use.
   const SOURCE = { key: "source", label: "Source", type: "check", options: [] };   // filled per page
+  const YEAR = { key: "year", label: "Year", type: "check", options: [] };       // filled per page
   const TYPE = { key: "type", label: "Type", type: "check", options: [["written", "Written"], ["code", "Code"]] };
   const LEVEL = { key: "level", label: "Level", type: "check", options: [
     ["easy", "Easy"], ["medium", "Medium"], ["hard", "Hard"], ["", "Unrated"]] };
@@ -49,21 +50,23 @@
     ["hidden", "Hidden"], ["collapsed", "Collapsed"], ["expanded", "Expanded"]] };
   const KIND = { key: "kind", label: "Show", type: "check", options: [
     ["def", "Definitions"], ["result", "Results"], ["exercise", "Exercises"], ["synthesis", "Synthesis"]] };
+  const PER_PAGE = ["source", "year"];   // facets whose values differ per page (lists of values switched off)
   const DEFAULT = { kind: ["def", "result", "exercise", "synthesis"], type: ["written", "code"],
                     level: ["easy", "medium", "hard", ""], state: ["new", "learned", "reviewing", "mastered"],
                     solutions: "collapsed" };
 
-  // `source` is the resources switched off on this page; it is not kept, as
-  // each page has its own sources.
+  // `source` and `year` are the values switched off on this page; they are not
+  // kept, as each page has its own sources and years.
   function load(key) {
     let s;
     try { s = Object.assign({}, DEFAULT, JSON.parse(localStorage.getItem(key) || "{}")); }
     catch (e) { s = Object.assign({}, DEFAULT); }
     s.source = [];
+    s.year = [];
     return s;
   }
   function save(key, s) {
-    const { source, ...kept } = s;
+    const { source, year, ...kept } = s;
     try { localStorage.setItem(key, JSON.stringify(kept)); } catch (e) { /* private mode */ }
   }
 
@@ -74,7 +77,7 @@
   function groupOk(el, s) {
     return s.level.includes(el.dataset.level || "") && s.state.includes(stateOf(el.dataset.item)) &&
            s.type.includes(el.dataset.kind === "code" ? "code" : "written") &&
-           !s.source.includes(el.dataset.source || "");
+           !s.source.includes(el.dataset.source || "") && !s.year.includes(el.dataset.year || "");
   }
 
   function apply(box, s, summary) {
@@ -121,10 +124,15 @@
     const probs = [...document.querySelectorAll("main .problem-group")];
     const sources = new Map();
     probs.forEach(g => sources.set(g.dataset.source || "", g.dataset.sourceLabel || "Other"));
+    // years, newest first; problems without one go last as "Undated" (SPEC §17.15.7)
+    const years = [...new Set(probs.map(g => g.dataset.year || ""))]
+      .sort((a, b) => (a === "") - (b === "") || b.localeCompare(a));
     const kinds = new Set(probs.map(g => g.dataset.kind === "code" ? "code" : "written"));
     const out = summary ? [KIND] : [];
     if (sources.size > 1)
       out.push(Object.assign({}, SOURCE, { options: [...sources].sort((a, b) => a[1].localeCompare(b[1])) }));
+    if (years.length > 1)
+      out.push(Object.assign({}, YEAR, { options: years.map(y => [y, y || "Undated"]) }));
     if (kinds.size > 1) out.push(TYPE);
     if (summary || probs.some(g => g.dataset.level)) out.push(LEVEL);
     out.push(STATE, SOLUTIONS);
@@ -145,11 +153,11 @@
         input.name = "sf-" + g.key;
         input.value = value;
         input.checked = g.type === "radio" ? s[g.key] === value
-                      : g.key === "source" ? !s.source.includes(value) : s[g.key].includes(value);
+                      : PER_PAGE.includes(g.key) ? !s[g.key].includes(value) : s[g.key].includes(value);
         input.addEventListener("change", () => {
           if (g.type === "radio") s[g.key] = value;
-          else if (g.key === "source")
-            s.source = Array.from(fs.querySelectorAll("input:not(:checked)")).map(i => i.value);
+          else if (PER_PAGE.includes(g.key))
+            s[g.key] = Array.from(fs.querySelectorAll("input:not(:checked)")).map(i => i.value);
           else s[g.key] = Array.from(fs.querySelectorAll("input:checked")).map(i => i.value);
           save(key, s);
           apply(box, s, summary);
@@ -167,7 +175,7 @@
     reset.textContent = "Reset";
     reset.className = "btn btn-sm btn-link p-0";
     reset.addEventListener("click", () => {
-      s = Object.assign({}, DEFAULT, { source: [] }); save(key, s); box.innerHTML = ""; build(box, key, summary);
+      s = Object.assign({}, DEFAULT, { source: [], year: [] }); save(key, s); box.innerHTML = ""; build(box, key, summary);
     });
     box.appendChild(reset);
     box.hidden = false;

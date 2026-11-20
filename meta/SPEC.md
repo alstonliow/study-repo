@@ -1390,10 +1390,15 @@ in any public file or build.
    them). Textbook prose is never copied; notes are written in our own words.
 7. **Filters.**
    - The course filter (§13 item 5) gets the UEC group from item 2.
-   - The exercise filter bar (§14) gains a **Year** facet, for problems whose
-     source resource has a year (past papers, dated problem sets, public ones
-     included). Like the other facets, it is shown only when a page has more
-     than one value.
+   - The exercise filter bar (§14) gains a **Year** facet (built 2026-11-20),
+     for problems whose source has a year (past papers, dated problem sets,
+     public ones included). A resource or any of its nodes may set `year:`,
+     either a year (`2024`) or an academic year (`2025-26`); a problem's year
+     is that of its source node, else of the nearest ancestor node that sets
+     one, else of the resource. Values are listed newest first, problems
+     without a year last as "Undated". Like the other facets, it is shown
+     only when a page has more than one value, and what is switched off is
+     not kept from page to page.
 8. **Handouts.** In the private build the Export page (§15) offers the UEC
    courses and a language choice (English, 中文), and writes a local
    `make pdf-private` command instead of the GitHub workflow.

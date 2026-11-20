@@ -23,6 +23,7 @@ from pathlib import Path
 import yaml
 
 ID = re.compile(r"res-[a-z0-9]+(?:-[a-z0-9]+)*")
+YEAR = re.compile(r"\d{4}(?:-\d{2})?")      # `year:` on a resource or node: 2024, or an academic year 2025-26
 
 
 @dataclass
@@ -104,6 +105,16 @@ class Resource:
         """The node at an exact locator in one edition."""
         return self._at.get((edition, locator))
 
+    def year_of(self, node_id: str = "") -> str:
+        """The year of a node (exercise filter, SPEC §17.15.7): its own `year:`,
+        else the nearest ancestor's, else the resource's; "" when none is set."""
+        n = self.nodes.get(node_id)
+        while n is not None:
+            if "year" in n.extra:
+                return str(n.extra["year"])
+            n = self.nodes.get(n.parent)
+        return str(self.meta.get("year", "") or "")
+
     def resolve(self, key: str) -> Resolution | str:
         """A legacy key -> Resolution, or the reason it does not resolve."""
         lk = self.legacy
@@ -164,6 +175,8 @@ def parse(path: Path) -> Resource:
                     problems.append(f"{nid}: edition '{ed}' is not listed under editions")
             nodes[nid] = Node(nid, str(item.get("kind", "")), str(item.get("title", "")), at, parent,
                               extra={k: v for k, v in item.items() if k not in ("id", "kind", "title", "at", "nodes")})
+            if "year" in item and not YEAR.fullmatch(str(item["year"])):
+                problems.append(f"{nid}: year must be like 2024 or 2025-26")
             nodes[nid].children = walk(item.get("nodes"), nid)
             ids.append(nid)
         return ids
@@ -181,6 +194,8 @@ def parse(path: Path) -> Resource:
         if key in d and not d[key]:
             problems.append(f"'{key}' is empty; leave it out instead")
     known = {"id", "kind", "title", "status", "editions", "legacy_keys", "nodes"}
+    if "year" in d and not YEAR.fullmatch(str(d["year"])):
+        problems.append("year must be like 2024 or 2025-26")
     return Resource(rid, path, str(d.get("kind", "")), str(d.get("title", "")), str(d.get("status", "draft")),
                     editions, lk, nodes, roots, problems=problems,
                     meta={k: v for k, v in d.items() if k not in known},

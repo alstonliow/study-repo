@@ -911,6 +911,30 @@ class TestProjects(Repo):
         self.assertIn("## Projects", (site / "courses/demo.qmd").read_text())
 
 
+class TestYear(Repo):
+    """The Year facet (SPEC §17.15.7): a problem's year comes from its source node,
+    the nearest ancestor with one, or the resource."""
+
+    def test_year_on_problem_groups(self):
+        self.edit("resources/demo.yml", "status: draft\n", "status: draft\nyear: 2020\n")
+        self.edit("resources/demo.yml", "title: Basics exercises\n", "title: Basics exercises\n        year: 2025-26\n")
+        page = (generate(self.root) / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn('data-item="prob-first-01" data-level="medium" data-kind="written" '
+                      'data-source="res-demo" data-source-label="Demo course notes" data-year="2020"', page)
+        self.assertIn('data-source-label="Demo course notes" data-year="2025-26"', page)   # the coding exercise's node
+        self.assertEqual(self.check().returncode, 0)
+
+    def test_no_year_no_attribute(self):
+        page = (generate(self.root) / "notes/t/alpha/first.qmd").read_text()
+        self.assertNotIn("data-year", page)
+
+    def test_bad_year(self):
+        self.edit("resources/demo.yml", "status: draft\n", "status: draft\nyear: last year\n")
+        r = self.check()
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn("year must be like 2024 or 2025-26", r.stdout)
+
+
 PRIVATE_FILES = {
     "private/meta/taxonomy.yml": """parts:
   - title: Tutoring
