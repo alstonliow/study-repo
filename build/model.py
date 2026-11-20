@@ -24,6 +24,9 @@ from kinds import SUMMARY_PREFIXES as KEY_PREFIXES
 ROOT = Path(os.environ.get("STUDY_ROOT") or Path(__file__).resolve().parent.parent).resolve()
 NOTES = ROOT / "notes"
 META = ROOT / "meta"
+# The private store (SPEC §17.14): read only when STUDY_PRIVATE=1 (make check-private,
+# make site-private). Public commands and CI never set it, so they never read private/.
+PRIVATE = os.environ.get("STUDY_PRIVATE") == "1"
 
 NOTE_FILES = ("note.md", "example.md", "code.md", "exercise.md", "solution.md")
 PAGE_FILES = ("note.md", "example.md", "code.md")   # page body, in page order (SPEC §5.9)
@@ -210,9 +213,11 @@ class SourceFile:
 class Note:
     """One knowledge point (a folder under notes/)."""
 
-    def __init__(self, folder: Path):
+    def __init__(self, folder: Path, base: Path = NOTES, visibility: str = "public"):
         self.folder = folder
-        self.id = str(folder.relative_to(NOTES))
+        self.id = str(folder.relative_to(base))
+        self.visibility = visibility     # follows from the store it was read from (SPEC §17.9.2)
+        self.dir = str(folder.relative_to(ROOT)) if folder.is_relative_to(ROOT) else f"notes/{self.id}"
         self.files: dict[str, SourceFile] = {}
         for name in NOTE_FILES:
             p = folder / name
@@ -339,8 +344,9 @@ class Point:
 class Course:
     """A course file meta/courses/<id>.yml (SPEC §13)."""
 
-    def __init__(self, path: Path):
+    def __init__(self, path: Path, visibility: str = "public"):
         self.path = path
+        self.visibility = visibility     # follows from where the file is (SPEC §17.14.1)
         d = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         self.id = d.get("id", path.stem)
         self.code = d.get("code", self.id.upper())
@@ -363,7 +369,8 @@ class Course:
         self.parts: set[str] = set()       # blocks covered one by one
         self.excluded: set[str] = set(self.exclude)
         self.order: list[tuple[str, Point]] = []   # notes in course order, with their first point
-        self.field = ""        # derived field of knowledge (§13 item 6), set by resolve_courses()
+        self.field_set = d.get("field")   # optional override of the derived field (§13 item 6, §17.15.2)
+        self.field = ""        # field of knowledge (§13 item 6), set by resolve_courses()
 
     @property
     def coursework_url(self) -> str:
@@ -381,26 +388,54 @@ class Course:
         return None
 
 
+def folders_in(notes: Path) -> list[Path]:
+    return sorted({p.parent for p in notes.rglob("*.md")}) if notes.exists() else []
+
+
 class Repo:
-    def __init__(self, root: Path = ROOT):
+    def __init__(self, root: Path = ROOT, private: bool = PRIVATE):
         self.root = root
         self.errors: list[str] = []
+        # private build (SPEC §17.14.3): also read private/, when asked and present
+        pdir = root / "private"
+        self.private_missing = private and not pdir.is_dir()
+        self.private = private and pdir.is_dir()
         tax = yaml.safe_load((META / "taxonomy.yml").read_text(encoding="utf-8")) or {}
-        folders = sorted({p.parent for p in NOTES.rglob("*.md")}) if NOTES.exists() else []
+        ptax: dict = {}
+        if self.private and (pdir / "meta" / "taxonomy.yml").exists():
+            ptax = yaml.safe_load((pdir / "meta" / "taxonomy.yml").read_text(encoding="utf-8")) or {}
+        self.public_branches = {b["id"] for p in tax.get("parts") or [] for b in p.get("branches") or []}
+        tax = {"parts": merge_parts(tax.get("parts") or [], ptax.get("parts") or [])}
+        self.private_branches = {b["id"] for p in ptax.get("parts") or [] for b in p.get("branches") or []}
+        stores = [(NOTES, "public")] + ([(pdir / "notes", "private")] if self.private else [])
         # notes/<branch>/review/: the branch's synthesis problems (SPEC §6.3), not a note
         self.reviews: dict[str, Note] = {}
         self.all_notes = []                                   # includes folders without note.md
-        for f in folders:
-            n = Note(f)
-            if f.name == REVIEW and not n.has_note:
-                self.reviews[n.branch] = n
-            else:
-                self.all_notes.append(n)
-        self.notes = {n.id: n for n in self.all_notes if n.has_note}
+        for base, vis in stores:
+            for f in folders_in(base):
+                n = Note(f, base, vis)
+                if f.name == REVIEW and not n.has_note:
+                    self.reviews[n.branch] = n
+                else:
+                    self.all_notes.append(n)
+        self.notes: dict[str, Note] = {}
+        self.clashes: list[str] = []      # private ids that equal public ones (SPEC §17.14.2)
+        for n in self.all_notes:
+            if not n.has_note:
+                continue
+            if n.id in self.notes:
+                self.clashes.append(f"{n.dir}: private note id '{n.id}' is also a public note")
+                continue
+            self.notes[n.id] = n
         self.owner = {bid: n.id for n in list(self.notes.values()) + list(self.reviews.values())
                       for bid in n.blocks}
         self.alias_of = {a: n.id for n in self.notes.values() for a in n.aliases}   # old id -> current id
         self.resources = resource_files.load(root)                     # SPEC §17.12
+        for rid, r in (resource_files.load(pdir, "private") if self.private else {}).items():
+            if rid in self.resources:
+                self.clashes.append(f"{r.path.relative_to(root)}: private resource id '{rid}' is also a public resource")
+            else:
+                self.resources[rid] = r
         self.projects = project_files.load(root)                       # SPEC §17.13 (public only)
         # labelled blocks in project write-ups (SPEC §17.13.2.3): project id -> block ids
         self.project_blocks = {p.id: [d.id for d in divs_in(p.body, str(p.path)) if d.id]
@@ -424,8 +459,8 @@ class Repo:
         self.branch_order = {b["id"]: [str(x) for x in b.get("notes") or []]
                              for p in tax.get("parts", []) for b in p["branches"]}
         self.sources = Sources(self.resources)
-        cdir = META / "courses"
-        self.courses = [Course(p) for p in sorted(cdir.glob("*.yml"))] if cdir.exists() else []
+        cdirs = [(META / "courses", "public")] + ([(pdir / "meta" / "courses", "private")] if self.private else [])
+        self.courses = [Course(p, vis) for d, vis in cdirs if d.exists() for p in sorted(d.glob("*.yml"))]
         self.resolve_courses()
 
     def _index(self) -> dict[str, Entity]:
@@ -433,12 +468,12 @@ class Repo:
         folder and labelled block. Aliases are not in it (see alias_of)."""
         out: dict[str, Entity] = {}
         for n in self.notes.values():
-            out[n.id] = Entity(n.id, "note", n.id, n.title)
+            out[n.id] = Entity(n.id, "note", n.id, n.title, n.visibility)
         for rv in self.reviews.values():
-            out[rv.id] = Entity(rv.id, "review", rv.id, "Synthesis problems")
+            out[rv.id] = Entity(rv.id, "review", rv.id, "Synthesis problems", rv.visibility)
         for n in list(self.notes.values()) + list(self.reviews.values()):
             for bid, name in n.blocks.items():
-                out.setdefault(bid, Entity(bid, bid.split("-", 1)[0], n.id, name))
+                out.setdefault(bid, Entity(bid, bid.split("-", 1)[0], n.id, name, n.visibility))
         for r in self.resources.values():
             out.setdefault(r.id, Entity(r.id, "resource", r.id, r.title, r.visibility))
             for node in r.nodes.values():
@@ -474,7 +509,7 @@ class Repo:
                     c.problems.append(("error", f"exclude: unknown block '{b}'"))
                 elif self.owner[b] not in c.whole:
                     c.problems.append(("warning", f"exclude: '{b}' is not inside a covered note"))
-            c.field = self.course_field(c)
+            c.field = c.field_set if isinstance(c.field_set, str) and c.field_set else self.course_field(c)
 
     def course_field(self, c: Course) -> str:
         """The field holding most of the notes c's `covers` reaches (a covered block
@@ -490,8 +525,11 @@ class Repo:
         return max(ranked, key=lambda f: (count.get(f, 0), -ranked.index(f))) if count else ""
 
     def field_order(self) -> list[str]:
-        """Fields in taxonomy order, each once."""
-        return list(dict.fromkeys(f for f, _ in self.fields if f))
+        """Fields in taxonomy order, each once, then fields named only by a course's
+        `field:` (§17.15.2), in course order."""
+        return list(dict.fromkeys([f for f, _ in self.fields if f] +
+                                  [c.field_set for c in self.courses
+                                   if isinstance(c.field_set, str) and c.field_set]))
 
     def in_scope(self, c: Course, nid: str, bid: str | None = None) -> bool:
         """Is block `bid` of note `nid` (or the note itself, bid=None) in course c?"""
@@ -589,6 +627,17 @@ class Repo:
             elif n.slug not in self.branch_order[n.branch]:
                 out.append(f"{n.id}: not listed under its branch in meta/taxonomy.yml (notes:)")
         return out
+
+
+def merge_parts(public: list[dict], private: list[dict]) -> list[dict]:
+    """The topic outline of a private build (SPEC §17.14.2): public parts in their
+    order; a private part goes after the last public part of its field, or at the end."""
+    out = list(public)
+    for p in private:
+        at = max((k for k, q in enumerate(out) if p.get("field") and q.get("field") == p.get("field")),
+                 default=len(out) - 1)
+        out.insert(at + 1, p)
+    return out
 
 
 def load() -> Repo:

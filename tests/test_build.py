@@ -27,17 +27,21 @@ EXPECTED = HERE / "expected"
 PY = sys.executable
 
 
-def run(script: str, root: Path, *args: str, site: Path | None = None) -> subprocess.CompletedProcess:
+def run(script: str, root: Path, *args: str, site: Path | None = None,
+        private: bool = False) -> subprocess.CompletedProcess:
     env = dict(os.environ, STUDY_ROOT=str(root))
+    env.pop("STUDY_PRIVATE", None)
+    if private:
+        env["STUDY_PRIVATE"] = "1"
     if site:
         env["STUDY_SITE"] = str(site)
     return subprocess.run([PY, str(BUILD / script), *args], env=env, capture_output=True, text=True)
 
 
-def generate(root: Path) -> Path:
+def generate(root: Path, private: bool = False) -> Path:
     site = root / "site"
     site.mkdir(exist_ok=True)
-    r = run("make_site.py", root, site=site)
+    r = run("make_site.py", root, site=site, private=private)
     if r.returncode:
         raise AssertionError(r.stdout + r.stderr)
     return site
@@ -905,6 +909,114 @@ class TestProjects(Repo):
         self.assertIn("A tool that puts [Theorem", page)
         self.assertIn("## Active\n\n- [Demo tool](/projects/demo-tool/index.qmd)", (site / "projects.qmd").read_text())
         self.assertIn("## Projects", (site / "courses/demo.qmd").read_text())
+
+
+PRIVATE_FILES = {
+    "private/meta/taxonomy.yml": """parts:
+  - title: Tutoring
+    branches:
+      - id: p/gamma
+        title: Gamma
+        desc: A private branch
+        notes:
+          - fourth
+""",
+    "private/notes/p/gamma/fourth/note.md": """---
+title: Fourth note
+sources: []
+requires: [t/alpha/first]
+status: draft
+---
+
+::: {#def-fourth .definition name="Private widget"}
+Builds on @def-widget.
+:::
+""",
+    "private/meta/courses/tut.yml": """id: tut
+code: TUT1
+name: "Tutoring course"
+outline_from: "fixture"
+status: draft
+field: Tutoring
+chapters:
+  - num: 1
+    title: "Only"
+    points:
+      - id: "1.1"
+        title: "Private and public"
+        covers: [t/alpha/first, p/gamma/fourth]
+""",
+}
+
+
+class TestPrivate(Repo):
+    """The private store (SPEC §17.14): read only with STUDY_PRIVATE=1."""
+
+    def setUp(self):
+        super().setUp()
+        for rel, text in PRIVATE_FILES.items():
+            p = self.root / rel
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text(text, encoding="utf-8")
+
+    def private_check(self) -> subprocess.CompletedProcess:
+        return run("check.py", self.root, private=True)
+
+    def assertPrivateError(self, text: str):
+        r = self.private_check()
+        self.assertEqual(r.returncode, 1, r.stdout)
+        self.assertIn(text, r.stdout)
+
+    def test_public_output_ignores_private_store(self):
+        out = self.tmp / "out"
+        copy_generated(generate(self.root), out)
+        self.assertEqual(diff_dirs(EXPECTED, out), [], "a public build read private/")
+        self.assertEqual(self.check().returncode, 0)
+
+    def test_private_check_is_clean(self):
+        r = self.private_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertIn("private store: 1 notes, 1 courses, 0 resources", r.stdout)
+
+    def test_private_site(self):
+        site = generate(self.root, private=True)
+        self.assertTrue((site / "notes/p/gamma/fourth.qmd").exists())
+        data = json.loads((site / "site-data.json").read_text())
+        self.assertIn({"id": "tut", "field": "Tutoring"},
+                      [{"id": c["id"], "field": c["field"]} for c in data["courses"]])
+        self.assertEqual(data["fields"][-1], "Tutoring")
+
+    def test_missing_store_warns(self):
+        shutil.rmtree(self.root / "private")
+        r = self.private_check()
+        self.assertEqual(r.returncode, 0, r.stdout)
+        self.assertIn("private/ is missing", r.stdout)
+
+    def test_public_reference_to_private(self):
+        self.edit("notes/t/alpha/second/note.md", "@def-widget", "@def-fourth")
+        self.assertPrivateError("public page references private 'def-fourth'")
+
+    def test_public_requires_private(self):
+        self.edit("notes/t/beta/third/note.md", "requires: [t/alpha/first]",
+                  "requires: [t/alpha/first, p/gamma/fourth]")
+        self.assertPrivateError("public note requires private 'p/gamma/fourth'")
+
+    def test_public_course_covers_private(self):
+        self.edit("meta/courses/demo.yml", "covers: [def-third]", "covers: [def-third, def-fourth]")
+        self.assertPrivateError("public course points to private 'def-fourth'")
+
+    def test_private_note_in_public_branch(self):
+        (self.root / "private/notes/t/beta").mkdir(parents=True)
+        (self.root / "private/notes/p/gamma/fourth").rename(self.root / "private/notes/t/beta/fifth")
+        self.assertPrivateError("a private note must be in a branch of private/meta/taxonomy.yml")
+
+    def test_private_id_clash(self):
+        self.edit("private/notes/p/gamma/fourth/note.md", "#def-fourth", "#def-widget")
+        self.assertPrivateError("duplicate id 'def-widget'")
+
+    def test_course_field_must_be_text(self):
+        self.edit("private/meta/courses/tut.yml", "field: Tutoring", "field: [Tutoring]")
+        self.assertPrivateError("field must be a non-empty text")
 
 
 if __name__ == "__main__":

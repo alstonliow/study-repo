@@ -391,6 +391,57 @@ def check_relations() -> None:
     print(f"relationships: {typed} typed, {len(g.references)} references between pages")
 
 
+@rule("private", "privacy boundary: no public file points into the private store")
+def check_private() -> None:
+    """The privacy boundary (SPEC §17.9.3, §17.14). Only a private build
+    (STUDY_PRIVATE=1, make check-private) reads private/, so only then can a
+    public file pointing at a private id be named."""
+    if REPO.private_missing:
+        warnings.append("STUDY_PRIVATE=1 but private/ is missing: checked the public part only")
+    if not REPO.private:
+        return
+    import relations
+    errors.extend(REPO.clashes)
+    ents = REPO.entities
+    private_notes = [n for n in REPO.notes.values() if n.visibility == "private"]
+    # placement: private notes only in private branches, public notes never in one
+    for n in REPO.notes.values():
+        in_private = n.branch in REPO.private_branches
+        if n.visibility == "private" and not in_private:
+            errors.append(f"{n.dir}: a private note must be in a branch of private/meta/taxonomy.yml")
+        elif n.visibility == "public" and in_private:
+            errors.append(f"{n.dir}: a public note is in the private branch '{n.branch}'")
+    for b in sorted(REPO.private_branches & REPO.public_branches):
+        errors.append(f"private/meta/taxonomy.yml: branch '{b}' is also a public branch")
+    # source keys of public notes and problems never name a private resource
+    for n in [n for n in list(REPO.notes.values()) + list(REPO.reviews.values()) if n.visibility == "public"]:
+        keys = [str(k) for k in n.front.get("sources") or []] + [p.attrs.get("source", "") for p in n.problems]
+        for k in keys:
+            res = (REPO.sources.node_of.get(k) or REPO.sources.find(k)) if k else None
+            if res is not None and res.visibility != "public":
+                errors.append(f"{n.dir}: public source key '{k}' belongs to private '{res.id}' (SPEC §17.9.3)")
+    # references and prerequisites from public notes
+    for ref in relations.Graph(REPO).references:
+        if ents[ref.holder].visibility == "public" and ents[ref.target].visibility != "public":
+            errors.append(f"{ref.where}: public page references private '{ref.target}' (SPEC §17.9.3)")
+    for n in REPO.notes.values():
+        if n.visibility == "public":
+            for r in REPO.requires(n.id):
+                if ents[r].visibility != "public":
+                    errors.append(f"{n.dir}/note.md: public note requires private '{r}' (SPEC §17.9.3)")
+    # public courses never cover or exclude private ids
+    for c in REPO.courses:
+        if c.visibility != "public":
+            continue
+        for x in [x for p in c.points for x in p.covers] + c.exclude:
+            e = ents.get(REPO.owner.get(x, x)) or ents.get(x)
+            if e is not None and e.visibility != "public":
+                errors.append(f"{rel(c.path)}: public course points to private '{x}' (SPEC §17.9.3)")
+    print(f"private store: {len(private_notes)} notes, "
+          f"{sum(1 for c in REPO.courses if c.visibility == 'private')} courses, "
+          f"{sum(1 for r in REPO.resources.values() if r.visibility == 'private')} resources")
+
+
 @rule("taxonomy", "every note listed in meta/taxonomy.yml")
 def check_taxonomy() -> None:
     for msg in REPO.taxonomy_problems():
@@ -414,6 +465,8 @@ def check_courses() -> None:
                 errors.append(f"{where}: coursework_repo must be a mapping with only 'url'")
             elif not str(r["url"] or "").startswith("https://"):
                 errors.append(f"{where}: coursework_repo.url must be an https URL")
+        if c.field_set is not None and not (isinstance(c.field_set, str) and c.field_set):
+            errors.append(f"{where}: field must be a non-empty text")
         if not c.field and REPO.field_order():
             warnings.append(f"{where}: no field of knowledge (its covers reach no note in a field)")
         outside = [n.id for n in REPO.notes.values()

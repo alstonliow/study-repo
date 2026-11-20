@@ -113,7 +113,7 @@ class Graph:
     def _collect_relations(self) -> None:
         repo = self.repo
         for n in repo.notes.values():
-            where = f"notes/{n.id}/note.md"
+            where = f"{n.dir}/note.md"
             for r in n.front.get("requires") or []:
                 self.relations.append(Relation(n.id, "requires", str(r), where))
             rel = n.front.get("relations")
@@ -142,7 +142,7 @@ class Graph:
                     for key, value in d.attrs.items():
                         if key in self.types:
                             for target in str(value).split():
-                                self._add(d.id, key, target, f"notes/{n.id}/{f.name}:{d.line}")
+                                self._add(d.id, key, target, f"{n.dir}/{f.name}:{d.line}")
 
     def _collect_resource_relations(self) -> None:
         """Relationships written in resource files: on the resource or on a
@@ -286,7 +286,7 @@ class Graph:
                         tholder = repo.entities[target].holder
                         if tholder == n.id:
                             continue                              # references within one page are not backlinks
-                        self.references.append(Reference(owner_of_line[i], n.id, target, f"notes/{n.id}/{f.name}:{i + 1}"))
+                        self.references.append(Reference(owner_of_line[i], n.id, target, f"{n.dir}/{f.name}:{i + 1}"))
 
     # ------------------------------------------------------------ views
     def outgoing(self, eid: str) -> list[Link]:

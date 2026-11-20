@@ -1,8 +1,8 @@
 """Resources (meta/SPEC.md §17.12): resource files, their node hierarchy,
 editions and locators, and the resolver for legacy source keys.
 
-A resource file is `resources/<slug>.yml` (public). The private store
-(`private/resources/`) comes in a later round. A resource's nodes form a tree;
+A resource file is `resources/<slug>.yml` (public) or, read only by a private
+build, `private/resources/<slug>.yml` (SPEC §17.14). A resource's nodes form a tree;
 each node has a stable id and, per edition, a locator (`at`). A legacy source
 key such as `fit1058-cn-5.4-q3` resolves deterministically:
 
@@ -187,11 +187,14 @@ def parse(path: Path) -> Resource:
                     current_marks=[str(e["id"]) for e in d.get("editions") or [] if e.get("current")])
 
 
-def load(root: Path) -> dict[str, Resource]:
-    """All public resources: resources/*.yml under root."""
+def load(root: Path, visibility: str = "public") -> dict[str, Resource]:
+    """The resources in root/resources/*.yml: the public ones under the repository
+    root, the private ones under private/ (SPEC §17.14.1). Visibility follows
+    from the folder."""
     folder = root / "resources"
     out = {}
     for p in sorted(folder.glob("*.yml")) if folder.exists() else []:
         r = parse(p)
+        r.visibility = visibility
         out[r.id or p.stem] = r
     return out

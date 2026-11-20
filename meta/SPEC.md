@@ -1289,7 +1289,8 @@ relations:
    are unnumbered (§17.8.2) and shown by title.
 ### 17.14 Private store and private build
 
-Drafted 2026-11-20 for the owner's tutoring (§17.15); not built yet. This
+Drafted 2026-11-20 for the owner's tutoring (§17.15); items 1–5 built
+2026-11-20 (round 1 of §17.15.9), except `make pdf-private` (round 5). This
 section fixes where private content lives and how it is built. It adds no new
 entity type: private notes, courses and resources follow the schemas of their
 public counterparts.
@@ -1316,8 +1317,9 @@ public counterparts.
    part may name a public field (`field: Mathematics`); it is shown after the
    public parts of that field.
 3. **Private build.** `build/model.py` reads the private store only when asked
-   (`Repo(private=True)`, used by `make check-private`, `make site-private` and
-   `make pdf-private`). Without the flag, or without `private/`, it reads the
+   (`Repo(private=True)`, set by the environment variable `STUDY_PRIVATE=1`,
+   which `make check-private`, `make site-private`, `make preview-private` and
+   later `make pdf-private` set). Without the flag, or without `private/`, it reads the
    public tree only, so every public command, CI included, is unchanged. A
    test asserts that the public build's output is identical with and without
    `private/` present (§17.9.3.2).
@@ -1326,7 +1328,8 @@ public counterparts.
    private id (§17.9.3.1, reported by name); every Chinese version matches its
    English file (§17.15.4). The owner runs it before committing either
    repository.
-5. **Output.** The private website is rendered to `out/private-site/` and only
+5. **Output.** The private website is generated into `out/private-site/src/`
+   (never into `site/`) and rendered to `out/private-site/src/_site/`, only
    previewed locally; it is never deployed. Private PDFs are built locally into
    `out/private-pdf/`; the GitHub PDF workflow never receives private options.
 6. **Progress marks** (Supabase, §17.9.4) may be saved for private ids; the
