@@ -80,31 +80,12 @@ Level curves near a critical point: closed ovals around a minimum, hyperbolas th
 
 :::
 
-::: {#thm-second-derivative-test-two-variables .theorem name="Second derivative test"}
+<!-- Merged 2026-11-20 (owner): the block thm-second-derivative-test-two-variables (with a sketched proof) was removed in favour of thm-second-derivative-test-several in math/analysis/differentiation/second-derivatives, which keeps its AC-B^2 form as part 4 and its x^4 +- y^4 examples. -->
 
-Let $(x_0,y_0)$ be a critical point of $f$, whose second partial derivatives are continuous, and put
+**Second derivative test.** Let $(x_0,y_0)$ be a critical point of $f$, whose second partial derivatives are continuous, and put
 $$A=f_{xx}(x_0,y_0),\qquad B=f_{xy}(x_0,y_0),\qquad C=f_{yy}(x_0,y_0).$$
+If $AC-B^2>0$ and $A>0$ there is a local minimum; if $AC-B^2>0$ and $A<0$ a local maximum; if $AC-B^2<0$ a saddle point; if $AC-B^2=0$ the test gives no conclusion. The quadratic approximation $\Delta f\approx\frac12A\Delta x^2+B\Delta x\Delta y+\frac12C\Delta y^2$ is the quadratic function of @thm-quadratic-form-two-variables with $4ac-b^2=AC-B^2$; that it decides the behaviour of $f$ is proved, for any number of variables, in @thm-second-derivative-test-several.
 
-1. If $AC-B^2>0$ and $A>0$: local minimum. If $AC-B^2>0$ and $A<0$: local maximum.
-2. If $AC-B^2<0$: saddle point.
-3. If $AC-B^2=0$: the test gives no conclusion.
-
-:::
-
-::: {.proof}
-
-1. The quadratic approximation of $f$ (Taylor's formula to second order) at a critical point, where the first-order terms vanish, is
-$$\Delta f\approx\tfrac12A\,\Delta x^2+B\,\Delta x\Delta y+\tfrac12C\,\Delta y^2 .$$
-
-2. This is the quadratic function of @thm-quadratic-form-two-variables with $a=\frac A2$, $b=B$, $c=\frac C2$, and $4ac-b^2=AC-B^2$.
-
-3. When $AC-B^2\ne0$ the quadratic part dominates the error near the point, so $f$ behaves like it: minimum, maximum or saddle as listed. (That the error is small enough is a sketch here; it needs the second-order Taylor formula with remainder.)
-
-4. When $AC-B^2=0$ the quadratic part vanishes along a line, and the higher-order terms decide: $x^4+y^4$, $-x^4-y^4$ and $x^4-y^4$ all have $A=B=C=0$.
-
-:::
-
-This is the two-variable case of @thm-second-derivative-test: the matrix $\begin{bmatrix}A&B\\B&C\end{bmatrix}$ is positive definite exactly when $A>0$ and $AC-B^2>0$.
 
 ::: {#exm-second-derivative-test .example name="Minimum on the open quadrant"}
 

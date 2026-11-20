@@ -41,7 +41,7 @@ Let $\mathbf{F}=\langle P,Q,R\rangle$ have continuous partial derivatives.
 
 ::: {.proof}
 
-1. $P=f_x$, $Q=f_y$, $R=f_z$, and the mixed partials of $f$ are equal (@thm-mixed-partials): $P_y=f_{xy}=f_{yx}=Q_x$, and likewise for the other two pairs.
+1. $P=f_x$, $Q=f_y$, $R=f_z$, and the mixed partials of $f$ are equal (@thm-symmetry-mixed-partials): $P_y=f_{xy}=f_{yx}=Q_x$, and likewise for the other two pairs.
 
 2. The converse is proved with Stokes' theorem (@thm-curl-free-conservative).
 

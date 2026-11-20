@@ -59,21 +59,9 @@ with the pivots as coefficients and the multipliers inside the squares.
 
 :::
 
-::: {#thm-second-derivative-test .theorem name="Minima and the second derivative test"}
+<!-- Merged 2026-11-20 (owner): the block thm-second-derivative-test was removed in favour of thm-second-derivative-test-several in math/analysis/differentiation/second-derivatives; its use of the smallest eigenvalue is kept there as an alternative in step 1. -->
 
-Let $f:\mathbb{R}^n\to\mathbb{R}$ be twice continuously differentiable and let $\nabla f(\mathbf{x}_0)=\mathbf{0}$. If the matrix of second derivatives $H=\big[\partial^2f/\partial x_i\partial x_j(\mathbf{x}_0)\big]$ is positive definite, then $f$ has a strict local minimum at $\mathbf{x}_0$.
-
-:::
-
-::: {.proof}
-
-1. By Taylor's theorem, $f(\mathbf{x}_0+\mathbf{h})=f(\mathbf{x}_0)+\frac12\mathbf{h}^{\mathsf T}H\mathbf{h}+o(\lVert\mathbf{h}\rVert^2)$, because the first-order term vanishes.
-
-2. On the unit sphere the continuous function $\mathbf{u}^{\mathsf T}H\mathbf{u}$ has a positive minimum $m$ (it is $\ge\lambda_{\min}>0$ by step 1 of @thm-positive-definite-tests). So $\frac12\mathbf{h}^{\mathsf T}H\mathbf{h}\ge\frac m2\lVert\mathbf{h}\rVert^2$.
-
-3. For $\lVert\mathbf{h}\rVert$ small and nonzero, the error term is less than $\frac m2\lVert\mathbf{h}\rVert^2$, so $f(\mathbf{x}_0+\mathbf{h})>f(\mathbf{x}_0)$.
-
-:::
+**Minima.** If $f:\mathbb{R}^n\to\mathbb{R}$ is twice continuously differentiable, $\nabla f(\mathbf{x}_0)=\mathbf{0}$ and the matrix of second derivatives $H=\big[\partial^2f/\partial x_i\partial x_j(\mathbf{x}_0)\big]$ is positive definite, then $f$ has a strict local minimum at $\mathbf{x}_0$ (@thm-second-derivative-test-several). The reason: by Taylor's theorem $f(\mathbf{x}_0+\mathbf{h})-f(\mathbf{x}_0)=\frac12\mathbf{h}^{\mathsf T}H\mathbf{h}+o(\lVert\mathbf{h}\rVert^2)$, and $\mathbf{h}^{\mathsf T}H\mathbf{h}\ge\lambda_{\min}\lVert\mathbf{h}\rVert^2$ with $\lambda_{\min}>0$.
 
 ::: {#rmk-positive-definite-matrices-1 .remark name="Ellipses"}
 

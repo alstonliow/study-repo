@@ -11,7 +11,7 @@ status: draft
 
 The **gradient** of $w=f(x,y,z)$ is the vector of its partial derivatives,
 $$\nabla w=\langle w_x,w_y,w_z\rangle .$$
-It depends on the point where it is evaluated (it is a vector field). With it the chain rule (@thm-multivariable-chain-rule) reads
+It depends on the point where it is evaluated (it is a vector field). With it the chain rule (@thm-chain-rule-several-variables) reads
 $$\frac{dw}{dt}=\nabla w\cdot\frac{d\mathbf{r}}{dt}.$$
 
 :::

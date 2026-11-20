@@ -70,7 +70,8 @@ chapters:
     covers: [math/calculus/multivariable/differentiation/functions-of-several-variables]
   - id: '8.2'
     title: Partial derivatives
-    covers: [math/calculus/multivariable/differentiation/partial-derivatives]
+    covers: [math/calculus/multivariable/differentiation/partial-derivatives, thm-continuous-partials-differentiable,
+      thm-symmetry-mixed-partials]  # merged blocks (owner, 2026-11-20)
 - num: 9
   title: Tangent planes, critical points, least squares
   points:
@@ -85,13 +86,13 @@ chapters:
   points:
   - id: '10.1'
     title: Second derivative test, boundaries
-    covers: [math/calculus/multivariable/differentiation/critical-points]
+    covers: [math/calculus/multivariable/differentiation/critical-points, thm-second-derivative-test-several]  # merged block (owner, 2026-11-20)
 - num: 11
   title: Differentials and the chain rule
   points:
   - id: '11.1'
     title: Chain rule
-    covers: [math/calculus/multivariable/differentiation/differentials-and-chain-rule]
+    covers: [math/calculus/multivariable/differentiation/differentials-and-chain-rule, thm-chain-rule-several-variables]  # merged block (owner, 2026-11-20)
 - num: 12
   title: Gradient and directional derivative
   points:

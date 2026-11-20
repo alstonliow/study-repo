@@ -30,7 +30,7 @@
 ::: {.solution for="prob-mit1806s10-9-q4" status="draft"}
 1. $F_1$: $\partial_xF_1=x^3+2x+2xy$, $\partial_yF_1=x^2+2y$. Setting both to $0$: $y=-x^2/2$, and then $x^3+2x-x^3=2x=0$. The only stationary point is $(0,0)$.
 
-2. $H_1=\begin{pmatrix}3x^2+2+2y&2x\\2x&2\end{pmatrix}$, which at $(0,0)$ is $\begin{pmatrix}2&0\\0&2\end{pmatrix}$, positive definite. So $(0,0)$ is the minimum (@thm-second-derivative-test), with $F_1=0$.
+2. $H_1=\begin{pmatrix}3x^2+2+2y&2x\\2x&2\end{pmatrix}$, which at $(0,0)$ is $\begin{pmatrix}2&0\\0&2\end{pmatrix}$, positive definite. So $(0,0)$ is the minimum (@thm-second-derivative-test-several), with $F_1=0$.
 
 3. $F_2$: $\partial_xF_2=3x^2+y-1$, $\partial_yF_2=x$. So $x=0$, $y=1$: the stationary point $(0,1)$.
 

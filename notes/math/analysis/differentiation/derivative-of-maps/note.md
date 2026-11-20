@@ -1,17 +1,17 @@
 ---
 title: "The Derivative of a Map between Euclidean Spaces"
-sources: [camib-at-a6]
+sources: [camib-at-a6, mit1802-8, mit1802-9, mit1802n-TA]
 requires: [math/analysis/metric-spaces/continuous-maps, math/analysis/real/differentiability/differentiability-and-inverses, math/calculus/multivariable/differentiation/partial-derivatives]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IB Analysis II (Michaelmas 2015 lecture notes), Section 6.1, in our own wording; the examples are ours (checked symbolically); proofs written out in steps. The calculus notes state linear approximation for two variables with an informal proof; the rigorous versions here carry related= and a merge is proposed to the owner. -->
+<!-- Added 2026-11-20 from Cambridge Part IB Analysis II (Michaelmas 2015 lecture notes), Section 6.1, in our own wording; the examples are ours (checked symbolically); proofs written out in steps. The calculus notes state linear approximation for two variables with an informal proof; the rigorous versions here carry related= and merged 2026-11-20 (owner): thm-continuous-partials-differentiable replaces the calculus block thm-linear-approximation-two-variables (MIT 18.02, Lectures 8-9 and Supplementary Notes TA); its proof is the calculus two-step mean value argument extended to n coordinates. -->
 
 In one variable, $f$ is differentiable at $a$ when $f(a+h)=f(a)+\lambda h+o(h)$ (@prp-derivative-little-o). In several variables the number $\lambda$ becomes a linear map, and this is the definition.
 
 Throughout, $U\subseteq\mathbb R^n$ is open, so that $a+h\in U$ for all small $h$, and $\|\cdot\|$ is any norm; by @thm-norms-equivalent-finite-dimension the choice does not affect the definitions. $L(\mathbb R^n;\mathbb R^m)$ is the space of linear maps $\mathbb R^n\to\mathbb R^m$, identified with $m\times n$ matrices.
 
-::: {#def-derivative-several-variables .definition name="Derivative of a map" related="prp-derivative-little-o thm-linear-approximation-two-variables"}
+::: {#def-derivative-several-variables .definition name="Derivative of a map" related="prp-derivative-little-o"}
 
 A map $f:U\to\mathbb R^m$ is *differentiable* at $a\in U$ if there is a linear map $A\in L(\mathbb R^n;\mathbb R^m)$ with
 $$\lim_{h\to0}\frac{\|f(a+h)-f(a)-Ah\|}{\|h\|}=0,$$
@@ -80,7 +80,7 @@ The converse fails badly: partial derivatives, even all directional derivatives,
 
 :::
 
-::: {#thm-continuous-partials-differentiable .theorem name="Continuous partial derivatives imply differentiability" related="thm-linear-approximation-two-variables"}
+::: {#thm-continuous-partials-differentiable .theorem name="Continuous partial derivatives imply differentiability"}
 
 Let $f:U\to\mathbb R^m$ and $a\in U$. If all partial derivatives $D_jf$ exist on a neighbourhood of $a$ and are continuous at $a$, then $f$ is differentiable at $a$.
 

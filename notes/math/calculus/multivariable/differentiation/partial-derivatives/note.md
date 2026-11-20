@@ -44,26 +44,11 @@ It is the plane containing the tangent lines of the two slices $y=y_0$ and $x=x_
 
 :::
 
-::: {#thm-linear-approximation-two-variables .theorem name="Linear approximation"}
+<!-- Merged 2026-11-20 (owner): the block thm-linear-approximation-two-variables (statement and two-step mean value proof) was removed in favour of thm-continuous-partials-differentiable in math/analysis/differentiation/derivative-of-maps, which proves the same for any number of variables. -->
 
-If $f_x$ and $f_y$ exist near $(x_0,y_0)$ and are continuous there, then
+**Linear approximation.** If $f_x$ and $f_y$ exist near $(x_0,y_0)$ and are continuous there, then
 $$\Delta f\approx f_x(x_0,y_0)\,\Delta x+f_y(x_0,y_0)\,\Delta y,$$
-in the sense that the error divided by $\sqrt{\Delta x^2+\Delta y^2}$ tends to $0$. In words: near the point, the graph is close to its tangent plane.
-
-:::
-
-::: {.proof}
-
-1. Go from $(x_0,y_0)$ to $(x_0+\Delta x,y_0+\Delta y)$ in two steps, first in $x$, then in $y$:
-$$\Delta f=\big[f(x_0+\Delta x,y_0)-f(x_0,y_0)\big]+\big[f(x_0+\Delta x,y_0+\Delta y)-f(x_0+\Delta x,y_0)\big].$$
-
-2. By the mean value theorem (@thm-mean-value) the first bracket is $f_x(\xi,y_0)\Delta x$ and the second is $f_y(x_0+\Delta x,\eta)\Delta y$, for some $\xi$ between $x_0$ and $x_0+\Delta x$ and $\eta$ between $y_0$ and $y_0+\Delta y$.
-
-3. As $(\Delta x,\Delta y)\to(0,0)$, continuity gives $f_x(\xi,y_0)\to f_x(x_0,y_0)$ and $f_y(x_0+\Delta x,\eta)\to f_y(x_0,y_0)$.
-
-4. So $\Delta f-f_x\Delta x-f_y\Delta y=\varepsilon_1\Delta x+\varepsilon_2\Delta y$ with $\varepsilon_1,\varepsilon_2\to0$, and $\lvert\varepsilon_1\Delta x+\varepsilon_2\Delta y\rvert\le(\lvert\varepsilon_1\rvert+\lvert\varepsilon_2\rvert)\sqrt{\Delta x^2+\Delta y^2}$.
-
-:::
+in the sense that the error divided by $\sqrt{\Delta x^2+\Delta y^2}$ tends to $0$: near the point, the graph is close to its tangent plane. This is @thm-continuous-partials-differentiable for two variables, proved there by moving along the axes and using the mean value theorem on each step.
 
 ::: {#exm-linear-approximation-two-variables .example name="Estimating a change"}
 
@@ -77,22 +62,8 @@ $$f_{xx}=\frac{\partial^2f}{\partial x^2},\qquad f_{xy}=(f_x)_y=\frac{\partial^2
 
 :::
 
-::: {#thm-mixed-partials .theorem name="Equality of mixed partials"}
+<!-- Merged 2026-11-20 (owner): the block thm-mixed-partials was removed in favour of thm-symmetry-mixed-partials in math/analysis/differentiation/second-derivatives (same second-difference proof, weaker hypothesis: continuity at the point). -->
 
-If $f_{xy}$ and $f_{yx}$ exist and are continuous near a point, then $f_{xy}=f_{yx}$ there.
-
-:::
-
-::: {.proof}
-
-1. Fix $h,k$ small and let $D=f(x+h,y+k)-f(x+h,y)-f(x,y+k)+f(x,y)$.
-
-2. With $g(s)=f(s,y+k)-f(s,y)$ we have $D=g(x+h)-g(x)=h\,g'(\xi)=h\,[f_x(\xi,y+k)-f_x(\xi,y)]$ for some $\xi$ between $x$ and $x+h$, by the mean value theorem; applying it again in the second variable, $D=hk\,f_{xy}(\xi,\eta)$.
-
-3. Grouping the four terms the other way, with $u(t)=f(x+h,t)-f(x,t)$, the same argument gives $D=hk\,f_{yx}(\xi',\eta')$.
-
-4. So $f_{xy}(\xi,\eta)=f_{yx}(\xi',\eta')$. Let $h,k\to0$: both points tend to $(x,y)$ and continuity gives $f_{xy}(x,y)=f_{yx}(x,y)$.
-
-:::
+**Equality of mixed partials.** If $f_{xy}$ and $f_{yx}$ exist near a point and are continuous at it, then $f_{xy}=f_{yx}$ there (@thm-symmetry-mixed-partials). Without continuity they can differ (@exm-mixed-partials-differ).
 
 For example $f=x^3y+y^2$ has $f_{xy}=3x^2=f_{yx}$.

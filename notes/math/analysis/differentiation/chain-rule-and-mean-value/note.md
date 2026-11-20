@@ -1,11 +1,11 @@
 ---
 title: "The Operator Norm, the Chain Rule and the Mean Value Inequality"
-sources: [camib-at-a6]
+sources: [camib-at-a6, mit1802-11]
 requires: [math/analysis/differentiation/derivative-of-maps, math/analysis/topology/connectedness]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IB Analysis II (Michaelmas 2015 lecture notes), Sections 6.2-6.3, in our own wording; examples ours; proofs written out in steps. The calculus chain rule (math/calculus/multivariable/differentiation/differentials-and-chain-rule) is proved there informally for continuous partial derivatives; the version here carries related= and a merge is proposed to the owner. -->
+<!-- Added 2026-11-20 from Cambridge Part IB Analysis II (Michaelmas 2015 lecture notes), Sections 6.2-6.3, in our own wording; examples ours; proofs written out in steps. The calculus chain rule (math/calculus/multivariable/differentiation/differentials-and-chain-rule) is proved there informally for continuous partial derivatives; the version here carries related= and merged 2026-11-20 (owner): thm-chain-rule-several-variables replaces the calculus block thm-multivariable-chain-rule (MIT 18.02, Lecture 11); the coordinate form after it comes from that block. -->
 
 To estimate $f(b)-f(a)$ from bounds on $Df$, we need a size for linear maps. The operator norm measures how much a linear map can stretch a vector.
 
@@ -43,7 +43,7 @@ By part 4, a sequence of matrices converges in the operator norm if and only if 
 
 ## The chain rule
 
-::: {#thm-chain-rule-several-variables .theorem name="Chain rule" related="thm-multivariable-chain-rule thm-derivative-chain-rule"}
+::: {#thm-chain-rule-several-variables .theorem name="Chain rule" related="thm-derivative-chain-rule"}
 
 Let $U\subseteq\mathbb R^n$ and $V\subseteq\mathbb R^m$ be open, $f:U\to V$ differentiable at $a$, and $g:V\to\mathbb R^p$ differentiable at $f(a)$. Then $g\circ f$ is differentiable at $a$ and
 $$D(g\circ f)(a)=Dg(f(a))\,Df(a).$$
@@ -67,7 +67,7 @@ $$g(f(a+h))=g(b)+BAh+B\varepsilon(h)\|h\|+\eta(k)\|k\|.$$
 
 :::
 
-In coordinates this is the familiar sum: $\frac{\partial(g\circ f)_i}{\partial x_j}=\sum_k\frac{\partial g_i}{\partial y_k}\frac{\partial f_k}{\partial x_j}$. Unlike @thm-multivariable-chain-rule it needs only differentiability, not continuous partial derivatives.
+In coordinates this is the familiar sum: $\frac{\partial(g\circ f)_i}{\partial x_j}=\sum_k\frac{\partial g_i}{\partial y_k}\frac{\partial f_k}{\partial x_j}$. Only differentiability is needed, not continuous partial derivatives. For a curve $t\mapsto(x(t),y(t),z(t))$ followed by $w=f(x,y,z)$ it reads $\frac{dw}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}+f_z\frac{dz}{dt}$, the form used in @sec-math-calculus-multivariable-differentiation-differentials-and-chain-rule.
 
 ## Mean value inequalities
 

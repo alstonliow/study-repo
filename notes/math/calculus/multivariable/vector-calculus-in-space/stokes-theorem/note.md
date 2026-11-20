@@ -95,7 +95,7 @@ If $\mathbf{F}$ has continuous second partial derivatives, then $\nabla\cdot(\na
 
 1. $\nabla\cdot\langle R_y-Q_z,P_z-R_x,Q_x-P_y\rangle=R_{yx}-Q_{zx}+P_{zy}-R_{xy}+Q_{xz}-P_{yz}$.
 
-2. By @thm-mixed-partials the terms cancel in pairs. (Symbolically: $\nabla\cdot(\nabla\times\mathbf{F})=0$ like $\mathbf{u}\cdot(\mathbf{u}\times\mathbf{v})=0$.)
+2. By @thm-symmetry-mixed-partials the terms cancel in pairs. (Symbolically: $\nabla\cdot(\nabla\times\mathbf{F})=0$ like $\mathbf{u}\cdot(\mathbf{u}\times\mathbf{v})=0$.)
 
 :::
 

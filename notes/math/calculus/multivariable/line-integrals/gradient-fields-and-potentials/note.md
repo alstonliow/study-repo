@@ -18,7 +18,7 @@ Let $\mathbf{F}=M\,\mathbf{i}+N\,\mathbf{j}$ have continuous partial derivatives
 
 ::: {.proof}
 
-1. If $\mathbf{F}=\nabla f$ then $M=f_x$ and $N=f_y$, so $N_x=f_{yx}=f_{xy}=M_y$ by @thm-mixed-partials.
+1. If $\mathbf{F}=\nabla f$ then $M=f_x$ and $N=f_y$, so $N_x=f_{yx}=f_{xy}=M_y$ by @thm-symmetry-mixed-partials.
 
 2. The converse follows from Green's theorem: see @cor-criterion-from-green; for simply connected regions, @sec-math-calculus-multivariable-line-integrals-simply-connected-regions.
 

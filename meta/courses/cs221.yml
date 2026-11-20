@@ -131,7 +131,7 @@ chapters:
     points:
       - id: "4.1"
         title: "Backpropagation"
-        covers: [ai/deep-learning/backpropagation, math/calculus/multivariable/differentiation/differentials-and-chain-rule]
+        covers: [ai/deep-learning/backpropagation, math/calculus/multivariable/differentiation/differentials-and-chain-rule, thm-chain-rule-several-variables]  # merged block (owner, 2026-11-20)
   - num: 5
     title: "Deep learning"
     points:

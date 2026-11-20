@@ -4,7 +4,7 @@
      of the 18.02 Notes) exist in raw/ but were not copied. -->
 
 ::: {.solution for="prob-mit1802n-6h-q1" status="draft"}
-@thm-div-curl-zero: $\nabla\cdot\langle R_y-Q_z,P_z-R_x,Q_x-P_y\rangle=R_{yx}-Q_{zx}+P_{zy}-R_{xy}+Q_{xz}-P_{yz}=0$, since the mixed partials are equal. Hypothesis: $P,Q,R$ have continuous second partial derivatives (so that @thm-mixed-partials applies).
+@thm-div-curl-zero: $\nabla\cdot\langle R_y-Q_z,P_z-R_x,Q_x-P_y\rangle=R_{yx}-Q_{zx}+P_{zy}-R_{xy}+Q_{xz}-P_{yz}=0$, since the mixed partials are equal. Hypothesis: $P,Q,R$ have continuous second partial derivatives (so that @thm-symmetry-mixed-partials applies).
 :::
 
 ::: {.solution for="prob-mit1802n-6h-q2" status="draft"}

@@ -192,7 +192,7 @@ chapters:
         covers: [math/linear-algebra/eigenvalues/symmetric-matrices]
       - id: "25.2"
         title: "Positive definiteness"
-        covers: [math/linear-algebra/positive-definite/positive-definite-matrices]
+        covers: [math/linear-algebra/positive-definite/positive-definite-matrices, thm-second-derivative-test-several]  # merged block (owner, 2026-11-20)
   - num: 26
     title: "Complex matrices, FFT"
     points:

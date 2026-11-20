@@ -14,24 +14,13 @@ $$dw=f_x\,dx+f_y\,dy+f_z\,dz .$$
 
 :::
 
-The differential $dw$ is not the same thing as the increment $\Delta w$. It is a formal expression recording how variations of $w$ are tied to variations of $x,y,z$, and it is used in two ways: as a template for the approximation $\Delta w\approx f_x\Delta x+f_y\Delta y+f_z\Delta z$ (@thm-linear-approximation-two-variables), and, divided by $dt$, as the chain rule.
+The differential $dw$ is not the same thing as the increment $\Delta w$. It is a formal expression recording how variations of $w$ are tied to variations of $x,y,z$, and it is used in two ways: as a template for the approximation $\Delta w\approx f_x\Delta x+f_y\Delta y+f_z\Delta z$ (@thm-continuous-partials-differentiable), and, divided by $dt$, as the chain rule.
 
-::: {#thm-multivariable-chain-rule .theorem name="Chain rule"}
+<!-- Merged 2026-11-20 (owner): the block thm-multivariable-chain-rule (three variables, continuous partial derivatives, proof by increments) was removed in favour of thm-chain-rule-several-variables in math/analysis/differentiation/chain-rule-and-mean-value, which needs only differentiability. -->
 
-If $w=f(x,y,z)$ has continuous partial derivatives and $x,y,z$ are differentiable functions of $t$, then
+**Chain rule.** If $w=f(x,y,z)$ has continuous partial derivatives (or is just differentiable) and $x,y,z$ are differentiable functions of $t$, then
 $$\frac{dw}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}+f_z\frac{dz}{dt}.$$
-
-:::
-
-::: {.proof}
-
-1. By the linear approximation, $\Delta w=f_x\Delta x+f_y\Delta y+f_z\Delta z+\varepsilon_1\Delta x+\varepsilon_2\Delta y+\varepsilon_3\Delta z$, where $\varepsilon_i\to0$ as $(\Delta x,\Delta y,\Delta z)\to\mathbf{0}$ (the proof of @thm-linear-approximation-two-variables works in three variables).
-
-2. Divide by $\Delta t$: $\dfrac{\Delta w}{\Delta t}=(f_x+\varepsilon_1)\dfrac{\Delta x}{\Delta t}+(f_y+\varepsilon_2)\dfrac{\Delta y}{\Delta t}+(f_z+\varepsilon_3)\dfrac{\Delta z}{\Delta t}$.
-
-3. As $\Delta t\to0$, $\Delta x,\Delta y,\Delta z\to0$ (the functions are continuous), so $\varepsilon_i\to0$, while $\Delta x/\Delta t\to dx/dt$ and so on. The limit is the formula.
-
-:::
+This is @thm-chain-rule-several-variables for $t\mapsto(x,y,z)\mapsto w$: the derivative of the composite is the row $(f_x,f_y,f_z)$ times the column $(\frac{dx}{dt},\frac{dy}{dt},\frac{dz}{dt})$.
 
 ::: {#exm-chain-rule-check .example name="Checking against substitution"}
 
@@ -57,7 +46,7 @@ $$\frac{\partial w}{\partial u}=f_x\frac{\partial x}{\partial u}+f_y\frac{\parti
 
 ::: {.proof}
 
-1. Hold $v$ fixed: then $x,y$ are functions of the single variable $u$, and @thm-multivariable-chain-rule gives the first formula. Holding $u$ fixed gives the second.
+1. Hold $v$ fixed: then $x,y$ are functions of the single variable $u$, and @thm-chain-rule-several-variables gives the first formula. Holding $u$ fixed gives the second.
 
 2. In the language of differentials: substitute $dx=x_u\,du+x_v\,dv$ and $dy=y_u\,du+y_v\,dv$ into $dw=f_x\,dx+f_y\,dy$ and read off the coefficients of $du$ and $dv$.
 

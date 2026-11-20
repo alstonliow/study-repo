@@ -1,11 +1,11 @@
 ---
 title: "Second Derivatives and Taylor's Theorem in Several Variables"
-sources: [camib-at-a6]
+sources: [camib-at-a6, mit1802-8, mit1802-9, mit1802-10, mit1802n-TA, mit1802n-SD, mit1806-27]
 requires: [math/analysis/differentiation/chain-rule-and-mean-value, math/analysis/real/differentiability/taylors-theorem, math/linear-algebra/positive-definite/positive-definite-matrices]
 status: draft
 ---
 
-<!-- Added 2026-11-20 from Cambridge Part IB Analysis II (Michaelmas 2015 lecture notes), Section 6.5, in our own wording; the counterexample to symmetry was checked symbolically; the second derivative test is our own addition from the second-order Taylor theorem; proofs written out in steps. The calculus notes state the equality of mixed partials and the second derivative test for two variables with informal proofs; the rigorous versions here carry related= and a merge is proposed to the owner. -->
+<!-- Added 2026-11-20 from Cambridge Part IB Analysis II (Michaelmas 2015 lecture notes), Section 6.5, in our own wording; the counterexample to symmetry was checked symbolically; the second derivative test is our own addition from the second-order Taylor theorem; proofs written out in steps. The calculus notes state the equality of mixed partials and the second derivative test for two variables with informal proofs; the rigorous versions here carry related= and merged 2026-11-20 (owner): thm-symmetry-mixed-partials replaces the calculus block thm-mixed-partials (MIT 18.02, Lecture 8-9, Supplementary Notes TA); thm-second-derivative-test-several replaces the calculus block thm-second-derivative-test-two-variables (MIT 18.02, Lectures 9-10, Supplementary Notes SD: part 4, the AC-B^2 form) and the linear-algebra block thm-second-derivative-test (MIT 18.06, Lecture 27: the smallest-eigenvalue bound in step 1). -->
 
 The derivative $Df$ of a map is again a map, from $U$ to the space of linear maps. Differentiating it once more gives a symmetric bilinear form, the Hessian, which controls the second-order behaviour of $f$ and decides the nature of critical points.
 
@@ -29,7 +29,7 @@ Let $f(x,y)=\frac{xy(x^2-y^2)}{x^2+y^2}$ for $(x,y)\ne0$ and $f(0)=0$. One compu
 
 :::
 
-::: {#thm-symmetry-mixed-partials .theorem name="Symmetry of mixed partial derivatives" related="thm-mixed-partials"}
+::: {#thm-symmetry-mixed-partials .theorem name="Symmetry of mixed partial derivatives"}
 
 Let $f:U\to\mathbb R^m$, $a\in U$ and $i\ne j$. If $D_iD_jf$ and $D_jD_if$ exist on a neighbourhood of $a$ and are continuous at $a$, then $D_iD_jf(a)=D_jD_if(a)$. In particular, if $f$ is $C^2$ then $D^2f(a)$ is a symmetric bilinear form.
 
@@ -76,19 +76,20 @@ $$E(h)=\tfrac12\sum_{i,j}h_ih_j\bigl(D_iD_jf(a+sh)-D_iD_jf(a)\bigr).$$
 
 :::
 
-::: {#thm-second-derivative-test-several .theorem name="Second derivative test" related="thm-second-derivative-test-two-variables thm-second-derivative-test"}
+::: {#thm-second-derivative-test-several .theorem name="Second derivative test"}
 
 Let $f:U\to\mathbb R$ be $C^2$ and $Df(a)=0$.
 
 1. If $H_f(a)$ is positive definite (@def-positive-definite), $f$ has a strict local minimum at $a$.
 2. If $H_f(a)$ is negative definite, $f$ has a strict local maximum at $a$.
 3. If $u^{\mathsf T}H_f(a)u>0>v^{\mathsf T}H_f(a)v$ for some $u,v$ (indefinite), $f$ has neither at $a$.
+4. For $n=2$, with $A=D_1D_1f(a)$, $B=D_1D_2f(a)$, $C=D_2D_2f(a)$: if $AC-B^2>0$ and $A>0$ there is a strict local minimum, if $AC-B^2>0$ and $A<0$ a strict local maximum, and if $AC-B^2<0$ neither (a saddle point). If $AC-B^2=0$ the test gives no conclusion.
 
 :::
 
 ::: {.proof}
 
-1. *A uniform lower bound.* The unit sphere $S=\{\|u\|=1\}$ is closed and bounded, hence sequentially compact (@thm-heine-borel-rn), and $u\mapsto u^{\mathsf T}H_f(a)u$ is continuous and positive on it. By @cor-extreme-value-compact it attains a minimum $\mu>0$. By homogeneity, $h^{\mathsf T}H_f(a)h\ge\mu\|h\|^2$ for all $h$.
+1. *A uniform lower bound.* The unit sphere $S=\{\|u\|=1\}$ is closed and bounded, hence sequentially compact (@thm-heine-borel-rn), and $u\mapsto u^{\mathsf T}H_f(a)u$ is continuous and positive on it. By @cor-extreme-value-compact it attains a minimum $\mu>0$. By homogeneity, $h^{\mathsf T}H_f(a)h\ge\mu\|h\|^2$ for all $h$. (Alternatively, $\mu$ is the smallest eigenvalue of $H_f(a)$, positive by @thm-positive-definite-tests.)
 
 2. *Positive definite.* By @thm-taylor-second-order with $Df(a)=0$,
 $$f(a+h)-f(a)=\tfrac12h^{\mathsf T}H_f(a)h+E(h)\ge\Bigl(\frac\mu2-\frac{|E(h)|}{\|h\|^2}\Bigr)\|h\|^2.$$
@@ -97,6 +98,10 @@ Choose $\rho>0$ with $\frac{|E(h)|}{\|h\|^2}<\frac\mu2$ for $0<\|h\|<\rho$. Then
 3. *Negative definite:* apply part 1 to $-f$.
 
 4. *Indefinite.* For small $t\ne0$, $f(a+tu)-f(a)=t^2\bigl(\frac12u^{\mathsf T}H_f(a)u+\frac{E(tu)}{t^2}\bigr)$, and $\frac{E(tu)}{t^2}=\frac{E(tu)}{\|tu\|^2}\|u\|^2\to0$, so this is positive for small $t$. In the same way $f(a+tv)<f(a)$ for small $t\ne0$. So every neighbourhood of $a$ contains points with larger and with smaller values.
+
+5. *Two variables.* $H_f(a)=\begin{pmatrix}A&B\\B&C\end{pmatrix}$ has determinant $AC-B^2$, the product of its two eigenvalues. If $AC-B^2>0$ the eigenvalues have the same sign, which is the sign of $A$ (the trace $A+C$ has the sign of $A$, since $AC>B^2\ge0$ forces $A$ and $C$ to have the same sign): positive definite if $A>0$, negative definite if $A<0$, so parts 1 and 2 apply. If $AC-B^2<0$ the eigenvalues have opposite signs and part 3 applies with eigenvectors as $u,v$.
+
+6. *No conclusion when $AC-B^2=0$*: see the examples after the proof.
 
 :::
 

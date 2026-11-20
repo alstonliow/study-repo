@@ -5,7 +5,7 @@ requires: [ai/deep-learning/einsum, ai/machine-learning/gradient-descent, cs/gra
 status: draft
 ---
 
-<!-- Added 2026-11-18 from Stanford CS221 (lecture code, commit 3ac2452), Lecture 4 (computation graphs, backpropagation), in our own wording. The correctness theorem and cost statement are our own formulation of the lecture's algorithm; proofs written out in steps. The chain rule itself is @thm-multivariable-chain-rule. -->
+<!-- Added 2026-11-18 from Stanford CS221 (lecture code, commit 3ac2452), Lecture 4 (computation graphs, backpropagation), in our own wording. The correctness theorem and cost statement are our own formulation of the lecture's algorithm; proofs written out in steps. The chain rule itself is @thm-chain-rule-several-variables. -->
 
 Gradient descent needs the gradient of the training loss. Working it out by hand is tedious and error-prone, but every such function is built from a few primitive operations (addition, multiplication, $\exp$, $\log$, matrix products, ...), each with a known derivative. Backpropagation (reverse-mode automatic differentiation) combines these local derivatives by the chain rule, for any function so built.
 
@@ -56,7 +56,7 @@ If every primitive function is differentiable, backpropagation returns $\text{gr
 
 ::: {.proof}
 
-1. Fix a node $v\ne\text{root}$ and let $w_1,\dots,w_m$ be the nodes that have $v$ as a dependency (its out-neighbours). The root depends on $\text{value}(v)$ only through $\text{value}(w_1),\dots,\text{value}(w_m)$. By the chain rule (@thm-multivariable-chain-rule),
+1. Fix a node $v\ne\text{root}$ and let $w_1,\dots,w_m$ be the nodes that have $v$ as a dependency (its out-neighbours). The root depends on $\text{value}(v)$ only through $\text{value}(w_1),\dots,\text{value}(w_m)$. By the chain rule (@thm-chain-rule-several-variables),
 $$
 \frac{\partial\,\text{root}}{\partial\,v}=\sum_{i=1}^{m}\frac{\partial\,\text{root}}{\partial\,w_i}\cdot\frac{\partial f_{w_i}}{\partial v}.
 $$
