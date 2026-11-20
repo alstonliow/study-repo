@@ -1121,6 +1121,10 @@ class TestPrivate(Repo):
         (self.root / "private/bank/tbook-review").rename(self.root / "private/bank/tbook-nothing")
         self.assertPrivateError("'res-tbook-nothing' is none")
 
+    def test_bank_source_outside_folder_node(self):
+        self.edit("private/bank/tbook-review/bank.md", 'source="res-tbook-review"', 'source="res-tbook-widgets-ex"')
+        self.assertPrivateError("is not inside res-tbook-review")
+
     def test_bank_practises_unknown_note(self):
         self.edit("private/bank/tbook-review/bank.md", 'practises="t/alpha/first"', 'practises="t/alpha/gone"')
         self.assertPrivateError("practises unknown id 't/alpha/gone'")

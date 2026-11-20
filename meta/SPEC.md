@@ -1430,11 +1430,12 @@ in any public file or build.
       switch on private pages, `--lang zh` PDFs and the private Export page.
 10. **Question bank (题库)** (owner decision, 2026-11-20). Problems kept for
     choosing from when making handouts, not for study pages.
-    - **Storage.** One folder per resource node the problems come from:
+    - **Storage.** One folder per resource node:
       `private/bank/<node-slug>/bank.md` with the problems and `solution.md`
       with their solutions, paired by id as in §6.2. `<node-slug>` is the
       node id without `res-`, for example a textbook section or one year's
-      paper. A bank folder is not a note: it has no YAML header, no page in
+      paper. Each problem's `source` lies in that node or below it (a
+      section folder holds the section's practice boxes and exercises). A bank folder is not a note: it has no YAML header, no page in
       the topic outline and no number.
     - **Problems** follow §6.1 (id, `origin`, `source`, optional `level`,
       statement verbatim) and add:

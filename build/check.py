@@ -349,6 +349,8 @@ def check_sources() -> None:
     keys = [(n.files["note.md"].path, str(k)) for n in REPO.notes.values() for k in n.front.get("sources") or []]
     keys += [(n.files["exercise.md"].path, p.attrs.get("source", ""))
              for n in list(REPO.notes.values()) + list(REPO.reviews.values()) for p in n.problems]
+    keys += [(b.files["bank.md"].path, p.attrs.get("source", ""))
+             for b in REPO.banks.values() if "bank.md" in b.files for p in b.problems]
     keys += [(n.files[name].path, d.attrs.get("source", "")) for n in REPO.notes.values()
              for name in ("note.md", "example.md", "code.md") if name in n.files
              for d in n.files[name].divs if "example" in d.classes]
@@ -466,8 +468,17 @@ def check_bank() -> None:
         extra = sorted({p.name for p in b.folder.iterdir()} - {"bank.md", "solution.md"})
         if extra:
             errors.append(f"{b.dir}: a bank folder holds only bank.md and solution.md (found {', '.join(extra)})")
+        found = REPO.bank_node(b)
         for pr in b.problems:
             where = f"{b.dir}/bank.md: {pr.id}"
+            res = REPO.sources.resolve(pr.attrs.get("source", "")) if pr.attrs.get("source") else None
+            if found and res and res.node:                     # the source lies in the folder's node
+                r, node = found
+                n = r.nodes.get(res.node)
+                while n is not None and n.id != node.id:
+                    n = r.nodes.get(n.parent)
+                if n is None:
+                    errors.append(f"{where}: source '{pr.attrs['source']}' is not inside {node.id}")
             practises = str(pr.attrs.get("practises", "")).split()
             if not practises:
                 errors.append(f"{where}: a bank problem needs practises=\"<note id> ...\"")
