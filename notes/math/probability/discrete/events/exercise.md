@@ -101,3 +101,33 @@ In each case draw the corresponding Venn diagrams.
 Prove that for any three events $A$, $B$ and $C$, we have
 $$\mathbf{P}(A \cap B \cap C) \geq \mathbf{P}(A) + \mathbf{P}(B) + \mathbf{P}(C) - 2.$$
 :::
+
+::: {.problem #prob-mit1805s22-1-q3 origin="external" source="mit1805s22-1-q3"}
+(Birthdays: counting and simulation)
+Ignoring leap days, the days of the year can be numbered 1 to 365. Assume that birthdays are equally likely to fall on any day of the year. Consider a group of $n$ people, of which you are not a member. An element of the sample space $S$ will be a sequence of $n$ birthdays (one for each person).
+
+(a) Define the probability function $P$ for $S$. (This will depend on $n$.)
+
+(b) Consider the following events:
+
+  A: "someone in the group shares your birthday"
+  B: "some two people in the group share a birthday"
+  C: "some three people in the group share a birthday"
+
+Carefully describe the subset of $S$ that corresponds to each event.
+
+(c) Find an exact formula for $P(A)$. What is the smallest $n$ such that $P(A) > 0.5$?
+
+(d) Justify why $n$ in part (c) is greater than $\frac{365}{2}$ without doing any computation. (We are looking for a short answer giving a heuristic sense of why this is so.)
+
+(e) Use R simulation to estimate the smallest $n$ for which $P(B) > 0.9$. For these simulations, let the number of trials be 10000. (You can reuse your code from Studio 1.)
+
+For this value of $n$, repeat the simulation a few times to verify that it always gives similar results.
+Using 10000 trials you saw very little variation in the estimate of $P(B)$. Try this again using 30 trials and verify that the estimated probabilities are much more variable. On your pset, give the results 7 runs of 30 trials using the value of $n$ you just found.
+
+(f) Find an exact formula for $P(B)$.
+
+(g) Use R simulation to estimate the smallest $n$ for which $P(C) > 0.5$. Again use 10000 trials. You will find that two adjacent values of $n$ are equally plausible based on simulations. You may pick either one for your answer.
+
+Note that it is much harder to find an exact formula for $P(C)$, so simulation is especially handy.
+:::

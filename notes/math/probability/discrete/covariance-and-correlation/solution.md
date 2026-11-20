@@ -36,3 +36,18 @@ $$\mathrm{Var}(R)=nq(1-q)-2(n-1)q^2,\qquad q=p(1-p).$$
 
 3. By bilinearity, $\mathrm{Cov}(X_1,X_2)=-\frac n{k^2}$.
 :::
+
+::: {.solution for="prob-mit1805s22-5-q3" status="draft"}
+(a) The marginals force $P(X=1,Y=-1)=\frac12-c$, $P(X=-1,Y=1)=\frac12-c$ and then $P(X=-1,Y=-1)=c$, with $0\le c\le\frac12$. Both means are $0$ and both variances $1$, so
+$$\mathrm{Cov}(X,Y)=E[XY]=c-\bigl(\tfrac12-c\bigr)-\bigl(\tfrac12-c\bigr)+c=4c-1=\mathrm{Cor}(X,Y).$$
+
+(b) Independence needs $P(X=1,Y=1)=\frac14$, i.e. $c=\frac14$; then all four cells are $\frac14$, which is the product of the marginals. The correlation is $1$ when $c=\frac12$ (then $Y=X$); it is $-1$ when $c=0$ (then $Y=-X$).
+:::
+
+::: {.solution for="prob-mit1805s22-5-q5" status="draft"}
+1. $X=\sum_{i=1}^nX_i$ and $Y=\sum_{j=n-7}^{2n-8}X_j$; each is a sum of $n$ terms, so $\mathrm{Var}(X)=\mathrm{Var}(Y)=n/4$.
+
+2. By bilinearity, $\mathrm{Cov}(X,Y)=\sum_i\sum_j\mathrm{Cov}(X_i,X_j)$. Independent terms contribute $0$ and $\mathrm{Cov}(X_i,X_i)=\frac14$, so only the shared indices $n-7,\dots,n$ count; there are $8$ of them. Hence $\mathrm{Cov}(X,Y)=\frac84=2$.
+
+3. $\mathrm{Cor}(X,Y)=\dfrac2{\sqrt{(n/4)(n/4)}}=\dfrac8n$.
+:::

@@ -129,3 +129,20 @@ In the Venn diagrams shade, respectively: everything inside the three circles; t
 
 3. Combining, $\Pr(A\cap B\cap C)\ge1-3+\Pr(A)+\Pr(B)+\Pr(C)=\Pr(A)+\Pr(B)+\Pr(C)-2$.
 :::
+
+::: {.solution for="prob-mit1805s22-1-q3" status="draft"}
+(a) $S=\{1,\dots,365\}^n$ has $365^n$ equally likely outcomes, so $P(E)=|E|/365^n$ for every $E\subseteq S$.
+
+(b) Let $d$ be your birthday. $A=\{(b_1,\dots,b_n): b_i=d\text{ for some }i\}$; $B$ is the set of sequences with $b_i=b_j$ for some $i<j$; $C$ is the set of sequences with $b_i=b_j=b_k$ for some $i<j<k$.
+
+(c) $A^c$ is the set of sequences avoiding $d$, of size $364^n$, so $P(A)=1-(364/365)^n$. This exceeds $\frac12$ when $n>\ln2/\ln(365/364)\approx252.65$, so the smallest $n$ is $253$.
+
+(d) The $n$ birthdays can coincide with each other, so $n$ people cover fewer than $n$ distinct days; to cover half the year in expectation one needs more than $365/2$ people.
+
+(e) Using the exact formula of (f): $P(B)\approx0.891$ for $n=40$ and $\approx0.903$ for $n=41$, so the answer is $n=41$; a simulation with $10000$ trials reproduces this to about $\pm0.006$. With only $30$ trials the estimate has standard deviation about $\sqrt{0.9\cdot0.1/30}\approx0.055$, so runs vary between roughly $0.8$ and $1$.
+
+(f) $B^c$ consists of the sequences of $n$ distinct days, $365\cdot364\cdots(365-n+1)$ of them, so
+$$P(B)=1-\frac{365\cdot364\cdots(365-n+1)}{365^n}\quad(n\le365),\qquad P(B)=1\quad(n>365).$$
+
+(g) An exact computation (a recursion on the number of days used once and twice) gives $P(C)\approx0.4995$ for $n=87$ and $\approx0.5111$ for $n=88$, so the answer is $88$; simulations with $10000$ trials cannot reliably separate $87$ from $88$.
+:::

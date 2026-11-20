@@ -267,3 +267,19 @@ The $n!$ assignments of hats to persons are equally likely.
 Fix Alice's 4 cards. Bob's hand is one of $\binom{52}8$ equally likely sets, and it contains Alice's cards exactly when its other 4 cards come from the remaining 48. So
 $$\Pr(\text{Alice wins})=\frac{\binom{48}4}{\binom{52}8}=\frac2{7735}\approx2.6\times10^{-4}.$$
 :::
+
+::: {.solution for="prob-mit1805s22-1-q2" status="draft"}
+(a) Each pair of faces has probability $1/36$; count the winning pairs.
+
+1. White beats orange: a white $5$ beats every orange face ($3\cdot6=18$ pairs), a white $2$ beats only the orange $1$ ($3$ pairs): $21/36=7/12$.
+
+2. Orange beats blue: an orange $4$ beats the five blue $3$s: $5\cdot5=25$ pairs, probability $25/36$.
+
+3. Blue beats white: a blue $3$ beats a white $2$ ($5\cdot3=15$ pairs), the blue $6$ beats every white face ($6$ pairs): $21/36=7/12$.
+
+Each die beats the next with probability above $\frac12$ in the cycle white $\to$ orange $\to$ blue $\to$ white, so no ordering from best to worst is consistent with "beats more often than not".
+
+(b) A sum of two blue dice is $6$ (probability $25/36$), $9$ ($10/36$) or $12$ ($1/36$). A sum of two white dice is $4$ ($9/36$), $7$ ($18/36$) or $10$ ($9/36$). White wins when it has $7$ against $6$, or $10$ against $6$ or $9$:
+$$\frac{18}{36}\cdot\frac{25}{36}+\frac9{36}\cdot\frac{35}{36}=\frac{450+315}{1296}=\frac{85}{144}\approx0.59.$$
+With two dice each, white now beats blue, reversing part (a).
+:::

@@ -49,3 +49,14 @@ Hint: Express the right-hand side of the above formula as a double summation the
 $$p_Y(y) = \frac{1}{b-a+1}, \qquad y = a, a+1, \ldots, b$$
 where $a$ and $b$ are nonnegative integers with $b > a$. Note that for $y = a, a+1, \ldots, b$, $p_Y(y)$ does not depend explicitly on $y$ since it is a uniform PMF.
 :::
+
+::: {.problem #prob-mit1805s22-3-q3 origin="external" source="mit1805s22-3-q3"}
+Dice
+Let $X$ be the result of rolling a fair 4-sided die. Let $Y$ be the result of rolling a fair 6-sided die. Let $Z$ be the average of $X$ and $Y$.
+
+(a) Find the standard deviation of $X$, of $Y$, and of $Z$.
+
+(b) Carefully graph the pmf and cdf of $Z$.
+
+(c) Here is a gambling game: You win $2X$ dollars if $X > Y$ and lose 1 dollar otherwise. After playing this game 60 times, what is your expected total gain (positive) or loss (negative)?
+:::

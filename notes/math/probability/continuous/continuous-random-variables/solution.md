@@ -40,3 +40,13 @@ so $c=\frac16$. The marginals are $f_X(x)=\int_0^2\bigl(\frac{xy}6+\frac14\bigr)
 $$\Pr(A\mid X\in[x,x+dx])\approx\frac{p\cdot1\,dx}{f(x)\,dx},\qquad\Pr(B\mid X\in[x,x+dx])\approx\frac{(1-p)\,2x\,dx}{f(x)\,dx}.$$
 Guess $A$ when $p>2(1-p)x$, i.e. when $x<\frac p{2(1-p)}$ (for every $x\in[0,1]$ if $p\ge\frac23$).
 :::
+
+::: {.solution for="prob-mit1805s22-3-q4" status="draft"}
+(a) $\int_0^{30}(40-h)\,dh=1200-450=750$ raisins.
+
+(b) Dividing by the total, $g(h)=\dfrac{40-h}{750}$ on $[0,30]$ and $0$ elsewhere: a line falling from $\frac4{75}$ at $h=0$ to $\frac1{75}$ at $h=30$.
+
+(c) $G(h)=0$ for $h<0$, $G(h)=\dfrac{40h-h^2/2}{750}$ for $0\le h\le30$, and $G(h)=1$ for $h>30$; on $[0,30]$ it is a concave parabola arc from $0$ to $1$.
+
+(d) $G(10)=\dfrac{400-50}{750}=\dfrac7{15}\approx0.467$.
+:::

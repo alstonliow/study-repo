@@ -20,3 +20,21 @@ Consider $n$ independent tosses of a $k$-sided fair die. Let $X_i$ be the number
 (a) Are $X_1$ and $X_2$ uncorrelated, positively correlated, or negatively correlated? Give a one-line justification.
 (b) Compute the covariance $\mathrm{cov}(X_1, X_2)$ of $X_1$ and $X_2$.
 :::
+
+::: {.problem #prob-mit1805s22-5-q3 origin="external" source="mit1805s22-5-q3"}
+Correlation
+Suppose $X$ and $Y$ are random variables with
+$$P(X = 1) = P(X = -1) = \frac12; \qquad P(Y = 1) = P(Y = -1) = \frac12.$$
+Let $c = P(X = 1 \text{ and } Y = 1)$.
+
+(a) Determine the joint distribution of $X$ and $Y$, $\mathrm{Cov}(X, Y)$, and $\mathrm{Cor}(X, Y)$.
+
+(b) For what value(s) of $c$ are $X$ and $Y$ independent? For what value(s) of $c$ are $X$ and $Y$ 100% correlated?
+:::
+
+::: {.problem #prob-mit1805s22-5-q5 origin="external" source="mit1805s22-5-q5"}
+Overlapping sums
+Suppose $X_1, X_2, \ldots$ are independent exponential(2) random variables. Suppose also that $X$ is the sum of the first $n$ and $Y$ is the sum of $X_{n-7}$ to $X_{2n-8}$. Compute $\mathrm{Cov}(X, Y)$ and $\mathrm{Cor}(X, Y)$. You should assume that $n \geq 8$.
+
+Hints: The variance of an exponential($\lambda$) random variable is $1/\lambda^2$. Use the linearity rules for covariance. What is the size of the overlap?
+:::

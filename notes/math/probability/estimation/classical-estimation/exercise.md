@@ -61,3 +61,21 @@ where $W_i$ and $V_i$ represent additive noise terms, modeled by independent nor
 
 Note: You may use the regression formulas and the connection with ML described in pages 478-479 of the text. However, the regression material is outside the scope of the final.
 :::
+
+::: {.problem #prob-mit1805s22-6-q1 origin="external" source="mit1805s22-6-q1"}
+Continuous MLE
+Suppose we have a distribution with the following pdf (called a gamma distribution)
+$$f(x\mid a) = \frac{a^5}{4!}\,x^4 e^{-ax}.$$
+Suppose we have independent data $x_1, x_2, \ldots, x_m$ drawn from this distribution. Find the maximum likelihood estimate (MLE) for $a$.
+
+Suggestion: The likelihood can be compactly written in terms of the sum S and the product P of the data.
+:::
+
+::: {.problem #prob-mit1805s22-6-q3 origin="external" source="mit1805s22-6-q3"}
+Estimating uniform parameters
+(a) Suppose we have data 1.2, 2.1, 1.3, 10.5, 5 which we know is drawn indepenedently from a uniform$(a, b)$ distribution. Give the maximum likelihood estimate for the parameters $a$ and $b$.
+
+Hint: in this case you should not try to find the MLE by differentiating the likelihood function.
+
+(b) Suppose we have data $x_1, x_2, \ldots, x_n$ which we know is drawn indepenedently from a uniform$(a, b)$ distribution. Give the maximum likelihood estimate for the parameters $a$ and $b$.
+:::

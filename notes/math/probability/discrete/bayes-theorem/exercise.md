@@ -104,3 +104,27 @@ The dog cannot go from one forest to the other. Oscar can search only in the day
 (c) If Oscar flips a fair coin to determine where to look on the first day and finds the dog on the first day, what is the probability that he looked in A?
 (d) If the dog is alive and not found by the $N$th day of the search, it will die that evening with probability $\frac{N}{N+2}$. Oscar has decided to look in A for the first two days. What is the probability that he will find a live dog for the first time on the second day?
 :::
+
+::: {.problem #prob-mit1805s22-2-q2 origin="external" source="mit1805s22-2-q2"}
+(The blue taxi)
+In a city with one hundred taxis, 1 is blue and 99 are green. A witness observes a hit-and-run by a taxi at night and recalls that the taxi was blue, so the police arrest the blue taxi driver who was on duty that night. The driver proclaims their innocence and hires you to defend them in court. You hire a scientist to test the witness' ability to distinguish blue and green taxis under conditions similar to the night of accident. The data suggests that the witness sees blue cars as blue 99% of the time and green cars as blue 2% of the time.
+
+Write a speech for the jury to give them reasonable doubt about your client's guilt. Your speech need not be longer than the statement of this question. Keep in mind that most jurors have not taken this course, so an illustrative table may be easier for them to understand than fancy formulas.
+:::
+
+::: {.problem #prob-mit1805s22-2-q4 origin="external" source="mit1805s22-2-q4"}
+(Dice) There are four dice in a drawer: one D4 (4 sides), one D6 (6-sides), and two D8 (8 sides). As usual, the sides of a die are numbered 1 to $n$, where $n$ is the number of sides.
+
+Your friend secretly grabs one of the four dice at random. Let $S$ be the number of sides on the chosen die.
+
+(a) What is the pmf of S?
+
+(b) Now, without showing it to you, your friend rolls the chosen die and tells you the result. Let $R$ be the result of the roll.
+Use Bayes' rule to find $P(S = s \mid R = 3)$ for $s = 4, 6, 8$. Which die is most likely if $R = 3$?
+
+Terminology: You are computing the pmf of 'S given R = 3'.
+
+(c) Which die is most likely if $R = 6$? Hint: You can either repeat the computation in (b), or you can reason based on your result in (b).
+
+(d) Which die is most likely if $R = 7$? No computations are needed!
+:::

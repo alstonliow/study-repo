@@ -257,3 +257,11 @@ $$\Pr(A\cap(B\cup C))=\Pr(A)\Pr(B)+\Pr(A)\Pr(C)-\Pr(A)\Pr(B)\Pr(C).$$
 
 3. Taking complements gives the formula.
 :::
+
+::: {.solution for="prob-mit1805s22-2-q1" status="draft"}
+Use the sample space $\{MM,MF,FM,FF\}$ (older first), all outcomes with probability $\frac14$.
+
+(a) The condition "older is female" is $\{FM,FF\}$, of probability $\frac12$; both female is $\{FF\}$. So the answer is $\frac{1/4}{1/2}=\frac12$.
+
+(b) The condition "at least one male" is $\{MM,MF,FM\}$, of probability $\frac34$, and both male is $\{MM\}$. The answer is $\frac{1/4}{3/4}=\frac13$. The two answers differ because the conditions remove different outcomes: in (b) the information does not say *which* kitten is male.
+:::

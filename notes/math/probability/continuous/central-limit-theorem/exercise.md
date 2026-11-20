@@ -25,3 +25,19 @@ Let $S_n$ be the number of successes in $n$ independent Bernoulli trials, where 
 (b) $\mathbf{P}\left(\frac{n}{2} - \frac{n}{10} \leq S_n \leq \frac{n}{2} + \frac{n}{10}\right)$
 (c) $\mathbf{P}\left(\frac{n}{2} - \frac{\sqrt{n}}{2} \leq S_n \leq \frac{n}{2} + \frac{\sqrt{n}}{2}\right)$
 :::
+
+::: {.problem #prob-mit1805s22-4-q2 origin="external" source="mit1805s22-4-q2"}
+Elections
+To head the newly formed US Dept. of Statistics, suppose that 50% of the population supports Alessandre, 20% supports Sarah, and the rest are split between Gabriel, Sarah and So Hee. A poll asks 400 random people who they support.
+
+(a) Use the central limit theorem to estimate the probability that at least 52.5% of those polled prefer Alessandre?
+
+(b) Use the central limit theorem to estimate the probability that less than 31% of those polled prefer Gabriel, Sarah or So Hee?
+:::
+
+::: {.problem #prob-mit1805s22-4-q3 origin="external" source="mit1805s22-4-q3"}
+A penny for your thoughts
+To save a mint, in 2012 Canada decided to do away with its pennies. The Chubby Chef in Equality, Illinois wants to be ready should the United States decide to pass a similar law. The Chubby Chef processes $n = 1000$ orders of assorted baked goods each day, and will round the price of each order to the nearest nickel (e.g., \$3.57 rounds to \$3.55 while \$3.58 rounds to \$3.60). Let $p$ be the probability that the total rounding error over the course of a day is either greater than 100 or less than -100 cents, i.e. exceeds 100 in absolute value. Estimate $p$ using the central limit theorem.
+
+Extra credit 5 points Simulate this in R with 10000 trials. (Each trial involves 1000 orders.) Print out or hand copy your code and include it. Give the result of running your code 3 times,
+:::

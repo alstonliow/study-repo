@@ -44,3 +44,29 @@ The quadrilateral is the parallelogram $\{0\le x\le1,\ x\le y\le x+1\}$ of area 
 
 (d) $\mathrm{Var}(2X+U)=4\cdot\frac1{12}+\frac1{12}=\frac5{12}$.
 :::
+
+::: {.solution for="prob-mit1805s22-5-q1" status="draft"}
+(a) $\int_0^1\int_0^1(x^2+xy)\,dy\,dx=\frac13+\frac14=\frac7{12}$, so $c=\frac{12}7$. For $(x,y)\in[0,1]^2$,
+$$F(x,y)=\frac{12}7\int_0^x\int_0^y(u^2+uv)\,dv\,du=\frac{12}7\Bigl(\frac{x^3y}3+\frac{x^2y^2}4\Bigr)=\frac{4x^3y+3x^2y^2}7 .$$
+
+(b) $F_X(x)=F(x,1)=\frac{4x^3+3x^2}7$ and $F_Y(y)=F(1,y)=\frac{4y+3y^2}7$ on $[0,1]$; differentiating, $f_X(x)=\frac{12x^2+6x}7$ and $f_Y(y)=\frac{4+6y}7$.
+
+(c) $E[X]=\int_0^1\frac{12x^3+6x^2}7dx=\frac57$, $E[X^2]=\int_0^1\frac{12x^4+6x^3}7dx=\frac{39}{70}$, so $\mathrm{Var}(X)=\frac{39}{70}-\frac{25}{49}=\frac{23}{490}\approx0.0469$.
+
+(d) $E[Y]=\frac47$, $E[Y^2]=\frac{17}{42}$, $\mathrm{Var}(Y)=\frac{23}{294}$, and $E[XY]=\frac{12}7\int_0^1\int_0^1(x^3y+x^2y^2)\,dy\,dx=\frac{12}7\bigl(\frac18+\frac19\bigr)=\frac{17}{42}$. So
+$$\mathrm{Cov}(X,Y)=\frac{17}{42}-\frac{20}{49}=-\frac1{294}\approx-0.0034,\qquad\mathrm{Cor}(X,Y)=\frac{-1/294}{\sqrt{\frac{23}{490}\cdot\frac{23}{294}}}\approx-0.056 .$$
+
+(e) No: the covariance is not $0$ (equivalently, $f(x,y)\ne f_X(x)f_Y(y)$, e.g. at $(1,0)$: $\frac{12}7\ne\frac{18}7\cdot\frac47$).
+:::
+
+::: {.solution for="prob-mit1805s22-5-q4" status="draft"}
+(a) $f(a,b)=\frac1{3600}$ on $[0,60]^2$ and $0$ elsewhere; for $(a,b)$ in the square, $F(a,b)=\frac{ab}{3600}$ (and $F$ is $0$, $\frac a{60}$, $\frac b{60}$ or $1$ outside it, by clamping $a$ and $b$ to $[0,60]$).
+
+(b) $P(A<30)=\frac{30}{60}=\frac12$.
+
+(c) (i) $P(A<15)P(30<B<45)=\frac14\cdot\frac14=\frac1{16}$. (ii) The event is the rectangle $[0,15]\times[30,45]$ of area $225$, and $\frac{225}{3600}=\frac1{16}$.
+
+(d) Read as "$A\le B+5$" (arriving before Bernardo also counts): the complement is the triangle $a>b+5$ with legs $55$, area $\frac{55^2}2=1512.5$, so the probability is $1-\frac{1512.5}{3600}\approx0.580$. (If only $0<A-B<5$ is meant, the region is a strip of area $\frac{60^2-55^2}2=287.5$, probability $\approx0.080$.)
+
+(e) They meet when $|A-B|\le15$. The complement is two triangles with legs $45$, total area $45^2=2025$, so the probability is $1-\frac{2025}{3600}=\frac7{16}=0.4375$.
+:::

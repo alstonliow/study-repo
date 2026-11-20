@@ -12,6 +12,14 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 18.05 integration (2026-11-20): 18.05 problems and blocks in shared notes
+  - prob-mit1805s22-1-q1
+  - prob-mit1805s22-1-q2
+  - prob-mit1805s22-1-q3
+  - prob-mit1805s22-2-q1
+  - prob-mit1805s22-2-q2
+  - prob-mit1805s22-2-q4
+  - prob-mit1805s22-3-q3
   # MIT 6.046 Spring 2015 material (not in this course's material)
   - prob-mit6046s15-1-q11
   - prob-mit6046s15-1-q12

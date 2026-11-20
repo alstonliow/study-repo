@@ -58,3 +58,39 @@ The random variables $X$ and $Y$ are described by a joint PDF which is constant 
 (c) Find the expected value of $X + Y$.
 (d) Find the variance of $X + Y$.
 :::
+
+::: {.problem #prob-mit1805s22-5-q1 origin="external" source="mit1805s22-5-q1"}
+Aching joints
+Suppose $X$ and $Y$ have joint pdf $f(x, y) = c(x^2 + xy)$ on $[0, 1] \times [0, 1]$.
+
+(a) Find $c$ and the joint cdf $F(x, y)$.
+
+(b) Find the marginal cumulative distribution functions $F_X$ and $F_Y$ and the marginal pdf $f_X$ and $f_Y$.
+
+(c) Find $E[X]$ and $\mathrm{Var}(X)$.
+
+(d) Find the covariance and correlation of $X$ and $Y$.
+
+(e) Are $X$ and $Y$ independent?
+:::
+
+::: {.problem #prob-mit1805s22-5-q4 origin="external" source="mit1805s22-5-q4"}
+Don't be late!
+Alicia and Bernardo are trying to meet for lunch and both will arrive, independently of each other, uniformly and at random between noon and 1pm. Let $A$ and $B$ be the number of minutes after noon at which Alicia and Bernardo arrive, respectively. Then $A$ and $B$ are independent uniformly distributed random variables on $[0, 60]$.
+
+Hint: For parts (c-e) you might find it easiest to find the fraction of the square $[0, 60]\times[0, 60]$ filled by the event.
+
+(a) Find the joint pdf $f(a, b)$ and joint cdf $F(a, b)$.
+
+(b) Find the probability that Alicia arrives before 12:30.
+
+(c) Find the probability that Alicia arrives before 12:15 and Bernardo arrives between 12:30 and 12:45 in two ways:
+
+(i) By using the fact that $A$ and $B$ are independent.
+
+(ii) By shading the corresponding area of the square $[0, 60] \times [0, 60]$ and finding what proportion of the square is shaded.
+
+(d) Find the probability that Alicia arrives less than five minutes after Bernardo. (Hint: use method (ii) from part (c).)
+
+(e) Now suppose that Alicia and Bernardo are both rather impatient and will leave if they have to wait more than 15 minutes for the other to arrive. What is the probability that Alicia and Bernardo will have lunch together?
+:::

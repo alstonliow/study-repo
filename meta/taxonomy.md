@@ -64,7 +64,7 @@ continuous probability and statistics build on them; Multivariable Calculus come
 uses its vectors, matrices and determinants (owner decision, 2026-11-18). Knowledge parts of research
 methods (experimental design, statistical evaluation) go into statistics or machine
 learning; reading, reproducing and writing are practice, recorded privately, not
-a field. Course order for the next additions: 6.041 with 18.05 (18.01, 18.06 and 18.02 done).
+a field. Course order for the next additions: 6.041 and 18.05 done (18.01, 18.06 and 18.02 before them).
 
 ## 3. Where the sources went
 
@@ -97,6 +97,8 @@ a field. Course order for the next additions: 6.041 with 18.05 (18.01, 18.06 and
 | UC Berkeley EECS126 homework (Fall 2021) HW 1–14 and discussions 2, 4–9, 11, 13 | 63 homework (figures redrawn in TikZ) and 11 discussion exercises with draft solutions; midterm redos and repeated problems skipped; labs 1–9 as coursework projects |
 | MIT 6.041 lecture slides (Fall 2010), Lectures 1–25 | new notes `math/probability/continuous/derived-distributions`, `continuous/iterated-expectations`, `random-processes/bernoulli-process`, `estimation/bayesian-inference`, `estimation/classical-estimation`; probability axioms added to sample spaces |
 | MIT 6.041 problem sets (Fall 2010) PS 1–11 | 51 exercises with draft solutions; figure-based problems (PS5 Q2–3, PS6 Q2 and Q4, PS8 Q2 and Q4, PS9 Q4) and 6.431-only problems skipped |
+| MIT 18.05 class readings and slides (Spring 2022), Classes 1–26 | new branches `math/statistics/bayesian` (4 notes) and `math/statistics/frequentist` (6 notes) at the end of Probability and Statistics; quantiles added to `continuous/continuous-random-variables`; classes 1–10 and 13 covered by existing probability notes |
+| MIT 18.05 problem sets (Spring 2022) PS 1–8 | 32 exercises with draft solutions; warm-ups, R-only and figure problems skipped; PS 9–11 not yet added |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
 course files (`meta/courses/`), not here.
@@ -161,3 +163,4 @@ course files (`meta/courses/`), not here.
 - 2026-11-20: merges (owner): fifteen MIT 18.06 blocks removed in favour of their Cambridge IB Linear Algebra versions (thm-dimension-well-defined → thm-dimension-invariant, thm-dimension-of-sum → thm-dimension-of-sum-and-intersection, prp-basis-unique-coordinates → prp-basis-iff-unique-expression, prp-linear-map-determined-by-basis → thm-linear-map-from-basis, def-matrix-of-linear-transformation → def-matrix-of-linear-map, thm-change-of-basis-similar → prp-endomorphism-change-of-basis, thm-product-rule-determinants → thm-determinant-multiplicative, thm-inverse-by-cofactors → thm-adjugate, thm-distinct-eigenvalues-independent → lem-eigenspaces-independent, thm-jordan-form → thm-jordan-normal-form, thm-symmetric-real-eigenvalues → lem-self-adjoint-eigenvalues, thm-spectral-theorem → cor-real-symmetric-orthogonally-diagonalisable, thm-cauchy-schwarz → thm-cauchy-schwarz-inner-product (triangle-inequality uses → cor-triangle-inequality-inner-product), def-gram-schmidt and thm-gram-schmidt → thm-gram-schmidt-abstract); the 18.06 notes keep pointer paragraphs, kept blocks gained the 18.06 extras (rank-one spectral form, cofactor form of the adjugate, n distinct eigenvalues, Jordan block counts), references point to the kept ids, and mit1806 and mit1802 cover them.
 
 - 2026-11-20: MIT 6.041 (Fall 2010) added as a course (`mit6041`): resources `res-mit-6041-lectures` (prefix `mit6041-`) and `res-mit-6041-f10-psets` (prefix `mit6041f10-`); five new notes (derived distributions, iterated expectations and random sums, Bernoulli process, Bayesian inference, classical estimation) and probability axioms; 51 problem-set exercises; three figures. Recitations and tutorials not used.
+- 2026-11-20: MIT 18.05 (Spring 2022) added as a course (`mit1805`): resources `res-mit-1805-classes` (prefix `mit1805-`) and `res-mit-1805-s22-psets` (prefix `mit1805s22-`); new branches `math/statistics/bayesian` and `math/statistics/frequentist` (10 notes); 32 problem-set exercises (PS 1–8).

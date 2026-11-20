@@ -13,6 +13,25 @@ outline_from: UC Berkeley EECS126 Probability and Random Processes, Fall 2021 su
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 18.05 integration (2026-11-20): 18.05 problems and blocks in shared notes
+  - def-quantile
+  - exm-quantiles
+  - prob-mit1805s22-1-q2
+  - prob-mit1805s22-1-q3
+  - prob-mit1805s22-2-q1
+  - prob-mit1805s22-2-q2
+  - prob-mit1805s22-2-q3
+  - prob-mit1805s22-2-q4
+  - prob-mit1805s22-2-q5
+  - prob-mit1805s22-3-q3
+  - prob-mit1805s22-3-q4
+  - prob-mit1805s22-4-q1
+  - prob-mit1805s22-4-q2
+  - prob-mit1805s22-4-q3
+  - prob-mit1805s22-5-q1
+  - prob-mit1805s22-5-q3
+  - prob-mit1805s22-5-q4
+  - prob-mit1805s22-5-q5
   # EECS126 integration (2026-11-19): problems from other courses in shared notes, and blocks outside this course
   - prob-cs188hw-9-q1
   - prob-cs70-14-q1

@@ -64,3 +64,18 @@
 (b) For $k\le a$, $\Pr(Y\ge k)=1$; for $a<k\le b$, $\Pr(Y\ge k)=\frac{b-k+1}{b-a+1}$; for $k>b$ it is $0$. Hence
 $$E[Y]=a+\frac{1}{b-a+1}\sum_{k=a+1}^b(b-k+1)=a+\frac{(b-a)(b-a+1)/2}{b-a+1}=\frac{a+b}2.$$
 :::
+
+::: {.solution for="prob-mit1805s22-3-q3" status="draft"}
+(a) A fair $n$-sided die has variance $\frac{n^2-1}{12}$. So $\mathrm{Var}(X)=\frac{15}{12}=\frac54$, $\sigma_X\approx1.118$, and $\mathrm{Var}(Y)=\frac{35}{12}$, $\sigma_Y\approx1.708$. By independence $\mathrm{Var}(Z)=\frac14\bigl(\frac54+\frac{35}{12}\bigr)=\frac{25}{24}$, so $\sigma_Z\approx1.021$.
+
+(b) The $24$ pairs $(X,Y)$ are equally likely. Counting pairs with each average:
+
+| $z$ | $1$ | $1.5$ | $2$ | $2.5$ | $3$ | $3.5$ | $4$ | $4.5$ | $5$ |
+|---|---|---|---|---|---|---|---|---|---|
+| $24\,p(z)$ | $1$ | $2$ | $3$ | $4$ | $4$ | $4$ | $3$ | $2$ | $1$ |
+| $24\,F(z)$ | $1$ | $3$ | $6$ | $10$ | $14$ | $18$ | $21$ | $23$ | $24$ |
+
+The pmf is a symmetric trapezoid of spikes about $z=3$; the cdf is a step function, constant between these points, jumping by $p(z)$ at each.
+
+(c) Let $W$ be the winnings of one game. $X>Y$ happens for $(x,y)$ with $y<x$: $x=2,3,4$ give $1,2,3$ pairs, winning $4,6,8$ dollars; the other $18$ pairs lose $1$. So $E[W]=\frac{4+12+24-18}{24}=\frac{11}{12}$, and by linearity the expected total over $60$ games is $60\cdot\frac{11}{12}=55$ dollars, a gain.
+:::

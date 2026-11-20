@@ -138,3 +138,16 @@ Let $n \geq 2$ be an integer. Show that
 $$\sum_{k=2}^{n} \binom{n}{k} k(k-1) = n(n-1)2^{n-2}.$$
 Hint: As one way of solving the problem, following from Example 1.31 in the text, think of a committee that includes a chair and a vice-chair.
 :::
+
+::: {.problem #prob-mit1805s22-1-q1 origin="external" source="mit1805s22-1-q1"}
+(6 card draw)
+You can easily look up the probability of 5 card poker hands, e.g. <https://en.wikipedia.org/wiki/Poker_probability>
+
+For this problem, let's consider hands with 6 cards. Here are two types:
+
+Two-pair: Two cards have one rank, two cards have another rank, and the remaining two cards have two different ranks. e.g. $\{2\heartsuit, 2\spadesuit, 5\heartsuit, 5\clubsuit, Q\diamondsuit, K\diamondsuit\}$
+
+Three-of-a-kind: Three cards have one rank and the remaining three cards have three other ranks. e.g. $\{2\heartsuit, 2\spadesuit, 2\clubsuit, 5\clubsuit, 9\spadesuit, K\heartsuit\}$
+
+Calculate the probability of each type of hand. Which is more probable?
+:::

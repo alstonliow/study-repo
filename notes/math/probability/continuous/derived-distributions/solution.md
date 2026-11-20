@@ -17,3 +17,13 @@ $$E\Bigl[\frac1X\Bigm|Y=\tfrac32\Bigr]=\frac{\int_{3/2}^21\,dx}{\int_{3/2}^2x\,d
 
 3. Hence $f_Z(z)=\frac9{14}$ for $-1\le z\le0$, $f_Z(z)=\frac3{14}(4-z^2)$ for $-2\le z\le-1$, and $0$ otherwise (the mirror image of $f_Y$).
 :::
+
+::: {.solution for="prob-mit1805s22-4-q4" status="draft"}
+Use the CDF method: write $F$ of the new variable in terms of $F_X(x)=1-e^{-x}$ ($x\ge0$), then differentiate.
+
+(a) $X$ has range $[0,\infty)$ and $f_X(x)=e^{-x}$. $Y=3X$ has range $[0,\infty)$ and $F_Y(y)=P(X\le y/3)=1-e^{-y/3}$, so $f_Y(y)=\frac13e^{-y/3}$: the same shape stretched three times wider and three times lower (starting at $\frac13$ instead of $1$).
+
+(b) $W$ has range $[b,\infty)$, and $F_W(w)=P(X\le\frac{w-b}a)=1-e^{-(w-b)/a}$, so $f_W(w)=\frac1ae^{-(w-b)/a}$ for $w\ge b$.
+
+(c) $V$ has range $[0,\infty)$, $F_V(v)=P(X\le v^{1/3})=1-e^{-v^{1/3}}$, so $f_V(v)=\frac13v^{-2/3}e^{-v^{1/3}}$ for $v>0$.
+:::

@@ -34,3 +34,13 @@ $$\mathrm{Var}(X+Y)=\tfrac32+\tfrac89-\tfrac49=\tfrac{35}{18}.$$
 (i) $A$ consists of $(1,1),(2,1),(4,1),(4,3)$ with total weight $49$. Given $A$, $X$ is $1,2,4$ with probabilities $\frac2{49},\frac5{49},\frac{42}{49}$. So $E[X\mid A]=\frac{2+10+168}{49}=\frac{180}{49}$, $E[X^2\mid A]=\frac{2+20+672}{49}=\frac{694}{49}$, and
 $$\mathrm{Var}(X\mid A)=\frac{694}{49}-\Bigl(\frac{180}{49}\Bigr)^2=\frac{1606}{2401}\approx0.669.$$
 :::
+
+::: {.solution for="prob-mit1805s22-2-q3" status="draft"}
+Condition on the first card (law of total expectation, @thm-total-expectation).
+
+1. First card $1$ (probability $\frac12$): the second card is drawn from three $1$s and four $2$s, so its expected rank is $\frac{3+8}7=\frac{11}7$ and $E[X\mid\text{first}=1]=1+\frac{11}7=\frac{18}7$.
+
+2. First card $2$ (probability $\frac12$): two more cards from four $1$s and three $2$s. Each has expected rank $\frac{4+6}7=\frac{10}7$, so by linearity $E[X\mid\text{first}=2]=2+\frac{20}7=\frac{34}7$.
+
+3. $E[X]=\frac12\cdot\frac{18}7+\frac12\cdot\frac{34}7=\frac{26}7\approx3.714$.
+:::

@@ -52,3 +52,11 @@ $$p_{X,Y}(x,y) = \begin{cases} c(x^2 + y^2), & \text{if } x \in \{1, 2, 4\} \tex
 (h) Find the variances $\mathrm{var}(X)$, $\mathrm{var}(Y)$ and $\mathrm{var}(X + Y)$.
 (i) Let $A$ denote the event $X \geq Y$. Find $\mathbf{E}[X \mid A]$ and $\mathrm{var}(X \mid A)$.
 :::
+
+::: {.problem #prob-mit1805s22-2-q3 origin="external" source="mit1805s22-2-q3"}
+(Trees of cards) There are 8 cards in a hat:
+
+$$\{1\heartsuit, 1\spadesuit, 1\diamondsuit, 1\clubsuit, 2\heartsuit, 2\spadesuit, 2\diamondsuit, 2\clubsuit\}$$
+
+You draw one card at random. If its rank is 1 you draw one more card; if its rank is two you draw two more cards. Let $X$ be the sum of the ranks on the 2 or 3 cards drawn. Find $E[X]$. (Note: all the draws are done without replacement.)
+:::

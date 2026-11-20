@@ -28,3 +28,15 @@ The answer is $np$.
 2. All rows have the same distribution, so this equals $\sum_{i=1}^{n}\Pr(X\ge i)$ for one $X\sim\operatorname{Bin}(n,p)$.
 3. For a variable with values in $\{0,\dots,n\}$, $X=\sum_{i=1}^n\mathbf 1\{X\ge i\}$, so the sum is $E[X]=np$.
 :::
+
+::: {.solution for="prob-mit1805s22-2-q5" status="draft"}
+Assume $n\ge3$.
+
+1. Let $X_i$ be the indicator that the person in seat $i$ is shorter than both neighbours; the required number is $X=\sum_iX_i$.
+
+2. The three people in seats $i-1,i,i+1$ are a uniformly random ordered triple of distinct heights, so each of the three is equally likely to be the shortest: $E[X_i]=\frac13$.
+
+3. By linearity of expectation, $E[X]=n/3$.
+
+(For $n=2$ both neighbours of each person are the other person, and exactly one person is shorter, so the answer is $1$.)
+:::

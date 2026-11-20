@@ -1,6 +1,6 @@
 ---
 title: "Continuous Random Variables"
-sources: [cs70-20.1, cs70-20.2]
+sources: [cs70-20.1, cs70-20.2, mit1805-6]
 requires: [math/probability/discrete/expectation-and-variance]
 status: draft
 ---
@@ -157,5 +157,23 @@ If $X$ and $Y$ are independent with densities $f_X$ and $f_Y$, then $f(x,y)=f_X(
 3. The right side is $\Pr(a\le X\le b)\Pr(c\le Y\le d)$, which equals $\Pr(a\le X\le b,\ c\le Y\le d)$ by independence. Letting $a,c\to-\infty$ and $b,d\to\infty$ also gives total integral $1$.
 
 4. So $f$ gives every rectangle its correct probability, as @def-joint-density requires.
+
+:::
+
+<!-- Added 2026-11-20 from MIT 18.05 (Spring 2022), Class 6, in our own wording. -->
+
+::: {#def-quantile .definition name="Quantile, median"}
+
+Let $X$ have a continuous, strictly increasing c.d.f. $F$ on the interval where its density is positive, and let $0<p<1$. The *$p$-quantile* of $X$ is the number $q_p$ with
+$$F(q_p)=\Pr(X\le q_p)=p .$$
+The $0.5$-quantile is the *median*; $q_{0.25}$ and $q_{0.75}$ are the *quartiles*. For a general c.d.f. one takes $q_p=\min\{x:F(x)\ge p\}$.
+
+:::
+
+::: {#exm-quantiles .example name="Quantiles of two distributions"}
+
+1. For $X\sim\operatorname{Exp}(\lambda)$, $F(x)=1-e^{-\lambda x}$, so $q_p=-\ln(1-p)/\lambda$; the median is $\ln2/\lambda\approx0.693/\lambda$, below the mean $1/\lambda$.
+
+2. For the standard normal $Z$, $q_{0.9}\approx1.28$, $q_{0.95}\approx1.645$ and $q_{0.975}\approx1.96$. By symmetry $q_{1-p}=-q_p$, so $\Pr(-1.96\le Z\le1.96)\approx0.95$.
 
 :::

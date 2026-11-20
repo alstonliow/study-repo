@@ -251,3 +251,13 @@ In solving this problem, feel free to browse problems 43-45 in Chapter 1 of the 
 (b) Prove that if $A_1, \ldots, A_n$ are independent events, then
 $$\mathbf{P}(A_1 \cup A_2 \cup \ldots \cup A_n) = 1 - \prod_{i=1}^{n} (1 - \mathbf{P}(A_i)).$$
 :::
+
+::: {.problem #prob-mit1805s22-2-q1 origin="external" source="mit1805s22-2-q1"}
+('Binary' paradox)
+For this problem assume that puppies are equally probable to be male or female. Likewise for kittens.
+Be sure to carefully justify your answers.
+
+(a) Our dog Layla had two puppies. The older puppy is female. What is the probability that both puppies are female?
+
+(b) Our cat Ariel had two kittens. At least one of them is male. What is the probability that both kittens are males?
+:::

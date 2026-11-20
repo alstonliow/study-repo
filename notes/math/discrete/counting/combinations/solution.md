@@ -175,3 +175,13 @@ Count the ways to choose, from $n$ people, a committee together with a chair and
 
 3. Both count the same set, so they are equal.
 :::
+
+::: {.solution for="prob-mit1805s22-1-q1" status="draft"}
+All $\binom{52}6=20{,}358{,}520$ hands are equally likely; count each type by the product rule.
+
+1. *Two-pair.* Choose the two paired ranks, $\binom{13}2$; their suits, $\binom42^2$; the two other ranks from the remaining $11$, $\binom{11}2$; and a suit for each, $4^2$. That is $78\cdot36\cdot55\cdot16=2{,}471{,}040$ hands, probability $\approx0.1214$.
+
+2. *Three-of-a-kind.* Choose the rank of the triple, $13$; its suits, $\binom43$; three other ranks from $12$, $\binom{12}3$; their suits, $4^3$. That is $13\cdot4\cdot220\cdot64=732{,}160$ hands, probability $\approx0.0360$.
+
+3. Two-pair is more than three times as probable.
+:::

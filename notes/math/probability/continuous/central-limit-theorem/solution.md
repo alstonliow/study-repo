@@ -40,3 +40,19 @@ $S_n$ has mean $\frac n2$ and standard deviation $\frac{\sqrt n}2$; let $Z_n=(S_
 
 (c) The event is $|Z_n|\le1$, so the limit is $\Phi(1)-\Phi(-1)\approx0.683$.
 :::
+
+::: {.solution for="prob-mit1805s22-4-q2" status="draft"}
+Each polled person is an independent Bernoulli$(p)$ trial; the sample proportion $\bar X$ of $n=400$ has mean $p$ and standard deviation $\sqrt{p(1-p)/400}$, and is approximately normal by the central limit theorem.
+
+(a) $p=0.5$, standard deviation $0.025$. $P(\bar X\ge0.525)\approx P(Z\ge1)\approx0.16$.
+
+(b) The remaining group has $p=0.3$, standard deviation $\sqrt{0.21/400}\approx0.0229$. $P(\bar X<0.31)\approx P(Z<0.436)\approx0.67$.
+:::
+
+::: {.solution for="prob-mit1805s22-4-q3" status="draft"}
+1. Model the last digit of each price as uniform on $0,\dots,9$, independently. The rounding error in cents (rounded minus original) is $0,-1,-2,+2,+1$ for last digits $0,1,2,3,4$ and the same for $5,\dots,9$, so each error $X_i$ is uniform on $\{-2,-1,0,1,2\}$: mean $0$, variance $\frac{4+1+0+1+4}5=2$.
+
+2. The daily total $S=\sum_{i=1}^{1000}X_i$ has mean $0$ and standard deviation $\sqrt{2000}\approx44.7$.
+
+3. By the central limit theorem, $p=P(|S|>100)\approx P(|Z|>100/44.7)=2(1-\Phi(2.236))\approx0.025$. A simulation with $10000$ trials gives values within a few thousandths of this.
+:::

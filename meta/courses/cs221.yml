@@ -17,6 +17,10 @@ coursework_repo:
   url: https://github.com/alstonliow/cs221-homework
 
 exclude:
+  # MIT 18.05 integration (2026-11-20): 18.05 problems and blocks in shared notes
+  - prob-mit1805s22-2-q1
+  - prob-mit1805s22-2-q2
+  - prob-mit1805s22-2-q4
   # CS188 blocks added to shared notes, and CS188 problems in CS221's scope (scope_excludes.py, 2026-11-19).
   - def-d-separation
   - def-heuristic-dominance

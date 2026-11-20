@@ -300,3 +300,20 @@ Now assume, in addition, that every hat thrown into the box has probability $p$ 
 ::: {.problem #prob-mit6041f10-3-q2 origin="external" source="mit6041f10-3-q2"}
 Alice plays with Bob the following game. First Alice randomly chooses 4 cards out of a 52-card deck, memorizes them, and places them back into the deck. Then Bob randomly chooses 8 cards out of the same deck. Alice wins if Bob's cards include all cards selected by her. What is the probability of this happening?
 :::
+
+::: {.problem #prob-mit1805s22-1-q2 origin="external" source="mit1805s22-1-q2"}
+(Non-transitive dice)
+In class we worked with non-transitive dice:
+
+Blue: 3 3 3 3 3 6; Orange: 1 4 4 4 4 4; White: 2 2 2 5 5 5.
+
+(a) Find the probability that white beats orange, the probability that orange beats blue and the probability that blue beats white.
+Can you line the dice up in order from best to worst? (Hint: this is why these are called 'non-transitive'.)
+
+(b) Suppose you roll two white dice against two blue dice. What is the probability that the sum of the white dice is greater than the sum of the blue dice?
+
+For hints on this problem and ways to make money with your dice, watch at least the first six minutes of the following video.
+<https://www.youtube.com/watch?v=zWUrwhaqq_c>
+
+Here a tree is used to organize the calculation rather than a table. We will discuss this method in Week 2.
+:::

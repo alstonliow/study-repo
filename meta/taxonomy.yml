@@ -538,6 +538,24 @@ parts:
           - classical-estimation
           - jointly-gaussian
           - kalman-filter
+      - id: math/statistics/bayesian
+        title: Bayesian Statistics
+        desc: Bayesian updating, predictive probabilities, odds and Bayes factors, conjugate priors, choosing priors, credible intervals
+        notes:   # topic order on the website
+          - bayesian-updating
+          - odds-and-prediction
+          - conjugate-priors
+          - credible-intervals
+      - id: math/statistics/frequentist
+        title: Frequentist Statistics
+        desc: Significance testing, p-values, t, chi-square and F tests, confidence intervals, the bootstrap, least squares regression
+        notes:   # topic order on the website
+          - significance-testing
+          - t-tests
+          - chi-square-and-f-tests
+          - confidence-intervals
+          - bootstrap
+          - least-squares-regression
   - title: Algorithms
     field: Computer Science
     branches:

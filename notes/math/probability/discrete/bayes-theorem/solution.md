@@ -135,3 +135,28 @@ There are $75$ defective old widgets out of $500$ and $75$ defective new ones ou
 
 (d) He must have: the dog in A ($0.4$), no find on day 1 ($0.75$), the dog surviving the first evening ($1-\frac13=\frac23$), and a find on day 2 ($0.25$). The product is $0.4\cdot0.75\cdot\frac23\cdot0.25=0.05$.
 :::
+
+::: {.solution for="prob-mit1805s22-2-q2" status="draft"}
+A speech built on a table of $10{,}000$ imagined nights like the one in question:
+
+| | witness says "blue" | witness says "green" | total |
+|---|---|---|---|
+| the taxi really was blue | $99$ | $1$ | $100$ |
+| the taxi really was green | $198$ | $9702$ | $9900$ |
+
+"Ladies and gentlemen, there is one blue taxi in this city and ninety-nine green ones. Out of $10{,}000$ such accidents, about $100$ involve the blue taxi, and the witness would call $99$ of them blue. But $9900$ involve green taxis, and even a witness who errs only $2\%$ of the time would call $198$ of those blue. So of all the times this witness says 'blue', only $99$ out of $297$ — one in three — really were blue. Two times out of three the taxi was green. That is not proof beyond reasonable doubt."
+
+By Bayes' theorem, $P(\text{blue}\mid\text{says blue})=\frac{0.01\cdot0.99}{0.01\cdot0.99+0.99\cdot0.02}=\frac13$.
+:::
+
+::: {.solution for="prob-mit1805s22-2-q4" status="draft"}
+(a) $p_S(4)=\frac14$, $p_S(6)=\frac14$, $p_S(8)=\frac12$.
+
+(b) The likelihoods of $R=3$ are $\frac14,\frac16,\frac18$. The Bayes numerators are $\frac1{16},\frac1{24},\frac1{16}$ with total $\frac16$, so
+$$P(S=4\mid R=3)=\tfrac38,\quad P(S=6\mid R=3)=\tfrac14,\quad P(S=8\mid R=3)=\tfrac38.$$
+The D4 and the D8 are equally most likely.
+
+(c) $R=6$ rules out the D4. The numerators for D6 and D8 are $\frac1{24}$ and $\frac1{16}$, giving posteriors $\frac25$ and $\frac35$: the D8 is most likely.
+
+(d) Only the D8 can show $7$, so its posterior probability is $1$.
+:::

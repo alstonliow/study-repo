@@ -48,3 +48,18 @@ With independent normal noise of fixed variance, the log-likelihood is a constan
 
 (b) With $z_i=x_i^2$: $\hat\beta_1\approx4.091$ and $\hat\beta_0\approx-3.07$. The quadratic model fits these data far better.
 :::
+
+::: {.solution for="prob-mit1805s22-6-q1" status="draft"}
+1. With $S=\sum x_i$ and $P=\prod x_i$, the likelihood is $\dfrac{a^{5m}}{(4!)^m}P^4e^{-aS}$, and the log-likelihood is $5m\ln a-aS+\text{const}$.
+
+2. Its derivative $\frac{5m}a-S$ vanishes at $a=\frac{5m}S$; the second derivative $-\frac{5m}{a^2}$ is negative, so this is the maximum.
+
+3. $\hat a=\dfrac{5m}{x_1+\dots+x_m}=\dfrac5{\bar x}$.
+:::
+
+::: {.solution for="prob-mit1805s22-6-q3" status="draft"}
+(b) first. The likelihood is $\prod_i\frac1{b-a}=(b-a)^{-n}$ if every $x_i\in[a,b]$, and $0$ otherwise. It is positive only when $a\le\min_ix_i$ and $b\ge\max_ix_i$, and there it increases as $b-a$ shrinks. So it is largest at
+$$\hat a=\min_ix_i,\qquad\hat b=\max_ix_i .$$
+
+(a) Hence $\hat a=1.2$ and $\hat b=10.5$.
+:::

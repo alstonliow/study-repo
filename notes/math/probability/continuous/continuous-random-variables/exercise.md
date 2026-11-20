@@ -43,3 +43,16 @@ Find the constant $c$. Are $X$ and $Y$ independent?
 
 (d) Using the same premise as in part c, suppose you observe a dart on the board but don't know who threw it. Let $x$ be the dart's distance from the center. We would like to come up with a decision rule to determine whether Alice or Bob is more likely to have thrown the dart given your observation, $x$. Specifically, if we let $A$ be the event that Alice threw the dart and $B$ be the event that Bob threw, we want to guess $A$ if $P[A \mid X \in [x, x + dx]] > P[B \mid X \in [x, x + dx]]$ (what do these two probabilities have to sum up to?). For what values of $x$ would we guess $A$? (your answer should be in terms of $p$)
 :::
+
+::: {.problem #prob-mit1805s22-3-q4 origin="external" source="mit1805s22-3-q4"}
+Two scoops
+Boxes of Raisin Bran cereal are 30cm tall. Due to settling, boxes have a higher density of raisins at the bottom ($h = 0$) than at the top ($h = 30$). Suppose the density (in raisins per cm of height) is given by $f(h) = 40 - h$.
+
+(a) How many raisins are in a box?
+
+(b) Let $H$ be the height of a random raisin. Find and graph the pdf $g(h)$ of $H$.
+
+(c) Find and graph the cdf $G(h)$ of $H$.
+
+(d) What is the probability that a random raisin is in the bottom third of the box?
+:::
