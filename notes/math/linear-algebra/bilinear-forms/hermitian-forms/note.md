@@ -1,0 +1,75 @@
+---
+title: "Hermitian Forms"
+sources: [camib-la-7]
+requires: [math/linear-algebra/bilinear-forms/sylvester-law-of-inertia, math/linear-algebra/eigenvalues/complex-matrices]
+status: draft
+---
+
+<!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 7.2, in our own wording; examples ours; proofs written out in steps. -->
+
+Over $\mathbb C$ a symmetric bilinear form cannot be positive definite: $\phi(iv,iv)=-\phi(v,v)$. The fix is to make the form conjugate-linear in one argument. Following the Cambridge course, forms here are linear in the first argument and conjugate-linear in the second (many physics texts use the opposite convention).
+
+::: {#def-sesquilinear-form .definition name="Sesquilinear and Hermitian forms"}
+
+Let $V,W$ be complex vector spaces. A *sesquilinear form* is a map $\phi:V\times W\to\mathbb C$ with
+$$\phi(\lambda v_1+\mu v_2,w)=\lambda\phi(v_1,w)+\mu\phi(v_2,w),\qquad \phi(v,\lambda w_1+\mu w_2)=\bar\lambda\phi(v,w_1)+\bar\mu\phi(v,w_2).$$
+Its matrix in bases $e_i$, $f_j$ is $A$ with $a_{ij}=\phi(e_i,f_j)$. A sesquilinear form on $V\times V$ is *Hermitian* if $\phi(u,v)=\overline{\phi(v,u)}$ for all $u,v$.
+
+:::
+
+In coordinates $\phi(v,w)=[v]^{\mathsf T}A\,\overline{[w]}$. The form is Hermitian exactly when its matrix satisfies $A=A^{\mathsf H}$ (@def-hermitian-unitary). For a Hermitian form, $\phi(v,v)=\overline{\phi(v,v)}$ is real, so it makes sense to ask for its sign.
+
+::: {#prp-hermitian-form-change-of-basis .proposition name="Change of basis for a Hermitian form"}
+
+If $P$ is the change of basis matrix from $\mathcal B$ to $\mathcal B'$, then $[\phi]_{\mathcal B'}=P^{\mathsf T}[\phi]_{\mathcal B}\bar P$.
+
+:::
+
+::: {.proof}
+
+1. $[v]_{\mathcal B}=P[v]_{\mathcal B'}$, so $\phi(v,w)=(P[v]_{\mathcal B'})^{\mathsf T}A\,\overline{P[w]_{\mathcal B'}}=[v]_{\mathcal B'}^{\mathsf T}(P^{\mathsf T}A\bar P)\overline{[w]_{\mathcal B'}}$.
+
+2. The matrix is determined by this identity, as for bilinear forms.
+
+:::
+
+Writing $R=\bar P$, the rule reads $A\mapsto R^{\mathsf H}AR$ (with $R^{\mathsf H}=P^{\mathsf T}$), which again is Hermitian.
+
+::: {#prp-hermitian-polarization .proposition name="Polarization for Hermitian forms"}
+
+A Hermitian form is determined by its values $\phi(v,v)$:
+$$\phi(u,v)=\tfrac14\big(\phi(u+v,u+v)-\phi(u-v,u-v)+i\,\phi(u+iv,u+iv)-i\,\phi(u-iv,u-iv)\big).$$
+
+:::
+
+::: {.proof}
+
+1. Expanding, $\phi(u+cv,u+cv)=\phi(u,u)+\bar c\,\phi(u,v)+c\,\phi(v,u)+\lvert c\rvert^2\phi(v,v)$ for $c\in\mathbb C$.
+
+2. Take $c=1,-1,i,-i$ with weights $1,-1,i,-i$. The terms $\phi(u,u)$ and $\phi(v,v)$ have weights summing to $1-1+i-i=0$. The coefficient of $\phi(u,v)$ is $1\cdot1+(-1)(-1)+i\cdot\bar i+(-i)\cdot\overline{(-i)}=1+1+1+1=4$. The coefficient of $\phi(v,u)$ is $1+1+i\cdot i+(-i)(-i)=1+1-1-1=0$.
+
+3. So the weighted sum is $4\phi(u,v)$.
+
+:::
+
+::: {#thm-sylvester-hermitian .theorem name="Sylvester's law for Hermitian forms" generalizes="thm-sylvester-law-of-inertia"}
+
+Let $\phi$ be a Hermitian form on an $n$-dimensional complex vector space. There is a basis in which $[\phi]=\operatorname{diag}(I_p,-I_q,0)$, and $p$ and $q$ do not depend on the basis: $p$ is the largest dimension of a subspace on which $\phi$ is positive definite, and $q$ likewise for negative definite.
+
+:::
+
+::: {.proof}
+
+1. If $\phi\ne0$, polarization (@prp-hermitian-polarization) gives $e_1$ with $\phi(e_1,e_1)\ne0$; this value is real, and after scaling by $\lvert\phi(e_1,e_1)\rvert^{-1/2}$ it is $\pm1$.
+
+2. $U=\{u:\phi(u,e_1)=0\}$ is the kernel of the non-zero linear functional $u\mapsto\phi(u,e_1)$, so $\dim U=n-1$ and $V=\langle e_1\rangle\oplus U$, as in @thm-symmetric-form-diagonalizable. By induction $\phi|_U$ has a basis of the required form, and $\phi(e_j,e_1)=0=\overline{\phi(e_1,e_j)}$ for $e_j\in U$. Reorder to get $\operatorname{diag}(I_p,-I_q,0)$.
+
+3. Uniqueness of $p$ and $q$ is the proof of @thm-sylvester-law-of-inertia word for word: a positive definite subspace meets $\langle e_{p+1},\dots,e_n\rangle$ only in $0$.
+
+:::
+
+::: {#exm-hermitian-form .example name="A Hermitian form on C^2"}
+
+Let $\phi(\mathbf z,\mathbf w)=\mathbf z^{\mathsf T}A\bar{\mathbf w}$ with $A=\begin{bmatrix}1&i\\-i&1\end{bmatrix}=A^{\mathsf H}$. Then $\phi(\mathbf z,\mathbf z)=\lvert z_1\rvert^2+iz_1\bar z_2-i\bar z_1z_2+\lvert z_2\rvert^2=\lvert z_1-i z_2\rvert^2$, since $\lvert z_1-iz_2\rvert^2=(z_1-iz_2)(\bar z_1+i\bar z_2)$. So $\phi$ is positive semi-definite of rank $1$: $p=1$, $q=0$, and $\phi(\mathbf z,\mathbf z)=0$ on the line $z_1=iz_2$. Its matrix has eigenvalues $0$ and $2$, in agreement.
+
+:::

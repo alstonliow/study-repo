@@ -273,6 +273,53 @@ parts:
           - linear-transformations
           - change-of-basis
           - pseudoinverse
+      - id: math/linear-algebra/abstract-vector-spaces
+        title: Abstract Vector Spaces
+        desc: Vector spaces over a field, quotients, the Steinitz exchange lemma and dimension, direct sums
+        notes:   # topic order on the website
+          - vector-spaces-over-a-field
+          - bases-and-dimension
+          - direct-sums
+      - id: math/linear-algebra/linear-maps
+        title: Linear Maps
+        desc: Linear maps and isomorphisms, matrices of linear maps, the first isomorphism theorem and rank–nullity, change of basis and the rank normal form
+        notes:   # topic order on the website
+          - linear-maps-and-isomorphisms
+          - matrices-of-linear-maps
+          - rank-nullity
+          - equivalence-and-rank
+      - id: math/linear-algebra/duality
+        title: Duality
+        desc: Dual spaces and dual bases, annihilators, dual maps, the double dual
+        notes:   # topic order on the website
+          - dual-spaces
+          - dual-maps
+      - id: math/linear-algebra/bilinear-forms
+        title: Bilinear and Quadratic Forms
+        desc: Bilinear forms and their matrices, symmetric and quadratic forms, Sylvester's law of inertia, Hermitian forms
+        notes:   # topic order on the website
+          - bilinear-forms
+          - symmetric-forms-and-quadratic-forms
+          - sylvester-law-of-inertia
+          - hermitian-forms
+      - id: math/linear-algebra/endomorphisms
+        title: Endomorphisms and Jordan Normal Form
+        desc: Determinants over a field, trace and eigenvalues of endomorphisms, the minimal polynomial, Cayley–Hamilton, Jordan normal form
+        notes:   # topic order on the website
+          - determinants-over-a-field
+          - eigenvalues-of-endomorphisms
+          - minimal-polynomial
+          - cayley-hamilton
+          - jordan-normal-form
+          - generalized-eigenspaces
+      - id: math/linear-algebra/inner-product-spaces
+        title: Inner Product Spaces
+        desc: Inner products and Cauchy–Schwarz, Gram–Schmidt and orthogonal complements, adjoints, orthogonal and unitary maps, the spectral theorem
+        notes:   # topic order on the website
+          - inner-products
+          - gram-schmidt-and-orthogonal-complements
+          - adjoints-and-isometries
+          - spectral-theorem
   - title: Multivariable Calculus
     field: Mathematics
     branches:

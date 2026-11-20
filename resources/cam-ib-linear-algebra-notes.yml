@@ -1,0 +1,62 @@
+# Cambridge Part IB Linear Algebra, Michaelmas 2015, lecture notes (lectures by S. J. Wadsley; unofficial notes taken by
+# Dexter Chua, https://dec41.user.srcf.net/h/IB_M/linear_algebra), as a resource (meta/SPEC.md §17.12).
+# DRAFT for owner review. No licence is stated, so the notes are kept only locally in raw/CAM_IB_LINEAR_ALGEBRA/2015
+# (linear_algebra.pdf) and never copied; all study notes are in our own words.
+# Locator = chapter number of the notes (1-8); a source key is camib-la-6. Node titles are our own short titles.
+# Node ids are stable. Written by hand in the style of res-cam-ib-analysis-ii-notes.
+id: res-cam-ib-linear-algebra-notes
+kind: course-notes
+title: Cambridge IB Linear Algebra Lecture Notes (Michaelmas 2015)
+status: draft
+courses:
+- camib-la
+editions:
+- id: 2015-michaelmas
+  current: true
+legacy_keys:
+  prefix: camib-la-
+  edition: 2015-michaelmas
+  pattern: ^camib-la-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: IB Linear Algebra §{section}
+  problem_label: IB Linear Algebra §{section} Q{n}
+nodes:
+- id: res-cam-ib-linear-algebra-notes-vector-spaces
+  kind: section
+  title: Vector spaces
+  at:
+    2015-michaelmas: '1'
+- id: res-cam-ib-linear-algebra-notes-linear-maps
+  kind: section
+  title: Linear maps
+  at:
+    2015-michaelmas: '2'
+- id: res-cam-ib-linear-algebra-notes-duality
+  kind: section
+  title: Duality
+  at:
+    2015-michaelmas: '3'
+- id: res-cam-ib-linear-algebra-notes-bilinear-forms
+  kind: section
+  title: Bilinear forms
+  at:
+    2015-michaelmas: '4'
+- id: res-cam-ib-linear-algebra-notes-determinants
+  kind: section
+  title: Determinants
+  at:
+    2015-michaelmas: '5'
+- id: res-cam-ib-linear-algebra-notes-endomorphisms
+  kind: section
+  title: Endomorphisms
+  at:
+    2015-michaelmas: '6'
+- id: res-cam-ib-linear-algebra-notes-symmetric-and-hermitian-forms
+  kind: section
+  title: Symmetric and Hermitian forms
+  at:
+    2015-michaelmas: '7'
+- id: res-cam-ib-linear-algebra-notes-inner-product-spaces
+  kind: section
+  title: Inner product spaces
+  at:
+    2015-michaelmas: '8'

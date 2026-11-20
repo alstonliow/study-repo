@@ -176,6 +176,29 @@ not here.
 | $\sigma_i,\ \Sigma,\ U,\ V$ | singular values and the SVD $A=U\Sigma V^{\mathsf T}$ |
 | $\operatorname{tr}A$ | trace |
 
+### Abstract linear algebra (`math/linear-algebra`, Cambridge IB branches)
+
+<!-- Added 2026-11-20 with Cambridge IB Linear Algebra. Vectors in abstract spaces are plain letters, not bold. -->
+
+| Symbol | Meaning |
+|---|---|
+| $F$ | field of scalars |
+| $u,v,w$; $\langle S\rangle$ | vectors of an abstract space; span of a set |
+| $U\le V$, $V/U$, $U\oplus W$ | subspace, quotient space, direct sum |
+| $\alpha,\beta$; $\iota$ | linear maps; the identity map |
+| $\mathcal L(U,V)$, $\operatorname{End}(V)$ | linear maps $U\to V$; endomorphisms of $V$ |
+| $[\alpha]_{\mathcal B,\mathcal C}$, $[v]_{\mathcal B}$ | matrix of $\alpha$ from basis $\mathcal B$ to basis $\mathcal C$; coordinates of $v$ |
+| $r(\alpha)$, $n(\alpha)$ | rank and nullity |
+| $V^*$, $\varepsilon_i$, $U^0$ | dual space, dual basis, annihilator |
+| $\alpha'$ | dual map $\theta\mapsto\theta\circ\alpha$ |
+| $\alpha^*$ | adjoint (inner product spaces) |
+| $\chi_\alpha$, $m_\alpha$ | characteristic polynomial $\det(t\iota-\alpha)$, minimal polynomial |
+| $E(\lambda)$; $a_\lambda$, $g_\lambda$, $c_\lambda$ | eigenspace; algebraic and geometric multiplicity, multiplicity in $m_\alpha$ |
+| $J_m(\lambda)$ | Jordan block |
+| $\varepsilon(\sigma)$ | sign of a permutation |
+| $\langle u,v\rangle$, $\lVert v\rVert$ | inner product (linear in the first argument), norm |
+| $O(V)$, $U(V)$ | orthogonal and unitary groups |
+
 ## Calculus (`math/calculus`)
 
 <!-- Added 2026-11-18 with MIT 18.01. -->
