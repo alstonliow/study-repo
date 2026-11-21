@@ -18,3 +18,17 @@
 
 3. $C$ has rank $1$, so $0$ is an eigenvalue twice; the trace gives the third: $6$, with eigenvector $(1,1,1)$.
 :::
+
+::: {.solution for="prob-mit18065ps-4-q2" status="draft"}
+1. $\det(A-\lambda I)=\lambda^2-\lambda-2=(\lambda-2)(\lambda+1)$, so $\lambda=2$ and $-1$; their sum $1$ is the trace $0+1$.
+
+2. $\lambda=2$: $\mathbf{x}=(1,1)$. $\lambda=-1$: $\mathbf{x}=(2,-1)$, since $A(2,-1)=(-2,1)$.
+
+3. From $A\mathbf{x}=\lambda\mathbf{x}$ we get $A^{-1}\mathbf{x}=\frac1\lambda\mathbf{x}$. So $A^{-1}$ has the *same* eigenvectors, with eigenvalues $\frac12$ and $-1$; their sum $-\frac12$ is the trace $-\frac12+0$ of $A^{-1}$. In general the eigenvalues are $1/\lambda_1$ and $1/\lambda_2$.
+:::
+
+::: {.solution for="prob-mit18065ps-4-q11" status="draft"}
+1. $A^{\mathsf T}-\lambda I=(A-\lambda I)^{\mathsf T}$, and a matrix and its transpose have the same determinant. So the characteristic polynomials agree.
+
+2. Example: $A=\begin{bmatrix}1&1\\0&0\end{bmatrix}$ has eigenvectors $(1,0)$ for $\lambda=1$ and $(1,-1)$ for $\lambda=0$. $A^{\mathsf T}=\begin{bmatrix}1&0\\1&0\end{bmatrix}$ has eigenvectors $(1,1)$ for $\lambda=1$ and $(0,1)$ for $\lambda=0$. Different.
+:::

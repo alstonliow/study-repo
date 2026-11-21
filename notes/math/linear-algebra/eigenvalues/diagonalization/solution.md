@@ -14,3 +14,13 @@
 
 2. Columns times rows (@thm-four-ways-to-multiply) gives $\sum_i(\lambda_i\mathbf{x}_i)\mathbf{y}_i^{\mathsf T}$.
 :::
+
+::: {.solution for="prob-mit18065ps-4-q15" status="draft"}
+1. $\begin{bmatrix}1&2\\0&3\end{bmatrix}$: triangular, $\lambda=1,3$ with eigenvectors $(1,0)$ and $(1,1)$. So
+$$A=\begin{bmatrix}1&1\\0&1\end{bmatrix}\begin{bmatrix}1&0\\0&3\end{bmatrix}\begin{bmatrix}1&-1\\0&1\end{bmatrix}.$$
+
+2. $\begin{bmatrix}1&1\\3&3\end{bmatrix}$: rank one, trace $4$, so $\lambda=0,4$ with eigenvectors $(1,-1)$ and $(1,3)$. So
+$$A=\begin{bmatrix}1&1\\-1&3\end{bmatrix}\begin{bmatrix}0&0\\0&4\end{bmatrix}\tfrac14\begin{bmatrix}3&-1\\1&1\end{bmatrix}.$$
+
+3. (b) $A^3=X\Lambda^3X^{-1}$ (the inner $X^{-1}X$ cancel) and $A^{-1}=X\Lambda^{-1}X^{-1}$, when no eigenvalue is zero. The second matrix has $\lambda=0$, so it has no inverse.
+:::

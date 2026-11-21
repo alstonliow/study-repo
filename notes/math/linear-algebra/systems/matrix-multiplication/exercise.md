@@ -23,3 +23,7 @@ a) If $A\begin{pmatrix}1\\0\\0\end{pmatrix}=\begin{pmatrix}2\\3\\1\end{pmatrix}$
 
 *Note (these notes):* Only part (a) was assigned.
 :::
+
+::: {.problem #prob-mit18065ps-27-q2 origin="external" source="mit18065ps-27-q2"}
+If $A$ is an $m$ by $n$ matrix with $m>n$, is it faster to multiply $A(A^{\mathsf T}A)$ or $(AA^{\mathsf T})A$ ?
+:::

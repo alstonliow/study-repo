@@ -28,3 +28,15 @@ Minimise $A=2xz+4yz+3xy$ subject to $xyz=1$ (length $x$, width $y$, height $z$).
 $$2z+3y=\lambda yz,\qquad4z+3x=\lambda xz,\qquad2x+4y=\lambda xy .$$
 Multiplying by $x$, $y$, $z$ respectively: $2xz+3xy=4yz+3xy=2xz+4yz\ (=\lambda)$. The first equality gives $x=2y$, the second $3xy=2xz$, i.e. $z=\frac32y$. Proportions $4:2:3$, as in 2F-2.
 :::
+
+::: {.solution for="prob-mit18065ps-24-q1" status="draft"}
+1. (a) With the sign that makes (e) come out as stated: $L(\mathbf{x},\lambda)=\frac12x_1^2+2x_2^2+\lambda(x_1+3x_2-b)$.
+
+2. (b) $\partial L/\partial x_1=x_1+\lambda=0$, $\;\partial L/\partial x_2=4x_2+3\lambda=0$, $\;\partial L/\partial\lambda=x_1+3x_2-b=0$.
+
+3. (c) $x_1=-\lambda$, $x_2=-\frac34\lambda$; then $-\lambda-\frac94\lambda=b$ gives $\lambda^*=-\frac{4b}{13}$ and $\mathbf{x}^*=\big(\frac{4b}{13},\frac{3b}{13}\big)$.
+
+4. (d) The level sets $\frac12x_1^2+2x_2^2=c$ are ellipses (circles only after rescaling $x_2$), centred at the origin. The minimiser is where the line $x_1+3x_2=b$ touches the smallest such ellipse; there the gradient $(x_1,4x_2)$ is parallel to the normal $(1,3)$ of the line: $(4b/13,12b/13)=\frac{4b}{13}(1,3)$.
+
+5. (e) $F^*=\frac12\big(\frac{4b}{13}\big)^2+2\big(\frac{3b}{13}\big)^2=\frac{26b^2}{169}=\frac{2b^2}{13}$, so $\partial F^*/\partial b=\frac{4b}{13}=-\lambda^*$.
+:::

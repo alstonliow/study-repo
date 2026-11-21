@@ -40,3 +40,9 @@
 
 3. The eigenvalues are $2-\sqrt3,\ 1,\ 2,\ 3,\ 2+\sqrt3$, all positive. Their sum is $10=\operatorname{tr}K$ and their product is $(4-3)\cdot1\cdot2\cdot3=6=\det K$.
 :::
+
+::: {.solution for="prob-mit18065ps-6-q1" status="draft"}
+1. $\mathbf{x}^{\mathsf T}\mathbf{x}=\sum_{i,j}c_ic_j\mathbf{v}_i^{\mathsf T}\mathbf{v}_j$, and $\mathbf{v}_i^{\mathsf T}\mathbf{v}_j$ is $1$ for $i=j$, $0$ otherwise. Only the squares survive.
+
+2. $S\mathbf{x}=\sum_jc_j\lambda_j\mathbf{v}_j$, so $\mathbf{x}^{\mathsf T}S\mathbf{x}=\sum_{i,j}c_ic_j\lambda_j\mathbf{v}_i^{\mathsf T}\mathbf{v}_j=\sum_j\lambda_jc_j^2$ by the same orthonormality.
+:::

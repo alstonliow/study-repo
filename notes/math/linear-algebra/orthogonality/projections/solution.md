@@ -41,3 +41,11 @@ Check two things:
 
 Both are needed: $\mathbf{p}=\mathbf{b}$ always passes test 2 (its error $\mathbf{0}$ is orthogonal to everything), yet $\mathbf{b}$ need not lie in the subspace. Together the two conditions characterise the projection (@thm-projection-onto-subspace).
 :::
+
+::: {.solution for="prob-mit18065ps-10-q17" status="draft"}
+1. $\widehat{x}=36/4=9$ (the mean of the data) and $\mathbf{p}=(9,9,9,9)$.
+
+2. $\mathbf{e}=(-9,-1,-1,11)$ and $\mathbf{a}^{\mathsf T}\mathbf{e}=-9-1-1+11=0$.
+
+3. $\lVert\mathbf{e}\rVert=\sqrt{81+1+1+121}=\sqrt{204}\approx14.3$.
+:::

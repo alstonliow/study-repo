@@ -32,3 +32,13 @@ So the columns are orthogonal with lengths $\sigma_i=\sqrt{\lambda_i}$, and $\ma
 
 (c) $A^{\mathsf T}\mathbf{y}=\mathbf{0}$ says $y_1-y_2=y_2-y_3=y_3-y_4=0$, so $N(A^{\mathsf T})$ is the line through $(1,1,1,1)$ and $\mathbf{u}_4=\frac12(1,1,1,1)$.
 :::
+
+::: {.solution for="prob-mit18065ps-6-q6" status="draft"}
+1. $A^{\mathsf T}A=\begin{bmatrix}9&12\\12&41\end{bmatrix}$ has trace $50$ and determinant $225$, so eigenvalues $45$ and $5$: $\sigma_1=3\sqrt5$, $\sigma_2=\sqrt5$ (check: $\sigma_1\sigma_2=15=\det A$).
+
+2. Eigenvectors: $\mathbf{v}_1=(1,3)/\sqrt{10}$ (from $(A^{\mathsf T}A-45I)\mathbf{v}=\mathbf{0}$, i.e. $-36v_1+12v_2=0$) and $\mathbf{v}_2=(3,-1)/\sqrt{10}$.
+
+3. $\mathbf{u}_i=A\mathbf{v}_i/\sigma_i$: $A(1,3)=(15,15)$ gives $\mathbf{u}_1=(1,1)/\sqrt2$; $A(3,-1)=(5,-5)$ gives $\mathbf{u}_2=(1,-1)/\sqrt2$.
+
+4. Check: $\sigma_1\mathbf{u}_1\mathbf{v}_1^{\mathsf T}+\sigma_2\mathbf{u}_2\mathbf{v}_2^{\mathsf T}=\frac{3}{2}\begin{bmatrix}1&3\\1&3\end{bmatrix}+\frac12\begin{bmatrix}3&-1\\-3&1\end{bmatrix}=\begin{bmatrix}3&4\\0&5\end{bmatrix}$.
+:::

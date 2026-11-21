@@ -38,3 +38,11 @@
 
 4. The map $X\mapsto AX$ is linear on the $9$-dimensional space $\mathbf{M}$; just as for a matrix, (dimension of nullspace) + (dimension of outputs) = (dimension of inputs): $3+6=9$.
 :::
+
+::: {.solution for="prob-mit18065ps-1-q18" status="draft"}
+1. The pivot columns of $\begin{bmatrix}0&A\\0&A\end{bmatrix}$ are the pivot columns of $A$ stacked twice, so the column factor is $\begin{bmatrix}C\\C\end{bmatrix}$.
+
+2. The row factor is $\begin{bmatrix}0&R\end{bmatrix}$ (zero columns in front, one per column of the zero block).
+
+3. Check by block multiplication: $\begin{bmatrix}C\\C\end{bmatrix}\begin{bmatrix}0&R\end{bmatrix}=\begin{bmatrix}0&CR\\0&CR\end{bmatrix}=\begin{bmatrix}0&A\\0&A\end{bmatrix}$. The columns of $\begin{bmatrix}C\\C\end{bmatrix}$ are independent because those of $C$ are, and the rows of $\begin{bmatrix}0&R\end{bmatrix}$ are independent because those of $R$ are, so the rank is still $r$.
+:::

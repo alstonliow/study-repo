@@ -79,3 +79,12 @@ The pmf is a symmetric trapezoid of spikes about $z=3$; the cdf is a step functi
 
 (c) Let $W$ be the winnings of one game. $X>Y$ happens for $(x,y)$ with $y<x$: $x=2,3,4$ give $1,2,3$ pairs, winning $4,6,8$ dollars; the other $18$ pairs lose $1$. So $E[W]=\frac{4+12+24-18}{24}=\frac{11}{12}$, and by linearity the expected total over $60$ games is $60\cdot\frac{11}{12}=55$ dollars, a gain.
 :::
+
+::: {.solution for="prob-mit18065ps-19-q8" status="draft"}
+Expand the square and use $\sum p_i=1$ and $\sum p_ix_i=m$:
+$$\sum p_i(x_i-m)^2=\sum p_ix_i^2-2m\sum p_ix_i+m^2\sum p_i=\sum p_ix_i^2-2m^2+m^2=\sum p_ix_i^2-m^2 .$$
+:::
+
+::: {.solution for="prob-mit18065ps-20-q12" status="draft"}
+$\mathrm{E}[(x-m)^2]=\mathrm{E}[x^2]-2m\,\mathrm{E}[x]+m^2=\mathrm{E}[x^2]-m^2$ by linearity, so $\mathrm{E}[x^2]=\sigma^2+m^2$.
+:::

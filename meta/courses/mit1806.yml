@@ -14,6 +14,29 @@ outline_from: "MIT 18.06 Linear Algebra (Strang), lectures 1-33 as in 18.06SC Fa
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 18.065 integration (2026-11-21): its problems in shared notes
+  - prob-mit18065ps-1-q18
+  - prob-mit18065ps-1-q4
+  - prob-mit18065ps-10-q12
+  - prob-mit18065ps-10-q17
+  - prob-mit18065ps-12-q1
+  - prob-mit18065ps-13-q4
+  - prob-mit18065ps-16-q12
+  - prob-mit18065ps-27-q2
+  - prob-mit18065ps-3-q4
+  - prob-mit18065ps-3-q6
+  - prob-mit18065ps-30-q3
+  - prob-mit18065ps-4-q11
+  - prob-mit18065ps-4-q15
+  - prob-mit18065ps-4-q2
+  - prob-mit18065ps-5-q14
+  - prob-mit18065ps-5-q15
+  - prob-mit18065ps-5-q3
+  - prob-mit18065ps-6-q1
+  - prob-mit18065ps-6-q6
+  - prob-mit18065ps-9-q2
+  - prob-mit18065ps-9-q8
+  - prob-mit18065ps-9-q9
   # MIT 18.02 (2026-11-18): 18.02 problems placed in Linear Algebra notes
   - prob-mit1802f07-1-q2
   - prob-mit1802f07-1-q4

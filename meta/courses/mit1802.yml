@@ -10,8 +10,9 @@ source_prefix: mit1802
 outline_from: MIT 18.02 Multivariable Calculus (Auroux), Fall 2007 lecture notes
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
-
+exclude:
+  # MIT 18.065 integration (2026-11-21): its problems in shared notes
+  - prob-mit18065ps-24-q1
 chapters:
 - num: 1
   title: Vectors and the dot product

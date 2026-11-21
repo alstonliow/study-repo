@@ -45,3 +45,7 @@ Prove Theorem 10.3 using induction.
 
 How many 10-digit passwords can he pick that don't contain forbidden sequences if each number $0, 1, \ldots, 9$ can only be chosen once (i.e. without replacement)?
 :::
+
+::: {.problem #prob-mit18065ps-19-q3 origin="external" source="mit18065ps-19-q3"}
+We know: $\frac13$ of all integers are divisible by 3 and $\frac17$ of integers are divisible by 7. What fraction of integers will be divisible by 3 or 7 or both ?
+:::

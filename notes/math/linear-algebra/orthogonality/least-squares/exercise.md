@@ -19,3 +19,12 @@ Form the closest parabola $b=C+Dt+Et^2$ to the same four points, and write down 
 ::: {.problem #prob-mit1806s10-6-q4 origin="external" source="mit1806s10-6-q4"}
 Find the plane that gives the best fit to the 4 values $\mathbf{b}=(0,1,3,4)$ at the corners $(1,0)$ and $(0,1)$ and $(-1,0)$ and $(0,-1)$ of a square. The equations $C+Dx+Ey=b$ at those 4 points are $A\mathbf{x}=\mathbf{b}$ with 3 unknowns $\mathbf{x}=(C,D,E)$. What is $A$? At the center $(0,0)$ of the square, show that $C+Dx+Ey$ is the average of the $b$'s.
 :::
+
+::: {.problem #prob-mit18065ps-10-q12 origin="external" source="mit18065ps-10-q12"}
+Problems 12 and 17 use four data points $\mathbf{b}=(0,8,8,20)$ to bring out the key ideas.
+
+
+With $\mathbf{b}=0,8,8,20$ at $t=0,1,3,4$, set up and solve the normal equations $A^{\mathsf T}A\widehat{\mathbf{x}}=A^{\mathsf T}\mathbf{b}$. For the best straight line in Figure II.3a, find its four heights $p_i$ and four errors $e_i$. What is the minimum squared error $E=e_1^2+e_2^2+e_3^2+e_4^2$?
+
+*Note (these notes):* The textbook figure is not reproduced here.
+:::

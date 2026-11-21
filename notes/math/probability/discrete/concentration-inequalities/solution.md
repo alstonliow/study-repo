@@ -85,3 +85,26 @@ $$X=\begin{cases}\mu-c&\text{with probability }a/2,\\\mu&\text{with probability 
 
 3. $|X-\mu|\ge c$ exactly when $X\ne\mu$, which has probability $a=\sigma^2/c^2$: equality in Chebyshev's inequality.
 :::
+
+::: {.solution for="prob-mit18065ps-20-q10" status="draft"}
+1. Code (Python, NumPy):
+```python
+import numpy as np
+rng = np.random.default_rng(0)
+N = 10**6
+A = rng.integers(0, 2, N).mean()     # 0.500418 with this seed
+X = (A - 0.5) * 2 * np.sqrt(N)       # 0.836
+```
+
+2. Each sample has mean $\frac12$ and variance $\frac14$, so $A_N$ has mean $\frac12$ and standard deviation $\frac1{2\sqrt N}=0.0005$ (@prp-sample-mean). The standardised variable is $(A_N-\frac12)\big/\frac1{2\sqrt N}=(A_N-\frac12)\cdot2\sqrt N$; this run gave $0.836$. By the central limit theorem $X$ is approximately standard normal, so a value between $-2$ and $2$ is expected about $95\%$ of the time.
+
+3. Read literally as $(A_N-\frac12)/(2\sqrt N)$ the value would be about $2\times10^{-7}$, which is not standardised; the intended divisor is the standard deviation $1/(2\sqrt N)$.
+:::
+
+::: {.solution for="prob-mit18065ps-20-q3" status="draft"}
+1. $\overline X=\mathrm{E}[X]=\frac12$, so $X\ge2\overline X$ means $X\ge1$, which has probability $\frac12$.
+
+2. Markov's inequality (@thm-markov-inequality) with $a=2\overline X$: $\Pr(X\ge2\overline X)\le\overline X/(2\overline X)=\frac12$. The bound equals the true probability, so Markov's inequality is exact here: all the probability above the mean sits exactly at $a$, and the rest at $0$.
+
+3. Note: the bound is $\overline X/a$ with $a=2\overline X$, which is $\frac12$; read as $\overline X/2=\frac14$ the claim would be false.
+:::

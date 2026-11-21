@@ -30,3 +30,9 @@ $$s_1=10-x_1-x_2,\quad s_2=20-4x_1+x_2,\quad s_3=24-x_1-3x_2,\quad p=4x_1+x_2.$$
 
 (d) The dual is: minimise $10y_1+20y_2+24y_3$ subject to $y_1+4y_2+y_3\ge4$, $y_1-y_2+3y_3\ge1$, $y_1,y_2,y_3\ge0$ (@def-dual-lp). The final coefficients of the slacks give $y=(\frac85,\frac35,0)$, which is feasible ($\frac85+\frac{12}5=4$, $\frac85-\frac35=1$) with value $16+12=28$; by weak duality (@thm-weak-duality) both are optimal, and the optimal value is $28$.
 :::
+
+::: {.solution for="prob-mit18065ps-24-q2" status="draft"}
+1. A corner has two of the three variables equal to zero: $(4,0,0)$, $(0,4,0)$, $(0,0,2)$.
+
+2. Costs: $20$, $12$, $16$. The minimum is at $(0,4,0)$ with cost $12$. A linear cost on the triangle is minimised at a corner, so this is the minimum over the whole triangle.
+:::

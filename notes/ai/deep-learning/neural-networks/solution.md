@@ -57,3 +57,23 @@ def mlp_probs(texts, emb, W1, b1, W2, b2):
 2. With one text per row of `X`, the layer $W_1\mathbf x+\mathbf b_1$ for all texts at once is `X @ W1.T + b1`; `np.maximum(·, 0)` is the ReLU.
 3. The softmax subtracts the row maximum before exponentiating, so large logits do not overflow.
 :::
+
+::: {.solution for="prob-mit18065ps-26-q4" status="draft"}
+Overlay the pieces of $F_1$ and $F_2$: each region of this common subdivision is a polygon on which both functions are linear. Continuity is preserved by sums, maxima and compositions of continuous functions.
+
+1. S: on each common region $F_1+F_2$ is a sum of two linear functions, hence linear.
+
+2. M: on each common region, the set where $F_1\ge F_2$ is cut off by the straight line $F_1=F_2$, so the region splits into at most two polygons, on each of which $\max(F_1,F_2)$ equals one linear function.
+
+3. C: $F_1$ has finitely many breakpoints. On an interval where $F_1$ is linear and nonconstant, $F_1(x)$ passes each breakpoint of $F_2$ at most once, so the interval splits into finitely many pieces on which $F_2\circ F_1$ is linear composed with linear; where $F_1$ is constant, so is the composition. Hence finitely many linear pieces.
+
+These three facts are why a ReLU network (sums, $\max(0,\cdot)$, compositions) computes a CPL function.
+:::
+
+::: {.solution for="prob-mit18065ps-33-q5" status="draft"}
+1. Hidden layers: the weight matrices are $6\times4$, $6\times6$, $6\times6$: $24+36+36=96$ weights, and $6+6+6=18$ biases.
+
+2. With one output neuron at the end (a $1\times6$ weight matrix and one bias), the totals are $102$ weights and $19$ biases.
+
+3. Each hidden neuron applies one ReLU: $3\times6=18$ activation functions before the final output.
+:::

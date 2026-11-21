@@ -29,3 +29,8 @@ Their sum should equal the trace 10. Their product should be $\det K=6$.
 
 *Note (these notes):* $K$ is the $5\times5$ matrix with $2$ on the diagonal and $-1$ just above and below it; the sine matrix has entries $S_{jk}=\sin(jk\pi h)=\sin(jk\pi/6)$.
 :::
+
+::: {.problem #prob-mit18065ps-6-q1 origin="external" source="mit18065ps-6-q1"}
+A symmetric matrix $S=S^{\mathsf T}$ has orthonormal eigenvectors $\mathbf{v}_1$ to $\mathbf{v}_n$. Then any vector $\mathbf{x}$ can be written as a combination $\mathbf{x}=c_1\mathbf{v}_1+\dots+c_n\mathbf{v}_n$. Explain these two formulas :
+$$\mathbf{x}^{\mathsf T}\mathbf{x}=c_1^2+\dots+c_n^2\qquad \mathbf{x}^{\mathsf T}S\mathbf{x}=\lambda_1c_1^2+\dots+\lambda_nc_n^2 .$$
+:::

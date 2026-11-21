@@ -60,3 +60,16 @@ Let $X$ be the result of rolling a fair 4-sided die. Let $Y$ be the result of ro
 
 (c) Here is a gambling game: You win $2X$ dollars if $X > Y$ and lose 1 dollar otherwise. After playing this game 60 times, what is your expected total gain (positive) or loss (negative)?
 :::
+
+::: {.problem #prob-mit18065ps-19-q8 origin="external" source="mit18065ps-19-q8"}
+Equation (4) gave a second equivalent form for $S^2$ (the variance using samples):
+$$S^2=\frac1{N-1}\text{ sum of }(x_i-m)^2=\frac1{N-1}\Big[\big(\text{sum of }x_i^2\big)-Nm^2\Big].$$
+Verify the matching identity for the expected variance $\sigma^2$ (using $m=\Sigma p_ix_i$) :
+$$\sigma^2=\text{ sum of }p_i(x_i-m)^2=\big(\text{sum of }p_ix_i^2\big)-m^2 .$$
+:::
+
+::: {.problem #prob-mit18065ps-20-q12 origin="external" source="mit18065ps-20-q12"}
+For any function $f(x)$ the expected value is $\mathrm{E}[f]=\sum p_i\,f(x_i)$ or $\int p(x)\,f(x)\,dx$ (discrete or continuous probability). The function can be $x$ or $(x-m)^2$ or $x^2$.
+
+If the mean is $\mathrm{E}[x]=m$ and the variance is $\mathrm{E}[(x-m)^2]=\sigma^2$ what is $\mathrm{E}[x^2]$ ?
+:::

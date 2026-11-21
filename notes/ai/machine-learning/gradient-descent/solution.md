@@ -39,3 +39,17 @@ def least_squares_gd(A, b, w0, eta, steps):
 2. Each pass records $F$ at the current point and then steps, except after the last record, so the list has `steps + 1` values.
 3. $F$ is $L$-smooth with $L=\lVert A\rVert_2^2$, the largest eigenvalue of $A^\top A$; with $\eta=1/L$ the loss never increases (@thm-descent-lemma). In the last test $\eta=3>2/L=2$, and each step multiplies $w$ by $1-3=-2$.
 :::
+
+::: {.solution for="prob-mit18065ps-22-q6" status="draft"}
+$f(\mathbf{x})=\frac12\mathbf{x}^{\mathsf T}A^{\mathsf T}A\mathbf{x}-\mathbf{b}^{\mathsf T}A\mathbf{x}+\frac12\mathbf{b}^{\mathsf T}\mathbf{b}$ has gradient $A^{\mathsf T}A\mathbf{x}-A^{\mathsf T}\mathbf{b}=A^{\mathsf T}(A\mathbf{x}-\mathbf{b})$. So
+$$\mathbf{x}_{k+1}=\mathbf{x}_k-s_kA^{\mathsf T}(A\mathbf{x}_k-\mathbf{b}).$$
+Each step multiplies by $A$ and $A^{\mathsf T}$ and never forms $A^{\mathsf T}A$; a fixed point solves the normal equations.
+:::
+
+::: {.solution for="prob-mit18065ps-25-q1" status="draft"}
+1. $\nabla F=\big(-2(y-x),\ 2y+2(y-x)\big)=(2x-2y,\ 4y-2x)$. At $(1,1)$: $\nabla F=(0,2)$.
+
+2. $(x_1,y_1)=(1,1)-\frac12(0,2)=(1,0)$.
+
+3. Remark: this step does not lower $F$ ($F(1,0)=1=F(1,1)$). The Hessian $\begin{bmatrix}2&-2\\-2&4\end{bmatrix}$ has eigenvalues $3\pm\sqrt5$, and gradient descent with a fixed step converges only for $s<2/(3+\sqrt5)\approx0.38$ (@thm-gradient-descent-quadratic-rate). With $s=\frac12$ the next iterates are $(0,1)$, $(1,-1)$, $(-1,2)$ with $F=2,5,13$: they diverge.
+:::

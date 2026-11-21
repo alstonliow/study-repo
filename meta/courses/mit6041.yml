@@ -10,6 +10,11 @@ outline_from: MIT 6.041 Probabilistic Systems Analysis and Applied Probability, 
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 18.065 integration (2026-11-21): its problems in shared notes
+  - prob-mit18065ps-19-q8
+  - prob-mit18065ps-20-q10
+  - prob-mit18065ps-20-q12
+  - prob-mit18065ps-20-q3
   # MIT 18.05 integration (2026-11-20): 18.05 problems and blocks in shared notes
   - def-quantile
   - exm-quantiles

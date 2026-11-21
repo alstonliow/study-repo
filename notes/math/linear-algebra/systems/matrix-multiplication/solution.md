@@ -28,3 +28,13 @@ b) $A^2=\begin{pmatrix}1&2\\0&1\end{pmatrix}$, $A^3=\begin{pmatrix}1&3\\0&1\end{
 $A$ times the $j$-th unit vector is the $j$-th column of $A$:
 $$A=\begin{pmatrix}2&-1&1\\3&0&1\\1&4&-1\end{pmatrix}.$$
 :::
+
+::: {.solution for="prob-mit18065ps-27-q2" status="draft"}
+1. A product of $p\times q$ by $q\times r$ costs $pqr$ multiplications.
+
+2. $A^{\mathsf T}A$ costs $n\cdot m\cdot n=mn^2$, then $A(A^{\mathsf T}A)$ costs $m\cdot n\cdot n=mn^2$: total $2mn^2$.
+
+3. $AA^{\mathsf T}$ costs $m^2n$, then $(AA^{\mathsf T})A$ costs $m\cdot m\cdot n=m^2n$: total $2m^2n$.
+
+4. Since $m>n$, $2mn^2<2m^2n$: $A(A^{\mathsf T}A)$ is faster, by the factor $m/n$. The order of multiplication matters, as it does in backpropagation.
+:::

@@ -11,6 +11,12 @@ outline_from: UC Berkeley CS188 Introduction to Artificial Intelligence, Fall 20
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 18.065 integration (2026-11-21): its problems in shared notes
+  - prob-mit18065ps-22-q6
+  - prob-mit18065ps-25-q1
+  - prob-mit18065ps-26-q4
+  - prob-mit18065ps-27-q5
+  - prob-mit18065ps-33-q5
   # Stanford CS221 homework problems in notes shared with CS221 (scope_excludes.py, 2026-11-19).
   - prob-cs221hw-1-q2
   - prob-cs221hw-1-q3

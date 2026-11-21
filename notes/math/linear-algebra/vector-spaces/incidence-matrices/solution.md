@@ -38,3 +38,11 @@ b. $\mathbf{f}$ must be in $C(A^{\mathsf T})=N(A)^{\perp}$, and $N(A)$ is the li
 
 c. The sum of the degrees counts every edge twice (once at each end): $2\cdot12=24$.
 :::
+
+::: {.solution for="prob-mit18065ps-30-q3" status="draft"}
+1. "Tree": connected with no loops, so a tree on $k$ nodes has exactly $k-1$ edges (@cor-euler-formula-from-rank with no loops).
+
+2. "Spanning": the tree reaches all $N$ nodes, so it has $N-1$ edges.
+
+3. These $N-1$ edges are chosen among the $M$ edges of the graph, so $M\ge N-1$ (with equality exactly when the connected graph is itself a tree).
+:::

@@ -26,3 +26,7 @@ $$A=\begin{bmatrix}1&0&-1\\-1&1&0\\0&-1&1\end{bmatrix}.\qquad\text{Notice: }A\be
 
 (a) finds the "nullspace" of that operation $AX$ and (b) finds the "column space". What are the dimensions of those two subspaces of $\mathbf{M}$? Why do the dimensions add to $(n-r)+r=9$?
 :::
+
+::: {.problem #prob-mit18065ps-1-q18 origin="external" source="mit18065ps-1-q18"}
+If $A=CR$, what are the $CR$ factors of the matrix $\begin{bmatrix}0&A\\0&A\end{bmatrix}$ ?
+:::

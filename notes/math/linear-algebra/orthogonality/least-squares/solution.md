@@ -41,3 +41,11 @@
 
 3. At $(0,0)$ the plane gives $C$. The first normal equation reads $4C=b_1+b_2+b_3+b_4$, because the column of $1$s is orthogonal to the other two columns. So $C=\frac{0+1+3+4}4=2$ is the average of the $b$'s.
 :::
+
+::: {.solution for="prob-mit18065ps-10-q12" status="draft"}
+1. The line $C+Dt$ gives $A=\begin{bmatrix}1&0\\1&1\\1&3\\1&4\end{bmatrix}$, $A^{\mathsf T}A=\begin{bmatrix}4&8\\8&26\end{bmatrix}$, $A^{\mathsf T}\mathbf{b}=\begin{bmatrix}36\\112\end{bmatrix}$.
+
+2. $4C+8D=36$ and $8C+26D=112$: the first gives $C=9-2D$, then $72+10D=112$, so $D=4$, $C=1$. Best line $1+4t$.
+
+3. Heights $\mathbf{p}=(1,5,13,17)$, errors $\mathbf{e}=\mathbf{b}-\mathbf{p}=(-1,3,-5,3)$, and $E=1+9+25+9=44$. Check: $\mathbf{e}$ is orthogonal to both columns of $A$ ($-1+3-5+3=0$ and $0+3-15+12=0$).
+:::

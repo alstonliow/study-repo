@@ -66,3 +66,9 @@ def test_w_unchanged():
     assert np.array_equal(w, before)
 ```
 :::
+
+::: {.problem #prob-mit18065ps-27-q5 origin="external" source="mit18065ps-27-q5"}
+Draw a computational graph to compute the function $f(x,y)=x^3(x-y)$. Use the graph to compute $f(2,3)$.
+
+*Note (these notes):* The graph is described in words rather than drawn.
+:::

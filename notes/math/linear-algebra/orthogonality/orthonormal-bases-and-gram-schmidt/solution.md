@@ -67,3 +67,28 @@ e) (Drawings omitted.) The two rotations turn the F by $\pm135^\circ$; it still 
 ::: {.solution for="prob-mit1802n-1f-q9" status="draft"}
 The $(i,j)$ entry of $AA^T$ is (row $i$ of $A$)$\cdot$(column $j$ of $A^T$) $=$ (row $i$)$\cdot$(row $j$). So $AA^T=I_n$ means: (row $i$)$\cdot$(row $i$)$=1$ for every $i$, i.e. (a), and (row $i$)$\cdot$(row $j$)$=0$ for $i\ne j$, i.e. (b).
 :::
+
+::: {.solution for="prob-mit18065ps-3-q4" status="draft"}
+$(Q\mathbf{x})^{\mathsf T}(Q\mathbf{y})=\mathbf{x}^{\mathsf T}Q^{\mathsf T}Q\mathbf{y}=\mathbf{x}^{\mathsf T}I\mathbf{y}=\mathbf{x}^{\mathsf T}\mathbf{y}$, using $Q^{\mathsf T}Q=I$. Taking $\mathbf{y}=\mathbf{x}$ gives $\lVert Q\mathbf{x}\rVert^2=\lVert\mathbf{x}\rVert^2$. Since dot products and lengths are preserved, so are the cosines of angles $\mathbf{x}^{\mathsf T}\mathbf{y}/(\lVert\mathbf{x}\rVert\lVert\mathbf{y}\rVert)$.
+:::
+
+::: {.solution for="prob-mit18065ps-3-q6" status="draft"}
+1. The columns of a permutation matrix are the columns $\mathbf{e}_1,\dots,\mathbf{e}_n$ of $I$ in another order, each used once. These are unit vectors and any two different ones are orthogonal.
+
+2. Entry $(i,j)$ of $P^{\mathsf T}P$ is (column $i$)$^{\mathsf T}$(column $j$), which is $1$ for $i=j$ and $0$ otherwise. So $P^{\mathsf T}P=I$ and $P^{-1}=P^{\mathsf T}$.
+:::
+
+::: {.solution for="prob-mit18065ps-9-q8" status="draft"}
+1. The multiple is $\mathbf{a}^{\mathsf T}\mathbf{b}/\mathbf{a}^{\mathsf T}\mathbf{a}=4/2=2$, so $\mathbf{A}_2=\mathbf{b}-2\mathbf{a}=(2,-2)$, and $\mathbf{a}^{\mathsf T}\mathbf{A}_2=0$.
+
+2. Sketch: $\mathbf{a}$ points along the diagonal at $45^\circ$; $\mathbf{b}$ along the $x$-axis; $2\mathbf{a}=(2,2)$ is the projection of $\mathbf{b}$ onto the line of $\mathbf{a}$, and $\mathbf{A}_2$ goes from the tip of $2\mathbf{a}$ to the tip of $\mathbf{b}$, at $-45^\circ$, perpendicular to $\mathbf{a}$.
+:::
+
+::: {.solution for="prob-mit18065ps-9-q9" status="draft"}
+1. $\mathbf{q}_1=(1,1)/\sqrt2$ and $\mathbf{q}_2=(2,-2)/(2\sqrt2)=(1,-1)/\sqrt2$.
+
+2. The missing entry is $\mathbf{q}_1^{\mathsf T}\mathbf{b}=4/\sqrt2=2\sqrt2$; also $\lVert\mathbf{a}\rVert=\sqrt2$ and $\lVert\mathbf{A}_2\rVert=2\sqrt2$:
+$$\begin{bmatrix}1&4\\1&0\end{bmatrix}=\frac1{\sqrt2}\begin{bmatrix}1&1\\1&-1\end{bmatrix}\begin{bmatrix}\sqrt2&2\sqrt2\\0&2\sqrt2\end{bmatrix}.$$
+
+3. Check column 2: $2\sqrt2\,\mathbf{q}_1+2\sqrt2\,\mathbf{q}_2=(2,2)+(2,-2)=(4,0)$.
+:::

@@ -69,3 +69,33 @@ plot(u, '+'); xlabel('mass number'); ylabel('movement'); print
 (MATLAB) Chemical engineering has a first derivative of $du/dx$ from fluid velocity as well as $d^2u/dx^2$ from diffusion. Replace $du/dx$ by a forward difference, then a centered difference, then a backward difference, with $\Delta x=\frac18$. Graph your numerical solutions of
 $$-\frac{d^2u}{dx^2}+10\frac{du}{dx}=1\quad\text{with }u(0)=u(1)=0.$$
 :::
+
+::: {.problem #prob-mit18065ps-5-q3 origin="external" source="mit18065ps-5-q3"}
+For which numbers $b$ and $c$ are these matrices positive definite?
+$$S=\begin{bmatrix}1&b\\b&9\end{bmatrix}\qquad S=\begin{bmatrix}2&4\\4&c\end{bmatrix}\qquad S=\begin{bmatrix}c&b\\b&c\end{bmatrix}.$$
+With the pivots in $D$ and multiplier in $L$, factor each $A$ into $LDL^{\mathsf T}$.
+:::
+
+::: {.problem #prob-mit18065ps-5-q14 origin="external" source="mit18065ps-5-q14"}
+Find the 3 by 3 matrix $S$ and its pivots, rank, eigenvalues, and determinant:
+$$\begin{bmatrix}x_1&x_2&x_3\end{bmatrix}S\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=4(x_1-x_2+2x_3)^2 .$$
+:::
+
+::: {.problem #prob-mit18065ps-5-q15 origin="external" source="mit18065ps-5-q15"}
+Compute the three upper left determinants of $S$ to establish positive definiteness. Verify that their ratios give the second and third pivots.
+$$\text{Pivots = ratios of determinants}\qquad S=\begin{bmatrix}2&2&0\\2&5&3\\0&3&8\end{bmatrix}.$$
+:::
+
+::: {.problem #prob-mit18065ps-12-q1 origin="external" source="mit18065ps-12-q1"}
+These problems start with a bidiagonal $n$ by $n$ backward difference matrix $D=I-S$. Two tridiagonal second difference matrices are $DD^{\mathsf T}$ and $A=-S+2I-S^{\mathsf T}$. The shift $S$ has one nonzero subdiagonal $S_{i,i-1}=1$ for $i=2,\dots,n$. $A$ has diagonals $-1,2,-1$.
+
+Show that $DD^{\mathsf T}$ equals $A$ except that $1\ne2$ in their $(1,1)$ entries. Similarly $D^{\mathsf T}D=A$ except that $1\ne2$ in their $(n,n)$ entries.
+:::
+
+::: {.problem #prob-mit18065ps-13-q4 origin="external" source="mit18065ps-13-q4"}
+If $M=\mathbf{1}\mathbf{1}^{\mathsf T}$ is the $n$ by $n$ matrix of 1's, prove that $nI-M$ is positive semidefinite. Problem 3 was the energy test. For Problem 4, find the eigenvalues of $nI-M$.
+:::
+
+::: {.problem #prob-mit18065ps-16-q12 origin="external" source="mit18065ps-16-q12"}
+If $\mathbf{x}^{\mathsf T}S\mathbf{x}>0$ for all $\mathbf{x}\ne\mathbf{0}$ and $C$ is invertible, why is $(C\mathbf{y})^{\mathsf T}S(C\mathbf{y})$ also positive ? This shows again that if $S$ has all positive eigenvalues, so does $C^{\mathsf T}SC$.
+:::

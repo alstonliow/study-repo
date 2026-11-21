@@ -47,3 +47,11 @@ def numerical_gradient(f, w, h=1e-5):
 3. The central difference has error $O(h^2)$ for smooth $f$ (the $h^1$ terms of the two Taylor expansions cancel), against $O(h)$ for the one-sided difference, so $h=10^{-5}$ gives about ten correct digits before rounding errors dominate.
 4. Comparing this estimate with a backward pass at a few random points catches most mistakes in hand-written gradients, as in the third test.
 :::
+
+::: {.solution for="prob-mit18065ps-27-q5" status="draft"}
+1. Graph: inputs $x,y$; node $a=x^3$ (from $x$); node $b=x-y$ (from $x$ and $y$); output $f=a\cdot b$.
+
+2. Forward at $(2,3)$: $a=8$, $b=-1$, $f=-8$.
+
+3. Backward (as a check of the graph): $\partial f/\partial a=b=-1$, $\partial f/\partial b=a=8$; then $\partial f/\partial x=3x^2\cdot(-1)+8\cdot1=-12+8=-4$ and $\partial f/\partial y=8\cdot(-1)=-8$. Directly, $f=x^4-x^3y$ gives $4x^3-3x^2y=32-36=-4$ and $-x^3=-8$.
+:::

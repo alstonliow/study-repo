@@ -97,3 +97,11 @@ Demonstrate that the Chebyshev inequality is tight, that is, for every $\mu$, $\
 $$\mathbf{P}(|X - \mu| \geq c) = \frac{\sigma^2}{c^2}.$$
 Hint: You should be able to do this with a discrete random variable that takes on only 3 distinct values with nonzero probability.
 :::
+
+::: {.problem #prob-mit18065ps-20-q10 origin="external" source="mit18065ps-20-q10"}
+Computer experiment : Find the average $A_{1000000}$ of a million random 0-1 samples ! What is your value of the standardized variable $X=\big(A_N-\frac12\big)/2\sqrt N$ ?
+:::
+
+::: {.problem #prob-mit18065ps-20-q3 origin="external" source="mit18065ps-20-q3"}
+A fair coin flip has outcomes $X=0$ and $X=1$ with probabilities $\frac12$ and $\frac12$. What is the probability that $X\ge2\overline X$ ? Show that Markov's inequality gives the exact probability $\overline X/2$ in this case.
+:::

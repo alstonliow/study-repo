@@ -30,3 +30,11 @@ which is $R$ without its zero rows (padded with $n-r$ zero rows).
    $$\begin{bmatrix}I_r&0_{r\times(n-r)}\\0_{(m-r)\times r}&0_{(m-r)\times(n-r)}\end{bmatrix}:$$
    only the rank survives.
 :::
+
+::: {.solution for="prob-mit18065ps-1-q4" status="draft"}
+1. Every row of $A$ is $(1,1,1)$, so $A\mathbf{x}=\mathbf{0}$ means $x_1+x_2+x_3=0$. Take $\mathbf{x}=(1,-1,0)$ and $\mathbf{y}=(1,0,-1)$; they are independent (neither is a multiple of the other).
+
+2. As a combination of columns: $1\begin{bmatrix}1\\1\\1\end{bmatrix}-1\begin{bmatrix}1\\1\\1\end{bmatrix}+0\begin{bmatrix}1\\1\\1\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix}$.
+
+3. $A$ has rank $1$, so its nullspace has dimension $3-1=2$. Any third solution is a combination of $\mathbf{x}$ and $\mathbf{y}$; a third *independent* one does not exist.
+:::

@@ -99,6 +99,8 @@ a field. Course order for the next additions: 6.041 and 18.05 done (18.01, 18.06
 | MIT 6.041 problem sets (Fall 2010) PS 1–11 | 51 exercises with draft solutions; figure-based problems (PS5 Q2–3, PS6 Q2 and Q4, PS8 Q2 and Q4, PS9 Q4) and 6.431-only problems skipped |
 | MIT 18.05 class readings and slides (Spring 2022), Classes 1–26 | new branches `math/statistics/bayesian` (4 notes) and `math/statistics/frequentist` (6 notes) at the end of Probability and Statistics; quantiles added to `continuous/continuous-random-variables`; classes 1–10 and 13 covered by existing probability notes |
 | MIT 18.05 problem sets (Spring 2022) PS 1–11 | 44 exercises with draft solutions; warm-ups, R-only and figure problems skipped |
+| MIT 18.065 video lectures (Spring 2018), Lectures 1–35 (no written notes) | new branch `math/linear-algebra/matrix-methods` (8 notes) and `ai/machine-learning/convex-optimization`; other lectures covered by existing linear algebra, probability, optimisation and deep learning notes |
+| MIT 18.065 problem sets (Spring 2018), textbook problems printed per lecture | 62 exercises with draft solutions (no official solutions); warm-ups (L1 Q1, Q9; L2), the repeated L11 II.2 Q10 and the TensorFlow Playground problem (L26 Q7) skipped |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
 course files (`meta/courses/`), not here.
@@ -164,3 +166,4 @@ course files (`meta/courses/`), not here.
 
 - 2026-11-20: MIT 6.041 (Fall 2010) added as a course (`mit6041`): resources `res-mit-6041-lectures` (prefix `mit6041-`) and `res-mit-6041-f10-psets` (prefix `mit6041f10-`); five new notes (derived distributions, iterated expectations and random sums, Bernoulli process, Bayesian inference, classical estimation) and probability axioms; 51 problem-set exercises; three figures. Recitations and tutorials not used.
 - 2026-11-20: MIT 18.05 (Spring 2022) added as a course (`mit1805`): resources `res-mit-1805-classes` (prefix `mit1805-`) and `res-mit-1805-s22-psets` (prefix `mit1805s22-`); new branches `math/statistics/bayesian` and `math/statistics/frequentist` (10 notes); 44 problem-set exercises (PS 1–11); bootstrap figure.
+- 2026-11-21: MIT 18.065 (Spring 2018) added as a course (`mit18065`): resources `res-mit-18065-lectures` (video, prefix `mit18065-`) and `res-mit-18065-psets` (prefix `mit18065ps-`, q = textbook problem number); new branch `math/linear-algebra/matrix-methods` (8 notes) and note `ai/machine-learning/convex-optimization`; 62 exercises; 4 figures.

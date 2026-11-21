@@ -320,6 +320,18 @@ parts:
           - gram-schmidt-and-orthogonal-complements
           - adjoints-and-isometries
           - spectral-theorem
+      - id: math/linear-algebra/matrix-methods
+        title: Matrix Methods for Data
+        desc: Matrix norms and condition numbers, eigenvalue perturbation and interlacing, low-rank approximation and PCA, rank-one updates, randomized matrix multiplication, circulant matrices, graph Laplacians, distance matrices and Procrustes
+        notes:   # topic order on the website
+          - matrix-norms
+          - eigenvalue-perturbation-and-interlacing
+          - low-rank-approximation
+          - rank-one-updates
+          - randomized-matrix-multiplication
+          - circulant-matrices
+          - graph-laplacians
+          - distance-matrices-and-procrustes
   - title: Multivariable Calculus
     field: Mathematics
     branches:
@@ -649,7 +661,7 @@ parts:
       - id: ai/machine-learning
         title: Machine Learning
         desc: Learning problems, linear regression and classification, gradient descent
-        notes: [supervised-learning, generalization, linear-regression, gradient-descent, linear-classification, perceptron, logistic-regression, softmax-regression, text-representation, decision-trees]   # topic order on the website
+        notes: [supervised-learning, generalization, linear-regression, gradient-descent, convex-optimization, linear-classification, perceptron, logistic-regression, softmax-regression, text-representation, decision-trees]   # topic order on the website
       - id: ai/deep-learning
         title: Deep Learning
         desc: Tensors, backpropagation, neural networks

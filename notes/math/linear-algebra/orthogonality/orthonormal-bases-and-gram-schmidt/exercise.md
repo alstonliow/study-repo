@@ -59,3 +59,22 @@ a) each row of $A$ is a row vector of length 1,
 
 b) two different rows are orthogonal vectors.
 :::
+
+::: {.problem #prob-mit18065ps-3-q4 origin="external" source="mit18065ps-3-q4"}
+Key property of every orthogonal matrix : $\lVert Q\mathbf{x}\rVert^2=\lVert\mathbf{x}\rVert^2$ for every vector $\mathbf{x}$. More than this, show that $(Q\mathbf{x})^{\mathsf T}(Q\mathbf{y})=\mathbf{x}^{\mathsf T}\mathbf{y}$ for every vector $\mathbf{x}$ and $\mathbf{y}$. So lengths and angles are not changed by $Q$. Computations with $Q$ never overflow !
+:::
+
+::: {.problem #prob-mit18065ps-3-q6 origin="external" source="mit18065ps-3-q6"}
+A permutation matrix has the same columns as the identity matrix (in some order). Explain why this permutation matrix and every permutation matrix is orthogonal :
+$$P=\begin{bmatrix}0&1&0&0\\0&0&1&0\\0&0&0&1\\1&0&0&0\end{bmatrix}\ \text{ has orthonormal columns so } P^{\mathsf T}P=\underline{\qquad}\ \text{ and } P^{-1}=\underline{\qquad}.$$
+When a matrix is symmetric or orthogonal, it will have orthogonal eigenvectors. This is the most important source of orthogonal vectors in applied mathematics.
+:::
+
+::: {.problem #prob-mit18065ps-9-q8 origin="external" source="mit18065ps-9-q8"}
+What multiple of $\mathbf{a}=\begin{bmatrix}1\\1\end{bmatrix}$ should be subtracted from $\mathbf{b}=\begin{bmatrix}4\\0\end{bmatrix}$ to make the result $\mathbf{A}_2$ orthogonal to $\mathbf{a}$? Sketch a figure to show $\mathbf{a}$, $\mathbf{b}$, and $\mathbf{A}_2$.
+:::
+
+::: {.problem #prob-mit18065ps-9-q9 origin="external" source="mit18065ps-9-q9"}
+Complete the Gram-Schmidt process in Problem 8 by computing $\mathbf{q}_1=\mathbf{a}/\lVert\mathbf{a}\rVert$ and $\mathbf{q}_2=\mathbf{A}_2/\lVert\mathbf{A}_2\rVert$ and factoring into $QR$:
+$$\begin{bmatrix}1&4\\1&0\end{bmatrix}=\begin{bmatrix}\mathbf{q}_1&\mathbf{q}_2\end{bmatrix}\begin{bmatrix}\lVert\mathbf{a}\rVert&?\\0&\lVert\mathbf{A}_2\rVert\end{bmatrix}.$$
+:::

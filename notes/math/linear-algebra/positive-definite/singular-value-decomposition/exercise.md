@@ -18,3 +18,9 @@ $$V=\frac1{\sqrt2}\begin{pmatrix}\sin\pi/4&\sin2\pi/4&\sin3\pi/4\\\sin2\pi/4&\si
 
 (c) Since $A$ is $4\times3$ weneed a fourth orthogonal vector $\mathbf{u}_4$. It comes from the nullspace of $A^{\mathsf T}$. What is $\mathbf{u}_4$?
 :::
+
+::: {.problem #prob-mit18065ps-6-q6 origin="external" source="mit18065ps-6-q6"}
+Find the $\sigma$'s and $\mathbf{v}$'s and $\mathbf{u}$'s in the SVD for $A=\begin{bmatrix}3&4\\0&5\end{bmatrix}$. Use equation (12).
+
+*Note (these notes):* Equation (12) of the textbook is $\mathbf{u}_i=A\mathbf{v}_i/\sigma_i$, as in @thm-svd.
+:::

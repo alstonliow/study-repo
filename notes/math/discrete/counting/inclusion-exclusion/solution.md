@@ -91,3 +91,7 @@ The passwords are the $10!$ orderings of the ten digits. Let $A_1,A_2,A_3$ be th
 
 4. By inclusion–exclusion (@thm-inclusion-exclusion), $|A_1\cup A_2\cup A_3|=720+5040+720-6=6474$, and the answer is $10!-6474=3\,622\,326$ (checked by computer).
 :::
+
+::: {.solution for="prob-mit18065ps-19-q3" status="draft"}
+By inclusion–exclusion, subtract those counted twice, the multiples of $21$ (since $3$ and $7$ are coprime): $\frac13+\frac17-\frac1{21}=\frac{7+3-1}{21}=\frac9{21}=\frac37$. (Here "fraction" means the limiting proportion among $1,\dots,N$ as $N\to\infty$.)
+:::

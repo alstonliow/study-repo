@@ -19,3 +19,7 @@ b. What condition on $\mathbf{f}$ makes it possible to solve $A^{\mathsf T}\math
 
 c. The diagonal entries of $A^{\mathsf T}A$ give the number of edges into each node. What is the sum of those diagonal entries?
 :::
+
+::: {.problem #prob-mit18065ps-30-q3 origin="external" source="mit18065ps-30-q3"}
+For a connected graph with $M$ edges and $N$ nodes, what requirement on $M$ and $N$ comes from each of the words spanning tree ?
+:::

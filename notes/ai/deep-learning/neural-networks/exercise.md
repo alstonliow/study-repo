@@ -137,3 +137,19 @@ def test_relu_and_rows_sum_to_one():
     assert np.allclose(P[1], softmax(A2 @ np.maximum(A1 @ x + c1, 0) + c2))
 ```
 :::
+
+::: {.problem #prob-mit18065ps-26-q4 origin="external" source="mit18065ps-26-q4"}
+Explain with words or show with graphs why each of these statements about Continuous Piecewise Linear functions (CPL functions) is true :
+
+M  The maximum $M(x,y)$ of two CPL functions $F_1(x,y)$ and $F_2(x,y)$ is CPL.
+
+S  The sum $S(x,y)$ of two CPL functions $F_1(x,y)$ and $F_2(x,y)$ is CPL.
+
+C  If the one-variable functions $y=F_1(x)$ and $z=F_2(y)$ are CPL, so is the composition $C(x)=z=F_2(F_1(x))$.
+:::
+
+::: {.problem #prob-mit18065ps-33-q5 origin="external" source="mit18065ps-33-q5"}
+How many weights and biases are in a network with $m=N_0=4$ inputs in each feature vector $\mathbf{v}_0$ and $N=6$ neurons on each of the 3 hidden layers ? How many activation functions (ReLU) are in this network, before the final output ?
+
+*Note (these notes):* The problem does not state the output size; the solution assumes a single output.
+:::

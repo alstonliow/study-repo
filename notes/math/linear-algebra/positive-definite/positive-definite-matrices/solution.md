@@ -114,3 +114,56 @@ Subgroups: the orthogonal matrices with determinant $1$ (the rotations) lie in b
 
 3. Graphing the three: the centered difference follows the exact solution best; the forward difference overshoots badly at the last point, and the backward (upwind) difference is too damped near $x=1$.
 :::
+
+::: {.solution for="prob-mit18065ps-5-q3" status="draft"}
+Use the pivot test (@thm-positive-definite-tests): both pivots positive.
+
+1. $\begin{bmatrix}1&b\\b&9\end{bmatrix}$: pivots $1$ and $9-b^2$; positive definite for $-3<b<3$. $L=\begin{bmatrix}1&0\\b&1\end{bmatrix}$, $D=\operatorname{diag}(1,\,9-b^2)$.
+
+2. $\begin{bmatrix}2&4\\4&c\end{bmatrix}$: pivots $2$ and $c-8$; positive definite for $c>8$. $L=\begin{bmatrix}1&0\\2&1\end{bmatrix}$, $D=\operatorname{diag}(2,\,c-8)$.
+
+3. $\begin{bmatrix}c&b\\b&c\end{bmatrix}$: pivots $c$ and $c-b^2/c$; positive definite for $c>\lvert b\rvert$. $L=\begin{bmatrix}1&0\\b/c&1\end{bmatrix}$, $D=\operatorname{diag}(c,\,c-b^2/c)$.
+
+In each case $S=LDL^{\mathsf T}$ is checked by multiplying out.
+:::
+
+::: {.solution for="prob-mit18065ps-5-q14" status="draft"}
+1. With $\mathbf{a}=(1,-1,2)$ the form is $4(\mathbf{a}^{\mathsf T}\mathbf{x})^2=\mathbf{x}^{\mathsf T}(4\mathbf{a}\mathbf{a}^{\mathsf T})\mathbf{x}$, so
+$$S=4\mathbf{a}\mathbf{a}^{\mathsf T}=\begin{bmatrix}4&-4&8\\-4&4&-8\\8&-8&16\end{bmatrix}.$$
+
+2. Rank $1$ (every row is a multiple of $\mathbf{a}^{\mathsf T}$); elimination leaves one pivot $4$ and then zeros.
+
+3. Eigenvalues: $S\mathbf{a}=4\lVert\mathbf{a}\rVert^2\mathbf{a}=24\mathbf{a}$, and $S\mathbf{x}=\mathbf{0}$ for $\mathbf{x}\perp\mathbf{a}$. So $\lambda=24,0,0$ and $\det S=0$. $S$ is positive semidefinite, not definite.
+:::
+
+::: {.solution for="prob-mit18065ps-5-q15" status="draft"}
+1. Upper left determinants: $2$, $\;2\cdot5-2\cdot2=6$, $\;\det S=2(40-9)-2(16-0)=30$. All positive, so $S$ is positive definite.
+
+2. Elimination: subtract row 1 from row 2 to get pivot $5-2=3$; then subtract row 2 (now $(0,3,3)$) from row 3 to get pivot $8-3=5$.
+
+3. Ratios: $2$, $6/2=3$, $30/6=5$, the three pivots.
+:::
+
+::: {.solution for="prob-mit18065ps-12-q1" status="draft"}
+1. $DD^{\mathsf T}=(I-S)(I-S^{\mathsf T})=I-S-S^{\mathsf T}+SS^{\mathsf T}$, and $D^{\mathsf T}D=I-S-S^{\mathsf T}+S^{\mathsf T}S$. So both equal $A$ except that $SS^{\mathsf T}$ or $S^{\mathsf T}S$ replaces the second copy of $I$.
+
+2. $S$ maps $\mathbf{e}_j\mapsto\mathbf{e}_{j+1}$ for $j<n$ and $\mathbf{e}_n\mapsto\mathbf{0}$. Then $SS^{\mathsf T}$ is diagonal with $(SS^{\mathsf T})_{ii}=\lVert\text{row } i\text{ of }S\rVert^2$, which is $0$ for $i=1$ and $1$ otherwise: $SS^{\mathsf T}=I$ except a $0$ in position $(1,1)$.
+
+3. $S^{\mathsf T}S$ is diagonal with entries $\lVert\text{column } j\text{ of }S\rVert^2$: $1$ for $j<n$ and $0$ for $j=n$.
+
+4. Hence $DD^{\mathsf T}$ has $(1,1)$ entry $1$ instead of $2$, and $D^{\mathsf T}D$ has $(n,n)$ entry $1$ instead of $2$; all other entries agree with $A$.
+:::
+
+::: {.solution for="prob-mit18065ps-13-q4" status="draft"}
+1. $M\mathbf{1}=n\mathbf{1}$ and $M\mathbf{x}=\mathbf{0}$ for every $\mathbf{x}\perp\mathbf{1}$, so $M$ has eigenvalues $n,0,\dots,0$.
+
+2. $nI-M$ has the same eigenvectors with eigenvalues $n-n=0$ (once) and $n-0=n$ ($n-1$ times). All are $\ge0$, so $nI-M$ is positive semidefinite (singular, since $\mathbf{1}$ is in its nullspace).
+
+3. Energy check: $\mathbf{x}^{\mathsf T}(nI-M)\mathbf{x}=n\lVert\mathbf{x}\rVert^2-(\mathbf{1}^{\mathsf T}\mathbf{x})^2\ge0$ by Cauchy–Schwarz, since $\lVert\mathbf{1}\rVert^2=n$.
+:::
+
+::: {.solution for="prob-mit18065ps-16-q12" status="draft"}
+1. For $\mathbf{y}\ne\mathbf{0}$, $\mathbf{x}=C\mathbf{y}\ne\mathbf{0}$ because $C$ is invertible, so $(C\mathbf{y})^{\mathsf T}S(C\mathbf{y})=\mathbf{x}^{\mathsf T}S\mathbf{x}>0$.
+
+2. This number is $\mathbf{y}^{\mathsf T}(C^{\mathsf T}SC)\mathbf{y}$, and $C^{\mathsf T}SC$ is symmetric. So $C^{\mathsf T}SC$ passes the energy test and is positive definite, hence has all positive eigenvalues.
+:::

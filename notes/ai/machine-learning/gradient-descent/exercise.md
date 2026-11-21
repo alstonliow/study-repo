@@ -196,3 +196,11 @@ def test_too_large_step_diverges():
     assert np.isclose(w[0], (-2.0) ** 5) and losses[-1] > losses[0]
 ```
 :::
+
+::: {.problem #prob-mit18065ps-22-q6 origin="external" source="mit18065ps-22-q6"}
+What is the gradient descent equation $\mathbf{x}_{k+1}=\mathbf{x}_k-s_k\nabla f(\mathbf{x}_k)$ for the least squares problem of minimizing $f(\mathbf{x})=\frac12\lVert A\mathbf{x}-\mathbf{b}\rVert^2$ ?
+:::
+
+::: {.problem #prob-mit18065ps-25-q1 origin="external" source="mit18065ps-25-q1"}
+Suppose we want to minimize $F(x,y)=y^2+(y-x)^2$. The actual minimum is $F=0$ at $(x^*,y^*)=(0,0)$. Find the gradient vector $\nabla F$ at the starting point $(x_0,y_0)=(1,1)$. For full gradient descent (not stochastic) with step $s=\frac12$, where is $(x_1,y_1)$ ?
+:::

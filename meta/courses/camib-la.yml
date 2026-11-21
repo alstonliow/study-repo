@@ -14,8 +14,9 @@ source_prefix: camib-la-
 outline_from: Cambridge Part IB Linear Algebra (Michaelmas 2015, S. J. Wadsley), notes taken by D. Chua
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
-
+exclude:
+  # MIT 18.065 integration (2026-11-21): its problems in shared notes
+  - prob-mit18065ps-18-q10
 chapters:
 - num: 1
   title: Vector spaces

@@ -13,3 +13,7 @@ The goal is to maximize the value of the objective function $p=4x_1+x_2$.
 
 (d) Give the dual LP of your standard-form LP from Part (b) and give its optimal value. (Hint: Use your solution to Part (c).)
 :::
+
+::: {.problem #prob-mit18065ps-24-q2 origin="external" source="mit18065ps-24-q2"}
+Suppose the constraints are $x_1+x_2+2x_3=4$ and $x_1\ge0$, $x_2\ge0$, $x_3\ge0$. Find the three corners of this triangle in $\mathbb{R}^3$. Which corner minimizes the cost $\mathbf{c}^{\mathsf T}\mathbf{x}=5x_1+3x_2+8x_3$ ?
+:::

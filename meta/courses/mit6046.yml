@@ -14,6 +14,8 @@ outline_from: "MIT 6.046J Design and Analysis of Algorithms, Spring 2015, Lectur
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 18.065 integration (2026-11-21): its problems in shared notes
+  - prob-mit18065ps-24-q2
   # Blocks from other courses' material in notes this course covers
   - prob-mit6006s20-6-q6
 
