@@ -156,6 +156,43 @@ A *vision transformer* for $K$ classes embeds the $N$ patches (@def-patch-embedd
 
 :::
 
+::: {#fig-vision-transformers-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.00,0.00) rectangle (0.60,-0.60);
+\node[tick] at (0.30,-0.30) {$1$};
+\draw[cell frame] (0.60,0.00) rectangle (1.20,-0.60);
+\node[tick] at (0.90,-0.30) {$2$};
+\draw[cell frame] (1.20,0.00) rectangle (1.80,-0.60);
+\node[tick] at (1.50,-0.30) {$3$};
+\draw[cell frame] (0.00,-0.60) rectangle (0.60,-1.20);
+\node[tick] at (0.30,-0.90) {$4$};
+\draw[cell frame] (0.60,-0.60) rectangle (1.20,-1.20);
+\node[tick] at (0.90,-0.90) {$5$};
+\draw[cell frame] (1.20,-0.60) rectangle (1.80,-1.20);
+\node[tick] at (1.50,-0.90) {$6$};
+\draw[map] (2.0,-0.6) -- (2.7,-0.6);
+\node[hl box] at (3.0,-0.6) {cls};
+\node[small vertex] at (3.75,-0.6) {$1$};
+\node[small vertex] at (4.35,-0.6) {$2$};
+\node[small vertex] at (4.95,-0.6) {$3$};
+\node[small vertex] at (5.55,-0.6) {$4$};
+\node[small vertex] at (6.15,-0.6) {$5$};
+\node[small vertex] at (6.75,-0.6) {$6$};
+\node[box, text width=3.6cm] (enc) at (5.0,0.8) {transformer encoder};
+\draw[map] (3.1,-0.25) -- (3.1,0.45);
+\node[hl box] (hd) at (8.4,0.8) {class head};
+\draw[map] (enc) -- (hd);
+\end{tikzpicture}
+\end{center}
+```
+
+A vision transformer: the image is cut into patches, each patch becomes a token, a class token is prepended, and the class token's final state feeds the classifier
+
+:::
+
 ::: {#prp-vit-attention-cost .proposition name="Cost of attention in a vision transformer"}
 
 With $N=HW/P^2$ tokens of width $d$, the attention scores and the weighted sums of one layer (ignoring the query, key, value and output projections) cost $\Theta(N^2d)$ operations, and a model with $L$ layers $\Theta(LN^2d)$. Hence, other things fixed, doubling $d$ doubles the cost; doubling both $H$ and $W$ multiplies $N$ by $4$ and the cost by $16$; doubling $P$ divides $N$ by $4$ and the cost by $16$; doubling $L$ doubles the cost.

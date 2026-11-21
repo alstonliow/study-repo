@@ -29,6 +29,42 @@ For a vocabulary of $V$ characters, a *character-level RNN language model* reads
 
 :::
 
+::: {#fig-recurrent-neural-networks-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (h0) at (0.0,0) {$\mathbf h_1$};
+\node[lab] (x0) at (0.0,-1.2) {h};
+\node[lab, text=accent] (y0) at (0.0,1.2) {e};
+\draw[map] (x0) -- (h0);
+\draw[map] (h0) -- (y0);
+\node[box] (h1) at (1.6,0) {$\mathbf h_2$};
+\node[lab] (x1) at (1.6,-1.2) {e};
+\node[lab, text=accent] (y1) at (1.6,1.2) {l};
+\draw[map] (x1) -- (h1);
+\draw[map] (h1) -- (y1);
+\draw[map] (h0) -- (h1);
+\node[box] (h2) at (3.2,0) {$\mathbf h_3$};
+\node[lab] (x2) at (3.2,-1.2) {l};
+\node[lab, text=accent] (y2) at (3.2,1.2) {l};
+\draw[map] (x2) -- (h2);
+\draw[map] (h2) -- (y2);
+\draw[map] (h1) -- (h2);
+\node[box] (h3) at (4.80,0) {$\mathbf h_4$};
+\node[lab] (x3) at (4.80,-1.2) {l};
+\node[lab, text=accent] (y3) at (4.80,1.2) {o};
+\draw[map] (x3) -- (h3);
+\draw[map] (h3) -- (y3);
+\draw[map] (h2) -- (h3);
+\end{tikzpicture}
+\end{center}
+```
+
+A character-level RNN trained on "hello": at each step it reads one character and is trained to predict the next one (highlighted)
+
+:::
+
 Image captioning works the same way with words: a convolutional network turns the image into a code (its last hidden layer, @sec-ai-deep-learning-network-visualization), a learnt linear map of the code gives $\mathbf{h}_0$, and the RNN generates the caption one word at a time from a start token until an end token. A word-level model has a large vocabulary but short sequences; a character-level one a tiny vocabulary and output layer but sequences several times longer, which makes long-range dependencies harder to learn.
 
 ::: {#def-bptt .definition name="Backpropagation through time"}
@@ -120,6 +156,24 @@ The scalar RNN of @exm-rnn-gradient-flow unrolled over four steps. Backpropagati
 ::: {#def-gradient-clipping .definition name="Gradient clipping"}
 
 *Gradient clipping* with threshold $c>0$ replaces a gradient $\mathbf{g}$ by $c\,\mathbf{g}/\lVert\mathbf{g}\rVert$ whenever $\lVert\mathbf{g}\rVert>c$, keeping its direction and bounding its size.
+
+:::
+
+::: {#fig-recurrent-neural-networks-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0,0) circle (1.2);
+\draw[->, emph] (0,0) -- (2.2,1.4) node[tick, right] {$\mathbf g$};
+\draw[->, hl] (0,0) -- (1.01,0.64) node[tick, below right, text=accent] {clipped};
+\node[tick] at (-0.6,-0.6) {$\tau$};
+\draw[faint] (0,0) -- (-0.85,-0.85);
+\end{tikzpicture}
+\end{center}
+```
+
+Gradient clipping by norm: a gradient longer than the threshold $\tau$ is rescaled onto the ball of radius $\tau$, keeping its direction
 
 :::
 

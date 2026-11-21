@@ -29,6 +29,107 @@ For an image $I$ with correct class $c$, *occlusion sensitivity* slides a grey s
 
 :::
 
+::: {#fig-network-visualization-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.00,0.00) rectangle (0.35,-0.35);
+\draw[cell frame] (0.35,0.00) rectangle (0.70,-0.35);
+\draw[cell frame] (0.70,0.00) rectangle (1.05,-0.35);
+\draw[cell frame] (1.05,0.00) rectangle (1.40,-0.35);
+\draw[cell frame] (1.40,0.00) rectangle (1.75,-0.35);
+\draw[cell frame] (1.75,0.00) rectangle (2.10,-0.35);
+\draw[cell frame] (2.10,0.00) rectangle (2.45,-0.35);
+\draw[cell frame] (0.00,-0.35) rectangle (0.35,-0.70);
+\draw[cell frame] (0.35,-0.35) rectangle (0.70,-0.70);
+\draw[cell frame] (0.70,-0.35) rectangle (1.05,-0.70);
+\draw[cell frame] (1.05,-0.35) rectangle (1.40,-0.70);
+\draw[cell frame] (1.40,-0.35) rectangle (1.75,-0.70);
+\draw[cell frame] (1.75,-0.35) rectangle (2.10,-0.70);
+\draw[cell frame] (2.10,-0.35) rectangle (2.45,-0.70);
+\draw[cell frame] (0.00,-0.70) rectangle (0.35,-1.05);
+\draw[cell frame] (0.35,-0.70) rectangle (0.70,-1.05);
+\draw[cell frame] (0.70,-0.70) rectangle (1.05,-1.05);
+\draw[cell frame] (1.05,-0.70) rectangle (1.40,-1.05);
+\draw[cell frame] (1.40,-0.70) rectangle (1.75,-1.05);
+\draw[cell frame] (1.75,-0.70) rectangle (2.10,-1.05);
+\draw[cell frame] (2.10,-0.70) rectangle (2.45,-1.05);
+\draw[cell frame] (0.00,-1.05) rectangle (0.35,-1.40);
+\draw[cell frame] (0.35,-1.05) rectangle (0.70,-1.40);
+\draw[cell frame] (0.70,-1.05) rectangle (1.05,-1.40);
+\draw[cell frame] (1.05,-1.05) rectangle (1.40,-1.40);
+\draw[cell frame] (1.40,-1.05) rectangle (1.75,-1.40);
+\draw[cell frame] (1.75,-1.05) rectangle (2.10,-1.40);
+\draw[cell frame] (2.10,-1.05) rectangle (2.45,-1.40);
+\draw[cell frame] (0.00,-1.40) rectangle (0.35,-1.75);
+\draw[cell frame] (0.35,-1.40) rectangle (0.70,-1.75);
+\draw[cell frame] (0.70,-1.40) rectangle (1.05,-1.75);
+\draw[cell frame] (1.05,-1.40) rectangle (1.40,-1.75);
+\draw[cell frame] (1.40,-1.40) rectangle (1.75,-1.75);
+\draw[cell frame] (1.75,-1.40) rectangle (2.10,-1.75);
+\draw[cell frame] (2.10,-1.40) rectangle (2.45,-1.75);
+\draw[cell frame] (0.00,-1.75) rectangle (0.35,-2.10);
+\draw[cell frame] (0.35,-1.75) rectangle (0.70,-2.10);
+\draw[cell frame] (0.70,-1.75) rectangle (1.05,-2.10);
+\draw[cell frame] (1.05,-1.75) rectangle (1.40,-2.10);
+\draw[cell frame] (1.40,-1.75) rectangle (1.75,-2.10);
+\draw[cell frame] (1.75,-1.75) rectangle (2.10,-2.10);
+\draw[cell frame] (2.10,-1.75) rectangle (2.45,-2.10);
+\draw[hl cell] (0.7,-0.7) rectangle (1.4,-1.4);
+\node[tick, below] at (1.2,-2.15) {occluded image};
+\draw[map] (2.65,-1.05) -- (3.35,-1.05);
+\draw[cell frame] (3.60,-0.00) rectangle (3.95,-0.35);
+\draw[cell frame] (3.95,-0.00) rectangle (4.30,-0.35);
+\draw[cell frame] (4.30,-0.00) rectangle (4.65,-0.35);
+\draw[cell frame] (4.65,-0.00) rectangle (5.00,-0.35);
+\draw[cell frame] (5.00,-0.00) rectangle (5.35,-0.35);
+\draw[cell frame] (5.35,-0.00) rectangle (5.70,-0.35);
+\draw[cell frame] (5.70,-0.00) rectangle (6.05,-0.35);
+\draw[cell frame] (3.60,-0.35) rectangle (3.95,-0.70);
+\draw[cell frame] (3.95,-0.35) rectangle (4.30,-0.70);
+\draw[shade] (4.30,-0.35) rectangle (4.65,-0.70);
+\draw[hl cell] (4.65,-0.35) rectangle (5.00,-0.70);
+\draw[shade] (5.00,-0.35) rectangle (5.35,-0.70);
+\draw[cell frame] (5.35,-0.35) rectangle (5.70,-0.70);
+\draw[cell frame] (5.70,-0.35) rectangle (6.05,-0.70);
+\draw[cell frame] (3.60,-0.70) rectangle (3.95,-1.05);
+\draw[shade] (3.95,-0.70) rectangle (4.30,-1.05);
+\draw[hl cell] (4.30,-0.70) rectangle (4.65,-1.05);
+\draw[hl cell] (4.65,-0.70) rectangle (5.00,-1.05);
+\draw[hl cell] (5.00,-0.70) rectangle (5.35,-1.05);
+\draw[cell frame] (5.35,-0.70) rectangle (5.70,-1.05);
+\draw[cell frame] (5.70,-0.70) rectangle (6.05,-1.05);
+\draw[cell frame] (3.60,-1.05) rectangle (3.95,-1.40);
+\draw[shade] (3.95,-1.05) rectangle (4.30,-1.40);
+\draw[hl cell] (4.30,-1.05) rectangle (4.65,-1.40);
+\draw[hl cell] (4.65,-1.05) rectangle (5.00,-1.40);
+\draw[hl cell] (5.00,-1.05) rectangle (5.35,-1.40);
+\draw[cell frame] (5.35,-1.05) rectangle (5.70,-1.40);
+\draw[cell frame] (5.70,-1.05) rectangle (6.05,-1.40);
+\draw[cell frame] (3.60,-1.40) rectangle (3.95,-1.75);
+\draw[cell frame] (3.95,-1.40) rectangle (4.30,-1.75);
+\draw[shade] (4.30,-1.40) rectangle (4.65,-1.75);
+\draw[hl cell] (4.65,-1.40) rectangle (5.00,-1.75);
+\draw[shade] (5.00,-1.40) rectangle (5.35,-1.75);
+\draw[cell frame] (5.35,-1.40) rectangle (5.70,-1.75);
+\draw[cell frame] (5.70,-1.40) rectangle (6.05,-1.75);
+\draw[cell frame] (3.60,-1.75) rectangle (3.95,-2.10);
+\draw[cell frame] (3.95,-1.75) rectangle (4.30,-2.10);
+\draw[cell frame] (4.30,-1.75) rectangle (4.65,-2.10);
+\draw[cell frame] (4.65,-1.75) rectangle (5.00,-2.10);
+\draw[cell frame] (5.00,-1.75) rectangle (5.35,-2.10);
+\draw[cell frame] (5.35,-1.75) rectangle (5.70,-2.10);
+\draw[cell frame] (5.70,-1.75) rectangle (6.05,-2.10);
+\node[tick, below] at (4.8,-2.15) {drop in class score};
+\end{tikzpicture}
+\end{center}
+```
+
+Occlusion sensitivity: a grey patch slides over the image and the drop in the class score is recorded at each position. Large drops (highlighted) mark the regions the network relies on
+
+:::
+
 ::: {#def-saliency-map .definition name="Saliency map"}
 
 The *saliency map* of an image $I$ (shape $3\times H\times W$) for class $c$ is the $H\times W$ map
@@ -38,6 +139,25 @@ M_{ij}=\max_{\text{channel }k}\ \Bigl\lvert\frac{\partial s_c}{\partial I_{k,i,j
 $$
 
 computed by one backward pass from $s_c$ to the input with the weights fixed.
+
+:::
+
+::: {#fig-network-visualization-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (i) at (0,0) {image $I$};
+\node[box] (n) at (3,0) {network};
+\node[box] (s) at (5.6,0) {score $s_c(I)$};
+\draw[map] (i) -- (n);
+\draw[map] (n) -- (s);
+\draw[map, hl] (s.south) to[bend left=30] node[edge label, text=accent] {$\partial s_c/\partial I$} (i.south);
+\end{tikzpicture}
+\end{center}
+```
+
+A saliency map backpropagates the class score to the pixels; the size of $\partial s_c/\partial I$ at each pixel shows how much a small change there would move the score
 
 :::
 
@@ -59,6 +179,22 @@ So the saliency map shows the pixels whose small changes move the class score mo
 ::: {#def-class-visualization .definition name="Class visualization by gradient ascent"}
 
 *Class visualization* starts from a random or zero image $I$ and repeats the step $I\gets I+\alpha\nabla_I\bigl(s_c(I)-\lambda\lVert I\rVert_2^2\bigr)$ with the network's weights fixed, often with extra smoothing (blurring, small random shifts) between steps. The result is an image that the network scores highly as class $c$.
+
+:::
+
+::: {#fig-network-visualization-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.0,0) node[lab, right] {step};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$s_c(I)-\lambda\lVert I\rVert^2$};
+\draw[hl, domain=0:5.6, samples=80, smooth, variable=\x] plot ({\x}, {2.2-1.9*exp(-0.6*\x)});
+\end{tikzpicture}
+\end{center}
+```
+
+Class visualisation runs gradient ascent on the image itself, with the network fixed, raising the regularised class score until it levels off
 
 :::
 

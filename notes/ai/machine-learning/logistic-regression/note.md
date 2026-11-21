@@ -19,6 +19,25 @@ $$
 
 :::
 
+::: {#fig-logistic-regression-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-3.4,0) -- (3.4,0) node[lab, right] {$z$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {};
+\draw[emph, domain=-3.2:3.2, samples=80, smooth, variable=\x] plot ({\x}, {2/(1+exp(-1.5*\x))});
+\draw[faint, dashed] (-3.2,2) -- (3.2,2);
+\draw (0,1) -- (-0.08,1) node[tick, left] {$\tfrac12$};
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The logistic function $\sigma(z)=1/(1+e^{-z})$ squashes any real score into $(0,1)$; $\sigma(0)=\tfrac12$ and $\sigma(-z)=1-\sigma(z)$
+
+:::
+
 ::: {#prp-logistic-function .proposition name="Properties of the logistic function"}
 
 1. $\sigma$ is increasing, with $\sigma(z)\to0$ as $z\to-\infty$, $\sigma(0)=\tfrac12$ and $\sigma(z)\to1$ as $z\to\infty$.

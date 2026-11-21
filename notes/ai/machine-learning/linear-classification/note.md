@@ -35,6 +35,33 @@ and its training loss is the fraction of training examples classified wrongly (t
 
 :::
 
+::: {#fig-linear-classification-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\path[shade] (-0.6,2.6) -- (3.6,-0.2) -- (4.4,-0.2) -- (4.4,2.6) -- cycle;
+\draw[emph] (-0.6,2.6) -- (3.6,-0.2);
+\draw[->, hl] (1.5,1.2) -- (2.1,2.1) node[tick, right] {$\mathbf w$};
+\node[dot] at (3.20,1.80) {};
+\node[dot] at (3.90,1.50) {};
+\node[dot] at (2.60,2.30) {};
+\node[hollow dot] at (0.20,0.40) {};
+\node[hollow dot] at (0.90,0.20) {};
+\node[hollow dot] at (0.30,1.20) {};
+\node[hollow dot] at (2.2,1.0) {};
+\draw[hl] (2.2,1.0) circle (0.16);
+\node[tick, below right] at (2.2,0.9) {$y=-1$ on the $+1$ side: margin $<0$};
+\node[tick] at (3.7,2.4) {$+1$};
+\node[tick] at (0.3,2.2) {$-1$};
+\end{tikzpicture}
+\end{center}
+```
+
+A linear classifier predicts $+1$ on the shaded side of the line $\mathbf w\cdot\mathbf x+b=0$. The margin $y(\mathbf w\cdot\mathbf x+b)$ is positive for correctly classified points and negative for the circled $-1$ example on the wrong side
+
+:::
+
 ::: {#exm-linear-classification-1 .example name="A classifier on three points"}
 
 Take the training data $\bigl((1,2),-1\bigr)$, $\bigl((2,0),+1\bigr)$, $\bigl((0,0),-1\bigr)$ and $\mathbf{w}=(1,-1)$, $b=-1$, so the logit is $x_1-x_2-1$. The logits are $-2$, $1$, $-1$ and the margins $2$, $1$, $1$: all positive, so every example is classified correctly and the training zero-one loss is $0$. The decision boundary is the line $x_2=x_1-1$.

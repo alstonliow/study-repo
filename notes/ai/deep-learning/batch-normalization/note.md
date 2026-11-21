@@ -21,6 +21,27 @@ It also keeps running averages $\bar\mu_j\gets m\bar\mu_j+(1-m)\mu_j$ and $\bar\
 
 :::
 
+::: {#fig-batch-normalization-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-0.2,0) -- (7.0,0) node[lab, right] {activation};
+\draw[faint, domain=1.6:7.0, samples=80, smooth, variable=\x] plot ({\x}, {2.4*exp(-((\x-4.6)^2)/(2*1.0^2))/(1.0*sqrt(2*pi))});
+\draw[hl, domain=0.4:3.6, samples=80, smooth, variable=\x] plot ({\x}, {2.4*exp(-((\x-2.0)^2)/(2*0.45^2))/(0.45*sqrt(2*pi))});
+\node[tick] at (5.6,1.2) {before};
+\node[tick, text=accent] at (2.9,2.1) {after};
+\draw[faint, dashed] (2.0,0) -- (2.0,2.2);
+\draw (2.0,0) -- (2.0,-0.08) node[tick, below] {$\beta$};
+\draw (4.6,0) -- (4.6,-0.08) node[tick, below] {$\mu_B$};
+\end{tikzpicture}
+\end{center}
+```
+
+Batch normalisation standardises each feature over the batch and then applies the learnt scale $\gamma$ and shift $\beta$: the distribution of the activation moves to mean $\beta$ and standard deviation $\gamma$
+
+:::
+
 ::: {#fig-batch-normalization-1}
 
 ```{=latex}

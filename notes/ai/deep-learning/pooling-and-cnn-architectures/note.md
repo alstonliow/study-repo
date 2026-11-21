@@ -113,6 +113,86 @@ A stack of $L$ convolutional layers with filter size $F$ and stride $1$ gives ea
 
 :::
 
+::: {#fig-pooling-and-cnn-architectures-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[dot] (n00) at (0.0,0.0) {};
+\node[hl dot] (n01) at (0.6,0.0) {};
+\node[hl dot] (n02) at (1.2,0.0) {};
+\node[hl dot] (n03) at (1.80,0.0) {};
+\node[hl dot] (n04) at (2.4,0.0) {};
+\node[hl dot] (n05) at (3.0,0.0) {};
+\node[hl dot] (n06) at (3.60,0.0) {};
+\node[hl dot] (n07) at (4.2,0.0) {};
+\node[dot] (n08) at (4.8,0.0) {};
+\node[tick, left] at (-0.3,0.0) {input};
+\node[dot] (n10) at (0.0,1.0) {};
+\node[dot] (n11) at (0.6,1.0) {};
+\node[hl dot] (n12) at (1.2,1.0) {};
+\node[hl dot] (n13) at (1.80,1.0) {};
+\node[hl dot] (n14) at (2.4,1.0) {};
+\node[hl dot] (n15) at (3.0,1.0) {};
+\node[hl dot] (n16) at (3.60,1.0) {};
+\node[dot] (n17) at (4.2,1.0) {};
+\node[dot] (n18) at (4.8,1.0) {};
+\node[tick, left] at (-0.3,1.0) {layer 1};
+\node[dot] (n20) at (0.0,2.0) {};
+\node[dot] (n21) at (0.6,2.0) {};
+\node[dot] (n22) at (1.2,2.0) {};
+\node[hl dot] (n23) at (1.80,2.0) {};
+\node[hl dot] (n24) at (2.4,2.0) {};
+\node[hl dot] (n25) at (3.0,2.0) {};
+\node[dot] (n26) at (3.60,2.0) {};
+\node[dot] (n27) at (4.2,2.0) {};
+\node[dot] (n28) at (4.8,2.0) {};
+\node[tick, left] at (-0.3,2.0) {layer 2};
+\node[dot] (n30) at (0.0,3.0) {};
+\node[dot] (n31) at (0.6,3.0) {};
+\node[dot] (n32) at (1.2,3.0) {};
+\node[dot] (n33) at (1.80,3.0) {};
+\node[hl dot] (n34) at (2.4,3.0) {};
+\node[dot] (n35) at (3.0,3.0) {};
+\node[dot] (n36) at (3.60,3.0) {};
+\node[dot] (n37) at (4.2,3.0) {};
+\node[dot] (n38) at (4.8,3.0) {};
+\node[tick, left] at (-0.3,3.0) {layer 3};
+\draw[faint] (n12) -- (n01);
+\draw[faint] (n12) -- (n02);
+\draw[faint] (n12) -- (n03);
+\draw[faint] (n13) -- (n02);
+\draw[faint] (n13) -- (n03);
+\draw[faint] (n13) -- (n04);
+\draw[faint] (n14) -- (n03);
+\draw[faint] (n14) -- (n04);
+\draw[faint] (n14) -- (n05);
+\draw[faint] (n15) -- (n04);
+\draw[faint] (n15) -- (n05);
+\draw[faint] (n15) -- (n06);
+\draw[faint] (n16) -- (n05);
+\draw[faint] (n16) -- (n06);
+\draw[faint] (n16) -- (n07);
+\draw[faint] (n23) -- (n12);
+\draw[faint] (n23) -- (n13);
+\draw[faint] (n23) -- (n14);
+\draw[faint] (n24) -- (n13);
+\draw[faint] (n24) -- (n14);
+\draw[faint] (n24) -- (n15);
+\draw[faint] (n25) -- (n14);
+\draw[faint] (n25) -- (n15);
+\draw[faint] (n25) -- (n16);
+\draw[faint] (n34) -- (n23);
+\draw[faint] (n34) -- (n24);
+\draw[faint] (n34) -- (n25);
+\end{tikzpicture}
+\end{center}
+```
+
+Three stacked $3$-wide convolutions: one unit of layer $3$ sees $7$ inputs (highlighted), the same receptive field as a single $7$-wide filter but with fewer parameters and more non-linearity
+
+:::
+
 The stack also puts two more non-linearities between input and output, so it is more expressive as well as cheaper.
 
 ::: {#rmk-cnn-layer-patterns .remark name="Layer patterns"}
@@ -124,6 +204,34 @@ $$
 $$
 
 with $N\le3$, $K<3$, and batch normalization (@def-batch-normalization) after each convolution. Convolutions use $3\times3$ filters, stride $1$ and same padding, so only the pooling layers change the spatial size; input sizes divisible by $2$ many times ($32$, $64$, $224$) avoid fractional sizes. Newer architectures depart from a plain chain: GoogLeNet's modules run several filter sizes in parallel, and residual networks (ResNet) add the skip connections of @def-residual-connection around pairs of convolutional layers and replace the large fully connected layers by global average pooling, which made networks of over $100$ layers trainable. In practice one reuses an architecture that works well on ImageNet, often with pretrained weights (@sec-ai-deep-learning-transfer-learning).
+
+:::
+
+::: {#fig-pooling-and-cnn-architectures-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (b0) at (0.0,0) {input};
+\node[box] (b1) at (1.6,0) {conv};
+\draw[map] (b0) -- (b1);
+\node[box] (b2) at (3.2,0) {ReLU};
+\draw[map] (b1) -- (b2);
+\node[box] (b3) at (4.80,0) {conv};
+\draw[map] (b2) -- (b3);
+\node[box] (b4) at (6.4,0) {ReLU};
+\draw[map] (b3) -- (b4);
+\node[hl box] (b5) at (8.0,0) {pool};
+\draw[map] (b4) -- (b5);
+\node[hl box] (b6) at (9.60,0) {FC};
+\draw[map] (b5) -- (b6);
+\draw[faint, dashed] (0.85,-0.55) rectangle (8.6,0.55);
+\node[tick, above] at (4.7,0.55) {repeat};
+\end{tikzpicture}
+\end{center}
+```
+
+The common pattern: blocks of convolutions with ReLU followed by pooling, repeated, then fully connected layers at the end
 
 :::
 

@@ -21,6 +21,28 @@ Common choices are $R(\boldsymbol\theta)=\tfrac12\lVert\boldsymbol\theta\rVert_2
 
 :::
 
+::: {#fig-regularization-and-model-selection-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-1.8,0) -- (3.6,0) node[lab, right] {$\theta_1$};
+\draw[->] (0,-1.6) -- (0,3.0) node[lab, above] {$\theta_2$};
+\draw[faint, rotate around={-30:(2.4,1.8)}] (2.4,1.8) ellipse (0.60 and 0.30);
+\draw[faint, rotate around={-30:(2.4,1.8)}] (2.4,1.8) ellipse (1.30 and 0.65);
+\draw[faint, rotate around={-30:(2.4,1.8)}] (2.4,1.8) ellipse (2.05 and 1.02);
+\draw[regionA] (0,0) circle (1.05);
+\node[hl dot] at (0.78,0.7) {};
+\node[dot] at (2.4,1.8) {};
+\node[tick, right] at (2.5,1.8) {unregularized};
+\end{tikzpicture}
+\end{center}
+```
+
+An $\ell_2$ penalty in picture form: the regularized solution (highlighted) is where a contour of the training loss first touches a ball around the origin, so it is pulled towards $\mathbf 0$
+
+:::
+
 ::: {#prp-ridge-closed-form .proposition name="Ridge regression in closed form"}
 
 For $J(\boldsymbol\theta)=\tfrac12\lVert X\boldsymbol\theta-\mathbf{y}\rVert^2$ and $\lambda>0$, the ridge objective $J(\boldsymbol\theta)+\tfrac\lambda2\lVert\boldsymbol\theta\rVert^2$ has the unique minimizer
@@ -46,6 +68,27 @@ and $X^{\mathsf T}X+\lambda I$ is invertible for every $X$.
 ::: {#exm-ridge-one-feature .example name="Shrinkage with one feature"}
 
 With one feature and no intercept, inputs $1,2,3$ and labels $1,2,2$, the formula reads $\theta_\lambda=\sum_ix_iy_i/(\sum_ix_i^2+\lambda)=11/(14+\lambda)$: $\theta_0\approx0.786$ (least squares), $\theta_1\approx0.733$ and $\theta_{10}\approx0.458$. Larger $\lambda$ shrinks the slope towards $0$, trading variance for bias.
+
+:::
+
+::: {#fig-regularization-and-model-selection-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$\lambda$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$\theta_\lambda$};
+\draw[emph, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {2.6*11/(14+\x*5)});
+\draw (0,0) -- (0,-0.08) node[tick, below] {$0$};
+\draw (1,0) -- (1,-0.08) node[tick, below] {$5$};
+\draw (2,0) -- (2,-0.08) node[tick, below] {$10$};
+\draw (6,0) -- (6,-0.08) node[tick, below] {$30$};
+\draw (0,2.04) -- (-0.08,2.04) node[tick, left] {$0.79$};
+\end{tikzpicture}
+\end{center}
+```
+
+The ridge estimate $\theta_\lambda=11/(14+\lambda)$ of @exm-ridge-one-feature shrinks from the least squares value $0.79$ towards $0$ as $\lambda$ grows
 
 :::
 
@@ -86,6 +129,50 @@ To choose among candidate models $M_1,\dots,M_m$ (different hypothesis classes, 
 3. *Leave-one-out cross validation* is $k$-fold with $k=N$.
 
 Larger $k$ wastes less data on validation but costs $k$ trainings per model; $k=10$ is a common default. The test set (@def-test-error) is never used for this choice.
+
+:::
+
+::: {#fig-regularization-and-model-selection-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.0,-0.0) rectangle (1.0,0.45);
+\draw[cell frame] (1.0,-0.0) rectangle (2.0,0.45);
+\draw[cell frame] (2.0,-0.0) rectangle (3.0,0.45);
+\draw[cell frame] (3.0,-0.0) rectangle (4.0,0.45);
+\draw[cell frame] (4.0,-0.0) rectangle (5.0,0.45);
+\node[tick, left] at (0,0.22) {round $1$};
+\draw[cell frame] (0.0,-0.5) rectangle (1.0,-0.05);
+\draw[hl cell] (1.0,-0.5) rectangle (2.0,-0.05);
+\draw[cell frame] (2.0,-0.5) rectangle (3.0,-0.05);
+\draw[cell frame] (3.0,-0.5) rectangle (4.0,-0.05);
+\draw[cell frame] (4.0,-0.5) rectangle (5.0,-0.05);
+\node[tick, left] at (0,-0.28) {round $2$};
+\draw[cell frame] (0.0,-1.0) rectangle (1.0,-0.55);
+\draw[cell frame] (1.0,-1.0) rectangle (2.0,-0.55);
+\draw[hl cell] (2.0,-1.0) rectangle (3.0,-0.55);
+\draw[cell frame] (3.0,-1.0) rectangle (4.0,-0.55);
+\draw[cell frame] (4.0,-1.0) rectangle (5.0,-0.55);
+\node[tick, left] at (0,-0.78) {round $3$};
+\draw[cell frame] (0.0,-1.5) rectangle (1.0,-1.05);
+\draw[cell frame] (1.0,-1.5) rectangle (2.0,-1.05);
+\draw[cell frame] (2.0,-1.5) rectangle (3.0,-1.05);
+\draw[hl cell] (3.0,-1.5) rectangle (4.0,-1.05);
+\draw[cell frame] (4.0,-1.5) rectangle (5.0,-1.05);
+\node[tick, left] at (0,-1.28) {round $4$};
+\draw[cell frame] (0.0,-2.0) rectangle (1.0,-1.55);
+\draw[cell frame] (1.0,-2.0) rectangle (2.0,-1.55);
+\draw[cell frame] (2.0,-2.0) rectangle (3.0,-1.55);
+\draw[cell frame] (3.0,-2.0) rectangle (4.0,-1.55);
+\draw[hl cell] (4.0,-2.0) rectangle (5.0,-1.55);
+\node[tick, left] at (0,-1.78) {round $5$};
+\node[tick, right] at (5.1,-0.8) {highlighted: validation fold};
+\end{tikzpicture}
+\end{center}
+```
+
+Five-fold cross validation: each round trains on four folds and validates on the fifth, and the five validation errors are averaged
 
 :::
 

@@ -19,9 +19,62 @@ $$
 
 :::
 
+::: {#fig-nearest-neighbors-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-1.4,0) -- (1.4,0) (0,-1.4) -- (0,1.4);
+\draw[emph] (1,0) -- (0,1) -- (-1,0) -- (0,-1) -- cycle;
+\draw[hl] (0,0) circle (1);
+\draw[emph, dashed] (-1,-1) rectangle (1,1);
+\node[tick] at (0.35,0.35) {$\ell_1$};
+\node[tick, text=accent] at (0.95,0.62) {$\ell_2$};
+\node[tick] at (1.25,1.15) {$\ell_\infty$};
+\end{tikzpicture}
+\end{center}
+```
+
+Unit balls of the $\ell_1$ (diamond), $\ell_2$ (circle) and $\ell_\infty$ (square) distances. Which points count as nearest depends on the distance chosen
+
+:::
+
 ::: {#def-k-nearest-neighbors .definition name="k-nearest neighbour classifier"}
 
 Given training data $(\mathbf{x}_1,y_1),\dots,(\mathbf{x}_N,y_N)$ with labels in $\{0,\dots,K-1\}$, a distance $d$ and an integer $k\ge1$, the *$k$-nearest neighbour classifier* predicts for an input $\mathbf{x}$ the label that occurs most often among the $k$ training points nearest to $\mathbf{x}$ under $d$. Ties between distances or between label counts are broken by a fixed rule, for example the smaller index or the smaller label. For $k=1$ it is the *nearest neighbour classifier*.
+
+:::
+
+::: {#fig-nearest-neighbors-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[hollow dot] at (0.94,0.31) {};
+\node[hollow dot] at (1.58,0.46) {};
+\node[hollow dot] at (0.27,1.20) {};
+\node[hollow dot] at (3.67,2.40) {};
+\node[hollow dot] at (3.06,0.67) {};
+\node[hollow dot] at (2.15,0.83) {};
+\node[hollow dot] at (0.69,0.32) {};
+\node[hollow dot] at (0.86,2.78) {};
+\node[hollow dot] at (3.32,2.42) {};
+\node[dot] at (3.20,0.58) {};
+\node[dot] at (1.24,1.88) {};
+\node[dot] at (2.93,2.56) {};
+\node[dot] at (3.52,0.26) {};
+\node[dot] at (2.42,2.02) {};
+\node[dot] at (2.02,0.53) {};
+\node[dot] at (1.89,0.27) {};
+\node[dot] at (3.74,2.60) {};
+\node[dot] at (2.19,0.90) {};
+\draw[hl] (2.0,1.5) circle (0.74);
+\node[lab] at (2.0,1.5) {$\times$};
+\end{tikzpicture}
+\end{center}
+```
+
+$3$-nearest neighbours: the circle around the query $\times$ holds its three nearest training points, 2 filled and 1 hollow, so the majority vote predicts the filled class
 
 :::
 

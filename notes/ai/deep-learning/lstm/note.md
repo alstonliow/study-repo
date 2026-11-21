@@ -26,6 +26,39 @@ with each $\mathbf{a}$ in $\mathbb{R}^m$. The *input gate* $\mathbf{i}$, *forget
 
 :::
 
+::: {#fig-lstm-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph, ->] (0,2) -- (7,2);
+\node[tick, left] at (0,2) {$\mathbf c_{t-1}$};
+\node[tick, right] at (7,2) {$\mathbf c_t$};
+\node[small vertex] (m) at (2,2) {$\odot$};
+\node[small vertex] (a) at (4,2) {$+$};
+\node[box] (f) at (2,0.6) {$\mathbf f$};
+\node[box] (i) at (3.2,0.6) {$\mathbf i$};
+\node[box] (g) at (4.8,0.6) {$\mathbf g$};
+\node[box] (o) at (6,0.6) {$\mathbf o$};
+\node[small vertex] (ig) at (4,1.45) {$\odot$};
+\draw[map] (f) -- (m);
+\draw[map] (i) -- (ig);
+\draw[map] (g) -- (ig);
+\draw[map] (ig) -- (a);
+\node[small vertex] (oh) at (6,-0.6) {$\odot$};
+\draw[map] (o) -- (oh);
+\draw[map] (5.4,2) |- node[tick, pos=0.2, right] {$\tanh$} (oh);
+\draw[map] (oh) -- (7,-0.6) node[tick, right] {$\mathbf h_t$};
+\node[hl box] (in) at (4,-1.2) {$\mathbf h_{t-1},\ \mathbf x_t$};
+\draw[faint] (in) -- (2,-0.2) (in) -- (3.2,-0.2) (in) -- (4.8,-0.2) (in) -- (6,-0.2);
+\end{tikzpicture}
+\end{center}
+```
+
+The LSTM cell: the gates $\mathbf f,\mathbf i,\mathbf o$ and the candidate $\mathbf g$ are computed from $\mathbf h_{t-1}$ and $\mathbf x_t$. Along the top line the cell state is only scaled by $\mathbf f$ and added to, which is why gradients survive many steps
+
+:::
+
 Read entrywise: the forget gate decides how much of each cell entry to keep, the input gate how much of the candidate to add, and the output gate how much of the cell to reveal as the hidden state, which is what the next step and the output layer see.
 
 ```{=latex}

@@ -72,6 +72,62 @@ An elementwise operation on tensors of different shapes first *broadcasts* them 
 
 :::
 
+::: {#fig-tensors-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.00,0.00) rectangle (0.45,-0.45);
+\node[tick] at (0.23,-0.23) {$1$};
+\draw[cell frame] (0.00,-0.45) rectangle (0.45,-0.90);
+\node[tick] at (0.23,-0.68) {$2$};
+\draw[cell frame] (0.00,-0.90) rectangle (0.45,-1.35);
+\node[tick] at (0.23,-1.12) {$3$};
+\node[lab] at (0.8,-0.67) {$+$};
+\draw[cell frame] (1.20,-0.45) rectangle (1.65,-0.90);
+\node[tick] at (1.43,-0.68) {$10$};
+\draw[cell frame] (1.65,-0.45) rectangle (2.10,-0.90);
+\node[tick] at (1.88,-0.68) {$20$};
+\draw[cell frame] (2.10,-0.45) rectangle (2.55,-0.90);
+\node[tick] at (2.33,-0.68) {$30$};
+\draw[cell frame] (2.55,-0.45) rectangle (3.00,-0.90);
+\node[tick] at (2.77,-0.68) {$40$};
+\node[lab] at (3.35,-0.67) {$=$};
+\draw[hl cell] (3.70,0.00) rectangle (4.15,-0.45);
+\node[tick] at (3.93,-0.23) {$11$};
+\draw[hl cell] (4.15,0.00) rectangle (4.60,-0.45);
+\node[tick] at (4.38,-0.23) {$21$};
+\draw[hl cell] (4.60,0.00) rectangle (5.05,-0.45);
+\node[tick] at (4.83,-0.23) {$31$};
+\draw[hl cell] (5.05,0.00) rectangle (5.50,-0.45);
+\node[tick] at (5.28,-0.23) {$41$};
+\draw[hl cell] (3.70,-0.45) rectangle (4.15,-0.90);
+\node[tick] at (3.93,-0.68) {$12$};
+\draw[hl cell] (4.15,-0.45) rectangle (4.60,-0.90);
+\node[tick] at (4.38,-0.68) {$22$};
+\draw[hl cell] (4.60,-0.45) rectangle (5.05,-0.90);
+\node[tick] at (4.83,-0.68) {$32$};
+\draw[hl cell] (5.05,-0.45) rectangle (5.50,-0.90);
+\node[tick] at (5.28,-0.68) {$42$};
+\draw[hl cell] (3.70,-0.90) rectangle (4.15,-1.35);
+\node[tick] at (3.93,-1.12) {$13$};
+\draw[hl cell] (4.15,-0.90) rectangle (4.60,-1.35);
+\node[tick] at (4.38,-1.12) {$23$};
+\draw[hl cell] (4.60,-0.90) rectangle (5.05,-1.35);
+\node[tick] at (4.83,-1.12) {$33$};
+\draw[hl cell] (5.05,-0.90) rectangle (5.50,-1.35);
+\node[tick] at (5.28,-1.12) {$43$};
+\node[tick, below] at (0.22,-1.4) {$(3,1)$};
+\node[tick, below] at (2.1,-0.95) {$(1,4)$};
+\node[tick, below] at (4.6,-1.4) {$(3,4)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Broadcasting a $(3,1)$ column against a $(1,4)$ row: each axis of size $1$ is repeated to match the other, and the sum has shape $(3,4)$
+
+:::
+
 ::: {#def-batched-matrix-multiplication .definition name="Batched matrix multiplication" related="def-matrix-product"}
 
 For a tensor $x$ of shape $(B,n,m)$ and a matrix $w$ of shape $(m,p)$, the product $x\,w$ has shape $(B,n,p)$ with

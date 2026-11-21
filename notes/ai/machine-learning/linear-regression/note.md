@@ -31,6 +31,25 @@ Linear regression minimizes the training loss built from it, the mean squared re
 
 :::
 
+::: {#fig-linear-regression-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-2.8,0) -- (2.8,0) node[lab, right] {$r$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {};
+\draw[emph, domain=-2.2:2.2, samples=80, smooth, variable=\x] plot ({\x}, {0.5*\x*\x});
+\draw[faint, domain=-2.2:2.2, samples=80, smooth, variable=\x] plot ({\x}, {abs(\x)});
+\node[tick] at (2.4,2.3) {$r^2$};
+\node[tick] at (-2.5,1.8) {$|r|$};
+\end{tikzpicture}
+\end{center}
+```
+
+The squared loss as a function of the residual $r=\mathbf w\cdot\phi(x)-y$, scaled by $\tfrac12$, against the absolute loss (faint): the squared loss punishes large residuals much more
+
+:::
+
 ::: {#thm-squared-loss-gradient .theorem name="Gradient of the squared loss"}
 
 For one example,

@@ -21,6 +21,42 @@ The *multiclass linear model* has a weight vector $\mathbf{w}_k$ and bias $b_k$ 
 
 :::
 
+::: {#fig-softmax-regression-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (3.2,0);
+\path[bar] (0.20,0) rectangle (0.60,1.40);
+\node[tick, above] at (0.40,1.40) {$2.0$};
+\path[bar] (0.95,0) rectangle (1.35,0.70);
+\node[tick, above] at (1.15,0.70) {$1.0$};
+\path[bar] (1.70,0) rectangle (2.10,0.07);
+\node[tick, above] at (1.90,0.07) {$0.1$};
+\path[bar] (2.45,0) rectangle (2.85,-0.70);
+\node[tick, below] at (2.65,-0.70) {$-1.0$};
+\node[tick] at (1.6,-1.3) {logits $\mathbf z$};
+\draw[map] (3.4,0.5) -- node[tick, above] {softmax} (4.8,0.5);
+\begin{scope}[xshift=5.0cm]
+\draw (0,0) -- (3.2,0);
+\path[hl cell] (0.20,0) rectangle (0.60,1.53);
+\node[tick, above] at (0.40,1.53) {$0.64$};
+\path[hl cell] (0.95,0) rectangle (1.35,0.56);
+\node[tick, above] at (1.15,0.56) {$0.23$};
+\path[hl cell] (1.70,0) rectangle (2.10,0.23);
+\node[tick, above] at (1.90,0.23) {$0.10$};
+\path[hl cell] (2.45,0) rectangle (2.85,0.08);
+\node[tick, above] at (2.65,0.08) {$0.03$};
+\node[tick] at (1.6,-1.3) {probabilities};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Softmax turns logits $\mathbf z=(2,1,0.1,-1)$ into probabilities: it keeps the order, makes every entry positive and normalizes the sum to $1$
+
+:::
+
 ::: {#prp-softmax-shift .proposition name="Softmax ignores a common shift"}
 
 For every $c\in\mathbb{R}$, $\operatorname{softmax}(\mathbf{z}+c\mathbf{1})=\operatorname{softmax}(\mathbf{z})$. With $K=2$, $\operatorname{softmax}(z_0,z_1)_1=\sigma(z_1-z_0)$, the logistic function of the difference of logits.
@@ -65,6 +101,29 @@ So for a fixed target, the cross entropy is smallest when the prediction equals 
 
 :::
 
+::: {#fig-softmax-regression-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.6,0) node[lab, right] {$k$};
+\path[bar] (0.20,0) rectangle (0.50,1.80);
+\path[hl cell] (0.50,0) rectangle (0.80,0.75);
+\path[bar] (1.20,0) rectangle (1.50,0.75);
+\path[hl cell] (1.50,0) rectangle (1.80,0.75);
+\path[bar] (2.20,0) rectangle (2.50,0.30);
+\path[hl cell] (2.50,0) rectangle (2.80,0.75);
+\path[bar] (3.20,0) rectangle (3.50,0.15);
+\path[hl cell] (3.50,0) rectangle (3.80,0.75);
+\node[tick, right] at (2.4,1.9) {dark $\mathbf p$, light $\mathbf q$};
+\end{tikzpicture}
+\end{center}
+```
+
+Gibbs' inequality: the cross entropy $-\sum_kp_k\log q_k$ of $\mathbf p$ relative to any $\mathbf q$ (here uniform) is at least the entropy of $\mathbf p$, with equality only when $\mathbf q=\mathbf p$
+
+:::
+
 <!-- Merged 2026-11-19 (owner decision): this block also replaces thm-gibbs-inequality from UC Berkeley EECS126 (note "Information Theory Introduction"), which stated the D(p||q) >= 0 form with the same proof. Statement and proof are the CS221 version; the D(p||q) form was added from EECS126. -->
 
 ::: {.proof}
@@ -89,6 +148,24 @@ $$
 $$
 
 the negative log probability of the correct class. For $K=2$ it is the logistic loss.
+
+:::
+
+::: {#fig-softmax-regression-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.6,0) node[lab, right] {$p_y$};
+\draw[->] (0,0) -- (0,2.8) node[lab, above] {loss};
+\draw[emph, domain=0.12:4, samples=80, smooth, variable=\x] plot ({\x}, {-0.6*ln(\x/4)});
+\draw (4,0) -- (4,-0.08) node[tick, below] {$1$};
+\draw (2,0) -- (2,-0.08) node[tick, below] {$\tfrac12$};
+\end{tikzpicture}
+\end{center}
+```
+
+The cross entropy loss $-\log p_y$ as a function of the probability $p_y$ given to the correct class: $0$ when $p_y=1$ and unbounded as $p_y\to0$
 
 :::
 

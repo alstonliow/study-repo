@@ -15,9 +15,50 @@ Plot the training loss per iteration (or per epoch, the number of passes over th
 
 :::
 
+::: {#fig-training-diagnostics-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {epoch};
+\draw[->] (0,0) -- (0,2.8) node[lab, above] {loss};
+\draw[faint, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {2.4*exp(-0.15*\x)+0.2});
+\draw[emph, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {2.4*exp(-1.6*\x)+0.9});
+\draw[hl, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {2.4*exp(-0.8*\x)+0.25});
+\node[tick] at (5.5,1.25) {too low};
+\node[tick] at (5.5,0.75) {too high};
+\node[tick, text=accent] at (5.5,0.4) {good};
+\end{tikzpicture}
+\end{center}
+```
+
+Typical loss curves: too low a learning rate decays slowly, too high a rate drops fast and stalls at a high loss, and a good rate decreases steadily to a low value
+
+:::
+
 ::: {#rmk-training-diagnostics-accuracy .remark name="Training versus validation accuracy"}
 
 The gap between training and validation accuracy measures overfitting (@def-overfitting). A large gap that keeps growing calls for stronger regularization (more $\ell_2$, more dropout, more data); no gap at all, with both accuracies low, suggests the model is too small or too regularized. Validation accuracy is checked every epoch, and the parameters with the best validation accuracy are kept (*early stopping*).
+
+:::
+
+::: {#fig-training-diagnostics-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {epoch};
+\draw[->] (0,0) -- (0,2.8) node[lab, above] {accuracy};
+\draw[emph, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {2.4-2.0*exp(-0.7*\x)});
+\draw[hl, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {1.7-1.3*exp(-0.9*\x)});
+\draw[<->] (5.4,1.69) -- node[tick, right] {gap} (5.4,2.35);
+\node[tick] at (2.0,2.2) {training};
+\node[tick, text=accent] at (2.4,1.25) {validation};
+\end{tikzpicture}
+\end{center}
+```
+
+A large gap between training and validation accuracy signals overfitting: regularise more or get more data. No gap at all suggests the model could be larger
 
 :::
 

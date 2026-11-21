@@ -60,6 +60,27 @@ A layer $f$ with a *residual* (skip) *connection* computes $\mathbf{x}\mapsto\ma
 
 :::
 
+::: {#fig-training-deep-networks-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] (x) at (0,0) {$\mathbf x$};
+\node[box] (f) at (2.2,0) {layer $f$};
+\node[small vertex] (p) at (4.2,0) {$+$};
+\node[lab] (o) at (6.2,0) {$\mathbf x+f(\mathbf x)$};
+\draw[map] (x) -- (f);
+\draw[map] (f) -- (p);
+\draw[map] (p) -- (o);
+\draw[map, hl] (x.north) to[out=60, in=120] node[tick, above, text=accent] {identity} (p.north);
+\end{tikzpicture}
+\end{center}
+```
+
+A residual connection adds the input back to the layer's output. The identity path lets gradients reach earlier layers unchanged
+
+:::
+
 For $f(x)=wx$ the layer multiplies by $1+w$ instead of $w$, which keeps the factor away from $0$ when $w$ is small; it can still explode when $w$ is large. The derivative of each layer is the identity plus that of $f$, so gradients reach early layers even when $f$ contributes little. Residual connections appear in LSTMs and residual networks, and in every modern deep architecture.
 
 ::: {#def-layer-normalization .definition name="Layer normalization"}
@@ -71,6 +92,45 @@ $$
 $$
 
 where $\varepsilon>0$ is a small constant (such as $10^{-5}$) that prevents division by zero, and the scale $\boldsymbol\gamma\in\mathbb{R}^d$ and shift $\boldsymbol\beta\in\mathbb{R}^d$ are learned parameters ($2d$ per layer).
+
+:::
+
+::: {#fig-training-deep-networks-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.00,0.00) rectangle (0.40,-0.40);
+\draw[cell frame] (0.40,0.00) rectangle (0.80,-0.40);
+\draw[cell frame] (0.80,0.00) rectangle (1.20,-0.40);
+\draw[cell frame] (1.20,0.00) rectangle (1.60,-0.40);
+\draw[cell frame] (1.60,0.00) rectangle (2.00,-0.40);
+\draw[cell frame] (2.00,0.00) rectangle (2.40,-0.40);
+\draw[hl cell] (0.00,-0.40) rectangle (0.40,-0.80);
+\draw[hl cell] (0.40,-0.40) rectangle (0.80,-0.80);
+\draw[hl cell] (0.80,-0.40) rectangle (1.20,-0.80);
+\draw[hl cell] (1.20,-0.40) rectangle (1.60,-0.80);
+\draw[hl cell] (1.60,-0.40) rectangle (2.00,-0.80);
+\draw[hl cell] (2.00,-0.40) rectangle (2.40,-0.80);
+\draw[cell frame] (0.00,-0.80) rectangle (0.40,-1.20);
+\draw[cell frame] (0.40,-0.80) rectangle (0.80,-1.20);
+\draw[cell frame] (0.80,-0.80) rectangle (1.20,-1.20);
+\draw[cell frame] (1.20,-0.80) rectangle (1.60,-1.20);
+\draw[cell frame] (1.60,-0.80) rectangle (2.00,-1.20);
+\draw[cell frame] (2.00,-0.80) rectangle (2.40,-1.20);
+\draw[cell frame] (0.00,-1.20) rectangle (0.40,-1.60);
+\draw[cell frame] (0.40,-1.20) rectangle (0.80,-1.60);
+\draw[cell frame] (0.80,-1.20) rectangle (1.20,-1.60);
+\draw[cell frame] (1.20,-1.20) rectangle (1.60,-1.60);
+\draw[cell frame] (1.60,-1.20) rectangle (2.00,-1.60);
+\draw[cell frame] (2.00,-1.20) rectangle (2.40,-1.60);
+\node[tick, left] at (0,-0.6) {example};
+\node[tick, above] at (1.2,0) {features};
+\end{tikzpicture}
+\end{center}
+```
+
+Layer normalisation computes a mean and variance over the features of one example (highlighted row), so it does not depend on the batch, unlike batch normalisation
 
 :::
 

@@ -19,6 +19,25 @@ It stops after a pass with no mistakes.
 
 :::
 
+::: {#fig-perceptron-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, emph] (0,0) -- (2.4,0.4) node[tick, right] {$\mathbf w$};
+\draw[->, faint] (0,0) -- (-0.3,1.6) node[tick, above] {$\mathbf f(x)$};
+\draw[->, hl] (0,0) -- (2.1,2.0) node[tick, right] {$\mathbf w+\mathbf f(x)$};
+\draw[faint, dashed] (2.4,0.4) -- (2.1,2.0);
+\draw[faint] (-0.33,2.0) -- (0.33,-2.0);
+\node[dot] at (-0.3,1.6) {};
+\end{tikzpicture}
+\end{center}
+```
+
+A perceptron update on a mistake with $y=+1$: adding $\mathbf f(x)$ turns $\mathbf w$ towards the example, increasing $\mathbf w\cdot\mathbf f(x)$ by $\lVert\mathbf f(x)\rVert^2$
+
+:::
+
 ```{=latex}
 \begin{algorithm}
 \caption{Binary perceptron}
@@ -91,6 +110,33 @@ Let $\mathbf w_k$ be the weights after $k$ mistakes, $\mathbf w_0=\mathbf 0$, an
 2. Slow growth of the length: $\|\mathbf w_k\|^{2}=\|\mathbf w_{k-1}\|^{2}+2y\,\mathbf w_{k-1}\cdot\mathbf f(x)+\|\mathbf f(x)\|^{2}\le\|\mathbf w_{k-1}\|^{2}+R^{2}$, because the middle term is $\le0$ at a mistake. So $\|\mathbf w_k\|^{2}\le kR^{2}$.
 3. By the Cauchy–Schwarz inequality and $\|\mathbf u\|=1$, $k\gamma\le\mathbf u\cdot\mathbf w_k\le\|\mathbf w_k\|\le\sqrt k\,R$.
 4. Hence $\sqrt k\le R/\gamma$, that is $k\le R^{2}/\gamma^{2}$. Since every pass but the last makes a mistake, the number of passes is finite.
+
+:::
+
+::: {#fig-perceptron-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint, dashed] (0,0) circle (2.0);
+\draw[->] (0,0) -- (1.41,-1.41) node[tick, right] {$R$};
+\path[shade] (-2.2,0.2) -- (2.2,0.2+0) -- (2.2,-0.2) -- (-2.2,-0.2) -- cycle;
+\draw[emph] (-2.2,0) -- (2.2,0);
+\draw[faint] (-2.2,0.4) -- (2.2,0.4) (-2.2,-0.4) -- (2.2,-0.4);
+\draw[<->] (-1.7,0) -- (-1.7,0.4) node[tick, left, pos=0.5] {$\gamma$};
+\node[dot] at (0.30,1.10) {};
+\node[dot] at (1.20,0.70) {};
+\node[dot] at (-0.60,1.50) {};
+\node[dot] at (-1.00,0.60) {};
+\node[hollow dot] at (0.50,-0.90) {};
+\node[hollow dot] at (-0.40,-1.40) {};
+\node[hollow dot] at (1.00,-1.10) {};
+\node[hollow dot] at (-1.20,-0.70) {};
+\end{tikzpicture}
+\end{center}
+```
+
+The quantities in @thm-perceptron-convergence: all examples lie in a ball of radius $R$ and are separated by a unit $\mathbf w^\ast$ with margin $\gamma$. The perceptron makes at most $R^2/\gamma^2$ mistakes
 
 :::
 

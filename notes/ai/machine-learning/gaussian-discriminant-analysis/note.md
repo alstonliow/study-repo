@@ -33,6 +33,30 @@ with the Gaussian density of @thm-jointly-gaussian-properties. The two classes s
 
 :::
 
+::: {#fig-gaussian-discriminant-analysis-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-0.4,0) -- (5.2,0) node[lab, right] {$x_1$};
+\draw[->] (0,-0.4) -- (0,3.6) node[lab, above] {$x_2$};
+\draw[faint, rotate around={25:(1.5,1.2)}] (1.5,1.2) ellipse (0.40 and 0.22);
+\draw[faint, rotate around={25:(1.5,1.2)}] (1.5,1.2) ellipse (0.80 and 0.44);
+\draw[faint, rotate around={25:(1.5,1.2)}] (1.5,1.2) ellipse (1.20 and 0.66);
+\draw[emph, rotate around={25:(3.4,2.4)}] (3.4,2.4) ellipse (0.40 and 0.22);
+\draw[emph, rotate around={25:(3.4,2.4)}] (3.4,2.4) ellipse (0.80 and 0.44);
+\draw[emph, rotate around={25:(3.4,2.4)}] (3.4,2.4) ellipse (1.20 and 0.66);
+\draw[hl] (1.2,3.4) -- (3.9,0.2);
+\node[tick] at (0.8,0.3) {$y=0$};
+\node[tick] at (4.6,3.2) {$y=1$};
+\end{tikzpicture}
+\end{center}
+```
+
+GDA in two dimensions: each class is a Gaussian with its own mean and a shared covariance (equal contour shapes), which makes the decision boundary a straight line
+
+:::
+
 ::: {#thm-gda-mle .theorem name="Maximum likelihood estimates for GDA"}
 
 Given examples $(\mathbf{x}^{(i)},y^{(i)})$, $i=1,\dots,N$, containing both classes, let $N_k$ be the number with $y^{(i)}=k$. The joint log-likelihood $\ell=\sum_i\log p(\mathbf{x}^{(i)},y^{(i)})$ is maximized by
@@ -94,6 +118,25 @@ where $\sigma$ is the logistic function. So GDA classifies with a linear decisio
    $$
 
 3. Expanding, the terms $\mathbf{x}^{\mathsf T}\Sigma^{-1}\mathbf{x}$ cancel. Since $\Sigma^{-1}$ is symmetric, the cross terms give $(\boldsymbol\mu_1-\boldsymbol\mu_0)^{\mathsf T}\Sigma^{-1}\mathbf{x}=\boldsymbol\theta^{\mathsf T}\mathbf{x}$, and the remaining constants are $\theta_0$.
+
+:::
+
+::: {#fig-gaussian-discriminant-analysis-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.4,0) node[lab, right] {$x$};
+\draw[faint, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.4*exp(-((\x-2.5)^2)/(2*0.9^2))/(0.9*sqrt(2*pi))});
+\draw[faint, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.4*exp(-((\x-4.6)^2)/(2*0.9^2))/(0.9*sqrt(2*pi))});
+\draw[hl, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.2/(1+exp(-(\x-3.55)*2.6))});
+\draw[faint, dashed] (3.55,0) -- (3.55,2.3);
+\node[tick, text=accent] at (6.5,2.4) {$\Pr(y=1\mid x)$};
+\end{tikzpicture}
+\end{center}
+```
+
+With shared variance the GDA posterior $\Pr(y=1\mid x)$ is a logistic function of $x$: it crosses $\tfrac12$ midway between the class means when the priors are equal
 
 :::
 

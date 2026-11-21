@@ -70,6 +70,27 @@ An *activation function* is a fixed non-linear function $a:\mathbb{R}\to\mathbb{
 
 :::
 
+::: {#fig-neural-networks-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-2.6,0) -- (2.8,0) node[lab, right] {$z$};
+\draw[->] (0,-1.3) -- (0,2.2);
+\draw[emph, domain=-2.5:2.5, samples=80, smooth, variable=\x] plot ({\x}, {1/(1+exp(-2*\x))});
+\draw[faint, domain=-2.5:2.5, samples=80, smooth, variable=\x] plot ({\x}, {tanh(2*\x)});
+\draw[hl, domain=-2.5:2.0, samples=80, smooth, variable=\x] plot ({\x}, {max(0,\x)});
+\node[tick] at (-2.0,0.25) {sigmoid};
+\node[tick] at (-2.0,-1.15) {tanh};
+\node[tick, text=accent] at (1.6,2.0) {ReLU};
+\end{tikzpicture}
+\end{center}
+```
+
+Three activation functions: sigmoid squashes to $(0,1)$, tanh to $(-1,1)$, and ReLU is $\max(0,z)$, which does not saturate for $z>0$
+
+:::
+
 ReLU has derivative $0$ for $z<0$: a unit whose input is negative on every example passes back no gradient and stops learning (a "dead neuron"). Activation functions balance being close to linear, so that gradients stay away from zero, against being non-linear enough to add expressive power.
 
 ::: {#def-multi-layer-perceptron .definition name="Multi-layer perceptron"}

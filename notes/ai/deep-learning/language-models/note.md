@@ -19,6 +19,31 @@ modelling each factor directly: a transformer with a causal mask (@def-self-atte
 
 :::
 
+::: {#fig-language-models-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (t0) at (0.0,0) {the};
+\node[box] (t1) at (1.5,0) {cat};
+\node[box] (t2) at (3.0,0) {sat};
+\node[box] (t3) at (4.5,0) {on};
+\draw[map, faint] (t0.north) to[out=60, in=120] (t1.north);
+\draw[map, faint] (t0.north) to[out=60, in=120] (t2.north);
+\draw[map, faint] (t1.north) to[out=60, in=120] (t2.north);
+\draw[map, faint] (t0.north) to[out=60, in=120] (t3.north);
+\draw[map, faint] (t1.north) to[out=60, in=120] (t3.north);
+\draw[map, faint] (t2.north) to[out=60, in=120] (t3.north);
+\node[lab, text=accent] at (6.0,0) {?};
+\draw[map, hl] (t3) -- (5.8,0);
+\end{tikzpicture}
+\end{center}
+```
+
+An autoregressive model factorises $P(x_1,\dots,x_n)=\prod_tP(x_t\mid x_{<t})$: each token is predicted from all the tokens before it (arcs), never from later ones
+
+:::
+
 The causal mask makes the prediction at position $t$ depend only on earlier tokens, so one pass over a training sequence yields $T$ predictions. Sampling at a *temperature* $\tau$ divides the scores by $\tau$ before the softmax: $\tau<1$ sharpens the distribution towards the most likely token, $\tau>1$ flattens it.
 
 ::: {#prp-next-token-mle .proposition name="Next-token cross entropy is maximum likelihood"}
@@ -41,6 +66,75 @@ The simplest autoregressive model conditions only on the previous token and esti
 
 :::
 
+::: {#fig-language-models-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.0,-0.0) rectangle (0.7,-0.45);
+\draw[hl cell] (0.7,-0.0) rectangle (1.4,-0.45);
+\node[tick] at (1.05,-0.22) {$2/3$};
+\draw[hl cell] (1.4,-0.0) rectangle (2.10,-0.45);
+\node[tick] at (1.75,-0.22) {$1/3$};
+\draw[cell frame] (2.10,-0.0) rectangle (2.8,-0.45);
+\draw[cell frame] (2.8,-0.0) rectangle (3.5,-0.45);
+\draw[cell frame] (3.5,-0.0) rectangle (4.2,-0.45);
+\draw[cell frame] (0.0,-0.45) rectangle (0.7,-0.9);
+\draw[cell frame] (0.7,-0.45) rectangle (1.4,-0.9);
+\draw[cell frame] (1.4,-0.45) rectangle (2.10,-0.9);
+\draw[hl cell] (2.10,-0.45) rectangle (2.8,-0.9);
+\node[tick] at (2.45,-0.67) {$1/2$};
+\draw[hl cell] (2.8,-0.45) rectangle (3.5,-0.9);
+\node[tick] at (3.15,-0.67) {$1/2$};
+\draw[cell frame] (3.5,-0.45) rectangle (4.2,-0.9);
+\draw[cell frame] (0.0,-0.9) rectangle (0.7,-1.35);
+\draw[cell frame] (0.7,-0.9) rectangle (1.4,-1.35);
+\draw[cell frame] (1.4,-0.9) rectangle (2.10,-1.35);
+\draw[hl cell] (2.10,-0.9) rectangle (2.8,-1.35);
+\node[tick] at (2.45,-1.12) {$1$};
+\draw[cell frame] (2.8,-0.9) rectangle (3.5,-1.35);
+\draw[cell frame] (3.5,-0.9) rectangle (4.2,-1.35);
+\draw[cell frame] (0.0,-1.35) rectangle (0.7,-1.8);
+\draw[cell frame] (0.7,-1.35) rectangle (1.4,-1.8);
+\draw[cell frame] (1.4,-1.35) rectangle (2.10,-1.8);
+\draw[cell frame] (2.10,-1.35) rectangle (2.8,-1.8);
+\draw[cell frame] (2.8,-1.35) rectangle (3.5,-1.8);
+\draw[hl cell] (3.5,-1.35) rectangle (4.2,-1.8);
+\node[tick] at (3.85,-1.57) {$1$};
+\draw[cell frame] (0.0,-1.8) rectangle (0.7,-2.25);
+\draw[cell frame] (0.7,-1.8) rectangle (1.4,-2.25);
+\draw[cell frame] (1.4,-1.8) rectangle (2.10,-2.25);
+\draw[cell frame] (2.10,-1.8) rectangle (2.8,-2.25);
+\draw[cell frame] (2.8,-1.8) rectangle (3.5,-2.25);
+\draw[hl cell] (3.5,-1.8) rectangle (4.2,-2.25);
+\node[tick] at (3.85,-2.02) {$1$};
+\draw[hl cell] (0.0,-2.25) rectangle (0.7,-2.7);
+\node[tick] at (0.35,-2.47) {$1$};
+\draw[cell frame] (0.7,-2.25) rectangle (1.4,-2.7);
+\draw[cell frame] (1.4,-2.25) rectangle (2.10,-2.7);
+\draw[cell frame] (2.10,-2.25) rectangle (2.8,-2.7);
+\draw[cell frame] (2.8,-2.25) rectangle (3.5,-2.7);
+\draw[cell frame] (3.5,-2.25) rectangle (4.2,-2.7);
+\node[tick, left] at (0,-0.22) {the};
+\node[tick, above] at (0.35,0) {the};
+\node[tick, left] at (0,-0.67) {cat};
+\node[tick, above] at (1.05,0) {cat};
+\node[tick, left] at (0,-1.12) {dog};
+\node[tick, above] at (1.75,0) {dog};
+\node[tick, left] at (0,-1.57) {sat};
+\node[tick, above] at (2.45,0) {sat};
+\node[tick, left] at (0,-2.02) {ran};
+\node[tick, above] at (3.15,0) {ran};
+\node[tick, left] at (0,-2.47) {.};
+\node[tick, above] at (3.85,0) {.};
+\end{tikzpicture}
+\end{center}
+```
+
+The bigram estimates of @exm-bigram-model as a table: row = previous token, column = next token. Each row is a conditional distribution; empty cells have probability $0$
+
+:::
+
 ::: {#def-pretraining-finetuning .definition name="Pretraining, fine-tuning, instruction tuning"}
 
 *Pretraining* trains a language model on a very large unlabelled corpus with the next-token loss; it is *self-supervised*, since the targets are the text itself. *Fine-tuning* continues training a pretrained model, on a smaller dataset for a particular task. *Instruction tuning* fine-tunes on examples of prompts paired with good responses written by people, so that the model answers requests instead of merely continuing text.
@@ -59,6 +153,26 @@ $$
 \mathbb E_{y\sim\pi_\theta(\cdot\mid x)}\bigl[r_\phi(x,y)\bigr]-\beta\,\mathrm{KL}\bigl(\pi_\theta(\cdot\mid x)\,\|\,\pi_{\text{ref}}(\cdot\mid x)\bigr),
 $$
 where the KL penalty with weight $\beta>0$ keeps it close to $\pi_{\text{ref}}$.
+
+:::
+
+::: {#fig-language-models-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (b0) at (0.0,0) {pretraining};
+\node[box] (b1) at (3.4,0) {instruction tuning};
+\draw[map] (b0) -- (b1);
+\node[hl box] (b2) at (6.8,0) {reward model $r_\phi$};
+\draw[map] (b1) -- (b2);
+\node[hl box] (b3) at (10.2,0) {RL against $r_\phi$};
+\draw[map] (b2) -- (b3);
+\end{tikzpicture}
+\end{center}
+```
+
+The training pipeline of a chat model: pretraining on text, supervised instruction tuning, then the two RLHF stages, fitting a reward model to human comparisons and optimising the policy against it
 
 :::
 

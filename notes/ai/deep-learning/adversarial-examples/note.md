@@ -19,6 +19,26 @@ An attack is described by when and what the adversary knows and wants.
 
 :::
 
+::: {#fig-adversarial-examples-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (-0.5,2.4) -- (3.6,-0.4);
+\node[dot] (x) at (1.2,0.5) {};
+\node[tick, left] at (x) {$\mathbf x$};
+\draw[hl] (0.6,-0.1) rectangle (1.8,1.1);
+\node[hl dot] at (1.8,1.1) {};
+\node[tick, right] at (1.8,1.1) {$\mathbf x+\boldsymbol\eta$};
+\node[tick] at (3.2,1.6) {other class};
+\end{tikzpicture}
+\end{center}
+```
+
+The threat model: the attacker may move $\mathbf x$ anywhere in the box $\lVert\boldsymbol\eta\rVert_\infty\le\varepsilon$; an adversarial example is a point of the box on the other side of the decision boundary
+
+:::
+
 ::: {#def-fgsm .definition name="Fast gradient sign method"}
 
 For a model with loss $J(\boldsymbol\theta,\mathbf{x},y)$ (for example the cross entropy loss, @def-cross-entropy-loss) and a budget $\varepsilon>0$, the *fast gradient sign method* (FGSM) produces
@@ -91,6 +111,24 @@ FGSM against a linear classifier. Among the points of the box $\lVert\boldsymbol
 ::: {#exm-fgsm-linear .example name="Why high dimension helps the attacker"}
 
 For a linear score $s=\mathbf{w}\cdot\mathbf{x}$, the perturbation $\varepsilon\operatorname{sign}(\mathbf{w})$ changes the score by $\varepsilon\lVert\mathbf{w}\rVert_1$. With $\mathbf{w}=(2,-1,3)$ and $\varepsilon=0.1$ the change is $0.6$. If the $D$ weights have average absolute value $m$, the change is $\varepsilon mD$: it grows linearly with the dimension, while the change of each pixel stays $\varepsilon$. For a $3\times32\times32$ image ($D=3072$), $\varepsilon=1/255$ and $m=0.1$, the score moves by about $1.2$, enough to flip many predictions.
+
+:::
+
+::: {#fig-adversarial-examples-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {dimension $d$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$\mathbf w\cdot\boldsymbol\eta$};
+\draw[hl] (0,0) -- (6,2.2);
+\draw[faint, dashed] (0,0.5) -- (6,0.5);
+\node[tick, right] at (6,0.5) {margin};
+\end{tikzpicture}
+\end{center}
+```
+
+For a linear score the FGSM perturbation $\boldsymbol\eta=\varepsilon\operatorname{sign}(\mathbf w)$ changes the score by $\varepsilon\lVert\mathbf w\rVert_1$, which grows linearly with the dimension: many tiny changes add up and cross any fixed margin
 
 :::
 

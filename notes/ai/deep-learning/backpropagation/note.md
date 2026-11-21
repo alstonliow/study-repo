@@ -25,6 +25,26 @@ $$
 
 :::
 
+::: {#fig-backpropagation-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (f) at (0,0) {$f$};
+\draw[->] (-2.4,0.7) -- node[tick, above] {$x$} (f);
+\draw[->] (-2.4,-0.7) -- node[tick, below] {$y$} (f);
+\draw[->] (f) -- node[tick, above] {$z$} (2.4,0);
+\draw[->, hl] (2.4,-0.35) -- node[tick, below, text=accent] {$\frac{\partial L}{\partial z}$} (0.5,-0.35);
+\node[tick, text=accent, align=center] at (-1.5,1.45) {$\frac{\partial L}{\partial x}=\frac{\partial L}{\partial z}\frac{\partial z}{\partial x}$};
+\node[tick, text=accent, align=center] at (-1.5,-1.45) {$\frac{\partial L}{\partial y}=\frac{\partial L}{\partial z}\frac{\partial z}{\partial y}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Backpropagation at one node: the upstream gradient $\partial L/\partial z$ arrives from the output and is multiplied by each local derivative to give the gradients of the inputs
+
+:::
+
 For tensor-valued nodes, $\text{grad}(v)$ has the shape of $\text{value}(v)$ and the product is the corresponding contraction; for example, if $v=u_1u_2$ is a matrix product, $u_1$ receives $\text{grad}(v)\,\text{value}(u_2)^{\mathsf T}$.
 
 ```{=latex}
@@ -142,6 +162,46 @@ Three primitive nodes have simple backward rules, which make gradients easy to r
 3. A *multiply* node $v=u_1u_2$ passes $\text{grad}(v)\,u_2$ to $u_1$ and $\text{grad}(v)\,u_1$ to $u_2$: it swaps the inputs. So if one input is much larger than the other, the smaller input receives the larger gradient; for a linear classifier, scaling the data by $1000$ scales the weight gradients by $1000$, which must be matched by a smaller learning rate.
 
 When a value is used by several nodes, its gradient is the sum of their contributions, as the $\mathrel{+}=$ in @def-backpropagation says. In hand-written backward passes it pays to split the forward computation into small staged variables, cache each one, and backpropagate through them one by one in reverse order.
+
+:::
+
+::: {#fig-backpropagation-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (gadd) at (0,0) {add};
+\draw[->] (-1.5,0.6) -- (gadd);
+\node[tick, above] at (-1.25,0.6) {$2$};
+\node[tick, below, text=accent] at (-1.25,0.6) {$3$};
+\draw[->] (-1.5,-0.6) -- (gadd);
+\node[tick, above] at (-1.25,-0.6) {$-1$};
+\node[tick, below, text=accent] at (-1.25,-0.6) {$3$};
+\draw[->] (gadd) -- (1.1,0);
+\node[tick, below, text=accent] at (0.85,0) {$3$};
+\node[box] (gmul) at (3.6,0) {mul};
+\draw[->] (2.1,0.6) -- (gmul);
+\node[tick, above] at (2.35,0.6) {$2$};
+\node[tick, below, text=accent] at (2.35,0.6) {$-3$};
+\draw[->] (2.1,-0.6) -- (gmul);
+\node[tick, above] at (2.35,-0.6) {$-1$};
+\node[tick, below, text=accent] at (2.35,-0.6) {$6$};
+\draw[->] (gmul) -- (4.7,0);
+\node[tick, below, text=accent] at (4.45,0) {$3$};
+\node[box] (gmax) at (7.2,0) {max};
+\draw[->] (5.7,0.6) -- (gmax);
+\node[tick, above] at (5.95,0.6) {$2$};
+\node[tick, below, text=accent] at (5.95,0.6) {$3$};
+\draw[->] (5.7,-0.6) -- (gmax);
+\node[tick, above] at (5.95,-0.6) {$-1$};
+\node[tick, below, text=accent] at (5.95,-0.6) {$0$};
+\draw[->] (gmax) -- (8.3,0);
+\node[tick, below, text=accent] at (8.05,0) {$3$};
+\end{tikzpicture}
+\end{center}
+```
+
+Gradients (below the wires) through three gates with inputs $2$ and $-1$ and upstream gradient $3$: add copies it, mul swaps the inputs and scales, max routes it to the larger input
 
 :::
 

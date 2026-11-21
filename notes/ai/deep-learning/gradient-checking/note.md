@@ -21,6 +21,29 @@ The *numerical gradient* collects one of them for $i=1,\dots,p$; it costs $p+1$ 
 
 :::
 
+::: {#fig-gradient-checking-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.0,0) node[lab, right] {$t$};
+\draw[emph, domain=0.1:3.4, samples=80, smooth, variable=\x] plot ({\x}, {0.08*\x^3+0.3});
+\draw[hl] (0.7,-0.308) -- (3.3,2.188);
+\draw[emph, dashed] (0.80,0.034) -- (3.20,2.461);
+\node[dot] at (1.2,0.438) {};
+\node[dot] at (2.8,2.056) {};
+\node[hl dot] at (2.0,0.940) {};
+\draw (1.2,0) -- (1.2,-0.08) node[tick, below] {$t-h$};
+\draw (2.0,0) -- (2.0,-0.08) node[tick, below] {$t$};
+\draw (2.8,0) -- (2.8,-0.08) node[tick, below] {$t+h$};
+\end{tikzpicture}
+\end{center}
+```
+
+The centred difference is the slope of the secant through $t\pm h$ (dashed); it approximates the slope of the tangent (highlighted) with error $O(h^2)$
+
+:::
+
 ::: {#thm-finite-difference-error .theorem name="Error of finite differences"}
 
 Let $g(t)=f(\boldsymbol\theta+t\mathbf{e}_i)$ be three times continuously differentiable near $0$. Then, as $h\to0$,

@@ -18,6 +18,31 @@ Let a pretrained network be split as $f=h\circ\boldsymbol\phi$: a *backbone* $\b
 
 :::
 
+::: {#fig-transfer-learning-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (b0) at (0.0,0) {conv 1};
+\node[box] (b1) at (1.6,0) {conv 2};
+\draw[map] (b0) -- (b1);
+\node[box] (b2) at (3.2,0) {conv 3};
+\draw[map] (b1) -- (b2);
+\node[box] (b3) at (4.80,0) {FC};
+\draw[map] (b2) -- (b3);
+\node[hl box] (b4) at (6.4,0) {new head};
+\draw[map] (b3) -- (b4);
+\draw[faint, dashed] (-0.7,-0.55) rectangle (5.5,0.55);
+\node[tick, above] at (2.4,0.55) {pretrained, frozen};
+\node[tick, above, text=accent] at (6.4,0.4) {trained};
+\end{tikzpicture}
+\end{center}
+```
+
+Transfer learning: keep the pretrained layers (frozen, or fine-tuned with a small learning rate) and train a new output layer on the target task
+
+:::
+
 Early layers compute generic features (edges, colours, textures) that transfer to almost any image task; later layers are increasingly specific to the source classes. This decides how much to retrain.
 
 ::: {#rmk-transfer-learning-cases .remark name="Which variant to use"}
@@ -26,6 +51,31 @@ Early layers compute generic features (edges, colours, textures) that transfer t
 |---|---|---|
 | small | linear classifier on the last codes; fine-tuning would overfit | linear classifier on codes from an earlier layer |
 | large | fine-tune the whole network | fine-tune the whole network, or train from scratch, still often initialized from the pretrained weights |
+
+:::
+
+::: {#fig-transfer-learning-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.00,0.00) rectangle (2.20,-2.20);
+\draw[cell frame] (2.20,0.00) rectangle (4.40,-2.20);
+\draw[cell frame] (0.00,-2.20) rectangle (2.20,-4.40);
+\draw[cell frame] (2.20,-2.20) rectangle (4.40,-4.40);
+\node[tick, align=center] at (1.1,-1.1) {linear head\\on top layer};
+\node[tick, align=center] at (3.3,-1.1) {linear head\\on earlier layers};
+\node[tick, align=center] at (1.1,-3.3) {fine-tune\\a few layers};
+\node[tick, align=center] at (3.3,-3.3) {fine-tune\\many layers};
+\node[tick, above] at (1.1,0) {similar data};
+\node[tick, above] at (3.3,0) {different data};
+\node[tick, left] at (0,-1.1) {little data};
+\node[tick, left] at (0,-3.3) {much data};
+\end{tikzpicture}
+\end{center}
+```
+
+What to retrain depends on how much target data there is and how similar it is to the pretraining data
 
 :::
 

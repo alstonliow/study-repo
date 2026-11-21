@@ -21,6 +21,57 @@ the sum running over all values of the names that are absent from the output.
 
 :::
 
+::: {#fig-einsum-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.00,0.00) rectangle (0.40,-0.40);
+\draw[cell frame] (0.40,0.00) rectangle (0.80,-0.40);
+\draw[cell frame] (0.80,0.00) rectangle (1.20,-0.40);
+\draw[cell frame] (1.20,0.00) rectangle (1.60,-0.40);
+\draw[hl cell] (0.00,-0.40) rectangle (0.40,-0.80);
+\draw[hl cell] (0.40,-0.40) rectangle (0.80,-0.80);
+\draw[hl cell] (0.80,-0.40) rectangle (1.20,-0.80);
+\draw[hl cell] (1.20,-0.40) rectangle (1.60,-0.80);
+\draw[cell frame] (0.00,-0.80) rectangle (0.40,-1.20);
+\draw[cell frame] (0.40,-0.80) rectangle (0.80,-1.20);
+\draw[cell frame] (0.80,-0.80) rectangle (1.20,-1.20);
+\draw[cell frame] (1.20,-0.80) rectangle (1.60,-1.20);
+\node[lab] at (1.95,-0.6) {$\times$};
+\draw[cell frame] (2.30,0.20) rectangle (2.70,-0.20);
+\draw[cell frame] (2.70,0.20) rectangle (3.10,-0.20);
+\draw[hl cell] (3.10,0.20) rectangle (3.50,-0.20);
+\draw[cell frame] (2.30,-0.20) rectangle (2.70,-0.60);
+\draw[cell frame] (2.70,-0.20) rectangle (3.10,-0.60);
+\draw[hl cell] (3.10,-0.20) rectangle (3.50,-0.60);
+\draw[cell frame] (2.30,-0.60) rectangle (2.70,-1.00);
+\draw[cell frame] (2.70,-0.60) rectangle (3.10,-1.00);
+\draw[hl cell] (3.10,-0.60) rectangle (3.50,-1.00);
+\draw[cell frame] (2.30,-1.00) rectangle (2.70,-1.40);
+\draw[cell frame] (2.70,-1.00) rectangle (3.10,-1.40);
+\draw[hl cell] (3.10,-1.00) rectangle (3.50,-1.40);
+\node[lab] at (3.75,-0.6) {$=$};
+\draw[cell frame] (4.10,0.00) rectangle (4.50,-0.40);
+\draw[cell frame] (4.50,0.00) rectangle (4.90,-0.40);
+\draw[cell frame] (4.90,0.00) rectangle (5.30,-0.40);
+\draw[cell frame] (4.10,-0.40) rectangle (4.50,-0.80);
+\draw[cell frame] (4.50,-0.40) rectangle (4.90,-0.80);
+\draw[hl cell] (4.90,-0.40) rectangle (5.30,-0.80);
+\draw[cell frame] (4.10,-0.80) rectangle (4.50,-1.20);
+\draw[cell frame] (4.50,-0.80) rectangle (4.90,-1.20);
+\draw[cell frame] (4.90,-0.80) rectangle (5.30,-1.20);
+\node[tick, below] at (0.8,-1.25) {$x_{ij}$};
+\node[tick, below] at (2.9,-1.45) {$y_{jk}$};
+\node[tick, below] at (4.7,-1.25) {$z_{ik}$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\texttt{einsum('ij,jk->ik')}$: the index $j$ appears in the inputs but not in the output, so it is summed. The highlighted entry $z_{ik}$ pairs row $i$ of $x$ with column $k$ of $y$
+
+:::
+
 Names in the output are kept (the product is taken entrywise along them, as a batch); names absent from the output are summed over. In einops a name `...` stands for any number of leading axes that are carried along unchanged.
 
 ::: {#exm-einsum-matrix-product .example name="Products as einsums"}
@@ -36,6 +87,53 @@ Names in the output are kept (the product is taken entrywise along them, as a ba
 ::: {#def-tensor-reduction .definition name="Reduction"}
 
 A *reduction* of a tensor along some named axes applies an operation such as sum, mean, max or min over all values of those names, for each fixed value of the remaining names. The result keeps only the remaining axes. For example, reducing $x$ labelled $(\text{batch},\text{seq},\text{hidden})$ to $(\text{batch},\text{seq})$ by sum gives $y[b,s]=\sum_h x[b,s,h]$.
+
+:::
+
+::: {#fig-einsum-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.00,0.00) rectangle (0.45,-0.45);
+\node[tick] at (0.23,-0.23) {$0$};
+\draw[cell frame] (0.45,0.00) rectangle (0.90,-0.45);
+\node[tick] at (0.68,-0.23) {$1$};
+\draw[cell frame] (0.90,0.00) rectangle (1.35,-0.45);
+\node[tick] at (1.12,-0.23) {$2$};
+\draw[cell frame] (1.35,0.00) rectangle (1.80,-0.45);
+\node[tick] at (1.58,-0.23) {$3$};
+\draw[cell frame] (0.00,-0.45) rectangle (0.45,-0.90);
+\node[tick] at (0.23,-0.68) {$1$};
+\draw[cell frame] (0.45,-0.45) rectangle (0.90,-0.90);
+\node[tick] at (0.68,-0.68) {$2$};
+\draw[cell frame] (0.90,-0.45) rectangle (1.35,-0.90);
+\node[tick] at (1.12,-0.68) {$3$};
+\draw[cell frame] (1.35,-0.45) rectangle (1.80,-0.90);
+\node[tick] at (1.58,-0.68) {$4$};
+\draw[cell frame] (0.00,-0.90) rectangle (0.45,-1.35);
+\node[tick] at (0.23,-1.12) {$2$};
+\draw[cell frame] (0.45,-0.90) rectangle (0.90,-1.35);
+\node[tick] at (0.68,-1.12) {$3$};
+\draw[cell frame] (0.90,-0.90) rectangle (1.35,-1.35);
+\node[tick] at (1.12,-1.12) {$4$};
+\draw[cell frame] (1.35,-0.90) rectangle (1.80,-1.35);
+\node[tick] at (1.58,-1.12) {$5$};
+\draw[map] (1.9,-0.67) -- (2.6,-0.67);
+\draw[hl cell] (2.80,-0.45) rectangle (3.25,-0.90);
+\node[tick] at (3.02,-0.68) {$3$};
+\draw[hl cell] (3.25,-0.45) rectangle (3.70,-0.90);
+\node[tick] at (3.48,-0.68) {$6$};
+\draw[hl cell] (3.70,-0.45) rectangle (4.15,-0.90);
+\node[tick] at (3.92,-0.68) {$9$};
+\draw[hl cell] (4.15,-0.45) rectangle (4.60,-0.90);
+\node[tick] at (4.38,-0.68) {$12$};
+\node[tick, above] at (2.25,-0.6) {sum $i$};
+\end{tikzpicture}
+\end{center}
+```
+
+Reducing over the first axis, $\texttt{einsum('ij->j')}$: each column is summed, and the axis disappears from the shape
 
 :::
 

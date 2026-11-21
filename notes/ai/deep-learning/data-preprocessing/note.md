@@ -15,6 +15,106 @@ Gradient-based training behaves best when the input features are centred at zero
 
 :::
 
+::: {#fig-data-preprocessing-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm]
+\draw[faint] (-1.6,0) -- (1.6,0) (0,-1.2) -- (0,1.2);
+\node[dot] at (1.45,0.49) {};
+\node[dot] at (0.66,0.61) {};
+\node[dot] at (0.84,0.37) {};
+\node[dot] at (0.33,0.47) {};
+\node[dot] at (0.06,0.46) {};
+\node[dot] at (0.29,0.54) {};
+\node[dot] at (0.13,0.66) {};
+\node[dot] at (0.28,0.09) {};
+\node[dot] at (0.98,0.53) {};
+\node[dot] at (0.20,0.63) {};
+\node[dot] at (0.59,0.60) {};
+\node[dot] at (0.15,0.62) {};
+\node[dot] at (-0.12,0.82) {};
+\node[dot] at (-0.01,0.56) {};
+\node[dot] at (0.51,0.62) {};
+\node[dot] at (0.40,0.67) {};
+\node[dot] at (-0.97,0.55) {};
+\node[dot] at (0.38,0.50) {};
+\node[dot] at (1.07,0.42) {};
+\node[dot] at (0.41,0.25) {};
+\node[dot] at (0.56,0.31) {};
+\node[dot] at (-0.19,0.94) {};
+\node[dot] at (0.73,0.57) {};
+\node[dot] at (0.52,0.34) {};
+\node[dot] at (0.02,0.64) {};
+\node[tick, below] at (0,-1.25) {raw};
+\end{scope}
+\begin{scope}[xshift=3.6cm]
+\draw[faint] (-1.6,0) -- (1.6,0) (0,-1.2) -- (0,1.2);
+\node[dot] at (1.08,-0.04) {};
+\node[dot] at (0.29,0.08) {};
+\node[dot] at (0.47,-0.16) {};
+\node[dot] at (-0.04,-0.06) {};
+\node[dot] at (-0.31,-0.07) {};
+\node[dot] at (-0.08,0.01) {};
+\node[dot] at (-0.24,0.13) {};
+\node[dot] at (-0.09,-0.44) {};
+\node[dot] at (0.61,-0.00) {};
+\node[dot] at (-0.17,0.10) {};
+\node[dot] at (0.22,0.07) {};
+\node[dot] at (-0.22,0.09) {};
+\node[dot] at (-0.49,0.29) {};
+\node[dot] at (-0.38,0.03) {};
+\node[dot] at (0.14,0.09) {};
+\node[dot] at (0.03,0.14) {};
+\node[dot] at (-1.34,0.02) {};
+\node[dot] at (0.01,-0.03) {};
+\node[dot] at (0.70,-0.11) {};
+\node[dot] at (0.04,-0.28) {};
+\node[dot] at (0.19,-0.22) {};
+\node[dot] at (-0.56,0.41) {};
+\node[dot] at (0.36,0.04) {};
+\node[dot] at (0.15,-0.19) {};
+\node[dot] at (-0.35,0.11) {};
+\node[tick, below] at (0,-1.25) {centred};
+\end{scope}
+\begin{scope}[xshift=7.2cm]
+\draw[faint] (-1.6,0) -- (1.6,0) (0,-1.2) -- (0,1.2);
+\node[dot] at (1.04,-0.12) {};
+\node[dot] at (0.28,0.22) {};
+\node[dot] at (0.45,-0.42) {};
+\node[dot] at (-0.04,-0.15) {};
+\node[dot] at (-0.29,-0.19) {};
+\node[dot] at (-0.08,0.04) {};
+\node[dot] at (-0.23,0.33) {};
+\node[dot] at (-0.09,-1.15) {};
+\node[dot] at (0.59,-0.00) {};
+\node[dot] at (-0.17,0.27) {};
+\node[dot] at (0.21,0.18) {};
+\node[dot] at (-0.21,0.23) {};
+\node[dot] at (-0.48,0.75) {};
+\node[dot] at (-0.37,0.07) {};
+\node[dot] at (0.13,0.25) {};
+\node[dot] at (0.03,0.35) {};
+\node[dot] at (-1.29,0.06) {};
+\node[dot] at (0.01,-0.07) {};
+\node[dot] at (0.67,-0.30) {};
+\node[dot] at (0.04,-0.73) {};
+\node[dot] at (0.18,-0.56) {};
+\node[dot] at (-0.54,1.07) {};
+\node[dot] at (0.35,0.10) {};
+\node[dot] at (0.14,-0.49) {};
+\node[dot] at (-0.34,0.28) {};
+\node[tick, below] at (0,-1.25) {centred and scaled};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Centring subtracts the mean of each feature; scaling then divides by its standard deviation, so both features spread equally
+
+:::
+
 For images all pixels already share one scale ($0$ to $255$), so mean subtraction alone is usual: either the mean image ($D$ numbers) or one mean per colour channel is subtracted.
 
 ::: {#def-pca-whitening .definition name="PCA and whitening"}

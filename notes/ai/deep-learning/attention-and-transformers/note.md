@@ -27,6 +27,32 @@ where the softmax (@def-softmax) is applied to each row. Row $i$ of the output i
 
 :::
 
+::: {#fig-attention-and-transformers-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (x) at (0,0) {$X$};
+\node[box] (q) at (2,1) {$Q=XW_Q$};
+\node[box] (k) at (2,0) {$K=XW_K$};
+\node[box] (v) at (2,-1) {$V=XW_V$};
+\node[hl box] (s) at (5.2,0.5) {$\operatorname{softmax}\bigl(QK^\top/\sqrt{d_k}\bigr)$};
+\node[box] (o) at (8.4,0) {output};
+\draw[map] (x) -- (q.west);
+\draw[map] (x) -- (k.west);
+\draw[map] (x) -- (v.west);
+\draw[map] (q.east) -- (s);
+\draw[map] (k.east) -- (s);
+\draw[map] (s) -- (o);
+\draw[map] (v.east) -- (o);
+\end{tikzpicture}
+\end{center}
+```
+
+Self-attention: queries and keys give the attention weights, row by row, and each output row is the weighted average of the values
+
+:::
+
 Each position asks a question (its query), every position offers a description of itself (its key), and the answer is a mix of the offered contents (values) in proportion to how well key matches query. Unlike a recurrent network, every position reaches every other in one step, and all positions are computed in parallel. Dividing by $\sqrt{d_k}$ keeps the scores of order $1$ when the entries of $\mathbf q$ and $\mathbf k$ are of order $1$, so that the softmax does not saturate.
 
 ::: {#exm-self-attention-toy .example name="Three positions"}
@@ -109,6 +135,33 @@ So attention alone treats a sentence as a bag of words. Transformers therefore a
 
 :::
 
+::: {#fig-attention-and-transformers-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (h0) at (0.0,0) {head 1};
+\draw[map] (2.4,-1.3) -- (h0.south);
+\draw[map] (h0.north) -- (2.4,1.1);
+\node[box] (h1) at (1.6,0) {head 2};
+\draw[map] (2.4,-1.3) -- (h1.south);
+\draw[map] (h1.north) -- (2.4,1.1);
+\node[box] (h2) at (3.2,0) {head 3};
+\draw[map] (2.4,-1.3) -- (h2.south);
+\draw[map] (h2.north) -- (2.4,1.1);
+\node[box] (h3) at (4.80,0) {head 4};
+\draw[map] (2.4,-1.3) -- (h3.south);
+\draw[map] (h3.north) -- (2.4,1.1);
+\node[lab] at (2.4,-1.5) {$X$};
+\node[hl box] at (2.4,1.4) {concatenate, then $W_O$};
+\end{tikzpicture}
+\end{center}
+```
+
+Multi-head attention runs several attention heads with their own projections in parallel and mixes their concatenated outputs with $W_O$
+
+:::
+
 Different heads can attend to different things at once, say one to the previous token and another to the subject of the sentence; the reshaping into heads is a rearrange of axes (@exm-einsum-heads).
 
 ::: {#def-transformer-block .definition name="Transformer block"}
@@ -118,6 +171,34 @@ $$
 X'=X+\operatorname{MultiHead}\bigl(\operatorname{LN}(X)\bigr),\qquad X''=X'+\operatorname{MLP}\bigl(\operatorname{LN}(X')\bigr),
 $$
 where $\operatorname{LN}$ is layer normalisation (@def-layer-normalization) and the MLP (@def-multi-layer-perceptron) is applied to each row separately. A *transformer* embeds the tokens, adds positional encodings, applies $L$ blocks, and maps each final row to scores over the vocabulary with a linear layer.
+
+:::
+
+::: {#fig-attention-and-transformers-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (b0) at (0.0,0) {$X$};
+\node[box] (b1) at (1.75,0) {LN};
+\draw[map] (b0) -- (b1);
+\node[hl box] (b2) at (3.5,0) {MultiHead};
+\draw[map] (b1) -- (b2);
+\node[box] (b3) at (5.25,0) {$+$};
+\draw[map] (b2) -- (b3);
+\node[box] (b4) at (7.0,0) {LN};
+\draw[map] (b3) -- (b4);
+\node[hl box] (b5) at (8.75,0) {MLP};
+\draw[map] (b4) -- (b5);
+\node[box] (b6) at (10.5,0) {$+$};
+\draw[map] (b5) -- (b6);
+\draw[map] (b0.north) to[out=50, in=130] (b3.north);
+\draw[map] (b3.north) to[out=50, in=130] (b6.north);
+\end{tikzpicture}
+\end{center}
+```
+
+A pre-norm transformer block: layer norm, multi-head attention and a residual connection, then layer norm, a row-wise MLP and a second residual connection
 
 :::
 
@@ -169,6 +250,29 @@ e_{p,2i}=\sin\bigl(p/10000^{2i/d}\bigr),\qquad e_{p,2i+1}=\cos\bigl(p/10000^{2i/
 $$
 
 and is added to the embedding of the token at position $p$.
+
+:::
+
+::: {#fig-attention-and-transformers-5}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.6,0) node[lab, right] {position};
+\draw[faint] (0,2.6) -- (6.3,2.6);
+\draw[hl, domain=0:6.3, samples=120, smooth, variable=\x] plot ({\x}, {2.6+0.35*sin(deg(1.0*\x*2))});
+\node[tick, left] at (0,2.6) {dim $0$};
+\draw[faint] (0,1.6) -- (6.3,1.6);
+\draw[emph, domain=0:6.3, samples=120, smooth, variable=\x] plot ({\x}, {1.6+0.35*sin(deg(0.45*\x*2))});
+\node[tick, left] at (0,1.6) {dim $2$};
+\draw[faint] (0,0.6) -- (6.3,0.6);
+\draw[emph, domain=0:6.3, samples=120, smooth, variable=\x] plot ({\x}, {0.6+0.35*sin(deg(0.2*\x*2))});
+\node[tick, left] at (0,0.6) {dim $4$};
+\end{tikzpicture}
+\end{center}
+```
+
+Sinusoidal positional encoding: each pair of dimensions is a sine and cosine of the position at its own frequency, from fast (top) to slow (bottom), so every position gets a distinct pattern
 
 :::
 

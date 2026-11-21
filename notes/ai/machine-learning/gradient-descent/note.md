@@ -85,6 +85,26 @@ $$
 
 :::
 
+::: {#fig-gradient-descent-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$w$};
+\draw[emph, domain=0.2:6.2, samples=80, smooth, variable=\x] plot ({\x}, {0.15*(\x-3.5)^2+0.3*sin(deg(1.5*\x))+0.8});
+\draw[hl, domain=0.2:3.3, samples=80, smooth, variable=\x] plot ({\x}, {1.720+-0.857*(\x-1.4)+0.5*(\x-1.4)^2});
+\node[dot] at (1.4,1.720) {};
+\draw (1.4,0) -- (1.4,-0.08) node[tick, below] {$w$};
+\node[hl dot] at (2.26,1.353) {};
+\draw (2.26,0) -- (2.26,-0.08) node[tick, below] {$w-\eta\nabla f$};
+\end{tikzpicture}
+\end{center}
+```
+
+The descent lemma: a function with $L$-Lipschitz gradient lies below the parabola $f(w)+\nabla f(w)(v-w)+\tfrac L2(v-w)^2$. The step $\eta=1/L$ moves to the parabola's minimum, which is guaranteed to lower $f$
+
+:::
+
 ::: {#cor-gradient-descent-stationary .corollary name="Gradient descent finds small gradients"}
 
 Under the hypotheses of @thm-descent-lemma, if $F$ is bounded below by $F^*$, then the iterates of gradient descent satisfy

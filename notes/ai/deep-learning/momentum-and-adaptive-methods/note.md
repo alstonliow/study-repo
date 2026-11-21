@@ -104,6 +104,27 @@ If $\mathbf{g}_t=\mathbf{g}$ for all $t$, then $\mathbf{m}_t=(1-\beta_1^t)\mathb
 
 :::
 
+::: {#fig-momentum-and-adaptive-methods-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$t$};
+\draw[emph] (0.000,0.000) -- (0.200,0.200) -- (0.400,0.380) -- (0.600,0.542) -- (0.800,0.688) -- (1.000,0.819) -- (1.200,0.937) -- (1.400,1.043) -- (1.600,1.139) -- (1.800,1.225) -- (2.000,1.303) -- (2.200,1.372) -- (2.400,1.435) -- (2.600,1.492) -- (2.800,1.542) -- (3.000,1.588) -- (3.200,1.629) -- (3.400,1.666) -- (3.600,1.700) -- (3.800,1.730) -- (4.000,1.757) -- (4.200,1.781) -- (4.400,1.803) -- (4.600,1.823) -- (4.800,1.840) -- (5.000,1.856) -- (5.200,1.871) -- (5.400,1.884) -- (5.600,1.895) -- (5.800,1.906) -- (6.000,1.915);
+\draw[hl] (0.2,2) -- (6,2);
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\draw (2,0) -- (2,-0.08) node[tick, below] {$10$};
+\draw (6,0) -- (6,-0.08) node[tick, below] {$30$};
+\node[tick] at (2.6,1.25) {$\mathbf m_t=1-\beta_1^t$};
+\node[tick, text=accent] at (4.2,2.25) {$\hat{\mathbf m}_t=\mathbf m_t/(1-\beta_1^t)$};
+\end{tikzpicture}
+\end{center}
+```
+
+With a constant gradient $1$ and $\beta_1=0.9$, the moving average $\mathbf m_t$ starts at $0$ and is biased low for the first steps; dividing by $1-\beta_1^t$ removes the bias
+
+:::
+
 ::: {#fig-momentum-and-adaptive-methods-1}
 
 ```{=latex}
@@ -131,6 +152,27 @@ Without the correction the first steps would be tiny: with $g=0.5$ and $\beta_1=
 ::: {#rmk-learning-rate-schedules .remark name="Annealing the learning rate"}
 
 A fixed learning rate makes the iterates bounce around a minimum at a distance set by the gradient noise. Common *schedules* lower it during training: *step decay* (divide by $2$ to $10$ every few epochs, or when the validation error stops improving), *exponential decay* $\eta_t=\eta_0e^{-kt}$, $1/t$ *decay* $\eta_t=\eta_0/(1+kt)$, and *cosine decay* from $\eta_0$ to $0$ over the run, often after a short linear *warm-up*.
+
+:::
+
+::: {#fig-momentum-and-adaptive-methods-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {epoch};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {learning rate};
+\draw[faint] (0.000,2.000) -- (2.000,2.000) -- (2.000,1.000) -- (4.000,1.000) -- (4.000,0.500) -- (6.000,0.500);
+\draw[emph, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {1+cos(deg(pi*\x/6))});
+\draw[hl] (0.000,0.000) -- (0.600,2.000) -- (6.000,0.050);
+\node[tick] at (2.6,1.15) {step};
+\node[tick] at (3.6,1.55) {cosine};
+\node[tick, text=accent, right] at (0.7,2.4) {warm-up, linear decay};
+\end{tikzpicture}
+\end{center}
+```
+
+Three learning rate schedules: step decay, cosine decay, and a linear warm-up followed by linear decay
 
 :::
 

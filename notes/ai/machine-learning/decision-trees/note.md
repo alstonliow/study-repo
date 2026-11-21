@@ -15,6 +15,33 @@ For inputs described by discrete *attributes* $A_1,\dots,A_n$, a *decision tree*
 
 :::
 
+::: {#fig-decision-trees-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (4,3);
+\draw[emph] (2.2,0) -- (2.2,3);
+\draw[emph] (2.2,1.4) -- (4,1.4);
+\draw[emph] (0,2.1) -- (2.2,2.1);
+\path[shade] (2.2,1.4) rectangle (4,3);
+\path[shade] (0,2.1) rectangle (2.2,3);
+\draw[emph] (2.2,0) -- (2.2,3) (2.2,1.4) -- (4,1.4) (0,2.1) -- (2.2,2.1);
+\node[tick, below] at (2.2,0) {$x_1=t_1$};
+\node[tick, right] at (4,1.4) {$x_2=t_2$};
+\node[tick, left] at (0,2.1) {$x_2=t_3$};
+\node[tick] at (3.1,2.2) {$+1$};
+\node[tick] at (3.1,0.7) {$-1$};
+\node[tick] at (1.1,2.55) {$+1$};
+\node[tick] at (1.1,1.0) {$-1$};
+\end{tikzpicture}
+\end{center}
+```
+
+A depth-two tree on two real features cuts the plane into axis-parallel rectangles, one per leaf, each labelled with a class (shaded: $+1$)
+
+:::
+
 Decision trees can express every function of the attributes: a tree that tests all attributes along every path has one leaf per combination of values. For $n$ Boolean attributes there are $2^{2^{n}}$ Boolean functions, so the hypothesis class is enormous, much larger than that of a linear classifier (which cannot even represent exclusive or of two attributes), and a tree that fits the training data perfectly can always be found when no two examples with equal attributes have different labels. The aim is a *small* consistent tree; finding the smallest is NP-hard, so trees are grown greedily, choosing at each node the attribute that best separates the labels.
 
 ::: {#def-entropy-information-gain .definition name="Entropy, information gain"}
@@ -27,6 +54,25 @@ measured in *bits*. For a set $S$ of labelled examples, $H(S)$ is the entropy of
 $$
 \mathrm{IG}(S,A)=H(S)-\sum_v\frac{|S_v|}{|S|}H(S_v).
 $$
+
+:::
+
+::: {#fig-decision-trees-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (r) at (0,0) {$5{+}\ 5{-}$\\$H=1$};
+\node[box] (a) at (-2.3,-2.0) {$4{+}\ 1{-}$\\$H=0.72$};
+\node[box] (c) at (2.3,-2.0) {$1{+}\ 4{-}$\\$H=0.72$};
+\draw[map] (r) -- node[edge label] {$x_j=0$} (a);
+\draw[map] (r) -- node[edge label] {$x_j=1$} (c);
+\node[tick, right] at (3.4,-0.4) {gain $1-0.72=0.28$};
+\end{tikzpicture}
+\end{center}
+```
+
+A split of ten examples. Each child is purer than the parent, and the information gain is the parent's entropy minus the weighted average entropy of the children
 
 :::
 

@@ -27,6 +27,27 @@ and predict $\boldsymbol\theta^{\mathsf T}\mathbf{x}$. (A constant feature $1$ i
 
 :::
 
+::: {#fig-locally-weighted-regression-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.2,0) node[lab, right] {$x^{(i)}$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {$w^{(i)}$};
+\draw[hl, domain=0:6, samples=100, smooth, variable=\x] plot ({\x}, {2*exp(-(\x-3)^2/(2*0.5^2))});
+\draw[emph, domain=0:6, samples=100, smooth, variable=\x] plot ({\x}, {2*exp(-(\x-3)^2/(2*1.5^2))});
+\draw (3,0) -- (3,-0.08) node[tick, below] {$x$};
+\node[tick, text=accent] at (3.9,1.9) {$\tau=0.5$};
+\node[tick] at (5.3,0.9) {$\tau=1.5$};
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The weights $w^{(i)}=\exp\bigl(-(x^{(i)}-x)^2/(2\tau^2)\bigr)$ as a function of the training input. A small bandwidth $\tau$ fits only the nearby points; a large one approaches ordinary least squares
+
+:::
+
 ::: {#prp-locally-weighted-closed-form .proposition name="Weighted normal equations"}
 
 Let $X$ have rows $\mathbf{x}^{(i)\mathsf T}$, let $\mathbf{y}$ collect the targets and let $W=\operatorname{diag}(w^{(1)},\dots,w^{(N)})$. If $X^{\mathsf T}WX$ is invertible, the weighted squared error of @def-locally-weighted-regression has the unique minimizer

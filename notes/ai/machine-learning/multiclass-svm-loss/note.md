@@ -33,6 +33,30 @@ $$
 
 :::
 
+::: {#fig-multiclass-svm-loss-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (3.4,0);
+\path[hl cell] (0.40,0) rectangle (1.00,1.28);
+\node[tick, above] at (0.70,1.28) {$3.2$};
+\path[bar] (1.50,0) rectangle (2.10,2.04);
+\node[tick, above] at (1.80,2.04) {$5.1$};
+\path[bar] (2.60,0) rectangle (3.20,-0.68);
+\node[tick, below] at (2.90,-0.68) {$-1.7$};
+\draw[faint, dashed] (0,0.88) -- (3.4,0.88) node[tick, right] {$s_y-\Delta$};
+\node[tick, below] at (0.70,-0.25) {cat};
+\node[tick, below] at (1.80,-0.25) {car};
+\node[tick, below] at (2.90,-0.93) {frog};
+\end{tikzpicture}
+\end{center}
+```
+
+Scores for an image of a cat (correct class highlighted) with $\Delta=1$. Every wrong class scoring above $s_y-\Delta$ adds its excess: car adds $5.1-3.2+1=2.9$, frog adds $0$, so the loss is $2.9$
+
+:::
+
 A term is zero exactly when the correct score exceeds the score of class $j$ by at least $\Delta$. With $K=2$ and scores $\pm\tfrac12\mathbf{w}\cdot\mathbf{x}$, the loss is the binary hinge loss of @prp-soft-margin-hinge.
 
 ::: {#exm-multiclass-svm-loss-1 .example name="Three classes"}

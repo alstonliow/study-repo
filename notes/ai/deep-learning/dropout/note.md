@@ -129,6 +129,38 @@ For fixed $\mathbf{h}$, $\mathbb E[\tilde{\mathbf{h}}]=\mathbf{h}$, and $\operat
 
 :::
 
+::: {#fig-dropout-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (3.6,0);
+\path[bar] (0.10,0) rectangle (0.50,0.80);
+\path[bar] (0.70,0) rectangle (1.10,1.20);
+\path[bar] (1.30,0) rectangle (1.70,0.50);
+\path[bar] (1.90,0) rectangle (2.30,1.00);
+\path[bar] (2.50,0) rectangle (2.90,0.70);
+\path[bar] (3.10,0) rectangle (3.50,0.90);
+\node[tick, below] at (1.8,-0.05) {$\mathbf h$};
+\draw[map] (3.8,0.6) -- node[tick, above] {$\frac1p\,\mathbf r\odot$} (5.0,0.6);
+\begin{scope}[xshift=5.2cm]
+\draw (0,0) -- (3.6,0);
+\path[hl cell] (0.10,0) rectangle (0.50,1.19);
+\node[tick] at (0.90,0.15) {$0$};
+\path[hl cell] (1.30,0) rectangle (1.70,0.75);
+\path[hl cell] (1.90,0) rectangle (2.30,1.49);
+\node[tick] at (2.70,0.15) {$0$};
+\path[hl cell] (3.10,0) rectangle (3.50,1.34);
+\node[tick, below] at (1.8,-0.05) {$\tilde{\mathbf h}$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Inverted dropout with keep probability $p=\tfrac23$: dropped units become $0$ and the kept ones are scaled up by $1/p$, so $E[\tilde{\mathbf h}]=\mathbf h$
+
+:::
+
 Dividing by $p$ at training time means the test-time network needs no change. Without it, the next layer would see inputs about $1/p$ times larger at test time than during training, and its pre-activations, and the network's predictions, would be systematically off. The older form scales by $p$ at test time instead, which is equivalent but puts work in the deployed model.
 
 ::: {#rmk-dropout-ensemble .remark name="Dropout as an ensemble"}

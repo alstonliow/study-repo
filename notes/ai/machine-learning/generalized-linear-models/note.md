@@ -115,12 +115,53 @@ The *canonical link* is $g=(b')^{-1}$, the link for which $\theta_i=X_i^{\mathsf
 
 :::
 
+::: {#fig-generalized-linear-models-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (x) at (0,0) {$\mathbf x$};
+\node[box] (e) at (2.4,0) {$\eta=\boldsymbol\theta^{\mathsf T}\mathbf x$};
+\node[hl box] (m) at (6.2,0) {$\mu=g^{-1}(\eta)$};
+\node[box] (y) at (9.4,0) {$y\sim$ family$(\mu)$};
+\draw[map] (x) -- (e);
+\draw[map] (e) -- node[edge label] {inverse link} (m);
+\draw[map] (m) -- (y);
+\end{tikzpicture}
+\end{center}
+```
+
+The three parts of a generalized linear model: a linear predictor $\eta$, an inverse link mapping it to the mean $\mu$, and an exponential-family distribution with that mean
+
+:::
+
 ::: {#exm-link-functions .example name="Common links"}
 
 1. *Normal responses:* identity link $g(\mu)=\mu$ (canonical), the linear model.
 2. *Counts (Poisson):* the mean is positive, and the log link $g(\mu)=\log\mu$ (canonical) maps $(0,\infty)$ onto $\mathbb{R}$. A count growing exponentially in time, $\mu_t=\gamma e^{\delta t}$, becomes $\log\mu_t=\log\gamma+\delta t$.
 3. *Binary responses:* $g$ must map $(0,1)$ onto $\mathbb{R}$. Choices are the *logit* $\log\frac\mu{1-\mu}$ (canonical: logistic regression), the *probit* $\Phi^{-1}(\mu)$, and the *complementary log-log* $\log(-\log(1-\mu))$.
 4. *Positive continuous responses (Gamma):* the canonical link is $-1/\mu$; the reciprocal link $1/\mu$ (the same up to sign) makes a saturating mean such as $\mu=\alpha x/(h+x)$ linear in $1/x$: $1/\mu=1/\alpha+(h/\alpha)(1/x)$. The log link is also common.
+
+:::
+
+::: {#fig-generalized-linear-models-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-3.4,0) -- (3.4,0) node[lab, right] {$\eta$};
+\draw[->] (0,0) -- (0,3.0) node[lab, above] {$\mu$};
+\draw[emph, domain=-3.2:3.2, samples=80, smooth, variable=\x] plot ({\x}, {2/(1+exp(-\x))});
+\draw[hl, domain=-3.2:2.2, samples=80, smooth, variable=\x] plot ({\x}, {0.3*exp(\x)});
+\draw[faint, domain=-3.2:3.2, samples=80, smooth, variable=\x] plot ({\x}, {1+0.4*\x});
+\node[tick] at (2.9,1.75) {logistic};
+\node[tick, text=accent] at (1.6,2.8) {$e^\eta$};
+\node[tick] at (-2.7,0.2) {identity};
+\end{tikzpicture}
+\end{center}
+```
+
+Inverse links of three canonical GLMs: identity (normal, $\mu\in\mathbb R$, rescaled), exponential (Poisson, $\mu>0$) and logistic (Bernoulli, $\mu\in(0,1)$, scaled to height $2$)
 
 :::
 

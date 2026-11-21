@@ -21,6 +21,34 @@ Each output channel $Y_{k,:,:}$ is an *activation map*; the $F\times F$ window o
 
 :::
 
+::: {#fig-convolutional-layers-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (2.4,2.4);
+\draw[cell frame] (0,2.4) -- (0.6,3.0) -- (3.0,3.0) -- (2.4,2.4) -- cycle;
+\draw[cell frame] (2.4,0) -- (3.0,0.6) -- (3.0,3.0) -- (2.4,2.4) -- cycle;
+\draw[hl cell] (0.5,1.2) rectangle (1.1,1.80);
+\draw[hl cell] (0.5,1.80) -- (1.1,2.4) -- (1.70,2.4) -- (1.1,1.80) -- cycle;
+\draw[hl cell] (1.1,1.2) -- (1.70,1.80) -- (1.70,2.4) -- (1.1,1.80) -- cycle;
+\node[tick, below] at (1.2,0) {input $W_1\times H_1\times D_1$};
+\draw[cell frame] (4.2,0.2) rectangle (6.0,2.0);
+\draw[cell frame] (4.45,0.35) rectangle (6.25,2.15);
+\draw[cell frame] (4.7,0.5) rectangle (6.5,2.3);
+\draw[cell frame] (4.95,0.65) rectangle (6.75,2.45);
+\draw[hl cell] (4.9,1.3) rectangle (5.1,1.5);
+\coordinate (o) at (4.9,1.4);
+\draw[map] (1.6,2.0) -- (o);
+\node[tick, below] at (5.4,0.15) {$K$ activation maps};
+\end{tikzpicture}
+\end{center}
+```
+
+A convolutional layer slides each of its $K$ filters (highlighted) through the full depth of the input; each position gives one number of that filter's activation map
+
+:::
+
 Strictly this is a cross-correlation; a convolution would flip the filter. The name is universal in deep learning and the difference is immaterial, since the filters are learnt.
 
 ::: {#prp-conv-output-size .proposition name="Output size and parameter count"}
@@ -157,6 +185,74 @@ Let $X_{\text{col}}$ be the matrix of shape $CF^2\times H'W'$ whose column for o
 
 1. Entry $(k,(i,j))$ of $W_{\text{row}}X_{\text{col}}$ is the inner product of row $k$ with column $(i,j)$, that is $\sum_{c,u,v}W^{(k)}_{c,u,v}X^{\text{pad}}_{c,iS+u,jS+v}$, because both list their entries in the same order of $(c,u,v)$.
 2. Adding $b_k$ gives $Y_{k,i,j}$ of @def-convolutional-layer.
+
+:::
+
+::: {#fig-convolutional-layers-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.00,0.00) rectangle (0.40,-0.40);
+\draw[hl cell] (0.40,0.00) rectangle (0.80,-0.40);
+\draw[cell frame] (0.80,0.00) rectangle (1.20,-0.40);
+\draw[cell frame] (1.20,0.00) rectangle (1.60,-0.40);
+\draw[hl cell] (0.00,-0.40) rectangle (0.40,-0.80);
+\draw[hl cell] (0.40,-0.40) rectangle (0.80,-0.80);
+\draw[cell frame] (0.80,-0.40) rectangle (1.20,-0.80);
+\draw[cell frame] (1.20,-0.40) rectangle (1.60,-0.80);
+\draw[cell frame] (0.00,-0.80) rectangle (0.40,-1.20);
+\draw[cell frame] (0.40,-0.80) rectangle (0.80,-1.20);
+\draw[cell frame] (0.80,-0.80) rectangle (1.20,-1.20);
+\draw[cell frame] (1.20,-0.80) rectangle (1.60,-1.20);
+\draw[cell frame] (0.00,-1.20) rectangle (0.40,-1.60);
+\draw[cell frame] (0.40,-1.20) rectangle (0.80,-1.60);
+\draw[cell frame] (0.80,-1.20) rectangle (1.20,-1.60);
+\draw[cell frame] (1.20,-1.20) rectangle (1.60,-1.60);
+\draw[map] (1.8,-0.8) -- (2.6,-0.8);
+\draw[hl cell] (2.80,0.40) rectangle (3.10,0.10);
+\draw[cell frame] (3.10,0.40) rectangle (3.40,0.10);
+\draw[cell frame] (3.40,0.40) rectangle (3.70,0.10);
+\draw[cell frame] (3.70,0.40) rectangle (4.00,0.10);
+\draw[cell frame] (4.00,0.40) rectangle (4.30,0.10);
+\draw[cell frame] (4.30,0.40) rectangle (4.60,0.10);
+\draw[cell frame] (4.60,0.40) rectangle (4.90,0.10);
+\draw[cell frame] (4.90,0.40) rectangle (5.20,0.10);
+\draw[cell frame] (5.20,0.40) rectangle (5.50,0.10);
+\draw[hl cell] (2.80,0.10) rectangle (3.10,-0.20);
+\draw[cell frame] (3.10,0.10) rectangle (3.40,-0.20);
+\draw[cell frame] (3.40,0.10) rectangle (3.70,-0.20);
+\draw[cell frame] (3.70,0.10) rectangle (4.00,-0.20);
+\draw[cell frame] (4.00,0.10) rectangle (4.30,-0.20);
+\draw[cell frame] (4.30,0.10) rectangle (4.60,-0.20);
+\draw[cell frame] (4.60,0.10) rectangle (4.90,-0.20);
+\draw[cell frame] (4.90,0.10) rectangle (5.20,-0.20);
+\draw[cell frame] (5.20,0.10) rectangle (5.50,-0.20);
+\draw[hl cell] (2.80,-0.20) rectangle (3.10,-0.50);
+\draw[cell frame] (3.10,-0.20) rectangle (3.40,-0.50);
+\draw[cell frame] (3.40,-0.20) rectangle (3.70,-0.50);
+\draw[cell frame] (3.70,-0.20) rectangle (4.00,-0.50);
+\draw[cell frame] (4.00,-0.20) rectangle (4.30,-0.50);
+\draw[cell frame] (4.30,-0.20) rectangle (4.60,-0.50);
+\draw[cell frame] (4.60,-0.20) rectangle (4.90,-0.50);
+\draw[cell frame] (4.90,-0.20) rectangle (5.20,-0.50);
+\draw[cell frame] (5.20,-0.20) rectangle (5.50,-0.50);
+\draw[hl cell] (2.80,-0.50) rectangle (3.10,-0.80);
+\draw[cell frame] (3.10,-0.50) rectangle (3.40,-0.80);
+\draw[cell frame] (3.40,-0.50) rectangle (3.70,-0.80);
+\draw[cell frame] (3.70,-0.50) rectangle (4.00,-0.80);
+\draw[cell frame] (4.00,-0.50) rectangle (4.30,-0.80);
+\draw[cell frame] (4.30,-0.50) rectangle (4.60,-0.80);
+\draw[cell frame] (4.60,-0.50) rectangle (4.90,-0.80);
+\draw[cell frame] (4.90,-0.50) rectangle (5.20,-0.80);
+\draw[cell frame] (5.20,-0.50) rectangle (5.50,-0.80);
+\node[tick, below] at (0.8,-1.65) {input, $2\times2$ patches};
+\node[tick, below] at (4.15,-0.85) {one column per patch};
+\end{tikzpicture}
+\end{center}
+```
+
+im2col: each receptive field is stretched into a column (the highlighted patch becomes the first column), so the whole convolution is one matrix product of the filters with this matrix
 
 :::
 
