@@ -1,6 +1,6 @@
 ---
 title: "Training Deep Networks"
-sources: [cs221-5]
+sources: [cs221-5, cs231n-6]
 requires: [ai/deep-learning/neural-networks]
 status: draft
 ---
@@ -119,3 +119,29 @@ By @prp-initialization-variance, the outputs of a layer then have about the same
 Stochastic gradient descent (@def-stochastic-gradient-descent) is usually run in *epochs*: each epoch shuffles the training examples and takes consecutive chunks of the shuffled order as minibatches, so every example is used once per epoch. Most networks are trained with adaptive optimizers such as Adam rather than plain SGD.
 
 :::
+
+<!-- Added 2026-11-21 from Stanford CS231n course notes (Neural networks part 2: weight initialization), in our own wording; the ReLU variance computation is written out as our own proof. -->
+
+::: {#rmk-zero-initialization .remark name="Why not initialize at zero"}
+
+If all weights of a layer start equal (for example all zero), every unit of the layer computes the same output and receives the same gradient, so the units stay identical for ever. Random initialization breaks this symmetry. Biases may start at zero.
+
+:::
+
+::: {#prp-he-initialization .proposition name="Initialization for ReLU layers" related="prp-initialization-variance"}
+
+Let $z_1,\dots,z_d$ be independent, each symmetric about $0$ with variance $s^2$, let $x_j=\operatorname{ReLU}(z_j)$, and let $w_1,\dots,w_d$ be independent of them and of each other with mean $0$ and variance $v$. Then $y=\sum_jw_jx_j$ has mean $0$ and variance $\tfrac12dvs^2$. In particular $v=2/d$ gives $\operatorname{Var}(y)=s^2$.
+
+:::
+
+::: {.proof}
+
+1. By independence and $\mathbb E[w_j]=0$, $\mathbb E[w_jx_j]=\mathbb E[w_j]\,\mathbb E[x_j]=0$, so $\mathbb E[y]=0$.
+2. The terms $w_jx_j$ are independent with mean $0$, so $\operatorname{Var}(y)=\sum_j\mathbb E[w_j^2x_j^2]=\sum_jv\,\mathbb E[x_j^2]$.
+3. By symmetry of $z_j$, $\mathbb E[x_j^2]=\mathbb E[z_j^2\,\mathbb 1\{z_j>0\}]=\tfrac12\mathbb E[z_j^2]=\tfrac12s^2$.
+4. Hence $\operatorname{Var}(y)=dv\cdot\tfrac12s^2$, which equals $s^2$ when $v=2/d$.
+
+:::
+
+ReLU sets half of its inputs to zero, so it halves the second moment; *He initialization*, standard deviation $\sqrt{2/d_{\text{in}}}$, doubles the variance of @def-xavier-initialization to compensate, and keeps the size of the pre-activations constant through a deep ReLU network.
+

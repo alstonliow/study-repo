@@ -1,6 +1,6 @@
 ---
 title: "Embeddings, Self-Attention and Transformers"
-sources: [cs188-24]
+sources: [cs188-24, cs231n-13, cs231n-14, cs231na-3]
 requires: [ai/deep-learning/training-deep-networks, ai/machine-learning/text-representation]
 status: draft
 ---
@@ -122,3 +122,61 @@ where $\operatorname{LN}$ is layer normalisation (@def-layer-normalization) and 
 :::
 
 Attention mixes information between positions; the MLP processes each position on its own; the residual connections (@def-residual-connection) and layer normalisation keep gradients well-behaved through dozens of blocks. Because every block keeps the shape $n\times d$, blocks stack freely, and the cost of attention, $O(n^{2}d)$ per layer, is what limits the context length $n$.
+
+<!-- Added 2026-11-21 from Stanford CS231n course notes (Attention: general attention layers, masked and multi-head self-attention; Transformers: multi-headed attention step by step, encoder and decoder blocks, layer normalization and MLP) and Assignment 3 (transformer captioning), in our own wording; the variance proposition and its proof are our own. -->
+
+::: {#prp-attention-score-variance .proposition name="Why scale by the square root of the key size" related="def-self-attention"}
+
+Let $\mathbf q,\mathbf k\in\mathbb{R}^{d_k}$ have independent entries with mean $0$ and variance $1$. Then $\mathbf q\cdot\mathbf k$ has mean $0$ and variance $d_k$, so $\mathbf q\cdot\mathbf k/\sqrt{d_k}$ has variance $1$.
+
+:::
+
+::: {.proof}
+
+1. Each term $q_ik_i$ has mean $\mathbb E[q_i]\,\mathbb E[k_i]=0$ and variance $\mathbb E[q_i^2]\,\mathbb E[k_i^2]=1$, by independence.
+2. The $d_k$ terms are independent, so the variances add to $d_k$; dividing by $\sqrt{d_k}$ divides the variance by $d_k$.
+
+:::
+
+Without the scaling, scores of size $\sqrt{d_k}$ make the softmax nearly one-hot, and its gradient nearly zero, as soon as $d_k$ is in the hundreds. In multi-head attention the key size of each head is $d/h$, hence the factor $\sqrt{d/h}$.
+
+::: {#def-cross-attention .definition name="Cross-attention"}
+
+*Cross-attention* takes its queries from one sequence $X\in\mathbb{R}^{n\times d}$ and its keys and values from another, $Z\in\mathbb{R}^{m\times d'}$: with $Q=XW_Q$, $K=ZW_K$, $V=ZW_V$, it outputs $\operatorname{softmax}(QK^{\mathsf T}/\sqrt{d_k})V\in\mathbb{R}^{n\times d_v}$. Each of the $n$ query positions mixes the $m$ value vectors of $Z$. Self-attention (@def-self-attention) is the case $Z=X$.
+
+:::
+
+::: {#def-encoder-decoder-transformer .definition name="Encoder–decoder transformer"}
+
+An *encoder–decoder transformer* maps an input sequence to an output sequence. The *encoder* is a stack of transformer blocks (@def-transformer-block) without a mask applied to the embedded input, giving $Z\in\mathbb{R}^{m\times d}$. Each *decoder block* applies, to the embedded output prefix $X$, three residual sublayers, each with layer normalization:
+
+$$
+X\gets X+\operatorname{MaskedMultiHead}(X),\qquad X\gets X+\operatorname{CrossAttention}(X,Z),\qquad X\gets X+\operatorname{MLP}(X),
+$$
+
+the first with a causal mask, the second with $h$ heads like multi-head attention. A linear layer and a softmax on the final rows predict the next output token.
+
+:::
+
+The decoder is autoregressive like a language model (@def-autoregressive-model), and the cross-attention lets every output position look at the whole input. In image captioning the "input sequence" is a set of image features from a convolutional network or a vision transformer (@sec-ai-deep-learning-vision-transformers), and the decoder generates the caption.
+
+::: {#def-sinusoidal-positional-encoding .definition name="Sinusoidal positional encoding"}
+
+For position $p=0,1,\dots$ and even model width $d$, the *sinusoidal positional encoding* $\mathbf{e}_p\in\mathbb{R}^d$ has entries
+
+$$
+e_{p,2i}=\sin\bigl(p/10000^{2i/d}\bigr),\qquad e_{p,2i+1}=\cos\bigl(p/10000^{2i/d}\bigr),\qquad i=0,\dots,d/2-1,
+$$
+
+and is added to the embedding of the token at position $p$.
+
+:::
+
+Each pair of coordinates is a point on a circle rotating with its own frequency, from one turn per $2\pi$ positions to one turn per $2\pi\cdot10^4$ positions; so $\mathbf{e}_{p+k}$ is a fixed rotation of $\mathbf{e}_p$ for each offset $k$, which makes relative positions easy to read off by a linear map. Learnt positional embeddings, one vector per position, work as well for a fixed maximum length.
+
+::: {#rmk-attention-and-transformers-norm-placement .remark name="Where layer normalization goes"}
+
+The original transformer applied layer normalization after each residual addition (*post-norm*, $X\gets\operatorname{LN}(X+\text{sublayer}(X))$). @def-transformer-block normalizes the input of each sublayer instead (*pre-norm*), which keeps an unnormalized identity path through the whole stack and trains more stably for deep models; it is the usual choice today.
+
+:::
+

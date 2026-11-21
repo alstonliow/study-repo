@@ -17,6 +17,18 @@ coursework_repo:
   url: https://github.com/alstonliow/cs221-homework
 
 exclude:
+  # Stanford CS231n integration (2026-11-21): its problems and blocks in shared notes
+  - def-leaky-relu-maxout
+  - exm-network-size
+  - prob-cs231na-1-q4
+  - prob-cs231na-1-q8
+  - prob-two-layer-net-code
+  - prp-he-initialization
+  - prp-matrix-product-gradient
+  - prp-sigmoid-saturation
+  - rmk-backpropagation-gates
+  - rmk-neural-networks-representational-power
+  - rmk-zero-initialization
   # MIT 18.065 integration (2026-11-21): its problems in shared notes
   - prob-mit18065ps-10-q12
   - prob-mit18065ps-22-q6

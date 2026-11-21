@@ -725,12 +725,12 @@ parts:
     branches:
       - id: ai/machine-learning
         title: Machine Learning
-        desc: Learning problems, linear regression and classification, gradient descent, generalized linear models, generative classifiers, bias and variance, regularization
-        notes: [supervised-learning, generalization, linear-regression, locally-weighted-regression, gradient-descent, convex-optimization, linear-classification, perceptron, logistic-regression, softmax-regression, generalized-linear-models, gaussian-discriminant-analysis, text-representation, decision-trees, bias-variance-tradeoff, regularization-and-model-selection]   # topic order on the website
+        desc: Learning problems, linear regression and classification, gradient descent, generalized linear models, generative classifiers, bias and variance, regularization, nearest neighbours, multiclass SVM loss
+        notes: [supervised-learning, generalization, linear-regression, locally-weighted-regression, gradient-descent, convex-optimization, linear-classification, perceptron, logistic-regression, softmax-regression, generalized-linear-models, gaussian-discriminant-analysis, text-representation, decision-trees, bias-variance-tradeoff, regularization-and-model-selection, nearest-neighbors, multiclass-svm-loss]   # topic order on the website
       - id: ai/deep-learning
         title: Deep Learning
-        desc: Tensors, backpropagation, neural networks
-        notes: [tensors, einsum, backpropagation, neural-networks, training-deep-networks, attention-and-transformers, language-models]   # topic order on the website
+        desc: Tensors, backpropagation, neural networks, training and regularization, convolutional and recurrent networks, transformers
+        notes: [tensors, einsum, backpropagation, gradient-checking, neural-networks, data-preprocessing, training-deep-networks, batch-normalization, dropout, momentum-and-adaptive-methods, training-diagnostics, convolutional-layers, pooling-and-cnn-architectures, network-visualization, adversarial-examples, transfer-learning, recurrent-neural-networks, lstm, attention-and-transformers, vision-transformers, language-models]   # topic order on the website
       - id: ai/search
         title: Search
         desc: Search problems, beam search, uniform cost search and A*
@@ -769,5 +769,5 @@ parts:
         notes: [empirical-risk-minimization, vc-dimension]   # topic order on the website
       - id: ai/unsupervised-learning
         title: Unsupervised Learning
-        desc: k-means, mixtures of Gaussians, the EM algorithm, variational autoencoders, independent components analysis
-        notes: [k-means, gaussian-mixtures, em-algorithm, variational-autoencoders, independent-component-analysis]   # topic order on the website
+        desc: k-means, mixtures of Gaussians, the EM algorithm, variational autoencoders, independent components analysis, GANs, diffusion models, contrastive learning
+        notes: [k-means, gaussian-mixtures, em-algorithm, variational-autoencoders, independent-component-analysis, autoregressive-image-models, generative-adversarial-networks, diffusion-models, contrastive-learning]   # topic order on the website

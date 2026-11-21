@@ -103,3 +103,7 @@ def test_large_features_stay_finite():
     assert np.all(np.isfinite(W)) and np.all(np.isfinite(b))
 ```
 :::
+
+::: {.problem #prob-cs231na-1-q4 origin="external" source="cs231na-1-q4"}
+Why do we expect our loss to be close to -log(0.1)? Explain briefly.
+:::

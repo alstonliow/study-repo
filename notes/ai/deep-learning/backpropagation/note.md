@@ -1,6 +1,6 @@
 ---
 title: "Computation Graphs and Backpropagation"
-sources: [cs221-4]
+sources: [cs221-4, cs231n-4]
 requires: [ai/deep-learning/einsum, ai/machine-learning/gradient-descent, cs/graph-algorithms/depth-first-search]
 status: draft
 ---
@@ -110,3 +110,38 @@ Let $X$ be an $n\times d$ data matrix, $\mathbf{y}\in\mathbb{R}^n$ the targets a
 Libraries such as PyTorch and JAX build the computation graph automatically while the forward pass runs, from ordinary-looking tensor code. A tensor used as a node passes gradients back to its dependencies; a value detached from the graph (`detach()`), or computed while gradients are switched off (as at prediction time), is treated as a constant and blocks them.
 
 :::
+
+<!-- Added 2026-11-21 from Stanford CS231n course notes (Backpropagation, intuitions: patterns in backward flow, gradients of vectorized operations), in our own wording; proof written out in steps. -->
+
+::: {#prp-matrix-product-gradient .proposition name="Gradient through a matrix product" related="def-backpropagation"}
+
+Let $D=WX$ with $W\in\mathbb{R}^{m\times n}$ and $X\in\mathbb{R}^{n\times p}$, and let a scalar $L$ depend on $D$ with $G=\partial L/\partial D\in\mathbb{R}^{m\times p}$ (the matrix of partial derivatives). Then
+
+$$
+\frac{\partial L}{\partial W}=G\,X^{\mathsf T},\qquad \frac{\partial L}{\partial X}=W^{\mathsf T}G .
+$$
+
+:::
+
+::: {.proof}
+
+1. Entry $D_{ik}=\sum_jW_{ij}X_{jk}$, so $\partial D_{ik}/\partial W_{ab}=\delta_{ia}X_{bk}$.
+2. By the chain rule, $\dfrac{\partial L}{\partial W_{ab}}=\sum_{i,k}G_{ik}\,\delta_{ia}X_{bk}=\sum_kG_{ak}X_{bk}=(GX^{\mathsf T})_{ab}$.
+3. Likewise $\partial D_{ik}/\partial X_{ab}=W_{ia}\delta_{kb}$, so $\dfrac{\partial L}{\partial X_{ab}}=\sum_iG_{ib}W_{ia}=(W^{\mathsf T}G)_{ab}$.
+
+:::
+
+A check that needs no derivation: $\partial L/\partial W$ must have the shape of $W$, $m\times n$, and the only product of $G$ ($m\times p$) and $X$ ($n\times p$) with that shape is $GX^{\mathsf T}$.
+
+::: {#rmk-backpropagation-gates .remark name="Patterns in the backward flow"}
+
+Three primitive nodes have simple backward rules, which make gradients easy to read off a graph:
+
+1. An *add* node $v=u_1+u_2$ passes $\text{grad}(v)$ unchanged to both inputs: it distributes the gradient.
+2. A *max* node $v=\max(u_1,u_2)$ passes $\text{grad}(v)$ to the larger input and $0$ to the other: it routes the gradient. ReLU is the case $u_2=0$.
+3. A *multiply* node $v=u_1u_2$ passes $\text{grad}(v)\,u_2$ to $u_1$ and $\text{grad}(v)\,u_1$ to $u_2$: it swaps the inputs. So if one input is much larger than the other, the smaller input receives the larger gradient; for a linear classifier, scaling the data by $1000$ scales the weight gradients by $1000$, which must be matched by a smaller learning rate.
+
+When a value is used by several nodes, its gradient is the sum of their contributions, as the $\mathrel{+}=$ in @def-backpropagation says. In hand-written backward passes it pays to split the forward computation into small staged variables, cache each one, and backpropagate through them one by one in reverse order.
+
+:::
+

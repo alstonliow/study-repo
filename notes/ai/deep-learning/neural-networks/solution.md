@@ -77,3 +77,44 @@ These three facts are why a ReLU network (sums, $\max(0,\cdot)$, compositions) c
 
 3. Each hidden neuron applies one ReLU: $3\times6=18$ activation functions before the final output.
 :::
+
+::: {.solution for="prob-cs231na-1-q8" status="draft"}
+**Answer:** sigmoid and ReLU.
+
+1. *Sigmoid.* $\sigma'(z)=\sigma(z)(1-\sigma(z))\le\frac14$, and it tends to $0$ as $\lvert z\rvert\to\infty$ (@prp-sigmoid-saturation). Inputs of large absolute value, strongly positive or strongly negative, give nearly zero gradient; this happens for instance when the weights are initialized too large.
+2. *ReLU.* The derivative is $0$ for every negative input. A unit whose input is negative for all examples passes back no gradient at all and never recovers (a dead unit), which a large learning rate or a large negative bias can cause.
+3. *Leaky ReLU.* The derivative is $1$ for positive and $\alpha>0$ for negative inputs (@def-leaky-relu-maxout), so the gradient is never zero; it does not have this problem.
+:::
+
+::: {.solution for="prob-two-layer-net-code" status="draft"}
+```{.python}
+import numpy as np
+
+
+def two_layer_loss_grad(X, y, W1, b1, W2, b2, reg):
+    """Loss and gradients of a ReLU network with a softmax output."""
+    N = X.shape[0]
+    Z = X @ W1 + b1
+    H = np.maximum(Z, 0.0)
+    S = H @ W2 + b2
+    S = S - S.max(axis=1, keepdims=True)
+    log_P = S - np.log(np.exp(S).sum(axis=1, keepdims=True))
+    P = np.exp(log_P)
+    loss = -log_P[np.arange(N), y].mean() + reg * (np.sum(W1**2) + np.sum(W2**2))
+    dS = P.copy()
+    dS[np.arange(N), y] -= 1.0
+    dS /= N
+    dW2 = H.T @ dS + 2 * reg * W2
+    db2 = dS.sum(axis=0)
+    dH = dS @ W2.T
+    dZ = dH * (Z > 0)
+    dW1 = X.T @ dZ + 2 * reg * W1
+    db1 = dZ.sum(axis=0)
+    return loss, {"W1": dW1, "b1": db1, "W2": dW2, "b2": db2}
+```
+
+1. The loss uses the log-softmax $S-\log\sum e^{S}$ after the shift, so a correct class with tiny probability gives a large finite loss instead of $\log0$.
+2. The gradient of the average cross entropy with respect to the scores is $(P-Y)/N$, $Y$ the one-hot labels (@thm-cross-entropy-gradient).
+3. Each affine layer passes gradients back by @prp-matrix-product-gradient; biases receive the column sums.
+4. ReLU routes the gradient to the units with positive input (the max node of @sec-ai-deep-learning-backpropagation).
+:::

@@ -12,6 +12,15 @@ outline_from: MIT 18.065 Matrix Methods in Data Analysis, Signal Processing, and
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Stanford CS231n integration (2026-11-21): its problems and blocks in shared notes
+  - def-leaky-relu-maxout
+  - exm-network-size
+  - prob-cs231na-1-q8
+  - prob-two-layer-net-code
+  - prp-matrix-product-gradient
+  - prp-sigmoid-saturation
+  - rmk-backpropagation-gates
+  - rmk-neural-networks-representational-power
   # MIT 18.065 integration (2026-11-21): problems from other courses in shared notes
   - prob-backpropagation-gradient-check-code
   - prob-cs221hw-1-q2

@@ -54,3 +54,9 @@ def train_softmax_regression(X, y, K, eta, epochs):
 2. The gradient of the loss of one example with respect to its logits is $\operatorname{softmax}(\mathbf z)-\mathbf e_y$ (@thm-cross-entropy-gradient). By the chain rule its gradient with respect to $W$ is the outer product of this vector with $\mathbf x$, and with respect to $\mathbf b$ the vector itself.
 3. Stacking the examples as rows, the mean of the outer products is `G.T @ X / n`, one matrix product instead of a loop.
 :::
+
+::: {.solution for="prob-cs231na-1-q4" status="draft"}
+1. With small random weights, all scores $W\mathbf{x}$ are close to $0$.
+2. The softmax of (nearly) equal scores is (nearly) uniform: each of the $10$ CIFAR-10 classes gets probability about $1/10$ (@def-softmax).
+3. The cross entropy loss of an example is $-\log$ of the probability of its correct class, so about $-\log0.1=\log10\approx2.303$, and the average over the training set is the same. A loss far from this at initialization signals a bug or a badly scaled initialization (@sec-ai-deep-learning-gradient-checking).
+:::

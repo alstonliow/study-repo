@@ -1,6 +1,6 @@
 ---
 title: "Neural Networks"
-sources: [cs221-5]
+sources: [cs221-5, cs231n-5, cs231n-8]
 requires: [ai/deep-learning/backpropagation, ai/machine-learning/softmax-regression]
 status: draft
 ---
@@ -105,3 +105,43 @@ The first layer plays the role of a learned feature map and the last is a linear
 An MLP with two inputs, four hidden units and one output logit: each hidden unit is an activation of a linear function of the inputs, and the output is a linear function of the hidden units.
 
 :::
+
+<!-- Added 2026-11-21 from Stanford CS231n course notes (Neural networks part 1: activation functions, layer-wise organization, sizing networks, representational power; minimal case study), in our own wording; the numbers were computed in Python; proofs written out in steps. -->
+
+::: {#prp-sigmoid-saturation .proposition name="Sigmoid and tanh saturate" related="def-activation-function"}
+
+The logistic function satisfies $\sigma'(z)=\sigma(z)\bigl(1-\sigma(z)\bigr)\le\tfrac14$, with equality only at $z=0$, and $\sigma'(z)\to0$ as $\lvert z\rvert\to\infty$. Moreover $\tanh(z)=2\sigma(2z)-1$, so $\tanh'(z)=1-\tanh^2(z)\le1$, also tending to $0$ as $\lvert z\rvert\to\infty$.
+
+:::
+
+::: {.proof}
+
+1. $\sigma(z)=1/(1+e^{-z})$ gives $\sigma'(z)=e^{-z}/(1+e^{-z})^2=\sigma(z)\bigl(1-\sigma(z)\bigr)$.
+2. With $u=\sigma(z)\in(0,1)$, $u(1-u)\le\tfrac14$ with equality only at $u=\tfrac12$, that is $z=0$; and $u(1-u)\to0$ as $u\to0$ or $u\to1$.
+3. $2\sigma(2z)-1=\dfrac{2-(1+e^{-2z})}{1+e^{-2z}}=\dfrac{1-e^{-2z}}{1+e^{-2z}}=\tanh z$.
+4. Differentiating, $\tanh'(z)=1-\tanh^2(z)$, which is at most $1$ and tends to $0$ because $\lvert\tanh z\rvert\to1$.
+
+:::
+
+So a unit whose input is large in absolute value passes back almost no gradient: $\sigma'(5)\approx0.0066$ and $\sigma'(10)\approx4.5\times10^{-5}$. Large initial weights saturate sigmoid units at once. The sigmoid has a second drawback: its outputs are all positive, so for the next layer's weights $\mathbf{w}$ the gradient $\text{grad}(z)\,\mathbf{h}$ has entries all of one sign, and the updates zig-zag. $\tanh$ is centred at zero and is preferred to the sigmoid inside networks.
+
+::: {#def-leaky-relu-maxout .definition name="Leaky ReLU and maxout"}
+
+For a small fixed slope $\alpha>0$ (say $0.01$), the *leaky ReLU* is $a(z)=\max(z,\alpha z)$. A *maxout* unit with two weight vectors computes $\max(\mathbf{w}_1\cdot\mathbf{x}+b_1,\ \mathbf{w}_2\cdot\mathbf{x}+b_2)$; ReLU is the case $\mathbf{w}_1=\mathbf 0$, $b_1=0$.
+
+:::
+
+ReLU is cheap and does not saturate for positive inputs, which speeds up training by stochastic gradient descent a lot compared with $\tanh$; its risk is the dead unit noted after @def-activation-function, made likely by a large learning rate. The leaky ReLU keeps a small gradient for negative inputs, and maxout never has zero gradient on both pieces, at the price of doubling the parameters. A common default is ReLU with a carefully chosen learning rate.
+
+::: {#exm-network-size .example name="Counting neurons and parameters"}
+
+A network with $3$ inputs, two hidden layers of $4$ units and one output is called a $3$-layer network (the input layer is not counted). It has $4+4+1=9$ units, $3\cdot4+4\cdot4+4\cdot1=32$ weights and $9$ biases, so $41$ parameters. The output layer usually has no activation, since its values are scores or real-valued predictions.
+
+:::
+
+::: {#rmk-neural-networks-representational-power .remark name="Representational power and size"}
+
+An MLP with one hidden layer and a non-polynomial activation can approximate any continuous function on a compact set arbitrarily well, given enough hidden units (the universal approximation theorem, Cybenko 1989 for the sigmoid; not proved here). This says little about learning: deeper networks represent the functions met in practice with far fewer units and are easier to fit by gradient descent. Larger networks can represent more complex functions and overfit more easily, but the remedy is regularization (@def-regularization, @sec-ai-deep-learning-dropout) rather than a smaller network: small networks have fewer, worse local minima, and their final loss varies much more from one initialization to the next.
+
+:::
+

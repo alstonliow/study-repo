@@ -11,6 +11,22 @@ outline_from: UC Berkeley CS188 Introduction to Artificial Intelligence, Fall 20
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Stanford CS231n integration (2026-11-21): its problems and blocks in shared notes
+  - def-cross-attention
+  - def-encoder-decoder-transformer
+  - def-leaky-relu-maxout
+  - def-sinusoidal-positional-encoding
+  - exm-network-size
+  - prob-cs231na-1-q4
+  - prob-cs231na-1-q8
+  - prob-cs231na-3-q1
+  - prob-two-layer-net-code
+  - prp-attention-score-variance
+  - prp-matrix-product-gradient
+  - prp-sigmoid-saturation
+  - rmk-attention-and-transformers-norm-placement
+  - rmk-backpropagation-gates
+  - rmk-neural-networks-representational-power
   # Stanford CS229 integration (2026-11-21): new block in a shared note
   - rmk-naive-bayes-event-models
   # MIT 18.065 integration (2026-11-21): its problems in shared notes

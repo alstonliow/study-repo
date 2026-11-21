@@ -13,6 +13,22 @@ status: draft  # draft until the owner has reviewed the mapping
 
 # Exercises from other courses in the notes CS229 covers (CS229 has no problem sets here).
 exclude:
+# Stanford CS231n integration (2026-11-21): its problems and blocks in shared notes
+- def-cross-attention
+- def-encoder-decoder-transformer
+- def-leaky-relu-maxout
+- def-sinusoidal-positional-encoding
+- exm-network-size
+- prob-cs231na-1-q4
+- prob-cs231na-1-q8
+- prob-cs231na-3-q1
+- prob-two-layer-net-code
+- prp-attention-score-variance
+- prp-matrix-product-gradient
+- prp-sigmoid-saturation
+- rmk-attention-and-transformers-norm-placement
+- rmk-backpropagation-gates
+- rmk-neural-networks-representational-power
 - prob-backpropagation-gradient-check-code
 - prob-bn-mle-code
 - prob-bootstrapped-policy-gradient-code

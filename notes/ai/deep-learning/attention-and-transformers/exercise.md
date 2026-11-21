@@ -57,3 +57,12 @@ def test_large_scores_are_stable():
     assert np.all(np.isfinite(out))
 ```
 :::
+
+::: {.problem #prob-cs231na-3-q1 origin="external" source="cs231na-3-q1"}
+Several key design decisions were made in designing the scaled dot product attention we introduced above. Explain why the following choices were beneficial:
+1. Using multiple attention heads as opposed to one.
+2. Dividing by $\sqrt{d/h}$ before applying the softmax function. Recall that $d$ is the feature dimension and $h$ is the number of heads.
+3. Adding a linear transformation to the output of the attention operation.
+
+Only one or two sentences per choice is necessary, but be sure to be specific in addressing what would have happened without each given implementation detail, why such a situation would be suboptimal, and how the proposed implementation improves the situation.
+:::

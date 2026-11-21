@@ -153,3 +153,66 @@ How many weights and biases are in a network with $m=N_0=4$ inputs in each featu
 
 *Note (these notes):* The problem does not state the output size; the solution assumes a single output.
 :::
+
+::: {.problem #prob-cs231na-1-q8 origin="external" source="cs231na-1-q8"}
+We've only asked you to implement ReLU, but there are a number of different activation functions that one could use in neural networks, each with its pros and cons. In particular, an issue commonly seen with activation functions is getting zero (or close to zero) gradient flow during backpropagation. Which of the following activation functions have this problem? If you consider these functions in the one dimensional case, what types of input would lead to this behaviour?
+1. Sigmoid
+2. ReLU
+3. Leaky ReLU
+:::
+
+::: {#prob-two-layer-net-code .problem .coding origin="adapted" source="res-stanford-cs231n-assignments-ps1" packages="numpy"}
+Write `two_layer_loss_grad(X, y, W1, b1, W2, b2, reg)` for a network with one ReLU hidden layer and a softmax output, trained with the cross entropy loss (@def-multi-layer-perceptron, @def-cross-entropy-loss).
+
+- Rows of `X` (shape `(N, D)`) are examples; $H=\operatorname{ReLU}(XW_1+\mathbf b_1)$ with $W_1$ of shape `(D, M)`, scores $S=HW_2+\mathbf b_2$ with $W_2$ of shape `(M, K)`.
+- The loss is the average cross entropy over the examples plus `reg * (np.sum(W1**2) + np.sum(W2**2))`.
+- Return `(loss, grads)`, `grads` a dict with keys `"W1", "b1", "W2", "b2"`. Use the shift of @prp-softmax-shift for numerical stability.
+
+```{.python .starter}
+import numpy as np
+
+
+def two_layer_loss_grad(X, y, W1, b1, W2, b2, reg):
+    """Loss and gradients of a ReLU network with a softmax output."""
+    ...
+```
+
+```{.python .tests}
+import numpy as np
+
+rng = np.random.default_rng(1)
+X, y = rng.normal(size=(5, 3)), np.array([0, 2, 1, 2, 0])
+P = {"W1": rng.normal(size=(3, 4)), "b1": rng.normal(size=4) * 0.1,
+     "W2": rng.normal(size=(4, 3)), "b2": rng.normal(size=3) * 0.1}
+
+
+def f(Q):
+    return two_layer_loss_grad(X, y, Q["W1"], Q["b1"], Q["W2"], Q["b2"], 0.05)
+
+
+def test_gradients_match_finite_differences():
+    loss, grads = f(P)
+    for name in P:
+        num = np.zeros_like(P[name])
+        for idx in np.ndindex(P[name].shape):
+            Qp = {k: v.copy() for k, v in P.items()}
+            Qm = {k: v.copy() for k, v in P.items()}
+            Qp[name][idx] += 1e-6
+            Qm[name][idx] -= 1e-6
+            num[idx] = (f(Qp)[0] - f(Qm)[0]) / 2e-6
+        assert grads[name].shape == P[name].shape
+        assert np.allclose(grads[name], num, atol=1e-5), name
+
+
+def test_zero_weights_give_log_k():
+    Z = {"W1": np.zeros((3, 4)), "b1": np.zeros(4), "W2": np.zeros((4, 3)), "b2": np.zeros(3)}
+    assert np.isclose(f(Z)[0], np.log(3))
+
+
+def test_large_scores_are_stable():
+    Q = dict(P)
+    Q["b2"] = np.array([1000.0, 0.0, 0.0])
+    loss, _ = f(Q)
+    assert np.isfinite(loss)
+```
+:::
