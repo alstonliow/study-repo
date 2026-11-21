@@ -1,6 +1,6 @@
 ---
 title: "Modes of Convergence"
-sources: [eecs126-2]
+sources: [eecs126-2, mit18650-1]
 requires: [math/probability/continuous/central-limit-theorem]
 status: draft
 ---
@@ -126,3 +126,69 @@ Let $f$ be continuous. If $X_n\to X$ almost surely, in probability, or in distri
 Convergence of $X_n$ does not give $E[X_n]\to E[X]$: with $\Pr(X_n=n)=1/n$ and $X_n=0$ otherwise, $X_n\to0$ in probability but $E[X_n]=1$. Expectations do converge when the $X_n$ are monotone and non-negative (monotone convergence) or bounded by one integrable variable (dominated convergence).
 
 :::
+
+<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 1 (review of convergence: convergence in L^p, characterisations of convergence in distribution, sums and products of limits), in our own wording; proofs written out in steps. -->
+
+::: {#def-lp-convergence .definition name="Convergence in mean of order p"}
+
+Let $p\ge1$. $X_n\to X$ *in $L^p$* (in mean of order $p$) if $E[|X_n|^p]$ and $E[|X|^p]$ are finite and
+$$\lim_{n\to\infty}E\bigl[|X_n-X|^p\bigr]=0 .$$
+For $p=2$ this is *convergence in mean square*.
+
+:::
+
+::: {#prp-lp-convergence .proposition name="Convergence in $L^p$ is stronger than in probability"}
+
+1. If $X_n\to X$ in $L^p$, then $X_n\to X$ in $L^q$ for every $1\le q\le p$.
+2. If $X_n\to X$ in $L^p$ for some $p\ge1$, then $X_n\to X$ in probability.
+
+:::
+
+::: {.proof}
+
+1. Let $Y=|X_n-X|$. The function $y\mapsto y^{p/q}$ is convex on $[0,\infty)$ because $p/q\ge1$, so Jensen's inequality gives $\bigl(E[Y^q]\bigr)^{p/q}\le E[Y^p]$.
+
+2. Hence $E[|X_n-X|^q]\le\bigl(E[|X_n-X|^p]\bigr)^{q/p}\to0$, which is part 1.
+
+3. For part 2 fix $\varepsilon>0$. By the generalised Markov inequality (@thm-generalised-markov) applied to $|X_n-X|^p$,
+   $$\Pr\bigl(|X_n-X|>\varepsilon\bigr)\le\frac{E[|X_n-X|^p]}{\varepsilon^p}\to0 .$$
+
+:::
+
+The converse of part 2 fails, for the reason given in the remark on expectations above: with $\Pr(X_n=n)=1/n$, $X_n\to0$ in probability but $E[|X_n|]=1$ for every $n$.
+
+::: {#prp-limits-of-sums-products .proposition name="Sums and products of limits"}
+
+Suppose $U_n\to U$ and $V_n\to V$, both almost surely or both in probability. Then, in the same sense,
+$$U_n+V_n\to U+V,\qquad U_nV_n\to UV,$$
+and $U_n/V_n\to U/V$ if moreover $\Pr(V=0)=0$.
+
+:::
+
+::: {.proof}
+
+1. *Almost surely.* The two events $\{U_n\to U\}$ and $\{V_n\to V\}$ have probability $1$, so their intersection does. On it the ordinary limit rules for real sequences give all three statements (the quotient where $V\ne0$, which also has probability $1$).
+
+2. *In probability.* The pair $(U_n,V_n)$ converges in probability to $(U,V)$ in the plane: $\Pr(\|(U_n,V_n)-(U,V)\|>\varepsilon)\le\Pr(|U_n-U|>\varepsilon/2)+\Pr(|V_n-V|>\varepsilon/2)\to0$.
+
+3. The maps $(u,v)\mapsto u+v$ and $(u,v)\mapsto uv$ are continuous on $\mathbb{R}^2$, and $(u,v)\mapsto u/v$ is continuous where $v\ne0$. The proof of @thm-continuous-mapping, part 2, works word for word for random vectors (choose $K$ with $\Pr(\|(U,V)\|>K)<\delta$; for the quotient, also choose $\kappa>0$ with $\Pr(|V|<\kappa)<\delta$ and work on the compact set $\{\|(u,v)\|\le K+1,\ |v|\ge\kappa/2\}$), which proves the claim.
+
+:::
+
+::: {#rmk-limits-in-distribution .remark name="Convergence in distribution does not add"}
+
+The rules of @prp-limits-of-sums-products fail for convergence in distribution. Take $X\sim N(0,1)$, $U_n=X$ and $V_n=-X$. Then $U_n\to X$ and $V_n\to X$ in distribution (since $-X$ has the law of $X$), but $U_n+V_n=0$ does not converge in distribution to $X+X\sim N(0,4)$. Convergence in distribution concerns each law separately and says nothing about the joint law; the rules hold when the pair $(U_n,V_n)$ converges in distribution to $(U,V)$, and in the important case where one limit is a constant (Slutsky's theorem, @thm-slutsky).
+
+:::
+
+::: {#prp-convergence-in-distribution-tests .proposition name="Other ways to check convergence in distribution"}
+
+Each of the following is equivalent to $X_n\to X$ in distribution (stated without proof).
+
+1. $E[h(X_n)]\to E[h(X)]$ for every bounded continuous function $h$; it is even enough to check this for bounded uniformly continuous $h$.
+2. The characteristic functions converge: $E[e^{itX_n}]\to E[e^{itX}]$ for every $t\in\mathbb{R}$ (Lévy's continuity theorem).
+
+Both carry over to random vectors in $\mathbb{R}^d$, with $t\in\mathbb{R}^d$ and $e^{i\,t^{\mathsf T}X_n}$; the definition by CDFs does too, with $\Pr(X_n\le x)$ read componentwise.
+
+:::
+

@@ -10,7 +10,15 @@ outline_from: MIT 6.041 Probabilistic Systems Analysis and Applied Probability, 
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
-  # MIT 18.065 integration (2026-11-21): its problems in shared notes
+    # MIT 18.650 integration (2026-11-21): its problems and blocks in shared notes
+  - def-lp-convergence
+  - prob-mit18650f16-1-q1
+  - prob-mit18650f16-1-q2
+  - prp-convergence-in-distribution-tests
+  - prp-limits-of-sums-products
+  - prp-lp-convergence
+  - rmk-limits-in-distribution
+# MIT 18.065 integration (2026-11-21): its problems in shared notes
   - prob-mit18065ps-19-q8
   - prob-mit18065ps-20-q10
   - prob-mit18065ps-20-q12

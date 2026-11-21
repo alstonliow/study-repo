@@ -13,6 +13,20 @@ status: draft  # draft until the owner has reviewed the mapping
 
 # Exercises from other courses in the notes CS229 covers (CS229 has no problem sets here).
 exclude:
+# MIT 18.650 integration (2026-11-21): its problems and blocks in shared notes
+- def-exponential-dispersion-family
+- def-fisher-scoring
+- def-link-function
+- exm-dispersion-families
+- exm-irls-logistic
+- exm-link-functions
+- prob-mit18650f16-11-q1
+- prob-mit18650f16-11-q2
+- prob-mit18650f16-11-q3
+- prob-mit18650f16-8-q3
+- prp-dispersion-family-moments
+- prp-irls
+- thm-glm-score-information
 # Stanford CS231n integration (2026-11-21): its problems and blocks in shared notes
 - def-cross-attention
 - def-encoder-decoder-transformer

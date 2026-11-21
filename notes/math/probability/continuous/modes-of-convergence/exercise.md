@@ -77,3 +77,35 @@ Random variable $X$ is uniformly distributed between $-1.0$ and $1.0$. Let $X_1,
 (b) $W_i = \max(X_1, \ldots, X_i)$
 (c) $V_i = X_1 \cdot X_2 \cdot \ldots \cdot X_i$
 :::
+
+::: {.problem #prob-mit18650f16-1-q1 origin="external" source="mit18650f16-1-q1"}
+Convergence of random variables
+
+1. For $n\in\mathbb{N}^*$, let $X_n$ be a random variable such that $\mathbb{P}\bigl[X_n=\frac1n\bigr]=1-\frac1{n^2}$ and $\mathbb{P}[X_n=n]=\frac1{n^2}$. Does $X_n$ converge in probability? In $L^2$?
+
+2. Let $(X_n)_{n\in\mathbb{N}^*}$ be a sequence of i.i.d. Bernoulli random variables with parameter $p\in[0,1]$. For $n\in\mathbb{N}^*$, let $\bar X_n=\frac1n\sum_{i=1}^nX_i$.
+
+   a) What is the distribution of $n\bar X_n$?
+
+   b) Prove that $\bar X_n$ converges to $p$ in $L^2$?
+
+3. For $n\in\mathbb{N}^*$, let $X_n$ be a Poisson random variable with parameter $1/n$.
+
+   a) Prove that $X_n\xrightarrow[n\to\infty]{\mathbb{P}}0$.
+
+   b) Prove that $nX_n\xrightarrow[n\to\infty]{\mathbb{P}}0$.
+:::
+
+::: {.problem #prob-mit18650f16-1-q2 origin="external" source="mit18650f16-1-q2"}
+True or false
+
+For each of the following statement, say whether it is true or false. When your answer is "false", give a counter example.
+
+1. If $X_n\xrightarrow[n\to\infty]{a.s.}X$ and $Y_n\xrightarrow[n\to\infty]{a.s.}Y$, then $X_n+Y_n\xrightarrow[n\to\infty]{a.s.}X+Y$.
+
+2. If $X_n\xrightarrow[n\to\infty]{\mathbb{P}}X$ and $Y_n\xrightarrow[n\to\infty]{\mathbb{P}}Y$, then $X_n+Y_n\xrightarrow[n\to\infty]{\mathbb{P}}X+Y$.
+
+3. If $X_n\xrightarrow[n\to\infty]{(d)}X$ and $Y_n\xrightarrow[n\to\infty]{(d)}Y$, then $X_n+Y_n\xrightarrow[n\to\infty]{(d)}X+Y$.
+
+4. Consider a coin that shows Heads with some unknown probability $p$ when it is tossed. After tossing this coin 100 times, Heads have shown up 43 times. The unknown parameter $p$ is contained in the interval $[.33,.53]$ with probability 95%.
+:::

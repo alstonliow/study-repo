@@ -562,7 +562,7 @@ parts:
           - credible-intervals
       - id: math/statistics/frequentist
         title: Frequentist Statistics
-        desc: Significance testing, p-values, t, chi-square and F tests, confidence intervals, the bootstrap, least squares regression
+        desc: Significance testing, p-values, t, chi-square and F tests, confidence intervals, the bootstrap, least squares regression, the linear model and its tests, nonparametric regression
         notes:   # topic order on the website
           - significance-testing
           - t-tests
@@ -570,6 +570,22 @@ parts:
           - confidence-intervals
           - bootstrap
           - least-squares-regression
+          - multiple-linear-regression
+          - regression-inference
+          - nonparametric-regression
+      - id: math/statistics/inference
+        title: Statistical Inference
+        desc: Statistical models, Slutsky and the delta method, asymptotic intervals, KL divergence and maximum likelihood, Fisher information, method of moments, Wald and likelihood ratio tests, goodness of fit, Jeffreys priors
+        notes:   # topic order on the website
+          - statistical-models
+          - slutsky-and-delta-method
+          - asymptotic-confidence-intervals
+          - kl-divergence-and-likelihood
+          - fisher-information
+          - method-of-moments
+          - parametric-tests
+          - goodness-of-fit
+          - bayesian-estimators
   - title: Convex Optimization
     field: Mathematics
     branches:
@@ -769,5 +785,5 @@ parts:
         notes: [empirical-risk-minimization, vc-dimension]   # topic order on the website
       - id: ai/unsupervised-learning
         title: Unsupervised Learning
-        desc: k-means, mixtures of Gaussians, the EM algorithm, variational autoencoders, independent components analysis, GANs, diffusion models, contrastive learning
-        notes: [k-means, gaussian-mixtures, em-algorithm, variational-autoencoders, independent-component-analysis, autoregressive-image-models, generative-adversarial-networks, diffusion-models, contrastive-learning]   # topic order on the website
+        desc: k-means, mixtures of Gaussians, the EM algorithm, variational autoencoders, principal component analysis, independent components analysis, GANs, diffusion models, contrastive learning
+        notes: [k-means, gaussian-mixtures, em-algorithm, variational-autoencoders, principal-component-analysis, independent-component-analysis, autoregressive-image-models, generative-adversarial-networks, diffusion-models, contrastive-learning]   # topic order on the website

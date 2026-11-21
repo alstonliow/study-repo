@@ -1,6 +1,6 @@
 ---
 title: "Exponential Families"
-sources: [cs229-3]
+sources: [cs229-3, mit18650-10]
 requires: [math/probability/continuous/standard-distributions]
 status: draft
 ---
@@ -86,3 +86,57 @@ In particular $a$ is convex. (For a vector parameter, $E[T(Y)]=\nabla a(\boldsym
 For the Bernoulli, $a'(\eta)=\dfrac{e^\eta}{1+e^\eta}=\phi$ and $a''(\eta)=\phi(1-\phi)$. For the unit-variance Gaussian, $a'(\eta)=\eta=\mu$ and $a''=1$. For the Poisson, $a'(\eta)=a''(\eta)=e^\eta=\lambda$: the mean and the variance of a Poisson variable are both $\lambda$.
 
 :::
+
+<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 10 (the one-parameter canonical exponential family with a dispersion parameter, its mean and variance, the table of b functions and canonical links), in our own wording; the proof and the Gamma computation are our own. MIT 18.650 also writes a k-parameter family as exp(sum_i eta_i(theta) T_i(x) - B(theta)) h(x), which is def-exponential-family with eta = eta(theta); merge proposed to the owner, not done. -->
+
+Generalized linear models use a variant of the one-parameter family that separates the location of the distribution from its spread.
+
+::: {#def-exponential-dispersion-family .definition name="Canonical exponential family with dispersion" generalizes="def-exponential-family"}
+
+A family of mass or density functions on $\mathbb{R}$ is a *canonical exponential family with dispersion parameter $\phi>0$* if
+
+$$
+f_\theta(y)=\exp\Bigl(\frac{y\theta-b(\theta)}{\phi}+c(y,\phi)\Bigr)
+$$
+
+for known functions $b$ and $c$. The parameter $\theta$ is the *canonical parameter* and $\phi$ the *dispersion parameter*. For fixed known $\phi$ this is an exponential family in the sense of @def-exponential-family with natural parameter $\eta=\theta/\phi$, $T(y)=y$, log partition function $a(\eta)=b(\phi\eta)/\phi$ and base measure $e^{c(y,\phi)}$.
+
+:::
+
+::: {#prp-dispersion-family-moments .proposition name="Mean and variance in a dispersion family" generalizes="prp-exponential-family-moments"}
+
+If $Y$ has density $f_\theta$ as above, with $\theta$ in the interior of the parameter set, then
+
+$$
+\mu=E[Y]=b'(\theta),\qquad \mathrm{Var}(Y)=\phi\,b''(\theta).
+$$
+
+In particular $b''>0$ whenever $Y$ is not almost surely constant, so $b'$ is strictly increasing.
+
+:::
+
+::: {.proof}
+
+1. With $\eta=\theta/\phi$ and $a(\eta)=b(\phi\eta)/\phi$ as in the definition, @prp-exponential-family-moments gives $E[Y]=a'(\eta)$ and $\mathrm{Var}(Y)=a''(\eta)$.
+
+2. By the chain rule, $a'(\eta)=b'(\phi\eta)=b'(\theta)$ and $a''(\eta)=\phi\,b''(\phi\eta)=\phi\,b''(\theta)$.
+
+3. A variance is positive unless the variable is constant, so $b''(\theta)>0$ in that case.
+
+:::
+
+The function $V(\mu)=b''\bigl((b')^{-1}(\mu)\bigr)$, the variance per unit dispersion written as a function of the mean, is the *variance function*.
+
+::: {#exm-dispersion-families .example name="Four dispersion families"}
+
+| Distribution | $\theta$ | $b(\theta)$ | $\phi$ | $\mu=b'(\theta)$ | $V(\mu)$ |
+|---|---|---|---|---|---|
+| $N(\mu,\sigma^2)$ | $\mu$ | $\theta^2/2$ | $\sigma^2$ | $\theta$ | $1$ |
+| $\operatorname{Poisson}(\mu)$ | $\log\mu$ | $e^\theta$ | $1$ | $e^\theta$ | $\mu$ |
+| $\operatorname{Ber}(\mu)$ | $\log\frac\mu{1-\mu}$ | $\log(1+e^\theta)$ | $1$ | $\frac{e^\theta}{1+e^\theta}$ | $\mu(1-\mu)$ |
+| $\operatorname{Gamma}$, mean $\mu$, shape $\nu$ | $-1/\mu$ | $-\log(-\theta)$ | $1/\nu$ | $-1/\theta$ | $\mu^2$ |
+
+For the normal, $\frac1{\sqrt{2\pi\sigma^2}}e^{-(y-\mu)^2/(2\sigma^2)}=\exp\bigl(\frac{y\mu-\mu^2/2}{\sigma^2}-\frac12(\frac{y^2}{\sigma^2}+\log(2\pi\sigma^2))\bigr)$. For the Gamma with shape $\nu$ and mean $\mu$ (scale $\mu/\nu$), the density $\frac1{\Gamma(\nu)}\bigl(\frac\nu\mu\bigr)^\nu y^{\nu-1}e^{-\nu y/\mu}$ equals $\exp\bigl(\nu\,(y\theta+\log(-\theta))+c(y,\phi)\bigr)$ with $\theta=-1/\mu$ and $c(y,\phi)=\nu\log\nu+(\nu-1)\log y-\log\Gamma(\nu)$; then $\mathrm{Var}(Y)=\phi\,b''(\theta)=\frac1\nu\cdot\frac1{\theta^2}=\mu^2/\nu$, the known Gamma variance.
+
+:::
+

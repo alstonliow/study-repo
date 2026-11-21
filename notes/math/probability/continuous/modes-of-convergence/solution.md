@@ -71,3 +71,25 @@ All three converge in probability.
 
 (c) $E|X|=\frac12$, so by independence $E|V_i|=2^{-i}$, and Markov's inequality gives $\Pr(|V_i|\ge\varepsilon)\le\frac{2^{-i}}\varepsilon\to0$. So $V_i\to0$.
 :::
+
+::: {.solution for="prob-mit18650f16-1-q1" status="draft"}
+1. For $\varepsilon>0$ and $n>1/\varepsilon$, $|X_n|>\varepsilon$ only if $X_n=n$, so $\Pr(|X_n|>\varepsilon)=1/n^2\to0$: $X_n\to0$ in probability. But $E[X_n^2]=\frac1{n^2}\bigl(1-\frac1{n^2}\bigr)+n^2\cdot\frac1{n^2}\to1$, so $E[|X_n-0|^2]\not\to0$: no convergence in $L^2$ to $0$. Since an $L^2$ limit would also be a limit in probability (@prp-lp-convergence), and that limit is $0$, there is no $L^2$ limit at all.
+
+2. a) $n\bar X_n=\sum_iX_i\sim\operatorname{Bin}(n,p)$.
+
+   b) $E[(\bar X_n-p)^2]=\mathrm{Var}(\bar X_n)=\frac{p(1-p)}n\to0$, since $\bar X_n$ has mean $p$.
+
+3. a) For $\varepsilon\in(0,1)$, $\Pr(|X_n|>\varepsilon)=\Pr(X_n\ge1)=1-e^{-1/n}\to0$.
+
+   b) $nX_n$ takes values in $\{0,n,2n,\dots\}$, so for $\varepsilon\in(0,n)$, $\Pr(|nX_n|>\varepsilon)=\Pr(X_n\ge1)=1-e^{-1/n}\to0$ as well. (The limit is $0$ although $E[nX_n]=1$ for all $n$: convergence in probability does not control expectations.)
+:::
+
+::: {.solution for="prob-mit18650f16-1-q2" status="draft"}
+1. True: intersect the two probability-one events of convergence (@prp-limits-of-sums-products).
+
+2. True, by the same proposition (the pair converges in probability, and addition is continuous).
+
+3. False. Let $X\sim N(0,1)$, $X_n=X$ and $Y_n=-X$ for all $n$, and $Y=X$. Then $Y_n\to Y$ in distribution because $-X$ and $X$ have the same law, but $X_n+Y_n=0$ while $X+Y=2X\sim N(0,4)$ (compare the remark after @prp-limits-of-sums-products).
+
+4. False as stated. $p$ is a fixed number, not random: it either lies in $[0.33,0.53]$ or it does not. What is true (approximately, for large $n$) is that the *random* interval $\bar X_n\pm1.96\sqrt{\bar X_n(1-\bar X_n)/n}$, here $0.43\pm0.097\approx[0.33,0.53]$, is produced by a procedure that covers the true $p$ in about $95\%$ of repetitions of the experiment.
+:::
