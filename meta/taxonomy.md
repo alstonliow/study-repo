@@ -55,7 +55,7 @@ theory stays in `math/discrete/graph` whether FIT1058, 6.042J or CS154 uses it).
 
 | Field | Parts (in topic order) | Folders |
 |---|---|---|
-| Mathematics | Discrete Mathematics; Single Variable Calculus; Linear Algebra; Multivariable Calculus; Real Analysis; Probability and Statistics; later Numerical Analysis, Optimization, Information Theory | `math/discrete`, `math/calculus/single-variable`, `math/calculus/multivariable`, `math/analysis`, `math/linear-algebra`, `math/probability`, `math/statistics`, … |
+| Mathematics | Discrete Mathematics; Single Variable Calculus; Linear Algebra; Multivariable Calculus; Real Analysis; Probability and Statistics; Convex Optimization; later Numerical Analysis, Information Theory | `math/discrete`, `math/calculus/single-variable`, `math/calculus/multivariable`, `math/analysis`, `math/linear-algebra`, `math/probability`, `math/statistics`, `math/optimization`, … |
 | Computer Science | Algorithms; Theory of Computation; Cryptography; later Systems (architecture, operating systems, databases, distributed systems) | `cs/*` |
 | Artificial Intelligence | later: Foundations (search and planning, probabilistic models), Machine Learning, Deep Learning, Reinforcement Learning, Vision, Language | `ai/*` |
 
@@ -101,6 +101,8 @@ a field. Course order for the next additions: 6.041 and 18.05 done (18.01, 18.06
 | MIT 18.05 problem sets (Spring 2022) PS 1–11 | 44 exercises with draft solutions; warm-ups, R-only and figure problems skipped |
 | MIT 18.065 video lectures (Spring 2018), Lectures 1–35 (no written notes) | new branch `math/linear-algebra/matrix-methods` (8 notes) and `ai/machine-learning/convex-optimization`; other lectures covered by existing linear algebra, probability, optimisation and deep learning notes |
 | MIT 18.065 problem sets (Spring 2018), textbook problems printed per lecture | 62 exercises with draft solutions (no official solutions); warm-ups (L1 Q1, Q9; L2), the repeated L11 II.2 Q10 and the TensorFlow Playground problem (L26 Q7) skipped |
+| Stanford EE364A slides (CVX101 online offering, Winter 2014), slide sets 2–12 | new part Convex Optimization, `math/optimization/` with six branches (36 notes): convex-sets, convex-functions, convex-problems, duality, applications, algorithms |
+| Stanford EE364A homework (CVX101, Winter 2014) HW 1–8 | 16 exercises with draft solutions (HW 1–4 and one from HW 6); software-only and data-driven numerical problems (HW 3 Q2, Q4, Q5; HW 4 Q4; HW 5–8 except HW 6 Q4) and the level-curve figure problem HW 2 Q1 not yet added |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
 course files (`meta/courses/`), not here.
@@ -167,3 +169,4 @@ course files (`meta/courses/`), not here.
 - 2026-11-20: MIT 6.041 (Fall 2010) added as a course (`mit6041`): resources `res-mit-6041-lectures` (prefix `mit6041-`) and `res-mit-6041-f10-psets` (prefix `mit6041f10-`); five new notes (derived distributions, iterated expectations and random sums, Bernoulli process, Bayesian inference, classical estimation) and probability axioms; 51 problem-set exercises; three figures. Recitations and tutorials not used.
 - 2026-11-20: MIT 18.05 (Spring 2022) added as a course (`mit1805`): resources `res-mit-1805-classes` (prefix `mit1805-`) and `res-mit-1805-s22-psets` (prefix `mit1805s22-`); new branches `math/statistics/bayesian` and `math/statistics/frequentist` (10 notes); 44 problem-set exercises (PS 1–11); bootstrap figure.
 - 2026-11-21: MIT 18.065 (Spring 2018) added as a course (`mit18065`): resources `res-mit-18065-lectures` (video, prefix `mit18065-`) and `res-mit-18065-psets` (prefix `mit18065ps-`, q = textbook problem number); new branch `math/linear-algebra/matrix-methods` (8 notes) and note `ai/machine-learning/convex-optimization`; 62 exercises; 4 figures.
+- 2026-11-21: Stanford EE364A (CVX101, Winter 2014) added as a course (`ee364a`): resources `res-stanford-ee364a-slides` (prefix `ee364a-`, locator = slide set) and `res-stanford-ee364a-hw` (prefix `ee364ahw-`); new part Convex Optimization (`math/optimization`, 6 branches, 36 notes); 16 exercises; 2 figures; optimization notation section in meta/notation.md.

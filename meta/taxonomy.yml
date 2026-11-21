@@ -568,6 +568,69 @@ parts:
           - confidence-intervals
           - bootstrap
           - least-squares-regression
+  - title: Convex Optimization
+    field: Mathematics
+    branches:
+      - id: math/optimization/convex-sets
+        title: Convex Sets
+        desc: Affine and convex sets, cones, polyhedra, operations preserving convexity, generalized inequalities, separating hyperplanes, dual cones
+        notes:   # topic order on the website
+          - affine-and-convex-sets
+          - examples-of-convex-sets
+          - operations-preserving-convex-sets
+          - generalized-inequalities
+          - separating-hyperplanes
+          - dual-cones
+      - id: math/optimization/convex-functions
+        title: Convex Functions
+        desc: Convexity conditions, operations preserving convexity, conjugates, quasiconvex and log-concave functions
+        notes:   # topic order on the website
+          - convex-functions
+          - operations-preserving-convex-functions
+          - conjugate-function
+          - quasiconvex-functions
+          - log-concave-functions
+      - id: math/optimization/convex-problems
+        title: Convex Optimization Problems
+        desc: Standard form, equivalent problems, LP, QP, SOCP, geometric and semidefinite programs, vector optimization
+        notes:   # topic order on the website
+          - optimization-problems
+          - equivalent-problems
+          - linear-and-quadratic-programs
+          - second-order-cone-programs
+          - geometric-programs
+          - semidefinite-programs
+          - vector-optimization
+      - id: math/optimization/duality
+        title: Duality
+        desc: Lagrange dual function and problem, strong duality, KKT conditions, sensitivity, reformulations
+        notes:   # topic order on the website
+          - lagrange-dual-function
+          - lagrange-dual-problem
+          - kkt-conditions
+          - sensitivity-analysis
+          - duality-and-reformulations
+      - id: math/optimization/applications
+        title: Applications
+        desc: Norm approximation, regularization and robust fitting, statistical estimation, experiment design, ellipsoids and centering, classification
+        notes:   # topic order on the website
+          - norm-approximation
+          - regularized-and-robust-approximation
+          - statistical-estimation
+          - experiment-design
+          - extremal-ellipsoids
+          - linear-discrimination
+      - id: math/optimization/algorithms
+        title: Algorithms
+        desc: Structured linear equations, descent and Newton methods, self-concordance, equality constraints, interior-point methods
+        notes:   # topic order on the website
+          - structured-linear-equations
+          - descent-methods
+          - newtons-method-for-minimization
+          - self-concordance
+          - equality-constrained-minimization
+          - barrier-method
+          - phase-one-and-complexity
   - title: Algorithms
     field: Computer Science
     branches:

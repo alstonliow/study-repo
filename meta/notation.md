@@ -243,6 +243,27 @@ not here.
 
 <!-- TODO: 1058note chapter 11 has no probability section. Add symbols during migration of chapter 9. -->
 
+### Convex optimization (`math/optimization`)
+
+<!-- Added 2026-11-21 with Stanford EE364A (CVX101). Vectors are plain lowercase letters, as in Boyd and Vandenberghe; matrices are capitals. -->
+
+| Symbol | Meaning |
+|---|---|
+| $x,y,z\in\mathbb{R}^n$; $x_i$ | vectors (plain lowercase); components |
+| $\mathbf 1$, $e_i$ | the all-ones vector; the $i$-th unit vector |
+| $x\preceq y$, $x\prec y$ | componentwise inequality ($x_i\le y_i$, $x_i<y_i$) for vectors |
+| $\mathbb S^n$, $\mathbb S^n_+$, $\mathbb S^n_{++}$ | symmetric, positive semidefinite, positive definite $n\times n$ matrices |
+| $X\succeq0$, $X\succ0$ | $X\in\mathbb S^n_+$, $X\in\mathbb S^n_{++}$ |
+| $x\preceq_K y$, $x\prec_K y$ | generalized inequality: $y-x\in K$, $y-x\in\operatorname{int}K$ |
+| $K^*$, $\lVert\cdot\rVert_*$ | dual cone, dual norm |
+| $\operatorname{dom}f$ | domain of $f$; $f$ is $+\infty$ outside it (extended-value extension) |
+| $\operatorname{epi}f$, $f^*$ | epigraph, conjugate function |
+| $\operatorname{conv}C$, $\operatorname{int}C$, $\operatorname{relint}C$ | convex hull, interior, relative interior |
+| $\nabla f(x)$, $\nabla^2 f(x)$ | gradient, Hessian |
+| $p^\star$, $d^\star$, $x^\star$, $(\lambda^\star,\nu^\star)$ | optimal values of the primal and dual problems; optimal points |
+| $L(x,\lambda,\nu)$, $g(\lambda,\nu)$ | Lagrangian, Lagrange dual function |
+| $\Delta x_{\rm nt}$, $\lambda(x)$ | Newton step, Newton decrement |
+
 ## Algorithms (`cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`)
 
 | Symbol | Meaning |
