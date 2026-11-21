@@ -90,6 +90,28 @@ $S=\operatorname{diag}(2,1)$ and $\mathbf{u}=(1,1)$ give $S+\mathbf{u}\mathbf{u}
 
 :::
 
+::: {#fig-eigenvalue-perturbation-and-interlacing-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0.75,0) -- (6.30,0);
+\draw[faint] (0.75,-1) -- (6.30,-1);
+\node[dot] at (1.5,0) {}; \node[lab, above] at (1.5,0) {$1$};
+\node[dot] at (3.0,0) {}; \node[lab, above] at (3.0,0) {$2$};
+\node[hl dot] at (2.073,-1) {}; \node[lab, below] at (2.073,-1) {$1.382$};
+\node[hl dot] at (5.427,-1) {}; \node[lab, below] at (5.427,-1) {$3.618$};
+\draw[dashed, faint] (1.5,0) -- (1.5,-1);
+\draw[dashed, faint] (3.0,0) -- (3.0,-1);
+\node[lab, left] at (0.7,0) {$S$}; \node[lab, left] at (0.7,-1) {$S+\mathbf u\mathbf u^{\mathsf T}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Interlacing in the example: each eigenvalue moves up, but not past the next old eigenvalue: $1\le1.382\le2\le3.618$.
+
+:::
+
 ::: {#prp-derivative-of-inverse .proposition name="Derivative of an inverse"}
 
 If $A(t)$ is invertible and differentiable, then

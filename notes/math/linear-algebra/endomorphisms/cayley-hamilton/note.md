@@ -65,6 +65,30 @@ $$\sum_{k=0}^n\big(A^kB_{k-1}-A^{k+1}B_k\big)=\sum_{k=0}^nc_kA^k=\chi_A(A).$$
 
 :::
 
+::: {#fig-cayley-hamilton-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] (u0) at (0.0,0) {$U_0$};
+\node[lab] (u1) at (1.9,0) {$U_1$};
+\node[lab] (u2) at (3.8,0) {$U_2$};
+\node[lab] (u3) at (5.70,0) {$U_3$};
+\draw[map] (u3) to[bend right=35] node[lab, tick, above] {$\alpha-\lambda_3\iota$} (u2);
+\draw[map] (u2) to[bend right=35] node[lab, tick, above] {$\alpha-\lambda_2\iota$} (u1);
+\draw[map] (u1) to[bend right=35] node[lab, tick, above] {$\alpha-\lambda_1\iota$} (u0);
+\node[lab] at (0.95,0) {$\subset$};
+\node[lab] at (2.85,0) {$\subset$};
+\node[lab] at (4.75,0) {$\subset$};
+\node[lab, below] at (2.85,-0.4) {$U_0=\{0\},\quad U_j=\langle v_1,\dots,v_j\rangle$};
+\end{tikzpicture}
+\end{center}
+```
+
+The first proof for $n=3$: in a triangular basis, $\alpha-\lambda_j\iota$ maps $U_j$ into $U_{j-1}$, so applying the three factors of $\chi_\alpha(\alpha)$ walks $V=U_3$ down to $\{0\}$.
+
+:::
+
 Substituting $t=A$ directly into "$\chi_A(t)=\det(tI-A)$" is not a proof: $\det(AI-A)=\det0$ is a scalar, while $\chi_A(A)$ is a matrix.
 
 ::: {#cor-minimal-and-characteristic-same-roots .corollary name="Same roots"}

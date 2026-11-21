@@ -1,7 +1,19 @@
 ::: {.problem #prob-mit1806s10-1-q1 origin="external" source="mit1806s10-1-q1"}
 The figure shows that $\cos(\alpha)=v_1/\lVert\mathbf{v}\rVert$ and $\sin(\alpha)=v_2/\lVert\mathbf{v}\rVert$. Similarly $\cos(\beta)$ is \_\_\_\_\_ and $\sin(\beta)$ is \_\_\_\_\_. The angle $\theta$ is $\beta-\alpha$. Substitute into the trigonometry formula $\cos(\alpha)\cos(\beta)+\sin(\beta)\sin(\alpha)$ for $\cos(\beta-\alpha)$ to find $\cos(\theta)=\mathbf{v}\cdot\mathbf{w}/\lVert\mathbf{v}\rVert\lVert\mathbf{w}\rVert$.
 
-*Note (these notes):* The figure is not reproduced: it shows $\mathbf{v}$ and $\mathbf{w}$ in the plane, making angles $\alpha$ and $\beta$ with the $x$-axis.
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.4,0) -- (3.6,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,3.0) node[lab, above] {$y$};
+\draw[->, emph] (0,0) -- (3,1) node[lab, right] {$\mathbf v=(v_1,v_2)$};
+\draw[->, emph] (0,0) -- (1.5,2.598) node[lab, above] {$\mathbf w=(w_1,w_2)$};
+\draw (1.0,0) arc (0:18.43:1.0); \node[lab, tick] at (1.2,0.18) {$\alpha$};
+\draw (0.5,0) arc (0:60:0.5); \node[lab, tick] at (0.5,0.5) {$\beta$};
+\draw[hl] (1.6,0.533) arc (18.43:60:1.687); \node[lab, tick] at (1.5,1.3) {$\theta$};
+\end{tikzpicture}
+\end{center}
+```
 :::
 
 ::: {.problem #prob-mit1806s10-1-q2 origin="external" source="mit1806s10-1-q2"}

@@ -58,6 +58,35 @@ Induction on $n=\dim V$; $n\le1$ is trivial.
 
 :::
 
+::: {#fig-symmetric-forms-and-quadratic-forms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm]
+\draw[faint] (-1.4,0) -- (1.4,0); \draw[faint] (0,-1.4) -- (0,1.4);
+\draw[hl] (0,0) circle (1);
+\node[lab, below] at (0,-1.5) {$x^2+y^2=1$};
+\end{scope}
+\begin{scope}[xshift=3.4cm]
+\draw[faint] (-1.4,0) -- (1.4,0); \draw[faint] (0,-1.4) -- (0,1.4);
+\draw[hl, domain=-0.85:0.85, smooth, variable=\t] plot ({cosh(\t)},{sinh(\t)});
+\draw[hl, domain=-0.85:0.85, smooth, variable=\t] plot ({-cosh(\t)},{sinh(\t)});
+\node[lab, below] at (0,-1.5) {$x^2-y^2=1$};
+\end{scope}
+\begin{scope}[xshift=6.8cm]
+\draw[faint] (-1.4,0) -- (1.4,0); \draw[faint] (0,-1.4) -- (0,1.4);
+\draw[hl] (1,-1.3) -- (1,1.3); \draw[hl] (-1,-1.3) -- (-1,1.3);
+\node[lab, below] at (0,-1.5) {$x^2=1$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+After diagonalising, a real quadratic form on $\mathbb R^2$ is $\pm x^2\pm y^2$ or simpler, and the curve $q=1$ shows which: an ellipse for signature $(2,0)$, a hyperbola for $(1,1)$, two lines for rank $1$.
+
+:::
+
 ```{=latex}
 \begin{algorithm}
 \caption{Diagonalising a symmetric form}

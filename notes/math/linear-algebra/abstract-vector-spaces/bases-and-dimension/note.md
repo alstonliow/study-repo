@@ -154,3 +154,21 @@ If $U\le V$ and $V$ is finite-dimensional, then $\dim V/U=\dim V-\dim U$. More p
 In $\mathbb R^4$ let $U=\langle e_1,e_2\rangle$ and $W=\langle e_2+e_3,\ e_4\rangle$. Then $U+W=\langle e_1,e_2,e_3,e_4\rangle=\mathbb R^4$ has dimension $4=2+2-\dim(U\cap W)$, so $U\cap W=\{0\}$. Replacing $W$ by $W'=\langle e_2,e_3\rangle$ gives $U+W'=\langle e_1,e_2,e_3\rangle$ of dimension $3$, so $\dim(U\cap W')=1$; indeed $U\cap W'=\langle e_2\rangle$.
 
 :::
+
+::: {#fig-bases-and-dimension-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0,0) ellipse (1.6 and 1.0); \draw (0,0) ellipse (1.6 and 1.0);
+\fill[tintB] (1.6,0) ellipse (1.6 and 1.0); \draw (1.6,0) ellipse (1.6 and 1.0);
+\node[lab] at (-1.0,1.2) {$U$}; \node[lab] at (2.6,1.2) {$W'$};
+\node[lab] at (-0.7,0) {$e_1$}; \node[lab] at (0.8,0) {$e_2$}; \node[lab] at (2.3,0) {$e_3$};
+\node[lab, below] at (0.8,-1.05) {$U\cap W'=\langle e_2\rangle$};
+\end{tikzpicture}
+\end{center}
+```
+
+$U=\langle e_1,e_2\rangle$ and $W'=\langle e_2,e_3\rangle$ share the basis vector $e_2$. A basis of $U+W'$ counts $e_2$ once: $\dim(U+W')=2+2-1=3$.
+
+:::

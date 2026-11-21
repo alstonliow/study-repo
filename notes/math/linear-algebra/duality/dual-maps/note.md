@@ -14,6 +14,23 @@ $$\alpha':W^*\to V^*,\qquad \alpha'(\theta)=\theta\circ\alpha.$$
 
 :::
 
+::: {#fig-dual-maps-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] (U) at (0,0) {$U$}; \node[lab] (V) at (2.6,0) {$V$}; \node[lab] (K) at (5.2,0) {$F$};
+\draw[map] (U) -- node[lab, above] {$\alpha$} (V);
+\draw[map] (V) -- node[lab, above] {$\theta\in V^*$} (K);
+\draw[map, hl] (U) to[bend right=30] node[lab, below] {$\alpha'(\theta)=\theta\circ\alpha\in U^*$} (K);
+\end{tikzpicture}
+\end{center}
+```
+
+The dual map goes backwards: a functional $\theta$ on $V$ is pulled back along $\alpha$ to the functional $\theta\circ\alpha$ on $U$, so $\alpha':V^*\to U^*$.
+
+:::
+
 $\alpha'(\theta)$ is linear as a composition of linear maps, and $\alpha'$ is linear in $\theta$. Directly from the definition, $(\beta\alpha)'=\alpha'\beta'$ and $\iota'=\iota$; so the dual of an isomorphism is an isomorphism with $(\alpha^{-1})'=(\alpha')^{-1}$.
 
 ::: {#thm-dual-map-matrix .theorem name="The dual map is the transpose"}

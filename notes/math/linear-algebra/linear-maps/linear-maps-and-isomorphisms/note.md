@@ -61,6 +61,26 @@ $$\ker\alpha=\{u\in U:\alpha(u)=0\},\qquad \operatorname{im}\alpha=\{\alpha(u):u
 
 :::
 
+::: {#fig-linear-maps-and-isomorphisms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[tintA, draw=ink] (0,0) ellipse (1.1 and 1.6); \node[lab] at (0,1.85) {$U$};
+\draw[tintB, draw=ink] (4,0) ellipse (1.1 and 1.6); \node[lab] at (4,1.85) {$V$};
+\draw[regionA] (0,-0.75) ellipse (0.7 and 0.45); \node[lab] at (0,-0.75) {$\ker\alpha$};
+\draw[regionB] (4,0.35) ellipse (0.75 and 0.8); \node[lab] at (4,0.6) {$\operatorname{Im}\alpha$};
+\node[dot] (z) at (4,0) {}; \node[lab, below] at (4,0) {$0$};
+\draw[map] (0.3,-0.65) to[bend right=12] (z);
+\draw[map] (0.2,0.7) to[bend left=12] node[lab, above] {$\alpha$} (3.8,0.9);
+\end{tikzpicture}
+\end{center}
+```
+
+A linear map $\alpha:U\to V$ sends the whole kernel to $0$; its image is a subspace of $V$. $\alpha$ is injective when $\ker\alpha=\{0\}$ and surjective when $\operatorname{Im}\alpha=V$.
+
+:::
+
 ::: {#prp-kernel-image-subspaces .proposition name="Kernel and image are subspaces"}
 
 $\ker\alpha\le U$ and $\operatorname{im}\alpha\le V$. Moreover $\alpha$ is injective if and only if $\ker\alpha=\{0\}$.

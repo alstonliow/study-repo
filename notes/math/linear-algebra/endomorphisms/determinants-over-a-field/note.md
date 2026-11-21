@@ -42,6 +42,27 @@ A *volume form* on $F^n$ is a map $d:F^n\times\dots\times F^n\to F$ ($n$ argumen
 
 :::
 
+::: {#fig-determinants-over-a-field-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->, faint] (-0.4,0) -- (3.2,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,2.2) node[lab, above] {$y$};
+\fill[shade] (0,0) rectangle (1,1); \node[lab, tick] at (0.5,0.5) {$1$};
+\fill[tintB] (0,0) -- (2,0.5) -- (3,2) -- (1,1.5) -- cycle;
+\draw (0,0) -- (2,0.5) -- (3,2) -- (1,1.5) -- cycle;
+\draw[->, emph] (0,0) -- (2,0.5) node[lab, below right] {$Ae_1$};
+\draw[->, emph] (0,0) -- (1,1.5) node[lab, above left] {$Ae_2$};
+\node[lab] at (2.0,1.0) {$\det A$};
+\end{tikzpicture}
+\end{center}
+```
+
+Over $\mathbb R$ the determinant is the volume form normalised on the unit cube: for $A=\begin{bmatrix}2&1\\0.5&1.5\end{bmatrix}$ the image of the unit square has signed area $\det A=2.5$. Over a general field only the algebraic rules (multilinear, alternating) remain.
+
+:::
+
 ::: {#lem-volume-form-permutation .lemma name="Volume forms change sign"}
 
 Let $d$ be a volume form. Exchanging two arguments multiplies $d$ by $-1$, and for $\sigma\in S_n$,

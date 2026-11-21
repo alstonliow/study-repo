@@ -58,6 +58,29 @@ $$Q=UV^{\mathsf T}\quad\text{minimises}\quad\lVert X-YQ\rVert_F .$$
 
 :::
 
+::: {#fig-distance-matrices-and-procrustes-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0.00,0.00) -- (1.40,0.20) -- (0.50,1.10) -- cycle;
+\node[dot] at (0.00,0.00) {}; \node[lab, tick, below right] at (0.00,0.00) {$1$};
+\node[dot] at (1.40,0.20) {}; \node[lab, tick, below right] at (1.40,0.20) {$2$};
+\node[dot] at (0.50,1.10) {}; \node[lab, tick, below right] at (0.50,1.10) {$3$};
+\draw[faint] (4.00,0.00) -- (4.29,1.38) -- (3.14,0.85) -- cycle;
+\node[hl dot] at (4.00,0.00) {}; \node[lab, tick, below right] at (4.00,0.00) {$1$};
+\node[hl dot] at (4.29,1.38) {}; \node[lab, tick, below right] at (4.29,1.38) {$2$};
+\node[hl dot] at (3.14,0.85) {}; \node[lab, tick, below right] at (3.14,0.85) {$3$};
+\node[lab, below] at (0.7,-0.3) {cloud $X$}; \node[lab, below] at (3.7,-0.3) {cloud $Y$};
+\draw[map] (3.0,1.4) to[bend right=30] node[lab, above] {$Q$} (1.4,1.4);
+\end{tikzpicture}
+\end{center}
+```
+
+Two labelled point clouds that differ by a rotation. Procrustes finds the orthogonal $Q$ that best turns $Y$ onto $X$ point by point; with noise the fit is not exact and $Q=UV^{\mathsf T}$ minimises the total squared error.
+
+:::
+
 ::: {#rmk-distance-matrices-and-procrustes-1 .remark name="Uses"}
 
 Recovering points from distances is *multidimensional scaling*; with noisy distances one keeps the top $k$ eigenvalues of $G$ (@thm-eckart-young-frobenius) to get the best $k$-dimensional picture. Procrustes aligns two such pictures, or two shapes, scans or word embeddings, before they are compared; centring both clouds first also removes the translation.

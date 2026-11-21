@@ -30,6 +30,25 @@ so in coordinates every bilinear form on $F^n\times F^m$ is $(\mathbf x,\mathbf 
 
 :::
 
+::: {#fig-bilinear-forms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.4,0) -- (3.6,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,2.4) node[lab, above] {$y$};
+\fill[shade] (0,0) -- (2.4,0.6) -- (3.2,2.0) -- (0.8,1.4) -- cycle;
+\draw[->, emph] (0,0) -- (2.4,0.6) node[lab, below right] {$\mathbf x$};
+\draw[->, emph] (0,0) -- (0.8,1.4) node[lab, above left] {$\mathbf y$};
+\node[lab] at (1.6,1.0) {$\psi(\mathbf x,\mathbf y)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The form $\psi(\mathbf x,\mathbf y)=x_1y_2-x_2y_1$ of item 2 over $\mathbb R$ is the signed area of the parallelogram on $\mathbf x$ and $\mathbf y$: positive when $\mathbf y$ is anticlockwise from $\mathbf x$, and $0$ when $\mathbf y=\mathbf x$.
+
+:::
+
 ::: {#prp-bilinear-form-change-of-basis .proposition name="Change of basis for a bilinear form"}
 
 If $P$ and $Q$ are the change of basis matrices from $\mathcal B$ to $\mathcal B'$ and from $\mathcal C$ to $\mathcal C'$ (as in @thm-change-of-basis-two-spaces), then

@@ -37,6 +37,29 @@ $$
 
 :::
 
+::: {#fig-matrix-derivatives-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.0,0.0) rectangle (1.1,0.8); \node[lab] at (0.55,0.4) {$A_{11}$};
+\draw[hl cell] (1.1,0.0) rectangle (2.2,0.8); \node[lab] at (1.65,0.4) {$A_{12}$};
+\draw[cell frame] (0.0,-0.8) rectangle (1.1,0.0); \node[lab] at (0.55,-0.4) {$A_{21}$};
+\draw[cell frame] (1.1,-0.8) rectangle (2.2,0.0); \node[lab] at (1.65,-0.4) {$A_{22}$};
+\draw[cell frame] (3.6,0.0) rectangle (4.7,0.8); \node[lab] at (4.15,0.4) {$\frac32$};
+\draw[hl cell] (4.7,0.0) rectangle (5.80,0.8); \node[lab] at (5.25,0.4) {$10A_{12}$};
+\draw[cell frame] (3.6,-0.8) rectangle (4.7,0.0); \node[lab] at (4.15,-0.4) {$A_{22}$};
+\draw[cell frame] (4.7,-0.8) rectangle (5.80,0.0); \node[lab] at (5.25,-0.4) {$A_{21}$};
+\node[lab, above] at (1.1,0.85) {$A$}; \node[lab, above] at (4.7,0.85) {$\nabla_Af(A)$};
+\draw[map] (2.3,0) -- node[lab, above] {$\partial f/\partial A_{ij}$} (3.5,0);
+\end{tikzpicture}
+\end{center}
+```
+
+The gradient with respect to a matrix has the shape of the matrix: entry $(i,j)$ is $\partial f/\partial A_{ij}$. Here the highlighted entry $A_{12}$ enters $f$ as $5A_{12}^2$, giving $10A_{12}$.
+
+:::
+
 ::: {#prp-matrix-gradient-rules .proposition name="Gradients of traces, quadratic forms and log determinants"}
 
 1. For $A\in\mathbb{R}^{m\times n}$ and a fixed $B\in\mathbb{R}^{n\times m}$,

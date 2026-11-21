@@ -61,6 +61,29 @@ $$U^0=\{\theta\in V^*:\theta(u)=0\text{ for all }u\in U\}\ \le V^*.$$
 
 :::
 
+::: {#fig-dual-spaces-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[faint] (-4.4,-1.2) -- (0.4,1.2);
+\node[lab, tick, left] at (-4.4,-1.2) {$\theta=-2$};
+\draw[faint] (-3.4,-1.2) -- (1.4,1.2);
+\draw[hl] (-2.4,-1.2) -- (2.4,1.2);
+\draw[faint] (-1.4,-1.2) -- (3.4,1.2);
+\draw[faint] (-0.4,-1.2) -- (4.4,1.2);
+\node[lab, tick, right] at (4.4,1.2) {$\theta=2$};
+\node[lab, above left] at (-0.2,1.2) {$U=\ker\theta$};
+\draw[->, emph] (0,0) -- (1.6,0.8) node[lab, below right] {$u$};
+\node[dot] at (0,0) {};
+\end{tikzpicture}
+\end{center}
+```
+
+A functional on $\mathbb R^2$ drawn by its level lines, here $\theta(x,y)=x-2y$. $\theta$ lies in the annihilator $U^0$ of the line $U$ exactly when its zero line contains $U$; up to scaling there is one such $\theta$, so $\dim U^0=2-1$.
+
+:::
+
 ::: {#thm-dimension-of-annihilator .theorem name="Dimension of the annihilator"}
 
 If $V$ is finite-dimensional and $U\le V$, then

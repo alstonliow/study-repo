@@ -117,3 +117,23 @@ If $\chi_\alpha$ splits over $F$ (in particular if $F=\mathbb C$), then $V$ has 
 $A=\begin{bmatrix}2&1&0\\0&2&0\\0&0&3\end{bmatrix}$ has $m_A=(t-2)^2(t-3)$ (@exm-minimal-polynomial). Its generalised eigenspaces are $\ker(A-2I)^2=\langle e_1,e_2\rangle$ and $\ker(A-3I)=\langle e_3\rangle$, while the eigenspace $E(2)=\langle e_1\rangle$ is smaller. Bézout: $p_1=t-3$, $p_2=(t-2)^2$, and $-(t-1)p_1+p_2=-(t^2-4t+3)+(t^2-4t+4)=1$, so $\pi_1=-(A-I)(A-3I)$ and $\pi_2=(A-2I)^2$ are the projections onto the two generalised eigenspaces along each other.
 
 :::
+
+::: {#fig-generalized-eigenspaces-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[regionA] (0,0) rectangle (3.4,2.0); \node[lab, above] at (1.7,2.0) {$\ker(A-2I)^2=\langle e_1,e_2\rangle$};
+\draw[regionB] (0.3,0.3) rectangle (1.5,1.4); \node[lab, tick] at (0.9,1.15) {$E(2)$};
+\node[lab] (e1) at (0.9,0.65) {$e_1$}; \node[lab] (e2) at (2.9,0.65) {$e_2$};
+\draw[map] (e2) -- node[lab, tick, below=3pt] {$A-2I$} (e1);
+\draw[regionC] (4.0,0) rectangle (5.6,2.0); \node[lab, above] at (4.8,2.0) {$\ker(A-3I)$};
+\node[lab] at (4.8,1.0) {$e_3$};
+\node[lab] at (3.6,1.0) {$\oplus$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\mathbb R^3$ splits into the two generalised eigenspaces of $A$. The eigenspace $E(2)$ is only part of the first one; $e_2$ reaches it after one step of $A-2I$.
+
+:::

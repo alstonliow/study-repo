@@ -98,3 +98,39 @@ Let $\alpha,\beta\in\operatorname{End}(V)$ both be diagonalisable. There is a ba
 3. A projection $\pi$ ($\pi^2=\pi$) is killed by $t^2-t=t(t-1)$, so it is diagonalisable with eigenvalues among $0,1$. An involution ($\sigma^2=\iota$) is killed by $(t-1)(t+1)$, which has distinct factors when $1+1\ne0$; over $\mathbb F_2$ the swap matrix is an involution that is not diagonalisable (@exm-endomorphism-not-diagonalisable).
 
 :::
+
+::: {#fig-minimal-polynomial-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm]
+\node[lab] (n000) at (0,-0.0) {$e_1$};
+\node[lab] (n001) at (1.5,-0.0) {$0$};
+\draw[map] (n000) -- node[lab, tick, above] {$A-2I$} (n001);
+\node[lab] (n010) at (0,-0.9) {$e_2$};
+\node[lab] (n011) at (1.5,-0.9) {$0$};
+\draw[map] (n010) -- node[lab, tick, above] {$A-2I$} (n011);
+\node[lab] (n020) at (0,-1.8) {$e_3$};
+\node[lab] (n021) at (1.5,-1.8) {$0$};
+\draw[map] (n020) -- node[lab, tick, above] {$A-3I$} (n021);
+\node[lab, above] at (1.2,0.5) {$A$: $m_A=(t-2)(t-3)$};
+\end{scope}
+\begin{scope}[xshift=4.5cm]
+\node[lab] (n400) at (0,-0.0) {$e_2$};
+\node[lab] (n401) at (1.5,-0.0) {$e_1$};
+\draw[map] (n400) -- node[lab, tick, above] {$B-2I$} (n401);
+\node[lab] (n402) at (3.0,-0.0) {$0$};
+\draw[map] (n401) -- node[lab, tick, above] {$B-2I$} (n402);
+\node[lab] (n410) at (0,-0.9) {$e_3$};
+\node[lab] (n411) at (1.5,-0.9) {$0$};
+\draw[map] (n410) -- node[lab, tick, above] {$B-3I$} (n411);
+\node[lab, above] at (1.2,0.5) {$B$: $m_B=(t-2)^2(t-3)$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Parts 1 and 2: for $A$ one step of $A-2I$ kills $e_1$ and $e_2$, but for $B$ the vector $e_2$ needs two steps of $B-2I$. The exponent of $t-\lambda$ in $m$ is the length of the longest such chain.
+
+:::

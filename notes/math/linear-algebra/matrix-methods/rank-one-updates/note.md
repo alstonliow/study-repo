@@ -29,6 +29,29 @@ For $A=I$: $(I-\mathbf{u}\mathbf{v}^{\mathsf T})^{-1}=I+\dfrac{\mathbf{u}\mathbf
 
 :::
 
+::: {#fig-rank-one-updates-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\draw[cell frame] (0,0) rectangle (1.6,1.6); \node[lab] at (0.8,0.8) {$A$};
+\node[lab] at (2.0,0.8) {$+$};
+\draw[hl cell] (2.4,0) rectangle (2.7,1.6); \node[lab, below] at (2.55,0) {$\mathbf u$};
+\draw[hl cell] (2.9,1.3) rectangle (4.5,1.6); \node[lab, below] at (3.7,1.3) {$\mathbf v^{\mathsf T}$};
+\node[lab] at (5.1,0.8) {$\Longrightarrow$};
+\draw[cell frame] (5.7,0) rectangle (7.3,1.6); \node[lab] at (6.5,0.8) {$A^{-1}$};
+\node[lab] at (7.7,0.8) {$-$};
+\draw[hl cell] (8.1,0) rectangle (8.4,1.6);
+\draw[hl cell] (8.6,1.3) rectangle (10.2,1.6);
+\node[lab, below] at (9.15,-0.2) {$\dfrac{(A^{-1}\mathbf u)(\mathbf v^{\mathsf T}A^{-1})}{1+\mathbf v^{\mathsf T}A^{-1}\mathbf u}$};
+\end{tikzpicture}
+\end{center}
+```
+
+A rank one change of $A$ (a column times a row) changes $A^{-1}$ by another rank one matrix, so the new inverse costs a few matrix–vector products instead of a fresh inversion.
+
+:::
+
 ::: {#thm-woodbury .theorem name="Woodbury formula"}
 
 Let $A$ ($n\times n$) be invertible, $U$ be $n\times k$, $V$ be $n\times k$, and suppose $I_k-V^{\mathsf T}A^{-1}U$ is invertible. Then

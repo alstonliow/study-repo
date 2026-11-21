@@ -38,6 +38,25 @@ $$[\beta\alpha]_{\mathcal B,\mathcal D}=[\beta]_{\mathcal C,\mathcal D}\,[\alpha
 
 :::
 
+::: {#fig-matrices-of-linear-maps-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] (U) at (0,1.8) {$U$}; \node[lab] (V) at (3.2,1.8) {$V$};
+\node[lab] (Fn) at (0,0) {$F^n$}; \node[lab] (Fm) at (3.2,0) {$F^m$};
+\draw[map] (U) -- node[lab, above] {$\alpha$} (V);
+\draw[map] (Fn) -- node[lab, below] {$[\alpha]_{\mathcal B,\mathcal C}$} (Fm);
+\draw[map] (U) -- node[lab, left] {$[\,\cdot\,]_{\mathcal B}$} (Fn);
+\draw[map] (V) -- node[lab, right] {$[\,\cdot\,]_{\mathcal C}$} (Fm);
+\end{tikzpicture}
+\end{center}
+```
+
+Coordinates turn the map into a matrix: going right then down equals going down then right, $[\alpha(u)]_{\mathcal C}=[\alpha]_{\mathcal B,\mathcal C}[u]_{\mathcal B}$. For differentiation (@exm-matrix-of-differentiation), $p\mapsto p'$ on top is $(1,1,1,1)^{\mathsf T}\mapsto(1,2,3)^{\mathsf T}$ below.
+
+:::
+
 Item 3 is the reason matrix multiplication is defined the way it is (@def-matrix-product): it is composition of maps written in coordinates. Associativity of the matrix product follows at once from associativity of composition.
 
 ::: {#exm-matrix-of-differentiation .example name="Differentiation as a matrix"}

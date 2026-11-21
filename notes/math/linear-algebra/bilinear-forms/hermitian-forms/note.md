@@ -17,6 +17,39 @@ Its matrix in bases $e_i$, $f_j$ is $A$ with $a_{ij}=\phi(e_i,f_j)$. A sesquilin
 
 :::
 
+::: {#fig-hermitian-forms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.0,0.0) rectangle (0.9,0.9);
+\draw[cell frame] (0.9,0.0) rectangle (1.8,0.9);
+\draw[cell frame] (1.8,0.0) rectangle (2.7,0.9);
+\draw[cell frame] (0.0,-0.9) rectangle (0.9,0.0);
+\draw[hl cell] (0.9,-0.9) rectangle (1.8,0.0);
+\draw[cell frame] (1.8,-0.9) rectangle (2.7,0.0);
+\draw[cell frame] (0.0,-1.8) rectangle (0.9,-0.9);
+\draw[cell frame] (0.9,-1.8) rectangle (1.8,-0.9);
+\draw[hl cell] (1.8,-1.8) rectangle (2.7,-0.9);
+\node[lab] at (0.45,0.45) {$a$};
+\node[lab] at (1.35,-0.45) {$b$};
+\node[lab] at (2.25,-1.35) {$c$};
+\node[lab] at (1.35,0.45) {$z$};
+\node[lab] at (0.45,-0.45) {$\bar z$};
+\node[lab] at (2.25,0.45) {$w$};
+\node[lab] at (0.45,-1.35) {$\bar w$};
+\node[lab] at (2.25,-0.45) {$u$};
+\node[lab] at (1.35,-1.35) {$\bar u$};
+\node[lab, right] at (3.0,0.45) {$a,b,c\in\mathbb R$};
+\node[lab, right] at (3.0,-0.45) {$a_{ji}=\overline{a_{ij}}$};
+\end{tikzpicture}
+\end{center}
+```
+
+The matrix of a Hermitian form satisfies $A^{\mathsf H}=A$: entries mirrored in the diagonal are complex conjugates, so the diagonal is real and $\phi(\mathbf z,\mathbf z)$ is always real.
+
+:::
+
 In coordinates $\phi(v,w)=[v]^{\mathsf T}A\,\overline{[w]}$. The form is Hermitian exactly when its matrix satisfies $A=A^{\mathsf H}$ (@def-hermitian-unitary). For a Hermitian form, $\phi(v,v)=\overline{\phi(v,v)}$ is real, so it makes sense to ask for its sign.
 
 ::: {#prp-hermitian-form-change-of-basis .proposition name="Change of basis for a Hermitian form"}

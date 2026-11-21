@@ -119,3 +119,24 @@ In particular, if $\alpha$ has $n=\dim V$ distinct eigenvalues, it is diagonalis
 $A=\begin{bmatrix}0&-1\\1&0\end{bmatrix}$ is not diagonalisable over $\mathbb R$ (no eigenvalues), but over $\mathbb C$ its eigenvalues $i,-i$ are distinct and $E(i)\oplus E(-i)=\mathbb C^2$ with $E(\pm i)=\langle(1,\mp i)^{\mathsf T}\rangle$. The matrix $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ is diagonalisable over no field: its only eigenvalue is $1$ and $E(1)=\langle e_1\rangle$ has dimension $1<2$. Over $\mathbb F_2$, $\begin{bmatrix}0&1\\1&0\end{bmatrix}$ has $\chi(t)=t^2-1=(t-1)^2$ and $E(1)=\langle(1,1)^{\mathsf T}\rangle$, so the swap matrix, diagonalisable over $\mathbb R$, is not diagonalisable over $\mathbb F_2$.
 
 :::
+
+::: {#fig-eigenvalues-of-endomorphisms-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+\draw[->, faint] (-0.4,0) -- (2.6,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,1.6) node[lab, above] {$y$};
+\draw[faint, dashed] (0,0) rectangle (1,1);
+\fill[tintA] (0,0) -- (1,0) -- (2,1) -- (1,1) -- cycle;
+\draw (0,0) -- (1,0) -- (2,1) -- (1,1) -- cycle;
+\draw[hl] (-0.4,0) -- (2.4,0) node[lab, below, pos=0.95] {$E(1)$};
+\draw[->, emph] (0,0) -- (0,1) node[lab, left] {$e_2$};
+\draw[->, emph] (0,0) -- (1,1) node[lab, above] {$Ae_2$};
+\end{tikzpicture}
+\end{center}
+```
+
+The shear $A=\begin{bmatrix}1&1\\0&1\end{bmatrix}$ moves the unit square to a parallelogram. Only vectors on the $x$-axis keep their direction, so there is one eigenline $E(1)$ and no basis of eigenvectors.
+
+:::

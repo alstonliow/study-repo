@@ -122,3 +122,21 @@ Over $\mathbb R$ this fails: a rotation of the plane by an angle other than $0$ 
 2. Take $A=\operatorname{diag}(1,4)$ (positive definite) and $B=\begin{bmatrix}0&1\\1&0\end{bmatrix}$. $\det(B-tA)=4t^2-1$ has roots $\pm\frac12$. The vectors $v_1=\frac1{\sqrt2}(1,\frac12)^{\mathsf T}$ and $v_2=\frac1{\sqrt2}(1,-\frac12)^{\mathsf T}$ satisfy $v_i^{\mathsf T}Av_j=\delta_{ij}$ and $Q^{\mathsf T}BQ=\operatorname{diag}(\frac12,-\frac12)$ for $Q=[v_1\ v_2]$.
 
 :::
+
+::: {#fig-spectral-theorem-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.2]
+\draw[->, faint] (-0.4,0) -- (2.0,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,2.0) node[lab, above] {$y$};
+\draw[hl, rotate=-45] (0,0) ellipse (1.600 and 0.924);
+\draw[->, emph] (0,0) -- (0.653,0.653) node[lab, above right] {$\lambda=3$};
+\draw[->, emph] (0,0) -- (1.131,-1.131) node[lab, below right] {$\lambda=1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The curve $2x^2+2xy+2y^2=1$ of part 1 is an ellipse whose axes are the orthonormal eigenvectors $\frac1{\sqrt2}(1,1)$ and $\frac1{\sqrt2}(1,-1)$; in those coordinates it is $3u^2+v^2=1$, with semi-axes $1/\sqrt3$ and $1$.
+
+:::

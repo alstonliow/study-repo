@@ -94,3 +94,36 @@ So, once an orthonormal basis $e_1,\dots,e_n$ is fixed, $\alpha\mapsto(\alpha e_
 The matrices in $O(2)$ have orthonormal columns: the first is $(\cos\theta,\sin\theta)^{\mathsf T}$ and the second is $\pm(-\sin\theta,\cos\theta)^{\mathsf T}$. With $+$ this is the rotation by $\theta$ ($\det=1$); with $-$ it is $\begin{bmatrix}\cos\theta&\sin\theta\\\sin\theta&-\cos\theta\end{bmatrix}$, the reflection in the line at angle $\theta/2$ ($\det=-1$). On $\mathbb C^1$, the unitary maps are multiplication by $e^{i\phi}$.
 
 :::
+
+::: {#fig-adjoints-and-isometries-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm]
+\draw[->, faint] (-0.4,0) -- (1.6,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,1.6) node[lab, above] {$y$};
+\draw[->, faint] (0,0) -- (1.2,0) node[lab, tick, below] {$e_1$};
+\draw[->, faint] (0,0) -- (0,1.2) node[lab, tick, left] {$e_2$};
+\draw[->, hl] (0,0) -- (0.600,1.039) node[lab, above right] {$Ae_1$};
+\draw[->, emph] (0,0) -- (-1.039,0.600) node[lab, left] {$Ae_2$};
+
+\node[lab, below] at (0.6,-0.9) {rotation, $\det=1$};
+\end{scope}
+\begin{scope}[xshift=4cm]
+\draw[->, faint] (-0.4,0) -- (1.6,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,1.6) node[lab, above] {$y$};
+\draw[->, faint] (0,0) -- (1.2,0) node[lab, tick, below] {$e_1$};
+\draw[->, faint] (0,0) -- (0,1.2) node[lab, tick, left] {$e_2$};
+\draw[->, hl] (0,0) -- (0.600,1.039) node[lab, above right] {$Ae_1$};
+\draw[->, emph] (0,0) -- (1.039,-0.600) node[lab, left] {$Ae_2$};
+\draw[dashed] (-0.7,-0.404) -- (1.6,0.924) node[lab, right] {angle $\theta/2$};
+\node[lab, below] at (0.6,-0.9) {reflection, $\det=-1$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The two kinds of $2\times2$ orthogonal matrix, here with $\theta=60^\circ$: both keep the columns orthonormal; the rotation keeps the order of $e_1,e_2$, the reflection in the dashed line reverses it.
+
+:::

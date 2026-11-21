@@ -49,6 +49,25 @@ $$0\le\lVert u-\lambda v\rVert^2=\lVert u\rVert^2-\bar\lambda\langle u,v\rangle-
 
 :::
 
+::: {#fig-inner-products-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.3,-0.1) -- (4.2,1.4);
+\draw[->, emph] (0,0) -- (3.6,1.2) node[lab, below right] {$x$};
+\draw[->, emph] (0,0) -- (1.4,2.2) node[lab, above left] {$y$};
+\draw[->, hl] (0,0) -- (1.98,0.66); \node[lab, below right] at (2.0,0.4) {$\frac{\langle y,x\rangle}{\lVert x\rVert^2}x$};
+\draw[dashed] (1.98,0.66) -- (1.4,2.2);
+\draw[faint] (1.83,0.61) -- (1.78,0.75) -- (1.93,0.80);
+\end{tikzpicture}
+\end{center}
+```
+
+Cauchy–Schwarz in the plane of $x$ and $y$: the projection of $y$ onto $x$ has length $\lvert\langle x,y\rangle\rvert/\lVert x\rVert$, a leg of a right triangle with hypotenuse $\lVert y\rVert$.
+
+:::
+
 ::: {#cor-triangle-inequality-inner-product .corollary name="Triangle inequality"}
 
 $\lVert u+v\rVert\le\lVert u\rVert+\lVert v\rVert$; so $\lVert\cdot\rVert$ is a norm (@def-norm) and $d(u,v)=\lVert u-v\rVert$ a metric.

@@ -37,5 +37,5 @@ The numbers $r,n,b,k,q,p$ are all different. Find bases for the rowspace and lef
 ::: {.problem #prob-mit1806s10-4-q9 origin="external" source="mit1806s10-4-q9"}
 If $A=\mathbf{u}\mathbf{v}^{\mathsf T}$ is a 2 by 2 matrix of rank 1, redraw Figure 3.5 to show clearly the Four Fundamental Subspaces. If $B$ produces those same four subspaces, what is the exact relation of $B$ to $A$?
 
-*Note (these notes):* Figure 3.5 of the book is the "big picture" of the four subspaces described at the end of @sec-math-linear-algebra-vector-spaces-four-fundamental-subspaces.
+*Note (these notes):* Figure 3.5 of the book is @fig-four-fundamental-subspaces-1.
 :::

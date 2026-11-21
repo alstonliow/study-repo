@@ -46,6 +46,33 @@ $$r(\alpha)+n(\alpha)=\dim U.$$
 
 :::
 
+::: {#fig-rank-nullity-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.0,1.5) rectangle (0.9,2.0);
+\draw[hl cell] (0.9,1.5) rectangle (1.8,2.0);
+\draw[cell frame] (1.8,1.5) rectangle (2.7,2.0);
+\draw[cell frame] (2.7,1.5) rectangle (3.6,2.0);
+\draw[cell frame] (3.6,1.5) rectangle (4.5,2.0);
+\draw[cell frame] (1.8,0) rectangle (2.7,0.5);
+\draw[cell frame] (2.7,0) rectangle (3.6,0.5);
+\draw[cell frame] (3.6,0) rectangle (4.5,0.5);
+\draw[faint] (4.5,0) rectangle (5.4,0.5);
+\node[lab, left] at (0,1.75) {$U$}; \node[lab, left] at (1.8,0.25) {$V$};
+\draw[decorate, decoration={brace, amplitude=4pt}] (0,2.05) -- node[lab, above=3pt] {$n(\alpha)$: sent to $0$} (1.8,2.05);
+\draw[decorate, decoration={brace, amplitude=4pt}] (1.8,2.05) -- node[lab, above=3pt] {$r(\alpha)$} (4.5,2.05);
+\draw[map] (3.15,1.5) -- node[lab, right] {$\alpha$, one to one} (3.15,0.5);
+\draw[decorate, decoration={brace, amplitude=4pt, mirror}] (1.8,-0.05) -- node[lab, below=3pt] {$\operatorname{Im}\alpha$} (4.5,-0.05);
+\end{tikzpicture}
+\end{center}
+```
+
+Rank–nullity with one cell per basis vector: a basis of $\ker\alpha$ (shaded) extends to a basis of $U$, and the extra vectors map to a basis of $\operatorname{Im}\alpha$. So $\dim U=n(\alpha)+r(\alpha)$.
+
+:::
+
 A direct proof avoids quotients: extend a basis $e_1,\dots,e_k$ of $\ker\alpha$ to a basis $e_1,\dots,e_n$ of $U$; then $\alpha(e_{k+1}),\dots,\alpha(e_n)$ is a basis of $\operatorname{im}\alpha$. They span because $\alpha(e_i)=0$ for $i\le k$, and $\sum_{i>k}\lambda_i\alpha(e_i)=0$ puts $\sum_{i>k}\lambda_ie_i$ in $\ker\alpha=\langle e_1,\dots,e_k\rangle$, which forces every $\lambda_i=0$. The same argument shows that $\langle e_{k+1},\dots,e_n\rangle$ is a complement of $\ker\alpha$ (@prp-complements-exist) mapped isomorphically onto the image.
 
 ::: {#cor-injective-iff-surjective .corollary name="Injective, surjective and bijective agree"}

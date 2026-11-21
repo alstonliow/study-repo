@@ -78,6 +78,33 @@ The eigenvalue $6$ belongs to $\mathbf{f}_0=(1,1,1)$ (every row sums to $6$), an
 
 :::
 
+::: {#fig-circulant-matrices-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (c00) at (0.000,1.000) {$1$};
+\node[small vertex] (c01) at (0.866,-0.500) {$2$};
+\node[small vertex] (c02) at (-0.866,-0.500) {$3$};
+\draw[map] (c00) to[bend left=25] (c01);
+\draw[map] (c01) to[bend left=25] (c02);
+\draw[map] (c02) to[bend left=25] (c00);
+\node[small vertex] (c10) at (4.200,1.000) {$3$};
+\node[small vertex] (c11) at (5.066,-0.500) {$1$};
+\node[small vertex] (c12) at (3.334,-0.500) {$2$};
+\draw[map] (c10) to[bend left=25] (c11);
+\draw[map] (c11) to[bend left=25] (c12);
+\draw[map] (c12) to[bend left=25] (c10);
+\node[lab, below] at (0,-1.1) {$\mathbf c=(1,2,3)$}; \node[lab, below] at (4.2,-1.1) {$P\mathbf c=(3,1,2)$};
+\draw[map, hl] (1.5,0) -- node[lab, above] {$P$} (2.7,0);
+\end{tikzpicture}
+\end{center}
+```
+
+Entries of $\mathbf c$ placed around a cycle (read clockwise from the top): the shift $P$ turns the cycle one step. A circulant $C(\mathbf c)$ is $c_0I+c_1P+c_2P^2$, a combination of these rotations.
+
+:::
+
 ::: {#rmk-circulant-matrices-1 .remark name="Convolutional neural networks"}
 
 A convolutional layer applies the same small filter at every position of a signal or image, so its weight matrix is a (block) Toeplitz matrix, which becomes circulant under periodic boundary conditions. It has only as many free weights as the filter, not $n^2$, and by @thm-circulant-eigenvectors the FFT can apply it in $O(n\log n)$ operations (@thm-fft).

@@ -17,6 +17,26 @@ if every $v\in V$ can be written as $v=u_1+\dots+u_k$ with $u_i\in U_i$ in exact
 
 :::
 
+::: {#fig-direct-sums-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-1.2,-0.4) -- (3.3,1.1) node[lab, right] {$U$};
+\draw[faint] (0.45,-0.9) -- (-1.0,2.0) node[lab, above] {$W$};
+\draw[dashed] (2.4,0.8) -- (1.8,2.0) -- (-0.6,1.2);
+\draw[->, hl] (0,0) -- (2.4,0.8) node[lab, below right] {$u\in U$};
+\draw[->, hl] (0,0) -- (-0.6,1.2) node[lab, left] {$w\in W$};
+\draw[->, emph] (0,0) -- (1.8,2.0) node[lab, above right] {$v=u+w$};
+\node[dot] at (0,0) {}; \node[lab, below left] at (0,0) {$0$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\mathbb R^2=U\oplus W$ for two different lines $U$ and $W$ through $0$: each $v$ splits as $u+w$ in exactly one way, along the parallelogram.
+
+:::
+
 ::: {#prp-direct-sum-criteria .proposition name="Tests for a direct sum"}
 
 Let $U_1,\dots,U_k\le V$ with $V$ finite-dimensional. The following are equivalent:
