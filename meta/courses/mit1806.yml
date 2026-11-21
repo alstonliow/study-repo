@@ -234,7 +234,7 @@ chapters:
     points:
       - id: "29.1"
         title: "SVD"
-        covers: [math/linear-algebra/positive-definite/singular-value-decomposition]
+        covers: [math/linear-algebra/positive-definite/singular-value-decomposition, thm-eckart-young-spectral]
   - num: 30
     title: "Linear transformations"
     points:

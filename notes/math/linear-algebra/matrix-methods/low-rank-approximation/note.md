@@ -1,11 +1,12 @@
 ---
 title: "Low-Rank Approximation and PCA"
-sources: [mit18065-7, mit18065-17]
+sources: [mit18065-7, mit18065-17, mit1806-29]
 requires: [math/linear-algebra/matrix-methods/matrix-norms, math/linear-algebra/matrix-methods/eigenvalue-perturbation-and-interlacing]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from MIT 18.065 (Spring 2018), Lectures 7 and 17 (video lectures and problem sets; no written lecture notes), in our own wording; proofs written out in steps. Numbers checked with numpy. -->
+<!-- Merged 2026-11-21 (owner): thm-eckart-young-spectral also replaces the Eckart–Young statement (without proof) that the SVD note made in a remark, from MIT 18.06SC Lecture 29; statement and proof are the 18.065 version. -->
 
 Cutting the SVD after $k$ terms,
 $$A_k=\sigma_1\mathbf{u}_1\mathbf{v}_1^{\mathsf T}+\dots+\sigma_k\mathbf{u}_k\mathbf{v}_k^{\mathsf T},$$
@@ -29,7 +30,7 @@ If $\operatorname{rank}B\le k$, then $\sigma_i(A-B)\ge\sigma_{i+k}(A)$ for every
 
 :::
 
-::: {#thm-eckart-young-spectral .theorem name="Eckart–Young in the spectral norm" related="rmk-singular-value-decomposition-1"}
+::: {#thm-eckart-young-spectral .theorem name="Eckart–Young in the spectral norm"}
 
 For every $B$ of rank at most $k$,
 $$\lVert A-B\rVert_2\ge\lVert A-A_k\rVert_2=\sigma_{k+1}.$$

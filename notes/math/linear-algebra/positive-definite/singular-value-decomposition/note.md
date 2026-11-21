@@ -79,8 +79,10 @@ $A$ maps the unit circle to an ellipse; the orthonormal $\mathbf v_i$ go to the 
 
 :::
 
-::: {#rmk-singular-value-decomposition-1 .remark name="Geometry and low-rank approximation"}
+::: {#rmk-singular-value-decomposition-1 .remark name="Geometry of the SVD"}
 
-$A=U\Sigma V^{\mathsf T}$ says: rotate (by $V^{\mathsf T}$), stretch along the axes (by $\Sigma$), rotate again (by $U$). The unit circle goes to an ellipse with half-axes $\sigma_i\mathbf{u}_i$. Keeping only the first $k$ terms $\sigma_1\mathbf{u}_1\mathbf{v}_1^{\mathsf T}+\dots+\sigma_k\mathbf{u}_k\mathbf{v}_k^{\mathsf T}$ gives the best rank-$k$ approximation of $A$ (Eckart–Young, stated here without proof); this is how images are compressed (@sec-math-linear-algebra-positive-definite-change-of-basis).
+$A=U\Sigma V^{\mathsf T}$ says: rotate (by $V^{\mathsf T}$), stretch along the axes (by $\Sigma$), rotate again (by $U$). The unit circle goes to an ellipse with half-axes $\sigma_i\mathbf{u}_i$. Keeping only the first $k$ terms $\sigma_1\mathbf{u}_1\mathbf{v}_1^{\mathsf T}+\dots+\sigma_k\mathbf{u}_k\mathbf{v}_k^{\mathsf T}$ gives the best rank-$k$ approximation of $A$ (@thm-eckart-young-spectral); this is how images are compressed (@sec-math-linear-algebra-positive-definite-change-of-basis).
+
+<!-- Merged 2026-11-21 (owner): the Eckart–Young statement this remark used to make without proof now lives only in thm-eckart-young-spectral (low-rank-approximation note); the geometric picture stays here. -->
 
 :::
