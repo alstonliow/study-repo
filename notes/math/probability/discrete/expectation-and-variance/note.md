@@ -114,6 +114,39 @@ A *mode* of $X$ is a value $k$ that maximises $\Pr(X=k)$.
 
 :::
 
+::: {#fig-expectation-and-variance-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.0,0) node[lab, right] {$k$};
+\draw[->] (0,0) -- (0,2.2) node[lab, above] {$\Pr(X=k)$};
+\path[bar] (0.150,0) rectangle (0.650,0.600);
+\node[tick, below] at (0.400,0) {$0$};
+\path[hl cell] (0.950,0) rectangle (1.450,1.800);
+\node[tick, below] at (1.200,0) {$1$};
+\path[bar] (1.750,0) rectangle (2.250,1.500);
+\node[tick, below] at (2.000,0) {$2$};
+\path[bar] (2.550,0) rectangle (3.050,0.900);
+\node[tick, below] at (2.800,0) {$3$};
+\path[bar] (3.350,0) rectangle (3.850,0.600);
+\node[tick, below] at (3.600,0) {$4$};
+\path[bar] (4.150,0) rectangle (4.650,0.360);
+\node[tick, below] at (4.400,0) {$5$};
+\path[bar] (4.950,0) rectangle (5.450,0.240);
+\node[tick, below] at (5.200,0) {$6$};
+\draw[hl] (2.15,0) -- (2.15,-0.5) node[lab, below] {mean $2.19$};
+\node[lab, above] at (1.2,1.80) {mode};
+\node[lab, right] at (2.0,1.95) {median $2$};
+\draw[faint, dashed] (2.0,0) -- (2.0,1.95);
+\end{tikzpicture}
+\end{center}
+```
+
+A right-skewed distribution: the mode is $1$, the median is $2$ (half the mass is at or below it), and the long right tail pulls the mean to about $2.2$
+
+:::
+
 ::: {#exm-expectation-and-variance-1-3 .example}
 
 The total of two dice has mode $7$. A fair die has every value $1,\dots,6$ as a mode, so a mode need not be unique.
@@ -133,6 +166,49 @@ To measure how far $X$ typically is from $\mu = E[X]$, the plain average $E[X-\m
 ::: {#def-variance-standard-deviation .definition name="Variance, standard deviation"}
 
 With $\mu=E[X]$, the *variance* of $X$ is $\mathrm{Var}(X) = E\big[(X-\mu)^2\big]$, and the *standard deviation* is $\sigma_X = \sqrt{\mathrm{Var}(X)}$.
+
+:::
+
+::: {#fig-expectation-and-variance-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=0.0cm]
+\draw[->] (0,0) -- (3.4,0) node[lab, right] {};
+\path[bar] (0.075,0) rectangle (0.525,0.000);
+\node[tick, below] at (0.300,0) {$0$};
+\path[bar] (0.775,0) rectangle (1.225,0.200);
+\node[tick, below] at (1.000,0) {$1$};
+\path[bar] (1.475,0) rectangle (1.925,1.600);
+\node[tick, below] at (1.700,0) {$2$};
+\path[bar] (2.175,0) rectangle (2.625,0.200);
+\node[tick, below] at (2.400,0) {$3$};
+\path[bar] (2.875,0) rectangle (3.325,0.000);
+\node[tick, below] at (3.100,0) {$4$};
+\draw[hl] (1.7,0) -- (1.7,1.8);
+\node[lab] at (1.7,2.1) {small variance};
+\end{scope}
+\begin{scope}[xshift=4.2cm]
+\draw[->] (0,0) -- (3.4,0) node[lab, right] {};
+\path[bar] (0.075,0) rectangle (0.525,0.400);
+\node[tick, below] at (0.300,0) {$0$};
+\path[bar] (0.775,0) rectangle (1.225,0.400);
+\node[tick, below] at (1.000,0) {$1$};
+\path[bar] (1.475,0) rectangle (1.925,0.400);
+\node[tick, below] at (1.700,0) {$2$};
+\path[bar] (2.175,0) rectangle (2.625,0.400);
+\node[tick, below] at (2.400,0) {$3$};
+\path[bar] (2.875,0) rectangle (3.325,0.400);
+\node[tick, below] at (3.100,0) {$4$};
+\draw[hl] (1.7,0) -- (1.7,1.8);
+\node[lab] at (1.7,2.1) {large variance};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Two distributions with the same mean $2$ (vertical line). The variance measures the spread around it: $0.2$ on the left, $2$ on the right
 
 :::
 
@@ -190,6 +266,27 @@ For any $a>0$,  $\Pr\big(|X-E[X]|\ge a\big) \le \dfrac{\mathrm{Var}(X)}{a^2}$.
 Let $\mu=E[X]$. Dropping the terms with $|k-\mu|<a$, and then using $(k-\mu)^2\ge a^2$ in the rest,
 $$\mathrm{Var}(X) = \sum_k (k-\mu)^2\Pr(X=k) \ge \sum_{k:\,|k-\mu|\ge a} (k-\mu)^2\Pr(X=k) \ge a^2\Pr(|X-\mu|\ge a).$$
 Divide by $a^2$.
+
+:::
+
+::: {#fig-expectation-and-variance-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.4,0) node[lab, right] {$x$};
+\draw[emph, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {4.6*exp(-((\x-3.5)^2)/(2*1^2))/(1*sqrt(2*pi))});
+\fill[shade, domain=0:1.5, variable=\x] (0,0) -- plot ({\x}, {4.6*exp(-((\x-3.5)^2)/(2*1^2))/(1*sqrt(2*pi))}) -- (1.5,0) -- cycle;
+\fill[shade, domain=5.5:7, variable=\x] (5.5,0) -- plot ({\x}, {4.6*exp(-((\x-3.5)^2)/(2*1^2))/(1*sqrt(2*pi))}) -- (7,0) -- cycle;
+\draw (1.5,0) -- (1.5,-0.08) node[tick, below] {$\mu-k\sigma$};
+\draw (3.5,0) -- (3.5,-0.08) node[tick, below] {$\mu$};
+\draw (5.5,0) -- (5.5,-0.08) node[tick, below] {$\mu+k\sigma$};
+\draw[<->] (1.5,2.0) -- node[lab, above] {within $k\sigma$} (5.5,2.0);
+\end{tikzpicture}
+\end{center}
+```
+
+Chebyshev's inequality bounds the shaded mass beyond $k$ standard deviations from the mean by $1/k^2$, whatever the shape of the distribution
 
 :::
 

@@ -35,6 +35,26 @@ $$E_\theta\bigl[(\hat\Theta_n-\theta)^2\bigr]=\mathrm{Var}_\theta(\hat\Theta_n)+
 
 :::
 
+::: {#fig-classical-estimation-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.4,0) node[lab, right] {$\hat\theta$};
+\draw[emph, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.6*exp(-((\x-3.4)^2)/(2*1.1^2))/(1.1*sqrt(2*pi))});
+\draw[hl, domain=1.8:7, samples=80, smooth, variable=\x] plot ({\x}, {2.6*exp(-((\x-4.4)^2)/(2*0.45^2))/(0.45*sqrt(2*pi))});
+\draw[faint, dashed] (3.4,0) -- (3.4,2.4);
+\draw (3.4,0) -- (3.4,-0.08) node[tick, below] {$\theta$};
+\node[tick] at (1.5,0.75) {unbiased, wide};
+\node[tick, text=accent] at (5.9,1.6) {biased, narrow};
+\end{tikzpicture}
+\end{center}
+```
+
+Sampling distributions of two estimators of $\theta$. One is unbiased but variable, the other biased but tight; the mean squared error, $\text{bias}^2+\text{variance}$, can favour either
+
+:::
+
 ::: {#exm-sample-mean-estimator .example name="The sample mean" related="prp-sample-mean"}
 
 If $X_1,\dots,X_n$ are independent with unknown mean $\theta$ and variance $\sigma^2$, the sample mean $M_n=(X_1+\dots+X_n)/n$ is unbiased, has mean squared error $\sigma^2/n$, and is consistent by the law of large numbers (@thm-law-of-large-numbers).
@@ -45,6 +65,25 @@ If $X_1,\dots,X_n$ are independent with unknown mean $\theta$ and variance $\sig
 
 Given the observation $x$, the *likelihood* is $\theta\mapsto p_X(x;\theta)$ (or $f_X(x;\theta)$). The *maximum likelihood (ML) estimate* $\hat\theta_n$ is a value of $\theta$ that maximises it. For independent observations the likelihood is a product, and one maximises the *log-likelihood*
 $$\sum_{i=1}^n\ln p_{X_i}(x_i;\theta)\quad\text{or}\quad\sum_{i=1}^n\ln f_{X_i}(x_i;\theta).$$
+
+:::
+
+::: {#fig-classical-estimation-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.4,0) node[lab, right] {$p$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$L(p)$};
+\draw[emph, domain=0:5, samples=100, smooth, variable=\x] plot ({\x}, {2.2*((\x/5)^3*(1-\x/5)^7)/(0.3^3*0.7^7)});
+\draw[hl, dashed] (1.5,0) -- (1.5,2.2);
+\draw (1.5,0) -- (1.5,-0.08) node[tick, below] {$0.3$};
+\draw (5,0) -- (5,-0.08) node[tick, below] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The likelihood $L(p)=p^3(1-p)^7$ of $3$ heads in $10$ tosses, scaled to height $1$; it peaks at the maximum likelihood estimate $\hat p=0.3$
 
 :::
 
@@ -74,6 +113,60 @@ The variance estimate is biased, $E[\hat V_n]=\frac{n-1}nv$, but asymptotically 
 
 For $0<\alpha<1$, a *$1-\alpha$ confidence interval* is a pair of estimators $\hat\Theta_n^-\le\hat\Theta_n^+$ such that
 $$\Pr_\theta\bigl(\hat\Theta_n^-\le\theta\le\hat\Theta_n^+\bigr)\ge1-\alpha\qquad\text{for every }\theta.$$
+
+:::
+
+::: {#fig-classical-estimation-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl, dashed] (2.5,-0.2) -- (2.5,4.3) node[tick, above] {$\theta$};
+\draw[emph] (1.71,0.00) -- (3.67,0.00);
+\node[dot] at (2.69,0.00) {};
+\draw[hl] (2.79,0.20) -- (4.75,0.20);
+\node[hl dot] at (3.77,0.20) {};
+\draw[emph] (2.07,0.40) -- (4.03,0.40);
+\node[dot] at (3.05,0.40) {};
+\draw[emph] (2.08,0.60) -- (4.04,0.60);
+\node[dot] at (3.06,0.60) {};
+\draw[emph] (1.84,0.80) -- (3.80,0.80);
+\node[dot] at (2.82,0.80) {};
+\draw[emph] (1.71,1.00) -- (3.67,1.00);
+\node[dot] at (2.69,1.00) {};
+\draw[emph] (1.86,1.20) -- (3.82,1.20);
+\node[dot] at (2.84,1.20) {};
+\draw[emph] (1.52,1.40) -- (3.48,1.40);
+\node[dot] at (2.50,1.40) {};
+\draw[emph] (1.17,1.60) -- (3.13,1.60);
+\node[dot] at (2.15,1.60) {};
+\draw[emph] (1.09,1.80) -- (3.05,1.80);
+\node[dot] at (2.07,1.80) {};
+\draw[emph] (0.96,2.00) -- (2.92,2.00);
+\node[dot] at (1.94,2.00) {};
+\draw[emph] (1.69,2.20) -- (3.65,2.20);
+\node[dot] at (2.67,2.20) {};
+\draw[emph] (1.85,2.40) -- (3.81,2.40);
+\node[dot] at (2.83,2.40) {};
+\draw[emph] (2.40,2.60) -- (4.36,2.60);
+\node[dot] at (3.38,2.60) {};
+\draw[emph] (1.83,2.80) -- (3.79,2.80);
+\node[dot] at (2.81,2.80) {};
+\draw[emph] (1.71,3.00) -- (3.67,3.00);
+\node[dot] at (2.69,3.00) {};
+\draw[emph] (1.91,3.20) -- (3.87,3.20);
+\node[dot] at (2.89,3.20) {};
+\draw[emph] (1.57,3.40) -- (3.53,3.40);
+\node[dot] at (2.55,3.40) {};
+\draw[emph] (0.62,3.60) -- (2.58,3.60);
+\node[dot] at (1.60,3.60) {};
+\draw[emph] (2.11,3.80) -- (4.07,3.80);
+\node[dot] at (3.09,3.80) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Twenty $95\%$ confidence intervals from independent samples. The interval is random and $\theta$ is fixed; in the long run about one interval in twenty misses $\theta$ (highlighted)
 
 :::
 

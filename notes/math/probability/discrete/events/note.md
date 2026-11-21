@@ -130,6 +130,28 @@ $$\Pr\left(\bigcup_{i=1}^n A_i\right) = \sum_{k=1}^n (-1)^{k+1}\sum_{i_1<\cdots<
 
 :::
 
+::: {#fig-events-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (-2.2,-2.0) rectangle (2.2,1.9);
+\draw[tintA] (-0.55,0.35) circle (1.05);
+\draw[tintB] (0.55,0.35) circle (1.05);
+\draw[tintC] (0,-0.6) circle (1.05);
+\draw (-0.55,0.35) circle (1.05) (0.55,0.35) circle (1.05) (0,-0.6) circle (1.05);
+\node[lab] at (-1.1,0.9) {$A_1$};
+\node[lab] at (1.1,0.9) {$A_2$};
+\node[lab] at (0,-1.35) {$A_3$};
+\node[lab, tick] at (0,0.05) {$+3-3+1$};
+\end{tikzpicture}
+\end{center}
+```
+
+Inclusion–exclusion for three events: a point in all three is counted $3$ times by the single terms, removed $3$ times by the pairs and added back once by the triple, so it counts exactly once
+
+:::
+
 ::: {#rmk-events-2 .remark name="Same proof as for counting"}
 
 The proof is the same as for inclusion-exclusion on set sizes (@sec-math-discrete-counting-inclusion-exclusion), with $\Pr$ in place of $|\cdot|$.
@@ -172,6 +194,26 @@ We use induction on $n$.
    $$\Pr(A_1\cup\cdots\cup A_n)\le\Pr(A_1\cup\cdots\cup A_{n-1})+\Pr(A_n)\le\sum_{i=1}^{n}\Pr(A_i).$$
 
 4. If the events are pairwise mutually exclusive, every intersection has probability $0$, so each step is an equality (@prp-events-1).
+
+:::
+
+::: {#fig-events-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (-2.4,-1.4) rectangle (2.4,1.4);
+\draw[regionA] (-0.6,0) circle (1.1);
+\draw[regionB, fill=none] (0.6,0) circle (1.1);
+\begin{scope}\clip (-0.6,0) circle (1.1);\fill[shade] (0.6,0) circle (1.1);\end{scope}
+\draw (0.6,0) circle (1.1);
+\node[lab] at (-1.15,0) {$A$};
+\node[lab] at (1.15,0) {$B$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\Pr(A)+\Pr(B)$ counts the shaded overlap twice, so it is at least $\Pr(A\cup B)$: this is @thm-union-bound for two events
 
 :::
 

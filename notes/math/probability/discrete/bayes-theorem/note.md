@@ -21,6 +21,32 @@ $A$ is the disjoint union of the sets $A\cap B_i$, since the $B_i$ are pairwise 
 
 :::
 
+::: {#fig-bayes-theorem-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (6,2.6);
+\draw (1.5,0) -- (1.5,2.6);
+\node[lab] at (0.75,0.3) {$B_1$};
+\draw (3,0) -- (3,2.6);
+\node[lab] at (2.25,0.3) {$B_2$};
+\draw (4.5,0) -- (4.5,2.6);
+\node[lab] at (3.75,0.3) {$B_3$};
+\node[lab] at (5.25,0.3) {$B_4$};
+\draw[regionA] plot[smooth cycle] coordinates {(0.6,1.4) (2,2.3) (4,2.2) (5.4,1.5) (4.2,0.8) (2,0.9)};
+\draw (1.5,0) -- (1.5,2.6);
+\draw (3,0) -- (3,2.6);
+\draw (4.5,0) -- (4.5,2.6);
+\node[lab] at (3,1.55) {$A$};
+\end{tikzpicture}
+\end{center}
+```
+
+The events $B_1,\dots,B_4$ partition the sample space and cut $A$ into the disjoint pieces $A\cap B_i$; adding $\Pr(A\mid B_i)\Pr(B_i)$ over the pieces gives $\Pr(A)$
+
+:::
+
 <!-- Added 2026-11-15 from CN §9.9 (own wording and proof). -->
 
 ::: {#thm-bayes-two-events .theorem name="Bayes' Theorem, two events"}

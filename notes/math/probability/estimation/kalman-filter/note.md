@@ -42,6 +42,23 @@ $$\begin{aligned}
 
 :::
 
+::: {#fig-kalman-filter-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (p) at (0,0) {predict\\$\hat X_{n\mid n-1}=a\hat X_{n-1\mid n-1}$};
+\node[hl box] (u) at (6,0) {update with $Y_n$\\$\hat X_{n\mid n}=\hat X_{n\mid n-1}+k_n(Y_n-c\hat X_{n\mid n-1})$};
+\draw[map] (p) -- node[edge label] {$\sigma^2_{n\mid n-1}$} (u);
+\draw[map] (u.south) to[bend left=25] node[edge label] {$n\to n+1$} (p.south);
+\end{tikzpicture}
+\end{center}
+```
+
+Each step of the Kalman filter predicts the state from the last estimate, then corrects the prediction by the gain $k_n$ times the innovation $Y_n-c\hat X_{n\mid n-1}$
+
+:::
+
 ```{=latex}
 \begin{algorithm}
 \caption{Scalar Kalman filter}
@@ -65,6 +82,54 @@ The gains $k_n$ and variances do not depend on the observations, so they can be 
 Take $a=c=1$ and $\sigma_V^2=\sigma_W^2=\sigma_0^2=1$. The recursion gives
 $$k_1=\tfrac23,\quad k_2=0.625,\quad k_3\approx0.619,\quad k_4\approx0.618,\ \dots$$
 and $\sigma^2_{n\mid n}=k_n$. The gain converges to the fixed point of $k=\frac{k+1}{k+2}$, namely $k=\frac{\sqrt5-1}{2}\approx0.618$: the steady-state filter puts weight $0.618$ on each new observation.
+
+:::
+
+::: {#fig-kalman-filter-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,1.15) -- (6.4,1.15) node[lab, right] {$n$};
+\draw[emph] (0.200,1.834) -- (0.400,1.607) -- (0.600,1.720) -- (0.800,1.848) -- (1.000,1.628) -- (1.200,1.917) -- (1.400,1.819) -- (1.600,1.878) -- (1.800,1.888) -- (2.000,2.379) -- (2.200,2.673) -- (2.400,2.934) -- (2.600,2.786) -- (2.800,3.060) -- (3.000,3.372) -- (3.200,3.859) -- (3.400,3.495) -- (3.600,3.305) -- (3.800,3.336) -- (4.000,3.482) -- (4.200,3.521) -- (4.400,4.145) -- (4.600,4.160) -- (4.800,3.736) -- (5.000,3.981) -- (5.200,4.074) -- (5.400,4.630) -- (5.600,4.389) -- (5.800,4.106) -- (6.000,4.403);
+\draw[hl] (0.200,2.019) -- (0.400,1.601) -- (0.600,1.997) -- (0.800,1.697) -- (1.000,1.650) -- (1.200,1.818) -- (1.400,1.783) -- (1.600,1.712) -- (1.800,1.875) -- (2.000,2.182) -- (2.200,2.304) -- (2.400,2.729) -- (2.600,2.765) -- (2.800,2.895) -- (3.000,3.472) -- (3.200,4.012) -- (3.400,3.761) -- (3.600,3.657) -- (3.800,3.506) -- (4.000,3.390) -- (4.200,3.347) -- (4.400,3.763) -- (4.600,3.694) -- (4.800,3.574) -- (5.000,3.972) -- (5.200,3.925) -- (5.400,4.181) -- (5.600,4.404) -- (5.800,4.275) -- (6.000,4.348);
+\node[hollow dot] at (0.20,2.23) {};
+\node[hollow dot] at (0.40,1.35) {};
+\node[hollow dot] at (0.60,2.24) {};
+\node[hollow dot] at (0.80,1.51) {};
+\node[hollow dot] at (1.00,1.62) {};
+\node[hollow dot] at (1.20,1.92) {};
+\node[hollow dot] at (1.40,1.76) {};
+\node[hollow dot] at (1.60,1.67) {};
+\node[hollow dot] at (1.80,1.98) {};
+\node[hollow dot] at (2.00,2.37) {};
+\node[hollow dot] at (2.20,2.38) {};
+\node[hollow dot] at (2.40,2.99) {};
+\node[hollow dot] at (2.60,2.79) {};
+\node[hollow dot] at (2.80,2.97) {};
+\node[hollow dot] at (3.00,3.83) {};
+\node[hollow dot] at (3.20,4.34) {};
+\node[hollow dot] at (3.40,3.61) {};
+\node[hollow dot] at (3.60,3.59) {};
+\node[hollow dot] at (3.80,3.41) {};
+\node[hollow dot] at (4.00,3.32) {};
+\node[hollow dot] at (4.20,3.32) {};
+\node[hollow dot] at (4.40,4.02) {};
+\node[hollow dot] at (4.60,3.65) {};
+\node[hollow dot] at (4.80,3.50) {};
+\node[hollow dot] at (5.00,4.22) {};
+\node[hollow dot] at (5.20,3.90) {};
+\node[hollow dot] at (5.40,4.34) {};
+\node[hollow dot] at (5.60,4.54) {};
+\node[hollow dot] at (5.80,4.20) {};
+\node[hollow dot] at (6.00,4.39) {};
+\node[tick, right] at (6.1,4.55) {$X_n$};
+\node[tick, right, text=accent] at (6.1,4.20) {$\hat X_{n\mid n}$};
+\end{tikzpicture}
+\end{center}
+```
+
+A simulated random walk $X_n$ (black), its noisy observations $Y_n$ (circles) and the Kalman estimate $\hat X_{n\mid n}$, which tracks the state much more closely than the raw observations
 
 :::
 

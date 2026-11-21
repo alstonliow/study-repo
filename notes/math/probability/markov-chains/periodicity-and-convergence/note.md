@@ -15,6 +15,34 @@ For a state $i$ let $S(i)=\{n\ge1:P^n(i,i)>0\}$, the lengths of the possible ret
 
 :::
 
+::: {#fig-periodicity-and-convergence-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (a) at (0,0) {$0$};
+\node[vertex] (b) at (2,0) {$1$};
+\node[vertex] (c) at (1,1.5) {$2$};
+\draw[->] (a) to[bend right=10] (b);
+\draw[->] (b) to[bend right=10] (c);
+\draw[->] (c) to[bend right=10] (a);
+\node[vertex] (d) at (5,0) {$0$};
+\node[vertex] (e) at (7,0) {$1$};
+\node[vertex] (f) at (6,1.5) {$2$};
+\draw[->] (d) to[bend right=10] (e);
+\draw[->] (e) to[bend right=10] (f);
+\draw[->] (f) to[bend right=10] (d);
+\draw[->] (d) to[loop left, looseness=6] (d);
+\node[tick] at (1,-0.8) {period $3$};
+\node[tick] at (6,-0.8) {aperiodic};
+\end{tikzpicture}
+\end{center}
+```
+
+Left: every return to $0$ takes a multiple of $3$ steps, so the period is $3$. Right: a self-loop at $0$ allows returns of length $1$ and $3$, whose greatest common divisor is $1$
+
+:::
+
 ::: {#fig-periodicity-and-convergence-1}
 
 ```{=latex}
@@ -81,6 +109,28 @@ If $d(i)=1$, there is an $N$ such that every $n\ge N$ lies in $S(i)$.
 
 Let a finite Markov chain be irreducible and aperiodic, with invariant distribution $\pi$. Then for every initial distribution,
 $$\Pr(X_n=i)\to\pi(i)\qquad\text{as }n\to\infty,\ \text{for every state }i.$$
+
+:::
+
+::: {#fig-periodicity-and-convergence-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$n$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {distance to $\pi$};
+\draw[emph] (0.000,2.000) -- (0.200,1.200) -- (0.400,0.720) -- (0.600,0.432) -- (0.800,0.259) -- (1.000,0.156) -- (1.200,0.093) -- (1.400,0.056) -- (1.600,0.034) -- (1.800,0.020) -- (2.000,0.012) -- (2.200,0.007) -- (2.400,0.004) -- (2.600,0.003) -- (2.800,0.002) -- (3.000,0.001) -- (3.200,0.001) -- (3.400,0.000) -- (3.600,0.000) -- (3.800,0.000) -- (4.000,0.000) -- (4.200,0.000) -- (4.400,0.000) -- (4.600,0.000) -- (4.800,0.000) -- (5.000,0.000) -- (5.200,0.000) -- (5.400,0.000) -- (5.600,0.000) -- (5.800,0.000) -- (6.000,0.000);
+\draw[hl] (0.000,2.000) -- (0.200,1.700) -- (0.400,1.445) -- (0.600,1.228) -- (0.800,1.044) -- (1.000,0.887) -- (1.200,0.754) -- (1.400,0.641) -- (1.600,0.545) -- (1.800,0.463) -- (2.000,0.394) -- (2.200,0.335) -- (2.400,0.284) -- (2.600,0.242) -- (2.800,0.206) -- (3.000,0.175) -- (3.200,0.149) -- (3.400,0.126) -- (3.600,0.107) -- (3.800,0.091) -- (4.000,0.078) -- (4.200,0.066) -- (4.400,0.056) -- (4.600,0.048) -- (4.800,0.040) -- (5.000,0.034) -- (5.200,0.029) -- (5.400,0.025) -- (5.600,0.021) -- (5.800,0.018) -- (6.000,0.015);
+\draw (2,0) -- (2,-0.08) node[tick, below] {$10$};
+\draw (4,0) -- (4,-0.08) node[tick, below] {$20$};
+\draw (6,0) -- (6,-0.08) node[tick, below] {$30$};
+\node[tick] at (1.2,0.5) {fast mixing};
+\node[tick, text=accent] at (4.4,0.4) {slow mixing};
+\end{tikzpicture}
+\end{center}
+```
+
+For an irreducible aperiodic finite chain the distance between the law of $X_n$ and $\pi$ decays geometrically; the rate is set by the second-largest eigenvalue modulus of $P$
 
 :::
 

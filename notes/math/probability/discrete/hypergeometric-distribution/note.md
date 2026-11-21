@@ -100,4 +100,41 @@ $$E[Y]=np,\qquad \mathrm{Var}(Y)=np(1-p)\,\frac{N-n}{N-1}.$$
 
 :::
 
+::: {#fig-hypergeometric-distribution-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.6,0) node[lab, right] {$k$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$\Pr(X=k)$};
+\path[bar] (0.20,0) rectangle (0.50,0.307);
+\path[hl cell] (0.50,0) rectangle (0.80,0.467);
+\node[tick, below] at (0.5,0) {$0$};
+\path[bar] (1.10,0) rectangle (1.40,1.533);
+\path[hl cell] (1.40,0) rectangle (1.70,1.555);
+\node[tick, below] at (1.4,0) {$1$};
+\path[bar] (2.00,0) rectangle (2.30,2.384);
+\path[hl cell] (2.30,0) rectangle (2.60,2.074);
+\node[tick, below] at (2.3,0) {$2$};
+\path[bar] (2.90,0) rectangle (3.20,1.430);
+\path[hl cell] (3.20,0) rectangle (3.50,1.382);
+\node[tick, below] at (3.2,0) {$3$};
+\path[bar] (3.80,0) rectangle (4.10,0.325);
+\path[hl cell] (4.10,0) rectangle (4.40,0.461);
+\node[tick, below] at (4.1,0) {$4$};
+\path[bar] (4.70,0) rectangle (5.00,0.022);
+\path[hl cell] (5.00,0) rectangle (5.30,0.061);
+\node[tick, below] at (5.0,0) {$5$};
+\path[bar] (3.6,2.3) rectangle (3.8,2.45);
+\node[tick, right] at (3.8,2.37) {hypergeometric};
+\path[hl cell] (3.6,1.95) rectangle (3.8,2.1);
+\node[tick, right] at (3.8,2.02) {$\operatorname{Bin}(5,0.4)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Drawing $5$ of $20$ balls ($8$ black) without replacement (dark) against with replacement (light): both have mean $2$, but without replacement the spread is smaller by the factor $\tfrac{N-n}{N-1}=\tfrac{15}{19}$
+
+:::
+
 The factor $\frac{N-n}{N-1}<1$ (for $n>1$) is why drawing without replacement is more concentrated than the binomial $\mathrm{Bin}(n,p)$, and for $N$ much larger than $n$ the two distributions are almost the same.

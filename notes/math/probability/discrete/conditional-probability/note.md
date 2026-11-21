@@ -155,6 +155,31 @@ We use induction on $n$.
 
 :::
 
+::: {#fig-conditional-probability-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[dot] (r) at (0,0) {};
+\node[hl dot] (a) at (2.4,0.8) {};
+\node[dot] (n) at (2.4,-0.8) {};
+\node[hl dot] (aa) at (4.8,1.3) {};
+\node[dot] (an) at (4.8,0.3) {};
+\draw[hl] (r) -- node[edge label] {$\tfrac4{52}$} (a);
+\draw (r) -- node[edge label] {$\tfrac{48}{52}$} (n);
+\draw[hl] (a) -- node[edge label] {$\tfrac3{51}$} (aa);
+\draw (a) -- node[edge label] {$\tfrac{48}{51}$} (an);
+\node[lab, right] at (aa.east) {ace, ace: $\tfrac4{52}\cdot\tfrac3{51}=\tfrac1{221}$};
+\node[lab, right] at (an.east) {ace, other};
+\node[lab, right] at (n.east) {first card not an ace};
+\end{tikzpicture}
+\end{center}
+```
+
+The product rule as a path in a tree: the probability of two aces is the product of the conditional probabilities along the highlighted path, as in @exm-two-aces
+
+:::
+
 ::: {#rmk-conditional-probability-4 .remark name="Read it as a sequence of choices"}
 
 The product rule fits experiments that happen in stages, such as dealing cards one by one: multiply the probability of each stage given everything before it. With mutually independent events every conditional probability equals the unconditional one, and the rule becomes a plain product.

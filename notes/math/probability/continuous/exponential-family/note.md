@@ -57,6 +57,48 @@ The multinomial, exponential, gamma, beta and Dirichlet families have the same f
 
 :::
 
+::: {#fig-exponential-family-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\path[bar] (0.525,0) rectangle (0.875,0.480);
+\path[bar] (1.325,0) rectangle (1.675,1.120);
+\node[tick, below] at (1.1,0) {Bernoulli: $\eta=\log\frac p{1-p}$};
+\end{scope}
+\begin{scope}[shift={(3.2,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\path[bar] (0.075,0) rectangle (0.225,0.224);
+\path[bar] (0.315,0) rectangle (0.465,0.672);
+\path[bar] (0.555,0) rectangle (0.705,1.008);
+\path[bar] (0.795,0) rectangle (0.945,1.008);
+\path[bar] (1.035,0) rectangle (1.185,0.756);
+\path[bar] (1.275,0) rectangle (1.425,0.454);
+\path[bar] (1.515,0) rectangle (1.665,0.227);
+\path[bar] (1.755,0) rectangle (1.905,0.097);
+\path[bar] (1.995,0) rectangle (2.145,0.036);
+\node[tick, below] at (1.1,0) {Poisson: $\eta=\log\mu$};
+\end{scope}
+\begin{scope}[shift={(6.4,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\draw[emph, domain=0:2.2, samples=80, smooth, variable=\x] plot ({\x}, {0.9*exp(-((\x-1.1)^2)/(2*0.4^2))/(0.4*sqrt(2*pi))});
+\node[tick, below] at (1.1,0) {normal: $\eta=\mu/\sigma^2$};
+\end{scope}
+\begin{scope}[shift={(9.6,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\draw[emph, domain=0.05:2.2, samples=80, smooth, variable=\x] plot ({\x}, {1.1*exp(-1.6*\x)});
+\node[tick, below] at (1.1,0) {exponential: $\eta=-\lambda$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Four members of the exponential family with their natural parameters $\eta$ (the normal with known $\sigma^2$)
+
+:::
+
 ::: {#prp-exponential-family-moments .proposition name="The log partition function generates the moments"}
 
 For a one-parameter exponential family with $T(y)=y$, at every $\eta$ in the interior of the set where $a(\eta)$ is finite,
@@ -81,6 +123,26 @@ In particular $a$ is convex. (For a vector parameter, $E[T(Y)]=\nabla a(\boldsym
 
 :::
 
+::: {#fig-exponential-family-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-0.4,0) -- (5.6,0) node[lab, right] {$\eta$};
+\draw[->] (0,0) -- (0,3.0) node[lab, above] {$a(\eta)$};
+\draw[emph, domain=-0.3:3.2, samples=80, smooth, variable=\x] plot ({\x}, {0.35*exp(\x*0.8)});
+\draw[hl] (0.8,0.069) -- (3.0,3.120);
+\node[hl dot] at (2.0,1.734) {};
+\draw (2.0,0) -- (2.0,-0.08) node[tick, below] {$\eta_0$};
+\node[tick, text=accent, right] at (2.4,1.93) {slope $a'(\eta_0)=E[T(Y)]$};
+\end{tikzpicture}
+\end{center}
+```
+
+The log-partition function $a(\eta)$ is convex. Its slope at $\eta_0$ is the mean of $T(Y)$ and its curvature the variance; for the Poisson family $a(\eta)=e^\eta$, so both equal $e^{\eta_0}$
+
+:::
+
 ::: {#exm-exponential-family-moments .example name="Checking the moments"}
 
 For the Bernoulli, $a'(\eta)=\dfrac{e^\eta}{1+e^\eta}=\phi$ and $a''(\eta)=\phi(1-\phi)$. For the unit-variance Gaussian, $a'(\eta)=\eta=\mu$ and $a''=1$. For the Poisson, $a'(\eta)=a''(\eta)=e^\eta=\lambda$: the mean and the variance of a Poisson variable are both $\lambda$.
@@ -100,6 +162,26 @@ f_\theta(y)=\exp\Bigl(\frac{y\theta-b(\theta)}{\phi}+c(y,\phi)\Bigr)
 $$
 
 for known functions $b$ and $c$. The parameter $\theta$ is the *canonical parameter* and $\phi$ the *dispersion parameter*. For fixed known $\phi$ this is an exponential family in the sense of @def-exponential-family with natural parameter $\eta=\theta/\phi$, $T(y)=y$, log partition function $a(\eta)=b(\phi\eta)/\phi$ and base measure $e^{c(y,\phi)}$.
+
+:::
+
+::: {#fig-exponential-family-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.6,0) node[lab, right] {$y$};
+\draw[hl, domain=0.4:6.2, samples=80, smooth, variable=\x] plot ({\x}, {2.0*exp(-((\x-3.2)^2)/(2*0.5^2))/(0.5*sqrt(2*pi))});
+\draw[emph, domain=0.2:6.2, samples=80, smooth, variable=\x] plot ({\x}, {2.0*exp(-((\x-3.2)^2)/(2*1.0^2))/(1.0*sqrt(2*pi))});
+\draw[faint, domain=0:6.2, samples=80, smooth, variable=\x] plot ({\x}, {2.0*exp(-((\x-3.2)^2)/(2*1.6^2))/(1.6*sqrt(2*pi))});
+\draw (3.2,0) -- (3.2,-0.08) node[tick, below] {$b'(\theta)$};
+\node[tick, text=accent] at (4.1,1.5) {small $\phi$};
+\node[tick] at (5.4,0.4) {large $\phi$};
+\end{tikzpicture}
+\end{center}
+```
+
+Normal members of a dispersion family with the same $\theta$ (hence the same mean $b'(\theta)$) and different $\phi$: the variance $\phi\,b''(\theta)$ grows with the dispersion
 
 :::
 

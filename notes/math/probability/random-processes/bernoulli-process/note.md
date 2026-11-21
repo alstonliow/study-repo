@@ -65,6 +65,24 @@ $S_n\sim\mathrm{Bin}(n,p)$, with mean $np$ and variance $np(1-p)$, and $T_1\sim\
 
 :::
 
+::: {#fig-bernoulli-process-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.6,0) node[lab, right] {$t$};
+\draw[->] (0,0) -- (0,2.8) node[lab, above] {$N_t$};
+\draw[emph] (0.000,0.000) -- (0.200,0.000) -- (0.200,0.250) -- (0.400,0.250) -- (0.400,0.250) -- (0.600,0.250) -- (0.600,0.250) -- (0.800,0.250) -- (0.800,0.250) -- (1.000,0.250) -- (1.000,0.250) -- (1.200,0.250) -- (1.200,0.500) -- (1.400,0.500) -- (1.400,0.750) -- (1.600,0.750) -- (1.600,0.750) -- (1.800,0.750) -- (1.800,1.000) -- (2.000,1.000) -- (2.000,1.250) -- (2.200,1.250) -- (2.200,1.250) -- (2.400,1.250) -- (2.400,1.250) -- (2.600,1.250) -- (2.600,1.250) -- (2.800,1.250) -- (2.800,1.250) -- (3.000,1.250) -- (3.000,1.250) -- (3.200,1.250) -- (3.200,1.500) -- (3.400,1.500) -- (3.400,1.500) -- (3.600,1.500) -- (3.600,1.500) -- (3.800,1.500) -- (3.800,1.500) -- (4.000,1.500) -- (4.000,1.500) -- (4.200,1.500) -- (4.200,1.500) -- (4.400,1.500) -- (4.400,1.750) -- (4.600,1.750) -- (4.600,1.750) -- (4.800,1.750) -- (4.800,1.750) -- (5.000,1.750) -- (5.000,1.750) -- (5.200,1.750) -- (5.200,2.000) -- (5.400,2.000) -- (5.400,2.000) -- (5.600,2.000) -- (5.600,2.000) -- (5.800,2.000) -- (5.800,2.000) -- (6.000,2.000) -- (6.000,2.000) -- (6.200,2.000);
+\draw[hl, dashed] (0,0) -- (6.0,2.25);
+\node[tick, text=accent] at (5.3,2.2) {$E[N_t]=pt$};
+\end{tikzpicture}
+\end{center}
+```
+
+The number of arrivals $N_t$ in the first $t$ slots of a Bernoulli process with $p=0.3$. It is $\operatorname{Bin}(t,p)$, so it grows along the line $pt$
+
+:::
+
 ::: {#thm-bernoulli-fresh-start .theorem name="Fresh start"}
 
 1. For every fixed $n$, the process $X_{n+1},X_{n+2},\dots$ is a Bernoulli process with parameter $p$, independent of $X_1,\dots,X_n$.
@@ -119,6 +137,38 @@ with $E[Y_k]=k/p$ and $\mathrm{Var}(Y_k)=k(1-p)/p^2$.
 2. The two split processes never both have an arrival in the same slot. So when $0<p$ and $0<q<1$, the probability of that is $0\ne pq\cdot p(1-q)$, and they are dependent.
 
 3. For merging, slot $t$ is empty in the merged process exactly when it is empty in both, with probability $(1-p)(1-q)$, independently over $t$. So the arrival probability is $1-(1-p)(1-q)=p+q-pq$.
+
+:::
+
+::: {#fig-bernoulli-process-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0,1.2) -- (6.4,1.2);
+\node[tick, left] at (0,1.2) {$p$};
+\node[hl dot] at (0.60,1.2) {};
+\node[hl dot] at (1.80,1.2) {};
+\node[hl dot] at (3.40,1.2) {};
+\node[hl dot] at (5.40,1.2) {};
+\draw[faint] (0,0.6) -- (6.4,0.6);
+\node[tick, left] at (0,0.6) {$q$};
+\node[dot] at (1.00,0.6) {};
+\node[dot] at (3.40,0.6) {};
+\node[dot] at (4.60,0.6) {};
+\draw[faint] (0,0) -- (6.4,0);
+\node[tick, left] at (0,0) {merged};
+\node[hl dot] at (0.60,0) {};
+\node[hl dot] at (1.00,0) {};
+\node[hl dot] at (1.80,0) {};
+\node[hl dot] at (3.40,0) {};
+\node[hl dot] at (4.60,0) {};
+\node[hl dot] at (5.40,0) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Merging two independent Bernoulli processes with parameters $p$ and $q$: a slot has an arrival if either has one, which gives a Bernoulli process with parameter $1-(1-p)(1-q)$
 
 :::
 

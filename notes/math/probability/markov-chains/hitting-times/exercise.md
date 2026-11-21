@@ -43,7 +43,20 @@ Help Jonathan evaluate the consequences of his incessant drinking!
 
 (d) What is the long-run average number of boba which can be found inside the straw? [Maybe you should first think about the long-run distribution of the number of boba.]
 
-*Note (these notes):* The figure of the straw is not reproduced.
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) -- (0,2.4) (0.8,0) -- (0.8,2.4);
+\draw[faint] (0,1.2) -- (0.8,1.2);
+\node[ball] at (0.4,1.8) {};
+\node[ball] at (0.4,0.6) {};
+\node[tick, right] at (0.9,1.8) {top component};
+\node[tick, right] at (0.9,0.6) {bottom component};
+\draw[->] (0.4,2.5) -- (0.4,3.0) node[tick, above] {mouth};
+\draw[->] (0.4,-0.6) -- (0.4,-0.1) node[tick, pos=0, below] {new boba with probability $p$};
+\end{tikzpicture}
+\end{center}
+```
 :::
 
 ::: {.problem #prob-eecs126hw-1-q4 origin="external" source="eecs126hw-1-q4"}
@@ -164,7 +177,23 @@ Due to the nature of the flu virus, individuals almost always develop immunity a
 ::: {.problem #prob-mit6041f10-9-q3 origin="external" source="mit6041f10-9-q3"}
 Assume that a fair coin is tossed repeatedly, with the tosses being independent. We want to determine the expected number of tosses necessary to first observe a head directly followed by a tail. To do so, we define a Markov chain with states $S$, $H$, $T$, $HT$, where $S$ is a starting state, $H$ indicates a head on the current toss, $T$ indicates a tail on the current toss (without heads on the previous toss), and $HT$ indicates heads followed by tails over the last two tosses. This Markov chain is illustrated below:
 
-[Figure: the chain on $S$, $H$, $T$, $HT$ with transition probabilities $1/2$.]
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (S) at (0,0) {$S$};
+\node[vertex] (H) at (2.4,0.9) {$H$};
+\node[vertex] (T) at (2.4,-0.9) {$T$};
+\node[vertex] (HT) at (4.8,0.9) {$HT$};
+\draw[->] (S) to[bend left=10] node[lab, tick, auto] {$\frac12$} (H);
+\draw[->] (S) to[bend right=10] node[lab, tick, auto] {$\frac12$} (T);
+\draw[->] (H) to[loop above, looseness=6] node[lab, tick, above] {$\frac12$} (H);
+\draw[->] (H) to[bend left=0] node[lab, tick, auto] {$\frac12$} (HT);
+\draw[->] (T) to[loop below, looseness=6] node[lab, tick, below] {$\frac12$} (T);
+\draw[->] (T) to[bend left=0] node[lab, tick, auto] {$\frac12$} (H);
+\draw[->] (HT) to[loop above, looseness=6] node[lab, tick, above] {$1$} (HT);
+\end{tikzpicture}
+\end{center}
+```
 
 We can find the expected number of tosses necessary to first observe a heads directly followed by tails by solving a mean first passage time problem for this Markov chain.
 

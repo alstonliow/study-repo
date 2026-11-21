@@ -60,6 +60,84 @@ How the standard distributions arise from each other. An arrow is an exact const
 
 :::
 
+::: {#fig-standard-distributions-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\path[bar] (0.525,0) rectangle (0.875,0.720);
+\path[bar] (1.325,0) rectangle (1.675,1.080);
+\node[tick, below] at (1.1,0) {Bernoulli};
+\end{scope}
+\begin{scope}[shift={(2.8,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\path[bar] (0.075,0) rectangle (0.225,0.067);
+\path[bar] (0.315,0) rectangle (0.465,0.358);
+\path[bar] (0.555,0) rectangle (0.705,0.836);
+\path[bar] (0.795,0) rectangle (0.945,1.115);
+\path[bar] (1.035,0) rectangle (1.185,0.929);
+\path[bar] (1.275,0) rectangle (1.425,0.495);
+\path[bar] (1.515,0) rectangle (1.665,0.165);
+\path[bar] (1.755,0) rectangle (1.905,0.031);
+\path[bar] (1.995,0) rectangle (2.145,0.003);
+\node[tick, below] at (1.1,0) {binomial};
+\end{scope}
+\begin{scope}[shift={(5.6,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\path[bar] (0.075,0) rectangle (0.225,1.050);
+\path[bar] (0.315,0) rectangle (0.465,0.682);
+\path[bar] (0.555,0) rectangle (0.705,0.444);
+\path[bar] (0.795,0) rectangle (0.945,0.288);
+\path[bar] (1.035,0) rectangle (1.185,0.187);
+\path[bar] (1.275,0) rectangle (1.425,0.122);
+\path[bar] (1.515,0) rectangle (1.665,0.079);
+\path[bar] (1.755,0) rectangle (1.905,0.051);
+\path[bar] (1.995,0) rectangle (2.145,0.033);
+\node[tick, below] at (1.1,0) {geometric};
+\end{scope}
+\begin{scope}[shift={(8.4,0)}]
+\draw[faint] (0,0) -- (2.2,0);
+\path[bar] (0.075,0) rectangle (0.225,0.474);
+\path[bar] (0.315,0) rectangle (0.465,0.947);
+\path[bar] (0.555,0) rectangle (0.705,0.947);
+\path[bar] (0.795,0) rectangle (0.945,0.632);
+\path[bar] (1.035,0) rectangle (1.185,0.316);
+\path[bar] (1.275,0) rectangle (1.425,0.126);
+\path[bar] (1.515,0) rectangle (1.665,0.042);
+\path[bar] (1.755,0) rectangle (1.905,0.012);
+\path[bar] (1.995,0) rectangle (2.145,0.003);
+\node[tick, below] at (1.1,0) {Poisson};
+\end{scope}
+\begin{scope}[shift={(0,-1.8)}]
+\draw[faint] (0,0) -- (2.2,0);
+\draw[emph] (0.3,0) -- (0.3,0.8) -- (1.9,0.8) -- (1.9,0);
+\node[tick, below] at (1.1,0) {uniform};
+\end{scope}
+\begin{scope}[shift={(2.8,-1.8)}]
+\draw[faint] (0,0) -- (2.2,0);
+\draw[emph, domain=0.05:2.2, samples=80, smooth, variable=\x] plot ({\x}, {1.1*exp(-1.6*\x)});
+\node[tick, below] at (1.1,0) {exponential};
+\end{scope}
+\begin{scope}[shift={(5.6,-1.8)}]
+\draw[faint] (0,0) -- (2.2,0);
+\draw[emph, domain=0:2.2, samples=80, smooth, variable=\x] plot ({\x}, {0.9*exp(-((\x-1.1)^2)/(2*0.4^2))/(0.4*sqrt(2*pi))});
+\node[tick, below] at (1.1,0) {normal};
+\end{scope}
+\begin{scope}[shift={(8.4,-1.8)}]
+\draw[faint] (0,0) -- (2.2,0);
+\draw[emph, domain=0:2.2, samples=80, smooth, variable=\x] plot ({\x}, {2.2*\x*\x*exp(-2.5*\x)*1.6});
+\node[tick, below] at (1.1,0) {gamma};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The shapes of the standard distributions: discrete ones on the top row (bars) and continuous densities below
+
+:::
+
 - **Sums of Bernoulli trials.** $\mathrm{Bin}(n,p)$ is the sum of $n$ independent $\mathrm{Bernoulli}(p)$ variables, and $\mathrm{Geom}(p)$ is the number of them up to the first success.
 - **With and without replacement.** For $N$ much larger than $n$, the factor $\frac{N-n}{N-1}$ is close to $1$, and $\mathrm{Hypergeometric}(N,B,n)\approx\mathrm{Bin}(n,\frac BN)$ (@sec-math-probability-discrete-hypergeometric-distribution).
 - **Rare events.** For large $n$ and small $p$, $\mathrm{Bin}(n,p)\approx\mathrm{Poisson}(np)$ (@thm-poisson-as-a-limit-of).

@@ -53,6 +53,25 @@ If $X\sim\mathrm{Exp}(\lambda)$, then $f$ is a density and $\Pr(X>t)=e^{-\lambda
 
 :::
 
+::: {#fig-exponential-distribution-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.2,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {$f(x)$};
+\fill[shade, domain=2:6, variable=\x] (2,0) -- plot ({\x}, {2.0*exp(-0.8*\x)}) -- (6,0) -- cycle;
+\draw[emph, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {2.0*exp(-0.8*\x)});
+\draw (2,0) -- (2,-0.08) node[tick, below] {$x$};
+\node[lab] at (3.4,0.75) {$e^{-\lambda x}$};
+\end{tikzpicture}
+\end{center}
+```
+
+The tail $\Pr(X>x)=e^{-\lambda x}$ is the shaded area under the exponential density
+
+:::
+
 ::: {#thm-exponential-mean-variance .theorem name="Mean and variance of the exponential distribution"}
 
 If $X\sim\mathrm{Exp}(\lambda)$, then $E[X]=\dfrac1\lambda$ and $\mathrm{Var}(X)=\dfrac1{\lambda^2}$.
@@ -82,6 +101,26 @@ If $X\sim\mathrm{Exp}(\lambda)$ and $s,t\ge0$, then $\Pr(X>s+t\mid X>s)=\Pr(X>t)
 
 1. The event $X>s+t$ is contained in $X>s$, so by @def-conditional-probability and @prp-exponential-tail,
    $$\Pr(X>s+t\mid X>s)=\frac{\Pr(X>s+t)}{\Pr(X>s)}=\frac{e^{-\lambda(s+t)}}{e^{-\lambda s}}=e^{-\lambda t}=\Pr(X>t).$$
+
+:::
+
+::: {#fig-exponential-distribution-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {};
+\draw[emph, domain=0:6, samples=80, smooth, variable=\x] plot ({\x}, {2.0*exp(-0.8*\x)});
+\draw[hl, dashed, domain=1.8:6, samples=80, smooth, variable=\x] plot ({\x}, {2.0*exp(-0.8*(\x-1.8))});
+\draw (1.8,0) -- (1.8,-0.08) node[tick, below] {$s$};
+\draw[faint, dashed] (1.8,0) -- (1.8,2.0);
+\node[tick, text=accent, right] at (2.0,1.9) {density of $X-s$ given $X>s$};
+\end{tikzpicture}
+\end{center}
+```
+
+Memorylessness: given $X>s$, the remaining time $X-s$ has the same exponential density, shifted to start at $s$ (dashed)
 
 :::
 

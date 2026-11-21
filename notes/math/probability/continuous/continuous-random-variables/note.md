@@ -65,6 +65,27 @@ and, by the fundamental theorem of calculus, $F'(x)=f(x)$ at every point where $
 
 :::
 
+::: {#fig-continuous-random-variables-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.4,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {};
+\draw[emph, domain=0:5.2, samples=80, smooth, variable=\x] plot ({\x}, {3.2*\x*exp(-\x)});
+\draw[hl, domain=0:5.2, samples=80, smooth, variable=\x] plot ({\x}, {2*(1-exp(-\x)*(1+\x))});
+\node[tick] at (1.0,1.55) {$f(x)$};
+\node[tick, text=accent] at (4.6,2.25) {$F(x)$};
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\draw[faint, dashed] (0,2) -- (5.2,2);
+\end{tikzpicture}
+\end{center}
+```
+
+A density $f$ and its distribution function $F(x)=\int_{-\infty}^xf(t)\,dt$. $F$ rises fastest where $f$ is largest and levels off at $1$
+
+:::
+
 ::: {#def-continuous-expectation .definition name="Expectation and variance"}
 
 If $X$ has density $f$, its *expectation* and *variance* are
@@ -167,6 +188,27 @@ If $X$ and $Y$ are independent with densities $f_X$ and $f_Y$, then $f(x,y)=f_X(
 Let $X$ have a continuous, strictly increasing c.d.f. $F$ on the interval where its density is positive, and let $0<p<1$. The *$p$-quantile* of $X$ is the number $q_p$ with
 $$F(q_p)=\Pr(X\le q_p)=p .$$
 The $0.5$-quantile is the *median*; $q_{0.25}$ and $q_{0.75}$ are the *quartiles*. For a general c.d.f. one takes $q_p=\min\{x:F(x)\ge p\}$.
+
+:::
+
+::: {#fig-continuous-random-variables-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.4,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {$F(x)$};
+\draw[emph, domain=0:5.2, samples=80, smooth, variable=\x] plot ({\x}, {2*(1-exp(-\x)*(1+\x))});
+\draw[faint, dashed] (0,2) -- (5.2,2);
+\draw[hl, ->] (0,1.5) -- (2.674,1.5) -- (2.674,0);
+\draw (0,1.5) -- (-0.08,1.5) node[tick, left] {$u$};
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\draw (2.674,0) -- (2.674,-0.08) node[tick, below] {$F^{-1}(u)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The $u$-quantile is read off the distribution function: go across from height $u$ to the curve, then down to the axis
 
 :::
 

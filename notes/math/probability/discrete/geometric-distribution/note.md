@@ -17,6 +17,46 @@ $$\Pr(X=k) = (1-p)^{k-1}p, \qquad k=1,2,3,\dots$$
 
 :::
 
+::: {#fig-geometric-distribution-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$k$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {$\Pr(X\le k)$};
+\draw[emph] (0.55,0.600) -- (1.10,0.600);
+\node[dot] at (0.55,0.600) {};
+\draw[emph] (1.10,1.020) -- (1.65,1.020);
+\node[dot] at (1.10,1.020) {};
+\draw[emph] (1.65,1.314) -- (2.20,1.314);
+\node[dot] at (1.65,1.314) {};
+\draw[emph] (2.20,1.520) -- (2.75,1.520);
+\node[dot] at (2.20,1.520) {};
+\draw[emph] (2.75,1.664) -- (3.30,1.664);
+\node[dot] at (2.75,1.664) {};
+\draw[emph] (3.30,1.765) -- (3.85,1.765);
+\node[dot] at (3.30,1.765) {};
+\draw[emph] (3.85,1.835) -- (4.40,1.835);
+\node[dot] at (3.85,1.835) {};
+\draw[emph] (4.40,1.885) -- (4.95,1.885);
+\node[dot] at (4.40,1.885) {};
+\draw[emph] (4.95,1.919) -- (5.50,1.919);
+\node[dot] at (4.95,1.919) {};
+\draw[emph] (5.50,1.944) -- (6.05,1.944);
+\node[dot] at (5.50,1.944) {};
+\draw[faint, dashed] (0,2) -- (6.1,2);
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\draw (0.55,0) -- (0.55,-0.08) node[tick, below] {$1$};
+\draw (2.75,0) -- (2.75,-0.08) node[tick, below] {$5$};
+\draw (5.5,0) -- (5.5,-0.08) node[tick, below] {$10$};
+\end{tikzpicture}
+\end{center}
+```
+
+The distribution function $\Pr(X\le k)=1-(1-p)^k$ of $\operatorname{Geom}(0.3)$ climbs to $1$, closing a fixed fraction $p$ of the remaining gap at each step
+
+:::
+
 ::: {#fig-geometric-distribution-1}
 
 ```{=latex}
@@ -116,6 +156,25 @@ Write $q=1-p$, so $0\le q<1$.
 There is a quick way to see $E[X]=\frac1p$. If the first trial succeeds, $X=1$. If it fails, one trial is used up and the process starts again, so on average $1+E[X]$ trials are needed. Hence
 $$E[X]=p\cdot1+(1-p)\bigl(1+E[X]\bigr),$$
 which gives $pE[X]=1$. This argument assumes that $E[X]$ is finite; the proof above shows that it is.
+
+:::
+
+::: {#fig-geometric-distribution-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (s) at (0,0) {start};
+\node[hl box] (d) at (3.5,0.8) {done: $1$ trial};
+\node[box] (f) at (3.5,-0.8) {$1$ trial, then start again};
+\draw[map] (s) -- node[edge label] {$p$} (d.west);
+\draw[map] (s) -- node[edge label] {$1-p$} (f.west);
+\draw[map, dashed] (f.south) to[bend left=35] (s.south);
+\end{tikzpicture}
+\end{center}
+```
+
+The first-step argument: after a failure the process starts afresh, so $E[X]=1+(1-p)E[X]$, giving $E[X]=1/p$
 
 :::
 

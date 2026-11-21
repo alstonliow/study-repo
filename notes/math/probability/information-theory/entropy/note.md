@@ -52,6 +52,33 @@ $$I(X;Y)=D\bigl(p_{X,Y}\,\|\,p_Xp_Y\bigr)=\sum_{x,y}p(x,y)\log_2\frac{p(x,y)}{p(
 
 :::
 
+::: {#fig-entropy-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.2,0) node[lab, right] {$x$};
+\path[bar] (0.20,0) rectangle (0.50,2.00);
+\path[hl cell] (0.50,0) rectangle (0.80,1.00);
+\node[tick, below] at (0.5,0) {$1$};
+\path[bar] (1.10,0) rectangle (1.40,1.00);
+\path[hl cell] (1.40,0) rectangle (1.70,1.00);
+\node[tick, below] at (1.4,0) {$2$};
+\path[bar] (2.00,0) rectangle (2.30,0.50);
+\path[hl cell] (2.30,0) rectangle (2.60,1.00);
+\node[tick, below] at (2.3,0) {$3$};
+\path[bar] (2.90,0) rectangle (3.20,0.50);
+\path[hl cell] (3.20,0) rectangle (3.50,1.00);
+\node[tick, below] at (3.2,0) {$4$};
+\node[tick, right] at (2.5,2.0) {dark $p$, light $q$};
+\end{tikzpicture}
+\end{center}
+```
+
+$p=(\tfrac12,\tfrac14,\tfrac18,\tfrac18)$ against the uniform $q$. Here $D(p\|q)=\sum_xp(x)\log_2\frac{p(x)}{q(x)}=2-H(p)=\tfrac14$ bit
+
+:::
+
 <!-- Merged 2026-11-19 (owner decision): the former block thm-relative-entropy-nonnegative now lives in @thm-gibbs-inequality (Softmax and Cross Entropy), which states both forms. -->
 
 Relative entropy is never negative: $D(p\,\|\,q)\ge0$, with equality if and only if $p=q$. This is Gibbs' inequality (@thm-gibbs-inequality), since $D(p\,\|\,q)=H(p,q)-H(p)$ with $H(p,q)$ the cross entropy; the base of the logarithm does not matter.
@@ -73,6 +100,27 @@ For discrete $X,Y$ with $X$ taking at most $n$ values:
 2. $\log\frac1{p(x,y)}=\log\frac1{p(x)}+\log\frac1{p(y\mid x)}$; take expectations.
 
 3. $\log\frac{p(x,y)}{p(x)p(y)}=\log\frac1{p(y)}-\log\frac1{p(y\mid x)}$; taking expectations gives $I(X;Y)=H(Y)-H(Y\mid X)$, and the chain rule gives the second form. $I(X;Y)\ge0$ by @thm-gibbs-inequality, with equality iff $p_{X,Y}=p_Xp_Y$.
+
+:::
+
+::: {#fig-entropy-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[tintA] (0,0) circle (1.3);
+\draw[tintB] (1.6,0) circle (1.3);
+\draw (0,0) circle (1.3) (1.6,0) circle (1.3);
+\node[tick] at (-0.6,0) {$H(X\mid Y)$};
+\node[tick] at (0.8,0) {$I(X;Y)$};
+\node[tick] at (2.25,0) {$H(Y\mid X)$};
+\node[lab] at (-0.6,1.55) {$H(X)$};
+\node[lab] at (2.2,1.55) {$H(Y)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Entropies as areas: $H(X)$ and $H(Y)$ overlap in the mutual information $I(X;Y)=H(X)-H(X\mid Y)$, and the union is $H(X,Y)$
 
 :::
 

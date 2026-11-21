@@ -30,6 +30,25 @@ For $X$ uniform on $[-1,1]$ this gives $f_Y(y)=\frac1{2\sqrt y}$ on $(0,1]$.
 
 :::
 
+::: {#fig-derived-distributions-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.8,0) node[lab, right] {$y$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$f_Y(y)$};
+\draw[emph, domain=0.15:4.0, samples=80, smooth, variable=\x] plot ({\x}, {0.5/sqrt(\x/4)/2});
+\draw[faint, dashed] (0,0.5) -- (4,0.5);
+\draw (4,0) -- (4,-0.08) node[tick, below] {$1$};
+\draw (0,0.5) -- (-0.08,0.5) node[tick, left] {$\tfrac12$};
+\end{tikzpicture}
+\end{center}
+```
+
+For $X$ uniform on $[0,1]$ the formula of @exm-derived-square gives $f_Y(y)=\frac1{2\sqrt y}$ on $(0,1]$: squaring crowds values towards $0$, and the density blows up there
+
+:::
+
 ::: {#thm-derived-density-monotone .theorem name="Density of a monotone function"}
 
 Let $X$ have density $f_X$, and let $g$ be strictly monotone and differentiable on an interval containing the values of $X$, with inverse $h=g^{-1}$. Then $Y=g(X)$ has density
@@ -47,6 +66,28 @@ for $y$ in the range of $g$, and $f_Y(y)=0$ elsewhere.
 3. Suppose $g$ is decreasing. Then $g(X)\le y$ exactly when $X\ge h(y)$, so $F_Y(y)=1-F_X(h(y))$.
 
 4. Differentiating gives $f_Y(y)=-f_X(h(y))\,h'(y)$, and now $h'(y)\le0$. Both cases read $f_X(h(y))\lvert h'(y)\rvert$.
+
+:::
+
+::: {#fig-derived-distributions-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.6,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,3.4) node[lab, above] {$y$};
+\draw[emph, domain=0:4.3, samples=80, smooth, variable=\x] plot ({\x}, {0.2+0.55*\x+0.08*\x*\x});
+\path[shade] (2.0,0) rectangle (2.4,1.620);
+\path[hl cell] (0,1.620) rectangle (2.0,1.981);
+\draw[faint, dashed] (2.4,0) -- (2.4,1.981) -- (0,1.981);
+\draw (2.2,0) -- (2.2,-0.08) node[tick, below] {$dx$};
+\draw (0,1.8004) -- (-0.08,1.8004) node[tick, left] {$dy$};
+\node[tick] at (3.7,3.0) {$y=g(x)$};
+\end{tikzpicture}
+\end{center}
+```
+
+A monotone $g$ maps a short interval of length $dx$ onto one of length $dy\approx|g'(x)|\,dx$ with the same probability, so $f_Y(y)=f_X(x)/|g'(x)|$
 
 :::
 

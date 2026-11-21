@@ -17,6 +17,67 @@ $$\mathrm{Cov}(X,Y)=E[(X-\mu_X)(Y-\mu_Y)].$$
 
 :::
 
+::: {#fig-covariance-and-correlation-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-2.6,0) -- (2.6,0);
+\draw[faint] (0,-2.2) -- (0,2.2);
+\node[lab] at (1.9,1.9) {$+$};
+\node[lab] at (-1.9,-1.9) {$+$};
+\node[lab] at (-1.9,1.9) {$-$};
+\node[lab] at (1.9,-1.9) {$-$};
+\node[dot] at (0.09,0.82) {};
+\node[dot] at (-0.93,-0.06) {};
+\node[dot] at (-0.26,-0.34) {};
+\node[dot] at (1.90,1.42) {};
+\node[dot] at (-0.04,0.41) {};
+\node[dot] at (1.13,0.77) {};
+\node[dot] at (0.59,-0.17) {};
+\node[dot] at (-0.37,-0.52) {};
+\node[dot] at (-1.33,-1.84) {};
+\node[dot] at (-1.63,-1.28) {};
+\node[dot] at (-0.17,-0.31) {};
+\node[dot] at (0.07,-0.75) {};
+\node[dot] at (-0.08,0.09) {};
+\node[dot] at (0.75,0.02) {};
+\node[dot] at (-0.40,-1.49) {};
+\node[dot] at (-0.50,-1.67) {};
+\node[dot] at (-1.42,-0.33) {};
+\node[dot] at (-2.20,-1.06) {};
+\node[dot] at (0.33,0.04) {};
+\node[dot] at (0.46,0.64) {};
+\node[dot] at (1.05,0.59) {};
+\node[dot] at (-0.59,-0.78) {};
+\node[dot] at (-0.99,-0.72) {};
+\node[dot] at (-0.79,0.09) {};
+\node[dot] at (-1.87,-1.96) {};
+\node[dot] at (-0.95,-1.92) {};
+\node[dot] at (1.90,-0.11) {};
+\node[dot] at (-0.28,-0.51) {};
+\node[dot] at (1.66,-0.03) {};
+\node[dot] at (1.07,0.31) {};
+\node[dot] at (-0.16,-0.51) {};
+\node[dot] at (0.64,-0.23) {};
+\node[dot] at (-0.08,0.16) {};
+\node[dot] at (1.84,-0.15) {};
+\node[dot] at (1.53,1.64) {};
+\node[dot] at (-0.48,-0.16) {};
+\node[dot] at (-0.47,0.66) {};
+\node[dot] at (0.21,0.02) {};
+\node[dot] at (-0.23,-0.28) {};
+\node[dot] at (-0.18,-0.65) {};
+\node[tick, below] at (2.6,0) {$x-E[X]$};
+\node[tick, left] at (0,2.2) {$y-E[Y]$};
+\end{tikzpicture}
+\end{center}
+```
+
+The product $(X-E[X])(Y-E[Y])$ is positive in the quadrants marked $+$ and negative in the others. Here most points lie in the $+$ quadrants, so the covariance is positive
+
+:::
+
 ::: {#prp-covariance-properties .proposition name="Properties of covariance"}
 
 1. $\mathrm{Cov}(X,Y)=E[XY]-E[X]E[Y]$.
@@ -117,6 +178,30 @@ If $\sigma_X>0$ and $\sigma_Y>0$, then $-1\le\mathrm{Corr}(X,Y)\le1$.
    $$0\le E[(\tilde X-\tilde Y)^2]=2-2E[\tilde X\tilde Y],\qquad 0\le E[(\tilde X+\tilde Y)^2]=2+2E[\tilde X\tilde Y].$$
 
 4. Hence $-1\le E[\tilde X\tilde Y]\le1$, and by step 2 this is the claim.
+
+:::
+
+::: {#fig-covariance-and-correlation-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.4,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,2.8) node[lab, above] {$y$};
+\draw[faint] (0.2,0.3) -- (4.0,2.5);
+\node[hl dot] at (0.40,0.42) {};
+\node[hl dot] at (0.85,0.68) {};
+\node[hl dot] at (1.30,0.94) {};
+\node[hl dot] at (1.75,1.20) {};
+\node[hl dot] at (2.20,1.46) {};
+\node[hl dot] at (2.65,1.72) {};
+\node[hl dot] at (3.10,1.98) {};
+\node[hl dot] at (3.55,2.24) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Equality in @thm-correlation-bound: $\rho=1$ exactly when $Y=aX+b$ with $a>0$, so every sample lies on one increasing line
 
 :::
 

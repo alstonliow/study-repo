@@ -23,6 +23,48 @@ substituting $j=n-i+1$.
 
 :::
 
+::: {#fig-coupon-collector-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.8,0) node[lab, right] {throws};
+\draw[->] (0,0) -- (0,3.0) node[lab, above] {distinct faces};
+\draw[emph] (0.00,0.00) -- (0.30,0.00) -- (0.30,0.45);
+\node[hl dot] at (0.30,0.45) {};
+\draw[emph] (0.30,0.45) -- (0.60,0.45) -- (0.60,0.90);
+\node[hl dot] at (0.60,0.90) {};
+\draw[emph] (0.60,0.90) -- (0.90,0.90) -- (0.90,1.35);
+\node[hl dot] at (0.90,1.35) {};
+\draw[emph] (0.90,1.35) -- (1.20,1.35) -- (1.20,1.35);
+\draw[emph] (1.20,1.35) -- (1.50,1.35) -- (1.50,1.35);
+\draw[emph] (1.50,1.35) -- (1.80,1.35) -- (1.80,1.80);
+\node[hl dot] at (1.80,1.80) {};
+\draw[emph] (1.80,1.80) -- (2.10,1.80) -- (2.10,2.25);
+\node[hl dot] at (2.10,2.25) {};
+\draw[emph] (2.10,2.25) -- (2.40,2.25) -- (2.40,2.25);
+\draw[emph] (2.40,2.25) -- (2.70,2.25) -- (2.70,2.25);
+\draw[emph] (2.70,2.25) -- (3.00,2.25) -- (3.00,2.25);
+\draw[emph] (3.00,2.25) -- (3.30,2.25) -- (3.30,2.25);
+\draw[emph] (3.30,2.25) -- (3.60,2.25) -- (3.60,2.25);
+\draw[emph] (3.60,2.25) -- (3.90,2.25) -- (3.90,2.25);
+\draw[emph] (3.90,2.25) -- (4.20,2.25) -- (4.20,2.70);
+\node[hl dot] at (4.20,2.70) {};
+\draw (0,0.45) -- (-0.08,0.45) node[tick, left] {$1$};
+\draw (0,0.9) -- (-0.08,0.9) node[tick, left] {$2$};
+\draw (0,1.35) -- (-0.08,1.35) node[tick, left] {$3$};
+\draw (0,1.8) -- (-0.08,1.8) node[tick, left] {$4$};
+\draw (0,2.25) -- (-0.08,2.25) node[tick, left] {$5$};
+\draw (0,2.7) -- (-0.08,2.7) node[tick, left] {$6$};
+\draw (4.2,0) -- (4.2,-0.08) node[tick, below] {$14$};
+\end{tikzpicture}
+\end{center}
+```
+
+One run of collecting all faces of a die, which took 14 throws. New faces (dots) come fast at first and slowly at the end; the expected total is $6H_6=14.7$
+
+:::
+
 ::: {#exm-coupon-collector-1 .example}
 
 To see all six faces of a die takes on average $6H_6=6\bigl(1+\frac12+\frac13+\frac14+\frac15+\frac16\bigr)=14.7$ throws.

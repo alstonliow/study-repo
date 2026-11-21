@@ -13,6 +13,28 @@ Let $A$ be "affected" and $B$ "tests positive". Then $\Pr(A)=0.05$, $\Pr(B\mid A
 So a positive result raises the probability from the prior $0.05$ to the posterior $0.19$, but most people who test positive are still healthy, because healthy people are so much more common.
 :::
 
+::: {#fig-bayes-theorem-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (4.0,4.0);
+\path[shade] (0,0.40) rectangle (0.8,4.0);
+\path[hl cell] (0.8,3.2) rectangle (4.0,4.0);
+\draw (0.8,0) -- (0.8,4.0);
+\node[lab, below] at (0.4,0) {$A$};
+\node[lab, below] at (2.4,0) {$\overline A$};
+\node[tick, above] at (0.4,4.0) {$5\%$};
+\node[tick, above] at (2.4,4.0) {$95\%$};
+\node[lab, right, align=left] at (4.2,3.2) {positive:\\ $0.9\cdot0.05=0.045$ (affected)\\ $0.2\cdot0.95=0.19$ (healthy)};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-medical-test with the affected column widened four times for visibility: the upper parts are the positive tests. Of the positive mass $0.235$ only $0.045$ is affected, so $\Pr(A\mid B)\approx0.19$
+
+:::
+
 ::: {#exm-tennis-opponent .example name="An unknown opponent" level="easy"}
 Your tennis opponent is $X$ with probability $0.6$ and $Y$ with probability $0.4$. You beat $X$ with probability $0.7$ and $Y$ with probability $0.3$. By @thm-law-of-total-probability,
 $$\Pr(\text{win})=0.7\cdot0.6+0.3\cdot0.4=0.54.$$

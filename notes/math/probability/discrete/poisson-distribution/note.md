@@ -17,6 +17,53 @@ $$\Pr(X=k) = \frac{e^{-\mu}\mu^k}{k!}, \qquad k=0,1,2,\dots$$
 
 :::
 
+::: {#fig-poisson-distribution-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.0,0) node[lab, right] {$k$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {$\Pr(X=k)$};
+\path[bar] (0.11,0) rectangle (0.29,2.023);
+\path[bar] (0.66,0) rectangle (0.84,2.023);
+\path[bar] (1.21,0) rectangle (1.39,1.012);
+\path[bar] (1.76,0) rectangle (1.94,0.337);
+\path[bar] (2.31,0) rectangle (2.49,0.084);
+\path[bar] (2.86,0) rectangle (3.04,0.017);
+\path[bar] (3.41,0) rectangle (3.59,0.003);
+\path[bar] (3.96,0) rectangle (4.14,0.000);
+\path[bar] (4.51,0) rectangle (4.69,0.000);
+\path[bar] (5.06,0) rectangle (5.24,0.000);
+\path[bar] (5.61,0) rectangle (5.79,0.000);
+\path[bar] (6.16,0) rectangle (6.34,0.000);
+\path[hl cell] (0.31,0) rectangle (0.49,0.101);
+\path[hl cell] (0.86,0) rectangle (1.04,0.403);
+\path[hl cell] (1.41,0) rectangle (1.59,0.806);
+\path[hl cell] (1.96,0) rectangle (2.14,1.075);
+\path[hl cell] (2.51,0) rectangle (2.69,1.075);
+\path[hl cell] (3.06,0) rectangle (3.24,0.860);
+\path[hl cell] (3.61,0) rectangle (3.79,0.573);
+\path[hl cell] (4.16,0) rectangle (4.34,0.327);
+\path[hl cell] (4.71,0) rectangle (4.89,0.164);
+\path[hl cell] (5.26,0) rectangle (5.44,0.073);
+\path[hl cell] (5.81,0) rectangle (5.99,0.029);
+\path[hl cell] (6.36,0) rectangle (6.54,0.011);
+\draw (0.3,0) -- (0.3,-0.08) node[tick, below] {$0$};
+\draw (1.40,0) -- (1.40,-0.08) node[tick, below] {$2$};
+\draw (2.5,0) -- (2.5,-0.08) node[tick, below] {$4$};
+\draw (3.6,0) -- (3.6,-0.08) node[tick, below] {$6$};
+\draw (4.7,0) -- (4.7,-0.08) node[tick, below] {$8$};
+\draw (5.8,0) -- (5.8,-0.08) node[tick, below] {$10$};
+\node[tick, right] at (0.8,2.05) {$\mu=1$};
+\node[tick, right] at (2.6,1.25) {$\mu=4$};
+\end{tikzpicture}
+\end{center}
+```
+
+Poisson distributions with means $1$ (dark) and $4$ (light). As $\mu$ grows the mass moves right and spreads, since the variance is also $\mu$
+
+:::
+
 ```{=latex}
 \begin{tikzpicture}[x=0.75cm, y=11cm, every node/.style={note}]
   \foreach \y in {0.1,0.2,0.3} {\draw[rule] (-0.6,\y) -- (10.6,\y); \node[left] at (-0.6,\y) {\y};}

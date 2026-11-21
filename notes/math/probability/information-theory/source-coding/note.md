@@ -16,6 +16,23 @@ $$2^{-n(H(X)+\varepsilon)}\le p(x_1)\cdots p(x_n)\le2^{-n(H(X)-\varepsilon)}.$$
 
 :::
 
+::: {#fig-source-coding-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (6,2.4);
+\node[tick, anchor=north west] at (0,2.4) {all $2^n$ sequences};
+\draw[regionA] (3.6,0.4) rectangle (5.4,1.6);
+\node[tick, align=center] at (4.5,1.0) {typical set\\$\approx2^{nH}$ sequences\\probability $\approx1$};
+\end{tikzpicture}
+\end{center}
+```
+
+For a biased binary source ($H<1$) the typical set is a vanishing fraction of all sequences, yet it carries almost all the probability; indexing only it needs about $nH$ bits
+
+:::
+
 ::: {#thm-aep .theorem name="Asymptotic equipartition property"}
 
 1. $\Pr\bigl((X_1,\dots,X_n)\in A_\varepsilon^{(n)}\bigr)\to1$ as $n\to\infty$.

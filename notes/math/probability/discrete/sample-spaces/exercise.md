@@ -103,7 +103,51 @@ We then looked at what happens if we roll each die twice, and add the result. In
 
 (c) Show that rolling die B twice is more likely to win than rolling die A twice.
 
-*Note (these notes):* The dice are drawn in the original as three faces each; each number appears on two opposite faces.
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] at (0.9,2.2) {die A};
+\draw[cell frame] (0.6,1.2) rectangle (1.2,1.7999999999999998);
+\node[lbl] at (0.8999999999999999,1.5) {$2$};
+\draw[cell frame] (0,0.6) rectangle (0.6,1.2);
+\node[lbl] at (0.3,0.8999999999999999) {$6$};
+\draw[cell frame] (0.6,0.6) rectangle (1.2,1.2);
+\node[lbl] at (0.8999999999999999,0.8999999999999999) {$7$};
+\draw[cell frame] (1.2,0.6) rectangle (1.7999999999999998,1.2);
+\node[lbl] at (1.5,0.8999999999999999) {$6$};
+\draw[cell frame] (0.6,0) rectangle (1.2,0.6);
+\node[lbl] at (0.8999999999999999,0.3) {$2$};
+\draw[cell frame] (0.6,-0.6) rectangle (1.2,0.0);
+\node[lbl] at (0.8999999999999999,-0.3) {$7$};
+\node[lab] at (3.6999999999999997,2.2) {die B};
+\draw[cell frame] (3.4,1.2) rectangle (4.0,1.7999999999999998);
+\node[lbl] at (3.6999999999999997,1.5) {$1$};
+\draw[cell frame] (2.8,0.6) rectangle (3.4,1.2);
+\node[lbl] at (3.0999999999999996,0.8999999999999999) {$5$};
+\draw[cell frame] (3.4,0.6) rectangle (4.0,1.2);
+\node[lbl] at (3.6999999999999997,0.8999999999999999) {$9$};
+\draw[cell frame] (4.0,0.6) rectangle (4.6,1.2);
+\node[lbl] at (4.3,0.8999999999999999) {$5$};
+\draw[cell frame] (3.4,0) rectangle (4.0,0.6);
+\node[lbl] at (3.6999999999999997,0.3) {$1$};
+\draw[cell frame] (3.4,-0.6) rectangle (4.0,0.0);
+\node[lbl] at (3.6999999999999997,-0.3) {$9$};
+\node[lab] at (6.5,2.2) {die C};
+\draw[cell frame] (6.199999999999999,1.2) rectangle (6.799999999999999,1.7999999999999998);
+\node[lbl] at (6.499999999999999,1.5) {$3$};
+\draw[cell frame] (5.6,0.6) rectangle (6.199999999999999,1.2);
+\node[lbl] at (5.8999999999999995,0.8999999999999999) {$4$};
+\draw[cell frame] (6.199999999999999,0.6) rectangle (6.799999999999999,1.2);
+\node[lbl] at (6.499999999999999,0.8999999999999999) {$8$};
+\draw[cell frame] (6.8,0.6) rectangle (7.3999999999999995,1.2);
+\node[lbl] at (7.1,0.8999999999999999) {$4$};
+\draw[cell frame] (6.199999999999999,0) rectangle (6.799999999999999,0.6);
+\node[lbl] at (6.499999999999999,0.3) {$3$};
+\draw[cell frame] (6.199999999999999,-0.6) rectangle (6.799999999999999,0.0);
+\node[lbl] at (6.499999999999999,-0.3) {$8$};
+\end{tikzpicture}
+\end{center}
+```
 :::
 
 ::: {.problem #prob-mit6042f10-10-q4 origin="external" source="mit6042f10-10-q4"}

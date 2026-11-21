@@ -18,6 +18,28 @@ $$f_{Y\mid X}(y\mid x)=\frac{f_{X,Y}(x,y)}{f_X(x)}.$$
 
 :::
 
+::: {#fig-joint-distributions-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.4,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,3.4) node[lab, above] {$y$};
+\draw[faint, rotate around={30:(2.2,1.7)}] (2.2,1.7) ellipse (0.49 and 0.28);
+\draw[faint, rotate around={30:(2.2,1.7)}] (2.2,1.7) ellipse (0.98 and 0.56);
+\draw[faint, rotate around={30:(2.2,1.7)}] (2.2,1.7) ellipse (1.47 and 0.84);
+\draw[hl, domain=0.3:4.2, samples=80, smooth, variable=\x] plot ({\x}, {1.4*exp(-((\x-2.2)^2)/(2*0.62^2))/(0.62*sqrt(2*pi))});
+\draw[hl, domain=0.3:3.2, smooth, variable=\y] plot ({1.1*exp(-((\y-1.7)^2)/(2*0.52^2))/(0.52*sqrt(2*pi))}, {\y});
+\node[tick, text=accent] at (3.6,0.75) {$f_X$};
+\node[tick, text=accent] at (0.95,3.1) {$f_Y$};
+\end{tikzpicture}
+\end{center}
+```
+
+Contours of a joint density with its two marginals drawn along the axes: $f_X$ integrates out $y$ and $f_Y$ integrates out $x$
+
+:::
+
 $X$ and $Y$ are independent (@def-continuous-independence) exactly when $f_{X,Y}(x,y)=f_X(x)f_Y(y)$ for (almost) all $x,y$. Expectations are computed as in the discrete case with sums replaced by integrals: $E[g(X,Y)]=\iint g(x,y)f_{X,Y}(x,y)\,dx\,dy$.
 
 ::: {#exm-joint-density-triangle .example name="Uniform on a triangle"}
@@ -79,6 +101,30 @@ Let $X_1,\dots,X_n$ be independent with $X_i\sim\operatorname{Exp}(\lambda_i)$, 
    $$\Pr(I=i,\,M>t)=\Pr(Y>X_i>t)=\int_t^\infty\lambda_ie^{-\lambda_ix}e^{-(\lambda-\lambda_i)x}\,dx=\frac{\lambda_i}{\lambda}e^{-\lambda t}.$$
 
 3. Hence $\Pr(I=i,M>t)=\Pr(I=i)\Pr(M>t)$ with $\Pr(I=i)=\lambda_i/\lambda$ (take $t=0$).
+
+:::
+
+::: {#fig-joint-distributions-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$t$};
+\draw[emph] (0,1.4) -- (4.6,1.4);
+\node[dot] at (4.6,1.4) {};
+\node[tick, right] at (4.70,1.4) {$X_1\sim\operatorname{Exp}(\lambda_1)$};
+\draw[emph] (0,0.8) -- (2.2,0.8);
+\node[hl dot] at (2.2,0.8) {};
+\node[tick, right] at (2.30,0.8) {$X_2\sim\operatorname{Exp}(\lambda_2)$};
+\draw[emph] (0,0.2) -- (3.5,0.2);
+\node[dot] at (3.5,0.2) {};
+\node[tick, right] at (3.6,0.2) {$X_3\sim\operatorname{Exp}(\lambda_3)$};
+\draw[hl, dashed] (2.2,1.7) -- (2.2,0) node[tick, below] {$\min_iX_i$};
+\end{tikzpicture}
+\end{center}
+```
+
+A race of independent exponential clocks: the first ring $\min_iX_i$ is exponential with rate $\sum_i\lambda_i$, and clock $j$ wins with probability $\lambda_j/\sum_i\lambda_i$
 
 :::
 

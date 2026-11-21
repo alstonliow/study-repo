@@ -14,6 +14,37 @@ $$E[Y]=\sum_{i=1}^{n}\Pr(\text{bin } i \text{ is empty})=n\Bigl(1-\frac1n\Bigr)^
 (@exm-balls-and-bins). For $m=n$ and large $n$, $\bigl(1-\frac1n\bigr)^n\approx e^{-1}$, so about $n/e\approx0.368\,n$ bins stay empty: about $368$ when $1000$ balls are thrown into $1000$ bins.
 :::
 
+::: {#fig-indicator-variables-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.0,0) rectangle (0.75,1.6);
+\node[tick, below] at (0.375,0) {$I_1=0$};
+\node[dot] at (0.375,0.3) {};
+\node[dot] at (0.375,0.75) {};
+\draw[hl cell] (0.9,0) rectangle (1.65,1.6);
+\node[tick, below] at (1.275,0) {$I_2=1$};
+\draw[cell frame] (1.8,0) rectangle (2.55,1.6);
+\node[tick, below] at (2.175,0) {$I_3=0$};
+\node[dot] at (2.175,0.3) {};
+\draw[cell frame] (2.7,0) rectangle (3.45,1.6);
+\node[tick, below] at (3.075,0) {$I_4=0$};
+\node[dot] at (3.075,0.3) {};
+\node[dot] at (3.075,0.75) {};
+\draw[hl cell] (3.6,0) rectangle (4.35,1.6);
+\node[tick, below] at (3.975,0) {$I_5=1$};
+\draw[cell frame] (4.5,0) rectangle (5.25,1.6);
+\node[tick, below] at (4.875,0) {$I_6=0$};
+\node[dot] at (4.875,0.3) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Six balls in six bins: the empty bins (highlighted) have indicator $1$, and the number of empty bins is $I_1+\dots+I_6=3$ here; its mean is $6(5/6)^6\approx2.0$
+
+:::
+
 ::: {#exm-roulette .example name="Roulette" level="easy"}
 A roulette wheel has $38$ slots: $18$ red, $18$ black and $2$ green. Betting \$1 on black wins \$1 with probability $\frac{18}{38}$ and loses \$1 otherwise, so one game has expected winnings
 $$1\cdot\frac{18}{38}+(-1)\cdot\frac{20}{38}=-\frac1{19}.$$

@@ -23,6 +23,24 @@ Every rate $R<C$ is achievable, and no rate $R>C$ is.
 
 :::
 
+::: {#fig-channel-capacity-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {rate $R$};
+\path[shade] (0,-0.25) rectangle (4,0.25);
+\draw[hl] (4,-0.4) -- (4,0.4) node[tick, above] {$C$};
+\node[tick] at (2,0.55) {reliable codes exist};
+\node[tick] at (5.2,0.55) {impossible};
+\end{tikzpicture}
+\end{center}
+```
+
+The channel coding theorem divides the rates: below capacity $C$ the error probability can be made arbitrarily small, above it it cannot
+
+:::
+
 We prove it for the simplest channel.
 
 ::: {#def-binary-erasure-channel .definition name="Binary erasure channel"}
@@ -71,6 +89,24 @@ The capacity of $\operatorname{BEC}(p)$ is $1-p$ bits per use, and every rate $R
 4. *Enough rows survive.* $|S|\sim\operatorname{Bin}(n,1-p)$, so by the law of large numbers $|S|\ge n(1-p-\delta)$ with probability tending to $1$ for any $\delta>0$. Taking $\delta=(1-p-R)/2$, the error probability is at most $2^{-n\delta}+o(1)\to0$.
 
 5. *Converse.* A message of $nR$ bits cannot be recovered from the $|S|\approx n(1-p)$ unerased bits if $nR>|S|$: at least $2^{nR-|S|}$ messages agree on the received bits, so the error probability stays bounded away from $0$ when $R>1-p$.
+
+:::
+
+::: {#fig-channel-capacity-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.8,0) node[lab, right] {$p$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$C$};
+\draw[emph] (0,2.2) -- (4,0);
+\draw (4,0) -- (4,-0.08) node[tick, below] {$1$};
+\draw (0,2.2) -- (-0.08,2.2) node[tick, left] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The capacity of the binary erasure channel falls linearly, $C=1-p$: the fraction of bits that are erased is lost, and the rest arrives intact
 
 :::
 

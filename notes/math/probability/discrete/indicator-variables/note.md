@@ -18,6 +18,33 @@ It is a Bernoulli random variable (@def-bernoulli-distribution) with parameter $
 
 :::
 
+::: {#fig-indicator-variables-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (4,2.2);
+\node[lab, anchor=north east] at (4,2.2) {$S$};
+\draw[regionA] (1.2,1.1) ellipse (0.9 and 0.7);
+\node[lab] at (1.2,1.1) {$A$};
+\node[dot] (p) at (1.5,0.75) {};
+\node[dot] (q) at (3.2,0.6) {};
+\draw[->] (5.2,-0.1) -- (5.2,2.3);
+\node[dot] (one) at (5.2,1.6) {};
+\node[dot] (zero) at (5.2,0.4) {};
+\node[tick, right] at (one.east) {$1$};
+\node[tick, right] at (zero.east) {$0$};
+\draw[map] (p) to[bend left=15] (one);
+\draw[map] (q) to[bend right=10] (zero);
+\node[lab] at (4.6,2.0) {$I_A$};
+\end{tikzpicture}
+\end{center}
+```
+
+The indicator $I_A$ is $1$ on the outcomes in $A$ and $0$ elsewhere, so $E[I_A]=\Pr(A)$
+
+:::
+
 ::: {#prp-expectation-of-indicator .proposition name="Expectation of an indicator"}
 
 $E[I_A]=\Pr(A)$.

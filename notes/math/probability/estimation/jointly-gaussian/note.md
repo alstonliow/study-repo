@@ -62,6 +62,28 @@ In particular $E[X\mid Y]=L[X\mid Y]$: for jointly Gaussian variables the MMSE e
 
 :::
 
+::: {#fig-jointly-gaussian-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-2.4,0) -- (2.6,0) node[lab, right] {$x$};
+\draw[->] (0,-2.2) -- (0,2.4) node[lab, above] {$y$};
+\draw[faint, rotate=38.66] (0,0) ellipse (0.67 and 0.30);
+\draw[faint, rotate=38.66] (0,0) ellipse (1.34 and 0.60);
+\draw[faint, rotate=38.66] (0,0) ellipse (2.01 and 0.90);
+\draw[emph] (-2.2,-1.76) -- (2.2,1.76) node[tick, right] {$E[Y\mid X=x]=\rho x$};
+\draw[hl] (1.2,-1.4) -- (1.2,2.2);
+\node[hl dot] at (1.2,0.96) {};
+\node[tick, below right] at (1.2,0) {$x$};
+\end{tikzpicture}
+\end{center}
+```
+
+For standard jointly Gaussian $X,Y$ with correlation $\rho$, the slice $X=x$ (vertical line) is a normal distribution centred on the regression line at $\rho x$, with variance $1-\rho^2$
+
+:::
+
 ::: {#exm-jointly-gaussian-pair .example name="Two correlated normals"}
 
 Let $X,Y$ be standard normal and jointly Gaussian with correlation $\rho$. Then $E[X\mid Y]=\rho Y$ and $\operatorname{Var}(X\mid Y)=1-\rho^2$. With $\rho=0.8$ and $Y=1$, $X$ is $N(0.8,0.36)$ given the observation.

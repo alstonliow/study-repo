@@ -43,6 +43,26 @@ Let $p=p(n)=\lambda\dfrac{\ln n}{n}$ for a constant $\lambda>0$.
 
 :::
 
+::: {#fig-random-graphs-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.4,0) node[lab, right] {$c$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {$\Pr(\text{connected})$};
+\draw[emph, domain=0:7.2, samples=80, smooth, variable=\x] plot ({\x}, {2.2*exp(-exp(-(\x-3.5)))});
+\draw (3.5,0) -- (3.5,-0.08) node[tick, below] {$0$};
+\draw (1.5,0) -- (1.5,-0.08) node[tick, below] {$-2$};
+\draw (5.5,0) -- (5.5,-0.08) node[tick, below] {$2$};
+\draw (0,2.2) -- (-0.08,2.2) node[tick, left] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+With $p=(\ln n+c)/n$ the probability that $G(n,p)$ is connected tends to $e^{-e^{-c}}$: the jump from $0$ to $1$ happens in a window of width $O(1/n)$ around $p=\ln n/n$
+
+:::
+
 ::: {#fig-random-graphs-1}
 
 ```{=latex}

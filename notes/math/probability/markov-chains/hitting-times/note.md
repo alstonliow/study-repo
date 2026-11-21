@@ -57,6 +57,27 @@ $$\beta(i)=0\quad(i\in A),\qquad \beta(i)=1+\sum_{j}P(i,j)\beta(j)\quad(i\notin 
 
 :::
 
+::: {#fig-hitting-times-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (i) at (0,0) {$i$};
+\node[box] (j0) at (3.6,1.3) {$h_{j_1}$};
+\draw[map] (i) -- node[edge label] {$P_{ij_1}$} (j0.west);
+\node[box] (j1) at (3.6,0) {$h_{j_2}$};
+\draw[map] (i) -- node[edge label] {$P_{ij_2}$} (j1.west);
+\node[box] (j2) at (3.6,-1.3) {$h_{j_3}$};
+\draw[map] (i) -- node[edge label] {$P_{ij_3}$} (j2.west);
+\node[tick, below] at (0,-0.4) {one step};
+\end{tikzpicture}
+\end{center}
+```
+
+First-step analysis: from $i$ the chain spends one step, then continues from a neighbour $j$ with expected remaining time $h_j$, so $h_i=1+\sum_jP_{ij}h_j$
+
+:::
+
 ::: {#thm-first-step-hitting-probability .theorem name="First step equations for hitting probabilities"}
 
 Let $A,B\subseteq\mathcal X$ be disjoint, and let $\alpha(i)$ be the probability, starting from $i$, that the chain enters $A$ before it enters $B$. Then

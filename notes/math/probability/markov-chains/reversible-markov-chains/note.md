@@ -17,6 +17,26 @@ A chain started from such a $\pi$ is called *reversible*.
 
 :::
 
+::: {#fig-reversible-markov-chains-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (i) at (0,0) {$i$};
+\node[vertex] (j) at (3.4,0) {$j$};
+\draw[->] (i) to[bend left=30] (j);
+\draw[->] (j) to[bend left=30] (i);
+\node[tick, above] at (1.7,0.75) {$\pi_iP_{ij}$};
+\node[tick, below] at (1.7,-0.75) {$\pi_jP_{ji}$};
+\node[lab] at (1.7,0) {$=$};
+\end{tikzpicture}
+\end{center}
+```
+
+Detailed balance: for every pair of states the stationary flow along each edge is the same in both directions
+
+:::
+
 ::: {#thm-detailed-balance-invariant .theorem name="Detailed balance implies invariance"}
 
 If $\pi$ satisfies the detailed balance equations, then $\pi$ is an invariant distribution, and the chain started from $\pi$ has the same law run forwards and backwards in time:
@@ -48,6 +68,29 @@ $$P(i_0,i_1)P(i_1,i_2)\cdots P(i_{n-1},i_0)=P(i_0,i_{n-1})\cdots P(i_2,i_1)P(i_1
 2. *If.* Fix a state $o$. For each $j$ choose a path $o=j_0,\dots,j_m=j$ with positive probabilities and set $\pi(j)\propto\prod_kP(j_k,j_{k+1})/P(j_{k+1},j_k)$. The cycle condition says this does not depend on the chosen path (two paths form a cycle); the reverse probabilities are positive because, by the cycle condition, a positive forward cycle has a positive reverse cycle.
 
 3. For neighbours $i,j$, extend the path to $i$ by the step $i\to j$: $\pi(j)=\pi(i)P(i,j)/P(j,i)$, which is detailed balance. If $P(i,j)=0$, the cycle condition forces $P(j,i)=0$ too. Normalising gives the invariant distribution.
+
+:::
+
+::: {#fig-reversible-markov-chains-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (a) at (0,0) {$i$};
+\node[vertex] (b) at (2.4,0) {$j$};
+\node[vertex] (c) at (1.2,1.8) {$k$};
+\draw[->, hl] (a) to[bend right=12] (b);
+\draw[->, hl] (b) to[bend right=12] (c);
+\draw[->, hl] (c) to[bend right=12] (a);
+\draw[->] (b) to[bend right=15] (a);
+\draw[->] (c) to[bend right=15] (b);
+\draw[->] (a) to[bend right=15] (c);
+\node[tick, right] at (3.2,1.2) {$P_{ij}P_{jk}P_{ki}=P_{ik}P_{kj}P_{ji}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Kolmogorov's criterion: a chain is reversible exactly when every cycle has the same probability traversed either way (highlighted against outer arrows)
 
 :::
 

@@ -23,6 +23,27 @@ It records the outcome of one Bernoulli trial: $1$ for success, $0$ for failure.
 
 :::
 
+::: {#fig-binomial-distribution-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (2.0,0) node[lab, right] {$k$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {$\Pr(X=k)$};
+\path[bar] (0.275,0) rectangle (0.725,1.750);
+\node[tick, below] at (0.500,0) {$0$};
+\path[hl cell] (1.075,0) rectangle (1.525,0.750);
+\node[tick, below] at (1.300,0) {$1$};
+\node[tick, above] at (0.5,1.75) {$1-p$};
+\node[tick, above] at (1.3,0.75) {$p$};
+\end{tikzpicture}
+\end{center}
+```
+
+A Bernoulli distribution with $p=0.3$: the value $1$ (success) has probability $p$ and $0$ has $1-p$
+
+:::
+
 ::: {#def-binomial-distribution .definition name="Binomial distribution"}
 
 $X\sim\mathrm{Bin}(n,p)$ is the number of successes in $n$ independent Bernoulli trials, each with success probability $p$:

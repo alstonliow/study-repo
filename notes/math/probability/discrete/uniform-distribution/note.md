@@ -82,3 +82,44 @@ If $X\sim\mathrm{Unif}(1,n)$, then $E[X] = \dfrac{n+1}{2}$ and $\mathrm{Var}(X) 
    $$\mathrm{Var}(X)=E[X^2]-E[X]^2=\frac{(n+1)(2n+1)}6-\frac{(n+1)^2}4=\frac{(n+1)\bigl(2(2n+1)-3(n+1)\bigr)}{12}=\frac{(n+1)(n-1)}{12}=\frac{n^2-1}{12}.$$
 
 :::
+
+::: {#fig-uniform-distribution-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.6,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {$F(x)$};
+\draw[emph] (0.6,0.333) -- (1.2,0.333);
+\node[dot] at (0.6,0.333) {};
+\node[hollow dot] at (0.6,0.000) {};
+\draw[emph] (1.2,0.667) -- (1.80,0.667);
+\node[dot] at (1.2,0.667) {};
+\node[hollow dot] at (1.2,0.333) {};
+\draw[emph] (1.80,1.000) -- (2.4,1.000);
+\node[dot] at (1.80,1.000) {};
+\node[hollow dot] at (1.80,0.667) {};
+\draw[emph] (2.4,1.333) -- (3.0,1.333);
+\node[dot] at (2.4,1.333) {};
+\node[hollow dot] at (2.4,1.000) {};
+\draw[emph] (3.0,1.667) -- (3.6,1.667);
+\node[dot] at (3.0,1.667) {};
+\node[hollow dot] at (3.0,1.333) {};
+\draw[emph] (3.60,2.000) -- (4.20,2.000);
+\node[dot] at (3.60,2.000) {};
+\node[hollow dot] at (3.60,1.667) {};
+\draw[emph] (0,0) -- (0.6,0);
+\draw (0.6,0) -- (0.6,-0.08) node[tick, below] {$1$};
+\draw (1.2,0) -- (1.2,-0.08) node[tick, below] {$2$};
+\draw (1.80,0) -- (1.80,-0.08) node[tick, below] {$3$};
+\draw (2.4,0) -- (2.4,-0.08) node[tick, below] {$4$};
+\draw (3.0,0) -- (3.0,-0.08) node[tick, below] {$5$};
+\draw (3.60,0) -- (3.60,-0.08) node[tick, below] {$6$};
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The distribution function of a fair die is a staircase with six equal steps of $\tfrac16$, one at each value
+
+:::

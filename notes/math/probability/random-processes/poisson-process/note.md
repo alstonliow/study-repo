@@ -80,6 +80,24 @@ For a Poisson process of rate $\lambda$:
 
 :::
 
+::: {#fig-poisson-process-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.6,0) node[lab, right] {$t$};
+\draw[->] (0,0) -- (0,2.9) node[lab, above] {$N(t)$};
+\draw[emph] (0.000,0.000) -- (1.551,0.000) -- (1.551,0.300) -- (2.733,0.300) -- (2.733,0.600) -- (3.187,0.600) -- (3.187,0.900) -- (3.437,0.900) -- (3.437,1.200) -- (4.034,1.200) -- (4.034,1.500) -- (4.466,1.500) -- (4.466,1.800) -- (5.743,1.800) -- (5.743,2.100) -- (5.943,2.100);
+\draw[hl, dashed] (0,0) -- (6,2.16);
+\node[tick, text=accent] at (5.6,2.5) {$\lambda t$};
+\end{tikzpicture}
+\end{center}
+```
+
+The counting path $N(t)$ of a Poisson process of rate $\lambda=1.2$: it jumps by $1$ at each arrival, and $N(t)\sim\operatorname{Poisson}(\lambda t)$ grows along the line $\lambda t$ on average
+
+:::
+
 ::: {#thm-poisson-merging-splitting .theorem name="Merging and splitting"}
 
 1. *Merging.* If $N_1$ and $N_2$ are independent Poisson processes of rates $\lambda_1,\lambda_2$, then $N_1+N_2$ is a Poisson process of rate $\lambda_1+\lambda_2$, and each arrival comes from $N_1$ with probability $\lambda_1/(\lambda_1+\lambda_2)$, independently of everything else.
@@ -98,6 +116,51 @@ For a Poisson process of rate $\lambda$:
 
 :::
 
+::: {#fig-poisson-process-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0,1.2) -- (6.4,1.2);
+\node[tick, left] at (0,1.2) {$\lambda_1$};
+\node[hl dot] at (0.34,1.2) {};
+\node[hl dot] at (0.47,1.2) {};
+\node[hl dot] at (1.10,1.2) {};
+\node[hl dot] at (1.31,1.2) {};
+\node[hl dot] at (1.40,1.2) {};
+\node[hl dot] at (2.04,1.2) {};
+\node[hl dot] at (5.17,1.2) {};
+\draw[faint] (0,0.6) -- (6.4,0.6);
+\node[tick, left] at (0,0.6) {$\lambda_2$};
+\node[dot] at (2.90,0.6) {};
+\node[dot] at (3.40,0.6) {};
+\node[dot] at (4.94,0.6) {};
+\node[dot] at (5.59,0.6) {};
+\node[dot] at (5.97,0.6) {};
+\node[dot] at (6.19,0.6) {};
+\draw[faint] (0,0) -- (6.4,0);
+\node[tick, left] at (0,0) {$\lambda_1+\lambda_2$};
+\node[hl dot] at (0.34,0) {};
+\node[hl dot] at (0.47,0) {};
+\node[hl dot] at (1.10,0) {};
+\node[hl dot] at (1.31,0) {};
+\node[hl dot] at (1.40,0) {};
+\node[hl dot] at (2.04,0) {};
+\node[hl dot] at (2.90,0) {};
+\node[hl dot] at (3.40,0) {};
+\node[hl dot] at (4.94,0) {};
+\node[hl dot] at (5.17,0) {};
+\node[hl dot] at (5.59,0) {};
+\node[hl dot] at (5.97,0) {};
+\node[hl dot] at (6.19,0) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Merging independent Poisson processes of rates $\lambda_1$ and $\lambda_2$ gives a Poisson process of rate $\lambda_1+\lambda_2$; each merged arrival came from the first with probability $\lambda_1/(\lambda_1+\lambda_2)$
+
+:::
+
 ::: {#thm-poisson-arrivals-uniform .theorem name="Arrivals given the count"}
 
 Given $N(t)=n$, the arrival times $T_1<\dots<T_n$ have the same joint distribution as the sorted values of $n$ independent uniform random variables on $[0,t]$.
@@ -111,6 +174,29 @@ Given $N(t)=n$, the arrival times $T_1<\dots<T_n$ have the same joint distributi
 2. The event $N(t)=n$ is $T_n\le t<T_{n+1}$. Integrating out $t_{n+1}>t$ gives density $\lambda^ne^{-\lambda t}$ for $(T_1,\dots,T_n)$ on $0<t_1<\dots<t_n\le t$, together with $N(t)=n$.
 
 3. Dividing by $\Pr(N(t)=n)=e^{-\lambda t}(\lambda t)^n/n!$ gives the constant density $n!/t^n$ on the ordered region, which is the density of the order statistics of $n$ uniform points.
+
+:::
+
+::: {#fig-poisson-process-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) -- (6,0);
+\draw (0,0.1) -- (0,-0.1) node[tick, below] {$0$};
+\draw (6,0.1) -- (6,-0.1) node[tick, below] {$t$};
+\node[hl dot] at (0.07,0) {};
+\node[hl dot] at (0.86,0) {};
+\node[hl dot] at (2.25,0) {};
+\node[hl dot] at (2.85,0) {};
+\node[hl dot] at (3.94,0) {};
+\node[hl dot] at (4.00,0) {};
+\node[tick, above] at (3,0.25) {given $N(t)=6$};
+\end{tikzpicture}
+\end{center}
+```
+
+Given that $6$ arrivals fall in $[0,t]$, their times are distributed like $6$ independent uniform points on $[0,t]$, sorted
 
 :::
 

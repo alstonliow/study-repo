@@ -59,6 +59,33 @@ Let $C_i$ be "you pick door $i$", $P_i$ "the prize is behind door $i$" and $H_i$
 Multiplying the three plain probabilities instead would give $\frac1{27}$, which is wrong because the events are not independent.
 :::
 
+::: {#fig-conditional-probability-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[dot] (r) at (0,0) {};
+\node[box] (p0) at (3,1.4) {prize at 1};
+\draw (r) -- node[edge label] {$\tfrac13$} (p0.west);
+\node[box, right] (q0) at (5.2,1.4) {stick wins};
+\draw (p0.east) -- (q0.west);
+\node[box] (p1) at (3,0) {prize at 2};
+\draw (r) -- node[edge label] {$\tfrac13$} (p1.west);
+\node[hl box, right] (q1) at (5.2,0) {switch wins};
+\draw (p1.east) -- (q1.west);
+\node[box] (p2) at (3,-1.4) {prize at 3};
+\draw (r) -- node[edge label] {$\tfrac13$} (p2.west);
+\node[hl box, right] (q2) at (5.2,-1.4) {switch wins};
+\draw (p2.east) -- (q2.west);
+\node[lab, above] at (r.north) {pick door 1};
+\end{tikzpicture}
+\end{center}
+```
+
+Monty Hall with the contestant on door $1$: whatever the host opens, switching wins exactly when the prize is not behind door $1$, which has probability $\tfrac23$
+
+:::
+
 <!-- The examples below are adapted (own wording) from UC Berkeley CS 70, Fall 2020, Note 14, §1 and §4 (source keys cs70-14.1, cs70-14.4, in note.md). -->
 
 ::: {#exm-conditioning-balls-and-bins .example name="Conditioning on an empty bin" level="easy"}

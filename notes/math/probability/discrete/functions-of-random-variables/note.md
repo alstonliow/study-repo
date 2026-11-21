@@ -28,6 +28,29 @@ This is sometimes called the *law of the unconscious statistician*.
 
 :::
 
+::: {#fig-functions-of-random-variables-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] at (0,2.0) {$X$};
+\node[lab] at (3,2.0) {$Y=X^2$};
+\node[box] (x0) at (0,1) {$-1$: $\tfrac13$};
+\node[box] (x1) at (0,0) {$0$: $\tfrac13$};
+\node[box] (x2) at (0,-1) {$1$: $\tfrac13$};
+\node[hl box] (y1) at (3,0.5) {$1$: $\tfrac23$};
+\node[box] (y0) at (3,-0.5) {$0$: $\tfrac13$};
+\draw[map] (x0) -- (y1);
+\draw[map] (x2) -- (y1);
+\draw[map] (x1) -- (y0);
+\end{tikzpicture}
+\end{center}
+```
+
+$Y=X^2$ for $X$ uniform on $\{-1,0,1\}$: values of $X$ with the same image pool their probabilities. Either way $E[Y]=\sum_x x^2\Pr(X=x)=\tfrac23$
+
+:::
+
 ## Spread: the random walk
 
 ::: {#prp-random-walk-square .proposition name="Squared distance of a random walk"}

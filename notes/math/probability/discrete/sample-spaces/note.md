@@ -24,6 +24,33 @@ A random experiment has a set $U$ of all possible outcomes, called the *sample s
 
 :::
 
+::: {#fig-sample-spaces-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (4.8,2.8);
+\node[lab, anchor=north east] at (4.8,2.8) {$S$};
+\draw[regionA] (0.15,0.15) rectangle (2.45,2.6);
+\node[lab] at (1.3,0.85) {$A$};
+\node[hl dot] at (0.5, 0.5) {};
+\node[hl dot] at (1.3, 1.4) {};
+\node[hl dot] at (2.1, 0.6) {};
+\node[dot] at (2.9, 1.5) {};
+\node[dot] at (3.6, 0.7) {};
+\node[hl dot] at (0.9, 2.2) {};
+\node[dot] at (1.9, 2.3) {};
+\node[dot] at (3.3, 2.4) {};
+\node[dot] at (4.3, 1.8) {};
+\node[dot] at (4.4, 0.4) {};
+\end{tikzpicture}
+\end{center}
+```
+
+A sample space $S$ of ten outcomes (dots). An event $A$ is any set of outcomes; here it holds the four highlighted ones
+
+:::
+
 ::: {#def-probability-equally-likely-case .definition name="Probability, equally likely case"}
 
 If $U$ is finite and every outcome is equally likely, then
@@ -53,6 +80,39 @@ Always $\Pr(\emptyset)=0$ and $\Pr(U)=1$. The equally likely case is $\Pr(x)=1/|
 
 Let $U=\mathbb{N}$ with $\Pr(n)=1/2^n$. This is a valid assignment, since $\sum_{n\ge1}1/2^n=\frac{1/2}{1-1/2}=1$ (@sec-math-calculus-single-variable-limits-sums-and-series). Then
 $$\Pr(\text{odd}) = \sum_{k=1}^\infty \frac{1}{2^{2k-1}} = \frac{1/2}{1-1/4} = \frac{2}{3}.$$
+
+:::
+
+::: {#fig-sample-spaces-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[dot] (r) at (0,0) {};
+\node[hl dot] (h0) at (1.6,0.7) {};
+\node[lab, right] at (h0.east) {$\Pr=1/2$};
+\draw (r) -- node[edge label] {H} (h0);
+\node[dot] (r1) at (1.6,-0.7) {};
+\draw (r) -- node[edge label] {T} (r1);
+\node[hl dot] (h1) at (3.2,0.0) {};
+\node[lab, right] at (h1.east) {$\Pr=1/4$};
+\draw (r1) -- node[edge label] {H} (h1);
+\node[dot] (r2) at (3.2,-1.4) {};
+\draw (r1) -- node[edge label] {T} (r2);
+\node[hl dot] (h2) at (4.80,-0.7) {};
+\node[lab, right] at (h2.east) {$\Pr=1/8$};
+\draw (r2) -- node[edge label] {H} (h2);
+\node[dot] (r3) at (4.80,-2.10) {};
+\draw (r2) -- node[edge label] {T} (r3);
+\node[hl dot] (h3) at (6.4,-1.40) {};
+\node[lab, right] at (h3.east) {$\Pr=1/16$};
+\draw (r3) -- node[edge label] {H} (h3);
+\node[lab] at (5.6,-2.6) {$\cdots$};
+\end{tikzpicture}
+\end{center}
+```
+
+Tossing until the first head: the outcomes $H, TH, TTH, \dots$ form an infinite sample space, with probabilities $\tfrac12,\tfrac14,\tfrac18,\dots$ that sum to $1$
 
 :::
 

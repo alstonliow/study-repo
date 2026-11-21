@@ -33,6 +33,26 @@ $$E[X]=\sum_iE[X\mid A_i]\Pr(A_i).$$
 
 :::
 
+::: {#fig-conditional-expectation-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (r) at (0,0) {$E[X]$};
+\node[box] (a0) at (4,1.3) {$E[X\mid A_1]$};
+\draw (r.east) -- node[edge label] {$\Pr(A_1)$} (a0.west);
+\node[box] (a1) at (4,0) {$E[X\mid A_2]$};
+\draw (r.east) -- node[edge label] {$\Pr(A_2)$} (a1.west);
+\node[box] (a2) at (4,-1.3) {$E[X\mid A_3]$};
+\draw (r.east) -- node[edge label] {$\Pr(A_3)$} (a2.west);
+\end{tikzpicture}
+\end{center}
+```
+
+The law of total expectation: average the conditional means $E[X\mid A_i]$ over the partition, weighting each by $\Pr(A_i)$
+
+:::
+
 Linearity holds for conditional expectations too: $E[aX+bY\mid A]=aE[X\mid A]+bE[Y\mid A]$, by @thm-linearity-of-expectation applied to the conditional probability.
 
 ::: {#exm-mean-time-to-failure .example name="Mean time to failure"}

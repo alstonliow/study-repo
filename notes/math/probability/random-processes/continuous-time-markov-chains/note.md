@@ -15,6 +15,26 @@ Let $\mathcal X$ be a countable state space and let $q(i,j)\ge0$ for $i\ne j$ be
 
 :::
 
+::: {#fig-continuous-time-markov-chains-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[vertex] (a) at (0,0) {$0$};
+\node[vertex] (b) at (2.6,0) {$1$};
+\node[vertex] (c) at (5.2,0) {$2$};
+\draw[->] (a) to[bend left=30] node[lab, tick, auto] {$1$} (b);
+\draw[->] (b) to[bend left=30] node[lab, tick, auto] {$\frac12$} (a);
+\draw[->] (b) to[bend left=30] node[lab, tick, auto] {$1$} (c);
+\draw[->] (c) to[bend left=30] node[lab, tick, auto] {$\frac32$} (b);
+\end{tikzpicture}
+\end{center}
+```
+
+A continuous-time chain is drawn with transition rates $q_{ij}$ on the edges instead of probabilities; @fig-continuous-time-markov-chains-2 shows a path of this chain
+
+:::
+
 Equivalently, from state $i$ an independent $\operatorname{Exp}(q(i,j))$ clock runs for each $j$, and the chain follows the first clock to ring (@prp-min-of-exponentials). For small $h$, $\Pr(X(t+h)=j\mid X(t)=i)=q(i,j)h+o(h)$ for $j\ne i$.
 
 ::: {#rmk-ctmc-why-exponential .remark name="Why the holding times are exponential"}
@@ -35,6 +55,38 @@ The second form is a flow balance: in the long run, the rate of leaving $j$ equa
 ::: {#def-jump-chain .definition name="Jump chain"}
 
 The *jump chain* of a CTMC is the discrete-time Markov chain of the states it visits, with transition matrix $P(i,j)=q(i,j)/q(i)$ for $j\ne i$ and $P(i,i)=0$.
+
+:::
+
+::: {#fig-continuous-time-markov-chains-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,-0.3) -- (6.5,-0.3) node[lab, right] {$t$};
+\draw[faint] (0,0.0) -- (6.2,0.0);
+\node[tick, left] at (0,0.0) {$0$};
+\draw[faint] (0,0.6) -- (6.2,0.6);
+\node[tick, left] at (0,0.6) {$1$};
+\draw[faint] (0,1.2) -- (6.2,1.2);
+\node[tick, left] at (0,1.2) {$2$};
+\draw[hl] (0.00,0.0) -- (0.98,0.0);
+\node[hl dot] at (0.00,0.0) {};
+\draw[hl] (0.98,0.6) -- (2.03,0.6);
+\node[hl dot] at (0.98,0.6) {};
+\draw[hl] (2.03,1.2) -- (2.93,1.2);
+\node[hl dot] at (2.03,1.2) {};
+\draw[hl] (2.93,0.6) -- (2.95,0.6);
+\node[hl dot] at (2.93,0.6) {};
+\draw[hl] (2.95,1.2) -- (4.86,1.2);
+\node[hl dot] at (2.95,1.2) {};
+\draw[hl] (4.86,0.6) -- (6.20,0.6);
+\node[hl dot] at (4.86,0.6) {};
+\end{tikzpicture}
+\end{center}
+```
+
+A path of a continuous-time chain: it holds in each state for an exponential time, then jumps according to the jump chain. Recording only the visited states gives the jump chain
 
 :::
 

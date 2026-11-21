@@ -95,6 +95,30 @@ If $X\sim N(\mu,\sigma^2)$, then $E[X]=\mu$ and $\mathrm{Var}(X)=\sigma^2$.
 
 :::
 
+::: {#fig-normal-distribution-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.4,0) node[lab, right] {$x$};
+\fill[shade, domain=1.5:5.5, variable=\x] (1.5,0) -- plot ({\x}, {5*exp(-((\x-3.5)^2)/(2*1^2))/(1*sqrt(2*pi))}) -- (5.5,0) -- cycle;
+\fill[hl cell, domain=2.5:4.5, variable=\x] (2.5,0) -- plot ({\x}, {5*exp(-((\x-3.5)^2)/(2*1^2))/(1*sqrt(2*pi))}) -- (4.5,0) -- cycle;
+\draw[emph, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {5*exp(-((\x-3.5)^2)/(2*1^2))/(1*sqrt(2*pi))});
+\draw (1.5,0) -- (1.5,-0.08) node[tick, below] {$\mu-2\sigma$};
+\draw (2.5,0) -- (2.5,-0.08) node[tick, below] {$\mu-\sigma$};
+\draw (3.5,0) -- (3.5,-0.08) node[tick, below] {$\mu$};
+\draw (4.5,0) -- (4.5,-0.08) node[tick, below] {$\mu+\sigma$};
+\draw (5.5,0) -- (5.5,-0.08) node[tick, below] {$\mu+2\sigma$};
+\node[tick] at (3.5,0.6) {$68\%$};
+\draw[<->] (1.5,2.25) -- node[tick, above] {$95\%$} (5.5,2.25);
+\end{tikzpicture}
+\end{center}
+```
+
+About $68\%$ of a normal distribution lies within one standard deviation of the mean and about $95\%$ within two
+
+:::
+
 The parameters are the mean and the variance, which explains the notation. About $68\%$ of the probability lies within $\sigma$ of $\mu$, about $95\%$ within $2\sigma$ and $99.7\%$ within $3\sigma$; half of it lies within about $0.67\sigma$.
 
 ## Sums of independent normal variables

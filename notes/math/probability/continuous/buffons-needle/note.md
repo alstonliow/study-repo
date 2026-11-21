@@ -84,3 +84,25 @@ Take lines at distance $1$, and let $p$ be the crossing probability for a needle
 The limits in steps 1 and 2 need a continuity argument, which we do not give; the first proof is complete.
 
 :::
+
+::: {#fig-buffons-needle-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0,0) -- (6,0);
+\draw[faint] (0,1.2) -- (6,1.2);
+\draw[faint] (0,2.4) -- (6,2.4);
+\draw[emph] (0.800,0.500) -- (1.600,1.500) -- (2.600,0.900) -- (3.400,1.900) -- (4.400,2.700) -- (5.200,1.800);
+\node[hl dot] at (1.36,1.2) {};
+\node[hl dot] at (2.10,1.2) {};
+\node[hl dot] at (2.84,1.2) {};
+\node[hl dot] at (4.03,2.4) {};
+\node[hl dot] at (4.67,2.4) {};
+\end{tikzpicture}
+\end{center}
+```
+
+A bent noodle crossing the lines. By linearity each small piece contributes its own expected number of crossings, so the expected count depends only on the total length
+
+:::

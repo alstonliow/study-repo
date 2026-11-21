@@ -51,6 +51,26 @@ The corresponding *estimators* are the random variables $\hat\Theta=g(X)$ obtain
 
 :::
 
+::: {#fig-bayesian-inference-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$\theta$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {};
+\draw[emph, domain=0:6.2, samples=80, smooth, variable=\x] plot ({\x}, {0.9*\x*\x*exp(-1.1*\x)*1.2});
+\draw (1.82,0) -- (1.82,-0.08) node[tick, below] {MAP};
+\draw (2.73,0) -- (2.73,-0.08) node[tick, below] {LMS};
+\draw[faint, dashed] (1.82,0) -- (1.82,0.97);
+\draw[hl] (2.73,0) -- (2.73,0.84);
+\end{tikzpicture}
+\end{center}
+```
+
+For a skewed posterior the MAP estimate (the mode) and the LMS estimate (the mean) differ; the long right tail pulls the mean to the right
+
+:::
+
 ::: {#rmk-map-lms-optimal .remark name="What each estimate is best at"}
 
 For a discrete $\Theta$ the MAP rule minimises the probability of a wrong guess (@thm-map-minimises-error). The LMS estimator minimises the mean squared error $E[(\Theta-g(X))^2]$ over all functions $g$ (@thm-mmse-conditional-expectation), and its error $\tilde\Theta=\hat\Theta-\Theta$ has mean $0$ and is uncorrelated with every function of $X$.
@@ -102,5 +122,28 @@ $$E[\Theta\mid X=x]=\int_x^1\frac{\theta\,d\theta}{\theta\lvert\ln x\rvert}=\fra
 Let $\Theta\sim N(x_0,\sigma_0^2)$ and $X=\Theta+W$ with $W\sim N(0,\sigma^2)$ independent of $\Theta$. The exponent of $f_\Theta(\theta)f_{X\mid\Theta}(x\mid\theta)$ is a quadratic in $\theta$, so the posterior is normal; completing the square gives mean and variance
 $$\hat\theta=\frac{x_0/\sigma_0^2+x/\sigma^2}{1/\sigma_0^2+1/\sigma^2},\qquad\frac1{1/\sigma_0^2+1/\sigma^2}.$$
 The posterior mean is a precision-weighted average of the prior mean and the observation. A normal density peaks at its mean, so here MAP and LMS agree, and the estimate is linear in $x$.
+
+:::
+
+::: {#fig-bayesian-inference-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.4,0) node[lab, right] {$\theta$};
+\draw[faint, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.5*exp(-((\x-2.0)^2)/(2*1.2^2))/(1.2*sqrt(2*pi))});
+\draw[emph, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.5*exp(-((\x-5.0)^2)/(2*0.8^2))/(0.8*sqrt(2*pi))});
+\draw[hl, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.5*exp(-((\x-4.08)^2)/(2*0.67^2))/(0.67*sqrt(2*pi))});
+\draw (2,0) -- (2,-0.08) node[tick, below] {$x_0$};
+\draw (5,0) -- (5,-0.08) node[tick, below] {$x$};
+\draw (4.08,0) -- (4.08,-0.08) node[tick, below] {$\hat\theta$};
+\node[tick] at (1.0,0.95) {prior};
+\node[tick] at (6.1,1.0) {likelihood};
+\node[tick, text=accent] at (4.1,1.6) {posterior};
+\end{tikzpicture}
+\end{center}
+```
+
+Normal prior and normal likelihood give a normal posterior. Its mean $\hat\theta$ lies between $x_0$ and $x$, nearer the more precise of the two, and it is narrower than both
 
 :::

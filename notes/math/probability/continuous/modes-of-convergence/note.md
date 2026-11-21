@@ -31,6 +31,33 @@ at every $x$ where the CDF of $X$ is continuous.
 
 :::
 
+::: {#fig-modes-of-convergence-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (4.6,0) node[lab, right] {$x$};
+\draw[->] (0,0) -- (0,2.4) node[lab, above] {};
+\draw[faint] (0.000,0.000) -- (1.333,0.000) -- (1.333,0.667);
+\draw[faint] (1.333,0.667) -- (2.667,0.667) -- (2.667,1.333);
+\draw[faint] (2.667,1.333) -- (4.000,1.333) -- (4.000,2.000);
+\draw[emph] (0.000,0.000) -- (0.667,0.000) -- (0.667,0.333);
+\draw[emph] (0.667,0.333) -- (1.333,0.333) -- (1.333,0.667);
+\draw[emph] (1.333,0.667) -- (2.000,0.667) -- (2.000,1.000);
+\draw[emph] (2.000,1.000) -- (2.667,1.000) -- (2.667,1.333);
+\draw[emph] (2.667,1.333) -- (3.333,1.333) -- (3.333,1.667);
+\draw[emph] (3.333,1.667) -- (4.000,1.667) -- (4.000,2.000);
+\draw[hl] (0,0) -- (4,2) -- (4.4,2);
+\draw (4,0) -- (4,-0.08) node[tick, below] {$1$};
+\draw (0,2) -- (-0.08,2) node[tick, left] {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+Distribution functions of the uniform distribution on $\{\tfrac1n,\dots,1\}$ for $n=3,6$: the staircases approach the line $F(x)=x$ of the uniform distribution on $[0,1]$, so the variables converge in distribution
+
+:::
+
 The weak law of large numbers (@thm-law-of-large-numbers) is convergence in probability of sample means; the strong law says they converge almost surely; the central limit theorem (@thm-central-limit-theorem) is convergence in distribution of the standardised sums.
 
 ::: {#thm-convergence-implications .theorem name="Almost sure ⇒ in probability ⇒ in distribution"}
@@ -60,6 +87,42 @@ The weak law of large numbers (@thm-law-of-large-numbers) is convergence in prob
 1. *In probability, not almost surely.* Let $X_n$ be independent with $\Pr(X_n=1)=1/n$ and $X_n=0$ otherwise. Then $\Pr(|X_n|>\varepsilon)=1/n\to0$. But $\sum_n1/n=\infty$, so by the second Borel–Cantelli lemma (@lem-borel-cantelli) $X_n=1$ infinitely often with probability $1$, and $X_n\not\to0$ almost surely.
 
 2. *In distribution, not in probability.* Let $X\sim N(0,1)$ and $X_n=-X$ for all $n$. Every $X_n$ has the distribution of $X$, but $|X_n-X|=2|X|$ does not become small.
+
+:::
+
+::: {#fig-modes-of-convergence-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0,-0.00) -- (4,-0.00);
+\draw[hl] (0.00,-0.00) -- (4.00,-0.00);
+\node[tick, left] at (0,-0.00) {$X_1$};
+\draw[faint] (0,-0.45) -- (4,-0.45);
+\draw[hl] (0.00,-0.45) -- (2.00,-0.45);
+\node[tick, left] at (0,-0.45) {$X_2$};
+\draw[faint] (0,-0.90) -- (4,-0.90);
+\draw[hl] (2.00,-0.90) -- (4.00,-0.90);
+\node[tick, left] at (0,-0.90) {$X_3$};
+\draw[faint] (0,-1.35) -- (4,-1.35);
+\draw[hl] (0.00,-1.35) -- (1.00,-1.35);
+\node[tick, left] at (0,-1.35) {$X_4$};
+\draw[faint] (0,-1.80) -- (4,-1.80);
+\draw[hl] (1.00,-1.80) -- (2.00,-1.80);
+\node[tick, left] at (0,-1.80) {$X_5$};
+\draw[faint] (0,-2.25) -- (4,-2.25);
+\draw[hl] (2.00,-2.25) -- (3.00,-2.25);
+\node[tick, left] at (0,-2.25) {$X_6$};
+\draw[faint] (0,-2.70) -- (4,-2.70);
+\draw[hl] (3.00,-2.70) -- (4.00,-2.70);
+\node[tick, left] at (0,-2.70) {$X_7$};
+\node[tick, below] at (0,-3.0) {$0$};
+\node[tick, below] at (4,-3.0) {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The sliding indicators on $[0,1]$: $X_n$ is $1$ on the highlighted interval. The intervals shrink, so $X_n\to0$ in probability, but they sweep across $[0,1]$ again and again, so $X_n(\omega)\to0$ for no $\omega$
 
 :::
 

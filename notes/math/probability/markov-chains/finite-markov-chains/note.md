@@ -19,6 +19,27 @@ whenever the conditioning event has positive probability (the *Markov property*)
 
 :::
 
+::: {#fig-finite-markov-chains-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,-0.3) -- (6.5,-0.3) node[lab, right] {$n$};
+\draw[faint] (0,0.0) -- (6.2,0.0);
+\node[tick, left] at (0,0.0) {$1$};
+\draw[faint] (0,0.6) -- (6.2,0.6);
+\node[tick, left] at (0,0.6) {$2$};
+\draw[faint] (0,1.2) -- (6.2,1.2);
+\node[tick, left] at (0,1.2) {$3$};
+\draw[hl] (0.000,0.000) -- (0.250,0.000) -- (0.250,0.600) -- (0.500,0.600) -- (0.500,1.200) -- (0.750,1.200) -- (0.750,0.600) -- (1.000,0.600) -- (1.000,0.600) -- (1.250,0.600) -- (1.250,0.000) -- (1.500,0.000) -- (1.500,0.600) -- (1.750,0.600) -- (1.750,0.600) -- (2.000,0.600) -- (2.000,1.200) -- (2.250,1.200) -- (2.250,0.600) -- (2.500,0.600) -- (2.500,1.200) -- (2.750,1.200) -- (2.750,0.000) -- (3.000,0.000) -- (3.000,0.600) -- (3.250,0.600) -- (3.250,1.200) -- (3.500,1.200) -- (3.500,0.600) -- (3.750,0.600) -- (3.750,0.600) -- (4.000,0.600) -- (4.000,0.600) -- (4.250,0.600) -- (4.250,0.000) -- (4.500,0.000) -- (4.500,0.000) -- (4.750,0.000) -- (4.750,0.600) -- (5.000,0.600) -- (5.000,0.600) -- (5.250,0.600) -- (5.250,1.200) -- (5.500,1.200) -- (5.500,1.200) -- (5.750,1.200) -- (5.750,1.200) -- (6.000,1.200) -- (6.000,0.600) -- (6.200,0.600);
+\end{tikzpicture}
+\end{center}
+```
+
+A sample path of a three-state Markov chain: at each step the next state is drawn from the row of $P$ of the current state, ignoring the earlier history
+
+:::
+
 ::: {#rmk-finite-markov-chains-diagram}
 
 A Markov chain is drawn as its *state transition diagram*: a directed graph on $\mathcal X$ with an arrow $i\to j$, labelled $P(i,j)$, whenever $P(i,j)>0$. One way to run the chain: on arriving at state $i$, draw the next state from row $i$ of $P$, independently of everything before.
@@ -59,6 +80,48 @@ In particular, $\Pr(X_n=j\mid X_0=i)=P^n(i,j)$ when $\pi_0(i)>0$.
 2. By the definition of the matrix product, this sum is the entry $i_n$ of the row vector $\pi_0P\cdots P=\pi_0P^n$.
 
 3. If $\pi_0(i)>0$, the same computation with the paths that start at $i$ gives $\Pr(X_0=i,X_n=j)=\pi_0(i)P^n(i,j)$; divide by $\pi_0(i)$.
+
+:::
+
+::: {#fig-finite-markov-chains-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\path[bar] (0.00,0) rectangle (0.45,2.000);
+\path[hl cell] (0.00,2.000) rectangle (0.45,2);
+\node[tick, below] at (0.22,0) {$0$};
+\path[bar] (0.70,0) rectangle (1.15,1.400);
+\path[hl cell] (0.70,1.400) rectangle (1.15,2);
+\node[tick, below] at (0.92,0) {$1$};
+\path[bar] (1.40,0) rectangle (1.85,1.040);
+\path[hl cell] (1.40,1.040) rectangle (1.85,2);
+\node[tick, below] at (1.62,0) {$2$};
+\path[bar] (2.10,0) rectangle (2.55,0.824);
+\path[hl cell] (2.10,0.824) rectangle (2.55,2);
+\node[tick, below] at (2.32,0) {$3$};
+\path[bar] (2.80,0) rectangle (3.25,0.694);
+\path[hl cell] (2.80,0.694) rectangle (3.25,2);
+\node[tick, below] at (3.02,0) {$4$};
+\path[bar] (3.50,0) rectangle (3.95,0.617);
+\path[hl cell] (3.50,0.617) rectangle (3.95,2);
+\node[tick, below] at (3.72,0) {$5$};
+\path[bar] (4.20,0) rectangle (4.65,0.570);
+\path[hl cell] (4.20,0.570) rectangle (4.65,2);
+\node[tick, below] at (4.42,0) {$6$};
+\path[bar] (4.90,0) rectangle (5.35,0.542);
+\path[hl cell] (4.90,0.542) rectangle (5.35,2);
+\node[tick, below] at (5.12,0) {$7$};
+\path[bar] (5.60,0) rectangle (6.05,0.525);
+\path[hl cell] (5.60,0.525) rectangle (6.05,2);
+\node[tick, below] at (5.82,0) {$8$};
+\draw[faint, dashed] (-0.2,0.5) -- (6.3,0.5) node[tick, right] {$\pi_0=\frac{b}{a+b}$};
+\node[lab, below] at (2.9,-0.35) {$n$};
+\end{tikzpicture}
+\end{center}
+```
+
+The distribution $\pi_n=\pi_0P^n$ of the two-state chain with $a=0.3$, $b=0.1$, started in state $0$: the dark part is $\Pr(X_n=0)$ and the light part $\Pr(X_n=1)$. It settles at $b/(a+b)=\tfrac14$
 
 :::
 

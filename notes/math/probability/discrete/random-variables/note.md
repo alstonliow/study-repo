@@ -16,6 +16,37 @@ A *random variable* on a sample space $U$ is a function $X:U\to\mathbb{R}$.
 
 :::
 
+::: {#fig-random-variables-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[set] at (0,0) {};
+\node[lab] at (0,1.9) {$S$};
+\node[lab] (o0) at (0,1.05) {HH};
+\node[lab] (o1) at (0,0.35) {HT};
+\node[lab] (o2) at (0,-0.35) {TH};
+\node[lab] (o3) at (0,-1.05) {TT};
+\draw[->] (2.5,-1.6) -- (2.5,1.6) node[lab, above] {$\mathbb R$};
+\node[dot] (v0) at (2.5,-1) {};
+\node[tick, right] at (v0.east) {$0$};
+\node[dot] (v1) at (2.5,0) {};
+\node[tick, right] at (v1.east) {$1$};
+\node[dot] (v2) at (2.5,1) {};
+\node[tick, right] at (v2.east) {$2$};
+\draw[map] (o0.east) -- (v2);
+\draw[map] (o1.east) -- (v1);
+\draw[map] (o2.east) -- (v1);
+\draw[map] (o3.east) -- (v0);
+\node[lab] at (1.3,1.6) {$X$};
+\end{tikzpicture}
+\end{center}
+```
+
+A random variable is a function on the sample space: $X$ sends each outcome of two coin tosses to its number of heads
+
+:::
+
 ::: {#exm-random-variables-1 .example}
 
 Throw two dice, so $U=\{1,\dots,6\}^2$. The total $Z(d_1,d_2)=d_1+d_2$ is a random variable with values in $\{2,\dots,12\}$; the event $Z=9$ is $\{(3,6),(4,5),(5,4),(6,3)\}$.
@@ -94,6 +125,41 @@ The same applies to any finite number of random variables.
 1. The events $Y=b$, over all values $b$ of $Y$, are pairwise mutually exclusive and together cover the sample space.
 
 2. So the event $X=a$ is the disjoint union of the events $X=a,\ Y=b$, and its probability is the sum of theirs.
+
+:::
+
+::: {#fig-random-variables-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.0,0.0) rectangle (1.26,-0.9);
+\node[tick] at (0.63,-0.45) {$1/4$};
+\draw[hl cell] (1.26,0.0) rectangle (2.52,-0.9);
+\node[tick] at (1.89,-0.45) {$1/4$};
+\draw[cell frame] (2.52,0.0) rectangle (3.78,-0.9);
+\node[tick] at (3.15,-0.45) {$0$};
+\node[lab, left] at (0,-0.45) {$X=0$};
+\node[tick, right] at (3.88,-0.45) {$1/2$};
+\draw[cell frame] (0.0,-0.9) rectangle (1.26,-1.8);
+\node[tick] at (0.63,-1.35) {$0$};
+\draw[hl cell] (1.26,-0.9) rectangle (2.52,-1.8);
+\node[tick] at (1.89,-1.35) {$1/4$};
+\draw[hl cell] (2.52,-0.9) rectangle (3.78,-1.8);
+\node[tick] at (3.15,-1.35) {$1/4$};
+\node[lab, left] at (0,-1.35) {$X=1$};
+\node[tick, right] at (3.88,-1.35) {$1/2$};
+\node[lab, above] at (0.63,0) {$Y=0$};
+\node[tick, below] at (0.63,-1.85) {$1/4$};
+\node[lab, above] at (1.89,0) {$Y=1$};
+\node[tick, below] at (1.89,-1.85) {$1/2$};
+\node[lab, above] at (3.15,0) {$Y=2$};
+\node[tick, below] at (3.15,-1.85) {$1/4$};
+\end{tikzpicture}
+\end{center}
+```
+
+The joint distribution of $X$, the number of heads on the first of two tosses, and $Y$, the total number of heads. Row sums (right) and column sums (below) give the distributions of $X$ and $Y$
 
 :::
 

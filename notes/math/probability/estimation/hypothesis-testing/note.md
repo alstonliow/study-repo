@@ -32,6 +32,27 @@ When $X$ has a prior distribution, among all decision rules $g$ the MAP rule min
 
 :::
 
+::: {#fig-hypothesis-testing-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (7.4,0) node[lab, right] {$y$};
+\draw[emph, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {4.2*exp(-((\x-2.5)^2)/(2*1^2))/(1*sqrt(2*pi))});
+\draw[hl, domain=0:7, samples=80, smooth, variable=\x] plot ({\x}, {2.6*exp(-((\x-4.6)^2)/(2*1^2))/(1*sqrt(2*pi))});
+\draw[faint, dashed] (3.78,0) -- (3.78,2.0);
+\node[tick] at (1.9,2.0) {decide $0$};
+\node[tick] at (5.6,2.0) {decide $1$};
+\node[tick] at (1.3,0.95) {$\pi_0f_0$};
+\node[tick, text=accent] at (5.9,0.75) {$\pi_1f_1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The MAP rule decides for the hypothesis with the larger weighted density $\pi_if_i(y)$; the threshold sits where the curves cross, shifted away from the more likely hypothesis
+
+:::
+
 Often there is no sensible prior, and the two errors have different costs (a missed alarm versus a false alarm). Then we fix the false-alarm probability and maximise the detection probability.
 
 ::: {#def-neyman-pearson-problem .definition name="Errors, likelihood ratio"}

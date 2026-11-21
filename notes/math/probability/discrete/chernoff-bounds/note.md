@@ -115,4 +115,27 @@ $$\Pr\bigl(S-E[S]\ge t\bigr)\le\exp\Bigl(-\frac{2t^2}{\sum_i(b_i-a_i)^2}\Bigr).$
 
 :::
 
+::: {#fig-chernoff-bounds-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (6.4,0) node[lab, right] {$n$};
+\draw[->] (0,0) -- (0,2.6) node[lab, above] {bound};
+\draw[emph, domain=0.25:6, samples=80, smooth, variable=\x] plot ({\x}, {min(2.2,2.2*25/(\x*100))});
+\draw[hl, domain=0.25:6, samples=80, smooth, variable=\x] plot ({\x}, {min(2.2,2.2*2*exp(-0.02*\x*100))});
+\draw (1,0) -- (1,-0.08) node[tick, below] {$100$};
+\draw (3,0) -- (3,-0.08) node[tick, below] {$300$};
+\draw (5,0) -- (5,-0.08) node[tick, below] {$500$};
+\draw (0,2.2) -- (-0.08,2.2) node[tick, left] {$1$};
+\node[tick] at (4.8,0.6) {Chebyshev $\frac{1}{4n\varepsilon^2}$};
+\node[tick, text=accent] at (2.6,1.0) {Hoeffding $2e^{-2n\varepsilon^2}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Bounds on $\Pr(|\overline X_n-p|\ge\varepsilon)$ for $\varepsilon=0.1$. Chebyshev's decays like $1/n$; Hoeffding's decays exponentially and is far smaller once $n$ is a few hundred
+
+:::
+
 For $n$ fair coin tosses ($X_i\in\{0,1\}$), $\Pr(\text{heads}\ge\frac n2+t)\le e^{-2t^2/n}$; with $n=1000$ and $t=100$ this is $e^{-20}\approx2\times10^{-9}$. Unlike @thm-chernoff-bound it needs only boundedness, not non-negativity, and depends on the range rather than the mean.

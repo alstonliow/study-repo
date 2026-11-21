@@ -75,6 +75,70 @@ with mean squared error $\operatorname{Var}(X)-\dfrac{\operatorname{Cov}(X,Y)^2}
 
 :::
 
+::: {#fig-linear-estimation-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0,0) -- (5.2,0) node[lab, right] {$y$};
+\draw[->] (0,0) -- (0,3.4) node[lab, above] {$x$};
+\node[dot] at (1.29,0.90) {};
+\node[dot] at (0.91,0.75) {};
+\node[dot] at (0.51,0.08) {};
+\node[dot] at (3.88,2.63) {};
+\node[dot] at (3.72,2.21) {};
+\node[dot] at (1.47,1.07) {};
+\node[dot] at (0.99,0.76) {};
+\node[dot] at (4.47,3.00) {};
+\node[dot] at (4.01,2.59) {};
+\node[dot] at (1.09,0.22) {};
+\node[dot] at (1.63,0.53) {};
+\node[dot] at (4.13,2.26) {};
+\node[dot] at (4.25,2.96) {};
+\node[dot] at (3.29,1.98) {};
+\node[dot] at (2.53,1.39) {};
+\node[dot] at (0.61,0.80) {};
+\node[dot] at (4.50,3.14) {};
+\node[dot] at (1.58,0.56) {};
+\node[dot] at (4.38,2.34) {};
+\node[dot] at (4.10,2.29) {};
+\node[dot] at (2.54,0.98) {};
+\node[dot] at (2.18,1.25) {};
+\node[dot] at (0.94,0.45) {};
+\node[dot] at (0.40,0.95) {};
+\node[dot] at (0.41,0.38) {};
+\node[dot] at (2.66,1.20) {};
+\node[dot] at (2.37,0.70) {};
+\node[dot] at (1.10,1.36) {};
+\node[dot] at (2.10,1.13) {};
+\node[dot] at (1.47,1.10) {};
+\node[dot] at (1.84,0.90) {};
+\node[dot] at (2.77,1.20) {};
+\node[dot] at (4.36,2.85) {};
+\node[dot] at (1.25,0.74) {};
+\node[dot] at (3.72,2.02) {};
+\node[dot] at (1.72,0.73) {};
+\node[dot] at (1.02,0.55) {};
+\node[dot] at (3.41,1.91) {};
+\node[dot] at (4.32,3.13) {};
+\node[dot] at (4.62,2.94) {};
+\node[dot] at (0.28,0.35) {};
+\node[dot] at (3.77,2.83) {};
+\node[dot] at (2.09,1.35) {};
+\node[dot] at (3.96,2.26) {};
+\node[dot] at (1.55,0.89) {};
+\draw[hl, domain=0.2:4.8, samples=80, smooth, variable=\x] plot ({\x}, {0.5+0.12*\x*\x});
+\draw[emph] (0.2,0.0) -- (4.8,3.1);
+\node[tick, text=accent] at (4.0,2.75) {$E[X\mid Y]$};
+\node[tick] at (4.7,3.35) {LLSE};
+\end{tikzpicture}
+\end{center}
+```
+
+The linear least squares estimate (straight line) is the best line through the cloud; the conditional mean $E[X\mid Y]$ (curve) is the best function of any shape, so its error is never larger
+
+:::
+
 ::: {#thm-mmse-conditional-expectation .theorem name="The MMSE estimate is the conditional expectation"}
 
 Among all functions $g$ with $E[g(Y)^2]<\infty$, the mean squared error $E[(X-g(Y))^2]$ is minimised by
