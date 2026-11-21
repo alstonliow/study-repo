@@ -45,7 +45,7 @@ ids are not affected by this grouping.
 | Computer Science | Algorithms | `cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`, `cs/algorithm-design`, `cs/models-of-computation` |
 | Computer Science | Theory of Computation | `cs/theory` (Computability and Complexity) |
 | Computer Science | Cryptography | `cs/cryptography` |
-| Artificial Intelligence | Artificial Intelligence | `ai/machine-learning`, `ai/deep-learning`, `ai/search`, `ai/reinforcement-learning`, `ai/games`, `ai/bayesian-networks` (one part for now, split into parts when more AI courses arrive; owner decision, 2026-11-18) |
+| Artificial Intelligence | Artificial Intelligence | `ai/machine-learning`, `ai/deep-learning`, `ai/search`, `ai/reinforcement-learning`, `ai/games`, `ai/bayesian-networks`, `ai/constraint-satisfaction`, `ai/decision-theory`, `ai/temporal-models`, `ai/kernel-methods`, `ai/learning-theory`, `ai/unsupervised-learning` (one part for now, split into parts when more AI courses arrive; owner decision, 2026-11-18) |
 
 ### Planned structure
 
@@ -103,6 +103,7 @@ a field. Course order for the next additions: 6.041 and 18.05 done (18.01, 18.06
 | MIT 18.065 problem sets (Spring 2018), textbook problems printed per lecture | 62 exercises with draft solutions (no official solutions); warm-ups (L1 Q1, Q9; L2), the repeated L11 II.2 Q10 and the TensorFlow Playground problem (L26 Q7) skipped |
 | Stanford EE364A slides (CVX101 online offering, Winter 2014), slide sets 2–12 | new part Convex Optimization, `math/optimization/` with six branches (36 notes): convex-sets, convex-functions, convex-problems, duality, applications, algorithms |
 | Stanford EE364A homework (CVX101, Winter 2014) HW 1–8 | 16 exercises with draft solutions (HW 1–4 and one from HW 6); software-only and data-driven numerical problems (HW 3 Q2, Q4, Q5; HW 4 Q4; HW 5–8 except HW 6 Q4) and the level-curve figure problem HW 2 Q1 not yet added |
+| Stanford CS229 lecture notes (Ma and Ng, version of 23 August 2026), Chapters 1–13 and 17–21 (14–16 left for the deep learning courses) | new branches `ai/kernel-methods` (three notes), `ai/learning-theory` (two), `ai/unsupervised-learning` (five); new notes in `ai/machine-learning` (five), `ai/reinforcement-learning` (four), `math/probability/continuous` (exponential families), `math/linear-algebra/matrix-methods` (matrix derivatives); event-model remark added to naive Bayes; no exercises (problem sets need a Stanford login) |
 
 Section-level placement is recorded in the resource files (`resources/`) and the
 course files (`meta/courses/`), not here.
@@ -170,3 +171,4 @@ course files (`meta/courses/`), not here.
 - 2026-11-20: MIT 18.05 (Spring 2022) added as a course (`mit1805`): resources `res-mit-1805-classes` (prefix `mit1805-`) and `res-mit-1805-s22-psets` (prefix `mit1805s22-`); new branches `math/statistics/bayesian` and `math/statistics/frequentist` (10 notes); 44 problem-set exercises (PS 1–11); bootstrap figure.
 - 2026-11-21: MIT 18.065 (Spring 2018) added as a course (`mit18065`): resources `res-mit-18065-lectures` (video, prefix `mit18065-`) and `res-mit-18065-psets` (prefix `mit18065ps-`, q = textbook problem number); new branch `math/linear-algebra/matrix-methods` (8 notes) and note `ai/machine-learning/convex-optimization`; 62 exercises; 4 figures.
 - 2026-11-21: Stanford EE364A (CVX101, Winter 2014) added as a course (`ee364a`): resources `res-stanford-ee364a-slides` (prefix `ee364a-`, locator = slide set) and `res-stanford-ee364a-hw` (prefix `ee364ahw-`); new part Convex Optimization (`math/optimization`, 6 branches, 36 notes); 16 exercises; 2 figures; optimization notation section in meta/notation.md.
+- 2026-11-21: Stanford CS229 (lecture notes, version of 23 August 2026) added as a course (`cs229`): resource `res-stanford-cs229-notes` (prefix `cs229-`, locator = chapter); new branches `ai/kernel-methods`, `ai/learning-theory`, `ai/unsupervised-learning` at the end of the AI part; 21 new notes; 7 figures; no exercises.

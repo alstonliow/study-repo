@@ -332,6 +332,7 @@ parts:
           - circulant-matrices
           - graph-laplacians
           - distance-matrices-and-procrustes
+          - matrix-derivatives
   - title: Multivariable Calculus
     field: Mathematics
     branches:
@@ -511,6 +512,7 @@ parts:
           - central-limit-theorem
           - buffons-needle
           - standard-distributions
+          - exponential-family
           - joint-distributions
           - derived-distributions
           - transforms
@@ -723,8 +725,8 @@ parts:
     branches:
       - id: ai/machine-learning
         title: Machine Learning
-        desc: Learning problems, linear regression and classification, gradient descent
-        notes: [supervised-learning, generalization, linear-regression, gradient-descent, convex-optimization, linear-classification, perceptron, logistic-regression, softmax-regression, text-representation, decision-trees]   # topic order on the website
+        desc: Learning problems, linear regression and classification, gradient descent, generalized linear models, generative classifiers, bias and variance, regularization
+        notes: [supervised-learning, generalization, linear-regression, locally-weighted-regression, gradient-descent, convex-optimization, linear-classification, perceptron, logistic-regression, softmax-regression, generalized-linear-models, gaussian-discriminant-analysis, text-representation, decision-trees, bias-variance-tradeoff, regularization-and-model-selection]   # topic order on the website
       - id: ai/deep-learning
         title: Deep Learning
         desc: Tensors, backpropagation, neural networks
@@ -735,8 +737,8 @@ parts:
         notes: [search-problems, tree-and-graph-search, approximate-search, uniform-cost-search, a-star-search]   # topic order on the website
       - id: ai/reinforcement-learning
         title: Reinforcement Learning
-        desc: Markov decision processes, value iteration, Q-learning, policy gradient
-        notes: [markov-decision-processes, policy-evaluation, value-iteration, policy-iteration, model-based-rl, model-free-rl, exploration, function-approximation, policy-gradient, improving-policy-gradient, td-learning]   # topic order on the website
+        desc: Markov decision processes, value iteration, Q-learning, policy gradient, continuous states, LQR and optimal control
+        notes: [markov-decision-processes, policy-evaluation, value-iteration, policy-iteration, model-based-rl, model-free-rl, exploration, function-approximation, policy-gradient, improving-policy-gradient, td-learning, continuous-state-mdps, linear-quadratic-regulation, differential-dynamic-programming, linear-quadratic-gaussian]   # topic order on the website
       - id: ai/games
         title: Games
         desc: Game trees, minimax, alpha-beta pruning, simultaneous games
@@ -757,3 +759,15 @@ parts:
         title: Temporal Models
         desc: Hidden Markov models, filtering, Viterbi algorithm, particle filtering
         notes: [hidden-markov-models, particle-filtering, viterbi-algorithm]   # topic order on the website
+      - id: ai/kernel-methods
+        title: Kernel Methods and Support Vector Machines
+        desc: Feature maps, kernels, the kernel trick, optimal margin classifiers, soft margins, SMO
+        notes: [kernels, support-vector-machines, soft-margin-svm]   # topic order on the website
+      - id: ai/learning-theory
+        title: Learning Theory
+        desc: Empirical risk minimization, uniform convergence, sample complexity, VC dimension
+        notes: [empirical-risk-minimization, vc-dimension]   # topic order on the website
+      - id: ai/unsupervised-learning
+        title: Unsupervised Learning
+        desc: k-means, mixtures of Gaussians, the EM algorithm, variational autoencoders, independent components analysis
+        notes: [k-means, gaussian-mixtures, em-algorithm, variational-autoencoders, independent-component-analysis]   # topic order on the website

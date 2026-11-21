@@ -11,6 +11,8 @@ outline_from: UC Berkeley CS188 Introduction to Artificial Intelligence, Fall 20
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Stanford CS229 integration (2026-11-21): new block in a shared note
+  - rmk-naive-bayes-event-models
   # MIT 18.065 integration (2026-11-21): its problems in shared notes
   - prob-mit18065ps-22-q6
   - prob-mit18065ps-25-q1
