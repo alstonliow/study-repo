@@ -5,7 +5,7 @@ requires: [math/probability/estimation/classical-estimation]
 status: draft
 ---
 
-<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 2 (statistical models, identification, estimators and their properties), in our own wording; the examples and the proof are our own. -->
+<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 2 (statistical models, identification, estimators and their properties), in our own wording; the examples and the proof are our own. Merge with def-estimator-properties (owner approved 2026-11-21): weak consistency is no longer defined twice; def-asymptotic-normality refers to it. -->
 
 Probability starts from a known distribution and computes what the data will look like. Statistics goes the other way: from data $X_1,\dots,X_n$, independent copies of a random variable $X$, it tries to learn the distribution of $X$. A *model* restricts the candidate distributions to a family indexed by a few numbers, so that learning the distribution means learning those numbers.
 
@@ -56,7 +56,7 @@ An *estimator* of $\theta$ is a statistic, that is a function of the data alone,
 
 Let $\hat\theta_n$ be an estimator of $\theta\in\Theta\subseteq\mathbb{R}^d$ based on $n$ observations.
 
-1. $\hat\theta_n$ is *weakly consistent* if $\hat\theta_n\to\theta$ in probability, and *strongly consistent* if $\hat\theta_n\to\theta$ almost surely, under $\Pr_\theta$ for every $\theta\in\Theta$.
+1. $\hat\theta_n$ is *strongly consistent* if $\hat\theta_n\to\theta$ almost surely under $\Pr_\theta$ for every $\theta\in\Theta$. Consistency in the sense of @def-estimator-properties (convergence in probability) is then called *weak consistency*.
 2. $\hat\theta_n$ is *asymptotically normal* if for every $\theta$ there is a covariance matrix $\Sigma(\theta)$, the *asymptotic covariance* (for $d=1$ the *asymptotic variance* $\sigma^2(\theta)$), with
    $$\sqrt n\,(\hat\theta_n-\theta)\xrightarrow{d}N_d\bigl(0,\Sigma(\theta)\bigr)\qquad\text{under }\Pr_\theta .$$
 

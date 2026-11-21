@@ -5,7 +5,7 @@ requires: [math/linear-algebra/matrix-methods/low-rank-approximation, math/proba
 status: draft
 ---
 
-<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 9 (covariance and empirical covariance matrices, the centring projector, directions of maximal spread, the PCA procedure and the choice of k, PCA for covariance estimation), in our own wording. The proofs and the numerical example are our own. The singular value view of PCA is in the low-rank approximation note. -->
+<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 9 (covariance and empirical covariance matrices, the centring projector, directions of maximal spread, the PCA procedure and the choice of k, PCA for covariance estimation), in our own wording. The proofs and the numerical example are our own. The singular value view of PCA is in the low-rank approximation note; merge with def-principal-components (owner approved 2026-11-21): both kept, def-pca-procedure points to it for the principal directions. -->
 
 Principal component analysis reduces $d$-dimensional data to $k<d$ dimensions while keeping as much of their spread as possible. The linear algebra note (@sec-math-linear-algebra-matrix-methods-low-rank-approximation) describes it through the singular value decomposition and closest subspaces; here the starting point is the covariance matrix, and the principal directions are the directions in which the data vary most.
 
@@ -68,7 +68,7 @@ and the maximal values are $\lambda_1,\dots,\lambda_d$. So the $k$ orthogonal di
 
 ::: {#def-pca-procedure .definition name="PCA procedure" related="def-principal-components"}
 
-Given $X_1,\dots,X_n\in\mathbb{R}^d$ and a target dimension $k<d$: compute the empirical covariance $S$, its eigendecomposition $S=PDP^{\mathsf T}$ with decreasing eigenvalues, set $P_k=(v_1,\dots,v_k)\in\mathbb{R}^{d\times k}$, and output the *principal component scores*
+Given $X_1,\dots,X_n\in\mathbb{R}^d$ and a target dimension $k<d$: compute the empirical covariance $S$, its eigendecomposition $S=PDP^{\mathsf T}$ with decreasing eigenvalues (the principal directions of @def-principal-components, there computed from the singular value decomposition of the centred data), set $P_k=(v_1,\dots,v_k)\in\mathbb{R}^{d\times k}$, and output the *principal component scores*
 $$Y_i=P_k^{\mathsf T}(X_i-\bar X)\in\mathbb{R}^k,\qquad i=1,\dots,n .$$
 The ratio $(\lambda_1+\dots+\lambda_k)/(\lambda_1+\dots+\lambda_d)$ is the fraction of the *total variance* $\operatorname{tr}S$ *explained* by the first $k$ components.
 

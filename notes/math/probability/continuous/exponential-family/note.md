@@ -25,6 +25,16 @@ $$
 
 (a sum for discrete $Y$). Fixing $T$, $a$ and $b$ and letting $\boldsymbol\eta$ vary gives the family.
 
+If the family is indexed by another parameter $\theta$ and $\boldsymbol\eta=\boldsymbol\eta(\theta)\in\mathbb{R}^k$, the density reads
+
+$$
+p_\theta(y)=b(y)\exp\Bigl(\sum_{i=1}^k\eta_i(\theta)\,T_i(y)-B(\theta)\Bigr),\qquad B(\theta)=a\bigl(\boldsymbol\eta(\theta)\bigr),
+$$
+
+a *$k$-parameter exponential family*.
+
+<!-- Merge (owner approved 2026-11-21): the theta-indexed k-parameter form is MIT 18.650 Chapter 10; the rest of the definition is from Stanford CS229 Chapter 3. -->
+
 :::
 
 ::: {#exm-exponential-family-members .example name="Bernoulli, Gaussian and Poisson"}
@@ -149,7 +159,7 @@ For the Bernoulli, $a'(\eta)=\dfrac{e^\eta}{1+e^\eta}=\phi$ and $a''(\eta)=\phi(
 
 :::
 
-<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 10 (the one-parameter canonical exponential family with a dispersion parameter, its mean and variance, the table of b functions and canonical links), in our own wording; the proof and the Gamma computation are our own. MIT 18.650 also writes a k-parameter family as exp(sum_i eta_i(theta) T_i(x) - B(theta)) h(x), which is def-exponential-family with eta = eta(theta); merge proposed to the owner, not done. -->
+<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 10 (the one-parameter canonical exponential family with a dispersion parameter, its mean and variance, the table of b functions and canonical links), in our own wording; the proof and the Gamma computation are our own. MIT 18.650 also writes a k-parameter family as exp(sum_i eta_i(theta) T_i(x) - B(theta)) h(x), now stated in def-exponential-family (merged 2026-11-21, owner approved). -->
 
 Generalized linear models use a variant of the one-parameter family that separates the location of the distribution from its spread.
 

@@ -5,7 +5,7 @@ requires: [math/probability/estimation/linear-estimation, math/probability/conti
 status: draft
 ---
 
-<!-- Added 2026-11-19 from UC Berkeley EECS126 (Fall 2021), Homeworks 12–13 and Discussions 12–13, in our own wording; proofs written out in steps. -->
+<!-- Added 2026-11-19 from UC Berkeley EECS126 (Fall 2021), Homeworks 12–13 and Discussions 12–13, in our own wording; proofs written out in steps. Merge with Cambridge II Probability and Measure prp-gaussian-vector-characteristic-function (owner approved 2026-11-21): both blocks kept at their own level, the proof of part 1 points to the characteristic-function proof. -->
 
 Gaussian vectors are the setting in which linear estimation is optimal and uncorrelated means independent.
 
@@ -28,7 +28,7 @@ Let $X\sim N(\mu,\Sigma)$.
 
 ::: {.proof}
 
-1. $s^{\mathsf T}X$ is normal with mean $s^{\mathsf T}\mu$ and variance $s^{\mathsf T}\Sigma s$, so its MGF at $1$ is as stated (@thm-transform-properties and the normal MGF). The multivariate MGF determines the distribution.
+1. $s^{\mathsf T}X$ is normal with mean $s^{\mathsf T}\mu$ and variance $s^{\mathsf T}\Sigma s$, so its MGF at $1$ is as stated (@thm-transform-properties and the normal MGF). The multivariate MGF determines the distribution; this uniqueness is used here without proof, and a complete argument through characteristic functions, which also proves part 4, is @prp-gaussian-vector-characteristic-function.
 
 2. $BX+c=(B\mu+c)+(BA)Z$, and $(BA)(BA)^{\mathsf T}=B\Sigma B^{\mathsf T}$.
 

@@ -103,15 +103,15 @@ The categorical distribution on $K$ classes is also an exponential family: take 
 
 :::
 
-<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 10 (GLMs with a dispersion parameter and an arbitrary link: link functions, canonical link, log-likelihood, Fisher scoring, iteratively reweighted least squares), in our own wording; derivations written out in steps, the numerical example is our own. Overlap with def-glm, thm-glm-likelihood and prp-glm-newton-step (the canonical case) is proposed to the owner as a merge, not done. -->
+<!-- Added 2026-11-21 from MIT 18.650 (Fall 2016), Chapter 10 (GLMs with a dispersion parameter and an arbitrary link: link functions, canonical link, log-likelihood, Fisher scoring, iteratively reweighted least squares), in our own wording; derivations written out in steps, the numerical example is our own. Overlap with def-glm, thm-glm-likelihood and prp-glm-newton-step (the canonical case): owner approved 2026-11-21 to keep both levels, linked by generalizes, since CS229 covers only the canonical blocks; the canonical link points to def-glm instead of being defined twice. -->
 
 The model of @def-glm ties the natural parameter to the input directly, $\eta=\boldsymbol\theta^{\mathsf T}\mathbf x$, which is the *canonical* choice. Statistics often needs other ways of linking the mean to the covariates, for instance a probit instead of a logistic curve, or a log link for Gamma responses. In this part we use the statistical notation: covariates $X_i\in\mathbb{R}^p$, coefficients $\beta$ (the $\boldsymbol\theta$ of @def-glm), and responses $Y_i$ with density $f_{\theta_i}(y)=\exp\bigl((y\theta_i-b(\theta_i))/\phi+c(y,\phi)\bigr)$ in a dispersion family (@def-exponential-dispersion-family) with known $\phi$, so $\mu_i=E[Y_i\mid X_i]=b'(\theta_i)$ and $V_i=b''(\theta_i)$ (@prp-dispersion-family-moments).
 
-::: {#def-link-function .definition name="Link function, canonical link"}
+::: {#def-link-function .definition name="Link function, canonical link" generalizes="def-glm"}
 
 A *link function* is a strictly increasing, differentiable function $g$ from the range of the mean to $\mathbb{R}$; the GLM with link $g$ assumes
 $$g(\mu_i)=X_i^{\mathsf T}\beta,\qquad\text{that is}\qquad \mu_i=g^{-1}(X_i^{\mathsf T}\beta).$$
-The *canonical link* is $g=(b')^{-1}$, the link for which $\theta_i=X_i^{\mathsf T}\beta$; it is strictly increasing because $b''>0$. In general $\theta_i=h(X_i^{\mathsf T}\beta)$ with $h=(b')^{-1}\circ g^{-1}=(g\circ b')^{-1}$, and $h$ is the identity exactly for the canonical link.
+The *canonical link* is $g=(b')^{-1}$, the link for which $\theta_i=X_i^{\mathsf T}\beta$, which is the model of @def-glm (there with $\phi=1$); it is strictly increasing because $b''>0$. In general $\theta_i=h(X_i^{\mathsf T}\beta)$ with $h=(b')^{-1}\circ g^{-1}=(g\circ b')^{-1}$, and $h$ is the identity exactly for the canonical link.
 
 :::
 
@@ -205,7 +205,7 @@ $$\beta^{(k+1)}=\beta^{(k)}+I\bigl(\beta^{(k)}\bigr)^{-1}\nabla\ell_n\bigl(\beta
 
 The information matrix is positive semidefinite, often easier to compute than the Hessian, and the method has essentially the same convergence behaviour as Newton's method. For a GLM with the canonical link the two coincide by @thm-glm-score-information, and Fisher scoring is the Newton step of @prp-glm-newton-step.
 
-::: {#prp-irls .proposition name="Fisher scoring is iteratively reweighted least squares"}
+::: {#prp-irls .proposition name="Fisher scoring is iteratively reweighted least squares" generalizes="prp-glm-newton-step"}
 
 For a GLM, with $\mu_i,W_i$ evaluated at $\beta^{(k)}$ and $\mathbb X^{\mathsf T}W\mathbb X$ invertible, the Fisher scoring step is
 
