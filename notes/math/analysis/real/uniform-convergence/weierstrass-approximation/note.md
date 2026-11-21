@@ -16,6 +16,35 @@ $$B_nf(x)=\sum_{k=0}^nf\!\left(\tfrac kn\right)p_{n,k}(x),\qquad p_{n,k}(x)=\bin
 
 :::
 
+::: {#fig-weierstrass-approximation-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (5.0,0) node[lab, right] {$\frac kn$};
+\draw[->, faint] (0,-0.2) -- (0,2.2) node[lab, above] {};
+\fill[shade] (-0.120,0) rectangle (0.120,0.097);
+\fill[shade] (0.255,0) rectangle (0.495,0.498);
+\fill[shade] (0.630,0) rectangle (0.870,1.175);
+\fill[hl cell] (1.005,0) rectangle (1.245,1.678);
+\fill[hl cell] (1.380,0) rectangle (1.620,1.618);
+\fill[shade] (1.755,0) rectangle (1.995,1.109);
+\fill[shade] (2.130,0) rectangle (2.370,0.555);
+\fill[shade] (2.505,0) rectangle (2.745,0.204);
+\fill[shade] (2.880,0) rectangle (3.120,0.055);
+\fill[shade] (3.255,0) rectangle (3.495,0.010);
+\fill[shade] (3.630,0) rectangle (3.870,0.001);
+\fill[shade] (4.005,0) rectangle (4.245,0.000);
+\fill[shade] (4.380,0) rectangle (4.620,0.000);
+\draw[faint] (1.350,-0.06) -- (1.350,0.06); \node[lab, tick, below] at (1.350,-0.05) {$x$};\draw[faint] (4.500,-0.06) -- (4.500,0.06); \node[lab, tick, below] at (4.500,-0.05) {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The weights $p_{n,k}(x)$ for $n=12$, $x=0.3$: they add up to $1$ and are concentrated where $\frac kn$ is near $x$, so $B_nf(x)$ is an average of values $f(\frac kn)$ close to $f(x)$.
+
+:::
+
 For $x\in[0,1]$ the numbers $p_{n,k}(x)$ are the probabilities of $k$ successes in $n$ independent trials of success probability $x$ (@def-binomial-distribution). So $B_nf(x)$ averages the values of $f$ at the grid points $\frac kn$, with weights concentrated near $k\approx nx$.
 
 ::: {#lem-bernstein-moments .lemma name="Moments of the Bernstein weights"}

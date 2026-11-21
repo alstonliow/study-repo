@@ -37,6 +37,42 @@ Likewise every decreasing sequence bounded below converges to the infimum of its
 
 :::
 
+::: {#fig-monotone-sequences-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.4) node[lab, above] {$a_n$};
+\node[dot] at (0.310,0.400) {};
+\node[dot] at (0.620,1.081) {};
+\node[dot] at (0.930,1.336) {};
+\node[dot] at (1.240,1.472) {};
+\node[dot] at (1.550,1.558) {};
+\node[dot] at (1.860,1.618) {};
+\node[dot] at (2.170,1.663) {};
+\node[dot] at (2.480,1.697) {};
+\node[dot] at (2.790,1.724) {};
+\node[dot] at (3.100,1.746) {};
+\node[dot] at (3.410,1.765) {};
+\node[dot] at (3.720,1.781) {};
+\node[dot] at (4.030,1.794) {};
+\node[dot] at (4.340,1.806) {};
+\node[dot] at (4.650,1.817) {};
+\node[dot] at (4.960,1.826) {};
+\node[dot] at (5.270,1.834) {};
+\node[dot] at (5.580,1.842) {};
+\node[dot] at (5.890,1.848) {};
+\node[dot] at (6.200,1.854) {};
+\draw[hl] (0,2) -- (6.4,2) node[lab, right] {$\sup_n a_n$};
+\end{tikzpicture}
+\end{center}
+```
+
+An increasing sequence that is bounded above climbs towards its supremum and cannot jump over it: every bound below the supremum is eventually passed.
+
+:::
+
 An ordered field is said to have the *monotone sequences property* if every increasing sequence bounded above converges. @thm-monotone-convergence says the least upper bound property implies it; the converse also holds, so either property can serve as the completeness axiom of $\mathbb R$.
 
 ::: {#thm-monotone-sequences-equivalent .theorem name="Monotone sequences property is equivalent to least upper bounds"}
@@ -85,6 +121,25 @@ $$\bigcap_{n=1}^\infty I_n\ne\emptyset.$$
 
 :::
 
+::: {#fig-monotone-sequences-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0.0,-0.0) -- (6.0,-0.0); \node[lab, tick, left] at (0.0,-0.0) {$[a_1,b_1]$};
+\draw[emph] (1.0,-0.45) -- (4.6,-0.45); \node[lab, tick, left] at (1.0,-0.45) {$[a_2,b_2]$};
+\draw[emph] (1.8,-0.9) -- (4.0,-0.9); \node[lab, tick, left] at (1.8,-0.9) {$[a_3,b_3]$};
+\draw[emph] (2.3,-1.35) -- (3.5,-1.35); \node[lab, tick, left] at (2.3,-1.35) {$[a_4,b_4]$};
+\draw[hl] (2.7,-1.8) -- (3.2,-1.8); \node[lab, tick, left] at (2.7,-1.8) {$[a_5,b_5]$};
+\draw[dashed, faint] (2.95,0.2) -- (2.95,-2.1); \node[hl dot] at (2.95,-2.1) {}; \node[lab, below] at (2.95,-2.15) {$\sup_n a_n\in\bigcap_n[a_n,b_n]$};
+\end{tikzpicture}
+\end{center}
+```
+
+Nested closed intervals: the left ends increase, the right ends decrease, and the supremum of the left ends lies in every interval.
+
+:::
+
 Closedness matters: the open intervals $(0,1/n)$ are nested and non-empty, but their intersection is empty.
 
 ::: {#rmk-monotone-sequences-1 .remark name="Another proof that $\mathbb R$ is uncountable" related="thm-reals-uncountable"}
@@ -120,6 +175,48 @@ Every bounded sequence of real numbers has a convergent subsequence.
 4. Let $\varepsilon>0$. By the Archimedean property choose $K$ with $(v_0-u_0)/2^K<\varepsilon$. Since $x\in[u_K,v_K]$, this interval lies in $(x-\varepsilon,x+\varepsilon)$.
 
 5. For $k\ge K$, $a_{n_k}\in[u_k,v_k]\subseteq[u_K,v_K]\subseteq(x-\varepsilon,x+\varepsilon)$. So $a_{n_k}\to x$.
+
+:::
+
+::: {#fig-monotone-sequences-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.2,0) -- (6.2,0);
+\draw[regionA] (0,-0.25) rectangle (6,0.25); \draw[regionB] (0,-0.5) rectangle (3,-0.95); \draw[regionC] (1.5,-1.2) rectangle (3,-1.65);
+\node[dot] at (0.300,0.000) {};
+\node[dot] at (5.600,0.000) {};
+\node[dot] at (2.200,0.000) {};
+\node[dot] at (4.100,0.000) {};
+\node[dot] at (1.300,0.000) {};
+\node[dot] at (3.000,0.000) {};
+\node[dot] at (4.800,0.000) {};
+\node[dot] at (2.800,0.000) {};
+\node[dot] at (0.900,0.000) {};
+\node[dot] at (3.300,0.000) {};
+\node[dot] at (5.200,0.000) {};
+\node[dot] at (3.100,0.000) {};
+\node[dot] at (1.800,0.000) {};
+\node[dot] at (3.050,0.000) {};
+\node[hl dot] at (0.300,-0.720) {};
+\node[hl dot] at (2.200,-0.720) {};
+\node[hl dot] at (1.300,-0.720) {};
+\node[hl dot] at (3.000,-0.720) {};
+\node[hl dot] at (2.800,-0.720) {};
+\node[hl dot] at (0.900,-0.720) {};
+\node[hl dot] at (1.800,-0.720) {};
+\node[hl dot] at (2.200,-1.420) {};
+\node[hl dot] at (3.000,-1.420) {};
+\node[hl dot] at (2.800,-1.420) {};
+\node[hl dot] at (1.800,-1.420) {};
+\node[lab, right] at (6.1,0) {$[a,b]$}; \node[lab, right] at (3.5,-0.72) {half with infinitely many terms};
+\node[lab, right] at (3.5,-1.42) {and again};
+\end{tikzpicture}
+\end{center}
+```
+
+Bolzano–Weierstrass by bisection: one half of the interval contains $a_n$ for infinitely many $n$; keep halving, pick one term in each nested interval, and the chosen subsequence converges by @thm-nested-intervals.
 
 :::
 

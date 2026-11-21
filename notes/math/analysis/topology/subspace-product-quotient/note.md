@@ -17,6 +17,22 @@ Let $X$ be a topological space and $Y\subseteq X$. The *subspace topology* on $Y
 
 :::
 
+::: {#fig-subspace-product-quotient-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.5,-0.3) -- (4.5,1.7) node[lab, right] {$Y$};
+\fill[tintA] (2.0,0.7) ellipse (1.1 and 0.8); \draw[faint, dashed] (2.0,0.7) ellipse (1.1 and 0.8); \node[lab] at (2.2,1.25) {$U$};
+\draw[hl] (1.04,0.316) -- (2.96,1.084); \node[lab, below right] at (2.4,0.75) {$U\cap Y$};
+\end{tikzpicture}
+\end{center}
+```
+
+The open sets of a subspace $Y$ are the traces $U\cap Y$ of open sets $U$ of the whole space; here an open disc meets a line in an open interval of the line.
+
+:::
+
 The axioms hold because $\bigcup(V_\alpha\cap Y)=(\bigcup V_\alpha)\cap Y$ and $(V_1\cap Y)\cap(V_2\cap Y)=(V_1\cap V_2)\cap Y$. For a metric space this is the topology of the metric subspace: a ball of $Y$ is $B^Y_r(y)=B_r(y)\cap Y$, and an open set of $Y$ is a union of such balls. For example $[0,\frac12)$ is open in $Y=[0,1]$, being $(-1,\frac12)\cap Y$, although it is not open in $\mathbb R$.
 
 ::: {#prp-subspace-continuity .proposition name="Maps into a subspace"}
@@ -48,6 +64,23 @@ For a metric space the open balls form a basis.
 ::: {#def-product-topology .definition name="Product topology"}
 
 The *product topology* on $X\times Y$ has as open sets all unions of *open boxes* $U\times V$ with $U$ open in $X$ and $V$ open in $Y$.
+
+:::
+
+::: {#fig-subspace-product-quotient-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (4.4,0) node[lab, right] {$X$}; \draw[->, faint] (0,-0.2) -- (0,3.0) node[lab, above] {$Y$};
+\draw[hl] (1.2,0) -- (3.0,0); \node[lab, below] at (2.1,-0.05) {$U$};
+\draw[hl] (0,0.8) -- (0,2.2); \node[lab, left] at (-0.05,1.5) {$V$};
+\fill[tintA] (1.2,0.8) rectangle (3.0,2.2); \draw[faint, dashed] (1.2,0.8) rectangle (3.0,2.2); \node[lab] at (2.1,1.5) {$U\times V$};
+\end{tikzpicture}
+\end{center}
+```
+
+Basic open sets of the product topology are boxes $U\times V$ with $U$ open in $X$ and $V$ open in $Y$; open sets of $X\times Y$ are unions of such boxes.
 
 :::
 
@@ -101,5 +134,23 @@ A map $g:X/{\sim}\to Y$ is continuous if and only if $g\circ q:X\to Y$ is contin
 
 1. *The circle.* On $[0,1]$ let $0\sim1$ and no other points be identified. The map $t\mapsto e^{2\pi it}$ is constant on classes and induces a continuous bijection $[0,1]/{\sim}\to S^1$; it is a homeomorphism by @prp-compact-hausdorff-homeomorphism. Similarly $\mathbb R/{\sim}$ with $x\sim y\iff x-y\in\mathbb Z$ is a circle, and gluing opposite sides of a square gives a torus.
 2. *A non-Hausdorff quotient.* On $\mathbb R$ let $x\sim y\iff x-y\in\mathbb Q$. If $V\ne\emptyset$ is open in the quotient, $U=q^{-1}(V)$ is open, non-empty and satisfies $U+r=U$ for every rational $r$. It contains an interval $(c-\delta,c+\delta)$, so it contains all its rational translates, which cover $\mathbb R$. So the only open sets are $\emptyset$ and the whole space: the quotient is indiscrete, although $\mathbb R$ is a metric space.
+
+:::
+
+::: {#fig-subspace-product-quotient-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) -- (2.5,0); \node[hl dot] at (0,0) {}; \node[hl dot] at (2.5,0) {};
+\node[lab, below] at (0,-0.05) {$0$}; \node[lab, below] at (2.5,-0.05) {$1$};
+\draw[hl, dashed] (0,0.12) to[bend left=50] node[lab, above] {$0\sim1$} (2.5,0.12);
+\draw[map] (2.9,0) -- node[lab, above] {$q$} (3.9,0);
+\draw[emph] (5.0,0) circle (0.8); \node[hl dot] at (5.8,0) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Item 1: gluing the two ends of $[0,1]$ gives a circle. The quotient map $q$ is onto, and a set is open in the quotient when its preimage is open in $[0,1]$.
 
 :::

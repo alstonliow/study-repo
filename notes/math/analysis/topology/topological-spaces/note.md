@@ -57,6 +57,42 @@ A homeomorphism is a bijection between points that also matches the open sets: $
 
 :::
 
+::: {#fig-topological-spaces-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (3.2,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-1.8) -- (0,1.9) node[lab, above] {$y$};
+\draw[emph] (0.150,-1.894) -- (0.173,-1.643) -- (0.195,-1.449) -- (0.218,-1.294) -- (0.240,-1.168) -- (0.262,-1.064) -- (0.285,-0.975) -- (0.307,-0.899) -- (0.330,-0.833) -- (0.352,-0.775) -- (0.375,-0.724) -- (0.398,-0.679) -- (0.420,-0.638) -- (0.443,-0.600) -- (0.465,-0.567) -- (0.487,-0.536) -- (0.510,-0.507) -- (0.532,-0.481) -- (0.555,-0.457) -- (0.578,-0.434) -- (0.600,-0.413) -- (0.623,-0.393) -- (0.645,-0.374) -- (0.667,-0.357) -- (0.690,-0.340) -- (0.712,-0.325) -- (0.735,-0.310) -- (0.758,-0.295) -- (0.780,-0.282) -- (0.802,-0.269) -- (0.825,-0.256) -- (0.847,-0.244) -- (0.870,-0.233) -- (0.892,-0.222) -- (0.915,-0.211) -- (0.937,-0.200) -- (0.960,-0.190) -- (0.982,-0.181) -- (1.005,-0.171) -- (1.027,-0.162) -- (1.050,-0.153) -- (1.073,-0.144) -- (1.095,-0.135) -- (1.117,-0.127) -- (1.140,-0.119) -- (1.162,-0.111) -- (1.185,-0.103) -- (1.208,-0.095) -- (1.230,-0.087) -- (1.252,-0.080) -- (1.275,-0.072) -- (1.297,-0.065) -- (1.320,-0.057) -- (1.342,-0.050) -- (1.365,-0.043) -- (1.387,-0.036) -- (1.410,-0.028) -- (1.432,-0.021) -- (1.455,-0.014) -- (1.477,-0.007) -- (1.500,-0.000) -- (1.522,0.007) -- (1.545,0.014) -- (1.567,0.021) -- (1.590,0.028) -- (1.612,0.036) -- (1.635,0.043) -- (1.657,0.050) -- (1.680,0.057) -- (1.703,0.065) -- (1.725,0.072) -- (1.748,0.080) -- (1.770,0.087) -- (1.792,0.095) -- (1.815,0.103) -- (1.838,0.111) -- (1.860,0.119) -- (1.883,0.127) -- (1.905,0.135) -- (1.927,0.144) -- (1.950,0.153) -- (1.972,0.162) -- (1.995,0.171) -- (2.018,0.181) -- (2.040,0.190) -- (2.062,0.200) -- (2.085,0.211) -- (2.107,0.222) -- (2.130,0.233) -- (2.152,0.244) -- (2.175,0.256) -- (2.197,0.269) -- (2.220,0.282) -- (2.242,0.295) -- (2.265,0.310) -- (2.287,0.325) -- (2.310,0.340) -- (2.333,0.357) -- (2.355,0.374) -- (2.377,0.393) -- (2.400,0.413) -- (2.422,0.434) -- (2.445,0.457) -- (2.467,0.481) -- (2.490,0.507) -- (2.512,0.536) -- (2.535,0.567) -- (2.558,0.600) -- (2.580,0.638) -- (2.603,0.679) -- (2.625,0.724) -- (2.647,0.775) -- (2.670,0.833) -- (2.692,0.899) -- (2.715,0.975) -- (2.737,1.064) -- (2.760,1.168) -- (2.782,1.294) -- (2.805,1.449) -- (2.828,1.643) -- (2.850,1.894);
+\draw[faint, dashed] (3,-1.8) -- (3,1.9);\draw[faint] (3.000,-0.06) -- (3.000,0.06); \node[lab, tick, below] at (3.000,-0.05) {$1$};\node[lab, right] at (2.0,1.6) {$\tan(\pi(x-\frac12))$};
+\end{tikzpicture}
+\end{center}
+```
+
+Item 1: $\tan(\pi(x-\frac12))$ stretches $(0,1)$ onto all of $\mathbb R$ continuously and invertibly, so a bounded interval is homeomorphic to an unbounded line.
+
+:::
+
+::: {#fig-topological-spaces-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) -- (2.5,0); \node[dot] at (0,0) {}; \node[hollow dot] at (2.5,0) {};
+\node[lab, below] at (0,-0.05) {$0$}; \node[lab, below] at (2.5,-0.05) {$1$};
+\draw[hl] (0,0) -- (0.4,0); \draw[hl] (2.1,0) -- (2.5,0);
+\draw[map] (2.9,0) -- node[lab, above] {$e^{2\pi it}$} (3.9,0);
+\draw[emph] (5.2,0) circle (0.9); \node[dot] at (6.1,0) {}; \node[lab, right] at (6.1,0) {$1$};
+\draw[hl] (6.1,0) arc (0:25:0.9); \draw[hl] (6.1,0) arc (0:-25:0.9);
+\end{tikzpicture}
+\end{center}
+```
+
+Item 2: $t\mapsto e^{2\pi it}$ bends $[0,1)$ round the circle. A small arc around $1$ (orange) comes from two far-apart pieces near $0$ and near $1$, so the inverse is not continuous at $1$.
+
+:::
+
 ## Sequences and the Hausdorff property
 
 ::: {#def-convergence-topological .definition name="Convergence in a topological space" generalizes="def-convergence-metric"}
@@ -70,6 +106,23 @@ By @prp-convergence-open-sets this is the old notion in metric spaces. In genera
 ::: {#def-hausdorff .definition name="Hausdorff space"}
 
 A topological space $X$ is *Hausdorff* if any two distinct points $x\ne y$ have disjoint open neighbourhoods: there are open $U\ni x$ and $V\ni y$ with $U\cap V=\emptyset$.
+
+:::
+
+::: {#fig-topological-spaces-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.5,-1.0) rectangle (4.5,1.2); \node[lab] at (-0.2,0.95) {$X$};
+\draw[regionA] (1,0) circle (0.8); \draw[regionB] (3,0) circle (0.8);
+\node[dot] at (1,0) {}; \node[lab, below] at (1,0) {$x$}; \node[dot] at (3,0) {}; \node[lab, below] at (3,0) {$y$};
+\node[lab] at (1,0.45) {$U$}; \node[lab] at (3,0.45) {$V$};
+\end{tikzpicture}
+\end{center}
+```
+
+Hausdorff: any two distinct points have disjoint open neighbourhoods $U\ni x$ and $V\ni y$. Then a sequence cannot converge to both (@prp-hausdorff-unique-limits).
 
 :::
 

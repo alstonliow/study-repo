@@ -31,6 +31,24 @@ Then $b\in A$.
 
 :::
 
+::: {#fig-compactness-of-closed-intervals-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.2,0) -- (6.4,0);
+\draw[hl] (0,0) -- (3.6,0); \node[lab, above] at (1.8,0.1) {in $A$};
+\node[dot] at (0,0) {}; \node[lab, below] at (0,-0.1) {$a$}; \node[dot] at (6,0) {}; \node[lab, below] at (6,-0.1) {$b$};
+\draw[->, emph] (3.6,0.35) to[bend left=30] node[lab, above] {(2) step right} (4.4,0.35);
+\draw[->, emph] (2.9,-0.45) -- node[lab, below] {(3) limits from the left stay in $A$} (3.55,-0.45);
+\end{tikzpicture}
+\end{center}
+```
+
+Continuous induction: start at $a$ (1), from any point of $A$ before $b$ one can move a little further right (2), and $A$ contains the points it approaches from the left (3). Then the supremum of $A$ cannot stop before $b$, so $b\in A$.
+
+:::
+
 A common way to use it: take $A=\{x\in[a,b]:\text{some property holds on }[a,x]\}$.
 
 ::: {#exm-compactness-of-closed-intervals-1 .example name="Boundedness by continuous induction"}
@@ -57,6 +75,27 @@ A *cover* of $A\subseteq\mathbb R$ by open intervals is a family $\{I_\gamma:\ga
 
 :::
 
+::: {#fig-compactness-of-closed-intervals-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.3,0) -- (6.3,0); \node[hollow dot] at (0,0) {}; \node[hollow dot] at (6,0) {}; \node[lab, below] at (0,-0.05) {$0$}; \node[lab, below] at (6,-0.05) {$1$};
+\draw[hl] (3.000,0.36) -- (6,0.36); \node[hollow dot] at (3.000,0.36) {}; \node[lab, tick, left] at (3.000,0.36) {$\frac1{2}$};
+\draw[hl] (2.000,0.54) -- (6,0.54); \node[hollow dot] at (2.000,0.54) {}; \node[lab, tick, left] at (2.000,0.54) {$\frac1{3}$};
+\draw[hl] (1.500,0.72) -- (6,0.72); \node[hollow dot] at (1.500,0.72) {}; \node[lab, tick, left] at (1.500,0.72) {$\frac1{4}$};
+\draw[faint] (1.200,0.90) -- (6,0.90); \node[hollow dot] at (1.200,0.90) {}; 
+\draw[faint] (1.000,1.08) -- (6,1.08); \node[hollow dot] at (1.000,1.08) {}; 
+\draw[faint] (0.857,1.26) -- (6,1.26); \node[hollow dot] at (0.857,1.26) {}; 
+\draw[faint] (0.750,1.44) -- (6,1.44); \node[hollow dot] at (0.750,1.44) {};
+\end{tikzpicture}
+\end{center}
+```
+
+The intervals $(\frac1n,1)$ cover $(0,1)$, but any finitely many of them stop at some $\frac1N>0$: no finite subcover. So $(0,1)$ is not compact.
+
+:::
+
 Not every cover has a finite subcover: the intervals $(\frac1n,1)$, $n\ge2$, cover $(0,1)$, but finitely many of them only reach down to the largest $\frac1n$ used.
 
 ::: {#thm-heine-borel-interval .theorem name="Heine–Borel theorem for intervals"}
@@ -76,6 +115,28 @@ Every cover of a closed bounded interval $[a,b]$ by open intervals has a finite 
 4. Suppose every $(x-\varepsilon,x]$ meets $A$. Some $I_\gamma\ni x$ contains $(x-\varepsilon,x]$ for some $\varepsilon>0$. Pick $y\in A\cap(x-\varepsilon,x]$; a finite family covering $[a,y]$, together with $I_\gamma$, covers $[a,x]$. So $x\in A$.
 
 5. By continuous induction $b\in A$, i.e. $[a,b]$ has a finite subcover.
+
+:::
+
+::: {#fig-compactness-of-closed-intervals-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) -- (6,0); \node[lab, below] at (0,-0.1) {$a$}; \node[lab, below] at (6,-0.1) {$b$};
+\draw[hl] (-0.2,0.3) -- (1.2,0.3); \node[hollow dot] at (-0.2,0.3) {}; \node[hollow dot] at (1.2,0.3) {};
+\draw[hl] (0.8,0.48) -- (2.4,0.48); \node[hollow dot] at (0.8,0.48) {}; \node[hollow dot] at (2.4,0.48) {};
+\draw[hl] (1.9,0.66) -- (3.1,0.66); \node[hollow dot] at (1.9,0.66) {}; \node[hollow dot] at (3.1,0.66) {};
+\draw[hl] (2.6,0.3) -- (4.3,0.3); \node[hollow dot] at (2.6,0.3) {}; \node[hollow dot] at (4.3,0.3) {};
+\draw[hl] (3.8,0.48) -- (5.0,0.48); \node[hollow dot] at (3.8,0.48) {}; \node[hollow dot] at (5.0,0.48) {};
+\draw[hl] (4.6,0.66) -- (6.2,0.66); \node[hollow dot] at (4.6,0.66) {}; \node[hollow dot] at (6.2,0.66) {};
+\draw[faint] (1.0,0.3) -- (1.6,0.3); \node[hollow dot] at (1.0,0.3) {}; \node[hollow dot] at (1.6,0.3) {};
+\draw[faint] (3.2,0.48) -- (3.6,0.48); \node[hollow dot] at (3.2,0.48) {}; \node[hollow dot] at (3.6,0.48) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Heine–Borel: from any cover of $[a,b]$ by open intervals (all bars), finitely many already cover it (orange). The open interval $(0,1)$ has covers with no finite subcover, such as the intervals $(\frac1n,1)$.
 
 :::
 

@@ -29,6 +29,46 @@ A sequence has at most one limit.
 
 :::
 
+::: {#fig-convergence-of-sequences-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.6) node[lab, above] {$a_n$};
+\fill[tintA] (0.000,0.900) rectangle (6.400,1.500);
+\draw[faint, dashed] (0.000,0.900) -- (6.400,0.900); \draw[faint, dashed] (0.000,1.500) -- (6.400,1.500);
+\node[dot] at (0.310,-0.240) {};
+\node[dot] at (0.620,1.920) {};
+\node[dot] at (0.930,0.720) {};
+\node[dot] at (1.240,1.560) {};
+\node[dot] at (1.550,0.912) {};
+\node[dot] at (1.860,1.440) {};
+\node[dot] at (2.170,0.994) {};
+\node[dot] at (2.480,1.380) {};
+\node[dot] at (2.790,1.040) {};
+\node[dot] at (3.100,1.344) {};
+\node[dot] at (3.410,1.069) {};
+\node[dot] at (3.720,1.320) {};
+\node[dot] at (4.030,1.089) {};
+\node[dot] at (4.340,1.303) {};
+\node[dot] at (4.650,1.104) {};
+\node[dot] at (4.960,1.290) {};
+\node[dot] at (5.270,1.115) {};
+\node[dot] at (5.580,1.280) {};
+\node[dot] at (5.890,1.124) {};
+\node[dot] at (6.200,1.272) {};
+\draw[faint] (0,1.2) -- (6.4,1.2); \node[lab, right] at (6.4,1.2) {$a$};
+\node[lab, right] at (6.4,1.55) {$a+\varepsilon$}; \node[lab, right] at (6.4,0.85) {$a-\varepsilon$};
+\draw[dashed, faint] (1.55,-0.1) -- (1.55,2.5); \node[lab, below] at (1.55,-0.1) {$N$};
+\end{tikzpicture}
+\end{center}
+```
+
+$a_n\to a$: for each $\varepsilon>0$ all terms after some $N$ lie in the band $(a-\varepsilon,a+\varepsilon)$ (here $a_n=1+(-1)^n\frac{1.2}n$, $\varepsilon=\frac14$). Two limits $a\ne b$ would need two disjoint bands of width $\varepsilon=\frac12\lvert a-b\rvert$ to hold the same tail, which is impossible.
+
+:::
+
 ::: {#def-bounded-sequence .definition name="Bounded sequence"}
 
 $(a_n)$ is *bounded* if there is $C$ with $|a_n|\le C$ for all $n$, and *eventually bounded* if there are $C$ and $N$ with $|a_n|\le C$ for all $n\ge N$.
@@ -112,6 +152,83 @@ $$c_n\to x.$$
 
 :::
 
+::: {#fig-convergence-of-sequences-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.6) node[lab, above] {};
+\node[dot] at (0.310,2.200) {};
+\node[dot] at (0.620,1.700) {};
+\node[dot] at (0.930,1.533) {};
+\node[dot] at (1.240,1.450) {};
+\node[dot] at (1.550,1.400) {};
+\node[dot] at (1.860,1.367) {};
+\node[dot] at (2.170,1.343) {};
+\node[dot] at (2.480,1.325) {};
+\node[dot] at (2.790,1.311) {};
+\node[dot] at (3.100,1.300) {};
+\node[dot] at (3.410,1.291) {};
+\node[dot] at (3.720,1.283) {};
+\node[dot] at (4.030,1.277) {};
+\node[dot] at (4.340,1.271) {};
+\node[dot] at (4.650,1.267) {};
+\node[dot] at (4.960,1.262) {};
+\node[dot] at (5.270,1.259) {};
+\node[dot] at (5.580,1.256) {};
+\node[dot] at (5.890,1.253) {};
+\node[dot] at (6.200,1.250) {};
+\node[dot] at (0.310,0.300) {};
+\node[dot] at (0.620,0.750) {};
+\node[dot] at (0.930,0.900) {};
+\node[dot] at (1.240,0.975) {};
+\node[dot] at (1.550,1.020) {};
+\node[dot] at (1.860,1.050) {};
+\node[dot] at (2.170,1.071) {};
+\node[dot] at (2.480,1.087) {};
+\node[dot] at (2.790,1.100) {};
+\node[dot] at (3.100,1.110) {};
+\node[dot] at (3.410,1.118) {};
+\node[dot] at (3.720,1.125) {};
+\node[dot] at (4.030,1.131) {};
+\node[dot] at (4.340,1.136) {};
+\node[dot] at (4.650,1.140) {};
+\node[dot] at (4.960,1.144) {};
+\node[dot] at (5.270,1.147) {};
+\node[dot] at (5.580,1.150) {};
+\node[dot] at (5.890,1.153) {};
+\node[dot] at (6.200,1.155) {};
+\node[hl dot] at (0.310,1.957) {};
+\node[hl dot] at (0.620,1.609) {};
+\node[hl dot] at (0.930,1.242) {};
+\node[hl dot] at (1.240,1.030) {};
+\node[hl dot] at (1.550,1.027) {};
+\node[hl dot] at (1.860,1.158) {};
+\node[hl dot] at (2.170,1.284) {};
+\node[hl dot] at (2.480,1.311) {};
+\node[hl dot] at (2.790,1.241) {};
+\node[hl dot] at (3.100,1.151) {};
+\node[hl dot] at (3.410,1.118) {};
+\node[hl dot] at (3.720,1.160) {};
+\node[hl dot] at (4.030,1.229) {};
+\node[hl dot] at (4.340,1.264) {};
+\node[hl dot] at (4.650,1.239) {};
+\node[hl dot] at (4.960,1.184) {};
+\node[hl dot] at (5.270,1.149) {};
+\node[hl dot] at (5.580,1.162) {};
+\node[hl dot] at (5.890,1.207) {};
+\node[hl dot] at (6.200,1.241) {};
+\draw[faint, dashed] (0,1.2) -- (6.4,1.2) node[lab, right] {$\ell$};
+\node[lab, right] at (0.4,2.3) {$c_n$}; \node[lab, right] at (0.4,0.25) {$a_n$}; \node[lab, above] at (2.5,1.45) {$b_n$};
+\end{tikzpicture}
+\end{center}
+```
+
+Sandwich: if $a_n\le b_n\le c_n$ and $a_n,c_n\to\ell$, the middle sequence (orange) has nowhere else to go.
+
+:::
+
 ::: {#exm-convergence-of-sequences-1 .example name="Using the rules instead of $\varepsilon$"}
 
 $\dfrac{n^2+3}{(n+5)(2n-1)}\to\dfrac12$. Divide numerator and denominator by $n^2$:
@@ -132,5 +249,40 @@ $$\frac{n^k}{(1+\delta)^n}\to0.$$
 3. Combining, for $n\ge 2k$,
 $$0\le\frac{n^k}{(1+\delta)^n}\le\frac{2^{k+1}(k+1)!}{\delta^{k+1}}\cdot\frac1n,$$
 a constant times $1/n$, which tends to $0$. The sandwich rule (@thm-sandwich-sequences) finishes the proof.
+
+:::
+
+::: {#fig-convergence-of-sequences-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.2) node[lab, above] {$\frac{n^3}{2^n}$};
+\node[dot] at (0.300,0.167) {};
+\node[dot] at (0.600,0.667) {};
+\node[dot] at (0.900,1.125) {};
+\node[dot] at (1.200,1.333) {};
+\node[dot] at (1.500,1.302) {};
+\node[dot] at (1.800,1.125) {};
+\node[dot] at (2.100,0.893) {};
+\node[dot] at (2.400,0.667) {};
+\node[dot] at (2.700,0.475) {};
+\node[dot] at (3.000,0.326) {};
+\node[dot] at (3.300,0.217) {};
+\node[dot] at (3.600,0.141) {};
+\node[dot] at (3.900,0.089) {};
+\node[dot] at (4.200,0.056) {};
+\node[dot] at (4.500,0.034) {};
+\node[dot] at (4.800,0.021) {};
+\node[dot] at (5.100,0.012) {};
+\node[dot] at (5.400,0.007) {};
+\node[dot] at (5.700,0.004) {};
+\node[dot] at (6.000,0.003) {};
+\end{tikzpicture}
+\end{center}
+```
+
+$n^3/2^n$ first grows (the polynomial wins for small $n$) but from $n\approx5$ on each step multiplies by about $\frac12$, and the terms fall to $0$.
 
 :::

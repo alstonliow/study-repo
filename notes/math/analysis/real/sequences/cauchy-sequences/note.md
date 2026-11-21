@@ -16,6 +16,43 @@ $$\forall\varepsilon>0\ \exists N\ \forall p,q\ge N\quad |a_p-a_q|<\varepsilon.$
 
 :::
 
+::: {#fig-cauchy-sequences-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.8) node[lab, above] {$a_n$};
+\node[dot] at (0.310,1.044) {};
+\node[dot] at (0.620,0.965) {};
+\node[dot] at (0.930,1.706) {};
+\node[dot] at (1.240,1.469) {};
+\node[dot] at (1.550,1.181) {};
+\node[dot] at (1.860,1.472) {};
+\node[dot] at (2.170,1.517) {};
+\node[dot] at (2.480,1.280) {};
+\node[dot] at (2.790,1.378) {};
+\node[dot] at (3.100,1.509) {};
+\node[dot] at (3.410,1.354) {};
+\node[dot] at (3.720,1.337) {};
+\node[dot] at (4.030,1.477) {};
+\node[dot] at (4.340,1.408) {};
+\node[dot] at (4.650,1.329) {};
+\node[dot] at (4.960,1.436) {};
+\node[dot] at (5.270,1.441) {};
+\node[dot] at (5.580,1.343) {};
+\node[dot] at (5.890,1.398) {};
+\node[dot] at (6.200,1.453) {};
+\fill[tintA] (2.4,1.25) rectangle (6.4,1.55); \draw[decorate, decoration={brace, amplitude=3pt, mirror}] (6.45,1.25) -- node[lab, right=3pt] {$<\varepsilon$} (6.45,1.55);
+\draw[dashed, faint] (2.4,-0.1) -- (2.4,2.6); \node[lab, below] at (2.4,-0.1) {$N$};
+\end{tikzpicture}
+\end{center}
+```
+
+A Cauchy sequence: after $N$, any two terms are within $\varepsilon$ of each other, so the tail fits in a strip of width $\varepsilon$. The definition never mentions the limit; completeness supplies it.
+
+:::
+
 ::: {#lem-convergent-is-cauchy .lemma name="Convergent sequences are Cauchy"}
 
 If $a_n\to a$, then $(a_n)$ is Cauchy.
@@ -46,6 +83,42 @@ If $(a_n)$ is Cauchy and some subsequence $a_{n_k}\to a$, then $a_n\to a$.
 
 :::
 
+::: {#fig-cauchy-sequences-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.8) node[lab, above] {$a_n$};
+\node[dot] at (0.310,1.044) {};
+\node[dot] at (0.620,0.965) {};
+\node[dot] at (1.240,1.469) {};
+\node[dot] at (1.550,1.181) {};
+\node[dot] at (2.170,1.517) {};
+\node[dot] at (2.480,1.280) {};
+\node[dot] at (3.100,1.509) {};
+\node[dot] at (3.410,1.354) {};
+\node[dot] at (4.030,1.477) {};
+\node[dot] at (4.340,1.408) {};
+\node[dot] at (4.960,1.436) {};
+\node[dot] at (5.270,1.441) {};
+\node[dot] at (5.890,1.398) {};
+\node[dot] at (6.200,1.453) {};
+\node[hl dot] at (0.930,1.706) {};
+\node[hl dot] at (1.860,1.472) {};
+\node[hl dot] at (2.790,1.378) {};
+\node[hl dot] at (3.720,1.337) {};
+\node[hl dot] at (4.650,1.329) {};
+\node[hl dot] at (5.580,1.343) {};
+\draw[faint, dashed] (0,1.4) -- (6.4,1.4) node[lab, right] {$a$};
+\end{tikzpicture}
+\end{center}
+```
+
+If a subsequence (orange) converges to $a$ and the whole sequence is Cauchy, the other terms are close to the subsequence terms and hence close to $a$.
+
+:::
+
 ::: {#thm-general-principle-of-convergence .theorem name="General principle of convergence"}
 
 A sequence of real numbers converges if and only if it is Cauchy.
@@ -67,6 +140,25 @@ A sequence of real numbers converges if and only if it is Cauchy.
 ::: {#def-complete-ordered-field .definition name="Complete ordered field"}
 
 An ordered field is *complete* if every Cauchy sequence in it converges.
+
+:::
+
+::: {#fig-cauchy-sequences-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.3,0) -- (6.3,0);
+\node[dot] at (0.300,0.000) {};\node[lab, tick, above] at (0.3,0.12) {$1$};
+\node[dot] at (2.600,0.000) {};\node[lab, tick, above] at (2.6,0.12) {$1.4$};
+\node[dot] at (4.000,0.000) {};\node[lab, tick, above] at (4.0,0.12) {$1.41$};
+\node[dot] at (4.900,0.000) {};\node[lab, tick, above] at (4.9,0.12) {$1.414$};\node[hollow dot] at (5.900,0.000) {};
+\node[lab, below] at (5.9,-0.1) {$\sqrt2$};
+\end{tikzpicture}
+\end{center}
+```
+
+Not to scale. In $\mathbb Q$ the truncations $1,1.4,1.41,\dots$ of $\sqrt2$ form a Cauchy sequence with no limit: $\mathbb Q$ is not complete. $\mathbb R$ fills in such gaps.
 
 :::
 

@@ -18,6 +18,24 @@ $$\|A\|=\sup\{\|Ax\|:x\in\mathbb R^n,\ \|x\|\le1\}.$$
 
 :::
 
+::: {#fig-chain-rule-and-mean-value-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) circle (0.8); \node[lab, below] at (0,-0.85) {$\lVert x\rVert\le1$};
+\draw[hl] (4.800,0.300) -- (4.846,0.372) -- (4.878,0.439) -- (4.896,0.502) -- (4.900,0.559) -- (4.889,0.610) -- (4.865,0.654) -- (4.826,0.691) -- (4.775,0.721) -- (4.710,0.743) -- (4.633,0.756) -- (4.545,0.762) -- (4.446,0.758) -- (4.339,0.747) -- (4.223,0.728) -- (4.100,0.700) -- (3.972,0.665) -- (3.840,0.622) -- (3.705,0.573) -- (3.569,0.517) -- (3.433,0.456) -- (3.299,0.390) -- (3.169,0.319) -- (3.043,0.245) -- (2.923,0.169) -- (2.811,0.090) -- (2.707,0.011) -- (2.613,-0.069) -- (2.530,-0.148) -- (2.459,-0.225) -- (2.400,-0.300) -- (2.354,-0.372) -- (2.322,-0.439) -- (2.304,-0.502) -- (2.300,-0.559) -- (2.311,-0.610) -- (2.335,-0.654) -- (2.374,-0.691) -- (2.425,-0.721) -- (2.490,-0.743) -- (2.567,-0.756) -- (2.655,-0.762) -- (2.754,-0.758) -- (2.861,-0.747) -- (2.977,-0.728) -- (3.100,-0.700) -- (3.228,-0.665) -- (3.360,-0.622) -- (3.495,-0.573) -- (3.631,-0.517) -- (3.767,-0.456) -- (3.901,-0.390) -- (4.031,-0.319) -- (4.157,-0.245) -- (4.277,-0.169) -- (4.389,-0.090) -- (4.493,-0.011) -- (4.587,0.069) -- (4.670,0.148) -- (4.741,0.225) -- cycle;
+\node[lab, below] at (3.6,-0.95) {image under $A$};
+\draw[map] (1.0,0) -- node[lab, above] {$A$} (2.2,0);
+\draw[->, emph] (3.6,0) -- (4.870,0.570) node[lab, above right] {$\lVert A\rVert$};
+\end{tikzpicture}
+\end{center}
+```
+
+The operator norm $\lVert A\rVert$ is the largest length of $Ax$ for $\lVert x\rVert\le1$: how far the image of the unit ball reaches.
+
+:::
+
 ::: {#prp-operator-norm-properties .proposition name="Properties of the operator norm"}
 
 1. $\|A\|$ is finite, and $\|Ax\|\le\|A\|\,\|x\|$ for all $x$; $\|A\|$ is the least constant with this property.
@@ -67,6 +85,23 @@ $$g(f(a+h))=g(b)+BAh+B\varepsilon(h)\|h\|+\eta(k)\|k\|.$$
 
 :::
 
+::: {#fig-chain-rule-and-mean-value-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] (U) at (0,0) {$\mathbb R^n$}; \node[lab] (V) at (2.6,0) {$\mathbb R^m$}; \node[lab] (W) at (5.2,0) {$\mathbb R^p$};
+\draw[map] (U) -- node[lab, above] {$f$} (V); \draw[map] (V) -- node[lab, above] {$g$} (W);
+\node[lab] (U2) at (0,-1.3) {$\mathbb R^n$}; \node[lab] (V2) at (2.6,-1.3) {$\mathbb R^m$}; \node[lab] (W2) at (5.2,-1.3) {$\mathbb R^p$};
+\draw[map, hl] (U2) -- node[lab, below] {$Df(a)$} (V2); \draw[map, hl] (V2) -- node[lab, below] {$Dg(f(a))$} (W2);
+\end{tikzpicture}
+\end{center}
+```
+
+Chain rule: the linear approximation of $g\circ f$ at $a$ is the composite of the linear approximations, $D(g\circ f)(a)=Dg(f(a))\,Df(a)$.
+
+:::
+
 In coordinates this is the familiar sum: $\frac{\partial(g\circ f)_i}{\partial x_j}=\sum_k\frac{\partial g_i}{\partial y_k}\frac{\partial f_k}{\partial x_j}$. Only differentiability is needed, not continuous partial derivatives. For a curve $t\mapsto(x(t),y(t),z(t))$ followed by $w=f(x,y,z)$ it reads $\frac{dw}{dt}=f_x\frac{dx}{dt}+f_y\frac{dy}{dt}+f_z\frac{dz}{dt}$, the form used in @sec-math-calculus-multivariable-differentiation-differentials-and-chain-rule.
 
 ## Mean value inequalities
@@ -86,6 +121,23 @@ Let $f:[a,b]\to\mathbb R^m$ be continuous, differentiable on $(a,b)$, with $\|f'
 2. By @thm-mean-value, $g(b)-g(a)=(b-a)\,v\cdot f'(t)$ for some $t\in(a,b)$. The left side is $v\cdot v=\|v\|^2$.
 
 3. By @thm-cauchy-schwarz-inner-product, $\|v\|^2\le(b-a)\|v\|\|f'(t)\|\le(b-a)M\|v\|$. Divide by $\|v\|$ if $v\ne0$.
+
+:::
+
+::: {#fig-chain-rule-and-mean-value-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (2.120,0.000) -- (2.180,0.126) -- (2.202,0.257) -- (2.179,0.389) -- (2.109,0.516) -- (1.992,0.633) -- (1.833,0.732) -- (1.640,0.812) -- (1.424,0.870) -- (1.197,0.906) -- (0.970,0.924) -- (0.751,0.927) -- (0.544,0.922) -- (0.353,0.913) -- (0.173,0.905) -- (0.000,0.902) -- (-0.173,0.905) -- (-0.353,0.913) -- (-0.544,0.922) -- (-0.751,0.927) -- (-0.970,0.924) -- (-1.197,0.906) -- (-1.424,0.870) -- (-1.640,0.812) -- (-1.833,0.732) -- (-1.992,0.633) -- (-2.109,0.516) -- (-2.179,0.389) -- (-2.202,0.257) -- (-2.180,0.126) -- (-2.120,0.000) -- (-2.032,-0.117) -- (-1.926,-0.225) -- (-1.810,-0.323) -- (-1.692,-0.414) -- (-1.576,-0.500) -- (-1.463,-0.585) -- (-1.351,-0.669) -- (-1.235,-0.755) -- (-1.110,-0.840) -- (-0.970,-0.924) -- (-0.811,-1.002) -- (-0.632,-1.069) -- (-0.433,-1.121) -- (-0.221,-1.155) -- (-0.000,-1.166) -- (0.221,-1.155) -- (0.433,-1.121) -- (0.632,-1.069) -- (0.811,-1.002) -- (0.970,-0.924) -- (1.110,-0.840) -- (1.235,-0.755) -- (1.351,-0.669) -- (1.463,-0.585) -- (1.576,-0.500) -- (1.692,-0.414) -- (1.810,-0.323) -- (1.926,-0.225) -- (2.032,-0.117) -- cycle;
+\draw[emph] (2.120,0.000) -- (2.180,0.126) -- (2.202,0.257) -- (2.179,0.389) -- (2.109,0.516) -- (1.992,0.633) -- (1.833,0.732) -- (1.640,0.812) -- (1.424,0.870) -- (1.197,0.906) -- (0.970,0.924) -- (0.751,0.927) -- (0.544,0.922) -- (0.353,0.913) -- (0.173,0.905) -- (0.000,0.902) -- (-0.173,0.905) -- (-0.353,0.913) -- (-0.544,0.922) -- (-0.751,0.927) -- (-0.970,0.924) -- (-1.197,0.906) -- (-1.424,0.870) -- (-1.640,0.812) -- (-1.833,0.732) -- (-1.992,0.633) -- (-2.109,0.516) -- (-2.179,0.389) -- (-2.202,0.257) -- (-2.180,0.126) -- (-2.120,0.000) -- (-2.032,-0.117) -- (-1.926,-0.225) -- (-1.810,-0.323) -- (-1.692,-0.414) -- (-1.576,-0.500) -- (-1.463,-0.585) -- (-1.351,-0.669) -- (-1.235,-0.755) -- (-1.110,-0.840) -- (-0.970,-0.924) -- (-0.811,-1.002) -- (-0.632,-1.069) -- (-0.433,-1.121) -- (-0.221,-1.155) -- (-0.000,-1.166) -- (0.221,-1.155) -- (0.433,-1.121) -- (0.632,-1.069) -- (0.811,-1.002) -- (0.970,-0.924) -- (1.110,-0.840) -- (1.235,-0.755) -- (1.351,-0.669) -- (1.463,-0.585) -- (1.576,-0.500) -- (1.692,-0.414) -- (1.810,-0.323) -- (1.926,-0.225) -- (2.032,-0.117) -- cycle;
+\node[dot] at (-1.2,-0.4) {}; \node[lab, below] at (-1.2,-0.4) {$a$}; \node[dot] at (1.3,0.5) {}; \node[lab, below] at (1.3,0.5) {$b$};
+\draw[hl] (-1.2,-0.4) -- (1.3,0.5); \node[lab, below right] at (0.2,-0.05) {segment in $U$};
+\end{tikzpicture}
+\end{center}
+```
+
+Mean value inequality: if the segment from $a$ to $b$ lies in $U$ and $\lVert Df\rVert\le M$ along it, then $\lVert f(b)-f(a)\rVert\le M\lVert b-a\rVert$. There is no mean value equality for vector-valued $f$.
 
 :::
 

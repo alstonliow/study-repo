@@ -19,6 +19,34 @@ that is, $f(a+h)=f(a)+Ah+o(\|h\|)$. Then $A$ is the *derivative* $Df(a)$. $f$ is
 
 :::
 
+::: {#fig-derivative-of-maps-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0.0,0) -- (0.0,1.2); \draw[faint] (0,0.0) -- (1.2,0.0);
+\draw[faint] (0.4,0) -- (0.4,1.2); \draw[faint] (0,0.4) -- (1.2,0.4);
+\draw[faint] (0.8,0) -- (0.8,1.2); \draw[faint] (0,0.8) -- (1.2,0.8);
+\draw[faint] (1.20,0) -- (1.20,1.2); \draw[faint] (0,1.20) -- (1.2,1.20);
+\draw[emph] (3.600,0.100) -- (3.615,0.160) -- (3.632,0.220) -- (3.649,0.280) -- (3.667,0.340) -- (3.686,0.400) -- (3.706,0.460) -- (3.726,0.520) -- (3.748,0.580) -- (3.770,0.640) -- (3.793,0.700) -- (3.817,0.760) -- (3.842,0.820) -- (3.868,0.880) -- (3.895,0.940) -- (3.922,1.000) -- (3.951,1.060) -- (3.980,1.120) -- (4.010,1.180) -- (4.041,1.240) -- (4.073,1.300);
+\draw[emph] (3.600,0.100) -- (3.660,0.121) -- (3.720,0.144) -- (3.780,0.167) -- (3.840,0.191) -- (3.900,0.216) -- (3.960,0.242) -- (4.020,0.268) -- (4.080,0.296) -- (4.140,0.324) -- (4.200,0.353) -- (4.260,0.383) -- (4.320,0.414) -- (4.380,0.446) -- (4.440,0.479) -- (4.500,0.512) -- (4.560,0.547) -- (4.620,0.582) -- (4.680,0.618) -- (4.740,0.655) -- (4.800,0.693);
+\draw[emph] (4.000,0.259) -- (4.015,0.319) -- (4.032,0.379) -- (4.049,0.439) -- (4.067,0.499) -- (4.086,0.559) -- (4.106,0.619) -- (4.126,0.679) -- (4.148,0.739) -- (4.170,0.799) -- (4.193,0.859) -- (4.217,0.919) -- (4.242,0.979) -- (4.268,1.039) -- (4.295,1.099) -- (4.322,1.159) -- (4.351,1.219) -- (4.380,1.279) -- (4.410,1.339) -- (4.441,1.399) -- (4.473,1.459);
+\draw[emph] (3.719,0.500) -- (3.779,0.521) -- (3.839,0.544) -- (3.899,0.567) -- (3.959,0.591) -- (4.019,0.616) -- (4.079,0.642) -- (4.139,0.668) -- (4.199,0.696) -- (4.259,0.724) -- (4.319,0.753) -- (4.379,0.783) -- (4.439,0.814) -- (4.499,0.846) -- (4.559,0.879) -- (4.619,0.912) -- (4.679,0.947) -- (4.739,0.982) -- (4.799,1.018) -- (4.859,1.055) -- (4.919,1.093);
+\draw[emph] (4.400,0.457) -- (4.415,0.517) -- (4.432,0.577) -- (4.449,0.637) -- (4.467,0.697) -- (4.486,0.757) -- (4.506,0.817) -- (4.526,0.877) -- (4.548,0.937) -- (4.570,0.997) -- (4.593,1.057) -- (4.617,1.117) -- (4.642,1.177) -- (4.668,1.237) -- (4.695,1.297) -- (4.722,1.357) -- (4.751,1.417) -- (4.780,1.477) -- (4.810,1.537) -- (4.841,1.597) -- (4.873,1.657);
+\draw[emph] (3.877,0.900) -- (3.937,0.921) -- (3.997,0.944) -- (4.057,0.967) -- (4.117,0.991) -- (4.177,1.016) -- (4.237,1.042) -- (4.297,1.068) -- (4.357,1.096) -- (4.417,1.124) -- (4.477,1.153) -- (4.537,1.183) -- (4.597,1.214) -- (4.657,1.246) -- (4.717,1.279) -- (4.777,1.312) -- (4.837,1.347) -- (4.897,1.382) -- (4.957,1.418) -- (5.017,1.455) -- (5.077,1.493);
+\draw[emph] (4.800,0.693) -- (4.815,0.753) -- (4.832,0.813) -- (4.849,0.873) -- (4.867,0.933) -- (4.886,0.993) -- (4.906,1.053) -- (4.926,1.113) -- (4.948,1.173) -- (4.970,1.233) -- (4.993,1.293) -- (5.017,1.353) -- (5.042,1.413) -- (5.068,1.473) -- (5.095,1.533) -- (5.122,1.593) -- (5.151,1.653) -- (5.180,1.713) -- (5.210,1.773) -- (5.241,1.833) -- (5.273,1.893);
+\draw[emph] (4.073,1.300) -- (4.133,1.321) -- (4.193,1.344) -- (4.253,1.367) -- (4.313,1.391) -- (4.373,1.416) -- (4.433,1.442) -- (4.493,1.468) -- (4.553,1.496) -- (4.613,1.524) -- (4.673,1.553) -- (4.733,1.583) -- (4.793,1.614) -- (4.853,1.646) -- (4.913,1.679) -- (4.973,1.712) -- (5.033,1.747) -- (5.093,1.782) -- (5.153,1.818) -- (5.213,1.855) -- (5.273,1.893);
+\draw[hl, dashed] (3.600,0.100) -- (4.800,0.520) -- (5.100,1.720) -- (3.900,1.300) -- cycle;
+\node[dot] at (0,0) {}; \node[lab, below left] at (0,0) {$a$}; \node[dot] at (3.6,0.1) {}; \node[lab, below left] at (3.6,0.1) {$f(a)$};
+\draw[map] (1.5,0.6) -- node[lab, above] {$f$} (3.2,0.6);
+\end{tikzpicture}
+\end{center}
+```
+
+Near $a$, $f$ bends a small grid (dark); the affine map $h\mapsto f(a)+Df(a)h$ sends it to the parallelogram (orange), and the error is $o(\lVert h\rVert)$.
+
+:::
+
 ::: {#prp-derivative-several-variables-basic .proposition name="Basic properties of the derivative"}
 
 Let $f,g:U\to\mathbb R^m$ and $a\in U$.
@@ -55,6 +83,26 @@ when the limit exists. With $e_1,\dots,e_n$ the standard basis, $D_jf(a)=D_{e_j}
 
 :::
 
+::: {#fig-derivative-of-maps-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-2.2,0) -- (2.4,0) node[lab, right] {$x$}; \draw[->, faint] (0,-1.6) -- (0,1.8) node[lab, above] {$y$};
+\draw[faint] (0,0) ellipse (0.60 and 0.42);
+\draw[faint] (0,0) ellipse (1.20 and 0.84);
+\draw[faint] (0,0) ellipse (1.80 and 1.26);
+\node[dot] at (0.9,0.5) {}; \node[lab, below right] at (0.9,0.5) {$a$};
+\draw[hl] (0.2,0.15) -- (2.0,1.05); \draw[->, emph] (0.9,0.5) -- (1.6,0.85) node[lab, above] {$v$};
+\node[lab, left] at (0.25,0.2) {$a+tv$};
+\end{tikzpicture}
+\end{center}
+```
+
+The directional derivative $D_vf(a)$ is the rate of change of $f$ along the line $a+tv$ (orange) through $a$; the partial derivatives are the cases $v=e_1$, $v=e_2$. Ellipses: level curves of $f$.
+
+:::
+
 ::: {#prp-derivative-partials-jacobian .proposition name="The derivative determines the partial derivatives"}
 
 If $f:U\to\mathbb R^m$ is differentiable at $a$, then every directional derivative exists and $D_vf(a)=Df(a)v$. In particular $Df(a)$ is the matrix of partial derivatives (the *Jacobian matrix*)
@@ -77,6 +125,27 @@ The converse fails badly: partial derivatives, even all directional derivatives,
 
 1. Let $f(x,y)=\frac{xy}{x^2+y^2}$ for $(x,y)\ne0$ and $f(0)=0$. Since $f=0$ on both axes, $D_1f(0)=D_2f(0)=0$. But $f(t,t)=\frac12$ for $t\ne0$, so $f$ is not even continuous at $0$, hence not differentiable there.
 2. Let $g(x,y)=\frac{x^2y}{x^2+y^2}$ for $(x,y)\ne0$ and $g(0)=0$. It is continuous ($|g|\le|y|$), and for $v=(v_1,v_2)\ne0$, $\frac{g(tv)}t=\frac{v_1^2v_2}{v_1^2+v_2^2}$, so every $D_vg(0)$ exists. But $v\mapsto D_vg(0)$ is not linear ($D_{e_1}g(0)=D_{e_2}g(0)=0$ while $D_{(1,1)}g(0)=\frac12$), so by @prp-derivative-partials-jacobian $g$ is not differentiable at $0$.
+
+:::
+
+::: {#fig-derivative-of-maps-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0,0) -- (1.600,0.000); \node[lab, tick] at (1.850,0.000) {$0$};
+\draw[hl] (0,0) -- (1.131,1.131); \node[lab, tick] at (1.308,1.308) {$\tfrac12$};
+\draw[faint] (0,0) -- (0.000,1.600); \node[lab, tick] at (0.000,1.850) {$0$};
+\draw[hl] (0,0) -- (-1.131,1.131); \node[lab, tick] at (-1.308,1.308) {$-\tfrac12$};
+\draw[faint] (0,0) -- (-1.600,0.000); \node[lab, tick] at (-1.850,0.000) {$0$};
+\draw[hl] (0,0) -- (-1.131,-1.131); \node[lab, tick] at (-1.308,-1.308) {$\tfrac12$};
+\draw[faint] (0,0) -- (-0.000,-1.600); \node[lab, tick] at (-0.000,-1.850) {$0$};
+\draw[hl] (0,0) -- (1.131,-1.131); \node[lab, tick] at (1.308,-1.308) {$-\tfrac12$};\node[hollow dot] at (0,0) {};
+\end{tikzpicture}
+\end{center}
+```
+
+Part 1: $f=\frac{xy}{x^2+y^2}$ is constant along each line through $0$, with the values shown. It is $0$ on the axes, so both partial derivatives at $0$ exist, but it takes the values $\pm\frac12$ arbitrarily close to $0$, so $f$ is not even continuous there.
 
 :::
 

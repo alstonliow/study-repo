@@ -29,6 +29,29 @@ converges, and its sum lies between $0$ and $a_1$.
 
 :::
 
+::: {#fig-convergence-tests-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.2,0) -- (6.4,0);
+\draw[->, emph] (6.000,0.25) -- (3.000,0.25);
+\draw[->, hl] (3.000,0.47) -- (5.000,0.47);
+\draw[->, emph] (5.000,0.69) -- (3.500,0.69);
+\draw[->, hl] (3.500,0.91) -- (4.700,0.91);
+\draw[->, emph] (4.700,1.13) -- (3.700,1.13);
+\draw[->, hl] (3.700,1.35) -- (4.557,1.35);
+\draw[->, emph] (4.557,1.57) -- (3.807,1.57);
+\draw[faint] (0.000,-0.06) -- (0.000,0.06); \node[lab, tick, below] at (0.000,-0.05) {$0$};\draw[faint] (6.000,-0.06) -- (6.000,0.06); \node[lab, tick, below] at (6.000,-0.05) {$1$};\draw[faint] (4.159,-0.06) -- (4.159,0.06); \node[lab, tick, below] at (4.159,-0.05) {$s$};
+\node[lab, right] at (6.2,1.0) {$S_1,S_2,\dots$};
+\end{tikzpicture}
+\end{center}
+```
+
+Alternating series test: each step goes the other way and is shorter than the last, so $S_2\le S_4\le\dots\le s\le\dots\le S_3\le S_1$ (here $\sum(-1)^{n+1}/n$).
+
+:::
+
 For example $1-\frac1{\sqrt[3]2}+\frac1{\sqrt[3]3}-\cdots$ converges, though $\sum n^{-1/3}=\infty$.
 
 ## The ratio test
@@ -52,6 +75,39 @@ Let $a_n\ne0$ for all $n$ (real or complex).
 3. If the ratios tend to $\rho<1$, take $\varepsilon=\frac{1-\rho}2$: eventually the ratios are at most $\frac{1+\rho}2<1$, and part 1 applies with $c=\frac{1+\rho}2$.
 
 4. If the ratios tend to $\rho>1$, then eventually $|a_{n+1}|>|a_n|$, so $|a_n|$ is eventually increasing and positive, hence $a_n\not\to0$ and the series diverges (@thm-nth-term-test).
+
+:::
+
+::: {#fig-convergence-tests-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.4) node[lab, above] {};
+\node[dot] at (0.350,1.782) {};
+\node[dot] at (0.700,0.758) {};
+\node[dot] at (1.050,0.628) {};
+\node[dot] at (1.400,0.623) {};
+\node[dot] at (1.750,0.281) {};
+\node[dot] at (2.100,0.197) {};
+\node[dot] at (2.450,0.214) {};
+\node[dot] at (2.800,0.105) {};
+\node[dot] at (3.150,0.063) {};
+\node[dot] at (3.500,0.072) {};
+\node[dot] at (3.850,0.039) {};
+\node[dot] at (4.200,0.020) {};
+\node[dot] at (4.550,0.024) {};
+\node[dot] at (4.900,0.015) {};
+\node[dot] at (5.250,0.007) {};
+\node[dot] at (5.600,0.008) {};
+\node[dot] at (5.950,0.005) {};
+\draw[hl] (0.350,1.820) -- (0.420,1.695) -- (0.490,1.578) -- (0.560,1.469) -- (0.630,1.368) -- (0.700,1.274) -- (0.770,1.186) -- (0.840,1.105) -- (0.910,1.029) -- (0.980,0.958) -- (1.050,0.892) -- (1.120,0.830) -- (1.190,0.773) -- (1.260,0.720) -- (1.330,0.670) -- (1.400,0.624) -- (1.470,0.581) -- (1.540,0.541) -- (1.610,0.504) -- (1.680,0.469) -- (1.750,0.437) -- (1.820,0.407) -- (1.890,0.379) -- (1.960,0.353) -- (2.030,0.329) -- (2.100,0.306) -- (2.170,0.285) -- (2.240,0.265) -- (2.310,0.247) -- (2.380,0.230) -- (2.450,0.214) -- (2.520,0.199) -- (2.590,0.186) -- (2.660,0.173) -- (2.730,0.161) -- (2.800,0.150) -- (2.870,0.140) -- (2.940,0.130) -- (3.010,0.121) -- (3.080,0.113) -- (3.150,0.105) -- (3.220,0.098) -- (3.290,0.091) -- (3.360,0.085) -- (3.430,0.079) -- (3.500,0.073) -- (3.570,0.068) -- (3.640,0.064) -- (3.710,0.059) -- (3.780,0.055) -- (3.850,0.051) -- (3.920,0.048) -- (3.990,0.045) -- (4.060,0.042) -- (4.130,0.039) -- (4.200,0.036) -- (4.270,0.034) -- (4.340,0.031) -- (4.410,0.029) -- (4.480,0.027) -- (4.550,0.025) -- (4.620,0.023) -- (4.690,0.022) -- (4.760,0.020) -- (4.830,0.019) -- (4.900,0.018) -- (4.970,0.016) -- (5.040,0.015) -- (5.110,0.014) -- (5.180,0.013) -- (5.250,0.012) -- (5.320,0.011) -- (5.390,0.011) -- (5.460,0.010) -- (5.530,0.009) -- (5.600,0.009) -- (5.670,0.008) -- (5.740,0.007) -- (5.810,0.007) -- (5.880,0.006) -- (5.950,0.006);\node[lab, above right] at (0.4,1.85) {$Cr^n$};
+\end{tikzpicture}
+\end{center}
+```
+
+If $\lvert a_{n+1}/a_n\rvert\le r<1$ from some point on, the terms stay below a geometric sequence $Cr^n$ (orange), and $\sum a_n$ converges by comparison.
 
 :::
 
@@ -110,5 +166,25 @@ $\sum_{n\ge1}z^n/n$ converges if $|z|<1$, and also if $|z|=1$ with $z\ne1$; it d
 2. If $|z|>1$, the terms do not tend to $0$, since $|z|^n/n\to\infty$ (@exm-exponential-beats-polynomial with $k=1$, inverted).
 
 3. If $z=1$, this is the harmonic series. If $|z|=1$, $z\ne1$, Abel's test applies with $a_n=1/n$. For $z=-1$ it is minus the alternating harmonic series (@exm-alternating-harmonic).
+
+:::
+
+::: {#fig-convergence-tests-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0,0) circle (1.5);
+\draw[hl] (0,0) circle (1.5);
+\draw[->, faint] (-2.1,0) -- (2.3,0) node[lab, right] {$\operatorname{Re}z$};
+\draw[->, faint] (0,-1.9) -- (0,1.9) node[lab, above] {$\operatorname{Im}z$};
+\node[hollow dot] at (1.5,0) {}; \node[lab, right] at (1.55,-0.35) {$z=1$: diverges};
+\node[lab] at (-0.6,0.5) {$\lvert z\rvert<1$};
+\node[lab] at (-1.6,1.5) {$\lvert z\rvert=1$, $z\ne1$}; \node[lab] at (1.9,-1.5) {diverges};
+\end{tikzpicture}
+\end{center}
+```
+
+Where $\sum z^n/n$ converges: the open unit disc (ratio test) and every point of the unit circle except $z=1$ (Abel's test).
 
 :::

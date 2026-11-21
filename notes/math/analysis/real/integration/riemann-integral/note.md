@@ -19,6 +19,33 @@ A dissection $D'$ *refines* $D$ if every point of $D$ is a point of $D'$. The *m
 
 :::
 
+::: {#fig-riemann-integral-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (4.6,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.2) -- (0,2.6) node[lab, above] {$y$};
+\fill[tintB] (0.3,0) rectangle (1.0,1.326); \draw[faint] (0.3,0) rectangle (1.0,1.326);
+\fill[shade] (0.3,0) rectangle (1.0,0.821);
+\fill[tintB] (1.0,0) rectangle (1.6,1.667); \draw[faint] (1.0,0) rectangle (1.6,1.667);
+\fill[shade] (1.0,0) rectangle (1.6,1.326);
+\fill[tintB] (1.6,0) rectangle (2.5,1.918); \draw[faint] (1.6,0) rectangle (2.5,1.918);
+\fill[shade] (1.6,0) rectangle (2.5,1.667);
+\fill[tintB] (2.5,0) rectangle (3.1,1.933); \draw[faint] (2.5,0) rectangle (3.1,1.933);
+\fill[shade] (2.5,0) rectangle (3.1,1.918);
+\fill[tintB] (3.1,0) rectangle (4.0,1.922); \draw[faint] (3.1,0) rectangle (4.0,1.922);
+\fill[shade] (3.1,0) rectangle (4.0,1.827);
+\draw[emph] (0.300,0.821) -- (0.346,0.856) -- (0.392,0.890) -- (0.439,0.925) -- (0.485,0.959) -- (0.531,0.994) -- (0.578,1.028) -- (0.624,1.062) -- (0.670,1.096) -- (0.716,1.129) -- (0.762,1.162) -- (0.809,1.195) -- (0.855,1.227) -- (0.901,1.259) -- (0.948,1.291) -- (0.994,1.321) -- (1.040,1.352) -- (1.086,1.382) -- (1.133,1.411) -- (1.179,1.440) -- (1.225,1.467) -- (1.271,1.495) -- (1.318,1.521) -- (1.364,1.547) -- (1.410,1.572) -- (1.456,1.597) -- (1.503,1.620) -- (1.549,1.643) -- (1.595,1.665) -- (1.641,1.686) -- (1.688,1.706) -- (1.734,1.725) -- (1.780,1.744) -- (1.826,1.761) -- (1.873,1.778) -- (1.919,1.794) -- (1.965,1.809) -- (2.011,1.823) -- (2.057,1.836) -- (2.104,1.848) -- (2.150,1.860) -- (2.196,1.870) -- (2.243,1.880) -- (2.289,1.889) -- (2.335,1.897) -- (2.381,1.904) -- (2.428,1.910) -- (2.474,1.916) -- (2.520,1.920) -- (2.566,1.924) -- (2.612,1.927) -- (2.659,1.930) -- (2.705,1.932) -- (2.751,1.933) -- (2.797,1.933) -- (2.844,1.933) -- (2.890,1.932) -- (2.936,1.931) -- (2.982,1.929) -- (3.029,1.926) -- (3.075,1.923) -- (3.121,1.920) -- (3.167,1.916) -- (3.214,1.912) -- (3.260,1.908) -- (3.306,1.903) -- (3.353,1.898) -- (3.399,1.893) -- (3.445,1.888) -- (3.491,1.883) -- (3.537,1.877) -- (3.584,1.872) -- (3.630,1.866) -- (3.676,1.861) -- (3.723,1.855) -- (3.769,1.850) -- (3.815,1.845) -- (3.861,1.840) -- (3.908,1.836) -- (3.954,1.831) -- (4.000,1.827);
+\draw[faint] (0.300,-0.06) -- (0.300,0.06); \node[lab, tick, below] at (0.300,-0.05) {$x_0=a$};\draw[faint] (4.000,-0.06) -- (4.000,0.06); \node[lab, tick, below] at (4.000,-0.05) {$x_n=b$};
+\end{tikzpicture}
+\end{center}
+```
+
+Upper and lower sums for a dissection: on each piece, a rectangle up to the supremum of $f$ (outlined) and one up to the infimum (shaded). $L_D(f)\le$ area $\le U_D(f)$.
+
+:::
+
 Clearly $L_D(f)\le U_D(f)$. Refining can only improve both bounds:
 
 ::: {#lem-refinement-sums .lemma name="Refinement"}
@@ -37,6 +64,34 @@ $$L_{D_1}(f)\le U_{D_2}(f).$$
 3. A general refinement adds finitely many points one at a time, so induction gives the claim. For lower sums the infima can only increase, by the same argument.
 
 4. For $D_1,D_2$, let $D$ consist of the points of both (their *common refinement*). Then $L_{D_1}(f)\le L_D(f)\le U_D(f)\le U_{D_2}(f)$.
+
+:::
+
+::: {#fig-riemann-integral-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (4.6,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.2) -- (0,2.6) node[lab, above] {$y$};
+\fill[hl cell] (0.3,0) rectangle (1.0,1.326); \draw[faint] (0.3,0) rectangle (1.0,1.326);
+\fill[hl cell] (1.0,0) rectangle (1.6,1.667); \draw[faint] (1.0,0) rectangle (1.6,1.667);
+\fill[hl cell] (1.6,0) rectangle (2.5,1.918); \draw[faint] (1.6,0) rectangle (2.5,1.918);
+\fill[hl cell] (2.5,0) rectangle (3.1,1.933); \draw[faint] (2.5,0) rectangle (3.1,1.933);
+\fill[hl cell] (3.1,0) rectangle (4.0,1.922); \draw[faint] (3.1,0) rectangle (4.0,1.922);
+\fill[cell frame] (0.3,0) rectangle (1.0,1.326); \draw[faint] (0.3,0) rectangle (1.0,1.326);
+\fill[cell frame] (1.0,0) rectangle (1.6,1.667); \draw[faint] (1.0,0) rectangle (1.6,1.667);
+\fill[cell frame] (1.6,0) rectangle (2.05,1.834); \draw[faint] (1.6,0) rectangle (2.05,1.834);
+\fill[cell frame] (2.05,0) rectangle (2.5,1.918); \draw[faint] (2.05,0) rectangle (2.5,1.918);
+\fill[cell frame] (2.5,0) rectangle (3.1,1.933); \draw[faint] (2.5,0) rectangle (3.1,1.933);
+\fill[cell frame] (3.1,0) rectangle (4.0,1.922); \draw[faint] (3.1,0) rectangle (4.0,1.922);
+\draw[emph] (0.300,0.821) -- (0.346,0.856) -- (0.392,0.890) -- (0.439,0.925) -- (0.485,0.959) -- (0.531,0.994) -- (0.578,1.028) -- (0.624,1.062) -- (0.670,1.096) -- (0.716,1.129) -- (0.762,1.162) -- (0.809,1.195) -- (0.855,1.227) -- (0.901,1.259) -- (0.948,1.291) -- (0.994,1.321) -- (1.040,1.352) -- (1.086,1.382) -- (1.133,1.411) -- (1.179,1.440) -- (1.225,1.467) -- (1.271,1.495) -- (1.318,1.521) -- (1.364,1.547) -- (1.410,1.572) -- (1.456,1.597) -- (1.503,1.620) -- (1.549,1.643) -- (1.595,1.665) -- (1.641,1.686) -- (1.688,1.706) -- (1.734,1.725) -- (1.780,1.744) -- (1.826,1.761) -- (1.873,1.778) -- (1.919,1.794) -- (1.965,1.809) -- (2.011,1.823) -- (2.057,1.836) -- (2.104,1.848) -- (2.150,1.860) -- (2.196,1.870) -- (2.243,1.880) -- (2.289,1.889) -- (2.335,1.897) -- (2.381,1.904) -- (2.428,1.910) -- (2.474,1.916) -- (2.520,1.920) -- (2.566,1.924) -- (2.612,1.927) -- (2.659,1.930) -- (2.705,1.932) -- (2.751,1.933) -- (2.797,1.933) -- (2.844,1.933) -- (2.890,1.932) -- (2.936,1.931) -- (2.982,1.929) -- (3.029,1.926) -- (3.075,1.923) -- (3.121,1.920) -- (3.167,1.916) -- (3.214,1.912) -- (3.260,1.908) -- (3.306,1.903) -- (3.353,1.898) -- (3.399,1.893) -- (3.445,1.888) -- (3.491,1.883) -- (3.537,1.877) -- (3.584,1.872) -- (3.630,1.866) -- (3.676,1.861) -- (3.723,1.855) -- (3.769,1.850) -- (3.815,1.845) -- (3.861,1.840) -- (3.908,1.836) -- (3.954,1.831) -- (4.000,1.827);
+\draw[faint] (2.050,-0.06) -- (2.050,0.06); \node[lab, tick, below] at (2.050,-0.05) {new point};
+\end{tikzpicture}
+\end{center}
+```
+
+Adding a point to the dissection can only lower the upper sum (the orange piece disappears) and raise the lower sum. So every lower sum is below every upper sum.
 
 :::
 
@@ -65,6 +120,42 @@ If the mesh of $D$ is less than $\delta$, the error is at most $\frac\delta2\sum
 Let $f(x)=1$ for rational $x\in[0,1]$ and $f(x)=0$ for irrational $x$. Every interval of positive length contains rationals and irrationals, so $M_i=1$ and $m_i=0$ for every dissection. Then $U_D(f)=1$ and $L_D(f)=0$ always, so the upper integral is $1$, the lower integral is $0$, and $f$ is not Riemann integrable.
 
 The rationals are countable, so in a sense $f$ is $0$ "almost everywhere"; the Lebesgue integral, built on measure theory, assigns it the integral $0$. That integral handles limits far better and is the one used in probability.
+
+:::
+
+::: {#fig-riemann-integral-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (4.8,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.2) -- (0,1.8) node[lab, above] {$y$};
+\node[hl dot] at (0.200,1.200) {};
+\node[dot] at (0.410,0.000) {};
+\node[dot] at (0.620,0.000) {};
+\node[hl dot] at (0.830,1.200) {};
+\node[dot] at (1.040,0.000) {};
+\node[dot] at (1.250,0.000) {};
+\node[hl dot] at (1.460,1.200) {};
+\node[dot] at (1.670,0.000) {};
+\node[dot] at (1.880,0.000) {};
+\node[hl dot] at (2.090,1.200) {};
+\node[dot] at (2.300,0.000) {};
+\node[dot] at (2.510,0.000) {};
+\node[hl dot] at (2.720,1.200) {};
+\node[dot] at (2.930,0.000) {};
+\node[dot] at (3.140,0.000) {};
+\node[hl dot] at (3.350,1.200) {};
+\node[dot] at (3.560,0.000) {};
+\node[dot] at (3.770,0.000) {};
+\node[hl dot] at (3.980,1.200) {};
+\node[dot] at (4.190,0.000) {};
+\draw[faint, dashed] (0.2,1.2) -- (4.3,1.2); \node[lab, right] at (4.4,1.2) {$1$ on $\mathbb Q$}; \node[lab, right] at (4.4,0.25) {$0$ off $\mathbb Q$};
+\end{tikzpicture}
+\end{center}
+```
+
+A sketch of the Dirichlet function: every piece of every dissection contains rationals (value $1$) and irrationals (value $0$), so $U_D=1$ and $L_D=0$ always, and the integral does not exist.
 
 :::
 

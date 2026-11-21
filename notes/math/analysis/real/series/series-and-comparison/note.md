@@ -32,6 +32,27 @@ $$\sum_{n=2}^N\frac1{n(n-1)}=1-\frac1N\to1,\qquad\text{so}\qquad\sum_{n=2}^\inft
 
 :::
 
+::: {#fig-series-and-comparison-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0.000,0) rectangle (3.000,0.5); \draw[faint] (0.000,0) rectangle (3.000,0.5);\node[lab, tick] at (1.500,0.25) {$\frac1{2}$};
+\fill[tintB] (3.000,0) rectangle (4.000,0.5); \draw[faint] (3.000,0) rectangle (4.000,0.5);\node[lab, tick] at (3.500,0.25) {$\frac1{6}$};
+\fill[tintA] (4.000,0) rectangle (4.500,0.5); \draw[faint] (4.000,0) rectangle (4.500,0.5);\node[lab, tick] at (4.250,0.25) {$\frac1{12}$};
+\fill[tintB] (4.500,0) rectangle (4.800,0.5); \draw[faint] (4.500,0) rectangle (4.800,0.5);
+\fill[tintA] (4.800,0) rectangle (5.000,0.5); \draw[faint] (4.800,0) rectangle (5.000,0.5);
+\fill[tintB] (5.000,0) rectangle (5.143,0.5); \draw[faint] (5.000,0) rectangle (5.143,0.5);
+\fill[tintA] (5.143,0) rectangle (5.250,0.5); \draw[faint] (5.143,0) rectangle (5.250,0.5);
+\draw[emph] (0,0) rectangle (6,0.5); \node[lab, below] at (0,-0.05) {$0$}; \node[lab, below] at (6,-0.05) {$1$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\frac1{n(n+1)}=\frac1n-\frac1{n+1}$: the pieces $\frac12,\frac16,\frac1{12},\dots$ fill $[0,1]$ from the left, and after $N$ pieces exactly $\frac1{N+1}$ is left.
+
+:::
+
 ::: {#thm-comparison-test .theorem name="Comparison test" related="thm-limit-comparison-series"}
 
 Let $a_n,b_n\ge0$, and suppose there are $C>0$ and $N$ with $a_n\le Cb_n$ for all $n\ge N$. If $\sum b_n$ converges, so does $\sum a_n$; equivalently, if $\sum a_n$ diverges, so does $\sum b_n$.
@@ -44,6 +65,32 @@ Let $a_n,b_n\ge0$, and suppose there are $C>0$ and $N$ with $a_n\le Cb_n$ for al
 $$S_M=S_N+\sum_{n=N+1}^M a_n\le S_N+C\sum_{n=N+1}^M b_n\le S_N+C\sum_{n=1}^\infty b_n.$$
 
 2. The right side does not depend on $M$, so the partial sums of $\sum a_n$ are bounded above, and the series converges by @prp-nonnegative-series-bounded.
+
+:::
+
+::: {#fig-series-and-comparison-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.3,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.6) node[lab, above] {};
+\draw[cell frame] (0.35,0) rectangle (0.75,2.400); \fill[shade] (0.35,0) rectangle (0.75,1.600);
+\draw[cell frame] (0.90,0) rectangle (1.30,1.200); \fill[shade] (0.90,0) rectangle (1.30,0.650);
+\draw[cell frame] (1.45,0) rectangle (1.85,0.800); \fill[shade] (1.45,0) rectangle (1.85,0.384);
+\draw[cell frame] (2.00,0) rectangle (2.40,0.600); \fill[shade] (2.00,0) rectangle (2.40,0.264);
+\draw[cell frame] (2.55,0) rectangle (2.95,0.480); \fill[shade] (2.55,0) rectangle (2.95,0.197);
+\draw[cell frame] (3.10,0) rectangle (3.50,0.400); \fill[shade] (3.10,0) rectangle (3.50,0.156);
+\draw[cell frame] (3.65,0) rectangle (4.05,0.343); \fill[shade] (3.65,0) rectangle (4.05,0.127);
+\draw[cell frame] (4.20,0) rectangle (4.60,0.300); \fill[shade] (4.20,0) rectangle (4.60,0.107);
+\draw[cell frame] (4.75,0) rectangle (5.15,0.267); \fill[shade] (4.75,0) rectangle (5.15,0.092);
+\draw[cell frame] (5.30,0) rectangle (5.70,0.240); \fill[shade] (5.30,0) rectangle (5.70,0.080);
+\node[lab, right] at (0.85,2.3) {$b_n$}; \node[lab, right] at (0.75,1.0) {$a_n$};
+\end{tikzpicture}
+\end{center}
+```
+
+Comparison: if $0\le a_n\le b_n$, the shaded bars fit inside the outlined ones, so the partial sums of $\sum a_n$ are bounded by $\sum b_n$ whenever that converges.
 
 :::
 
@@ -81,6 +128,51 @@ If the condensed series diverges, the partial sums of $\sum a_n$ are unbounded.
 2. *Upper bound.* The block $a_{2^k}+\cdots+a_{2^{k+1}-1}$ has $2^k$ terms, each at most $a_{2^k}$. So
 $$\sum_{n=1}^{2^{K+1}-1}a_n\le\sum_{k=0}^K2^ka_{2^k}.$$
 If the condensed series converges, the partial sums of $\sum a_n$ are bounded (every $S_N$ is at most some $S_{2^{K+1}-1}$), so $\sum a_n$ converges by @prp-nonnegative-series-bounded.
+
+:::
+
+::: {#fig-series-and-comparison-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0.00,0) rectangle (0.36,2.400); \draw[faint] (0.00,0) rectangle (0.36,2.400);
+\draw[hl] (0.00,2.400) -- (0.36,2.400);
+\fill[tintB] (0.36,0) rectangle (0.72,1.200); \draw[faint] (0.36,0) rectangle (0.72,1.200);
+\draw[hl] (0.36,1.200) -- (0.72,1.200);
+\fill[tintB] (0.72,0) rectangle (1.08,0.800); \draw[faint] (0.72,0) rectangle (1.08,0.800);
+\draw[hl] (0.72,1.200) -- (1.08,1.200);
+\fill[tintA] (1.08,0) rectangle (1.44,0.600); \draw[faint] (1.08,0) rectangle (1.44,0.600);
+\draw[hl] (1.08,0.600) -- (1.44,0.600);
+\fill[tintA] (1.44,0) rectangle (1.80,0.480); \draw[faint] (1.44,0) rectangle (1.80,0.480);
+\draw[hl] (1.44,0.600) -- (1.80,0.600);
+\fill[tintA] (1.80,0) rectangle (2.16,0.400); \draw[faint] (1.80,0) rectangle (2.16,0.400);
+\draw[hl] (1.80,0.600) -- (2.16,0.600);
+\fill[tintA] (2.16,0) rectangle (2.52,0.343); \draw[faint] (2.16,0) rectangle (2.52,0.343);
+\draw[hl] (2.16,0.600) -- (2.52,0.600);
+\node[lab, tick, below] at (1.80,0) {block $k=2$};
+\fill[tintB] (2.52,0) rectangle (2.88,0.300); \draw[faint] (2.52,0) rectangle (2.88,0.300);
+\draw[hl] (2.52,0.300) -- (2.88,0.300);
+\fill[tintB] (2.88,0) rectangle (3.24,0.267); \draw[faint] (2.88,0) rectangle (3.24,0.267);
+\draw[hl] (2.88,0.300) -- (3.24,0.300);
+\fill[tintB] (3.24,0) rectangle (3.60,0.240); \draw[faint] (3.24,0) rectangle (3.60,0.240);
+\draw[hl] (3.24,0.300) -- (3.60,0.300);
+\fill[tintB] (3.60,0) rectangle (3.96,0.218); \draw[faint] (3.60,0) rectangle (3.96,0.218);
+\draw[hl] (3.60,0.300) -- (3.96,0.300);
+\fill[tintB] (3.96,0) rectangle (4.32,0.200); \draw[faint] (3.96,0) rectangle (4.32,0.200);
+\draw[hl] (3.96,0.300) -- (4.32,0.300);
+\fill[tintB] (4.32,0) rectangle (4.68,0.185); \draw[faint] (4.32,0) rectangle (4.68,0.185);
+\draw[hl] (4.32,0.300) -- (4.68,0.300);
+\fill[tintB] (4.68,0) rectangle (5.04,0.171); \draw[faint] (4.68,0) rectangle (5.04,0.171);
+\draw[hl] (4.68,0.300) -- (5.04,0.300);
+\fill[tintB] (5.04,0) rectangle (5.40,0.160); \draw[faint] (5.04,0) rectangle (5.40,0.160);
+\draw[hl] (5.04,0.300) -- (5.40,0.300);
+\node[lab, tick, below] at (3.96,0) {block $k=3$};\draw[faint] (0,0) -- (5.6,0);
+\end{tikzpicture}
+\end{center}
+```
+
+Cauchy condensation for decreasing $a_n$ (bars, here $a_n=1/n$): the $2^k$ terms of block $k$ lie between $2^ka_{2^{k+1}}$ and $2^ka_{2^k}$ (orange level), so $\sum a_n$ and $\sum2^ka_{2^k}$ converge together.
 
 :::
 

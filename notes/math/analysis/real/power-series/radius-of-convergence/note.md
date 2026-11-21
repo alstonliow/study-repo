@@ -49,6 +49,25 @@ If $|z|<R$, then $\sum a_nz^n$ converges absolutely; if $|z|>R$, it diverges.
 
 :::
 
+::: {#fig-radius-of-convergence-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0,0) circle (1.4); \draw[hl, dashed] (0,0) circle (1.4);
+\draw[->, faint] (-2.4,0) -- (2.6,0); \draw[->, faint] (0,-2.0) -- (0,2.0);
+\draw[->, emph] (0,0) -- (0.99,0.99) node[lab, midway, above left] {$R$};
+\node[lab] at (-0.5,-0.5) {converges absolutely};
+\node[lab] at (1.95,1.5) {diverges}; \node[lab] at (-1.9,-1.45) {diverges};
+\node[lab, right] at (1.45,-0.6) {$\lvert z\rvert=R$: depends};
+\end{tikzpicture}
+\end{center}
+```
+
+A power series $\sum a_nz^n$ converges absolutely inside the disc $\lvert z\rvert<R$ and diverges outside it. On the circle anything can happen (@exm-radius-of-convergence-1).
+
+:::
+
 On the circle $|z|=R$ anything can happen:
 
 ::: {#exm-radius-of-convergence-1 .example name="Three series with radius $1$"}
@@ -58,6 +77,35 @@ On the circle $|z|=R$ anything can happen:
 2. $\sum z^n/n$ diverges at $z=1$ and converges at every other point of the circle (@exm-convergence-tests-2).
 
 3. $\sum z^n/n^2$ converges at every point of the circle, absolutely, since $\sum1/n^2<\infty$ (@exm-series-and-comparison-2); for $|z|>1$ its terms are unbounded.
+
+:::
+
+::: {#fig-radius-of-convergence-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[xshift=0cm]
+\fill[tintA] (0,0) circle (1);
+\draw[faint, dashed] (0,0) circle (1);
+\node[lab, below] at (0,-1.1) {$\sum z^n$};
+\end{scope}
+\begin{scope}[xshift=2.8cm]
+\fill[tintA] (0,0) circle (1);
+\draw[hl] (0,0) circle (1);
+\node[hollow dot] at (1,0) {};
+\node[lab, below] at (0,-1.1) {$\sum z^n/n$};
+\end{scope}
+\begin{scope}[xshift=5.6cm]
+\fill[tintA] (0,0) circle (1);
+\draw[hl] (0,0) circle (1);
+\node[lab, below] at (0,-1.1) {$\sum z^n/n^2$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Three series with $R=1$ and different behaviour on the circle (orange: converges there): none of it, all but $z=1$, all of it.
 
 :::
 
@@ -77,6 +125,42 @@ $$R=\frac{1}{\limsup_{n\to\infty}\sqrt[n]{|a_n|}}.$$
 2. *$|z|L<1$.* Choose $q$ with $|z|L<q<1$. Since $\sup_{m\ge n}|z|\sqrt[m]{|a_m|}$ decreases to $|z|L$, there is $N$ with $|z|\sqrt[n]{|a_n|}\le q$ for all $n\ge N$, i.e. $|a_nz^n|\le q^n$. Comparison with the geometric series gives absolute convergence.
 
 3. *$|z|L>1$.* For every $n$, $\sup_{m\ge n}|z|\sqrt[m]{|a_m|}>1$, so $|z|\sqrt[m]{|a_m|}>1$ for infinitely many $m$. For those $m$, $|a_mz^m|>1$, so the terms do not tend to $0$ and the series diverges.
+
+:::
+
+::: {#fig-radius-of-convergence-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (6.6,0) node[lab, right] {$n$};
+\draw[->, faint] (0,-0.2) -- (0,2.6) node[lab, above] {};
+\node[dot] at (0.300,0.700) {};
+\node[dot] at (0.600,2.100) {};
+\node[dot] at (0.900,0.700) {};
+\node[dot] at (1.200,2.100) {};
+\node[dot] at (1.500,0.700) {};
+\node[dot] at (1.800,2.100) {};
+\node[dot] at (2.100,0.700) {};
+\node[dot] at (2.400,2.100) {};
+\node[dot] at (2.700,0.700) {};
+\node[dot] at (3.000,2.100) {};
+\node[dot] at (3.300,0.700) {};
+\node[dot] at (3.600,2.100) {};
+\node[dot] at (3.900,0.700) {};
+\node[dot] at (4.200,2.100) {};
+\node[dot] at (4.500,0.700) {};
+\node[dot] at (4.800,2.100) {};
+\node[dot] at (5.100,0.700) {};
+\node[dot] at (5.400,2.100) {};
+\node[dot] at (5.700,0.700) {};
+\node[dot] at (6.000,2.100) {};
+\draw[hl, dashed] (0,2.1) -- (6.3,2.1) node[lab, right] {$\limsup=3$};
+\end{tikzpicture}
+\end{center}
+```
+
+For $a_n=(2+(-1)^n)^n$ the roots $\sqrt[n]{\lvert a_n\rvert}$ alternate between $3$ and $1$; the limit superior is $3$, so $R=\frac13$.
 
 :::
 

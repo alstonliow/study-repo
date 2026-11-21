@@ -32,6 +32,24 @@ For $\|\cdot\|_1$ and $\|\cdot\|_\infty$ all axioms are immediate. For $\|\cdot\
 
 :::
 
+::: {#fig-normed-spaces-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.1]
+\draw[->, faint] (-1.8,0) -- (1.9,0); \draw[->, faint] (0,-1.8) -- (0,1.9);
+\draw[emph] (1.3,0) -- (0,1.3) -- (-1.3,0) -- (0,-1.3) -- cycle;
+\draw[hl] (0,0) circle (1.3);
+\draw[faint, dashed] (-1.3,-1.3) rectangle (1.3,1.3);
+\node[lab] at (0.45,0.45) {$\lVert x\rVert_1\le1$}; \node[lab, below right] at (0.95,-0.95) {$\lVert x\rVert_2\le1$}; \node[lab, right] at (1.3,1.4) {$\lVert x\rVert_\infty\le1$};
+\end{tikzpicture}
+\end{center}
+```
+
+Unit balls of three norms on $\mathbb R^2$: a diamond for $\lVert\cdot\rVert_1$, the disc for $\lVert\cdot\rVert_2$ (orange) and a square for $\lVert\cdot\rVert_\infty$ (dashed).
+
+:::
+
 ::: {#def-inner-product .definition name="Inner product"}
 
 An *inner product* on a real vector space $V$ is a function $\langle\cdot,\cdot\rangle:V\times V\to\mathbb R$ that is linear in each variable, symmetric ($\langle v,w\rangle=\langle w,v\rangle$) and positive definite ($\langle v,v\rangle>0$ for $v\ne0$).
@@ -65,9 +83,43 @@ Norms $\|\cdot\|$ and $\|\cdot\|'$ on $V$ are *Lipschitz equivalent* if there ar
 
 :::
 
+::: {#fig-normed-spaces-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-1.8,0) -- (1.9,0); \draw[->, faint] (0,-1.8) -- (0,1.9);
+\draw[emph] (-0.92,-0.92) rectangle (0.92,0.92); \draw[hl] (0,0) circle (1.3); \draw[emph] (-1.3,-1.3) rectangle (1.3,1.3);
+\node[lab, right] at (1.35,1.0) {$\lVert x\rVert_\infty\le1$}; \node[lab] at (0.2,0.55) {$\lVert x\rVert_\infty\le\frac1{\sqrt2}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Each unit ball fits inside a scaled copy of the other: $\lVert x\rVert_\infty\le\lVert x\rVert_2\le\sqrt2\,\lVert x\rVert_\infty$ on $\mathbb R^2$. Lipschitz equivalent norms are exactly those whose balls nest like this.
+
+:::
+
 ::: {#exm-norms-not-equivalent .example name="Inequivalent norms on $C[0,1]$"}
 
 Let $f_n\in C[0,1]$ be the tent of height $1$ on $[0,\frac2n]$ (zero outside). Then $\|f_n\|_\infty=1$ and $\|f_n\|_1=\frac1n$. So $f_n\to0$ in $\|\cdot\|_1$ but not in $\|\cdot\|_\infty$, and no constant $B$ has $\|f\|_\infty\le B\|f\|_1$ for all $f$. (The other inequality, $\|f\|_1\le\|f\|_\infty$, does hold.)
+
+:::
+
+::: {#fig-normed-spaces-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.2,0) -- (3.5,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.2) -- (0,2.0) node[lab, above] {$y$};
+\fill[tintA] (0,0) -- (1.500,1.6) -- (3.000,0) -- cycle; \draw[emph] (0,0) -- (1.500,1.6) -- (3.000,0) -- (3.0,0);
+\fill[tintB] (0,0) -- (0.500,1.6) -- (1.000,0) -- cycle; \draw[hl] (0,0) -- (0.500,1.6) -- (1.000,0) -- (3.0,0);
+\draw[faint] (-0.06,1.600) -- (0.06,1.600); \node[lab, tick, left] at (-0.05,1.600) {$1$};\draw[faint] (3.000,-0.06) -- (3.000,0.06); \node[lab, tick, below] at (3.000,-0.05) {$1$};\node[lab, above] at (1.5,1.6) {$n=2$}; \node[lab, above] at (0.5,1.6) {$n=6$};
+\end{tikzpicture}
+\end{center}
+```
+
+Tents of height $1$ on $[0,\frac2n]$: the sup norm stays $1$ while the area $\lVert f_n\rVert_1=\frac1n$ shrinks, so the two norms are not equivalent on $C[0,1]$.
 
 :::
 

@@ -59,11 +59,48 @@ If $\sup A\in A$, it is the *maximum* $\max A$. Lower bounds, the *infimum* $\in
 
 :::
 
+::: {#fig-ordered-fields-and-completeness-1}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.5,0) -- (6.5,0);
+\draw[hl] (0.5,0) -- (3,0); \node[hollow dot] at (3,0) {}; \node[dot] at (0.5,0) {};
+\node[lab, above] at (1.75,0.1) {$A=[a_0,s)$};
+\fill[tintB] (3,-0.15) rectangle (6.3,0.15); \node[lab, above] at (4.7,0.18) {upper bounds of $A$};
+\node[lab, below] at (3,-0.1) {$\sup A=s$}; \node[lab, below] at (0.5,-0.1) {$\inf A$};
+\end{tikzpicture}
+\end{center}
+```
+
+The supremum is the left end of the set of upper bounds: every upper bound is $\ge s$, and anything below $s$ is beaten by some element of $A$. Here $\sup A$ is not in $A$.
+
+:::
+
 ::: {#exm-supremum-in-q .example name="Suprema that do and do not exist"}
 
 In $\mathbb R$, $\sup(0,1)=1$ but $(0,1)$ has no maximum, while $\max[0,1]=1$.
 
 In $\mathbb Q$, the set $A=\{x\in\mathbb Q: x^2<2\}$ is bounded above (by $2$) but has no supremum in $\mathbb Q$: its supremum in $\mathbb R$ would be $\sqrt2$, which is irrational, and every rational upper bound $q>\sqrt 2$ can be lowered to a rational between $\sqrt2$ and $q$.
+
+:::
+
+::: {#fig-ordered-fields-and-completeness-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.3,0) -- (6.3,0);
+\draw[hl] (0,0) -- (2.83,0); \fill[tintB] (2.83,-0.15) rectangle (6,0.15);
+\node[hollow dot] at (2.83,0) {}; \node[lab, below] at (2.83,-0.12) {$\sqrt2\notin\mathbb Q$};
+\node[lab, above] at (1.4,0.1) {$A=\{x^2<2\}$}; \node[lab, above] at (4.4,0.18) {rational upper bounds};
+\draw[faint] (0.000,-0.06) -- (0.000,0.06); \node[lab, tick, below] at (0.000,-0.05) {$0$};\draw[faint] (4.000,-0.06) -- (4.000,0.06); \node[lab, tick, below] at (4.000,-0.05) {$2$};
+\draw[->, faint] (5.2,-0.5) -- node[lab, tick, below=2pt] {always a smaller one} (3.4,-0.5);
+\end{tikzpicture}
+\end{center}
+```
+
+In $\mathbb Q$ the set $A$ and its upper bounds do not meet: the point where they would meet is $\sqrt2$, which is missing, so there is no least upper bound.
 
 :::
 
@@ -107,6 +144,31 @@ $$\lim_{n\to\infty}\frac1n=0.$$
 3. Then $n+1>s$, and $n+1$ is again in the set, contradicting that $s$ is an upper bound. So the set is not bounded above, which is the second form.
 
 4. For the limit (@def-limit-of-a-sequence): given $\varepsilon>0$, pick a natural number $N>1/\varepsilon$ by the second form. For all $n\ge N$, $0<1/n\le 1/N<\varepsilon$.
+
+:::
+
+::: {#fig-ordered-fields-and-completeness-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (-0.3,0) -- (6.3,0);
+\draw[faint] (0.700,-0.06) -- (0.700,0.06); \node[lab, tick, below] at (0.700,-0.05) {$1\varepsilon$};
+\draw[faint] (1.400,-0.06) -- (1.400,0.06); \node[lab, tick, below] at (1.400,-0.05) {$2\varepsilon$};
+\draw[faint] (2.100,-0.06) -- (2.100,0.06); \node[lab, tick, below] at (2.100,-0.05) {$3\varepsilon$};
+\draw[faint] (2.800,-0.06) -- (2.800,0.06); \node[lab, tick, below] at (2.800,-0.05) {};
+\draw[faint] (3.500,-0.06) -- (3.500,0.06); \node[lab, tick, below] at (3.500,-0.05) {};
+\draw[faint] (4.200,-0.06) -- (4.200,0.06); \node[lab, tick, below] at (4.200,-0.05) {};
+\draw[faint] (4.900,-0.06) -- (4.900,0.06); \node[lab, tick, below] at (4.900,-0.05) {};
+\draw[faint] (5.600,-0.06) -- (5.600,0.06); \node[lab, tick, below] at (5.600,-0.05) {$n\varepsilon$};
+\node[hl dot] at (4.6,0) {}; \node[lab, above] at (4.6,0.1) {$x$};
+\draw[->, emph] (0,0.5) -- (5.6,0.5) node[lab, above, pos=0.5] {$n$ steps of size $\varepsilon$};
+\draw[faint] (0.000,-0.06) -- (0.000,0.06); \node[lab, tick, below] at (0.000,-0.05) {$0$};
+\end{tikzpicture}
+\end{center}
+```
+
+Archimedean property: steps of any fixed size $\varepsilon>0$ eventually pass any $x$; with $\varepsilon=1$, some natural number exceeds $x$, and so $\frac1n<\varepsilon$ for large $n$.
 
 :::
 
