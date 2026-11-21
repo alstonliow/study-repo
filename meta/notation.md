@@ -243,6 +243,22 @@ not here.
 
 <!-- TODO: 1058note chapter 11 has no probability section. Add symbols during migration of chapter 9. -->
 
+### Measure theory (`math/analysis/measure-theory`, `math/probability/measure-theoretic`)
+
+<!-- Added 2026-11-21 with Cambridge Part II Probability and Measure. -->
+
+| Symbol | Meaning |
+|---|---|
+| $(E,\mathcal E,\mu)$; $(\Omega,\mathcal F,\Pr)$ | measure space; probability space |
+| $\sigma(\mathcal A)$, $\mathcal B(E)$, $\mathcal B$ | generated σ-algebra; Borel σ-algebra; $\mathcal B(\mathbb R)$ |
+| $\lambda$, $\lambda^d$; $\mu^*$ | Lebesgue measure on $\mathbb R$, $\mathbb R^d$; outer measure |
+| $\mu(f)=\int f\,d\mu$; $\mathbf 1_A$ | integral; indicator function |
+| $\mu\circ f^{-1}$, $\mu_X$, $F_X$ | image measure; law and distribution function of $X$ |
+| $\mu_1\otimes\mu_2$, $\mathcal E_1\otimes\mathcal E_2$ | product measure, product σ-algebra |
+| $\|f\|_p$, $L^p$ | $L^p$ norm and space (functions equal a.e. identified) |
+| $\hat f$, $\hat\mu$, $\varphi_X$ | Fourier transform $\int f(x)e^{i\langle u,x\rangle}dx$; of a measure; characteristic function |
+| $g_t$, $f*g$, $\mu*\nu$ | Gaussian density with variance $t$; convolutions |
+
 ### Convex optimization (`math/optimization`)
 
 <!-- Added 2026-11-21 with Stanford EE364A (CVX101). Vectors are plain lowercase letters, as in Boyd and Vandenberghe; matrices are capitals. -->

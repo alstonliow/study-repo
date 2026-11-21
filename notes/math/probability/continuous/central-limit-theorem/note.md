@@ -1,6 +1,6 @@
 ---
 title: "Central Limit Theorem"
-sources: [cs70-20.5]
+sources: [cs70-20.5, camii-pm-7]
 requires: [math/probability/continuous/normal-distribution, math/probability/discrete/concentration-inequalities]
 status: draft
 ---
@@ -15,6 +15,25 @@ which has mean $0$ and variance $1$ for every $n$.
 
 Let $X_1,X_2,\dots$ be i.i.d. random variables with finite mean $\mu$ and finite variance $\sigma^2>0$, and let $S_n=X_1+\dots+X_n$. Then for every constant $c$,
 $$\Pr\Bigl(\frac{S_n-n\mu}{\sigma\sqrt n}\le c\Bigr)\to\frac1{\sqrt{2\pi}}\int_{-\infty}^c e^{-x^2/2}\,dx\qquad\text{as }n\to\infty.$$
+
+:::
+
+<!-- Proof added 2026-11-21 from Cambridge Part II Probability and Measure (Michaelmas 2016 lecture notes), Section 7.2, in our own wording; it uses characteristic functions and Lévy's continuity theorem from math/probability/measure-theoretic/weak-convergence. -->
+
+::: {.proof}
+
+1. Replacing $X_i$ by $(X_i-\mu)/\sigma$, assume $\mu=0$, $\sigma=1$; let $\varphi(u)=E[e^{iuX_1}]$ and $Y_n=S_n/\sqrt n$.
+
+2. *Expansion of $\varphi$.* The $u$-derivatives of $e^{iuX_1}$ of order $1$ and $2$ are bounded by $|X_1|$ and $X_1^2$, which are integrable. Differentiating under the integral twice (@thm-differentiation-under-integral) and using dominated convergence for continuity, $\varphi$ is $C^2$ with $\varphi'(0)=iE[X_1]=0$ and $\varphi''(0)=-E[X_1^2]=-1$. By Taylor's theorem, $\varphi(u)=1-\frac{u^2}2+r(u)$ with $r(u)/u^2\to0$ as $u\to0$.
+
+3. *Characteristic function of $Y_n$.* By independence (@prp-convolution-properties), $\varphi_{Y_n}(u)=\varphi(u/\sqrt n)^n$.
+
+4. For complex numbers of modulus at most $1$, $|a_1\cdots a_n-b_1\cdots b_n|\le\sum_k|a_k-b_k|$ (telescope one factor at a time). With $a_k=\varphi(u/\sqrt n)$ and $b_k=1-\frac{u^2}{2n}$, which has modulus at most $1$ once $n\ge u^2/4$,
+$$\Big|\varphi_{Y_n}(u)-\Big(1-\frac{u^2}{2n}\Big)^n\Big|\le n\,\big|r(u/\sqrt n)\big|=u^2\,\frac{|r(u/\sqrt n)|}{u^2/n}\to0 .$$
+
+5. Since $(1-\frac{u^2}{2n})^n\to e^{-u^2/2}$, the characteristic function of $N(0,1)$ (@prp-gaussian-fourier), $\varphi_{Y_n}(u)\to e^{-u^2/2}$ for every $u$. By Lévy's continuity theorem (@thm-levy-continuity), $Y_n\to Z\sim N(0,1)$ weakly.
+
+6. *From weak convergence to the distribution function.* Fix $c$ and $k\ge1$, and let $h$ be continuous with $\mathbf 1_{(-\infty,c]}\le h\le\mathbf 1_{(-\infty,c+1/k]}$. Then $\limsup_n\Pr(Y_n\le c)\le\lim_nE[h(Y_n)]=E[h(Z)]\le\Phi(c+\frac1k)$. Similarly, with $h$ between $\mathbf 1_{(-\infty,c-1/k]}$ and $\mathbf 1_{(-\infty,c]}$, $\liminf_n\Pr(Y_n\le c)\ge\Phi(c-\frac1k)$. Let $k\to\infty$; $\Phi$ is continuous.
 
 :::
 
@@ -74,7 +93,7 @@ The exact distribution of the sum of $10$ fair dice (bars) and the normal densit
 
 ::: {#rmk-central-limit-theorem-meaning}
 
-1. We do not prove the theorem here; the usual proofs use characteristic or moment generating functions.
+1. The proof above uses characteristic functions, which exist for every distribution; moment generating functions would need extra assumptions.
 
 2. Every trace of the original distribution disappears except $\mu$ and $\sigma^2$. The standard deviation of the average is $\sigma/\sqrt n$, so its bell curve becomes a spike at $\mu$ at the rate $1/\sqrt n$.
 

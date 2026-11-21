@@ -1,0 +1,73 @@
+# Cambridge Part II Probability and Measure example sheets 1-4, Michaelmas 2026 (academic year 2026-27, DPMMS,
+# C. Mouhot), as a resource (meta/SPEC.md §17.12). DRAFT for owner review. No licence is stated, so the sheets are
+# kept only locally in raw/CAM_II_PROBABILITY_MEASURE/example-sheets (PM-Example-Sheet-1.pdf ... -4.pdf).
+# The sheets number questions by course topic (1.1 ... 10.4; sheet 1 = topics 1-2, sheet 2 = topic 3,
+# sheet 3 = topics 4-7.7, sheet 4 = topics 7.8-10). Locator = topic number; a source key is camii-pms-7-q6 for
+# question 7.6. Every numbered question is added as an exercise (statements verbatim, solutions our own); the
+# unnumbered "Additional exercise (records)" on sheet 1 is skipped because it has no number to cite. Titles are our own.
+id: res-cam-ii-probability-measure-sheets
+kind: homework
+title: Cambridge II Probability and Measure Example Sheets (2026-27)
+status: draft
+courses:
+- camii-pm
+editions:
+- id: 2026-27
+  current: true
+legacy_keys:
+  prefix: camii-pms-
+  edition: 2026-27
+  pattern: ^camii\-pms-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: II P&M Sheets §{section}
+  problem_label: II P&M Sheets Q{section}.{n}
+nodes:
+- id: res-cam-ii-probability-measure-sheets-measures-and-sigma-algebras
+  kind: homework
+  title: Measures and σ-algebras
+  at:
+    2026-27: '1'
+- id: res-cam-ii-probability-measure-sheets-measurable-functions-and-independence
+  kind: homework
+  title: Measurable functions and independence
+  at:
+    2026-27: '2'
+- id: res-cam-ii-probability-measure-sheets-integration
+  kind: homework
+  title: Integration
+  at:
+    2026-27: '3'
+- id: res-cam-ii-probability-measure-sheets-lp-spaces-and-inequalities
+  kind: homework
+  title: Lp spaces and inequalities
+  at:
+    2026-27: '4'
+- id: res-cam-ii-probability-measure-sheets-projection-in-l2
+  kind: homework
+  title: Projection in L2
+  at:
+    2026-27: '5'
+- id: res-cam-ii-probability-measure-sheets-uniform-integrability
+  kind: homework
+  title: Uniform integrability
+  at:
+    2026-27: '6'
+- id: res-cam-ii-probability-measure-sheets-fourier-transform-and-weak-convergence
+  kind: homework
+  title: Fourier transform and weak convergence
+  at:
+    2026-27: '7'
+- id: res-cam-ii-probability-measure-sheets-gaussian-vectors
+  kind: homework
+  title: Gaussian vectors
+  at:
+    2026-27: '8'
+- id: res-cam-ii-probability-measure-sheets-ergodic-theory
+  kind: homework
+  title: Ergodic theory
+  at:
+    2026-27: '9'
+- id: res-cam-ii-probability-measure-sheets-strong-law-and-characteristic-functions
+  kind: homework
+  title: Strong law and characteristic functions
+  at:
+    2026-27: '10'

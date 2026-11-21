@@ -475,6 +475,23 @@ parts:
           - chain-rule-and-mean-value
           - inverse-function-theorem
           - second-derivatives
+      - id: math/analysis/measure-theory
+        title: Measure and Integration
+        desc: σ-algebras, π- and d-systems, measures, Carathéodory's extension theorem, Lebesgue measure, measurable functions, the Lebesgue integral, monotone and dominated convergence, convergence in measure, product measures and Fubini, Hölder and Minkowski, L^p spaces, the Fourier transform
+        notes:   # topic order on the website
+          - sigma-algebras
+          - measures
+          - caratheodory-extension
+          - lebesgue-measure
+          - measurable-functions
+          - lebesgue-integral
+          - convergence-theorems
+          - convergence-in-measure
+          - product-measures
+          - integral-inequalities
+          - lp-spaces
+          - fourier-transform
+          - fourier-inversion
   - title: Probability and Statistics
     field: Mathematics
     branches:
@@ -552,6 +569,17 @@ parts:
           - classical-estimation
           - jointly-gaussian
           - kalman-filter
+      - id: math/probability/measure-theoretic
+        title: Measure-Theoretic Probability
+        desc: Probability spaces and independence of σ-algebras, distribution functions and laws, Skorokhod representation, tail events and Kolmogorov's zero-one law, uniform integrability, characteristic functions and weak convergence, ergodic theorems, the strong law of large numbers
+        notes:   # topic order on the website
+          - probability-spaces-and-independence
+          - distribution-functions
+          - tail-events
+          - uniform-integrability
+          - weak-convergence
+          - ergodic-theorems
+          - strong-law-of-large-numbers
       - id: math/statistics/bayesian
         title: Bayesian Statistics
         desc: Bayesian updating, predictive probabilities, odds and Bayes factors, conjugate priors, choosing priors, credible intervals
