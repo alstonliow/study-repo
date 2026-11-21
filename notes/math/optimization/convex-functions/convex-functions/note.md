@@ -1,19 +1,20 @@
 ---
 title: "Convex Functions"
-sources: [ee364a-3]
+sources: [ee364a-3, mit18065-21]
 requires: [math/optimization/convex-sets/operations-preserving-convex-sets, math/calculus/multivariable/differentiation/gradient]
 status: draft
 ---
 
-<!-- Added 2026-11-21 from Stanford EE364A (CVX101, Winter 2014), slides on convex functions, in our own wording; proofs written out in steps. The basic definition and the second-order test are already in @sec-ai-machine-learning-convex-optimization; this note adds domains, the first-order condition, epigraphs and Jensen's inequality. -->
+<!-- Added 2026-11-21 from Stanford EE364A (CVX101, Winter 2014), slides on convex functions, in our own wording; proofs written out in steps. The second-order test is in @sec-ai-machine-learning-convex-optimization. -->
+<!-- Merged 2026-11-21 (owner approval): def-convex-function moved here from @sec-ai-machine-learning-convex-optimization (MIT 18.065, Lecture 21) and combined with the EE364A definition (domain, extended-value extension), which replaces def-extended-value-extension; chord wording and strict convexity from 18.065, domain and extension from EE364A. -->
 
-A convex function (@def-convex-function) lies below its chords. In optimization a function comes with its domain, convexity can be checked on lines, by the gradient or by the Hessian, and it is equivalent to convexity of the epigraph.
+A convex function lies below its chords. In optimization a function comes with its domain, convexity can be checked on lines, by the gradient or by the Hessian, and it is equivalent to convexity of the epigraph.
 
-::: {#def-extended-value-extension .definition name="Domain, extended-value extension" related="def-convex-function"}
+::: {#def-convex-function .definition name="Convex function"}
 
-A function $f:\mathbb{R}^n\to\mathbb{R}$ is convex if $\operatorname{dom}f$ is convex and
-$$f(\theta x+(1-\theta)y)\le\theta f(x)+(1-\theta)f(y)\qquad\text{for } x,y\in\operatorname{dom}f,\ 0\le\theta\le1.$$
-It is *concave* if $-f$ is convex. Its *extended-value extension* is $\tilde f(x)=f(x)$ on $\operatorname{dom}f$ and $+\infty$ elsewhere; with the rule $\theta\cdot\infty=\infty$ the inequality above then holds for all $x,y\in\mathbb{R}^n$ exactly when $f$ is convex.
+A function $f:\mathbb{R}^n\to\mathbb{R}$ is *convex* if $\operatorname{dom}f$ is convex and
+$$f(\theta x+(1-\theta)y)\le\theta f(x)+(1-\theta)f(y)\qquad\text{for } x,y\in\operatorname{dom}f,\ 0\le\theta\le1,$$
+that is, the graph lies below every chord. It is *strictly convex* if the inequality is strict for $x\ne y$ and $0<\theta<1$, and *concave* if $-f$ is convex. Its *extended-value extension* is $\tilde f(x)=f(x)$ on $\operatorname{dom}f$ and $+\infty$ elsewhere; with the rule $\theta\cdot\infty=\infty$ the inequality above then holds for all $x,y\in\mathbb{R}^n$ exactly when $f$ is convex.
 
 :::
 

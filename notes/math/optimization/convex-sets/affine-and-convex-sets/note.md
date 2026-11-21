@@ -1,13 +1,14 @@
 ---
 title: "Affine and Convex Sets"
-sources: [ee364a-2]
+sources: [ee364a-2, mit18065-21]
 requires: [math/linear-algebra/vector-spaces/solving-ax-b]
 status: draft
 ---
 
 <!-- Added 2026-11-21 from Stanford EE364A (CVX101, Winter 2014), slides on convex sets, in our own wording; proofs written out in steps. -->
+<!-- Merged 2026-11-21 (owner approval): def-convex-set moved here from @sec-ai-machine-learning-convex-optimization (MIT 18.065, Lecture 21); wording from 18.065, display form and notation of this part from EE364A. -->
 
-Convex optimization studies sets and functions that behave well under averaging. This note fixes the three basic kinds of set: affine sets (closed under lines), convex sets (closed under segments, @def-convex-set) and convex cones (closed under nonnegative combinations).
+Convex optimization studies sets and functions that behave well under averaging. This note fixes the three basic kinds of set: affine sets (closed under lines), convex sets (closed under segments) and convex cones (closed under nonnegative combinations).
 
 ::: {#def-affine-set .definition name="Affine set, affine hull"}
 
@@ -35,7 +36,14 @@ A nonempty set $C$ is affine if and only if, for one (equivalently every) $x_0\i
 
 :::
 
-::: {#def-convex-combination .definition name="Convex combination, convex hull" related="def-convex-set"}
+::: {#def-convex-set .definition name="Convex set"}
+
+A set $C\subseteq\mathbb{R}^n$ is *convex* if it contains the segment between any two of its points:
+$$x_1,x_2\in C,\ 0\le\theta\le1\ \Longrightarrow\ \theta x_1+(1-\theta)x_2\in C.$$
+
+:::
+
+::: {#def-convex-combination .definition name="Convex combination, convex hull"}
 
 A *convex combination* of $x_1,\dots,x_k$ is a point
 $$\theta_1x_1+\cdots+\theta_kx_k,\qquad \theta_i\ge0,\quad \theta_1+\cdots+\theta_k=1.$$

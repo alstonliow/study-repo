@@ -1,27 +1,14 @@
 ---
 title: "Convexity and Accelerated Gradient Descent"
 sources: [mit18065-21, mit18065-22, mit18065-23]
-requires: [ai/machine-learning/gradient-descent, math/linear-algebra/positive-definite/positive-definite-matrices]
+requires: [ai/machine-learning/gradient-descent, math/optimization/convex-functions/convex-functions]
 status: draft
 ---
 
 <!-- Added 2026-11-20 from MIT 18.065 (Spring 2018), Lectures 21–23 (video lectures and problem sets; no written lecture notes), in our own wording; proofs written out in steps. Numbers checked with numpy. -->
+<!-- Merged 2026-11-21 (owner approval): the definitions def-convex-set and def-convex-function moved to @sec-math-optimization-convex-sets-affine-and-convex-sets and @sec-math-optimization-convex-functions-convex-functions, combined there with the EE364A versions. -->
 
-Convex problems are the ones gradient descent solves reliably: every local minimum is global, and projections onto convex constraint sets never push points apart. On a quadratic, the speed of gradient descent is set by the condition number of the Hessian, and a momentum term improves it from $\kappa$ to $\sqrt\kappa$.
-
-::: {#def-convex-set .definition name="Convex set"}
-
-A set $K\subseteq\mathbb{R}^n$ is *convex* if it contains the segment between any two of its points: $\mathbf{x},\mathbf{y}\in K$ and $0\le t\le1$ imply $(1-t)\mathbf{x}+t\mathbf{y}\in K$.
-
-:::
-
-::: {#def-convex-function .definition name="Convex function"}
-
-$f:K\to\mathbb{R}$ on a convex set $K$ is *convex* if
-$$f\big((1-t)\mathbf{x}+t\mathbf{y}\big)\le(1-t)f(\mathbf{x})+tf(\mathbf{y})\qquad\text{for all }\mathbf{x},\mathbf{y}\in K,\ 0\le t\le1,$$
-that is, the graph lies below every chord. It is *strictly convex* if the inequality is strict for $\mathbf{x}\ne\mathbf{y}$ and $0<t<1$.
-
-:::
+Convex sets (@def-convex-set) and convex functions (@def-convex-function) are defined in the optimization notes. Convex problems are the ones gradient descent solves reliably: every local minimum is global, and projections onto convex constraint sets never push points apart. On a quadratic, the speed of gradient descent is set by the condition number of the Hessian, and a momentum term improves it from $\kappa$ to $\sqrt\kappa$.
 
 ::: {#prp-convex-second-derivative .proposition name="Second derivative test for convexity"}
 
