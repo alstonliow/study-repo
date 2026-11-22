@@ -69,6 +69,12 @@
   edge label/.style={lab, note, fill=white, inner sep=1.5pt},
   set/.style={ellipse, draw=ink, fill=primarySoft, minimum width=1.3cm, minimum height=2.5cm},
   map/.style={->, shorten <=3pt, shorten >=3pt},
+  state/.style={vertex, minimum size=7.5mm, inner sep=1pt},
+  accept state/.style={state, double=primarySoft, double distance=1.4pt},
+  hl state/.style={state, fill=accentLight, draw=accent},
+  hl accept state/.style={accept state, draw=accent, double=accentLight, fill=accentLight},
+  trans/.style={->, shorten <=1pt, shorten >=1pt},
+  start/.style={<-, shorten <=1pt},
 }
 \providecommand{\N}{\mathbb{N}}
 \providecommand{\Z}{\mathbb{Z}}

@@ -746,13 +746,46 @@ parts:
   - title: Theory of Computation
     field: Computer Science
     branches:
+      - id: cs/automata
+        title: Automata and Formal Languages
+        desc: Finite automata, nondeterminism, regular expressions, the pumping lemmas, context-free grammars, pushdown automata
+        notes:   # topic order on the website
+          - finite-automata
+          - nondeterministic-finite-automata
+          - regular-expressions
+          - nonregular-languages
+          - context-free-grammars
+          - pushdown-automata
+          - non-context-free-languages
       - id: cs/theory
         title: Computability and Complexity
-        desc: Computability, self-reference, undecidability
+        desc: Turing machines, decidability, reducibility, self-reference, time and space complexity, NP- and PSPACE-completeness, hierarchy theorems, probabilistic computation, interactive proofs
         notes:   # topic order on the website
+          - turing-machines
+          - turing-machine-variants
+          - decidable-languages
+          - undecidability
+          - reducibility
+          - computation-histories
           - computability
+          - recursion-theorem
+          - logical-theories
+          - time-complexity
+          - nondeterministic-time
           - complexity-classes
+          - cook-levin
           - np-complete-reductions
+          - space-complexity
+          - savitch-theorem
+          - games-and-geography
+          - logarithmic-space
+          - nl-equals-conl
+          - hierarchy-theorems
+          - intractability-and-oracles
+          - probabilistic-computation
+          - branching-programs
+          - interactive-proofs
+          - conp-in-ip
           - approximation-algorithms
           - fixed-parameter-algorithms
   - title: Cryptography

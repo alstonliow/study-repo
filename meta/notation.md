@@ -294,3 +294,23 @@ not here.
 | $d(v)$ | an algorithm's current estimate of $\delta(s,v)$ |
 | $P(v)$ | parent pointer of $v$ in a search or shortest-path tree |
 | `operation(args)` | an operation of an interface (sequence, set, priority queue), in code font |
+
+## Theory of computation (`cs/automata`, `cs/theory`)
+
+| Symbol | Meaning |
+|---|---|
+| $\Sigma,\ \Gamma,\ \sqcup$ | input alphabet; tape (or stack) alphabet; blank |
+| $\varepsilon,\ \lvert w\rvert,\ w^{\mathcal R}$ | empty string; length; reversal |
+| $\Sigma_\varepsilon$ | $\Sigma\cup\{\varepsilon\}$ |
+| $M=(Q,\Sigma,\delta,q_0,F)$ | finite automaton; a TM has $q_{\text{acc}},q_{\text{rej}}$ instead of $F$ |
+| $L(M),\ L(R),\ L(G)$ | language of a machine, regular expression, grammar |
+| $AB,\ A^*$ | concatenation and star of languages |
+| $u\overset{*}{\Rightarrow}v$ | derivation in a grammar |
+| $\langle O\rangle$ | encoding of an object as a string |
+| $A_{\mathsf{DFA}},\ E_{\mathsf{TM}},\ EQ_{\mathsf{CFG}},\dots$ | acceptance, emptiness, equivalence problems (sans-serif model name) |
+| $\le_{\mathrm m},\ \le_{\mathrm p},\ \le_{\mathrm L}$ | mapping, polynomial-time, log-space reducibility |
+| $\mathrm{TIME},\ \mathrm{NTIME},\ \mathrm{SPACE},\ \mathrm{NSPACE}$ | resource-bounded classes (upright) |
+| $\mathrm{P},\ \mathrm{NP},\ \mathrm{coNP},\ \mathrm{L},\ \mathrm{NL},\ \mathrm{PSPACE},\ \mathrm{BPP},\ \mathrm{IP}$ | complexity classes (upright; the $P,\ NP$ of the sequences section are the same classes) |
+| $\mathit{SAT},\ \mathit{PATH},\ \mathit{TQBF}$ | named languages (italic) |
+| $\mathrm P^A$ | class relative to an oracle $A$ |
+
