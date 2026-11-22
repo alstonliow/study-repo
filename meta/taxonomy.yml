@@ -677,6 +677,72 @@ parts:
           - equality-constrained-minimization
           - barrier-method
           - phase-one-and-complexity
+          - quasi-newton-methods
+          - trust-region-methods
+          - adjoint-methods
+          - derivative-free-optimization
+  - title: Numerical Analysis
+    field: Mathematics
+    branches:
+      - id: math/numerical/floating-point
+        title: Floating Point and Stability
+        desc: IEEE floating-point arithmetic, conditioning of problems, stability and backward error, rounding errors in summation
+        notes:   # topic order on the website
+          - floating-point-arithmetic
+          - conditioning
+          - stability-and-backward-error
+          - summation-error
+      - id: math/numerical/qr-and-least-squares
+        title: QR Factorization and Least Squares
+        desc: Householder reflectors and Givens rotations, Gram-Schmidt in floating point, algorithms for least squares
+        notes:   # topic order on the website
+          - householder-qr
+          - gram-schmidt-in-floating-point
+          - least-squares-algorithms
+      - id: math/numerical/direct-solvers
+        title: Direct Solvers
+        desc: Triangular systems, stability of LU with partial pivoting, Cholesky, caches and blocked algorithms, sparse direct solvers
+        notes:   # topic order on the website
+          - triangular-systems
+          - lu-stability
+          - cholesky-factorization
+          - caches-and-blocking
+          - sparse-direct-solvers
+      - id: math/numerical/eigenvalue-algorithms
+        title: Eigenvalue Algorithms
+        desc: Schur factorization, Hessenberg reduction, power and inverse iteration, the QR algorithm with and without shifts
+        notes:   # topic order on the website
+          - schur-factorization
+          - hessenberg-reduction
+          - power-and-inverse-iteration
+          - qr-algorithm
+          - shifted-qr-algorithm
+      - id: math/numerical/krylov-methods
+        title: Krylov Subspace Methods
+        desc: Arnoldi and Lanczos iterations, GMRES, conjugate gradients and their convergence, preconditioning, biconjugate gradients
+        notes:   # topic order on the website
+          - arnoldi-iteration
+          - lanczos-and-restarting
+          - gmres
+          - conjugate-gradient
+          - cg-convergence
+          - preconditioning
+          - biconjugate-gradient
+      - id: math/numerical/quadrature
+        title: Quadrature and Approximation
+        desc: Convergence of the trapezoidal rule, Chebyshev approximation, Clenshaw-Curtis and Gaussian quadrature, adaptive and multidimensional integration
+        notes:   # topic order on the website
+          - trapezoidal-rule-convergence
+          - chebyshev-approximation
+          - clenshaw-curtis-quadrature
+          - gaussian-quadrature
+          - adaptive-and-multidimensional-quadrature
+      - id: math/numerical/ordinary-differential-equations
+        title: Ordinary Differential Equations
+        desc: One-step methods, order and error, stability regions, stiffness and implicit methods
+        notes:   # topic order on the website
+          - one-step-methods
+          - stiffness-and-implicit-methods
   - title: Algorithms
     field: Computer Science
     branches:
@@ -737,6 +803,7 @@ parts:
           - fast-fourier-transform
           - randomized-algorithms
           - linear-programming
+          - cooley-tukey-algorithms
       - id: cs/models-of-computation
         title: Other Models of Computation
         desc: Distributed algorithms, external memory and cache-oblivious algorithms
@@ -797,45 +864,13 @@ parts:
         notes:   # topic order on the website
           - cryptographic-hash-functions
           - public-key-cryptography
-  - title: Artificial Intelligence
+  - title: Machine Learning
     field: Artificial Intelligence
     branches:
       - id: ai/machine-learning
         title: Machine Learning
         desc: Learning problems, linear regression and classification, gradient descent, generalized linear models, generative classifiers, bias and variance, regularization, nearest neighbours, multiclass SVM loss
         notes: [supervised-learning, generalization, linear-regression, locally-weighted-regression, gradient-descent, convex-optimization, linear-classification, perceptron, logistic-regression, softmax-regression, generalized-linear-models, gaussian-discriminant-analysis, text-representation, decision-trees, bias-variance-tradeoff, regularization-and-model-selection, nearest-neighbors, multiclass-svm-loss]   # topic order on the website
-      - id: ai/deep-learning
-        title: Deep Learning
-        desc: Tensors, backpropagation, neural networks, training and regularization, convolutional and recurrent networks, transformers
-        notes: [tensors, einsum, backpropagation, gradient-checking, neural-networks, data-preprocessing, training-deep-networks, batch-normalization, dropout, momentum-and-adaptive-methods, training-diagnostics, convolutional-layers, pooling-and-cnn-architectures, network-visualization, adversarial-examples, transfer-learning, recurrent-neural-networks, lstm, attention-and-transformers, vision-transformers, language-models]   # topic order on the website
-      - id: ai/search
-        title: Search
-        desc: Search problems, beam search, uniform cost search and A*
-        notes: [search-problems, tree-and-graph-search, approximate-search, uniform-cost-search, a-star-search]   # topic order on the website
-      - id: ai/reinforcement-learning
-        title: Reinforcement Learning
-        desc: Markov decision processes, value iteration, Q-learning, policy gradient, continuous states, LQR and optimal control
-        notes: [markov-decision-processes, policy-evaluation, value-iteration, policy-iteration, model-based-rl, model-free-rl, exploration, function-approximation, policy-gradient, improving-policy-gradient, td-learning, continuous-state-mdps, linear-quadratic-regulation, differential-dynamic-programming, linear-quadratic-gaussian]   # topic order on the website
-      - id: ai/games
-        title: Games
-        desc: Game trees, minimax, alpha-beta pruning, simultaneous games
-        notes: [game-trees, alpha-beta-pruning, game-evaluation-functions, simultaneous-games, nash-equilibria]   # topic order on the website
-      - id: ai/bayesian-networks
-        title: Bayesian Networks
-        desc: Bayesian networks, sampling-based inference, parameter learning
-        notes: [bayesian-networks, variable-elimination, rejection-sampling, likelihood-weighting, gibbs-sampling, conditional-independence, parameter-learning, naive-bayes, expectation-maximization]   # topic order on the website
-      - id: ai/constraint-satisfaction
-        title: Constraint Satisfaction
-        desc: Constraint satisfaction problems, backtracking, arc consistency, tree-structured CSPs, local search
-        notes: [constraint-satisfaction-problems, backtracking-search, arc-consistency, tree-structured-csps, local-search]   # topic order on the website
-      - id: ai/decision-theory
-        title: Decision Theory
-        desc: Utilities and rational preferences, decision networks, value of information
-        notes: [utilities, decision-networks, value-of-information]   # topic order on the website
-      - id: ai/temporal-models
-        title: Temporal Models
-        desc: Hidden Markov models, filtering, Viterbi algorithm, particle filtering
-        notes: [hidden-markov-models, particle-filtering, viterbi-algorithm]   # topic order on the website
       - id: ai/kernel-methods
         title: Kernel Methods and Support Vector Machines
         desc: Feature maps, kernels, the kernel trick, optimal margin classifiers, soft margins, SMO
@@ -848,3 +883,47 @@ parts:
         title: Unsupervised Learning
         desc: k-means, mixtures of Gaussians, the EM algorithm, variational autoencoders, principal component analysis, independent components analysis, GANs, diffusion models, contrastive learning
         notes: [k-means, gaussian-mixtures, em-algorithm, variational-autoencoders, principal-component-analysis, independent-component-analysis, autoregressive-image-models, generative-adversarial-networks, diffusion-models, contrastive-learning]   # topic order on the website
+  - title: Deep Learning
+    field: Artificial Intelligence
+    branches:
+      - id: ai/deep-learning
+        title: Deep Learning
+        desc: Tensors, backpropagation, neural networks, training and regularization, convolutional and recurrent networks, transformers
+        notes: [tensors, einsum, backpropagation, gradient-checking, neural-networks, data-preprocessing, training-deep-networks, batch-normalization, dropout, momentum-and-adaptive-methods, training-diagnostics, convolutional-layers, pooling-and-cnn-architectures, network-visualization, adversarial-examples, transfer-learning, recurrent-neural-networks, lstm, attention-and-transformers, vision-transformers, language-models]   # topic order on the website
+  - title: Search and Constraint Satisfaction
+    field: Artificial Intelligence
+    branches:
+      - id: ai/search
+        title: Search
+        desc: Search problems, beam search, uniform cost search and A*
+        notes: [search-problems, tree-and-graph-search, approximate-search, uniform-cost-search, a-star-search]   # topic order on the website
+      - id: ai/constraint-satisfaction
+        title: Constraint Satisfaction
+        desc: Constraint satisfaction problems, backtracking, arc consistency, tree-structured CSPs, local search
+        notes: [constraint-satisfaction-problems, backtracking-search, arc-consistency, tree-structured-csps, local-search]   # topic order on the website
+  - title: Reinforcement Learning and Games
+    field: Artificial Intelligence
+    branches:
+      - id: ai/reinforcement-learning
+        title: Reinforcement Learning
+        desc: Markov decision processes, value iteration, Q-learning, policy gradient, continuous states, LQR and optimal control
+        notes: [markov-decision-processes, policy-evaluation, value-iteration, policy-iteration, model-based-rl, model-free-rl, exploration, function-approximation, policy-gradient, improving-policy-gradient, td-learning, continuous-state-mdps, linear-quadratic-regulation, differential-dynamic-programming, linear-quadratic-gaussian]   # topic order on the website
+      - id: ai/games
+        title: Games
+        desc: Game trees, minimax, alpha-beta pruning, simultaneous games
+        notes: [game-trees, alpha-beta-pruning, game-evaluation-functions, simultaneous-games, nash-equilibria]   # topic order on the website
+  - title: Probabilistic Reasoning
+    field: Artificial Intelligence
+    branches:
+      - id: ai/bayesian-networks
+        title: Bayesian Networks
+        desc: Bayesian networks, sampling-based inference, parameter learning
+        notes: [bayesian-networks, variable-elimination, rejection-sampling, likelihood-weighting, gibbs-sampling, conditional-independence, parameter-learning, naive-bayes, expectation-maximization]   # topic order on the website
+      - id: ai/temporal-models
+        title: Temporal Models
+        desc: Hidden Markov models, filtering, Viterbi algorithm, particle filtering
+        notes: [hidden-markov-models, particle-filtering, viterbi-algorithm]   # topic order on the website
+      - id: ai/decision-theory
+        title: Decision Theory
+        desc: Utilities and rational preferences, decision networks, value of information
+        notes: [utilities, decision-networks, value-of-information]   # topic order on the website

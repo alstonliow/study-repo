@@ -45,7 +45,13 @@ ids are not affected by this grouping.
 | Computer Science | Algorithms | `cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`, `cs/algorithm-design`, `cs/models-of-computation` |
 | Computer Science | Theory of Computation | `cs/automata` (Automata and Formal Languages), `cs/theory` (Computability and Complexity) |
 | Computer Science | Cryptography | `cs/cryptography` |
-| Artificial Intelligence | Artificial Intelligence | `ai/machine-learning`, `ai/deep-learning`, `ai/search`, `ai/reinforcement-learning`, `ai/games`, `ai/bayesian-networks`, `ai/constraint-satisfaction`, `ai/decision-theory`, `ai/temporal-models`, `ai/kernel-methods`, `ai/learning-theory`, `ai/unsupervised-learning` (one part for now, split into parts when more AI courses arrive; owner decision, 2026-11-18) |
+| Artificial Intelligence | Machine Learning | `ai/machine-learning`, `ai/kernel-methods`, `ai/learning-theory`, `ai/unsupervised-learning` |
+| Artificial Intelligence | Deep Learning | `ai/deep-learning` |
+| Artificial Intelligence | Search and Constraint Satisfaction | `ai/search`, `ai/constraint-satisfaction` |
+| Artificial Intelligence | Reinforcement Learning and Games | `ai/reinforcement-learning`, `ai/games` |
+| Artificial Intelligence | Probabilistic Reasoning | `ai/bayesian-networks`, `ai/temporal-models`, `ai/decision-theory` |
+
+The single Artificial Intelligence part was split into these five parts (owner decision, 2026-11-22); Deep Learning is its own part. The order follows prerequisites (as in CS221): Markov decision processes use search problems, games use policy evaluation, Bayesian networks use MDPs and softmax regression. Branch ids did not change.
 
 ### Planned structure
 
@@ -57,7 +63,7 @@ theory stays in `math/discrete/graph` whether FIT1058, 6.042J or CS154 uses it).
 |---|---|---|
 | Mathematics | Discrete Mathematics; Single Variable Calculus; Linear Algebra; Multivariable Calculus; Real Analysis; Probability and Statistics; Convex Optimization; later Numerical Analysis, Information Theory | `math/discrete`, `math/calculus/single-variable`, `math/calculus/multivariable`, `math/analysis`, `math/linear-algebra`, `math/probability`, `math/statistics`, `math/optimization`, … |
 | Computer Science | Algorithms; Theory of Computation; Cryptography; later Systems (architecture, operating systems, databases, distributed systems) | `cs/*` |
-| Artificial Intelligence | later: Foundations (search and planning, probabilistic models), Machine Learning, Deep Learning, Reinforcement Learning, Vision, Language | `ai/*` |
+| Artificial Intelligence | Machine Learning; Deep Learning; Search and Constraint Satisfaction; Reinforcement Learning and Games; Probabilistic Reasoning; later Vision, Language | `ai/*` |
 
 Single Variable Calculus, Linear Algebra and Multivariable Calculus come before Probability and Statistics because
 continuous probability and statistics build on them; Multivariable Calculus comes after Linear Algebra because it
