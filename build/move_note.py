@@ -153,32 +153,36 @@ def main(argv: list[str]) -> int:
     return 0
 
 
-def branch_span(tax: str, bid: str) -> tuple[int, int]:
-    """Start and end of the `notes:` list of branch bid in taxonomy.yml."""
+def edit_notes(tax: str, bid: str, fn) -> str:
+    """Apply fn to the `notes:` list of branch bid in taxonomy.yml, keeping its style:
+    a flow list (notes: [a, b]   # comment) or a block list (notes: then - a lines)."""
     m = re.search(r"^\s*- id: " + re.escape(bid) + r"\s*$", tax, re.M)
     if not m:
         raise SystemExit(f"error: branch '{bid}' not found in meta/taxonomy.yml")
-    nm = re.compile(r"^        notes:.*\n((?:          - .*\n)*)", re.M).search(tax, m.end())
+    nm = re.compile(r"^        notes:(.*)\n((?:          - .*\n)*)", re.M).search(tax, m.end())
     nxt = re.compile(r"^\s*- (id|title): ", re.M).search(tax, m.end())
     if not nm or (nxt and nm.start() > nxt.start()):
         raise SystemExit(f"error: branch '{bid}' has no notes: list in meta/taxonomy.yml")
-    return nm.start(1), nm.end(1)
+    flow = re.fullmatch(r"\s*\[(.*?)\](.*)", nm.group(1))
+    if flow:
+        slugs = [x.strip() for x in flow.group(1).split(",") if x.strip()]
+        text = f"        notes: [{', '.join(fn(slugs))}]{flow.group(2)}\n"
+    else:
+        slugs = [line.strip()[2:].strip() for line in nm.group(2).splitlines()]
+        text = f"        notes:{nm.group(1)}\n" + "".join(f"          - {x}\n" for x in fn(slugs))
+    return tax[:nm.start()] + text + tax[nm.end():]
 
 
 def rename_in_branch(tax: str, bid: str, old: str, new: str) -> str:
-    a, b = branch_span(tax, bid)
-    return tax[:a] + re.sub(r"^(          - )" + re.escape(old) + r"$", r"\g<1>" + new, tax[a:b], count=1,
-                            flags=re.M) + tax[b:]
+    return edit_notes(tax, bid, lambda xs: [new if x == old else x for x in xs])
 
 
 def remove_from_branch(tax: str, bid: str, slug: str) -> str:
-    a, b = branch_span(tax, bid)
-    return tax[:a] + re.sub(r"^          - " + re.escape(slug) + r"\n", "", tax[a:b], count=1, flags=re.M) + tax[b:]
+    return edit_notes(tax, bid, lambda xs: [x for x in xs if x != slug])
 
 
 def append_to_branch(tax: str, bid: str, slug: str) -> str:
-    a, b = branch_span(tax, bid)
-    return tax[:b] + f"          - {slug}\n" + tax[b:]
+    return edit_notes(tax, bid, lambda xs: xs + [slug])
 
 
 if __name__ == "__main__":

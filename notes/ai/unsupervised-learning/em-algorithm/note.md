@@ -91,7 +91,7 @@ The iterates of EM satisfy $\ell(\boldsymbol\theta^{(t+1)})\ge\ell(\boldsymbol\t
 
 ::: {#rmk-em-coordinate-ascent .remark name="EM as coordinate ascent" editor="No figure: the general algorithm is drawn through its mixture-of-Gaussians instance in fig-gaussian-mixtures-1."}
 
-Write $F(Q,\boldsymbol\theta)=\sum_i\operatorname{ELBO}(\mathbf{x}^{(i)};Q_i,\boldsymbol\theta)$. By @thm-elbo the E-step maximizes $F$ over $Q$ with $\boldsymbol\theta$ fixed, and the M-step maximizes it over $\boldsymbol\theta$ with $Q$ fixed: EM is coordinate ascent on $F$, like $k$-means on the distortion. Since $\ell$ is bounded above in many models, the increasing sequence $\ell(\boldsymbol\theta^{(t)})$ then converges, though only to a stationary value, not necessarily the global maximum. When the exact posterior is intractable, one can maximize $F$ over a restricted family of $Q$ instead (@sec-ai-unsupervised-learning-variational-autoencoders).
+Write $F(Q,\boldsymbol\theta)=\sum_i\operatorname{ELBO}(\mathbf{x}^{(i)};Q_i,\boldsymbol\theta)$. By @thm-elbo the E-step maximizes $F$ over $Q$ with $\boldsymbol\theta$ fixed, and the M-step maximizes it over $\boldsymbol\theta$ with $Q$ fixed: EM is coordinate ascent on $F$, like $k$-means on the distortion. Since $\ell$ is bounded above in many models, the increasing sequence $\ell(\boldsymbol\theta^{(t)})$ then converges, though only to a stationary value, not necessarily the global maximum. When the exact posterior is intractable, one can maximize $F$ over a restricted family of $Q$ instead (@sec-ai-deep-unsupervised-learning-variational-autoencoders).
 
 :::
 

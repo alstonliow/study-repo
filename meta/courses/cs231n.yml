@@ -157,13 +157,13 @@ chapters:
   points:
   - id: '15.1'
     title: Autoregressive models
-    covers: [ai/unsupervised-learning/autoregressive-image-models]
+    covers: [ai/deep-unsupervised-learning/autoregressive-image-models]
   - id: '15.2'
     title: Variational autoencoders
     covers: [def-vae, def-elbo]
   - id: '15.3'
     title: Generative adversarial networks
-    covers: [ai/unsupervised-learning/generative-adversarial-networks]
+    covers: [ai/deep-unsupervised-learning/generative-adversarial-networks]
 - num: 16
   title: Adversarial attacks
   points:
@@ -178,7 +178,7 @@ chapters:
     covers: [ai/deep-learning/vision-transformers]
   - id: '17.2'
     title: Self-supervised and contrastive learning
-    covers: [ai/unsupervised-learning/contrastive-learning]
+    covers: [ai/deep-unsupervised-learning/contrastive-learning]
   - id: '17.3'
     title: Diffusion models
-    covers: [ai/unsupervised-learning/diffusion-models]
+    covers: [ai/deep-unsupervised-learning/diffusion-models]

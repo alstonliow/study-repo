@@ -2,6 +2,7 @@
 title: "Variational Inference and Variational Autoencoders"
 sources: [cs229-11]
 requires: [ai/unsupervised-learning/em-algorithm, ai/deep-learning/neural-networks]
+aliases: [ai/unsupervised-learning/variational-autoencoders]   # old ids (moved)
 status: draft
 ---
 

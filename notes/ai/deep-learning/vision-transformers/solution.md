@@ -4,7 +4,7 @@
 ::: {.solution for="prob-cs231na-3-q2" status="draft"}
 *Factor.* A ViT has much weaker inductive biases than a CNN (@sec-ai-deep-learning-vision-transformers). A convolutional network assumes locality and translation equivariance through small shared filters, which are right for images and need not be learnt. A ViT lets every patch attend to every other from the first layer and must learn from the data that nearby patches matter and that the same pattern can appear anywhere; with little data it overfits instead.
 
-*Remedies.* Pretrain on a large dataset (with labels or self-supervised, @sec-ai-unsupervised-learning-contrastive-learning) and fine-tune; use strong data augmentation and regularization (random crops, mixing of images, stochastic depth, weight decay); distil from a CNN teacher; build in locality with a convolutional stem, smaller patches or local attention windows.
+*Remedies.* Pretrain on a large dataset (with labels or self-supervised, @sec-ai-deep-unsupervised-learning-contrastive-learning) and fine-tune; use strong data augmentation and regularization (random crops, mixing of images, stochastic depth, weight decay); distil from a CNN teacher; build in locality with a convolutional stem, smaller patches or local attention windows.
 :::
 
 ::: {.solution for="prob-cs231na-3-q3" status="draft"}

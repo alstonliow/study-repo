@@ -17,7 +17,7 @@
 
 1. Segmentation needs patch features that say what is at each location and where object boundaries are.
 2. CLIP is trained only to align a global image embedding with a caption (@def-clip); nothing in its loss rewards the individual patch features for being locally meaningful, so the spatial information in them is weak.
-3. DINO matches the outputs of small local crops to those of large global crops of the same image (@def-dino), which forces the features of parts to be consistent with the whole; its patch features separate objects, parts and background (@sec-ai-unsupervised-learning-contrastive-learning). A segmentation head on DINO's patch features therefore has more to work with.
+3. DINO matches the outputs of small local crops to those of large global crops of the same image (@def-dino), which forces the features of parts to be consistent with the whole; its patch features separate objects, parts and background (@sec-ai-deep-unsupervised-learning-contrastive-learning). A segmentation head on DINO's patch features therefore has more to work with.
 :::
 
 ::: {.solution for="prob-nt-xent-code" status="draft"}

@@ -7,7 +7,7 @@ status: draft
 
 <!-- Added 2026-11-21 from Stanford CS231n course notes (Transfer learning: feature extraction, fine-tuning, when and how to fine-tune, practical advice) and Assignment 3 (linear probes on pretrained features), in our own wording. -->
 
-Few tasks come with a million labelled images. *Transfer learning* reuses a network trained on a large dataset (the *source* task, usually ImageNet classification, or a self-supervised task, @sec-ai-unsupervised-learning-contrastive-learning) for a new *target* task with less data.
+Few tasks come with a million labelled images. *Transfer learning* reuses a network trained on a large dataset (the *source* task, usually ImageNet classification, or a self-supervised task, @sec-ai-deep-unsupervised-learning-contrastive-learning) for a new *target* task with less data.
 
 ::: {#def-transfer-learning .definition name="Feature extraction and fine-tuning"}
 

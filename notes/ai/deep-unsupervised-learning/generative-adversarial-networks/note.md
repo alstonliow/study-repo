@@ -1,13 +1,14 @@
 ---
 title: "Generative Adversarial Networks"
 sources: [cs231n-15]
-requires: [ai/unsupervised-learning/autoregressive-image-models]
+requires: [ai/deep-unsupervised-learning/autoregressive-image-models]
+aliases: [ai/unsupervised-learning/generative-adversarial-networks]   # old ids (moved)
 status: draft
 ---
 
 <!-- Added 2026-11-21 from Stanford CS231n course notes (Generative modeling: generative adversarial networks, the minimax objective, training, evaluation by inception score and nearest neighbours, mode collapse, DCGAN, CycleGAN, StyleGAN), in our own wording; the optimal-discriminator theorem and the Jensen–Shannon corollary are proved in our own steps; the loss derivatives were checked in Python. -->
 
-Autoregressive models and VAEs (@sec-ai-unsupervised-learning-variational-autoencoders) write down a density. A *generative adversarial network* (GAN) gives up the density and learns only to sample: a *generator* turns random noise into data, and a *discriminator* is trained at the same time to tell its outputs from real data.
+Autoregressive models and VAEs (@sec-ai-deep-unsupervised-learning-variational-autoencoders) write down a density. A *generative adversarial network* (GAN) gives up the density and learns only to sample: a *generator* turns random noise into data, and a *discriminator* is trained at the same time to tell its outputs from real data.
 
 ::: {#def-gan .definition name="Generative adversarial network"}
 

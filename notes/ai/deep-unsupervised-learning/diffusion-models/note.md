@@ -1,7 +1,8 @@
 ---
 title: "Denoising Diffusion Models"
 sources: [cs231na-3]
-requires: [ai/unsupervised-learning/variational-autoencoders, ai/deep-learning/convolutional-layers]
+requires: [ai/deep-unsupervised-learning/variational-autoencoders, ai/deep-learning/convolutional-layers]
+aliases: [ai/unsupervised-learning/diffusion-models]   # old ids (moved)
 status: draft
 ---
 

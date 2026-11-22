@@ -2,6 +2,7 @@
 title: "Self-Supervised and Contrastive Representation Learning"
 sources: [cs231na-3]
 requires: [ai/deep-learning/transfer-learning, ai/deep-learning/vision-transformers]
+aliases: [ai/unsupervised-learning/contrastive-learning]   # old ids (moved)
 status: draft
 ---
 

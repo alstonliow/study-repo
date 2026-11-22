@@ -881,8 +881,8 @@ parts:
         notes: [empirical-risk-minimization, vc-dimension]   # topic order on the website
       - id: ai/unsupervised-learning
         title: Unsupervised Learning
-        desc: k-means, mixtures of Gaussians, the EM algorithm, variational autoencoders, principal component analysis, independent components analysis, GANs, diffusion models, contrastive learning
-        notes: [k-means, gaussian-mixtures, em-algorithm, variational-autoencoders, principal-component-analysis, independent-component-analysis, autoregressive-image-models, generative-adversarial-networks, diffusion-models, contrastive-learning]   # topic order on the website
+        desc: k-means, mixtures of Gaussians, the EM algorithm, principal component analysis, independent components analysis
+        notes: [k-means, gaussian-mixtures, em-algorithm, principal-component-analysis, independent-component-analysis]   # topic order on the website
   - title: Deep Learning
     field: Artificial Intelligence
     branches:
@@ -890,6 +890,10 @@ parts:
         title: Deep Learning
         desc: Tensors, backpropagation, neural networks, training and regularization, convolutional and recurrent networks, transformers
         notes: [tensors, einsum, backpropagation, gradient-checking, neural-networks, data-preprocessing, training-deep-networks, batch-normalization, dropout, momentum-and-adaptive-methods, training-diagnostics, convolutional-layers, pooling-and-cnn-architectures, network-visualization, adversarial-examples, transfer-learning, recurrent-neural-networks, lstm, attention-and-transformers, vision-transformers, language-models]   # topic order on the website
+      - id: ai/deep-unsupervised-learning
+        title: Deep Unsupervised Learning
+        desc: Variational autoencoders, autoregressive image models, GANs, diffusion models, contrastive learning
+        notes: [variational-autoencoders, autoregressive-image-models, generative-adversarial-networks, diffusion-models, contrastive-learning]   # topic order on the website
   - title: Search and Constraint Satisfaction
     field: Artificial Intelligence
     branches:

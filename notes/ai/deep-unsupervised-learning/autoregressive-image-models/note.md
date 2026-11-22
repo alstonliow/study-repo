@@ -1,7 +1,8 @@
 ---
 title: "Generative Models and Autoregressive Image Models"
 sources: [cs231n-15]
-requires: [ai/unsupervised-learning/variational-autoencoders, ai/deep-learning/convolutional-layers, ai/deep-learning/recurrent-neural-networks]
+requires: [ai/deep-unsupervised-learning/variational-autoencoders, ai/deep-learning/convolutional-layers, ai/deep-learning/recurrent-neural-networks]
+aliases: [ai/unsupervised-learning/autoregressive-image-models]   # old ids (moved)
 status: draft
 ---
 
@@ -10,8 +11,8 @@ status: draft
 A *generative model* learns a distribution $p_{\text{model}}$ close to the data distribution $p_{\text{data}}$ from unlabelled samples, and can draw new samples from it. Models differ in how they represent $p_{\text{model}}$:
 
 1. *explicit, tractable density*: $p_{\text{model}}(\mathbf{x})$ can be computed exactly, as for the autoregressive models below;
-2. *explicit, approximate density*: only a bound on $\log p_{\text{model}}(\mathbf{x})$ can be computed, as for the VAE (@def-vae) and diffusion models (@sec-ai-unsupervised-learning-diffusion-models);
-3. *implicit density*: the model only samples, as a GAN does (@sec-ai-unsupervised-learning-generative-adversarial-networks).
+2. *explicit, approximate density*: only a bound on $\log p_{\text{model}}(\mathbf{x})$ can be computed, as for the VAE (@def-vae) and diffusion models (@sec-ai-deep-unsupervised-learning-diffusion-models);
+3. *implicit density*: the model only samples, as a GAN does (@sec-ai-deep-unsupervised-learning-generative-adversarial-networks).
 
 ::: {#def-autoregressive-image-model .definition name="Autoregressive image model"}
 

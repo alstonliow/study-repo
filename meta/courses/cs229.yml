@@ -213,7 +213,7 @@ chapters:
     covers: [ai/unsupervised-learning/em-algorithm]
   - id: '11.3'
     title: Variational autoencoders
-    covers: [ai/unsupervised-learning/variational-autoencoders]
+    covers: [ai/deep-unsupervised-learning/variational-autoencoders]
 - num: 12
   title: Principal components analysis
   points:

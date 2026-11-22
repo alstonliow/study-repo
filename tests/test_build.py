@@ -222,6 +222,68 @@ class TestCheck(Repo):
         self.edit(self.SOL, "    return 2 * x", "    import numpy\n    return 2 * x")
         self.assertError("solution of 'prob-first-code' imports numpy")
 
+    # C coding exercises (SPEC §6.4 item 10): the Python fixture exercise turned into C
+    def to_c(self, sol_body: str = "return 2 * x;") -> None:
+        self.edit(self.EX, """```{.python .starter}
+def double(x):
+    \"\"\"Return 2 * x.\"\"\"
+    ...
+```
+
+```{.python .tests}
+def test_small():
+    assert double(2) == 4
+
+
+def test_zero():
+    assert double(0) == 0
+```""", """```{.c .starter}
+int double_it(int x) { return 0; }
+```
+
+```{.c .tests}
+void test_small(void) { assert(double_it(2) == 4); }
+void test_zero(void) { assert(double_it(0) == 0); }
+```""")
+        self.edit(self.SOL, """```{.python}
+def double(x):
+    \"\"\"Return 2 * x.\"\"\"
+    return 2 * x
+```""", "```{.c}\nint double_it(int x) { %s }\n```" % sol_body)
+
+    def test_c_solution_runs(self):
+        self.to_c()
+        r = self.check()
+        self.assertIn("coding: 1 exercises, 1 solutions run against their tests", r.stdout)
+        self.assertNotIn("prob-first-code", r.stdout)
+
+    def test_c_wrong_solution(self):
+        self.to_c("return x + 2;")
+        self.assertError("solution of 'prob-first-code' does not pass its tests: failed: test_zero (assertion failed)")
+
+    def test_c_crash_fails_one_test(self):
+        self.to_c("if (x == 0) { volatile int *p = 0; *p = 1; } return 2 * x;")
+        self.assertError("does not pass its tests: failed: test_zero (signal")
+
+    def test_c_compile_error(self):
+        self.to_c("return 2 * x")
+        self.assertError("solution of 'prob-first-code' does not pass its tests: compile error")
+
+    def test_c_header_not_allowed(self):
+        self.to_c("return 2 * x; }\n#include <curl/curl.h>\nint unused(void) { return 0;")
+        self.assertError("solution of 'prob-first-code' includes curl/curl.h")
+
+    def test_c_mixed_languages(self):
+        self.to_c()
+        self.edit(self.EX, "{.c .tests}", "{.python .tests}")
+        self.assertError("the .tests fence must be {.c .tests}")
+
+    def test_c_page_is_marked(self):
+        self.to_c()
+        page = (generate(self.root) / "notes/t/alpha/first.qmd").read_text(encoding="utf-8")
+        self.assertIn('data-lang="c"', page)
+        self.assertIn("```c\nint double_it", page)
+
     def test_withheld_with_solution_is_an_error(self):
         self.edit(self.SOL, 'for="prob-first-code"', 'for="prob-first-withheld"')
         self.assertError("'prob-first-withheld' is solution=\"withheld\" and must have no solution")
@@ -299,6 +361,20 @@ class TestMove(Repo):
         self.assertIn("/notes/t/alpha/second.html", page)            # redirect from the old address
         data = json.loads((site / "site-data.json").read_text())
         self.assertEqual(data["aliases"], {"t/alpha/second": "t/beta/gadgets"})
+
+    def test_move_note_with_flow_style_lists(self):
+        # notes: [a, b] lists (the style of the real taxonomy.yml) are edited in place
+        import re
+        tax_path = self.root / "meta/taxonomy.yml"
+        tax = re.sub(r"(        notes:)[^\n]*\n((?:          - .*\n)+)",
+                     lambda m: m.group(1) + " [" + ", ".join(x.strip()[2:] for x in m.group(2).splitlines())
+                     + "]   # topic order\n", tax_path.read_text())
+        tax_path.write_text(tax)
+        self.move("t/alpha/second", "t/beta/gadgets")
+        tax = tax_path.read_text()
+        self.assertIn("notes: [first]   # topic order\n", tax)
+        self.assertIn("notes: [third, gadgets]   # topic order\n", tax)
+        self.assertEqual(self.check().returncode, 0)
 
     def test_move_whole_branch(self):
         self.move("t/alpha", "t/gamma")
