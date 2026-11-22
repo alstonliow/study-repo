@@ -45,7 +45,7 @@ with equality if and only if $Q(z)=p(z\mid\mathbf{x};\boldsymbol\theta)$ for all
 
 :::
 
-::: {#def-em-general .definition name="The EM algorithm" related="def-expectation-maximization"}
+::: {#def-em-general .definition name="The EM algorithm" generalizes="def-expectation-maximization"}
 
 For independent observations $\mathbf{x}^{(1)},\dots,\mathbf{x}^{(N)}$ with latent $z^{(i)}$, the log-likelihood is $\ell(\boldsymbol\theta)=\sum_i\log p(\mathbf{x}^{(i)};\boldsymbol\theta)$. *EM* starts from $\boldsymbol\theta^{(0)}$ and for $t=0,1,2,\dots$ repeats:
 
