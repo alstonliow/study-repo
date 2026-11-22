@@ -35,6 +35,30 @@ $1\le g_\lambda\le a_\lambda$ and $1\le c_\lambda\le a_\lambda$.
 
 :::
 
+::: {#fig-jordan-normal-form-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (2.00,0.00) rectangle (2.75,0.45);
+\draw[cell, fill=primaryLight] (2.75,0.00) rectangle (3.50,0.45);
+\node[lab, tick] at (2.75,-0.22) {$g_\lambda=2$};
+\draw[cell, fill=accentLight] (3.50,0.00) rectangle (4.25,0.45);
+\node[lab, anchor=east] at (1.90,0.23) {$E(\lambda)$};
+\draw[cell, fill=accentLight] (2.00,-0.90) rectangle (2.75,-0.45);
+\draw[cell, fill=accentLight] (2.75,-0.90) rectangle (3.50,-0.45);
+\draw[cell, fill=accentLight] (3.50,-0.90) rectangle (4.25,-0.45);
+\node[lab, tick] at (3.12,-1.12) {$a_\lambda=3$};
+\node[lab, anchor=east] at (1.90,-0.68) {$\ker(\alpha-\lambda\iota)^n$};
+\node[lab, note, anchor=west] at (4.6,-0.2) {$1\le g_\lambda\le a_\lambda$};
+\end{tikzpicture}
+\end{center}
+```
+
+The eigenspace sits inside the generalised eigenspace, whose dimension is the algebraic multiplicity. Equality $g_\lambda=a_\lambda$ for every $\lambda$ is diagonalisability (@cor-diagonalisable-iff-multiplicities).
+
+:::
+
 ::: {#cor-diagonalisable-iff-multiplicities .corollary name="Diagonalisability in terms of multiplicities"}
 
 If $\chi_\alpha$ splits over $F$ (for instance $F=\mathbb C$), the following are equivalent: $\alpha$ is diagonalisable; $a_\lambda=g_\lambda$ for every eigenvalue $\lambda$; $c_\lambda=1$ for every eigenvalue $\lambda$.
@@ -54,6 +78,24 @@ If $\chi_\alpha$ splits over $F$ (for instance $F=\mathbb C$), the following are
 A matrix is in *Jordan normal form* if it is block diagonal,
 $$\begin{bmatrix}J_{n_1}(\lambda_1)&&\\&\ddots&\\&&J_{n_k}(\lambda_k)\end{bmatrix},$$
 with Jordan blocks $J_m(\lambda)$ (@def-jordan-block) on the diagonal; the $\lambda_i$ need not be distinct.
+
+:::
+
+::: {#fig-jordan-normal-form-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (4.5,-4.5);
+\draw[hl cell] (0.0,0.0) rectangle (2.25,-2.25); \node[lab, tick] at (1.125,-1.125) {$J_3(\lambda_1)$};
+\draw[hl cell] (2.25,-2.25) rectangle (3.75,-3.75); \node[lab, tick] at (3.0,-3.0) {$J_2(\lambda_1)$};
+\draw[hl cell] (3.75,-3.75) rectangle (4.5,-4.5); \node[lab, tick] at (4.125,-4.125) {$J_1(\lambda_2)$};
+\node[lab, note, anchor=west, align=left] at (4.9,-2.0) {zeros outside the diagonal blocks;\\each block: one eigenvalue on its diagonal, $1$s just above};
+\end{tikzpicture}
+\end{center}
+```
+
+The shape of a Jordan normal form, here $J_3(\lambda_1)\oplus J_2(\lambda_1)\oplus J_1(\lambda_2)$. For $\lambda_1$ the algebraic multiplicity is $3+2=5$ (total block size) and the geometric multiplicity is $2$ (number of blocks).
 
 :::
 
@@ -124,6 +166,42 @@ Let $A=\begin{bmatrix}3&1&0\\-1&1&0\\1&1&2\end{bmatrix}$. Then $\chi_A(t)=(t-2)^
 $$A-2I=\begin{bmatrix}1&1&0\\-1&-1&0\\1&1&0\end{bmatrix},\qquad (A-2I)^2=0.$$
 So $n(A-2I)=2$: two blocks; $n((A-2I)^2)-n(A-2I)=1$: one block of size $\ge2$. The Jordan normal form is $J_2(2)\oplus J_1(2)$, and $m_A=(t-2)^2$. A Jordan basis: take $w=e_1$ (not in $\ker(A-2I)$), $v_1=(A-2I)w=(1,-1,1)^{\mathsf T}$, $v_2=w$, and $v_3=e_3\in\ker(A-2I)$ independent of $v_1$. With $P=[v_1\ v_2\ v_3]$,
 $$P^{-1}AP=\begin{bmatrix}2&1&0\\0&2&0\\0&0&2\end{bmatrix}.$$
+
+:::
+
+::: {#fig-jordan-normal-form-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$2$};
+\draw[hl cell] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$1$};
+\draw[cell frame] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$0$};
+\draw[hl cell] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$0$};
+\draw[hl cell] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$2$};
+\draw[cell frame] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$0$};
+\draw[cell frame] (0.000,-0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[cell frame] (0.550,-0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$0$};
+\draw[cell, fill=primaryLight] (1.100,-0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$2$};
+\node[lab, note] at (0.825,-0.350) {$P^{-1}AP$};
+\node[small vertex] (w) at (5.2,1.1) {$v_2$}; \node[small vertex] (v1) at (3.8,1.1) {$v_1$}; \node[lab] (z1) at (2.6,1.1) {$\mathbf 0$};
+\node[small vertex] (v3) at (3.8,0.2) {$v_3$}; \node[lab] (z3) at (2.6,0.2) {$\mathbf 0$};
+\draw[->, emph] (w) -- (v1); \draw[->, emph] (v1) -- (z1); \draw[->, emph] (v3) -- (z3);
+\node[lab, note, anchor=west, align=left] at (5.8,0.6) {arrows: $A-2I$;\\$v_2=e_1$, $v_1=(1,-1,1)$, $v_3=e_3$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-jordan-normal-form: one chain of length $2$ and one of length $1$ give the blocks $J_2(2)$ and $J_1(2)$. A chain is read from its top vector, here $v_2$, down to $\mathbf 0$.
 
 :::
 

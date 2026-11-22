@@ -21,6 +21,24 @@ $\mathbf{x}\cdot\mathbf{y}=0$ if and only if $\lVert\mathbf{x}\rVert^2+\lVert\ma
 
 :::
 
+::: {#fig-orthogonal-subspaces-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph, primary, ->] (0,0) -- (3,0) node[midway, below, lab] {$\mathbf x$};
+\draw[emph, secondary, ->] (3,0) -- (3,2) node[midway, right, lab] {$\mathbf y$};
+\draw[emph, accent, ->] (0,0) -- (3,2) node[midway, above left, lab] {$\mathbf x+\mathbf y$};
+\draw[muted] (2.75,0) -- (2.75,0.25) -- (3,0.25);
+\node[lab, note, anchor=west] at (3.6,1) {$\mathbf x\cdot\mathbf y=0\iff\lVert\mathbf x+\mathbf y\rVert^2=\lVert\mathbf x\rVert^2+\lVert\mathbf y\rVert^2$};
+\end{tikzpicture}
+\end{center}
+```
+
+Pythagoras in any dimension: expanding $\lVert\mathbf x+\mathbf y\rVert^2=\lVert\mathbf x\rVert^2+2\,\mathbf x\cdot\mathbf y+\lVert\mathbf y\rVert^2$ shows that the cross term $2\,\mathbf x\cdot\mathbf y$ vanishes exactly for a right angle.
+
+:::
+
 ::: {#def-orthogonal-subspaces .definition name="Orthogonal subspaces and complements"}
 
 Subspaces $S$ and $T$ of $\mathbb{R}^n$ are *orthogonal* if $\mathbf{s}^{\mathsf T}\mathbf{t}=0$ for every $\mathbf{s}\in S$ and $\mathbf{t}\in T$. The *orthogonal complement* of $S$ is
@@ -61,6 +79,30 @@ Every $\mathbf{x}\in\mathbb{R}^n$ is uniquely $\mathbf{x}=\mathbf{x}_r+\mathbf{x
 2. These $n$ independent vectors are a basis of $\mathbb{R}^n$ (@cor-basis-from-independent-set), which gives existence; uniqueness follows as in step 1.
 
 3. $A\mathbf{x}=A\mathbf{x}_r+A\mathbf{x}_n=A\mathbf{x}_r$. If two row-space vectors have the same image, their difference is in $C(A^{\mathsf T})\cap N(A)=\{\mathbf{0}\}$. Every $\mathbf{b}=A\mathbf{x}\in C(A)$ is $A\mathbf{x}_r$.
+
+:::
+
+::: {#fig-orthogonal-subspaces-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-2.30,0) -- (2.40,0);
+\draw[->, muted] (0,-2.30) -- (0,2.40);
+\draw[emph, primary, faint] (-1.1,-2.2) -- (1.1,2.2); \draw[emph, accent, faint] (-2.2,1.1) -- (2.2,-1.1);
+\node[lab, note, primary] at (1.0,2.45) {$C(A^{\mathsf T})$}; \node[lab, note, accent] at (2.55,-1.1) {$N(A)$};
+\draw[->, emph, ink] (0,0) -- (1.5,0.5) node[right, lab] {$\mathbf x=(3,1)$};
+\draw[->, emph, primary] (0,0) -- (0.5,1) node[left=4pt, lab] {$\mathbf x_r=(1,2)$};
+\draw[->, emph, accent] (0,0) -- (1,-0.5) node[below, lab] {$\mathbf x_n=(2,-1)$};
+\draw[faint, dashed] (0.5,1) -- (1.5,0.5) -- (1,-0.5);
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (3.6,0.4) {$A=\begin{bmatrix}1&2\end{bmatrix}$:\\$A\mathbf x=A\mathbf x_r=5$,\quad $A\mathbf x_n=0$};
+\end{tikzpicture}
+\end{center}
+```
+
+Every $\mathbf x$ splits into a row space part and a nullspace part, here for $A=\begin{bmatrix}1&2\end{bmatrix}$ in $\mathbb R^2$ (coordinates drawn at half scale). The nullspace part contributes nothing to $A\mathbf x$.
 
 :::
 

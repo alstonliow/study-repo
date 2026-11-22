@@ -42,6 +42,27 @@ If $v\in W^\perp$ and $w\in W$, then $\langle\alpha^*v,w\rangle=\langle v,\alpha
 
 :::
 
+::: {#fig-spectral-theorem-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[x={(-0.5cm,-0.4cm)}, y={(1cm,0)}, z={(0,1cm)}]
+\fill[tintA] (-1.2,-1.5,0) -- (1.6,-1.5,0) -- (1.6,1.6,0) -- (-1.2,1.6,0) -- cycle;
+\draw[bold, accent] (0,0,-0.8) -- (0,0,1.7);
+\fill[ink] (0,0,0) circle[pt];
+\node[lab, note, accent] at (0,0.3,1.7) {$U$}; \node[lab, note, primary] at (1.4,1.5,0.2) {$U^\perp$};
+\draw[->, emph, primary] (0.6,-0.6,0) to[bend left=30] (0.6,0.7,0);
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (2.4,0.5) {$\alpha(U)\subseteq U$ and $\alpha=\alpha^*$\\$\Rightarrow\alpha(U^\perp)\subseteq U^\perp$:\\for $w\perp U$, $\langle\alpha w,u\rangle=\langle w,\alpha u\rangle=0$};
+\end{tikzpicture}
+\end{center}
+```
+
+The step that drives the induction in the spectral theorem: once an eigenvector line $U$ is found, a self-adjoint map also keeps the perpendicular plane, so the argument can continue inside $U^\perp$.
+
+:::
+
 ::: {#thm-spectral-theorem-self-adjoint .theorem name="Spectral theorem for self-adjoint maps"}
 
 If $\alpha\in\operatorname{End}(V)$ is self-adjoint, then $V$ has an orthonormal basis of eigenvectors of $\alpha$, and all eigenvalues are real. Equivalently, $V$ is the orthogonal direct sum of the eigenspaces of $\alpha$.
@@ -96,6 +117,28 @@ Let $\phi,\psi$ be symmetric bilinear forms on a finite-dimensional real vector 
 
 :::
 
+::: {#fig-spectral-theorem-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.40,0) -- (1.5,0);
+\draw[->, muted] (0,-1.40) -- (0,1.5);
+\draw[emph, primary] (0,0) ellipse[x radius=1, y radius=0.5];
+\draw[->, emph, accent] (0,0) -- (0.707,0.354) node[right, lab] {$v_1$};
+\draw[->, emph, secondary] (0,0) -- (0.707,-0.354) node[right, lab] {$v_2$};
+\node[lab, note, primary] at (-0.9,0.65) {$x^2+4y^2=1$};
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (1.9,0.3) {$A$-orthonormal: $v_i^{\mathsf T}Av_j=\delta_{ij}$, both on the ellipse;\\the form $B=2xy$ is diagonal in this basis:\\$v_1^{\mathsf T}Bv_1=\frac12$,\ \ $v_2^{\mathsf T}Bv_2=-\frac12$,\ \ $v_1^{\mathsf T}Bv_2=0$};
+\end{tikzpicture}
+\end{center}
+```
+
+Part 2 of @exm-spectral-theorem. Treating the positive definite form $A$ as the inner product, its unit circle is the ellipse; $v_1,v_2$ are orthonormal for $A$ (conjugate half-diameters of the ellipse) and also diagonalise $B$, with the roots $\pm\frac12$ of $\det(B-tA)$ as diagonal entries.
+
+:::
+
 The diagonal entries of $Q^{\mathsf T}BQ$ are the roots of $\det(B-tA)=0$, since $\det(Q^{\mathsf T}(B-tA)Q)=\prod_i(\lambda_i-t)$. This is the setting of small oscillations in mechanics, with $A$ the kinetic and $B$ the potential energy.
 
 ::: {#thm-unitary-diagonalisable .theorem name="Unitary maps are diagonalisable" generalizes="thm-hermitian-real-eigenvalues"}
@@ -111,6 +154,30 @@ If $V$ is a complex inner product space and $\alpha\in U(V)$, then $V$ has an or
 2. Induction on $\dim V$. Over $\mathbb C$, $\chi_\alpha$ has a root, so $\alpha$ has a unit eigenvector $e_1$ with eigenvalue $\lambda$. $W=\langle e_1\rangle$ is invariant under $\alpha$ and under $\alpha^{-1}=\alpha^*$ (since $\alpha^{-1}e_1=\lambda^{-1}e_1$).
 
 3. By @lem-invariant-complement applied to $\alpha^*$ (whose adjoint is $\alpha$), $W^\perp$ is $\alpha$-invariant. $\alpha|_{W^\perp}$ is still an isometry, so by induction $W^\perp$ has an orthonormal basis of eigenvectors; add $e_1$.
+
+:::
+
+::: {#fig-spectral-theorem-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.5,0) -- (1.60,0);
+\draw[->, muted] (0,-1.5) -- (0,1.60);
+\draw[emph, primary] (0,0) circle[radius=1];
+\fill[accent] (0.940,0.342) circle[pt];
+\fill[accent] (-0.342,0.940) circle[pt];
+\fill[accent] (-0.940,-0.342) circle[pt];
+\fill[accent] (0.342,-0.940) circle[pt];
+\node[lab, note, primary] at (1.1,1.0) {$\lvert\lambda\rvert=1$};
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (1.9,0.3) {unitary: $\lVert\alpha v\rVert=\lVert v\rVert$, so $\lvert\lambda\rvert=1$\\self-adjoint: eigenvalues on the real axis};
+\end{tikzpicture}
+\end{center}
+```
+
+Where eigenvalues live. A unitary map keeps lengths, so its eigenvalues lie on the unit circle (some example points marked); like a self-adjoint map, it has an orthonormal basis of eigenvectors.
 
 :::
 

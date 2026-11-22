@@ -15,6 +15,30 @@ The number of columns of $A$ must equal the number of rows of $B$.
 
 :::
 
+::: {#fig-matrix-multiplication-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (1.6,-1.0); \node[lab] at (0.8,-0.5) {$A$};
+\draw[decorate, decoration={brace, amplitude=3pt, mirror}] (-0.1,0) -- (-0.1,-1.0) node[midway, left=3pt, lab, tick] {$m$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (0,0.1) -- (1.6,0.1) node[midway, above=3pt, lab, tick, accent] {$n$};
+\node[lab] at (1.85,-0.5) {$\times$};
+\draw[cell frame] (2.1,0) rectangle (3.0,-1.6); \node[lab] at (2.55,-0.8) {$B$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (3.1,0) -- (3.1,-1.6) node[midway, right=3pt, lab, tick, accent] {$n$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (2.1,0.1) -- (3.0,0.1) node[midway, above=3pt, lab, tick] {$p$};
+\node[lab] at (3.7,-0.5) {$=$};
+\draw[hl cell] (4.0,0) rectangle (4.9,-1.0); \node[lab] at (4.45,-0.5) {$AB$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (5.0,0) -- (5.0,-1.0) node[midway, right=3pt, lab, tick] {$m$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (4.0,0.1) -- (4.9,0.1) node[midway, above=3pt, lab, tick] {$p$};
+\end{tikzpicture}
+\end{center}
+```
+
+Shapes in a product: an $m\times n$ matrix times an $n\times p$ matrix is $m\times p$. The inner sizes (both $n$) must agree, because each entry of $AB$ is a dot product of a row of $A$ with a column of $B$.
+
+:::
+
 ::: {#fig-matrix-multiplication-1}
 
 ```{=latex}
@@ -60,6 +84,79 @@ $$AB=\sum_{k=1}^n\mathbf{a}_k\mathbf{b}_k^{\mathsf T}.$$
 
 :::
 
+::: {#fig-matrix-multiplication-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[cell, fill=primaryLight] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$2$};
+\draw[cell, fill=primaryLight] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$3$};
+\draw[cell, fill=primaryLight] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$4$};
+\node[lab, note] at (0.550,-0.350) {$A$};
+\draw[cell frame] (1.400,0.550) rectangle (1.950,1.100);
+\node[lab] at (1.675,0.825) {$5$};
+\draw[hl cell] (1.950,0.550) rectangle (2.500,1.100);
+\node[lab] at (2.225,0.825) {$6$};
+\draw[cell frame] (1.400,0.000) rectangle (1.950,0.550);
+\node[lab] at (1.675,0.275) {$7$};
+\draw[hl cell] (1.950,0.000) rectangle (2.500,0.550);
+\node[lab] at (2.225,0.275) {$8$};
+\node[lab, note] at (1.950,-0.350) {$B$};
+\node[lab] at (2.75,0.55) {$=$};
+\draw[cell frame] (3.050,0.550) rectangle (3.600,1.100);
+\node[lab] at (3.325,0.825) {$19$};
+\draw[hl cell] (3.600,0.550) rectangle (4.150,1.100);
+\node[lab] at (3.875,0.825) {$22$};
+\draw[cell frame] (3.050,0.000) rectangle (3.600,0.550);
+\node[lab] at (3.325,0.275) {$43$};
+\draw[hl cell] (3.600,0.000) rectangle (4.150,0.550);
+\node[lab] at (3.875,0.275) {$50$};
+\node[lab, note] at (3.600,-0.350) {$AB$};
+\node[lab, anchor=west] at (4.5,0.55) {$A\begin{bmatrix}6\\8\end{bmatrix}=6\begin{bmatrix}1\\3\end{bmatrix}+8\begin{bmatrix}2\\4\end{bmatrix}=\begin{bmatrix}22\\50\end{bmatrix}$};
+\begin{scope}[shift={(0,-2.2)}]
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$2$};
+\draw[hl cell] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$3$};
+\draw[hl cell] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$4$};
+\node[lab, note] at (0.550,-0.350) {$A$};
+\draw[cell, fill=primaryLight] (1.400,0.550) rectangle (1.950,1.100);
+\node[lab] at (1.675,0.825) {$5$};
+\draw[cell, fill=primaryLight] (1.950,0.550) rectangle (2.500,1.100);
+\node[lab] at (2.225,0.825) {$6$};
+\draw[cell, fill=primaryLight] (1.400,0.000) rectangle (1.950,0.550);
+\node[lab] at (1.675,0.275) {$7$};
+\draw[cell, fill=primaryLight] (1.950,0.000) rectangle (2.500,0.550);
+\node[lab] at (2.225,0.275) {$8$};
+\node[lab, note] at (1.950,-0.350) {$B$};
+\node[lab] at (2.75,0.55) {$=$};
+\draw[cell frame] (3.050,0.550) rectangle (3.600,1.100);
+\node[lab] at (3.325,0.825) {$19$};
+\draw[cell frame] (3.600,0.550) rectangle (4.150,1.100);
+\node[lab] at (3.875,0.825) {$22$};
+\draw[hl cell] (3.050,0.000) rectangle (3.600,0.550);
+\node[lab] at (3.325,0.275) {$43$};
+\draw[hl cell] (3.600,0.000) rectangle (4.150,0.550);
+\node[lab] at (3.875,0.275) {$50$};
+\node[lab, note] at (3.600,-0.350) {$AB$};
+\node[lab, anchor=west] at (4.5,0.55) {$[3\ \ 4]\,B=3\,[5\ \ 6]+4\,[7\ \ 8]=[43\ \ 50]$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Ways 2 and 3 of @thm-four-ways-to-multiply on the matrices of @exm-columns-times-rows. Top: a column of $AB$ is $A$ times that column of $B$, a combination of the columns of $A$. Bottom: a row of $AB$ is that row of $A$ times $B$, a combination of the rows of $B$.
+
+:::
+
 ::: {#prp-matrix-product-laws .proposition name="Laws of matrix multiplication"}
 
 Whenever the sizes match,
@@ -97,11 +194,102 @@ $$AB=\begin{bmatrix}A_1B_1+A_2B_3&A_1B_2+A_2B_4\\A_3B_1+A_4B_3&A_3B_2+A_4B_4\end
 
 :::
 
+::: {#fig-matrix-multiplication-5}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.0,0.0) rectangle (0.7,-0.7);
+\node[lab] at (0.35,-0.35) {$A_1$};
+\draw[hl cell] (0.7,0.0) rectangle (1.4,-0.7);
+\node[lab] at (1.05,-0.35) {$A_2$};
+\draw[cell frame] (0.0,-0.7) rectangle (0.7,-1.4);
+\node[lab] at (0.35,-1.05) {$A_3$};
+\draw[cell frame] (0.7,-0.7) rectangle (1.4,-1.4);
+\node[lab] at (1.05,-1.05) {$A_4$};
+\draw[hl cell] (1.8,0.0) rectangle (2.5,-0.7);
+\node[lab] at (2.15,-0.35) {$B_1$};
+\draw[cell frame] (2.5,0.0) rectangle (3.2,-0.7);
+\node[lab] at (2.85,-0.35) {$B_2$};
+\draw[hl cell] (1.8,-0.7) rectangle (2.5,-1.4);
+\node[lab] at (2.15,-1.05) {$B_3$};
+\draw[cell frame] (2.5,-0.7) rectangle (3.2,-1.4);
+\node[lab] at (2.85,-1.05) {$B_4$};
+\node[lab] at (3.5,-0.7) {$=$};
+\draw[cell frame] (3.9,0) rectangle (8.7,-1.4); \draw[faint] (6.3,0) -- (6.3,-1.4); \draw[faint] (3.9,-0.7) -- (8.7,-0.7);
+\draw[hl cell] (3.9,0) rectangle (6.3,-0.7);
+\node[lab] at (5.1,-0.35) {$A_1B_1+A_2B_3$}; \node[lab] at (7.5,-0.35) {$A_1B_2+A_2B_4$};
+\node[lab] at (5.1,-1.05) {$A_3B_1+A_4B_3$}; \node[lab] at (7.5,-1.05) {$A_3B_2+A_4B_4$};
+\end{tikzpicture}
+\end{center}
+```
+
+Block multiplication follows the entry rule: the top-left block of $AB$ is the first block row of $A$ times the first block column of $B$ (highlighted), with matrix products in place of number products. The order $A_1B_1$, not $B_1A_1$, matters.
+
+:::
+
 ::: {#exm-columns-times-rows .example name="Columns times rows"}
 
 $$\begin{bmatrix}1&2\\3&4\end{bmatrix}\begin{bmatrix}5&6\\7&8\end{bmatrix}
 =\begin{bmatrix}1\\3\end{bmatrix}\begin{bmatrix}5&6\end{bmatrix}+\begin{bmatrix}2\\4\end{bmatrix}\begin{bmatrix}7&8\end{bmatrix}
 =\begin{bmatrix}5&6\\15&18\end{bmatrix}+\begin{bmatrix}14&16\\28&32\end{bmatrix}
 =\begin{bmatrix}19&22\\43&50\end{bmatrix}.$$
+
+:::
+
+::: {#fig-matrix-multiplication-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[cell, fill=primaryLight] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$3$};
+\draw[cell, fill=primaryLight] (0.700,0.550) rectangle (1.250,1.100);
+\node[lab] at (0.975,0.825) {$5$};
+\draw[cell, fill=primaryLight] (1.250,0.550) rectangle (1.800,1.100);
+\node[lab] at (1.525,0.825) {$6$};
+\node[lab] at (2.15,0.55) {$+$};
+\draw[hl cell] (2.500,0.550) rectangle (3.050,1.100);
+\node[lab] at (2.775,0.825) {$2$};
+\draw[hl cell] (2.500,0.000) rectangle (3.050,0.550);
+\node[lab] at (2.775,0.275) {$4$};
+\draw[hl cell] (3.200,0.550) rectangle (3.750,1.100);
+\node[lab] at (3.475,0.825) {$7$};
+\draw[hl cell] (3.750,0.550) rectangle (4.300,1.100);
+\node[lab] at (4.025,0.825) {$8$};
+\node[lab] at (4.65,0.55) {$=$};
+\draw[cell, fill=primaryLight] (5.000,0.550) rectangle (5.550,1.100);
+\node[lab] at (5.275,0.825) {$5$};
+\draw[cell, fill=primaryLight] (5.550,0.550) rectangle (6.100,1.100);
+\node[lab] at (5.825,0.825) {$6$};
+\draw[cell, fill=primaryLight] (5.000,0.000) rectangle (5.550,0.550);
+\node[lab] at (5.275,0.275) {$15$};
+\draw[cell, fill=primaryLight] (5.550,0.000) rectangle (6.100,0.550);
+\node[lab] at (5.825,0.275) {$18$};
+\node[lab] at (6.4,0.55) {$+$};
+\draw[hl cell] (6.750,0.550) rectangle (7.300,1.100);
+\node[lab] at (7.025,0.825) {$14$};
+\draw[hl cell] (7.300,0.550) rectangle (7.850,1.100);
+\node[lab] at (7.575,0.825) {$16$};
+\draw[hl cell] (6.750,0.000) rectangle (7.300,0.550);
+\node[lab] at (7.025,0.275) {$28$};
+\draw[hl cell] (7.300,0.000) rectangle (7.850,0.550);
+\node[lab] at (7.575,0.275) {$32$};
+\node[lab] at (8.15,0.55) {$=$};
+\draw[cell frame] (8.450,0.550) rectangle (9.000,1.100);
+\node[lab] at (8.725,0.825) {$19$};
+\draw[cell frame] (9.000,0.550) rectangle (9.550,1.100);
+\node[lab] at (9.275,0.825) {$22$};
+\draw[cell frame] (8.450,0.000) rectangle (9.000,0.550);
+\node[lab] at (8.725,0.275) {$43$};
+\draw[cell frame] (9.000,0.000) rectangle (9.550,0.550);
+\node[lab] at (9.275,0.275) {$50$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-columns-times-rows as two layers: column $k$ of $A$ times row $k$ of $B$ is a full $2\times2$ matrix of rank one, and $AB$ is the sum of these layers.
 
 :::

@@ -23,6 +23,27 @@ For every linear functional $\theta\in V^*$ there is exactly one $u\in V$ with $
 
 :::
 
+::: {#fig-adjoints-and-isometries-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\draw[->, muted] (-1.6,0) -- (1.8,0); \draw[->, muted] (0,-1.6) -- (0,1.8);
+\draw[faint, primary] (-1.5,0.250) -- (1.5,-1.250);
+\draw[faint, primary] (-1.5,0.500) -- (1.5,-1.000);
+\draw[faint, primary] (-1.5,0.750) -- (1.5,-0.750);
+\draw[faint, primary] (-1.5,1.000) -- (1.5,-0.500);
+\draw[faint, primary] (-1.5,1.250) -- (1.5,-0.250);
+\draw[->, emph, accent] (0,0) -- (0.5,1.0) node[above, lab] {$u=(1,2)$};
+\node[lab, note, anchor=west, align=left] at (2.0,0.3) {$\theta(x,y)=x+2y=\langle(x,y),u\rangle$:\\the level lines of $\theta$ are\\perpendicular to $u$};
+\end{tikzpicture}
+\end{center}
+```
+
+Riesz in $\mathbb R^2$: a linear functional, drawn by its level lines $\theta=c$ (for $c=-1,-\frac12,0,\frac12,1$), is the inner product with one vector $u$, which points across the lines in the direction where $\theta$ grows.
+
+:::
+
 In the real case $u\mapsto\langle\cdot,u\rangle$ is an isomorphism $V\to V^*$ that needs no basis; in the complex case it is conjugate-linear.
 
 ::: {#def-adjoint .definition name="Adjoint, self-adjoint"}
@@ -30,6 +51,24 @@ In the real case $u\mapsto\langle\cdot,u\rangle$ is an isomorphism $V\to V^*$ th
 The *adjoint* of a linear map $\alpha:V\to W$ is the map $\alpha^*:W\to V$ with
 $$\langle\alpha v,w\rangle=\langle v,\alpha^*w\rangle\qquad\text{for all }v\in V,\ w\in W.$$
 $\alpha\in\operatorname{End}(V)$ is *self-adjoint* if $\alpha^*=\alpha$ (*symmetric* in the real case, *Hermitian* in the complex case).
+
+:::
+
+::: {#fig-adjoints-and-isometries-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (V) at (0,0) {$V$};
+\node[box] (W) at (4,0) {$W$};
+\draw[->, emph, primary] (V) to[bend left=25] node[above, lab] {$\alpha$} (W);
+\draw[->, emph, accent] (W) to[bend left=25] node[below, lab] {$\alpha^*$} (V);
+\node[lab, anchor=west] at (5.0,0) {$\langle\alpha v,w\rangle_W=\langle v,\alpha^*w\rangle_V$\quad for all $v,w$};
+\end{tikzpicture}
+\end{center}
+```
+
+The adjoint goes the other way and lets $\alpha$ move across the inner product. In orthonormal bases its matrix is the conjugate transpose (@thm-adjoint-exists).
 
 :::
 
@@ -84,6 +123,28 @@ For $\alpha\in\operatorname{End}(V)$ the following are equivalent:
 5. (4)⇒(1): if $e_i$ and $\alpha e_i$ are both orthonormal bases and $v=\sum\lambda_ie_i$, $w=\sum\mu_ie_i$, then by @prp-parseval $\langle\alpha v,\alpha w\rangle=\sum\lambda_i\bar\mu_i=\langle v,w\rangle$.
 
 6. (3)⇔(5): by @thm-adjoint-exists, $[\alpha^*\alpha]=A^{\mathsf H}A$ in an orthonormal basis.
+
+:::
+
+::: {#fig-adjoints-and-isometries-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[hl box] (c) at (0,0) {$\alpha$ is an isometry};
+\node[box] (t0) at (0.00,1.50) {$\langle\alpha u,\alpha v\rangle=\langle u,v\rangle$};
+\draw[<->, emph] (c) -- (t0);
+\node[box] (t1) at (3.81,-0.75) {$\lVert\alpha v\rVert=\lVert v\rVert$};
+\draw[<->, emph] (c) -- (t1);
+\node[box] (t2) at (-3.81,-0.75) {$\alpha^*\alpha=\iota$};
+\draw[<->, emph] (c) -- (t2);
+\node[box] (t3) at (0.00,-1.50) {orthonormal bases go to orthonormal bases};
+\draw[<->, emph] (c) -- (t3);
+\end{tikzpicture}
+\end{center}
+```
+
+Equivalent descriptions of an isometry. Keeping lengths already keeps inner products, because the polarization identity writes inner products in terms of lengths.
 
 :::
 

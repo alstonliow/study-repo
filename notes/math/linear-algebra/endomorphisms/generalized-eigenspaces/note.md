@@ -47,11 +47,77 @@ each $V_i$ is $\alpha$-invariant, and $\alpha|_{V_i}$ has minimal polynomial $(t
 
 :::
 
+::: {#fig-generalized-eigenspaces-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (2.10,-2.10);
+\draw[hl cell] (0.0,0.0) rectangle (1.4,-1.4); \node[lab, tick] at (0.7,-0.7) {$\begin{smallmatrix}2&1\\0&2\end{smallmatrix}$};
+\draw[hl cell] (1.4,-1.4) rectangle (2.10,-2.10); \node[lab, tick] at (1.75,-1.75) {$3$};
+\node[lab, note, anchor=west, align=left] at (2.5,-0.5) {$V=V_2\oplus V_3$ with $V_2=\ker(A-2I)^2$, $V_3=\ker(A-3I)$:};
+\node[lab, note, anchor=west, align=left] at (2.5,-1.1) {both are invariant, so in an adapted basis the matrix is block diagonal};
+\node[lab, note, anchor=west, align=left] at (2.5,-1.7) {and each block has a single eigenvalue};
+\end{tikzpicture}
+\end{center}
+```
+
+The generalised eigenspace decomposition turns any matrix whose characteristic polynomial splits into blocks, one per eigenvalue. Inside a block $\alpha-\lambda\iota$ is nilpotent, which leads to the Jordan form.
+
+:::
+
 In a basis made of bases of the $V_i$, $[\alpha]$ is block diagonal with one block per eigenvalue. When all $c_i=1$ this is the diagonalisability theorem again.
 
 ::: {#def-nilpotent .definition name="Nilpotent endomorphism"}
 
 $\beta\in\operatorname{End}(W)$ is *nilpotent* if $\beta^r=0$ for some $r\ge1$; equivalently, $m_\beta=t^c$ for some $c$.
+
+:::
+
+::: {#fig-generalized-eigenspaces-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,1.100) rectangle (0.550,1.650);
+\draw[hl cell] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$1$};
+\draw[cell frame] (1.100,1.100) rectangle (1.650,1.650);
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\draw[hl cell] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$1$};
+\draw[cell frame] (0.000,-0.000) rectangle (0.550,0.550);
+\draw[cell frame] (0.550,-0.000) rectangle (1.100,0.550);
+\draw[cell frame] (1.100,-0.000) rectangle (1.650,0.550);
+\node[lab, note] at (0.825,-0.350) {$N$};
+\draw[cell frame] (2.200,1.100) rectangle (2.750,1.650);
+\draw[cell frame] (2.750,1.100) rectangle (3.300,1.650);
+\draw[hl cell] (3.300,1.100) rectangle (3.850,1.650);
+\node[lab] at (3.575,1.375) {$1$};
+\draw[cell frame] (2.200,0.550) rectangle (2.750,1.100);
+\draw[cell frame] (2.750,0.550) rectangle (3.300,1.100);
+\draw[cell frame] (3.300,0.550) rectangle (3.850,1.100);
+\draw[cell frame] (2.200,-0.000) rectangle (2.750,0.550);
+\draw[cell frame] (2.750,-0.000) rectangle (3.300,0.550);
+\draw[cell frame] (3.300,-0.000) rectangle (3.850,0.550);
+\node[lab, note] at (3.025,-0.350) {$N^2$};
+\draw[cell frame] (4.400,1.100) rectangle (4.950,1.650);
+\draw[cell frame] (4.950,1.100) rectangle (5.500,1.650);
+\draw[cell frame] (5.500,1.100) rectangle (6.050,1.650);
+\draw[cell frame] (4.400,0.550) rectangle (4.950,1.100);
+\draw[cell frame] (4.950,0.550) rectangle (5.500,1.100);
+\draw[cell frame] (5.500,0.550) rectangle (6.050,1.100);
+\draw[cell frame] (4.400,-0.000) rectangle (4.950,0.550);
+\draw[cell frame] (4.950,-0.000) rectangle (5.500,0.550);
+\draw[cell frame] (5.500,-0.000) rectangle (6.050,0.550);
+\node[lab, note] at (5.225,-0.350) {$N^3$$\,=0$};
+\node[lab, note, anchor=west, align=left] at (6.6,0.825) {each power pushes the $1$s\\one diagonal further up};
+\end{tikzpicture}
+\end{center}
+```
+
+A nilpotent matrix: $N=J_3(0)$ shifts $e_3\mapsto e_2\mapsto e_1\mapsto0$. Its square shifts by two places, and its cube is zero.
 
 :::
 
@@ -115,6 +181,35 @@ If $\chi_\alpha$ splits over $F$ (in particular if $F=\mathbb C$), then $V$ has 
 ::: {#exm-generalized-eigenspaces .example name="Generalised eigenspaces"}
 
 $A=\begin{bmatrix}2&1&0\\0&2&0\\0&0&3\end{bmatrix}$ has $m_A=(t-2)^2(t-3)$ (@exm-minimal-polynomial). Its generalised eigenspaces are $\ker(A-2I)^2=\langle e_1,e_2\rangle$ and $\ker(A-3I)=\langle e_3\rangle$, while the eigenspace $E(2)=\langle e_1\rangle$ is smaller. Bézout: $p_1=t-3$, $p_2=(t-2)^2$, and $-(t-1)p_1+p_2=-(t^2-4t+3)+(t^2-4t+4)=1$, so $\pi_1=-(A-I)(A-3I)$ and $\pi_2=(A-2I)^2$ are the projections onto the two generalised eigenspaces along each other.
+
+:::
+
+::: {#fig-generalized-eigenspaces-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (2.60,0.00) rectangle (3.35,0.45);
+\node[lab, tick] at (2.98,-0.22) {$e_1$};
+\draw[cell frame] (3.35,0.00) rectangle (4.10,0.45);
+\draw[cell frame] (4.10,0.00) rectangle (4.85,0.45);
+\node[lab, anchor=east] at (2.50,0.23) {$\ker(A-2I)$};
+\draw[cell, fill=primaryLight] (2.60,-0.90) rectangle (3.35,-0.45);
+\draw[cell, fill=primaryLight] (3.35,-0.90) rectangle (4.10,-0.45);
+\node[lab, tick] at (3.35,-1.12) {$e_1,e_2$};
+\draw[cell frame] (4.10,-0.90) rectangle (4.85,-0.45);
+\node[lab, anchor=east] at (2.50,-0.68) {$\ker(A-2I)^2$};
+\draw[cell, fill=primaryLight] (2.60,-1.80) rectangle (3.35,-1.35);
+\draw[cell, fill=primaryLight] (3.35,-1.80) rectangle (4.10,-1.35);
+\node[lab, tick] at (3.35,-2.02) {$e_1,e_2$};
+\draw[cell frame] (4.10,-1.80) rectangle (4.85,-1.35);
+\node[lab, anchor=east] at (2.50,-1.57) {$\ker(A-2I)^3$};
+\node[lab, note, anchor=west, align=left] at (5.2,-0.7) {the kernels grow and then stop:\\$1,2,2,\dots$; the limit is the\\generalised eigenspace $V_2$};
+\end{tikzpicture}
+\end{center}
+```
+
+The kernels of the powers of $A-2I$ for the matrix of @exm-generalized-eigenspaces. The eigenvector $e_1$ is killed in one step; $e_2$ needs two, since $(A-2I)e_2=e_1$.
 
 :::
 

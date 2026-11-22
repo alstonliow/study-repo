@@ -60,10 +60,65 @@ $$\lVert A-B\rVert_F^2\ge\lVert A-A_k\rVert_F^2=\sigma_{k+1}^2+\dots+\sigma_r^2 
 
 :::
 
+::: {#fig-low-rank-approximation-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (0,0) -- (4.2,0) node[right, lab, tick] {$i$}; \draw[->, muted] (0,0) -- (0,2.8) node[above, lab, tick] {$\sigma_i$};
+\draw[bar] (0.15,0) rectangle (0.50,2.50); \node[lab, tick] at (0.32,-0.2) {1};
+\draw[bar] (0.75,0) rectangle (1.10,1.60); \node[lab, tick] at (0.92,-0.2) {2};
+\draw[cell, fill=accentLight] (1.35,0) rectangle (1.70,0.70); \node[lab, tick] at (1.52,-0.2) {3};
+\draw[cell, fill=accentLight] (1.95,0) rectangle (2.30,0.40); \node[lab, tick] at (2.12,-0.2) {4};
+\draw[cell, fill=accentLight] (2.55,0) rectangle (2.90,0.20); \node[lab, tick] at (2.72,-0.2) {5};
+\draw[cell, fill=accentLight] (3.15,0) rectangle (3.50,0.10); \node[lab, tick] at (3.32,-0.2) {6};
+\draw[faint, dashed] (1.3,0) -- (1.3,2.6) node[above, lab, note] {keep $k=2$};
+\node[lab, note, anchor=west, align=left] at (4.4,1.3) {$\lVert A-A_k\rVert_2=\sigma_{k+1}$\\$\lVert A-A_k\rVert_F=\sqrt{\sigma_{k+1}^2+\dots+\sigma_r^2}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Eckart–Young with made-up singular values: the best rank $k$ approximation keeps the $k$ largest terms $\sigma_i\mathbf u_i\mathbf v_i^{\mathsf T}$ of the SVD (blue). The error is measured by the discarded singular values (red).
+
+:::
+
 ::: {#exm-eckart-young .example name="Best rank one approximation"}
 
 $A=\begin{bmatrix}3&0\\4&5\end{bmatrix}$ has $\sigma_1=3\sqrt5$, $\mathbf{u}_1=(1,3)/\sqrt{10}$, $\mathbf{v}_1=(1,1)/\sqrt2$ (@exm-svd-two-by-two). So
 $$A_1=\sigma_1\mathbf{u}_1\mathbf{v}_1^{\mathsf T}=\begin{bmatrix}1.5&1.5\\4.5&4.5\end{bmatrix},\qquad \lVert A-A_1\rVert_2=\lVert A-A_1\rVert_F=\sigma_2=\sqrt5 .$$
+
+:::
+
+::: {#fig-low-rank-approximation-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$3$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$0$};
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$4$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$5$};
+\node[lab, note] at (0.550,-0.350) {$A$};
+\node[lab] at (1.35,0.55) {$\approx$};
+\draw[cell, fill=primaryLight] (1.700,0.550) rectangle (2.250,1.100);
+\node[lab] at (1.975,0.825) {$1.5$};
+\draw[cell, fill=primaryLight] (2.250,0.550) rectangle (2.800,1.100);
+\node[lab] at (2.525,0.825) {$1.5$};
+\draw[cell, fill=primaryLight] (1.700,0.000) rectangle (2.250,0.550);
+\node[lab] at (1.975,0.275) {$4.5$};
+\draw[cell, fill=primaryLight] (2.250,0.000) rectangle (2.800,0.550);
+\node[lab] at (2.525,0.275) {$4.5$};
+\node[lab, note] at (2.250,-0.350) {$A_1=\sigma_1\mathbf u_1\mathbf v_1^{\mathsf T}$};
+\node[lab, note, anchor=west, align=left] at (3.2,0.55) {rank one: column $(1,3)$ times row $(1.5,1.5)$\\error $\lVert A-A_1\rVert_2=\sigma_2=\sqrt5$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-eckart-young: the best rank one approximation of $A$ has equal columns, both multiples of $\mathbf u_1$; no matrix of rank one is closer in the spectral or the Frobenius norm.
 
 :::
 
@@ -123,6 +178,37 @@ The four centred points (one repeated) and the first principal direction $\mathb
 ::: {#rmk-low-rank-approximation-1 .remark name="PCA is not least squares"}
 
 Least squares (@def-least-squares-solution) measures vertical errors in the last variable only; PCA measures perpendicular distances and treats all variables alike. The two best-fit lines differ in general. PCA also depends on the units: rescaling one variable changes the principal directions, so variables are often standardised first.
+
+:::
+
+::: {#fig-low-rank-approximation-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[emph, primary] (-1.7,-1.0) -- (1.7,1.0);
+\draw[accent] (-1.4,-0.9) -- (-1.400,-0.824); \fill[ink] (-1.4,-0.9) circle[pt];
+\draw[accent] (-0.6,0.2) -- (-0.600,-0.353); \fill[ink] (-0.6,0.2) circle[pt];
+\draw[accent] (0.3,-0.1) -- (0.300,0.176); \fill[ink] (0.3,-0.1) circle[pt];
+\draw[accent] (0.8,0.9) -- (0.800,0.471); \fill[ink] (0.8,0.9) circle[pt];
+\draw[accent] (1.2,0.4) -- (1.200,0.706); \fill[ink] (1.2,0.4) circle[pt];
+\node[lab, note] at (0,-1.5) {least squares: vertical errors};
+\end{scope}
+\begin{scope}[shift={(4.2,0)}]
+\draw[emph, primary] (-1.7,-1.0) -- (1.7,1.0);
+\draw[accent] (-1.4,-0.9) -- (-1.433,-0.843); \fill[ink] (-1.4,-0.9) circle[pt];
+\draw[accent] (-0.6,0.2) -- (-0.358,-0.211); \fill[ink] (-0.6,0.2) circle[pt];
+\draw[accent] (0.3,-0.1) -- (0.179,0.105); \fill[ink] (0.3,-0.1) circle[pt];
+\draw[accent] (0.8,0.9) -- (0.988,0.581); \fill[ink] (0.8,0.9) circle[pt];
+\draw[accent] (1.2,0.4) -- (1.066,0.627); \fill[ink] (1.2,0.4) circle[pt];
+\node[lab, note] at (0,-1.5) {PCA: perpendicular distances};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The same line measured in the two ways compared in the remark above. Least squares treats one coordinate as the output and measures errors in it; PCA treats the coordinates alike and measures distances to the line. The minimisers are different lines in general.
 
 :::
 

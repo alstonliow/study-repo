@@ -17,6 +17,58 @@ For a weighted graph, $W_{ij}=w_{ij}\ge0$, $D_{ii}=\sum_jw_{ij}$ and $L=A^{\math
 
 :::
 
+::: {#fig-graph-laplacians-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,1.650) rectangle (0.550,2.200);
+\node[lab] at (0.275,1.925) {$1$};
+\draw[cell, fill=primaryLight] (0.550,1.650) rectangle (1.100,2.200);
+\node[lab] at (0.825,1.925) {$-1$};
+\draw[cell frame] (1.100,1.650) rectangle (1.650,2.200);
+\node[lab] at (1.375,1.925) {$0$};
+\draw[cell frame] (1.650,1.650) rectangle (2.200,2.200);
+\node[lab] at (1.925,1.925) {$0$};
+\draw[cell, fill=primaryLight] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$-1$};
+\draw[hl cell] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$2$};
+\draw[cell, fill=primaryLight] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$-1$};
+\draw[cell frame] (1.650,1.100) rectangle (2.200,1.650);
+\node[lab] at (1.925,1.375) {$0$};
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$0$};
+\draw[cell, fill=primaryLight] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$-1$};
+\draw[hl cell] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$2$};
+\draw[cell, fill=primaryLight] (1.650,0.550) rectangle (2.200,1.100);
+\node[lab] at (1.925,0.825) {$-1$};
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$0$};
+\draw[cell, fill=primaryLight] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$-1$};
+\draw[hl cell] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$1$};
+\node[lab, note] at (1.100,-0.350) {$L=D-A$};
+\node[lab, note, anchor=west, align=left] at (2.6,1.4) {diagonal: degrees $1,2,2,1$\\off-diagonal: $-1$ for each edge\\every row sums to $0$, so $L\mathbf 1=\mathbf 0$};
+\node[small vertex] (p0) at (2.9,0.3) {1};
+\node[small vertex] (p1) at (3.8,0.3) {2};
+\node[small vertex] (p2) at (4.7,0.3) {3};
+\node[small vertex] (p3) at (5.6,0.3) {4};
+\draw (p0) -- (p1) -- (p2) -- (p3);
+\end{tikzpicture}
+\end{center}
+```
+
+The Laplacian of the path of @exm-path-laplacian: degrees on the diagonal (highlighted), minus the adjacency matrix off it (shaded).
+
+:::
+
 ::: {#prp-laplacian-quadratic-form .proposition name="The energy of a Laplacian"}
 
 $$\mathbf{x}^{\mathsf T}L\mathbf{x}=\sum_{\text{edges }\{i,j\}}(x_i-x_j)^2 .$$
@@ -34,6 +86,27 @@ So $L$ is positive semidefinite, every row sums to zero, and $L\mathbf{1}=\mathb
 
 :::
 
+::: {#fig-graph-laplacians-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (q0) at (0.0,0) {1}; \node[lab, tick] at (0.0,-0.5) {$0.65$};
+\node[small vertex] (q1) at (2.0,0) {2}; \node[lab, tick] at (2.0,-0.5) {$0.27$};
+\node[small vertex] (q2) at (4.0,0) {3}; \node[lab, tick] at (4.0,-0.5) {$-0.27$};
+\node[small vertex] (q3) at (6.0,0) {4}; \node[lab, tick] at (6.0,-0.5) {$-0.65$};
+\draw[emph] (q0) -- node[above, lab, note, accent] {$0.144$} (q1);
+\draw[emph] (q1) -- node[above, lab, note, accent] {$0.292$} (q2);
+\draw[emph] (q2) -- node[above, lab, note, accent] {$0.144$} (q3);
+\node[lab, note, anchor=west] at (6.6,0) {$\sum_{\text{edges}}(x_i-x_j)^2\approx0.586=2-\sqrt2$};
+\end{tikzpicture}
+\end{center}
+```
+
+The energy $\mathbf x^{\mathsf T}L\mathbf x=\sum_{\text{edges }ij}(x_i-x_j)^2$ for the Fiedler vector of the path (node values below, edge terms above). The middle edge, where the sign changes, carries the most energy; the total is the eigenvalue $\lambda_2$.
+
+:::
+
 ::: {#thm-laplacian-components .theorem name="Zero eigenvalues count connected components"}
 
 The multiplicity of the eigenvalue $0$ of $L$ equals the number of connected components of the graph. In particular the second smallest eigenvalue $\lambda_2(L)$ is positive exactly when the graph is connected.
@@ -47,6 +120,23 @@ The multiplicity of the eigenvalue $0$ of $L$ equals the number of connected com
 2. By @prp-laplacian-quadratic-form this says $x_i=x_j$ for every edge, so $\mathbf{x}$ is constant on each connected component.
 
 3. The vectors that are constant on each component form a space with one basis vector (the indicator) per component.
+
+:::
+
+::: {#fig-graph-laplacians-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex, fill=primaryLight] (a) at (0,0) {1}; \node[small vertex, fill=primaryLight] (b) at (1,0.7) {2}; \node[small vertex, fill=primaryLight] (c) at (1,-0.7) {3};
+\node[small vertex, fill=accentLight] (d) at (3,0.4) {4}; \node[small vertex, fill=accentLight] (e) at (4,0.4) {5}; \node[small vertex, fill=accentLight] (f) at (3.5,-0.5) {6};
+\draw (a) -- (b) -- (c) -- (a); \draw (d) -- (e) -- (f) -- (d);
+\node[lab, note, anchor=west, align=left] at (4.8,0.1) {$L\mathbf x=\mathbf 0$ for $\mathbf x=(1,1,1,0,0,0)$ (nodes 1--3)\\and for $(0,0,0,1,1,1)$ (nodes 4--6):\\two components, eigenvalue $0$ twice};
+\end{tikzpicture}
+\end{center}
+```
+
+A graph with two connected components. A vector that is constant on each component has zero energy, so the indicator vectors of the components span the nullspace of $L$.
 
 :::
 

@@ -13,6 +13,70 @@ Let a graph have $n$ nodes and $m$ edges, each edge given a direction. Its *inci
 
 :::
 
+::: {#fig-incidence-matrices-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.000,2.200) rectangle (0.550,2.750);
+\node[lab] at (0.275,2.475) {$-1$};
+\draw[cell frame] (0.550,2.200) rectangle (1.100,2.750);
+\node[lab] at (0.825,2.475) {$1$};
+\draw[cell frame] (1.100,2.200) rectangle (1.650,2.750);
+\node[lab] at (1.375,2.475) {$0$};
+\draw[cell frame] (1.650,2.200) rectangle (2.200,2.750);
+\node[lab] at (1.925,2.475) {$0$};
+\draw[cell frame] (0.000,1.650) rectangle (0.550,2.200);
+\node[lab] at (0.275,1.925) {$0$};
+\draw[cell, fill=primaryLight] (0.550,1.650) rectangle (1.100,2.200);
+\node[lab] at (0.825,1.925) {$-1$};
+\draw[cell frame] (1.100,1.650) rectangle (1.650,2.200);
+\node[lab] at (1.375,1.925) {$1$};
+\draw[cell frame] (1.650,1.650) rectangle (2.200,2.200);
+\node[lab] at (1.925,1.925) {$0$};
+\draw[hl cell] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$-1$};
+\draw[cell frame] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$0$};
+\draw[hl cell] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$1$};
+\draw[cell frame] (1.650,1.100) rectangle (2.200,1.650);
+\node[lab] at (1.925,1.375) {$0$};
+\draw[cell, fill=primaryLight] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$-1$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$0$};
+\draw[cell frame] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$0$};
+\draw[cell frame] (1.650,0.550) rectangle (2.200,1.100);
+\node[lab] at (1.925,0.825) {$1$};
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$0$};
+\draw[cell, fill=primaryLight] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$-1$};
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\node[lab] at (1.925,0.275) {$1$};
+\node[lab] at (0.275,2.95) {\scriptsize $1$};
+\node[lab] at (0.83,2.95) {\scriptsize $2$};
+\node[lab] at (1.375,2.95) {\scriptsize $3$};
+\node[lab] at (1.93,2.95) {\scriptsize $4$};
+\node[lab] at (-0.55,2.475) {\scriptsize $e_1$};
+\node[lab] at (-0.55,1.925) {\scriptsize $e_2$};
+\node[lab] at (-0.55,1.375) {\scriptsize $e_3$};
+\node[lab] at (-0.55,0.825) {\scriptsize $e_4$};
+\node[lab] at (-0.55,0.27) {\scriptsize $e_5$};
+\node[lab] at (1.1,3.3) {\scriptsize nodes};
+\node[lab, note, anchor=west, align=left] at (2.5,1.375) {row $3$ is edge $1\to3$:\\$-1$ at node $1$ (start),\\$+1$ at node $3$ (end)};
+\end{tikzpicture}
+\end{center}
+```
+
+The incidence matrix of @exm-incidence-matrix-four-nodes: one row per edge, one column per node. Every row has exactly one $-1$ and one $+1$, so the entries of each row add to zero.
+
+:::
+
 This is the transpose, with signs, of the incidence matrix of @def-incidence-matrix. The signs turn $A$ into a difference operator: if $\mathbf{x}$ assigns a *potential* $x_i$ to every node, then $(A\mathbf{x})_k=x_j-x_i$ is the potential difference across edge $k$.
 
 ::: {#exm-incidence-matrix-four-nodes .example name="Four nodes, five edges"}
@@ -20,6 +84,31 @@ This is the transpose, with signs, of the incidence matrix of @def-incidence-mat
 Edges $1\to2$, $2\to3$, $1\to3$, $1\to4$, $3\to4$ give
 $$A=\begin{bmatrix}-1&1&0&0\\0&-1&1&0\\-1&0&1&0\\-1&0&0&1\\0&0&-1&1\end{bmatrix}.$$
 $N(A)$ is the line through $(1,1,1,1)$; the rank is $3$. A basis of $N(A^{\mathsf T})$ is $(1,1,-1,0,0)$ (around the loop $1\to2\to3\to1$) and $(0,0,1,-1,1)$ (around $1\to3\to4\to1$).
+
+:::
+
+::: {#fig-incidence-matrices-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (0,0) -- (1.6,1.2) node[midway, edge label] {$1$};
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (1.6,1.2) -- (3.2,0) node[midway, edge label] {$2$};
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (0,0) -- (3.2,0) node[midway, edge label] {$3$};
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (0,0) -- (1.6,-1.2) node[midway, edge label] {$2$};
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (3.2,0) -- (1.6,-1.2) node[midway, edge label] {$-1$};
+\node[small vertex] at (0,0) {$0$};
+\node[small vertex] at (1.6,1.2) {$1$};
+\node[small vertex] at (3.2,0) {$3$};
+\node[small vertex] at (1.6,-1.2) {$2$};
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (3.8,0) {node labels: potentials $\mathbf x=(0,1,3,2)$\\edge labels: $A\mathbf x$, the potential\\differences $x_{\text{end}}-x_{\text{start}}$};
+\end{tikzpicture}
+\end{center}
+```
+
+What $A\mathbf x$ means for an incidence matrix. Row $k$ of $A$ has $-1$ at the start of edge $k$ and $+1$ at its end, so $(A\mathbf x)_k$ is the potential difference along edge $k$. Adding a constant to every potential does not change any difference, which is why $(1,1,1,1)$ spans $N(A)$.
 
 :::
 
@@ -65,6 +154,43 @@ Let $A$ be the incidence matrix of a connected directed graph with $n$ nodes and
 3. $A\mathbf{x}=\mathbf{e}$ is solvable iff $\mathbf{e}\in C(A)$, iff $\mathbf{e}$ is orthogonal to every vector of $N(A^{\mathsf T})$ (@thm-fundamental-theorem-orthogonality), iff the signed sum of $\mathbf{e}$ around every loop is $0$.
 
 4. A spanning tree has $n-1$ edges and no loop, so no combination of its rows vanishes (a vanishing combination would be a nonzero element of $N(A^{\mathsf T})$ supported on the tree, i.e. a flow without a loop, which is impossible: a leaf edge of the support would violate Kirchhoff's law at the leaf). So these $n-1=r$ rows are independent and form a basis.
+
+:::
+
+::: {#fig-incidence-matrices-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, hl, shorten >=8pt, shorten <=8pt] (0,0) -- (1.6,1.2) node[midway, edge label] {1};
+\draw[->, hl, shorten >=8pt, shorten <=8pt] (1.6,1.2) -- (3.2,0) node[midway, edge label] {2};
+\draw[->, hl, shorten >=8pt, shorten <=8pt] (0,0) -- (3.2,0) node[midway, edge label] {3};
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (0,0) -- (1.6,-1.2) node[midway, edge label] {4};
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (3.2,0) -- (1.6,-1.2) node[midway, edge label] {5};
+\node[small vertex] at (0,0) {1};
+\node[small vertex] at (1.6,1.2) {2};
+\node[small vertex] at (3.2,0) {3};
+\node[small vertex] at (1.6,-1.2) {4};
+\end{scope}
+\begin{scope}[shift={(4.6,0)}]
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (0,0) -- (1.6,1.2) node[midway, edge label] {1};
+\draw[->, emph, shorten >=8pt, shorten <=8pt] (1.6,1.2) -- (3.2,0) node[midway, edge label] {2};
+\draw[->, hl, shorten >=8pt, shorten <=8pt] (0,0) -- (3.2,0) node[midway, edge label] {3};
+\draw[->, hl, shorten >=8pt, shorten <=8pt] (0,0) -- (1.6,-1.2) node[midway, edge label] {4};
+\draw[->, hl, shorten >=8pt, shorten <=8pt] (3.2,0) -- (1.6,-1.2) node[midway, edge label] {5};
+\node[small vertex] at (0,0) {1};
+\node[small vertex] at (1.6,1.2) {2};
+\node[small vertex] at (3.2,0) {3};
+\node[small vertex] at (1.6,-1.2) {4};
+\end{scope}
+\node[lab, note, align=center] at (1.6,-1.85) {loop $1\to2\to3\to1$:\\$\mathbf y=(1,1,-1,0,0)$};
+\node[lab, note, align=center] at (6.2,-1.85) {loop $1\to3\to4\to1$:\\$\mathbf y=(0,0,1,-1,1)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The two independent loops of @exm-incidence-matrix-four-nodes, a basis of $N(A^{\mathsf T})$. An edge travelled along its arrow gets $+1$, against it $-1$ (edge $4$ in the second loop). With $4$ nodes, $5$ edges and $2$ independent loops, Euler's formula reads $4-5+2=1$.
 
 :::
 

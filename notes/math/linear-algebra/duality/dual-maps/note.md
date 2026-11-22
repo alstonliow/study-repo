@@ -50,6 +50,59 @@ $$[\alpha']_{\mathcal C^*,\mathcal B^*}=\big([\alpha]_{\mathcal B,\mathcal C}\bi
 
 :::
 
+::: {#fig-dual-maps-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$0$};
+\draw[cell, fill=primaryLight] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$1$};
+\draw[cell frame] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$0$};
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$0$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$0$};
+\draw[cell, fill=primaryLight] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$2$};
+\draw[cell frame] (0.000,-0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[cell frame] (0.550,-0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$0$};
+\draw[cell frame] (1.100,-0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$0$};
+\node[lab, note] at (0.825,-0.350) {$[D]$ on $1,t,t^2$};
+\draw[->] (1.9,0.825) -- (2.9,0.825) node[midway, above, lab, note] {${}^{\mathsf T}$};
+\draw[cell frame] (3.100,1.100) rectangle (3.650,1.650);
+\node[lab] at (3.375,1.375) {$0$};
+\draw[cell frame] (3.650,1.100) rectangle (4.200,1.650);
+\node[lab] at (3.925,1.375) {$0$};
+\draw[cell frame] (4.200,1.100) rectangle (4.750,1.650);
+\node[lab] at (4.475,1.375) {$0$};
+\draw[cell, fill=primaryLight] (3.100,0.550) rectangle (3.650,1.100);
+\node[lab] at (3.375,0.825) {$1$};
+\draw[cell frame] (3.650,0.550) rectangle (4.200,1.100);
+\node[lab] at (3.925,0.825) {$0$};
+\draw[cell frame] (4.200,0.550) rectangle (4.750,1.100);
+\node[lab] at (4.475,0.825) {$0$};
+\draw[cell frame] (3.100,-0.000) rectangle (3.650,0.550);
+\node[lab] at (3.375,0.275) {$0$};
+\draw[cell, fill=primaryLight] (3.650,-0.000) rectangle (4.200,0.550);
+\node[lab] at (3.925,0.275) {$2$};
+\draw[cell frame] (4.200,-0.000) rectangle (4.750,0.550);
+\node[lab] at (4.475,0.275) {$0$};
+\node[lab, note] at (3.925,-0.350) {$[D']$ on $\varepsilon_0,\varepsilon_1,\varepsilon_2$};
+\node[lab, note, anchor=west, align=left] at (5.1,0.825) {$D'\varepsilon_0=\varepsilon_0\circ D=\varepsilon_1$\\(the constant term of $p'$ is the\\$t$-coefficient of $p$);\\$D'\varepsilon_1=2\varepsilon_2$,\ \ $D'\varepsilon_2=0$};
+\end{tikzpicture}
+\end{center}
+```
+
+The matrix of the dual map in the dual bases is the transpose, for differentiation on $F[t]_{\le2}$ (@exm-dual-map). For example $\varepsilon_2\circ D$ reads the coefficient of $t^2$ in $p'$, which is $0$, so the last column of $[D']$ is zero.
+
+:::
+
 ::: {#thm-dual-map-kernel-image .theorem name="Kernel and image of the dual map"}
 
 Let $\alpha:V\to W$ be linear with $V,W$ finite-dimensional. Then
@@ -71,6 +124,28 @@ Let $\alpha:V\to W$ be linear with $V,W$ finite-dimensional. Then
 
 :::
 
+::: {#fig-dual-maps-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (V) at (0,1.4) {$V$};
+\node[box] (W) at (3.2,1.4) {$W$};
+\node[box] (Ws) at (3.2,0) {$W^*$};
+\node[box] (Vs) at (0,0) {$V^*$};
+\draw[->, emph] (V) -- (W) node[midway, above, lab] {$\alpha$};
+\draw[->, emph, accent] (Ws) -- (Vs) node[midway, below, lab] {$\alpha'$};
+\node[lab, note, anchor=west, align=left] at (4.0,1.4) {$\operatorname{im}\alpha\subseteq W$};
+\node[lab, note, anchor=west, align=left] at (4.0,0) {$\ker\alpha'=\{\theta:\theta\circ\alpha=0\}=(\operatorname{im}\alpha)^0$};
+\node[lab, note, anchor=west, align=left] at (4.0,-0.6) {$\operatorname{im}\alpha'=(\ker\alpha)^0\subseteq V^*$};
+\end{tikzpicture}
+\end{center}
+```
+
+A functional on $W$ is killed by $\alpha'$ exactly when it vanishes on everything $\alpha$ hits. Kernel and image swap roles between $\alpha$ and $\alpha'$, each turned into an annihilator.
+
+:::
+
 ::: {#thm-dual-map-rank .theorem name="A map and its dual have the same rank" related="thm-row-rank-equals-column-rank"}
 
 $r(\alpha')=r(\alpha)$. In matrix form, $r(A^{\mathsf T})=r(A)$: row rank equals column rank.
@@ -89,6 +164,24 @@ $r(\alpha')=r(\alpha)$. In matrix form, $r(A^{\mathsf T})=r(A)$: row rank equals
 
 The *double dual* of $V$ is $V^{**}=(V^*)^*$. The *evaluation map* is
 $$\operatorname{ev}:V\to V^{**},\qquad \operatorname{ev}(v)(\theta)=\theta(v).$$
+
+:::
+
+::: {#fig-dual-maps-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (V) at (0,0) {$V$};
+\node[box] (Vss) at (3.6,0) {$V^{**}$};
+\draw[->, emph] (V) -- (Vss) node[midway, above, lab] {$\operatorname{ev}$};
+\node[lab, note, anchor=west, align=left] at (4.4,0) {$\operatorname{ev}(v)$ is the functional on $V^*$\\$\theta\mapsto\theta(v)$: \emph{evaluate at $v$}};
+\node[lab, note, align=center] at (1.8,-0.9) {no basis chosen; an isomorphism when $\dim V<\infty$};
+\end{tikzpicture}
+\end{center}
+```
+
+The evaluation map. A vector $v$ gives a functional on functionals by evaluating them at $v$. Since its definition uses no basis, $V\cong V^{**}$ is called canonical, unlike $V\cong V^*$.
 
 :::
 

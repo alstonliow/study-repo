@@ -17,6 +17,22 @@ Its matrix in bases $e_i$, $f_j$ is $A$ with $a_{ij}=\phi(e_i,f_j)$. A sesquilin
 
 :::
 
+::: {#fig-hermitian-forms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (a) at (0,0) {$\phi(\lambda z,w)=\lambda\,\phi(z,w)$}; \node[lab, note, below] at (0,-0.4) {linear in the first slot};
+\node[hl box] (b) at (5.2,0) {$\phi(z,\lambda w)=\bar\lambda\,\phi(z,w)$}; \node[lab, note, below] at (5.2,-0.4) {conjugate-linear in the second};
+\node[lab, anchor=west, align=left] at (-1.6,-1.3) {then $\phi(z,z)$ is unchanged by $z\mapsto\lambda z$ with $\lvert\lambda\rvert=1$: $\lambda\bar\lambda=1$, so a Hermitian $\phi(z,z)$ can be real};
+\end{tikzpicture}
+\end{center}
+```
+
+Sesquilinear means one and a half times linear. Conjugating in the second argument is what lets $\phi(z,z)$ measure a size, as $\lvert z\rvert^2=z\bar z$ does for one complex number.
+
+:::
+
 ::: {#fig-hermitian-forms-1}
 
 ```{=latex}
@@ -85,6 +101,25 @@ $$\phi(u,v)=\tfrac14\big(\phi(u+v,u+v)-\phi(u-v,u-v)+i\,\phi(u+iv,u+iv)-i\,\phi(
 
 :::
 
+::: {#fig-hermitian-forms-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0,0) circle[radius=1];
+\draw[->, muted] (-1.15,0) -- (1.15,0); \draw[->, muted] (0,-1.15) -- (0,1.15);
+\fill[primary] (1,0) circle[pt] node[anchor=west, lab, note, primary] {$+\frac14\,\phi(u+v,u+v)$};
+\fill[accent] (-1,0) circle[pt] node[anchor=east, lab, note, accent] {$-\frac14\,\phi(u-v,u-v)$};
+\fill[secondary] (0,1) circle[pt] node[anchor=south, lab, note, secondary] {$+\frac i4\,\phi(u+iv,u+iv)$};
+\fill[muted] (0,-1) circle[pt] node[anchor=north, lab, note, muted] {$-\frac i4\,\phi(u-iv,u-iv)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The polarization formula samples $\phi(u+cv,u+cv)$ at the four units $c=1,i,-1,-i$ and weights each value by $c$. The cross terms $\bar c\,\phi(u,v)$ add up, the other terms cancel, leaving $\phi(u,v)$.
+
+:::
+
 ::: {#thm-sylvester-hermitian .theorem name="Sylvester's law for Hermitian forms" generalizes="thm-sylvester-law-of-inertia"}
 
 Let $\phi$ be a Hermitian form on an $n$-dimensional complex vector space. There is a basis in which $[\phi]=\operatorname{diag}(I_p,-I_q,0)$, and $p$ and $q$ do not depend on the basis: $p$ is the largest dimension of a subspace on which $\phi$ is positive definite, and $q$ likewise for negative definite.
@@ -98,6 +133,53 @@ Let $\phi$ be a Hermitian form on an $n$-dimensional complex vector space. There
 2. $U=\{u:\phi(u,e_1)=0\}$ is the kernel of the non-zero linear functional $u\mapsto\phi(u,e_1)$, so $\dim U=n-1$ and $V=\langle e_1\rangle\oplus U$, as in @thm-symmetric-form-diagonalizable. By induction $\phi|_U$ has a basis of the required form, and $\phi(e_j,e_1)=0=\overline{\phi(e_1,e_j)}$ for $e_j\in U$. Reorder to get $\operatorname{diag}(I_p,-I_q,0)$.
 
 3. Uniqueness of $p$ and $q$ is the proof of @thm-sylvester-law-of-inertia word for word: a positive definite subspace meets $\langle e_{p+1},\dots,e_n\rangle$ only in $0$.
+
+:::
+
+::: {#fig-hermitian-forms-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.000,2.200) rectangle (0.550,2.750);
+\node[lab] at (0.275,2.475) {$1$};
+\draw[cell frame] (0.550,2.200) rectangle (1.100,2.750);
+\draw[cell frame] (1.100,2.200) rectangle (1.650,2.750);
+\draw[cell frame] (1.650,2.200) rectangle (2.200,2.750);
+\draw[cell frame] (2.200,2.200) rectangle (2.750,2.750);
+\draw[cell frame] (0.000,1.650) rectangle (0.550,2.200);
+\draw[cell, fill=primaryLight] (0.550,1.650) rectangle (1.100,2.200);
+\node[lab] at (0.825,1.925) {$1$};
+\draw[cell frame] (1.100,1.650) rectangle (1.650,2.200);
+\draw[cell frame] (1.650,1.650) rectangle (2.200,2.200);
+\draw[cell frame] (2.200,1.650) rectangle (2.750,2.200);
+\draw[cell frame] (0.000,1.100) rectangle (0.550,1.650);
+\draw[cell frame] (0.550,1.100) rectangle (1.100,1.650);
+\draw[hl cell] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$-1$};
+\draw[cell frame] (1.650,1.100) rectangle (2.200,1.650);
+\draw[cell frame] (2.200,1.100) rectangle (2.750,1.650);
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\draw[cell frame] (1.100,0.550) rectangle (1.650,1.100);
+\draw[cell frame] (1.650,0.550) rectangle (2.200,1.100);
+\node[lab] at (1.925,0.825) {$0$};
+\draw[cell frame] (2.200,0.550) rectangle (2.750,1.100);
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\draw[cell frame] (1.650,0.000) rectangle (2.200,0.550);
+\draw[cell frame] (2.200,0.000) rectangle (2.750,0.550);
+\node[lab] at (2.475,0.275) {$0$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (0,2.85) -- (1.1,2.85) node[midway, above=3pt, lab, tick] {$p$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (1.1,2.85) -- (1.65,2.85) node[midway, above=3pt, lab, tick] {$q$};
+\draw[decorate, decoration={brace, amplitude=3pt}] (1.65,2.85) -- (2.75,2.85) node[midway, above=3pt, lab, tick] {$n-p-q$};
+\node[lab, note, anchor=west, align=left] at (3.2,1.4) {Hermitian forms: the same normal form;\\the diagonal entries $\phi(v_i,v_i)$ are real,\\and $p$, $q$ do not depend on the basis};
+\end{tikzpicture}
+\end{center}
+```
+
+The normal form of a Hermitian form on $\mathbb C^5$ with $p=2$, $q=1$: $\operatorname{diag}(1,\dots,1,-1,\dots,-1,0,\dots,0)$, exactly as for real symmetric forms.
 
 :::
 

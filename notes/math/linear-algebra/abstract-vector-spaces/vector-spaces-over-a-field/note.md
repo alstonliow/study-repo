@@ -16,6 +16,27 @@ $$\lambda(\mu v)=(\lambda\mu)v,\qquad \lambda(u+v)=\lambda u+\lambda v,\qquad (\
 
 :::
 
+::: {#fig-vector-spaces-over-a-field-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.6,0) -- (1.7,0);
+\draw[->, muted] (0,-1.6) -- (0,1.7);
+\fill[primary] (1,0) circle[pt] node[below, lab] {$1$}; \fill[accent] (0,1) circle[pt] node[left, lab] {$i$};
+\draw[->, emph, ink] (0,0) -- (1.2,0.8) node[right, lab] {$z=a+bi$};
+\draw[faint, dashed] (1.2,0) -- (1.2,0.8) -- (0,0.8);
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (2.2,0.3) {over $\mathbb R$: basis $1,i$, dimension $2$\\over $\mathbb C$: basis $1$, dimension $1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The same set $\mathbb C$ is a vector space over two fields. With real scalars it is the plane with basis $1,i$; with complex scalars every non-zero number spans everything. The field is part of the structure.
+
+:::
+
 ::: {#prp-vector-space-zero-rules .proposition name="Zero and negatives"}
 
 In every $F$-vector space, $0v=0$, $\lambda0=0$ and $(-1)v=-v$ for all $v\in V$, $\lambda\in F$.
@@ -38,6 +59,40 @@ In every $F$-vector space, $0v=0$, $\lambda0=0$ and $(-1)v=-v$ for all $v\in V$,
 2. For any set $X$, the functions $X\to F$ form a vector space $F^X$ under pointwise operations. With $X=\{1,\dots,n\}$ this is $F^n$; with $X=\mathbb N$ it is the space of sequences.
 3. The polynomials $F[t]$ with coefficients in $F$, and the matrices $\operatorname{Mat}_{m,n}(F)$.
 4. $\mathbb C$ is a $\mathbb C$-vector space and also an $\mathbb R$-vector space; $\mathbb R$ is a $\mathbb Q$-vector space. The field of scalars is part of the structure.
+
+:::
+
+::: {#fig-vector-spaces-over-a-field-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[faint] (0.0,0.0) -- (1.0,0.7);
+\draw[faint] (0.0,0.0) -- (0.0,2.0);
+\draw[faint] (0.0,0.0) -- (2.2,0.0);
+\draw[faint] (1.0,0.7) -- (1.0,2.7);
+\draw[faint] (1.0,0.7) -- (3.2,0.7);
+\draw[faint] (0.0,2.0) -- (1.0,2.7);
+\draw[faint] (0.0,2.0) -- (2.2,2.0);
+\draw[faint] (1.0,2.7) -- (3.2,2.7);
+\draw[faint] (2.2,0.0) -- (3.2,0.7);
+\draw[faint] (2.2,0.0) -- (2.2,2.0);
+\draw[faint] (3.2,0.7) -- (3.2,2.7);
+\draw[faint] (2.2,2.0) -- (3.2,2.7);
+\node[hl dot] at (0.0,0.0) {}; \node[lab, tick, above right] at (0.0,0.0) {000};
+\node[dot] at (1.0,0.7) {}; \node[lab, tick, above right] at (1.0,0.7) {001};
+\node[dot] at (0.0,2.0) {}; \node[lab, tick, above right] at (0.0,2.0) {010};
+\node[hl dot] at (1.0,2.7) {}; \node[lab, tick, above right] at (1.0,2.7) {011};
+\node[dot] at (2.2,0.0) {}; \node[lab, tick, above right] at (2.2,0.0) {100};
+\node[hl dot] at (3.2,0.7) {}; \node[lab, tick, above right] at (3.2,0.7) {101};
+\node[hl dot] at (2.2,2.0) {}; \node[lab, tick, above right] at (2.2,2.0) {110};
+\node[dot] at (3.2,2.7) {}; \node[lab, tick, above right] at (3.2,2.7) {111};
+\node[lab, note, anchor=west, align=left] at (4.0,1.3) {$\mathbb F_2^3$: $8$ vectors, addition is XOR,\\e.g. $110+011=101$;\\highlighted: the subspace $\{\mathbf x: x_1+x_2+x_3=0\}$\\of $4$ vectors (even weight)};
+\end{tikzpicture}
+\end{center}
+```
+
+Item 1 of @exm-vector-spaces-over-fields for $F=\mathbb F_2$, $n=3$: the vectors are the corners of a cube. The highlighted corners are closed under XOR, so they form a subspace; it has dimension $2$ and $2^2=4$ elements.
 
 :::
 
@@ -66,6 +121,30 @@ If $U,W\le V$, then $U\cap W$ and $U+W$ are subspaces of $V$. $U+W$ is the small
 
 :::
 
+::: {#fig-vector-spaces-over-a-field-5}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.6,0) -- (1.7,0);
+\draw[->, muted] (0,-1.6) -- (0,1.7);
+\draw[emph, primary] (-1.5,-0.75) -- (1.5,0.75) node[right, lab, note] {$U$};
+\draw[emph, secondary] (-0.6,-1.5) -- (0.6,1.5) node[above, lab, note] {$W$};
+\draw[->, emph, primary] (0,0) -- (1.0,0.5) node[above, lab] {};
+\draw[->, emph, secondary] (0,0) -- (0.4,1.0) node[above, lab] {};
+\draw[->, emph, accent] (0,0) -- (1.4,1.5) node[right, lab] {$u+w\in U+W$};
+\draw[faint, dashed] (1,0.5) -- (1.4,1.5) -- (0.4,1);
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (2.3,0.2) {$U\cup W$ (two lines) is not closed under $+$;\\the smallest subspace containing both\\is $U+W$, here the whole plane};
+\end{tikzpicture}
+\end{center}
+```
+
+Sum versus union of two subspaces. The sum $U+W$ consists of all $u+w$; it is a subspace, while the union is only a subspace when one of $U,W$ contains the other.
+
+:::
+
 The union of two subspaces is usually not a subspace: in $\mathbb R^2$ the two axes are subspaces, but $(1,0)+(0,1)$ lies on neither.
 
 ::: {#def-quotient-space .definition name="Quotient space"}
@@ -88,6 +167,31 @@ The operations on $V/U$ are well defined, and make $V/U$ an $F$-vector space wit
 2. If $v+U=v'+U$ and $w+U=w'+U$, then $(v+w)-(v'+w')=(v-v')+(w-w')\in U$ and $\lambda v-\lambda v'=\lambda(v-v')\in U$. So sums and multiples do not depend on the representatives.
 
 3. Each axiom of @def-vector-space-over-field for $V/U$ follows from the same axiom in $V$ applied to representatives.
+
+:::
+
+::: {#fig-vector-spaces-over-a-field-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.8,0) -- (1.9,0);
+\draw[->, muted] (0,-1.8) -- (0,1.9);
+\draw[faint] (-1.7,0) -- (1.7,0);
+\draw[emph, primary] (-1.7,0.6) -- (1.7,0.6);
+\draw[emph, secondary] (-1.7,1.1) -- (1.7,1.1);
+\draw[emph, accent] (-1.7,1.7) -- (1.7,1.7);
+\fill[primary] (-1.0,0.6) circle[pt] node[below, lab, tick] {$v$}; \fill[secondary] (0.4,1.1) circle[pt] node[below, lab, tick] {$w$}; \fill[accent] (-0.6,1.7) circle[pt] node[below, lab, tick] {$v+w$};
+\node[lab, note, primary, anchor=west] at (1.8,0.6) {$v+U$}; \node[lab, note, secondary, anchor=west] at (1.8,1.1) {$w+U$}; \node[lab, note, accent, anchor=west] at (1.8,1.7) {$(v+w)+U$};
+\node[lab, note, anchor=west] at (1.8,0) {$U$}; 
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (4.2,0.6) {any point of $v+U$ plus any point\\of $w+U$ lands on $(v+w)+U$,\\so adding cosets is well defined};
+\end{tikzpicture}
+\end{center}
+```
+
+Addition in $V/U$ for $V=\mathbb R^2$ and $U$ the horizontal axis. Moving $v$ or $w$ inside its coset changes the sum only by an element of $U$, which keeps it on the same coset.
 
 :::
 

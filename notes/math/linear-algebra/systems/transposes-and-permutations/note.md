@@ -54,9 +54,69 @@ Also $(A\mathbf{x})\cdot\mathbf{y}=\mathbf{x}\cdot(A^{\mathsf T}\mathbf{y})$.
 
 :::
 
+::: {#fig-transposes-and-permutations-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0,0) rectangle (1.4,-0.8); \node[lab] at (0.7,-0.4) {$AB$};
+\node[lab, tick] at (0.7,-1.05) {$m\times p$};
+\draw[->] (1.6,-0.4) -- (2.3,-0.4) node[midway, above, lab, note] {${}^{\mathsf T}$};
+\draw[hl cell] (2.5,0) rectangle (3.3,-1.4); \node[lab] at (2.9,-0.7) {\scriptsize$(AB)^{\mathsf T}$};
+\node[lab, tick] at (2.9,-1.65) {$p\times m$};
+\node[lab] at (3.6,-0.7) {$=$};
+\draw[cell frame] (3.9,0) rectangle (5.7,-1.4); \node[lab] at (4.8,-0.7) {$B^{\mathsf T}$};
+\node[lab, tick] at (4.8,-1.65) {$p\times n$};
+\draw[cell frame] (5.9,0) rectangle (6.7,-1.8); \node[lab] at (6.30,-0.9) {$A^{\mathsf T}$};
+\node[lab, tick] at (6.3,-2.05) {$n\times m$};
+\end{tikzpicture}
+\end{center}
+```
+
+Why the order reverses in $(AB)^{\mathsf T}=B^{\mathsf T}A^{\mathsf T}$: with $A$ of size $m\times n$ and $B$ of size $n\times p$, the shapes only fit in that order. The product $A^{\mathsf T}B^{\mathsf T}$ would need $m=p$.
+
+:::
+
 ::: {#def-symmetric-matrix .definition name="Symmetric matrix"}
 
 A square matrix $S$ is *symmetric* if $S^{\mathsf T}=S$, that is $s_{ij}=s_{ji}$ for all $i,j$.
+
+:::
+
+::: {#fig-transposes-and-permutations-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$1$};
+\draw[cell, fill=primaryLight] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$2$};
+\draw[cell frame] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$3$};
+\draw[cell, fill=primaryLight] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$2$};
+\draw[hl cell] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$4$};
+\draw[cell frame] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$5$};
+\draw[cell frame] (0.000,-0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$3$};
+\draw[cell frame] (0.550,-0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$5$};
+\draw[hl cell] (1.100,-0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$6$};
+\draw[cell, fill=secondarySoft] (1.1,1.65) rectangle (1.65,1.1); \node[lab] at (1.375,1.375) {$3$};
+\draw[cell, fill=secondarySoft] (0,0.55) rectangle (0.55,0); \node[lab] at (0.275,0.275) {$3$};
+\draw[cell, fill=accentSoft] (1.1,1.1) rectangle (1.65,0.55); \node[lab] at (1.375,0.825) {$5$};
+\draw[cell, fill=accentSoft] (0.55,0.55) rectangle (1.1,0); \node[lab] at (0.825,0.275) {$5$};
+\draw[dashed, faint] (-0.2,1.85) -- (1.85,-0.2);
+\node[lab, note, anchor=west, align=left] at (2.2,0.825) {$s_{ij}=s_{ji}$:\\mirror image in\\the main diagonal};
+\end{tikzpicture}
+\end{center}
+```
+
+A symmetric matrix equals its transpose: entries in mirror positions across the main diagonal (same shade) are equal, and the diagonal (highlighted) is free.
 
 :::
 
@@ -115,5 +175,96 @@ Every permutation matrix satisfies $P^{\mathsf T}P=I$, so $P^{-1}=P^{\mathsf T}$
 Besides $I$ there are the three row exchanges $P_{12},P_{13},P_{23}$ and the two cyclic shifts
 $$\begin{bmatrix}0&1&0\\0&0&1\\1&0&0\end{bmatrix},\qquad\begin{bmatrix}0&0&1\\1&0&0\\0&1&0\end{bmatrix},$$
 which are inverse to each other (and transposes of each other).
+
+:::
+
+::: {#fig-transposes-and-permutations-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,0.800) rectangle (0.400,1.200);
+\node[lab] at (0.200,1.000) {$1$};
+\draw[cell frame] (0.400,0.800) rectangle (0.800,1.200);
+\draw[cell frame] (0.800,0.800) rectangle (1.200,1.200);
+\draw[cell frame] (0.000,0.400) rectangle (0.400,0.800);
+\draw[hl cell] (0.400,0.400) rectangle (0.800,0.800);
+\node[lab] at (0.600,0.600) {$1$};
+\draw[cell frame] (0.800,0.400) rectangle (1.200,0.800);
+\draw[cell frame] (0.000,-0.000) rectangle (0.400,0.400);
+\draw[cell frame] (0.400,-0.000) rectangle (0.800,0.400);
+\draw[hl cell] (0.800,-0.000) rectangle (1.200,0.400);
+\node[lab] at (1.000,0.200) {$1$};
+\node[lab, note] at (0.600,-0.300) {$I$};
+\draw[cell frame] (2.000,0.800) rectangle (2.400,1.200);
+\draw[hl cell] (2.400,0.800) rectangle (2.800,1.200);
+\node[lab] at (2.600,1.000) {$1$};
+\draw[cell frame] (2.800,0.800) rectangle (3.200,1.200);
+\draw[hl cell] (2.000,0.400) rectangle (2.400,0.800);
+\node[lab] at (2.200,0.600) {$1$};
+\draw[cell frame] (2.400,0.400) rectangle (2.800,0.800);
+\draw[cell frame] (2.800,0.400) rectangle (3.200,0.800);
+\draw[cell frame] (2.000,-0.000) rectangle (2.400,0.400);
+\draw[cell frame] (2.400,-0.000) rectangle (2.800,0.400);
+\draw[hl cell] (2.800,-0.000) rectangle (3.200,0.400);
+\node[lab] at (3.000,0.200) {$1$};
+\node[lab, note] at (2.600,-0.300) {$P_{12}$};
+\draw[cell frame] (4.000,0.800) rectangle (4.400,1.200);
+\draw[cell frame] (4.400,0.800) rectangle (4.800,1.200);
+\draw[hl cell] (4.800,0.800) rectangle (5.200,1.200);
+\node[lab] at (5.000,1.000) {$1$};
+\draw[cell frame] (4.000,0.400) rectangle (4.400,0.800);
+\draw[hl cell] (4.400,0.400) rectangle (4.800,0.800);
+\node[lab] at (4.600,0.600) {$1$};
+\draw[cell frame] (4.800,0.400) rectangle (5.200,0.800);
+\draw[hl cell] (4.000,-0.000) rectangle (4.400,0.400);
+\node[lab] at (4.200,0.200) {$1$};
+\draw[cell frame] (4.400,-0.000) rectangle (4.800,0.400);
+\draw[cell frame] (4.800,-0.000) rectangle (5.200,0.400);
+\node[lab, note] at (4.600,-0.300) {$P_{13}$};
+\draw[hl cell] (6.000,0.800) rectangle (6.400,1.200);
+\node[lab] at (6.200,1.000) {$1$};
+\draw[cell frame] (6.400,0.800) rectangle (6.800,1.200);
+\draw[cell frame] (6.800,0.800) rectangle (7.200,1.200);
+\draw[cell frame] (6.000,0.400) rectangle (6.400,0.800);
+\draw[cell frame] (6.400,0.400) rectangle (6.800,0.800);
+\draw[hl cell] (6.800,0.400) rectangle (7.200,0.800);
+\node[lab] at (7.000,0.600) {$1$};
+\draw[cell frame] (6.000,-0.000) rectangle (6.400,0.400);
+\draw[hl cell] (6.400,-0.000) rectangle (6.800,0.400);
+\node[lab] at (6.600,0.200) {$1$};
+\draw[cell frame] (6.800,-0.000) rectangle (7.200,0.400);
+\node[lab, note] at (6.600,-0.300) {$P_{23}$};
+\draw[cell frame] (8.000,0.800) rectangle (8.400,1.200);
+\draw[hl cell] (8.400,0.800) rectangle (8.800,1.200);
+\node[lab] at (8.600,1.000) {$1$};
+\draw[cell frame] (8.800,0.800) rectangle (9.200,1.200);
+\draw[cell frame] (8.000,0.400) rectangle (8.400,0.800);
+\draw[cell frame] (8.400,0.400) rectangle (8.800,0.800);
+\draw[hl cell] (8.800,0.400) rectangle (9.200,0.800);
+\node[lab] at (9.000,0.600) {$1$};
+\draw[hl cell] (8.000,-0.000) rectangle (8.400,0.400);
+\node[lab] at (8.200,0.200) {$1$};
+\draw[cell frame] (8.400,-0.000) rectangle (8.800,0.400);
+\draw[cell frame] (8.800,-0.000) rectangle (9.200,0.400);
+\node[lab, note] at (8.600,-0.300) {shift};
+\draw[cell frame] (10.000,0.800) rectangle (10.400,1.200);
+\draw[cell frame] (10.400,0.800) rectangle (10.800,1.200);
+\draw[hl cell] (10.800,0.800) rectangle (11.200,1.200);
+\node[lab] at (11.000,1.000) {$1$};
+\draw[hl cell] (10.000,0.400) rectangle (10.400,0.800);
+\node[lab] at (10.200,0.600) {$1$};
+\draw[cell frame] (10.400,0.400) rectangle (10.800,0.800);
+\draw[cell frame] (10.800,0.400) rectangle (11.200,0.800);
+\draw[cell frame] (10.000,-0.000) rectangle (10.400,0.400);
+\draw[hl cell] (10.400,-0.000) rectangle (10.800,0.400);
+\node[lab] at (10.600,0.200) {$1$};
+\draw[cell frame] (10.800,-0.000) rectangle (11.200,0.400);
+\node[lab, note] at (10.600,-0.300) {shift back};
+\end{tikzpicture}
+\end{center}
+```
+
+The six $3\times3$ permutation matrices: one $1$ (highlighted) in every row and every column. Row $i$ of $PA$ is the row of $A$ picked out by the $1$ in row $i$ of $P$; the last two are the cyclic shifts of @exm-three-by-three-permutation-matrices.
 
 :::

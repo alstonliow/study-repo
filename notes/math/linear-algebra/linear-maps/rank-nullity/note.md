@@ -25,6 +25,26 @@ is a well-defined isomorphism (@def-quotient-space).
 
 :::
 
+::: {#fig-rank-nullity-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (U) at (0,1.5) {$U$};
+\node[box] (I) at (4,1.5) {$\operatorname{im}\alpha$};
+\node[box] (Q) at (0,0) {$U/\ker\alpha$};
+\draw[->, emph] (U) -- (I) node[midway, above, lab] {$\alpha$};
+\draw[->, emph] (U) -- (Q) node[midway, left, lab] {$\pi$};
+\draw[->, emph, accent] (Q) -- node[below right, lab] {$\bar\alpha$, an isomorphism} (I);
+\node[lab, note, anchor=west, align=left] at (5.0,0.8) {$\pi(u)=u+\ker\alpha$ forgets the part\\that $\alpha$ ignores; what is left maps\\one-to-one onto the image};
+\end{tikzpicture}
+\end{center}
+```
+
+The first isomorphism theorem as a triangle: $\alpha=\bar\alpha\circ\pi$. Taking dimensions, $\dim U-\dim\ker\alpha=\dim\operatorname{im}\alpha$, which is rank–nullity.
+
+:::
+
 ::: {#def-rank-nullity .definition name="Rank and nullity"}
 
 For a linear map $\alpha:U\to V$ with $U$ finite-dimensional, the *rank* is $r(\alpha)=\dim\operatorname{im}\alpha$ and the *nullity* is $n(\alpha)=\dim\ker\alpha$.
@@ -89,6 +109,36 @@ Let $\alpha:U\to V$ be linear with $\dim U=\dim V<\infty$. Then $\alpha$ is inje
 
 :::
 
+::: {#fig-rank-nullity-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=accentLight] (0.00,0.00) rectangle (0.75,0.45);
+\draw[cell, fill=accentLight] (0.75,0.00) rectangle (1.50,0.45);
+\node[lab, tick] at (0.75,-0.22) {$\ker$};
+\draw[cell, fill=primaryLight] (1.50,0.00) rectangle (2.25,0.45);
+\draw[cell, fill=primaryLight] (2.25,0.00) rectangle (3.00,0.45);
+\draw[cell, fill=primaryLight] (3.00,0.00) rectangle (3.75,0.45);
+\node[lab, tick] at (2.62,-0.22) {rank};
+\node[lab, anchor=east] at (-0.10,0.23) {$\dim U=5$};
+\draw[cell, fill=primaryLight] (0.00,-1.00) rectangle (0.75,-0.55);
+\draw[cell, fill=primaryLight] (0.75,-1.00) rectangle (1.50,-0.55);
+\draw[cell, fill=primaryLight] (1.50,-1.00) rectangle (2.25,-0.55);
+\node[lab, tick] at (1.12,-1.22) {$\operatorname{im}$};
+\draw[cell frame] (2.25,-1.00) rectangle (3.00,-0.55);
+\draw[cell frame] (3.00,-1.00) rectangle (3.75,-0.55);
+\node[lab, tick] at (3.00,-1.22) {missed};
+\node[lab, anchor=east] at (-0.10,-0.78) {$\dim V=5$};
+\node[lab, note, anchor=west, align=left] at (4.1,-0.3) {same dimension: nullity $=\dim V-$rank,\\so $\ker=0\iff\operatorname{im}=V$};
+\end{tikzpicture}
+\end{center}
+```
+
+When $\dim U=\dim V$, the part of $U$ that the map kills has the same size as the part of $V$ it misses. One is zero exactly when the other is, so injective, surjective and bijective agree.
+
+:::
+
 The shifts on sequences (@exm-linear-maps-abstract) show that the corollary fails in infinite dimensions.
 
 ::: {#cor-invertible-matrix-conditions .corollary name="One-sided inverses of square matrices"}
@@ -110,5 +160,43 @@ For $A\in\operatorname{Mat}_n(F)$ the following are equivalent: $A$ is invertibl
 ::: {#exm-rank-nullity .example name="Rank–nullity for the trace"}
 
 The trace $\operatorname{tr}:\operatorname{Mat}_n(F)\to F$ is linear and non-zero, so its image is $F$ and $r=1$. Hence the matrices of trace zero form a subspace of dimension $n^2-1$. For $n=2$ a basis is $\begin{bmatrix}1&0\\0&-1\end{bmatrix},\begin{bmatrix}0&1\\0&0\end{bmatrix},\begin{bmatrix}0&0\\1&0\end{bmatrix}$.
+
+:::
+
+::: {#fig-rank-nullity-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$0$};
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[hl cell] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$-1$};
+\draw[cell frame] (1.600,0.550) rectangle (2.150,1.100);
+\node[lab] at (1.875,0.825) {$0$};
+\draw[cell, fill=primaryLight] (2.150,0.550) rectangle (2.700,1.100);
+\node[lab] at (2.425,0.825) {$1$};
+\draw[cell frame] (1.600,0.000) rectangle (2.150,0.550);
+\node[lab] at (1.875,0.275) {$0$};
+\draw[cell frame] (2.150,0.000) rectangle (2.700,0.550);
+\node[lab] at (2.425,0.275) {$0$};
+\draw[cell frame] (3.200,0.550) rectangle (3.750,1.100);
+\node[lab] at (3.475,0.825) {$0$};
+\draw[cell frame] (3.750,0.550) rectangle (4.300,1.100);
+\node[lab] at (4.025,0.825) {$0$};
+\draw[cell, fill=primaryLight] (3.200,0.000) rectangle (3.750,0.550);
+\node[lab] at (3.475,0.275) {$1$};
+\draw[cell frame] (3.750,0.000) rectangle (4.300,0.550);
+\node[lab] at (4.025,0.275) {$0$};
+\node[lab, note, anchor=west, align=left] at (4.6,0.55) {a basis of $\ker\operatorname{tr}$ in $\operatorname{Mat}_2$:\\$\dim=4-1=3$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-rank-nullity for $n=2$: the trace-zero matrices. The trace has rank $1$, so its kernel has dimension $n^2-1=3$; the highlighted diagonals add to zero.
 
 :::

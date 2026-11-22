@@ -37,6 +37,37 @@ $$
 
 :::
 
+::: {#fig-matrix-derivatives-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,1.000) rectangle (1.000,2.000);
+\node[lab] at (0.500,1.500) {$\frac{\partial f}{\partial A_{11}}$};
+\draw[cell frame] (1.000,1.000) rectangle (2.000,2.000);
+\node[lab] at (1.500,1.500) {$\frac{\partial f}{\partial A_{12}}$};
+\draw[cell frame] (0.000,0.000) rectangle (1.000,1.000);
+\node[lab] at (0.500,0.500) {$\frac{\partial f}{\partial A_{21}}$};
+\draw[cell frame] (1.000,0.000) rectangle (2.000,1.000);
+\node[lab] at (1.500,0.500) {$\frac{\partial f}{\partial A_{22}}$};
+\node[lab] at (2.3,1.0) {$=$};
+\draw[cell, fill=primaryLight] (2.600,1.000) rectangle (3.600,2.000);
+\node[lab] at (3.100,1.500) {$\frac32$};
+\draw[cell, fill=primaryLight] (3.600,1.000) rectangle (4.600,2.000);
+\node[lab] at (4.100,1.500) {$10A_{12}$};
+\draw[cell, fill=primaryLight] (2.600,0.000) rectangle (3.600,1.000);
+\node[lab] at (3.100,0.500) {$A_{22}$};
+\draw[cell, fill=primaryLight] (3.600,0.000) rectangle (4.600,1.000);
+\node[lab] at (4.100,0.500) {$A_{21}$};
+\node[lab, note, anchor=west] at (4.9,1.0) {$f=\tfrac32A_{11}+5A_{12}^2+A_{21}A_{22}$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-matrix-gradient-1 entry by entry: each entry of the gradient is the partial derivative of $f$ with respect to the matching entry of $A$.
+
+:::
+
 ::: {#fig-matrix-derivatives-1}
 
 ```{=latex}
@@ -113,6 +144,28 @@ $$
 $$
 
 Setting it to zero gives the normal equations $X^{\mathsf T}X\boldsymbol\theta=X^{\mathsf T}\mathbf{y}$ of @thm-least-squares-normal-equations, and when $X^{\mathsf T}X$ is invertible the minimizer is $\boldsymbol\theta=(X^{\mathsf T}X)^{-1}X^{\mathsf T}\mathbf{y}$. For instance, the points $(0,1),(1,2),(2,4)$ with a column of ones for the intercept give $X^{\mathsf T}X=\begin{bmatrix}3&3\\3&5\end{bmatrix}$, $X^{\mathsf T}\mathbf{y}=\begin{bmatrix}7\\10\end{bmatrix}$ and $\boldsymbol\theta=\bigl(\tfrac56,\tfrac32\bigr)$: the line $y=\tfrac56+\tfrac32x$.
+
+:::
+
+::: {#fig-matrix-derivatives-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (-2.2,0) -- (2.4,0) node[right, lab, tick] {$\theta_1$}; \draw[->, muted] (0,-1.6) -- (0,1.8) node[above, lab, tick] {$\theta_2$};
+\draw[faint, primary, rotate around={25:(0.5,0.3)}] (0.5,0.3) ellipse[x radius=0.52, y radius=0.28];
+\draw[faint, primary, rotate around={25:(0.5,0.3)}] (0.5,0.3) ellipse[x radius=1.05, y radius=0.56];
+\draw[faint, primary, rotate around={25:(0.5,0.3)}] (0.5,0.3) ellipse[x radius=1.58, y radius=0.84];
+\draw[faint, primary, rotate around={25:(0.5,0.3)}] (0.5,0.3) ellipse[x radius=2.10, y radius=1.12];
+\fill[accent] (0.5,0.3) circle[pt] node[below right, lab, tick] {$\hat{\boldsymbol\theta}$};
+\draw[->, emph, ink] (-0.9,1.0) -- (-1.4,1.5) node[above, lab, tick] {$\nabla J$};
+\fill[ink] (-0.9,1.0) circle[pt];
+\node[lab, note, anchor=west, align=left] at (2.8,0.3) {$\nabla J=X^{\mathsf T}X\boldsymbol\theta-X^{\mathsf T}\mathbf y$\\$=\mathbf 0$ at the bottom of the bowl:\\the normal equations};
+\end{tikzpicture}
+\end{center}
+```
+
+Level curves of the least squares cost $J(\boldsymbol\theta)$, a quadratic bowl. The gradient is perpendicular to the level curves and points uphill; it vanishes only at the minimiser $\hat{\boldsymbol\theta}$.
 
 :::
 

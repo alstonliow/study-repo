@@ -15,9 +15,77 @@ In particular $T(\mathbf{0})=\mathbf{0}$.
 
 :::
 
+::: {#fig-linear-transformations-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-0.2,0) -- (2.4,0); \draw[->, muted] (0,-0.2) -- (0,1.9);
+\draw[->, emph, primary] (0,0) -- (1,0.2) node[below, lab] {$\mathbf v$};
+\draw[->, emph, secondary] (0,0) -- (0.3,1) node[left, lab] {$\mathbf w$};
+\draw[faint, dashed] (1,0.2) -- (1.3,1.2) -- (0.3,1);
+\draw[->, emph, accent] (0,0) -- (1.3,1.2) node[above, lab] {$\mathbf v+\mathbf w$};
+\end{scope}
+\draw[->] (2.6,0.8) -- (3.6,0.8) node[midway, above, lab, note] {$T$};
+\begin{scope}[shift={(4,0)}]
+\draw[->, muted] (-0.2,0) -- (2.4,0); \draw[->, muted] (0,-0.2) -- (0,1.9);
+\draw[->, emph, primary] (0,0) -- (1.1,0.2) node[below, lab] {$T\mathbf v$};
+\draw[->, emph, secondary] (0,0) -- (0.8,1) node[left, lab] {$T\mathbf w$};
+\draw[faint, dashed] (1.1,0.2) -- (1.9,1.2) -- (0.8,1);
+\draw[->, emph, accent] (0,0) -- (1.9,1.2) node[above, lab] {$T(\mathbf v+\mathbf w)$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Linearity in a picture, for the shear $T(x,y)=(x+\frac12y,\,y)$: the image of the parallelogram on $\mathbf v,\mathbf w$ is the parallelogram on $T\mathbf v,T\mathbf w$, so $T(\mathbf v+\mathbf w)=T\mathbf v+T\mathbf w$.
+
+:::
+
 ::: {#exm-linear-and-not-linear .example name="Linear and not linear"}
 
 Linear: projection onto a line in $\mathbb{R}^2$; rotation by $\theta$; $T(\mathbf{v})=A\mathbf{v}$ for a fixed matrix $A$; differentiation $p\mapsto p'$ on polynomials. Not linear: a shift $T(\mathbf{v})=\mathbf{v}+\mathbf{v}_0$ with $\mathbf{v}_0\neq\mathbf{0}$ (it moves $\mathbf{0}$); $T(\mathbf{v})=\lVert\mathbf{v}\rVert$ (it fails for $c=-1$).
+
+:::
+
+::: {#fig-linear-transformations-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.3,0) -- (1.5,0); \draw[->, muted] (0,-1.3) -- (0,1.5);
+\draw[faint, primary] (-1.000,-1.000) -- (-1.000,1.000); \draw[faint, primary] (-1.000,-1.000) -- (1.000,-1.000);
+\draw[faint, primary] (-0.500,-1.000) -- (-0.500,1.000); \draw[faint, primary] (-1.000,-0.500) -- (1.000,-0.500);
+\draw[faint, primary] (0.500,-1.000) -- (0.500,1.000); \draw[faint, primary] (-1.000,0.500) -- (1.000,0.500);
+\draw[faint, primary] (1.000,-1.000) -- (1.000,1.000); \draw[faint, primary] (-1.000,1.000) -- (1.000,1.000);
+\fill[accent] (0.000,0.000) circle[pt];
+\node[lab, note, align=center] at (0.1,-1.75) {the grid};
+\end{scope}
+\begin{scope}[shift={(3.6,0)}]
+\draw[->, muted] (-1.3,0) -- (1.5,0); \draw[->, muted] (0,-1.3) -- (0,1.5);
+\draw[faint, primary] (-0.366,-1.366) -- (-1.366,0.366); \draw[faint, primary] (-0.366,-1.366) -- (1.366,-0.366);
+\draw[faint, primary] (0.067,-1.116) -- (-0.933,0.616); \draw[faint, primary] (-0.616,-0.933) -- (1.116,0.067);
+\draw[faint, primary] (0.933,-0.616) -- (-0.067,1.116); \draw[faint, primary] (-1.116,-0.067) -- (0.616,0.933);
+\draw[faint, primary] (1.366,-0.366) -- (0.366,1.366); \draw[faint, primary] (-1.366,0.366) -- (0.366,1.366);
+\fill[accent] (0.000,0.000) circle[pt];
+\node[lab, note, align=center] at (0.1,-1.75) {rotation: linear\\($\mathbf 0$ stays, lines stay evenly spaced)};
+\end{scope}
+\begin{scope}[shift={(7.4,0)}]
+\draw[->, muted] (-1.3,0) -- (1.5,0); \draw[->, muted] (0,-1.3) -- (0,1.5);
+\draw[faint, primary] (-0.600,-0.700) -- (-0.600,1.300); \draw[faint, primary] (-0.600,-0.700) -- (1.400,-0.700);
+\draw[faint, primary] (-0.100,-0.700) -- (-0.100,1.300); \draw[faint, primary] (-0.600,-0.200) -- (1.400,-0.200);
+\draw[faint, primary] (0.900,-0.700) -- (0.900,1.300); \draw[faint, primary] (-0.600,0.800) -- (1.400,0.800);
+\draw[faint, primary] (1.400,-0.700) -- (1.400,1.300); \draw[faint, primary] (-0.600,1.300) -- (1.400,1.300);
+\fill[accent] (0.400,0.300) circle[pt];
+\node[lab, note, align=center] at (0.1,-1.75) {shift by $\mathbf v_0$: not linear\\($\mathbf 0$ moves)};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+A linear transformation keeps the origin fixed and takes evenly spaced parallel lines to evenly spaced parallel lines (or collapses them). A shift moves the origin, so $T(\mathbf 0)\ne\mathbf 0$ and it is not linear.
 
 :::
 
@@ -75,5 +143,33 @@ Projection onto the line through $\mathbf q_1$ (@exm-matrix-of-projection). In t
 On polynomials of degree $\le2$ with basis $1,x,x^2$ (input) and $1,x$ (output), $\frac{d}{dx}$ sends $1\mapsto0$, $x\mapsto1$, $x^2\mapsto2x$. Its matrix is
 $$A=\begin{bmatrix}0&1&0\\0&0&2\end{bmatrix},$$
 and $A(c_0,c_1,c_2)=(c_1,2c_2)$ are the coefficients of $c_1+2c_2x$. The nullspace (constants) and column space (all of the output space) match the calculus.
+
+:::
+
+::: {#fig-linear-transformations-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.600,0.500) rectangle (1.200,1.100);
+\node[lab] at (0.900,0.800) {$0$};
+\draw[hl cell] (1.200,0.500) rectangle (1.800,1.100);
+\node[lab] at (1.500,0.800) {$1$};
+\draw[cell frame] (1.800,0.500) rectangle (2.400,1.100);
+\node[lab] at (2.100,0.800) {$0$};
+\draw[cell frame] (0.600,-0.100) rectangle (1.200,0.500);
+\node[lab] at (0.900,0.200) {$0$};
+\draw[cell frame] (1.200,-0.100) rectangle (1.800,0.500);
+\node[lab] at (1.500,0.200) {$0$};
+\draw[hl cell] (1.800,-0.100) rectangle (2.400,0.500);
+\node[lab] at (2.100,0.200) {$2$};
+\node[lab, tick] at (0.9,1.3) {$1$}; \node[lab, tick] at (1.5,1.3) {$x$}; \node[lab, tick] at (2.1,1.3) {$x^2$};
+\node[lab, tick] at (0.35,0.8) {$1$}; \node[lab, tick] at (0.35,0.2) {$x$};
+\node[lab, note, anchor=west, align=left] at (2.8,0.5) {column $j$: the derivative of input basis $j$\\$1\mapsto0$, $x\mapsto1$, $x^2\mapsto2x$};
+\end{tikzpicture}
+\end{center}
+```
+
+The matrix of $\frac{d}{dx}$ from polynomials of degree $\le2$ (columns, basis $1,x,x^2$) to degree $\le1$ (rows, basis $1,x$). The first column is zero because constants differentiate to $0$.
 
 :::

@@ -17,6 +17,27 @@ where $A^{\mathsf H}=\bar A^{\mathsf T}$ is the *conjugate transpose*. $\mathbf{
 
 :::
 
+::: {#fig-complex-matrices-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.40,0) -- (1.5,0);
+\draw[->, muted] (0,-1.40) -- (0,1.5);
+\fill[primary] (1,0) circle[pt] node[below, lab] {$1$}; \fill[accent] (0,1) circle[pt] node[right, lab] {$i$};
+\draw[faint] (0,0) circle[radius=1];
+\node[lab, tick] at (1.4,-0.25) {Re}; \node[lab, tick] at (0.3,1.45) {Im};
+\end{scope}
+\node[lab, anchor=west, align=left] at (2.0,0.2) {$\mathbf z=(1,i)$:\\$\mathbf z^{\mathsf T}\mathbf z=1+i^2=0$\quad(wrong length)\\$\mathbf z^{\mathsf H}\mathbf z=\lvert1\rvert^2+\lvert i\rvert^2=2$};
+\end{tikzpicture}
+\end{center}
+```
+
+Why the inner product in $\mathbb C^n$ conjugates. Both entries of $\mathbf z=(1,i)$ lie on the unit circle, so $\lVert\mathbf z\rVert^2$ should be $2$; without the conjugate the squares cancel.
+
+:::
+
 ::: {#def-hermitian-unitary .definition name="Hermitian and unitary matrices"}
 
 A complex square matrix $S$ is *Hermitian* if $S^{\mathsf H}=S$. A complex square matrix $Q$ is *unitary* if $Q^{\mathsf H}Q=I$, i.e. its columns are orthonormal for the inner product above. Real symmetric and real orthogonal matrices are the real cases.
@@ -43,6 +64,68 @@ A Hermitian matrix has real eigenvalues, and eigenvectors for different eigenval
 
 Let $w=e^{2\pi i/n}$. The $n\times n$ *Fourier matrix* has entries $(F_n)_{jk}=w^{jk}$ for $j,k=0,\dots,n-1$:
 $$F_4=\begin{bmatrix}1&1&1&1\\1&i&i^2&i^3\\1&i^2&i^4&i^6\\1&i^3&i^6&i^9\end{bmatrix}=\begin{bmatrix}1&1&1&1\\1&i&-1&-i\\1&-1&1&-1\\1&-i&-1&i\end{bmatrix}.$$
+
+:::
+
+::: {#fig-complex-matrices-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (-0.45,-0.45) rectangle (0.45,0.45);
+\draw[faint] (0.00,0.00) circle[radius=0.3];
+\draw[->, emph, primary] (0.00,0.00) -- (0.300,0.000);
+\draw[cell frame] (0.45,-0.45) rectangle (1.35,0.45);
+\draw[faint] (0.90,0.00) circle[radius=0.3];
+\draw[->, emph, primary] (0.90,0.00) -- (1.200,0.000);
+\draw[cell frame] (1.35,-0.45) rectangle (2.25,0.45);
+\draw[faint] (1.80,0.00) circle[radius=0.3];
+\draw[->, emph, primary] (1.80,0.00) -- (2.100,0.000);
+\draw[cell frame] (2.25,-0.45) rectangle (3.15,0.45);
+\draw[faint] (2.70,0.00) circle[radius=0.3];
+\draw[->, emph, primary] (2.70,0.00) -- (3.000,0.000);
+\draw[cell frame] (-0.45,-1.35) rectangle (0.45,-0.45);
+\draw[faint] (0.00,-0.90) circle[radius=0.3];
+\draw[->, emph, primary] (0.00,-0.90) -- (0.300,-0.900);
+\draw[hl cell] (0.45,-1.35) rectangle (1.35,-0.45);
+\draw[faint] (0.90,-0.90) circle[radius=0.3];
+\draw[->, emph, primary] (0.90,-0.90) -- (0.900,-0.600);
+\draw[hl cell] (1.35,-1.35) rectangle (2.25,-0.45);
+\draw[faint] (1.80,-0.90) circle[radius=0.3];
+\draw[->, emph, primary] (1.80,-0.90) -- (1.500,-0.900);
+\draw[hl cell] (2.25,-1.35) rectangle (3.15,-0.45);
+\draw[faint] (2.70,-0.90) circle[radius=0.3];
+\draw[->, emph, primary] (2.70,-0.90) -- (2.700,-1.200);
+\draw[cell frame] (-0.45,-2.25) rectangle (0.45,-1.35);
+\draw[faint] (0.00,-1.80) circle[radius=0.3];
+\draw[->, emph, primary] (0.00,-1.80) -- (0.300,-1.800);
+\draw[hl cell] (0.45,-2.25) rectangle (1.35,-1.35);
+\draw[faint] (0.90,-1.80) circle[radius=0.3];
+\draw[->, emph, primary] (0.90,-1.80) -- (0.600,-1.800);
+\draw[cell frame] (1.35,-2.25) rectangle (2.25,-1.35);
+\draw[faint] (1.80,-1.80) circle[radius=0.3];
+\draw[->, emph, primary] (1.80,-1.80) -- (2.100,-1.800);
+\draw[hl cell] (2.25,-2.25) rectangle (3.15,-1.35);
+\draw[faint] (2.70,-1.80) circle[radius=0.3];
+\draw[->, emph, primary] (2.70,-1.80) -- (2.400,-1.800);
+\draw[cell frame] (-0.45,-3.15) rectangle (0.45,-2.25);
+\draw[faint] (0.00,-2.70) circle[radius=0.3];
+\draw[->, emph, primary] (0.00,-2.70) -- (0.300,-2.700);
+\draw[hl cell] (0.45,-3.15) rectangle (1.35,-2.25);
+\draw[faint] (0.90,-2.70) circle[radius=0.3];
+\draw[->, emph, primary] (0.90,-2.70) -- (0.900,-3.000);
+\draw[hl cell] (1.35,-3.15) rectangle (2.25,-2.25);
+\draw[faint] (1.80,-2.70) circle[radius=0.3];
+\draw[->, emph, primary] (1.80,-2.70) -- (1.500,-2.700);
+\draw[hl cell] (2.25,-3.15) rectangle (3.15,-2.25);
+\draw[faint] (2.70,-2.70) circle[radius=0.3];
+\draw[->, emph, primary] (2.70,-2.70) -- (2.700,-2.400);
+\node[lab, note, anchor=west, align=left] at (3.3,-1.35) {entry $(j,k)$ is $w^{jk}$, $w=i$:\\arrow at angle $jk\cdot90^\circ$;\\row $j$ turns $j$ times as fast};
+\end{tikzpicture}
+\end{center}
+```
+
+The $4\times4$ Fourier matrix drawn entry by entry, rows and columns numbered from $0$. Row $0$ is constant and each later row winds around the circle at its own frequency; rows of different frequency are orthogonal.
 
 :::
 
@@ -106,5 +189,48 @@ where $D=\operatorname{diag}(1,w,\dots,w^{m-1})$ and $P$ is the permutation that
 3. For $j<m$ this is $y'_j+w^jy''_j$; for $j+m$ it is $y'_j-w^jy''_j$, because $w^m=-1$. These are the three factors.
 
 4. Each level of the recursion costs $m=n/2$ multiplications by entries of $D$, and there are $\log_2n$ levels.
+
+:::
+
+::: {#fig-complex-matrices-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] (in0) at (0,0.0) {$x_0$};
+\node[lab] (in1) at (0,-0.8) {$x_2$};
+\node[lab] (in2) at (0,-1.6) {$x_1$};
+\node[lab] (in3) at (0,-2.40) {$x_3$};
+\draw[cell frame] (0.6,0.3) rectangle (1.8,-1.1); \node[lab, note] at (1.2,-0.4) {$F_2$};
+\draw[cell frame] (0.6,-1.3) rectangle (1.8,-2.7); \node[lab, note] at (1.2,-2.0) {$F_2$};
+\draw[->] (in0) -- (0.6,0.0);
+\fill[ink] (2.3,0.0) circle[pt]; \draw (1.8,0.0) -- (2.3,0.0);
+\draw[->] (in1) -- (0.6,-0.8);
+\fill[ink] (2.3,-0.8) circle[pt]; \draw (1.8,-0.8) -- (2.3,-0.8);
+\draw[->] (in2) -- (0.6,-1.6);
+\fill[ink] (2.3,-1.6) circle[pt]; \draw (1.8,-1.6) -- (2.3,-1.6);
+\draw[->] (in3) -- (0.6,-2.40);
+\fill[ink] (2.3,-2.40) circle[pt]; \draw (1.8,-2.40) -- (2.3,-2.40);
+\draw[->, emph, primary] (2.3,0.0) -- (4.2,0.0);
+\draw[->, emph, primary] (2.3,0.0) -- (4.2,-1.6);
+\draw[->, emph, accent] (2.3,-1.6) -- (4.2,0.0);
+\draw[->, emph, accent] (2.3,-1.6) -- (4.2,-1.6);
+\draw[->, emph, primary] (2.3,-0.8) -- (4.2,-0.8);
+\draw[->, emph, primary] (2.3,-0.8) -- (4.2,-2.40);
+\draw[->, emph, accent] (2.3,-2.40) -- (4.2,-0.8);
+\draw[->, emph, accent] (2.3,-2.40) -- (4.2,-2.40);
+\node[lab, tick, accent] at (2.75,-1.40) {$\times 1$};
+\node[lab, tick, accent] at (2.75,-2.2) {$\times w$};
+\node[lab, anchor=west] at (4.3,0.0) {$y_0$};
+\node[lab, anchor=west] at (4.3,-0.8) {$y_1$};
+\node[lab, anchor=west] at (4.3,-1.6) {$y_2$};
+\node[lab, anchor=west] at (4.3,-2.40) {$y_3$};
+\node[lab, tick, accent] at (3.8,-2.2) {$-$}; \node[lab, tick, accent] at (3.8,-1.45) {$-$};
+\node[lab, note, anchor=west, align=left] at (5.2,-1.2) {$y_j=y'_j+w^jy''_j$\\$y_{j+2}=y'_j-w^jy''_j$\\($j=0,1$, $w=i$)};
+\end{tikzpicture}
+\end{center}
+```
+
+The factorization for $n=4$ as a butterfly. $P$ sorts the input into even and odd components, two half-size transforms $F_2$ give $\mathbf y'$ and $\mathbf y''$, and the last factor combines them with the weights $1,w$ and opposite signs.
 
 :::

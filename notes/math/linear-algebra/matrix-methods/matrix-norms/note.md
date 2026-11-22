@@ -1,6 +1,6 @@
 ---
 title: "Norms of Vectors and Matrices"
-sources: [mit18065-8, mit18065-10, mit18065-11]
+sources: [mit18065-8, mit18065-10, mit18065-11, mit18335-4]
 requires: [math/linear-algebra/positive-definite/singular-value-decomposition]
 status: draft
 ---
@@ -84,6 +84,25 @@ All three are unchanged when $A$ is multiplied on either side by an orthogonal m
 
 :::
 
+::: {#fig-matrix-norms-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (0,0) -- (8.2,0); \draw[->, muted] (0,0) -- (0,2.4);
+\draw[bar] (0.40,0) rectangle (1.00,1.342); \node[lab, tick] at (0.70,-0.25) {$\sigma_1$};
+\draw[bar] (2.00,0) rectangle (2.60,0.447); \node[lab, tick] at (2.30,-0.55) {$\sigma_2$};
+\draw[cell, fill=accentLight] (3.60,0) rectangle (4.20,1.342); \node[lab, tick] at (3.90,-0.25) {$\lVert A\rVert_2=\sigma_1$};
+\draw[cell, fill=accentLight] (5.20,0) rectangle (5.80,1.414); \node[lab, tick] at (5.50,-0.55) {$\lVert A\rVert_F=\sqrt{50}$};
+\draw[cell, fill=accentLight] (6.80,0) rectangle (7.40,1.789); \node[lab, tick] at (7.10,-0.25) {$\lVert A\rVert_*=4\sqrt5$};
+\end{tikzpicture}
+\end{center}
+```
+
+Three norms of $A=\begin{bmatrix}3&0\\4&5\end{bmatrix}$ from its singular values $3\sqrt5\approx6.7$ and $\sqrt5\approx2.2$: the largest one, the root of the sum of squares, and the sum. Always $\lVert A\rVert_2\le\lVert A\rVert_F\le\lVert A\rVert_*$.
+
+:::
+
 ::: {#prp-frobenius-submultiplicative .proposition name="Norms of products"}
 
 $$\lVert AB\rVert_2\le\lVert A\rVert_2\lVert B\rVert_2,\qquad \lVert AB\rVert_F\le\lVert A\rVert_F\lVert B\rVert_F .$$
@@ -132,10 +151,129 @@ $$\frac{\lVert\delta\mathbf{x}\rVert}{\lVert\mathbf{x}\rVert}\le\kappa(A)\,\frac
 
 :::
 
+::: {#fig-matrix-norms-5}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.1,0) -- (1.2,0);
+\draw[->, muted] (0,-1.1) -- (0,1.2);
+\draw[emph, primary] (0,0) circle[radius=0.5];
+\node[lab, note, primary] at (0,-1.4) {$\delta\mathbf b$: a circle};
+\end{scope}
+\draw[->] (1.3,0) -- (2.3,0) node[midway, above, lab, note] {$A^{-1}$};
+\begin{scope}[shift={(4.4,0)}]
+\draw[->, muted] (-1.9,0) -- (1.9,0); \draw[->, muted] (0,-1.1) -- (0,1.1);
+\draw[emph, accent, rotate=20] (0,0) ellipse[x radius=1.5, y radius=0.5];
+\node[lab, note, accent] at (0,-1.4) {$\delta\mathbf x$: stretched by up to $1/\sigma_n$};
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (6.6,0) {$\dfrac{\lVert\delta\mathbf x\rVert}{\lVert\mathbf x\rVert}\le\kappa(A)\dfrac{\lVert\delta\mathbf b\rVert}{\lVert\mathbf b\rVert}$,\\ $\kappa=\sigma_1/\sigma_n$};
+\end{tikzpicture}
+\end{center}
+```
+
+Errors in $\mathbf b$ of equal size come out of $A^{-1}$ with very different sizes: those along the weakest direction of $A$ are amplified most. The ratio of the strongest to the weakest stretch is the condition number.
+
+:::
+
 ::: {#exm-condition-number-hilbert .example name="Small and large condition numbers"}
 
 $A=\begin{bmatrix}3&0\\4&5\end{bmatrix}$ has $\sigma_1=3\sqrt5$, $\sigma_2=\sqrt5$ (@exm-svd-two-by-two). So $\lVert A\rVert_2=3\sqrt5$, $\lVert A\rVert_F=\sqrt{50}$, $\lVert A\rVert_*=4\sqrt5$ and $\kappa(A)=3$.
 
 The $3\times3$ Hilbert matrix $H_{ij}=1/(i+j-1)$ is symmetric positive definite with $\kappa(H)\approx524$; for $n=10$ it is about $1.6\times10^{13}$, so in double precision almost every digit of the solution of $H\mathbf{x}=\mathbf{b}$ can be lost. Orthogonal matrices have $\kappa(Q)=1$, which is why computations with $Q$ are safe.
+
+:::
+
+::: {#fig-matrix-norms-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (0,0) -- (4.6,0) node[right, lab, tick] {$n$}; \draw[->, muted] (0,0) -- (0,3.0) node[above, lab, tick] {$\log_{10}\kappa(H_n)$};
+\fill[accent] (0.50,0.000) circle[pt]; \node[lab, tick] at (0.50,-0.2) {1};
+\fill[accent] (1.00,0.360) circle[pt]; \node[lab, tick] at (1.00,-0.2) {2};
+\fill[accent] (1.50,0.761) circle[pt]; \node[lab, tick] at (1.50,-0.2) {3};
+\fill[accent] (2.00,1.173) circle[pt]; \node[lab, tick] at (2.00,-0.2) {4};
+\fill[accent] (2.50,1.590) circle[pt]; \node[lab, tick] at (2.50,-0.2) {5};
+\fill[accent] (3.00,2.009) circle[pt]; \node[lab, tick] at (3.00,-0.2) {6};
+\fill[accent] (3.50,2.430) circle[pt]; \node[lab, tick] at (3.50,-0.2) {7};
+\fill[accent] (4.00,2.851) circle[pt]; \node[lab, tick] at (4.00,-0.2) {8};
+\draw[faint] (0,0.00) -- (-0.08,0.00) node[left, lab, tick] {0};
+\draw[faint] (0,1.40) -- (-0.08,1.40) node[left, lab, tick] {5};
+\draw[faint] (0,2.80) -- (-0.08,2.80) node[left, lab, tick] {10};
+\node[lab, note, anchor=west, align=left] at (4.8,1.5) {each step costs about\\$1.5$ more decimal digits};
+\end{tikzpicture}
+\end{center}
+```
+
+Condition numbers of the Hilbert matrices $H_n$ on a logarithmic scale, from $\kappa(H_1)=1$ and $\kappa(H_3)\approx524$ upward. They grow roughly geometrically, so $H\mathbf x=\mathbf b$ becomes hopeless in double precision near $n=12$.
+
+:::
+
+<!-- Added 2026-11-22 from MIT 18.335 (Spring 2019), Lecture 4 (norms on vector spaces), in our own wording: induced norms for any pair of vector norms and the one- and infinity-norm formulas. -->
+
+::: {#def-induced-matrix-norm .definition name="Induced matrix norm" generalizes="def-matrix-norms"}
+
+Given norms $\lVert\cdot\rVert_{(n)}$ on $\mathbb{C}^n$ and $\lVert\cdot\rVert_{(m)}$ on $\mathbb{C}^m$, the *induced* (or *operator*) norm of an $m\times n$ matrix $A$ is
+$$\lVert A\rVert_{(m,n)}=\max_{\mathbf{x}\ne\mathbf{0}}\frac{\lVert A\mathbf{x}\rVert_{(m)}}{\lVert\mathbf{x}\rVert_{(n)}}=\max_{\lVert\mathbf{x}\rVert_{(n)}=1}\lVert A\mathbf{x}\rVert_{(m)},$$
+the largest factor by which $A$ stretches a vector. For the $p$-norms on both sides it is written $\lVert A\rVert_p$; $\lVert A\rVert_2$ is the spectral norm of @def-matrix-norms. The maximum exists because the unit sphere is compact and all norms on $\mathbb{C}^n$ are equivalent (@thm-norms-equivalent-finite-dimension).
+
+:::
+
+::: {#prp-induced-one-infinity-norms .proposition name="One- and infinity-norms of a matrix"}
+
+For an $m\times n$ matrix $A$ with entries $a_{ij}$,
+$$\lVert A\rVert_1=\max_{1\le j\le n}\sum_{i=1}^m\lvert a_{ij}\rvert\quad(\text{largest column sum}),\qquad \lVert A\rVert_\infty=\max_{1\le i\le m}\sum_{j=1}^n\lvert a_{ij}\rvert\quad(\text{largest row sum}).$$
+Every induced norm is submultiplicative: $\lVert AB\rVert\le\lVert A\rVert\,\lVert B\rVert$.
+
+:::
+
+::: {.proof}
+
+1. *One-norm, upper bound.* Write $A\mathbf{x}=\sum_j x_j\mathbf{a}_j$ with columns $\mathbf{a}_j$. Then $\lVert A\mathbf{x}\rVert_1\le\sum_j\lvert x_j\rvert\,\lVert\mathbf{a}_j\rVert_1\le\big(\max_j\lVert\mathbf{a}_j\rVert_1\big)\lVert\mathbf{x}\rVert_1$.
+
+2. *One-norm, attained.* If column $k$ has the largest sum, $\mathbf{x}=\mathbf{e}_k$ gives $\lVert A\mathbf{e}_k\rVert_1=\lVert\mathbf{a}_k\rVert_1$ with $\lVert\mathbf{e}_k\rVert_1=1$.
+
+3. *Infinity-norm, upper bound.* For $\lVert\mathbf{x}\rVert_\infty=1$, each entry satisfies $\lvert(A\mathbf{x})_i\rvert=\lvert\sum_j a_{ij}x_j\rvert\le\sum_j\lvert a_{ij}\rvert$, so $\lVert A\mathbf{x}\rVert_\infty\le\max_i\sum_j\lvert a_{ij}\rvert$.
+
+4. *Infinity-norm, attained.* If row $k$ has the largest sum, take $x_j=\overline{a_{kj}}/\lvert a_{kj}\rvert$ (and $x_j=1$ where $a_{kj}=0$). Then $\lVert\mathbf{x}\rVert_\infty=1$ (or $\mathbf{x}$ is any unit vector if row $k$ is zero) and $(A\mathbf{x})_k=\sum_j\lvert a_{kj}\rvert$.
+
+5. *Submultiplicativity.* $\lVert AB\mathbf{x}\rVert\le\lVert A\rVert\,\lVert B\mathbf{x}\rVert\le\lVert A\rVert\,\lVert B\rVert\,\lVert\mathbf{x}\rVert$ for every $\mathbf{x}$.
+
+:::
+
+::: {#exm-induced-norms .example name="Three induced norms of one matrix"}
+
+For $A=\begin{bmatrix}1&2\\0&2\end{bmatrix}$ the column sums are $1,4$ and the row sums $3,2$, so $\lVert A\rVert_1=4$ and $\lVert A\rVert_\infty=3$. The singular values are the square roots of the eigenvalues of $A^{\mathsf T}A=\begin{bmatrix}1&2\\2&8\end{bmatrix}$, giving $\lVert A\rVert_2=\sqrt{(9+\sqrt{65})/2}\approx2.921$. The vector $\mathbf{e}_2$ realises $\lVert A\rVert_1$ and $(1,1)$ realises $\lVert A\rVert_\infty$.
+
+:::
+
+::: {#fig-matrix-norms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.62]
+\begin{scope}
+\draw[->, faint] (-4.4,0) -- (4.4,0); \draw[->, faint] (0,-3.2) -- (0,3.2);
+\draw[emph] (1,0) -- (0,1) -- (-1,0) -- (0,-1) -- cycle;
+\draw[hl] (1,0) -- (2,2) -- (-1,0) -- (-2,-2) -- cycle;
+\fill (2,2) circle (2.5pt) node[lab, right] {$A\mathbf{e}_2$};
+\draw[faint, dashed] (4,0) -- (0,4) -- (-4,0) -- (0,-4) -- cycle;
+\node[lab] at (0,-3.9) {$\lVert A\rVert_1=4$};
+\end{scope}
+\begin{scope}[xshift=10.5cm]
+\draw[->, faint] (-4.4,0) -- (4.4,0); \draw[->, faint] (0,-3.2) -- (0,3.2);
+\draw[emph] (-1,-1) rectangle (1,1);
+\draw[hl] (3,2) -- (-1,-2) -- (-3,-2) -- (1,2) -- cycle;
+\fill (3,2) circle (2.5pt) node[lab, right] {$A(1,1)$};
+\draw[faint, dashed] (-3,-3) rectangle (3,3);
+\node[lab] at (0,-3.9) {$\lVert A\rVert_\infty=3$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The unit ball (thin) of the $1$-norm (left) and the $\infty$-norm (right) and its image under $A=\left[\begin{smallmatrix}1&2\\0&2\end{smallmatrix}\right]$ (thick). The induced norm is the smallest multiple of the unit ball (dashed) that contains the image; it is reached at a corner of the ball.
 
 :::

@@ -34,6 +34,27 @@ $$\lVert1\rVert^2=2\pi,\qquad \lVert\cos kx\rVert^2=\lVert\sin kx\rVert^2=\pi\qu
 
 :::
 
+::: {#fig-fourier-series-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[y={(0,0.9cm)}]
+\draw[->, muted] (0,0) -- (6.7,0) node[right, lab, tick] {$x$}; \draw[->, muted] (0,-1.3) -- (0,1.3);
+\fill[tintA, domain=0:3.1416, samples=60] plot (\x, {sin(\x r)*sin(2*\x r)}) -- cycle;
+\fill[tintB, domain=3.1416:6.2832, samples=60] (3.1416,0) -- plot (\x, {sin(\x r)*sin(2*\x r)}) -- cycle;
+\draw[faint, domain=0:6.2832, samples=60] plot (\x, {sin(\x r)});
+\draw[faint, dashed, domain=0:6.2832, samples=60] plot (\x, {sin(2*\x r)});
+\draw[emph, ink, domain=0:6.2832, samples=100] plot (\x, {sin(\x r)*sin(2*\x r)});
+\node[lab, tick] at (3.14,-0.25) {$\pi$}; \node[lab, tick] at (6.28,-0.25) {$2\pi$};
+\node[lab, note, anchor=west] at (6.5,0.8) {$\sin x\,\sin2x$: the shaded areas cancel};
+\end{tikzpicture}
+\end{center}
+```
+
+Why $\sin x$ and $\sin 2x$ are orthogonal: their product (dark curve) has as much area above the axis as below over a full period, so $\int_0^{2\pi}\sin x\sin2x\,dx=0$. The faint curves are the two factors.
+
+:::
+
 ::: {#thm-fourier-coefficients .theorem name="Fourier coefficients are projections"}
 
 If $f(x)=a_0+\sum_{k\ge1}(a_k\cos kx+b_k\sin kx)$ (with the series converging suitably), then
@@ -51,6 +72,23 @@ $$a_0=\frac1{2\pi}\int_0^{2\pi}f(x)\,dx,\qquad a_k=\frac1\pi\int_0^{2\pi}f(x)\co
 
 :::
 
+::: {#fig-fourier-series-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[y={(0,0.9cm)}]
+\draw[->, muted] (0,0) -- (6.7,0) node[right, lab, tick] {$x$}; \draw[->, muted] (0,-1.5) -- (0,1.6);
+\draw[bold, ink] (0,1) -- (3.1416,1); \draw[bold, ink] (3.1416,-1) -- (6.2832,-1); \draw[faint, dashed] (3.1416,1) -- (3.1416,-1);
+\draw[emph, accent, domain=0:6.2832, samples=80] plot (\x, {4/pi*sin(\x r)});
+\node[lab, note] at (1.2,1.3) {$f$}; \node[lab, note, accent, anchor=west] at (6.5,-0.9) {$b_1\sin x$, $b_1=\frac{\langle f,\sin x\rangle}{\langle\sin x,\sin x\rangle}=\frac4\pi$};
+\end{tikzpicture}
+\end{center}
+```
+
+The first Fourier term is the projection of the square wave $f$ onto the line through $\sin x$: the multiple $b_1\sin x$ closest to $f$ in the norm of @def-function-inner-product. The remaining error $f-b_1\sin x$ is orthogonal to $\sin x$.
+
+:::
+
 Each coefficient is the projection formula $\mathbf{a}^{\mathsf T}\mathbf{b}/\mathbf{a}^{\mathsf T}\mathbf{a}$ of @thm-projection-onto-line, with $\mathbf{a}$ a basis function and $\mathbf{b}=f$. Because the basis is orthogonal, the coefficients can be computed one at a time, as with $Q^{\mathsf T}\mathbf{b}$ in @prp-projection-with-orthonormal-columns.
 
 ::: {#exm-fourier-square-wave .example name="A square wave"}
@@ -58,6 +96,36 @@ Each coefficient is the projection formula $\mathbf{a}^{\mathsf T}\mathbf{b}/\ma
 Let $f(x)=1$ on $(0,\pi)$ and $f(x)=-1$ on $(\pi,2\pi)$. Then $a_0=0$ and $a_k=0$, and
 $$b_k=\frac1\pi\Big(\int_0^\pi\sin kx\,dx-\int_\pi^{2\pi}\sin kx\,dx\Big)=\frac{2(1-\cos k\pi)}{k\pi}=\begin{cases}\frac4{k\pi}&k\text{ odd},\\0&k\text{ even}.\end{cases}$$
 So $f(x)=\frac4\pi\big(\sin x+\frac13\sin3x+\frac15\sin5x+\cdots\big)$.
+
+:::
+
+::: {#fig-fourier-series-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[y={(0,1cm)}]
+\draw[->, muted] (0,0) -- (5.3,0) node[right, lab, tick] {$k$}; \draw[->, muted] (0,0) -- (0,1.6) node[above, lab, tick] {$b_k$};
+\draw[bar] (0.35,0) rectangle (0.65,1.273);
+\node[lab, tick] at (0.50,-0.2) {1};
+\node[lab, tick] at (1.00,-0.2) {2};
+\draw[bar] (1.35,0) rectangle (1.65,0.424);
+\node[lab, tick] at (1.50,-0.2) {3};
+\node[lab, tick] at (2.00,-0.2) {4};
+\draw[bar] (2.35,0) rectangle (2.65,0.255);
+\node[lab, tick] at (2.50,-0.2) {5};
+\node[lab, tick] at (3.00,-0.2) {6};
+\draw[bar] (3.35,0) rectangle (3.65,0.182);
+\node[lab, tick] at (3.50,-0.2) {7};
+\node[lab, tick] at (4.00,-0.2) {8};
+\draw[bar] (4.35,0) rectangle (4.65,0.141);
+\node[lab, tick] at (4.50,-0.2) {9};
+\node[lab, note, anchor=west] at (1.0,1.27) {$\frac{4}{\pi}\approx1.27$}; \node[lab, note, anchor=west] at (2.0,0.55) {$\frac4{3\pi}$};
+\node[lab, note, anchor=west] at (5.4,0.8) {even $k$: $b_k=0$};
+\end{tikzpicture}
+\end{center}
+```
+
+The sine coefficients $b_k=\frac{4}{k\pi}$ ($k$ odd) of the square wave. They decay only like $1/k$, which is why the partial sums converge slowly near the jumps.
 
 :::
 

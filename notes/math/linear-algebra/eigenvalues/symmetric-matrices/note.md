@@ -28,6 +28,55 @@ $$S=3\cdot\frac12\begin{bmatrix}1&1\\1&1\end{bmatrix}+1\cdot\frac12\begin{bmatri
 
 :::
 
+::: {#fig-symmetric-matrices-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$2$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$1$};
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$1$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$2$};
+\node[lab, note] at (0.550,-0.350) {$S$};
+\node[lab] at (1.35,0.55) {$=3$};
+\draw[cell, fill=primaryLight] (1.700,0.550) rectangle (2.250,1.100);
+\node[lab] at (1.975,0.825) {$\frac12$};
+\draw[cell, fill=primaryLight] (2.250,0.550) rectangle (2.800,1.100);
+\node[lab] at (2.525,0.825) {$\frac12$};
+\draw[cell, fill=primaryLight] (1.700,0.000) rectangle (2.250,0.550);
+\node[lab] at (1.975,0.275) {$\frac12$};
+\draw[cell, fill=primaryLight] (2.250,0.000) rectangle (2.800,0.550);
+\node[lab] at (2.525,0.275) {$\frac12$};
+\node[lab, note] at (2.250,-0.350) {$\mathbf q_1\mathbf q_1^{\mathsf T}$};
+\node[lab] at (3.05,0.55) {$+\,1$};
+\draw[hl cell] (3.400,0.550) rectangle (3.950,1.100);
+\node[lab] at (3.675,0.825) {$\frac12$};
+\draw[hl cell] (3.950,0.550) rectangle (4.500,1.100);
+\node[lab] at (4.225,0.825) {$-\frac12$};
+\draw[hl cell] (3.400,0.000) rectangle (3.950,0.550);
+\node[lab] at (3.675,0.275) {$-\frac12$};
+\draw[hl cell] (3.950,0.000) rectangle (4.500,0.550);
+\node[lab] at (4.225,0.275) {$\frac12$};
+\node[lab, note] at (3.950,-0.350) {$\mathbf q_2\mathbf q_2^{\mathsf T}$};
+\begin{scope}[shift={(6.6,0.4)}]
+\draw[->, muted] (-1.0,0) -- (1.1,0);
+\draw[->, muted] (0,-1.0) -- (0,1.1);
+\draw[->, emph, primary] (0,0) -- (0.6,0.6) node[right, lab] {$\mathbf q_1$};
+\draw[->, emph, accent] (0,0) -- (0.6,-0.6) node[right, lab] {$\mathbf q_2$};
+\draw[muted] (0.14,0.14) -- (0.28,0) -- (0.14,-0.14);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-spectral-two-by-two: $S$ is a sum of projections onto its perpendicular eigenvector lines, each weighted by its eigenvalue. The two projection matrices add to $I$ and multiply to $0$.
+
+:::
+
 ::: {#fig-symmetric-matrices-1}
 
 ```{=latex}
@@ -62,5 +111,38 @@ For a symmetric matrix with nonzero pivots (no row exchanges needed), the number
 2. As $t$ goes from $1$ to $0$, the eigenvalues of $S_t$ move continuously and are real (@lem-self-adjoint-eigenvalues); none can cross $0$, because $\det S_t\ne0$.
 
 3. At $t=0$, $S_0=D$, whose eigenvalues are the pivots. So the sign pattern of the eigenvalues of $S=S_1$ matches the pivots.
+
+:::
+
+::: {#fig-symmetric-matrices-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$3$};
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$3$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$1$};
+\node[lab, note] at (0.550,-0.350) {$S$};
+\draw[->] (1.3,0.55) -- (2.3,0.55) node[midway, above, lab, tick] {eliminate};
+\draw[hl cell] (2.500,0.550) rectangle (3.050,1.100);
+\node[lab] at (2.775,0.825) {$1$};
+\draw[cell frame] (3.050,0.550) rectangle (3.600,1.100);
+\node[lab] at (3.325,0.825) {$3$};
+\draw[cell frame] (2.500,0.000) rectangle (3.050,0.550);
+\node[lab] at (2.775,0.275) {$0$};
+\draw[hl cell] (3.050,0.000) rectangle (3.600,0.550);
+\node[lab] at (3.325,0.275) {$-8$};
+\node[lab, note] at (3.050,-0.350) {pivots $1,-8$};
+\node[lab, anchor=west, align=left] at (4.1,0.55) {eigenvalues $4,-2$:\\one positive, one negative,\\like the pivots};
+\end{tikzpicture}
+\end{center}
+```
+
+For a symmetric matrix the pivots and the eigenvalues have the same signs, counted with multiplicity, though not the same values. Here $\det S=-8$ is both $1\cdot(-8)$ and $4\cdot(-2)$.
 
 :::

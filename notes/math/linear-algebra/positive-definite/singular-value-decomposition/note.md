@@ -30,6 +30,25 @@ $$A\mathbf{v}_i=\sigma_i\mathbf{u}_i\quad(i\le r),\qquad A\mathbf{v}_i=\mathbf{0
 
 :::
 
+::: {#fig-singular-value-decomposition-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (2.0,-1.4); \node[lab] at (1.0,-0.7) {$A$}; \node[lab, tick] at (1.0,-1.65) {$m\times n$};
+\node[lab] at (2.3,-0.7) {$=$};
+\draw[cell frame, fill=primarySoft] (2.6,0) rectangle (4.0,-1.4); \node[lab] at (3.3,-0.7) {$U$}; \node[lab, tick] at (3.3,-1.65) {$m\times m$};
+\draw[cell frame] (4.2,0) rectangle (6.2,-1.4); \node[lab, tick] at (5.2,-1.65) {$\Sigma$: $m\times n$};
+\draw[accent, bold] (4.2,0) -- (5.0,-0.8); \node[lab, tick, accent] at (5.25,-0.25) {$\sigma_1\ge\dots\ge\sigma_r$}; \node[lab, muted] at (5.4,-1.05) {$0$};
+\draw[cell frame, fill=primarySoft] (6.4,0) rectangle (8.4,-2.0); \node[lab] at (7.4,-1.0) {$V^{\mathsf T}$}; \node[lab, tick] at (7.4,-2.25) {$n\times n$};
+\end{tikzpicture}
+\end{center}
+```
+
+The shapes in the SVD. $U$ and $V$ are square and orthogonal; $\Sigma$ has the shape of $A$, with the $r$ positive singular values on its diagonal and zeros everywhere else.
+
+:::
+
 ::: {#cor-svd-four-subspaces .corollary name="The SVD and the four subspaces"}
 
 $\mathbf{v}_1,\dots,\mathbf{v}_r$ is an orthonormal basis of the row space $C(A^{\mathsf T})$ and $\mathbf{v}_{r+1},\dots,\mathbf{v}_n$ of $N(A)$; $\mathbf{u}_1,\dots,\mathbf{u}_r$ is an orthonormal basis of $C(A)$ and $\mathbf{u}_{r+1},\dots,\mathbf{u}_m$ of $N(A^{\mathsf T})$. Moreover $AA^{\mathsf T}\mathbf{u}_i=\sigma_i^2\mathbf{u}_i$.
@@ -43,6 +62,25 @@ $\mathbf{v}_1,\dots,\mathbf{v}_r$ is an orthonormal basis of the row space $C(A^
 2. $\mathbf{u}_i=A\mathbf{v}_i/\sigma_i\in C(A)$ for $i\le r$, and $\dim C(A)=r$. The remaining $\mathbf{u}$'s are orthogonal to $C(A)$, so they lie in $N(A^{\mathsf T})$, of dimension $m-r$.
 
 3. $AA^{\mathsf T}\mathbf{u}_i=AA^{\mathsf T}A\mathbf{v}_i/\sigma_i=A(\sigma_i^2\mathbf{v}_i)/\sigma_i=\sigma_i^2\mathbf{u}_i$.
+
+:::
+
+::: {#fig-singular-value-decomposition-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[regionA] (0,0.15) rectangle (2.6,1.5); \node[lab, tick] at (1.3,1.3) {row space}; \node[lab] at (1.3,0.6) {$\mathbf v_1,\dots,\mathbf v_r$};
+\draw[regionB] (0,-1.5) rectangle (2.6,-0.15); \node[lab, tick] at (1.3,-0.35) {nullspace}; \node[lab] at (1.3,-0.95) {$\mathbf v_{r+1},\dots,\mathbf v_n$};
+\draw[regionA] (5.4,0.15) rectangle (8.0,1.5); \node[lab, tick] at (6.7,1.3) {column space}; \node[lab] at (6.7,0.6) {$\mathbf u_1,\dots,\mathbf u_r$};
+\draw[regionB] (5.4,-1.5) rectangle (8.0,-0.15); \node[lab, tick] at (6.7,-0.35) {left nullspace}; \node[lab] at (6.7,-0.95) {$\mathbf u_{r+1},\dots,\mathbf u_m$};
+\draw[->, emph, primary] (2.7,0.6) -- node[above, lab, note] {$A\mathbf v_i=\sigma_i\mathbf u_i$} (5.3,0.6);
+\draw[->, emph, accent] (2.7,-0.95) -- node[below, lab, note] {$A\mathbf v_i=\mathbf 0$} (4.0,-0.95); \node[lab, accent] at (4.15,-0.95) {$\mathbf 0$};
+\end{tikzpicture}
+\end{center}
+```
+
+The SVD gives orthonormal bases of all four subspaces at once: the first $r$ columns of $V$ and $U$ for the row and column spaces, which $A$ matches up one by one, and the remaining columns for the two nullspaces.
 
 :::
 
@@ -84,5 +122,49 @@ $A$ maps the unit circle to an ellipse; the orthonormal $\mathbf v_i$ go to the 
 $A=U\Sigma V^{\mathsf T}$ says: rotate (by $V^{\mathsf T}$), stretch along the axes (by $\Sigma$), rotate again (by $U$). The unit circle goes to an ellipse with half-axes $\sigma_i\mathbf{u}_i$. Keeping only the first $k$ terms $\sigma_1\mathbf{u}_1\mathbf{v}_1^{\mathsf T}+\dots+\sigma_k\mathbf{u}_k\mathbf{v}_k^{\mathsf T}$ gives the best rank-$k$ approximation of $A$ (@thm-eckart-young-spectral); this is how images are compressed (@sec-math-linear-algebra-positive-definite-change-of-basis).
 
 <!-- Merged 2026-11-21 (owner): the Eckart–Young statement this remark used to make without proof now lives only in thm-eckart-young-spectral (low-rank-approximation note); the geometric picture stays here. -->
+
+:::
+
+::: {#fig-singular-value-decomposition-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.62]
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.7,0) -- (1.7,0); \draw[->, muted] (0,-1.7) -- (0,1.7);
+\draw[emph, primary, rotate=0.00] (0,0) ellipse[x radius=0.700, y radius=0.700];
+\draw[->, emph, accent] (0,0) -- (0.495,0.495) node[lab, tick, pos=1.25] {$\mathbf v_1$};
+\draw[->, emph, secondary] (0,0) -- (-0.495,0.495) node[lab, tick, pos=1.25] {$\mathbf v_2$};
+\node[lab, note] at (0,-2.0) {unit circle};
+\end{scope}
+\draw[->] (1.8,0) -- (2.6,0) node[midway, above, lab, note] {$V^{\mathsf T}$};
+\begin{scope}[shift={(4.4,0)}]
+\draw[->, muted] (-1.7,0) -- (1.7,0); \draw[->, muted] (0,-1.7) -- (0,1.7);
+\draw[emph, primary, rotate=0.00] (0,0) ellipse[x radius=0.700, y radius=0.700];
+\draw[->, emph, accent] (0,0) -- (0.700,0.000) node[lab, tick, pos=1.25] {$\mathbf e_1$};
+\draw[->, emph, secondary] (0,0) -- (0.000,0.700) node[lab, tick, pos=1.25] {$\mathbf e_2$};
+\node[lab, note] at (0,-2.0) {rotate};
+\end{scope}
+\draw[->] (6.2,0) -- (7.0,0) node[midway, above, lab, note] {$\Sigma$};
+\begin{scope}[shift={(8.8,0)}]
+\draw[->, muted] (-1.7,0) -- (1.7,0); \draw[->, muted] (0,-1.7) -- (0,1.7);
+\draw[emph, primary, rotate=0.00] (0,0) ellipse[x radius=1.476, y radius=0.492];
+\draw[->, emph, accent] (0,0) -- (1.476,0.000) node[lab, tick, pos=1.25] {$\sigma_1$};
+\draw[->, emph, secondary] (0,0) -- (0.000,0.492) node[lab, tick, pos=1.25] {$\sigma_2$};
+\node[lab, note] at (0,-2.0) {stretch the axes};
+\end{scope}
+\draw[->] (10.6,0) -- (11.4,0) node[midway, above, lab, note] {$U$};
+\begin{scope}[shift={(13.2,0)}]
+\draw[->, muted] (-1.7,0) -- (1.7,0); \draw[->, muted] (0,-1.7) -- (0,1.7);
+\draw[emph, primary, rotate=71.57] (0,0) ellipse[x radius=1.476, y radius=0.492];
+\draw[->, emph, accent] (0,0) -- (0.467,1.400) node[lab, tick, pos=1.25] {$\sigma_1\mathbf u_1$};
+\draw[->, emph, secondary] (0,0) -- (-0.467,0.156) node[lab, tick, pos=1.25] {$\sigma_2\mathbf u_2$};
+\node[lab, note] at (0,-2.0) {rotate};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+$A=U\Sigma V^{\mathsf T}$ for $A=\begin{bmatrix}3&0\\4&5\end{bmatrix}$ of @exm-svd-two-by-two, one factor at a time: $V^{\mathsf T}$ turns $\mathbf v_1,\mathbf v_2$ to the axes, $\Sigma$ stretches by $\sigma_1=3\sqrt5$ and $\sigma_2=\sqrt5$, and $U$ turns the axes to $\mathbf u_1,\mathbf u_2$.
 
 :::

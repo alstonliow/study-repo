@@ -17,6 +17,34 @@ If $\mathcal B=(e_1,\dots,e_n)$ and $\mathcal C=(f_1,\dots,f_m)$ are bases, the 
 
 :::
 
+::: {#fig-bilinear-forms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (1.300,1.300);
+\node[lab] at (0.650,0.650) {$\scriptstyle\psi(e_1,f_1)$};
+\draw[cell frame] (1.300,0.000) rectangle (2.600,1.300);
+\node[lab] at (1.950,0.650) {$\scriptstyle\psi(e_1,f_2)$};
+\draw[cell frame] (2.600,0.000) rectangle (3.900,1.300);
+\node[lab] at (3.250,0.650) {$\scriptstyle\psi(e_1,f_3)$};
+\draw[cell frame] (0.000,-1.300) rectangle (1.300,0.000);
+\node[lab] at (0.650,-0.650) {$\scriptstyle\psi(e_2,f_1)$};
+\draw[cell frame] (1.300,-1.300) rectangle (2.600,0.000);
+\node[lab] at (1.950,-0.650) {$\scriptstyle\psi(e_2,f_2)$};
+\draw[cell, fill=primaryLight] (2.600,-1.300) rectangle (3.900,0.000);
+\node[lab] at (3.250,-0.650) {$\scriptstyle\psi(e_2,f_3)$};
+\node[lab, tick] at (0.65,1.5) {$f_1$}; \node[lab, tick] at (1.95,1.5) {$f_2$}; \node[lab, tick] at (3.25,1.5) {$f_3$};
+\node[lab, tick] at (-0.25,0.65) {$e_1$}; \node[lab, tick] at (-0.25,-0.65) {$e_2$};
+\node[lab, note, anchor=west, align=left] at (4.2,0.0) {$\psi(\mathbf x,\mathbf y)=\mathbf x^{\mathsf T}A\,\mathbf y$\\with $\mathbf x$, $\mathbf y$ the coordinate columns};
+\end{tikzpicture}
+\end{center}
+```
+
+The matrix of a bilinear form $\psi:U\times V\to F$ with $\dim U=2$, $\dim V=3$: entry $(i,j)$ is the value on the $i$-th basis vector of $U$ and the $j$-th of $V$. By bilinearity these six numbers determine $\psi$.
+
+:::
+
 Expanding both arguments,
 $$\psi(v,w)=\sum_{i,j}\lambda_i\mu_j\psi(e_i,f_j)=[v]_{\mathcal B}^{\mathsf T}\,A\,[w]_{\mathcal C},$$
 so in coordinates every bilinear form on $F^n\times F^m$ is $(\mathbf x,\mathbf y)\mapsto\mathbf x^{\mathsf T}A\mathbf y$ for a unique $n\times m$ matrix $A$.
@@ -64,6 +92,24 @@ $$[\psi]_{\mathcal B',\mathcal C'}=P^{\mathsf T}\,[\psi]_{\mathcal B,\mathcal C}
 
 :::
 
+::: {#fig-bilinear-forms-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (a) at (0,1.4) {$U\times V$};
+\node[box] (b) at (4,1.4) {$F$};
+\draw[->, emph] (a) -- (b) node[midway, above, lab] {$\psi$};
+\node[lab, anchor=west] at (-1.5,0) {$[\psi]_{\mathcal B',\mathcal C'}=P^{\mathsf T}\,[\psi]_{\mathcal B,\mathcal C}\,Q$};
+\node[lab, note, anchor=west, align=left] at (5.0,0.7) {a linear map changes by $Q^{-1}AP$,\\a bilinear form by $P^{\mathsf T}AQ$:\\both inputs are changed, none is an output};
+\end{tikzpicture}
+\end{center}
+```
+
+How the matrix of a bilinear form changes with the bases. Both arguments are vectors fed in, so both get the change-of-basis matrix ($P$ for $U$, $Q$ for $V$), one of them transposed because it stands on the left of $A$.
+
+:::
+
 Compare a linear map $V\to W$, whose matrix changes to $Q^{-1}AP$: forms and maps are both described by matrices, but they transform differently.
 
 ::: {#def-bilinear-form-kernels .definition name="Kernels, non-degenerate forms, rank"}
@@ -101,5 +147,43 @@ So a non-degenerate form identifies $W$ with $V^*$. For example, the dot product
 ::: {#exm-degenerate-form .example name="A degenerate form"}
 
 On $\mathbb R^2\times\mathbb R^3$ let $\psi(\mathbf x,\mathbf y)=\mathbf x^{\mathsf T}A\mathbf y$ with $A=\begin{bmatrix}1&0&1\\2&0&2\end{bmatrix}$, of rank $1$. The left kernel is $\{\mathbf x:\mathbf x^{\mathsf T}A=0\}=\langle(2,-1)^{\mathsf T}\rangle$, of dimension $2-1$; the right kernel is $\{\mathbf y:A\mathbf y=0\}=\langle(0,1,0)^{\mathsf T},(1,0,-1)^{\mathsf T}\rangle$, of dimension $3-1$, as @thm-bilinear-form-kernels predicts.
+
+:::
+
+::: {#fig-bilinear-forms-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$0$};
+\draw[cell frame] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$1$};
+\draw[cell, fill=primaryLight] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$2$};
+\draw[cell, fill=primaryLight] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$0$};
+\draw[cell, fill=primaryLight] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$2$};
+\node[lab, note] at (0.825,-0.350) {$A$, rank $1$};
+\node[lab, note, anchor=west, align=left] at (2.0,0.55) {left kernel ($\subseteq\mathbb R^2$): $\langle(2,-1)\rangle$, dimension $2-1$\\right kernel ($\subseteq\mathbb R^3$): $\langle(0,1,0),(1,0,-1)\rangle$, dimension $3-1$};
+\draw[cell, fill=primaryLight] (0.00,-1.40) rectangle (0.75,-0.95);
+\node[lab, tick] at (0.38,-1.62) {$r$};
+\draw[cell, fill=accentLight] (0.75,-1.40) rectangle (1.50,-0.95);
+\node[lab, tick] at (1.12,-1.62) {ker};
+\node[lab, anchor=east] at (-0.10,-1.17) {$\mathbb R^2$};
+\draw[cell, fill=primaryLight] (4.20,-1.40) rectangle (4.95,-0.95);
+\node[lab, tick] at (4.58,-1.62) {$r$};
+\draw[cell, fill=accentLight] (4.95,-1.40) rectangle (5.70,-0.95);
+\draw[cell, fill=accentLight] (5.70,-1.40) rectangle (6.45,-0.95);
+\node[lab, tick] at (5.70,-1.62) {right kernel};
+\node[lab, anchor=east] at (4.10,-1.17) {$\mathbb R^3$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-degenerate-form: the two kernels of a form can have different dimensions, but each side has dimension rank plus kernel, as in @thm-bilinear-form-kernels.
 
 :::

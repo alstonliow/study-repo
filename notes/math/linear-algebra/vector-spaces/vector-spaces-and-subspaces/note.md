@@ -48,6 +48,43 @@ The subspaces of $\mathbb{R}^3$ are: $\{\mathbf{0}\}$; every line through $\math
 
 :::
 
+::: {#fig-vector-spaces-and-subspaces-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.3,0) -- (1.4,0);
+\draw[->, muted] (0,-1.3) -- (0,1.4);
+\draw[emph, primary] (-1.2,-0.1) -- (1.2,1.1);
+\fill[accent] (0,0) circle[pt];
+\node[lab, note, align=center] at (0,-1.75) {line missing $\mathbf 0$};
+\end{scope}
+\begin{scope}[shift={(3.4,0)}]
+\draw[->, muted] (-1.3,0) -- (1.4,0);
+\draw[->, muted] (0,-1.3) -- (0,1.4);
+\fill[tintA] (0,0) rectangle (1.2,1.2);
+\draw[->, emph, primary] (0,0) -- (0.8,0.5) node[right, lab] {$\mathbf v$};
+\draw[->, emph, accent] (0,0) -- (-0.8,-0.5) node[left, lab] {$-\mathbf v$};
+\node[lab, note, align=center] at (0,-1.75) {first quadrant:\\$-\mathbf v$ leaves it};
+\end{scope}
+\begin{scope}[shift={(6.8,0)}]
+\draw[->, muted] (-1.3,0) -- (1.4,0);
+\draw[->, muted] (0,-1.3) -- (0,1.4);
+\draw[emph, primary] (-1.2,0) -- (1.2,0); \draw[emph, primary] (0,-1.2) -- (0,1.2);
+\draw[->, emph, secondary] (0,0) -- (0.8,0) node[above, lab] {};
+\draw[->, emph, secondary] (0,0) -- (0,0.7) node[above, lab] {};
+\draw[->, emph, accent] (0,0) -- (0.8,0.7) node[right, lab] {$\mathbf v+\mathbf w$};
+\node[lab, note, align=center] at (0,-1.75) {two lines:\\the sum leaves them};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Three sets that are not subspaces, from @exm-subspaces-of-r3 (drawn in the plane). The first does not contain $\mathbf 0$; the second is not closed under multiplication by $-1$; the third is not closed under addition.
+
+:::
+
 ::: {#fig-vector-spaces-and-subspaces-1}
 
 ```{=latex}
@@ -82,6 +119,27 @@ If $S$ and $T$ are subspaces of $V$, then $S\cap T$ is a subspace. The union $S\
 2. If $\mathbf{v},\mathbf{w}\in S\cap T$, then $c\mathbf{v}+d\mathbf{w}$ lies in $S$ and in $T$, because each is closed under combinations.
 
 3. For the union, two different lines through $\mathbf{0}$ in $\mathbb{R}^2$ are a counterexample (@exm-subspaces-of-r3).
+
+:::
+
+::: {#fig-vector-spaces-and-subspaces-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[x={(-0.5cm,-0.4cm)}, y={(1cm,0)}, z={(0,1cm)}]
+\fill[tintA] (-1.2,-1.5,0) -- (1.8,-1.5,0) -- (1.8,1.8,0) -- (-1.2,1.8,0) -- cycle;
+\fill[tintC] (-1.2,0,-1) -- (1.8,0,-1) -- (1.8,0,1.6) -- (-1.2,0,1.6) -- cycle;
+\draw[bold, accent] (-1.2,0,0) -- (1.8,0,0);
+\fill[ink] (0,0,0) circle[pt];
+\node[lab, note, primary] at (0,1.7,0.2) {plane $z=0$}; \node[lab, note, secondary] at (0,0,1.85) {plane $y=0$};
+\node[lab, note, accent] at (2.1,0,0.25) {$x$-axis};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Two planes through $\mathbf 0$ in $\mathbb R^3$ meet in a line through $\mathbf 0$: the intersection of subspaces is a subspace. Their union is not one.
 
 :::
 

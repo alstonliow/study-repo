@@ -51,9 +51,62 @@ Let $e_1,\dots,e_n$ be a basis as in @thm-real-symmetric-forms. We show $p=\max\
 
 :::
 
+::: {#fig-sylvester-law-of-inertia-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.00,0.00) rectangle (0.75,0.45);
+\draw[cell, fill=primaryLight] (0.75,0.00) rectangle (1.50,0.45);
+\draw[cell, fill=primaryLight] (1.50,0.00) rectangle (2.25,0.45);
+\node[lab, tick] at (1.12,-0.22) {$P$: $\psi>0$, $\dim p=3$};
+\draw[cell frame] (2.25,0.00) rectangle (3.00,0.45);
+\draw[cell frame] (3.00,0.00) rectangle (3.75,0.45);
+\draw[cell frame] (3.75,0.00) rectangle (4.50,0.45);
+\node[lab, anchor=east] at (-0.10,0.23) {first basis};
+\draw[cell frame] (0.00,-1.10) rectangle (0.75,-0.65);
+\draw[cell frame] (0.75,-1.10) rectangle (1.50,-0.65);
+\draw[cell, fill=accentLight] (1.50,-1.10) rectangle (2.25,-0.65);
+\draw[cell, fill=accentLight] (2.25,-1.10) rectangle (3.00,-0.65);
+\draw[cell, fill=accentLight] (3.00,-1.10) rectangle (3.75,-0.65);
+\draw[cell, fill=accentLight] (3.75,-1.10) rectangle (4.50,-0.65);
+\node[lab, tick] at (3.00,-1.32) {$N'$: $\psi\le0$, $\dim n-p'=4$};
+\node[lab, anchor=east] at (-0.10,-0.88) {second basis};
+\fill[tintC] (1.5,-1.15) rectangle (2.25,0.5); \node[lab, note, secondary, anchor=west] at (3.2,0.9) {overlap forced: $3+4>n=6$};
+\end{tikzpicture}
+\end{center}
+```
+
+The idea of the proof, with $n=6$, $p=3$ positive directions in one diagonal basis and $p'=2$ in another. The positive subspace $P$ of the first and the non-positive subspace $N'$ of the second have dimensions adding to more than $n$, so they share a non-zero $v$, with $\psi(v,v)>0$ and $\le0$ at once. Hence $p\le p'$, and by symmetry $p=p'$.
+
+:::
+
 ::: {#def-signature .definition name="Signature"}
 
 The *signature* of a real symmetric form $\phi$ is $s(\phi)=p-q$, with $p,q$ as in @thm-real-symmetric-forms. (Some authors call the pair $(p,q)$ the signature.)
+
+:::
+
+::: {#fig-sylvester-law-of-inertia-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.00,0.00) rectangle (0.75,0.45);
+\draw[cell, fill=primaryLight] (0.75,0.00) rectangle (1.50,0.45);
+\draw[cell, fill=primaryLight] (1.50,0.00) rectangle (2.25,0.45);
+\node[lab, tick] at (1.12,-0.22) {$+$: $p$};
+\draw[cell, fill=accentLight] (2.25,0.00) rectangle (3.00,0.45);
+\draw[cell, fill=accentLight] (3.00,0.00) rectangle (3.75,0.45);
+\node[lab, tick] at (3.00,-0.22) {$-$: $q$};
+\draw[cell frame] (3.75,0.00) rectangle (4.50,0.45);
+\node[lab, tick] at (4.12,-0.22) {$0$};
+\node[lab, note, anchor=west, align=left] at (4.8,0.2) {rank $=p+q=5$, signature $=p-q=1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The invariants of a real symmetric form, one cell per diagonal entry of its normal form: $p$ entries $+1$, $q$ entries $-1$, and the rest $0$.
 
 :::
 
@@ -76,6 +129,25 @@ By the spectral theorem (@cor-real-symmetric-orthogonally-diagonalisable) one di
 ::: {#exm-sylvester .example name="Signature in two ways"}
 
 For $q(x,y,z)=x^2+2xy+3y^2+4yz+z^2$, completing the square gave $x'^2+2y'^2-z'^2$ (@exm-diagonalising-quadratic-form), so $p=2$, $q=1$, rank $3$ and signature $1$. Its matrix $\begin{bmatrix}1&1&0\\1&3&2\\0&2&1\end{bmatrix}$ has characteristic polynomial $t^3-5t^2+2t+2=(t-1)(t^2-4t-2)$, with roots $1$ and $2\pm\sqrt6$: two positive and one negative, although the eigenvalues themselves differ from $1,2,-1$. The same counts, as Sylvester's law requires. The form $xy$ on $\mathbb R^2$ equals $\big(\frac{x+y}2\big)^2-\big(\frac{x-y}2\big)^2$, so it has $p=q=1$ and signature $0$: it is positive on the line $y=x$ and negative on $y=-x$.
+
+:::
+
+::: {#fig-sylvester-law-of-inertia-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (-1.5,0) -- (5.6,0) node[right, lab, tick] {eigenvalue};
+\fill[accent] (-0.449,0) circle[pt] node[below, lab, tick] {$2-\sqrt6$};
+\fill[primary] (1,0) circle[pt] node[below, lab, tick] {$1$}; \fill[primary] (4.449,0) circle[pt] node[below, lab, tick] {$2+\sqrt6$};
+\draw[faint] (0,-0.15) -- (0,0.15) node[above, lab, tick] {$0$};
+\node[lab, note, anchor=west, align=left] at (-1.5,1.0) {completing squares: $x'^2+2y'^2-z'^2$ \quad $\Rightarrow\ p=2,\ q=1$};
+\node[lab, note, anchor=west, align=left] at (-1.5,-1.0) {eigenvalues: two positive, one negative \quad $\Rightarrow$ the same $p,q$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-sylvester: two different diagonalisations of the same form, by completing squares and by eigenvalues, have different diagonal entries but the same numbers of positive and negative ones.
 
 :::
 

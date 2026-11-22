@@ -25,6 +25,27 @@ $$[\alpha]_{\mathcal B',\mathcal C'}=[\iota_V]_{\mathcal C,\mathcal C'}\,[\alpha
 
 :::
 
+::: {#fig-equivalence-and-rank-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (a) at (0,1.5) {$U$, basis $\mathcal B$};
+\node[box] (b) at (5,1.5) {$V$, basis $\mathcal C$};
+\node[box] (c) at (0,0) {$U$, basis $\mathcal B'$};
+\node[box] (d) at (5,0) {$V$, basis $\mathcal C'$};
+\draw[->, emph] (a) -- (b) node[midway, above, lab] {$[\alpha]_{\mathcal B,\mathcal C}$};
+\draw[->, emph, accent] (c) -- (d) node[midway, below, lab] {$[\alpha]_{\mathcal B',\mathcal C'}$};
+\draw[->, emph] (c) -- (a) node[midway, left, lab] {$P$};
+\draw[->, emph] (b) -- (d) node[midway, right, lab] {$Q^{-1}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Change of basis for a map between two spaces: to use the new bases, convert new coordinates to old ($P$), apply the old matrix, and convert back ($Q^{-1}$). Read from right to left this is $Q^{-1}[\alpha]_{\mathcal B,\mathcal C}P$.
+
+:::
+
 ::: {#def-equivalent-matrices .definition name="Equivalent matrices"}
 
 $A,B\in\operatorname{Mat}_{n,m}(F)$ are *equivalent* if $B=Q^{-1}AP$ for some invertible $P\in\operatorname{GL}_m(F)$ and $Q\in\operatorname{GL}_n(F)$.
@@ -53,6 +74,24 @@ Hence two $n\times m$ matrices are equivalent if and only if they have the same 
 
 :::
 
+::: {#fig-equivalence-and-rank-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (2.4,-1.6);
+\draw[hl cell] (0,0) rectangle (1.0,-1.0); \node[lab] at (0.5,-0.5) {$I_r$};
+\node[lab, muted] at (1.7,-0.5) {$0$}; \node[lab, muted] at (0.5,-1.3) {$0$}; \node[lab, muted] at (1.7,-1.3) {$0$};
+\node[lab, anchor=east] at (-0.2,-0.8) {$Q^{-1}AP=$};
+\node[lab, note, anchor=west, align=left] at (2.7,-0.8) {choose a basis of $U$ ending with a basis\\of $\ker\alpha$, and a basis of $V$ starting with\\the images of the other vectors};
+\end{tikzpicture}
+\end{center}
+```
+
+The rank normal form. With bases adapted to the map on both sides, $\alpha$ sends the first $r$ basis vectors to the first $r$ basis vectors and kills the rest, so every matrix of rank $r$ is equivalent to this one.
+
+:::
+
 ::: {#thm-row-rank-equals-column-rank .theorem name="Row rank equals column rank" related="thm-fundamental-theorem-dimensions"}
 
 For every $A\in\operatorname{Mat}_{n,m}(F)$, the column space and row space of $A$ have the same dimension: $r(A)=r(A^{\mathsf T})$.
@@ -78,6 +117,77 @@ The *elementary matrices* in $\operatorname{GL}_n(F)$ are
 3. $T_i(\lambda)$ ($\lambda\ne0$): the identity with entry $(i,i)$ replaced by $\lambda$.
 
 Multiplying $A$ on the left by one of them exchanges two rows, adds $\lambda$ times row $j$ to row $i$, or scales row $i$ by $\lambda$; multiplying on the right does the same to columns. Each is invertible, with inverse $S_{ij}$, $E_{ij}(-\lambda)$, $T_i(\lambda^{-1})$.
+
+:::
+
+::: {#fig-equivalence-and-rank-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$0$};
+\draw[hl cell] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$1$};
+\draw[cell frame] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$0$};
+\draw[hl cell] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$0$};
+\draw[cell frame] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$0$};
+\draw[cell frame] (0.000,-0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[cell frame] (0.550,-0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$0$};
+\draw[cell frame] (1.100,-0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$1$};
+\node[lab, note] at (0.825,-0.350) {$S_{12}$};
+\draw[cell frame] (2.300,1.100) rectangle (2.850,1.650);
+\node[lab] at (2.575,1.375) {$1$};
+\draw[cell frame] (2.850,1.100) rectangle (3.400,1.650);
+\node[lab] at (3.125,1.375) {$0$};
+\draw[cell frame] (3.400,1.100) rectangle (3.950,1.650);
+\node[lab] at (3.675,1.375) {$0$};
+\draw[hl cell] (2.300,0.550) rectangle (2.850,1.100);
+\node[lab] at (2.575,0.825) {$\lambda$};
+\draw[cell frame] (2.850,0.550) rectangle (3.400,1.100);
+\node[lab] at (3.125,0.825) {$1$};
+\draw[cell frame] (3.400,0.550) rectangle (3.950,1.100);
+\node[lab] at (3.675,0.825) {$0$};
+\draw[cell frame] (2.300,-0.000) rectangle (2.850,0.550);
+\node[lab] at (2.575,0.275) {$0$};
+\draw[cell frame] (2.850,-0.000) rectangle (3.400,0.550);
+\node[lab] at (3.125,0.275) {$0$};
+\draw[cell frame] (3.400,-0.000) rectangle (3.950,0.550);
+\node[lab] at (3.675,0.275) {$1$};
+\node[lab, note] at (3.125,-0.350) {$E_{21}(\lambda)$};
+\draw[cell frame] (4.600,1.100) rectangle (5.150,1.650);
+\node[lab] at (4.875,1.375) {$1$};
+\draw[cell frame] (5.150,1.100) rectangle (5.700,1.650);
+\node[lab] at (5.425,1.375) {$0$};
+\draw[cell frame] (5.700,1.100) rectangle (6.250,1.650);
+\node[lab] at (5.975,1.375) {$0$};
+\draw[cell frame] (4.600,0.550) rectangle (5.150,1.100);
+\node[lab] at (4.875,0.825) {$0$};
+\draw[hl cell] (5.150,0.550) rectangle (5.700,1.100);
+\node[lab] at (5.425,0.825) {$\lambda$};
+\draw[cell frame] (5.700,0.550) rectangle (6.250,1.100);
+\node[lab] at (5.975,0.825) {$0$};
+\draw[cell frame] (4.600,-0.000) rectangle (5.150,0.550);
+\node[lab] at (4.875,0.275) {$0$};
+\draw[cell frame] (5.150,-0.000) rectangle (5.700,0.550);
+\node[lab] at (5.425,0.275) {$0$};
+\draw[cell frame] (5.700,-0.000) rectangle (6.250,0.550);
+\node[lab] at (5.975,0.275) {$1$};
+\node[lab, note] at (5.425,-0.350) {$T_2(\lambda)$};
+\node[lab, note, anchor=west, align=left] at (6.6,0.825) {on the left: row operations\\on the right: column operations};
+\end{tikzpicture}
+\end{center}
+```
+
+The three kinds of elementary matrix for $n=3$, each differing from $I$ in the highlighted entries: exchange, add a multiple of one row to another, scale.
 
 :::
 

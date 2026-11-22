@@ -29,6 +29,24 @@ For $A=I$: $(I-\mathbf{u}\mathbf{v}^{\mathsf T})^{-1}=I+\dfrac{\mathbf{u}\mathbf
 
 :::
 
+::: {#fig-rank-one-updates-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] at (0,0) {$(A+\mathbf u\mathbf v^{\mathsf T})^{-1}=A^{-1}-\dfrac{A^{-1}\mathbf u\;\mathbf v^{\mathsf T}A^{-1}}{1+\mathbf v^{\mathsf T}A^{-1}\mathbf u}$};
+\draw[cell frame] (-1.2,-0.9) rectangle (-0.95,-1.9); \node[lab, tick] at (-1.075,-2.1) {$A^{-1}\mathbf u$};
+\draw[cell frame] (-0.8,-0.9) rectangle (0.2,-1.15); \node[lab, tick] at (-0.3,-1.35) {$\mathbf v^{\mathsf T}A^{-1}$};
+\draw[hl cell] (1.6,-1.25) rectangle (1.85,-1.5); \node[lab, tick] at (1.725,-1.75) {a number};
+\node[lab, note, anchor=west, align=left] at (2.6,-1.4) {the correction is column times row:\\rank one, cost $O(n^2)$ once $A^{-1}$ is known};
+\end{tikzpicture}
+\end{center}
+```
+
+The shapes in the Sherman–Morrison formula: the change to $A^{-1}$ is a column times a row divided by a single number, which must not be $0$.
+
+:::
+
 ::: {#fig-rank-one-updates-1}
 
 ```{=latex}
@@ -70,6 +88,24 @@ A change of rank $k$ in $A$ costs one $k\times k$ inverse instead of a new $n\ti
 
 :::
 
+::: {#fig-rank-one-updates-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab] at (0,0) {$(A+UCV^{\mathsf T})^{-1}=A^{-1}-A^{-1}U\big(C^{-1}+V^{\mathsf T}A^{-1}U\big)^{-1}V^{\mathsf T}A^{-1}$};
+\draw[cell frame] (-2.0,-0.8) rectangle (-1.4,-2.4); \node[lab, tick] at (-1.7,-2.6) {$A^{-1}U$: $n\times k$};
+\draw[hl cell] (-0.6,-0.8) rectangle (0,-1.4); \node[lab, tick] at (-0.3,-1.65) {$k\times k$};
+\draw[cell frame] (0.8,-0.8) rectangle (2.4,-1.4); \node[lab, tick] at (1.6,-1.65) {$V^{\mathsf T}A^{-1}$: $k\times n$};
+\node[lab, note, anchor=west] at (2.9,-1.1) {only a small $k\times k$ inverse is new};
+\end{tikzpicture}
+\end{center}
+```
+
+The Woodbury formula for a rank $k$ change $UCV^{\mathsf T}$: the update to the inverse is a thin $n\times k$ matrix, a small $k\times k$ inverse and a wide $k\times n$ matrix. For $k=1$ it is Sherman–Morrison.
+
+:::
+
 ::: {#prp-solve-after-rank-one-update .proposition name="Solving after a rank one change"}
 
 To solve $(A-\mathbf{u}\mathbf{v}^{\mathsf T})\mathbf{y}=\mathbf{b}$ using only solves with $A$: solve $A\mathbf{x}=\mathbf{b}$ and $A\mathbf{z}=\mathbf{u}$, then
@@ -89,6 +125,33 @@ Multiply @thm-sherman-morrison by $\mathbf{b}$: $A^{-1}\mathbf{b}=\mathbf{x}$ an
 With $A=I$, $\mathbf{u}=(1,0)$, $\mathbf{v}=(0,1)$: $\mathbf{v}^{\mathsf T}\mathbf{u}=0$, so
 $$\begin{bmatrix}1&-1\\0&1\end{bmatrix}^{-1}=I+\mathbf{u}\mathbf{v}^{\mathsf T}=\begin{bmatrix}1&1\\0&1\end{bmatrix}.$$
 If instead $\mathbf{v}=(1,0)$, then $\mathbf{v}^{\mathsf T}\mathbf{u}=1$ and $I-\mathbf{u}\mathbf{v}^{\mathsf T}=\operatorname{diag}(0,1)$ is singular, as the formula warns.
+
+:::
+
+::: {#fig-rank-one-updates-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(1.2,0)}]
+\draw[->, muted] (-0.3,0) -- (2.2,0); \draw[->, muted] (0,-0.3) -- (0,1.4);
+\draw[faint] (0,0) rectangle (1,1);
+\fill[tintA] (0.000,0.000) -- (1.000,0.000) -- (0.000,1.000) -- (-1.000,1.000) -- cycle;
+\draw[primary] (0,0) -- (1,0) -- (0,1) -- (-1,1) -- cycle;
+\node[lab, note] at (0.6,-0.5) {$\begin{bmatrix}1&-1\\0&1\end{bmatrix}$: shear left};
+\end{scope}
+\begin{scope}[shift={(6.2,0)}]
+\draw[->, muted] (-0.3,0) -- (2.2,0); \draw[->, muted] (0,-0.3) -- (0,1.4);
+\draw[faint] (0,0) rectangle (1,1);
+\fill[tintA] (0.000,0.000) -- (1.000,0.000) -- (2.000,1.000) -- (1.000,1.000) -- cycle;
+\draw[primary] (0,0) -- (1,0) -- (2,1) -- (1,1) -- cycle;
+\node[lab, note] at (0.6,-0.5) {its inverse $\begin{bmatrix}1&1\\0&1\end{bmatrix}$: shear right};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-rank-one-update: $I-\mathbf u\mathbf v^{\mathsf T}$ with $\mathbf u=(1,0)$, $\mathbf v=(0,1)$ shears the unit square to the left, and its inverse $I+\mathbf u\mathbf v^{\mathsf T}$ shears it back. Since $\mathbf v^{\mathsf T}\mathbf u=0$ the denominator in Sherman–Morrison is $1$.
 
 :::
 

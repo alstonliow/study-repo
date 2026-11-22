@@ -28,6 +28,23 @@ the maximum over subspaces $Y\subseteq\mathbb{R}^n$ of dimension $i$, attained b
 
 :::
 
+::: {#fig-eigenvalue-perturbation-and-interlacing-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[y={(0,0.8cm)}]
+\draw[->, muted] (0,0) -- (6.6,0) node[right, lab, tick] {$\theta$}; \draw[->, muted] (0,0) -- (0,3.4) node[above, lab, tick] {$R(\mathbf x)$};
+\draw[emph, primary] (0.000,3.000) -- (0.079,2.988) -- (0.157,2.951) -- (0.236,2.891) -- (0.314,2.809) -- (0.393,2.707) -- (0.471,2.588) -- (0.550,2.454) -- (0.628,2.309) -- (0.707,2.156) -- (0.785,2.000) -- (0.864,1.844) -- (0.942,1.691) -- (1.021,1.546) -- (1.100,1.412) -- (1.178,1.293) -- (1.257,1.191) -- (1.335,1.109) -- (1.414,1.049) -- (1.492,1.012) -- (1.571,1.000) -- (1.649,1.012) -- (1.728,1.049) -- (1.806,1.109) -- (1.885,1.191) -- (1.963,1.293) -- (2.042,1.412) -- (2.121,1.546) -- (2.199,1.691) -- (2.278,1.844) -- (2.356,2.000) -- (2.435,2.156) -- (2.513,2.309) -- (2.592,2.454) -- (2.670,2.588) -- (2.749,2.707) -- (2.827,2.809) -- (2.906,2.891) -- (2.985,2.951) -- (3.063,2.988) -- (3.142,3.000) -- (3.220,2.988) -- (3.299,2.951) -- (3.377,2.891) -- (3.456,2.809) -- (3.534,2.707) -- (3.613,2.588) -- (3.691,2.454) -- (3.770,2.309) -- (3.848,2.156) -- (3.927,2.000) -- (4.006,1.844) -- (4.084,1.691) -- (4.163,1.546) -- (4.241,1.412) -- (4.320,1.293) -- (4.398,1.191) -- (4.477,1.109) -- (4.555,1.049) -- (4.634,1.012) -- (4.712,1.000) -- (4.791,1.012) -- (4.869,1.049) -- (4.948,1.109) -- (5.027,1.191) -- (5.105,1.293) -- (5.184,1.412) -- (5.262,1.546) -- (5.341,1.691) -- (5.419,1.844) -- (5.498,2.000) -- (5.576,2.156) -- (5.655,2.309) -- (5.733,2.454) -- (5.812,2.588) -- (5.891,2.707) -- (5.969,2.809) -- (6.048,2.891) -- (6.126,2.951) -- (6.205,2.988) -- (6.283,3.000);
+\draw[faint, dashed] (0,3) -- (6.3,3) node[right, lab, note] {$\lambda_1=3$}; \draw[faint, dashed] (0,1) -- (6.3,1) node[right, lab, note] {$\lambda_2=1$};
+\node[lab, tick] at (3.14,-0.25) {$\pi$};
+\end{tikzpicture}
+\end{center}
+```
+
+The Rayleigh quotient $R(\mathbf x)=\mathbf x^{\mathsf T}S\mathbf x/\mathbf x^{\mathsf T}\mathbf x$ of $S=\operatorname{diag}(3,1)$ on the unit vectors $\mathbf x=(\cos\theta,\sin\theta)$. Its maximum and minimum are the extreme eigenvalues, reached at the eigenvectors; the max–min principle extends this to the middle eigenvalues.
+
+:::
+
 ::: {#thm-weyl-inequality .theorem name="Weyl's inequality"}
 
 For symmetric $S$ and $T$ and indices with $i+j-1\le n$,
@@ -47,6 +64,28 @@ In particular $\lambda_i(S)+\lambda_n(T)\le\lambda_i(S+T)\le\lambda_i(S)+\lambda
 4. $R_{S+T}=R_S+R_T$, so $\lambda_{i+j-1}(S+T)\le\lambda_i(S)+\lambda_j(T)$.
 
 5. For the lower bound apply the case $j=1$ to $S=(S+T)+(-T)$, using $\lambda_1(-T)=-\lambda_n(T)$.
+
+:::
+
+::: {#fig-eigenvalue-perturbation-and-interlacing-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (-0.3,0) -- (6.5,0) node[right, lab, tick] {$\lambda$};
+\fill[primary] (1,0) circle[pt]; \fill[tintA] (0.4,-0.15) rectangle (1.6,0.15);
+\fill[primary] (3,0) circle[pt]; \fill[tintA] (2.4,-0.15) rectangle (3.6,0.15);
+\fill[primary] (5,0) circle[pt]; \fill[tintA] (4.4,-0.15) rectangle (5.6,0.15);
+\fill[accent] (1.4,0) circle[pt];
+\fill[accent] (2.7,0) circle[pt];
+\fill[accent] (5.5,0) circle[pt];
+\draw[|<->|, faint] (2.4,0.35) -- (3.6,0.35) node[midway, above, lab, tick] {$\pm\lVert T\rVert$};
+\node[lab, note, primary] at (1,-0.45) {$\lambda_i(S)$}; \node[lab, note, accent] at (5.5,-0.45) {$\lambda_i(S+T)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Weyl's inequality as a picture (made-up values): adding a symmetric $T$ moves each eigenvalue, counted in order, by at most $\lVert T\rVert_2$, so every new eigenvalue stays in the shaded window around the old one.
 
 :::
 
@@ -81,6 +120,24 @@ $$\lambda_1\ge\beta_1\ge\lambda_2\ge\beta_2\ge\dots\ge\beta_{n-1}\ge\lambda_n .$
 2. Subspaces of $E$ are among all subspaces of $\mathbb{R}^n$, so $\beta_i\le\lambda_i$.
 
 3. $Y=\operatorname{span}(\mathbf{q}_1,\dots,\mathbf{q}_{i+1})\cap E$ has dimension at least $i$, and $R_S\ge\lambda_{i+1}$ on it. Any $i$-dimensional subspace of it shows $\beta_i\ge\lambda_{i+1}$.
+
+:::
+
+::: {#fig-eigenvalue-perturbation-and-interlacing-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (-0.3,0.6) -- (4.0,0.6) node[right, lab, tick] {$S$};
+\draw[->, muted] (-0.3,0) -- (4.0,0) node[right, lab, tick] {$S_{11}$};
+\fill[primary] (1,0.6) circle[pt] node[above, lab, tick] {$1$}; \fill[primary] (3,0.6) circle[pt] node[above, lab, tick] {$3$};
+\fill[accent] (2,0) circle[pt] node[below, lab, tick] {$2$}; \draw[faint, dashed] (1,0.6) -- (2,0) -- (3,0.6);
+\node[lab, note, anchor=west, align=left] at (4.6,0.3) {$S=\begin{bmatrix}2&1\\1&2\end{bmatrix}$, top-left block $[2]$:\\$1\le2\le3$};
+\end{tikzpicture}
+\end{center}
+```
+
+Cauchy interlacing in the smallest case: the eigenvalue of a $1\times1$ principal submatrix, a diagonal entry, lies between the two eigenvalues of the $2\times2$ symmetric matrix.
 
 :::
 

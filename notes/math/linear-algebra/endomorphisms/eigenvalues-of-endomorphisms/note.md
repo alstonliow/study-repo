@@ -25,6 +25,27 @@ If $P$ is the change of basis matrix from $\mathcal B$ to $\mathcal B'$, then $[
 
 :::
 
+::: {#fig-eigenvalues-of-endomorphisms-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (a) at (0,1.5) {$V$, basis $\mathcal B$};
+\node[box] (b) at (4.6,1.5) {$V$, basis $\mathcal B$};
+\node[box] (c) at (0,0) {$V$, basis $\mathcal B'$};
+\node[box] (d) at (4.6,0) {$V$, basis $\mathcal B'$};
+\draw[->, emph] (a) -- (b) node[midway, above, lab] {$A$};
+\draw[->, emph, accent] (c) -- (d) node[midway, below, lab] {$P^{-1}AP$};
+\draw[->, emph] (c) -- (a) node[midway, left, lab] {$P$};
+\draw[->, emph] (b) -- (d) node[midway, right, lab] {$P^{-1}$};
+\end{tikzpicture}
+\end{center}
+```
+
+For an endomorphism one basis serves for both the input and the output, so the change-of-basis matrix appears on both sides: $P^{-1}AP$ instead of $Q^{-1}AP$. Trace, determinant and characteristic polynomial survive this change.
+
+:::
+
 So a property of square matrices that is invariant under similarity is a property of the endomorphism. Classifying endomorphisms means classifying matrices up to similarity, which is much harder than equivalence (where only the rank survives, @thm-rank-normal-form).
 
 ::: {#lem-trace-cyclic .lemma name="Trace of a product"}
@@ -36,6 +57,28 @@ For $A\in\operatorname{Mat}_{n,m}(F)$ and $B\in\operatorname{Mat}_{m,n}(F)$, $\o
 ::: {.proof}
 
 $\operatorname{tr}(AB)=\sum_i\sum_ja_{ij}b_{ji}=\sum_j\sum_ib_{ji}a_{ij}=\operatorname{tr}(BA)$.
+
+:::
+
+::: {#fig-eigenvalues-of-endomorphisms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (1.6,-0.8); \node[lab] at (0.8,-0.4) {$A$};
+\draw[cell frame] (1.8,0) rectangle (2.6,-1.6); \node[lab] at (2.2,-0.8) {$B$};
+\draw[hl cell] (3.0,0) rectangle (3.8,-0.8); \node[lab] at (3.4,-0.4) {$AB$};
+\node[lab, tick] at (3.4,-1.0) {$m\times m$};
+\draw[cell frame] (5,0) rectangle (5.8,-1.6); \node[lab] at (5.4,-0.8) {$B$};
+\draw[cell frame] (6.0,0) rectangle (7.6,-0.8); \node[lab] at (6.8,-0.4) {$A$};
+\draw[hl cell] (8.0,0) rectangle (9.6,-1.6); \node[lab] at (8.8,-0.8) {$BA$};
+\node[lab, tick] at (8.8,-1.8) {$n\times n$};
+\node[lab, anchor=west] at (0,-2.4) {different sizes, same trace: $\operatorname{tr}(AB)=\sum_{i,j}a_{ij}b_{ji}=\operatorname{tr}(BA)$};
+\end{tikzpicture}
+\end{center}
+```
+
+$AB$ and $BA$ can even have different sizes, but both traces add up the same products $a_{ij}b_{ji}$. With $B=P^{-1}$ and $A=XP$ this shows that similar matrices have the same trace.
 
 :::
 
@@ -111,6 +154,32 @@ In particular, if $\alpha$ has $n=\dim V$ distinct eigenvalues, it is diagonalis
 3. (2)⇔(3): the sum is direct by @lem-eigenspaces-independent, so its dimension is $\sum\dim E(\lambda_i)$ (@prp-direct-sum-criteria), and a subspace of dimension $n$ is $V$.
 
 4. With $n$ distinct eigenvalues each $\dim E(\lambda_i)\ge1$, so the sum in (3) is at least $n$, hence equal to $n$.
+
+:::
+
+::: {#fig-eigenvalues-of-endomorphisms-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (1.80,0.00) rectangle (2.55,0.45);
+\draw[cell, fill=primaryLight] (2.55,0.00) rectangle (3.30,0.45);
+\node[lab, tick] at (2.55,-0.22) {$E(2)$};
+\draw[cell, fill=accentLight] (3.30,0.00) rectangle (4.05,0.45);
+\node[lab, tick] at (3.67,-0.22) {$E(3)$};
+\node[lab, anchor=east] at (1.70,0.23) {$\operatorname{diag}(2,2,3)$};
+\draw[cell, fill=primaryLight] (1.80,-1.00) rectangle (2.55,-0.55);
+\node[lab, tick] at (2.17,-1.22) {$E(2)$};
+\draw[cell frame] (2.55,-1.00) rectangle (3.30,-0.55);
+\draw[cell, fill=accentLight] (3.30,-1.00) rectangle (4.05,-0.55);
+\node[lab, tick] at (3.67,-1.22) {$E(3)$};
+\node[lab, anchor=east] at (1.70,-0.78) {$\begin{bmatrix}2&1&0\\0&2&0\\0&0&3\end{bmatrix}$};
+\node[lab, note, anchor=west, align=left] at (4.3,-0.3) {diagonalisable exactly when\\the eigenspaces fill $V$:\\$\sum_\lambda\dim E(\lambda)=\dim V$};
+\end{tikzpicture}
+\end{center}
+```
+
+Two maps with the same characteristic polynomial $(t-2)^2(t-3)$, one cell per dimension. The eigenspaces always form a direct sum (@lem-eigenspaces-independent); the second map is not diagonalisable because its eigenspace for $2$ is one dimension short.
 
 :::
 

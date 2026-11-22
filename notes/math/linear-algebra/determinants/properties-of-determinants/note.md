@@ -22,6 +22,41 @@ and the same in every other row.
 
 :::
 
+::: {#fig-properties-of-determinants-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-0.2,0) -- (2.6,0); \draw[->, muted] (0,-0.2) -- (0,2.2);
+\fill[tintA] (0.000,0.000) -- (1.200,0.200) -- (1.500,1.200) -- (0.300,1.000) -- cycle;
+\draw[->, emph, primary] (0,0) -- (1.2, 0.2) node[below right, lab, tick] {$\mathbf r_1$};
+\draw[->, emph, primary] (0,0) -- (0.3, 1.0) node[left, lab, tick] {$\mathbf r_2$};
+\node[lab, note, align=center] at (1.1,-0.6) {$\det=1.14$};
+\end{scope}
+\begin{scope}[shift={(3.3,0)}]
+\draw[->, muted] (-0.2,0) -- (2.6,0); \draw[->, muted] (0,-0.2) -- (0,2.2);
+\fill[tintB] (0.000,0.000) -- (2.400,0.400) -- (2.700,1.400) -- (0.300,1.000) -- cycle;
+\draw[->, emph, accent] (0,0) -- (2.4, 0.4) node[below right, lab, tick] {$\mathbf r_1$};
+\draw[->, emph, accent] (0,0) -- (0.3, 1.0) node[left, lab, tick] {$\mathbf r_2$};
+\node[lab, note, align=center] at (1.1,-0.6) {row $1$ doubled:\\$\det=2.28$};
+\end{scope}
+\begin{scope}[shift={(6.6,0)}]
+\draw[->, muted] (-0.2,0) -- (2.6,0); \draw[->, muted] (0,-0.2) -- (0,2.2);
+\fill[tintC] (0.000,0.000) -- (1.200,0.200) -- (2.700,1.400) -- (1.500,1.200) -- cycle;
+\draw[->, emph, secondary] (0,0) -- (1.2, 0.2) node[below right, lab, tick] {$\mathbf r_1$};
+\draw[->, emph, secondary] (0,0) -- (1.5, 1.2) node[left, lab, tick] {$\mathbf r_2$};
+\node[lab, note, align=center] at (1.1,-0.6) {$\mathbf r_2+\mathbf r_1$:\\$\det=1.14$};
+\end{scope}
+\draw[faint, dashed] (6.6+0.3,1.0) -- (6.6+1.5,1.2);
+\end{tikzpicture}
+\end{center}
+```
+
+Rule 3 as area, for $\mathbf r_1=(1.2,0.2)$, $\mathbf r_2=(0.3,1)$. Scaling a row scales the area; adding a multiple of one row to another shears the parallelogram along that row and keeps the area. Exchanging the rows (rule 2) reverses the orientation, which is the sign.
+
+:::
+
 ::: {#thm-determinant-consequences .theorem name="Consequences of the three properties"}
 
 For every $n\times n$ matrix $A$:
@@ -76,6 +111,59 @@ If $PA=LU$, then $\det A=\pm(\text{product of the pivots})$, with the sign $+$ f
 
 :::
 
+::: {#fig-properties-of-determinants-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$1$};
+\draw[cell frame] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$1$};
+\draw[cell frame] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$1$};
+\draw[cell frame] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$2$};
+\draw[cell frame] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$3$};
+\draw[cell frame] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$5$};
+\draw[cell frame] (0.000,-0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$4$};
+\draw[cell frame] (0.550,-0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$0$};
+\draw[cell frame] (1.100,-0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$5$};
+\node[lab, note] at (0.825,-0.350) {$A$};
+\draw[->] (1.9,0.825) -- (2.9,0.825) node[midway, above, lab, tick] {elimination};
+\draw[hl cell] (3.100,1.100) rectangle (3.650,1.650);
+\node[lab] at (3.375,1.375) {$1$};
+\draw[cell frame] (3.650,1.100) rectangle (4.200,1.650);
+\node[lab] at (3.925,1.375) {$1$};
+\draw[cell frame] (4.200,1.100) rectangle (4.750,1.650);
+\node[lab] at (4.475,1.375) {$1$};
+\draw[cell frame] (3.100,0.550) rectangle (3.650,1.100);
+\node[lab] at (3.375,0.825) {$0$};
+\draw[hl cell] (3.650,0.550) rectangle (4.200,1.100);
+\node[lab] at (3.925,0.825) {$1$};
+\draw[cell frame] (4.200,0.550) rectangle (4.750,1.100);
+\node[lab] at (4.475,0.825) {$3$};
+\draw[cell frame] (3.100,-0.000) rectangle (3.650,0.550);
+\node[lab] at (3.375,0.275) {$0$};
+\draw[cell frame] (3.650,-0.000) rectangle (4.200,0.550);
+\node[lab] at (3.925,0.275) {$0$};
+\draw[hl cell] (4.200,-0.000) rectangle (4.750,0.550);
+\node[lab] at (4.475,0.275) {$13$};
+\node[lab, note] at (3.925,-0.350) {$U$};
+\node[lab, anchor=west] at (5.1,0.825) {$\det A=\det U=1\cdot1\cdot13=13$};
+\end{tikzpicture}
+\end{center}
+```
+
+Subtracting multiples of rows does not change the determinant, and a triangular determinant is the product of its diagonal. For the matrix of @exm-elimination-three-by-three no row exchange is needed, so $\det A$ is the product of the pivots.
+
+:::
+
 <!-- Merged 2026-11-20 (owner): the block thm-product-rule-determinants was removed in favour of thm-determinant-multiplicative (Cambridge IB Linear Algebra), which states it for any field or inner product space with a full proof. -->
 
 **Product rule.** For $n\times n$ matrices, $\det(AB)=\det A\cdot\det B$. The idea: for fixed $B$ with $\det B\ne0$, $A\mapsto\det(AB)/\det B$ has the three defining properties, and only $\det$ has them. The proof over any field is @thm-determinant-multiplicative.
@@ -99,5 +187,24 @@ $\det A^{-1}=1/\det A$ and $\det A^{\mathsf T}=\det A$. Consequently every prope
 ::: {#rmk-properties-of-determinants-1 .remark name="Determinants are not linear"}
 
 $\det(A+B)\neq\det A+\det B$ in general, and $\det(2A)=2^n\det A$ for $n\times n$ $A$: linearity holds in one row at a time only.
+
+:::
+
+::: {#fig-properties-of-determinants-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (-0.2,0) -- (2.4,0); \draw[->, muted] (0,-0.2) -- (0,2.4);
+\fill[tintB] (0,0) rectangle (2,2); \draw[accent] (0,0) rectangle (2,2);
+\fill[tintA] (0,0) rectangle (1,1); \draw[primary, emph] (0,0) rectangle (1,1);
+\draw[faint] (1,0) -- (1,2); \draw[faint] (0,1) -- (2,1);
+\node[lab, note] at (0.5,0.5) {$I$}; \node[lab, note, accent] at (1.5,1.5) {$2I$};
+\node[lab, note, anchor=west, align=left] at (2.6,1) {$\det(2I)=4\ne2\det I$:\\each of the $n$ rows is doubled,\\so $\det(tA)=t^n\det A$};
+\end{tikzpicture}
+\end{center}
+```
+
+Doubling a $2\times2$ matrix doubles both edges of its square, which multiplies the area by $4$, not $2$. The determinant is linear in each row separately, not in the whole matrix.
 
 :::

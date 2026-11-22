@@ -16,6 +16,31 @@ $$C=\frac1s\sum_{t=1}^{s}\frac{\mathbf{a}_{k_t}\mathbf{b}_{k_t}^{\mathsf T}}{p_{
 
 :::
 
+::: {#fig-randomized-matrix-multiplication-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.0,0) rectangle (0.25,-1.0); \draw[cell frame] (0.35,0) rectangle (1.25,-0.25);
+\node[lab, tick] at (0.6,-1.25) {$\mathbf a_1\mathbf b_1^{\mathsf T}$};
+\node[lab] at (1.48,-0.5) {$+$};
+\draw[cell frame] (1.7,0) rectangle (1.95,-1.0); \draw[cell frame] (2.05,0) rectangle (2.95,-0.25);
+\node[lab, tick] at (2.3,-1.25) {$\mathbf a_2\mathbf b_2^{\mathsf T}$};
+\node[lab] at (3.18,-0.5) {$+$};
+\draw[hl cell] (3.4,0) rectangle (3.65,-1.0); \draw[hl cell] (3.75,0) rectangle (4.65,-0.25);
+\node[lab, tick] at (4.0,-1.25) {$\mathbf a_3\mathbf b_3^{\mathsf T}$};
+\node[lab] at (4.88,-0.5) {$+$};
+\draw[cell frame] (5.1,0) rectangle (5.35,-1.0); \draw[cell frame] (5.45,0) rectangle (6.35,-0.25);
+\node[lab, tick] at (5.70,-1.25) {$\mathbf a_4\mathbf b_4^{\mathsf T}$};
+\node[lab, note, anchor=west, align=left] at (6.9,-0.5) {pick term $k$ with probability $p_k$,\\use $\frac1{p_k}\mathbf a_k\mathbf b_k^{\mathsf T}$; on average this is $AB$};
+\end{tikzpicture}
+\end{center}
+```
+
+$AB$ is a sum of column-times-row layers. Sampling only some layers (highlighted) and rescaling them gives an unbiased estimate of $AB$ at a fraction of the cost.
+
+:::
+
 ```{=latex}
 \begin{algorithm}
 \caption{Sampled matrix product}
@@ -76,6 +101,22 @@ Take $A=\operatorname{diag}(1,3)$ and $B=I$, so $AB=A$ and $\lVert AB\rVert_F^2=
 
 - uniform $p=(\frac12,\frac12)$: variance $2(1+9)-10=10$;
 - optimal $p=(\frac14,\frac34)$: variance $(1+3)^2-10=6$.
+
+:::
+
+::: {#fig-randomized-matrix-multiplication-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (0,0) -- (3.4,0); \draw[->, muted] (0,0) -- (0,2.4) node[above, lab, tick] {variance};
+\draw[cell, fill=accentLight] (0.4,0) rectangle (1.2,2.0); \node[lab, tick] at (0.8,2.2) {$10$}; \node[lab, tick, align=center] at (0.8,-0.35) {uniform\\$p=(\frac12,\frac12)$};
+\draw[bar] (2.0,0) rectangle (2.8,1.2); \node[lab, tick] at (2.4,1.4) {$6$}; \node[lab, tick, align=center] at (2.4,-0.35) {by norms\\$p=(\frac14,\frac34)$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-sampled-product with one sample: choosing the larger layer more often, in proportion to $\lVert\mathbf a_k\rVert\lVert\mathbf b_k\rVert$, lowers the variance from $10$ to $6$.
 
 :::
 

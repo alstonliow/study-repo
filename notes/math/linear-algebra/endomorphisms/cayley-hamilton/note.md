@@ -13,6 +13,37 @@ $\alpha\in\operatorname{End}(V)$ is *triangulable* if some basis makes $[\alpha]
 
 :::
 
+::: {#fig-cayley-hamilton-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[regionA] (0,0) rectangle (4.2,2.4); \draw[regionB] (0.2,0.2) rectangle (2.8,1.6); \draw[regionC] (0.4,0.4) rectangle (1.4,1.0);
+\node[lab, note] at (0.9,0.7) {$U_1$}; \node[lab, note] at (2.3,1.35) {$U_2$}; \node[lab, note] at (3.8,2.15) {$U_3=V$};
+\draw[hl cell] (5.200,1.450) rectangle (5.750,2.000);
+\node[lab] at (5.475,1.725) {$\lambda_1$};
+\draw[cell frame] (5.750,1.450) rectangle (6.300,2.000);
+\node[lab] at (6.025,1.725) {$*$};
+\draw[cell frame] (6.300,1.450) rectangle (6.850,2.000);
+\node[lab] at (6.575,1.725) {$*$};
+\draw[cell frame] (5.200,0.900) rectangle (5.750,1.450);
+\draw[hl cell] (5.750,0.900) rectangle (6.300,1.450);
+\node[lab] at (6.025,1.175) {$\lambda_2$};
+\draw[cell frame] (6.300,0.900) rectangle (6.850,1.450);
+\node[lab] at (6.575,1.175) {$*$};
+\draw[cell frame] (5.200,0.350) rectangle (5.750,0.900);
+\draw[cell frame] (5.750,0.350) rectangle (6.300,0.900);
+\draw[hl cell] (6.300,0.350) rectangle (6.850,0.900);
+\node[lab] at (6.575,0.625) {$\lambda_3$};
+\node[lab, note, anchor=west, align=left] at (7.2,1.2) {$\alpha(U_j)\subseteq U_j$:\\column $j$ has zeros\\below row $j$};
+\end{tikzpicture}
+\end{center}
+```
+
+A triangulable map has a chain of invariant subspaces $U_1\subset U_2\subset\dots\subset U_n=V$ with $\dim U_j=j$. In a basis adapted to the chain its matrix is upper triangular, with the eigenvalues on the diagonal.
+
+:::
+
 ::: {#thm-triangulable-iff-splits .theorem name="Triangulable means the characteristic polynomial splits"}
 
 $\alpha$ is triangulable if and only if $\chi_\alpha(t)=\prod_{i=1}^n(t-\lambda_i)$ for some (not necessarily distinct) $\lambda_i\in F$. Over $\mathbb C$, every endomorphism is triangulable.
@@ -107,8 +138,55 @@ $m_\alpha$ and $\chi_\alpha$ have the same roots in $F$, namely the eigenvalues 
 
 :::
 
+::: {#fig-cayley-hamilton-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[lab, anchor=east] at (-0.2,0.25) {$\chi$}; \node[lab, anchor=east] at (-0.2,-0.8) {$m$};
+\draw[cell, fill=primaryLight] (0.00,0.00) rectangle (0.85,0.50);
+\draw[cell, fill=primaryLight] (0.85,0.00) rectangle (1.70,0.50);
+\draw[cell, fill=primaryLight] (1.70,0.00) rectangle (2.55,0.50);
+\node[lab, tick] at (1.27,-0.22) {$(t-2)^3$};
+\draw[cell, fill=accentLight] (2.55,0.00) rectangle (3.40,0.50);
+\draw[cell, fill=accentLight] (3.40,0.00) rectangle (4.25,0.50);
+\node[lab, tick] at (3.40,-0.22) {$(t-5)^2$};
+\draw[cell, fill=primaryLight] (0.00,-1.05) rectangle (0.85,-0.55);
+\draw[cell, fill=primaryLight] (0.85,-1.05) rectangle (1.70,-0.55);
+\node[lab, tick] at (0.85,-1.27) {$(t-2)^2$};
+\draw[cell frame] (1.70,-1.05) rectangle (2.55,-0.55);
+\draw[cell, fill=accentLight] (2.55,-1.05) rectangle (3.40,-0.55);
+\node[lab, tick] at (2.97,-1.27) {$t-5$};
+\draw[cell frame] (3.40,-1.05) rectangle (4.25,-0.55);
+\node[lab, note, anchor=west, align=left] at (4.6,-0.15) {$m$ divides $\chi$ and has every root of $\chi$:\\each exponent in $m$ is between $1$ and\\the exponent in $\chi$};
+\end{tikzpicture}
+\end{center}
+```
+
+One possible pair for a $5\times5$ matrix, one cell per linear factor: $\chi=(t-2)^3(t-5)^2$ and $m=(t-2)^2(t-5)$. Cayley–Hamilton gives $m\mid\chi$, and every eigenvalue appears in $m$ at least once.
+
+:::
+
 ::: {#exm-cayley-hamilton .example name="Inverse and powers from Cayley–Hamilton"}
 
 $A=\begin{bmatrix}1&2\\3&4\end{bmatrix}$ has $\chi_A(t)=t^2-5t-2$, so $A^2=5A+2I$. Then $A(A-5I)=2I$ gives $A^{-1}=\frac12(A-5I)=\begin{bmatrix}-2&1\\\frac32&-\frac12\end{bmatrix}$, and every power of $A$ is a combination of $I$ and $A$: $A^3=5A^2+2A=27A+10I=\begin{bmatrix}37&54\\81&118\end{bmatrix}$.
+
+:::
+
+::: {#fig-cayley-hamilton-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, muted] (-0.3,0) -- (5.0,0) node[right, lab, tick] {coefficient of $A$}; \draw[->, muted] (0,-0.3) -- (0,1.6) node[above, lab, tick] {coefficient of $I$};
+\fill[primary] (0,0.1) circle[pt] node[left, lab] {$I$}; \fill[primary] (0.18,0) circle[pt] node[below, lab] {$A$};
+\fill[accent] (0.9,0.2) circle[pt] node[below right, lab] {$A^2=5A+2I$}; \fill[accent] (4.86,1.0) circle[pt] node[above left, lab] {$A^3=27A+10I$};
+\draw[faint, dashed] (0.9,0.2) -- (4.86,1.0);
+\node[lab, tick] at (0.9,-0.25) {$5$}; \node[lab, tick] at (4.86,-0.25) {$27$}; \node[lab, tick] at (-0.25,1.0) {$10$};
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-cayley-hamilton: since $A^2=5A+2I$, every power of the $2\times2$ matrix $A$ lies in the two-dimensional span of $I$ and $A$ inside the four-dimensional space $\operatorname{Mat}_2$. Each power is found from the previous two.
 
 :::

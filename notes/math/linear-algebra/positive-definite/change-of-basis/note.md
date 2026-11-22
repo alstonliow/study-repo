@@ -59,6 +59,47 @@ A basis is useful for compression if (1) coordinates are fast to compute, for ex
 
 :::
 
+::: {#fig-change-of-basis-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0.0,0)}]
+\draw[muted] (-0.1,0) -- (1.7,0);
+\draw[bar] (0.05,0) rectangle (0.35,0.350);
+\draw[bar] (0.45,0) rectangle (0.75,0.350);
+\draw[bar] (0.85,0) rectangle (1.15,0.350);
+\draw[bar] (1.25,0) rectangle (1.55,0.350);
+\node[lab, tick] at (0.8,-0.75) {$\mathbf w_1$};
+\end{scope}
+\begin{scope}[shift={(2.2,0)}]
+\draw[muted] (-0.1,0) -- (1.7,0);
+\draw[bar] (0.05,0) rectangle (0.35,0.350);
+\draw[bar] (0.45,0) rectangle (0.75,0.350);
+\draw[bar] (0.85,0) rectangle (1.15,-0.350);
+\draw[bar] (1.25,0) rectangle (1.55,-0.350);
+\node[lab, tick] at (0.8,-0.75) {$\mathbf w_2$};
+\end{scope}
+\begin{scope}[shift={(4.4,0)}]
+\draw[muted] (-0.1,0) -- (1.7,0);
+\draw[bar] (0.05,0) rectangle (0.35,0.350);
+\draw[bar] (0.45,0) rectangle (0.75,-0.350);
+\node[lab, tick] at (0.8,-0.75) {$\mathbf w_3$};
+\end{scope}
+\begin{scope}[shift={(6.60,0)}]
+\draw[muted] (-0.1,0) -- (1.7,0);
+\draw[bar] (0.85,0) rectangle (1.15,0.350);
+\draw[bar] (1.25,0) rectangle (1.55,-0.350);
+\node[lab, tick] at (0.8,-0.75) {$\mathbf w_4$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The basis of @exm-haar-basis drawn as signals of length $4$: the average $\mathbf w_1$, a coarse difference $\mathbf w_2$, and two fine differences $\mathbf w_3,\mathbf w_4$ that see only one half of the signal.
+
+:::
+
 ::: {#exm-haar-basis .example name="A Haar-type basis in R^4"}
 
 The orthogonal vectors
@@ -66,5 +107,45 @@ $$(1,1,1,1),\quad(1,1,-1,-1),\quad(1,-1,0,0),\quad(0,0,1,-1)$$
 measure an average, a coarse difference and two fine differences. For the smooth signal $\mathbf{x}=(4,4,3,3)$ the coordinates are $c_i=\mathbf{w}_i^{\mathsf T}\mathbf{x}/\mathbf{w}_i^{\mathsf T}\mathbf{w}_i$:
 $$\mathbf{c}=\big(\tfrac{14}4,\tfrac24,0,0\big)=(3.5,0.5,0,0).$$
 Two of the four coefficients are zero, so storing two numbers recovers $\mathbf{x}$ exactly. The Fourier basis (@def-fourier-matrix) and wavelet bases do the same on a large scale (JPEG uses $8\times8$ cosine bases).
+
+:::
+
+::: {#fig-change-of-basis-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[muted] (-0.1,0) -- (1.7,0);
+\draw[bar] (0.05,0) rectangle (0.35,1.200);
+\draw[bar] (0.45,0) rectangle (0.75,1.200);
+\draw[bar] (0.85,0) rectangle (1.15,0.900);
+\draw[bar] (1.25,0) rectangle (1.55,0.900);
+\node[lab, tick] at (0.8,-0.75) {$\mathbf x=(4,4,3,3)$};
+\end{scope}
+\node[lab] at (2.0,0.6) {$=3.5$};
+\begin{scope}[shift={(2.5,0)}]
+\draw[muted] (-0.1,0) -- (1.7,0);
+\draw[bar] (0.05,0) rectangle (0.35,0.300);
+\draw[bar] (0.45,0) rectangle (0.75,0.300);
+\draw[bar] (0.85,0) rectangle (1.15,0.300);
+\draw[bar] (1.25,0) rectangle (1.55,0.300);
+\node[lab, tick] at (0.8,-0.75) {$\mathbf w_1$};
+\end{scope}
+\node[lab] at (4.5,0.6) {$+\,0.5$};
+\begin{scope}[shift={(5.0,0)}]
+\draw[muted] (-0.1,0) -- (1.7,0);
+\draw[bar] (0.05,0) rectangle (0.35,0.300);
+\draw[bar] (0.45,0) rectangle (0.75,0.300);
+\draw[bar] (0.85,0) rectangle (1.15,-0.300);
+\draw[bar] (1.25,0) rectangle (1.55,-0.300);
+\node[lab, tick] at (0.8,-0.75) {$\mathbf w_2$};
+\end{scope}
+\node[lab] at (7.1,0.6) {$+\,0\,\mathbf w_3+0\,\mathbf w_4$};
+\end{tikzpicture}
+\end{center}
+```
+
+The smooth signal of @exm-haar-basis needs only two of the four basis vectors: its coordinates are $(3.5,0.5,0,0)$. Dropping small coordinates in a good basis is the idea of compression.
 
 :::

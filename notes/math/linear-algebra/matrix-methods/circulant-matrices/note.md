@@ -18,6 +18,29 @@ $$C(\mathbf{c})=\begin{bmatrix}c_0&c_1&c_2\\c_2&c_0&c_1\\c_1&c_2&c_0\end{bmatrix
 
 :::
 
+::: {#fig-circulant-matrices-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.0,0.0) rectangle (0.6,-0.6); \node[lab] at (0.3,-0.3) {$1$};
+\draw[cell, fill=accentLight] (0.6,0.0) rectangle (1.2,-0.6); \node[lab] at (0.90,-0.3) {$2$};
+\draw[cell, fill=secondarySoft] (1.2,0.0) rectangle (1.80,-0.6); \node[lab] at (1.5,-0.3) {$3$};
+\draw[cell, fill=secondarySoft] (0.0,-0.6) rectangle (0.6,-1.2); \node[lab] at (0.3,-0.90) {$3$};
+\draw[cell, fill=primaryLight] (0.6,-0.6) rectangle (1.2,-1.2); \node[lab] at (0.90,-0.90) {$1$};
+\draw[cell, fill=accentLight] (1.2,-0.6) rectangle (1.80,-1.2); \node[lab] at (1.5,-0.90) {$2$};
+\draw[cell, fill=accentLight] (0.0,-1.2) rectangle (0.6,-1.80); \node[lab] at (0.3,-1.5) {$2$};
+\draw[cell, fill=secondarySoft] (0.6,-1.2) rectangle (1.2,-1.80); \node[lab] at (0.90,-1.5) {$3$};
+\draw[cell, fill=primaryLight] (1.2,-1.2) rectangle (1.80,-1.80); \node[lab] at (1.5,-1.5) {$1$};
+\node[lab, note, anchor=west, align=left] at (2.2,-0.9) {each row is the row above shifted one place\\to the right, wrapping around;\\equal entries run along the (wrapped) diagonals};
+\end{tikzpicture}
+\end{center}
+```
+
+The circulant matrix of @exm-circulant-three for $\mathbf c=(1,2,3)$, coloured by value. It is determined by its first row and is a polynomial in the cyclic shift $P$.
+
+:::
+
 ::: {#thm-circulant-eigenvectors .theorem name="Eigenvectors of every circulant"}
 
 $$C(\mathbf{c})\,\mathbf{f}_k=(F\mathbf{c})_k\,\mathbf{f}_k\qquad(k=0,\dots,n-1).$$
@@ -40,6 +63,42 @@ So $C(\mathbf{c})=\frac1n F\,\operatorname{diag}(F\mathbf{c})\,\overline F$: the
 The *cyclic convolution* of $\mathbf{c},\mathbf{d}\in\mathbb{C}^n$ is the vector $\mathbf{c}\circledast\mathbf{d}\in\mathbb{C}^n$ with
 $$(\mathbf{c}\circledast\mathbf{d})_k=\sum_{i+j\equiv k\ (\mathrm{mod}\ n)}c_id_j .$$
 The *ordinary convolution* $\mathbf{c}*\mathbf{d}\in\mathbb{C}^{2n-1}$ has $(\mathbf{c}*\mathbf{d})_k=\sum_{i+j=k}c_id_j$: the coefficients of the product of the polynomials $\sum c_ix^i$ and $\sum d_jx^j$. Cyclic convolution folds entry $k+n$ of $\mathbf{c}*\mathbf{d}$ back onto entry $k$.
+
+:::
+
+::: {#fig-circulant-matrices-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0.000,0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$1$};
+\draw[cell frame] (0.550,0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$2$};
+\draw[cell frame] (1.100,0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$3$};
+\node[lab, note] at (0.825,-0.350) {$\mathbf c$};
+\node[lab] at (1.95,0.275) {$\circledast$};
+\draw[cell frame] (2.300,0.000) rectangle (2.850,0.550);
+\node[lab] at (2.575,0.275) {$0$};
+\draw[hl cell] (2.850,0.000) rectangle (3.400,0.550);
+\node[lab] at (3.125,0.275) {$1$};
+\draw[cell frame] (3.400,0.000) rectangle (3.950,0.550);
+\node[lab] at (3.675,0.275) {$0$};
+\node[lab, note] at (3.125,-0.350) {$\mathbf d$};
+\node[lab] at (4.25,0.275) {$=$};
+\draw[cell frame] (4.600,0.000) rectangle (5.150,0.550);
+\node[lab] at (4.875,0.275) {$3$};
+\draw[cell frame] (5.150,0.000) rectangle (5.700,0.550);
+\node[lab] at (5.425,0.275) {$1$};
+\draw[cell frame] (5.700,0.000) rectangle (6.250,0.550);
+\node[lab] at (5.975,0.275) {$2$};
+\node[lab, note] at (5.425,-0.350) {$\mathbf c$ shifted cyclically};
+\end{tikzpicture}
+\end{center}
+```
+
+Cyclic convolution with $\mathbf d=(0,1,0)$, a single $1$, moves every entry of $\mathbf c$ one place (with wrap-around): $\mathbf c\circledast\mathbf d=(3,1,2)$, as in @exm-circulant-three.
 
 :::
 
@@ -75,6 +134,24 @@ $\mathbf{c}\circledast\mathbf{d}=\mathbf{d}\circledast\mathbf{c}$ from the symme
 For $\mathbf{c}=(1,2,3)$,
 $$C=\begin{bmatrix}1&2&3\\3&1&2\\2&3&1\end{bmatrix},\qquad F\mathbf{c}=\big(6,\ -\tfrac32-\tfrac{\sqrt3}2i,\ -\tfrac32+\tfrac{\sqrt3}2i\big).$$
 The eigenvalue $6$ belongs to $\mathbf{f}_0=(1,1,1)$ (every row sums to $6$), and the three eigenvalues add to $3=\operatorname{tr}C$. With $\mathbf{d}=(0,1,0)$, $C(\mathbf{d})=P$ and $\mathbf{c}\circledast\mathbf{d}=(3,1,2)$: multiplying by $P$ shifts $\mathbf{c}$ cyclically.
+
+:::
+
+::: {#fig-circulant-matrices-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-2.0,0) -- (6.6,0) node[right, lab, tick] {Re}; \draw[->, muted] (0,-1.4) -- (0,1.4) node[above, lab, tick] {Im};
+\fill[accent] (6,0) circle[pt] node[above, lab] {$6$}; \fill[primary] (-1.5,0.866) circle[pt] node[above, lab] {$-\frac32+\frac{\sqrt3}2i$};
+\fill[primary] (-1.5,-0.866) circle[pt] node[below, lab] {$-\frac32-\frac{\sqrt3}2i$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The eigenvalues of the circulant of @exm-circulant-three in the complex plane: the entries of $F\mathbf c$. The real one, $6$, is the row sum; the other two are conjugate because $\mathbf c$ is real; all three add to $\operatorname{tr}C=3$.
 
 :::
 

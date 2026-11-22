@@ -32,6 +32,28 @@ So it is a positive definite symmetric bilinear form (real case) or Hermitian fo
 
 :::
 
+::: {#fig-inner-products-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.5,0) -- (1.60,0);
+\draw[->, muted] (0,-1.5) -- (0,1.60);
+\draw[faint] (0,0) circle[radius=1];
+\draw[emph, primary, rotate=45] (0,0) ellipse[x radius=0.577, y radius=1];
+\draw[->, faint] (0,0) -- (1,0) node[above, lab] {};
+\node[lab, note, primary] at (1.0,1.2) {$\mathbf x^{\mathsf T}S\mathbf x=1$};
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (1.9,0.3) {$\langle\mathbf x,\mathbf y\rangle=\mathbf x^{\mathsf T}S\mathbf y$, $S=\begin{bmatrix}2&1\\1&2\end{bmatrix}$:\\its unit circle is an ellipse, and\\$(1,-1)\perp(1,1)$ still, but $\mathbf e_1\not\perp\mathbf e_2$};
+\end{tikzpicture}
+\end{center}
+```
+
+Item 4 of @exm-inner-product-spaces: a positive definite $S$ gives a new inner product on $\mathbb R^2$. Its unit vectors form an ellipse (blue) instead of the circle (faint), and lengths and angles change with it; $\langle\mathbf e_1,\mathbf e_2\rangle=s_{12}=1$.
+
+:::
+
 ::: {#thm-cauchy-schwarz-inner-product .theorem name="Cauchy–Schwarz inequality"}
 
 In an inner product space, $\lvert\langle u,v\rangle\rvert\le\lVert u\rVert\,\lVert v\rVert$ for all $u,v$, with equality if and only if $u$ and $v$ are linearly dependent.
@@ -80,6 +102,23 @@ $\lVert u+v\rVert^2=\lVert u\rVert^2+2\operatorname{Re}\langle u,v\rangle+\lVert
 
 :::
 
+::: {#fig-inner-products-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, emph, primary] (0,0) -- (3,0.6) node[below, lab] {$x$};
+\draw[->, emph, secondary] (3,0.6) -- (3.8,2.2) node[right, lab] {$y$};
+\draw[->, emph, accent] (0,0) -- (3.8,2.2) node[above left, lab] {$x+y$};
+\node[lab, note, anchor=west] at (4.4,1.0) {$\lVert x+y\rVert\le\lVert x\rVert+\lVert y\rVert$, equality only when $x,y$ point the same way};
+\end{tikzpicture}
+\end{center}
+```
+
+The triangle inequality: a side of a triangle is at most the sum of the other two. It follows from Cauchy–Schwarz, $\lVert x+y\rVert^2\le\lVert x\rVert^2+2\lVert x\rVert\lVert y\rVert+\lVert y\rVert^2$.
+
+:::
+
 ::: {#def-orthonormal-set .definition name="Orthogonal and orthonormal" generalizes="def-orthonormal-vectors"}
 
 $u,v$ are *orthogonal* if $\langle u,v\rangle=0$. A set $\{e_i\}$ is *orthonormal* if $\langle e_i,e_j\rangle=\delta_{ij}$; an *orthonormal basis* is an orthonormal set that is a basis.
@@ -100,6 +139,30 @@ $$v=\sum_{i=1}^n\langle v,e_i\rangle e_i,\qquad \langle u,v\rangle=\sum_{i=1}^n\
 2. Write $v=\sum_i\lambda_ie_i$. Then $\langle v,e_j\rangle=\sum_i\lambda_i\langle e_i,e_j\rangle=\lambda_j$.
 
 3. With $u=\sum_i\mu_ie_i$, $\langle u,v\rangle=\sum_{i,j}\mu_i\bar\lambda_j\langle e_i,e_j\rangle=\sum_i\mu_i\bar\lambda_i$; the norm formula is the case $u=v$.
+
+:::
+
+::: {#fig-inner-products-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-0.3,0) -- (2.4,0); \draw[->, muted] (0,-0.3) -- (0,2.0);
+\draw[->, emph, primary] (0,0) -- (0.8,0.6) node[below right, lab] {$e_1$};
+\draw[->, emph, secondary] (0,0) -- (-0.6,0.8) node[left, lab] {$e_2$};
+\draw[->, emph, ink] (0,0) -- (1.0,1.9) node[above, lab] {$v$};
+\draw[faint, dashed] (1.0,1.9) -- (1.952,1.464); \draw[faint, dashed] (1.0,1.9) -- (-0.456,0.608);
+\fill[primary] (1.952,1.464) circle[pt] node[right, lab, tick] {$\langle v,e_1\rangle e_1$};
+\fill[secondary] (-0.456,0.608) circle[pt] node[left, lab, tick] {$\langle v,e_2\rangle e_2$};
+\draw[faint, primary] (0,0) -- (1.952,1.464); \draw[faint, secondary] (0,0) -- (-0.456,0.608);
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (3.2,1.0) {$v=\langle v,e_1\rangle e_1+\langle v,e_2\rangle e_2$\\$\lVert v\rVert^2=\langle v,e_1\rangle^2+\langle v,e_2\rangle^2$};
+\end{tikzpicture}
+\end{center}
+```
+
+In an orthonormal basis the coordinates are inner products: the coordinate along $e_i$ is the length of the shadow of $v$ on the line of $e_i$. Pythagoras in these coordinates is Parseval's identity.
 
 :::
 

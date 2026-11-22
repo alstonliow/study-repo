@@ -38,6 +38,28 @@ where $\Sigma^{+}$ is $n\times m$ with $1/\sigma_1,\dots,1/\sigma_r$ on its diag
 
 :::
 
+::: {#fig-pseudoinverse-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[regionA] (0,0.2) rectangle (2.4,1.6); \node[lab, note] at (1.2,1.35) {row space};
+\draw[regionB] (0,-1.6) rectangle (2.4,-0.2); \node[lab, note] at (1.2,-0.45) {nullspace};
+\draw[regionA] (5,0.2) rectangle (7.4,1.6); \node[lab, note] at (6.2,1.35) {column space};
+\draw[regionB] (5,-1.6) rectangle (7.4,-0.2); \node[lab, note] at (6.2,-0.45) {$N(A^{\mathsf T})$};
+\fill[ink] (1.6,0.8) circle[pt] node[left, lab] {$\mathbf x^+$}; \fill[ink] (5.8,0.8) circle[pt] node[right, lab] {$\mathbf p$};
+\draw[->, emph, primary] (1.6,0.8) to[bend left=20] node[above, lab] {$A$} (5.8,0.8);
+\draw[->, emph, accent] (5.8,0.8) to[bend left=20] node[below, lab] {$A^+$} (1.6,0.8);
+\fill[ink] (6.2,-1.0) circle[pt] node[right, lab] {$\mathbf e$}; \fill[ink] (1.2,-1.0) circle[pt] node[left, lab] {$\mathbf 0$};
+\draw[->, emph, accent] (6.2,-1.0) -- node[below, lab] {$A^+$} (1.2,-1.0);
+\end{tikzpicture}
+\end{center}
+```
+
+What $A^+$ does to the four subspaces. Between the row space and the column space $A$ is invertible, and $A^+$ is its inverse there; $A^+$ sends the left nullspace to $\mathbf 0$. So for $\mathbf b=\mathbf p+\mathbf e$, $A^+\mathbf b=\mathbf x^+$ is the shortest least squares solution.
+
+:::
+
 ::: {#thm-pseudoinverse-properties .theorem name="What the pseudoinverse does"}
 
 1. $A^{+}\mathbf{u}_i=\mathbf{v}_i/\sigma_i$ for $i\le r$ and $A^{+}\mathbf{u}_i=\mathbf{0}$ for $i>r$: $A^{+}$ inverts $A$ from $C(A)$ back to the row space, and sends $N(A^{\mathsf T})$ to $\mathbf{0}$.
@@ -64,6 +86,27 @@ where $\Sigma^{+}$ is $n\times m$ with $1/\sigma_1,\dots,1/\sigma_r$ on its diag
 $A=\begin{bmatrix}1&2\\2&4\end{bmatrix}=5\,\mathbf{u}\mathbf{u}^{\mathsf T}$ with $\mathbf{u}=\frac1{\sqrt5}(1,2)$ is singular. Its SVD has $\sigma_1=5$, $\mathbf{u}_1=\mathbf{v}_1=\mathbf{u}$, so
 $$A^{+}=\frac15\mathbf{u}\mathbf{u}^{\mathsf T}=\frac1{25}\begin{bmatrix}1&2\\2&4\end{bmatrix}.$$
 For $\mathbf{b}=(5,0)$: $A^{+}\mathbf{b}=\frac15(1,2)$, and $A\,A^{+}\mathbf{b}=(1,2)$ is the projection of $\mathbf{b}$ onto the line $C(A)$.
+
+:::
+
+::: {#fig-pseudoinverse-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-0.3,0) -- (5.4,0); \draw[->, muted] (0,-0.3) -- (0,2.4);
+\draw[faint, primary] (-0.15,-0.3) -- (1.2,2.4) node[right, lab, note] {$C(A)=C(A^{\mathsf T})$};
+\draw[->, emph, ink] (0,0) -- (5,0) node[below, lab] {$\mathbf b=(5,0)$};
+\draw[->, emph, primary] (0,0) -- (1,2) node[above left, lab] {$AA^+\mathbf b=(1,2)$};
+\draw[faint, dashed, accent] (5,0) -- (1,2);
+\draw[->, bold, accent] (0,0) -- (0.2,0.4) node[right, lab] {$A^+\mathbf b=\frac15(1,2)$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-pseudoinverse-rank-one: $\mathbf b=(5,0)$ is not in the column space. Its projection is $(1,2)$, and $A^+\mathbf b=\frac15(1,2)$ is the solution of $A\mathbf x=(1,2)$ that lies in the row space, hence the shortest one.
 
 :::
 

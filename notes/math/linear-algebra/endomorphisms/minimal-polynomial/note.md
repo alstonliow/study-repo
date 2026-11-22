@@ -35,6 +35,33 @@ For $p\in F[t]$, $p(\alpha)=0$ if and only if $m_\alpha$ divides $p$. In particu
 
 :::
 
+::: {#fig-minimal-polynomial-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[hl box] (c) at (0,3) {$(t-2)^2(t-3)$};
+\node[hl box] (a) at (-1.6,2) {$(t-2)(t-3)$};
+\node[box] (b) at (1.6,2) {$(t-2)^2$};
+\node[box] (d) at (-1.6,1) {$t-3$};
+\node[box] (e) at (1.6,1) {$t-2$};
+\node[box] (f) at (0,0) {$1$};
+\draw[faint] (c) -- (a);
+\draw[faint] (c) -- (b);
+\draw[faint] (a) -- (d);
+\draw[faint] (a) -- (e);
+\draw[faint] (b) -- (e);
+\draw[faint] (d) -- (f);
+\draw[faint] (e) -- (f);
+\node[lab, note, anchor=west, align=left] at (3.0,1.5) {divisors of $\chi_A$ for $A=\operatorname{diag}(2,2,3)$;\\highlighted: those with $p(A)=0$;\\they are exactly the multiples of\\$m_A=(t-2)(t-3)$};
+\end{tikzpicture}
+\end{center}
+```
+
+The divisors of $(t-2)^2(t-3)$, with lines for divisibility. The polynomials that kill $A$ form everything above $m_A$; for the matrix $B$ of @exm-minimal-polynomial only the top one would be highlighted.
+
+:::
+
 Similar matrices have the same minimal polynomial, since $p(P^{-1}AP)=P^{-1}p(A)P$.
 
 ::: {#prp-eigenvalue-root-of-minimal-polynomial .proposition name="Eigenvalues are roots of the minimal polynomial"}
@@ -91,11 +118,50 @@ Let $\alpha,\beta\in\operatorname{End}(V)$ both be diagonalisable. There is a ba
 
 :::
 
+::: {#fig-minimal-polynomial-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[regionA] (0,0) rectangle (2.4,1.5); \node[lab, note] at (1.2,1.25) {$E_\alpha(\lambda_1)$};
+\draw[regionB] (3.0,0) rectangle (5.4,1.5); \node[lab, note] at (4.2,1.25) {$E_\alpha(\lambda_2)$};
+\draw[->, emph, secondary] (0.9,0.5) arc[start angle=200, end angle=-20, radius=0.32] node[right, lab, note] {$\beta$};
+\draw[->, emph, secondary] (3.9,0.5) arc[start angle=200, end angle=-20, radius=0.32] node[right, lab, note] {$\beta$};
+\node[lab, note, anchor=west, align=left] at (5.8,0.75) {$\alpha\beta=\beta\alpha$: $\beta$ maps each eigenspace\\of $\alpha$ into itself; diagonalise $\beta$ inside\\each one to get a common eigenbasis};
+\end{tikzpicture}
+\end{center}
+```
+
+The idea of simultaneous diagonalisation. If $\alpha v=\lambda v$ then $\alpha(\beta v)=\beta(\alpha v)=\lambda\beta v$, so $\beta$ preserves the eigenspaces of $\alpha$, and the restriction of $\beta$ to each is still diagonalisable.
+
+:::
+
 ::: {#exm-minimal-polynomial .example name="Minimal polynomials"}
 
 1. $A=\begin{bmatrix}2&0&0\\0&2&0\\0&0&3\end{bmatrix}$ has $\chi_A=(t-2)^2(t-3)$ but $m_A=(t-2)(t-3)$: diagonal matrices are killed by the product over their distinct diagonal entries.
 2. $B=\begin{bmatrix}2&1&0\\0&2&0\\0&0&3\end{bmatrix}$ has the same $\chi$, but $(B-2I)(B-3I)=\begin{bmatrix}0&-1&0\\0&0&0\\0&0&0\end{bmatrix}\ne0$, so $m_B=(t-2)^2(t-3)$ and $B$ is not diagonalisable.
 3. A projection $\pi$ ($\pi^2=\pi$) is killed by $t^2-t=t(t-1)$, so it is diagonalisable with eigenvalues among $0,1$. An involution ($\sigma^2=\iota$) is killed by $(t-1)(t+1)$, which has distinct factors when $1+1\ne0$; over $\mathbb F_2$ the swap matrix is an involution that is not diagonalisable (@exm-endomorphism-not-diagonalisable).
+
+:::
+
+::: {#fig-minimal-polynomial-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-1.70,0) -- (1.8,0);
+\draw[->, muted] (0,-1.70) -- (0,1.8);
+\draw[emph, primary] (-1.6,-0.4) -- (1.6,0.4) node[right, lab, note] {$U$: $\lambda=1$};
+\draw[emph, accent] (-0.8,1.6) -- (0.8,-1.6) node[below, lab, note] {$W$: $\lambda=0$};
+\fill[ink] (1.2,1.0) circle[pt] node[above, lab] {$v$}; \fill[primary] (1.52,0.38) circle[pt] node[below right, lab] {$\pi v$};
+\draw[faint, dashed] (1.2,1.0) -- (1.52,0.38);
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+Item 3 of @exm-minimal-polynomial: a projection $\pi$ onto $U$ along $W$ (not necessarily perpendicular) satisfies $\pi^2=\pi$. It is diagonal in a basis made of a basis of $U$ (eigenvalue $1$) and a basis of $W$ (eigenvalue $0$).
 
 :::
 

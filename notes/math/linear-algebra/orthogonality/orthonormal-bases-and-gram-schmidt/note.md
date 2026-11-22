@@ -39,6 +39,30 @@ If $Q^{\mathsf T}Q=I$ then $\lVert Q\mathbf{x}\rVert=\lVert\mathbf{x}\rVert$ and
 
 :::
 
+::: {#fig-orthonormal-bases-and-gram-schmidt-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[shift={(0,0)}]
+\draw[gridline] (-1.4,-1.4) grid[step=0.5] (1.4,1.4);
+\draw[->, muted] (-1.5,0) -- (1.60,0);
+\draw[->, muted] (0,-1.5) -- (0,1.60);
+\draw[cell frame, fill=primarySoft] (0,0) rectangle (1,1);
+\draw[hl cell] (0,0) -- (0.866,0.5) -- (0.366,1.366) -- (-0.5,0.866) -- cycle;
+\draw[->, emph, primary] (0,0) -- (1,0) node[below, lab] {$\mathbf e_1$};
+\draw[->, emph, accent] (0,0) -- (0.866,0.5) node[right, lab] {$Q\mathbf e_1$};
+\draw[->, emph, accent] (0,0) -- (-0.5,0.866) node[left, lab] {$Q\mathbf e_2$};
+\end{scope}
+\node[lab, note, anchor=west, align=left] at (1.9,0.3) {$Q=\begin{bmatrix}\cos30^\circ&-\sin30^\circ\\\sin30^\circ&\cos30^\circ\end{bmatrix}$\\$Q^{\mathsf T}Q=I$: lengths, angles\\and areas are unchanged};
+\end{tikzpicture}
+\end{center}
+```
+
+An orthogonal matrix moves the unit square to another unit square: its columns $Q\mathbf e_1,Q\mathbf e_2$ are orthonormal. Since $\lVert Q\mathbf x\rVert^2=\mathbf x^{\mathsf T}Q^{\mathsf T}Q\mathbf x=\lVert\mathbf x\rVert^2$, no vector changes length.
+
+:::
+
 ::: {#prp-projection-with-orthonormal-columns .proposition name="Projections are easy with orthonormal columns"}
 
 If $Q$ has orthonormal columns, the projection onto $C(Q)$ is
@@ -102,6 +126,24 @@ If $A$ is $m\times n$ with independent columns, then $A=QR$, where $Q$ is $m\tim
 
 :::
 
+::: {#fig-orthonormal-bases-and-gram-schmidt-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell frame] (0,0) rectangle (1.6,-1.6); \node[lab] at (0.8,-0.8) {$A$}; \node[lab, tick] at (0.8,-1.85) {columns $\mathbf a_j$};
+\node[lab] at (1.9,-0.8) {$=$};
+\draw[cell frame, fill=primarySoft] (2.2,0) rectangle (3.8,-1.6); \node[lab] at (3.0,-0.8) {$Q$}; \node[lab, tick] at (3.0,-1.85) {orthonormal $\mathbf q_j$};
+\draw[cell frame] (4.0,0) rectangle (5.6,-1.6); \fill[accentSoft] (4.0,0) -- (5.6,0) -- (5.6,-1.6) -- cycle; \draw[accent] (4.0,0) -- (5.6,-1.6);
+\node[lab] at (5.1,-0.45) {$R$}; \node[lab, muted] at (4.45,-1.15) {$0$}; \node[lab, tick] at (4.8,-1.85) {$r_{ij}=\mathbf q_i^{\mathsf T}\mathbf a_j$};
+\end{tikzpicture}
+\end{center}
+```
+
+The shapes in $A=QR$. $R$ is upper triangular because Gram–Schmidt builds $\mathbf a_j$ only from $\mathbf q_1,\dots,\mathbf q_j$: the later $\mathbf q_i$ are perpendicular to it.
+
+:::
+
 ::: {#exm-gram-schmidt-three-vectors .example name="Gram–Schmidt in R^3"}
 
 Start with $\mathbf{a}_1=(1,1,0)$, $\mathbf{a}_2=(1,0,1)$, $\mathbf{a}_3=(0,1,1)$.
@@ -111,6 +153,29 @@ Start with $\mathbf{a}_1=(1,1,0)$, $\mathbf{a}_2=(1,0,1)$, $\mathbf{a}_3=(0,1,1)
 3. $\mathbf{A}_3=(0,1,1)-\frac12(1,1,0)-\frac16(1,-1,2)=\frac23(-1,1,1)$, so $\mathbf{q}_3=\frac1{\sqrt3}(-1,1,1)$.
 
 Then $R=Q^{\mathsf T}A=\begin{bmatrix}\sqrt2&1/\sqrt2&1/\sqrt2\\0&\sqrt6/2&1/\sqrt6\\0&0&2/\sqrt3\end{bmatrix}$.
+
+:::
+
+::: {#fig-orthonormal-bases-and-gram-schmidt-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\begin{scope}[x={(-0.5cm,-0.4cm)}, y={(1cm,0)}, z={(0,1cm)}, scale=1.3]
+\fill[tintA] (-0.6,-0.6,0) -- (1.6,-0.6,0) -- (1.6,1.8,0) -- (-0.6,1.8,0) -- cycle;
+\draw[->, emph, primary] (0,0,0) -- (1,0,0) node[below left, lab] {$\mathbf q_1$};
+\draw[->, emph, primary] (0,0,0) -- (0,1,0) node[below right, lab] {$\mathbf q_2$};
+\draw[->, emph, ink] (0,0,0) -- (0.7,1.1,1.3) node[above, lab] {$\mathbf a_3$};
+\draw[->, emph, secondary] (0,0,0) -- (0.7,1.1,0) node[below right, lab] {$\mathbf p$};
+\draw[->, emph, accent] (0.7,1.1,0) -- (0.7,1.1,1.3) node[midway, right, lab] {$\mathbf A_3$};
+\draw[->, bold, accent] (0,0,0) -- (0,0,0.8) node[left, lab] {$\mathbf q_3$};
+\node[lab, note, primary] at (1.5,1.9,0) {plane of $\mathbf q_1,\mathbf q_2$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The third Gram–Schmidt step: subtract from $\mathbf a_3$ its projection $\mathbf p=(\mathbf q_1^{\mathsf T}\mathbf a_3)\mathbf q_1+(\mathbf q_2^{\mathsf T}\mathbf a_3)\mathbf q_2$ onto the plane of $\mathbf q_1,\mathbf q_2$. What is left, $\mathbf A_3$, is perpendicular to that plane, and its unit vector is $\mathbf q_3$.
 
 :::
 

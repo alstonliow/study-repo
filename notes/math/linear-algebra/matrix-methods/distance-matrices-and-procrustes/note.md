@@ -31,11 +31,50 @@ There are points $\mathbf{x}_1,\dots,\mathbf{x}_N\in\mathbb{R}^k$ with $\lVert\m
 
 :::
 
+::: {#fig-distance-matrices-and-procrustes-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[ink] (0,0) circle[pt] node[below left, lab] {$\mathbf x_1=\mathbf 0$};
+\fill[ink] (3,0) circle[pt] node[below right, lab] {$\mathbf x_i$}; \fill[ink] (1.2,2) circle[pt] node[above, lab] {$\mathbf x_j$};
+\draw[emph, primary] (0,0) -- node[below, lab, note] {$d_{1i}$} (3,0); \draw[emph, primary] (0,0) -- node[left, lab, note] {$d_{1j}$} (1.2,2); \draw[emph, accent] (3,0) -- node[above right, lab, note] {$d_{ij}$} (1.2,2);
+\node[lab, note, anchor=west, align=left] at (3.8,1.0) {law of cosines:\\$\mathbf x_i\cdot\mathbf x_j=\tfrac12\big(d_{1i}^2+d_{1j}^2-d_{ij}^2\big)$\\fills the Gram matrix $G$};
+\end{tikzpicture}
+\end{center}
+```
+
+From distances to dot products: placing $\mathbf x_1$ at the origin, each dot product $\mathbf x_i\cdot\mathbf x_j$ is fixed by three distances. Factoring $G=X^{\mathsf T}X$ then recovers the points up to a rotation.
+
+:::
+
 ::: {#exm-points-from-distances .example name="A triangle and a non-triangle"}
 
 Three points at mutual distance $1$: $G=\begin{bmatrix}0&0&0\\0&1&\frac12\\0&\frac12&1\end{bmatrix}$ has eigenvalues $0,\frac12,\frac32$, so rank $2$: an equilateral triangle in the plane, e.g. $\mathbf{x}_2=(1,0)$, $\mathbf{x}_3=(\frac12,\frac{\sqrt3}2)$.
 
 With $d_{12}=d_{23}=1$ and $d_{13}=3$ the triangle inequality fails, and indeed the lower $2\times2$ block of $G$ is $\begin{bmatrix}1&4.5\\4.5&9\end{bmatrix}$ with determinant $-11.25<0$, so $G$ is not positive semidefinite.
+
+:::
+
+::: {#fig-distance-matrices-and-procrustes-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0,0) -- (2,0) -- (1,1.732) -- cycle; \draw[emph, primary] (0,0) -- (2,0) -- (1,1.732) -- cycle;
+\fill[ink] (0,0) circle[pt] node[below, lab, tick] {$\mathbf x_1$}; \fill[ink] (2,0) circle[pt] node[below, lab, tick] {$\mathbf x_2$}; \fill[ink] (1,1.732) circle[pt] node[above, lab, tick] {$\mathbf x_3$};
+\node[lab, note] at (1,-0.6) {$1,1,1$: realisable};
+\begin{scope}[shift={(3.6,0)}]
+\draw[emph, primary] (0,0) -- (2,0); \draw[emph, primary] (2,0) -- (2.6,0.8);
+\draw[emph, accent, dashed] (0,0) -- (6,0);
+\fill[ink] (0,0) circle[pt] node[below, lab, tick] {$\mathbf x_1$}; \fill[ink] (2,0) circle[pt] node[below, lab, tick] {$\mathbf x_2$};
+\node[lab, note, accent] at (4.5,0.3) {need $3$, at most $1+1=2$}; \node[lab, note] at (3,-0.6) {$1,1,3$: no points exist};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+The two cases of @exm-points-from-distances (drawn at scale $2$). Equal distances give an equilateral triangle and a positive semidefinite $G$ of rank $2$; distances $1,1,3$ break the triangle inequality and $G$ has a negative eigenvalue.
 
 :::
 

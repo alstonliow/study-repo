@@ -29,6 +29,25 @@ Induction on $k$; assume $e_1,\dots,e_{k-1}$ are orthonormal with $\langle e_1,\
 
 :::
 
+::: {#fig-gram-schmidt-and-orthogonal-complements-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (v) at (0,0) {$v_k$};
+\node[box] (w) at (4.4,0) {$w_k=v_k-\sum_{i<k}\langle v_k,e_i\rangle e_i$};
+\node[hl box] (e) at (9.4,0) {$e_k=w_k/\lVert w_k\rVert$};
+\draw[->, emph] (v) -- node[above, lab, tick] {remove} (w);
+\draw[->, emph] (w) -- node[above, lab, tick] {normalise} (e);
+\draw[->, emph, accent] (e) to[bend left=25] node[below, lab, note] {use $e_1,\dots,e_k$ for the next vector} (v);
+\end{tikzpicture}
+\end{center}
+```
+
+One round of Gram–Schmidt in any inner product space: remove from $v_k$ its components along the earlier $e_i$, then scale to length $1$. $w_k\neq0$ because $v_k$ is not in the span of the earlier vectors.
+
+:::
+
 ```{=latex}
 \begin{algorithm}
 \caption{Gram--Schmidt in an inner product space}
@@ -117,6 +136,27 @@ Let $V$ be a finite-dimensional inner product space and $W\le V$. Then
 
 :::
 
+::: {#fig-gram-schmidt-and-orthogonal-complements-4}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[cell, fill=primaryLight] (0.00,0.00) rectangle (0.75,0.45);
+\draw[cell, fill=primaryLight] (0.75,0.00) rectangle (1.50,0.45);
+\node[lab, tick] at (0.75,-0.22) {$U$};
+\draw[cell, fill=accentLight] (1.50,0.00) rectangle (2.25,0.45);
+\draw[cell, fill=accentLight] (2.25,0.00) rectangle (3.00,0.45);
+\draw[cell, fill=accentLight] (3.00,0.00) rectangle (3.75,0.45);
+\node[lab, tick] at (2.62,-0.22) {$U^\perp$};
+\node[lab, note, anchor=west, align=left] at (4.0,0.2) {$V=U\oplus U^\perp$: an orthonormal basis of $U$\\extends to one of $V$; the added vectors\\are an orthonormal basis of $U^\perp$};
+\end{tikzpicture}
+\end{center}
+```
+
+The orthogonal decomposition, one cell per orthonormal basis vector. Extending by Gram–Schmidt keeps the new vectors perpendicular to $U$, so $\dim U+\dim U^\perp=\dim V$.
+
+:::
+
 ::: {#prp-best-approximation .proposition name="The projection is the best approximation" generalizes="thm-projection-onto-subspace"}
 
 With $\pi$ as in @thm-orthogonal-complement, $\lVert v-\pi(v)\rVert\le\lVert v-w\rVert$ for every $w\in W$, with equality only for $w=\pi(v)$.
@@ -128,6 +168,27 @@ With $\pi$ as in @thm-orthogonal-complement, $\lVert v-\pi(v)\rVert\le\lVert v-w
 1. $v-w=(v-\pi(v))+(\pi(v)-w)$, where $v-\pi(v)\in W^\perp$ and $\pi(v)-w\in W$.
 
 2. For orthogonal vectors $\lVert a+b\rVert^2=\lVert a\rVert^2+2\operatorname{Re}\langle a,b\rangle+\lVert b\rVert^2=\lVert a\rVert^2+\lVert b\rVert^2$. So $\lVert v-w\rVert^2=\lVert v-\pi(v)\rVert^2+\lVert\pi(v)-w\rVert^2$, and the second term is $0$ only if $w=\pi(v)$.
+
+:::
+
+::: {#fig-gram-schmidt-and-orthogonal-complements-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (-1.6,-0.7) -- (2.6,-0.7) -- (3.6,0.9) -- (-0.6,0.9) -- cycle;
+\node[lab, note, primary] at (3.0,-0.45) {$U$};
+\fill[ink] (1.4,1.9) circle[pt] node[above, lab] {$v$}; \fill[primary] (1.4,0.2) circle[pt] node[below, lab, tick] {$\pi(v)$};
+\draw[emph, accent] (1.4,1.9) -- (1.4,0.2);
+\fill[muted] (-0.3,0.4) circle[pt] node[below, lab, tick] {$u$}; \draw[faint, dashed] (1.4,1.9) -- (-0.3,0.4);
+\draw[faint, dashed] (-0.3,0.4) -- (1.4,0.2);
+\draw[muted] (1.4,0.4) -- (1.25,0.42) -- (1.25,0.22);
+\node[lab, note, anchor=west, align=left] at (4.0,1.0) {$\lVert v-u\rVert^2=\lVert v-\pi v\rVert^2+\lVert\pi v-u\rVert^2$\\$\ge\lVert v-\pi v\rVert^2$, by Pythagoras};
+\end{tikzpicture}
+\end{center}
+```
+
+Why the orthogonal projection is the best approximation from $U$. For any other $u\in U$ the error $v-u$ is the hypotenuse of a right triangle whose legs are $v-\pi(v)$ (perpendicular to $U$) and $\pi(v)-u$ (inside $U$).
 
 :::
 

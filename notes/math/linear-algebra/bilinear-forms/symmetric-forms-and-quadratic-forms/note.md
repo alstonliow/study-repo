@@ -15,11 +15,59 @@ A bilinear form $\phi:V\times V\to F$ is *symmetric* if $\phi(u,v)=\phi(v,u)$ fo
 
 :::
 
+::: {#fig-symmetric-forms-and-quadratic-forms-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] at (0,0) {similarity: $P^{-1}AP$}; \node[lab, note, align=center] at (0,-0.9) {$A$ is a map $V\to V$\\eigenvalues are invariant};
+\node[hl box] at (5.4,0) {congruence: $P^{\mathsf T}AP$}; \node[lab, note, align=center] at (5.4,-0.9) {$A$ is a form $V\times V\to F$\\$p,q$ and rank are invariant};
+\node[lab, note, align=center] at (2.7,1.0) {the same when $P^{-1}=P^{\mathsf T}$ (orthogonal $P$)};
+\end{tikzpicture}
+\end{center}
+```
+
+A square matrix can describe a linear map or a bilinear form, and the two change differently with the basis. They agree for orthogonal changes of basis, which is why the spectral theorem diagonalises a symmetric matrix in both senses at once.
+
+:::
+
 Congruence is an equivalence relation, and two matrices are congruent exactly when they represent the same form on $V$ in two bases. Congruence preserves symmetry and rank but not eigenvalues or determinant: $\det(P^{\mathsf T}AP)=(\det P)^2\det A$.
 
 ::: {#def-quadratic-form .definition name="Quadratic form"}
 
 A map $q:V\to F$ is a *quadratic form* if $q(v)=\phi(v,v)$ for some bilinear form $\phi$ on $V$. In coordinates, $q(\mathbf x)=\mathbf x^{\mathsf T}A\mathbf x=\sum_{i,j}a_{ij}x_ix_j$.
+
+:::
+
+::: {#fig-symmetric-forms-and-quadratic-forms-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[hl cell] (0.000,1.100) rectangle (0.550,1.650);
+\node[lab] at (0.275,1.375) {$1$};
+\draw[cell, fill=primaryLight] (0.550,1.100) rectangle (1.100,1.650);
+\node[lab] at (0.825,1.375) {$1$};
+\draw[cell frame] (1.100,1.100) rectangle (1.650,1.650);
+\node[lab] at (1.375,1.375) {$0$};
+\draw[cell, fill=primaryLight] (0.000,0.550) rectangle (0.550,1.100);
+\node[lab] at (0.275,0.825) {$1$};
+\draw[hl cell] (0.550,0.550) rectangle (1.100,1.100);
+\node[lab] at (0.825,0.825) {$3$};
+\draw[cell, fill=primaryLight] (1.100,0.550) rectangle (1.650,1.100);
+\node[lab] at (1.375,0.825) {$2$};
+\draw[cell frame] (0.000,-0.000) rectangle (0.550,0.550);
+\node[lab] at (0.275,0.275) {$0$};
+\draw[cell, fill=primaryLight] (0.550,-0.000) rectangle (1.100,0.550);
+\node[lab] at (0.825,0.275) {$2$};
+\draw[hl cell] (1.100,-0.000) rectangle (1.650,0.550);
+\node[lab] at (1.375,0.275) {$1$};
+\node[lab, note, anchor=west, align=left] at (2.0,0.825) {$q=\textcolor{accent}{1}x^2+\textcolor{accent}{3}y^2+\textcolor{accent}{1}z^2+\textcolor{primary}{2}xy+\textcolor{primary}{4}yz$\\squares go on the diagonal;\\a cross term $c\,x_ix_j$ is split, $\frac c2$ into $(i,j)$ and $(j,i)$};
+\end{tikzpicture}
+\end{center}
+```
+
+Reading off the symmetric matrix of the quadratic form of @exm-diagonalising-quadratic-form. Splitting each cross term in half makes the matrix symmetric, and then $q(\mathbf x)=\mathbf x^{\mathsf T}A\mathbf x$.
 
 :::
 

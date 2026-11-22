@@ -33,6 +33,28 @@ where $B_j$ is $A$ with column $j$ replaced by $\mathbf{b}$.
 
 :::
 
+::: {#fig-cramers-rule-and-volume-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw[->, muted] (-0.3,0) -- (6.4,0); \draw[->, muted] (0,-0.3) -- (0,8.6);
+\fill[tintA] (0.000,0.000) -- (2.000,1.000) -- (3.000,4.000) -- (1.000,3.000) -- cycle;
+\draw[primary] (0,0) -- (2,1) -- (3,4) -- (1,3) -- cycle;
+\fill[tintB] (0.000,0.000) -- (5.000,5.000) -- (6.000,8.000) -- (1.000,3.000) -- cycle;
+\draw[accent, faint] (0,0) -- (5,5) -- (6,8) -- (1,3) -- cycle;
+\draw[->, emph, primary] (0,0) -- (2,1) node[below right, lab] {$\mathbf a_1$};
+\draw[->, emph, secondary] (0,0) -- (1,3) node[left, lab] {$\mathbf a_2$};
+\draw[->, emph, accent] (0,0) -- (5,5) node[right, lab] {$\mathbf b=2\mathbf a_1+\mathbf a_2$};
+\node[lab, note, primary, anchor=west] at (6.5,3.0) {area of $\mathbf a_1,\mathbf a_2$: $\det A=5$}; \node[lab, note, accent, anchor=west] at (6.5,1.8) {area of $\mathbf b,\mathbf a_2$: $\det B_1=10$};
+\end{tikzpicture}
+\end{center}
+```
+
+Cramer's rule as areas, for $A=\begin{bmatrix}2&1\\1&3\end{bmatrix}$ and $\mathbf b=(5,5)$. Replacing column $\mathbf a_1$ by $\mathbf b=x_1\mathbf a_1+x_2\mathbf a_2$ multiplies the area by $x_1$, since the $x_2\mathbf a_2$ part only shears along the other side. So $x_1=\det B_1/\det A=10/5=2$.
+
+:::
+
 Cramer's rule is elegant but costly: $n+1$ determinants instead of one elimination.
 
 ::: {#thm-determinant-volume .theorem name="Determinant as volume"}
@@ -78,5 +100,27 @@ The rows $(3,1)$ and $(1,2)$ span a parallelogram of area $\lvert\det\begin{bmat
 The triangle with corners $(x_1,y_1),(x_2,y_2),(x_3,y_3)$ is half of a parallelogram, so its area is
 $$\frac12\left|\det\begin{bmatrix}x_1&y_1&1\\x_2&y_2&1\\x_3&y_3&1\end{bmatrix}\right|.$$
 For corners $(0,0),(4,0),(1,3)$ this gives $\frac12\lvert4\cdot3-0\cdot1\rvert=6$.
+
+:::
+
+::: {#fig-cramers-rule-and-volume-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=0.8]
+\begin{scope}[shift={(0,0)}]
+\draw[->, muted] (-0.3,0) -- (4.6,0); \draw[->, muted] (0,-0.3) -- (0,3.4);
+\fill[tintD] (0.000,0.000) -- (4.000,0.000) -- (5.000,3.000) -- (1.000,3.000) -- cycle;
+\draw[faint, dashed] (4,0) -- (5,3) -- (1,3);
+\fill[tintB] (0.000,0.000) -- (4.000,0.000) -- (1.000,3.000) -- cycle;
+\draw[accent, emph] (0,0) -- (4,0) -- (1,3) -- cycle;
+\node[lab, tick, below] at (4,0) {$(4,0)$}; \node[lab, tick, above] at (1,3) {$(1,3)$};
+\node[lab, note, accent] at (1.7,1.0) {area $6$}; \node[lab, note, muted] at (3.6,2.3) {parallelogram: $12$};
+\end{scope}
+\end{tikzpicture}
+\end{center}
+```
+
+@exm-triangle-area: the triangle with corners $(0,0),(4,0),(1,3)$ is half of the parallelogram on the edges $(4,0)$ and $(1,3)$, whose area is $\lvert4\cdot3-0\cdot1\rvert=12$.
 
 :::
