@@ -70,9 +70,69 @@ For a continuous field $\mathbf{F}=\langle M,N\rangle$ on a connected open regio
 
 :::
 
+::: {#fig-conservative-fields-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box] (a) at (0,0) {$\mathbf F=\nabla f$};
+\node[box] (b) at (4.2,0) {$\oint_C\mathbf F\cdot d\mathbf r=0$\\ for closed $C$};
+\node[box] (c) at (4.2,-2.0) {$\int_C\mathbf F\cdot d\mathbf r$ depends\\ only on endpoints};
+\node[box] (d) at (0,-2.0) {$\mathbf F\cdot d\mathbf r$ is\\ exact, $=df$};
+\draw[map, <->] (a) -- (b);
+\draw[map, <->] (b) -- (c);
+\draw[map, <->] (c) -- (d);
+\draw[map, <->] (d) -- (a);
+\end{tikzpicture}
+\end{center}
+```
+
+The four equivalent properties of a conservative field. Any one of them implies the other three.
+
+:::
+
 ::: {#exm-not-conservative .example name="A field that is not a gradient"}
 
 $\mathbf{F}=-y\,\mathbf{i}+x\,\mathbf{j}$ has work $2\pi a^2\ne0$ around the circle of radius $a$ (@exm-line-integral-circle-geometric). So it is not conservative, hence not a gradient field.
+
+:::
+
+::: {#fig-conservative-fields-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-1.5,-1.5) -- (-1.05,-1.95);
+\draw[->, faint] (-1.5,-0.75) -- (-1.27,-1.2);
+\draw[->, faint] (-1.5,0) -- (-1.5,-0.45);
+\draw[->, faint] (-1.5,0.75) -- (-1.73,0.3);
+\draw[->, faint] (-1.5,1.5) -- (-1.95,1.05);
+\draw[->, faint] (-0.75,-1.5) -- (-0.3,-1.73);
+\draw[->, faint] (-0.75,-0.75) -- (-0.53,-0.97);
+\draw[->, faint] (-0.75,0) -- (-0.75,-0.22);
+\draw[->, faint] (-0.75,0.75) -- (-0.97,0.53);
+\draw[->, faint] (-0.75,1.5) -- (-1.2,1.27);
+\draw[->, faint] (0,-1.5) -- (0.45,-1.5);
+\draw[->, faint] (0,-0.75) -- (0.22,-0.75);
+\draw[->, faint] (0,0.75) -- (-0.22,0.75);
+\draw[->, faint] (0,1.5) -- (-0.45,1.5);
+\draw[->, faint] (0.75,-1.5) -- (1.2,-1.27);
+\draw[->, faint] (0.75,-0.75) -- (0.97,-0.53);
+\draw[->, faint] (0.75,0) -- (0.75,0.22);
+\draw[->, faint] (0.75,0.75) -- (0.53,0.97);
+\draw[->, faint] (0.75,1.5) -- (0.3,1.73);
+\draw[->, faint] (1.5,-1.5) -- (1.95,-1.05);
+\draw[->, faint] (1.5,-0.75) -- (1.73,-0.3);
+\draw[->, faint] (1.5,0) -- (1.5,0.45);
+\draw[->, faint] (1.5,0.75) -- (1.27,1.2);
+\draw[->, faint] (1.5,1.5) -- (1.05,1.95);
+\draw[hl, ->] (1.1,0) arc[start angle=0, end angle=350, radius=1.1];
+\node[lab, right] at (1.25,-0.5) {$C$};
+\end{tikzpicture}
+\end{center}
+```
+
+The field $-y\,\mathbf i+x\,\mathbf j$ points along the counterclockwise circle everywhere, so the work around a closed circle is positive ($2\pi a^2$), not $0$. A field whose work around some closed loop is nonzero cannot be a gradient.
 
 :::
 

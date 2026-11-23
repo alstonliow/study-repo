@@ -15,6 +15,44 @@ but on the circle of radius $a$, counterclockwise, $\mathbf{F}=\hat{\mathbf{T}}/
 
 :::
 
+::: {#fig-simply-connected-regions-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0.6,0) -- (0.6,0.83);
+\draw[->] (0.42,0.42) -- (-0.16,1.01);
+\draw[->] (0,0.6) -- (-0.83,0.6);
+\draw[->] (-0.42,0.42) -- (-1.01,-0.16);
+\draw[->] (-0.6,0) -- (-0.6,-0.83);
+\draw[->] (-0.42,-0.42) -- (0.16,-1.01);
+\draw[->] (0,-0.6) -- (0.83,-0.6);
+\draw[->] (0.42,-0.42) -- (1.01,0.16);
+\draw[->] (1.18,0.24) -- (1.09,0.65);
+\draw[->] (0.66,1) -- (0.32,1.23);
+\draw[->] (-0.24,1.18) -- (-0.65,1.09);
+\draw[->] (-1,0.66) -- (-1.23,0.32);
+\draw[->] (-1.18,-0.24) -- (-1.09,-0.65);
+\draw[->] (-0.66,-1) -- (-0.32,-1.23);
+\draw[->] (0.24,-1.18) -- (0.65,-1.09);
+\draw[->] (1,-0.66) -- (1.23,-0.32);
+\draw[->] (1.8,0) -- (1.8,0.28);
+\draw[->] (1.27,1.27) -- (1.08,1.47);
+\draw[->] (0,1.8) -- (-0.28,1.8);
+\draw[->] (-1.27,1.27) -- (-1.47,1.08);
+\draw[->] (-1.8,0) -- (-1.8,-0.28);
+\draw[->] (-1.27,-1.27) -- (-1.08,-1.47);
+\draw[->] (0,-1.8) -- (0.28,-1.8);
+\draw[->] (1.27,-1.27) -- (1.47,-1.08);
+\draw[hollow dot] (0,0) circle (0.06);
+\end{tikzpicture}
+\end{center}
+```
+
+The vortex field $\dfrac{-y\,\mathbf i+x\,\mathbf j}{x^2+y^2}$ circles the origin, with length $1/r$: strong near the hole, weak far away. Its curl is $0$, yet its work around any circle about the origin is $2\pi$.
+
+:::
+
 ::: {#fig-simply-connected-regions-1}
 
 ```{=latex}
@@ -68,6 +106,26 @@ $$\oint_{C_1}\mathbf{F}\cdot d\mathbf{r}+\dots+\oint_{C_n}\mathbf{F}\cdot d\math
 1. Make cuts from the outer curve to each inner curve. The cut region is bounded by a single closed curve which runs along every $C_i$ (with $R$ on its left) and along each cut twice, in opposite directions.
 
 2. Apply Green's theorem to the cut region. The integrals along the cuts cancel, leaving the sum of the integrals over the $C_i$.
+
+:::
+
+::: {#fig-simply-connected-regions-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA, even odd rule] (0,0) ellipse (2.0 and 1.4) (0.2,0.1) circle (0.6);
+\draw[emph, ->] (2,0) arc[start angle=0, end angle=350, x radius=2, y radius=1.4];
+\draw[hl, ->] (0.8,0.1) arc[start angle=0, end angle=-350, radius=0.6];
+\node[lab, right] at (1.95,1) {$C_1$};
+\node[lab] at (0.2,0.1) {hole};
+\node[lab, right] at (0.95,-0.5) {$C_2$};
+\node[lab] at (-1.3,-0.4) {$R$};
+\end{tikzpicture}
+\end{center}
+```
+
+Extended Green's theorem on a region $R$ with a hole: the boundary is the outer curve $C_1$, counterclockwise, together with the inner curve $C_2$, clockwise, so that $R$ is always on the left.
 
 :::
 

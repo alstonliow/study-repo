@@ -89,6 +89,26 @@ With $\mathbf{A}\cdot\mathbf{B}=\lvert\mathbf{A}\rvert\lvert\mathbf{B}\rvert\cos
 
 :::
 
+::: {#fig-cross-product-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+\draw[->, faint] (0,0) -- (-1,-0.64) node[lab, below left] {$x$};
+\draw[->, faint] (0,0) -- (2,0) node[lab, right] {$y$};
+\draw[->, faint] (0,0) -- (0,2) node[lab, above] {$z$};
+\fill[tintA] (0,0) -- (-0.4,-0.45) -- (0.75,-0.54) -- (1.15,-0.1) -- cycle;
+\draw[->, emph] (0,0) -- (-0.4,-0.45) node[lab, below] {$\mathbf A$};
+\draw[->, emph] (0,0) -- (1.15,-0.1) node[lab, right] {$\mathbf B$};
+\draw[->, hl] (0,0) -- (0,1.6) node[lab, left] {$\mathbf A\times\mathbf B$};
+\end{tikzpicture}
+\end{center}
+```
+
+$\mathbf A\times\mathbf B$ is perpendicular to both $\mathbf A$ and $\mathbf B$, points by the right-hand rule, and has length equal to the area of the parallelogram they span (shaded).
+
+:::
+
 ::: {#prp-cross-product-rules .proposition name="Rules for the cross product"}
 
 $\mathbf{B}\times\mathbf{A}=-\mathbf{A}\times\mathbf{B}$, $\mathbf{A}\times\mathbf{A}=\mathbf{0}$, the product is linear in each factor, and
@@ -111,6 +131,32 @@ and its absolute value is the volume of the parallelepiped with edges $\mathbf{A
 2. Take the face with sides $\mathbf{B},\mathbf{C}$ as base: its area is $\lvert\mathbf{B}\times\mathbf{C}\rvert$ and its unit normal is $\hat{\mathbf{n}}=(\mathbf{B}\times\mathbf{C})/\lvert\mathbf{B}\times\mathbf{C}\rvert$.
 
 3. The height is the component of $\mathbf{A}$ along the normal, $\lvert\mathbf{A}\cdot\hat{\mathbf{n}}\rvert$. Volume $=$ base $\times$ height $=\lvert\mathbf{B}\times\mathbf{C}\rvert\,\lvert\mathbf{A}\cdot\hat{\mathbf{n}}\rvert=\lvert\mathbf{A}\cdot(\mathbf{B}\times\mathbf{C})\rvert$.
+
+:::
+
+::: {#fig-cross-product-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+\draw[->, faint] (0,0) -- (-1,-0.64) node[lab, below left] {$x$};
+\draw[->, faint] (0,0) -- (2.2,0) node[lab, right] {$y$};
+\draw[->, faint] (0,0) -- (0,2) node[lab, above] {$z$};
+\fill[tintA] (0,0) -- (-0.4,-0.45) -- (0.75,-0.54) -- (1.15,-0.1) -- cycle;
+\draw[emph] (0,0) -- (-0.4,-0.45) -- (0.75,-0.54) -- (1.15,-0.1) -- cycle;
+\draw[emph] (0.05,1.2) -- (-0.35,0.76) -- (0.8,0.66) -- (1.2,1.11) -- cycle;
+\draw[emph] (0,0) -- (0.05,1.2);
+\draw[emph] (-0.4,-0.45) -- (-0.35,0.76);
+\draw[emph] (1.15,-0.1) -- (1.2,1.11);
+\draw[emph] (0.75,-0.54) -- (0.8,0.66);
+\draw[->, hl] (0,0) -- (0.05,1.2) node[lab, left] {$\mathbf C$};
+\node[lab, below] at (-0.4,-0.45) {$\mathbf A$};
+\node[lab, right] at (1.15,-0.1) {$\mathbf B$};
+\end{tikzpicture}
+\end{center}
+```
+
+The box spanned by $\mathbf A$, $\mathbf B$, $\mathbf C$: base area $\lvert\mathbf A\times\mathbf B\rvert$ times height (the component of $\mathbf C$ along $\mathbf A\times\mathbf B$) gives the volume $\lvert\mathbf C\cdot(\mathbf A\times\mathbf B)\rvert=\lvert\det[\mathbf A\ \mathbf B\ \mathbf C]\rvert$.
 
 :::
 

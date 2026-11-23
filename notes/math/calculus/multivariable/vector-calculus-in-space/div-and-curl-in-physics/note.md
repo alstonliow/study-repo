@@ -37,6 +37,56 @@ For a closed surface $S$ enclosing the solid $D$, the flux of $\mathbf{E}$ out o
 
 :::
 
+::: {#fig-div-and-curl-in-physics-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (0.6,0) -- (1.02,0);
+\draw[->] (0.52,0.3) -- (0.88,0.51);
+\draw[->] (0.3,0.52) -- (0.51,0.88);
+\draw[->] (0,0.6) -- (0,1.02);
+\draw[->] (-0.3,0.52) -- (-0.51,0.88);
+\draw[->] (-0.52,0.3) -- (-0.88,0.51);
+\draw[->] (-0.6,0) -- (-1.02,0);
+\draw[->] (-0.52,-0.3) -- (-0.88,-0.51);
+\draw[->] (-0.3,-0.52) -- (-0.51,-0.88);
+\draw[->] (0,-0.6) -- (0,-1.02);
+\draw[->] (0.3,-0.52) -- (0.51,-0.88);
+\draw[->] (0.52,-0.3) -- (0.88,-0.51);
+\draw[->] (1.1,0) -- (1.33,0);
+\draw[->] (0.95,0.55) -- (1.15,0.66);
+\draw[->] (0.55,0.95) -- (0.66,1.15);
+\draw[->] (0,1.1) -- (0,1.33);
+\draw[->] (-0.55,0.95) -- (-0.66,1.15);
+\draw[->] (-0.95,0.55) -- (-1.15,0.66);
+\draw[->] (-1.1,0) -- (-1.33,0);
+\draw[->] (-0.95,-0.55) -- (-1.15,-0.66);
+\draw[->] (-0.55,-0.95) -- (-0.66,-1.15);
+\draw[->] (0,-1.1) -- (0,-1.33);
+\draw[->] (0.55,-0.95) -- (0.66,-1.15);
+\draw[->] (0.95,-0.55) -- (1.15,-0.66);
+\draw[->] (1.6,0) -- (1.76,0);
+\draw[->] (1.39,0.8) -- (1.52,0.88);
+\draw[->] (0.8,1.39) -- (0.88,1.52);
+\draw[->] (0,1.6) -- (0,1.76);
+\draw[->] (-0.8,1.39) -- (-0.88,1.52);
+\draw[->] (-1.39,0.8) -- (-1.52,0.88);
+\draw[->] (-1.6,0) -- (-1.76,0);
+\draw[->] (-1.39,-0.8) -- (-1.52,-0.88);
+\draw[->] (-0.8,-1.39) -- (-0.88,-1.52);
+\draw[->] (0,-1.6) -- (0,-1.76);
+\draw[->] (0.8,-1.39) -- (0.88,-1.52);
+\draw[->] (1.39,-0.8) -- (1.52,-0.88);
+\fill[ink] (0,0) circle[pt] node[lab, below] {$q$};
+\end{tikzpicture}
+\end{center}
+```
+
+The field of a point charge points radially outward and weakens like $1/\rho^2$ (arrows in a plane through the charge). Its divergence is $0$ away from the charge, so the flux through any closed surface around $q$ is the same.
+
+:::
+
 ::: {#fig-div-and-curl-in-physics-1}
 
 ```{=latex}
@@ -71,6 +121,28 @@ $$\oint_C\mathbf{E}\cdot d\mathbf{r}=-\frac{d}{dt}\iint_S\mathbf{B}\cdot\hat{\ma
 1. By Stokes' theorem (@thm-stokes), $\oint_C\mathbf{E}\cdot d\mathbf{r}=\iint_S(\nabla\times\mathbf{E})\cdot\hat{\mathbf{n}}\,dS=-\iint_S\frac{\partial\mathbf{B}}{\partial t}\cdot\hat{\mathbf{n}}\,dS$.
 
 2. For a fixed surface the time derivative can be taken outside the integral.
+
+:::
+
+::: {#fig-div-and-curl-in-physics-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) ellipse (1.4 and 0.5);
+\draw[->, emph] (1.4,0) arc[start angle=0, end angle=-80, x radius=1.4, y radius=0.5];
+\fill[tintA] (0,0) ellipse (1.4 and 0.5);
+\draw[->, hl] (-0.8,-0.9) -- (-0.8,1.3);
+\draw[->, hl] (0,-0.9) -- (0,1.3);
+\draw[->, hl] (0.8,-0.9) -- (0.8,1.3);
+\node[lab, right] at (0.9,1.3) {$\mathbf B$, changing};
+\node[lab, right] at (1.45,-0.3) {$C$};
+\node[lab] at (-0.4,-0.2) {$S$};
+\end{tikzpicture}
+\end{center}
+```
+
+Faraday's law: a changing magnetic flux through a surface $S$ produces an electric field whose work around the boundary $C$ (the induced voltage) is $-\frac{d}{dt}\iint_S\mathbf B\cdot d\mathbf S$.
 
 :::
 

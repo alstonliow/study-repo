@@ -22,6 +22,26 @@ The answers agree because $\mathbf{F}=\nabla(xyz)$, and $xyz$ changes from $0$ t
 
 :::
 
+::: {#fig-line-integrals-in-space-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[->, faint] (0,0) -- (-0.8,-0.51) node[lab, below left] {$x$};
+\draw[->, faint] (0,0) -- (1.6,0) node[lab, right] {$y$};
+\draw[->, faint] (0,0) -- (0,1.6) node[lab, above] {$z$};
+\draw[hl] (0,0) -- (0,0.03) -- (0,0.05) -- (0.01,0.08) -- (0.01,0.1) -- (0.02,0.13) -- (0.02,0.15) -- (0.03,0.18) -- (0.04,0.2) -- (0.05,0.23) -- (0.06,0.25) -- (0.07,0.27) -- (0.08,0.3) -- (0.09,0.32) -- (0.11,0.34) -- (0.12,0.37) -- (0.13,0.39) -- (0.15,0.41) -- (0.16,0.43) -- (0.18,0.45) -- (0.2,0.47) -- (0.21,0.49) -- (0.23,0.51) -- (0.25,0.52) -- (0.26,0.54) -- (0.28,0.56) -- (0.3,0.57) -- (0.31,0.59) -- (0.33,0.6) -- (0.35,0.61) -- (0.36,0.62) -- (0.38,0.63) -- (0.4,0.64) -- (0.41,0.65) -- (0.43,0.66) -- (0.44,0.67) -- (0.46,0.67) -- (0.47,0.68) -- (0.49,0.68) -- (0.5,0.68);
+\draw[emph, dashed] (0,0) -- (-0.5,-0.32) -- (0.5,-0.32) -- (0.5,0.68);
+\fill[ink] (0.5,0.68) circle[pt] node[lab, above right] {$(1,1,1)$};
+\fill[ink] (0,0) circle[pt];
+\end{tikzpicture}
+\end{center}
+```
+
+Two paths from the origin to $(1,1,1)$: the twisted cubic $(t^3,t^2,t)$ (thick) and three segments parallel to the axes (dashed). For $\mathbf F=\nabla(xyz)$ the work along both is $1$.
+
+:::
+
 ::: {#def-curl-space .definition name="Curl"}
 
 The **curl** of $\mathbf{F}=\langle P,Q,R\rangle$ is
@@ -56,6 +76,30 @@ For which $a,b$ is $\mathbf{F}=axy\,\mathbf{i}+(x^2+z^3)\,\mathbf{j}+(byz^2-4z^3
 3. $f_z=3yz^2+h'(z)=3yz^2-4z^3$, so $h=-z^4+c$.
 
 So $f=x^2y+yz^3-z^4+c$. Alternatively, integrate $\mathbf{F}$ from the origin along three segments parallel to the axes.
+
+:::
+
+::: {#fig-line-integrals-in-space-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[->, faint] (0,0) -- (-0.9,-0.58) node[lab, below left] {$x$};
+\draw[->, faint] (0,0) -- (1.8,0) node[lab, right] {$y$};
+\draw[->, faint] (0,0) -- (0,1.6) node[lab, above] {$z$};
+\draw[hl] (0,0) -- (-0.6,-0.38);
+\draw[hl] (-0.6,-0.38) -- (0.5,-0.38);
+\draw[hl] (0.5,-0.38) -- (0.5,0.52);
+\draw[faint, dashed] (0.5,0.52) -- (0.5,-0.38) -- (1.1,0);
+\fill[accent] (0.5,0.52) circle[pt] node[lab, above right] {$(x,y,z)$};
+\node[lab, below] at (-0.3,-0.19) {$1$};
+\node[lab, below] at (-0.05,-0.38) {$2$};
+\node[lab, right] at (0.5,0.07) {$3$};
+\end{tikzpicture}
+\end{center}
+```
+
+Finding a potential by integrating from the origin along segments parallel to the axes: (1) along the $x$-axis, (2) parallel to the $y$-axis, (3) parallel to the $z$-axis. On each segment only one component of $\mathbf F$ does work.
 
 :::
 

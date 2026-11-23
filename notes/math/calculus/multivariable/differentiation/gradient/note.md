@@ -57,6 +57,26 @@ The surface $x^2+y^2-z^2=4$ at $(2,1,1)$: $\nabla w=\langle2x,2y,-2z\rangle=\lan
 
 :::
 
+::: {#fig-gradient-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.4,0) -- (3.2,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-1.6) -- (0,2.2) node[lab, above] {$z$};
+\draw[emph] (2.29,-1.5) -- (2.25,-1.44) -- (2.22,-1.39) -- (2.18,-1.33) -- (2.15,-1.27) -- (2.12,-1.22) -- (2.08,-1.16) -- (2.05,-1.1) -- (2.02,-1.05) -- (2,-0.99) -- (1.97,-0.93) -- (1.94,-0.88) -- (1.92,-0.82) -- (1.89,-0.76) -- (1.87,-0.71) -- (1.85,-0.65) -- (1.83,-0.59) -- (1.81,-0.54) -- (1.8,-0.48) -- (1.78,-0.42) -- (1.77,-0.37) -- (1.76,-0.31) -- (1.75,-0.25) -- (1.74,-0.2) -- (1.74,-0.14) -- (1.73,-0.08) -- (1.73,-0.03) -- (1.73,0.03) -- (1.73,0.09) -- (1.74,0.14) -- (1.74,0.2) -- (1.75,0.26) -- (1.76,0.31) -- (1.77,0.37) -- (1.78,0.43) -- (1.8,0.48) -- (1.81,0.54) -- (1.83,0.6) -- (1.85,0.65) -- (1.87,0.71) -- (1.89,0.77) -- (1.92,0.82) -- (1.94,0.88) -- (1.97,0.94) -- (2,0.99) -- (2.03,1.05) -- (2.06,1.11) -- (2.09,1.16) -- (2.12,1.22) -- (2.15,1.28) -- (2.19,1.33) -- (2.22,1.39) -- (2.26,1.45) -- (2.29,1.5) -- (2.33,1.56) -- (2.37,1.62) -- (2.41,1.67) -- (2.45,1.73) -- (2.49,1.79) -- (2.53,1.84) -- (2.57,1.9);
+\fill[accent] (2,1) circle[pt] node[lab, right] {$(2,1,1)$};
+\draw[hl] (1.3,-0.4) -- (2,1) -- (2.7,2.4);
+\draw[->] (2,1) -- (2.8,0.6) node[lab, below right] {$\nabla w$};
+\node[lab, right] at (1.4,-1.4) {slice $y=1$};
+\end{tikzpicture}
+\end{center}
+```
+
+The slice $y=1$ of the surface $x^2+y^2-z^2=4$ is the hyperbola $x^2-z^2=3$. At $(2,1,1)$ the gradient $\langle4,2,-2\rangle$ has $xz$-part $\langle4,-2\rangle$, normal to the slice, and the tangent plane $4x+2y-2z=8$ meets the slice in the tangent line $z=2x-3$ (thick).
+
+:::
+
 ::: {#def-directional-derivative .definition name="Directional derivative"}
 
 For a unit vector $\hat{\mathbf{u}}$, the **directional derivative** of $w$ at $P$ in the direction $\hat{\mathbf{u}}$ is the rate of change of $w$ along the straight line through $P$ with unit velocity $\hat{\mathbf{u}}$, $\mathbf{r}(s)=P+s\hat{\mathbf{u}}$:
@@ -78,6 +98,28 @@ where $\theta$ is the angle between $\nabla w$ and $\hat{\mathbf{u}}$. Hence $\n
 1. By the chain rule along $\mathbf{r}(s)=P+s\hat{\mathbf{u}}$: $\dfrac{dw}{ds}=\nabla w\cdot\dfrac{d\mathbf{r}}{ds}=\nabla w\cdot\hat{\mathbf{u}}$.
 
 2. As $\lvert\hat{\mathbf{u}}\rvert=1$, this equals $\lvert\nabla w\rvert\cos\theta$, which is largest, equal to $\lvert\nabla w\rvert$, when $\theta=0$, and zero when $\hat{\mathbf{u}}\perp\nabla w$.
+
+:::
+
+::: {#fig-gradient-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0.8,0) circle (0.8);
+\draw[->, hl] (0,0) -- (1.6,0) node[lab, right] {$\nabla f$};
+\fill[ink] (0,0) circle[pt] node[lab, left] {$P$};
+\draw[->] (0,0) -- (0.92,0.77) node[lab, above] {$\hat{\mathbf u}$};
+\fill[ink] (0.94,0.79) circle[pt];
+\draw[->] (0,0) -- (-0.6,1.04);
+\fill[ink] (0.4,-0.69) circle[pt];
+\draw[faint] (0.35,0) arc[start angle=0, end angle=40, radius=0.35];
+\node[lab, right] at (0.45,0.17) {$\theta$};
+\end{tikzpicture}
+\end{center}
+```
+
+$D_{\hat{\mathbf u}}f=\nabla f\cdot\hat{\mathbf u}=\lvert\nabla f\rvert\cos\theta$. Marking $D_{\hat{\mathbf u}}f$ along each direction traces the thick circle through $P$: largest ($\lvert\nabla f\rvert$) along $\nabla f$, zero perpendicular to it (along the level curve), negative in the backward half.
 
 :::
 

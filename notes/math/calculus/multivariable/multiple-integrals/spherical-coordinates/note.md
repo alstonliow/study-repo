@@ -52,6 +52,29 @@ $$dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta .$$
 
 :::
 
+::: {#fig-spherical-coordinates-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (0,0) -- (0,2.6) node[lab, above] {$z$};
+\draw[->, faint] (0,0) -- (2.6,0) node[lab, right] {$r$};
+\fill[accentLight] (0.96,1.15) arc[start angle=50, end angle=35, radius=1.5] -- (1.64,1.15) arc[start angle=35, end angle=50, radius=2.0] -- cycle;
+\draw[faint] (0,0) -- (1.48,1.76);
+\draw[faint] (0,0) -- (1.88,1.32);
+\node[lab, below right] at (1.52,0.88) {$\Delta\rho$};
+\node[lab, above right] at (1.57,1.47) {$\rho\,\Delta\phi$};
+\draw[hl] (0.96,1.15) -- (0,1.15) node[lab, midway, above] {$\rho\sin\phi$};
+\draw[faint] (0,0.5) arc[start angle=90, end angle=50, radius=0.5];
+\node[lab, above] at (0.18,0.55) {$\phi$};
+\end{tikzpicture}
+\end{center}
+```
+
+The spherical volume element in a vertical half-plane: the cell has sides $\Delta\rho$ and $\rho\,\Delta\phi$, and rotating it by $\Delta\theta$ about the $z$-axis moves it a distance $\rho\sin\phi\,\Delta\theta$, since $\rho\sin\phi$ is its distance from the axis. So $dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta$.
+
+:::
+
 ::: {#exm-ball-volume-spherical .example name="Volume of a ball"}
 
 $\displaystyle\int_0^{2\pi}\!\!\int_0^\pi\!\!\int_0^a\rho^2\sin\phi\,d\rho\,d\phi\,d\theta=2\pi\cdot2\cdot\frac{a^3}3=\frac43\pi a^3$. The surface area of the sphere is $\int_0^{2\pi}\!\int_0^\pi a^2\sin\phi\,d\phi\,d\theta=4\pi a^2$.
@@ -63,5 +86,28 @@ $\displaystyle\int_0^{2\pi}\!\!\int_0^\pi\!\!\int_0^a\rho^2\sin\phi\,d\rho\,d\ph
 Rotating @exm-sphere-cut-by-plane about the $x$-axis, the plane becomes horizontal at distance $1/\sqrt2$ from the centre: we want the part of the unit ball above $z=1/\sqrt2$. For fixed $\phi,\theta$ the ray from the origin enters the region on the plane $\rho\cos\phi=1/\sqrt2$, i.e. $\rho=\frac1{\sqrt2}\sec\phi$, and leaves on the sphere $\rho=1$. The plane meets the sphere where $z=r=1/\sqrt2$, i.e. $\phi=\pi/4$. So
 $$V=\int_0^{2\pi}\!\!\int_0^{\pi/4}\!\!\int_{\sec\phi/\sqrt2}^1\rho^2\sin\phi\,d\rho\,d\phi\,d\theta=\frac{2\pi}3-\frac{5\pi}{6\sqrt2}\approx0.243 ,$$
 which agrees with the formula $\pi h^2(3-h)/3$ for a cap of height $h=1-1/\sqrt2$ of a unit ball.
+
+:::
+
+::: {#fig-spherical-coordinates-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.8]
+\draw[->, faint] (0,-1.2) -- (0,1.5) node[lab, above] {$z$};
+\draw[->, faint] (-1.3,0) -- (1.5,0) node[lab, right] {$y$};
+\draw[emph] (0,0) circle (1);
+\fill[tintB] (-0.71,0.71) -- (-0.71,0.71) -- (-0.67,0.74) -- (-0.63,0.78) -- (-0.58,0.81) -- (-0.54,0.84) -- (-0.49,0.87) -- (-0.44,0.9) -- (-0.4,0.92) -- (-0.34,0.94) -- (-0.29,0.96) -- (-0.24,0.97) -- (-0.19,0.98) -- (-0.14,0.99) -- (-0.08,1) -- (-0.03,1) -- (0.03,1) -- (0.08,1) -- (0.14,0.99) -- (0.19,0.98) -- (0.24,0.97) -- (0.29,0.96) -- (0.34,0.94) -- (0.4,0.92) -- (0.44,0.9) -- (0.49,0.87) -- (0.54,0.84) -- (0.58,0.81) -- (0.63,0.78) -- (0.67,0.74) -- (0.71,0.71) -- (0.71,0.71) -- cycle;
+\draw[hl] (-0.71,0.71) -- (0.71,0.71);
+\draw[faint] (0,0) -- (0.71,0.71);
+\draw[faint] (0,0) -- (0.35,0.71);
+\draw[hl, ->] (0.35,0.71) -- (0.44,0.88);
+\node[lab, right] at (0.76,0.71) {$z=\tfrac1{\sqrt2}$};
+\node[lab, right] at (0.14,0.35) {$\phi$};
+\end{tikzpicture}
+\end{center}
+```
+
+Cross-section of the cap of the unit ball above $z=1/\sqrt2$: a ray at angle $\phi\le\pi/4$ enters the cap at the plane, $\rho=\sec\phi/\sqrt2$, and leaves it at the sphere, $\rho=1$ (thick arrow).
 
 :::

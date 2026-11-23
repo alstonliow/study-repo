@@ -56,6 +56,27 @@ i.e. $x=x_0+v_1t$, $y=y_0+v_2t$, $z=z_0+v_3t$. Through two points $Q_0,Q_1$ take
 
 :::
 
+::: {#fig-lines-and-planes-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.4,0) -- (3.4,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.4) -- (0,2) node[lab, above] {$y$};
+\draw[emph] (-0.3,0.06) -- (1.45,1.05) -- (3.2,2.03);
+\fill[accent] (0.3,0.4) circle[pt] node[lab, below right] {$t=0$};
+\fill[ink] (1.1,0.85) circle[pt] node[lab, below right] {$t=1$};
+\fill[ink] (1.9,1.3) circle[pt] node[lab, below right] {$t=2$};
+\fill[ink] (2.7,1.75) circle[pt] node[lab, below right] {$t=3$};
+\draw[->, hl] (0.3,0.4) -- (1.1,0.85) node[lab, above left] {$\mathbf v$};
+\end{tikzpicture}
+\end{center}
+```
+
+The line $\mathbf r(t)=P_0+t\mathbf v$: each unit of $t$ moves by the direction vector $\mathbf v$. Negative $t$ goes the other way.
+
+:::
+
 A line is also the intersection of two non-parallel planes; a direction vector of that line is $\mathbf{N}_1\times\mathbf{N}_2$, since it is perpendicular to both normals.
 
 ::: {#exm-line-meets-plane .example name="Where a line meets a plane"}
@@ -88,6 +109,31 @@ Let $A$ be a $3\times3$ matrix whose rows $\mathbf{N}_1,\mathbf{N}_2,\mathbf{N}_
 3. Then for any solution $\mathbf{x}$, every point $\mathbf{x}+t\mathbf{w}$ is also a solution, because $A\mathbf{w}=\mathbf{0}$. So there are no solutions or infinitely many.
 
 4. For $\mathbf{b}=\mathbf{0}$ the point $\mathbf{x}=\mathbf{0}$ is always a solution, so case 2 gives infinitely many solutions and case 1 only $\mathbf{0}$.
+
+:::
+
+::: {#fig-lines-and-planes-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (-1.4,-0.84) -- (0,0) -- (1.4,0.84);
+\draw[emph] (-1,1.5) -- (0.5,0.6) -- (2,-0.3);
+\draw[emph] (0.4,-1.0) -- (0.4,1.6);
+\node[lab] at (0.5,-1.4) {no common point};
+\end{tikzpicture}
+\hspace{1.2em}
+\begin{tikzpicture}
+\draw[emph] (-1.4,-0.84) -- (0,0) -- (1.4,0.84);
+\draw[emph] (-1.4,0.84) -- (0,0) -- (1.4,-0.84);
+\draw[emph] (0,-1.0) -- (0,1.0);
+\fill[accent] (0,0) circle[pt];
+\node[lab] at (0,-1.4) {common line};
+\end{tikzpicture}
+\end{center}
+```
+
+Two singular cases of three planes, seen along a direction parallel to all three (each plane appears as a line). Left: the planes meet in pairs along three parallel lines, a triangular prism, and there is no solution. Right: all three contain one line (the dot), and there are infinitely many solutions.
 
 :::
 

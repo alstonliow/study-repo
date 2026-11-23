@@ -64,9 +64,110 @@ $C$ the circle of radius $a$ about the origin, counterclockwise, so $\hat{\mathb
 
 :::
 
+::: {#fig-flux-and-normal-form-of-greens-theorem-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) circle (1.2);
+\draw[->, hl] (1.2,0) -- (1.7,0);
+\draw[->, faint] (1.2,0) -- (1.2,0.45);
+\draw[->, hl] (0.85,0.85) -- (1.2,1.2);
+\draw[->, faint] (0.85,0.85) -- (0.53,1.17);
+\draw[->, hl] (0,1.2) -- (0,1.7);
+\draw[->, faint] (0,1.2) -- (-0.45,1.2);
+\draw[->, hl] (-0.85,0.85) -- (-1.2,1.2);
+\draw[->, faint] (-0.85,0.85) -- (-1.17,0.53);
+\draw[->, hl] (-1.2,0) -- (-1.7,0);
+\draw[->, faint] (-1.2,0) -- (-1.2,-0.45);
+\draw[->, hl] (-0.85,-0.85) -- (-1.2,-1.2);
+\draw[->, faint] (-0.85,-0.85) -- (-0.53,-1.17);
+\draw[->, hl] (0,-1.2) -- (0,-1.7);
+\draw[->, faint] (0,-1.2) -- (0.45,-1.2);
+\draw[->, hl] (0.85,-0.85) -- (1.2,-1.2);
+\draw[->, faint] (0.85,-0.85) -- (1.17,-0.53);
+\node[lab] at (0,0) {$C$};
+\node[lab, right] at (2,0.3) {$x\mathbf i+y\mathbf j$};
+\node[lab, left] at (-0.75,1.35) {$-y\mathbf i+x\mathbf j$};
+\end{tikzpicture}
+\end{center}
+```
+
+Flux across the circle: the radial field $x\,\mathbf i+y\,\mathbf j$ (thick) crosses $C$ along the outward normal, flux $2\pi a^2$; the rotation field $-y\,\mathbf i+x\,\mathbf j$ (thin) slides along $C$, flux $0$.
+
+:::
+
 ::: {#def-divergence-plane .definition name="Divergence in the plane"}
 
 The **divergence** of $\mathbf{F}=P\,\mathbf{i}+Q\,\mathbf{j}$ is $\operatorname{div}\mathbf{F}=P_x+Q_y$.
+
+:::
+
+::: {#fig-flux-and-normal-form-of-greens-theorem-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->] (-1.2,-1.2) -- (-1.62,-1.62);
+\draw[->] (-1.2,-0.6) -- (-1.62,-0.81);
+\draw[->] (-1.2,0) -- (-1.62,0);
+\draw[->] (-1.2,0.6) -- (-1.62,0.81);
+\draw[->] (-1.2,1.2) -- (-1.62,1.62);
+\draw[->] (-0.6,-1.2) -- (-0.81,-1.62);
+\draw[->] (-0.6,-0.6) -- (-0.81,-0.81);
+\draw[->] (-0.6,0) -- (-0.81,0);
+\draw[->] (-0.6,0.6) -- (-0.81,0.81);
+\draw[->] (-0.6,1.2) -- (-0.81,1.62);
+\draw[->] (0,-1.2) -- (0,-1.62);
+\draw[->] (0,-0.6) -- (0,-0.81);
+\draw[->] (0,0.6) -- (0,0.81);
+\draw[->] (0,1.2) -- (0,1.62);
+\draw[->] (0.6,-1.2) -- (0.81,-1.62);
+\draw[->] (0.6,-0.6) -- (0.81,-0.81);
+\draw[->] (0.6,0) -- (0.81,0);
+\draw[->] (0.6,0.6) -- (0.81,0.81);
+\draw[->] (0.6,1.2) -- (0.81,1.62);
+\draw[->] (1.2,-1.2) -- (1.62,-1.62);
+\draw[->] (1.2,-0.6) -- (1.62,-0.81);
+\draw[->] (1.2,0) -- (1.62,0);
+\draw[->] (1.2,0.6) -- (1.62,0.81);
+\draw[->] (1.2,1.2) -- (1.62,1.62);
+\draw[faint, dashed] (0,0) circle (0.5);
+\node[lab] at (0,-1.75) {$\operatorname{div}=2$: source};
+\end{tikzpicture}
+\hspace{1.2em}
+\begin{tikzpicture}
+\draw[->] (-1.2,-1.2) -- (-0.78,-1.62);
+\draw[->] (-1.2,-0.6) -- (-0.99,-1.02);
+\draw[->] (-1.2,0) -- (-1.2,-0.42);
+\draw[->] (-1.2,0.6) -- (-1.41,0.18);
+\draw[->] (-1.2,1.2) -- (-1.62,0.78);
+\draw[->] (-0.6,-1.2) -- (-0.18,-1.41);
+\draw[->] (-0.6,-0.6) -- (-0.39,-0.81);
+\draw[->] (-0.6,0) -- (-0.6,-0.21);
+\draw[->] (-0.6,0.6) -- (-0.81,0.39);
+\draw[->] (-0.6,1.2) -- (-1.02,0.99);
+\draw[->] (0,-1.2) -- (0.42,-1.2);
+\draw[->] (0,-0.6) -- (0.21,-0.6);
+\draw[->] (0,0.6) -- (-0.21,0.6);
+\draw[->] (0,1.2) -- (-0.42,1.2);
+\draw[->] (0.6,-1.2) -- (1.02,-0.99);
+\draw[->] (0.6,-0.6) -- (0.81,-0.39);
+\draw[->] (0.6,0) -- (0.6,0.21);
+\draw[->] (0.6,0.6) -- (0.39,0.81);
+\draw[->] (0.6,1.2) -- (0.18,1.41);
+\draw[->] (1.2,-1.2) -- (1.62,-0.78);
+\draw[->] (1.2,-0.6) -- (1.41,-0.18);
+\draw[->] (1.2,0) -- (1.2,0.42);
+\draw[->] (1.2,0.6) -- (0.99,1.02);
+\draw[->] (1.2,1.2) -- (0.78,1.62);
+\draw[faint, dashed] (0,0) circle (0.5);
+\node[lab] at (0,-1.75) {$\operatorname{div}=0$};
+\end{tikzpicture}
+\end{center}
+```
+
+Divergence measures net outflow per unit area. Through the small dashed circle, the field $x\,\mathbf i+y\,\mathbf j$ (left) flows out everywhere, $M_x+N_y=2$; the field $-y\,\mathbf i+x\,\mathbf j$ (right) flows in as much as out, divergence $0$.
 
 :::
 

@@ -17,6 +17,26 @@ which is what the true Hessian satisfies to first order, $\nabla^2f\,s_k\approx 
 
 :::
 
+::: {#fig-quasi-newton-methods-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[->, faint] (-0.4,0) -- (2.4,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.6) -- (0,1.8) node[lab, above] {$f'(x)$};
+\draw[emph] (-0.2,0.14) -- (-0.16,0.13) -- (-0.13,0.12) -- (-0.09,0.12) -- (-0.05,0.11) -- (-0.02,0.1) -- (0.02,0.1) -- (0.06,0.09) -- (0.09,0.08) -- (0.13,0.07) -- (0.17,0.07) -- (0.2,0.06) -- (0.24,0.06) -- (0.28,0.05) -- (0.31,0.05) -- (0.35,0.04) -- (0.39,0.04) -- (0.42,0.04) -- (0.46,0.04) -- (0.5,0.04) -- (0.53,0.04) -- (0.57,0.04) -- (0.61,0.05) -- (0.64,0.05) -- (0.68,0.06) -- (0.72,0.07) -- (0.75,0.08) -- (0.79,0.09) -- (0.83,0.1) -- (0.86,0.12) -- (0.9,0.14) -- (0.94,0.16) -- (0.97,0.18) -- (1.01,0.21) -- (1.05,0.23) -- (1.08,0.26) -- (1.12,0.3) -- (1.16,0.33) -- (1.19,0.37) -- (1.23,0.41) -- (1.27,0.46) -- (1.3,0.5) -- (1.34,0.55) -- (1.38,0.61) -- (1.41,0.66) -- (1.45,0.72) -- (1.49,0.79) -- (1.52,0.86) -- (1.56,0.93) -- (1.6,1) -- (1.63,1.08) -- (1.67,1.16) -- (1.71,1.25) -- (1.74,1.34) -- (1.78,1.44) -- (1.82,1.54) -- (1.85,1.64) -- (1.89,1.75);
+\draw[hl] (0.2,-0.34) -- (1.1,0.53) -- (2,1.39);
+\fill[ink] (0.6,0.04) circle[pt] node[lab, below right] {$x_k$};
+\fill[ink] (1.6,1.01) circle[pt] node[lab, left] {$x_{k+1}$};
+\draw[faint] (0.6,0.04) -- (1.6,0.04) node[lab, midway, below] {$s$} -- (1.6,1.01) node[lab, midway, right] {$y$};
+\end{tikzpicture}
+\end{center}
+```
+
+The secant condition in one variable: the new curvature estimate $B_{k+1}$ is the slope of the chord of $f'$ between $x_k$ and $x_{k+1}$, so $B_{k+1}s=y$ with $s=x_{k+1}-x_k$ and $y=f'(x_{k+1})-f'(x_k)$. Quasi-Newton methods impose the same condition on a matrix.
+
+:::
+
 ::: {#def-bfgs .definition name="BFGS method"}
 
 Start from $x_0$ and a symmetric positive definite $H_0$ (often $I$). At step $k$: set the direction $d_k=-H_k\nabla f(x_k)$, choose a step $t_k$ by a line search, put $x_{k+1}=x_k+t_kd_k$, $s_k=t_kd_k$, $y_k=\nabla f(x_{k+1})-\nabla f(x_k)$, $\rho_k=1/(y_k^{\mathsf T}s_k)$, and update

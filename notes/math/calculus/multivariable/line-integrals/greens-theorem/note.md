@@ -50,6 +50,32 @@ the same.
 
 :::
 
+::: {#fig-greens-theorem-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[tintA] (0,0) -- (1.5,0) -- (1.5,1.5) -- (0,1.5) -- cycle;
+\fill[tintC] (1.5,0) -- (3,0) -- (3,1.5) -- (1.5,1.5) -- cycle;
+\draw[emph, ->] (0,0) -- (1.4,0);
+\draw[emph, ->] (1.4,0.1) -- (1.4,1.4);
+\draw[emph, ->] (1.5,1.5) -- (0,1.5);
+\draw[emph, ->] (0,1.5) -- (0,0.05);
+\draw[emph, ->] (1.6,0) -- (3,0);
+\draw[emph, ->] (3,0) -- (3,1.5);
+\draw[emph, ->] (3,1.5) -- (1.6,1.5);
+\draw[emph, ->] (1.6,1.4) -- (1.6,0.1);
+\node[lab] at (0.75,0.75) {$R_1$};
+\node[lab] at (2.25,0.75) {$R_2$};
+\node[lab, below] at (1.5,-0.35) {cancel};
+\end{tikzpicture}
+\end{center}
+```
+
+Why Green's theorem can be proved piece by piece: cut $R$ into $R_1$ and $R_2$. The shared edge is traversed once upward and once downward, so its line integrals cancel, and the sum of the two boundary integrals is the integral around the outer boundary.
+
+:::
+
 ::: {#exm-green-disk .example name="A hard line integral made easy"}
 
 $C$ the unit circle about $(2,0)$, counterclockwise. With $M=ye^{-x}$, $N=\frac12x^2-e^{-x}$:
@@ -80,6 +106,25 @@ $$\text{area}(R)=\oint_Cx\,dy=-\oint_Cy\,dx=\frac12\oint_Cx\,dy-y\,dx .$$
 ::: {.proof}
 
 1. Apply Green's theorem with $(M,N)=(0,x)$, $(-y,0)$ or $(-\frac y2,\frac x2)$; in each case $N_x-M_y=1$.
+
+:::
+
+::: {#fig-greens-theorem-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-2.3,0) -- (2.5,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-1.5) -- (0,1.6) node[lab, above] {$y$};
+\fill[tintA] (2,0) -- (1.99,0.1) -- (1.97,0.19) -- (1.93,0.28) -- (1.88,0.38) -- (1.81,0.46) -- (1.73,0.55) -- (1.64,0.63) -- (1.53,0.71) -- (1.41,0.78) -- (1.29,0.84) -- (1.15,0.9) -- (1,0.95) -- (0.85,1) -- (0.68,1.03) -- (0.52,1.06) -- (0.35,1.08) -- (0.17,1.1) -- (0,1.1) -- (-0.17,1.1) -- (-0.35,1.08) -- (-0.52,1.06) -- (-0.68,1.03) -- (-0.85,1) -- (-1,0.95) -- (-1.15,0.9) -- (-1.29,0.84) -- (-1.41,0.78) -- (-1.53,0.71) -- (-1.64,0.63) -- (-1.73,0.55) -- (-1.81,0.46) -- (-1.88,0.38) -- (-1.93,0.28) -- (-1.97,0.19) -- (-1.99,0.1) -- (-2,0) -- (-1.99,-0.1) -- (-1.97,-0.19) -- (-1.93,-0.28) -- (-1.88,-0.38) -- (-1.81,-0.46) -- (-1.73,-0.55) -- (-1.64,-0.63) -- (-1.53,-0.71) -- (-1.41,-0.78) -- (-1.29,-0.84) -- (-1.15,-0.9) -- (-1,-0.95) -- (-0.85,-1) -- (-0.68,-1.03) -- (-0.52,-1.06) -- (-0.35,-1.08) -- (-0.17,-1.1) -- (0,-1.1) -- (0.17,-1.1) -- (0.35,-1.08) -- (0.52,-1.06) -- (0.68,-1.03) -- (0.85,-1) -- (1,-0.95) -- (1.15,-0.9) -- (1.29,-0.84) -- (1.41,-0.78) -- (1.53,-0.71) -- (1.64,-0.63) -- (1.73,-0.55) -- (1.81,-0.46) -- (1.88,-0.38) -- (1.93,-0.28) -- (1.97,-0.19) -- (1.99,-0.1) -- cycle;
+\draw[emph, ->] (2,0) arc[start angle=0, end angle=350, x radius=2, y radius=1.1];
+\node[lab] at (0,0.25) {$A=\tfrac12\oint_C x\,dy-y\,dx$};
+\node[lab, right] at (2,0.9) {$C$};
+\end{tikzpicture}
+\end{center}
+```
+
+The area inside an ellipse by a line integral around its boundary: with $x=a\cos t$, $y=b\sin t$, $\tfrac12\oint x\,dy-y\,dx=\tfrac12\int_0^{2\pi}ab\,dt=\pi ab$.
 
 :::
 

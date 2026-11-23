@@ -36,6 +36,26 @@ $\left(\dfrac{\partial f}{\partial x}\right)_{y}$ is the rate of change of $f$ w
 
 :::
 
+::: {#fig-non-independent-variables-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[->, faint] (-0.3,0) -- (2.8,0) node[lab, right] {$x$};
+\draw[->, faint] (0,-0.3) -- (0,2.6) node[lab, above] {$y$};
+\draw[faint] (0.2,0.2) -- (2.4,2.4) node[lab, right] {$v=0$};
+\draw[faint] (0.2,1.2) -- (1.6,2.6) node[lab, right] {$v=1$};
+\fill[ink] (0.8,0.8) circle[pt];
+\draw[->, hl] (0.8,0.8) -- (1.6,0.8) node[lab, below] {$y$ fixed};
+\draw[->, hl] (0.8,0.8) -- (1.6,1.6) node[lab, left] {$v$ fixed};
+\end{tikzpicture}
+\end{center}
+```
+
+Both derivatives increase $x$ by the same amount, but in different directions: $(\partial f/\partial x)_y$ moves horizontally, while with $u=x$, $v=y-x$ the derivative $(\partial f/\partial u)_v$ moves along the line $v=\text{const}$, so $y$ increases too. For $f=x+y$ the rates are $1$ and $2$.
+
+:::
+
 ::: {#exm-held-fixed-matters .example name="Same variable, different derivatives"}
 
 $f=x+y$ has $\left(\frac{\partial f}{\partial x}\right)_y=1$. Change variables to $u=x$, $v=y-x$: then $f=2u+v$ and $\left(\frac{\partial f}{\partial u}\right)_v=2$, although $u=x$. The second derivative moves $x$ while keeping $y-x$ fixed: it is $\left(\frac{\partial f}{\partial x}\right)_v$, not $\left(\frac{\partial f}{\partial x}\right)_y$.
@@ -51,6 +71,29 @@ $$\left(\frac{\partial w}{\partial z}\right)_y=f_z-\frac{f_xg_z}{g_x}.$$
 2. **Chain rule.** $\left(\frac{\partial w}{\partial z}\right)_y=f_x\left(\frac{\partial x}{\partial z}\right)_y+f_z$, and differentiating the constraint, $0=g_x\left(\frac{\partial x}{\partial z}\right)_y+g_z$, gives $\left(\frac{\partial x}{\partial z}\right)_y=-g_z/g_x$.
 
 Both methods compute the same quantities (assume $g_x\ne0$).
+
+:::
+
+::: {#fig-non-independent-variables-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\fill[ink] (0,0) circle[pt] node[lab, above] {$f$};
+\node[lab] at (-1.2,-1) {$x$};
+\node[lab] at (0,-1) {$y$};
+\node[lab] at (1.2,-1) {$z$};
+\draw[map] (0,0) -- (-1.2,-0.85);
+\draw[map] (0,0) -- (0,-0.85);
+\draw[map] (0,0) -- (1.2,-0.85);
+\node[hl box] at (0,-1.9) {$g(x,y,z)=c$ links them};
+\node[lab, right] at (3.4,-0.3) {$\left(\dfrac{\partial f}{\partial x}\right)_y=f_x+f_z\left(\dfrac{\partial z}{\partial x}\right)_y$};
+\node[lab, right] at (3.4,-1.4) {$\left(\dfrac{\partial z}{\partial x}\right)_y=-\dfrac{g_x}{g_z}$};
+\end{tikzpicture}
+\end{center}
+```
+
+Constrained partial derivatives: $f$ depends on $x,y,z$, but a constraint $g=c$ makes one of them dependent. Holding $y$ fixed and moving $x$ forces $z$ to move, so the chain rule adds the indirect term through $z$.
 
 :::
 

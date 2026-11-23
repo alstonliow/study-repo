@@ -52,6 +52,32 @@ $$\mathbf{v}=\frac{d\mathbf{r}}{dt}=\hat{\mathbf{T}}\,\frac{ds}{dt}.$$
 
 :::
 
+::: {#fig-vector-valued-functions-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (0,0) circle (1.4);
+\fill[ink] (0,0) circle[pt];
+\fill[ink] (1.16,0.79) circle[pt];
+\draw[->, hl] (1.16,0.79) -- (0.76,1.37);
+\draw[->] (1.16,0.79) -- (0.64,0.43);
+\fill[ink] (-0.93,1.04) circle[pt];
+\draw[->, hl] (-0.93,1.04) -- (-1.45,0.58);
+\draw[->] (-0.93,1.04) -- (-0.51,0.57);
+\fill[ink] (-0.69,-1.22) circle[pt];
+\draw[->, hl] (-0.69,-1.22) -- (-0.08,-1.56);
+\draw[->] (-0.69,-1.22) -- (-0.38,-0.67);
+\node[lab, above] at (0.56,1.54) {$\mathbf v$};
+\node[lab] at (0.5,0.18) {$\mathbf a$};
+\end{tikzpicture}
+\end{center}
+```
+
+Uniform circular motion: the velocity $\mathbf v$ (thick) is tangent to the circle and the acceleration $\mathbf a$ points to the centre. Constant speed does not mean zero acceleration, because the direction of $\mathbf v$ changes.
+
+:::
+
 The speed is $\lvert d\mathbf{r}/dt\rvert$, which is not the same as $d\lvert\mathbf{r}\rvert/dt$: a point moving round a circle centred at the origin has $\lvert\mathbf{r}\rvert$ constant but non-zero speed.
 
 ::: {#exm-cycloid-velocity .example name="Velocity on the cycloid"}
@@ -107,6 +133,25 @@ Let a planet move with position $\mathbf{r}(t)$ relative to the sun. The line fr
 3. By @prp-vector-product-rules, $\dfrac{d}{dt}(\mathbf{r}\times\mathbf{v})=\mathbf{v}\times\mathbf{v}+\mathbf{r}\times\mathbf{a}=\mathbf{r}\times\mathbf{a}$.
 
 4. So $\mathbf{r}\times\mathbf{v}$ is constant exactly when $\mathbf{r}\times\mathbf{a}=\mathbf{0}$, i.e. when $\mathbf{a}$ is parallel to $\mathbf{r}$.
+
+:::
+
+::: {#fig-vector-valued-functions-3}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\draw[emph] (2,0) -- (1.99,0.11) -- (1.97,0.23) -- (1.93,0.34) -- (1.88,0.44) -- (1.81,0.55) -- (1.73,0.65) -- (1.64,0.75) -- (1.53,0.84) -- (1.41,0.92) -- (1.29,1) -- (1.15,1.06) -- (1,1.13) -- (0.85,1.18) -- (0.68,1.22) -- (0.52,1.26) -- (0.35,1.28) -- (0.17,1.3) -- (0,1.3) -- (-0.17,1.3) -- (-0.35,1.28) -- (-0.52,1.26) -- (-0.68,1.22) -- (-0.85,1.18) -- (-1,1.13) -- (-1.15,1.06) -- (-1.29,1) -- (-1.41,0.92) -- (-1.53,0.84) -- (-1.64,0.75) -- (-1.73,0.65) -- (-1.81,0.55) -- (-1.88,0.44) -- (-1.93,0.34) -- (-1.97,0.23) -- (-1.99,0.11) -- (-2,0) -- (-1.99,-0.11) -- (-1.97,-0.23) -- (-1.93,-0.34) -- (-1.88,-0.44) -- (-1.81,-0.55) -- (-1.73,-0.65) -- (-1.64,-0.75) -- (-1.53,-0.84) -- (-1.41,-0.92) -- (-1.29,-1) -- (-1.15,-1.06) -- (-1,-1.13) -- (-0.85,-1.18) -- (-0.68,-1.22) -- (-0.52,-1.26) -- (-0.35,-1.28) -- (-0.17,-1.3) -- (0,-1.3) -- (0.17,-1.3) -- (0.35,-1.28) -- (0.52,-1.26) -- (0.68,-1.22) -- (0.85,-1.18) -- (1,-1.13) -- (1.15,-1.06) -- (1.29,-1) -- (1.41,-0.92) -- (1.53,-0.84) -- (1.64,-0.75) -- (1.73,-0.65) -- (1.81,-0.55) -- (1.88,-0.44) -- (1.93,-0.34) -- (1.97,-0.23) -- (1.99,-0.11) -- cycle;
+\fill[ink] (1.52,0) circle[pt] node[lab, below] {sun};
+\fill[tintB] (1.52,0) -- (1.41,-0.92) -- (1.48,-0.87) -- (1.56,-0.81) -- (1.64,-0.75) -- (1.71,-0.67) -- (1.79,-0.59) -- (1.85,-0.49) -- (1.91,-0.38) -- (1.96,-0.26) -- (1.99,-0.13) -- (2,0) -- (1.99,0.13) -- (1.96,0.26) -- (1.91,0.38) -- (1.85,0.49) -- (1.79,0.59) -- (1.71,0.67) -- (1.64,0.75) -- (1.56,0.81) -- (1.48,0.87) -- (1.41,0.92) -- cycle;
+\draw[hl] (1.52,0) -- (1.41,-0.92) -- (1.48,-0.87) -- (1.56,-0.81) -- (1.64,-0.75) -- (1.71,-0.67) -- (1.79,-0.59) -- (1.85,-0.49) -- (1.91,-0.38) -- (1.96,-0.26) -- (1.99,-0.13) -- (2,0) -- (1.99,0.13) -- (1.96,0.26) -- (1.91,0.38) -- (1.85,0.49) -- (1.79,0.59) -- (1.71,0.67) -- (1.64,0.75) -- (1.56,0.81) -- (1.48,0.87) -- (1.41,0.92) -- cycle;
+\fill[tintB] (1.52,0) -- (-1.98,0.18) -- (-1.98,0.17) -- (-1.99,0.15) -- (-1.99,0.13) -- (-1.99,0.11) -- (-1.99,0.09) -- (-2,0.07) -- (-2,0.06) -- (-2,0.04) -- (-2,0.02) -- (-2,0) -- (-2,-0.02) -- (-2,-0.04) -- (-2,-0.06) -- (-2,-0.07) -- (-1.99,-0.09) -- (-1.99,-0.11) -- (-1.99,-0.13) -- (-1.99,-0.15) -- (-1.98,-0.17) -- (-1.98,-0.18) -- cycle;
+\draw[hl] (1.52,0) -- (-1.98,0.18) -- (-1.98,0.17) -- (-1.99,0.15) -- (-1.99,0.13) -- (-1.99,0.11) -- (-1.99,0.09) -- (-2,0.07) -- (-2,0.06) -- (-2,0.04) -- (-2,0.02) -- (-2,0) -- (-2,-0.02) -- (-2,-0.04) -- (-2,-0.06) -- (-2,-0.07) -- (-1.99,-0.09) -- (-1.99,-0.11) -- (-1.99,-0.13) -- (-1.99,-0.15) -- (-1.98,-0.17) -- (-1.98,-0.18) -- cycle;
+\end{tikzpicture}
+\end{center}
+```
+
+Kepler's second law: the line from the sun to the planet sweeps out equal areas in equal times. Both shaded sectors take the same time; near the sun the planet moves faster, so its sector is short and wide.
 
 :::
 
