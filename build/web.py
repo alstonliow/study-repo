@@ -188,7 +188,8 @@ def render_problems(note: Note, courses_of=None, keep=None, origin: bool = False
         fo = fence_for(inner)
         cs = " ".join(courses_of(pid))
         lv = a.get("level", "")
-        kind = f'data-kind="code" data-packages="{",".join(coding.packages)}"' if coding else 'data-kind="written"'
+        kind = ('data-kind="code"' + (f' data-lang="{coding.lang}"' if coding.lang != "python" else "")
+                + f' data-packages="{",".join(coding.packages)}"' if coding else 'data-kind="written"')
         res = REPO.sources.resolve(src) if src else None     # the exercise filter groups by resource
         rid = res.resource if res else ""
         rlabel = REPO.resources[rid].title.replace('"', "'") if rid in REPO.resources else "Other"
@@ -243,9 +244,10 @@ def bank_url(cid: str, num) -> str:
 
 def coding_body(c: Coding) -> str:
     """A coding exercise on the website: the statement, then the starter and the
-    tests in marked divs that site/_assets/runnable.html turns into an editor."""
-    starter = f"```python\n{c.starter}\n```"
-    tests = f"```python\n{c.tests}\n```"
+    tests in marked divs that site/_assets/runnable.html turns into an editor
+    (Python) or a read-only view with the tests folded (C, SPEC §6.4 item 10)."""
+    starter = f"```{c.lang}\n{c.starter}\n```"
+    tests = f"```{c.lang}\n{c.tests}\n```"
     return (f"{c.statement}\n\n::: {{.coding-starter}}\n{starter}\n:::\n\n"
             f"::: {{.coding-tests}}\n{tests}\n:::\n")
 

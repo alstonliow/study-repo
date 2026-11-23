@@ -152,7 +152,7 @@ class Book:
             body = p.body.strip()
             coding = note.coding.get(pid)
             if coding:                    # statement and starter; the tests are not printed (SPEC §6.4)
-                body = f"{coding.statement}\n\n```python\n{coding.starter}\n```"
+                body = f"{coding.statement}\n\n```{coding.lang}\n{coding.starter}\n```"
             stmt = (f"[]{{#{pid}}}\n```{{=latex}}\n{head}\n```\n\n"
                     f"{self.no_headings(body)}\n")
             self.printed.add(pid)

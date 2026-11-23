@@ -218,6 +218,17 @@ json.dumps(out)
     const starterBox = group.querySelector(".coding-starter");
     const testsBox = group.querySelector(".coding-tests");
     if (!starterBox || !testsBox) return;
+    // C (SPEC §6.4 item 10): checked by make check with the local compiler, never run
+    // in the browser; the starter stays as it is, the tests and the solution code fold.
+    if (group.dataset.lang === "c") {
+      const det = document.createElement("details");
+      const sum = det.appendChild(document.createElement("summary"));
+      sum.textContent = "Tests (C: compile and run on your machine)";
+      while (testsBox.firstChild) det.append(testsBox.firstChild);
+      testsBox.append(det);
+      solutionPanel(group, null, "", "");
+      return;
+    }
     const starter = starterBox.querySelector("code").textContent;
     const tests = testsBox.querySelector("code").textContent;
     const packages = (group.dataset.packages || "").split(",").map(s => s.trim()).filter(Boolean);
@@ -286,6 +297,7 @@ json.dumps(out)
     const sum = det.appendChild(document.createElement("summary"));
     sum.textContent = steps.length ? "Show the code" : "Show the solution code";
     block.before(det);
+    if (!mine) { det.append(block); return; }      // C: no run bar
     const box = document.createElement("div");
     box.className = "run-cell";
     const out = document.createElement("div");

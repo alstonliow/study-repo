@@ -131,6 +131,9 @@ def fences(text: str) -> list[tuple[list[str], dict, str, int, int]]:
     return out
 
 
+CODING_LANGS = ("python", "c")   # languages of coding exercises (SPEC §6.4 items 1, 10)
+
+
 @dataclass
 class Coding:
     """A coding exercise: a problem block with the class .coding (SPEC §6.4)."""
@@ -139,20 +142,27 @@ class Coding:
     tests: str
     packages: list[str]
     problems: list[str]       # form errors found while parsing
+    lang: str = "python"      # "python" or "c" (SPEC §6.4 item 10)
+
+
+def fence_lang(classes: list[str]) -> str:
+    return next((c for c in classes if c in CODING_LANGS), "")
 
 
 def parse_coding(attrs: dict, body: str) -> Coding:
-    """Statement, the one {.python .starter} fence, the one {.python .tests} fence
-    (in that order) and `packages` of a .coding problem."""
+    """Statement, the one {.<lang> .starter} fence, the one {.<lang> .tests} fence
+    (in that order, same language) and `packages` of a .coding problem."""
     fs = fences(body)
     starters = [f for f in fs if "starter" in f[0]]
     tests = [f for f in fs if "tests" in f[0]]
+    lang = (fence_lang(starters[0][0]) if starters else "") or "python"
     problems = []
     for name, found in (("starter", starters), ("tests", tests)):
         if len(found) != 1:
-            problems.append(f"needs exactly one {{.python .{name}}} fence (found {len(found)})")
-        elif "python" not in found[0][0]:
-            problems.append(f"the .{name} fence must be {{.python .{name}}}")
+            problems.append(f"needs exactly one {{.{lang} .{name}}} fence (found {len(found)})")
+        elif fence_lang(found[0][0]) != lang:
+            problems.append(f"the .{name} fence must be {{.{lang} .{name}}}"
+                            + ("" if fence_lang(found[0][0]) else f" (languages: {', '.join(CODING_LANGS)})"))
     if starters and tests and starters[0][3] > tests[0][3]:
         problems.append("the starter fence must come before the tests fence")
     statement = body
@@ -161,13 +171,16 @@ def parse_coding(attrs: dict, body: str) -> Coding:
     if not statement.strip():
         problems.append("has no statement")
     packages = [x.strip() for x in attrs.get("packages", "").split(",") if x.strip()]
+    if packages and lang != "python":
+        problems.append("packages is for Python exercises only")
     return Coding(re.sub(r"\n{3,}", "\n\n", statement).strip(), starters[0][2] if starters else "",
-                  tests[0][2] if tests else "", packages, problems)
+                  tests[0][2] if tests else "", packages, problems, lang)
 
 
-def solution_code(body: str) -> list[str]:
-    """The Python fences of a solution ({.python} or python): a coding exercise's solution has one."""
-    return [code for classes, _, code, _, _ in fences(body) if "python" in classes]
+def solution_code(body: str, lang: str = "python") -> list[str]:
+    """The code fences of a solution in the exercise's language ({.python} or python,
+    {.c} or c): a coding exercise's solution has one."""
+    return [code for classes, _, code, _, _ in fences(body) if lang in classes]
 
 
 # ---------------------------------------------------------------- model
@@ -268,7 +281,8 @@ class Note:
                               if "solution" in a["classes"]]
         # coding exercises (SPEC §6.4): problem id -> Coding, and the code of their solutions
         self.coding = {p.id: parse_coding(p.attrs, p.body) for p in self.problems if p.has("coding") and p.id}
-        self.solution_code = {d.attrs.get("for"): solution_code(d.body) for d in self.solution_divs
+        self.solution_code = {d.attrs.get("for"): solution_code(d.body, self.coding[d.attrs["for"]].lang)
+                              for d in self.solution_divs
                               if d.attrs.get("for") in self.coding}
         self.num = ""   # display number, set by the site build
         self.courses: list[str] = []   # course ids whose scope includes this note (set by the site build)

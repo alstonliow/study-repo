@@ -247,10 +247,17 @@ def check_coding() -> None:
             withheld = next(p for p in note.problems if p.id == pid).attrs.get("solution") == "withheld"
             if sols is not None and len(sols) != 1 and not withheld:
                 errors.append(f"{rel(note.files['solution.md'].path)}: solution for '{pid}' needs exactly one "
-                              f"{{.python}} fence (found {len(sols)})")
+                              f"{{.{c.lang}}} fence (found {len(sols)})")
             parts = [("starter", c.starter), ("tests", c.tests)] + ([("solution", sols[0])] if sols and len(sols) == 1 else [])
             ok = True
             for what, code in parts:
+                if c.lang == "c":            # SPEC §6.4 item 10: headers from a fixed list
+                    bad = coding.c_disallowed(code)
+                    if bad:
+                        errors.append(f"{where}: {what} of '{pid}' includes {', '.join(sorted(bad))} "
+                                      "(only the C standard library and the allowed POSIX headers)")
+                        ok = False
+                    continue
                 try:
                     bad = coding.disallowed(code, c.packages)
                 except SyntaxError as exc:
@@ -261,15 +268,21 @@ def check_coding() -> None:
                     errors.append(f"{where}: {what} of '{pid}' imports {', '.join(sorted(bad))} "
                                   "(only the standard library and declared, allowed packages)")
                     ok = False
+            if c.lang == "c" and not coding.c_tests(c.tests):
+                errors.append(f"{where}: the tests of '{pid}' define no test_* function (void test_name(void))")
+                ok = False
             if c.problems or not ok:
                 continue
-            jobs.append((where, pid, "starter", c.starter, c.tests))
+            if c.lang == "c" and not coding.c_compiler():
+                errors.append(f"{where}: '{pid}' is a C exercise, but no C compiler (cc, gcc, clang) was found")
+                continue
+            jobs.append((where, pid, "starter", c.starter, c.tests, c.lang))
             if sols and len(sols) == 1:
-                jobs.append((where, pid, "solution", sols[0], c.tests))
+                jobs.append((where, pid, "solution", sols[0], c.tests, c.lang))
     with ThreadPoolExecutor(max_workers=8) as pool:
-        results = list(pool.map(lambda j: coding.run(j[3], j[4]), jobs))
+        results = list(pool.map(lambda j: coding.run(j[3], j[4], lang=j[5]), jobs))
     ran = 0
-    for (where, pid, what, _, _), r in zip(jobs, results):
+    for (where, pid, what, *_), r in zip(jobs, results):
         if what == "solution":
             ran += 1
             if not r.passed:
