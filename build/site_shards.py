@@ -172,7 +172,7 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--site", type=Path, default=ROOT / "site", help="the generated site folder")
     ap.add_argument("--of", type=int, required=True, help="number of shards")
     ap.add_argument("--shard", type=int, help="render: shard index, 0-based")
-    a = ap.parse_args(argv)
+    a = ap.parse_intermixed_args(argv)   # paths may follow --of (the CI merge step)
     if a.of < 1:
         ap.error("--of must be at least 1")
     site = a.site.resolve()

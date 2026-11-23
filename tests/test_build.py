@@ -432,6 +432,14 @@ class TestSiteShards(unittest.TestCase):
         self.assertEqual((merged / "sitemap.xml").read_text(encoding="utf-8").count("<loc>"), len(self.PAGES))
         self.assertTrue((merged / "site_libs" / "lib.js").exists())
 
+    def test_merge_command_line(self):
+        # the argument order of the CI merge step: paths after --of
+        shards = self.fake_render(3)
+        merged = self.tmp / "merged"
+        argv = ["merge", "--site", str(self.site), "--of", "3", str(merged), *map(str, shards)]
+        self.assertEqual(self.ss.main(argv), 0)
+        self.assertTrue((merged / "index.html").exists())
+
     def test_merge_missing_page_fails(self):
         shards = self.fake_render(2)
         for f in shards[0].rglob("*.html"):
