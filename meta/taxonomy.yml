@@ -880,6 +880,41 @@ parts:
         notes:   # topic order on the website
           - cryptographic-hash-functions
           - public-key-cryptography
+  - title: Computer Systems
+    field: Computer Science
+    branches:
+      - id: cs/data-representation
+        title: Data Representation
+        desc: Bits and bit operations, unsigned and two's-complement integers, conversion and arithmetic, byte ordering, IEEE floating point, C pointers and memory
+        notes: [bits-and-bit-operations, integer-encodings, integer-conversion, integer-arithmetic, byte-ordering, ieee-floating-point, floating-point-rounding, c-pointers-and-memory]   # topic order on the website
+      - id: cs/machine-level
+        title: Machine-Level Programming
+        desc: x86-64 machine state, data movement and arithmetic, condition codes and control, procedures and the stack, arrays and structures, buffer overflow, code optimization and instruction-level parallelism
+        notes: [x86-64-basics, data-movement-and-arithmetic, condition-codes-and-jumps, loops-and-switch, procedures-and-the-stack, arrays-and-structs, buffer-overflow, code-optimization, instruction-level-parallelism]   # topic order on the website
+      - id: cs/memory-hierarchy
+        title: The Memory Hierarchy
+        desc: Storage technologies, locality, caching in the hierarchy, cache organization and performance, blocking
+        notes: [storage-technologies, locality, caching-in-the-hierarchy, cache-organization, cache-performance, cache-blocking]   # topic order on the website
+      - id: cs/linking
+        title: Linking
+        desc: Object files and symbols, symbol resolution and relocation, static and shared libraries, interpositioning
+        notes: [object-files-and-symbols, symbol-resolution-and-relocation, libraries-and-dynamic-linking]   # topic order on the website
+      - id: cs/exceptional-control-flow
+        title: Exceptional Control Flow
+        desc: Exceptions, processes, process control, signals and safe signal handling
+        notes: [exceptions, processes, process-control, signals, signal-handling]   # topic order on the website
+      - id: cs/virtual-memory
+        title: Virtual Memory and Allocation
+        desc: Address spaces and paging, address translation, Linux virtual memory, dynamic memory allocation, garbage collection, memory bugs
+        notes: [address-spaces-and-paging, vm-memory-management-and-protection, address-translation, linux-virtual-memory, dynamic-memory-allocation, implicit-free-lists, explicit-and-segregated-lists, garbage-collection, memory-bugs]   # topic order on the website
+      - id: cs/systems-io-networking
+        title: System I/O and Networking
+        desc: Unix I/O, file sharing and redirection, networks and the Internet, the sockets interface, HTTP and web servers
+        notes: [unix-io, file-sharing-and-redirection, network-basics, sockets-interface, http-and-web-servers]   # topic order on the website
+      - id: cs/concurrency
+        title: Concurrency
+        desc: Concurrent servers, threads, semaphores, producer-consumer and readers-writers, thread safety and deadlock, thread-level parallelism
+        notes: [concurrent-servers, threads, semaphores-and-mutual-exclusion, producer-consumer-and-readers-writers, thread-safety-and-deadlock, thread-level-parallelism]   # topic order on the website
   - title: Machine Learning
     field: Artificial Intelligence
     branches:
