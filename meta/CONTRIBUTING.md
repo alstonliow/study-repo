@@ -242,7 +242,7 @@ GitHub (link at the bottom of the sidebar). Sync uses Supabase:
 | `build/` | `model.py` (the one parser), registries (`kinds.py`, `sources.py`), `outline.py` and `numbering.py`, `refs.py`, `filters.py`, `transforms.py`; site (`make_site.py`, `web.py`, `summaries.py`, `graphs.py`, `tikz.py`), PDF (`make_pdf.py`, `book.py`), shared figure styles (`figures.tex`), checks (`check.py`), `move_note.py` |
 | `site/` | Quarto website: `_quarto.yml` and `_assets/` (themes, styles, page scripts, Lua filter, favicon) are hand-written; everything else there is generated and not committed |
 | `tests/` | Tests of the build scripts on a small fixture (`make test`) |
-| `.github/workflows/` | Builds and publishes the website and the PDFs on every push to `main` |
+| `.github/workflows/` | Publishes the website on every push to `main` (pages rendered in parallel shards by `build/site_shards.py`; pushes that touch only the README, guides or licences are skipped); rebuilds the PDFs weekly or on demand |
 
 Local only, never committed: `raw/` (reference material: course notes and solutions, one folder per course), `out/` (built PDFs), `private/` (the private store).
 

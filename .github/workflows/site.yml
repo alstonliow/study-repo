@@ -3,13 +3,30 @@
 # This workflow only reads the repository; it never commits or pushes.
 name: Publish site
 
-# Speed: PDFs are slow (about 15 minutes), so a push does not rebuild them. They are
-# rebuilt every Monday and when the workflow is run by hand with "Build PDFs" ticked;
-# other runs reuse the last PDFs from the cache, so the Downloads page keeps working.
-# A commit whose message contains [skip ci] does not trigger this workflow at all.
+# Speed:
+# - Rendering the pages is most of the time, so it runs in parallel: `prepare`
+#   checks the notes and generates site/, `render` renders it in SHARDS parallel
+#   jobs (build/site_shards.py), `publish` merges their output and deploys.
+# - PDFs are slow (about 15 minutes), so a push does not rebuild them. They are
+#   rebuilt every Monday and when the workflow is run by hand with "Build PDFs"
+#   ticked; other runs reuse the last PDFs from the cache.
+# - Pushes that change only the files under paths-ignore (README, guides,
+#   licences) do not publish. A commit whose message contains [skip ci] does not
+#   trigger this workflow at all.
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - README.md
+      - NOTICES.md
+      - LICENSE
+      - LICENSE-CODE
+      - CLAUDE.md
+      - meta/CONTRIBUTING.md
+      - meta/PLAN.md
+      - meta/PLAN.zh.md
+      - meta/ideas.md
+      - .github/workflows/pdf.yml
   schedule:
     - cron: "0 3 * * 1"   # Mondays 03:00 UTC
   workflow_dispatch:
@@ -28,8 +45,12 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+env:
+  QUARTO_VERSION: 1.11.9
+  SHARDS: 6   # keep equal to the length of the render job's shard list
+
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -42,10 +63,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install pyyaml mypy types-PyYAML numpy
-
-      - uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: 1.11.9
 
       # The apt packages are cached: a plain apt-get install sometimes took over 30
       # minutes when the Ubuntu mirror was slow. Change "version" to refresh the cache.
@@ -97,8 +114,66 @@ jobs:
           path: out/pdf
           key: pdfs-${{ github.run_id }}
 
-      - name: Build site
-        run: make site
+      - name: Generate site pages
+        run: python3 build/make_site.py
+
+      - name: Show shards
+        run: python3 build/site_shards.py plan --of "$SHARDS"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-src
+          path: site/
+          retention-days: 1
+
+  render:
+    needs: prepare
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: true
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: ${{ env.QUARTO_VERSION }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-src
+          path: site/
+
+      - name: Render shard ${{ matrix.shard }}
+        run: python3 build/site_shards.py render --shard ${{ matrix.shard }} --of "$SHARDS"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-shard-${{ matrix.shard }}
+          path: site/_site/
+          retention-days: 1
+
+  publish:
+    needs: render
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-src
+          path: site/
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: site-shard-*
+          path: shards/
+
+      - name: Merge shards
+        run: |
+          dirs=$(for i in $(seq 0 $((SHARDS - 1))); do echo "shards/site-shard-$i"; done)
+          python3 build/site_shards.py merge --of "$SHARDS" site/_site $dirs
 
       - uses: actions/configure-pages@v5
 
@@ -107,7 +182,7 @@ jobs:
           path: site/_site
 
   deploy:
-    needs: build
+    needs: publish
     runs-on: ubuntu-24.04
     environment:
       name: github-pages

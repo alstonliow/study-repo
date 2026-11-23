@@ -360,6 +360,87 @@ class TestReadmeStats(Repo):
         self.assertNotIn("README.md", self.check().stdout)
 
 
+class TestSiteShards(unittest.TestCase):
+    """build/site_shards.py on a fake generated site (no Quarto needed)."""
+    PAGES = ["index.qmd", "map.qmd", "library.qmd", "library/res-a.qmd", "library/res-b.qmd",
+             "courses/c1.qmd", "courses/c1/chapter-1.qmd", "courses/c2.qmd",
+             "notes/math/discrete/sets/index.qmd", "notes/math/discrete/sets/subsets.qmd",
+             "notes/math/algebra/groups/index.qmd", "notes/cs/algo/sorting/merge-sort.qmd"]
+
+    def setUp(self):
+        sys.path.insert(0, str(BUILD))
+        import site_shards
+        self.ss = site_shards
+        self.tmp = Path(tempfile.mkdtemp(prefix="study-shards-"))
+        self.site = self.tmp / "site"
+        for page in self.PAGES:
+            f = self.site / page
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_text("---\ntitle: x\n---\n", encoding="utf-8")
+        (self.site / "_assets").mkdir()
+        (self.site / "_assets" / "ignored.qmd").write_text("", encoding="utf-8")
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_units_do_not_overlap(self):
+        units = self.ss.units(self.ss.pages(self.site))
+        self.assertEqual(sorted(units), sorted(self.PAGES))
+        self.assertEqual(units["courses/c1.qmd"], "courses/c1.qmd")      # beside courses/c1/
+        self.assertEqual(units["courses/c1/chapter-1.qmd"], "courses/c1")
+        self.assertEqual(units["library/res-a.qmd"], "library")
+        self.assertEqual(units["notes/math/discrete/sets/subsets.qmd"], "notes/math/discrete")
+        folders = {u for u in units.values() if not u.endswith(".qmd")}
+        for u in set(units.values()):
+            self.assertFalse(any(u.startswith(f + "/") for f in folders), u)
+        for n in (1, 3, 5):
+            shards = self.ss.plan(self.site, n)
+            flat = [u for s in shards for u in s]
+            self.assertEqual(sorted(flat), sorted(set(units.values())))
+
+    def fake_render(self, n: int) -> list[Path]:
+        """Each shard writes its own pages, a stub index.html, and its search/sitemap entries."""
+        out = []
+        for k, todo in enumerate(self.ss.plan(self.site, n)):
+            d = self.tmp / f"shard{k}"
+            mine = [p for p, u in self.ss.units(self.ss.pages(self.site)).items() if u in todo]
+            for p in mine:
+                f = d / (p[:-4] + ".html")
+                f.parent.mkdir(parents=True, exist_ok=True)
+                f.write_text(f"page {p}", encoding="utf-8")
+            if "index.qmd" not in mine:
+                (d / "index.html").write_text("redirect stub", encoding="utf-8")
+            (d / "site_libs").mkdir(parents=True, exist_ok=True)
+            (d / "site_libs" / "lib.js").write_text("same", encoding="utf-8")
+            entries = [{"objectID": p[:-4] + ".html", "href": p[:-4] + ".html", "title": p} for p in mine]
+            (d / "search.json").write_text(json.dumps(entries), encoding="utf-8")
+            urls = "".join(f"<url><loc>https://x/{p[:-4]}.html</loc></url>" for p in mine)
+            (d / "sitemap.xml").write_text(
+                f'<?xml version="1.0"?><urlset xmlns="{self.ss.SITEMAP_NS}">{urls}</urlset>', encoding="utf-8")
+            out.append(d)
+        return out
+
+    def test_merge(self):
+        shards = self.fake_render(3)
+        merged = self.tmp / "merged"
+        self.assertEqual(self.ss.merge(self.site, 3, merged, shards), 0)
+        self.assertEqual((merged / "index.html").read_text(encoding="utf-8"), "page index.qmd")
+        for p in self.PAGES:
+            self.assertTrue((merged / (p[:-4] + ".html")).exists(), p)
+        search = json.loads((merged / "search.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(search), len(self.PAGES))
+        self.assertEqual((merged / "sitemap.xml").read_text(encoding="utf-8").count("<loc>"), len(self.PAGES))
+        self.assertTrue((merged / "site_libs" / "lib.js").exists())
+
+    def test_merge_missing_page_fails(self):
+        shards = self.fake_render(2)
+        for f in shards[0].rglob("*.html"):
+            if f.name != "index.html":
+                f.unlink()
+                break
+        self.assertEqual(self.ss.merge(self.site, 2, self.tmp / "merged", shards), 1)
+
+
 class TestMove(Repo):
     def move(self, old: str, new: str) -> subprocess.CompletedProcess:
         r = run("move_note.py", self.root, old, new)
