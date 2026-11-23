@@ -1,8 +1,8 @@
 ---
 title: "Bayes' Theorem"
 sources: [fit1058-cn-9.9, cs70-14.2, cs70-14.3.1]
-requires: [math/probability/discrete/conditional-probability, math/discrete/sets/partitions]
-aliases: [math/probability/bayes-theorem]   # old ids (moved)
+requires: [math/probability/foundations/conditional-probability, math/discrete/sets/partitions]
+aliases: [math/probability/bayes-theorem, math/probability/discrete/bayes-theorem]   # old ids (moved)
 status: draft
 ---
 

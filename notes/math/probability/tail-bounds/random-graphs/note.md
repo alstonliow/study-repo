@@ -1,7 +1,8 @@
 ---
 title: "Random Graphs"
 sources: [eecs126-5]
-requires: [math/probability/discrete/concentration-inequalities]
+requires: [math/probability/tail-bounds/concentration-inequalities]
+aliases: [math/probability/discrete/random-graphs]   # old ids (moved)
 status: draft
 ---
 

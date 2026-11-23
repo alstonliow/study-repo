@@ -1,7 +1,7 @@
 ---
 title: "Source Coding and Huffman Codes"
 sources: [eecs126-7, eecs126d-10]
-requires: [math/probability/information-theory/entropy, math/probability/discrete/concentration-inequalities]
+requires: [math/probability/information-theory/entropy, math/probability/tail-bounds/concentration-inequalities]
 status: draft
 ---
 

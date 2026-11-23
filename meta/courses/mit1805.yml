@@ -190,19 +190,19 @@ chapters:
   points:
   - id: '2.1'
     title: Sample spaces and probability functions
-    covers: [math/probability/discrete/sample-spaces]
+    covers: [math/probability/foundations/sample-spaces]
   - id: '2.2'
     title: Events
-    covers: [math/probability/discrete/events]
+    covers: [math/probability/foundations/events]
 - num: 3
   title: Conditional probability, independence and Bayes' theorem
   points:
   - id: '3.1'
     title: Conditional probability and independence
-    covers: [math/probability/discrete/conditional-probability]
+    covers: [math/probability/foundations/conditional-probability]
   - id: '3.2'
     title: Total probability and Bayes' theorem
-    covers: [math/probability/discrete/bayes-theorem]
+    covers: [math/probability/foundations/bayes-theorem]
 - num: 4
   title: Discrete random variables and expectation
   points:
@@ -244,7 +244,7 @@ chapters:
   points:
   - id: '6.1'
     title: Law of large numbers
-    covers: [math/probability/discrete/concentration-inequalities]
+    covers: [math/probability/tail-bounds/concentration-inequalities]
   - id: '6.2'
     title: Central limit theorem
     covers: [math/probability/continuous/central-limit-theorem]

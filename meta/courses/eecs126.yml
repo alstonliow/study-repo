@@ -183,13 +183,13 @@ chapters:
   points:
   - id: '1.1'
     title: Probability spaces and conditioning
-    covers: [math/probability/discrete/sample-spaces, math/probability/discrete/events, math/probability/discrete/conditional-probability, math/probability/discrete/bayes-theorem]
+    covers: [math/probability/foundations/sample-spaces, math/probability/foundations/events, math/probability/foundations/conditional-probability, math/probability/foundations/bayes-theorem]
   - id: '1.2'
     title: Discrete random variables
     covers: [math/probability/discrete/random-variables, math/probability/discrete/expectation-and-variance, math/probability/discrete/conditional-expectation, math/probability/discrete/indicator-variables, math/probability/discrete/functions-of-random-variables, math/probability/discrete/covariance-and-correlation]
   - id: '1.3'
     title: Discrete distributions
-    covers: [math/probability/discrete/uniform-distribution, math/probability/discrete/binomial-distribution, math/probability/discrete/hypergeometric-distribution, math/probability/discrete/poisson-distribution, math/probability/discrete/geometric-distribution, math/probability/discrete/coupon-collector]
+    covers: [math/probability/discrete/uniform-distribution, math/probability/discrete/binomial-distribution, math/probability/discrete/hypergeometric-distribution, math/probability/discrete/poisson-distribution, math/probability/discrete/geometric-distribution, math/probability/tail-bounds/coupon-collector]
 - num: 2
   title: Continuous probability
   points:
@@ -204,10 +204,10 @@ chapters:
   points:
   - id: '3.1'
     title: Markov, Chebyshev and the law of large numbers
-    covers: [math/probability/discrete/concentration-inequalities]
+    covers: [math/probability/tail-bounds/concentration-inequalities]
   - id: '3.2'
     title: Chernoff and Hoeffding bounds
-    covers: [math/probability/discrete/chernoff-bounds]
+    covers: [math/probability/tail-bounds/chernoff-bounds]
   - id: '3.3'
     title: Transforms
     covers: [math/probability/continuous/transforms]
@@ -222,7 +222,7 @@ chapters:
   points:
   - id: '4.1'
     title: Erdős–Rényi graphs and thresholds
-    covers: [math/probability/discrete/random-graphs]
+    covers: [math/probability/tail-bounds/random-graphs]
 - num: 5
   title: Discrete-time Markov chains
   points:

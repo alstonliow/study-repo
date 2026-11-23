@@ -5,7 +5,7 @@ requires: [math/analysis/measure-theory/lebesgue-integral]
 status: draft
 ---
 
-<!-- Added 2026-11-21 from Cambridge Part II Probability and Measure (Michaelmas 2016 lecture notes), Section 4.1, in our own wording; proofs written out in steps. Markov's and Jensen's inequalities already appear for random variables (math/probability/discrete/concentration-inequalities, math/optimization/convex-functions/convex-functions); here they are stated for general measures and integrable random variables. -->
+<!-- Added 2026-11-21 from Cambridge Part II Probability and Measure (Michaelmas 2016 lecture notes), Section 4.1, in our own wording; proofs written out in steps. Markov's and Jensen's inequalities already appear for random variables (math/probability/tail-bounds/concentration-inequalities, math/optimization/convex-functions/convex-functions); here they are stated for general measures and integrable random variables. -->
 
 Four inequalities do most of the work in analysis with integrals. $(E,\mathcal E,\mu)$ is a measure space; for $1\le p<\infty$ write $\|f\|_p=\mu(|f|^p)^{1/p}$ and $\|f\|_\infty=\inf\{c\ge0:\ |f|\le c\text{ a.e.}\}$.
 

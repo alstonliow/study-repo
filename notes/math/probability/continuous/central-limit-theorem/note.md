@@ -1,7 +1,7 @@
 ---
 title: "Central Limit Theorem"
 sources: [cs70-20.5, camii-pm-7]
-requires: [math/probability/continuous/normal-distribution, math/probability/discrete/concentration-inequalities]
+requires: [math/probability/continuous/normal-distribution, math/probability/tail-bounds/concentration-inequalities]
 status: draft
 ---
 

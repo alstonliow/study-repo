@@ -234,7 +234,7 @@ chapters:
     points:
       - id: "16.1"
         title: "Bayesian networks"
-        covers: [ai/bayesian-networks/bayesian-networks, ai/bayesian-networks/rejection-sampling, math/probability/discrete/conditional-probability, math/probability/discrete/bayes-theorem]
+        covers: [ai/bayesian-networks/bayesian-networks, ai/bayesian-networks/rejection-sampling, math/probability/foundations/conditional-probability, math/probability/foundations/bayes-theorem]
   - num: 17
     title: "Gibbs sampling"
     points:

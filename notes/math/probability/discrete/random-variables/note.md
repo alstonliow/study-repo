@@ -1,7 +1,7 @@
 ---
 title: "Random Variables and Distributions"
 sources: [fit1058-cn-10.1, fit1058-cn-10.2, cs70-15.3]
-requires: [math/probability/discrete/conditional-probability]
+requires: [math/probability/foundations/conditional-probability]
 aliases: [math/probability/random-variables]   # old ids (moved)
 status: draft
 ---
@@ -68,7 +68,7 @@ $$\Pr(X=r \text{ and } Y=s) = \Pr(X=r)\cdot\Pr(Y=s).$$
 
 ::: {#rmk-random-variables-2 .remark name="Compared with independent events"}
 
-This says that the events $X=r$ and $Y=s$ are independent (@sec-math-probability-discrete-conditional-probability) for *every* pair of values $r,s$. The numbers shown on two separate fair dice are independent random variables.
+This says that the events $X=r$ and $Y=s$ are independent (@sec-math-probability-foundations-conditional-probability) for *every* pair of values $r,s$. The numbers shown on two separate fair dice are independent random variables.
 
 :::
 

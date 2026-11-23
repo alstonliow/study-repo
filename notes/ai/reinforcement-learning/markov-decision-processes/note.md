@@ -97,7 +97,7 @@ For the policy "always quit", $V(\text{in})=10$. For "always stay", the Bellman 
 
 ::: {#def-monte-carlo-estimate .definition name="Monte Carlo estimate"}
 
-The *Monte Carlo* estimate of an expectation $E[f(X)]$ draws independent samples $x_1,\dots,x_m$ of $X$ and returns $\frac1m\sum_{i}f(x_i)$. It is unbiased, and by the law of large numbers (@sec-math-probability-discrete-concentration-inequalities) it converges to $E[f(X)]$ as $m\to\infty$, with standard deviation proportional to $1/\sqrt m$. *Monte Carlo policy evaluation* estimates $V_\pi(s)$ as the average utility of $m$ rollouts of $\pi$ from $s$.
+The *Monte Carlo* estimate of an expectation $E[f(X)]$ draws independent samples $x_1,\dots,x_m$ of $X$ and returns $\frac1m\sum_{i}f(x_i)$. It is unbiased, and by the law of large numbers (@sec-math-probability-tail-bounds-concentration-inequalities) it converges to $E[f(X)]$ as $m\to\infty$, with standard deviation proportional to $1/\sqrt m$. *Monte Carlo policy evaluation* estimates $V_\pi(s)$ as the average utility of $m$ rollouts of $\pi$ from $s$.
 
 :::
 

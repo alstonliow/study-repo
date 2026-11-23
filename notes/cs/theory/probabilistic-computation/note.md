@@ -1,7 +1,7 @@
 ---
 title: "Probabilistic Computation and BPP"
 sources: [mit18404j-23, mit18404j-24]
-requires: [cs/theory/nondeterministic-time, math/probability/discrete/chernoff-bounds]
+requires: [cs/theory/nondeterministic-time, math/probability/tail-bounds/chernoff-bounds]
 status: draft
 ---
 

@@ -568,13 +568,13 @@ chapters:
     points:
       - id: "16.2"
         title: "The four-step method"
-        covers: [math/probability/discrete/sample-spaces, math/probability/discrete/events]
+        covers: [math/probability/foundations/sample-spaces, math/probability/foundations/events]
   - num: 17
     title: "Conditional probability"
     points:
       - id: "17.2"
         title: "Conditional probability"
-        covers: [math/probability/discrete/conditional-probability, math/probability/discrete/bayes-theorem]
+        covers: [math/probability/foundations/conditional-probability, math/probability/foundations/bayes-theorem]
   - num: 18
     title: "Random variables"
     points:
@@ -586,19 +586,19 @@ chapters:
         covers: [math/probability/discrete/expectation-and-variance, math/probability/discrete/conditional-expectation]
       - id: "18.5"
         title: "Linearity of expectation"
-        covers: [math/probability/discrete/indicator-variables, math/probability/discrete/coupon-collector]
+        covers: [math/probability/discrete/indicator-variables, math/probability/tail-bounds/coupon-collector]
   - num: 19
     title: "Deviation from the mean"
     points:
       - id: "19.1"
         title: "Markov's and Chebyshev's theorems"
-        covers: [math/probability/discrete/concentration-inequalities]
+        covers: [math/probability/tail-bounds/concentration-inequalities]
       - id: "19.3"
         title: "Properties of variance"
         covers: [math/probability/discrete/functions-of-random-variables, math/probability/discrete/covariance-and-correlation]
       - id: "19.6"
         title: "Sums of random variables"
-        covers: [math/probability/discrete/chernoff-bounds, math/probability/discrete/hashing-and-load-balancing]
+        covers: [math/probability/tail-bounds/chernoff-bounds, math/probability/tail-bounds/hashing-and-load-balancing]
   - num: 20
     title: "Random walks"
     points:

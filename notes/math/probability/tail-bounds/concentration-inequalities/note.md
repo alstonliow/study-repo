@@ -2,7 +2,7 @@
 title: "Concentration Inequalities and the Law of Large Numbers"
 sources: [cs70-17.1, cs70-17.2, cs70-17.3, cs70-17.4]
 requires: [math/probability/discrete/indicator-variables, math/probability/discrete/binomial-distribution]
-aliases: [math/probability/concentration-inequalities]   # old ids (moved)
+aliases: [math/probability/concentration-inequalities, math/probability/discrete/concentration-inequalities]   # old ids (moved)
 status: draft
 ---
 

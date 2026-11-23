@@ -1,7 +1,7 @@
 ---
 title: "Probability Spaces and Independence of σ-Algebras"
 sources: [camii-pm-1]
-requires: [math/analysis/measure-theory/measures, math/probability/discrete/conditional-probability]
+requires: [math/analysis/measure-theory/measures, math/probability/foundations/conditional-probability]
 status: draft
 ---
 

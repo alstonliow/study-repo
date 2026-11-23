@@ -196,22 +196,22 @@ chapters:
   points:
   - id: '1.1'
     title: Sample spaces and probability laws
-    covers: [math/probability/discrete/sample-spaces]
+    covers: [math/probability/foundations/sample-spaces]
   - id: '1.2'
     title: Events and their probabilities
-    covers: [math/probability/discrete/events]
+    covers: [math/probability/foundations/events]
 - num: 2
   title: Conditioning and Bayes' rule
   points:
   - id: '2.1'
     title: Total probability and Bayes' rule
-    covers: [math/probability/discrete/bayes-theorem]
+    covers: [math/probability/foundations/bayes-theorem]
 - num: 3
   title: Independence
   points:
   - id: '3.1'
     title: Conditional probability and independence
-    covers: [math/probability/discrete/conditional-probability]
+    covers: [math/probability/foundations/conditional-probability]
 - num: 4
   title: Counting
   points:
@@ -343,7 +343,7 @@ chapters:
   points:
   - id: '19.1'
     title: Markov and Chebyshev inequalities, weak law
-    covers: [math/probability/discrete/concentration-inequalities]
+    covers: [math/probability/tail-bounds/concentration-inequalities]
   - id: '19.2'
     title: Convergence in probability
     covers: [math/probability/continuous/modes-of-convergence]

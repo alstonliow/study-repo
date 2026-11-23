@@ -2,7 +2,7 @@
 title: "The coupon collector's problem"
 sources: [fit1058-cn-10.11, cs70-19.1.2]
 requires: [math/probability/discrete/geometric-distribution]
-aliases: [math/probability/coupon-collector]   # old ids (moved)
+aliases: [math/probability/coupon-collector, math/probability/discrete/coupon-collector]   # old ids (moved)
 status: draft
 ---
 

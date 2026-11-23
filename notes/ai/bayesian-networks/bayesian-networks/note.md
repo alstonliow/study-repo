@@ -1,11 +1,11 @@
 ---
 title: "Bayesian Networks and Exact Inference"
 sources: [cs221-16]
-requires: [ai/deep-learning/einsum, math/probability/discrete/bayes-theorem, math/probability/discrete/random-variables]
+requires: [ai/deep-learning/einsum, math/probability/foundations/bayes-theorem, math/probability/discrete/random-variables]
 status: draft
 ---
 
-<!-- Added 2026-11-18 from Stanford CS221 (lecture code, commit 3ac2452), Lecture 16 (joint distributions as tensors, Bayesian networks, probabilistic inference, explaining away), in our own wording. Marginalization and conditioning are the rules of @sec-math-probability-discrete-conditional-probability and @sec-math-probability-discrete-bayes-theorem; this note only adds the tensor view and links them. -->
+<!-- Added 2026-11-18 from Stanford CS221 (lecture code, commit 3ac2452), Lecture 16 (joint distributions as tensors, Bayesian networks, probabilistic inference, explaining away), in our own wording. Marginalization and conditioning are the rules of @sec-math-probability-foundations-conditional-probability and @sec-math-probability-foundations-bayes-theorem; this note only adds the tensor view and links them. -->
 
 Search, MDPs and games represent the world by a single state. A *model-based* alternative represents it by a set of random variables (sunshine, rain, traffic, ...) and their joint distribution, and answers questions by probabilistic reasoning. Changing one part of such a model (a reward, a sensor) leaves the rest intact.
 

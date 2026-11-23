@@ -1,8 +1,8 @@
 ---
 title: "Events"
 sources: [fit1058-cn-9.4, fit1058-cn-9.5, fit1058-cn-9.6, cs70-13.3.5, cs70-14.4.3]
-requires: [math/probability/discrete/sample-spaces, math/discrete/counting/inclusion-exclusion]
-aliases: [math/probability/events]   # old ids (moved)
+requires: [math/probability/foundations/sample-spaces, math/discrete/counting/inclusion-exclusion]
+aliases: [math/probability/events, math/probability/discrete/events]   # old ids (moved)
 status: draft
 ---
 

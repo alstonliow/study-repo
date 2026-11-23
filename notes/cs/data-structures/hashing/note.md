@@ -1,11 +1,11 @@
 ---
 title: "Direct Access Arrays and Hashing"
 sources: [mit6006-4, mit6006r-4]
-requires: [cs/data-structures/comparison-lower-bounds, math/probability/discrete/hashing-and-load-balancing, math/discrete/number-theory/modular-arithmetic]
+requires: [cs/data-structures/comparison-lower-bounds, math/probability/tail-bounds/hashing-and-load-balancing, math/discrete/number-theory/modular-arithmetic]
 status: draft
 ---
 
-<!-- Added 2026-11-17 from MIT 6.006 (Spring 2020), Lecture 4 and Recitation 4, in our own wording; the universality proof is written out in steps (the lecture states the result without proof). Complements the probabilistic view in @sec-math-probability-discrete-hashing-and-load-balancing. -->
+<!-- Added 2026-11-17 from MIT 6.006 (Spring 2020), Lecture 4 and Recitation 4, in our own wording; the universality proof is written out in steps (the lecture states the result without proof). Complements the probabilistic view in @sec-math-probability-tail-bounds-hashing-and-load-balancing. -->
 
 ## Direct access arrays
 

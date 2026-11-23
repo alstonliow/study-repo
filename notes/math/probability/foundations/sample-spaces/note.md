@@ -2,7 +2,7 @@
 title: "Probability and Sample Spaces"
 sources: [fit1058-cn-9.1, fit1058-cn-9.2, fit1058-cn-9.3, cs70-13.3.3, cs70-13.3.4, mit6041-1]
 requires: [math/discrete/counting/sum-and-product-rules, math/calculus/single-variable/limits/sums-and-series]
-aliases: [math/probability/sample-spaces]   # old ids (moved)
+aliases: [math/probability/sample-spaces, math/probability/discrete/sample-spaces]   # old ids (moved)
 status: draft
 ---
 

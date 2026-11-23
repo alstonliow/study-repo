@@ -5,7 +5,7 @@ requires: [math/probability/measure-theoretic/ergodic-theorems]
 status: draft
 ---
 
-<!-- Added 2026-11-21 from Cambridge Part II Probability and Measure (Michaelmas 2016 lecture notes), Section 7.1, in our own wording; proofs written out in steps. The weak law (math/probability/discrete/concentration-inequalities) gives convergence in probability; here the convergence is almost sure. -->
+<!-- Added 2026-11-21 from Cambridge Part II Probability and Measure (Michaelmas 2016 lecture notes), Section 7.1, in our own wording; proofs written out in steps. The weak law (math/probability/tail-bounds/concentration-inequalities) gives convergence in probability; here the convergence is almost sure. -->
 
 Let $Y_1,Y_2,\dots$ be random variables and $S_n=Y_1+\dots+Y_n$. The weak law (@thm-law-of-large-numbers) says $S_n/n\to\mu$ in probability. The strong law says this happens for almost every outcome. We give two proofs: a short one under a fourth-moment assumption, and the general one from Birkhoff's theorem.
 

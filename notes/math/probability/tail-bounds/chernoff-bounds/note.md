@@ -1,7 +1,8 @@
 ---
 title: "Chernoff Bounds"
 sources: [mcs-19.6, eecs126-1]
-requires: [math/probability/discrete/concentration-inequalities]
+requires: [math/probability/tail-bounds/concentration-inequalities]
+aliases: [math/probability/discrete/chernoff-bounds]   # old ids (moved)
 status: draft
 ---
 

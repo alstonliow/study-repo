@@ -550,10 +550,10 @@ chapters:
     points:
       - id: "13.1"
         title: "Random experiments"
-        covers: [math/probability/discrete/sample-spaces]
+        covers: [math/probability/foundations/sample-spaces]
       - id: "13.2"
         title: "Probability spaces"
-        covers: [math/probability/discrete/events]
+        covers: [math/probability/foundations/events]
       - id: "13.3"
         title: "Examples"
         # poker hands, balls and bins, birthday paradox. The coin tosses and Monty
@@ -565,10 +565,10 @@ chapters:
     points:
       - id: "14.1"
         title: "Conditional probability"
-        covers: [math/probability/discrete/conditional-probability]
+        covers: [math/probability/foundations/conditional-probability]
       - id: "14.3"
         title: "Bayes' rule and total probability"
-        covers: [math/probability/discrete/bayes-theorem]
+        covers: [math/probability/foundations/bayes-theorem]
   - num: 15
     title: "Random variables: distribution and expectation"
     points:
@@ -601,7 +601,7 @@ chapters:
     points:
       - id: "17.1"
         title: "Markov's inequality"
-        covers: [math/probability/discrete/concentration-inequalities]
+        covers: [math/probability/tail-bounds/concentration-inequalities]
       - id: "17.2"
         title: "Chebyshev's inequality"
         covers: [thm-chebyshev-s-inequality]
@@ -610,16 +610,16 @@ chapters:
     points:
       - id: "18.1"
         title: "Hashing"
-        covers: [math/probability/discrete/hashing-and-load-balancing]
+        covers: [math/probability/tail-bounds/hashing-and-load-balancing]
       - id: "18.2"
         title: "Load balancing"
-        covers: [math/probability/discrete/hashing-and-load-balancing]
+        covers: [math/probability/tail-bounds/hashing-and-load-balancing]
   - num: 19
     title: "Geometric and Poisson distributions"
     points:
       - id: "19.1"
         title: "Geometric distribution"
-        covers: [math/probability/discrete/geometric-distribution, math/probability/discrete/coupon-collector]
+        covers: [math/probability/discrete/geometric-distribution, math/probability/tail-bounds/coupon-collector]
       - id: "19.2"
         title: "Poisson distribution"
         covers: [math/probability/discrete/poisson-distribution]

@@ -2,7 +2,7 @@
 title: "Hashing and Load Balancing"
 sources: [cs70-18.1, cs70-18.2]
 requires: [math/probability/discrete/indicator-variables]
-aliases: [math/probability/hashing-and-load-balancing]   # old ids (moved)
+aliases: [math/probability/hashing-and-load-balancing, math/probability/discrete/hashing-and-load-balancing]   # old ids (moved)
 status: draft
 ---
 

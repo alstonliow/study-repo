@@ -492,17 +492,21 @@ parts:
           - lp-spaces
           - fourier-transform
           - fourier-inversion
-  - title: Probability and Statistics
+  - title: Probability
     field: Mathematics
     branches:
-      - id: math/probability/discrete
-        title: Discrete Probability
-        desc: Events, conditional probability, random variables, distributions
+      - id: math/probability/foundations
+        title: Probability Spaces
+        desc: Sample spaces, events, conditional probability, Bayes' theorem
         notes:   # topic order on the website
           - sample-spaces
           - events
           - conditional-probability
           - bayes-theorem
+      - id: math/probability/discrete
+        title: Discrete Probability
+        desc: Random variables, expectation and variance, indicators, covariance, discrete distributions
+        notes:   # topic order on the website
           - random-variables
           - expectation-and-variance
           - conditional-expectation
@@ -514,9 +518,13 @@ parts:
           - hypergeometric-distribution
           - poisson-distribution
           - geometric-distribution
-          - coupon-collector
+      - id: math/probability/tail-bounds
+        title: Tail Bounds and Applications
+        desc: Markov, Chebyshev and Chernoff bounds; coupon collector, hashing and load balancing, random graphs
+        notes:   # topic order on the website
           - concentration-inequalities
           - chernoff-bounds
+          - coupon-collector
           - hashing-and-load-balancing
           - random-graphs
       - id: math/probability/continuous
@@ -559,16 +567,6 @@ parts:
           - entropy
           - source-coding
           - channel-capacity
-      - id: math/probability/estimation
-        title: Estimation and Detection
-        desc: Hypothesis testing, linear and MMSE estimation, Bayesian and classical estimation, jointly Gaussian vectors, Kalman filter
-        notes:   # topic order on the website
-          - hypothesis-testing
-          - linear-estimation
-          - bayesian-inference
-          - classical-estimation
-          - jointly-gaussian
-          - kalman-filter
       - id: math/probability/measure-theoretic
         title: Measure-Theoretic Probability
         desc: Probability spaces and independence of σ-algebras, distribution functions and laws, Skorokhod representation, tail events and Kolmogorov's zero-one law, uniform integrability, characteristic functions and weak convergence, ergodic theorems, the strong law of large numbers
@@ -580,6 +578,19 @@ parts:
           - weak-convergence
           - ergodic-theorems
           - strong-law-of-large-numbers
+  - title: Statistics
+    field: Mathematics
+    branches:
+      - id: math/probability/estimation
+        title: Estimation and Detection
+        desc: Hypothesis testing, linear and MMSE estimation, Bayesian and classical estimation, jointly Gaussian vectors, Kalman filter
+        notes:   # topic order on the website
+          - hypothesis-testing
+          - linear-estimation
+          - bayesian-inference
+          - classical-estimation
+          - jointly-gaussian
+          - kalman-filter
       - id: math/statistics/bayesian
         title: Bayesian Statistics
         desc: Bayesian updating, predictive probabilities, odds and Bayes factors, conjugate priors, choosing priors, credible intervals
