@@ -6,7 +6,8 @@
      has both), level, progress state (from progress.html, via
      window.StudyProgress), and solutions (hidden / collapsed / expanded).
      Choices except source are kept per browser, separately for summaries and
-     note pages. Printing the page prints what the filters show. -->
+     note pages. The bar is collapsed to one line (toggle + count) by default;
+     whether it is open is kept per browser too. Printing the page prints what the filters show. -->
 <style>
   .summary-filters { display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; margin: 0.6rem 0 1.4rem; padding: 0.7rem 0.9rem;
     border: 1px solid var(--rule, #ddd); border-radius: 4px; font: 0.82rem/1.5 "Source Sans 3", system-ui, sans-serif; }
@@ -16,6 +17,14 @@
   .summary-filters label { cursor: pointer; white-space: nowrap; }
   .summary-filters input { margin-right: 0.25rem; vertical-align: -1px; }
   .summary-filters .sf-count { margin-left: auto; color: var(--notec, #777); align-self: center; }
+  .summary-filters .sf-toggle { flex-basis: 100%; display: flex; align-items: center; gap: 0.35rem; margin: 0; padding: 0;
+    border: none; background: none; color: var(--notec, #777); font: inherit; font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; cursor: pointer; text-align: left; }
+  .summary-filters .sf-toggle::before { content: "▸"; display: inline-block; transition: transform 0.15s; }
+  .summary-filters .sf-toggle[aria-expanded="true"]::before { transform: rotate(90deg); }
+  .summary-filters.sf-collapsed { padding: 0.4rem 0.9rem; }
+  .summary-filters.sf-collapsed .sf-toggle { flex-basis: auto; }
+  .summary-filters.sf-collapsed fieldset, .summary-filters.sf-collapsed .sf-reset { display: none; }
   .sf-hidden { display: none !important; }
   .summary-intro { display: block; color: var(--notec); font-size: 0.9rem; margin-bottom: 0.4rem; }
   .solutions-hidden .problem-group .callout { display: none !important; }
@@ -161,6 +170,21 @@
 
   function build(box, key, summary) {
     let s = load(key);
+    const openKey = key + "-open";
+    let open = false;
+    try { open = localStorage.getItem(openKey) === "1"; } catch (e) {}
+    box.classList.toggle("sf-collapsed", !open);
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "sf-toggle";
+    toggle.textContent = "Filters";
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.addEventListener("click", () => {
+      const now = box.classList.toggle("sf-collapsed");
+      toggle.setAttribute("aria-expanded", now ? "false" : "true");
+      try { localStorage.setItem(openKey, now ? "0" : "1"); } catch (e) {}
+    });
+    box.appendChild(toggle);
     groupsFor(summary).forEach(g => {
       const fs = document.createElement("fieldset");
       const lg = document.createElement("legend");
@@ -193,7 +217,7 @@
     const reset = document.createElement("button");
     reset.type = "button";
     reset.textContent = "Reset";
-    reset.className = "btn btn-sm btn-link p-0";
+    reset.className = "btn btn-sm btn-link p-0 sf-reset";
     reset.addEventListener("click", () => {
       history.replaceState(null, "", location.pathname + location.hash);   // drops ?topic=
       s = Object.assign({}, DEFAULT, Object.fromEntries(PER_PAGE.map(k => [k, []]))); save(key, s); box.innerHTML = ""; build(box, key, summary);
