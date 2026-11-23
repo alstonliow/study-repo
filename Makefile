@@ -1,9 +1,13 @@
 PYTHON ?= python3
 
-.PHONY: check test site pdf preview clean-site check-private site-private preview-private private-site-src
+.PHONY: check readme test site pdf preview clean-site check-private site-private preview-private private-site-src
 
 check:
 	$(PYTHON) build/check.py
+
+# Rewrite the statistics block in README.md (build/readme_stats.py)
+readme:
+	$(PYTHON) build/readme_stats.py
 
 # Private build (SPEC §17.14): also reads private/. Local only; CI never runs these.
 # Run check-private before committing either repository.

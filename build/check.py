@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Callable
 
 from kinds import ID_PREFIXES, NO_ID_CLASSES
+import readme_stats
 from model import MATH, REF, ROOT, load
 
 REQUIRED_YAML = ["title", "sources", "requires", "status"]
@@ -586,6 +587,14 @@ def check_widgets() -> None:
 
 
 WIDGET_KEY = re.compile(r'^\s*"(fig-[\w-]+)":\s*\{', re.M)
+
+
+@rule("readme", "README.md statistics are up to date")
+def check_readme() -> None:
+    if REPO.private:   # the block counts public notes only; make check covers it
+        return
+    if readme_stats.stale(REPO, ROOT / "README.md"):
+        warnings.append("README.md: statistics are out of date; run make readme")
 
 
 @rule("files", "nothing from raw/, no PDFs or build artefacts")
