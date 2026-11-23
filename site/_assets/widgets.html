@@ -955,6 +955,138 @@
     return F;
   }
 
+  // ---------- MIT 18.335 widgets (numerical linear algebra, quadrature) ----------
+  const rmatrix = (s, maxR, maxC) => {
+    const rows = s.split(";").map(r => reals(r)).filter(r => r.length);
+    if (!rows.length || rows.some(r => r.length !== rows[0].length)) throw new Error("rows must have equal length, separated by ;");
+    if (rows.length > maxR || rows[0].length > maxC) throw new Error(`at most ${maxR} rows and ${maxC} columns, please`);
+    if (rows.flat().some(v => Math.abs(v) > 1000)) throw new Error("entries from −1000 to 1000, please");
+    return rows;
+  };
+  const sig = x => { if (!Number.isFinite(x)) return String(x); if (Math.abs(x) < 1e-14) return "0"; const a = Math.abs(x); return (a >= 1e-3 && a < 1e5 ? Number(x.toPrecision(5)).toString() : x.toExponential(2)).replace("-", "−"); };
+  const mshow = (M, cls, rowLab) => table(M[0].map((_, j) => String(j + 1)), M.map(r => r.map(sig)), cls || (() => ""), rowLab || M.map((_, i) => String(i + 1)));
+  const symmetric = M => M.every((r, i) => r.every((v, j) => Math.abs(v - M[j][i]) < 1e-12));
+  // Householder QR of a square matrix: returns {Q, R}
+  function hhqr(A) {
+    const m = A.length, n = A[0].length, R = A.map(r => r.slice()), Q = [...Array(m)].map((_, i) => [...Array(m)].map((_, j) => +(i === j)));
+    for (let k = 0; k < Math.min(m - 1, n); k++) {
+      const x = R.slice(k).map(r => r[k]), a = Math.hypot(...x); if (a === 0) continue;
+      const v = x.slice(); v[0] += (x[0] >= 0 ? 1 : -1) * a; const vn = Math.hypot(...v); if (vn === 0) continue;
+      for (let i = 0; i < v.length; i++) v[i] /= vn;
+      for (let j = 0; j < n; j++) { let s = 0; for (let i = k; i < m; i++) s += v[i - k] * R[i][j]; for (let i = k; i < m; i++) R[i][j] -= 2 * v[i - k] * s; }
+      for (let i = 0; i < m; i++) { let s = 0; for (let l = k; l < m; l++) s += Q[i][l] * v[l - k]; for (let l = k; l < m; l++) Q[i][l] -= 2 * s * v[l - k]; }
+    }
+    return { Q, R };
+  }
+  const mmul = (A, B) => A.map(r => B[0].map((_, j) => r.reduce((s, v, k) => s + v * B[k][j], 0)));
+  const solve = (A, b) => {           // Gaussian elimination with partial pivoting
+    const n = A.length, M = A.map((r, i) => [...r, b[i]]);
+    for (let c = 0; c < n; c++) {
+      let p = c; for (let i = c + 1; i < n; i++) if (Math.abs(M[i][c]) > Math.abs(M[p][c])) p = i;
+      [M[c], M[p]] = [M[p], M[c]]; if (M[c][c] === 0) throw new Error("singular system (shift equals an eigenvalue?)");
+      for (let i = c + 1; i < n; i++) { const l = M[i][c] / M[c][c]; for (let j = c; j <= n; j++) M[i][j] -= l * M[c][j]; }
+    }
+    const x = Array(n).fill(0);
+    for (let i = n - 1; i >= 0; i--) { let s = M[i][n]; for (let j = i + 1; j < n; j++) s -= M[i][j] * x[j]; x[i] = s / M[i][i]; }
+    return x;
+  };
+  const dotv = (a, b) => a.reduce((s, x, i) => s + x * b[i], 0), nrm = a => Math.sqrt(dotv(a, a));
+  const matvec = (A, x) => A.map(r => dotv(r, x));
+
+  function householderSteps(p) {
+    const A = rmatrix(p.m, 6, 5), m = A.length, n = A[0].length, F = [], R = A.map(r => r.slice());
+    if (m < n) throw new Error("need at least as many rows as columns");
+    F.push({ html: mshow(R), note: `The ${m}×${n} matrix A. Each step reflects the part of one column on and below the diagonal onto a multiple of e₁.` });
+    for (let k = 0; k < Math.min(m - 1, n); k++) {
+      const x = R.slice(k).map(r => r[k]), a = Math.hypot(...x);
+      const v = x.slice(); v[0] += (x[0] >= 0 ? 1 : -1) * a; const vn = Math.hypot(...v);
+      F.push({ html: mshow(R, (i, j) => j === k && i >= k ? "hl" : ""), note: `Step ${k + 1}: x = (${x.map(sig).join(", ")}), ‖x‖ = ${sig(a)}. Take v = x ${x[0] >= 0 ? "+" : "−"} ‖x‖e₁ = (${v.map(sig).join(", ")}) (the sign of x₁, to avoid cancellation).` });
+      if (vn === 0 || a === 0) continue;
+      for (let i = 0; i < v.length; i++) v[i] /= vn;
+      for (let j = k; j < n; j++) { let s = 0; for (let i = k; i < m; i++) s += v[i - k] * R[i][j]; for (let i = k; i < m; i++) R[i][j] -= 2 * v[i - k] * s; }
+      for (let i = k + 1; i < m; i++) R[i][k] = 0;
+      F.push({ html: mshow(R, (i, j) => i >= k && j >= k ? (j === k && i > k ? "done" : "hl") : ""), note: `Apply F = I − 2vvᵀ/vᵀv to rows ${k + 1}–${m}, columns ${k + 1}–${n} (shaded). Column ${k + 1} becomes (${sig(R[k][k])}, 0, …): r${k + 1}${k + 1} = ${sig(R[k][k])} = −sign(x₁)‖x‖.` });
+    }
+    F.push({ html: mshow(R, (i, j) => j >= i ? "done" : "dim"), note: `R is upper triangular. Q = F₁F₂⋯ is kept implicitly as the vectors v; A = QR.` });
+    return F;
+  }
+
+  function qrAlgorithm(p) {
+    const A0 = rmatrix(p.m, 5, 5), m = A0.length, steps = Math.min(60, Math.max(1, Number(p.steps) || 10)), F = [];
+    if (A0[0].length !== m) throw new Error("the matrix must be square");
+    if (!symmetric(A0)) throw new Error("please enter a symmetric matrix");
+    let A = A0.map(r => r.slice()), active = m, k = 0;
+    const sub = () => [...Array(m - 1).keys()].map(i => sig(Math.abs(A[i + 1][i]))).join(", ");
+    F.push({ html: mshow(A, (i, j) => i === j + 1 ? "hl" : ""), note: `A⁽⁰⁾. Subdiagonal |a₍ᵢ₊₁,ᵢ₎| = ${sub()}. ${p.shift === "none" ? "Unshifted: factor, multiply in reverse order." : "Shifted, with deflation when the last subdiagonal entry of the active block is negligible."}` });
+    while (k < steps && active > 1) {
+      k++;
+      const B = A.slice(0, active).map(r => r.slice(0, active));
+      let mu = 0;
+      if (p.shift === "rq") mu = B[active - 1][active - 1];
+      if (p.shift === "wilk") { const a = B[active - 2][active - 2], b = B[active - 1][active - 2], c = B[active - 1][active - 1], d = (a - c) / 2, s = d >= 0 ? 1 : -1; mu = c - s * b * b / (Math.abs(d) + Math.hypot(d, b)); }
+      for (let i = 0; i < active; i++) B[i][i] -= mu;
+      const { Q, R } = hhqr(B), C = mmul(R, Q);
+      for (let i = 0; i < active; i++) for (let j = 0; j < active; j++) A[i][j] = C[i][j] + (i === j ? mu : 0);
+      let msg = `Step ${k}${p.shift === "none" ? "" : `, shift μ = ${sig(mu)}`}: A⁽${k}⁾ = RQ${p.shift === "none" ? "" : " + μI"}. Subdiagonal: ${sub()}.`;
+      if (p.shift !== "none" && Math.abs(A[active - 1][active - 2]) < 1e-14 * (Math.abs(A[active - 1][active - 1]) + Math.abs(A[active - 2][active - 2]))) {
+        A[active - 1][active - 2] = A[active - 2][active - 1] = 0; msg += ` Deflate: λ = ${sig(A[active - 1][active - 1])}.`; active--;
+      }
+      const act = active;
+      F.push({ html: mshow(A, (i, j) => i >= act || j >= act ? (i === j ? "done" : "dim") : i === j + 1 ? "hl" : ""), note: msg });
+    }
+    F.push({ html: mshow(A, (i, j) => i === j ? "done" : ""), note: `After ${k} steps the diagonal approximates the eigenvalues: ${A.map((r, i) => sig(r[i])).join(", ")}.` });
+    return F;
+  }
+
+  function eigIterations(p) {
+    const A = rmatrix(p.m, 5, 5), m = A.length, F = [], N = Math.min(40, Math.max(1, Number(p.steps) || 8)), mu0 = Number(p.mu);
+    if (A[0].length !== m) throw new Error("the matrix must be square");
+    if (!symmetric(A)) throw new Error("please enter a symmetric matrix");
+    if (!Number.isFinite(mu0)) throw new Error("the shift must be a number");
+    let x = Array(m).fill(1 / Math.sqrt(m)), lam = dotv(x, matvec(A, x)), prev = null;
+    const pic = (k, note) => F.push({ html: row(x.map(sig), () => "hl", { label: "v⁽" + k + "⁾" }) + row([sig(lam)], () => "done", { label: "r(v)" }), note });
+    pic(0, `Start from v⁽⁰⁾ = (1, …, 1)/√${m}; Rayleigh quotient r = ${sig(lam)}.`);
+    for (let k = 1; k <= N; k++) {
+      let w;
+      if (p.alg === "power") w = matvec(A, x);
+      else { const s = p.alg === "inverse" ? mu0 : lam; try { w = solve(A.map((r, i) => r.map((v, j) => v - (i === j ? s : 0))), x); } catch (e) { pic(k - 1, `The shift ${sig(s)} is an eigenvalue to working precision: v⁽${k - 1}⁾ is an eigenvector. Stop.`); return F; } }
+      const L = nrm(w); x = w.map(v => v / L); prev = lam; lam = dotv(x, matvec(A, x));
+      pic(k, `${p.alg === "power" ? "w = Av" : p.alg === "inverse" ? `solve (A − ${sig(mu0)}I)w = v` : `solve (A − ${sig(prev)}I)w = v (shift = previous Rayleigh quotient)`}; normalise. Rayleigh quotient ${sig(lam)} (change ${sig(Math.abs(lam - prev))}).`);
+    }
+    return F;
+  }
+
+  function cgSteps(p) {
+    const A = rmatrix(p.m, 6, 6), n = A.length, b = reals(p.b), F = [];
+    if (A[0].length !== n || b.length !== n) throw new Error("A must be square and b must match its size");
+    if (!symmetric(A)) throw new Error("A must be symmetric (and positive definite)");
+    let x = Array(n).fill(0), r = b.slice(), q = r.slice(), rho = dotv(r, r);
+    const pic = (k, note) => F.push({ html: row(x.map(sig), () => "hl", { label: "x" + k }) + row(r.map(sig), () => "", { label: "r" + k }) + row([sig(Math.sqrt(rho))], () => "done", { label: "‖r‖" }), note });
+    pic(0, "x₀ = 0, r₀ = b, p₀ = r₀.");
+    for (let k = 1; k <= n + 2 && Math.sqrt(rho) > 1e-12 * nrm(b); k++) {
+      const w = matvec(A, q), pw = dotv(q, w);
+      if (pw <= 0) throw new Error("pᵀAp ≤ 0: A is not positive definite");
+      const a = rho / pw; x = x.map((v, i) => v + a * q[i]); r = r.map((v, i) => v - a * w[i]);
+      const rn = dotv(r, r), beta = rn / rho; rho = rn; q = r.map((v, i) => v + beta * q[i]);
+      pic(k, `α = ${sig(a)}, x${k} = x${k - 1} + αp, r${k} = r${k - 1} − αAp; β = ${sig(beta)}, new direction p = r + βp. ‖r${k}‖ = ${sig(Math.sqrt(rho))}.`);
+    }
+    F.push({ html: F[F.length - 1].html, note: `Converged in ${F.length - 1} steps (at most n = ${n} in exact arithmetic; fewer if A has fewer distinct eigenvalues).` });
+    return F;
+  }
+
+  function quadCompare(p) {
+    const fs = { ecos: [x => Math.exp(Math.cos(Math.PI * (x + 1))), "periodic e^cos(π(x+1))"], runge: [x => 1 / (1 + 16 * x * x), "1/(1+16x²)"], abs: [x => Math.abs(x) ** 3, "|x|³"], sqrt: [x => Math.sqrt(1 + x), "√(1+x)"] };
+    const [f, name] = fs[p.f] || fs.runge, F = [];
+    const trap = n => { let s = 0; for (let k = 0; k <= n; k++) s += (k === 0 || k === n ? 0.5 : 1) * f(-1 + 2 * k / n); return s * 2 / n; };
+    const cc = n => { let s = 0; for (let k = 0; k <= n; k++) { const th = Math.PI * k / n; let t = 0; for (let j = 1; j <= n / 2; j++) t += (2 * j === n ? 1 : 2) / (4 * j * j - 1) * Math.cos(2 * j * th); s += (k === 0 || k === n ? 1 : 2) / n * (1 - t) * f(Math.cos(th)); } return s; };
+    const exact = cc(512), rows = [];
+    for (let n = 2; n <= 64; n *= 2) {
+      rows.push([String(n), sig(Math.abs(trap(n) - exact)), sig(Math.abs(cc(n) - exact))]);
+      F.push({ html: table(["n", "trapezoid error", "Clenshaw–Curtis error"], rows.map(r => r.slice(1)), (i, j) => i === rows.length - 1 ? "hl" : "", rows.map(r => r[0])), note: `∫₋₁¹ ${name} dx with n + 1 points. ${n === 2 ? "Equally spaced trapezoid nodes versus Chebyshev nodes cos(kπ/n)." : "Doubling n: the trapezoid error falls by about 4 for a smooth non-periodic integrand, Clenshaw–Curtis much faster; for the periodic integrand both are spectrally accurate."}` });
+    }
+    return F;
+  }
+
   // ---------- registry: figure id -> widget ----------
   // ---------- MDPs ----------
   function valueIterTram(p) {
@@ -1093,6 +1225,11 @@
   }
 
   const WIDGETS = {
+    "fig-householder-qr-2": { title: "Try it: Householder QR", inputs: [{ name: "m", label: "rows (; between)", value: "3 1 2; 4 2 1; 0 2 2; 0 1 1" }], run: householderSteps, speed: 1500 },
+    "fig-qr-algorithm-2": { title: "Try it: the QR algorithm", inputs: [{ name: "m", label: "symmetric matrix (; between rows)", value: "4 1 0 0; 1 3 1 0; 0 1 2 1; 0 0 1 1" }, { name: "shift", label: "shifts", value: "none", options: [["none", "none"], ["rq", "Rayleigh quotient"], ["wilk", "Wilkinson"]] }, { name: "steps", label: "steps", value: "20", short: true }], run: qrAlgorithm, speed: 900 },
+    "fig-power-and-inverse-iteration-2": { title: "Try it: power, inverse and Rayleigh quotient iteration", inputs: [{ name: "m", label: "symmetric matrix", value: "4 1 0 0; 1 3 1 0; 0 1 2 1; 0 0 1 1" }, { name: "alg", label: "method", value: "rqi", options: [["power", "power iteration"], ["inverse", "inverse iteration"], ["rqi", "Rayleigh quotient iteration"]] }, { name: "mu", label: "shift μ (inverse)", value: "4.5", short: true }, { name: "steps", label: "steps", value: "6", short: true }], run: eigIterations, speed: 1200 },
+    "fig-conjugate-gradient-1": { title: "Try it: conjugate gradients", inputs: [{ name: "m", label: "SPD matrix A", value: "4 1 0 0; 1 4 1 0; 0 1 4 1; 0 0 1 4" }, { name: "b", label: "b", value: "1 2 0 1" }], run: cgSteps, speed: 1300 },
+    "fig-clenshaw-curtis-quadrature-2": { title: "Try it: trapezoid versus Clenshaw–Curtis", inputs: [{ name: "f", label: "integrand", value: "runge", options: [["runge", "1/(1+16x²)"], ["ecos", "periodic e^cos(π(x+1))"], ["abs", "|x|³"], ["sqrt", "√(1+x)"]] }], run: quadCompare, speed: 1200 },
     "fig-backtracking-search-1": { title: "Try it: n-queens by backtracking with forward checking", inputs: [{ name: "n", label: "board size n", value: "4", short: true }], run: queensFC, speed: 1000 },
     "fig-hidden-markov-models-1": { title: "Try it: the forward algorithm", inputs: [{ name: "probs", label: "P(stay), P(U | rain), P(U | sun)", value: "0.7 0.8 0.3" }, { name: "ev", label: "evidence (U or N per day)", value: "U U N" }], run: forwardWeather, speed: 1100 },
     "fig-gibbs-sampling-1": { title: "Try it: Gibbs sampling on the telephone chain", inputs: [{ name: "eps", label: "flip probability", value: "0.2", short: true }, { name: "m", label: "sweeps", value: "1000", short: true }], run: gibbsTelephone, speed: 1100 },

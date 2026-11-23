@@ -679,7 +679,7 @@ parts:
           - linear-discrimination
       - id: math/optimization/algorithms
         title: Algorithms
-        desc: Structured linear equations, descent and Newton methods, self-concordance, equality constraints, interior-point methods
+        desc: Structured linear equations, descent and Newton methods, self-concordance, equality constraints, interior-point methods, quasi-Newton and trust-region methods, adjoint gradients, derivative-free methods
         notes:   # topic order on the website
           - structured-linear-equations
           - descent-methods
@@ -807,7 +807,7 @@ parts:
           - interval-subproblems
       - id: cs/algorithm-design
         title: Algorithm Design Paradigms
-        desc: Greedy, divide and conquer, FFT, randomized algorithms, linear programming
+        desc: Greedy, divide and conquer, FFT, randomized algorithms, linear programming, Cooley-Tukey FFTs
         notes:   # topic order on the website
           - greedy-algorithms
           - divide-and-conquer

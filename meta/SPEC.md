@@ -396,6 +396,33 @@ assert ucs("A", succ_small, lambda s: s == "A") == (0, ["A"])
    only code that builds and CI run (§5.9); it is always our own code.
 9. **PDF.** The statement and the starter are printed; the tests are not.
    The solution code is printed with the other solutions.
+10. **C exercises** (approved by the owner on 2026-11-22, for systems courses
+    such as CMU 15-213). A coding exercise may be in C instead of Python: the
+    fences are `{.c .starter}` and `{.c .tests}`, and the solution is one
+    `{.c}` fence. Items 1 to 9 apply, with these differences:
+    1. *Form.* Starter and tests are in the same language. `packages` is
+       for Python only.
+    2. *Code.* The starter is our own declarations with a stub body that
+       compiles (for example `return 0;`). Code may include only the C11
+       standard library headers and a fixed list of POSIX headers
+       (`unistd.h`, `fcntl.h`, `pthread.h`, `sys/types.h`, `sys/wait.h`,
+       `sys/stat.h`, `sys/mman.h`); a quoted `#include "..."` is not allowed.
+       `assert.h`, `limits.h`, `stdbool.h`, `stddef.h`, `stdint.h`,
+       `stdio.h`, `stdlib.h` and `string.h` are included before the code, so
+       short exercises need no includes.
+    3. *Tests.* Functions `void test_name(void)` that use `assert`. Each test
+       runs in its own child process with a time limit of 5 seconds, so a
+       failed assert or a crash fails that test only.
+    4. *Checks.* `make check` compiles prelude, code, tests and a generated
+       driver in one file with the local C compiler (`cc`, `-std=c11 -O1
+       -Wall`) and runs it, within the 10-second limit of item 8, for the
+       solution (must pass) and the starter (must fail). With no C compiler
+       a C exercise is an error. CI uses the compiler of its Ubuntu image.
+    5. *Website.* C is not run in the browser. The starter is shown as code
+       to copy; the tests fold under **Tests**; the solution opens on the
+       approach with its code folded, without **Run tests on it** or **Load
+       into editor**. The exercise still counts as **Code** in the filter.
+    6. *PDF.* As item 9, with the code printed as C.
 
 ## 7. Writing conventions
 

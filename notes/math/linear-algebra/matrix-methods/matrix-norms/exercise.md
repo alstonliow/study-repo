@@ -18,3 +18,11 @@ Add up both sides over all $i$ and $j$ to show that $\lVert AB\rVert_F^2\le\lVer
 The first page of I.11 shows unit balls for the $\ell^1$ and $\ell^2$ and $\ell^\infty$ norms. Those are the three sets of vectors $\mathbf{v}=(v_1,v_2)$ with $\lVert\mathbf{v}\rVert_1\le1$, $\lVert\mathbf{v}\rVert_2\le1$, $\lVert\mathbf{v}\rVert_\infty\le1$. Unit balls are always convex because of the triangle inequality for vector norms :
 $$\text{If }\lVert\mathbf{v}\rVert\le1\text{ and }\lVert\mathbf{w}\rVert\le1\text{ show that }\Big\lVert\frac{\mathbf{v}}2+\frac{\mathbf{w}}2\Big\rVert\le1 .$$
 :::
+
+::: {.problem #prob-mit18335ps-2-q2 origin="external" source="mit18335ps-2-q2"}
+**Norms**
+
+(a) Derive Trefethen eq. (3.10) (for which Trefethen only writes "by much the same argument"). Find the code that computes the induced $\|A\|_\infty$ norm in Julia, the `opnorm(A, Inf)` function, on github.com/JuliaLang/julia in `stdlib/LinearAlgebra/src/generic.jl` and satisfy yourself that it is equivalent to (3.10).
+
+(b) Trefethen, problem 3.4. Check your result for a random $10\times7$ matrix $A$ in Julia, constructed by `A=randn(10,7)` with the induced $p=2$ norm as computed by `opnorm(A)` in Julia.
+:::

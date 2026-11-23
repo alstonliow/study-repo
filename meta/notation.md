@@ -280,6 +280,26 @@ not here.
 | $L(x,\lambda,\nu)$, $g(\lambda,\nu)$ | Lagrangian, Lagrange dual function |
 | $\Delta x_{\rm nt}$, $\lambda(x)$ | Newton step, Newton decrement |
 
+### Numerical analysis (`math/numerical`)
+
+<!-- Added 2026-11-22 with MIT 18.335 (Spring 2019). Vectors bold, as in the linear algebra notes; scalars and matrices as there. -->
+
+| Symbol | Meaning |
+|---|---|
+| $\varepsilon_{\text{mach}}$ | machine epsilon (unit roundoff), $\tfrac12\beta^{1-t}$; $2^{-53}$ in double precision |
+| $\operatorname{fl}(x)$; $\oplus,\ominus,\otimes,\oslash$ | nearest floating-point number; floating-point operations |
+| $O(\varepsilon_{\text{mach}})$ | bounded by a constant (depending on dimensions only) times $\varepsilon_{\text{mach}}$ |
+| $\tilde f,\ \tilde{\mathbf{x}}$ | computed (floating-point) algorithm or result |
+| $\kappa(x)$, $\kappa(A)$ | relative condition number of a problem; $\lVert A\rVert\lVert A^{-1}\rVert$ |
+| $\lVert A\rVert_p$ | matrix norm induced by the vector $p$-norm |
+| $\hat Q\hat R$, $QR$ | reduced and full QR factorization |
+| $\rho$ | growth factor of Gaussian elimination |
+| $\mathcal K_n(A,\mathbf{b})$ | Krylov subspace $\operatorname{span}\{\mathbf{b},A\mathbf{b},\dots,A^{n-1}\mathbf{b}\}$ |
+| $Q_n,\ H_n,\ \tilde H_n,\ T_n$ | Arnoldi basis, square and $(n+1)\times n$ Hessenberg matrices, Lanczos tridiagonal matrix |
+| $\lVert\mathbf{v}\rVert_A$ | energy norm $\sqrt{\mathbf{v}^{\mathsf T}A\mathbf{v}}$ |
+| $T_n$ (polynomial) | Chebyshev polynomial, $T_n(\cos\theta)=\cos n\theta$ |
+| $R(z)$, $S$ | stability function and region of absolute stability of an ODE method |
+
 ## Algorithms (`cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`)
 
 | Symbol | Meaning |

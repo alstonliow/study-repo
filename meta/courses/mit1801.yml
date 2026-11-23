@@ -12,6 +12,8 @@ outline_from: MIT 18.01 Single Variable Calculus (Jerison), Fall 2006 lectures
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 18.335 problem in the shared Newton's method note (scope_excludes.py, 2026-11-22).
+  - prob-mit18335ps-1-q3
   # Cambridge IA Analysis I example-sheet problems in shared notes (scope_excludes.py, 2026-11-20).
   - prob-cama1s-2-q10
   - prob-cama1s-2-q12
