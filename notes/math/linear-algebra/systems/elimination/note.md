@@ -11,7 +11,9 @@ Elimination is the standard way to solve $A\mathbf{x}=\mathbf{b}$: subtract mult
 
 ::: {#def-gaussian-elimination .definition name="Elimination, pivots, multipliers"}
 
-Elimination on an $n\times n$ matrix $A$ works column by column. In column $k$ the *pivot* is the entry in row $k$ after the earlier steps. For each row $i>k$ subtract $\ell_{ik}$ times row $k$ from row $i$, where the *multiplier* is
+Elimination on an $n\times n$ matrix $A$ works column by column. In column $k$ the *pivot* is the entry in row $k$ after the earlier steps. For each row $i>k$ subtract $\ell_{ik}$ times row $k$ from row $i$,
+$$R_i\leftarrow R_i-\ell_{ik}R_k,$$
+where $R_i$ denotes row $i$ and the *multiplier* is
 $$\ell_{ik}=\frac{\text{entry to eliminate in row }i}{\text{pivot in row }k}.$$
 This makes every entry below the pivot zero. The result is an upper triangular matrix $U$ whose diagonal holds the pivots. The same operations applied to $\mathbf{b}$ give a vector $\mathbf{c}$, and $U\mathbf{x}=\mathbf{c}$ is solved by *back substitution*: the last equation first, then upwards.
 
@@ -170,7 +172,9 @@ Each step of elimination is a multiplication on the left by a simple matrix.
 
 ::: {#def-elimination-matrix .definition name="Elimination matrix"}
 
-The *elimination matrix* $E_{ij}$ is the identity matrix with the entry $-\ell_{ij}$ in row $i$, column $j$ (with $i>j$). Multiplying $E_{ij}A$ subtracts $\ell_{ij}$ times row $j$ of $A$ from row $i$ and leaves the other rows unchanged.
+The *elimination matrix* $E_{ij}$ is the identity matrix with the entry $-\ell_{ij}$ in row $i$, column $j$ (with $i>j$):
+$$E_{ij}=I-\ell_{ij}\,\mathbf{e}_i\mathbf{e}_j^{\mathsf T}.$$
+Multiplying $E_{ij}A$ subtracts $\ell_{ij}$ times row $j$ of $A$ from row $i$ and leaves the other rows unchanged.
 
 :::
 
@@ -196,7 +200,7 @@ What elimination does, in matrix language. Going straight from $A\mathbf x=\math
 ::: {#prp-row-operations-are-left-multiplication .proposition name="Row operations are multiplication on the left"}
 
 For any matrix $M$ with $n$ columns and any $A$ with $n$ rows, row $i$ of $MA$ is the combination
-$$m_{i1}\,(\text{row }1\text{ of }A)+\dots+m_{in}\,(\text{row }n\text{ of }A).$$ In particular $E_{ij}$ acts as described in @def-elimination-matrix.
+$$\operatorname{row}_i(MA)=\sum_{j=1}^n m_{ij}\operatorname{row}_j(A)=m_{i1}\,(\text{row }1\text{ of }A)+\dots+m_{in}\,(\text{row }n\text{ of }A).$$ In particular $E_{ij}$ acts as described in @def-elimination-matrix.
 
 :::
 
@@ -369,5 +373,24 @@ A zero in a pivot position does not stop elimination if a lower row can help. He
 ::: {#rmk-elimination-1 .remark name="Rows on the left, columns on the right"}
 
 Multiplying by a matrix on the left combines rows; multiplying on the right combines columns. Elimination uses only row operations, so the elimination matrices always stand on the left of $A$.
+
+:::
+
+::: {#fig-elimination-6}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[box, align=center] (a) at (0,0) {\textbf{matrix product}\\[2pt]$E_{ij}=I-\ell_{ij}\,\mathbf e_i\mathbf e_j^{\mathsf T}$};
+\node[box, align=center] (b) at (5.3,0) {\textbf{combination of rows}\\[2pt]$\operatorname{row}_i(MA)=\sum_j m_{ij}\operatorname{row}_j(A)$};
+\node[hl box, align=center] (c) at (10.4,0) {\textbf{elimination step}\\[2pt]$R_i\leftarrow R_i-\ell_{ij}R_j$};
+\draw[->, bold] (a) -- (b); \draw[->, bold] (b) -- (c);
+\node[lab, note, align=center] at (2.55,-1.0) {row $i$ of $E_{ij}$ is\\$\mathbf e_i^{\mathsf T}-\ell_{ij}\mathbf e_j^{\mathsf T}$};
+\node[lab, note, align=center] at (7.95,-1.0) {so row $i$ of $E_{ij}A$ is\\row $i$ minus $\ell_{ij}$ times row $j$};
+\end{tikzpicture}
+\end{center}
+```
+
+The three formulas of this note and how they connect. The matrix $E_{ij}$ differs from $I$ in one entry; by @prp-row-operations-are-left-multiplication, multiplying by it on the left combines rows of $A$ with the weights in its rows; the only row that changes is row $i$, which is exactly the elimination step.
 
 :::
