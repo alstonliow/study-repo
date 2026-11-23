@@ -763,6 +763,7 @@ parts:
         notes:   # topic order on the website
           - problems-and-algorithms
           - stable-matching
+          - string-matching
       - id: cs/data-structures
         title: Data Structures and Sorting
         desc: Sequences and sets, sorting, hashing, search trees, heaps
@@ -777,8 +778,11 @@ parts:
           - avl-trees
           - binary-heaps
           - two-three-trees
+          - red-black-trees
+          - b-trees
           - augmented-search-trees
           - amortized-analysis
+          - fibonacci-heaps
           - union-find
           - van-emde-boas
           - skip-lists
@@ -789,6 +793,7 @@ parts:
         notes:   # topic order on the website
           - breadth-first-search
           - depth-first-search
+          - strongly-connected-components
           - weighted-shortest-paths
           - bellman-ford
           - dijkstra

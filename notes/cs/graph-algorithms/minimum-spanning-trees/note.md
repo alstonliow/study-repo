@@ -100,7 +100,7 @@ Prim's algorithm from $a$ on the graph of @fig-minimum-spanning-trees-1. Small n
 
 ::: {#thm-prim .theorem name="Prim's algorithm"}
 
-Prim's algorithm returns an MST. With a binary heap it runs in $O(|E|\log|V|)$ time, and with a Fibonacci heap in $O(|E|+|V|\log|V|)$.
+Prim's algorithm returns an MST. With a binary heap it runs in $O(|E|\log|V|)$ time, and with a Fibonacci heap (@sec-cs-data-structures-fibonacci-heaps) in $O(|E|+|V|\log|V|)$.
 
 :::
 
