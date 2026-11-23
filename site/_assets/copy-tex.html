@@ -1,0 +1,65 @@
+<!-- Copy with maths. MathJax replaces each formula by glyph markup, so a plain
+     browser copy loses the formulas. On copy, every formula inside the selection
+     (a partly selected formula counts whole) is replaced by its TeX source,
+     $...$ inline and $$...$$ display, in both the plain-text and the HTML
+     clipboard data. Without MathJax, or with no formula selected, the browser's
+     own copy runs unchanged. -->
+<style>
+  .copy-tex-buffer { position: fixed; left: -99999px; top: 0; white-space: normal; }
+</style>
+<script>
+(function () {
+  function texOf(item) {
+    const tex = String(item.math || "").trim();
+    return item.display ? "$$" + tex + "$$" : "$" + tex + "$";
+  }
+
+  function mathAround(node) {
+    const el = node.nodeType === 1 ? node : node.parentElement;
+    return el ? el.closest("mjx-container") : null;
+  }
+
+  document.addEventListener("copy", function (event) {
+    const sel = window.getSelection();
+    const doc = window.MathJax && MathJax.startup && MathJax.startup.document;
+    if (!sel || sel.isCollapsed || !sel.rangeCount || !doc || !doc.math || !event.clipboardData) return;
+
+    // Record the TeX on each typeset formula so that clones carry it.
+    for (const item of doc.math) {
+      const root = item.typesetRoot;
+      if (root && root.isConnected && root.setAttribute) root.setAttribute("data-tex", texOf(item));
+    }
+
+    const buffer = document.createElement("div");
+    buffer.className = "copy-tex-buffer";
+    for (let i = 0; i < sel.rangeCount; i++) {
+      const range = sel.getRangeAt(i).cloneRange();
+      const startMath = mathAround(range.startContainer);
+      const endMath = mathAround(range.endContainer);
+      if (startMath) range.setStartBefore(startMath);
+      if (endMath) range.setEndAfter(endMath);
+      buffer.appendChild(range.cloneContents());
+    }
+
+    const maths = buffer.querySelectorAll("mjx-container[data-tex]");
+    if (!maths.length) return;
+    maths.forEach(function (m) {
+      const tex = m.getAttribute("data-tex");
+      // a display formula gets a line of its own
+      const node = tex.startsWith("$$") ? document.createElement("div") : document.createTextNode(tex);
+      if (node.nodeType === 1) node.textContent = tex;
+      m.replaceWith(node);
+    });
+    buffer.querySelectorAll("mjx-container, mjx-assistive-mml").forEach(function (m) { m.remove(); });
+
+    document.body.appendChild(buffer);
+    const text = buffer.innerText;
+    const html = buffer.innerHTML;
+    buffer.remove();
+
+    event.clipboardData.setData("text/plain", text);
+    event.clipboardData.setData("text/html", html);
+    event.preventDefault();
+  });
+})();
+</script>
