@@ -1,0 +1,72 @@
+# Michael Sipser, Introduction to the Theory of Computation, 3rd edition (Cengage, 2013,
+# US edition, ISBN 978-1-133-18779-0; all rights reserved), as a resource (meta/SPEC.md §17.12).
+# DRAFT for owner review. Kept locally in raw/SIPSER_3E. Locator = chapter number;
+# a source key is sipser3e-7-q13 (Problem 7.13). Only the problems that MIT 18.404J
+# (Fall 2020) assigns in its problem sets are copied (owner decision, 2026-11-23, SPEC §10);
+# the book's Selected Solutions are never read or copied. Titles are our own short titles.
+# Node ids are stable: never renamed when a title or a locator changes.
+id: res-sipser-3e
+kind: textbook
+title: Introduction to the Theory of Computation (Sipser, 3rd ed.)
+status: draft
+courses: [mit18404j]     # association only: the courses that use this resource (not ownership)
+editions:
+- id: 3e-us
+  current: true
+legacy_keys:
+  prefix: sipser3e-
+  edition: 3e-us
+  pattern: ^sipser3e-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: Sipser {section}
+  problem_label: Sipser {section}.{n}
+nodes:
+- id: res-sipser-3e-regular-languages
+  kind: chapter
+  title: Finite automata and regular expressions
+  at:
+    3e-us: '1'
+- id: res-sipser-3e-context-free-languages
+  kind: chapter
+  title: Grammars and pushdown automata
+  at:
+    3e-us: '2'
+- id: res-sipser-3e-church-turing-thesis
+  kind: chapter
+  title: Turing machines and their variants
+  at:
+    3e-us: '3'
+- id: res-sipser-3e-decidability
+  kind: chapter
+  title: Decidable and undecidable languages
+  at:
+    3e-us: '4'
+- id: res-sipser-3e-reducibility
+  kind: chapter
+  title: Reductions
+  at:
+    3e-us: '5'
+- id: res-sipser-3e-advanced-computability
+  kind: chapter
+  title: Recursion theorem and logical theories
+  at:
+    3e-us: '6'
+- id: res-sipser-3e-time-complexity
+  kind: chapter
+  title: P, NP and NP-completeness
+  at:
+    3e-us: '7'
+- id: res-sipser-3e-space-complexity
+  kind: chapter
+  title: PSPACE, L and NL
+  at:
+    3e-us: '8'
+- id: res-sipser-3e-intractability
+  kind: chapter
+  title: Hierarchy theorems and oracles
+  at:
+    3e-us: '9'
+- id: res-sipser-3e-advanced-complexity
+  kind: chapter
+  title: Randomness and interactive proofs
+  at:
+    3e-us: '10'

@@ -497,6 +497,13 @@ written in our own words.
 Textbook exercises and past exam problems are allowed in the private store
 only, for the owner's tutoring (§17.15.6, owner decision, 2026-11-20).
 
+One public exception (owner decision, 2026-11-23): the problems of Sipser's
+*Introduction to the Theory of Computation* (3rd edition) that MIT 18.404J
+assigns in its problem sets, which cite them by number only. They follow the
+homework rule above: statement verbatim, `origin="external"`, `source` a key of
+the Sipser resource, solutions in our own words with `status="draft"`. No other
+textbook problems, and the book's Selected Solutions are never read or copied.
+
 Code under a permissive licence (MIT, BSD, Apache) may be copied in excerpts
 into `code.md` (owner decision, 2026-11-18; §5.9), with `origin="external"` or
 `"adapted"` and a `source` key. Only the code is copied, never the lecture
