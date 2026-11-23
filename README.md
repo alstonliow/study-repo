@@ -51,12 +51,12 @@ Generated from the notes by `make readme`:
 | MIT 18.335J | Introduction to Numerical Methods | MIT |
 | MIT 18.404J | Theory of Computation | MIT |
 | MIT 18.650 | Statistics for Applications | MIT |
-| FIT1058 |  | Monash University |
-| Stanford CS221 | Artificial Intelligence: Principles and Techniques | Stanford |
+| Monash FIT1058 | Foundations of Computing | Monash University |
+| Stanford CS221 | Artificial Intelligence: Principles and Techniques | Stanford University |
 | Stanford CS229 | Machine Learning | Stanford University |
 | Stanford CS231n | Deep Learning for Computer Vision | Stanford University |
 | Stanford EE364A | Convex Optimization I | Stanford University |
-| CS70 | Discrete Mathematics and Probability Theory | UC Berkeley |
+| UC Berkeley CS70 | Discrete Mathematics and Probability Theory | UC Berkeley |
 | UC Berkeley CS188 | Introduction to Artificial Intelligence | UC Berkeley |
 | UC Berkeley EECS126 | Probability and Random Processes | UC Berkeley |
 | Cambridge IA Analysis I | Analysis I | University of Cambridge |

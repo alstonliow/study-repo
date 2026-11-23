@@ -4,8 +4,8 @@
 # Content that is not in the Course Notes is out of scope ("extra").
 # Each point covers whole notes; "exclude" takes single blocks back out.
 id: fit1058
-code: FIT1058
-name: ""  # TODO: full unit name (owner to fill in)
+code: Monash FIT1058
+name: Foundations of Computing
 institution: Monash University
 source_prefix: fit1058-
 outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"

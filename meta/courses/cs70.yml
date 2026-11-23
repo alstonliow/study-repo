@@ -10,7 +10,7 @@
 # Points use CS70's own numbering: chapter = CS70 note number, point = section.
 # Titles are our own short titles (the resource res-ucb-cs70 has the full tree).
 id: cs70
-code: CS70
+code: UC Berkeley CS70
 name: "Discrete Mathematics and Probability Theory"
 institution: UC Berkeley
 source_prefix: cs70-

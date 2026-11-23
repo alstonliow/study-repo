@@ -9,7 +9,7 @@
 id: cs221
 code: Stanford CS221
 name: "Artificial Intelligence: Principles and Techniques"
-institution: Stanford
+institution: Stanford University
 source_prefix: cs221
 outline_from: "Stanford CS221 lecture code (github.com/stanford-cs221/lectures, commit 3ac2452), 20 technical lectures"
 status: draft  # draft until the owner has reviewed the mapping
