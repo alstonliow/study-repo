@@ -64,3 +64,16 @@ The answer is $\frac{\mu^2}{\lambda^2+\lambda\mu+\mu^2}$.
 2. Cut balance gives $\pi(1)\lambda=\pi(2)\mu$ and $\pi(0)\lambda=\pi(1)\mu$, so with $r=\mu/\lambda$, $(\pi(0),\pi(1),\pi(2))\propto(r^2,r,1)$.
 3. Normalising, $\pi(0)=\frac{r^2}{1+r+r^2}=\frac{\mu^2}{\lambda^2+\lambda\mu+\mu^2}$, the long-run fraction of time with no server working.
 :::
+
+::: {.solution for="prob-eecs126-6-q1" status="draft"}
+1. *Balance equations* ("rate out = rate in"; each is one column of $\pi Q=0$):
+   - state 1: $\pi_1\cdot1=2.5\pi_2+3\pi_3$;
+   - state 2: $\pi_2\cdot5=\pi_1\cdot1$;
+   - state 3: $\pi_3\cdot3=2.5\pi_2$.
+
+2. *Solve in terms of $\pi_1$.* State 2 gives $\pi_2=\pi_1/5$. State 3 gives $\pi_3=\frac{2.5}{3}\pi_2=\frac56\cdot\frac{\pi_1}5=\pi_1/6$. The equation for state 1 is then automatic: $2.5\cdot\frac{\pi_1}5+3\cdot\frac{\pi_1}6=\frac{\pi_1}2+\frac{\pi_1}2=\pi_1$. (The three equations sum to $0=0$, so one of them is always redundant.)
+
+3. *Normalize.* $\pi_1\bigl(1+\frac15+\frac16\bigr)=\pi_1\cdot\frac{41}{30}=1$, so $\pi_1=\frac{30}{41}$, $\pi_2=\frac6{41}$, $\pi_3=\frac5{41}$.
+
+4. The chain is irreducible on three states ($1\to2\to3\to1$), so this stationary distribution is unique.
+:::

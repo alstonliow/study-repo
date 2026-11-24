@@ -108,3 +108,13 @@ X = (A - 0.5) * 2 * np.sqrt(N)       # 0.836
 
 3. Note: the bound is $\overline X/a$ with $a=2\overline X$, which is $\frac12$; read as $\overline X/2=\frac14$ the claim would be false.
 :::
+
+::: {.solution for="prob-eecs126-1-q1" status="draft"}
+"Tight" means that equality holds for some $\lambda$.
+
+1. *Bound (1).* Fix $\lambda>0$ and $p\in[0,1/n]$. Let $A_1,\dots,A_n$ be disjoint events with $P(A_i)=p$, and let $X_i=\lambda\mathbf 1_{A_i}$. At most one $X_i$ is non-zero, so $|S_n|=\lambda\mathbf 1_{A_1\cup\dots\cup A_n}$ and $P(|S_n|\ge\lambda)=np$. The right side is $\frac1\lambda\sum_i\lambda p=np$ as well. (Markov is tight exactly for variables taking only the values $0$ and $\lambda$.)
+
+2. *Bound (2).* Fix $\lambda>0$ and $p\in[0,1]$. Let $X_1$ take the values $\pm\lambda$ with probability $p/2$ each and $0$ otherwise, and let $X_2=\dots=X_n=0$. Constants are independent of everything, so the family is pairwise independent with mean $0$. Then $P(|S_n|\ge\lambda)=P(X_1\ne0)=p$ and $\frac1{\lambda^2}\sum_i\mathrm{Var}(X_i)=\frac{p\lambda^2}{\lambda^2}=p$.
+
+3. *A genuinely $n$-variable version of (2).* Take $X_1,\dots,X_n$ pairwise independent with mean $0$, and suppose $S_n$ takes only the values $0$ and $\pm\lambda$. Then $\mathrm{Var}(S_n)=\sum\mathrm{Var}(X_i)$ (pairwise independence), and $E[S_n^2]=\lambda^2P(|S_n|\ge\lambda)$, so (2) holds with equality. For example, $n=2$ with $X_1,X_2$ independent uniform on $\{\pm\tfrac\lambda2\}$ gives $S_2\in\{0,\pm\lambda\}$. Here $P(|S_2|\ge\lambda)=\frac12$ and $\frac{2(\lambda/2)^2}{\lambda^2}=\frac12$.
+:::

@@ -10,3 +10,13 @@
 
 (d) For each letter $c\in\{A,C,G,T\}$, let $d^{(c)}$ be the $0/1$ indicator sequence of $c$ in $D$ and $p^{(c)}$ that of $c$ in the reversed pattern. The coefficient of $x^{j+m-1}$ in $\sum_cd^{(c)}(x)p^{(c)}(x)$ counts the non-wild positions of $P$ that agree with $D$ at offset $j$; $P$ matches iff it equals $q$. Four multiplications, $O(n\lg n)$. For $D=ACGACCAT$ and $P=AC{*}A$ ($q=3$) the counts at $j=0,\dots,4$ are $3,0,0,3,1$, so $M=[0,3]$.
 :::
+
+::: {.solution for="prob-mit18335-38-q1" status="draft"}
+Write $\omega=e^{-2\pi i/N}$, so $\omega^N=1$ and $\omega^r\ne1$ for $0<|r|<N$.
+
+1. *Substitute.* Put (1) into the right side of (2), with summation index $m$: $\frac1N\sum_{k=0}^{N-1}\sum_{m=0}^{N-1}x_m\omega^{mk}\omega^{-nk}=\frac1N\sum_{m=0}^{N-1}x_m\sum_{k=0}^{N-1}\omega^{(m-n)k}$. Interchanging two finite sums is always allowed.
+
+2. *The inner sum.* If $m=n$, every term is $1$ and the sum is $N$. If $m\ne n$, then $0<|m-n|<N$, so $r=\omega^{m-n}\ne1$ and the geometric series gives $\sum_{k=0}^{N-1}r^k=\frac{1-r^N}{1-r}=0$, because $r^N=(\omega^N)^{m-n}=1$.
+
+3. *Conclude.* Only $m=n$ survives: the right side equals $\frac1N\cdot x_n\cdot N=x_n$. So (2) applied after (1) is the identity. Both maps are linear maps on $\mathbb C^N$, so each is the inverse of the other.
+:::

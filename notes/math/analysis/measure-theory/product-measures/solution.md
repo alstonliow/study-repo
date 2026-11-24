@@ -33,3 +33,17 @@ $$\Pr(T=n,\ Y\in A)=(1-p)^{n-1}\frac{\nu(A)}R .$$
 
 4. Summing over $n$: $\Pr(T<\infty,\ Y\in A)=\frac{\nu(A)}R\cdot\frac1p=\nu(A)$. In particular $\Pr(T<\infty)=\nu(E)=1$, so $Y$ is a.s. defined and $\Pr(Y\in A)=\nu(A)$.
 :::
+
+::: {.solution for="prob-camii-pm-3-q1" status="draft"}
+Write $m$ for Lebesgue measure on $[0,1]$, $\#$ for counting measure, $D=\{(x,x):x\in[0,1]\}$ for the diagonal, and $A^y=\{x:(x,y)\in A\}$ for the sections. Sections of sets in the product $\sigma$-algebra are Borel.
+
+1. *A first measure.* Let $\mu(A)=\sum_{y\in[0,1]}m(A^y)$, a sum of non-negative terms (the supremum of its finite partial sums). For disjoint $A_n$ the sections $A_n^y$ are disjoint, so $\mu(\bigcup A_n)=\sum_y\sum_nm(A_n^y)=\sum_n\sum_ym(A_n^y)=\sum_n\mu(A_n)$. Sums of non-negative terms may be rearranged. So $\mu$ is a measure. On a rectangle, $(A_1\times A_2)^y$ is $A_1$ for $y\in A_2$ and empty otherwise, so $\mu(A_1\times A_2)=\#A_2\cdot m(A_1)$.
+
+2. *A second measure.* The map $\varphi(x)=(x,x)$ is measurable, so $\rho(A)=m(\varphi^{-1}(A))=m(\{x:(x,x)\in A\})$ is a measure. Let $\infty\cdot\rho$ be the set function that is $\infty$ when $\rho(A)>0$ and $0$ when $\rho(A)=0$. It is a measure: $\rho(\bigcup A_n)=\sum\rho(A_n)$ is positive exactly when some $\rho(A_n)$ is. Put $\nu=\mu+\infty\cdot\rho$.
+
+3. *They agree on rectangles.* $\rho(A_1\times A_2)=m(A_1\cap A_2)$. If this is $0$, then $\nu(A_1\times A_2)=\mu(A_1\times A_2)$. If it is positive, then $m(A_1)>0$, and $A_2\supseteq A_1\cap A_2$ has positive Lebesgue measure, so it is uncountable and $\#A_2=\infty$. Then both measures give $\infty$.
+
+4. *They differ on the diagonal.* Every section $D^y=\{y\}$ has $m(\{y\})=0$, so $\mu(D)=0$. But $\rho(D)=m([0,1])=1>0$, so $\nu(D)=\infty$.
+
+5. So two different measures on the product $\sigma$-algebra take the value $\mu_1(A_1)\mu_2(A_2)$ on every rectangle: the product measure is not unique. The uniqueness proof fails because counting measure on $[0,1]$ is not $\sigma$-finite.
+:::

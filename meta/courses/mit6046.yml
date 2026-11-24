@@ -14,6 +14,8 @@ outline_from: "MIT 6.046J Design and Analysis of Algorithms, Spring 2015, Lectur
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Lecture-note problems backfill (2026-11-24): other courses' problems in shared notes
+  - prob-mit18335-38-q1
   # MIT 18.065 integration (2026-11-21): its problems in shared notes
   - prob-mit18065ps-24-q2
   # Blocks from other courses' material in notes this course covers
@@ -28,7 +30,7 @@ chapters:
         covers: [cs/algorithm-design/greedy-algorithms]
       - id: "1.2"
         title: "Weighted interval scheduling"
-        covers: [exm-weighted-interval-scheduling]
+        covers: [exm-weighted-interval-scheduling, prob-mit6046-1-q1]
   - num: 2
     title: "Divide and conquer"
     points:

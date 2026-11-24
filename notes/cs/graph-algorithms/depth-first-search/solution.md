@@ -16,3 +16,13 @@ Make an undirected graph whose vertices are the $n$ plants and $n^2$ buildings a
 
 Build an adjacency list in $O(|V|+|W|)$ time and run BFS (or DFS) from each plant, counting the buildings reached (@prp-connected-components-algorithm). The searches explore disjoint components, so together they take $O(|V|+|W|)$. There are $|V|=n+n^2$ vertices and at most $\binom{n+n^2}2=O(n^4)$ wires, so the total is $O(n^4)$.
 :::
+
+::: {.solution for="prob-mit6006-10-q1" status="draft"}
+1. *A topological order rules out cycles.* Suppose $f$ is a topological order and $v_0\to v_1\to\dots\to v_k=v_0$ is a cycle. Every edge goes forward in $f$, so $f(v_0)<f(v_1)<\dots<f(v_k)=f(v_0)$, a contradiction. So the graph is a DAG.
+
+2. *Every finite DAG has a source.* If every vertex had an incoming edge, we could walk backwards along incoming edges forever; with finitely many vertices some vertex repeats, and the repeated stretch, read forwards, is a cycle.
+
+3. *Every DAG has a topological order*, by induction on $|V|$. The empty graph is trivial. Otherwise take a source $v$ (step 2) and put it first. $G-v$ is still a DAG, so by induction it has a topological order; append it after $v$. Edges out of $v$ go forward because $v$ is first, and edges inside $G-v$ go forward by induction; no edge enters $v$.
+
+4. Together, a directed graph has a topological order exactly when it is a DAG. (@thm-dfs-topological-sort gives a linear-time construction for step 3.)
+:::

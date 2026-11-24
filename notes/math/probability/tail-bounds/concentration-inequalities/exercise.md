@@ -105,3 +105,9 @@ Computer experiment : Find the average $A_{1000000}$ of a million random 0-1 sam
 ::: {.problem #prob-mit18065ps-20-q3 origin="external" source="mit18065ps-20-q3"}
 A fair coin flip has outcomes $X=0$ and $X=1$ with probabilities $\frac12$ and $\frac12$. What is the probability that $X\ge2\overline X$ ? Show that Markov's inequality gives the exact probability $\overline X/2$ in this case.
 :::
+
+::: {.problem #prob-eecs126-1-q1 origin="external" source="eecs126-1-q1"}
+Come up with examples of random variables $X_1,\dots,X_n$ in which (1) and (2) are tight.
+
+*Note (these notes):* The notes state, for $S_n=X_1+\dots+X_n$, the first moment bound (1) $P(|S_n|\ge\lambda)\le\frac1\lambda\sum_{i=1}^nE|X_i|$ (Markov's inequality, @thm-markov-inequality) and the second moment bound (2) $P(|S_n|\ge\lambda)\le\frac1{\lambda^2}\sum_{i=1}^n\mathrm{Var}(X_i)$ (Chebyshev's inequality, @thm-chebyshev-s-inequality), for pairwise independent $X_i$ (and mean zero, implicitly).
+:::

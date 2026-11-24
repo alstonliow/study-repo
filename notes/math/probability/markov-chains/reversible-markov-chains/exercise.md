@@ -90,3 +90,17 @@ def test_zero_steps():
     assert metropolis_hastings(log_f, None, None, 3, 0, random.Random(3)) == []
 ```
 :::
+
+::: {.problem #prob-eecs126-4-q1 origin="external" source="eecs126-4-q1"}
+Consider an irreducible Markov chain on the finite state space $\mathcal X$ with transition probability matrix $P$.
+
+1. Suppose that $\tilde P$ is another transition probability matrix of the same dimensions as $P$ (the rows sum to 1). Show that if $\pi$ is a probability distribution on $\mathcal X$ which satisfies $\pi(x)P(x,y)=\pi(y)\tilde P(y,x)$ for all $x,y\in\mathcal X$, then $\pi$ is the stationary distribution and $\tilde P$ is the transition probability matrix of the reversed chain.
+
+2. In particular, if $\pi$ satisfies the detailed balance equations (1), then $\pi$ is the stationary distribution.
+
+*Note (these notes):* Equations (1) are the detailed balance equations of @def-detailed-balance. The *reversed chain* of a chain started from its stationary distribution $\pi$ has transition probabilities $P(X_n=x\mid X_{n+1}=y)$.
+:::
+
+::: {.problem #prob-eecs126-4-q2 origin="external" source="eecs126-4-q2"}
+The graph associated with a Markov chain is formed by taking the transition diagram of the chain, forgetting the directions of all of the edges, removing multiple edges, and removing self-loops. If the graph of a finite-state irreducible Markov chain is a tree, then the stationary distribution of the Markov chain satisfies detailed balance.
+:::

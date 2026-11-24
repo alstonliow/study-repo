@@ -22,3 +22,9 @@ with probability at least $1-a$.
 
 (e) Compare the three confidence intervals.
 :::
+
+::: {.problem #prob-eecs126-1-q2 origin="external" source="eecs126-1-q2"}
+By letting $t$ take values in some larger interval than $[0,1]$, show that the term $e^{-c\lambda\sigma/K}$ in the Chernoff bound can be replaced with $(\lambda K/\sigma)^{-c\lambda\sigma/K}$, which is better for when $\lambda K\gg\sigma$.
+
+*Note (these notes):* The notes' Chernoff bound (6), a different form from @thm-chernoff-bound: if $X_1,\dots,X_n$ are independent with $|X_i|\le K$ almost surely, means $\mu_i$ and variances $\sigma_i^2$, then for every $\lambda>0$, $P(|S_n-\mu|\ge\lambda\sigma)\le C\max\bigl(e^{-c\lambda^2},e^{-c\lambda\sigma/K}\bigr)$, where $\mu=\sum\mu_i$, $\sigma^2=\sum\sigma_i^2$ and $C,c>0$ are constants. The proof reduces to $\mu_i=0$, $K=1$, bounds $Ee^{tX_i}\le e^{O(t^2\sigma_i^2)}$ for $t\in[0,1]$, applies Markov's inequality to $e^{tS_n}$, and optimizes over $t\in[0,1]$.
+:::

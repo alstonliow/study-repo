@@ -15,3 +15,11 @@ In Wentonian physics, a force field acts on the motion of a particle by requirin
 ::: {.problem #prob-mit6006r-12-q1 origin="external" source="mit6006r-12-q1"}
 Alice, Bob, and Casey are best friends who live in different corners of a rural school district. During the summer, they decide to meet every Saturday at some intersection in the district to play tee-ball. Each child will bike to the meeting location from their home along dirt roads. Each dirt road between road intersections has a level of fun associated with biking along it in a certain direction, depending on the incline and quality of the road, the number of animals passed, etc. Road fun-ness may be positive, but could also be be negative, e.g. when a road is difficult to traverse in a given direction, or passes by a scary dog, etc. The children would like to: choose a road intersection to meet and play tee-ball that maximizes the total fun of all three children in reaching their chosen meeting location; or alternatively, abandon tee-ball altogether in favor of biking, if a loop of roads exists in their district along which they can bike all day with ever increasing fun. Help the children organize their Saturday routine by finding a tee-ball location, or determining that there exists a continuously fun bike loop in their district (for now, you do not have to find such a loop). You may assume that each child can reach any road in the district by bike.
 :::
+
+::: {.problem #prob-mit6006-12-q1 origin="external" source="mit6006-12-q1"}
+Given undirected graph $G$, return whether $G$ contains a negative-weight cycle
+:::
+
+::: {.problem #prob-mit6006-12-q2 origin="external" source="mit6006-12-q2"}
+Given SSSP algorithm $A$ that runs in $O(|V|(|V|+|E|))$ time, show how to use it to solve SSSP in $O(|V||E|)$ time
+:::

@@ -26,3 +26,23 @@ To detect a negative-weight cycle anywhere in a graph, add a vertex $x$ with a $
 
 Three Bellman–Ford runs and one $O(|V|)$ scan: $O(|V|\,|E|)$ time.
 :::
+
+::: {.solution for="prob-mit6006-12-q1" status="draft"}
+Treat each undirected edge $\{u,v\}$ as the two directed edges $(u,v)$ and $(v,u)$ of the same weight; this is how shortest paths in an undirected graph are defined.
+
+1. If some edge has weight $w(u,v)<0$, then $u\to v\to u$ is a cycle of weight $2w(u,v)<0$.
+
+2. If there is a negative-weight cycle, at least one of its edges has negative weight.
+
+3. So the answer is Yes exactly when some edge has negative weight. Scanning the edges takes $O(|E|)$ time. This is why negative weights are only interesting in directed graphs.
+:::
+
+::: {.solution for="prob-mit6006-12-q2" status="draft"}
+1. Run BFS (or DFS) from $s$ in $O(|V|+|E|)$ time to find the set $V'$ of vertices reachable from $s$. Set $\delta(s,v)=\infty$ for $v\notin V'$.
+
+2. Let $G'$ be the subgraph induced on $V'$, with edge set $E'$. Every path from $s$ stays inside $V'$, so the distances from $s$ in $G'$ are the same as in $G$. Run $A$ on $G'$.
+
+3. Every vertex of $V'$ other than $s$ is entered by some edge of $E'$ (the last edge of a path from $s$), so $|V'|\le|E'|+1$. Hence $A$ takes $O(|V'|(|V'|+|E'|))=O(|V'|(|E'|+1))$ time, which is $O(|V||E|)$ when $|E|\ge1$. If $E=\emptyset$, only $s$ is reachable and the answer is immediate.
+
+4. Steps 1 and 3 together take $O(|V||E|)$ time.
+:::

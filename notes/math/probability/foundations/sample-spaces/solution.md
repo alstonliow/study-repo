@@ -283,3 +283,17 @@ Each die beats the next with probability above $\frac12$ in the cycle white $\to
 $$\frac{18}{36}\cdot\frac{25}{36}+\frac9{36}\cdot\frac{35}{36}=\frac{450+315}{1296}=\frac{85}{144}\approx0.59.$$
 With two dice each, white now beats blue, reversing part (a).
 :::
+
+::: {.solution for="prob-mit1805-2-q1" status="draft"}
+Assume $0<p\le1$ (for $p=0$ heads never comes and $\Omega$ would need an outcome "never").
+
+1. $\sum_{n=1}^\infty(1-p)^{n-1}p=p\sum_{m=0}^\infty(1-p)^m$, a geometric series with ratio $0\le1-p<1$.
+
+2. It converges to $\frac1{1-(1-p)}=\frac1p$, so the total is $p\cdot\frac1p=1$.
+:::
+
+::: {.solution for="prob-mit1805-2-q2" status="draft"}
+1. The outcome $n$ happens exactly when the first $n-1$ tosses are tails and toss $n$ is heads.
+
+2. The tosses are independent, each tails with probability $1-p$ and heads with probability $p$. So this sequence of results has probability $(1-p)^{n-1}\cdot p$.
+:::

@@ -53,3 +53,28 @@ Thus, for instance, at any time, any customers that are waiting in the queue wou
 ::: {.problem #prob-eecs126d-9-q2 origin="external" source="eecs126d-9-q2"}
 **Two-Server System.** A company has two servers (the second server is a backup in case the first server fails, so only one server is ever used at a time). When a server is running, the time until it breaks down is exponentially distributed with rate $\mu$. When a server is broken, it is taken to the repair shop. The repair shop can only fix one server at a time, and its repair time is exponentially distributed with rate $\lambda$. Find the long-run probability that no servers are operational.
 :::
+
+::: {.problem #prob-eecs126-6-q1 origin="external" source="eecs126-6-q1"}
+Say our application has a normal state (1) and a test state (2) and a repair state (3).
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (1) at (0,0) {$1$};
+\node[small vertex] (2) at (2.8,0) {$2$};
+\node[small vertex] (3) at (1.4,-2.0) {$3$};
+\draw[->] (1) to[bend left=25] node[lab,tick,above] {$1$} (2);
+\draw[->] (2) to[bend left=25] node[lab,tick,below] {$2.5$} (1);
+\draw[->] (2) to node[lab,tick,right] {$2.5$} (3);
+\draw[->] (3) to node[lab,tick,left] {$3$} (1);
+\end{tikzpicture}
+\end{center}
+```
+
+What is the stationary distribution of this Markov Chain? Note we have
+$$Q=\begin{pmatrix}-1&1&0\\2.5&-5&2.5\\3&0&-3\end{pmatrix}.$$
+Write out the balance equations, either by examining $\pi Q=0$ or by just looking at the "rate in = rate out" for each state. Show that
+$$\pi=(30/41,\ 6/41,\ 5/41).$$
+
+*Note (these notes):* The notes mark this as problem 7.14 of Bertsekas and Tsitsiklis, *Introduction to Probability*; the owner approved adding it (2026-11-24). The figure is our redrawing of the transition diagram: the edge labels are the rates of $Q$. Stationary distributions of a CTMC are defined in @def-ctmc-stationary.
+:::

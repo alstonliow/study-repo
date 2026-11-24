@@ -14,3 +14,9 @@ Let $\mu$ and $\nu$ be probability measures on $(E,\mathcal E)$ and let $f:E\to[
 $$T=\min\{n\in\mathbb N:\ RU_n\le f(X_n)\},\qquad Y=X_T.$$
 Show that $Y$ has law $\nu$. (This justifies simulation by rejection sampling.)
 :::
+
+::: {.problem #prob-camii-pm-3-q1 origin="external" source="camii-pm-3-q1"}
+Show the non-uniqueness of the product Lebesgue measure on $[0,1]$ and the counting measure on $[0,1]$.
+
+*Note (these notes):* Here uniqueness in @thm-product-measure means: a unique measure on $\mathcal B([0,1])\otimes\mathcal B([0,1])$ with $\mu(A_1\times A_2)=\mu_1(A_1)\mu_2(A_2)$ for all rectangles, where $\mu_1$ is Lebesgue measure and $\mu_2$ is counting measure ($0\cdot\infty=0$). The counting measure on $[0,1]$ is not $\sigma$-finite.
+:::

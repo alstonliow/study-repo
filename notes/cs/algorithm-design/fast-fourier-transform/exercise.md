@@ -17,3 +17,9 @@ The problem is, again, to output a sorted list $M$ of valid "match positions", w
 
 Based on your solutions to Parts (b) and (c), give an efficient algorithm for this setting. Illustrate your algorithm on the example above.
 :::
+
+::: {.problem #prob-mit18335-38-q1 origin="external" source="mit18335-38-q1"}
+Prove that equation (2) really is the inverse of equation (1). Hint: subsitute (1) into (2), interchange the order of the two sums, and sum the geometric series.
+
+*Note (these notes):* Equations (1) and (2) are the DFT and its inverse for $N$ complex numbers: (1) $y_k=\sum_{n=0}^{N-1}x_ne^{-\frac{2\pi i}{N}nk}$ and (2) $x_n=\frac1N\sum_{k=0}^{N-1}y_ke^{+\frac{2\pi i}{N}nk}$. This is @prp-inverse-dft with $\omega_N=e^{-2\pi i/N}$.
+:::

@@ -18,6 +18,10 @@ outline_from: "UC Berkeley CS 70 Course Notes (Fall 2020), Notes 1-21 (mapped ro
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Lecture-note problems backfill (2026-11-24): other courses' problems in shared notes
+  - prob-eecs126-1-q1
+  - prob-mit1805-2-q1
+  - prob-mit1805-2-q2
   # MIT 18.065 integration (2026-11-21): its problems in shared notes
   - prob-mit18065ps-19-q3
   - prob-mit18065ps-19-q8

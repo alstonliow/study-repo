@@ -13,6 +13,9 @@ outline_from: UC Berkeley EECS126 Probability and Random Processes, Fall 2021 su
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Lecture-note problems backfill (2026-11-24): other courses' problems in shared notes
+  - prob-mit1805-2-q1
+  - prob-mit1805-2-q2
     # MIT 18.650 integration (2026-11-21): its problems and blocks in shared notes
   - def-lp-convergence
   - prob-mit18650f16-1-q1

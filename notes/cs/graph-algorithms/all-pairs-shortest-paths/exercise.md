@@ -34,3 +34,9 @@ Now suppose that we add a new constraint to the problem — an upper bound of $h
 
 Your algorithm should modify $D$ to reflect the effects of changing $w_{i,j}$ to $r$, and should also update any additional distance information that you have added. As for Part (a), your algorithm will need to handle three cases: $r=w_{i,j}$, $r<w_{i,j}$, and $r>w_{i,j}$. For each of the cases, analyze your algorithm's complexity, in terms of graph parameters and $h$.
 :::
+
+::: {.problem #prob-mit6046-11-q1 origin="external" source="mit6046-11-q1"}
+Bellman-Ford consult any system of difference constraints (or report that it is unsolvable) in $O(VE)$ time where $V$ = variables and $E$ = constraints. An exercise is to prove the Bellman-Ford minimizes $\max_i x_i-\min_i x_i$.
+
+*Note (these notes):* A system of difference constraints asks for reals $x_1,\dots,x_n$ with $x_j-x_i\le b_{ij}$ for given pairs $(i,j)$. Build a graph with a vertex per variable and an edge $i\to j$ of weight $b_{ij}$ per constraint. Add a new vertex $s$ with an edge of weight $0$ to every variable, as in Johnson's algorithm (@def-johnson). Run Bellman–Ford (@thm-bellman-ford) from $s$: a negative cycle means no solution, and otherwise $x_i=\delta(s,i)$ is a solution.
+:::

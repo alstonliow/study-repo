@@ -361,3 +361,15 @@ For hints on this problem and ways to make money with your dice, watch at least 
 
 Here a tree is used to organize the calculation rather than a table. We will discuss this method in Week 2.
 :::
+
+::: {.problem #prob-mit1805-2-q1 origin="external" source="mit1805-2-q1"}
+Show the sum of all the probabilities equals 1 (hint: geometric series).
+
+*Note (these notes):* In the 18.05 class 2 reading, a coin with probability $p$ of heads is tossed until the first heads, and the number of tosses is reported. The sample space is $\Omega=\{1,2,3,\dots\}$ with probability function $P(n)=(1-p)^{n-1}p$ (compare @exm-infinite-sample-space).
+:::
+
+::: {.problem #prob-mit1805-2-q2 origin="external" source="mit1805-2-q2"}
+Justify the formula for $P(n)$ (we will do this soon).
+
+*Note (these notes):* In the 18.05 class 2 reading, a coin with probability $p$ of heads is tossed until the first heads, and the number of tosses is reported. The sample space is $\Omega=\{1,2,3,\dots\}$ with probability function $P(n)=(1-p)^{n-1}p$ (compare @exm-infinite-sample-space).
+:::

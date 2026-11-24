@@ -290,11 +290,11 @@ chapters:
   points:
   - id: '38.1'
     title: Discrete Fourier transform and radix-2 FFT
-    covers: [def-dft, thm-fft, prp-inverse-dft]
+    covers: [def-dft, thm-fft, prp-inverse-dft, prob-mit18335-38-q1]
   - id: '38.2'
     title: Cooley-Tukey for general sizes
     covers: [thm-cooley-tukey-general, fig-cooley-tukey-algorithms-1, cor-fft-operation-count, rmk-cooley-tukey-algorithms-1,
-      prp-fft-accuracy, fig-cooley-tukey-algorithms-2]
+      prp-fft-accuracy, fig-cooley-tukey-algorithms-2, prob-mit18335-38-q2]
 - num: 39
   title: FFTW
   points:
