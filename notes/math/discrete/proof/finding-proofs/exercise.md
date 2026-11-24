@@ -75,74 +75,109 @@ $e_1,e_2,\dots,e_r$ in that order.
 :::
 
 ::: {.problem #prob-proofs-12 origin="external" source="fit1058-cn-3.15-q12"}
-(Challenge) Let $E$ be a finite set and $\mathcal S$ a set of subsets of $E$.
+(Challenge)
+Let $E$ be a finite set, and let $\mathcal{S}$ be a set of subsets of $E$. We say $\mathcal{S}$ is *linear under $\triangle$*
+if, for every two sets $X, Y \in \mathcal{S}$, we have $X \triangle Y \in \mathcal{S}$. So, applying symmetric difference to
+sets in $\mathcal{S}$ always gives sets in $\mathcal{S}$; the operation never takes you out of $\mathcal{S}$.
 
-- $\mathcal S$ is *linear under $\triangle$* if
-  $X\triangle Y\in\mathcal S$ for all $X,Y\in\mathcal S$.
+The *span* of $\mathcal{S}$, written $\mathrm{span}(\mathcal{S})$, is the set of all symmetric differences of any number
+of members of $\mathcal{S}$. In other words,
+$$
+\mathrm{span}(\mathcal{S}) := \{X_1 \triangle X_2 \triangle \cdots \triangle X_k : X_1, X_2, \ldots, X_k \in \mathcal{S},\ k \in \mathbb{N}\}.
+$$
+By convention, the symmetric difference of zero sets is the empty set. Therefore, the
+span of any set $\mathcal{S}$ always contains the empty set.
 
-- $\mathrm{span}(\mathcal S) := \{X_1\triangle\cdots\triangle X_k :
-                X_1,\dots,X_k\in\mathcal S,\ k\in\mathbb{N}\}$ (the symmetric difference of
-  zero sets is $\emptyset$).
+$\mathcal{S}$ is *dependent under $\triangle$* if, for some $X_1, X_2, \ldots, X_k \in \mathcal{S}$ which are all distinct; i.e.,
+$X_i \neq X_j$ whenever $1 \le i < j \le k$, we have
+$$
+X_1 \triangle X_2 \triangle \cdots \triangle X_k = \emptyset.
+$$
+If $\mathcal{S}$ is not dependent under $\triangle$ then we say it is *independent under $\triangle$*.
 
-- $\mathcal S$ is *dependent under $\triangle$* if for some
-  distinct $X_1,\dots,X_k\in\mathcal S$,
-  $X_1\triangle\cdots\triangle X_k=\emptyset$; otherwise
-  *independent*.
+$\mathcal{S}$ is a *circuit under $\triangle$* if it is dependent under $\triangle$ and also minimal with respect
+to that property.
 
-- A *circuit* is a minimal dependent set; a *base* is a
-  maximal independent set.
+$\mathcal{S}$ is a *base under $\triangle$* if it is independent under $\triangle$ and also maximal with respect
+to that property.
 
-(a) Let $\mathcal S$ be linear under $\triangle$. Prove by induction on
-    $k$ that for all $X_1,\dots,X_k\in\mathcal S$,
-    $X_1\triangle\cdots\triangle X_k\in\mathcal S$.
+(Recall the precise usage of "minimal" and "maximal" from § 1.7.)
 
-(b) Prove that $\mathcal S$ is linear under $\triangle$ iff
-    $\mathcal S=\mathrm{span}(\mathcal S)$.
+(a) Let $\mathcal{S}$ be linear under $\triangle$. Prove, by induction on $k$, that for all $k$ and all
+$X_1, X_2, \ldots, X_k \in \mathcal{S}$,
+$$
+X_1 \triangle X_2 \triangle \cdots \triangle X_k \in \mathcal{S}.
+$$
 
-(c) Prove by induction on $k$ that for all $X_1,\dots,X_k\in\mathcal
-                  S$, either $X_1\triangle\cdots\triangle X_k=\emptyset$, or there
-    exist distinct $Y_1,\dots,Y_n\in\mathcal S$ with $n\le k$ and
-    $X_1\triangle\cdots\triangle X_k=Y_1\triangle\cdots\triangle Y_n$.
+(b) Prove that, for every set $\mathcal{S}$ of subsets of $E$, the set $\mathcal{S}$ is linear under $\triangle$ if and only
+if it equals its own span, i.e.,
+$$
+\mathcal{S} = \mathrm{span}(\mathcal{S}).
+$$
 
-(d) Prove that $\mathcal S$ is dependent iff there exists
-    $X\in\mathcal S$ with $X\in\mathrm{span}(\mathcal S\setminus\{X\})$.
+(c) Prove by induction on $k$, that for all $k$ and all $X_1, X_2, \ldots, X_k \in S$, either
+$$
+X_1 \triangle X_2 \triangle \cdots \triangle X_k = \emptyset,
+$$
+or there exist $Y_1, Y_2, \ldots, Y_n \in S$ with $n \le k$, such that $Y_i \neq Y_j$ for all $i \neq j$ and
+$$
+X_1 \triangle X_2 \triangle \cdots \triangle X_k = Y_1 \triangle Y_2 \triangle \cdots \triangle Y_n.
+$$
 
-(e) Prove that if $\mathcal S$ is minimal dependent, then for every
-    $X\in\mathcal S$, $X\in\mathrm{span}(\mathcal S\setminus\{X\})$.
+(d) Prove that $\mathcal{S}$ is dependent under $\triangle$ if and only if there exists $X \in \mathcal{S}$ such that
+$$
+X \in \mathrm{span}(\mathcal{S} \setminus \{X\}).
+$$
 
-(f) Prove that every minimal spanning set is independent.
+(e) Prove that if $\mathcal{S}$ is a minimal dependent set under $\triangle$, then for every $X \in \mathcal{S}$ we have
+$$
+X \in \mathrm{span}(\mathcal{S} \setminus \{X\}).
+$$
 
-(g) Prove that every minimal spanning set is a maximal independent set.
+(f) Prove that every minimal spanning set under $\triangle$ is independent under $\triangle$.
 
-(h) Prove that every maximal independent set is a spanning set.
+(g) Now prove that every minimal spanning set under $\triangle$ is a maximal independent
+set under $\triangle$.
 
-(i) Prove that every maximal independent set is a minimal spanning set.
+(h) Prove that every maximal independent set under $\triangle$ is also a spanning set under
+$\triangle$.
 
-(j) Prove that $\mathcal S$ is a minimal spanning set iff it is a
-    maximal independent set.
+(i) Now prove that every maximal independent set under $\triangle$ is also a minimal spanning
+set under $\triangle$.
 
-(k) Prove that if $\mathcal S$ is independent then
-    $|\mathrm{span}(\mathcal S)|=2^{|\mathcal S|}$.
+(j) Prove that $\mathcal{S}$ is a minimal spanning set under $\triangle$ if and only if it is a maximal
+independent set under $\triangle$.
 
-(l) Prove the independence augmentation property: if $\mathcal S$ and
-    $\mathcal T$ are independent and $|\mathcal T|=|\mathcal S|+1$,
-    then there exists $X\in\mathcal T\setminus\mathcal S$ such that
-    $\mathcal S\cup\{X\}$ is independent.
+(k) Prove that, if $\mathcal{S}$ is independent under $\triangle$ then
+$$
+|\mathrm{span}(\mathcal{S})| = 2^{|\mathcal{S}|}.
+$$
 
-(m) Prove that all bases have the same size.
+(l) Prove the *independence augmentation property*: if $\mathcal{S}$ and $\mathcal{T}$ are independent
+under $\triangle$ and $|\mathcal{T}| = |\mathcal{S}|+1$, then there exits $X \in \mathcal{T} \setminus \mathcal{S}$ such that $\mathcal{S} \cup \{X\}$ is independent
+under $\triangle$.
 
-(n) Do all minimal dependent sets have the same size? Prove your claim.
+(m) Prove that all bases under $\triangle$ have the same size.
 
-(o) Prove that for every base $\mathcal B$ of $\mathcal S$ and every
-    $X\in\mathcal S$, there is a unique way to write $X$ as a symmetric
-    difference of members of $\mathcal B$, each used at most once.
+(n) Do all minimal dependent sets under $\triangle$ have the same size? Give a proof of your
+claim.
 
-(p) For each of (a)–(o), state what type of proof you used.
+(o) Prove that, for every base $\mathcal{B}$ of $\mathcal{S}$ under $\triangle$, and every $X \in \mathcal{S}$, there is a unique way to
+write $X$ as a symmetric difference of members of $\mathcal{B}$, using each element of $\mathcal{B}$ at most once.
 
-(q) Design a simple algorithm: INPUT a collection $\mathcal S$ of
-    subsets of $E$ with nonnegative weights; OUTPUT an independent
-    $\mathcal X\subseteq\mathcal S$ of maximum total weight. Does it
-    always find the best solution? Justify using a previous exercise.
+(p) For each previous part of this question, (a)–(o), state what type of proof you have
+used.
+
+(q) Design a simple algorithm for the following problem.
+
+> INPUT: a collection $\mathcal{S}$ of subsets of $E$, together with a nonnegative real weight
+> for each member of $\mathcal{S}$.
+>
+> OUTPUT: a subset $\mathcal{X}$ of $\mathcal{S}$ that is independent under $\triangle$ such that the sum
+> of the weights of all members of $\mathcal{X}$ is maximum.
+
+Does this algorithm always finds the best possible solution? Justify your answer, using
+a previous exercise.
 :::
 
 ::: {.problem #prob-proofs-15 origin="external" source="fit1058-cn-3.15-q15"}

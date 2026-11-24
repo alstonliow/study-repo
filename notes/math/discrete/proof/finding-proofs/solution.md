@@ -239,41 +239,198 @@ exchange” technique (Steinitz exchange lemma) underlies both.
 :::
 :::
 
-::: {.solution for="prob-proofs-12"}
-**(a)**
+::: {.solution for="prob-proofs-12" status="draft"}
+<!-- Written by Claude in our own words, then checked against the FIT1058 sample solutions
+     (not copied). Differences: (b) adds the caveat S nonempty; (n) uses a different
+     counterexample (the sample's 4-set family has symmetric difference {1,4}, not empty);
+     (g), (h), (m) are proved directly rather than by contradiction. -->
+**Conventions.** Throughout we use that $\triangle$ is commutative and associative,
+$X \triangle X = \emptyset$ and $X \triangle \emptyset = X$; so a symmetric difference of
+several sets does not depend on order or bracketing, and two equal terms cancel.
+A dependence witness always has $k \ge 1$ (with $k = 0$ every family would be dependent).
+For (f)–(o) fix a family $\mathcal{S}$; "spanning", "independent", "minimal" and "maximal"
+refer to subfamilies $\mathcal{T} \subseteq \mathcal{S}$, and $\mathcal{T}$ is *spanning* if
+$\mathrm{span}(\mathcal{T}) = \mathrm{span}(\mathcal{S})$. Two facts used repeatedly:
 
-**(b)**
+- **(L)** $\mathcal{T} \subseteq \mathrm{span}(\mathcal{T})$, and $\mathrm{span}(\mathcal{T})$ is linear
+  under $\triangle$ (join the two lists of terms). Hence if $\mathcal{U} \subseteq \mathrm{span}(\mathcal{T})$,
+  then $\mathrm{span}(\mathcal{U}) \subseteq \mathrm{span}(\mathcal{T})$: each term of a member of
+  $\mathrm{span}(\mathcal{U})$ expands into members of $\mathcal{T}$. Also $\mathcal{U} \subseteq \mathcal{T}$
+  implies $\mathrm{span}(\mathcal{U}) \subseteq \mathrm{span}(\mathcal{T})$.
+- **(M)** If $\mathcal{U}$ is independent, $X \notin \mathcal{U}$ and $\mathcal{U} \cup \{X\}$ is dependent,
+  then $X \in \mathrm{span}(\mathcal{U})$. Indeed, take distinct $X_1, \ldots, X_k \in \mathcal{U} \cup \{X\}$
+  with $X_1 \triangle \cdots \triangle X_k = \emptyset$. If $X$ were not among them, $\mathcal{U}$ would be
+  dependent; so $X = X_j$ for some $j$, and taking $\triangle X_j$ of both sides gives $X$ as the
+  symmetric difference of the other $X_i$, all in $\mathcal{U}$.
 
-**(c)**
+**(a)** Induction on $k \ge 1$.
+
+1. Base case $k = 1$: $X_1 \in \mathcal{S}$.
+
+2. Inductive step: suppose the claim holds for $k$, and let $X_1, \ldots, X_{k+1} \in \mathcal{S}$.
+   Then $Z := X_1 \triangle \cdots \triangle X_k \in \mathcal{S}$ by the inductive hypothesis, so
+   $X_1 \triangle \cdots \triangle X_{k+1} = Z \triangle X_{k+1} \in \mathcal{S}$ by linearity.
+
+3. The case $k = 0$ gives $\emptyset$. If $\mathcal{S} \neq \emptyset$, pick $X \in \mathcal{S}$; then
+   $\emptyset = X \triangle X \in \mathcal{S}$. If $\mathcal{S} = \emptyset$ the case $k = 0$ fails, so the
+   claim holds for all $k$ exactly when $\mathcal{S} \neq \emptyset$.
+
+**(b)** This needs $\mathcal{S} \neq \emptyset$: the empty family is linear (vacuously), but
+$\mathrm{span}(\emptyset) = \{\emptyset\} \neq \emptyset$. Assume $\mathcal{S} \neq \emptyset$.
+
+1. ($\Rightarrow$) Every $X \in \mathcal{S}$ is a symmetric difference of one member, so
+   $\mathcal{S} \subseteq \mathrm{span}(\mathcal{S})$. Conversely every member of the span is in
+   $\mathcal{S}$ by (a), including the case $k = 0$ (step 3 of (a)).
+
+2. ($\Leftarrow$) If $X, Y \in \mathcal{S}$, then $X \triangle Y \in \mathrm{span}(\mathcal{S}) = \mathcal{S}$.
+
+**(c)** Induction on $k \ge 0$.
+
+1. Base case $k = 0$: the empty symmetric difference is $\emptyset$.
+
+2. Inductive step: let $Z := X_1 \triangle \cdots \triangle X_k$. By the inductive hypothesis $Z = \emptyset$,
+   or $Z = Y_1 \triangle \cdots \triangle Y_n$ with distinct $Y_i \in \mathcal{S}$ and $n \le k$.
+   Consider $Z \triangle X_{k+1}$.
+
+3. If $Z = \emptyset$, then $Z \triangle X_{k+1} = X_{k+1}$, one set, and $1 \le k+1$.
+
+4. If $X_{k+1} \notin \{Y_1, \ldots, Y_n\}$, then $Y_1, \ldots, Y_n, X_{k+1}$ are distinct, and $n + 1 \le k + 1$.
+
+5. If $X_{k+1} = Y_j$, the two copies cancel, leaving the symmetric difference of the $n - 1$
+   distinct sets $Y_i$, $i \ne j$. This is $\emptyset$ if $n = 1$; otherwise $n - 1 \le k + 1$.
 
 **(d)**
 
+1. ($\Rightarrow$) Take distinct $X_1, \ldots, X_k \in \mathcal{S}$, $k \ge 1$, with
+   $X_1 \triangle \cdots \triangle X_k = \emptyset$, and let $X := X_1$. Taking $\triangle X_1$ of both sides gives
+   $X = X_2 \triangle \cdots \triangle X_k$. By distinctness $X_2, \ldots, X_k \in \mathcal{S} \setminus \{X\}$,
+   so $X \in \mathrm{span}(\mathcal{S} \setminus \{X\})$ (for $k = 1$ this says $X = \emptyset$, the empty
+   symmetric difference).
+
+2. ($\Leftarrow$) Suppose $X \in \mathrm{span}(\mathcal{S} \setminus \{X\})$. Apply (c) to the family
+   $\mathcal{S} \setminus \{X\}$. Either $X = \emptyset$, and then the single set $X_1 := X$ witnesses
+   dependence; or $X = Y_1 \triangle \cdots \triangle Y_n$ with distinct $Y_i \in \mathcal{S} \setminus \{X\}$, and then
+   $X, Y_1, \ldots, Y_n$ are distinct members of $\mathcal{S}$ with $X \triangle Y_1 \triangle \cdots \triangle Y_n = \emptyset$.
+
 **(e)**
 
-**(f)**
+1. Since $\mathcal{S}$ is dependent, there are distinct $X_1, \ldots, X_k \in \mathcal{S}$ with
+   $X_1 \triangle \cdots \triangle X_k = \emptyset$. The subfamily $\{X_1, \ldots, X_k\}$ is then dependent, so by
+   minimality it is all of $\mathcal{S}$.
 
-**(g)**
+2. Let $X \in \mathcal{S}$; then $X = X_j$ for some $j$, and as in (d) $X$ is the symmetric difference of the
+   other $X_i$, which all lie in $\mathcal{S} \setminus \{X\}$.
 
-**(h)**
+**(f)** Let $\mathcal{T}$ be a minimal spanning subfamily, and suppose for contradiction that it is dependent.
 
-**(i)**
+1. By (d) there is $X \in \mathcal{T}$ with $X \in \mathrm{span}(\mathcal{T} \setminus \{X\})$.
 
-**(j)**
+2. Then $\mathcal{T} \subseteq \mathrm{span}(\mathcal{T} \setminus \{X\})$, so by (L)
+   $\mathrm{span}(\mathcal{T}) \subseteq \mathrm{span}(\mathcal{T} \setminus \{X\}) \subseteq \mathrm{span}(\mathcal{T})$.
 
-**(k)**
+3. So $\mathcal{T} \setminus \{X\}$ is spanning, contradicting the minimality of $\mathcal{T}$.
 
-**(l)**
+**(g)** Let $\mathcal{T}$ be a minimal spanning subfamily. It is independent by (f).
 
-**(m)**
+1. Let $X \in \mathcal{S} \setminus \mathcal{T}$. Then
+   $X \in \mathrm{span}(\mathcal{S}) = \mathrm{span}(\mathcal{T}) = \mathrm{span}((\mathcal{T} \cup \{X\}) \setminus \{X\})$,
+   so $\mathcal{T} \cup \{X\}$ is dependent by (d).
 
-**(n)**
+2. Any subfamily of $\mathcal{S}$ properly containing $\mathcal{T}$ contains such a $\mathcal{T} \cup \{X\}$, and a
+   family containing a dependent family is dependent (the same witness works). So $\mathcal{T}$ is maximal independent.
 
-**(o)**
+**(h)** Let $\mathcal{T}$ be a maximal independent subfamily.
 
-**Algorithm & justification**
+1. Let $X \in \mathcal{S}$. If $X \in \mathcal{T}$ then $X \in \mathrm{span}(\mathcal{T})$. Otherwise
+   $\mathcal{T} \cup \{X\}$ is dependent by maximality, so $X \in \mathrm{span}(\mathcal{T})$ by (M).
+
+2. Hence $\mathcal{S} \subseteq \mathrm{span}(\mathcal{T})$, so $\mathrm{span}(\mathcal{S}) \subseteq \mathrm{span}(\mathcal{T})$ by (L);
+   the reverse inclusion holds since $\mathcal{T} \subseteq \mathcal{S}$. So $\mathcal{T}$ is spanning.
+
+**(i)** Let $\mathcal{T}$ be a maximal independent subfamily. It is spanning by (h). Suppose for
+contradiction that some $\mathcal{T}' \subsetneq \mathcal{T}$ is spanning, and pick $X \in \mathcal{T} \setminus \mathcal{T}'$.
+
+1. $X \in \mathrm{span}(\mathcal{S}) = \mathrm{span}(\mathcal{T}') \subseteq \mathrm{span}(\mathcal{T} \setminus \{X\})$ by (L).
+
+2. By (d), $\mathcal{T}$ is dependent, a contradiction. So $\mathcal{T}$ is a minimal spanning subfamily.
+
+**(j)** ($\Rightarrow$) is (g) and ($\Leftarrow$) is (i).
+
+**(k)** Let $n := |\mathcal{S}|$. For $\mathcal{U} \subseteq \mathcal{S}$ let $\varphi(\mathcal{U})$ be the symmetric
+difference of all members of $\mathcal{U}$ (with $\varphi(\emptyset) = \emptyset$). We show that
+$\varphi : \mathcal{P}(\mathcal{S}) \to \mathrm{span}(\mathcal{S})$ is a bijection; then
+$|\mathrm{span}(\mathcal{S})| = |\mathcal{P}(\mathcal{S})| = 2^n$.
+
+1. Surjective: a member of the span is $X_1 \triangle \cdots \triangle X_k$; by (c) it is $\emptyset = \varphi(\emptyset)$
+   or $Y_1 \triangle \cdots \triangle Y_m = \varphi(\{Y_1, \ldots, Y_m\})$ with the $Y_i$ distinct.
+
+2. Injective: members in both $\mathcal{U}$ and $\mathcal{V}$ cancel in pairs, so
+   $\varphi(\mathcal{U}) \triangle \varphi(\mathcal{V}) = \varphi(\mathcal{U} \triangle \mathcal{V})$. If
+   $\varphi(\mathcal{U}) = \varphi(\mathcal{V})$ and $\mathcal{U} \neq \mathcal{V}$, then the members of the nonempty
+   family $\mathcal{U} \triangle \mathcal{V} \subseteq \mathcal{S}$ are distinct with symmetric difference
+   $\emptyset$, so $\mathcal{S}$ is dependent, a contradiction.
+
+**(l)** Suppose for contradiction that $\mathcal{S} \cup \{X\}$ is dependent for every $X \in \mathcal{T} \setminus \mathcal{S}$.
+
+1. By (M), every $X \in \mathcal{T} \setminus \mathcal{S}$ lies in $\mathrm{span}(\mathcal{S})$; so does every
+   $X \in \mathcal{T} \cap \mathcal{S}$. Hence $\mathcal{T} \subseteq \mathrm{span}(\mathcal{S})$, and
+   $\mathrm{span}(\mathcal{T}) \subseteq \mathrm{span}(\mathcal{S})$ by (L).
+
+2. By (k), $2^{|\mathcal{S}| + 1} = |\mathrm{span}(\mathcal{T})| \le |\mathrm{span}(\mathcal{S})| = 2^{|\mathcal{S}|}$,
+   a contradiction.
+
+**(m)** Let $\mathcal{B}_1, \mathcal{B}_2$ be bases (maximal independent subfamilies) of $\mathcal{S}$.
+
+1. By (h) both are spanning, so $\mathrm{span}(\mathcal{B}_1) = \mathrm{span}(\mathcal{S}) = \mathrm{span}(\mathcal{B}_2)$.
+
+2. By (k), $2^{|\mathcal{B}_1|} = 2^{|\mathcal{B}_2|}$, so $|\mathcal{B}_1| = |\mathcal{B}_2|$.
+
+(Alternatively: if $|\mathcal{B}_1| < |\mathcal{B}_2|$, apply (l) to $\mathcal{B}_1$ and $|\mathcal{B}_1| + 1$ members of
+$\mathcal{B}_2$ to contradict the maximality of $\mathcal{B}_1$.)
+
+**(n)** No. Let $E = \{1, 2\}$ and $\mathcal{S} = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$.
+
+1. $\{\emptyset\}$ is dependent ($k = 1$, $X_1 = \emptyset$), and its only proper subfamily, the empty family,
+   is independent. So it is a minimal dependent subfamily of size $1$.
+
+2. $\{\{1\}, \{2\}, \{1, 2\}\}$ is dependent, since $\{1\} \triangle \{2\} \triangle \{1, 2\} = \emptyset$. Its proper
+   subfamilies are independent: each single member is nonempty, and two distinct sets have nonempty
+   symmetric difference. So it is a minimal dependent subfamily of size $3$.
+
+**(o)** Let $\mathcal{B}$ be a base of $\mathcal{S}$ and $X \in \mathcal{S}$. With $\varphi$ as in (k), a way of
+writing $X$ using each member of $\mathcal{B}$ at most once is a subfamily $\mathcal{U} \subseteq \mathcal{B}$ with
+$\varphi(\mathcal{U}) = X$.
+
+1. Existence: $X \in \mathrm{span}(\mathcal{S}) = \mathrm{span}(\mathcal{B})$ by (h), and $\varphi$ maps onto
+   $\mathrm{span}(\mathcal{B})$ by (k).
+
+2. Uniqueness: $\mathcal{B}$ is independent, so $\varphi$ is injective on $\mathcal{P}(\mathcal{B})$ by (k).
+
+**(p)** (a) induction; (b) direct proof of both directions; (c) induction with proof by cases;
+(d) direct proof of both directions, by construction; (e) direct proof; (f) contradiction;
+(g) direct proof; (h) direct proof by cases; (i) contradiction; (j) combining two earlier results;
+(k) bijective proof (construction, with injectivity by contradiction); (l) contradiction;
+(m) direct proof (the alternative is by contradiction); (n) counterexample; (o) existence and uniqueness.
+
+**(q)** Greedy algorithm.
+
+1. Sort the members of $\mathcal{S}$ by weight, largest first, and start with $\mathcal{X} := \emptyset$.
+
+2. For each $X$ in this order, add $X$ to $\mathcal{X}$ if $\mathcal{X} \cup \{X\}$ is still independent.
+   By (d) and (M) this holds exactly when $X \notin \mathrm{span}(\mathcal{X})$, which can be tested by
+   Gaussian elimination over $\{0, 1\}$ on the characteristic vectors of the sets.
+
+3. Output $\mathcal{X}$.
+
+It always finds a best solution. Take the ground set to be $\mathcal{S}$ and the independent subfamilies
+of $\mathcal{S}$ as $\mathcal{I}$ in @prob-proofs-05. Then (I1) holds since the empty family is independent;
+(I2) holds since a subfamily of an independent family is independent (a witness in the subfamily
+would be one in the family); and (I3) follows from (l), applied to $\mathcal{X}$ and any $|\mathcal{X}| + 1$
+members of $\mathcal{Y}$ when $|\mathcal{X}| < |\mathcal{Y}|$. This greedy algorithm is the one in
+@prob-proofs-05, so by its part (f) it finds an independent subfamily of maximum weight.
 :::
 
-::: {.solution for="prob-proofs-04" status="draft"}
+::: {.solution for="prob-proofs-04"}
 <!-- TODO: as in Exercise 3, this refers to the proofs in these notes rather
      than the Course Notes' numbering. Owner to check. -->
 (a) **Construction.** The ($\Leftarrow$) direction of @thm-inverse-functions-1
@@ -298,7 +455,7 @@ parts (a) and (b) of the proof of @thm-equivalence-relations-1 prove two
 statements that must *both* hold, not alternatives.
 :::
 
-::: {.solution for="prob-proofs-15" status="draft"}
+::: {.solution for="prob-proofs-15"}
 We show that $G\circ G$ is not embeddable in $G$ (definitions as in Exercise
 2.15), so $G\circ G\not\equiv G$.
 
