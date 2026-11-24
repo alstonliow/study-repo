@@ -14,6 +14,8 @@ exclude:
   # Other courses' problems in notes this course covers whole (scope_excludes.py, 2026-11-22).
   - prob-ee364ahw-4-q2
   - prob-mit1801f06-3-q5
+  # MIT 18.03SC problem added to one-step-methods (scope_excludes.py, 2026-11-24).
+  - prob-mit1803ps-3-q1
 
 chapters:
 - num: 1

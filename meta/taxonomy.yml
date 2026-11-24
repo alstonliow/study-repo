@@ -413,6 +413,60 @@ parts:
         notes:   # topic order on the website
           - calculus-of-variations
           - derivatives-of-random-functions
+  - title: Differential Equations
+    field: Mathematics
+    branches:
+      - id: math/differential-equations/first-order
+        title: First-Order Equations
+        desc: Modelling with ODEs, direction fields and existence, first-order linear equations and integrating factors, autonomous equations and stability
+        notes:   # topic order on the website
+          - modeling-with-odes
+          - direction-fields
+          - first-order-linear-equations
+          - autonomous-equations
+      - id: math/differential-equations/complex-and-sinusoids
+        title: Complex Numbers and Sinusoids
+        desc: Complex arithmetic and the complex exponential, sinusoidal functions, complex replacement for first-order equations
+        notes:   # topic order on the website
+          - complex-numbers
+          - sinusoidal-functions
+          - complex-replacement
+      - id: math/differential-equations/second-order-linear
+        title: Second-Order Linear Equations
+        desc: Characteristic equation and modes, damping, the exponential response formula and p(D), undetermined coefficients, resonance, frequency response and RLC circuits
+        notes:   # topic order on the website
+          - second-order-linear-equations
+          - damped-oscillators
+          - exponential-response-formula
+          - undetermined-coefficients
+          - resonance
+          - frequency-response
+      - id: math/differential-equations/fourier-and-laplace
+        title: Fourier Series and Laplace Transform
+        desc: Fourier series and periodic input, step and delta functions, impulse response and convolution, the Laplace transform, transfer functions and poles
+        notes:   # topic order on the website
+          - fourier-series-computation
+          - periodic-input
+          - step-and-delta-functions
+          - impulse-response-and-convolution
+          - laplace-transform
+          - inverse-laplace-and-ivps
+          - transfer-functions-and-poles
+      - id: math/differential-equations/linear-systems
+        title: Linear Systems
+        desc: First-order systems and the companion matrix, the eigenvalue method, phase portraits and the trace-determinant plane, fundamental matrices and variation of parameters
+        notes:   # topic order on the website
+          - first-order-systems
+          - eigenvalue-method
+          - linear-phase-portraits
+          - fundamental-matrices
+      - id: math/differential-equations/nonlinear-systems
+        title: Nonlinear Systems
+        desc: Autonomous systems in the phase plane, linearization and structural stability, limit cycles and chaos
+        notes:   # topic order on the website
+          - autonomous-systems
+          - linearization
+          - limit-cycles-and-chaos
   - title: Real Analysis
     field: Mathematics
     branches:
