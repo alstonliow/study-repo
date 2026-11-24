@@ -2,6 +2,8 @@
 title: "Least Squares Approximation"
 sources: [mit1806-16]
 requires: [math/linear-algebra/orthogonality/projections]
+relations:
+  related: [math/calculus/multivariable/differentiation/least-squares-fitting]
 status: draft
 ---
 

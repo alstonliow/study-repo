@@ -61,7 +61,7 @@ chapters:
         covers: [cs/data-structures/amortized-analysis]
       - id: "5.2"
         title: "2-3 trees and B-trees"
-        covers: [cs/data-structures/two-three-trees]
+        covers: [cs/data-structures/two-three-trees, def-b-tree]
       - id: "5.3"
         title: "Union-find"
         covers: [cs/data-structures/union-find]

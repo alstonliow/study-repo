@@ -89,7 +89,7 @@ provided this $\Sigma$ is invertible: the class frequency, the class means and t
    g(P)=\frac N2\log\det P-\frac12\operatorname{tr}(PS).
    $$
 
-5. By @prp-matrix-gradient-rules, $\nabla_Pg=\tfrac N2P^{-1}-\tfrac12S$ (both $P$ and $S$ are symmetric). This vanishes when $P^{-1}=S/N$, that is, $\Sigma=S/N$.
+5. By @cor-log-det-differential and @prp-matrix-gradient-rules, $\nabla_Pg=\tfrac N2P^{-1}-\tfrac12S$ (both $P$ and $S$ are symmetric). This vanishes when $P^{-1}=S/N$, that is, $\Sigma=S/N$.
 
 6. $g$ is concave on positive definite $P$: $\log\det$ is concave (@exm-log-det-concave) and $\operatorname{tr}(PS)$ is linear. A stationary point of a concave function is a maximum, which completes the proof.
 

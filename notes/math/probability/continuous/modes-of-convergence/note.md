@@ -2,6 +2,8 @@
 title: "Modes of Convergence"
 sources: [eecs126-2, mit18650-1]
 requires: [math/probability/continuous/central-limit-theorem]
+relations:
+  related: [math/analysis/measure-theory/convergence-in-measure]
 status: draft
 ---
 

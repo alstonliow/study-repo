@@ -2,6 +2,8 @@
 title: "Linear Programming"
 sources: [mit6046-15]
 requires: [cs/algorithm-design/randomized-algorithms, cs/graph-algorithms/maximum-flow]
+relations:
+  related: [math/optimization/convex-problems/linear-and-quadratic-programs]
 status: draft
 ---
 

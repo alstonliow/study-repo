@@ -1,13 +1,19 @@
 ---
 title: "B-Trees"
-sources: [res-clrs-b-trees]
+sources: [mit6046r-2, res-clrs-b-trees]
 requires: [cs/data-structures/two-three-trees]
 status: draft
 ---
 
-<!-- Added 2026-11-23 from CLRS (3rd edition), Chapter 18, in our own wording; proofs written out in steps. The definition is @def-b-tree (in 2-3 trees), whose parameter B is CLRS's minimum degree t; this note adds the height bound, the disk-access view and the one-pass updates. The example trees are our own. -->
+<!-- Added 2026-11-23 from CLRS (3rd edition), Chapter 18, in our own wording; proofs written out in steps. Merged 2026-11-24 (owner): the definition def-b-tree comes from MIT 6.046 Recitation 2 and was moved here from cs/data-structures/two-three-trees; its parameter B is CLRS's minimum degree t. The rest of the note, from CLRS, adds the height bound, the disk-access view and the one-pass updates. The example trees are our own. -->
 
-A B-tree (@def-b-tree) is a 2-3 tree with wide nodes: every node other than the root has between $B$ and $2B$ children. B-trees are made for data on disk or in any memory that moves whole blocks at a time. One node fills one block, $B$ is in the hundreds, and the tree is so shallow that a search reads only a handful of blocks.
+A B-tree is a 2-3 tree (@def-two-three-tree) with wide nodes: every node other than the root has between $B$ and $2B$ children. B-trees are made for data on disk or in any memory that moves whole blocks at a time. One node fills one block, $B$ is in the hundreds, and the tree is so shallow that a search reads only a handful of blocks.
+
+::: {#def-b-tree .definition name="B-tree"}
+
+A *B-tree* with branching parameter $B\ge2$ generalises 2-3 trees: every internal node other than the root has between $B$ and $2B$ children (and one key fewer than children), the root has between $2$ and $2B$ children, and all leaves are at the same depth. Insertion splits overfull nodes and deletion borrows or merges, as in 2-3 trees (@prp-two-three-insert).
+
+:::
 
 ## Shape and height
 

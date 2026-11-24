@@ -240,7 +240,7 @@ chapters:
     points:
       - id: "30.1"
         title: "Linear transformations"
-        covers: [math/linear-algebra/positive-definite/linear-transformations, thm-linear-map-from-basis, def-matrix-of-linear-map]
+        covers: [math/linear-algebra/positive-definite/linear-transformations, thm-linear-map-from-basis, def-matrix-of-linear-map, thm-matrix-of-linear-map, exm-matrix-of-differentiation]
   - num: 31
     title: "Change of basis"
     points:

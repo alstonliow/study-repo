@@ -1,11 +1,11 @@
 ---
-title: "2-3 Trees and B-Trees"
+title: "2-3 Trees"
 sources: [mit6046r-2]
 requires: [cs/data-structures/avl-trees]
 status: draft
 ---
 
-<!-- Added 2026-11-17 from MIT 6.046 (Spring 2015), Recitation 2, in our own wording; proofs written out in steps. -->
+<!-- Added 2026-11-17 from MIT 6.046 (Spring 2015), Recitation 2, in our own wording; proofs written out in steps. Merged 2026-11-24 (owner): the definition of a B-tree (def-b-tree) moved to cs/data-structures/b-trees. -->
 
 AVL trees stay balanced by rotations. Another way is to let a node hold more than one key, so that all leaves can be kept at exactly the same depth.
 
@@ -105,10 +105,4 @@ Inserting $35$ overfills a leaf ($25,30,35$). It splits and sends $30$ up; now t
 
 Deletion is the reverse. Swap a key in an internal node with its successor (which is in a leaf) and remove it from the leaf. If a node becomes empty, *borrow* a key through the parent from a neighbouring sibling that has two keys, or else *merge* with a sibling by pulling a key down from the parent, and repeat upwards. This also takes $O(\log n)$ time.
 
-::: {#def-b-tree .definition name="B-tree"}
-
-A *B-tree* with branching parameter $B\ge2$ generalises 2-3 trees: every internal node other than the root has between $B$ and $2B$ children (and one key fewer than children), the root has between $2$ and $2B$ children, and all leaves are at the same depth. Insertion splits overfull nodes and deletion borrows or merges, as above.
-
-:::
-
-A B-tree has height $\Theta(\log_Bn)$. If a node fits in one block of memory, a search reads only $O(\log_Bn)$ blocks instead of $O(\log_2n)$, which is why B-trees are used for databases and file systems (see @sec-cs-models-of-computation-cache-oblivious-algorithms).
+Allowing nodes with many keys gives B-trees (@sec-cs-data-structures-b-trees), the version used for data on disk.

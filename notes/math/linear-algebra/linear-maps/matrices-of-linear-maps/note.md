@@ -7,6 +7,8 @@ status: draft
 
 <!-- Added 2026-11-20 from Cambridge Part IB Linear Algebra (Michaelmas 2015 lecture notes), Section 2.2, in our own wording; examples ours (checked with sympy); proofs written out in steps. MIT 18.06 defines the matrix of a transformation (def-matrix-of-linear-transformation) and states that it computes the map; the versions here prove that composition is matrix multiplication and that L(U,V) is isomorphic to a matrix space. Merge proposed to the owner. -->
 
+<!-- Merged 2026-11-24 (owner): thm-matrix-represents-transformation (18.06 L30) merged into thm-matrix-of-linear-map (items 1 and 3); exm-matrix-of-derivative (18.06 L30) merged into exm-matrix-of-differentiation, from which the nullspace and image remark comes. -->
+
 <!-- Merged 2026-11-20 (owner): def-matrix-of-linear-transformation (18.06 L30) merged into def-matrix-of-linear-map (same definition). -->
 
 Once bases are chosen, a linear map between finite-dimensional spaces is the same thing as a matrix. Let $U$ have basis $\mathcal B=(e_1,\dots,e_m)$ and $V$ basis $\mathcal C=(f_1,\dots,f_n)$; write $[u]_{\mathcal B}\in F^m$ for the coordinate column of $u$.
@@ -112,7 +114,7 @@ Item 3 is the reason matrix multiplication is defined the way it is (@def-matrix
 
 Let $U=F[t]_{\le3}$ with basis $\mathcal B=(1,t,t^2,t^3)$ and $V=F[t]_{\le2}$ with basis $\mathcal C=(1,t,t^2)$. Differentiation $D:U\to V$ sends $1,t,t^2,t^3$ to $0,1,2t,3t^2$, so
 $$[D]_{\mathcal B,\mathcal C}=\begin{bmatrix}0&1&0&0\\0&0&2&0\\0&0&0&3\end{bmatrix}.$$
-For $p=1+t+t^2+t^3$, $[p]_{\mathcal B}=(1,1,1,1)^{\mathsf T}$ and $[D]\,[p]_{\mathcal B}=(1,2,3)^{\mathsf T}$, the coordinates of $p'=1+2t+3t^2$. Over a field where $3=0$, such as $\mathbb F_3$, the same matrix has a zero last column, and $D(t^3)=0$.
+For $p=1+t+t^2+t^3$, $[p]_{\mathcal B}=(1,1,1,1)^{\mathsf T}$ and $[D]\,[p]_{\mathcal B}=(1,2,3)^{\mathsf T}$, the coordinates of $p'=1+2t+3t^2$. The nullspace of $D$ is the constants and its image is all of $V$, matching the calculus. Over a field where $3=0$, such as $\mathbb F_3$, the same matrix has a zero last column, and $D(t^3)=0$.
 
 :::
 

@@ -1,11 +1,13 @@
 ---
 title: "Numerical Gradients and Gradient Checking"
 sources: [cs231n-3, cs231n-7]
-requires: [ai/deep-learning/backpropagation]
+requires: [ai/deep-learning/backpropagation, math/calculus/matrix/computing-derivatives/finite-difference-checks]
+relations:
+  related: [math/calculus/matrix/computing-derivatives/finite-difference-checks]
 status: draft
 ---
 
-<!-- Added 2026-11-21 from Stanford CS231n course notes (Optimization: numerical and analytic gradients; Neural networks part 3: gradient checks), in our own wording; the error theorem is proved by Taylor expansion as our own proof; the example was computed in Python. -->
+<!-- Added 2026-11-21 from Stanford CS231n course notes (Optimization: numerical and analytic gradients; Neural networks part 3: gradient checks), in our own wording; the example was computed in Python. The error theorem was merged 2026-11-24 (owner) into @thm-finite-difference-error in @sec-math-calculus-matrix-computing-derivatives-finite-difference-checks, which keeps its id. -->
 
 Backpropagation (@def-backpropagation) computes exact gradients fast, but its code is easy to get wrong. Finite differences compute gradients slowly from loss values alone, so comparing the two catches most bugs. The exercise @prob-backpropagation-gradient-check-code implements the numerical side.
 
@@ -44,23 +46,7 @@ The centred difference is the slope of the secant through $t\pm h$ (dashed); it 
 
 :::
 
-::: {#thm-finite-difference-error .theorem name="Error of finite differences"}
-
-Let $g(t)=f(\boldsymbol\theta+t\mathbf{e}_i)$ be three times continuously differentiable near $0$. Then, as $h\to0$,
-
-$$
-\frac{g(h)-g(0)}{h}=g'(0)+O(h),\qquad \frac{g(h)-g(-h)}{2h}=g'(0)+O(h^2).
-$$
-
-:::
-
-::: {.proof}
-
-1. By Taylor's theorem, $g(\pm h)=g(0)\pm hg'(0)+\tfrac{h^2}{2}g''(0)\pm\tfrac{h^3}{6}g'''(\xi_\pm)$ for some $\xi_\pm$ between $0$ and $\pm h$.
-2. Forward difference: $\dfrac{g(h)-g(0)}{h}=g'(0)+\tfrac h2g''(0)+\tfrac{h^2}{6}g'''(\xi_+)$, so the error is $O(h)$, with leading term $\tfrac h2g''(0)$.
-3. Centred difference: in $g(h)-g(-h)$ the even terms cancel, leaving $2hg'(0)+\tfrac{h^3}{6}\bigl(g'''(\xi_+)+g'''(\xi_-)\bigr)$. Dividing by $2h$ gives $g'(0)+O(h^2)$, since $g'''$ is bounded near $0$.
-
-:::
+The forward difference has error $O(h)$ and the centred difference error $O(h^2)$ (@thm-finite-difference-error, proved there for any direction and any normed output space).
 
 ::: {#exm-finite-difference-cube .example name="The derivative of a cube"}
 

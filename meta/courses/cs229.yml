@@ -95,7 +95,7 @@ chapters:
     covers: [ai/machine-learning/linear-regression, ai/machine-learning/gradient-descent]
   - id: '1.2'
     title: Matrix derivatives
-    covers: [math/linear-algebra/matrix-methods/matrix-derivatives]
+    covers: [math/linear-algebra/matrix-methods/matrix-derivatives, cor-log-det-differential]
   - id: '1.3'
     title: Normal equations
     covers: [math/linear-algebra/orthogonality/least-squares]

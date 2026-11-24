@@ -2,6 +2,8 @@
 title: "External Memory and Cache-Oblivious Algorithms"
 sources: [mit6046-23, mit6046-24]
 requires: [cs/data-structures/two-three-trees, cs/algorithm-design/divide-and-conquer]
+relations:
+  related: [math/numerical/direct-solvers/caches-and-blocking]
 status: draft
 ---
 

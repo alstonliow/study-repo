@@ -2,6 +2,8 @@
 title: "Gradient Descent"
 sources: [cs221-2, cs221-3]
 requires: [ai/machine-learning/linear-regression]
+relations:
+  related: [math/optimization/algorithms/descent-methods]
 status: draft
 ---
 

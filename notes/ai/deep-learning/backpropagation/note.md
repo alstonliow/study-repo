@@ -2,6 +2,8 @@
 title: "Computation Graphs and Backpropagation"
 sources: [cs221-4, cs231n-4]
 requires: [ai/deep-learning/einsum, ai/machine-learning/gradient-descent, cs/graph-algorithms/depth-first-search]
+relations:
+  related: [math/calculus/matrix/computing-derivatives/reverse-mode-automatic-differentiation]
 status: draft
 ---
 

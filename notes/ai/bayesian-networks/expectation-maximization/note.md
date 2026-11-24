@@ -2,6 +2,8 @@
 title: "Expectation Maximization"
 sources: [cs221-18]
 requires: [ai/bayesian-networks/parameter-learning]
+relations:
+  related: [ai/unsupervised-learning/em-algorithm]
 status: draft
 ---
 

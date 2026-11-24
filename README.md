@@ -18,13 +18,14 @@ Generated from the notes by `make readme`:
 |---|---|--:|--:|--:|--:|
 | Mathematics | Discrete Mathematics | 11 | 95 | 272 | 81 |
 |  | Single Variable Calculus | 7 | 36 | 214 | 7 |
-|  | Linear Algebra | 13 | 66 | 226 | 263 |
+|  | Linear Algebra | 13 | 66 | 226 | 262 |
 |  | Multivariable Calculus | 5 | 30 | 198 | 90 |
+|  | Matrix Calculus | 3 | 12 | 7 | 23 |
 |  | Real Analysis | 12 | 55 | 113 | 138 |
 |  | Probability | 8 | 51 | 245 | 130 |
 |  | Statistics | 4 | 28 | 85 | 20 |
-|  | Convex Optimization | 6 | 40 | 16 | 116 |
-|  | Numerical Analysis | 7 | 31 | 8 | 58 |
+|  | Convex Optimization | 6 | 40 | 17 | 116 |
+|  | Numerical Analysis | 7 | 32 | 8 | 60 |
 | Computer Science | Algorithms | 6 | 45 | 75 | 109 |
 |  | Theory of Computation | 2 | 34 | 55 | 61 |
 |  | Cryptography | 1 | 2 | 0 | 1 |
@@ -34,9 +35,9 @@ Generated from the notes by `make readme`:
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
 |  | Reinforcement Learning and Games | 2 | 20 | 22 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **103** | **663** | **1639** | **1398** |
+| **Total** | | **106** | **676** | **1647** | **1422** |
 
-25 courses are mapped onto the topic tree:
+26 courses are mapped onto the topic tree:
 
 | Course | Title | Institution |
 |---|---|---|
@@ -53,6 +54,7 @@ Generated from the notes by `make readme`:
 | MIT 18.335J | Introduction to Numerical Methods | MIT |
 | MIT 18.404J | Theory of Computation | MIT |
 | MIT 18.650 | Statistics for Applications | MIT |
+| MIT 18.S096 | Matrix Calculus for Machine Learning and Beyond | MIT |
 | Monash FIT1058 | Foundations of Computing | Monash University |
 | Stanford CS221 | Artificial Intelligence: Principles and Techniques | Stanford University |
 | Stanford CS229 | Machine Learning | Stanford University |

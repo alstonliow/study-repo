@@ -2,6 +2,8 @@
 title: "Linear Regression"
 sources: [cs221-2]
 requires: [ai/machine-learning/supervised-learning, math/calculus/multivariable/differentiation/gradient]
+relations:
+  related: [math/statistics/frequentist/multiple-linear-regression]
 status: draft
 ---
 

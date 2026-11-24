@@ -84,7 +84,7 @@ The term of $\ell$ for one example has gradient $\bigl(\mathbf 1-2g(W\mathbf{x})
 
 2. The term $\log g'(\mathbf{w}_j^{\mathsf T}\mathbf{x})$ depends only on row $j$ of $W$, with gradient $\bigl(1-2g(\mathbf{w}_j^{\mathsf T}\mathbf{x})\bigr)\mathbf{x}^{\mathsf T}$ in that row. Stacking the rows gives $\bigl(\mathbf 1-2g(W\mathbf{x})\bigr)\mathbf{x}^{\mathsf T}$.
 
-3. For $\log\lvert\det W\rvert$, let $\epsilon\in\{\pm1\}$ be the sign of $\det W$; near $W$ the function equals $\log(\epsilon\det W)$. As in part 3 of @prp-matrix-gradient-rules, $\partial\det W/\partial W_{ij}$ is the cofactor $C_{ij}$, so the partial derivative is $\epsilon C_{ij}/(\epsilon\det W)=C_{ij}/\det W=(W^{-1})_{ji}$. The gradient is $(W^{-1})^{\mathsf T}=(W^{\mathsf T})^{-1}$.
+3. For $\log\lvert\det W\rvert$, the gradient is $(W^{-1})^{\mathsf T}=(W^{\mathsf T})^{-1}$ by @cor-log-det-differential.
 
 :::
 

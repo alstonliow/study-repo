@@ -2,6 +2,8 @@
 title: "Markov Matrices"
 sources: [mit1806-24]
 requires: [math/linear-algebra/eigenvalues/diagonalization]
+relations:
+  related: [math/probability/markov-chains/finite-markov-chains]
 status: draft
 ---
 

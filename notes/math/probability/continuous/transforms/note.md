@@ -2,6 +2,8 @@
 title: "Moment Generating and Characteristic Functions"
 sources: [eecs126hw-6, eecs126d-6]
 requires: [math/probability/continuous/normal-distribution, math/probability/continuous/joint-distributions]
+relations:
+  related: [math/probability/measure-theoretic/weak-convergence]
 status: draft
 ---
 

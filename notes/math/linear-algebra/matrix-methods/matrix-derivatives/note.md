@@ -1,11 +1,13 @@
 ---
 title: "Matrix Derivatives"
 sources: [cs229-1]
-requires: [math/linear-algebra/determinants/determinant-formulas]
+requires: [math/linear-algebra/vector-spaces/matrix-spaces-and-rank-one]
+relations:
+  related: [math/calculus/matrix/derivatives/linear-operator-derivatives]
 status: draft
 ---
 
-<!-- Added 2026-11-21 from Stanford CS229 lecture notes (version of 23 August 2026), Chapter 1 (matrix derivatives, normal equations) and Chapter 4 (gradient of the log determinant, used for Gaussian maximum likelihood), in our own wording; proofs written out in steps. -->
+<!-- Added 2026-11-21 from Stanford CS229 lecture notes (version of 23 August 2026), Chapter 1 (matrix derivatives, normal equations) and Chapter 4 (gradient of the log determinant, used for Gaussian maximum likelihood), in our own wording; proofs written out in steps. Merged 2026-11-24 (owner): the log-determinant part (former part 3 of @prp-matrix-gradient-rules, proved by cofactors) now lives in @cor-log-det-differential, which keeps the 18.S096 id; its cofactor proof is step 1 of @thm-jacobi-formula. -->
 
 Many learning objectives are scalar functions of a vector or a matrix of parameters. Arranging the partial derivatives in the shape of the argument gives compact rules that turn "set the gradient to zero" into a matrix equation.
 
@@ -91,7 +93,7 @@ The gradient with respect to a matrix has the shape of the matrix: entry $(i,j)$
 
 :::
 
-::: {#prp-matrix-gradient-rules .proposition name="Gradients of traces, quadratic forms and log determinants"}
+::: {#prp-matrix-gradient-rules .proposition name="Gradients of traces and quadratic forms"}
 
 1. For $A\in\mathbb{R}^{m\times n}$ and a fixed $B\in\mathbb{R}^{n\times m}$,
 
@@ -107,12 +109,6 @@ The gradient with respect to a matrix has the shape of the matrix: entry $(i,j)$
 
    which is $2B\mathbf{x}$ when $B$ is symmetric.
 
-3. On the open set of $A\in\mathbb{R}^{n\times n}$ with $\det A>0$,
-
-   $$
-   \nabla_A\log\det A=(A^{-1})^{\mathsf T}.
-   $$
-
 :::
 
 ::: {.proof}
@@ -121,13 +117,9 @@ The gradient with respect to a matrix has the shape of the matrix: entry $(i,j)$
 
 2. $\mathbf{b}^{\mathsf T}\mathbf{x}=\sum_kb_kx_k$ has $\partial/\partial x_i$ equal to $b_i$. For the quadratic form, $\mathbf{x}^{\mathsf T}B\mathbf{x}=\sum_{k,l}x_kB_{kl}x_l$; differentiating in $x_i$ picks the terms with $k=i$ and those with $l=i$, giving $\sum_lB_{il}x_l+\sum_kx_kB_{ki}=(B\mathbf{x})_i+(B^{\mathsf T}\mathbf{x})_i$.
 
-3. Fix $i,j$ and expand $\det A$ along row $i$ by cofactors: $\det A=\sum_kA_{ik}C_{ik}$, where the cofactors $C_{ik}$ do not involve row $i$ of $A$. So $\partial\det A/\partial A_{ij}=C_{ij}$.
-
-4. The inverse is $A^{-1}=C^{\mathsf T}/\det A$, where $C$ is the matrix of cofactors, so $C_{ij}=\det A\,(A^{-1})_{ji}$.
-
-5. By the chain rule, $\partial\log\det A/\partial A_{ij}=C_{ij}/\det A=(A^{-1})_{ji}$, which is the $(i,j)$ entry of $(A^{-1})^{\mathsf T}$.
-
 :::
+
+The gradient of $\log\lvert\det A\rvert$ is $(A^{-1})^{\mathsf T}$ (@cor-log-det-differential).
 
 ::: {#exm-matrix-derivatives-normal-equations .example name="The normal equations by differentiation"}
 

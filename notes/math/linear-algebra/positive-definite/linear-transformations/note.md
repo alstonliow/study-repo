@@ -97,19 +97,9 @@ A linear transformation keeps the origin fixed and takes evenly spaced parallel 
 
 **The matrix of $T$.** Choose a basis $\mathbf{v}_1,\dots,\mathbf{v}_n$ of $V$ (input) and $\mathbf{w}_1,\dots,\mathbf{w}_m$ of $W$ (output). The *matrix* of $T$ in these bases is the $m\times n$ matrix $A$ whose column $j$ holds the output coordinates of $T(\mathbf{v}_j)$, that is, $T(\mathbf{v}_j)=a_{1j}\mathbf{w}_1+\dots+a_{mj}\mathbf{w}_m$ (@def-matrix-of-linear-map).
 
-::: {#thm-matrix-represents-transformation .theorem name="Coordinates transform by the matrix"}
+<!-- Merged 2026-11-24 (owner): the block thm-matrix-represents-transformation (with its proof) was removed in favour of thm-matrix-of-linear-map (Cambridge IB Linear Algebra), which states the same two facts over any field and adds the isomorphism with a matrix space. -->
 
-If $\mathbf{v}$ has input coordinates $\mathbf{c}$, then $T(\mathbf{v})$ has output coordinates $A\mathbf{c}$. If $S:W\to Z$ has matrix $B$ (in the same basis of $W$), then $S\circ T$ has matrix $BA$.
-
-:::
-
-::: {.proof}
-
-1. $T(\sum_jc_j\mathbf{v}_j)=\sum_jc_j\sum_ia_{ij}\mathbf{w}_i=\sum_i(A\mathbf{c})_i\mathbf{w}_i$.
-
-2. Applying step 1 twice, the coordinates of $S(T(\mathbf{v}))$ are $B(A\mathbf{c})=(BA)\mathbf{c}$ by associativity (@prp-matrix-product-laws). This is why matrices are multiplied the way they are.
-
-:::
+**Coordinates transform by the matrix.** If $\mathbf{v}$ has input coordinates $\mathbf{c}$, then $T(\mathbf{v})$ has output coordinates $A\mathbf{c}$, and if $S:W\to Z$ has matrix $B$, then $S\circ T$ has matrix $BA$. This is why matrices are multiplied the way they are. See @thm-matrix-of-linear-map.
 
 ::: {#exm-matrix-of-projection .example name="A good basis gives a diagonal matrix"}
 
@@ -138,38 +128,6 @@ Projection onto the line through $\mathbf q_1$ (@exm-matrix-of-projection). In t
 
 :::
 
-::: {#exm-matrix-of-derivative .example name="Matrix of the derivative"}
+<!-- Merged 2026-11-24 (owner): the block exm-matrix-of-derivative (degree <= 2) and its figure fig-linear-transformations-3 were removed in favour of exm-matrix-of-differentiation (Cambridge IB Linear Algebra, degree <= 3, with figure); the remark on the nullspace and column space came from 18.06 L30 and was added there. -->
 
-On polynomials of degree $\le2$ with basis $1,x,x^2$ (input) and $1,x$ (output), $\frac{d}{dx}$ sends $1\mapsto0$, $x\mapsto1$, $x^2\mapsto2x$. Its matrix is
-$$A=\begin{bmatrix}0&1&0\\0&0&2\end{bmatrix},$$
-and $A(c_0,c_1,c_2)=(c_1,2c_2)$ are the coefficients of $c_1+2c_2x$. The nullspace (constants) and column space (all of the output space) match the calculus.
-
-:::
-
-::: {#fig-linear-transformations-3}
-
-```{=latex}
-\begin{center}
-\begin{tikzpicture}
-\draw[cell frame] (0.600,0.500) rectangle (1.200,1.100);
-\node[lab] at (0.900,0.800) {$0$};
-\draw[hl cell] (1.200,0.500) rectangle (1.800,1.100);
-\node[lab] at (1.500,0.800) {$1$};
-\draw[cell frame] (1.800,0.500) rectangle (2.400,1.100);
-\node[lab] at (2.100,0.800) {$0$};
-\draw[cell frame] (0.600,-0.100) rectangle (1.200,0.500);
-\node[lab] at (0.900,0.200) {$0$};
-\draw[cell frame] (1.200,-0.100) rectangle (1.800,0.500);
-\node[lab] at (1.500,0.200) {$0$};
-\draw[hl cell] (1.800,-0.100) rectangle (2.400,0.500);
-\node[lab] at (2.100,0.200) {$2$};
-\node[lab, tick] at (0.9,1.3) {$1$}; \node[lab, tick] at (1.5,1.3) {$x$}; \node[lab, tick] at (2.1,1.3) {$x^2$};
-\node[lab, tick] at (0.35,0.8) {$1$}; \node[lab, tick] at (0.35,0.2) {$x$};
-\node[lab, note, anchor=west, align=left] at (2.8,0.5) {column $j$: the derivative of input basis $j$\\$1\mapsto0$, $x\mapsto1$, $x^2\mapsto2x$};
-\end{tikzpicture}
-\end{center}
-```
-
-The matrix of $\frac{d}{dx}$ from polynomials of degree $\le2$ (columns, basis $1,x,x^2$) to degree $\le1$ (rows, basis $1,x$). The first column is zero because constants differentiate to $0$.
-
-:::
+**The matrix of the derivative.** Differentiation of polynomials is linear, so it has a matrix; @exm-matrix-of-differentiation computes it.

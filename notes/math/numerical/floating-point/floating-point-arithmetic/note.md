@@ -2,6 +2,8 @@
 title: "Floating-Point Arithmetic"
 sources: [mit18335-2]
 requires: []
+relations:
+  related: [cs/data-representation/ieee-floating-point]
 status: draft
 ---
 

@@ -386,6 +386,33 @@ parts:
           - line-integrals-in-space
           - stokes-theorem
           - div-and-curl-in-physics
+  - title: Matrix Calculus
+    field: Mathematics
+    branches:
+      - id: math/calculus/matrix/derivatives
+        title: Derivatives as Linear Operators
+        desc: Derivatives of vector and matrix functions as linear operators, Jacobians and Kronecker products, gradients for general inner products, determinant and inverse, second derivatives, eigenproblems
+        notes:   # topic order on the website
+          - linear-operator-derivatives
+          - jacobians-and-kronecker-products
+          - gradients-in-inner-product-spaces
+          - derivatives-of-determinant-and-inverse
+          - hessians-and-bilinear-maps
+          - derivatives-of-eigenproblems
+      - id: math/calculus/matrix/computing-derivatives
+        title: Computing Derivatives
+        desc: Finite-difference checks, Newton's method for systems, forward-mode and reverse-mode automatic differentiation
+        notes:   # topic order on the website
+          - finite-difference-checks
+          - newtons-method-for-systems
+          - forward-mode-automatic-differentiation
+          - reverse-mode-automatic-differentiation
+      - id: math/calculus/matrix/functionals-and-random-functions
+        title: Functionals and Random Functions
+        desc: Calculus of variations and the Euler-Lagrange equations, derivatives of random functions and the reparameterization trick
+        notes:   # topic order on the website
+          - calculus-of-variations
+          - derivatives-of-random-functions
   - title: Real Analysis
     field: Mathematics
     branches:
@@ -754,6 +781,7 @@ parts:
         notes:   # topic order on the website
           - one-step-methods
           - stiffness-and-implicit-methods
+          - ode-sensitivity-analysis
   - title: Algorithms
     field: Computer Science
     branches:
