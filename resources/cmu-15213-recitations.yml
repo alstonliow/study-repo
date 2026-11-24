@@ -1,0 +1,60 @@
+# CMU 15-213 Introduction to Computer Systems, Fall 2015, recitation slides (Carnegie Mellon University; slides not copied),
+# as a resource (meta/SPEC.md §17.12). DRAFT for owner review. Kept locally in raw/CMU_15213/recitations.
+# Locator = recitation number, or cboot / linuxboot for the two boot camps; a source key is cmu15213r-7.
+# Recitations 1, 2 (no recitation those weeks) and 5, 8-12 (not downloaded) are absent; 15 (exam review) is not used.
+# Problems: cmu15213r-3-q1 is problem 1 of Recitation 3. Titles are our own short titles. Node ids are stable.
+id: res-cmu-15213-recitations
+kind: course-notes
+title: CMU 15-213 Recitation Slides (Fall 2015)
+status: draft
+courses: [cmu15213]
+editions:
+- id: 2015-fall
+  current: true
+legacy_keys:
+  prefix: cmu15213r-
+  edition: 2015-fall
+  pattern: ^cmu15213r-(?P<section>\d+|cboot|linuxboot)(?:-q(?P<n>\d+))?$
+  label: 15-213 Rec {section}
+  problem_label: 15-213 Rec {section} Q{n}
+nodes:
+- id: res-cmu-15213-recitations-data-representation
+  kind: recitation
+  title: Data representation and the Data Lab
+  at:
+    2015-fall: '3'
+- id: res-cmu-15213-recitations-assembly-and-gdb
+  kind: recitation
+  title: Assembly, GDB and the Bomb Lab
+  at:
+    2015-fall: '4'
+- id: res-cmu-15213-recitations-attack-lab-and-c
+  kind: recitation
+  title: The Attack Lab and C practice
+  at:
+    2015-fall: '6'
+- id: res-cmu-15213-recitations-caches-and-blocking
+  kind: recitation
+  title: Caches, blocking and the Cache Lab
+  at:
+    2015-fall: '7'
+- id: res-cmu-15213-recitations-proxy
+  kind: recitation
+  title: Web requests and the Proxy Lab
+  at:
+    2015-fall: '13'
+- id: res-cmu-15213-recitations-synchronization
+  kind: recitation
+  title: Thread synchronization
+  at:
+    2015-fall: '14'
+- id: res-cmu-15213-recitations-c-boot-camp
+  kind: recitation
+  title: C boot camp
+  at:
+    2015-fall: 'cboot'
+- id: res-cmu-15213-recitations-linux-boot-camp
+  kind: recitation
+  title: Linux boot camp
+  at:
+    2015-fall: 'linuxboot'

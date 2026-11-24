@@ -19,26 +19,28 @@ Generated from the notes by `make readme`:
 | Mathematics | Discrete Mathematics | 11 | 95 | 272 | 81 |
 |  | Single Variable Calculus | 7 | 36 | 214 | 7 |
 |  | Linear Algebra | 13 | 66 | 226 | 263 |
-|  | Multivariable Calculus | 5 | 30 | 198 | 30 |
+|  | Multivariable Calculus | 5 | 30 | 198 | 90 |
 |  | Real Analysis | 12 | 55 | 113 | 138 |
 |  | Probability | 8 | 51 | 245 | 130 |
 |  | Statistics | 4 | 28 | 85 | 20 |
-|  | Convex Optimization | 6 | 40 | 16 | 9 |
+|  | Convex Optimization | 6 | 40 | 16 | 116 |
 |  | Numerical Analysis | 7 | 31 | 8 | 58 |
-| Computer Science | Algorithms | 6 | 40 | 75 | 94 |
-|  | Theory of Computation | 2 | 34 | 9 | 61 |
+| Computer Science | Algorithms | 6 | 45 | 75 | 109 |
+|  | Theory of Computation | 2 | 34 | 55 | 61 |
 |  | Cryptography | 1 | 2 | 0 | 1 |
+|  | Computer Systems | 8 | 51 | 21 | 165 |
 | Artificial Intelligence | Machine Learning | 4 | 28 | 23 | 55 |
 |  | Deep Learning | 2 | 26 | 37 | 62 |
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
 |  | Reinforcement Learning and Games | 2 | 20 | 22 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **95** | **607** | **1572** | **1051** |
+| **Total** | | **103** | **663** | **1639** | **1398** |
 
-24 courses are mapped onto the topic tree:
+25 courses are mapped onto the topic tree:
 
 | Course | Title | Institution |
 |---|---|---|
+| CMU 15-213 | Introduction to Computer Systems | Carnegie Mellon University |
 | MIT 6.006 | Introduction to Algorithms | MIT |
 | MIT 6.041 | Probabilistic Systems Analysis and Applied Probability | MIT |
 | MIT 6.042J | Mathematics for Computer Science | MIT |

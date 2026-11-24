@@ -1,0 +1,54 @@
+# CMU 15-213 Introduction to Computer Systems, Fall 2015, lab assignments (CS:APP3e labs, Carnegie Mellon University),
+# as a resource (meta/SPEC.md §17.12). DRAFT for owner review. Kept locally in raw/CMU_15213/labs (write-ups and handout tars;
+# datalab-handout.tar is truncated). The handouts are not openly licensed, so no starter code is copied; the C exercises
+# that cite a lab (origin="adapted") are our own. Locator = lab number; a source key is cmu15213lab-5.
+# Titles are our own short titles. Node ids are stable.
+id: res-cmu-15213-labs
+kind: homework
+title: CMU 15-213 Labs (Fall 2015)
+status: draft
+courses: [cmu15213]
+editions:
+- id: 2015-fall
+  current: true
+legacy_keys:
+  prefix: cmu15213lab-
+  edition: 2015-fall
+  pattern: ^cmu15213lab-(?P<section>\d+)$
+  label: 15-213 Lab {section}
+nodes:
+- id: res-cmu-15213-labs-data-lab
+  kind: project
+  title: Bit manipulation puzzles
+  at:
+    2015-fall: '1'
+- id: res-cmu-15213-labs-bomb-lab
+  kind: project
+  title: Defusing a binary bomb
+  at:
+    2015-fall: '2'
+- id: res-cmu-15213-labs-attack-lab
+  kind: project
+  title: Code injection and return-oriented attacks
+  at:
+    2015-fall: '3'
+- id: res-cmu-15213-labs-cache-lab
+  kind: project
+  title: A cache simulator and cache-friendly transpose
+  at:
+    2015-fall: '4'
+- id: res-cmu-15213-labs-shell-lab
+  kind: project
+  title: A Unix shell with job control
+  at:
+    2015-fall: '5'
+- id: res-cmu-15213-labs-malloc-lab
+  kind: project
+  title: A dynamic storage allocator
+  at:
+    2015-fall: '6'
+- id: res-cmu-15213-labs-proxy-lab
+  kind: project
+  title: A concurrent caching Web proxy
+  at:
+    2015-fall: '7'
