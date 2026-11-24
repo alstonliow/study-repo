@@ -494,6 +494,14 @@ statement is copied verbatim with `origin="external"` and a `source` key of a
 homework resource. Official homework solutions are never copied; solutions are
 written in our own words.
 
+Problems printed in a course's own lecture or course notes are allowed the
+same way (owner decision, 2026-11-24): they belong to the course like its
+homework. Statement verbatim, `origin="external"`, `source` a key of the
+course-notes resource (`<prefix><section>-q<n>`, numbered in the order the
+problems appear in that section); any solution printed in the notes is never
+copied, ours is written in our own words with `status="draft"`. Textbook
+problems stay excluded except as below.
+
 Textbook exercises and past exam problems are allowed in the private store
 only, for the owner's tutoring (§17.15.6, owner decision, 2026-11-20).
 

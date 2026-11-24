@@ -28,3 +28,21 @@ $$
 
 *Note (these notes):* The hyperbolic rotation is Problem 0(b) of Pset 1 (@prob-mit18s096ps-1-q0).
 :::
+
+::: {.problem #prob-mit18s096-3-q1 origin="external" source="mit18s096-3-q1"}
+The vector $\operatorname{vec}A$ corresponds to the coefficients you get when you express the $m\times n$ matrix $A$ in a basis of matrices. What is that basis?
+:::
+
+::: {.problem #prob-mit18s096-3-q2 origin="external" source="mit18s096-3-q2"}
+From the definition of the Kronecker product, derive the following identities:
+
+1. $(A\otimes B)^T=A^T\otimes B^T$.
+2. $(A\otimes B)(C\otimes D)=(AC)\otimes(BD)$.
+3. $(A\otimes B)^{-1}=A^{-1}\otimes B^{-1}$. (Follows from property 2.)
+4. $A\otimes B$ is orthogonal (its transpose is its inverse) if $A$ and $B$ are orthogonal. (From properties 1 & 3.)
+5. $\det(A\otimes B)=\det(A)^m\det(B)^n$, where $A\in\mathbb{R}^{n,n}$ and $B\in\mathbb{R}^{m,m}$.
+6. $\operatorname{tr}(A\otimes B)=(\operatorname{tr}A)(\operatorname{tr}B)$.
+7. Given eigenvectors/values $Au=\lambda u$ and $Bv=\mu v$ of $A$ and $B$, then $\lambda\mu$ is an eigenvalue of $A\otimes B$ with eigenvector $u\otimes v$. (Also, since $u\otimes v=\operatorname{vec}X$ where $X=vu^T$, you can relate this via Prop. 27 below to the identity $BXA^T=Bv(Au)^T=\lambda\mu X$.)
+
+*Note (these notes):* Prop. 27 of the course notes is @thm-vec-kronecker-identity here, written as $\operatorname{vec}(AXB)=(B^{\mathsf T}\otimes A)\operatorname{vec}X$.
+:::
