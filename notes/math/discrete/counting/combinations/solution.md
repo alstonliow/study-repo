@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-counting-04" status="draft"}
+::: {.solution for="prob-counting-04"}
 (a) Swanston is three streets east of William, and La Trobe is four streets
     north of Flinders. A route that always moves away from the start is a
     sequence of $3$ moves west (W) and $4$ moves north (N) in some order. It
@@ -29,7 +29,7 @@
     $$\binom{12}4 = \frac{12\cdot11\cdot10\cdot9}{4!} = 495.$$
 :::
 
-::: {.solution for="prob-counting-08" status="draft"}
+::: {.solution for="prob-counting-08"}
 An $n$-digit number has no leading $0$. Choosing the *set* (or multiset) of
 digits fixes the number, because the order is forced.
 
@@ -52,7 +52,7 @@ digits fixes the number, because the order is forced.
     $$\binom{n+9}{n} - 1.$$
 :::
 
-::: {.solution for="prob-counting-09" status="draft"}
+::: {.solution for="prob-counting-09"}
 (a) $\binom{52}5 = 2{,}598{,}960$.
 
 (b) A straight flush is fixed by its suit and its lowest card, which can be

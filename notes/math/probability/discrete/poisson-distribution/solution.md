@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-2-08" status="draft"}
+::: {.solution for="prob-probability-2-08"}
 (a) Poisson with mean $\lambda = 0.83$:
     $\Pr(N = k) = e^{-0.83}\,0.83^k/k!$.
 

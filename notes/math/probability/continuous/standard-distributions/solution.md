@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-2-10" status="draft"}
+::: {.solution for="prob-probability-2-10"}
 (a) **Uniform** on $\{1,\dots,13\}$: each value has $4$ of the $52$ cards.
 
 (b) **Binomial** $\mathrm{Bin}(n,p)$, where $n$ is the number of days the

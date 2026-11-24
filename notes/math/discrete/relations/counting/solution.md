@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-23" status="draft"}
+::: {.solution for="prob-functions-23"}
 A binary relation on an $n$-set $A$ is any subset of $A\times A$, so there are
 $2^{n^2}$ of them.
 
@@ -12,7 +12,7 @@ So the number of relations that are not reflexive is
 $$2^{n^2} - 2^{n^2-n}.$$
 :::
 
-::: {.solution for="prob-functions-24" status="draft"}
+::: {.solution for="prob-functions-24"}
 A ternary relation is obtained by choosing three columns in order: a first,
 second and third coordinate. Choosing the same columns in a different order
 gives a different relation, since its triples are ordered differently.

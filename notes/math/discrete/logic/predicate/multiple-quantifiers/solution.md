@@ -3,7 +3,7 @@
 
 <!-- Migrated from 1058note exercises/chapters (owner's solutions). -->
 
-::: {.solution for="prob-predicate-03" status="draft"}
+::: {.solution for="prob-predicate-03"}
 Write $s$ for $\mathrm{supervised}$, and $\mathrm{Church}$, $\mathrm{Turing}$
 for the two constants.
 
@@ -21,7 +21,7 @@ for the two constants.
 (f) $$\exists Y_1\ \exists Y_2\ \Bigl(Y_1\ne Y_2\wedge s(\mathrm{Turing},Y_1)\wedge s(\mathrm{Turing},Y_2)\wedge\forall Z\ \bigl(s(\mathrm{Turing},Z)\to(Z = Y_1\vee Z = Y_2)\bigr)\Bigr).$$
 :::
 
-::: {.solution for="prob-predicate-04" status="draft"}
+::: {.solution for="prob-predicate-04"}
 Write $d$ for $\mathrm{designedFirstComputerIn}$.
 
 (a) $d(\mathrm{Pearcey},\mathrm{Australia})\wedge d(\mathrm{Beard},\mathrm{Australia})$.
@@ -31,7 +31,7 @@ Write $d$ for $\mathrm{designedFirstComputerIn}$.
     $\forall X\,\forall Y\,\forall Z\ \bigl((d(X,Y)\wedge d(X,Z))\to Y = Z\bigr)$.
 :::
 
-::: {.solution for="prob-predicate-05" status="draft"}
+::: {.solution for="prob-predicate-05"}
 We may only use $\mathrm{knows}$, so we cannot write $X = Y$. Instead, use
 walks that are allowed to go back and forth. Assume, as in §2.14, that
 $\mathrm{knows}$ is symmetric and that everyone knows someone. Write $k$ for
@@ -48,11 +48,11 @@ adds $2$ each time. So there is a walk of length $5$ (if $d$ is odd) or $6$
 contains a path of length at most $6$.
 :::
 
-::: {.solution for="prob-predicate-06" status="draft"}
+::: {.solution for="prob-predicate-06"}
 $$\forall A\ \forall B\ \bigl(A = B\ \leftrightarrow\ A\triangle B = \emptyset\bigr).$$
 :::
 
-::: {.solution for="prob-predicate-07" status="draft"}
+::: {.solution for="prob-predicate-07"}
 | | predicates | functions | variables (domain) | constants | proposition? |
 |---|---|---|---|---|---|
 | (a) | $\ge$ | squaring | $x\in\mathbb R$ (bound) | $0$ | yes, **true** |
@@ -75,7 +75,7 @@ Notes:
   propositional variables.
 :::
 
-::: {.solution for="prob-predicate-08" status="draft"}
+::: {.solution for="prob-predicate-08"}
 - Predicates: $\subseteq$ (binary, used twice).
 - Functions: the power set function $\mathcal P$.
 - Variables: $A$ and $B$, ranging over sets; both are bound by $\forall$.
@@ -114,7 +114,7 @@ $$S = \exists m\ \Big(P(m)\wedge E(m)\ \wedge\ \forall n\big(P(n)\wedge E(n)\Rig
 $$R\wedge S$$
 :::
 
-::: {.solution for="prob-predicate-12" status="draft"}
+::: {.solution for="prob-predicate-12"}
 $$\exists c\ \exists k\ \forall x\ \Bigl(t(P,x)\le c\cdot\mathrm{len}(x)^k\Bigr).$$
 Here $c,k$ range over positive integers and $x$ over $A^*$. The order of the
 quantifiers matters: $c$ and $k$ are chosen once, before $x$. This says that

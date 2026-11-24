@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-graph-1-08" status="draft"}
+::: {.solution for="prob-graph-1-08"}
 $2^k$.
 
 1. In a connected bipartite graph, the colour of one vertex fixes all the

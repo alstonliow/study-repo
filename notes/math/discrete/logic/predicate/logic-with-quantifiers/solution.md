@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-predicate-02" status="draft"}
+::: {.solution for="prob-predicate-02"}
 (a) $\forall X\ \neg\bigl(\mathrm{prolog}(X)\wedge\mathrm{elvish}(X)\bigr)$.
 
 (b) Negate it and move the negation inwards:
@@ -12,7 +12,7 @@
     and the second uses double negation.
 :::
 
-::: {.solution for="prob-predicate-14" status="draft"}
+::: {.solution for="prob-predicate-14"}
 (a) 1. Assume $\exists X\,(P(X)\wedge Q(X))$, and let $a$ be such an $X$, so
        $P(a)$ and $Q(a)$ are both true.
 

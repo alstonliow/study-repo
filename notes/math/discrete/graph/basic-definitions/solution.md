@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-graph-1-01" status="draft"}
+::: {.solution for="prob-graph-1-01"}
 (a) $\forall e\ \exists v\ \mathrm{incident}(v,e)$.
 
 (b) No edge has a vertex that is its only vertex:

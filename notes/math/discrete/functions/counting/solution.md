@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-09" status="draft"}
+::: {.solution for="prob-functions-09"}
 For $x\in A$, $\mathrm{Fix}(\{x\})$ is the set of bijections that fix $x$, and
 $$F = \bigcup_{x\in A}\mathrm{Fix}(\{x\}).$$
 A bijection fixes every element of $X$ exactly when it is in all of the
@@ -11,7 +11,7 @@ By inclusion–exclusion (Exercise 1.13),
 $$|F| = \sum_{\emptyset\ne X\subseteq A}(-1)^{|X|-1}\,|\mathrm{Fix}(X)|.$$
 :::
 
-::: {.solution for="prob-functions-10" status="draft"}
+::: {.solution for="prob-functions-10"}
 (a) The number of bijections fixing $X$ depends only on $|X|$, not on which
     elements $X$ contains: relabelling the elements of $A$ turns the
     bijections fixing one $k$-set into those fixing any other.
@@ -40,7 +40,7 @@ $$|F| = \sum_{\emptyset\ne X\subseteq A}(-1)^{|X|-1}\,|\mathrm{Fix}(X)|.$$
     with $1/e$ to about $27$ decimal places.
 :::
 
-::: {.solution for="prob-functions-11" status="draft"}
+::: {.solution for="prob-functions-11"}
 (a) Write a function as the string $f(1)f(2)f(3)f(4)$. A surjection onto three
     values uses one value twice and the others once. There are $36$:
 

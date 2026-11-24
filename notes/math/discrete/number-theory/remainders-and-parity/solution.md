@@ -1,19 +1,19 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-04" status="draft"}
+::: {.solution for="prob-number-theory-04"}
 "The last $31$ bits" of a number is its remainder on division by $2^{31}$:
 $$\mathrm{LCG}(x) = (1103515245\,x + 12345)\bmod 2^{31}.$$
 :::
 
-::: {.solution for="prob-number-theory-06" status="draft"}
+::: {.solution for="prob-number-theory-06"}
 $$\forall n\in\mathbb N:\ \Bigl(\mathrm{Leap}(n)\leftrightarrow\bigl((4\mid n\wedge\neg(100\mid n))\vee 400\mid n\bigr)\Bigr).$$
 
 The case "multiple of $400$" needs its own disjunct, because such years are
 also multiples of $100$.
 :::
 
-::: {.solution for="prob-number-theory-07" status="draft"}
+::: {.solution for="prob-number-theory-07"}
 1. *Odd case.* Let $n$ be odd, so $n = 2k+1$ for some integer $k$.
 
 2. Then

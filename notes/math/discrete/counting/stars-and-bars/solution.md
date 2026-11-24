@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-counting-11" status="draft"}
+::: {.solution for="prob-counting-11"}
 Let
 $$X = \{(x_1,\dots,x_n)\in\mathbb Z^n : x_i\ge 0,\ x_1+\cdots+x_n = r\},$$
 $$Y = \{(y_1,\dots,y_n)\in\mathbb Z^n : y_i\ge 1,\ y_1+\cdots+y_n = r+n\}.$$

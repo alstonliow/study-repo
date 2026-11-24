@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-17" status="draft"}
+::: {.solution for="prob-functions-17"}
 The inverse is the relation itself: $R^{-1} = R$.
 
 $(x,y)\in R^{-1}$ means $(y,x)\in R$, and by symmetry this holds exactly when
@@ -9,7 +9,7 @@ $(x,y)\in R$. Conversely, $R^{-1} = R$ implies that $R$ is symmetric, so this
 is another characterisation of symmetry.
 :::
 
-::: {.solution for="prob-functions-20" status="draft"}
+::: {.solution for="prob-functions-20"}
 An equivalence relation must be reflexive, symmetric and transitive.
 
 | relation | equivalence? | reason |

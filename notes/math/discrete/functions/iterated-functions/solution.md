@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-13" status="draft"}
+::: {.solution for="prob-functions-13"}
 All of them. If $f$ has inverse $f^{-1}$, then $f^{(k)}$ has inverse
 $(f^{-1})^{(k)}$:
 
@@ -14,7 +14,7 @@ $(f^{-1})^{(k)}$:
    (For $k=0$, $f^{(0)}$ is the identity, which is its own inverse.)
 :::
 
-::: {.solution for="prob-functions-14" status="draft"}
+::: {.solution for="prob-functions-14"}
 Write $f$ as the string $f(1)f(2)f(3)$. Exactly $9$ functions are eventually
 constant:
 $$111,\ 222,\ 333,\qquad 112,\ 131,\ 221,\ 233,\ 313,\ 322.$$

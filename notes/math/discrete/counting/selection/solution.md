@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-counting-02" status="draft"}
+::: {.solution for="prob-counting-02"}
 (a) Each filled ballot is an ordering of the $n$ candidates (the candidate
     numbered $1$, then $2$, and so on), so there are $n!$ ways.
 
@@ -10,7 +10,7 @@
     $$N(N-1)\cdots(N-11) = \frac{N!}{(N-12)!}\qquad(N\ge 12).$$
 :::
 
-::: {.solution for="prob-counting-10" status="draft"}
+::: {.solution for="prob-counting-10"}
 (a) $10^5 = 100{,}000$.
 
 (b) First digit nonzero: $9\cdot10^4 = 90{,}000$.

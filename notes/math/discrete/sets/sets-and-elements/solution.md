@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sets-02" status="draft"}
+::: {.solution for="prob-sets-02"}
 (a) A value of `aNewType` is an int together with a string, in that order.
     So the set of values is the Cartesian product
     $$\texttt{Int}\times\texttt{String}.$$

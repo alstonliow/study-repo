@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-propositional-06" status="draft"}
+::: {.solution for="prob-propositional-06"}
 1. $A\Rightarrow C$ is equivalent to $\neg A\vee C$. With
    $A = P_1\wedge\cdots\wedge P_n$:
    $$(P_1\wedge\cdots\wedge P_n)\Rightarrow C\ =\ \neg(P_1\wedge\cdots\wedge P_n)\vee C.$$
@@ -12,7 +12,7 @@
 3. Substituting gives $\neg P_1\vee\cdots\vee\neg P_n\vee C$.
 :::
 
-::: {.solution for="prob-propositional-09" status="draft"}
+::: {.solution for="prob-propositional-09"}
 No. Negating an implication does not reverse it:
 $$\neg(P\Rightarrow Q) = \neg(\neg P\vee Q) = P\wedge\neg Q,\qquad P\Leftarrow Q = Q\Rightarrow P = P\vee\neg Q.$$
 
@@ -23,7 +23,7 @@ $$\neg(P\Rightarrow Q) = \neg(\neg P\vee Q) = P\wedge\neg Q,\qquad P\Leftarrow Q
 - The converse fails, by the same assignment $P = Q = \mathrm T$.
 :::
 
-::: {.solution for="prob-propositional-11" status="draft"}
+::: {.solution for="prob-propositional-11"}
 $P\oplus Q$ is true exactly when $P$ and $Q$ differ.
 
 | $P$ | $Q$ | $P\oplus Q$ | $(P\wedge\neg Q)\vee(\neg P\wedge Q)$ | $(P\vee Q)\wedge(\neg P\vee\neg Q)$ |
@@ -40,7 +40,7 @@ $P\oplus Q$ is true exactly when $P$ and $Q$ differ.
     false". Its column also matches.
 :::
 
-::: {.solution for="prob-propositional-12" status="draft"}
+::: {.solution for="prob-propositional-12"}
 (a) $P\vee Q = P\oplus Q\oplus(P\wedge Q)$.
 
     Check: if exactly one is true, the result is $\mathrm T\oplus\mathrm F = \mathrm T$.

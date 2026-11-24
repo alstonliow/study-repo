@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sets-04" status="draft"}
+::: {.solution for="prob-sets-04"}
 (a) and (b) Each arrow is labelled by the element it adds:
 
 ```{=latex}
@@ -63,7 +63,7 @@
     highest set from which both $X$ and $Y$ can be reached by going up.
 :::
 
-::: {.solution for="prob-sets-05" status="draft"}
+::: {.solution for="prob-sets-05"}
 For a three-element set, the following list changes one bit at a time:
 $$000,\ 001,\ 011,\ 010,\ 110,\ 111,\ 101,\ 100.$$
 
@@ -82,7 +82,7 @@ This is a *Gray code*. It extends to any $n$ by reflection:
 The list for $n=3$ above is obtained this way from $00,\ 01,\ 11,\ 10$.
 :::
 
-::: {.solution for="prob-sets-07" status="draft"}
+::: {.solution for="prob-sets-07"}
 1. Assume $A\subseteq B$, and let $X\in\mathcal{P}(A)$. We show
    $X\in\mathcal{P}(B)$.
 
@@ -95,7 +95,7 @@ The list for $n=3$ above is obtained this way from $00,\ 01,\ 11,\ 10$.
    $\mathcal{P}(A)\subseteq\mathcal{P}(B)$.
 :::
 
-::: {.solution for="prob-sets-08" status="draft"}
+::: {.solution for="prob-sets-08"}
 (a) Compare consecutive terms using $\binom nr = \frac{n!}{r!\,(n-r)!}$:
     $$\frac{\binom n{r+1}}{\binom nr} = \frac{n-r}{r+1}.$$
 

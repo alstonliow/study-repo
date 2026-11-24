@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sequences-02" status="draft"}
+::: {.solution for="prob-sequences-02"}
 (a) $a_1 = 2$, $a_2 = 2\cdot2\cdot2 = 8$, $a_3 = 6\cdot8 = 48$,
     $a_4 = 8\cdot48 = 384$, $a_5 = 10\cdot384 = 3840$.
 
@@ -15,7 +15,7 @@
     3. By induction, $P(n)$ holds for all $n\ge1$.
 :::
 
-::: {.solution for="prob-sequences-03" status="draft"}
+::: {.solution for="prob-sequences-03"}
 (a) $b_1 = 3$, $b_2 = 9$, $b_3 = 81$, $b_4 = 6561$, $b_5 = 43{,}046{,}721$.
     Each term is $3$ raised to a power, and the exponent doubles each time:
     $3^1, 3^2, 3^4, 3^8, 3^{16}$.
@@ -30,7 +30,7 @@
     3. By induction, the formula holds for all $n\ge1$.
 :::
 
-::: {.solution for="prob-sequences-04" status="draft"}
+::: {.solution for="prob-sequences-04"}
 (a) $3, 5, 9, 17, 33, 65, 129$. The differences $2, 4, 8, 16, 32, 64$ double
     each time.
 
@@ -45,7 +45,7 @@
     3. By (strong) induction, the formula holds for all $n\ge1$.
 :::
 
-::: {.solution for="prob-sequences-05" status="draft"}
+::: {.solution for="prob-sequences-05"}
 Let $P(n)$ be the statement $g_n\le n\log n - n + H_n$.
 
 1. *Base case.* $g_1 = 0$, and the right-hand side is
@@ -64,7 +64,7 @@ Let $P(n)$ be the statement $g_n\le n\log n - n + H_n$.
 5. This is $P(n)$. By induction, $P(n)$ holds for all $n\ge1$.
 :::
 
-::: {.solution for="prob-sequences-06" status="draft"}
+::: {.solution for="prob-sequences-06"}
 **Explore.** $r_1, \dots, r_6 = 1, 2, 5, 14, 41, 122$. Each term is a bit less
 than $3$ times the previous one.
 

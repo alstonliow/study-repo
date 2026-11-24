@@ -55,7 +55,7 @@ This matches the claimed formula for $n+1$ variables.
 :::
 :::
 
-::: {.solution for="prob-propositional-14" status="draft"}
+::: {.solution for="prob-propositional-14"}
 $P$ is true exactly when at least two of $X,Y,Z$ are true (the *majority*
 function).
 
@@ -78,7 +78,7 @@ function).
     row, while route (d) multiplies out all the choices.
 :::
 
-::: {.solution for="prob-propositional-17" status="draft"}
+::: {.solution for="prob-propositional-17"}
 1. Start from the DNF of the function, with one conjunction (minterm) per
    true row of its truth table. (If there are no true rows, the function is
    False, which is in ANF.)

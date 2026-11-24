@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-1-10" status="draft"}
+::: {.solution for="prob-probability-1-10"}
 Yes, if "independent" means mutually independent (the definition for $n$
 events).
 
@@ -19,7 +19,7 @@ events).
    $$\Pr(A\cap B\cap C) = \Pr(\mathrm{HH}) = \tfrac14 \ne \tfrac12\cdot\tfrac14 = \Pr(A)\Pr(B\cap C).$$
 :::
 
-::: {.solution for="prob-probability-1-11" status="draft"}
+::: {.solution for="prob-probability-1-11"}
 (a) The two paths $S\text{–}M\text{–}T$ and $S\text{–}N\text{–}T$ share no
     links, and each survives with probability $p^2$. At least one survives
     with probability
@@ -55,7 +55,7 @@ events).
     least (a); indeed (c) minus (a) is $2p^3(1-p)^2\ge 0$.
 :::
 
-::: {.solution for="prob-probability-1-13" status="draft"}
+::: {.solution for="prob-probability-1-13"}
 Choose a random tile from the standard English Scrabble set of $100$ tiles.
 The letters in the first half of the alphabet, A–M, account for
 $$9+2+2+4+12+2+3+2+9+1+1+4+2 = 53$$
@@ -64,7 +64,7 @@ account for $9+12+9 = 30$. So
 $$\Pr(\text{vowel}\mid\text{A–M}) = \frac{\Pr(\{\mathrm A,\mathrm E,\mathrm I\})}{\Pr(\{\mathrm A,\dots,\mathrm M\})} = \frac{30}{53}\approx 0.566.$$
 :::
 
-::: {.solution for="prob-probability-1-14" status="draft"}
+::: {.solution for="prob-probability-1-14"}
 Assume $\Pr(A)>0$ and $\Pr(B)>0$, so that both conditional probabilities are
 defined, and also $\Pr(A\cap B)>0$.
 
@@ -79,7 +79,7 @@ both conditional probabilities are $0$ even when $\Pr(A)\ne\Pr(B)$. For
 example, roll a die with $A = \{1\}$ and $B = \{2,3\}$.
 :::
 
-::: {.solution for="prob-probability-1-15" status="draft"}
+::: {.solution for="prob-probability-1-15"}
 1. By Exercise 11(c) with $p = \frac12$:
    $$2\cdot\tfrac14 + 2\cdot\tfrac18 - 5\cdot\tfrac1{16} + 2\cdot\tfrac1{32} = \tfrac{16+8-10+2}{32} = \tfrac12.$$
 

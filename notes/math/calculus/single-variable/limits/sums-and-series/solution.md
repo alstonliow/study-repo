@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sequences-13" status="draft"}
+::: {.solution for="prob-sequences-13"}
 (a) $\underbrace{99\cdots9}_{n} = 9 + 90 + 900 + \cdots + 9\cdot10^{n-1}$, a
     geometric series with $a = 9$, $r = 10$ and $n$ terms. The formula gives
     $$S_n = a\,\frac{r^n - 1}{r - 1} = 9\cdot\frac{10^n - 1}9 = 10^n - 1,$$
@@ -14,7 +14,7 @@
     So $0.999\ldots = 1$: it is another decimal expansion of the same number.
 :::
 
-::: {.solution for="prob-sequences-14" status="draft"}
+::: {.solution for="prob-sequences-14"}
 (a) For $n\ge1$, $\frac1{2n}\le\frac12$, so
     $H_n\le\log n + \gamma + \frac12\le\log n + 2$, since $\gamma\approx 0.577$.
     For $n\ge 8$ we have $\log n\ge 2$, so $H_n\le 2\log n$. Hence
@@ -24,7 +24,7 @@
     so the sum is $O(n\log n)$.
 :::
 
-::: {.solution for="prob-sequences-15" status="draft"}
+::: {.solution for="prob-sequences-15"}
 (a) By Exercise 5 and then (6.47),
     $$g_n\le n\log n - n + H_n\le n\log n - n + \log n + \gamma + \frac1{2n}\le n\log n - n + \log n + c,$$
     with $c = \gamma + \frac12$.

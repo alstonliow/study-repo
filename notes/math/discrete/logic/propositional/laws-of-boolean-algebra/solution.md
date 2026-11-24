@@ -46,7 +46,7 @@ The remaining two terms, $(x\wedge v\wedge z)$ and $(x\wedge w\wedge y)$, do not
 $$(v\wedge y)\vee(w\wedge z)\vee(x\wedge v\wedge z)\vee(x\wedge w\wedge y)$$
 :::
 
-::: {.solution for="prob-propositional-04" status="draft"}
+::: {.solution for="prob-propositional-04"}
 The laws are
 $$P\wedge(Q\vee R) = (P\wedge Q)\vee(P\wedge R),\qquad P\vee(Q\wedge R) = (P\vee Q)\wedge(P\vee R).$$
 Prove each by cases on $P$.
@@ -65,7 +65,7 @@ Prove each by cases on $P$.
 In every case the two sides agree, so both laws hold.
 :::
 
-::: {.solution for="prob-propositional-05" status="draft"}
+::: {.solution for="prob-propositional-05"}
 Yes, parentheses are needed: the two readings are not equivalent.
 
 1. Take $a = \mathrm F$ and $c = \mathrm T$. Then $a\wedge(b\vee c)$ is false
@@ -82,7 +82,7 @@ $a\wedge b\vee c$ means $(a\wedge b)\vee c$, but it is safer to write the
 parentheses.)
 :::
 
-::: {.solution for="prob-propositional-07" status="draft"}
+::: {.solution for="prob-propositional-07"}
 $$\begin{aligned}
 &(\neg X\wedge\neg Y)\vee(\neg X\wedge Y)\vee(X\wedge Y)\\
 &= \bigl(\neg X\wedge(\neg Y\vee Y)\bigr)\vee(X\wedge Y) && \text{distributive law}\\
@@ -93,7 +93,7 @@ $$\begin{aligned}
 This is $X\Rightarrow Y$.
 :::
 
-::: {.solution for="prob-propositional-13" status="draft"}
+::: {.solution for="prob-propositional-13"}
 There is exactly one distributive law: $\wedge$ distributes over $\oplus$,
 but not the other way round.
 

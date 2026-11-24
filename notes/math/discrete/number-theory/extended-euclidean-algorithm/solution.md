@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-13" status="draft"}
+::: {.solution for="prob-number-theory-13"}
 1. Run the Euclidean algorithm on $99$ and $86$:
    $$\begin{aligned}
    99 &= 1\cdot 86 + 13\\

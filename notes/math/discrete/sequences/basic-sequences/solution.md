@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sequences-01" status="draft"}
+::: {.solution for="prob-sequences-01"}
 In each case the sequence starts at $n = 1$.
 
 (a) $a_1 = 1$, $a_n = a_{n-1} + 1$.

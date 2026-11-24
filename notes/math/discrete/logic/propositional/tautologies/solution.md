@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-propositional-10" status="draft"}
+::: {.solution for="prob-propositional-10"}
 1. The implication can only be false if its premise $P\wedge(P\Rightarrow Q)$
    is true and its conclusion $Q$ is false.
 

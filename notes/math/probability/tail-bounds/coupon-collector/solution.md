@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-2-11" status="draft"}
+::: {.solution for="prob-probability-2-11"}
 This is the coupon collector problem with $n = 365$ coupons.
 
 1. When $i$ different birthdays have been seen, each new person has a new

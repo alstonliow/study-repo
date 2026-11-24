@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-proofs-14" status="draft"}
+::: {.solution for="prob-proofs-14"}
 1. Lines 3–8 are a correct proof that $\mathbb Z\subseteq\mathbb Q$.
 
 2. Line 9 says "the superset relation", but to prove $\mathbb Z = \mathbb Q$

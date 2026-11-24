@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-2-09" status="draft"}
+::: {.solution for="prob-probability-2-09"}
 (a) Geometric with $p = 0.0125$: the number of balls up to and including
     the dismissal ball, $\Pr(X = k) = (1-p)^{k-1}p$ for $k\ge1$.
 

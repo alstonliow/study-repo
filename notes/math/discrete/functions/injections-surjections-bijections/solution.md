@@ -125,7 +125,7 @@ Hence, $f$ is a bijection.
 :::
 :::
 
-::: {.solution for="prob-functions-04" status="draft"}
+::: {.solution for="prob-functions-04"}
 Every function is a binary relation, and binary and ternary relations are
 disjoint kinds of relation. Bijections are the functions that are both
 injections and surjections, and identity functions are bijections:
@@ -157,7 +157,7 @@ injections and surjections, and identity functions are bijections:
 boxes.)
 :::
 
-::: {.solution for="prob-functions-07" status="draft"}
+::: {.solution for="prob-functions-07"}
 Here $\mathbb N = \{0,1,2,\dots\}$.
 
 **Injection.** $f(m,n) = 2^m3^n$. By unique prime factorisation,
@@ -174,7 +174,7 @@ $$g(m,n) = 2^m(2n+1) - 1.$$
    $2^m\cdot q$ with $q$ odd, say $q = 2n+1$. Then $g(m,n) = N$.
 :::
 
-::: {.solution for="prob-functions-12" status="draft"}
+::: {.solution for="prob-functions-12"}
 $f\sqcup g : A\cup C\to B\cup D$ is defined by
 $$(f\sqcup g)(x) = \begin{cases} f(x), & x\in A,\\ g(x), & x\in C.\end{cases}$$
 This is well defined because $A\cap C = \emptyset$.

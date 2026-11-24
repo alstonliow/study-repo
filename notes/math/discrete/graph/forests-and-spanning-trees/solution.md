@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude. CN chapter 12 has no
      sample solutions, so these were not checked against one. Owner to review. -->
 
-::: {.solution for="prob-graph-2-07" status="draft"}
+::: {.solution for="prob-graph-2-07"}
 $11$.
 
 Ignore $ef$ for a moment: it is a bridge and is in every spanning tree. The
@@ -19,7 +19,7 @@ edges, so it drops $2$ edges and must break both cycles.
 3. Total: $6 + 5 = 11$. (The Matrix–Tree Theorem gives the same.)
 :::
 
-::: {.solution for="prob-graph-2-08" status="draft"}
+::: {.solution for="prob-graph-2-08"}
 Sort the edges by weight and add each one unless it closes a cycle:
 
 | step | edge | weight | action |

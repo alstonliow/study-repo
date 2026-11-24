@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sequences-11" status="draft"}
+::: {.solution for="prob-sequences-11"}
 (a) No. Once $n\ge 10^4$ we have $n^2 > 100\,n^{1.5}$, since this is
     equivalent to $n^{0.5} > 100$. Oh-No had many winning choices, and
     $n = 10^6$ is one of them.
@@ -26,7 +26,7 @@
     $a_n > c\,f(n)$. Exactly one of the two players has a winning strategy.
 :::
 
-::: {.solution for="prob-sequences-12" status="draft"}
+::: {.solution for="prob-sequences-12"}
 (a) $O(n^4)$. It is $(n+1)^4$.
 
 (b) $\binom n2 = \frac{n(n-1)}2 = O(n^2)$.

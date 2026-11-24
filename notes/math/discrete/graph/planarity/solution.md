@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude. CN chapter 12 has no
      sample solutions, so these were not checked against one. Owner to review. -->
 
-::: {.solution for="prob-graph-2-09" status="draft"}
+::: {.solution for="prob-graph-2-09"}
 Draw $K_{2,n}$ with straight edges as follows.
 
 1. Put the two vertices of the first part at $(0,1)$ and $(0,-1)$, and the
@@ -19,7 +19,7 @@ Draw $K_{2,n}$ with straight edges as follows.
 5. So no two edges cross, and $K_{2,n}$ is planar.
 :::
 
-::: {.solution for="prob-graph-2-10" status="draft"}
+::: {.solution for="prob-graph-2-10"}
 In each case $n - m + f = 2$, where $f$ counts the outer face:
 
 | graph | $n$ | $m$ | $f$ | $n-m+f$ |
@@ -36,7 +36,7 @@ For the solids, the faces of the plane drawing are the faces of the solid (one
 of them becomes the outer face).
 :::
 
-::: {.solution for="prob-graph-2-11" status="draft"}
+::: {.solution for="prob-graph-2-11"}
 Let $G$ be planar with $n\ge3$ vertices and $m$ edges; the average degree is
 $2m/n$.
 
@@ -52,7 +52,7 @@ $2m/n$.
     bound $< 4$ from (b) applies.
 :::
 
-::: {.solution for="prob-graph-2-12" status="draft"}
+::: {.solution for="prob-graph-2-12"}
 1. If $G$ has at most $2$ vertices, every degree is at most $1$.
 
 2. Otherwise, by Exercise 11(a), the average degree of $G$ is less than $6$.

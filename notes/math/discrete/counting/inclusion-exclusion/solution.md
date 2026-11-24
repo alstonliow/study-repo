@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-counting-05" status="draft"}
+::: {.solution for="prob-counting-05"}
 Let $C$, $S$, $W$ be the sets of catalogue entries containing CSIRAC,
 SILLIAC and WREDAC. A Basic Search for several terms returns the entries
 containing all of them, so it gives the sizes of intersections directly.
@@ -18,7 +18,7 @@ containing all of them, so it gives the sizes of intersections directly.
      searches and fill them in. -->
 :::
 
-::: {.solution for="prob-counting-06" status="draft"}
+::: {.solution for="prob-counting-06"}
 (a) Let $A_3, A_5, A_7$ be the multiples of $3$, $5$, $7$ in
     $\{1,\dots,100\}$. A number is in $A_3\cap A_5$ when it is a multiple of
     $15$, and so on:
@@ -36,7 +36,7 @@ containing all of them, so it gives the sizes of intersections directly.
     of $3$, $5$ or $7$. So the count up to $100$ is $48 - 3 = 45$.
 :::
 
-::: {.solution for="prob-counting-07" status="draft"}
+::: {.solution for="prob-counting-07"}
 Let $F$ be all functions from the $6$-set to $\{1,2,3,4\}$, and let $M_i$
 be those that miss the value $i$. A surjection misses nothing.
 

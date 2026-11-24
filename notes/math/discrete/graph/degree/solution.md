@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-graph-1-03" status="draft"}
+::: {.solution for="prob-graph-1-03"}
 Let $G$ have $n\ge2$ vertices. Every degree lies in $\{0,1,\dots,n-1\}$.
 
 1. *Case 1: $G$ has an isolated vertex $u$.* Then no vertex $v$ has degree
@@ -15,7 +15,7 @@ Let $G$ have $n\ge2$ vertices. Every degree lies in $\{0,1,\dots,n-1\}$.
    pigeonhole principle, two vertices have the same degree.
 :::
 
-::: {.solution for="prob-graph-1-04" status="draft"}
+::: {.solution for="prob-graph-1-04"}
 Caffeine has $8$ carbon, $10$ hydrogen, $4$ nitrogen and $2$ oxygen atoms, so
 $24$ vertices. The degree sum is
 $$8\cdot4 + 10\cdot1 + 4\cdot3 + 2\cdot2 = 32 + 10 + 12 + 4 = 58.$$
@@ -25,7 +25,7 @@ $$8\cdot4 + 10\cdot1 + 4\cdot3 + 2\cdot2 = 32 + 10 + 12 + 4 = 58.$$
 (b) The average degree is $58/24 = 29/12\approx 2.42$.
 :::
 
-::: {.solution for="prob-graph-2-13" status="draft"}
+::: {.solution for="prob-graph-2-13"}
 (a) $K_4$, with $4$ vertices. A 3-regular graph needs at least $4$ vertices,
     and $K_4$ is planar (Exercise 10(c)).
 

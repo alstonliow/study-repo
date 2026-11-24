@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sets-19" status="draft"}
+::: {.solution for="prob-sets-19"}
 Not in general. Take complements in a universal set $U$, so that
 $\overline{A\times B}$ is the complement within $U\times U$.
 

@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-1-08" status="draft"}
+::: {.solution for="prob-probability-1-08"}
 1. By De Morgan's law, $\overline{A\cup B} = \overline A\cap\overline B$.
 
 2. For any event $E$, $\Pr(E) = 1 - \Pr(\overline E)$, because $E$ and
@@ -11,7 +11,7 @@
    $$\Pr(A\cup B) = 1 - \Pr(\overline{A\cup B}) = 1 - \Pr(\overline A\cap\overline B).$$
 :::
 
-::: {.solution for="prob-probability-1-09" status="draft"}
+::: {.solution for="prob-probability-1-09"}
 Let $P(n)$ be the statement for $n$ sets.
 
 1. *Base case $n=0$.* The union of no sets is $\emptyset$, and
@@ -30,7 +30,7 @@ Let $P(n)$ be the statement for $n$ sets.
 5. This is $P(n+1)$. By induction, $P(n)$ holds for all $n\in\mathbb N$.
 :::
 
-::: {.solution for="prob-probability-1-12" status="draft"}
+::: {.solution for="prob-probability-1-12"}
 A fixed-point-free permutation is a *derangement*. Let $D_n$ be the number of
 derangements of an $n$-set, so the probability is $D_n/n!$.
 

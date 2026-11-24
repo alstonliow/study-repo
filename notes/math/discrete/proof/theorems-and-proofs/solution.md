@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-proofs-03" status="draft"}
+::: {.solution for="prob-proofs-03"}
 <!-- TODO: the Course Notes number their theorems differently; this answer
      uses the results as they appear in these notes. Owner to check. -->
 Using the results of the Sets, Functions and Relations parts of these notes.

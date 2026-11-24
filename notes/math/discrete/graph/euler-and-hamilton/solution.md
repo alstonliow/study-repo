@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-graph-1-09" status="draft"}
+::: {.solution for="prob-graph-1-09"}
 Each vertex meets two sides of the square, each of them doubled, plus one
 diagonal. So every vertex has degree $2\cdot2 + 1 = 5$, which is odd.
 
@@ -11,7 +11,7 @@ $4$ odd vertices, so there is no trail containing every edge, and hence no
 Euler tour.
 :::
 
-::: {.solution for="prob-graph-1-10" status="draft"}
+::: {.solution for="prob-graph-1-10"}
 A connected graph is Eulerian if and only if every degree is even.
 
 | solid | vertices | degree | Eulerian? |
@@ -43,7 +43,7 @@ Euler tour of the octahedron, through all $12$ edges:
 $$T\,1\,2\,3\,4\,1\,B\,2\,T\,3\,B\,4\,T.$$
 :::
 
-::: {.solution for="prob-graph-1-11" status="draft"}
+::: {.solution for="prob-graph-1-11"}
 (a) The vertices are the corners of a cube. Each edge changes one bit, and
     the three directions correspond to the three bits:
 
@@ -83,7 +83,7 @@ $$T\,1\,2\,3\,4\,1\,B\,2\,T\,3\,B\,4\,T.$$
     1001 1011 1010 1000 1001 1101 1111 1110 1100 1101 0101 0111 0110 0100 0101 0001 0000
 :::
 
-::: {.solution for="prob-graph-1-12" status="draft"}
+::: {.solution for="prob-graph-1-12"}
 Let $G$ be a connected multigraph (multiple edges and loops allowed).
 
 1. *Construct $H$.* Replace every edge of $G$ by a path of length $3$: for

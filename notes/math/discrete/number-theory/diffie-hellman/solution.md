@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-18" status="draft"}
+::: {.solution for="prob-number-theory-18"}
 1. List the powers of $7$ mod $11$:
 
    | $x$ | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
@@ -17,7 +17,7 @@
    Check: $y_A^{x_B} = 2^9 = 512\equiv 6$.
 :::
 
-::: {.solution for="prob-number-theory-19" status="draft"}
+::: {.solution for="prob-number-theory-19"}
 (a) $18$ is not prime, but Diffie–Hellman only needs a primitive root.
     $\varphi(18) = 6$, and $\mathbb Z_{18}^* = \{1,5,7,11,13,17\}$. The powers
     of $5$ mod $18$ are $5, 7, 17, 13, 11, 1$, so $5$ is a primitive root.
@@ -34,7 +34,7 @@
     composite modulus also has extra structure that an attacker can exploit.
 :::
 
-::: {.solution for="prob-number-theory-20" status="draft"}
+::: {.solution for="prob-number-theory-20"}
 By Fermat's little theorem, $a^{p-1}\equiv 1\pmod p$. So A's public number is
 $$y_A = a^{p-1}\bmod p = 1.$$
 
@@ -45,7 +45,7 @@ is destroyed completely.
 More generally, A should choose $x_A$ with $1\le x_A\le p-2$.
 :::
 
-::: {.solution for="prob-number-theory-21" status="draft"}
+::: {.solution for="prob-number-theory-21"}
 Use one public prime $p$ and primitive root $a$, and let A, B, C choose
 private numbers $x_A, x_B, x_C$. Arrange them in a ring
 $A\to B\to C\to A$.

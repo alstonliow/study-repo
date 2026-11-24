@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-1-01" status="draft"}
+::: {.solution for="prob-probability-1-01"}
 (a) Let $W$ be the set of five-letter English words, with $|W| = N$. An
     outcome is a word together with a position in it:
     $$U = W\times\{1,2,3,4,5\},\qquad |U| = 5N.$$
@@ -23,13 +23,13 @@
     pattern). The counts depend on the word list installed.
 :::
 
-::: {.solution for="prob-probability-1-02" status="draft"}
+::: {.solution for="prob-probability-1-02"}
 $$U = \{\mathrm{HHH},\mathrm{HHT},\mathrm{HTH},\mathrm{HTT},\mathrm{THH},\mathrm{THT},\mathrm{TTH},\mathrm{TTT}\} = \{\mathrm H,\mathrm T\}^3,$$
 with each of the $8$ outcomes having probability $\frac18 = \bigl(\frac12\bigr)^3$,
 since the tosses are fair and independent.
 :::
 
-::: {.solution for="prob-probability-1-03" status="draft"}
+::: {.solution for="prob-probability-1-03"}
 The outcomes are $k$ Tails followed by a Head, for $k = 0,1,2,\dots$:
 $$U = \{\mathrm H,\ \mathrm{TH},\ \mathrm{TTH},\ \dots\} = \{\mathrm T^k\mathrm H : k\ge 0\},$$
 $$\Pr(\mathrm T^k\mathrm H) = \Bigl(\frac12\Bigr)^{k+1}.$$
@@ -38,7 +38,7 @@ These probabilities add up to $\sum_{k\ge0}2^{-(k+1)} = 1$. So the infinite
 sequence of Tails, which never stops, has probability $0$ and can be left out.
 :::
 
-::: {.solution for="prob-probability-1-04" status="draft"}
+::: {.solution for="prob-probability-1-04"}
 The $36$ ordered outcomes are equally likely, and the number of outcomes with
 total $t$ is $6 - |t-7|$.
 
@@ -51,19 +51,19 @@ total $t$ is $6 - |t-7|$.
     So the minimum is $d = 5$.
 :::
 
-::: {.solution for="prob-probability-1-05" status="draft"}
+::: {.solution for="prob-probability-1-05"}
 All $\binom{52}5$ hands are equally likely. A hand with no diamonds uses only
 the $39$ other cards:
 $$\Pr(\text{no diamonds}) = \frac{\binom{39}5}{\binom{52}5} = \frac{575{,}757}{2{,}598{,}960}\approx 0.2215.$$
 :::
 
-::: {.solution for="prob-probability-1-06" status="draft"}
+::: {.solution for="prob-probability-1-06"}
 There are $\lfloor100/3\rfloor = 33$ multiples of $3$, and
 $\lfloor100/9\rfloor = 11$ of them are multiples of $9$. So
 $$\Pr = \frac{33 - 11}{100} = \frac{22}{100} = 0.22.$$
 :::
 
-::: {.solution for="prob-probability-1-07" status="draft"}
+::: {.solution for="prob-probability-1-07"}
 Assume $365$ equally likely birthdays (ignore 29 February), chosen
 independently.
 

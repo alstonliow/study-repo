@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-01" status="draft"}
+::: {.solution for="prob-number-theory-01"}
 (a) $d$ divides $n$ when $n$ is an integer multiple of $d$:
     $$\exists k\in\mathbb Z:\ n = kd.$$
 
@@ -12,7 +12,7 @@
     $$d\mid m\ \wedge\ d\mid n\ \wedge\ \forall c\in\mathbb Z:\ \bigl((c\mid m\wedge c\mid n)\to c\le d\bigr).$$
 :::
 
-::: {.solution for="prob-number-theory-02" status="draft"}
+::: {.solution for="prob-number-theory-02"}
 Write $s(n)$ for the sum of the proper divisors of $n$ (the positive divisors
 other than $n$).
 
@@ -34,7 +34,7 @@ other than $n$).
     $$1+2+4+8+16 + 31+62+124+248 = 31 + 465 = 496.$$
 :::
 
-::: {.solution for="prob-number-theory-05" status="draft"}
+::: {.solution for="prob-number-theory-05"}
 (a) Every prime with two or more digits is odd and not a multiple of $5$, so
     its last digit is $1$, $3$, $7$ or $9$. Also, the first digit of a
     five-digit number is not $0$.
@@ -58,7 +58,7 @@ other than $n$).
     attempts.
 :::
 
-::: {.solution for="prob-number-theory-09" status="draft"}
+::: {.solution for="prob-number-theory-09"}
 Write $n = 10^k q + r$, where $r$ is the number formed by the last $k$
 digits of $n$, so $0\le r < 10^k$.
 

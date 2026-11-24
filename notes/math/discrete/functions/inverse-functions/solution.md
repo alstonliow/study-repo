@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-16" status="draft"}
+::: {.solution for="prob-functions-16"}
 Let $f : A\to B$ be an injection, and let
 $f^{-1} = \{(f(a),a) : a\in A\}$ be its inverse relation, from $B$ to $A$.
 Since $f$ is injective, $f^{-1}$ relates each element of $\operatorname{im}f$

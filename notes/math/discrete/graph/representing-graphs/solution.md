@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-graph-1-02" status="draft"}
+::: {.solution for="prob-graph-1-02"}
 Write $b = \lfloor\log_2 n\rfloor + 1$ for the bits per vertex number.
 
 (a) The vertex list has $n$ numbers and the edge list has $2m$ (two ends per

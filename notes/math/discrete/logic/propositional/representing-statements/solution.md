@@ -36,7 +36,7 @@ This matches intuition: incrementing always flips the lowest bit.
 $$y_2 \equiv x_1\wedge x_0, \qquad y_1\equiv x_1\oplus x_0, \qquad y_0\equiv \neg x_0$$
 :::
 
-::: {.solution for="prob-propositional-15" status="draft"}
+::: {.solution for="prob-propositional-15"}
 Write $J, M, K$ for Judith, Margaret, Katherine.
 
 (a) $\neg J\vee\neg M$.
@@ -64,7 +64,7 @@ Write $J, M, K$ for Judith, Margaret, Katherine.
 (j) $\neg J\wedge\neg M\wedge\neg K$.
 :::
 
-::: {.solution for="prob-propositional-16" status="draft"}
+::: {.solution for="prob-propositional-16"}
 Expand with the distributive law, choosing one literal from each clause, and
 drop disjuncts that contain a variable and its negation or that are repeats.
 

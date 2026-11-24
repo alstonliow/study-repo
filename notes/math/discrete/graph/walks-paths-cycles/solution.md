@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-graph-1-05" status="draft"}
+::: {.solution for="prob-graph-1-05"}
 1. Let $W = v_0v_1\cdots v_k$ be a shortest walk from $u = v_0$ to $w = v_k$,
    and suppose it is not a path. Then some vertex repeats: $v_i = v_j$ with
    $i<j$.
@@ -15,7 +15,7 @@
    is a path.
 :::
 
-::: {.solution for="prob-graph-1-06" status="draft"}
+::: {.solution for="prob-graph-1-06"}
 Let $G$ be a finite graph with minimum degree at least $2$.
 
 1. Let $P = v_0v_1\cdots v_k$ be a longest path in $G$. It exists because $G$
@@ -30,7 +30,7 @@ Let $G$ be a finite graph with minimum degree at least $2$.
 4. Then $v_0v_1\cdots v_iv_0$ is a cycle, of length $i+1\ge3$.
 :::
 
-::: {.solution for="prob-graph-1-07" status="draft"}
+::: {.solution for="prob-graph-1-07"}
 If $u$ and $v$, or $v$ and $w$, are in different components, the right-hand
 side is $\infty$ and there is nothing to prove. Otherwise:
 

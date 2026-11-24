@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-2-04" status="draft"}
+::: {.solution for="prob-probability-2-04"}
 The suggestion does not give a fair die. The number of Heads is
 $\mathrm{Bin}(5,\frac12)$, so the probabilities of $1,\dots,6$ are
 $$\tfrac1{32},\ \tfrac5{32},\ \tfrac{10}{32},\ \tfrac{10}{32},\ \tfrac5{32},\ \tfrac1{32}.$$
@@ -24,7 +24,7 @@ $n$ tosses has probability $2^{-n}$, so every event has probability
 $k/2^n$, which is never $\frac16$.
 :::
 
-::: {.solution for="prob-probability-2-07" status="draft"}
+::: {.solution for="prob-probability-2-07"}
 $E(X) = np = 8$, $\mathrm{Var}(X) = np(1-p) = 4$, and $\sigma = 2$. All
 probabilities below are $\binom{16}k/2^{16}$ summed over the relevant $k$.
 

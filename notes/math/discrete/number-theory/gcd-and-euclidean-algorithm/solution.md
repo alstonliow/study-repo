@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-12" status="draft"}
+::: {.solution for="prob-number-theory-12"}
 For $(55,34)$ every quotient is $1$, so each step is a single subtraction:
 $$\gcd(55,34) = \gcd(34,21) = \gcd(21,13) = \gcd(13,8) = \gcd(8,5) = \gcd(5,3) = \gcd(3,2) = \gcd(2,1) = 1.$$
 That is $7$ subtractions, and every number that appears is a Fibonacci number:

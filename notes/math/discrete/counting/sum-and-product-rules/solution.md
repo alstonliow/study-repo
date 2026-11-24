@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-counting-01" status="draft"}
+::: {.solution for="prob-counting-01"}
 (a) Each pass of the outer loop does $bcd$ beeps in the $j$-$k$-$l$ nest and
     $e(f+g+h)$ in the $m$ loop. So the total is
     $$a\bigl(bcd + e(f+g+h)\bigr).$$
@@ -10,7 +10,7 @@
     $O(n^3)$. So the number of beeps is $O(n^4)$.
 :::
 
-::: {.solution for="prob-counting-03" status="draft"}
+::: {.solution for="prob-counting-03"}
 (a) $6\cdot6 = 36$.
 
 (b) The outcomes with both numbers equal are $6$. The remaining $30$ split

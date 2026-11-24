@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sets-20" status="draft"}
+::: {.solution for="prob-sets-20"}
 Three parts with four elements in total means one part has two elements and
 the other two parts are singletons. The partition is fixed by the pair, so
 there are $\binom42 = 6$ partitions:
@@ -14,7 +14,7 @@ there are $\binom42 = 6$ partitions:
 - $\{\{3,4\},\{1\},\{2\}\}$
 :::
 
-::: {.solution for="prob-sets-22" status="draft"}
+::: {.solution for="prob-sets-22"}
 (a) Only the trivial partition $\{\mathbb R\}$, with
     $\mathbb R = (-\infty,\infty)$ as its single part.
 

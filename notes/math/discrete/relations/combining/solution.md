@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-18" status="draft"}
+::: {.solution for="prob-functions-18"}
 In §2.13, $\mathrm{Parent}(X,Y)$ holds when $Y$ is a parent of $X$. Its
 transitive closure
 $$\mathrm{Ancestor} = \mathrm{Parent}\cup\mathrm{Parent}^{(2)}\cup\mathrm{Parent}^{(3)}\cup\cdots$$
@@ -15,7 +15,7 @@ $$\mathrm{Related}(X,Y)\iff X = Y\ \vee\ \mathrm{Ancestor}(X,Y)\ \vee\ \mathrm{A
 themselves, for example when no earlier ancestor is recorded.)
 :::
 
-::: {.solution for="prob-functions-19" status="draft"}
+::: {.solution for="prob-functions-19"}
 Let $\mathrm{Collatz}^+$ be the transitive closure of the Collatz function
 (as a binary relation on $\mathbb Z^+$):
 $$\mathrm{Collatz}^+ = \bigcup_{i\ge1}\mathrm{Collatz}^{(i)}.$$

@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-proofs-06" status="draft"}
+::: {.solution for="prob-proofs-06"}
 (a) The $k$-th odd number is $2k-1$.
 
 (b) For $k = 1$, the sum of the first odd number is $1 = 1^2$.
@@ -20,7 +20,7 @@
     $k\ge1$.
 :::
 
-::: {.solution for="prob-proofs-07" status="draft"}
+::: {.solution for="prob-proofs-07"}
 Let $P(n)$ be the statement $\sum_{i=0}^n 2^i = 2^{n+1}-1$.
 
 1. *Base case $n = 0$.* The left side is $2^0 = 1$, and the right side is
@@ -34,7 +34,7 @@ Let $P(n)$ be the statement $\sum_{i=0}^n 2^i = 2^{n+1}-1$.
    $n\in\mathbb N_0$.
 :::
 
-::: {.solution for="prob-proofs-08" status="draft"}
+::: {.solution for="prob-proofs-08"}
 Let $P(n)$ be the statement $\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$.
 
 1. *Base case $n = 1$.* Both sides equal $1$, since
@@ -51,7 +51,7 @@ Let $P(n)$ be the statement $\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}6$.
    $n\ge1$. (For $n = 0$ both sides are $0$.)
 :::
 
-::: {.solution for="prob-proofs-09" status="draft"}
+::: {.solution for="prob-proofs-09"}
 We use $1 + 2 + \cdots + n = \frac{n(n+1)}2$, so the claim is
 $$\sum_{i=1}^n i^3 = \frac{n^2(n+1)^2}4.$$
 Call this $P(n)$.
@@ -68,7 +68,7 @@ Call this $P(n)$.
 4. By the Principle of Mathematical Induction, $P(n)$ holds for all $n\ge1$.
 :::
 
-::: {.solution for="prob-proofs-13" status="draft"}
+::: {.solution for="prob-proofs-13"}
 The "theorem" is false, and the error is in step 4.
 
 1. Steps 1–3 are correct for $n = 0, 1, 2$.

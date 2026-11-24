@@ -1,13 +1,13 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-21" status="draft"}
+::: {.solution for="prob-functions-21"}
 It is the relation itself. An equivalence relation is already transitive, and
 the transitive closure of a transitive relation $R$ is $R$: every
 $R^{(k)}\subseteq R$, so their union adds nothing.
 :::
 
-::: {.solution for="prob-functions-22" status="draft"}
+::: {.solution for="prob-functions-22"}
 (a) $\{\text{ate},\ \text{eat},\ \text{eta},\ \text{tea}\}$, and some
     dictionaries also list "tae".
 

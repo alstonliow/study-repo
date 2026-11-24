@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-functions-15" status="draft"}
+::: {.solution for="prob-functions-15"}
 We use the definitions from Assignment 1, restated here.
 
 - $G\le H$ ($G$ is *embeddable* in $H$): for every key $k$ of $G$ there is a

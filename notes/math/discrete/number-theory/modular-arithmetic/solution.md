@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-03" status="draft"}
+::: {.solution for="prob-number-theory-03"}
 (a) A non-leap year has $365 = 52\cdot 7 + 1$ days, so the weekday moves on
     by one:
     $$(d+1)\bmod 7.$$
@@ -14,13 +14,13 @@
     $$(d+5)\bmod 7.$$
 :::
 
-::: {.solution for="prob-number-theory-08" status="draft"}
+::: {.solution for="prob-number-theory-08"}
 With letters identified with $\mathbb Z_{26}$ and key $k\in\mathbb Z_{26}$:
 $$e(m_1\cdots m_n, k) = c_1\cdots c_n,\qquad c_i = (m_i + k)\bmod 26,$$
 $$d(c_1\cdots c_n, k) = m_1\cdots m_n,\qquad m_i = (c_i - k)\bmod 26.$$
 :::
 
-::: {.solution for="prob-number-theory-10" status="draft"}
+::: {.solution for="prob-number-theory-10"}
 Write $n = \sum_{i=0}^{D-1} n_i 10^i$ with decimal digits $n_i$, so that
 $\mathrm{ds}(n) = \sum_i n_i$.
 
@@ -51,7 +51,7 @@ $\mathrm{ds}(n) = \sum_i n_i$.
     $1 - 0 + 1 - 1 = 1$, and indeed $13\bmod 3 = 1$.
 :::
 
-::: {.solution for="prob-number-theory-11" status="draft"}
+::: {.solution for="prob-number-theory-11"}
 By Exercise 10(b), each number is congruent mod $9$ to its digit sum. For the
 left-hand side, $92\equiv 9+2 = 11\equiv 2$ and $31\equiv 3+1 = 4$, so
 $92\times 31\equiv 2\cdot 4 = 8\pmod 9$.
@@ -75,7 +75,7 @@ In general: if the remainders differ, the equation is false; if they agree,
 the equation may or may not be true.
 :::
 
-::: {.solution for="prob-number-theory-15" status="draft"}
+::: {.solution for="prob-number-theory-15"}
 (a) Encryption must be invertible, so $m\mapsto km\bmod 26$ must be a
     bijection on $\mathbb Z_{26}$. This holds exactly when $k$ has a
     multiplicative inverse mod $26$, that is, when $\gcd(k,26) = 1$. The

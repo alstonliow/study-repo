@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-2-05" status="draft"}
+::: {.solution for="prob-probability-2-05"}
 - **Expectation:** $E(W) = 0\cdot\frac12 + 1\cdot\frac13 + 2\cdot\frac16 = \frac23$.
 - **Median:** $m$ is a median when $\Pr(W\le m)\ge\frac12$ and
   $\Pr(W\ge m)\ge\frac12$. Both $m = 0$ ($\Pr(W\le0) = \frac12$,
@@ -13,7 +13,7 @@
 - **Standard deviation:** $\sqrt{5}/3\approx 0.745$.
 :::
 
-::: {.solution for="prob-probability-2-06" status="draft"}
+::: {.solution for="prob-probability-2-06"}
 1. For one die $X$: $E(X) = \frac72$ and $E(X^2) = \frac{91}6$, so
    $\mathrm{Var}(X) = \frac{91}6 - \frac{49}4 = \frac{35}{12}$.
 

@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-16" status="draft"}
+::: {.solution for="prob-number-theory-16"}
 Let $e$ be the given exponent.
 
 1. Reduce the base: $1752 = 14\cdot 125 + 2$, so $1752\equiv 2\pmod{125}$.

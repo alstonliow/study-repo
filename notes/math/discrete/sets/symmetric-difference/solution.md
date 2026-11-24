@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sets-15" status="draft"}
+::: {.solution for="prob-sets-15"}
 $A\triangle B$ is the set of elements in exactly one of $A$ and $B$. Three ways:
 $$|A\triangle B| = |A\cup B| - |A\cap B|,$$
 $$|A\triangle B| = |A| + |B| - 2|A\cap B|,$$
@@ -13,7 +13,7 @@ $|A\cup B| = |A|+|B|-|A\cap B|$. The third holds because $A\setminus B$ and
 $B\setminus A$ are disjoint and their union is $A\triangle B$.
 :::
 
-::: {.solution for="prob-sets-16" status="draft"}
+::: {.solution for="prob-sets-16"}
 An element is in $A\triangle B\triangle C$ exactly when it is in an odd number
 of the three sets (see Exercise 18). So the shaded regions are the three
 "only one set" regions and the centre:
@@ -32,7 +32,7 @@ of the three sets (see Exercise 18). So the shaded regions are the three
 ```
 :::
 
-::: {.solution for="prob-sets-17" status="draft"}
+::: {.solution for="prob-sets-17"}
 1. Let $x$ be any element. By definition, $x\in(A\cup B)\triangle(A\cap B)$
    if and only if $x$ is in exactly one of $A\cup B$ and $A\cap B$.
 
@@ -47,7 +47,7 @@ of the three sets (see Exercise 18). So the shaded regions are the three
    elements, so they are equal.
 :::
 
-::: {.solution for="prob-sets-18" status="draft"}
+::: {.solution for="prob-sets-18"}
 $A_1\triangle A_2\triangle\cdots\triangle A_n$ consists of the elements that
 belong to an **odd number** of the sets $A_1,\dots,A_n$.
 

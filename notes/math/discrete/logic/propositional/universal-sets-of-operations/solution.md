@@ -105,7 +105,7 @@ $$a\wedge b \equiv \neg\big(\neg(a\wedge b)\big) \equiv \neg(a\ \text{NAND}\ b) 
 Since NAND alone can express $\wedge,\vee,\neg$, and $\{\wedge,\vee,\neg\}$ is universal, the single operation NAND is itself a **universal (functionally complete) operation**: every Boolean circuit can, in principle, be built using nothing but NAND gates.
 :::
 
-::: {.solution for="prob-propositional-18" status="draft"}
+::: {.solution for="prob-propositional-18"}
 Each 2-input gate reduces the number of values still to be combined by one.
 Starting from $8$ inputs and ending with $1$ output takes exactly $7$ gates,
 whatever the arrangement.
@@ -122,7 +122,7 @@ $3t$ is optimal. After time $kt$, each available value depends on at most
 $2^k$ inputs, so combining all $8 = 2^3$ inputs needs $k\ge3$.
 :::
 
-::: {.solution for="prob-propositional-23" status="draft"}
+::: {.solution for="prob-propositional-23"}
 True. The single operation NAND, $P\uparrow Q = \neg(P\wedge Q)$, is
 universal.
 

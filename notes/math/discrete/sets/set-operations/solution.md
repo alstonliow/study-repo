@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sets-01" status="draft"}
+::: {.solution for="prob-sets-01"}
 The formula $|B\setminus A| = |B|-|A|$ assumes that every element of $A$ is
 removed from $B$. That is only true when every element of $A$ is in $B$, that
 is, when $A\subseteq B$.
@@ -19,7 +19,7 @@ When $A\subseteq B$ we have $A\cap B = A$, and the formula reduces to the
 original one.
 :::
 
-::: {.solution for="prob-sets-03" status="draft"}
+::: {.solution for="prob-sets-03"}
 (a) $A\cup B = B$. Every element of $A$ is already in $B$.
 
 (b) $A\cup B \ne B$: some element of $A$ is not in $B$, and it is in
@@ -40,7 +40,7 @@ original one.
     $B$, and $A\subseteq B$ says there are none.
 :::
 
-::: {.solution for="prob-sets-06" status="draft"}
+::: {.solution for="prob-sets-06"}
 (a) Each region is an intersection of $A$ or $\overline A$, $B$ or
     $\overline B$, and $C$ or $\overline C$:
 
@@ -103,18 +103,18 @@ original one.
     space.
 :::
 
-::: {.solution for="prob-sets-09" status="draft"}
+::: {.solution for="prob-sets-09"}
 $$|A\cup B| = |A| + |B| - |A\cap B|.$$
 
 $|A|+|B|$ counts every element of $A\cap B$ twice, so we subtract it once.
 :::
 
-::: {.solution for="prob-sets-10" status="draft"}
+::: {.solution for="prob-sets-10"}
 Rearranging the answer to Exercise 9:
 $$|A\cap B| = |A| + |B| - |A\cup B|.$$
 :::
 
-::: {.solution for="prob-sets-11" status="draft"}
+::: {.solution for="prob-sets-11"}
 $$|A\cup B\cup C| = |A|+|B|+|C| - |A\cap B| - |A\cap C| - |B\cap C| + |A\cap B\cap C|.$$
 
 1. Write $A\cup B\cup C = (A\cup B)\cup C$ and apply Exercise 9:
@@ -127,7 +127,7 @@ $$|A\cup B\cup C| = |A|+|B|+|C| - |A\cap B| - |A\cap C| - |B\cap C| + |A\cap B\c
 3. Substitute this and $|A\cup B| = |A|+|B|-|A\cap B|$ into step 1.
 :::
 
-::: {.solution for="prob-sets-12" status="draft"}
+::: {.solution for="prob-sets-12"}
 $$|A\cap B\cap C| = |A|+|B|+|C| - |A\cup B| - |A\cup C| - |B\cup C| + |A\cup B\cup C|.$$
 
 1. By Exercise 10, $|A\cap B| = |A|+|B|-|A\cup B|$, and similarly for the
@@ -140,7 +140,7 @@ $$|A\cap B\cap C| = |A|+|B|+|C| - |A\cup B| - |A\cup C| - |B\cup C| + |A\cup B\c
 3. Substitute step 1 into step 2 and collect terms.
 :::
 
-::: {.solution for="prob-sets-13" status="draft"}
+::: {.solution for="prob-sets-13"}
 For two and three sets, Exercises 9 and 11 become
 $$|A\cup B| = i_1 - i_2,\qquad |A\cup B\cup C| = i_1 - i_2 + i_3.$$
 
@@ -151,7 +151,7 @@ $$|A_1\cup\cdots\cup A_n| = i_1 - i_2 + i_3 - \cdots + (-1)^{n-1} i_n
 The last term is $+i_n$ when $n$ is odd and $-i_n$ when $n$ is even.
 :::
 
-::: {.solution for="prob-sets-14" status="draft"}
+::: {.solution for="prob-sets-14"}
 For two and three sets, Exercises 10 and 12 become
 $$|A\cap B| = u_1 - u_2,\qquad |A\cap B\cap C| = u_1 - u_2 + u_3.$$
 
@@ -177,7 +177,7 @@ One way to prove it:
 4. Subtract this from $|U|$, using step 1.
 :::
 
-::: {.solution for="prob-sets-21" status="draft"}
+::: {.solution for="prob-sets-21"}
 The eight parts are the basic regions of the Venn diagram, one for each choice
 of "in" or "out" for each of the three sets:
 

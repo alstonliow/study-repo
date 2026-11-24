@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude. CN chapter 12 has no
      sample solutions, so these were not checked against one. Owner to review. -->
 
-::: {.solution for="prob-graph-2-01" status="draft"}
+::: {.solution for="prob-graph-2-01"}
 There are six trees with six vertices:
 
 ```{=latex}
@@ -57,7 +57,7 @@ To see that the list is complete, sort by maximum degree $\Delta$:
   form three paths ("legs") hanging off it, with lengths $3,1,1$ or $2,2,1$.
 :::
 
-::: {.solution for="prob-graph-2-02" status="draft"}
+::: {.solution for="prob-graph-2-02"}
 1. Diameter at least $3$ means there is a path $v_0v_1v_2v_3$ of length $3$.
 
 2. $v_1$ is adjacent to $v_0$ and $v_2$, so $\deg(v_1)\ge 2$.
@@ -69,7 +69,7 @@ To see that the list is complete, sort by maximum degree $\Delta$:
    of $v_1$, and $\deg(v_1)\le n-2$. Take $v = v_1$.
 :::
 
-::: {.solution for="prob-graph-2-03" status="draft"}
+::: {.solution for="prob-graph-2-03"}
 Let there be $\ell$ leaves, so $n = k + \ell$ vertices and $n-1$ edges.
 
 1. By the Handshaking Lemma, $3k + \ell = 2(n-1) = 2(k+\ell-1)$.
@@ -81,7 +81,7 @@ For example, $k = 1$ gives the star with $3$ leaves, and $k = 2$ gives two
 adjacent degree-3 vertices with $4$ leaves.
 :::
 
-::: {.solution for="prob-graph-2-04" status="draft"}
+::: {.solution for="prob-graph-2-04"}
 (a) 1. Let $T$ be a tree with $n\ge3$ vertices, so it has $n-1$ edges and
        degree sum $2(n-1)$.
 
@@ -94,7 +94,7 @@ adjacent degree-3 vertices with $4$ leaves.
     for every $n$.
 :::
 
-::: {.solution for="prob-graph-2-05" status="draft"}
+::: {.solution for="prob-graph-2-05"}
 ($\Rightarrow$) Let $G$ be a tree and $u,v$ vertices.
 
 1. $G$ is connected, so there is a $u$–$v$ walk, and a shortest one is a path
@@ -120,7 +120,7 @@ adjacent degree-3 vertices with $4$ leaves.
 6. Connected and acyclic, so $G$ is a tree.
 :::
 
-::: {.solution for="prob-graph-2-06" status="draft"}
+::: {.solution for="prob-graph-2-06"}
 A tree with $n$ vertices has $n-1$ edges, so its average degree is
 $$\frac{2(n-1)}{n} = 2 - \frac2n < 2.$$
 :::

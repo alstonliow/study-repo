@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-1-16" status="draft"}
+::: {.solution for="prob-probability-1-16"}
 Each of the four fielders is equally likely, with probability $\frac14$.
 
 (a) By the law of total probability,
@@ -15,7 +15,7 @@ Each of the four fielders is equally likely, with probability $\frac14$.
     to $\frac37$.
 :::
 
-::: {.solution for="prob-probability-1-17" status="draft"}
+::: {.solution for="prob-probability-1-17"}
 Let $M = 10^6$. Treat each of the $5M$ people as equally likely to be the
 criminal, so $\Pr(\text{Guilty}) = \frac1{5M}$ for the matched person. The
 criminal certainly matches, and an innocent person matches with probability
@@ -36,7 +36,7 @@ $\frac1M$.
    tell them apart.
 :::
 
-::: {.solution for="prob-probability-1-18" status="draft"}
+::: {.solution for="prob-probability-1-18"}
 In every case the prior is $\frac13$ for each coin. Given the coin, the
 tosses are independent:
 

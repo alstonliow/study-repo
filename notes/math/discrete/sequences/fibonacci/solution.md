@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sequences-07" status="draft"}
+::: {.solution for="prob-sequences-07"}
 **Finding the formula.** As for the Fibonacci numbers, look for solutions
 $l_n = x^n$ of $l_n = l_{n-1} + l_{n-2}$. This needs $x^2 = x + 1$, so
 $$x = \varphi = \frac{1+\sqrt5}2\quad\text{or}\quad x = \psi = \frac{1-\sqrt5}2.$$

@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-probability-2-01" status="draft"}
+::: {.solution for="prob-probability-2-01"}
 Count the $36$ equally likely pairs $(x,y)$ by $|x-y|$:
 
 | $k$ | 0 | 1 | 2 | 3 | 4 | 5 |
@@ -12,7 +12,7 @@ For $k\ge1$ there are $6-k$ pairs with $x - y = k$ and as many with
 $y - x = k$, giving $2(6-k)$.
 :::
 
-::: {.solution for="prob-probability-2-02" status="draft"}
+::: {.solution for="prob-probability-2-02"}
 $X\oplus Y$ is uniform on $\{0,1\}$, whatever the distribution of $Y$.
 
 1. Let $q = \Pr(Y = 0)$. $X\oplus Y = 0$ exactly when $X = Y$. By
@@ -27,7 +27,7 @@ $X\oplus Y$ is uniform on $\{0,1\}$, whatever the distribution of $Y$.
    completely.
 :::
 
-::: {.solution for="prob-probability-2-03" status="draft"}
+::: {.solution for="prob-probability-2-03"}
 Each of the four strings has probability $\frac14$. Note that in each string
 $z = x\oplus y$.
 

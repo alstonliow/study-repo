@@ -1,7 +1,7 @@
 <!-- Draft solutions (status="draft") written by Claude with the FIT1058 sample
      solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-number-theory-17" status="draft"}
+::: {.solution for="prob-number-theory-17"}
 (a) $k = \varphi(11) = 10$. By definition, a primitive root $a$ of $11$ has
     $a^k\not\equiv 1$ for $1\le k<10$, and $a^{10}\equiv 1$ by Fermat's
     little theorem.

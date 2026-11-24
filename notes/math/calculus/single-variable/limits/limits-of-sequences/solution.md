@@ -1,7 +1,7 @@
 <!-- Solutions marked status="draft" were written by Claude with the FIT1058
      sample solutions as a reference; not copied. Owner to review, then remove status. -->
 
-::: {.solution for="prob-sequences-08" status="draft"}
+::: {.solution for="prob-sequences-08"}
 (a) There are two errors.
 
     1. Step 2 uses the recurrence for $t_1$, but $t_1 = 1$ is given
@@ -38,7 +38,7 @@
        $n = 2$ covers all even $n$.
 :::
 
-::: {.solution for="prob-sequences-09" status="draft"}
+::: {.solution for="prob-sequences-09"}
 (a) The terms are ratios of consecutive Fibonacci numbers,
     $\varphi_n = f_{n+1}/f_n$:
 
@@ -94,7 +94,7 @@ Write $\delta = 0.001$. All terms are at least $1$, so they are positive.
     induction, $P(n)$ holds for all $n\ge N$.
 :::
 
-::: {.solution for="prob-sequences-10" status="draft"}
+::: {.solution for="prob-sequences-10"}
 (a) No. With $a = \frac12$ and $\varepsilon = \frac14$, Lim wins only if
     $\frac14 < a_n < \frac34$. For $n\ge3$, $|a_n|\le\frac13$, so every
     choice of $n\ge3$ wins for Una.
