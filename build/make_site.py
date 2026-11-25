@@ -71,9 +71,7 @@ def main() -> int:
     sidebar: list[dict] = []
     branch_items = {}
     summary_courses: dict[str, list[str]] = {}
-    home = ["---", "title: Study Notes", "---", "",
-            "Personal study notes, organised by topic rather than by course. "
-            "So far: discrete mathematics, probability, and first topics in computer science.", ""]
+    home: list[str] = []                 # body; the header with totals is added at the end
     part_secs = {}
     for part, branches in BRANCHES:
         in_field = bool(REPO.part_field.get(part))
@@ -99,7 +97,8 @@ def main() -> int:
             sec["contents"].append({"section": f"{branch_num[bid]} {btitle}", "href": f"notes/{bid}/index.qmd",
                                     "contents": [f"notes/{n.id}.qmd" for n in members]
                                     + [f"notes/{bid}/summary.qmd"]})
-            rows.append((f"notes/{bid}/index.html", btitle, REPO.branch_desc.get(bid, ""), branch_num[bid]))
+            rows.append((f"notes/{bid}/index.html", btitle, REPO.branch_desc.get(bid, ""), branch_num[bid],
+                         f"{len(members)} note{'s' if len(members) != 1 else ''}"))
         home += contents_block(part, rows, 3 if in_field else 2)
         part_secs[part] = sec
     for f, parts in REPO.fields:          # optional field level above the parts (SPEC §2.5)
@@ -163,8 +162,10 @@ def main() -> int:
                 chap.notes, chap.reviews, ctx(), page, course=c,
                 in_scope=filters.Filter(REPO, course=c, omit_extra=True).in_scope), encoding="utf-8")
             summary_courses[page] = [c.id]
+        ncn = sum(len(ch.notes) for ch in co.chapters)
         course_rows.setdefault(c.field, []).append(
-            (c.code, (f"courses/{c.id}.html", c.code, c.name or "Knowledge points in course order", "")))
+            (c.code, (f"courses/{c.id}.html", c.code, c.name or "Knowledge points in course order", "",
+                      f"{ncn} note{'s' if ncn != 1 else ''}")))
         page_courses[f"courses/{c.id}.html"] = [c.id]
     if list(course_rows) == [""]:          # no fields in the taxonomy: one flat list
         home += contents_block("Courses", [r for _, r in course_rows[""]])
@@ -203,7 +204,12 @@ def main() -> int:
         if (SITE / stale).exists():
             (SITE / stale).unlink()
 
-    (SITE / "index.qmd").write_text("\n".join(home) + "\n", encoding="utf-8")
+    nprob = sum(len(n.problems) for n in notes.values())
+    (SITE / "index.qmd").write_text("\n".join(web.home_header(
+        [(len(notes), "note", "notes"), (len(branch_items), "branch", "branches"),
+         (len(REPO.courses), "course", "courses"), (nprob, "exercise", "exercises")],
+        [REPO.part_field.get(p) or p for p, _ in BRANCHES] + (["Courses"] if course_rows else []))
+        + home) + "\n", encoding="utf-8")
     for pg in web.PAGES:                          # generated pages outside the notes
         (SITE / pg.file).write_text(pg.render(), encoding="utf-8")
     navbar = [{"href": "index.qmd", "text": "Home"}] + \
