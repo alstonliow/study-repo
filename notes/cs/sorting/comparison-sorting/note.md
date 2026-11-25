@@ -24,7 +24,7 @@ Trying all $n!$ permutations and checking each in $\Theta(n)$ time ("permutation
 
 ## The algorithms
 
-Each comparison sort has its own note: selection and insertion sort (@sec-cs-sorting-elementary-sorts), merge sort (@sec-cs-sorting-merge-sort) and heap sort (@sec-cs-sorting-heap-sort). A sorted array can then be searched by binary search (@sec-cs-sorting-binary-search). No comparison sort beats $\Omega(n\log n)$ comparisons in the worst case (@thm-comparison-sort-lower-bound).
+Each comparison sort has its own note: selection and insertion sort (@sec-cs-sorting-elementary-sorts), merge sort (@sec-cs-sorting-merge-sort), heap sort (@sec-cs-sorting-heap-sort) and quicksort (@sec-cs-sorting-quicksort). A sorted array can then be searched by binary search (@sec-cs-sorting-binary-search). No comparison sort beats $\Omega(n\log n)$ comparisons in the worst case (@thm-comparison-sort-lower-bound).
 
 | algorithm | worst-case time | in place | stable |
 |---|---|---|---|
@@ -32,3 +32,4 @@ Each comparison sort has its own note: selection and insertion sort (@sec-cs-sor
 | insertion sort (@def-insertion-sort) | $\Theta(n^2)$ | yes | yes |
 | merge sort (@def-merge-sort) | $\Theta(n\log n)$ | no | yes |
 | heap sort (@def-heap-sort) | $O(n\log n)$ | yes | no |
+| randomized quicksort (@thm-randomized-quicksort) | $\Theta(n^2)$, $O(n\log n)$ expected | with in-place partitioning | no |

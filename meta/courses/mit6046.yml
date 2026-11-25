@@ -36,7 +36,7 @@ chapters:
     points:
       - id: "2.1"
         title: "Convex hull, median, Strassen"
-        covers: [cs/algorithms/divide-and-conquer]
+        covers: [cs/algorithms/divide-and-conquer, cs/algorithm-topics/convex-hull, cs/sorting/selection, cs/sorting/median-of-medians, cs/algorithms/strassen]
       - id: "2.2"
         title: "Master theorem"
         covers: [thm-master-theorem, thm-master-theorem-special-case-extra, prob-mit6046s15-1-q12]
@@ -72,7 +72,7 @@ chapters:
     points:
       - id: "6.1"
         title: "Verification, quicksort, selection"
-        covers: [cs/algorithms/randomized-algorithms]
+        covers: [cs/algorithms/randomized-algorithms, cs/algorithms/freivalds, cs/sorting/quicksort, cs/sorting/randomized-selection]
   - num: 7
     title: "Skip lists"
     points:

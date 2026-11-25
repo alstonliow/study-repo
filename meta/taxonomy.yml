@@ -845,7 +845,9 @@ parts:
         notes:   # topic order on the website
           - problems-and-algorithms
           - divide-and-conquer
+          - strassen
           - randomized-algorithms
+          - freivalds
       - id: cs/data-structures
         title: Data Structures
         desc: Sequences and sets, hashing, binary trees, heaps, balanced search trees, augmentation
@@ -874,10 +876,14 @@ parts:
           - merge-sort
           - binary-search
           - heap-sort
+          - quicksort
           - comparison-lower-bounds
           - linear-sorting
           - counting-sort
           - radix-sort
+          - selection
+          - randomized-selection
+          - median-of-medians
       - id: cs/graph-algorithms
         title: Graph Search and Shortest Paths
         desc: Breadth- and depth-first search, strongly connected components, single-source and all-pairs shortest paths
@@ -935,13 +941,14 @@ parts:
           - stable-matching
       - id: cs/algorithm-topics
         title: Selected Topics in Algorithms
-        desc: Distributed algorithms, linear programming, the FFT, string matching, approximation and fixed-parameter algorithms, cache-oblivious algorithms
+        desc: Distributed algorithms, linear programming, the FFT, string matching, the convex hull, approximation and fixed-parameter algorithms, cache-oblivious algorithms
         notes:   # topic order on the website
           - distributed-algorithms
           - linear-programming
           - fast-fourier-transform
           - cooley-tukey-algorithms
           - string-matching
+          - convex-hull
           - approximation-algorithms
           - fixed-parameter-algorithms
           - cache-oblivious-algorithms

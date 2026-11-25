@@ -1,7 +1,7 @@
 ---
 title: "External Memory and Cache-Oblivious Algorithms"
 sources: [mit6046-23, mit6046-24]
-requires: [cs/data-structures/two-three-trees, cs/algorithms/divide-and-conquer]
+requires: [cs/data-structures/two-three-trees, cs/sorting/median-of-medians]
 aliases: [cs/models-of-computation/cache-oblivious-algorithms]   # old ids (moved)
 relations:
   related: [math/numerical/direct-solvers/caches-and-blocking]

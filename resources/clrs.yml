@@ -90,7 +90,7 @@ nodes:
       title: Strassen's algorithm
       at:
         3e: '4.2'
-      covers: [cs/algorithms/divide-and-conquer]
+      covers: [cs/algorithms/strassen]
     - id: res-clrs-substitution-method
       kind: section
       title: Substitution method
@@ -193,7 +193,7 @@ nodes:
       title: Quicksort and partition
       at:
         3e: '7.1'
-      covers: [cs/algorithms/randomized-algorithms]
+      covers: [cs/sorting/quicksort]
     - id: res-clrs-quicksort-performance
       kind: section
       title: Performance of quicksort
@@ -204,13 +204,13 @@ nodes:
       title: Randomised quicksort
       at:
         3e: '7.3'
-      covers: [cs/algorithms/randomized-algorithms]
+      covers: [cs/sorting/quicksort]
     - id: res-clrs-quicksort-analysis
       kind: section
       title: Analysis of quicksort
       at:
         3e: '7.4'
-      covers: [cs/algorithms/randomized-algorithms]
+      covers: [cs/sorting/quicksort]
   - id: res-clrs-linear-time-sorting
     kind: chapter
     title: Sorting in linear time
@@ -256,13 +256,13 @@ nodes:
       title: Selection in expected linear time
       at:
         3e: '9.2'
-      covers: [cs/algorithms/randomized-algorithms]
+      covers: [cs/sorting/randomized-selection]
     - id: res-clrs-linear-selection
       kind: section
       title: Selection in worst-case linear time
       at:
         3e: '9.3'
-      covers: [cs/algorithms/divide-and-conquer]
+      covers: [cs/sorting/median-of-medians]
 - id: res-clrs-data-structures
   kind: part
   title: Data structures
