@@ -1,7 +1,7 @@
 ---
 title: "Amortized Analysis"
 sources: [mit6046-5]
-requires: [cs/data-structures/linked-lists-and-dynamic-arrays]
+requires: [cs/data-structures/dynamic-arrays]
 aliases: [cs/data-structures/amortized-analysis, cs/algorithms/amortized-analysis]   # old ids (moved)
 status: draft
 ---

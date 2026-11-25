@@ -852,6 +852,8 @@ parts:
         notes:   # topic order on the website
           - interfaces
           - linked-lists-and-dynamic-arrays
+          - linked-lists
+          - dynamic-arrays
           - hashing
           - perfect-hashing
           - binary-trees
@@ -860,14 +862,22 @@ parts:
           - two-three-trees
           - red-black-trees
           - augmented-search-trees
+          - order-statistic-trees
+          - range-trees
           - skip-lists
       - id: cs/sorting
         title: Sorting and Selection
         desc: Comparison sorts, lower bounds, sorting in linear time, selection
         notes:   # topic order on the website
           - comparison-sorting
+          - elementary-sorts
+          - merge-sort
+          - binary-search
+          - heap-sort
           - comparison-lower-bounds
           - linear-sorting
+          - counting-sort
+          - radix-sort
       - id: cs/graph-algorithms
         title: Graph Search and Shortest Paths
         desc: Breadth- and depth-first search, strongly connected components, single-source and all-pairs shortest paths

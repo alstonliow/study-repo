@@ -44,13 +44,13 @@ chapters:
         covers: [cs/data-structures/interfaces]
       - id: "2.2"
         title: "Linked lists, dynamic arrays, amortization"
-        covers: [cs/data-structures/linked-lists-and-dynamic-arrays]
+        covers: [cs/data-structures/linked-lists-and-dynamic-arrays, cs/data-structures/linked-lists, cs/data-structures/dynamic-arrays]
   - num: 3
     title: "Sorting"
     points:
       - id: "3.1"
         title: "Selection, insertion and merge sort"
-        covers: [cs/sorting/comparison-sorting]
+        covers: [cs/sorting/comparison-sorting, cs/sorting/elementary-sorts, cs/sorting/merge-sort, cs/sorting/binary-search]
       - id: "3.2"
         title: "Solving recurrences"
         covers: [thm-master-theorem, thm-master-theorem-special-case-extra, prob-mit6006s20-2-q1]
@@ -68,7 +68,7 @@ chapters:
     points:
       - id: "5.1"
         title: "Counting sort and radix sort"
-        covers: [cs/sorting/linear-sorting]
+        covers: [cs/sorting/linear-sorting, cs/sorting/counting-sort, cs/sorting/radix-sort]
   - num: 6
     title: "Binary trees"
     points:
@@ -86,7 +86,7 @@ chapters:
     points:
       - id: "8.1"
         title: "Priority queues and heaps"
-        covers: [cs/data-structures/binary-heaps]
+        covers: [cs/data-structures/binary-heaps, cs/sorting/heap-sort]
   - num: 9
     title: "Breadth-first search"
     points:

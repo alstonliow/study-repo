@@ -90,7 +90,7 @@ chapters:
     points:
       - id: "9.1"
         title: "Order statistics and range trees"
-        covers: [cs/data-structures/augmented-search-trees, def-subtree-augmentation]
+        covers: [cs/data-structures/augmented-search-trees, cs/data-structures/order-statistic-trees, cs/data-structures/range-trees, def-subtree-augmentation]
   - num: 10
     title: "Dynamic programming"
     points:

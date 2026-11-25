@@ -1,7 +1,7 @@
 ---
 title: "Decision Trees and Comparison Lower Bounds"
 sources: [mit6006-4, mit6006-5, mit6006r-4]
-requires: [cs/sorting/comparison-sorting, math/discrete/graph/trees]
+requires: [cs/sorting/binary-search, math/discrete/graph/trees]
 aliases: [cs/data-structures/comparison-lower-bounds]   # old ids (moved)
 status: draft
 ---

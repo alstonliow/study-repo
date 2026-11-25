@@ -34,7 +34,7 @@ nodes:
       title: Insertion sort
       at:
         3e: '2.1'
-      covers: [cs/sorting/comparison-sorting]
+      covers: [cs/sorting/elementary-sorts]
     - id: res-clrs-analyzing-algorithms
       kind: section
       title: Analysing algorithms
@@ -46,7 +46,7 @@ nodes:
       title: Merge sort
       at:
         3e: '2.3'
-      covers: [cs/sorting/comparison-sorting]
+      covers: [cs/sorting/merge-sort]
   - id: res-clrs-growth-of-functions
     kind: chapter
     title: Growth of functions
@@ -165,7 +165,7 @@ nodes:
       title: Heapsort
       at:
         3e: '6.4'
-      covers: [cs/data-structures/binary-heaps]
+      covers: [cs/sorting/heap-sort]
     - id: res-clrs-priority-queues
       kind: section
       title: Priority queues
@@ -218,13 +218,13 @@ nodes:
       title: Counting sort
       at:
         3e: '8.2'
-      covers: [cs/sorting/linear-sorting]
+      covers: [cs/sorting/counting-sort]
     - id: res-clrs-radix-sort
       kind: section
       title: Radix sort
       at:
         3e: '8.3'
-      covers: [cs/sorting/linear-sorting]
+      covers: [cs/sorting/radix-sort]
     - id: res-clrs-bucket-sort
       kind: section
       title: Bucket sort
@@ -276,7 +276,7 @@ nodes:
       title: Linked lists
       at:
         3e: '10.2'
-      covers: [cs/data-structures/linked-lists-and-dynamic-arrays]
+      covers: [cs/data-structures/linked-lists]
     - id: res-clrs-pointers-and-objects
       kind: section
       title: Implementing pointers and objects
@@ -392,7 +392,7 @@ nodes:
       title: Dynamic order statistics
       at:
         3e: '14.1'
-      covers: [cs/data-structures/augmented-search-trees]
+      covers: [cs/data-structures/order-statistic-trees]
     - id: res-clrs-how-to-augment
       kind: section
       title: How to augment
@@ -507,7 +507,7 @@ nodes:
       title: Dynamic tables
       at:
         3e: '17.4'
-      covers: [cs/algorithm-design/amortized-analysis, cs/data-structures/linked-lists-and-dynamic-arrays]
+      covers: [cs/algorithm-design/amortized-analysis, cs/data-structures/dynamic-arrays]
 - id: res-clrs-advanced-data-structures
   kind: part
   title: Advanced data structures
