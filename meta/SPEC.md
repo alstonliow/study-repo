@@ -521,8 +521,22 @@ One public exception (owner decision, 2026-11-23): the problems of Sipser's
 *Introduction to the Theory of Computation* (3rd edition) that MIT 18.404J
 assigns in its problem sets, which cite them by number only. They follow the
 homework rule above: statement verbatim, `origin="external"`, `source` a key of
-the Sipser resource, solutions in our own words with `status="draft"`. No other
-textbook problems, and the book's Selected Solutions are never read or copied.
+the Sipser resource, solutions in our own words with `status="draft"`. The book's Selected Solutions are never read or copied.
+
+A second public exception (owner decision, 2026-11-25): from Cormen, Leiserson,
+Rivest and Stein, *Introduction to Algorithms* (3rd edition, resource `res-clrs`),
+the chapter-end Problems of the chapters the resource lists, and the section
+Exercises that MIT 6.046 (Spring 2015) assigns in its problem sets. They follow
+the homework rule above: statement verbatim, `origin="external"`, `source` a key
+of the CLRS resource (`clrs3e-<chapter>-q<n>` for Problem <chapter>-<n>,
+`clrs3e-<chapter>.<section>-q<n>` for Exercise <chapter>.<section>-<n>; block ids
+`prob-clrs3e-<chapter>-q<n>` and `prob-clrs3e-<chapter>-<section>-q<n>`),
+solutions in our own words with `status="draft"`. A problem goes into the
+`exercise.md` of the note whose content it practises; one with no fitting note
+is skipped and listed for the owner. No solution manual, official or not, is
+read or copied. The problems belong to no course: a course whose covered notes
+receive them lists them under `exclude`, except that MIT 6.046 keeps the
+Exercises its problem sets assign. No other textbook problems.
 
 Code under a permissive licence (MIT, BSD, Apache) may be copied in excerpts
 into `code.md` (owner decision, 2026-11-18; §5.9), with `origin="external"` or

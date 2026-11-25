@@ -4,8 +4,12 @@
 # Selective (owner decision, 2026-11-23): only the chapters chosen for the notes are listed.
 # Left out: chapter 1 (introduction), 27 (multithreaded algorithms), 28 (matrix operations,
 # covered by the linear algebra and numerical notes), 33 (computational geometry) and the
-# appendices A-D. Sections without `covers` have no note yet. No exercises or problems are
-# taken from the book (textbook text, CLAUDE.md).
+# appendices A-D. Sections without `covers` have no note yet.
+# Problems (owner decision, 2026-11-25, SPEC §10): the chapter-end Problems of the listed
+# chapters and the section Exercises that MIT 6.046 (Spring 2015) assigns in its problem sets
+# are copied verbatim as exercises; no other text of the book. A source key is clrs3e-15-q4
+# (Problem 15-4, resolved to the chapter node) or clrs3e-18.2-q5 (Exercise 18.2-5, resolved
+# to the section node). Solutions are our own; no solution manual is read.
 # Titles are our own short titles. Node ids are stable: never renamed when a title or a locator changes.
 id: res-clrs
 kind: textbook
@@ -16,6 +20,12 @@ year: 2009
 editions:
 - id: 3e
   current: true
+legacy_keys:
+  prefix: clrs3e-
+  edition: 3e
+  pattern: ^clrs3e-(?P<section>\d+(?:\.\d+)?)(?:-q(?P<n>\d+))?$
+  label: CLRS {section}
+  problem_label: CLRS {section}-{n}
 nodes:
 - id: res-clrs-foundations
   kind: part
