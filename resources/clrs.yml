@@ -666,7 +666,7 @@ nodes:
       title: Topological sort
       at:
         3e: '22.4'
-      covers: [cs/graph-algorithms/depth-first-search]
+      covers: [cs/graph-algorithms/topological-sort]
     - id: res-clrs-strongly-connected-components
       kind: section
       title: Strongly connected components
@@ -708,7 +708,7 @@ nodes:
       title: Shortest paths in DAGs
       at:
         3e: '24.2'
-      covers: [cs/graph-algorithms/weighted-shortest-paths]
+      covers: [cs/graph-algorithms/dag-shortest-paths]
     - id: res-clrs-dijkstra
       kind: section
       title: Dijkstra
@@ -737,7 +737,7 @@ nodes:
       title: Shortest paths and matrix multiplication
       at:
         3e: '25.1'
-      covers: [cs/graph-algorithms/all-pairs-shortest-paths]
+      covers: [cs/graph-algorithms/shortest-paths-by-squaring]
     - id: res-clrs-floyd-warshall
       kind: section
       title: Floyd-Warshall
@@ -749,7 +749,7 @@ nodes:
       title: Johnson's algorithm
       at:
         3e: '25.3'
-      covers: [cs/graph-algorithms/all-pairs-shortest-paths]
+      covers: [cs/graph-algorithms/johnson]
   - id: res-clrs-maximum-flow
     kind: chapter
     title: Maximum flow

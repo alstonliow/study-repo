@@ -102,7 +102,7 @@ chapters:
     points:
       - id: "11.1"
         title: "Matrix multiplication, Floyd-Warshall, Johnson"
-        covers: [cs/graph-algorithms/all-pairs-shortest-paths, thm-floyd-warshall]
+        covers: [cs/graph-algorithms/all-pairs-shortest-paths, cs/graph-algorithms/shortest-paths-by-squaring, cs/graph-algorithms/johnson, thm-floyd-warshall]
   - num: 12
     title: "Minimum spanning trees"
     points:

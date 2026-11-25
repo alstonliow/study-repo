@@ -1,7 +1,7 @@
 ---
 title: "Recursive Algorithms and Dynamic Programming"
 sources: [mit6006-15, mit6006r-15]
-requires: [cs/graph-algorithms/weighted-shortest-paths, math/discrete/sequences/fibonacci]
+requires: [cs/graph-algorithms/dag-shortest-paths, math/discrete/sequences/fibonacci]
 aliases: [cs/dynamic-programming/recursive-algorithms]   # old ids (moved)
 status: draft
 ---

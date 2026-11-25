@@ -1,7 +1,7 @@
 ---
 title: "Strongly Connected Components"
 sources: [res-clrs-strongly-connected-components]
-requires: [cs/graph-algorithms/depth-first-search]
+requires: [cs/graph-algorithms/topological-sort]
 status: draft
 ---
 

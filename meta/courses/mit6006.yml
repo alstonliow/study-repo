@@ -17,8 +17,6 @@ exclude:
   # Lecture-note problems backfill (2026-11-24): other courses' problems in shared notes
   - prob-mit6046-11-q1
   # Blocks from other courses' material in notes this course covers
-  - def-min-plus-product
-  - prp-shortest-paths-by-squaring
   - prob-mit6046s15-6-q1
   # 6.046 recitation problem in a 6.006 note
   - prob-mit6046r-5-q1
@@ -98,13 +96,13 @@ chapters:
     points:
       - id: "10.1"
         title: "DFS, components, topological sort"
-        covers: [cs/graph-algorithms/depth-first-search, def-dag, def-connected-graph-component]
+        covers: [cs/graph-algorithms/depth-first-search, cs/graph-algorithms/topological-sort, def-dag, def-connected-graph-component]
   - num: 11
     title: "Weighted shortest paths"
     points:
       - id: "11.1"
         title: "Weighted graphs and DAG relaxation"
-        covers: [cs/graph-algorithms/weighted-shortest-paths]
+        covers: [cs/graph-algorithms/weighted-shortest-paths, cs/graph-algorithms/dag-shortest-paths]
   - num: 12
     title: "Bellman-Ford"
     points:
@@ -122,7 +120,7 @@ chapters:
     points:
       - id: "14.1"
         title: "All-pairs shortest paths"
-        covers: [cs/graph-algorithms/all-pairs-shortest-paths]
+        covers: [cs/graph-algorithms/all-pairs-shortest-paths, cs/graph-algorithms/johnson]
   - num: 15
     title: "Recursive algorithms"
     points:

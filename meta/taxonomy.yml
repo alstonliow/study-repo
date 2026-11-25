@@ -884,11 +884,15 @@ parts:
         notes:   # topic order on the website
           - breadth-first-search
           - depth-first-search
+          - topological-sort
           - strongly-connected-components
           - weighted-shortest-paths
+          - dag-shortest-paths
           - bellman-ford
           - dijkstra
           - all-pairs-shortest-paths
+          - shortest-paths-by-squaring
+          - johnson
       - id: cs/algorithm-design
         title: Dynamic Programming, Greedy Algorithms and Amortized Analysis
         desc: Recursive algorithm design, subproblems, pseudopolynomial time, greedy algorithms, amortized analysis

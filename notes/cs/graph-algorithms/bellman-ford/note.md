@@ -1,7 +1,7 @@
 ---
 title: "Bellman–Ford: Shortest Paths with Negative Weights"
 sources: [mit6006-12, mit6006r-12]
-requires: [cs/graph-algorithms/weighted-shortest-paths]
+requires: [cs/graph-algorithms/dag-shortest-paths]
 status: draft
 ---
 
