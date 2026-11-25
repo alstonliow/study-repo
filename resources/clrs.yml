@@ -922,19 +922,19 @@ nodes:
       title: Rabin-Karp
       at:
         3e: '32.2'
-      covers: [cs/algorithm-topics/string-matching]
+      covers: [cs/algorithm-topics/rabin-karp]
     - id: res-clrs-string-matching-automata
       kind: section
       title: Matching with finite automata
       at:
         3e: '32.3'
-      covers: [cs/algorithm-topics/string-matching]
+      covers: [cs/algorithm-topics/string-matching-automaton]
     - id: res-clrs-knuth-morris-pratt
       kind: section
       title: Knuth-Morris-Pratt
       at:
         3e: '32.4'
-      covers: [cs/algorithm-topics/string-matching]
+      covers: [cs/algorithm-topics/knuth-morris-pratt]
   - id: res-clrs-np-completeness
     kind: chapter
     title: NP-completeness

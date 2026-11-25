@@ -952,6 +952,9 @@ parts:
           - fast-fourier-transform
           - cooley-tukey-algorithms
           - string-matching
+          - rabin-karp
+          - string-matching-automaton
+          - knuth-morris-pratt
           - convex-hull
           - approximation-algorithms
           - fixed-parameter-algorithms
