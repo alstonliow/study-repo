@@ -89,7 +89,7 @@ def svg(nodes: list[str], edges: list[tuple[str, str]], label: dict[str, str], h
             y1 += NODE_H
             m = (y1 + y2) / 2
             d = f"M{x1:.0f},{y1:.0f} C{x1:.0f},{m:.0f} {x2:.0f},{m:.0f} {x2:.0f},{y2 - 4:.0f}"
-        out.append(f'<path class="{cls}" d="{d}"/>')
+        out.append(f'<path class="{cls}" data-a="{html.escape(a)}" data-b="{html.escape(b)}" d="{d}"/>')
     for n in nodes:
         x, y = xy(n)
         lines = textwrap.wrap(label[n], 24)[:2]
@@ -104,3 +104,28 @@ def svg(nodes: list[str], edges: list[tuple[str, str]], label: dict[str, str], h
                    f'<rect x="{x}" y="{y}" width="{NODE_W}" height="{NODE_H}" rx="4"/>{texts}</a>')
     out.append("</svg>")
     return "\n".join(out)
+
+
+# ---------------------------------------------------------------- the map of parts
+def acyclic(edges: dict[tuple[str, str], int]) -> list[tuple[str, str]]:
+    """The edges of a weighted graph with each 2-cycle broken: of a->b and b->a
+    only the heavier is kept (ties keep both; layout() breaks longer cycles)."""
+    return [(a, b) for (a, b), w in edges.items() if w > edges.get((b, a), 0) or
+            (w == edges.get((b, a)) and a < b)]
+
+
+def reduction(nodes: list[str], edges: list[tuple[str, str]]) -> set[tuple[str, str]]:
+    """Transitive reduction of a DAG: the edges not implied by a longer path."""
+    succ = {n: [b for a, b in edges if a == n] for n in nodes}
+
+    def reach(start: str, skip: tuple[str, str]) -> set[str]:
+        seen: set[str] = set()
+        stack = [b for b in succ[start] if (start, b) != skip]
+        while stack:
+            x = stack.pop()
+            if x not in seen:
+                seen.add(x)
+                stack += succ.get(x, [])
+        return seen
+
+    return {(a, b) for a, b in edges if b not in reach(a, (a, b))}

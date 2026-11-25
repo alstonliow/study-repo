@@ -235,3 +235,123 @@ nav.page-navigation .pagination-link i { font-size: 1.3rem; color: var(--notec);
 .st-figure p:has(> .fig-label) { text-align: center; color: var(--notec); font-size: 0.9em; margin-top: 0.4em; }
 .st-figure .fig-label strong { color: var(--bs-body-color); font-weight: 600; }
 .solution-withheld { display: block; color: var(--notec); font-size: 0.85em; font-style: italic; margin: 0.3rem 0 0.8rem; }
+
+/* ---------- map of topics (build/web.py map_page, _assets/map.html) ---------- */
+:root { --field-0: #2f5d8f; --field-1: #a5533b; --field-2: #5b7f4a; --field-3: #7a5c9a;
+        --trace-up: #b07a1f; --trace-down: #2f7f8f; }
+body.quarto-dark { --field-0: #8fb6e4; --field-1: #d99a84; --field-2: #9cc58a; --field-3: #bba1dc;
+                   --trace-up: #d9b061; --trace-down: #7fc6d3; }
+.tmap { font-family: "Source Sans 3", system-ui, sans-serif; margin: 0.6rem 0 2rem; }
+.tmap-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; margin-bottom: 1.4rem;
+  position: sticky; top: 3.6rem; z-index: 5; padding: 0.5rem 0;
+  background: color-mix(in srgb, var(--bs-body-bg) 88%, transparent); backdrop-filter: blur(6px); }
+.tmap-search { flex: 0 1 18rem; padding: 0.35rem 0.7rem; font: inherit; font-size: 0.92rem; color: inherit;
+  background: var(--sidebg); border: 1px solid var(--rule); border-radius: 999px; outline: none;
+  transition: border-color .2s, box-shadow .2s; }
+.tmap-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+.tmap-fields { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.tmap-fields button { --fc: var(--accent); font-family: inherit; font-weight: 600; font-size: 0.72rem; line-height: 1; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.42rem 0.75rem; border-radius: 999px; border: 1px solid var(--rule); background: none; color: var(--notec);
+  cursor: pointer; transition: all .2s; }
+.tmap-fields button:hover { color: var(--fc); border-color: var(--fc); }
+.tmap-fields button.active { color: var(--bs-body-bg); background: var(--fc); border-color: var(--fc); }
+.tmap-legend { margin-left: auto; font-size: 0.78rem; color: var(--notec); display: flex; align-items: center; gap: 0.35rem; }
+.tmap-legend i { display: inline-block; width: 1.2rem; height: 3px; border-radius: 2px; margin-left: 0.5rem; }
+.tmap-legend i.up { background: var(--trace-up); }
+.tmap-legend i.down { background: var(--trace-down); }
+
+.tmap-stage { position: relative; }
+.tmap-edges { position: absolute; inset: 0; pointer-events: none; overflow: visible; z-index: 0; }
+.tmap-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start;
+  gap: 1.1rem 1.6rem; margin-bottom: 2.8rem; }
+.tmap-row:last-child { margin-bottom: 0; }
+
+.tmap-edge { fill: none; stroke: var(--notec); opacity: 0; transition: opacity .35s, stroke .25s; }
+.tmap-edge.core { opacity: 0.45; }
+.tmap-edge > title { pointer-events: none; }
+.tmap.focus .tmap-edge { opacity: 0.06; }
+.tmap.focus .tmap-edge.up, .tmap.focus .tmap-edge.down { opacity: 0.95; stroke-dasharray: 7 5; animation: tmap-flow 0.9s linear infinite; }
+.tmap.focus .tmap-edge.up { stroke: var(--trace-up); }
+.tmap.focus .tmap-edge.down { stroke: var(--trace-down); }
+.tmap .tmap-edge.off { opacity: 0.04; }
+@keyframes tmap-flow { to { stroke-dashoffset: -12; } }
+
+.tmap-card { --fc: var(--accent); --done: 0; position: relative; width: 17.5rem; padding: 0.8rem 0.9rem 0.7rem;
+  background: var(--sidebg); border: 1px solid var(--rule); border-top: 3px solid var(--fc); border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04); overflow: hidden; outline: none;
+  opacity: 0; transform: translateY(14px) scale(.98);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .25s, border-color .25s, filter .3s; }
+.tmap.ready .tmap-card { opacity: 1; transform: none; transition-delay: calc(var(--i) * 45ms), calc(var(--i) * 45ms), 0s, 0s, 0s; }
+.tmap.drawn .tmap-card { transition-delay: 0s; }
+.tmap-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 0), color-mix(in srgb, var(--fc) 13%, transparent), transparent 70%); }
+.tmap-card:hover::before { opacity: 1; }
+.tmap-card:hover { box-shadow: 0 8px 24px -10px color-mix(in srgb, var(--fc) 45%, transparent); transform: translateY(-2px); }
+.tmap.focus .tmap-card { opacity: 0.35; filter: saturate(.4); }
+.tmap.focus .tmap-card.on { opacity: 1; filter: none; }
+.tmap.focus .tmap-card.up { opacity: 1; filter: none; border-color: var(--trace-up); box-shadow: 0 0 0 2px color-mix(in srgb, var(--trace-up) 35%, transparent); }
+.tmap.focus .tmap-card.down { opacity: 1; filter: none; border-color: var(--trace-down); box-shadow: 0 0 0 2px color-mix(in srgb, var(--trace-down) 35%, transparent); }
+.tmap .tmap-card.off { opacity: 0.18; filter: grayscale(1); transform: scale(.97); }
+
+.tmap-card header { position: relative; padding-right: 2.6rem; margin-bottom: 0.45rem; }
+.tmap-field { display: block; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--fc); }
+.tmap-card h3 { margin: 0.1rem 0 0; padding: 0; border: none; font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.tmap-ring { position: absolute; right: 0; top: 0; width: 2.2rem; height: 2.2rem; transform: rotate(-90deg); }
+.tmap-ring circle { fill: none; stroke-width: 3.2; }
+.tmap-ring .bg { stroke: var(--rule); }
+.tmap-ring .fg { stroke: var(--pg-mastered, #4e8a5a); stroke-linecap: round; stroke-dasharray: 94.25;
+  stroke-dashoffset: calc(94.25 * (1 - var(--done))); transition: stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1); }
+.tmap-card:not(.started) .tmap-ring .fg { stroke: transparent; }
+.tmap-pct { position: absolute; right: 0; top: 0; width: 2.2rem; height: 2.2rem; display: grid; place-items: center;
+  font-size: 0.6rem; font-weight: 600; color: var(--notec); }
+
+.tmap-branches { list-style: none; margin: 0.2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.tmap-branch { position: relative; max-width: 100%; }
+.tmap-branch.open { flex-basis: 100%; }
+.tmap-branch > button { position: relative; display: inline-flex; align-items: baseline; gap: 0.3rem; max-width: 100%;
+  padding: 0.16rem 0.55rem 0.22rem; font: inherit; font-size: 0.76rem; line-height: 1.3; color: inherit; text-align: left;
+  background: var(--bs-body-bg); border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; overflow: hidden;
+  transition: border-color .15s, color .15s, background .15s; }
+.tmap-branch > button:hover { border-color: var(--fc); color: var(--fc); }
+.tmap-branch.open > button { border-color: var(--fc); color: var(--bs-body-bg); background: var(--fc); }
+.tmap-branch.open > button .cnt { color: inherit; opacity: 0.8; }
+.tmap-branch .cnt { font-size: 0.66rem; color: var(--notec); }
+.tmap-bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; height: 2px; }
+.tmap-bar span { display: block; height: 100%; transition: width .8s cubic-bezier(.4,0,.2,1); }
+.tmap-notes { display: grid; grid-template-rows: 0fr; contain: inline-size; transition: grid-template-rows .3s ease; }
+.tmap-notes > div { overflow: hidden; }
+.tmap-branch.open .tmap-notes { grid-template-rows: 1fr; }
+.tmap-notes ol { list-style: none; margin: 0.35rem 0 0.2rem 0.4rem; padding: 0 0 0 0.2rem; border-left: 1px solid var(--rule); }
+.tmap-notes li a { display: flex; align-items: baseline; gap: 0.45em; padding: 0.12rem 0.4rem; font-size: 0.8rem; line-height: 1.35;
+  color: inherit; text-decoration: none; border-radius: 3px; }
+.tmap-notes li a:hover { color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+.tmap-notes li a .pg-dot { flex: none; }
+.tmap-open { display: inline-block; margin: 0.1rem 0 0.4rem 0.6rem; font-size: 0.76rem; font-weight: 600; color: var(--fc); text-decoration: none; }
+.tmap-open:hover { text-decoration: underline; }
+.tmap.searching .tmap-branch:not(.hit) > button { opacity: 0.45; }
+.tmap.searching .tmap-branch.hit:not(.open) > button .name { color: var(--accent); font-weight: 600; }
+.tmap.searching .tmap-notes li:not(.hit) { opacity: 0.45; }
+.tmap-notes li.hit a { background: color-mix(in srgb, var(--accent) 14%, transparent); font-weight: 600; }
+
+/* note-level graphs: hover a node to trace its chain (map.html) */
+.dep-graph .dep-node rect, .dep-graph .dep-node, .dep-graph .dep-edge { transition: opacity .2s, stroke .2s; }
+.dep-graph.tracing .dep-node { opacity: 0.25; }
+.dep-graph.tracing .dep-node.on, .dep-graph.tracing .dep-node.up, .dep-graph.tracing .dep-node.down { opacity: 1; }
+.dep-graph.tracing .dep-node.on rect { stroke: var(--accent); stroke-width: 2.4; }
+.dep-graph.tracing .dep-node.up rect { stroke: var(--trace-up); stroke-width: 2; }
+.dep-graph.tracing .dep-node.down rect { stroke: var(--trace-down); stroke-width: 2; }
+.dep-graph.tracing .dep-edge { opacity: 0.08; }
+.dep-graph.tracing .dep-edge.up, .dep-graph.tracing .dep-edge.down { opacity: 1; stroke-width: 1.8; stroke-dasharray: 6 4; animation: tmap-flow 0.9s linear infinite; }
+.dep-graph.tracing .dep-edge.up { stroke: var(--trace-up); }
+.dep-graph.tracing .dep-edge.down { stroke: var(--trace-down); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tmap *, .tmap-card, .dep-graph * { transition: none !important; animation: none !important; }
+  .tmap-card { opacity: 1; transform: none; }
+}
+@media (max-width: 640px) {
+  .tmap-card { width: 100%; }
+  .tmap-row { margin-bottom: 1.6rem; }
+  .tmap-legend { margin-left: 0; }
+  .tmap-tools { position: static; backdrop-filter: none; }
+}

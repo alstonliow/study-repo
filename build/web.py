@@ -485,10 +485,71 @@ def page(file: str, nav: str = ""):
 
 @page("map.qmd", nav="Map")
 def map_page() -> str:
-    return ("---\ntitle: Map of topics\n---\n\n"
-            "[Every knowledge point and its prerequisites. Arrows point from a prerequisite to the topics "
-            "that need it; click a box to open the topic. Colours follow your progress marks.]{.graph-note}\n\n"
-            + dep_graph(REPO.topic_order(), "map.html", with_outside=False, across=True) + "\n")
+    """Two-level map: one card per part, laid out in rows by prerequisite depth,
+    with its branches and (on demand) their notes. Part-to-part edges are the
+    note-level `requires` summed up; site/_assets/map.html draws and animates them."""
+    import json
+    esc = html.escape
+    part_of = {bid: title for title, bs in REPO.parts for bid, _ in bs}
+    field_of = {t: f for f, ts in REPO.fields for t in ts}
+    slug = {t: "p-" + "".join(c if c.isalnum() else "-" for c in t.lower()) for t, _ in REPO.parts}
+    weight: dict[tuple[str, str], int] = {}
+    for n in REPO.topic_order():
+        for r in REPO.requires(n):
+            a, b = slug[part_of[REPO.notes[r].branch]], slug[part_of[REPO.notes[n].branch]]
+            if a != b:
+                weight[(a, b)] = weight.get((a, b), 0) + 1
+    nodes = list(slug.values())
+    dag = graphs.acyclic(weight)
+    core = graphs.reduction(nodes, dag)
+    pos = graphs.layout(nodes, dag)                     # (layer, order) -> rows top to bottom
+    rows: dict[int, list[tuple[int, str]]] = {}
+    for title, _ in REPO.parts:
+        layer, order = pos[slug[title]]
+        rows.setdefault(layer, []).append((order, title))
+    branches = dict(REPO.parts)
+    out = ['<div class="tmap" id="tmap">',
+           '<div class="tmap-tools">'
+           '<input type="search" class="tmap-search" placeholder="Find a topic…" aria-label="Find a topic">'
+           '<div class="tmap-fields" role="group" aria-label="Field">'
+           '<button type="button" class="active" data-field="">All</button>'
+           + "".join(f'<button type="button" data-field="{esc(f)}" style="--fc:var(--field-{k % 4})">{esc(f)}</button>'
+                     for k, f in enumerate(REPO.field_order()))
+           + '</div><span class="tmap-legend"><i class="up"></i>needs <i class="down"></i>leads to</span></div>',
+           '<div class="tmap-stage"><svg class="tmap-edges" aria-hidden="true"></svg>']
+    k = 0
+    for layer in sorted(rows):
+        out.append('<div class="tmap-row">')
+        for _, title in sorted(rows[layer]):
+            field = field_of.get(title, "")
+            fk = REPO.field_order().index(field) % 4 if field in REPO.field_order() else 3
+            out.append(f'<section class="tmap-card" id="{slug[title]}" data-field="{esc(field)}" '
+                       f'style="--i:{k};--fc:var(--field-{fk})" tabindex="-1">'
+                       f'<header><span class="tmap-field">{esc(field)}</span><h3>{esc(title)}</h3>'
+                       '<svg class="tmap-ring" viewBox="0 0 36 36" aria-hidden="true"><circle class="bg" r="15" cx="18" cy="18"/>'
+                       '<circle class="fg" r="15" cx="18" cy="18"/></svg><span class="tmap-pct"></span></header>'
+                       '<ul class="tmap-branches">')
+            k += 1
+            for bid, btitle in branches[title]:
+                members = REPO.branch_members(bid)
+                notes = "".join(f'<li><a href="{esc(rel_href("map.html", f"notes/{n.id}.html"))}" data-item="{esc(n.id)}">'
+                                f'<span class="pg-dot" data-item="{esc(n.id)}"></span>{esc(n.display_title)}</a></li>'
+                                for n in members)
+                out.append(f'<li class="tmap-branch" data-branch="{esc(bid)}">'
+                           f'<button type="button" aria-expanded="false"><span class="name">{esc(btitle)}</span>'
+                           f'<span class="cnt">{len(members)}</span><span class="tmap-bar"></span></button>'
+                           f'<div class="tmap-notes"><div><ol>{notes}</ol>'
+                           f'<a class="tmap-open" href="{esc(rel_href("map.html", f"notes/{bid}/index.html"))}">Open branch →</a>'
+                           '</div></div></li>')
+            out.append('</ul></section>')
+        out.append('</div>')
+    data = {"edges": [[a, b, w, (a, b) in core] for (a, b), w in weight.items()]}
+    out += ['</div>', f'<script type="application/json" id="tmap-data">{json.dumps(data)}</script>', '</div>']
+    return ("---\ntitle: Map of topics\npage-layout: full\n---\n\n"
+            "[Each card is a part; lines show which parts build on which (thicker = more links). "
+            "Hover a card to trace what it needs and what it leads to; open a branch to see its topics. "
+            "Colours follow your progress marks.]{.graph-note}\n\n"
+            "```{=html}\n" + "\n".join(out) + "\n```\n")
 
 
 # ---------------------------------------------------------------- Library (SPEC §17.12.7)

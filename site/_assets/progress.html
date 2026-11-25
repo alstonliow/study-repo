@@ -57,6 +57,7 @@ window.STUDY_PROGRESS_CONFIG = {
   }
   let store = load();
   const stateOf = item => (store[item] && store[item].s) || "new";
+  window.StudyProgress = { stateOf };   // read by map.html
 
   // ---------- remote (Supabase) ----------
   let db = null, session = null;

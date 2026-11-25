@@ -546,6 +546,22 @@ class TestPages(Repo):
         branch = (site / "notes/t/alpha/index.qmd").read_text()
         self.assertIn('class="dep-node"', branch)
         self.assertIn('data-item="t/alpha/second"', (site / "map.qmd").read_text())
+        self.assertIn('data-a="', branch)                          # edges name their ends (map.html tracing)
+
+    def test_map_of_parts(self):
+        site = generate(self.root)
+        page = (site / "map.qmd").read_text()
+        self.assertIn('class="tmap-card"', page)
+        self.assertIn('data-branch="t/alpha"', page)
+        self.assertIn('id="tmap-data"', page)
+
+    def test_part_graph_helpers(self):
+        sys.path.insert(0, str(BUILD))
+        import graphs
+        self.assertEqual(sorted(graphs.acyclic({("a", "b"): 8, ("b", "a"): 1, ("b", "c"): 1})),
+                         [("a", "b"), ("b", "c")])
+        self.assertEqual(graphs.reduction(["a", "b", "c"], [("a", "b"), ("b", "c"), ("a", "c")]),
+                         {("a", "b"), ("b", "c")})
 
     def test_branch_summary(self):
         site = generate(self.root)

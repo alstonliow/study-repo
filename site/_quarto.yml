@@ -38,6 +38,7 @@ format:
       - _assets/widgets.html
       - _assets/runnable.html
       - _assets/copy-tex.html
+      - _assets/map.html
     filters:
       - _assets/list-delims.lua
     grid:
