@@ -300,7 +300,7 @@ not here.
 | $T_n$ (polynomial) | Chebyshev polynomial, $T_n(\cos\theta)=\cos n\theta$ |
 | $R(z)$, $S$ | stability function and region of absolute stability of an ODE method |
 
-## Algorithms (`cs/algorithms`, `cs/data-structures`, `cs/graph-algorithms`, `cs/dynamic-programming`)
+## Algorithms (the part Algorithms: `cs/algorithms`, `cs/sorting`, `cs/data-structures`, `cs/advanced-data-structures`, `cs/algorithm-design`, `cs/graph-algorithms`, `cs/graph-optimization`, `cs/algorithm-topics`)
 
 | Symbol | Meaning |
 |---|---|

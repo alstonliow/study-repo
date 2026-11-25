@@ -470,7 +470,7 @@ chapters:
     points:
       - id: "4"
         title: "The propose-and-reject algorithm"
-        covers: [cs/algorithms/stable-matching]
+        covers: [cs/graph-optimization/stable-matching]
   - num: 5
     title: "Graph theory"
     points:

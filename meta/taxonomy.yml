@@ -840,38 +840,37 @@ parts:
     field: Computer Science
     branches:
       - id: cs/algorithms
-        title: Algorithms
-        desc: Design and analysis of algorithms
+        title: Foundations
+        desc: Problems, algorithms and models of computation, divide and conquer, randomized algorithms
         notes:   # topic order on the website
           - problems-and-algorithms
-          - stable-matching
-          - string-matching
+          - divide-and-conquer
+          - randomized-algorithms
       - id: cs/data-structures
-        title: Data Structures and Sorting
-        desc: Sequences and sets, sorting, hashing, search trees, heaps
+        title: Data Structures
+        desc: Sequences and sets, hashing, binary trees, heaps, balanced search trees, augmentation
         notes:   # topic order on the website
           - interfaces
           - linked-lists-and-dynamic-arrays
-          - comparison-sorting
-          - comparison-lower-bounds
           - hashing
-          - linear-sorting
+          - perfect-hashing
           - binary-trees
           - avl-trees
           - binary-heaps
           - two-three-trees
           - red-black-trees
-          - b-trees
           - augmented-search-trees
-          - amortized-analysis
-          - fibonacci-heaps
-          - union-find
-          - van-emde-boas
           - skip-lists
-          - perfect-hashing
+      - id: cs/sorting
+        title: Sorting and Selection
+        desc: Comparison sorts, lower bounds, sorting in linear time, selection
+        notes:   # topic order on the website
+          - comparison-sorting
+          - comparison-lower-bounds
+          - linear-sorting
       - id: cs/graph-algorithms
-        title: Graph Algorithms
-        desc: Graph search, single-source and all-pairs shortest paths
+        title: Graph Search and Shortest Paths
+        desc: Breadth- and depth-first search, strongly connected components, single-source and all-pairs shortest paths
         notes:   # topic order on the website
           - breadth-first-search
           - depth-first-search
@@ -880,33 +879,44 @@ parts:
           - bellman-ford
           - dijkstra
           - all-pairs-shortest-paths
-          - minimum-spanning-trees
-          - maximum-flow
-          - flow-applications
-      - id: cs/dynamic-programming
-        title: Dynamic Programming
-        desc: Recursive algorithm design, subproblems, pseudopolynomial time
+      - id: cs/algorithm-design
+        title: Dynamic Programming, Greedy Algorithms and Amortized Analysis
+        desc: Recursive algorithm design, subproblems, pseudopolynomial time, greedy algorithms, amortized analysis
         notes:   # topic order on the website
           - recursive-algorithms
           - subproblem-design
           - more-dynamic-programs
           - pseudopolynomial-time
           - interval-subproblems
-      - id: cs/algorithm-design
-        title: Algorithm Design Paradigms
-        desc: Greedy, divide and conquer, FFT, randomized algorithms, linear programming, Cooley-Tukey FFTs
-        notes:   # topic order on the website
           - greedy-algorithms
-          - divide-and-conquer
-          - fast-fourier-transform
-          - randomized-algorithms
-          - linear-programming
-          - cooley-tukey-algorithms
-      - id: cs/models-of-computation
-        title: Other Models of Computation
-        desc: Distributed algorithms, external memory and cache-oblivious algorithms
+          - amortized-analysis
+      - id: cs/advanced-data-structures
+        title: Advanced Data Structures
+        desc: B-trees, Fibonacci heaps, van Emde Boas trees, disjoint sets
+        notes:   # topic order on the website
+          - b-trees
+          - fibonacci-heaps
+          - van-emde-boas
+          - union-find
+      - id: cs/graph-optimization
+        title: Spanning Trees, Matching and Flows
+        desc: Minimum spanning trees, maximum flow and minimum cut, bipartite and stable matching
+        notes:   # topic order on the website
+          - minimum-spanning-trees
+          - maximum-flow
+          - flow-applications
+          - stable-matching
+      - id: cs/algorithm-topics
+        title: Selected Topics in Algorithms
+        desc: Distributed algorithms, linear programming, the FFT, string matching, approximation and fixed-parameter algorithms, cache-oblivious algorithms
         notes:   # topic order on the website
           - distributed-algorithms
+          - linear-programming
+          - fast-fourier-transform
+          - cooley-tukey-algorithms
+          - string-matching
+          - approximation-algorithms
+          - fixed-parameter-algorithms
           - cache-oblivious-algorithms
   - title: Theory of Computation
     field: Computer Science
@@ -951,8 +961,6 @@ parts:
           - branching-programs
           - interactive-proofs
           - conp-in-ip
-          - approximation-algorithms
-          - fixed-parameter-algorithms
   - title: Cryptography
     field: Computer Science
     branches:

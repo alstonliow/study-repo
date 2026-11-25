@@ -1,7 +1,7 @@
 ---
 title: "Search Problems, Exhaustive Search and Dynamic Programming"
 sources: [cs221-6]
-requires: [cs/dynamic-programming/recursive-algorithms]
+requires: [cs/algorithm-design/recursive-algorithms]
 status: draft
 ---
 

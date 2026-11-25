@@ -50,7 +50,7 @@ chapters:
     points:
       - id: "3.1"
         title: "Selection, insertion and merge sort"
-        covers: [cs/data-structures/comparison-sorting]
+        covers: [cs/sorting/comparison-sorting]
       - id: "3.2"
         title: "Solving recurrences"
         covers: [thm-master-theorem, thm-master-theorem-special-case-extra, prob-mit6006s20-2-q1]
@@ -59,7 +59,7 @@ chapters:
     points:
       - id: "4.1"
         title: "Comparison model and lower bounds"
-        covers: [cs/data-structures/comparison-lower-bounds]
+        covers: [cs/sorting/comparison-lower-bounds]
       - id: "4.2"
         title: "Direct access arrays and hash tables"
         covers: [cs/data-structures/hashing]
@@ -68,7 +68,7 @@ chapters:
     points:
       - id: "5.1"
         title: "Counting sort and radix sort"
-        covers: [cs/data-structures/linear-sorting]
+        covers: [cs/sorting/linear-sorting]
   - num: 6
     title: "Binary trees"
     points:
@@ -128,25 +128,25 @@ chapters:
     points:
       - id: "15.1"
         title: "SRT BOT and dynamic programming"
-        covers: [cs/dynamic-programming/recursive-algorithms]
+        covers: [cs/algorithm-design/recursive-algorithms]
   - num: 16
     title: "Dynamic programming subproblems"
     points:
       - id: "16.1"
         title: "LCS, LIS, coin game"
-        covers: [cs/dynamic-programming/subproblem-design]
+        covers: [cs/algorithm-design/subproblem-design]
   - num: 17
     title: "Dynamic programming examples"
     points:
       - id: "17.1"
         title: "Floyd-Warshall, parenthesization, fingering"
-        covers: [cs/dynamic-programming/more-dynamic-programs]
+        covers: [cs/algorithm-design/more-dynamic-programs]
   - num: 18
     title: "Pseudopolynomial time"
     points:
       - id: "18.1"
         title: "Rod cutting, subset sum, knapsack"
-        covers: [cs/dynamic-programming/pseudopolynomial-time]
+        covers: [cs/algorithm-design/pseudopolynomial-time]
   - num: 19
     title: "Complexity"
     points:

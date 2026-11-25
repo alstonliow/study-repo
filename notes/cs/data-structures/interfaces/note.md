@@ -86,6 +86,6 @@ A static array occupies consecutive words starting at address $a$; slot $i$ is a
 
 ::: {#rmk-interfaces-set-from-sequence .remark name="A set from a sequence"}
 
-Any sequence data structure gives a (slow) set: store the items in any order and answer `find(k)` and the order operations by scanning all $n$ items, in $O(n)$ time. Faster sets come from keeping the items sorted (@sec-cs-data-structures-comparison-sorting), from hashing (@sec-cs-data-structures-hashing), or from balanced search trees (@sec-cs-data-structures-avl-trees).
+Any sequence data structure gives a (slow) set: store the items in any order and answer `find(k)` and the order operations by scanning all $n$ items, in $O(n)$ time. Faster sets come from keeping the items sorted (@sec-cs-sorting-comparison-sorting), from hashing (@sec-cs-data-structures-hashing), or from balanced search trees (@sec-cs-data-structures-avl-trees).
 
 :::

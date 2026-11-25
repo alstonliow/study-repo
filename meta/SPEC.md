@@ -475,6 +475,18 @@ assert ucs("A", succ_small, lambda s: s == "A") == (0, ["A"])
 4. Criterion: the smallest concept cluster that is referenced on its own
    elsewhere gets its own folder.
 5. Start coarse. Splitting is easier than merging.
+6. Algorithms: one algorithm per note (owner decision, 2026-11-25). Exceptions:
+   - a data structure is one note with all its operations (AVL insertion,
+     deletion and rotations together; union by rank with path compression);
+   - a variant that changes one choice stays with its base algorithm
+     (Edmonds–Karp in Ford–Fulkerson, randomized quicksort in quicksort);
+   - algorithms under about 30 lines each stay together in one note
+     (a set of approximation algorithms, the elementary sorts);
+   - concept notes are not algorithms and stay as they are (models of
+     computation, lower bounds, relaxation, the cut property, SRT BOT);
+   - in dynamic programming, one problem per note;
+   - when a note is split, its id stays as an overview (§2.6) with the problem,
+     the shared lemmas and a comparison of the algorithms.
 
 ## 9. Freeze
 

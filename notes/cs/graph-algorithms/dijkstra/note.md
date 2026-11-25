@@ -146,7 +146,7 @@ With a changeable priority queue on $n$ items whose `build`, `delete_min` and `d
 
 ::: {.proof}
 
-`build` is called once, `delete_min` once per vertex, and `decrease_key` at most once per relaxation, that is, at most once per edge. With an array, `delete_min` scans for the minimum in $O(|V|)$. With a binary heap (@sec-cs-data-structures-binary-heaps), `decrease_key` is a heapify up from the item's position, $O(\log n)$. Fibonacci heaps (@sec-cs-data-structures-fibonacci-heaps) achieve the last row.
+`build` is called once, `delete_min` once per vertex, and `decrease_key` at most once per relaxation, that is, at most once per edge. With an array, `delete_min` scans for the minimum in $O(|V|)$. With a binary heap (@sec-cs-data-structures-binary-heaps), `decrease_key` is a heapify up from the item's position, $O(\log n)$. Fibonacci heaps (@sec-cs-advanced-data-structures-fibonacci-heaps) achieve the last row.
 
 :::
 

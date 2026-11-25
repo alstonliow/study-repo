@@ -1,7 +1,7 @@
 ---
 title: "Direct Access Arrays and Hashing"
 sources: [mit6006-4, mit6006r-4]
-requires: [cs/data-structures/comparison-lower-bounds, math/probability/tail-bounds/hashing-and-load-balancing, math/discrete/number-theory/modular-arithmetic]
+requires: [math/probability/tail-bounds/hashing-and-load-balancing, math/discrete/number-theory/modular-arithmetic]
 status: draft
 ---
 

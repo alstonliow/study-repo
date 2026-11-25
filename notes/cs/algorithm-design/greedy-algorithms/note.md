@@ -1,7 +1,7 @@
 ---
 title: "Greedy Algorithms: Interval Scheduling"
 sources: [mit6046-1, mit6046r-6]
-requires: [cs/dynamic-programming/interval-subproblems]
+requires: [cs/algorithm-design/interval-subproblems]
 status: draft
 ---
 
@@ -155,6 +155,6 @@ Three jobs $J_1,J_2,J_3$ with processing times $4,1,3$ (small numbers are comple
 
 ::: {#rmk-greedy-algorithms-hard .remark name="When greedy is not enough"}
 
-Small changes make interval problems hard: if each request may be served by only some of several non-identical machines, deciding whether all requests can be scheduled is NP-complete (@sec-cs-theory-np-complete-reductions). Then one looks for approximation algorithms (@sec-cs-theory-approximation-algorithms) or algorithms fast for small parameters (@sec-cs-theory-fixed-parameter-algorithms).
+Small changes make interval problems hard: if each request may be served by only some of several non-identical machines, deciding whether all requests can be scheduled is NP-complete (@sec-cs-theory-np-complete-reductions). Then one looks for approximation algorithms (@sec-cs-algorithm-topics-approximation-algorithms) or algorithms fast for small parameters (@sec-cs-algorithm-topics-fixed-parameter-algorithms).
 
 :::

@@ -5,7 +5,7 @@ requires: [math/optimization/convex-problems/optimization-problems]
 status: draft
 ---
 
-<!-- Added 2026-11-21 from Stanford EE364A (CVX101, Winter 2014), slides on convex optimization problems, in our own wording; proofs written out in steps. Linear programs as an algorithmic topic are in @sec-cs-algorithm-design-linear-programming; this note places them among convex problems. -->
+<!-- Added 2026-11-21 from Stanford EE364A (CVX101, Winter 2014), slides on convex optimization problems, in our own wording; proofs written out in steps. Linear programs as an algorithmic topic are in @sec-cs-algorithm-topics-linear-programming; this note places them among convex problems. -->
 
 Linear programs (@def-linear-program) have affine objective and constraints; quadratic programs allow a convex quadratic objective; QCQPs allow convex quadratic constraints too. Each class contains the previous one.
 

@@ -132,6 +132,6 @@ A *data structure* stores a non-constant amount of data and supports a set of op
 ::: {#rmk-problems-and-algorithms-strategy .remark name="Two ways to solve a problem"}
 
 1. *Reduce* it to a problem you already know how to solve: use a known data structure (arrays, hash tables, balanced trees, heaps), a sorting algorithm, or a graph algorithm (breadth-first search, shortest paths).
-2. *Design* a new recursive algorithm: brute force, decrease and conquer, divide and conquer, dynamic programming, or a greedy method (@sec-cs-dynamic-programming-recursive-algorithms).
+2. *Design* a new recursive algorithm: brute force, decrease and conquer, divide and conquer, dynamic programming, or a greedy method (@sec-cs-algorithm-design-recursive-algorithms).
 
 :::

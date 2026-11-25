@@ -5,7 +5,7 @@ requires: [ai/machine-learning/generalization]
 status: draft
 ---
 
-<!-- Added 2026-11-19 from UC Berkeley CS188 (Fall 2025), Lecture 23 (inductive learning, consistency versus simplicity, decision trees, expressiveness, choosing an attribute by information gain, entropy, overfitting, significance of a split, pruning), in our own wording; the cycling data is our own and the entropies were computed in Python. Decision trees for lower bounds on sorting are a different use of the name (@sec-cs-data-structures-comparison-lower-bounds). -->
+<!-- Added 2026-11-19 from UC Berkeley CS188 (Fall 2025), Lecture 23 (inductive learning, consistency versus simplicity, decision trees, expressiveness, choosing an attribute by information gain, entropy, overfitting, significance of a split, pruning), in our own wording; the cycling data is our own and the entropies were computed in Python. Decision trees for lower bounds on sorting are a different use of the name (@sec-cs-sorting-comparison-lower-bounds). -->
 
 Linear classifiers and neural networks score inputs with weighted sums. A decision tree classifies by a sequence of questions about single attributes, which people can read and check. Learning one illustrates a theme of all learning: many hypotheses fit the training data, and the simplest one consistent with it tends to generalise best (*Ockham's razor*).
 

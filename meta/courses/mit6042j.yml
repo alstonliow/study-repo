@@ -514,7 +514,7 @@ chapters:
         covers: [math/discrete/graph/bipartite-graphs, math/discrete/proof/induction-extended-example]
       - id: "11.6"
         title: "Stable matching"
-        covers: [cs/algorithms/stable-matching]
+        covers: [cs/graph-optimization/stable-matching]
       - id: "11.7"
         title: "Colouring"
         covers: [math/discrete/graph/colouring]

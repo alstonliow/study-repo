@@ -5,7 +5,7 @@ requires: [math/optimization/duality/lagrange-dual-function, math/optimization/c
 status: draft
 ---
 
-<!-- Added 2026-11-21 from Stanford EE364A (CVX101, Winter 2014), slides on duality, in our own wording; proofs written out in steps. The proof of Slater's theorem is the separating-hyperplane argument. LP duality as an algorithmic statement is in @sec-cs-algorithm-design-linear-programming. -->
+<!-- Added 2026-11-21 from Stanford EE364A (CVX101, Winter 2014), slides on duality, in our own wording; proofs written out in steps. The proof of Slater's theorem is the separating-hyperplane argument. LP duality as an algorithmic statement is in @sec-cs-algorithm-topics-linear-programming. -->
 
 The best lower bound from the dual function is itself an optimization problem, always convex. For convex problems that satisfy a mild condition, its value equals the primal optimal value.
 

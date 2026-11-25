@@ -22,13 +22,13 @@ Generated from the notes by `make readme`:
 |  | Multivariable Calculus | 5 | 30 | 198 | 90 |
 |  | Matrix Calculus | 3 | 12 | 10 | 23 |
 |  | Differential Equations | 6 | 27 | 35 | 55 |
-|  | Real Analysis | 12 | 55 | 113 | 138 |
-|  | Probability | 8 | 51 | 245 | 130 |
+|  | Real Analysis | 12 | 55 | 114 | 138 |
+|  | Probability | 8 | 51 | 252 | 130 |
 |  | Statistics | 4 | 28 | 85 | 20 |
 |  | Convex Optimization | 6 | 40 | 17 | 116 |
 |  | Numerical Analysis | 7 | 32 | 10 | 60 |
-| Computer Science | Algorithms | 6 | 45 | 75 | 109 |
-|  | Theory of Computation | 2 | 34 | 55 | 61 |
+| Computer Science | Algorithms | 8 | 47 | 89 | 111 |
+|  | Theory of Computation | 2 | 32 | 53 | 59 |
 |  | Cryptography | 1 | 2 | 0 | 1 |
 |  | Computer Systems | 8 | 51 | 21 | 165 |
 | Artificial Intelligence | Machine Learning | 4 | 28 | 23 | 55 |
@@ -36,7 +36,7 @@ Generated from the notes by `make readme`:
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
 |  | Reinforcement Learning and Games | 2 | 20 | 22 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **112** | **703** | **1687** | **1477** |
+| **Total** | | **114** | **703** | **1707** | **1477** |
 
 27 courses are mapped onto the topic tree:
 
