@@ -690,7 +690,7 @@ nodes:
       title: Kruskal and Prim
       at:
         3e: '23.2'
-      covers: [cs/graph-optimization/minimum-spanning-trees]
+      covers: [cs/graph-optimization/kruskal, cs/graph-optimization/prim]
   - id: res-clrs-single-source-shortest-paths
     kind: chapter
     title: Single-source shortest paths
@@ -767,13 +767,13 @@ nodes:
       title: Ford-Fulkerson
       at:
         3e: '26.2'
-      covers: [cs/graph-optimization/maximum-flow]
+      covers: [cs/graph-optimization/ford-fulkerson]
     - id: res-clrs-bipartite-matching
       kind: section
       title: Maximum bipartite matching
       at:
         3e: '26.3'
-      covers: [cs/graph-optimization/flow-applications]
+      covers: [cs/graph-optimization/bipartite-matching]
     - id: res-clrs-push-relabel
       kind: section
       title: Push-relabel

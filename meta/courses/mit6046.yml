@@ -108,19 +108,19 @@ chapters:
     points:
       - id: "12.1"
         title: "Prim and Kruskal"
-        covers: [cs/graph-optimization/minimum-spanning-trees]
+        covers: [cs/graph-optimization/minimum-spanning-trees, cs/graph-optimization/kruskal, cs/graph-optimization/prim]
   - num: 13
     title: "Network flow"
     points:
       - id: "13.1"
         title: "Max-flow min-cut"
-        covers: [cs/graph-optimization/maximum-flow]
+        covers: [cs/graph-optimization/maximum-flow, cs/graph-optimization/ford-fulkerson]
   - num: 14
     title: "Flow applications"
     points:
       - id: "14.1"
         title: "Matching and elimination"
-        covers: [cs/graph-optimization/flow-applications]
+        covers: [cs/graph-optimization/flow-applications, cs/graph-optimization/bipartite-matching]
   - num: 15
     title: "Linear programming"
     points:

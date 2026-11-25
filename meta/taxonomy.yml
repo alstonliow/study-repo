@@ -936,8 +936,12 @@ parts:
         desc: Minimum spanning trees, maximum flow and minimum cut, bipartite and stable matching
         notes:   # topic order on the website
           - minimum-spanning-trees
+          - kruskal
+          - prim
           - maximum-flow
+          - ford-fulkerson
           - flow-applications
+          - bipartite-matching
           - stable-matching
       - id: cs/algorithm-topics
         title: Selected Topics in Algorithms
