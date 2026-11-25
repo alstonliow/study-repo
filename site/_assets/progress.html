@@ -1,4 +1,4 @@
-<!-- Progress tracking. Every knowledge point and exercise has a mark with four
+<!-- Progress tracking. Every knowledge point, exercise and online practice problem has a mark with four
      states: New -> Learned -> Reviewing -> Mastered (click to advance,
      shift-click to go back). Marks are kept in this browser (localStorage).
      When SUPABASE_URL and SUPABASE_ANON_KEY are set, signing in with GitHub
@@ -180,6 +180,14 @@ window.STUDY_PROGRESS_CONFIG = {
       b.querySelector(".pg-dot").dataset.state = s;
       b.querySelector(".pg-label").textContent = LABEL[s];
     });
+    // practice cards: state on the card, and "x/n studied" per grid (the Practice page also in total)
+    document.querySelectorAll(".lc-card[data-item]").forEach(c => { c.dataset.state = stateOf(c.dataset.item); });
+    document.querySelectorAll(".lc-progress").forEach(el => {
+      const scope = el.classList.contains("lc-progress-all") ? document : el.closest(".lc-head").nextElementSibling;
+      const items = scope ? [...scope.querySelectorAll(".lc-card[data-item]")].map(c => c.dataset.item) : [];
+      const c = tally(items), done = items.length - c.new;
+      el.textContent = done ? `${done}/${items.length} studied` + (c.mastered ? ` · ${c.mastered} mastered` : "") : "";
+    });
     if (!data) return;
     summaries.forEach(({ el, bid }) => {
       const notes = data.branches[bid] || [];
@@ -215,6 +223,11 @@ window.STUDY_PROGRESS_CONFIG = {
       const t = p.querySelector(".problem-title");
       const host = t ? t.parentElement : p;
       host.insertBefore(mark(p.id), host.firstChild);
+    });
+    // online practice problems (LeetCode cards): one mark per card, keyed by its resource node id
+    document.querySelectorAll(".lc-card[data-item]").forEach(c => {
+      const slot = c.querySelector(".lc-mark-slot");
+      if (slot) slot.appendChild(mark(c.dataset.item));
     });
     // sidebar
     document.querySelectorAll("#quarto-sidebar a.sidebar-link").forEach(a => {

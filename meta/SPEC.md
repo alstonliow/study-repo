@@ -1224,7 +1224,8 @@ and `meta/sources.yml` was removed.
    - A note page lists the problems that practise it as cards under its
      exercises (title, number, difficulty, link opening the site); the
      website also has one page listing all of them by part and branch, with
-     a difficulty filter.
+     a difficulty filter. Each card has the same progress mark as an
+     exercise (New, Learned, Reviewing, Mastered), stored under the node id.
 
 #### 17.12.8 Build order for phase 3
 

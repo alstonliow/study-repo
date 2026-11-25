@@ -382,7 +382,7 @@ body.quarto-dark {
 .lc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 0.75rem; margin: 0 0 1.4rem; }
 .lc-card { --c: var(--accent); position: relative; display: flex; flex-direction: column; gap: 0.35rem;
   padding: 0.75rem 0.95rem 0.7rem 1.1rem; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden;
-  background: var(--lc-card); color: inherit !important; text-decoration: none !important;
+  background: var(--lc-card);
   transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
 .lc-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--c); opacity: .85; }
 .lc-card.lc-easy { --c: var(--lc-easy); } .lc-card.lc-medium { --c: var(--lc-medium); } .lc-card.lc-hard { --c: var(--lc-hard); }
@@ -392,10 +392,20 @@ body.quarto-dark {
 .lc-num { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; color: var(--notec); font-variant-numeric: tabular-nums; }
 .lc-diff { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c);
   padding: 0.08rem 0.55rem; border-radius: 999px; background: color-mix(in srgb, var(--c) 13%, transparent); }
-.lc-title { font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--probfg); }
-.lc-card:hover .lc-title { color: var(--c); }
-.lc-foot { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.15rem;
+.lc-title { font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--probfg) !important; text-decoration: none !important; }
+.lc-title::after { content: ""; position: absolute; inset: 0; z-index: 1; }      /* the whole card opens the problem */
+.lc-title:focus-visible { outline: none; }
+.lc-card:hover .lc-title { color: var(--c) !important; }
+.lc-card:focus-within { transform: translateY(-2px); box-shadow: var(--lc-shadow); border-color: color-mix(in srgb, var(--c) 55%, var(--rule)); }
+.lc-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: auto; padding-top: 0.25rem;
   font-size: 0.75rem; color: var(--notec); }
+.lc-site { display: inline-flex; align-items: center; gap: 0.3rem; }
+.lc-mark-slot .pg-mark { position: relative; z-index: 2; background: var(--lc-card); }   /* above the card link */
+.lc-card[data-state="mastered"] { background: color-mix(in srgb, var(--pg-mastered) 6%, var(--lc-card)); }
+.lc-card[data-state="mastered"] .lc-title::before { content: "✓ "; color: var(--pg-mastered); }
+.lc-progress:empty { display: none; }
+.lc-progress { margin-left: auto; color: var(--notec); font-variant-numeric: tabular-nums; }
+.lc-filter .lc-progress { align-self: center; font: 0.82rem "Source Sans 3", system-ui, sans-serif; }
 .lc-ext { width: 0.95rem; height: 0.95rem; transition: transform .15s ease, color .15s ease; }
 .lc-card:hover .lc-ext { transform: translate(2px, -2px); color: var(--c); }
 

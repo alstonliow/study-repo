@@ -399,28 +399,29 @@ def practice_cards(items: list, filter_bar: bool = False, grid: bool = True) -> 
     counts = {d: sum(1 for _, n in items if n.extra.get("difficulty") == d) for d in ("easy", "medium", "hard")}
     words = {"easy": "Easy", "medium": "Medium", "hard": "Hard"}
     dist = "".join(f'<span class="lc-dot lc-{d}">{counts[d]} {words[d]}</span>' for d in counts if counts[d])
-    head = f'<div class="lc-head"><span class="lc-total">{len(items)} problem{"s" if len(items) != 1 else ""}</span>{dist}</div>'
+    head = (f'<div class="lc-head"><span class="lc-total">{len(items)} problem{"s" if len(items) != 1 else ""}</span>'
+            f'{dist}<span class="lc-progress"></span></div>')
     if filter_bar:                    # the Practice page: counts plus chips that filter every grid below
         head = ('<div class="lc-filter" role="group" aria-label="Filter by difficulty">'
                 + f'<button type="button" class="lc-chip active" data-lc="all">All <b>{len(items)}</b></button>'
                 + "".join(f'<button type="button" class="lc-chip lc-{d}" data-lc="{d}">{words[d]} <b>{counts[d]}</b></button>'
-                          for d in counts if counts[d]) + "</div>")
+                          for d in counts if counts[d]) + '<span class="lc-progress lc-progress-all"></span></div>')
     if not grid:
         return "```{=html}\n" + head + "\n```"
     cards = []
     for res, n in items:
         d = str(n.extra.get("difficulty", ""))
         loc = res.locator(n.id)
-        cards.append(
-            f'<a class="lc-card lc-{d}" data-lc="{d}" href="{e(str(n.extra.get("url", "")))}" target="_blank" '
-            f'rel="noopener" title="Open on {e(res.title)}">'
+        cards.append(                 # the title link covers the card; the progress mark sits above it
+            f'<div class="lc-card lc-{d}" data-lc="{d}" data-item="{e(n.id)}">'
             f'<span class="lc-top"><span class="lc-num">{"#" + e(loc) if loc else e(res.title)}</span>'
             f'<span class="lc-diff">{words.get(d, d)}</span></span>'
-            f'<span class="lc-title">{e(n.title)}</span>'
-            f'<span class="lc-foot"><span class="lc-site">{e(res.title)}</span>'
+            f'<a class="lc-title" href="{e(str(n.extra.get("url", "")))}" target="_blank" rel="noopener" '
+            f'title="Open on {e(res.title)}">{e(n.title)}</a>'
+            f'<span class="lc-foot"><span class="lc-mark-slot"></span><span class="lc-site">{e(res.title)}'
             f'<svg class="lc-ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3L5.5 10.5M11 9.5V13H3V5h3.5" '
             f'fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-            f'</span></a>')
+            f'</span></span></div>')
     return ("```{=html}\n" + head + '<div class="lc-grid">' + "".join(cards) + "</div>\n```")
 
 
