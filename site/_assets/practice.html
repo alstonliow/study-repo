@@ -1,26 +1,38 @@
-<!-- Practice page (meta/SPEC.md §17.12.7 item 6): the difficulty chips filter the
-     problem cards of every branch; branches and parts left empty are hidden. -->
+<!-- Practice page (meta/SPEC.md §17.12.7 item 6): chips filter the problem cards by
+     difficulty and by named list (Hot 100, ...); branches and parts left empty are hidden.
+     The filter is kept in the URL hash, e.g. #hard+hot100. -->
 <script>
 (() => {
   const bar = document.querySelector(".lc-filter");
   if (!bar) return;
-  const apply = (d) => {
-    bar.querySelectorAll(".lc-chip").forEach((b) => b.classList.toggle("active", b.dataset.lc === d));
-    document.querySelectorAll(".lc-card").forEach((c) => c.classList.toggle("lc-off", d !== "all" && c.dataset.lc !== d));
+  let diff = "all", list = "";
+  const apply = () => {
+    bar.querySelectorAll(".lc-chip[data-lc]").forEach((b) => b.classList.toggle("active", b.dataset.lc === diff));
+    bar.querySelectorAll(".lc-chip[data-list]").forEach((b) => b.classList.toggle("active", b.dataset.list === list));
+    document.querySelectorAll(".lc-card").forEach((c) => c.classList.toggle("lc-off",
+      (diff !== "all" && c.dataset.lc !== diff) || (list && !(c.dataset.lists || "").split(" ").includes(list))));
     document.querySelectorAll("main section.level3, main section.level2").forEach((s) => {
-      if (!s.querySelector(".lc-card")) return;
-      s.style.display = s.querySelector(".lc-card:not(.lc-off)") ? "" : "none";
+      if (s.querySelector(".lc-card")) s.style.display = s.querySelector(".lc-card:not(.lc-off)") ? "" : "none";
     });
+    const all = diff === "all" && !list;
     document.querySelectorAll(".lc-grid").forEach((g) => {
       const head = g.previousElementSibling;
-      if (head && head.classList.contains("lc-head")) head.style.display = d === "all" ? "" : "none";
+      if (head && head.classList.contains("lc-head")) head.style.display = all ? "" : "none";
     });
+    const h = [diff !== "all" ? diff : "", list].filter(Boolean).join("+");
+    history.replaceState(null, "", h ? "#" + h : location.pathname);
   };
   bar.addEventListener("click", (e) => {
     const b = e.target.closest(".lc-chip");
-    if (b) { apply(b.dataset.lc); history.replaceState(null, "", b.dataset.lc === "all" ? location.pathname : "#" + b.dataset.lc); }
+    if (!b) return;
+    if (b.dataset.lc) diff = b.dataset.lc;
+    else list = list === b.dataset.list ? "" : b.dataset.list;
+    apply();
   });
-  const h = location.hash.slice(1);
-  if (["easy", "medium", "hard"].includes(h)) apply(h);
+  for (const part of location.hash.slice(1).split("+")) {
+    if (["easy", "medium", "hard"].includes(part)) diff = part;
+    else if (bar.querySelector(`.lc-chip[data-list="${CSS.escape(part)}"]`)) list = part;
+  }
+  if (location.hash) apply();
 })();
 </script>

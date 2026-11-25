@@ -192,6 +192,14 @@ def parse(path: Path) -> Resource:
             ids.append(nid)
         return ids
     roots = walk(d.get("nodes"), rid)
+    lists = {str(x.get("id", "")) for x in d.get("lists") or []}     # named problem lists (SPEC §17.12.7 item 6)
+    for x in d.get("lists") or []:
+        if not x.get("id") or not x.get("label"):
+            problems.append("lists: each list needs an id and a label")
+    for n in nodes.values():
+        for lid in n.extra.get("lists") or []:
+            if str(lid) not in lists:
+                problems.append(f"{n.id}: list '{lid}' is not declared under lists")
     lk = None
     if d.get("legacy_keys"):
         k = d["legacy_keys"]

@@ -405,16 +405,27 @@ def practice_cards(items: list, filter_bar: bool = False, grid: bool = True) -> 
         head = ('<div class="lc-filter" role="group" aria-label="Filter by difficulty">'
                 + f'<button type="button" class="lc-chip active" data-lc="all">All <b>{len(items)}</b></button>'
                 + "".join(f'<button type="button" class="lc-chip lc-{d}" data-lc="{d}">{words[d]} <b>{counts[d]}</b></button>'
-                          for d in counts if counts[d]) + '<span class="lc-progress lc-progress-all"></span></div>')
+                          for d in counts if counts[d]))
+        named: dict[str, list] = {}                       # problem lists (Hot 100, ...): label, count
+        for res, n in items:
+            labels = {str(x["id"]): str(x["label"]) for x in res.meta.get("lists") or []}
+            for x in n.extra.get("lists") or []:
+                named.setdefault(str(x), [labels.get(str(x), str(x)), 0])[1] += 1
+        head += "".join(f'<span class="lc-sep"></span><button type="button" class="lc-chip lc-list" data-list="{e(k)}">'
+                        f'{e(v[0])} <b>{v[1]}</b></button>' for k, v in named.items())
+        head += '<span class="lc-progress lc-progress-all"></span></div>'
     if not grid:
         return "```{=html}\n" + head + "\n```"
     cards = []
     for res, n in items:
         d = str(n.extra.get("difficulty", ""))
         loc = res.locator(n.id)
+        labels = {str(x["id"]): str(x["label"]) for x in res.meta.get("lists") or []}
+        lids = [str(x) for x in n.extra.get("lists") or []]
+        tags = "".join(f'<span class="lc-tag">{e(labels.get(x, x))}</span>' for x in lids)
         cards.append(                 # the title link covers the card; the progress mark sits above it
-            f'<div class="lc-card lc-{d}" data-lc="{d}" data-item="{e(n.id)}">'
-            f'<span class="lc-top"><span class="lc-num">{"#" + e(loc) if loc else e(res.title)}</span>'
+            f'<div class="lc-card lc-{d}" data-lc="{d}" data-lists="{e(" ".join(lids))}" data-item="{e(n.id)}">'
+            f'<span class="lc-top"><span class="lc-num">{"#" + e(loc) if loc else e(res.title)}</span>{tags}'
             f'<span class="lc-diff">{words.get(d, d)}</span></span>'
             f'<a class="lc-title" href="{e(str(n.extra.get("url", "")))}" target="_blank" rel="noopener" '
             f'title="Open on {e(res.title)}">{e(n.title)}</a>'
@@ -844,15 +855,43 @@ def ctx():
                            block_courses=REPO.block_courses, review_courses=REPO.review_courses)
 
 
+HOME_LINKS = [("map.qmd", "Map", "How the topics build on each other"),
+              ("library.qmd", "Library", "Books and course notes behind the notes"),
+              ("practice.qmd", "Practice", "Online judge problems by topic"),
+              ("export.qmd", "Export", "Print any selection as a PDF")]
+
+
+def home_header(stats: list[tuple[int, str, str]], sections: list[str]) -> list[str]:
+    """Home page header: lead, totals (count, singular, plural), links to the other pages, jump links to the sections."""
+    import html
+    import re
+    have = {pg.file for pg in PAGES}
+    stat = "".join(f'<div class="home-stat"><b>{n:,}</b><span>{one if n == 1 else many}</span></div>'
+                   for n, one, many in stats)
+    links = "".join(f'<a class="home-link" href="{f.replace(".qmd", ".html")}"><b>{t}</b><span>{d}</span></a>'
+                    for f, t, d in HOME_LINKS if f in have)
+    seen = list(dict.fromkeys(sections))
+    jump = "".join(f'<a href="#{re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")}">{html.escape(s)}</a>' for s in seen)
+    return ["---", "title: Study Notes", "page-layout: full", "toc: false", "---", "",
+            "[Personal study notes, organised by topic rather than by course: definitions, results, "
+            "proofs and worked exercises, each written once and linked to every course that uses it.]{.home-lead}", "",
+            "```{=html}",
+            f'<div class="home-stats">{stat}</div>',
+            f'<nav class="home-links">{links}</nav>',
+            f'<nav class="home-jump" aria-label="Sections">{jump}</nav>',
+            "```", ""]
+
+
 def contents_block(heading: str, rows: list, level: int = 2) -> list[str]:
-    """A book-style contents list for the home page: (href, title, desc)."""
+    """A card grid for the home page: rows of (href, title, desc, num[, meta])."""
     import html
     items = "\n".join(
-        f'<li><a href="{href}">'
-        + (f'<span class="contents-num">{num}</span>' if num else "")
-        + f'{html.escape(title)}</a>'
-        + (f'<span class="contents-desc">{html.escape(desc)}</span>' if desc else "")
-        + "</li>"
-        for href, title, desc, num in rows)
+        f'<li><a href="{r[0]}">'
+        + (f'<span class="contents-num">{r[3]}</span>' if r[3] else "")
+        + f'<span class="contents-title">{html.escape(r[1])}</span>'
+        + (f'<span class="contents-meta">{html.escape(r[4])}</span>' if len(r) > 4 and r[4] else "")
+        + (f'<span class="contents-desc">{html.escape(r[2])}</span>' if r[2] else "")
+        + "</a></li>"
+        for r in rows)
     return ["::: {.contents-field}", f"{'#' * level} {heading}", "", "```{=html}",
             f'<ul class="contents-list">\n{items}\n</ul>', "```", ":::", ""]

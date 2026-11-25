@@ -1216,6 +1216,13 @@ and `meta/sources.yml` was removed.
      are allowed as node titles here (an exception to §17.12.3 item 4),
      because they are names, not text.
    - `url` and `difficulty` are required on every `problem` node.
+   - **Named lists** (owner decision, 2026-11-26), such as LeetCode's Top 100
+     Liked ("Hot 100"): declared once in the resource file under `lists:`
+     (`id`, `label`, `title`, `url`), and named on a node with
+     `lists: [hot100]`. Cards show the label; the Practice page filters by it.
+     Every problem of the Hot 100 is included. There is no limit on the number
+     of problems per note; problems are chosen because their intended
+     solution is the note's algorithm, preferring frequent interview problems.
      `difficulty` is the site's own rating, kept apart from a problem block's
      `level`, which only the owner fills in (§6.1).
    - The node links to the notes it practises with `practises` (§17.15.12),
@@ -1224,7 +1231,7 @@ and `meta/sources.yml` was removed.
    - A note page lists the problems that practise it as cards under its
      exercises (title, number, difficulty, link opening the site); the
      website also has one page listing all of them by part and branch, with
-     a difficulty filter. Each card has the same progress mark as an
+     difficulty and list filters. Each card has the same progress mark as an
      exercise (New, Learned, Reviewing, Mastered), stored under the node id.
 
 #### 17.12.8 Build order for phase 3

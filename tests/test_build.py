@@ -1051,13 +1051,23 @@ class TestPractice(Repo):
         site = generate(self.root)
         first = (site / "notes/t/alpha/first.qmd").read_text()
         self.assertIn("## Practice", first)
-        self.assertIn('<div class="lc-card lc-hard" data-lc="hard" data-item="res-judge-two-gadgets">', first)
+        self.assertIn('<div class="lc-card lc-hard" data-lc="hard" data-lists="" data-item="res-judge-two-gadgets">', first)
         self.assertIn('<a class="lc-title" href="https://judge.example/p/two-gadgets/" target="_blank"', first)
         self.assertIn('<span class="lc-num">#7</span>', first)
         page = (site / "practice.qmd").read_text()
         self.assertIn('data-lc="hard">Hard <b>1</b>', page)
         self.assertIn("Two Gadgets", page)
         self.assertNotIn("## Practice", (site / "notes/t/alpha/second.qmd").read_text())
+
+    def test_named_lists(self):
+        self.write(extra="  lists: [top]\n")
+        self.assertIn("res-judge-two-gadgets: list 'top' is not declared under lists", self.check().stdout)
+        text = (self.root / self.RES).read_text().replace("nodes:\n", "lists:\n- id: top\n  label: Top 1\nnodes:\n", 1)
+        (self.root / self.RES).write_text(text)
+        self.assertEqual(self.check().returncode, 0)
+        site = generate(self.root)
+        self.assertIn('<span class="lc-tag">Top 1</span>', (site / "notes/t/alpha/first.qmd").read_text())
+        self.assertIn('data-list="top">Top 1 <b>1</b>', (site / "practice.qmd").read_text())
 
     def test_problem_fields_are_checked(self):
         self.write(difficulty="tricky", url="judge.example/p")
