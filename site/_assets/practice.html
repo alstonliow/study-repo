@@ -1,0 +1,26 @@
+<!-- Practice page (meta/SPEC.md §17.12.7 item 6): the difficulty chips filter the
+     problem cards of every branch; branches and parts left empty are hidden. -->
+<script>
+(() => {
+  const bar = document.querySelector(".lc-filter");
+  if (!bar) return;
+  const apply = (d) => {
+    bar.querySelectorAll(".lc-chip").forEach((b) => b.classList.toggle("active", b.dataset.lc === d));
+    document.querySelectorAll(".lc-card").forEach((c) => c.classList.toggle("lc-off", d !== "all" && c.dataset.lc !== d));
+    document.querySelectorAll("main section.level3, main section.level2").forEach((s) => {
+      if (!s.querySelector(".lc-card")) return;
+      s.style.display = s.querySelector(".lc-card:not(.lc-off)") ? "" : "none";
+    });
+    document.querySelectorAll(".lc-grid").forEach((g) => {
+      const head = g.previousElementSibling;
+      if (head && head.classList.contains("lc-head")) head.style.display = d === "all" ? "" : "none";
+    });
+  };
+  bar.addEventListener("click", (e) => {
+    const b = e.target.closest(".lc-chip");
+    if (b) { apply(b.dataset.lc); history.replaceState(null, "", b.dataset.lc === "all" ? location.pathname : "#" + b.dataset.lc); }
+  });
+  const h = location.hash.slice(1);
+  if (["easy", "medium", "hard"].includes(h)) apply(h);
+})();
+</script>

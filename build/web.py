@@ -370,6 +370,60 @@ def connections(note: Note) -> str:
     return "\n".join(out + [":::"])
 
 
+# ---------- online practice problems (SPEC §17.12.7 item 6) ----------
+
+def practice_nodes(target: str | None = None) -> list:
+    """Online practice problems (resource nodes of kind `problem`) as
+    (resource, node), all of them or those that practise `target`, easiest
+    first, then by number."""
+    out = []
+    for res in REPO.resources.values():
+        for n in res.nodes.values():
+            if n.kind != "problem":
+                continue
+            if target is not None and not any(l.name == "practises" and l.other == target
+                                              for l in GRAPH.outgoing(n.id)):
+                continue
+            out.append((res, n))
+    rank = {d: i for i, d in enumerate(("easy", "medium", "hard"))}
+    def key(rn):
+        loc = rn[0].locator(rn[1].id)
+        return (rank.get(str(rn[1].extra.get("difficulty")), 9), int(loc) if loc.isdigit() else 10**9, rn[1].title)
+    return sorted(out, key=key)
+
+
+def practice_cards(items: list, filter_bar: bool = False, grid: bool = True) -> str:
+    """Cards linking out to online practice problems: number, official title,
+    the site's difficulty; the whole card opens the problem in a new tab."""
+    e = html.escape
+    counts = {d: sum(1 for _, n in items if n.extra.get("difficulty") == d) for d in ("easy", "medium", "hard")}
+    words = {"easy": "Easy", "medium": "Medium", "hard": "Hard"}
+    dist = "".join(f'<span class="lc-dot lc-{d}">{counts[d]} {words[d]}</span>' for d in counts if counts[d])
+    head = f'<div class="lc-head"><span class="lc-total">{len(items)} problem{"s" if len(items) != 1 else ""}</span>{dist}</div>'
+    if filter_bar:                    # the Practice page: counts plus chips that filter every grid below
+        head = ('<div class="lc-filter" role="group" aria-label="Filter by difficulty">'
+                + f'<button type="button" class="lc-chip active" data-lc="all">All <b>{len(items)}</b></button>'
+                + "".join(f'<button type="button" class="lc-chip lc-{d}" data-lc="{d}">{words[d]} <b>{counts[d]}</b></button>'
+                          for d in counts if counts[d]) + "</div>")
+    if not grid:
+        return "```{=html}\n" + head + "\n```"
+    cards = []
+    for res, n in items:
+        d = str(n.extra.get("difficulty", ""))
+        loc = res.locator(n.id)
+        cards.append(
+            f'<a class="lc-card lc-{d}" data-lc="{d}" href="{e(str(n.extra.get("url", "")))}" target="_blank" '
+            f'rel="noopener" title="Open on {e(res.title)}">'
+            f'<span class="lc-top"><span class="lc-num">{"#" + e(loc) if loc else e(res.title)}</span>'
+            f'<span class="lc-diff">{words.get(d, d)}</span></span>'
+            f'<span class="lc-title">{e(n.title)}</span>'
+            f'<span class="lc-foot"><span class="lc-site">{e(res.title)}</span>'
+            f'<svg class="lc-ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3L5.5 10.5M11 9.5V13H3V5h3.5" '
+            f'fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+            f'</span></a>')
+    return ("```{=html}\n" + head + '<div class="lc-grid">' + "".join(cards) + "</div>\n```")
+
+
 def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: dict[str, str | None]) -> str:
     body_text = wrap_scope(note.body.strip(), note)     # headings inside a note are not numbered
     parts = [body_text]
@@ -379,6 +433,9 @@ def build_page(note: Note, notes: dict[str, Note], owner: dict[str, str], svgs: 
         parts.append("## Code\n\n" + wrap_scope(note.code.strip(), note))
     if note.exercises.strip():
         parts.append("## Exercises\n\n" + render_problems(note))
+    practice = practice_nodes(note.id)
+    if practice:
+        parts.append("## Practice {.lc-section}\n\n" + practice_cards(practice))
     conn = connections(note)
     if conn:
         parts.append(conn)
@@ -611,7 +668,9 @@ def resource_page(res) -> str:
         else:
             f = ":::"
             lines.extend([f"{f} {{#{nid} .resource-node}}",
-                          (f"[{loc}]{{.node-loc}} " if loc else "") + f"**{n.title}**"]
+                          (f"[{loc}]{{.node-loc}} " if loc else "")
+                          + (f"**[{n.title}]({n.extra['url']})**" if n.extra.get("url") else f"**{n.title}**")
+                          + level_badge(n.extra.get("difficulty"))]
                          + ([f"\n[{links}]{{.node-links}}"] if links else []) + [f, ""])
         for c in n.children:
             node(c, depth + 1)
@@ -670,6 +729,42 @@ def project_page(prj) -> str:
 def project_rows(projects) -> list[str]:
     return [f"- [{p.title}]({project_url(p.id)}) [{project_info(p)}]{{.toc-desc}}"
             for p in sorted(projects, key=lambda p: p.title.lower())]
+
+
+@page("practice.qmd", nav="Practice")
+def practice_page() -> str:
+    """All online practice problems, grouped by the part and branch of the
+    first note each practises, with a difficulty filter (SPEC §17.12.7 item 6)."""
+    items = practice_nodes()
+    out = ["---", "title: Practice", "---", "",
+           "[Problems on online judges that practise the notes. Each card opens the problem on its site; "
+           "only the title, number and the site's difficulty are kept here.]{.summary-intro}", ""]
+    if not items:
+        return "\n".join(out + ["*No practice problems yet.*", ""])
+    out += [practice_cards(items, filter_bar=True, grid=False), ""]
+    first: dict[str, Note] = {}       # problem node -> the first note it practises (a block's holder)
+    for res, n in items:
+        t = next((l.other for l in GRAPH.outgoing(n.id) if l.name == "practises"), "")
+        note = REPO.notes.get(t) or REPO.notes.get(REPO.entities[t].holder if t in REPO.entities else "")
+        if note is not None:
+            first[n.id] = note
+    for ptitle, branches in REPO.parts:
+        rows = [(bid, btitle, [rn for rn in items if rn[1].id in first and first[rn[1].id].branch == bid])
+                for bid, btitle in branches]
+        rows = [r for r in rows if r[2]]
+        if not rows:
+            continue
+        out += [f"## {ptitle}", ""]
+        for bid, btitle, its in rows:
+            out += [f"### {btitle}", "", practice_cards(its), ""]
+            topics = []
+            for _, n in its:
+                note = first[n.id]
+                if note.id not in topics:
+                    topics.append(note.id)
+            out += ["[Topics: " + ", ".join(f"[{REPO.notes[t].display_title}]({page_url(t)})" for t in topics)
+                    + "]{.note-meta}", ""]
+    return "\n".join(out)
 
 
 @page("projects.qmd", nav="Projects")

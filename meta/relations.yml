@@ -49,8 +49,8 @@ types:
     from: [projects]
     to: [notes, blocks]
   - name: practises            # a problem practises the note or block (SPEC §17.15.12); written on
-    inverse: practised in      # question-bank problems, practises="<note id> ..."
-    symmetric: false
+    inverse: practised in      # question-bank problems, practises="<note id> ...", and on online
+    symmetric: false           # practice problems (resource nodes, SPEC §17.12.7 item 6)
     acyclic: false
-    from: [blocks]
+    from: [blocks, nodes]
     to: [notes, blocks]

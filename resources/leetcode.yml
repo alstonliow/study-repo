@@ -1,0 +1,73 @@
+# LeetCode (leetcode.com), an online judge, as a resource (meta/SPEC.md §17.12.7 item 6).
+# DRAFT for owner review. One node per problem: the official title, the problem number
+# (locator), the link and LeetCode's own difficulty. Statements, examples, hints, editorials
+# and solutions are never copied. Each node names the notes it practises.
+# Node ids are named by the problem's slug, never by number, and are never renamed.
+id: res-leetcode
+kind: problem-set
+title: LeetCode
+status: draft
+url: https://leetcode.com/
+editions:
+- id: web
+  current: true
+nodes:
+# ---- string matching
+- id: res-leetcode-find-the-index-of-the-first-occurrence-in-a-string
+  kind: problem
+  title: Find the Index of the First Occurrence in a String
+  at: {web: '28'}
+  url: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
+  difficulty: easy
+  practises: [cs/algorithm-topics/string-matching, cs/algorithm-topics/knuth-morris-pratt]
+- id: res-leetcode-repeated-string-match
+  kind: problem
+  title: Repeated String Match
+  at: {web: '686'}
+  url: https://leetcode.com/problems/repeated-string-match/
+  difficulty: medium
+  practises: [cs/algorithm-topics/string-matching]
+# ---- Knuth–Morris–Pratt (prefix function)
+- id: res-leetcode-repeated-substring-pattern
+  kind: problem
+  title: Repeated Substring Pattern
+  at: {web: '459'}
+  url: https://leetcode.com/problems/repeated-substring-pattern/
+  difficulty: easy
+  practises: [cs/algorithm-topics/knuth-morris-pratt]
+- id: res-leetcode-shortest-palindrome
+  kind: problem
+  title: Shortest Palindrome
+  at: {web: '214'}
+  url: https://leetcode.com/problems/shortest-palindrome/
+  difficulty: hard
+  practises: [cs/algorithm-topics/knuth-morris-pratt]
+- id: res-leetcode-longest-happy-prefix
+  kind: problem
+  title: Longest Happy Prefix
+  at: {web: '1392'}
+  url: https://leetcode.com/problems/longest-happy-prefix/
+  difficulty: hard
+  practises: [cs/algorithm-topics/knuth-morris-pratt, cs/algorithm-topics/rabin-karp]
+# ---- Rabin–Karp (rolling hash)
+- id: res-leetcode-repeated-dna-sequences
+  kind: problem
+  title: Repeated DNA Sequences
+  at: {web: '187'}
+  url: https://leetcode.com/problems/repeated-dna-sequences/
+  difficulty: medium
+  practises: [cs/algorithm-topics/rabin-karp]
+- id: res-leetcode-longest-duplicate-substring
+  kind: problem
+  title: Longest Duplicate Substring
+  at: {web: '1044'}
+  url: https://leetcode.com/problems/longest-duplicate-substring/
+  difficulty: hard
+  practises: [cs/algorithm-topics/rabin-karp]
+- id: res-leetcode-distinct-echo-substrings
+  kind: problem
+  title: Distinct Echo Substrings
+  at: {web: '1316'}
+  url: https://leetcode.com/problems/distinct-echo-substrings/
+  difficulty: hard
+  practises: [cs/algorithm-topics/rabin-karp]

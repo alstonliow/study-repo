@@ -1196,6 +1196,35 @@ and `meta/sources.yml` was removed.
 5. **Personal records** about a resource, such as reading status, dates or
    personal notes, are private. They are not fields of a public resource
    file. They belong to a later records type, or to a private resource.
+6. **Online practice problems** (owner decision, 2026-11-25). An online
+   judge such as LeetCode is a resource (`resources/leetcode.yml`, `kind:
+   problem-set`) with one node per problem (`kind: problem`):
+
+   ```yaml
+   - id: res-leetcode-shortest-palindrome     # named by content, never by number
+     kind: problem
+     title: Shortest Palindrome               # the official problem title
+     at: {web: '214'}                         # locator = the site's problem number
+     url: https://leetcode.com/problems/shortest-palindrome/
+     difficulty: hard                         # easy | medium | hard, as the site gives it
+     practises: [cs/algorithm-topics/knuth-morris-pratt]
+   ```
+
+   - Only the number, the official title, the link and the site's difficulty
+     are stored. The statement, examples, hints, editorial and solutions are
+     never copied, and no `solution.md` entry exists for them. Official titles
+     are allowed as node titles here (an exception to §17.12.3 item 4),
+     because they are names, not text.
+   - `url` and `difficulty` are required on every `problem` node.
+     `difficulty` is the site's own rating, kept apart from a problem block's
+     `level`, which only the owner fills in (§6.1).
+   - The node links to the notes it practises with `practises` (§17.15.12),
+     written in the resource file. They are not exercise blocks: they have no
+     block id in a note, no `origin`, `source` or number, and no course scope.
+   - A note page lists the problems that practise it as cards under its
+     exercises (title, number, difficulty, link opening the site); the
+     website also has one page listing all of them by part and branch, with
+     a difficulty filter.
 
 #### 17.12.8 Build order for phase 3
 
@@ -1540,7 +1569,8 @@ in any public file or build.
       the problem's `practises`.
     - Types are private: a public file never names one.
 12. **`practises`**: a new relationship type in `meta/relations.yml`
-    (inverse "practised in"), from blocks to notes and blocks. It is written
-    on bank problems; public problems may use it later. Like every
+    (inverse "practised in"), from blocks and resource nodes to notes and
+    blocks. It is written on bank problems and on online practice problems
+    (§17.12.7 item 6); public problems may use it later. Like every
     relationship, a public block never practises a private note.
 

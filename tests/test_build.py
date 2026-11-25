@@ -1033,6 +1033,38 @@ def update_expected() -> None:
 
 
 
+class TestPractice(Repo):
+    """Online practice problems: resource nodes of kind problem (SPEC §17.12.7 item 6)."""
+
+    RES = "resources/judge.yml"
+
+    def write(self, extra: str = "", difficulty: str = "hard", url: str = "https://judge.example/p/two-gadgets/") -> None:
+        (self.root / self.RES).write_text(
+            "id: res-judge\nkind: problem-set\ntitle: Judge\nurl: https://judge.example/\n"
+            "editions:\n- id: web\n  current: true\nnodes:\n"
+            "- id: res-judge-two-gadgets\n  kind: problem\n  title: Two Gadgets\n  at: {web: '7'}\n"
+            f"  url: {url}\n  difficulty: {difficulty}\n  practises: [t/alpha/first]\n{extra}", encoding="utf-8")
+
+    def test_cards_on_note_and_practice_page(self):
+        self.write()
+        self.assertEqual(self.check().returncode, 0)
+        site = generate(self.root)
+        first = (site / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn("## Practice", first)
+        self.assertIn('<a class="lc-card lc-hard" data-lc="hard" href="https://judge.example/p/two-gadgets/"', first)
+        self.assertIn('<span class="lc-num">#7</span>', first)
+        page = (site / "practice.qmd").read_text()
+        self.assertIn('data-lc="hard">Hard <b>1</b>', page)
+        self.assertIn("Two Gadgets", page)
+        self.assertNotIn("## Practice", (site / "notes/t/alpha/second.qmd").read_text())
+
+    def test_problem_fields_are_checked(self):
+        self.write(difficulty="tricky", url="judge.example/p")
+        out = self.check().stdout
+        self.assertIn("res-judge-two-gadgets: a problem node needs a url (https://...)", out)
+        self.assertIn("res-judge-two-gadgets: difficulty must be one of easy, medium, hard", out)
+
+
 class TestProjects(Repo):
     """Projects (SPEC §17.13): loader, checks, pages and the "Applied in" group."""
 

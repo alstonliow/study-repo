@@ -52,5 +52,5 @@ types:
     inverse: practised in
     symmetric: false
     acyclic: false
-    from: [blocks]
+    from: [blocks, nodes]
     to: [notes, blocks]

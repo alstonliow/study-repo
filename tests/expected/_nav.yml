@@ -8,6 +8,8 @@ website:
       text: Map
     - href: library.qmd
       text: Library
+    - href: practice.qmd
+      text: Practice
     - href: projects.qmd
       text: Projects
     - href: export.qmd

@@ -24,6 +24,8 @@ import yaml
 
 ID = re.compile(r"res-[a-z0-9]+(?:-[a-z0-9]+)*")
 YEAR = re.compile(r"\d{4}(?:-\d{2})?")      # `year:` on a resource or node: 2024, or an academic year 2025-26
+URL = re.compile(r"https://\S+")
+DIFFICULTIES = ("easy", "medium", "hard")   # an online problem's own rating (SPEC §17.12.7 item 6)
 
 
 @dataclass
@@ -177,6 +179,15 @@ def parse(path: Path) -> Resource:
                               extra={k: v for k, v in item.items() if k not in ("id", "kind", "title", "at", "nodes")})
             if "year" in item and not YEAR.fullmatch(str(item["year"])):
                 problems.append(f"{nid}: year must be like 2024 or 2025-26")
+            if item.get("kind") == "problem":     # online practice problem (SPEC §17.12.7 item 6)
+                if not URL.fullmatch(str(item.get("url", ""))):
+                    problems.append(f"{nid}: a problem node needs a url (https://...)")
+                if str(item.get("difficulty", "")) not in DIFFICULTIES:
+                    problems.append(f"{nid}: difficulty must be one of {', '.join(DIFFICULTIES)}")
+                if item.get("nodes"):
+                    problems.append(f"{nid}: a problem node has no child nodes")
+            elif "difficulty" in item:
+                problems.append(f"{nid}: difficulty is only for problem nodes")
             nodes[nid].children = walk(item.get("nodes"), nid)
             ids.append(nid)
         return ids
