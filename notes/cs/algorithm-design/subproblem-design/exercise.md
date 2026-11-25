@@ -77,24 +77,3 @@ The player wins the round if the value of the player's hand (i.e., the sum of ca
 
 Text Justification is the problem of fitting a sequence of $n$ space separated words into a column of lines with constant width $s$, to minimize the amount of white-space between words. Each word can be represented by its width $w_i<s$. A good way to minimize white space in a line is to minimize *badness* of a line. Assuming a line contains words from $w_i$ to $w_j$, the badness of the line is defined as $b(i,j)=(s-(w_i+\dots+w_j))^3$ if $s>(w_i+\dots+w_j)$, and $b(i,j)=\infty$ otherwise. A good text justification would then partition words into lines to minimize the sum total of badness over all lines containing words. The cubic power heavily penalizes large white space in a line. Microsoft Word uses a greedy algorithm to justify text that puts as many words into a line as it can before moving to the next line. This algorithm can lead to some really bad lines. LaTeX on the other hand formats text to minimize this measure of white space using a dynamic program. Describe an $O(n^2)$ algorithm to fit $n$ words into a column of width $s$ that minimizes the sum of badness over all lines.
 :::
-
-::: {.problem #prob-mit6046r-5-q1 origin="external" source="mit6046r-5-q1"}
-**Rectangular blocks**
-
-Given a set of $n$ rectangular three-dimensional blocks, where block $B_i$ has length $l_i$, width $w_i$, and height $h_i$, all real numbers, find the maximum height of a tower of blocks that is as tall as possible, using any subset of the blocks, such that the tower respects the following constraints:
-
-1. Blocks cannot be rotated: the length always refers to the east-west direction, the width is always north-south, and the height is always up-down.
-2. Block $B_i$ can be stacked on top of block $B_j$ only if $l_i\le l_j$ and $w_i\le w_j$, that is, the two dimensions of the base of block $B_i$ are no greater than those of block $B_j$.
-:::
-
-::: {.problem #prob-mit6006-16-q1 origin="external" source="mit6006-16-q1"}
-Speed up to $O(|A|\log|A|)$ by doing only $O(\log|A|)$ work per subproblem, via AVL tree augmentation
-
-*Note (these notes):* This refers to the longest increasing subsequence DP of @exm-lis, which spends $O(|A|)$ work per subproblem.
-:::
-
-::: {.problem #prob-mit6006-16-q2 origin="external" source="mit6006-16-q2"}
-Speed up to $\Theta(n^2)$ time by precomputing all sums $\sum_{k=i}^{j}v_k$ in $\Theta(n^2)$ time, via dynamic programming (!)
-
-*Note (these notes):* This refers to the first solution of the alternating coin game, @exm-coin-game, where computing the sum inside each subproblem takes $\Theta(n)$ work and $\Theta(n^3)$ in total.
-:::

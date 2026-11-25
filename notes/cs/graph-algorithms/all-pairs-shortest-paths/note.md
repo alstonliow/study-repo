@@ -17,7 +17,7 @@ The output has $|V|^2$ entries, so running a single-source algorithm from every 
 
 ## The algorithms
 
-Repeated squaring of the weight matrix (@sec-cs-graph-algorithms-shortest-paths-by-squaring) and Johnson's algorithm (@sec-cs-graph-algorithms-johnson) have their own notes; the Floyd–Warshall algorithm is a dynamic program (@thm-floyd-warshall).
+Repeated squaring of the weight matrix (@sec-cs-graph-algorithms-shortest-paths-by-squaring) and Johnson's algorithm (@sec-cs-graph-algorithms-johnson) have their own notes; the Floyd–Warshall algorithm, a dynamic program, has its own note too (@sec-cs-algorithm-design-floyd-warshall).
 
 | algorithm | weights | time $O(\cdot)$ |
 |---|---|---|

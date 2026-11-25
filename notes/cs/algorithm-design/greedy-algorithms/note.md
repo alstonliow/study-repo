@@ -1,11 +1,11 @@
 ---
 title: "Greedy Algorithms: Interval Scheduling"
 sources: [mit6046-1, mit6046r-6]
-requires: [cs/algorithm-design/interval-subproblems]
+requires: [cs/algorithm-design/recursive-algorithms]
 status: draft
 ---
 
-<!-- Added 2026-11-17 from MIT 6.046 (Spring 2015), Lecture 1 and Recitation 6, in our own wording; proofs written out in steps. -->
+<!-- Added 2026-11-17 from MIT 6.046 (Spring 2015), Lecture 1 and Recitation 6, in our own wording; proofs written out in steps. On 2026-11-25 the weighted version moved to its own note (one problem per note, SPEC §8.6). -->
 
 A *greedy* algorithm builds a solution one choice at a time, each time taking the choice that looks best now and never undoing it. It is fast and simple, but correct only for problems with the right structure, and the proof is the hard part. The usual proof shows that some optimal solution agrees with each greedy choice (an *exchange argument*), or that greedy *stays ahead* of every other solution.
 
@@ -81,7 +81,7 @@ Eight requests drawn as intervals in time. Earliest finish first picks $[1,4)$, 
 
 ## Weighted interval scheduling
 
-If each request has a weight and we want the compatible set of largest total weight, no greedy rule works, but dynamic programming does: sort by finishing time and use @exm-weighted-interval-scheduling, in $O(n\log n)$ time.
+If each request has a weight and we want the compatible set of largest total weight, no greedy rule works, but dynamic programming does, in $O(n\log n)$ time (@sec-cs-algorithm-design-weighted-interval-scheduling).
 
 ## Scheduling to minimise total completion time
 

@@ -41,15 +41,3 @@ In part (d), the prizes are represented by a rooted binary tree $T$, with root v
 
 Given a boolean expression consisting of a string of the symbols True, False, AND, OR, and XOR, count the number of ways to parenthesize the expression such that it will evaluate to True. For example, there are $2$ ways to parenthesize True AND False XOR True such that it evaluates to True.
 :::
-
-::: {.problem #prob-mit6046-1-q1 origin="external" source="mit6046-1-q1"}
-Total running time is $O(n^2)$ since we need $O(n)$ time to solve each sub-problem. Turns out that we can actually reduce the overall complexity to $O(n\log n)$. We leave this as an exercise.
-
-*Note (these notes):* This refers to weighted interval scheduling (@exm-weighted-interval-scheduling) solved with the subproblems $R^x=\{j\in R: s(j)\ge x\}$ (requests starting at or after $x$) and the relation $\mathrm{opt}(R)=\max_{1\le i\le n}\bigl(w(i)+\mathrm{opt}(R^{f(i)})\bigr)$, where request $i$ is tried as the first request chosen.
-:::
-
-::: {.problem #prob-mit6046-10-q1 origin="external" source="mit6046-10-q1"}
-Compute the actual solution
-
-*Note (these notes):* The program it follows computes only the length $L(i,j)$ of a longest palindromic subsequence of $X[i\cdots j]$ (@exm-longest-palindromic-subsequence), not the subsequence itself.
-:::

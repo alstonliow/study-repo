@@ -30,7 +30,7 @@ chapters:
         covers: [cs/algorithm-design/greedy-algorithms]
       - id: "1.2"
         title: "Weighted interval scheduling"
-        covers: [exm-weighted-interval-scheduling, prob-mit6046-1-q1]
+        covers: [cs/algorithm-design/weighted-interval-scheduling]
   - num: 2
     title: "Divide and conquer"
     points:
@@ -96,7 +96,7 @@ chapters:
     points:
       - id: "10.1"
         title: "Interval subproblems"
-        covers: [cs/algorithm-design/interval-subproblems, exm-coin-game, prob-mit6046r-5-q1]
+        covers: [cs/algorithm-design/interval-subproblems, cs/algorithm-design/longest-palindromic-subsequence, cs/algorithm-design/optimal-bst, exm-coin-game, exm-stacking-blocks, prob-mit6046r-5-q1]
   - num: 11
     title: "All-pairs shortest paths"
     points:

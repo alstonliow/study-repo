@@ -898,11 +898,24 @@ parts:
         desc: Recursive algorithm design, subproblems, pseudopolynomial time, greedy algorithms, amortized analysis
         notes:   # topic order on the website
           - recursive-algorithms
+          - bowling
           - subproblem-design
+          - lcs
+          - lis
+          - coin-game
           - more-dynamic-programs
+          - floyd-warshall
+          - arithmetic-parenthesization
+          - piano-fingering
           - pseudopolynomial-time
+          - rod-cutting
+          - subset-sum
+          - knapsack
           - interval-subproblems
+          - longest-palindromic-subsequence
+          - optimal-bst
           - greedy-algorithms
+          - weighted-interval-scheduling
           - amortized-analysis
       - id: cs/advanced-data-structures
         title: Advanced Data Structures

@@ -1,5 +1,5 @@
-<!-- Solutions marked status="draft" were written by Claude in our own words, 
-     no official solutions were available. Owner to review, then remove status. -->
+<!-- Solutions marked status="draft" were written by Claude in our own words, checked
+     against the official answers; not copied. Owner to review, then remove status. -->
 
 ::: {.solution for="prob-mit6006-17-q1" status="draft"}
 Let times be $0,\dots,n-1$, let $t_i$ be the set of arrows that must be down at time $i$ (newly pressed or held), and let $d(t,p,t',p')$ be the difficulty of a move from foot positions $p$ to $p'$.

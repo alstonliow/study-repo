@@ -47,28 +47,3 @@ Number the operands $1,\dots,m$ and let $\mathrm{op}_k$ be the operator between 
 
 *Check on the example.* $(\text{T AND F})\text{ XOR T}=\text{F XOR T}=\text{T}$ and $\text{T AND }(\text{F XOR T})=\text{T AND T}=\text{T}$: both parenthesizations give True, so the count is $2$.
 :::
-
-::: {.solution for="prob-mit6046-1-q1" status="draft"}
-1. *Sort.* Sort the requests by start time, $s(1)\le\dots\le s(n)$, in $O(n\log n)$. Every $R^x$ is then a suffix $\{k,k+1,\dots,n\}$; write $\mathrm{opt}(k)$ for its value, with $\mathrm{opt}(n+1)=0$.
-
-2. *Find the next request.* For each $i$, let $\mathrm{next}(i)$ be the first index $j$ with $s(j)\ge f(i)$, so that $R^{f(i)}$ is the suffix starting at $\mathrm{next}(i)$. Binary search finds it in $O(\log n)$: $O(n\log n)$ for all $i$.
-
-3. *A constant-work relation.* In the suffix starting at $k$, either request $k$ is not chosen, and the best is $\mathrm{opt}(k+1)$; or it is chosen, and it is then the first request, so the best is $w(k)+\mathrm{opt}(\mathrm{next}(k))$. Hence $\mathrm{opt}(k)=\max\{\mathrm{opt}(k+1),\ w(k)+\mathrm{opt}(\mathrm{next}(k))\}$. This takes the same maximum as the lecture's relation over all possible first requests $i\ge k$, written recursively.
-
-4. *Time.* $n$ subproblems in decreasing $k$ with $O(1)$ work each, after $O(n\log n)$ preprocessing: $O(n\log n)$ in total.
-:::
-
-::: {.solution for="prob-mit6046-10-q1" status="draft"}
-1. *Fill the table.* Compute all $L(i,j)$ bottom-up in increasing $j-i$ (or memoize the recursion), with $L(i,i)=1$ and $L(i,i-1)=0$: $O(n^2)$ time and space.
-
-2. *Walk back.* Start with $i=1$, $j=n$ and an empty list `left`. While $i\le j$:
-   - if $i=j$: record the middle letter $X[i]$ and stop;
-   - if $X[i]=X[j]$: append $X[i]$ to `left`, and set $i\leftarrow i+1$, $j\leftarrow j-1$;
-   - otherwise move to the larger of $L(i+1,j)$ and $L(i,j-1)$ (either one if they are equal).
-
-3. *Output.* `left`, then the middle letter if any, then `left` reversed.
-
-4. *Correctness.* At each step the walk moves to a subproblem that attains $L(i,j)$ in the relation. Each matched pair adds $2$, and the middle letter adds $1$. So the output is a palindrome, it is a subsequence of $X$ (the indices used increase on the left and decrease on the right), and its length is $L(1,n)$.
-
-5. *Time.* The walk takes $O(n)$ steps after the $O(n^2)$ table.
-:::

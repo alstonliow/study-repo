@@ -18,8 +18,9 @@ exclude:
   - prob-mit6046-11-q1
   # Blocks from other courses' material in notes this course covers
   - prob-mit6046s15-6-q1
-  # 6.046 recitation problem in a 6.006 note
+  # 6.046 recitation problem and example in a 6.006 note
   - prob-mit6046r-5-q1
+  - exm-stacking-blocks
 
 chapters:
   - num: 1
@@ -126,25 +127,25 @@ chapters:
     points:
       - id: "15.1"
         title: "SRT BOT and dynamic programming"
-        covers: [cs/algorithm-design/recursive-algorithms]
+        covers: [cs/algorithm-design/recursive-algorithms, cs/algorithm-design/bowling]
   - num: 16
     title: "Dynamic programming subproblems"
     points:
       - id: "16.1"
         title: "LCS, LIS, coin game"
-        covers: [cs/algorithm-design/subproblem-design]
+        covers: [cs/algorithm-design/subproblem-design, cs/algorithm-design/lcs, cs/algorithm-design/lis, cs/algorithm-design/coin-game]
   - num: 17
     title: "Dynamic programming examples"
     points:
       - id: "17.1"
         title: "Floyd-Warshall, parenthesization, fingering"
-        covers: [cs/algorithm-design/more-dynamic-programs]
+        covers: [cs/algorithm-design/more-dynamic-programs, cs/algorithm-design/floyd-warshall, cs/algorithm-design/arithmetic-parenthesization, cs/algorithm-design/piano-fingering]
   - num: 18
     title: "Pseudopolynomial time"
     points:
       - id: "18.1"
         title: "Rod cutting, subset sum, knapsack"
-        covers: [cs/algorithm-design/pseudopolynomial-time]
+        covers: [cs/algorithm-design/pseudopolynomial-time, cs/algorithm-design/rod-cutting, cs/algorithm-design/subset-sum, cs/algorithm-design/knapsack]
   - num: 19
     title: "Complexity"
     points:

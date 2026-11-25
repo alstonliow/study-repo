@@ -430,13 +430,13 @@ nodes:
       title: Rod cutting
       at:
         3e: '15.1'
-      covers: [cs/algorithm-design/pseudopolynomial-time]
+      covers: [cs/algorithm-design/rod-cutting]
     - id: res-clrs-matrix-chain
       kind: section
       title: Matrix-chain multiplication
       at:
         3e: '15.2'
-      covers: [cs/algorithm-design/more-dynamic-programs]
+      covers: [cs/algorithm-design/arithmetic-parenthesization]
     - id: res-clrs-dp-elements
       kind: section
       title: Elements of dynamic programming
@@ -448,13 +448,13 @@ nodes:
       title: Longest common subsequence
       at:
         3e: '15.4'
-      covers: [cs/algorithm-design/subproblem-design]
+      covers: [cs/algorithm-design/lcs]
     - id: res-clrs-optimal-bst
       kind: section
       title: Optimal binary search trees
       at:
         3e: '15.5'
-      covers: [cs/algorithm-design/interval-subproblems]
+      covers: [cs/algorithm-design/optimal-bst]
   - id: res-clrs-greedy-algorithms
     kind: chapter
     title: Greedy algorithms
@@ -743,7 +743,7 @@ nodes:
       title: Floyd-Warshall
       at:
         3e: '25.2'
-      covers: [cs/graph-algorithms/all-pairs-shortest-paths]
+      covers: [cs/algorithm-design/floyd-warshall]
     - id: res-clrs-johnson
       kind: section
       title: Johnson's algorithm
