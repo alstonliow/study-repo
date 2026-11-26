@@ -9,16 +9,15 @@ toc: false
 ```{=html}
 <div class="home-stats"><div class="home-stat"><b>3</b><span>notes</span></div><div class="home-stat"><b>2</b><span>branches</span></div><div class="home-stat"><b>1</b><span>course</span></div><div class="home-stat"><b>4</b><span>exercises</span></div></div>
 <nav class="home-links"><a class="home-link" href="map.html"><b>Map</b><span>How the topics build on each other</span></a><a class="home-link" href="library.html"><b>Library</b><span>Books and course notes behind the notes</span></a><a class="home-link" href="practice.html"><b>Practice</b><span>Online judge problems by topic</span></a><a class="home-link" href="export.html"><b>Export</b><span>Print any selection as a PDF</span></a></nav>
-<nav class="home-jump" aria-label="Sections"><a href="#testing">Testing</a><a href="#courses">Courses</a></nav>
+<nav class="home-jump" aria-label="Sections"><a href="#contents">Contents</a><a href="#courses">Courses</a></nav>
 ```
 
 ::: {.contents-field}
-## Testing
+## Contents
 
 ```{=html}
-<ul class="contents-list">
-<li><a href="notes/t/alpha/index.html"><span class="contents-num">1</span><span class="contents-title">Alpha</span><span class="contents-meta">2 notes</span><span class="contents-desc">First test branch</span></a></li>
-<li><a href="notes/t/beta/index.html"><span class="contents-num">2</span><span class="contents-title">Beta</span><span class="contents-meta">1 note</span><span class="contents-desc">Second test branch</span></a></li>
+<ul class="contents-list part-list">
+<li class="part-card"><details><summary><span class="contents-title">Testing</span><span class="contents-meta">2 branches · 3 notes</span><span class="contents-desc">Alpha · Beta</span></summary><ol class="part-branches"><li><a href="notes/t/alpha/index.html" title="First test branch"><span class="contents-num">1</span>Alpha</a></li><li><a href="notes/t/beta/index.html" title="Second test branch"><span class="contents-num">2</span>Beta</a></li></ol></details></li>
 </ul>
 ```
 :::

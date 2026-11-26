@@ -31,7 +31,7 @@ import summaries
 import tikz
 import web
 from model import RAW, load
-from web import OUT_COURSES, OUT_NOTES, SITE, TIKZ, branch_page, build_page, contents_block, ctx
+from web import OUT_COURSES, OUT_NOTES, SITE, TIKZ, branch_page, build_page, contents_block, ctx, part_cards
 
 
 def main() -> int:
@@ -73,10 +73,8 @@ def main() -> int:
     summary_courses: dict[str, list[str]] = {}
     home: list[str] = []                 # body; the header with totals is added at the end
     part_secs = {}
+    part_rows: dict[str, list] = {}      # part -> its branch rows, for the home page
     for part, branches in BRANCHES:
-        in_field = bool(REPO.part_field.get(part))
-        if in_field and REPO.fields and part == next(ps for f, ps in REPO.fields if part in ps)[0]:
-            home += [f"## {REPO.part_field[part]}", ""]
         sec = {"section": part, "contents": []}
         rows = []
         for bid, btitle in branches:
@@ -98,9 +96,15 @@ def main() -> int:
                                     "contents": [f"notes/{n.id}.qmd" for n in members]
                                     + [f"notes/{bid}/summary.qmd"]})
             rows.append((f"notes/{bid}/index.html", btitle, REPO.branch_desc.get(bid, ""), branch_num[bid],
-                         f"{len(members)} note{'s' if len(members) != 1 else ''}"))
-        home += contents_block(part, rows, 3 if in_field else 2)
+                         f"{len(members)} note{'s' if len(members) != 1 else ''}", len(members)))
+        if rows:
+            part_rows[part] = rows
         part_secs[part] = sec
+    # home: one card per part, grouped by field; a card opens to its branches
+    for f in REPO.field_order() + [""]:
+        cards = [(p, part_rows[p]) for p, _ in BRANCHES if p in part_rows and (REPO.part_field.get(p) or "") == f]
+        if cards:
+            home += part_cards(f or ("Topics" if REPO.field_order() else "Contents"), cards)
     for f, parts in REPO.fields:          # optional field level above the parts (SPEC §2.5)
         secs = [part_secs[p] for p in parts if p in part_secs]
         sidebar += [{"section": f, "contents": secs}] if f else secs
@@ -208,7 +212,8 @@ def main() -> int:
     (SITE / "index.qmd").write_text("\n".join(web.home_header(
         [(len(notes), "note", "notes"), (len(branch_items), "branch", "branches"),
          (len(REPO.courses), "course", "courses"), (nprob, "exercise", "exercises")],
-        [REPO.part_field.get(p) or p for p, _ in BRANCHES] + (["Courses"] if course_rows else []))
+        [f or ("Topics" if REPO.field_order() else "Contents") for f in REPO.field_order() + [""]
+         if any((REPO.part_field.get(p) or "") == f for p in part_rows)] + (["Courses"] if course_rows else []))
         + home) + "\n", encoding="utf-8")
     for pg in web.PAGES:                          # generated pages outside the notes
         (SITE / pg.file).write_text(pg.render(), encoding="utf-8")

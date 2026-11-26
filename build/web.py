@@ -891,6 +891,25 @@ def home_header(stats: list[tuple[int, str, str]], sections: list[str]) -> list[
             "```", ""]
 
 
+def part_cards(heading: str, parts: list[tuple[str, list]]) -> list[str]:
+    """Home page: one card per part (title, counts, branch names) that opens to
+    its branches; parts are (title, branch rows of (href, title, desc, num, meta, note count))."""
+    import html
+    esc = html.escape
+    cards = []
+    for title, rows in parts:
+        nnotes = sum(r[5] for r in rows)
+        meta = f"{len(rows)} branch{'es' if len(rows) != 1 else ''} · {nnotes} note{'s' if nnotes != 1 else ''}"
+        branches = "".join(f'<li><a href="{r[0]}" title="{esc(r[2])}"><span class="contents-num">{r[3]}</span>'
+                           f'{esc(r[1])}</a></li>' for r in rows)
+        cards.append(f'<li class="part-card"><details><summary><span class="contents-title">{esc(title)}</span>'
+                     f'<span class="contents-meta">{meta}</span>'
+                     f'<span class="contents-desc">{esc(" · ".join(r[1] for r in rows))}</span></summary>'
+                     f'<ol class="part-branches">{branches}</ol></details></li>')
+    return ["::: {.contents-field}", f"## {heading}", "", "```{=html}",
+            '<ul class="contents-list part-list">\n' + "\n".join(cards) + "\n</ul>", "```", ":::", ""]
+
+
 def contents_block(heading: str, rows: list, level: int = 2) -> list[str]:
     """A card grid for the home page: rows of (href, title, desc, num[, meta])."""
     import html

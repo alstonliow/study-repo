@@ -115,18 +115,37 @@ body.quarto-dark .tikz-figure img { filter: invert(0.88) hue-rotate(180deg); }
 .contents-field h2 { border-bottom: none; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--notec); margin-bottom: 0.4rem; }
 .contents-field h3 { margin: 0 0 0.6rem; font-size: 1.05rem; font-weight: 600; color: var(--accent); }
 .contents-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: 0.75rem; }
-.contents-list li { position: relative; margin: 0; padding: 0.7rem 0.95rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; transition: border-color .15s, background-color .15s; }
-.contents-list li:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 4%, transparent); }
-.contents-list a { display: grid; grid-template-columns: auto 1fr auto; column-gap: 0.5rem; align-items: baseline; color: var(--bs-body-color); text-decoration: none; }
-.contents-list a::after { content: ""; position: absolute; inset: 0; }          /* whole card is the link */
+.contents-list > li { position: relative; margin: 0; padding: 0.7rem 0.95rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; transition: border-color .15s, background-color .15s; }
+.contents-list > li:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 4%, transparent); }
+.contents-list > li > a { display: grid; grid-template-columns: auto 1fr auto; column-gap: 0.5rem; align-items: baseline; color: var(--bs-body-color); text-decoration: none; }
+.contents-list > li > a::after { content: ""; position: absolute; inset: 0; }          /* whole card is the link */
 .contents-list .contents-num { grid-column: 1; color: var(--notec); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
 .contents-list .contents-title { grid-column: 2; font-size: 1.08rem; font-weight: 600; line-height: 1.3; }
 .contents-list .contents-title:first-child { grid-column: 1 / 3; }   /* no number: courses */
-.contents-list li:hover .contents-title { color: var(--accent); }
+.contents-list > li:hover > a .contents-title, .part-card summary:hover .contents-title { color: var(--accent); }
 .contents-list .contents-meta { grid-column: 3; font-size: 0.74rem; color: var(--notec); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .contents-list .contents-desc { grid-column: 1 / -1; margin-top: 0.25rem; color: var(--notec); font-size: 0.84rem; line-height: 1.45;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .contents-list .pg-count { padding-left: 0; }
+/* part cards: the summary shows counts and branch names; open to list the branches */
+.part-list { align-items: start; }
+.part-card { padding: 0 !important; }
+.part-card summary { display: grid; grid-template-columns: 1fr; column-gap: 0.5rem; align-items: baseline;
+  padding: 0.8rem 1rem 0.85rem; cursor: pointer; list-style: none; }
+.part-card summary::-webkit-details-marker { display: none; }
+.part-card summary .contents-title { grid-column: 1; font-size: 1.15rem; }
+.part-card summary .contents-title::after { content: "▸"; display: inline-block; margin-left: 0.4rem; font-size: 0.75em; color: var(--notec); transition: transform .15s; }
+.part-card details[open] summary .contents-title::after { transform: rotate(90deg); }
+.part-card summary .contents-meta { grid-column: 1; margin-top: 0.1rem; }
+.part-card details[open] summary .contents-desc { display: none; }
+.part-card:has(details[open]) { border-color: var(--accent); background: none !important; }
+.part-branches { list-style: none; margin: 0; padding: 0 1rem 0.7rem; border-top: 1px solid var(--rule); }
+.part-branches li { padding: 0.3rem 0; border-bottom: 1px dashed var(--rule); }
+.part-branches li:last-child { border-bottom: none; }
+.part-branches a { color: var(--bs-body-color); text-decoration: none; font-size: 0.95rem; }
+.part-branches a:hover { color: var(--accent); }
+.part-branches .contents-num { display: inline-block; min-width: 1.6rem; color: var(--notec); font-variant-numeric: tabular-nums; }
+.part-branches .pg-count { display: inline; margin-left: 0.5rem; }
 @media (max-width: 640px) {
   .contents-list { grid-template-columns: 1fr; }
   .home-lead { font-size: 1rem; }

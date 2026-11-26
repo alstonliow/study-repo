@@ -248,7 +248,7 @@ window.STUDY_PROGRESS_CONFIG = {
       summaries.push({ el, bid });
     }
     // home page: per-branch counts
-    document.querySelectorAll(".contents-list li > a").forEach(a => {
+    document.querySelectorAll(".contents-list li > a, .part-branches li > a").forEach(a => {
       const b = branchIdOf(a.getAttribute("href") || "");
       if (!b) return;
       const el = document.createElement("span");
