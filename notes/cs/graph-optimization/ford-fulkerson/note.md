@@ -1,6 +1,6 @@
 ---
 title: "The Ford–Fulkerson Method"
-sources: [mit6046-13, mit6046-14, mit6046r-7]
+sources: [mit6046-13, mit6046-14, mit6046r-7, cs97si-8]
 requires: [cs/graph-optimization/maximum-flow, cs/graph-algorithms/breadth-first-search]
 status: draft
 ---
@@ -119,3 +119,28 @@ Edmonds–Karp performs $O(|V||E|)$ augmentations, so it runs in $O(|V||E|^2)$ t
 3. So between two times that $(u,v)$ is critical, $\delta(u)$ grows by at least $2$; as $\delta(u)\le|V|$, each of the $O(|E|)$ residual edges is critical $O(|V|)$ times, and each augmentation has a critical edge: $O(|V||E|)$ augmentations, each costing $O(|E|)$ for BFS.
 
 :::
+
+## Reading off a minimum cut
+
+<!-- Added 2026-11-26 from Stanford CS 97SI (Winter 2011-12), Lecture 8 (computing a min cut), in our own wording; proof written out in steps. -->
+
+::: {#prp-min-cut-from-residual .proposition name="A minimum cut from the final residual network"}
+
+When the Ford–Fulkerson method stops with flow $f$, let $S$ be the set of vertices reachable from $s$ in $G_f$. Then $(S,V\setminus S)$ is an $s$–$t$ cut (@def-st-cut) of capacity $|f|$, hence a minimum cut. It is found by one more search from $s$, in $O(|V|+|E|)$ time.
+
+:::
+
+::: {.proof}
+
+1. $s\in S$, and $t\notin S$ because the method stopped: there is no augmenting path.
+
+2. Every edge $u\to v$ of $G$ with $u\in S$, $v\notin S$ is saturated, $f(u,v)=c(u,v)$, since otherwise $v$ would be reachable through the forward residual edge.
+
+3. Every edge $v\to u$ with $v\notin S$, $u\in S$ carries no flow, since otherwise the backward residual edge $u\to v$ would make $v$ reachable.
+
+4. By @lem-flow-across-cut the net flow across the cut is $|f|$; by steps 2 and 3 it equals the capacity of the cut. Every cut has capacity at least $|f|$, so this one is minimum.
+
+:::
+
+In @exm-max-flow-small the final residual network has no edge leaving $s$ with spare capacity, so $S=\{s\}$, the cut of capacity $5$ found there.
+

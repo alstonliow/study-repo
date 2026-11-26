@@ -18,6 +18,8 @@ outline_from: "UC Berkeley CS 70 Course Notes (Fall 2020), Notes 1-21 (mapped ro
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Stanford CS 97SI additions (2026-11-26) in shared notes
+  - prp-pascal-table
   # Lecture-note problems backfill (2026-11-24): other courses' problems in shared notes
   - prob-eecs126-1-q1
   - prob-mit1805-2-q1

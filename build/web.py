@@ -388,7 +388,9 @@ def practice_nodes(target: str | None = None) -> list:
     rank = {d: i for i, d in enumerate(("easy", "medium", "hard"))}
     def key(rn):
         loc = rn[0].locator(rn[1].id)
-        return (rank.get(str(rn[1].extra.get("difficulty")), 9), int(loc) if loc.isdigit() else 10**9, rn[1].title)
+        r = rn[1].extra.get("rating")
+        return (rank.get(str(rn[1].extra.get("difficulty")), 9), r if isinstance(r, int) else 99,
+                int(loc) if loc.isdigit() else 10**9, rn[1].title)
     return sorted(out, key=key)
 
 
@@ -426,7 +428,10 @@ def practice_cards(items: list, filter_bar: bool = False, grid: bool = True) -> 
         cards.append(                 # the title link covers the card; the progress mark sits above it
             f'<div class="lc-card lc-{d}" data-lc="{d}" data-lists="{e(" ".join(lids))}" data-item="{e(n.id)}">'
             f'<span class="lc-top"><span class="lc-num">{"#" + e(loc) if loc else e(res.title)}</span>{tags}'
-            f'<span class="lc-diff">{words.get(d, d)}</span></span>'
+            + (f'<span class="lc-diff">{words.get(d, d)}</span>' if d else "")
+            + (f'<span class="lc-rating" title="Rating by {e(str(res.meta.get("rating_from", "")))}, 0 (easiest) to 10">'
+               f'{n.extra["rating"]}/10</span>' if isinstance(n.extra.get("rating"), int) else "")
+            + '</span>'
             f'<a class="lc-title" href="{e(str(n.extra.get("url", "")))}" target="_blank" rel="noopener" '
             f'title="Open on {e(res.title)}">{e(n.title)}</a>'
             f'<span class="lc-foot"><span class="lc-mark-slot"></span><span class="lc-site">{e(res.title)}'
@@ -750,7 +755,7 @@ def practice_page() -> str:
     items = practice_nodes()
     out = ["---", "title: Practice", "---", "",
            "[Problems on online judges that practise the notes. Each card opens the problem on its site; "
-           "only the title, number and the site's difficulty are kept here.]{.summary-intro}", ""]
+           "only the title, number and the site's difficulty (or a course's 0–10 rating) are kept here.]{.summary-intro}", ""]
     if not items:
         return "\n".join(out + ["*No practice problems yet.*", ""])
     out += [practice_cards(items, filter_bar=True, grid=False), ""]

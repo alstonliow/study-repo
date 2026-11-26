@@ -1215,7 +1215,13 @@ and `meta/sources.yml` was removed.
      never copied, and no `solution.md` entry exists for them. Official titles
      are allowed as node titles here (an exception to §17.12.3 item 4),
      because they are names, not text.
-   - `url` and `difficulty` are required on every `problem` node.
+   - `url` is required on every `problem` node, and so is `difficulty` where
+     the site gives one. A judge without its own difficulty (POJ) uses
+     `rating` instead (owner decision, 2026-11-26): a whole number from 0
+     (easiest) to 10, as a course's problem list rates it, with
+     `rating_from:` on the resource naming who rated it (CS 97SI for
+     `resources/poj.yml`). Cards show it as "3/10". A problem `url` may be
+     `http://` when the judge serves no https (POJ).
    - **Named lists** (owner decision, 2026-11-26), such as LeetCode's Top 100
      Liked ("Hot 100"): declared once in the resource file under `lists:`
      (`id`, `label`, `title`, `url`), and named on a node with

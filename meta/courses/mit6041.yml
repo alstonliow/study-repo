@@ -10,6 +10,8 @@ outline_from: MIT 6.041 Probabilistic Systems Analysis and Applied Probability, 
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Stanford CS 97SI additions (2026-11-26) in shared notes
+  - prp-pascal-table
     # MIT 18.650 integration (2026-11-21): its problems and blocks in shared notes
   - def-lp-convergence
   - prob-mit18650f16-1-q1

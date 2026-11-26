@@ -1076,6 +1076,23 @@ class TestPractice(Repo):
         self.assertIn("res-judge-two-gadgets: difficulty must be one of easy, medium, hard", out)
 
 
+    def test_rating_instead_of_difficulty(self):
+        text = ("id: res-judge\nkind: problem-set\ntitle: Judge\nurl: https://judge.example/\n"
+                "editions:\n- id: web\n  current: true\nnodes:\n"
+                "- id: res-judge-two-gadgets\n  kind: problem\n  title: Two Gadgets\n  at: {web: '7'}\n"
+                "  url: http://judge.example/p?id=7\n  rating: 3\n  practises: [t/alpha/first]\n")
+        (self.root / self.RES).write_text(text)
+        self.assertIn("res-judge-two-gadgets: a rating needs rating_from", self.check().stdout)
+        (self.root / self.RES).write_text(text.replace("rating: 3", "rating: 11").replace("nodes:", "rating_from: A course\nnodes:"))
+        self.assertIn("res-judge-two-gadgets: rating must be a whole number from 0 to 10", self.check().stdout)
+        (self.root / self.RES).write_text(text.replace("nodes:", "rating_from: A course\nnodes:"))
+        self.assertEqual(self.check().returncode, 0)
+        first = (generate(self.root) / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn('<span class="lc-rating" title="Rating by A course, 0 (easiest) to 10">3/10</span>', first)
+        self.assertNotIn('class="lc-diff"', first)
+        (self.root / self.RES).write_text(text.replace("  rating: 3\n", ""))
+        self.assertIn("res-judge-two-gadgets: a problem node needs a difficulty or a rating", self.check().stdout)
+
 class TestProjects(Repo):
     """Projects (SPEC §17.13): loader, checks, pages and the "Applied in" group."""
 

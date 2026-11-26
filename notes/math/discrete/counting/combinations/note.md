@@ -1,6 +1,6 @@
 ---
 title: Unordered Selection without Replacement
-sources: [fit1058-cn-8.8, cs70-10.4]
+sources: [fit1058-cn-8.8, cs70-10.4, cs97si-2]
 requires: [math/discrete/counting/selection, math/discrete/sets/power-set]
 status: draft
 ---
@@ -178,3 +178,26 @@ $$\binom n{k_1,k_2,\dots,k_m}=\frac{n!}{k_1!\,k_2!\cdots k_m!}.$$
 :::
 
 For example, the letters of BOOKKEEPER (one B, two O, two K, three E, one P, one R) can be arranged in $\frac{10!}{1!\,2!\,2!\,3!\,1!\,1!}=151\,200$ ways. With $m=2$ the rule gives $\binom n{k,n-k}=\binom nk$, and the same labelling argument proves the multinomial theorem $(x_1+\dots+x_m)^n=\sum\binom n{k_1,\dots,k_m}x_1^{k_1}\cdots x_m^{k_m}$, the sum over all $k_1+\dots+k_m=n$.
+
+## Computing binomial coefficients
+
+<!-- Added 2026-11-26 from Stanford CS 97SI (Winter 2011-12), Lecture 2 (computing binomial coefficients), in our own wording; proof written out in steps. -->
+
+::: {#prp-pascal-table .proposition name="Pascal's triangle as a table"}
+
+Filling a table row by row with $\binom{n}{0}=\binom{n}{n}=1$ and Pascal's identity (@prp-pascal-identity) for $0<r<n$ computes all $\binom{n}{r}$ with $0\le r\le n\le N$ using $O(N^2)$ additions and no division. The same recursion with every entry reduced modulo $m$ gives $\binom{n}{r}\bmod m$ for any modulus $m$, prime or not.
+
+:::
+
+::: {.proof}
+
+1. Row $n$ depends only on row $n-1$, so filling rows in increasing order computes each entry from entries already known; by Pascal's identity and the base cases, every entry is correct, by induction on $n$.
+
+2. There are $\binom{N+2}{2}=O(N^2)$ entries, each costing one addition.
+
+3. Reduction modulo $m$ respects addition, so reducing every entry gives the residues of the true values.
+
+:::
+
+For example row $6$ is $1,6,15,20,15,6,1$. The formula $n!/(r!(n-r)!)$ is worse in practice: the factorials overflow long before the result does, and modulo $m$ it needs inverses of $r!$ and $(n-r)!$, which exist only when they are coprime to $m$ (for a prime $m>n$, by @thm-inverse).
+

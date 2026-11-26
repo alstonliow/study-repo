@@ -1,0 +1,26 @@
+# Adrian Vladu and Cosmin Negruşeri, "Suffix arrays – a programming contest approach" (GInfo 15/7,
+# November 2005), linked from Stanford CS 97SI Lecture 10 as additional material, as a resource
+# (meta/SPEC.md §17.12). DRAFT for owner review. No licence stated: notes use our own words only.
+# One source key, vladu2005-sa (the whole article).
+id: res-vladu-negruseri-suffix-arrays
+kind: article
+title: Suffix Arrays, a Programming Contest Approach
+status: draft
+authors: [Adrian Vladu, Cosmin Negruşeri]
+year: 2005
+url: https://web.stanford.edu/class/cs97si/suffix-array.pdf
+editions:
+- id: ginfo-2005
+  current: true
+legacy_keys:
+  prefix: vladu2005-
+  edition: ginfo-2005
+  pattern: ^vladu2005-(?P<section>sa)$
+  label: Vladu and Negruşeri 2005
+nodes:
+- id: res-vladu-negruseri-suffix-arrays-article
+  kind: article
+  title: Suffix arrays in contests
+  at:
+    ginfo-2005: sa
+  covers: [cs/algorithm-topics/suffix-arrays]

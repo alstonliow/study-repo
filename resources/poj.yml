@@ -1,0 +1,612 @@
+# Peking University Online Judge (POJ, poj.org), an online judge, as a resource (meta/SPEC.md
+# §17.12.7 item 6). DRAFT for owner review. One node per problem: the official title, the problem
+# number (locator) and the link. POJ gives no difficulty of its own; `rating` is the 0 (easiest)
+# to 10 rating of Stanford CS 97SI's problem lists (owner decision, 2026-11-26), and the lists
+# cs97si / cs97si-challenge are that course's practice lists and the problems it marks as challenge
+# problems. Statements, hints and solutions are never copied. Each node names the notes it practises
+# (first = the note it is listed under). Problems whose intended solution has no note yet
+# (segment trees, sieves, bridges, ad-hoc and big-number problems) are left out.
+# POJ serves only http. Node ids are the problem's title slug, never its number, and are never renamed.
+id: res-poj
+kind: problem-set
+title: POJ
+status: draft
+url: http://poj.org/
+rating_from: Stanford CS 97SI
+editions:
+- id: web
+  current: true
+lists:
+- id: cs97si
+  label: CS 97SI
+  title: Stanford CS 97SI practice problems
+  url: https://web.stanford.edu/class/cs97si/
+- id: cs97si-challenge
+  label: Challenge
+  title: Stanford CS 97SI challenge problems
+  url: https://web.stanford.edu/class/cs97si/
+nodes:
+- id: res-poj-find-the-multiple
+  kind: problem
+  title: 'Find The Multiple'
+  at: {web: '1426'}
+  url: http://poj.org/problem?id=1426
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/breadth-first-search]
+- id: res-poj-area
+  kind: problem
+  title: 'Area'
+  at: {web: '1654'}
+  url: http://poj.org/problem?id=1654
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/computational-geometry/vector-geometry]
+- id: res-poj-the-circumference-of-the-circle
+  kind: problem
+  title: 'The Circumference of the Circle'
+  at: {web: '2242'}
+  url: http://poj.org/problem?id=2242
+  rating: 2
+  lists: [cs97si]
+  practises: [cs/computational-geometry/vector-geometry]
+- id: res-poj-chocolate-chip-cookies
+  kind: problem
+  title: 'Chocolate Chip Cookies'
+  at: {web: '2693'}
+  url: http://poj.org/problem?id=2693
+  rating: 4
+  lists: [cs97si]
+  practises: [cs/computational-geometry/vector-geometry]
+- id: res-poj-mobile-phones
+  kind: problem
+  title: 'Mobile phones'
+  at: {web: '1195'}
+  url: http://poj.org/problem?id=1195
+  rating: 8
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/data-structures/fenwick-trees]
+- id: res-poj-nearest-common-ancestors
+  kind: problem
+  title: 'Nearest Common Ancestors'
+  at: {web: '1330'}
+  url: http://poj.org/problem?id=1330
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/advanced-data-structures/lowest-common-ancestor]
+- id: res-poj-find-them-catch-them
+  kind: problem
+  title: 'Find them, Catch them'
+  at: {web: '1703'}
+  url: http://poj.org/problem?id=1703
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-poj-navigation-nightmare
+  kind: problem
+  title: 'Navigation Nightmare'
+  at: {web: '1984'}
+  url: http://poj.org/problem?id=1984
+  rating: 5
+  lists: [cs97si]
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-poj-cube-stacking
+  kind: problem
+  title: 'Cube Stacking'
+  at: {web: '1988'}
+  url: http://poj.org/problem?id=1988
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-poj-hardwood-species
+  kind: problem
+  title: 'Hardwood Species'
+  at: {web: '2418'}
+  url: http://poj.org/problem?id=2418
+  rating: 1
+  lists: [cs97si]
+  practises: [cs/data-structures/binary-trees]
+- id: res-poj-apple-tree
+  kind: problem
+  title: 'Apple Tree'
+  at: {web: '3321'}
+  url: http://poj.org/problem?id=3321
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/data-structures/fenwick-trees, cs/graph-algorithms/depth-first-search]
+- id: res-poj-expressions
+  kind: problem
+  title: 'Expressions'
+  at: {web: '3367'}
+  url: http://poj.org/problem?id=3367
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-poj-bugs-integrated-inc
+  kind: problem
+  title: 'Bugs Integrated, Inc.'
+  at: {web: '1038'}
+  url: http://poj.org/problem?id=1038
+  rating: 9
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/algorithm-design/bitmask-dp]
+- id: res-poj-palindrome
+  kind: problem
+  title: 'Palindrome'
+  at: {web: '1159'}
+  url: http://poj.org/problem?id=1159
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/algorithm-design/longest-palindromic-subsequence]
+- id: res-poj-balancing-act
+  kind: problem
+  title: 'Balancing Act'
+  at: {web: '1655'}
+  url: http://poj.org/problem?id=1655
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/algorithm-design/tree-dp]
+- id: res-poj-minimax-triangulation
+  kind: problem
+  title: 'Minimax Triangulation'
+  at: {web: '2066'}
+  url: http://poj.org/problem?id=2066
+  rating: 8
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/algorithm-design/interval-subproblems]
+- id: res-poj-lazy-cows
+  kind: problem
+  title: 'Lazy Cows'
+  at: {web: '2430'}
+  url: http://poj.org/problem?id=2430
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/algorithm-design/bitmask-dp]
+- id: res-poj-tri-tiling
+  kind: problem
+  title: 'Tri Tiling'
+  at: {web: '2663'}
+  url: http://poj.org/problem?id=2663
+  rating: 1
+  lists: [cs97si]
+  practises: [cs/algorithm-design/tri-tiling]
+- id: res-poj-number-game
+  kind: problem
+  title: 'Number Game'
+  at: {web: '1143'}
+  url: http://poj.org/problem?id=1143
+  rating: 7
+  lists: [cs97si]
+  practises: [math/discrete/graph/winning-positions]
+- id: res-poj-georgia-and-bob
+  kind: problem
+  title: 'Georgia and Bob'
+  at: {web: '1704'}
+  url: http://poj.org/problem?id=1704
+  rating: 5
+  lists: [cs97si]
+  practises: [math/discrete/graph/nim]
+- id: res-poj-a-new-stone-game
+  kind: problem
+  title: 'A New Stone Game'
+  at: {web: '1740'}
+  url: http://poj.org/problem?id=1740
+  rating: 7
+  lists: [cs97si]
+  practises: [math/discrete/graph/nim]
+- id: res-poj-matches-game
+  kind: problem
+  title: 'Matches Game'
+  at: {web: '2234'}
+  url: http://poj.org/problem?id=2234
+  rating: 1
+  lists: [cs97si]
+  practises: [math/discrete/graph/nim]
+- id: res-poj-euclids-game
+  kind: problem
+  title: "Euclid's Game"
+  at: {web: '2348'}
+  url: http://poj.org/problem?id=2348
+  rating: 6
+  lists: [cs97si]
+  practises: [math/discrete/graph/winning-positions]
+- id: res-poj-a-multiplication-game
+  kind: problem
+  title: 'A multiplication game'
+  at: {web: '2505'}
+  url: http://poj.org/problem?id=2505
+  rating: 3
+  lists: [cs97si]
+  practises: [math/discrete/graph/winning-positions]
+- id: res-poj-s-nim
+  kind: problem
+  title: 'S-Nim'
+  at: {web: '2960'}
+  url: http://poj.org/problem?id=2960
+  rating: 5
+  lists: [cs97si]
+  practises: [math/discrete/graph/sprague-grundy]
+- id: res-poj-john
+  kind: problem
+  title: 'John'
+  at: {web: '3480'}
+  url: http://poj.org/problem?id=3480
+  rating: 3
+  lists: [cs97si]
+  practises: [math/discrete/graph/nim]
+- id: res-poj-the-castle
+  kind: problem
+  title: 'The Castle'
+  at: {web: '1164'}
+  url: http://poj.org/problem?id=1164
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/depth-first-search]
+- id: res-poj-agri-net
+  kind: problem
+  title: 'Agri-Net'
+  at: {web: '1258'}
+  url: http://poj.org/problem?id=1258
+  rating: 2
+  lists: [cs97si]
+  practises: [cs/graph-optimization/prim]
+- id: res-poj-power-hungry-cows
+  kind: problem
+  title: 'Power Hungry Cows'
+  at: {web: '1945'}
+  url: http://poj.org/problem?id=1945
+  rating: 5
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/breadth-first-search]
+- id: res-poj-popular-cows
+  kind: problem
+  title: 'Popular Cows'
+  at: {web: '2186'}
+  url: http://poj.org/problem?id=2186
+  rating: 8
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/graph-algorithms/strongly-connected-components]
+- id: res-poj-catenyms
+  kind: problem
+  title: 'Catenyms'
+  at: {web: '2337'}
+  url: http://poj.org/problem?id=2337
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/eulerian-circuits]
+- id: res-poj-out-of-hay
+  kind: problem
+  title: 'Out of Hay'
+  at: {web: '2395'}
+  url: http://poj.org/problem?id=2395
+  rating: 4
+  lists: [cs97si]
+  practises: [cs/graph-optimization/kruskal]
+- id: res-poj-a-knights-journey
+  kind: problem
+  title: "A Knight's Journey"
+  at: {web: '2488'}
+  url: http://poj.org/problem?id=2488
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-poj-stockbroker-grapevine
+  kind: problem
+  title: 'Stockbroker Grapevine'
+  at: {web: '1125'}
+  url: http://poj.org/problem?id=1125
+  rating: 1
+  lists: [cs97si]
+  practises: [cs/algorithm-design/floyd-warshall]
+- id: res-poj-the-doors
+  kind: problem
+  title: 'The Doors'
+  at: {web: '1556'}
+  url: http://poj.org/problem?id=1556
+  rating: 5
+  lists: [cs97si]
+  practises: [cs/computational-geometry/segment-intersection, cs/graph-algorithms/dijkstra]
+- id: res-poj-tram
+  kind: problem
+  title: 'Tram'
+  at: {web: '1847'}
+  url: http://poj.org/problem?id=1847
+  rating: 1
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/dijkstra]
+- id: res-poj-farm-tour
+  kind: problem
+  title: 'Farm Tour'
+  at: {web: '2135'}
+  url: http://poj.org/problem?id=2135
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/graph-optimization/min-cost-flow]
+- id: res-poj-subway
+  kind: problem
+  title: 'Subway'
+  at: {web: '2502'}
+  url: http://poj.org/problem?id=2502
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/dijkstra]
+- id: res-poj-layout
+  kind: problem
+  title: 'Layout'
+  at: {web: '3169'}
+  url: http://poj.org/problem?id=3169
+  rating: 4
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/difference-constraints]
+- id: res-poj-roadblocks
+  kind: problem
+  title: 'Roadblocks'
+  at: {web: '3255'}
+  url: http://poj.org/problem?id=3255
+  rating: 5
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/dijkstra]
+- id: res-poj-wormholes
+  kind: problem
+  title: 'Wormholes'
+  at: {web: '3259'}
+  url: http://poj.org/problem?id=3259
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/bellman-ford]
+- id: res-poj-sightseeing
+  kind: problem
+  title: 'Sightseeing'
+  at: {web: '3463'}
+  url: http://poj.org/problem?id=3463
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/graph-algorithms/dijkstra]
+- id: res-poj-drainage-ditches
+  kind: problem
+  title: 'Drainage Ditches'
+  at: {web: '1273'}
+  url: http://poj.org/problem?id=1273
+  rating: 1
+  lists: [cs97si]
+  practises: [cs/graph-optimization/ford-fulkerson]
+- id: res-poj-the-perfect-stall
+  kind: problem
+  title: 'The Perfect Stall'
+  at: {web: '1274'}
+  url: http://poj.org/problem?id=1274
+  rating: 1
+  lists: [cs97si]
+  practises: [cs/graph-optimization/bipartite-matching]
+- id: res-poj-optimal-milking
+  kind: problem
+  title: 'Optimal Milking'
+  at: {web: '2112'}
+  url: http://poj.org/problem?id=2112
+  rating: 4
+  lists: [cs97si]
+  practises: [cs/graph-optimization/ford-fulkerson, cs/sorting/ternary-search]
+- id: res-poj-going-home
+  kind: problem
+  title: 'Going Home'
+  at: {web: '2195'}
+  url: http://poj.org/problem?id=2195
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/graph-optimization/min-cost-flow]
+- id: res-poj-muddy-fields
+  kind: problem
+  title: 'Muddy Fields'
+  at: {web: '2226'}
+  url: http://poj.org/problem?id=2226
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/graph-optimization/bipartite-matching]
+- id: res-poj-ombrophobic-bovines
+  kind: problem
+  title: 'Ombrophobic Bovines'
+  at: {web: '2391'}
+  url: http://poj.org/problem?id=2391
+  rating: 8
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/graph-optimization/ford-fulkerson, cs/sorting/ternary-search, cs/algorithm-design/floyd-warshall]
+- id: res-poj-secret-milking-machine
+  kind: problem
+  title: 'Secret Milking Machine'
+  at: {web: '2455'}
+  url: http://poj.org/problem?id=2455
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/graph-optimization/ford-fulkerson, cs/sorting/ternary-search]
+- id: res-poj-minimum-cost
+  kind: problem
+  title: 'Minimum Cost'
+  at: {web: '2516'}
+  url: http://poj.org/problem?id=2516
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/graph-optimization/min-cost-flow]
+- id: res-poj-asteroids
+  kind: problem
+  title: 'Asteroids'
+  at: {web: '3041'}
+  url: http://poj.org/problem?id=3041
+  rating: 5
+  lists: [cs97si]
+  practises: [cs/graph-optimization/bipartite-matching]
+- id: res-poj-dining
+  kind: problem
+  title: 'Dining'
+  at: {web: '3281'}
+  url: http://poj.org/problem?id=3281
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/graph-optimization/ford-fulkerson]
+- id: res-poj-paratroopers
+  kind: problem
+  title: 'Paratroopers'
+  at: {web: '3308'}
+  url: http://poj.org/problem?id=3308
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/graph-optimization/ford-fulkerson]
+- id: res-poj-march-of-the-penguins
+  kind: problem
+  title: 'March of the Penguins'
+  at: {web: '3498'}
+  url: http://poj.org/problem?id=3498
+  rating: 8
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/graph-optimization/ford-fulkerson]
+- id: res-poj-grandpas-estate
+  kind: problem
+  title: "Grandpa's Estate"
+  at: {web: '1228'}
+  url: http://poj.org/problem?id=1228
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/computational-geometry/graham-scan]
+- id: res-poj-fishnet
+  kind: problem
+  title: 'Fishnet'
+  at: {web: '1408'}
+  url: http://poj.org/problem?id=1408
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/computational-geometry/vector-geometry]
+- id: res-poj-a-round-peg-in-a-ground-hole
+  kind: problem
+  title: 'A Round Peg in a Ground Hole'
+  at: {web: '1584'}
+  url: http://poj.org/problem?id=1584
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/computational-geometry/vector-geometry]
+- id: res-poj-space-ant
+  kind: problem
+  title: 'Space Ant'
+  at: {web: '1696'}
+  url: http://poj.org/problem?id=1696
+  rating: 4
+  lists: [cs97si]
+  practises: [cs/computational-geometry/graham-scan]
+- id: res-poj-expanding-rods
+  kind: problem
+  title: 'Expanding Rods'
+  at: {web: '1905'}
+  url: http://poj.org/problem?id=1905
+  rating: 2
+  lists: [cs97si]
+  practises: [cs/sorting/ternary-search]
+- id: res-poj-line-of-sight
+  kind: problem
+  title: 'Line of Sight'
+  at: {web: '2074'}
+  url: http://poj.org/problem?id=2074
+  rating: 4
+  lists: [cs97si]
+  practises: [cs/computational-geometry/segment-intersection]
+- id: res-poj-toys
+  kind: problem
+  title: 'TOYS'
+  at: {web: '2318'}
+  url: http://poj.org/problem?id=2318
+  rating: 3
+  lists: [cs97si]
+  practises: [cs/computational-geometry/vector-geometry]
+- id: res-poj-hotter-colder
+  kind: problem
+  title: 'Hotter Colder'
+  at: {web: '2540'}
+  url: http://poj.org/problem?id=2540
+  rating: 5
+  lists: [cs97si]
+  practises: [cs/computational-geometry/half-plane-intersection]
+- id: res-poj-pick-up-sticks
+  kind: problem
+  title: 'Pick-up sticks'
+  at: {web: '2653'}
+  url: http://poj.org/problem?id=2653
+  rating: 2
+  lists: [cs97si]
+  practises: [cs/computational-geometry/segment-intersection]
+- id: res-poj-most-distant-point-from-the-sea
+  kind: problem
+  title: 'Most Distant Point from the Sea'
+  at: {web: '3525'}
+  url: http://poj.org/problem?id=3525
+  rating: 8
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/computational-geometry/half-plane-intersection, cs/sorting/ternary-search]
+- id: res-poj-all-in-all
+  kind: problem
+  title: 'All in All'
+  at: {web: '1936'}
+  url: http://poj.org/problem?id=1936
+  rating: 1
+  lists: [cs97si]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-poj-period
+  kind: problem
+  title: 'Period'
+  at: {web: '1961'}
+  url: http://poj.org/problem?id=1961
+  rating: 5
+  lists: [cs97si]
+  practises: [cs/algorithm-topics/knuth-morris-pratt]
+- id: res-poj-milking-grid
+  kind: problem
+  title: 'Milking Grid'
+  at: {web: '2185'}
+  url: http://poj.org/problem?id=2185
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/algorithm-topics/knuth-morris-pratt]
+- id: res-poj-anagram-groups
+  kind: problem
+  title: 'Anagram Groups'
+  at: {web: '2408'}
+  url: http://poj.org/problem?id=2408
+  rating: 2
+  lists: [cs97si]
+  practises: [cs/data-structures/hashing]
+- id: res-poj-seek-the-name-seek-the-fame
+  kind: problem
+  title: 'Seek the Name, Seek the Fame'
+  at: {web: '2752'}
+  url: http://poj.org/problem?id=2752
+  rating: 4
+  lists: [cs97si]
+  practises: [cs/algorithm-topics/knuth-morris-pratt]
+- id: res-poj-long-long-message
+  kind: problem
+  title: 'Long Long Message'
+  at: {web: '2774'}
+  url: http://poj.org/problem?id=2774
+  rating: 9
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/algorithm-topics/suffix-arrays]
+- id: res-poj-cow-patterns
+  kind: problem
+  title: 'Cow Patterns'
+  at: {web: '3167'}
+  url: http://poj.org/problem?id=3167
+  rating: 8
+  lists: [cs97si, cs97si-challenge]
+  practises: [cs/algorithm-topics/knuth-morris-pratt]
+- id: res-poj-milk-patterns
+  kind: problem
+  title: 'Milk Patterns'
+  at: {web: '3261'}
+  url: http://poj.org/problem?id=3261
+  rating: 6
+  lists: [cs97si]
+  practises: [cs/algorithm-topics/suffix-arrays]
+- id: res-poj-snowflake-snow-snowflakes
+  kind: problem
+  title: 'Snowflake Snow Snowflakes'
+  at: {web: '3349'}
+  url: http://poj.org/problem?id=3349
+  rating: 7
+  lists: [cs97si]
+  practises: [cs/data-structures/hashing]

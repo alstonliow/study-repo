@@ -25,6 +25,7 @@ import yaml
 ID = re.compile(r"res-[a-z0-9]+(?:-[a-z0-9]+)*")
 YEAR = re.compile(r"\d{4}(?:-\d{2})?")      # `year:` on a resource or node: 2024, or an academic year 2025-26
 URL = re.compile(r"https://\S+")
+PROBLEM_URL = re.compile(r"https?://\S+")   # some judges (POJ) serve only http
 DIFFICULTIES = ("easy", "medium", "hard")   # an online problem's own rating (SPEC §17.12.7 item 6)
 
 
@@ -180,14 +181,22 @@ def parse(path: Path) -> Resource:
             if "year" in item and not YEAR.fullmatch(str(item["year"])):
                 problems.append(f"{nid}: year must be like 2024 or 2025-26")
             if item.get("kind") == "problem":     # online practice problem (SPEC §17.12.7 item 6)
-                if not URL.fullmatch(str(item.get("url", ""))):
+                if not PROBLEM_URL.fullmatch(str(item.get("url", ""))):
                     problems.append(f"{nid}: a problem node needs a url (https://...)")
-                if str(item.get("difficulty", "")) not in DIFFICULTIES:
+                if "difficulty" in item and str(item["difficulty"]) not in DIFFICULTIES:
                     problems.append(f"{nid}: difficulty must be one of {', '.join(DIFFICULTIES)}")
+                if "difficulty" not in item and "rating" not in item:
+                    problems.append(f"{nid}: a problem node needs a difficulty or a rating")
+                if "rating" in item:
+                    r = item["rating"]
+                    if not isinstance(r, int) or isinstance(r, bool) or not 0 <= r <= 10:
+                        problems.append(f"{nid}: rating must be a whole number from 0 to 10")
+                    if not d.get("rating_from"):
+                        problems.append(f"{nid}: a rating needs rating_from on the resource (who rated it)")
                 if item.get("nodes"):
                     problems.append(f"{nid}: a problem node has no child nodes")
-            elif "difficulty" in item:
-                problems.append(f"{nid}: difficulty is only for problem nodes")
+            elif "difficulty" in item or "rating" in item:
+                problems.append(f"{nid}: difficulty and rating are only for problem nodes")
             nodes[nid].children = walk(item.get("nodes"), nid)
             ids.append(nid)
         return ids

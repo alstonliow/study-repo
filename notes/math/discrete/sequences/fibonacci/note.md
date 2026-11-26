@@ -1,6 +1,6 @@
 ---
 title: "The Fibonacci sequence"
-sources: [fit1058-cn-6.7]
+sources: [fit1058-cn-6.7, cs97si-2]
 requires: [math/discrete/sequences/solving-recurrences]
 status: draft
 ---
@@ -118,3 +118,33 @@ By the note above, $f_n = \alpha\varphi^n + \beta\psi^n$ satisfies the recurrenc
 Since $|\psi|<1$, $\psi^n\to0$, so $f_n \approx \varphi^n/\sqrt5$ for large $n$, consistent with $\varphi^{-2}\le f_n/\varphi^n\le1$. In fact $f_n$ is the integer nearest to $\varphi^n/\sqrt5$, since $|\psi^n/\sqrt5|<\frac12$. It is surprising that a formula full of $\sqrt5$ always gives integers: the irrational parts cancel.
 
 :::
+
+## Computing $f_n$ fast
+
+<!-- Added 2026-11-26 from Stanford CS 97SI (Winter 2011-12), Lecture 2 (the matrix form of the Fibonacci numbers), in our own wording; proof written out in steps. The example is our own, checked by computation. -->
+
+::: {#prp-fibonacci-matrix-power .proposition name="Fibonacci numbers by a matrix power"}
+
+With $f_0=0$, for every $n\ge1$
+
+$$
+\begin{pmatrix}1&1\\1&0\end{pmatrix}^{n}=\begin{pmatrix}f_{n+1}&f_n\\f_n&f_{n-1}\end{pmatrix}.
+$$
+
+So $f_n$ (or $f_n\bmod m$) is computed with $O(\log n)$ multiplications of $2\times2$ matrices by repeated squaring, as in @def-binary-square-and-multiply-exponentiation.
+
+:::
+
+::: {.proof}
+
+1. *Base* $n=1$: the matrix is $\begin{pmatrix}f_2&f_1\\f_1&f_0\end{pmatrix}=\begin{pmatrix}1&1\\1&0\end{pmatrix}$.
+
+2. *Step.* If the formula holds for $n$, multiplying by the matrix once more gives
+   $$\begin{pmatrix}f_{n+1}&f_n\\f_n&f_{n-1}\end{pmatrix}\begin{pmatrix}1&1\\1&0\end{pmatrix}=\begin{pmatrix}f_{n+1}+f_n&f_{n+1}\\f_n+f_{n-1}&f_n\end{pmatrix}=\begin{pmatrix}f_{n+2}&f_{n+1}\\f_{n+1}&f_n\end{pmatrix}.$$
+
+3. *Cost.* Matrix multiplication is associative, so square-and-multiply computes the $n$-th power with at most $2\lfloor\log_2n\rfloor$ products. Reducing every entry modulo $m$ keeps the numbers small, because reduction respects sums and products.
+
+:::
+
+For example $\begin{pmatrix}1&1\\1&0\end{pmatrix}^{10}=\begin{pmatrix}89&55\\55&34\end{pmatrix}$, so $f_{10}=55$. Unlike Binet's formula (@thm-binet), this uses only integer arithmetic and works modulo any $m$; the same idea computes any linear recurrence $a_n=c_1a_{n-1}+\dots+c_ka_{n-k}$ with a $k\times k$ matrix in $O(k^3\log n)$.
+

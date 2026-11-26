@@ -10,6 +10,8 @@ outline_from: MIT 18.05 Introduction to Probability and Statistics, Spring 2022 
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Stanford CS 97SI additions (2026-11-26) in shared notes
+  - prp-pascal-table
   # MIT 18.065 integration (2026-11-21): its problems in shared notes
   - prob-mit18065ps-19-q3
   - prob-mit18065ps-19-q8

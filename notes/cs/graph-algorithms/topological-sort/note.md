@@ -1,6 +1,6 @@
 ---
 title: "Topological Sort and Cycle Detection"
-sources: [mit6006-10, mit6006r-10]
+sources: [mit6006-10, mit6006r-10, cs97si-6]
 requires: [cs/graph-algorithms/depth-first-search]
 status: draft
 ---
@@ -144,3 +144,76 @@ A digraph has a directed cycle if and only if, in the reverse finishing order of
 The DAG of @fig-depth-first-search-1 with an extra edge $f\to b$. Full-DFS from $a$ (alphabetical) is visiting $a,b,c,f$ (highlighted, the set $A$) when it examines $f\to b$ (dashed). Since $b\in A$, the tree path $b,c,f$ and the edge $f\to b$ form the cycle $b,c,f,b$.
 
 :::
+
+## Topological sort by removing sources
+
+<!-- Added 2026-11-26 from Stanford CS 97SI (Winter 2011-12), Lecture 6 (the faster topological sort), in our own wording; proof written out in steps. The example and figure are our own. -->
+
+::: {#def-kahn .definition name="Kahn's algorithm"}
+
+Compute the in-degree $\deg^-(v)$ of every vertex and put the vertices of in-degree $0$ in a queue. Repeatedly remove a vertex $u$ from the queue, append it to the output, and for each edge $(u,v)$ decrease $\deg^-(v)$, adding $v$ to the queue when it reaches $0$.
+
+:::
+
+```{=latex}
+\begin{algorithm}
+\caption{Kahn's algorithm}
+\begin{algorithmic}
+\INPUT Digraph $G=(V,E)$ as adjacency lists
+\OUTPUT A topological order, or ``cycle''
+\STATE compute $\deg^-(v)$ for all $v$; $Q\gets$ queue of all $v$ with $\deg^-(v)=0$; $L\gets()$
+\WHILE{$Q$ is not empty}
+    \STATE remove $u$ from $Q$; append $u$ to $L$
+    \FOR{$v\in\operatorname{Adj}(u)$}
+        \STATE $\deg^-(v)\gets\deg^-(v)-1$
+        \IF{$\deg^-(v)=0$}
+            \STATE add $v$ to $Q$
+        \ENDIF
+    \ENDFOR
+\ENDWHILE
+\RETURN $L$ if $|L|=|V|$, otherwise ``cycle''
+\end{algorithmic}
+\end{algorithm}
+```
+
+::: {#thm-kahn .theorem name="Kahn's algorithm"}
+
+Kahn's algorithm outputs a topological order of $G$ if $G$ is a DAG and reports a cycle otherwise, in $O(|V|+|E|)$ time.
+
+:::
+
+::: {.proof}
+
+1. *Invariant:* the counter $\deg^-(v)$ is the number of edges into $v$ from vertices not yet output, and a vertex enters the queue exactly when that number becomes $0$.
+
+2. *Order.* When $v$ is output, all edges into $v$ come from vertices already output, so every edge $(u,v)$ goes from an earlier to a later vertex of $L$.
+
+3. *All vertices of a DAG are output.* Suppose the queue empties while a set $R\ne\emptyset$ of vertices is left. Every $v\in R$ has an edge from another vertex of $R$, so walking backwards along such edges inside the finite set $R$ repeats a vertex: $G$ has a cycle. Hence for a DAG $L$ contains all of $V$.
+
+4. *Cycles are reported.* No vertex on a cycle can be output first among the cycle's vertices, since its predecessor on the cycle is still unoutput; so $|L|<|V|$.
+
+5. *Time.* Computing in-degrees and the main loop examine every edge once and every vertex once.
+
+:::
+
+::: {#fig-topological-sort-kahn}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}[x=1.6cm,y=1.1cm,>=Stealth]
+\node[small vertex, fill=accentLight] (a) at (0,1) {$a$};
+\node[small vertex, fill=accentLight] (b) at (0,0) {$b$};
+\node[small vertex] (c) at (1,1) {$c$};
+\node[small vertex] (d) at (1,0) {$d$};
+\node[small vertex] (e) at (2,0.5) {$e$};
+\draw[->] (a) -- (c); \draw[->] (a) -- (d); \draw[->] (b) -- (d); \draw[->] (c) -- (e); \draw[->] (d) -- (e);
+\foreach \v/\k in {a/0,b/0,c/1,d/2,e/2} \node[lab,tick,above=7pt] at (\v) {$\k$};
+\node[lab,note,anchor=west] at (2.5,0.5) {output $a,b,c,d,e$};
+\end{tikzpicture}
+\end{center}
+```
+
+Kahn's algorithm on a small DAG; the numbers are the initial in-degrees. The sources $a,b$ start in the queue; removing $a$ frees $c$, removing $b$ frees $d$ (its count drops $2\to1\to0$), and $e$ goes last.
+
+:::
+

@@ -134,6 +134,9 @@ parts:
           - planarity
           - colouring
           - games-on-graphs
+          - winning-positions
+          - nim
+          - sprague-grundy
           - communication-networks
       - id: math/discrete/polynomials
         title: Polynomials and Codes
@@ -869,6 +872,7 @@ parts:
           - skip-lists
           - stacks-and-queues
           - tries
+          - fenwick-trees
       - id: cs/sorting
         title: Sorting and Selection
         desc: Comparison sorts, lower bounds, sorting in linear time, selection
@@ -877,6 +881,7 @@ parts:
           - elementary-sorts
           - merge-sort
           - binary-search
+          - ternary-search
           - heap-sort
           - quicksort
           - comparison-lower-bounds
@@ -894,9 +899,11 @@ parts:
           - depth-first-search
           - topological-sort
           - strongly-connected-components
+          - eulerian-circuits
           - weighted-shortest-paths
           - dag-shortest-paths
           - bellman-ford
+          - difference-constraints
           - dijkstra
           - all-pairs-shortest-paths
           - shortest-paths-by-squaring
@@ -922,6 +929,9 @@ parts:
           - interval-subproblems
           - longest-palindromic-subsequence
           - optimal-bst
+          - tri-tiling
+          - tree-dp
+          - bitmask-dp
           - greedy-algorithms
           - weighted-interval-scheduling
           - amortized-analysis
@@ -942,6 +952,7 @@ parts:
           - fibonacci-heaps
           - van-emde-boas
           - union-find
+          - lowest-common-ancestor
       - id: cs/graph-optimization
         title: Spanning Trees, Matching and Flows
         desc: Minimum spanning trees, maximum flow and minimum cut, bipartite and stable matching
@@ -953,6 +964,7 @@ parts:
           - ford-fulkerson
           - flow-applications
           - bipartite-matching
+          - min-cost-flow
           - stable-matching
       - id: cs/algorithm-topics
         title: Selected Topics in Algorithms
@@ -966,10 +978,21 @@ parts:
           - rabin-karp
           - string-matching-automaton
           - knuth-morris-pratt
+          - suffix-tries
+          - suffix-arrays
           - convex-hull
           - approximation-algorithms
           - fixed-parameter-algorithms
           - cache-oblivious-algorithms
+      - id: cs/computational-geometry
+        title: Computational Geometry
+        desc: Vectors and the cross product, segment intersection, the Graham scan, sweep lines, half-plane intersection
+        notes:   # topic order on the website
+          - vector-geometry
+          - segment-intersection
+          - graham-scan
+          - sweep-line
+          - half-plane-intersection
   - title: Theory of Computation
     field: Computer Science
     branches:
