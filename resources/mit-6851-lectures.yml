@@ -28,6 +28,16 @@ nodes:
   title: Retroactive data structures
   at:
     2012-spring: '2'
+- id: res-mit-6851-lectures-geometry-point-location-and-orthogonal-range-search
+  kind: lecture
+  title: 'Geometry: point location and orthogonal range search'
+  at:
+    2012-spring: '3'
+- id: res-mit-6851-lectures-kinetic-data-structures
+  kind: lecture
+  title: Kinetic data structures
+  at:
+    2012-spring: '4'
 - id: res-mit-6851-lectures-dynamic-optimality-and-the-geometry-of-bsts
   kind: lecture
   title: Dynamic optimality and the geometry of BSTs
@@ -38,6 +48,26 @@ nodes:
   title: Lower bounds for BSTs and Tango trees
   at:
     2012-spring: '6'
+- id: res-mit-6851-lectures-memory-hierarchies-and-cache-oblivious-b-trees
+  kind: lecture
+  title: Memory hierarchies and cache-oblivious B-trees
+  at:
+    2012-spring: '7'
+- id: res-mit-6851-lectures-ordered-file-maintenance-and-order-maintenance
+  kind: lecture
+  title: Ordered file maintenance and order maintenance
+  at:
+    2012-spring: '8'
+- id: res-mit-6851-lectures-funnelsort-and-cache-oblivious-range-search
+  kind: lecture
+  title: Funnelsort and cache-oblivious range search
+  at:
+    2012-spring: '9'
+- id: res-mit-6851-lectures-hashing
+  kind: lecture
+  title: Hashing
+  at:
+    2012-spring: '10'
 - id: res-mit-6851-lectures-integer-data-structures
   kind: lecture
   title: Integer data structures
@@ -48,11 +78,36 @@ nodes:
   title: Fusion trees
   at:
     2012-spring: '12'
+- id: res-mit-6851-lectures-predecessor-lower-bounds
+  kind: lecture
+  title: Predecessor lower bounds
+  at:
+    2012-spring: '13'
+- id: res-mit-6851-lectures-integer-sorting
+  kind: lecture
+  title: Integer sorting
+  at:
+    2012-spring: '14'
 - id: res-mit-6851-lectures-static-trees-rmq-lca-and-level-ancestors
   kind: lecture
   title: 'Static trees: RMQ, LCA and level ancestors'
   at:
     2012-spring: '15'
+- id: res-mit-6851-lectures-string-data-structures
+  kind: lecture
+  title: String data structures
+  at:
+    2012-spring: '16'
+- id: res-mit-6851-lectures-succinct-data-structures
+  kind: lecture
+  title: Succinct data structures
+  at:
+    2012-spring: '17'
+- id: res-mit-6851-lectures-compact-suffix-arrays
+  kind: lecture
+  title: Compact suffix arrays
+  at:
+    2012-spring: '18'
 - id: res-mit-6851-lectures-dynamic-trees
   kind: lecture
   title: Dynamic trees
@@ -63,3 +118,8 @@ nodes:
   title: Dynamic connectivity
   at:
     2012-spring: '20'
+- id: res-mit-6851-lectures-cell-probe-lower-bound-for-dynamic-connectivity
+  kind: lecture
+  title: Cell-probe lower bound for dynamic connectivity
+  at:
+    2012-spring: '21'

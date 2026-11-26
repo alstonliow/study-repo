@@ -28,7 +28,7 @@ Generated from the notes by `make readme`:
 |  | Convex Optimization | 6 | 41 | 18 | 117 |
 |  | Combinatorial Optimization | 3 | 23 | 69 | 23 |
 |  | Numerical Analysis | 7 | 32 | 10 | 60 |
-| Computer Science | Algorithms | 10 | 136 | 126 | 172 |
+| Computer Science | Algorithms | 10 | 152 | 133 | 176 |
 |  | Theory of Computation | 2 | 32 | 53 | 59 |
 |  | Cryptography | 1 | 2 | 0 | 1 |
 |  | Computer Systems | 8 | 51 | 21 | 165 |
@@ -37,7 +37,7 @@ Generated from the notes by `make readme`:
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
 |  | Reinforcement Learning and Games | 2 | 20 | 23 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **119** | **819** | **1815** | **1565** |
+| **Total** | | **119** | **835** | **1822** | **1569** |
 
 31 courses are mapped onto the topic tree:
 

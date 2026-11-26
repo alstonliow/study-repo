@@ -23,11 +23,26 @@ nodes:
   title: Retroactive successor
   at:
     2012-spring: '1'
+- id: res-mit-6851-psets-ps2
+  kind: homework
+  title: Range tree construction
+  at:
+    2012-spring: '2'
 - id: res-mit-6851-psets-ps3
   kind: homework
   title: Geometry of BSTs and working set
   at:
     2012-spring: '3'
+- id: res-mit-6851-psets-ps4
+  kind: homework
+  title: Cache-oblivious median and queue
+  at:
+    2012-spring: '4'
+- id: res-mit-6851-psets-ps5
+  kind: homework
+  title: Cache-oblivious geometry
+  at:
+    2012-spring: '5'
 - id: res-mit-6851-psets-ps6
   kind: homework
   title: van Emde Boas variants
@@ -40,7 +55,7 @@ nodes:
     2012-spring: '7'
 - id: res-mit-6851-psets-ps8
   kind: homework
-  title: Level ancestors construction
+  title: Signature compression and level ancestors
   at:
     2012-spring: '8'
 - id: res-mit-6851-psets-ps9
@@ -48,3 +63,8 @@ nodes:
   title: Substring matching
   at:
     2012-spring: '9'
+- id: res-mit-6851-psets-ps10
+  kind: homework
+  title: Compact balanced parentheses
+  at:
+    2012-spring: '10'
