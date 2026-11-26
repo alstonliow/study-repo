@@ -14,6 +14,10 @@ outline_from: "MIT 6.046J Design and Analysis of Algorithms, Spring 2015, Lectur
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 6.851 problems in shared notes (2026-11-26)
+  - prob-mit6851ps-6-q1
+  - prob-mit6851ps-6-q2
+  - prob-mit6851ps-7-q1
   # MIT 6.854J problems and blocks in shared notes (2026-11-26)
   - prob-mit6854ps-1-q3
   - prob-mit6854ps-1-q4

@@ -12,6 +12,8 @@ outline_from: Stanford CS 97SI Introduction to Programming Contests (Jaehyun Par
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 6.851 problems in shared notes (2026-11-26)
+  - prob-mit6851ps-9-q1
   # MIT 6.854J problems and blocks in shared notes (2026-11-26)
   - prob-mit6854ps-6-q3
 chapters:

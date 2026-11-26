@@ -28,7 +28,7 @@ Generated from the notes by `make readme`:
 |  | Convex Optimization | 6 | 41 | 18 | 117 |
 |  | Combinatorial Optimization | 3 | 23 | 69 | 23 |
 |  | Numerical Analysis | 7 | 32 | 10 | 60 |
-| Computer Science | Algorithms | 10 | 126 | 118 | 163 |
+| Computer Science | Algorithms | 10 | 136 | 126 | 172 |
 |  | Theory of Computation | 2 | 32 | 53 | 59 |
 |  | Cryptography | 1 | 2 | 0 | 1 |
 |  | Computer Systems | 8 | 51 | 21 | 165 |
@@ -37,9 +37,9 @@ Generated from the notes by `make readme`:
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
 |  | Reinforcement Learning and Games | 2 | 20 | 23 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **119** | **809** | **1807** | **1556** |
+| **Total** | | **119** | **819** | **1815** | **1565** |
 
-30 courses are mapped onto the topic tree:
+31 courses are mapped onto the topic tree:
 
 | Course | Title | Institution |
 |---|---|---|
@@ -48,6 +48,7 @@ Generated from the notes by `make readme`:
 | MIT 6.041 | Probabilistic Systems Analysis and Applied Probability | MIT |
 | MIT 6.042J | Mathematics for Computer Science | MIT |
 | MIT 6.046 | Design and Analysis of Algorithms | MIT |
+| MIT 6.851 | Advanced Data Structures | MIT |
 | MIT 6.854J | Advanced Algorithms | MIT |
 | MIT 18.01 | Single Variable Calculus | MIT |
 | MIT 18.02 | Multivariable Calculus | MIT |

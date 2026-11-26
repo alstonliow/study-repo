@@ -990,10 +990,20 @@ parts:
           - b-trees
           - fibonacci-heaps
           - van-emde-boas
+          - y-fast-trees
+          - fusion-trees
           - union-find
           - lowest-common-ancestor
           - splay-trees
           - link-cut-trees
+          - dynamic-optimality
+          - euler-tour-trees
+          - dynamic-connectivity
+          - cartesian-trees
+          - range-minimum-query
+          - level-ancestors
+          - persistent-data-structures
+          - retroactive-data-structures
       - id: cs/graph-optimization
         title: Spanning Trees, Matching and Flows
         desc: Minimum spanning trees, maximum flow and minimum cut, minimum-cost flow, global and T-odd minimum cuts, bipartite and stable matching
