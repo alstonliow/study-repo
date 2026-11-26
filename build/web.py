@@ -864,28 +864,36 @@ def ctx():
                            block_courses=REPO.block_courses, review_courses=REPO.review_courses)
 
 
-HOME_LINKS = [("map.qmd", "Map", "How the topics build on each other"),
-              ("library.qmd", "Library", "Books and course notes behind the notes"),
-              ("practice.qmd", "Practice", "Online judge problems by topic"),
-              ("export.qmd", "Export", "Print any selection as a PDF")]
+HOME_LINKS = [("map.qmd", "Map", "How the topics build on each other", "diagram-3"),
+              ("library.qmd", "Library", "Books and course notes behind the notes", "book"),
+              ("practice.qmd", "Practice", "Online judge problems by topic", "code-square"),
+              ("export.qmd", "Export", "Print any selection as a PDF", "printer")]
+
+
+def field_colour(field: str) -> str:
+    """The field's colour, as on the Map page (styles.css --field-0..3)."""
+    order = REPO.field_order()
+    return f"var(--field-{order.index(field) % 4 if field in order else 3})"
 
 
 def home_header(stats: list[tuple[int, str, str]], sections: list[str]) -> list[str]:
-    """Home page header: lead, totals (count, singular, plural), links to the other pages, jump links to the sections."""
+    """Home page header: title and lead, totals (count, singular, plural), links
+    to the other pages, jump links to the sections (fields get their colour)."""
     import html
     import re
     have = {pg.file for pg in PAGES}
     stat = "".join(f'<div class="home-stat"><b>{n:,}</b><span>{one if n == 1 else many}</span></div>'
                    for n, one, many in stats)
-    links = "".join(f'<a class="home-link" href="{f.replace(".qmd", ".html")}"><b>{t}</b><span>{d}</span></a>'
-                    for f, t, d in HOME_LINKS if f in have)
-    seen = list(dict.fromkeys(sections))
-    jump = "".join(f'<a href="#{re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")}">{html.escape(s)}</a>' for s in seen)
-    return ["---", "title: Study Notes", "page-layout: full", "toc: false", "---", "",
-            "[Personal study notes, organised by topic rather than by course: definitions, results, "
-            "proofs and worked exercises, each written once and linked to every course that uses it.]{.home-lead}", "",
+    links = "".join(f'<a class="home-link" href="{f.replace(".qmd", ".html")}"><i class="bi bi-{icon}" aria-hidden="true"></i>'
+                    f'<b>{t}</b><span>{d}</span></a>' for f, t, d, icon in HOME_LINKS if f in have)
+    jump = "".join(f'<a href="#{re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")}" style="--fc:{field_colour(s)}">'
+                   f'{html.escape(s)}</a>' for s in dict.fromkeys(sections))
+    return ["---", "pagetitle: Study Notes", "page-layout: full", "toc: false", "---", "",
             "```{=html}",
-            f'<div class="home-stats">{stat}</div>',
+            '<header class="home-hero"><div class="home-title" role="heading" aria-level="1">Study Notes</div>'
+            '<p class="home-lead">Personal study notes, organised by topic rather than by course: definitions, results, '
+            'proofs and worked exercises, each written once and linked to every course that uses it.</p>'
+            f'<div class="home-stats">{stat}</div></header>',
             f'<nav class="home-links">{links}</nav>',
             f'<nav class="home-jump" aria-label="Sections">{jump}</nav>',
             "```", ""]
@@ -906,7 +914,10 @@ def part_cards(heading: str, parts: list[tuple[str, list]]) -> list[str]:
                      f'<span class="contents-meta">{meta}</span>'
                      f'<span class="contents-desc">{esc(" · ".join(r[1] for r in rows))}</span></summary>'
                      f'<ol class="part-branches">{branches}</ol></details></li>')
-    return ["::: {.contents-field}", f"## {heading}", "", "```{=html}",
+    nnotes = sum(r[5] for _, rows in parts for r in rows)
+    meta = f'{len(parts)} part{"s" if len(parts) != 1 else ""} · {nnotes} notes'
+    return [f'::: {{.contents-field style="--fc:{field_colour(heading)}"}}', f"## {heading}", "",
+            "```{=html}", f'<p class="field-meta">{meta}</p>',
             '<ul class="contents-list part-list">\n' + "\n".join(cards) + "\n</ul>", "```", ":::", ""]
 
 
@@ -921,5 +932,5 @@ def contents_block(heading: str, rows: list, level: int = 2) -> list[str]:
         + (f'<span class="contents-desc">{html.escape(r[2])}</span>' if r[2] else "")
         + "</a></li>"
         for r in rows)
-    return ["::: {.contents-field}", f"{'#' * level} {heading}", "", "```{=html}",
+    return [f'::: {{.contents-field style="--fc:{field_colour(heading)}"}}', f"{'#' * level} {heading}", "", "```{=html}",
             f'<ul class="contents-list">\n{items}\n</ul>', "```", ":::", ""]

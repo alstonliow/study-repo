@@ -1,28 +1,27 @@
 ---
-title: Study Notes
+pagetitle: Study Notes
 page-layout: full
 toc: false
 ---
 
-[Personal study notes, organised by topic rather than by course: definitions, results, proofs and worked exercises, each written once and linked to every course that uses it.]{.home-lead}
-
 ```{=html}
-<div class="home-stats"><div class="home-stat"><b>3</b><span>notes</span></div><div class="home-stat"><b>2</b><span>branches</span></div><div class="home-stat"><b>1</b><span>course</span></div><div class="home-stat"><b>4</b><span>exercises</span></div></div>
-<nav class="home-links"><a class="home-link" href="map.html"><b>Map</b><span>How the topics build on each other</span></a><a class="home-link" href="library.html"><b>Library</b><span>Books and course notes behind the notes</span></a><a class="home-link" href="practice.html"><b>Practice</b><span>Online judge problems by topic</span></a><a class="home-link" href="export.html"><b>Export</b><span>Print any selection as a PDF</span></a></nav>
-<nav class="home-jump" aria-label="Sections"><a href="#contents">Contents</a><a href="#courses">Courses</a></nav>
+<header class="home-hero"><div class="home-title" role="heading" aria-level="1">Study Notes</div><p class="home-lead">Personal study notes, organised by topic rather than by course: definitions, results, proofs and worked exercises, each written once and linked to every course that uses it.</p><div class="home-stats"><div class="home-stat"><b>3</b><span>notes</span></div><div class="home-stat"><b>2</b><span>branches</span></div><div class="home-stat"><b>1</b><span>course</span></div><div class="home-stat"><b>4</b><span>exercises</span></div></div></header>
+<nav class="home-links"><a class="home-link" href="map.html"><i class="bi bi-diagram-3" aria-hidden="true"></i><b>Map</b><span>How the topics build on each other</span></a><a class="home-link" href="library.html"><i class="bi bi-book" aria-hidden="true"></i><b>Library</b><span>Books and course notes behind the notes</span></a><a class="home-link" href="practice.html"><i class="bi bi-code-square" aria-hidden="true"></i><b>Practice</b><span>Online judge problems by topic</span></a><a class="home-link" href="export.html"><i class="bi bi-printer" aria-hidden="true"></i><b>Export</b><span>Print any selection as a PDF</span></a></nav>
+<nav class="home-jump" aria-label="Sections"><a href="#contents" style="--fc:var(--field-3)">Contents</a><a href="#courses" style="--fc:var(--field-3)">Courses</a></nav>
 ```
 
-::: {.contents-field}
+::: {.contents-field style="--fc:var(--field-3)"}
 ## Contents
 
 ```{=html}
+<p class="field-meta">1 part · 3 notes</p>
 <ul class="contents-list part-list">
 <li class="part-card"><details><summary><span class="contents-title">Testing</span><span class="contents-meta">2 branches · 3 notes</span><span class="contents-desc">Alpha · Beta</span></summary><ol class="part-branches"><li><a href="notes/t/alpha/index.html" title="First test branch"><span class="contents-num">1</span>Alpha</a></li><li><a href="notes/t/beta/index.html" title="Second test branch"><span class="contents-num">2</span>Beta</a></li></ol></details></li>
 </ul>
 ```
 :::
 
-::: {.contents-field}
+::: {.contents-field style="--fc:var(--field-3)"}
 ## Courses
 
 ```{=html}
