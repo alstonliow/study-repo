@@ -4,8 +4,10 @@
 # CSES section, in CSES's own order. One node per problem: the official title, the task number
 # (locator) and the link. Statements, hints and solutions are never copied. Each node names the
 # notes it practises (first = primary). Problems whose intended solution has no note yet (segment
-# trees, sparse tables, sieves, bridges and articulation points, 2-SAT, Catalan numbers, Burnside,
-# general DP such as coin change and edit distance, ad-hoc and construction problems) are left out.
+# trees and lazy propagation, sieves, bridges and articulation points, 2-SAT, centroid
+# decomposition, Catalan numbers, Burnside, convex hull trick, linear basis, Manacher, Z-function,
+# general DP such as coin change, edit distance and digit DP, ad-hoc and construction problems) are
+# left out. Extended 2026-11-26 with matches in the MIT 6.851 / 18.433 / CS 97SI notes.
 # Node ids are the problem's title slug, never its number, and are never renamed.
 id: res-cses
 kind: problem-set
@@ -85,6 +87,12 @@ nodes:
     at: {web: '1090'}
     url: https://cses.fi/problemset/task/1090
     practises: [cs/algorithm-patterns/two-pointers]
+  - id: res-cses-concert-tickets
+    kind: problem
+    title: Concert Tickets
+    at: {web: '1091'}
+    url: https://cses.fi/problemset/task/1091
+    practises: [cs/data-structures/order-statistic-trees]
   - id: res-cses-restaurant-customers
     kind: problem
     title: Restaurant Customers
@@ -133,6 +141,12 @@ nodes:
     at: {web: '3420'}
     url: https://cses.fi/problemset/task/3420
     practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-josephus-problem-i
+    kind: problem
+    title: Josephus Problem I
+    at: {web: '2162'}
+    url: https://cses.fi/problemset/task/2162
+    practises: [cs/data-structures/order-statistic-trees]
   - id: res-cses-josephus-problem-ii
     kind: problem
     title: Josephus Problem II
@@ -205,6 +219,12 @@ nodes:
     at: {web: '1085'}
     url: https://cses.fi/problemset/task/1085
     practises: [cs/sorting/binary-search]
+  - id: res-cses-movie-festival-ii
+    kind: problem
+    title: Movie Festival II
+    at: {web: '1632'}
+    url: https://cses.fi/problemset/task/1632
+    practises: [cs/algorithm-design/greedy-algorithms]
   - id: res-cses-maximum-subarray-sum-ii
     kind: problem
     title: Maximum Subarray Sum II
@@ -262,6 +282,12 @@ nodes:
     title: Elevator Rides
     at: {web: '1653'}
     url: https://cses.fi/problemset/task/1653
+    practises: [cs/algorithm-design/bitmask-dp]
+  - id: res-cses-counting-tilings
+    kind: problem
+    title: Counting Tilings
+    at: {web: '2181'}
+    url: https://cses.fi/problemset/task/2181
     practises: [cs/algorithm-design/bitmask-dp]
   - id: res-cses-increasing-subsequence-ii
     kind: problem
@@ -387,6 +413,12 @@ nodes:
     at: {web: '1750'}
     url: https://cses.fi/problemset/task/1750
     practises: [cs/advanced-data-structures/lowest-common-ancestor]
+  - id: res-cses-planets-queries-ii
+    kind: problem
+    title: Planets Queries II
+    at: {web: '1160'}
+    url: https://cses.fi/problemset/task/1160
+    practises: [cs/advanced-data-structures/level-ancestors]
   - id: res-cses-road-reparation
     kind: problem
     title: Road Reparation
@@ -475,6 +507,12 @@ nodes:
     at: {web: '1646'}
     url: https://cses.fi/problemset/task/1646
     practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-static-range-minimum-queries
+    kind: problem
+    title: Static Range Minimum Queries
+    at: {web: '1647'}
+    url: https://cses.fi/problemset/task/1647
+    practises: [cs/advanced-data-structures/range-minimum-query]
   - id: res-cses-dynamic-range-sum-queries
     kind: problem
     title: Dynamic Range Sum Queries
@@ -517,6 +555,18 @@ nodes:
     at: {web: '1734'}
     url: https://cses.fi/problemset/task/1734
     practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-forest-queries-ii
+    kind: problem
+    title: Forest Queries II
+    at: {web: '1739'}
+    url: https://cses.fi/problemset/task/1739
+    practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-range-queries-and-copies
+    kind: problem
+    title: Range Queries and Copies
+    at: {web: '1737'}
+    url: https://cses.fi/problemset/task/1737
+    practises: [cs/advanced-data-structures/persistent-data-structures]
 - id: res-cses-tree-algorithms
   kind: section
   title: Tree Algorithms
@@ -669,6 +719,24 @@ nodes:
     at: {web: '1724'}
     url: https://cses.fi/problemset/task/1724
     practises: [cs/graph-algorithms/shortest-paths-by-squaring]
+  - id: res-cses-moving-robots
+    kind: problem
+    title: Moving Robots
+    at: {web: '1726'}
+    url: https://cses.fi/problemset/task/1726
+    practises: [math/probability/discrete/indicator-variables, math/probability/discrete/expectation-and-variance]
+  - id: res-cses-candy-lottery
+    kind: problem
+    title: Candy Lottery
+    at: {web: '1727'}
+    url: https://cses.fi/problemset/task/1727
+    practises: [math/probability/discrete/expectation-and-variance]
+  - id: res-cses-inversion-probability
+    kind: problem
+    title: Inversion Probability
+    at: {web: '1728'}
+    url: https://cses.fi/problemset/task/1728
+    practises: [math/probability/discrete/expectation-and-variance]
   - id: res-cses-stick-game
     kind: problem
     title: Stick Game
@@ -699,6 +767,12 @@ nodes:
     at: {web: '2207'}
     url: https://cses.fi/problemset/task/2207
     practises: [math/discrete/graph/sprague-grundy]
+  - id: res-cses-another-game
+    kind: problem
+    title: Another Game
+    at: {web: '2208'}
+    url: https://cses.fi/problemset/task/2208
+    practises: [math/discrete/graph/nim]
 - id: res-cses-string-algorithms
   kind: section
   title: String Algorithms
@@ -769,6 +843,18 @@ nodes:
     at: {web: '2107'}
     url: https://cses.fi/problemset/task/2107
     practises: [cs/algorithm-topics/knuth-morris-pratt]
+  - id: res-cses-inverse-suffix-array
+    kind: problem
+    title: Inverse Suffix Array
+    at: {web: '3225'}
+    url: https://cses.fi/problemset/task/3225
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-string-transform
+    kind: problem
+    title: String Transform
+    at: {web: '1113'}
+    url: https://cses.fi/problemset/task/1113
+    practises: [cs/algorithm-topics/suffix-arrays]
   - id: res-cses-substring-order-i
     kind: problem
     title: Substring Order I
@@ -809,6 +895,24 @@ nodes:
     at: {web: '2191'}
     url: https://cses.fi/problemset/task/2191
     practises: [cs/computational-geometry/vector-geometry]
+  - id: res-cses-point-in-polygon
+    kind: problem
+    title: Point in Polygon
+    at: {web: '2192'}
+    url: https://cses.fi/problemset/task/2192
+    practises: [cs/computational-geometry/vector-geometry]
+  - id: res-cses-polygon-lattice-points
+    kind: problem
+    title: Polygon Lattice Points
+    at: {web: '2193'}
+    url: https://cses.fi/problemset/task/2193
+    practises: [cs/computational-geometry/vector-geometry, math/discrete/number-theory/gcd-and-euclidean-algorithm]
+  - id: res-cses-minimum-euclidean-distance
+    kind: problem
+    title: Minimum Euclidean Distance
+    at: {web: '2194'}
+    url: https://cses.fi/problemset/task/2194
+    practises: [cs/computational-geometry/sweep-line]
   - id: res-cses-convex-hull
     kind: problem
     title: Convex Hull
@@ -831,6 +935,18 @@ nodes:
   kind: section
   title: Advanced Techniques
   nodes:
+  - id: res-cses-reachable-nodes
+    kind: problem
+    title: Reachable Nodes
+    at: {web: '2138'}
+    url: https://cses.fi/problemset/task/2138
+    practises: [cs/graph-algorithms/topological-sort]
+  - id: res-cses-reachability-queries
+    kind: problem
+    title: Reachability Queries
+    at: {web: '2143'}
+    url: https://cses.fi/problemset/task/2143
+    practises: [cs/graph-algorithms/strongly-connected-components, cs/graph-algorithms/topological-sort]
   - id: res-cses-cut-and-paste
     kind: problem
     title: Cut and Paste
@@ -867,6 +983,18 @@ nodes:
     at: {web: '2113'}
     url: https://cses.fi/problemset/task/2113
     practises: [cs/algorithm-topics/fast-fourier-transform]
+  - id: res-cses-new-roads-queries
+    kind: problem
+    title: New Roads Queries
+    at: {web: '2101'}
+    url: https://cses.fi/problemset/task/2101
+    practises: [cs/advanced-data-structures/union-find]
+  - id: res-cses-dynamic-connectivity
+    kind: problem
+    title: Dynamic Connectivity
+    at: {web: '2133'}
+    url: https://cses.fi/problemset/task/2133
+    practises: [cs/advanced-data-structures/dynamic-connectivity]
   - id: res-cses-parcel-delivery
     kind: problem
     title: Parcel Delivery
@@ -919,6 +1047,12 @@ nodes:
     at: {web: '3222'}
     url: https://cses.fi/problemset/task/3222
     practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-sliding-window-median
+    kind: problem
+    title: Sliding Window Median
+    at: {web: '1076'}
+    url: https://cses.fi/problemset/task/1076
+    practises: [cs/data-structures/order-statistic-trees, cs/algorithm-patterns/sliding-window]
   - id: res-cses-sliding-window-inversions
     kind: problem
     title: Sliding Window Inversions
@@ -949,6 +1083,12 @@ nodes:
   kind: section
   title: Advanced Graph Problems
   nodes:
+  - id: res-cses-nearest-shops
+    kind: problem
+    title: Nearest Shops
+    at: {web: '3303'}
+    url: https://cses.fi/problemset/task/3303
+    practises: [cs/graph-algorithms/breadth-first-search]
   - id: res-cses-tree-traversals
     kind: problem
     title: Tree Traversals
@@ -961,18 +1101,36 @@ nodes:
     at: {web: '1757'}
     url: https://cses.fi/problemset/task/1757
     practises: [cs/graph-algorithms/topological-sort, cs/data-structures/binary-heaps]
+  - id: res-cses-acyclic-graph-edges
+    kind: problem
+    title: Acyclic Graph Edges
+    at: {web: '1756'}
+    url: https://cses.fi/problemset/task/1756
+    practises: [cs/graph-algorithms/topological-sort]
   - id: res-cses-graph-girth
     kind: problem
     title: Graph Girth
     at: {web: '1707'}
     url: https://cses.fi/problemset/task/1707
     practises: [cs/graph-algorithms/breadth-first-search]
+  - id: res-cses-fixed-length-walk-queries
+    kind: problem
+    title: Fixed Length Walk Queries
+    at: {web: '3357'}
+    url: https://cses.fi/problemset/task/3357
+    practises: [cs/graph-algorithms/shortest-paths-by-squaring]
   - id: res-cses-mst-edge-check
     kind: problem
     title: MST Edge Check
     at: {web: '3407'}
     url: https://cses.fi/problemset/task/3407
     practises: [cs/graph-optimization/kruskal]
+  - id: res-cses-mst-edge-set-check
+    kind: problem
+    title: MST Edge Set Check
+    at: {web: '3408'}
+    url: https://cses.fi/problemset/task/3408
+    practises: [cs/graph-optimization/minimum-spanning-trees]
   - id: res-cses-mst-edge-cost
     kind: problem
     title: MST Edge Cost
@@ -1081,6 +1239,12 @@ nodes:
     at: {web: '2131'}
     url: https://cses.fi/problemset/task/2131
     practises: [cs/graph-optimization/min-cost-flow]
+  - id: res-cses-bit-substrings
+    kind: problem
+    title: Bit Substrings
+    at: {web: '2115'}
+    url: https://cses.fi/problemset/task/2115
+    practises: [cs/algorithm-topics/fast-fourier-transform]
   - id: res-cses-book-shop-ii
     kind: problem
     title: Book Shop II
