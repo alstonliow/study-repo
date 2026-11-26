@@ -93,6 +93,7 @@ parts:
         desc: Divisibility, gcd, modular arithmetic, Diffie–Hellman
         notes:   # topic order on the website
           - divisibility-and-primes
+          - sieve-of-eratosthenes
           - remainders-and-parity
           - gcd-and-euclidean-algorithm
           - extended-euclidean-algorithm
@@ -915,6 +916,8 @@ parts:
           - stacks-and-queues
           - tries
           - fenwick-trees
+          - segment-trees
+          - lazy-propagation
       - id: cs/sorting
         title: Sorting and Selection
         desc: Comparison sorts, lower bounds, sorting in linear time, selection
@@ -942,6 +945,8 @@ parts:
           - depth-first-search
           - topological-sort
           - strongly-connected-components
+          - two-satisfiability
+          - bridges-and-articulation-points
           - eulerian-circuits
           - weighted-shortest-paths
           - dag-shortest-paths
@@ -969,6 +974,8 @@ parts:
           - rod-cutting
           - subset-sum
           - knapsack
+          - coin-change
+          - edit-distance
           - interval-subproblems
           - longest-palindromic-subsequence
           - optimal-bst

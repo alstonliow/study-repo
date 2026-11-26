@@ -3,11 +3,12 @@
 # (owner decision, 2026-11-26), so the resource is `unrated`: problems sit under one section node per
 # CSES section, in CSES's own order. One node per problem: the official title, the task number
 # (locator) and the link. Statements, hints and solutions are never copied. Each node names the
-# notes it practises (first = primary). Problems whose intended solution has no note yet (segment
-# trees and lazy propagation, sieves, bridges and articulation points, 2-SAT, centroid
+# notes it practises (first = primary). Problems whose intended solution has no note yet (centroid
 # decomposition, Catalan numbers, Burnside, convex hull trick, linear basis, Manacher, Z-function,
-# general DP such as coin change, edit distance and digit DP, ad-hoc and construction problems) are
-# left out. Extended 2026-11-26 with matches in the MIT 6.851 / 18.433 / CS 97SI notes.
+# digit DP and other general DP, merge-sort or persistent trees for range counting, ad-hoc and
+# construction problems) are left out. Extended 2026-11-26 with matches in the MIT 6.851 / 18.433 /
+# CS 97SI notes, and again with notes written for CSES (segment trees, lazy propagation, sieve,
+# bridges, 2-SAT, coin change, edit distance).
 # Node ids are the problem's title slug, never its number, and are never renamed.
 id: res-cses
 kind: problem-set
@@ -235,12 +236,42 @@ nodes:
   kind: section
   title: Dynamic Programming
   nodes:
+  - id: res-cses-dice-combinations
+    kind: problem
+    title: Dice Combinations
+    at: {web: '1633'}
+    url: https://cses.fi/problemset/task/1633
+    practises: [cs/algorithm-design/coin-change]
+  - id: res-cses-minimizing-coins
+    kind: problem
+    title: Minimizing Coins
+    at: {web: '1634'}
+    url: https://cses.fi/problemset/task/1634
+    practises: [cs/algorithm-design/coin-change]
+  - id: res-cses-coin-combinations-i
+    kind: problem
+    title: Coin Combinations I
+    at: {web: '1635'}
+    url: https://cses.fi/problemset/task/1635
+    practises: [cs/algorithm-design/coin-change]
+  - id: res-cses-coin-combinations-ii
+    kind: problem
+    title: Coin Combinations II
+    at: {web: '1636'}
+    url: https://cses.fi/problemset/task/1636
+    practises: [cs/algorithm-design/coin-change]
   - id: res-cses-book-shop
     kind: problem
     title: Book Shop
     at: {web: '1158'}
     url: https://cses.fi/problemset/task/1158
     practises: [cs/algorithm-design/knapsack]
+  - id: res-cses-edit-distance
+    kind: problem
+    title: Edit Distance
+    at: {web: '1639'}
+    url: https://cses.fi/problemset/task/1639
+    practises: [cs/algorithm-design/edit-distance]
   - id: res-cses-longest-common-subsequence
     kind: problem
     title: Longest Common Subsequence
@@ -443,6 +474,12 @@ nodes:
     at: {web: '1683'}
     url: https://cses.fi/problemset/task/1683
     practises: [cs/graph-algorithms/strongly-connected-components]
+  - id: res-cses-giant-pizza
+    kind: problem
+    title: Giant Pizza
+    at: {web: '1684'}
+    url: https://cses.fi/problemset/task/1684
+    practises: [cs/graph-algorithms/two-satisfiability, cs/graph-algorithms/strongly-connected-components]
   - id: res-cses-coin-collector
     kind: problem
     title: Coin Collector
@@ -519,6 +556,12 @@ nodes:
     at: {web: '1648'}
     url: https://cses.fi/problemset/task/1648
     practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-dynamic-range-minimum-queries
+    kind: problem
+    title: Dynamic Range Minimum Queries
+    at: {web: '1649'}
+    url: https://cses.fi/problemset/task/1649
+    practises: [cs/data-structures/segment-trees]
   - id: res-cses-range-xor-queries
     kind: problem
     title: Range Xor Queries
@@ -537,6 +580,12 @@ nodes:
     at: {web: '1652'}
     url: https://cses.fi/problemset/task/1652
     practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-hotel-queries
+    kind: problem
+    title: Hotel Queries
+    at: {web: '1143'}
+    url: https://cses.fi/problemset/task/1143
+    practises: [cs/data-structures/segment-trees]
   - id: res-cses-list-removals
     kind: problem
     title: List Removals
@@ -549,6 +598,24 @@ nodes:
     at: {web: '1144'}
     url: https://cses.fi/problemset/task/1144
     practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-prefix-sum-queries
+    kind: problem
+    title: Prefix Sum Queries
+    at: {web: '2166'}
+    url: https://cses.fi/problemset/task/2166
+    practises: [cs/data-structures/segment-trees]
+  - id: res-cses-pizzeria-queries
+    kind: problem
+    title: Pizzeria Queries
+    at: {web: '2206'}
+    url: https://cses.fi/problemset/task/2206
+    practises: [cs/data-structures/segment-trees]
+  - id: res-cses-subarray-sum-queries
+    kind: problem
+    title: Subarray Sum Queries
+    at: {web: '1190'}
+    url: https://cses.fi/problemset/task/1190
+    practises: [cs/data-structures/segment-trees]
   - id: res-cses-distinct-values-queries
     kind: problem
     title: Distinct Values Queries
@@ -561,6 +628,18 @@ nodes:
     at: {web: '1739'}
     url: https://cses.fi/problemset/task/1739
     practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-range-updates-and-sums
+    kind: problem
+    title: Range Updates and Sums
+    at: {web: '1735'}
+    url: https://cses.fi/problemset/task/1735
+    practises: [cs/data-structures/lazy-propagation, cs/data-structures/segment-trees]
+  - id: res-cses-polynomial-queries
+    kind: problem
+    title: Polynomial Queries
+    at: {web: '1736'}
+    url: https://cses.fi/problemset/task/1736
+    practises: [cs/data-structures/lazy-propagation, cs/data-structures/segment-trees]
   - id: res-cses-range-queries-and-copies
     kind: problem
     title: Range Queries and Copies
@@ -659,6 +738,18 @@ nodes:
     at: {web: '1712'}
     url: https://cses.fi/problemset/task/1712
     practises: [math/discrete/number-theory/modular-exponentiation, math/discrete/number-theory/euler-totient]
+  - id: res-cses-counting-divisors
+    kind: problem
+    title: Counting Divisors
+    at: {web: '1713'}
+    url: https://cses.fi/problemset/task/1713
+    practises: [math/discrete/number-theory/sieve-of-eratosthenes]
+  - id: res-cses-common-divisors
+    kind: problem
+    title: Common Divisors
+    at: {web: '1081'}
+    url: https://cses.fi/problemset/task/1081
+    practises: [math/discrete/number-theory/sieve-of-eratosthenes]
   - id: res-cses-prime-multiples
     kind: problem
     title: Prime Multiples
@@ -671,6 +762,12 @@ nodes:
     at: {web: '2417'}
     url: https://cses.fi/problemset/task/2417
     practises: [math/discrete/counting/inclusion-exclusion]
+  - id: res-cses-next-prime
+    kind: problem
+    title: Next Prime
+    at: {web: '3396'}
+    url: https://cses.fi/problemset/task/3396
+    practises: [math/discrete/number-theory/sieve-of-eratosthenes]
   - id: res-cses-binomial-coefficients
     kind: problem
     title: Binomial Coefficients
@@ -965,6 +1062,18 @@ nodes:
     at: {web: '2074'}
     url: https://cses.fi/problemset/task/2074
     practises: [cs/advanced-data-structures/splay-trees]
+  - id: res-cses-necessary-roads
+    kind: problem
+    title: Necessary Roads
+    at: {web: '2076'}
+    url: https://cses.fi/problemset/task/2076
+    practises: [cs/graph-algorithms/bridges-and-articulation-points]
+  - id: res-cses-necessary-cities
+    kind: problem
+    title: Necessary Cities
+    at: {web: '2077'}
+    url: https://cses.fi/problemset/task/2077
+    practises: [cs/graph-algorithms/bridges-and-articulation-points]
   - id: res-cses-apples-and-bananas
     kind: problem
     title: Apples and Bananas
