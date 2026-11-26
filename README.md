@@ -16,7 +16,7 @@ Generated from the notes by `make readme`:
 
 | Field | Part | Branches | Notes | Exercises | Figures |
 |---|---|--:|--:|--:|--:|
-| Mathematics | Discrete Mathematics | 11 | 95 | 272 | 81 |
+| Mathematics | Discrete Mathematics | 11 | 98 | 272 | 84 |
 |  | Single Variable Calculus | 7 | 36 | 214 | 7 |
 |  | Linear Algebra | 13 | 66 | 226 | 262 |
 |  | Multivariable Calculus | 5 | 30 | 198 | 90 |
@@ -25,20 +25,21 @@ Generated from the notes by `make readme`:
 |  | Real Analysis | 12 | 55 | 114 | 138 |
 |  | Probability | 8 | 51 | 252 | 130 |
 |  | Statistics | 4 | 28 | 85 | 20 |
-|  | Convex Optimization | 6 | 40 | 17 | 116 |
+|  | Convex Optimization | 6 | 41 | 18 | 117 |
+|  | Combinatorial Optimization | 3 | 23 | 69 | 23 |
 |  | Numerical Analysis | 7 | 32 | 10 | 60 |
-| Computer Science | Algorithms | 9 | 95 | 89 | 127 |
+| Computer Science | Algorithms | 10 | 126 | 118 | 163 |
 |  | Theory of Computation | 2 | 32 | 53 | 59 |
 |  | Cryptography | 1 | 2 | 0 | 1 |
 |  | Computer Systems | 8 | 51 | 21 | 165 |
 | Artificial Intelligence | Machine Learning | 4 | 28 | 23 | 55 |
 |  | Deep Learning | 2 | 26 | 37 | 62 |
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
-|  | Reinforcement Learning and Games | 2 | 20 | 22 | 16 |
+|  | Reinforcement Learning and Games | 2 | 20 | 23 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **115** | **751** | **1707** | **1493** |
+| **Total** | | **119** | **809** | **1807** | **1556** |
 
-27 courses are mapped onto the topic tree:
+30 courses are mapped onto the topic tree:
 
 | Course | Title | Institution |
 |---|---|---|
@@ -47,6 +48,7 @@ Generated from the notes by `make readme`:
 | MIT 6.041 | Probabilistic Systems Analysis and Applied Probability | MIT |
 | MIT 6.042J | Mathematics for Computer Science | MIT |
 | MIT 6.046 | Design and Analysis of Algorithms | MIT |
+| MIT 6.854J | Advanced Algorithms | MIT |
 | MIT 18.01 | Single Variable Calculus | MIT |
 | MIT 18.02 | Multivariable Calculus | MIT |
 | MIT 18.03SC | Differential Equations | MIT |
@@ -55,12 +57,14 @@ Generated from the notes by `make readme`:
 | MIT 18.065 | Matrix Methods in Data Analysis, Signal Processing, and Machine Learning | MIT |
 | MIT 18.335J | Introduction to Numerical Methods | MIT |
 | MIT 18.404J | Theory of Computation | MIT |
+| MIT 18.433 | Combinatorial Optimization | MIT |
 | MIT 18.650 | Statistics for Applications | MIT |
 | MIT 18.S096 | Matrix Calculus for Machine Learning and Beyond | MIT |
 | Monash FIT1058 | Foundations of Computing | Monash University |
 | Stanford CS221 | Artificial Intelligence: Principles and Techniques | Stanford University |
 | Stanford CS229 | Machine Learning | Stanford University |
 | Stanford CS231n | Deep Learning for Computer Vision | Stanford University |
+| Stanford CS 97SI | Introduction to Programming Contests | Stanford University |
 | Stanford EE364A | Convex Optimization I | Stanford University |
 | UC Berkeley CS70 | Discrete Mathematics and Probability Theory | UC Berkeley |
 | UC Berkeley CS188 | Introduction to Artificial Intelligence | UC Berkeley |

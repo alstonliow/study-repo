@@ -14,6 +14,19 @@ outline_from: "MIT 6.046J Design and Analysis of Algorithms, Spring 2015, Lectur
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 6.854J problems and blocks in shared notes (2026-11-26)
+  - prob-mit6854ps-1-q3
+  - prob-mit6854ps-1-q4
+  - prob-mit6854ps-1-q5
+  - prob-mit6854ps-1-q6
+  - prob-mit6854ps-1-q7
+  - prob-mit6854ps-2-q1
+  - prob-mit6854ps-2-q2
+  - prob-mit6854ps-3-q5
+  - prob-mit6854ps-5-q1
+  - prob-mit6854ps-5-q2
+  - thm-fattest-augmenting-path
+  - thm-flow-decomposition
   # MIT 18.433 integration (2026-11-26): its problems and blocks in shared notes
   - prob-mit18433-4-q1
   - prob-mit18433-4-q2

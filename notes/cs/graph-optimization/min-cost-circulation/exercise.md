@@ -1,0 +1,21 @@
+::: {.problem #prob-mit6854ps-2-q5 origin="external" source="mit6854ps-2-q5"}
+We argued in lecture that for the maximum flow problem, there always exists a maximum flow which is integer-valued if the capacities are integral. Prove that a corresponding statement for minimum cost circulations also holds, namely that if the capacities and the costs are integer-valued then (i) the minimum cost circulation can be chosen to be integer-valued and (ii) the vertex potentials proving optimality can also be chosen to be integer-valued.
+:::
+
+::: {.problem #prob-mit6854ps-2-q6 origin="external" source="mit6854ps-2-q6"}
+In this problem, we will add a time dimension to network flows. Suppose we have a network $G=(V,E)$ in which each arc has unit capacity ($u(v,w)=1$ for all arcs $(v,w)$), and we have two special vertices, a source $s$ and a sink $t$. Our network for example could be a computer network and our unit of flow could be a packet. Each arc also has an integer-valued transit time $\tau(v,w)\in\mathbb Z_+$ which represents the time it takes (a unit of flow or packet) to travel through the arc. At every unit of time, say at time $d$, only one packet can enter the arc (there might be several packets already travelling through the arc since there could have been packets injected in it at times $d-1$, $d-2$, etc.). We can assume that vertices can instantaneously accept packets on its incoming arcs and also inject one packet (if available) on each of its outgoing arcs (and if there are remaining packets, they can be queued at the vertex).
+
+The first problem we consider is, given a deadline $D$, to find the maximum number $k(D)$ of packets that can enter the network at $s$ at time 1 or later and leave the network at vertex $t$ at time $D$ or earlier. As an example, suppose that our graph has only 3 arcs $(s,a)$, $(a,t)$ and $(s,t)$ each with a transit time of 2. Then, if $D=5$, the answer should be $k(5)=4$ packets. Indeed, we can send 3 packets along the arc $(s,t)$, entering at times 1, 2 and 3 and leaving at time 3, 4 and $5\le D$. We can also send a 4th packet, along the path $(s,a)$ and $(a,t)$; it will enter the arc $(s,a)$ at time 1, arrive at $a$ at time 3 and arrive at $t$ at time 5. (Observe by the way that in this example, no packet had to wait at intermediate vertices.)
+
+(a) Construct a maximum flow instance on a bigger network $G'=(V',E')$ such that the solution of this maximum flow instance allows you to find $k(D)$ and the scheduling (when they travel through each arc) of the packets in the original network $G$. $|V'|$ can be of the order of $D|V|$.
+
+(b) The solution above is not polynomial when $D$ is part of the input (since the size of the network grows linearly in $D$). To find a polynomial time algorithm, consider the following circulation problem. Take the original graph $G=(V,E)$ with all arcs of capacity 1 and give arc $(v,w)\in E$ a cost $c(v,w)=\tau(v,w)$. Add one arc $(t,s)$ of infinite capacity and cost equal to $-D$. Let $-C^*$ be the cost of the minimum cost circulation $f^*$. Prove the following claim: $C^*$ is precisely $k(D)$. Also explain how one can find the scheduling of the packets from the minimum cost circulation $f^*$.
+
+(It might be helpful to first see what happens on the simple example with 3 arcs given above.)
+
+(c) Now, suppose that we want to solve the converse problem. We would like to send $k$ packets from $s$ to $t$ so that the last packet arrives at $t$ as early as possible. Propose a polynomial-time algorithm which given $k$ finds $D(k)$, the minimum time at which all packets have arrived at $t$. What is the running time of your algorithm as a function of $n=|V|$, $m=|E|$, $T=\max\tau(v,w)$ and $k$?
+
+(d) Your algorithm for (c) is probably not strongly polynomial, in the sense that its running time depends on $\log(T)$ and/or $\log(k)$. Can you propose a strongly polynomial-time algorithm? Just sketch it (a few lines are enough); do not give all the details. (Kind of hint: this solution will be much slower than (c) when $T$ and $k$ are small.)
+
+(By the way, all the results above are still true if the capacities are integers possibly greater than 1; in such a case, at every time $d$, at most $u(v,w)$ packets can be injected in arc $(v,w)$. Arguing about the validity of (b) is slightly more difficult.)
+:::

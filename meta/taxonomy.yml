@@ -772,6 +772,7 @@ parts:
           - equality-constrained-minimization
           - barrier-method
           - phase-one-and-complexity
+          - primal-dual-interior-point
           - quasi-newton-methods
           - trust-region-methods
           - adjoint-methods
@@ -788,9 +789,11 @@ parts:
           - lp-duality
           - faces-of-polyhedra
           - vertices-of-polyhedra
+          - simplex-method
           - combinatorial-polytopes
           - total-unimodularity
           - ellipsoid-method
+          - lp-complexity
       - id: math/combinatorial-optimization/matching
         title: Matching
         desc: Augmenting paths, König's theorem, the assignment problem and the Hungarian method, Edmonds' blossom algorithm, the Tutte–Berge formula
@@ -989,6 +992,8 @@ parts:
           - van-emde-boas
           - union-find
           - lowest-common-ancestor
+          - splay-trees
+          - link-cut-trees
       - id: cs/graph-optimization
         title: Spanning Trees, Matching and Flows
         desc: Minimum spanning trees, maximum flow and minimum cut, minimum-cost flow, global and T-odd minimum cuts, bipartite and stable matching
@@ -1001,6 +1006,8 @@ parts:
           - flow-applications
           - bipartite-matching
           - min-cost-flow
+          - min-cost-circulation
+          - min-mean-cycle-cancelling
           - global-minimum-cut
           - minimum-t-odd-cut
           - stable-matching
@@ -1020,6 +1027,11 @@ parts:
           - suffix-arrays
           - convex-hull
           - approximation-algorithms
+          - christofides
+          - lp-rounding-and-primal-dual
+          - facility-location
+          - max-cut
+          - sparsest-cut
           - fixed-parameter-algorithms
           - cache-oblivious-algorithms
       - id: cs/computational-geometry
@@ -1031,6 +1043,10 @@ parts:
           - graham-scan
           - sweep-line
           - half-plane-intersection
+          - seidel-lp
+          - randomized-incremental-hull
+          - voronoi-diagrams
+          - fortune-sweep
   - title: Theory of Computation
     field: Computer Science
     branches:

@@ -10,6 +10,15 @@ outline_from: MIT 18.433 Combinatorial Optimization, Spring 2015 lecture notes (
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # MIT 6.854J problems and blocks in shared notes (2026-11-26)
+  - prob-mit6854ps-1-q3
+  - prob-mit6854ps-1-q4
+  - prob-mit6854ps-1-q5
+  - prob-mit6854ps-2-q1
+  - prob-mit6854ps-2-q2
+  - prob-mit6854ps-3-q5
+  - thm-fattest-augmenting-path
+  - thm-flow-decomposition
   # Other courses' problems in shared notes (2026-11-26)
   - prob-mit6046s15-7-q1
 

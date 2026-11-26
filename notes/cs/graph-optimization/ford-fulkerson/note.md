@@ -1,6 +1,6 @@
 ---
 title: "The Ford–Fulkerson Method"
-sources: [mit6046-13, mit6046-14, mit6046r-7, cs97si-8]
+sources: [mit6046-13, mit6046-14, mit6046r-7, cs97si-8, mit6854-3]
 requires: [cs/graph-optimization/maximum-flow, cs/graph-algorithms/breadth-first-search]
 status: draft
 ---
@@ -144,3 +144,65 @@ When the Ford–Fulkerson method stops with flow $f$, let $S$ be the set of vert
 
 In @exm-max-flow-small the final residual network has no edge leaving $s$ with spare capacity, so $S=\{s\}$, the cut of capacity $5$ found there.
 
+
+## Flow decomposition and the fattest augmenting path
+
+<!-- Added 2026-11-26 from MIT 6.854J (Fall 2008, Goemans), Lecture 3 (Sections 2.2-2.3), in our own wording; proofs written out in steps. -->
+
+::: {#thm-flow-decomposition .theorem name="Flow decomposition"}
+
+Let $f$ be a flow (or a circulation) and $k$ the number of edges with $f(u,v)>0$. Then $f$ is a sum of at most $k$ flows, each sending a positive amount along one $s$–$t$ path or around one directed cycle, all on edges with $f>0$.
+
+:::
+
+::: {.proof}
+
+1. If some edge carries positive flow, follow positive edges forward from it, and backward from it. By conservation one can always continue unless one reaches $t$ (forward) or $s$ (backward). So either a vertex repeats, giving a cycle of positive edges, or one obtains an $s$–$t$ path of positive edges.
+
+2. Let $T$ be this path or cycle and $\Delta=\min_{e\in T}f(e)>0$. Subtract $\Delta$ along $T$ (and add it on the reverse edges). The rest is still a flow (or circulation), is still non-negative where it was, and has at least one fewer edge with positive flow.
+
+3. Repeat. After at most $k$ steps no edge carries positive flow, and the subtracted pieces add up to $f$.
+
+:::
+
+The decomposition explains why augmenting along a *fattest* path, one of largest bottleneck $c_f(P)$, is fast.
+
+::: {#thm-fattest-augmenting-path .theorem name="Fattest augmenting paths (Edmonds–Karp)"}
+
+With integer capacities at most $U$, Ford–Fulkerson that always augments along a path of largest bottleneck stops after at most $|E|\lceil\ln(|E|U)\rceil+1$ augmentations. Such a path is found by a variant of Dijkstra's algorithm (@def-dijkstra) in $O(|E|+|V|\log|V|)$, so the total time is $O\big(|E|(|E|+|V|\log|V|)\log(|V|U)\big)$.
+
+:::
+
+::: {.proof}
+
+1. Let $f^*$ be a maximum flow and $f$ the current flow. $f^*-f$ is a flow of value $|f^*|-|f|$ in $G_f$ (it respects the residual capacities). By @thm-flow-decomposition it splits into at most $|E|$ paths and cycles, and the paths carry the whole value, so some $s$–$t$ path carries at least $(|f^*|-|f|)/|E|$. That path is augmenting in $G_f$, so the fattest path does at least as well.
+
+2. Hence one augmentation multiplies the remaining gap $|f^*|-|f|$ by at most $1-1/|E|$. The gap starts at most $|E|U$ (the capacity of the cut around $s$), and after $k$ augmentations it is at most $(1-1/|E|)^k|E|U<e^{-k/|E|}|E|U$.
+
+3. For $k\ge|E|\ln(|E|U)$ the gap is below $1$. All flows are integral, so the gap is $0$ after one more step at most.
+
+4. *Finding the path.* Run Dijkstra on $G_f$ with the label $b(v)$ = largest bottleneck of a path from $s$ to $v$ found so far, extracting the largest label each time and updating $b(w)\gets\max\big(b(w),\min(b(v),c_f(v,w))\big)$. The exchange argument of @thm-dijkstra goes through because $\min$ never increases along a path.
+
+:::
+
+::: {#fig-ford-fulkerson-2}
+
+```{=latex}
+\begin{center}
+\begin{tikzpicture}
+\node[small vertex] (ps) at (0,0) {$s$};
+\node[small vertex] (pa) at (2,1.1) {$a$};
+\node[small vertex] (pb) at (2,-1.1) {$b$};
+\node[small vertex] (pt) at (4,0) {$t$};
+\draw[->, hl] (ps) -- node[edge label] {$10$} (pa);
+\draw[->, hl] (pa) -- node[edge label] {$10$} (pt);
+\draw[->, emph] (ps) -- node[edge label] {$1$} (pt);
+\draw[->, emph] (ps) -- node[edge label] {$5$} (pb);
+\draw[->, emph] (pb) -- node[edge label] {$5$} (pt);
+\end{tikzpicture}
+\end{center}
+```
+
+The fattest augmenting path $s\,a\,t$ (bottleneck $10$) is not the shortest one, $s\,t$ (bottleneck $1$).
+
+:::

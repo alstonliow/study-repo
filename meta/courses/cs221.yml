@@ -17,6 +17,8 @@ coursework_repo:
   url: https://github.com/alstonliow/cs221-homework
 
 exclude:
+  # MIT 6.854J problems and blocks in shared notes (2026-11-26)
+  - prob-mit6854ps-4-q1
   # Stanford CS231n integration (2026-11-21): its problems and blocks in shared notes
   - def-leaky-relu-maxout
   - exm-network-size

@@ -33,3 +33,23 @@ Using these scaled values (and the given sizes), run $Alg_3$ and output the set 
 
 Prove that $Alg_4$ is a FPTAS for Knapsack.
 :::
+
+::: {.problem #prob-mit6854ps-5-q1 origin="external" source="mit6854ps-5-q1"}
+In the bin packing problem, we are given $n$ items, item $i$ being of length $a_i$ ($0<a_i\le1$), and we need to find the minimum number of bins of length 1 so that no bin contains items whose total length exceeds 1. This problem is NP-hard. Consider the following heuristic, called "First Fit" (FF): Consider the items in any order and place each item into the first bin that still has room for it. Let $L^*$ denote the minimum number of bins needed and let $L_{FF}$ be the number of bins obtained by using First Fit.
+
+(a) Show that $L_{FF}\le2L^*-1$ for any instance.
+
+(b) Show that $L_{FF}\le\alpha L^*+\beta$ for some $\alpha<2$. The best possible answer is $\alpha=1.7$ and $\beta=2$, but this is somewhat tricky to show (or *supposedly* tricky: you might have an easy argument).
+
+Hint to get $\alpha=1.75$ in case you don't have any other idea. Consider three types of bins in the packing obtained by FF. $B_1$ consists of the bins containing items of total length greater than $2/3$, $B_2$ consists of the bins not in $B_1$ containing one item of length greater than 0.5 (and possibly other items) and $B_3$ consists of the remaining bins. Show first that $|B_3|\le2$.
+:::
+
+::: {.problem #prob-mit6854ps-5-q2 origin="external" source="mit6854ps-5-q2"}
+Consider the following problem. Given a collection $\mathcal F$ of subsets of $\{1,\dots,n\}$ and an integer $k$, find $k$ sets $S_1,\dots,S_k$ in $\mathcal F$ such that $|S_1\cup S_2\cup\dots\cup S_k|$ is maximum. This problem is NP-hard. The greedy algorithm first chooses $S_1$ to be the largest set, and then having constructed $S_1,\dots,S_{i-1}$ chooses $S_i$ to be the set that maximizes
+$$\left|S_i\setminus\cup_{j=1}^{i-1}S_j\right|.$$
+Show that the greedy algorithm is a $1-\left(1-\frac1k\right)^k$-approximation algorithm.
+
+(Hint: You may want to show that, for any $j$, the union of the first $j$ sets given by the greedy algorithm have a cardinality at least
+$$\left(1-\left(1-\frac1k\right)^j\right)OPT,$$
+where $OPT$ denotes the maximum cardinality of the union of $k$ sets.)
+:::

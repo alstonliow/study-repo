@@ -10,8 +10,9 @@ source_prefix: ee364a
 outline_from: Stanford EE364A Convex Optimization I, CVX101 (Winter 2014) slides
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
-
+exclude:
+  # MIT 6.854J problems and blocks in shared notes (2026-11-26)
+  - prob-mit6854ps-4-q4
 chapters:
 - num: 2
   title: Convex sets
