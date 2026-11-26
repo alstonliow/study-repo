@@ -18,6 +18,10 @@ lists:
   label: Hot 100
   title: Top 100 Liked
   url: https://leetcode.com/studyplan/top-100-liked/
+- id: top150
+  label: Top 150
+  title: Top Interview 150
+  url: https://leetcode.com/studyplan/top-interview-150/
 nodes:
 - id: res-leetcode-median-of-two-sorted-arrays
   kind: problem
@@ -25,7 +29,7 @@ nodes:
   at: {web: '4'}
   url: https://leetcode.com/problems/median-of-two-sorted-arrays/
   difficulty: hard
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/binary-search]
 - id: res-leetcode-search-in-rotated-sorted-array
   kind: problem
@@ -33,7 +37,7 @@ nodes:
   at: {web: '33'}
   url: https://leetcode.com/problems/search-in-rotated-sorted-array/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/binary-search]
 - id: res-leetcode-find-first-and-last-position-of-element-in-sorted-array
   kind: problem
@@ -41,7 +45,7 @@ nodes:
   at: {web: '34'}
   url: https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/binary-search]
 - id: res-leetcode-search-insert-position
   kind: problem
@@ -49,7 +53,7 @@ nodes:
   at: {web: '35'}
   url: https://leetcode.com/problems/search-insert-position/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/binary-search]
 - id: res-leetcode-search-a-2d-matrix
   kind: problem
@@ -57,7 +61,7 @@ nodes:
   at: {web: '74'}
   url: https://leetcode.com/problems/search-a-2d-matrix/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/binary-search]
 - id: res-leetcode-find-minimum-in-rotated-sorted-array
   kind: problem
@@ -65,7 +69,7 @@ nodes:
   at: {web: '153'}
   url: https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/binary-search]
 - id: res-leetcode-binary-tree-inorder-traversal
   kind: problem
@@ -81,7 +85,7 @@ nodes:
   at: {web: '98'}
   url: https://leetcode.com/problems/validate-binary-search-tree/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-symmetric-tree
   kind: problem
@@ -89,7 +93,7 @@ nodes:
   at: {web: '101'}
   url: https://leetcode.com/problems/symmetric-tree/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-binary-tree-level-order-traversal
   kind: problem
@@ -97,7 +101,7 @@ nodes:
   at: {web: '102'}
   url: https://leetcode.com/problems/binary-tree-level-order-traversal/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees, cs/graph-algorithms/breadth-first-search]
 - id: res-leetcode-maximum-depth-of-binary-tree
   kind: problem
@@ -105,7 +109,7 @@ nodes:
   at: {web: '104'}
   url: https://leetcode.com/problems/maximum-depth-of-binary-tree/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-construct-binary-tree-from-preorder-and-inorder-traversal
   kind: problem
@@ -113,7 +117,7 @@ nodes:
   at: {web: '105'}
   url: https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-convert-sorted-array-to-binary-search-tree
   kind: problem
@@ -121,7 +125,7 @@ nodes:
   at: {web: '108'}
   url: https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-flatten-binary-tree-to-linked-list
   kind: problem
@@ -129,7 +133,7 @@ nodes:
   at: {web: '114'}
   url: https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-binary-tree-maximum-path-sum
   kind: problem
@@ -137,7 +141,7 @@ nodes:
   at: {web: '124'}
   url: https://leetcode.com/problems/binary-tree-maximum-path-sum/
   difficulty: hard
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-binary-tree-right-side-view
   kind: problem
@@ -145,7 +149,7 @@ nodes:
   at: {web: '199'}
   url: https://leetcode.com/problems/binary-tree-right-side-view/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees, cs/graph-algorithms/breadth-first-search]
 - id: res-leetcode-invert-binary-tree
   kind: problem
@@ -153,7 +157,7 @@ nodes:
   at: {web: '226'}
   url: https://leetcode.com/problems/invert-binary-tree/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-kth-smallest-element-in-a-bst
   kind: problem
@@ -161,7 +165,7 @@ nodes:
   at: {web: '230'}
   url: https://leetcode.com/problems/kth-smallest-element-in-a-bst/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees, cs/data-structures/order-statistic-trees]
 - id: res-leetcode-lowest-common-ancestor-of-a-binary-tree
   kind: problem
@@ -169,7 +173,7 @@ nodes:
   at: {web: '236'}
   url: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-trees]
 - id: res-leetcode-path-sum-iii
   kind: problem
@@ -193,7 +197,7 @@ nodes:
   at: {web: '2'}
   url: https://leetcode.com/problems/add-two-numbers/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/linked-lists]
 - id: res-leetcode-remove-nth-node-from-end-of-list
   kind: problem
@@ -201,7 +205,7 @@ nodes:
   at: {web: '19'}
   url: https://leetcode.com/problems/remove-nth-node-from-end-of-list/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/linked-lists]
 - id: res-leetcode-merge-two-sorted-lists
   kind: problem
@@ -209,7 +213,7 @@ nodes:
   at: {web: '21'}
   url: https://leetcode.com/problems/merge-two-sorted-lists/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/linked-lists, cs/sorting/merge-sort]
 - id: res-leetcode-swap-nodes-in-pairs
   kind: problem
@@ -225,7 +229,7 @@ nodes:
   at: {web: '25'}
   url: https://leetcode.com/problems/reverse-nodes-in-k-group/
   difficulty: hard
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/linked-lists]
 - id: res-leetcode-copy-list-with-random-pointer
   kind: problem
@@ -233,7 +237,7 @@ nodes:
   at: {web: '138'}
   url: https://leetcode.com/problems/copy-list-with-random-pointer/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/linked-lists]
 - id: res-leetcode-linked-list-cycle
   kind: problem
@@ -241,7 +245,7 @@ nodes:
   at: {web: '141'}
   url: https://leetcode.com/problems/linked-list-cycle/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/linked-lists]
 - id: res-leetcode-linked-list-cycle-ii
   kind: problem
@@ -289,7 +293,7 @@ nodes:
   at: {web: '146'}
   url: https://leetcode.com/problems/lru-cache/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/hashing, cs/data-structures/linked-lists]
 - id: res-leetcode-sort-list
   kind: problem
@@ -297,7 +301,7 @@ nodes:
   at: {web: '148'}
   url: https://leetcode.com/problems/sort-list/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/merge-sort, cs/data-structures/linked-lists]
 - id: res-leetcode-merge-k-sorted-lists
   kind: problem
@@ -305,7 +309,7 @@ nodes:
   at: {web: '23'}
   url: https://leetcode.com/problems/merge-k-sorted-lists/
   difficulty: hard
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-heaps, cs/sorting/merge-sort]
 - id: res-leetcode-two-sum
   kind: problem
@@ -313,7 +317,7 @@ nodes:
   at: {web: '1'}
   url: https://leetcode.com/problems/two-sum/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/hashing]
 - id: res-leetcode-group-anagrams
   kind: problem
@@ -321,7 +325,7 @@ nodes:
   at: {web: '49'}
   url: https://leetcode.com/problems/group-anagrams/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/hashing]
 - id: res-leetcode-longest-consecutive-sequence
   kind: problem
@@ -329,7 +333,7 @@ nodes:
   at: {web: '128'}
   url: https://leetcode.com/problems/longest-consecutive-sequence/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/hashing]
 - id: res-leetcode-subarray-sum-equals-k
   kind: problem
@@ -345,7 +349,7 @@ nodes:
   at: {web: '295'}
   url: https://leetcode.com/problems/find-median-from-data-stream/
   difficulty: hard
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/binary-heaps]
 - id: res-leetcode-top-k-frequent-elements
   kind: problem
@@ -361,7 +365,7 @@ nodes:
   at: {web: '215'}
   url: https://leetcode.com/problems/kth-largest-element-in-an-array/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/randomized-selection, cs/data-structures/binary-heaps]
 - id: res-leetcode-sort-colors
   kind: problem
@@ -377,7 +381,7 @@ nodes:
   at: {web: '56'}
   url: https://leetcode.com/problems/merge-intervals/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/sorting/comparison-sorting]
 - id: res-leetcode-rotting-oranges
   kind: problem
@@ -393,7 +397,7 @@ nodes:
   at: {web: '200'}
   url: https://leetcode.com/problems/number-of-islands/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/graph-algorithms/depth-first-search]
 - id: res-leetcode-course-schedule
   kind: problem
@@ -401,7 +405,7 @@ nodes:
   at: {web: '207'}
   url: https://leetcode.com/problems/course-schedule/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/graph-algorithms/topological-sort]
 - id: res-leetcode-jump-game-ii
   kind: problem
@@ -409,7 +413,7 @@ nodes:
   at: {web: '45'}
   url: https://leetcode.com/problems/jump-game-ii/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/greedy-algorithms]
 - id: res-leetcode-jump-game
   kind: problem
@@ -417,7 +421,7 @@ nodes:
   at: {web: '55'}
   url: https://leetcode.com/problems/jump-game/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/greedy-algorithms]
 - id: res-leetcode-best-time-to-buy-and-sell-stock
   kind: problem
@@ -425,7 +429,7 @@ nodes:
   at: {web: '121'}
   url: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/greedy-algorithms]
 - id: res-leetcode-partition-labels
   kind: problem
@@ -441,7 +445,7 @@ nodes:
   at: {web: '72'}
   url: https://leetcode.com/problems/edit-distance/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/lcs]
 - id: res-leetcode-longest-common-subsequence
   kind: problem
@@ -457,7 +461,7 @@ nodes:
   at: {web: '300'}
   url: https://leetcode.com/problems/longest-increasing-subsequence/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/lis]
 - id: res-leetcode-partition-equal-subset-sum
   kind: problem
@@ -481,7 +485,7 @@ nodes:
   at: {web: '322'}
   url: https://leetcode.com/problems/coin-change/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/rod-cutting]
 - id: res-leetcode-longest-palindromic-substring
   kind: problem
@@ -489,7 +493,7 @@ nodes:
   at: {web: '5'}
   url: https://leetcode.com/problems/longest-palindromic-substring/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/longest-palindromic-subsequence]
 - id: res-leetcode-longest-valid-parentheses
   kind: problem
@@ -505,7 +509,7 @@ nodes:
   at: {web: '53'}
   url: https://leetcode.com/problems/maximum-subarray/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/subproblem-design]
 - id: res-leetcode-unique-paths
   kind: problem
@@ -521,7 +525,7 @@ nodes:
   at: {web: '64'}
   url: https://leetcode.com/problems/minimum-path-sum/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/subproblem-design]
 - id: res-leetcode-climbing-stairs
   kind: problem
@@ -529,7 +533,7 @@ nodes:
   at: {web: '70'}
   url: https://leetcode.com/problems/climbing-stairs/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/subproblem-design]
 - id: res-leetcode-pascals-triangle
   kind: problem
@@ -545,7 +549,7 @@ nodes:
   at: {web: '139'}
   url: https://leetcode.com/problems/word-break/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/subproblem-design]
 - id: res-leetcode-maximum-product-subarray
   kind: problem
@@ -561,7 +565,7 @@ nodes:
   at: {web: '198'}
   url: https://leetcode.com/problems/house-robber/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-design/subproblem-design]
 - id: res-leetcode-single-number
   kind: problem
@@ -569,7 +573,7 @@ nodes:
   at: {web: '136'}
   url: https://leetcode.com/problems/single-number/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-representation/bits-and-bit-operations]
 - id: res-leetcode-word-ladder
   kind: problem
@@ -577,6 +581,7 @@ nodes:
   at: {web: '127'}
   url: https://leetcode.com/problems/word-ladder/
   difficulty: hard
+  lists: [top150]
   practises: [cs/graph-algorithms/breadth-first-search]
 - id: res-leetcode-shortest-path-in-binary-matrix
   kind: problem
@@ -605,6 +610,7 @@ nodes:
   at: {web: '133'}
   url: https://leetcode.com/problems/clone-graph/
   difficulty: medium
+  lists: [top150]
   practises: [cs/graph-algorithms/depth-first-search]
 - id: res-leetcode-max-area-of-island
   kind: problem
@@ -633,6 +639,7 @@ nodes:
   at: {web: '210'}
   url: https://leetcode.com/problems/course-schedule-ii/
   difficulty: medium
+  lists: [top150]
   practises: [cs/graph-algorithms/topological-sort]
 - id: res-leetcode-find-eventual-safe-states
   kind: problem
@@ -717,6 +724,7 @@ nodes:
   at: {web: '28'}
   url: https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/
   difficulty: easy
+  lists: [top150]
   practises: [cs/algorithm-topics/string-matching, cs/algorithm-topics/knuth-morris-pratt]
 - id: res-leetcode-repeated-string-match
   kind: problem
@@ -773,7 +781,7 @@ nodes:
   at: {web: '17'}
   url: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/backtracking]
 - id: res-leetcode-generate-parentheses
   kind: problem
@@ -781,7 +789,7 @@ nodes:
   at: {web: '22'}
   url: https://leetcode.com/problems/generate-parentheses/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/backtracking]
 - id: res-leetcode-combination-sum
   kind: problem
@@ -789,7 +797,7 @@ nodes:
   at: {web: '39'}
   url: https://leetcode.com/problems/combination-sum/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/backtracking]
 - id: res-leetcode-permutations
   kind: problem
@@ -797,7 +805,7 @@ nodes:
   at: {web: '46'}
   url: https://leetcode.com/problems/permutations/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/backtracking]
 - id: res-leetcode-n-queens
   kind: problem
@@ -821,7 +829,7 @@ nodes:
   at: {web: '79'}
   url: https://leetcode.com/problems/word-search/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/backtracking]
 - id: res-leetcode-palindrome-partitioning
   kind: problem
@@ -837,7 +845,7 @@ nodes:
   at: {web: '20'}
   url: https://leetcode.com/problems/valid-parentheses/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/stacks-and-queues]
 - id: res-leetcode-largest-rectangle-in-histogram
   kind: problem
@@ -853,7 +861,7 @@ nodes:
   at: {web: '155'}
   url: https://leetcode.com/problems/min-stack/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/stacks-and-queues]
 - id: res-leetcode-decode-string
   kind: problem
@@ -885,7 +893,7 @@ nodes:
   at: {web: '11'}
   url: https://leetcode.com/problems/container-with-most-water/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/two-pointers]
 - id: res-leetcode-3sum
   kind: problem
@@ -893,7 +901,7 @@ nodes:
   at: {web: '15'}
   url: https://leetcode.com/problems/3sum/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/two-pointers]
 - id: res-leetcode-trapping-rain-water
   kind: problem
@@ -901,7 +909,7 @@ nodes:
   at: {web: '42'}
   url: https://leetcode.com/problems/trapping-rain-water/
   difficulty: hard
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/two-pointers, cs/data-structures/stacks-and-queues]
 - id: res-leetcode-move-zeroes
   kind: problem
@@ -917,7 +925,7 @@ nodes:
   at: {web: '3'}
   url: https://leetcode.com/problems/longest-substring-without-repeating-characters/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/sliding-window]
 - id: res-leetcode-minimum-window-substring
   kind: problem
@@ -925,7 +933,7 @@ nodes:
   at: {web: '76'}
   url: https://leetcode.com/problems/minimum-window-substring/
   difficulty: hard
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/sliding-window]
 - id: res-leetcode-find-all-anagrams-in-a-string
   kind: problem
@@ -941,7 +949,7 @@ nodes:
   at: {web: '208'}
   url: https://leetcode.com/problems/implement-trie-prefix-tree/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/data-structures/tries]
 - id: res-leetcode-next-permutation
   kind: problem
@@ -965,7 +973,7 @@ nodes:
   at: {web: '169'}
   url: https://leetcode.com/problems/majority-element/
   difficulty: easy
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/array-techniques]
 - id: res-leetcode-rotate-array
   kind: problem
@@ -973,7 +981,7 @@ nodes:
   at: {web: '189'}
   url: https://leetcode.com/problems/rotate-array/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/array-techniques]
 - id: res-leetcode-rotate-image
   kind: problem
@@ -981,7 +989,7 @@ nodes:
   at: {web: '48'}
   url: https://leetcode.com/problems/rotate-image/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/array-techniques]
 - id: res-leetcode-spiral-matrix
   kind: problem
@@ -989,7 +997,7 @@ nodes:
   at: {web: '54'}
   url: https://leetcode.com/problems/spiral-matrix/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/array-techniques]
 - id: res-leetcode-set-matrix-zeroes
   kind: problem
@@ -997,7 +1005,7 @@ nodes:
   at: {web: '73'}
   url: https://leetcode.com/problems/set-matrix-zeroes/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/array-techniques]
 - id: res-leetcode-search-a-2d-matrix-ii
   kind: problem
@@ -1013,5 +1021,807 @@ nodes:
   at: {web: '238'}
   url: https://leetcode.com/problems/product-of-array-except-self/
   difficulty: medium
-  lists: [hot100]
+  lists: [hot100, top150]
   practises: [cs/algorithm-patterns/prefix-sums]
+- id: res-leetcode-number-of-provinces
+  kind: problem
+  title: "Number of Provinces"
+  at: {web: '547'}
+  url: https://leetcode.com/problems/number-of-provinces/
+  difficulty: medium
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-leetcode-redundant-connection
+  kind: problem
+  title: "Redundant Connection"
+  at: {web: '684'}
+  url: https://leetcode.com/problems/redundant-connection/
+  difficulty: medium
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-leetcode-satisfiability-of-equality-equations
+  kind: problem
+  title: "Satisfiability of Equality Equations"
+  at: {web: '990'}
+  url: https://leetcode.com/problems/satisfiability-of-equality-equations/
+  difficulty: medium
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-leetcode-accounts-merge
+  kind: problem
+  title: "Accounts Merge"
+  at: {web: '721'}
+  url: https://leetcode.com/problems/accounts-merge/
+  difficulty: medium
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-leetcode-smallest-string-with-swaps
+  kind: problem
+  title: "Smallest String With Swaps"
+  at: {web: '1202'}
+  url: https://leetcode.com/problems/smallest-string-with-swaps/
+  difficulty: medium
+  practises: [cs/advanced-data-structures/union-find]
+- id: res-leetcode-min-cost-to-connect-all-points
+  kind: problem
+  title: "Min Cost to Connect All Points"
+  at: {web: '1584'}
+  url: https://leetcode.com/problems/min-cost-to-connect-all-points/
+  difficulty: medium
+  practises: [cs/graph-optimization/minimum-spanning-trees, cs/graph-optimization/kruskal, cs/graph-optimization/prim]
+- id: res-leetcode-find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree
+  kind: problem
+  title: "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree"
+  at: {web: '1489'}
+  url: https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/
+  difficulty: hard
+  practises: [cs/graph-optimization/kruskal, cs/graph-optimization/minimum-spanning-trees]
+- id: res-leetcode-target-sum
+  kind: problem
+  title: "Target Sum"
+  at: {web: '494'}
+  url: https://leetcode.com/problems/target-sum/
+  difficulty: medium
+  practises: [cs/algorithm-design/knapsack]
+- id: res-leetcode-ones-and-zeroes
+  kind: problem
+  title: "Ones and Zeroes"
+  at: {web: '474'}
+  url: https://leetcode.com/problems/ones-and-zeroes/
+  difficulty: medium
+  practises: [cs/algorithm-design/knapsack]
+- id: res-leetcode-coin-change-ii
+  kind: problem
+  title: "Coin Change II"
+  at: {web: '518'}
+  url: https://leetcode.com/problems/coin-change-ii/
+  difficulty: medium
+  practises: [cs/algorithm-design/knapsack]
+- id: res-leetcode-last-stone-weight-ii
+  kind: problem
+  title: "Last Stone Weight II"
+  at: {web: '1049'}
+  url: https://leetcode.com/problems/last-stone-weight-ii/
+  difficulty: medium
+  practises: [cs/algorithm-design/knapsack]
+- id: res-leetcode-maximum-profit-in-job-scheduling
+  kind: problem
+  title: "Maximum Profit in Job Scheduling"
+  at: {web: '1235'}
+  url: https://leetcode.com/problems/maximum-profit-in-job-scheduling/
+  difficulty: hard
+  practises: [cs/algorithm-design/weighted-interval-scheduling]
+- id: res-leetcode-maximum-earnings-from-taxi
+  kind: problem
+  title: "Maximum Earnings From Taxi"
+  at: {web: '2008'}
+  url: https://leetcode.com/problems/maximum-earnings-from-taxi/
+  difficulty: medium
+  practises: [cs/algorithm-design/weighted-interval-scheduling]
+- id: res-leetcode-burst-balloons
+  kind: problem
+  title: "Burst Balloons"
+  at: {web: '312'}
+  url: https://leetcode.com/problems/burst-balloons/
+  difficulty: hard
+  practises: [cs/algorithm-design/interval-subproblems]
+- id: res-leetcode-minimum-cost-tree-from-leaf-values
+  kind: problem
+  title: "Minimum Cost Tree From Leaf Values"
+  at: {web: '1130'}
+  url: https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
+  difficulty: medium
+  practises: [cs/algorithm-design/interval-subproblems]
+- id: res-leetcode-minimum-score-triangulation-of-polygon
+  kind: problem
+  title: "Minimum Score Triangulation of Polygon"
+  at: {web: '1039'}
+  url: https://leetcode.com/problems/minimum-score-triangulation-of-polygon/
+  difficulty: medium
+  practises: [cs/algorithm-design/interval-subproblems]
+- id: res-leetcode-guess-number-higher-or-lower-ii
+  kind: problem
+  title: "Guess Number Higher or Lower II"
+  at: {web: '375'}
+  url: https://leetcode.com/problems/guess-number-higher-or-lower-ii/
+  difficulty: medium
+  practises: [cs/algorithm-design/interval-subproblems]
+- id: res-leetcode-implement-queue-using-stacks
+  kind: problem
+  title: "Implement Queue using Stacks"
+  at: {web: '232'}
+  url: https://leetcode.com/problems/implement-queue-using-stacks/
+  difficulty: easy
+  practises: [cs/algorithm-design/amortized-analysis]
+- id: res-leetcode-height-checker
+  kind: problem
+  title: "Height Checker"
+  at: {web: '1051'}
+  url: https://leetcode.com/problems/height-checker/
+  difficulty: easy
+  practises: [cs/sorting/counting-sort]
+- id: res-leetcode-relative-sort-array
+  kind: problem
+  title: "Relative Sort Array"
+  at: {web: '1122'}
+  url: https://leetcode.com/problems/relative-sort-array/
+  difficulty: easy
+  practises: [cs/sorting/counting-sort]
+- id: res-leetcode-maximum-gap
+  kind: problem
+  title: "Maximum Gap"
+  at: {web: '164'}
+  url: https://leetcode.com/problems/maximum-gap/
+  difficulty: medium
+  practises: [cs/sorting/radix-sort]
+- id: res-leetcode-sort-an-array
+  kind: problem
+  title: "Sort an Array"
+  at: {web: '912'}
+  url: https://leetcode.com/problems/sort-an-array/
+  difficulty: medium
+  practises: [cs/sorting/heap-sort]
+- id: res-leetcode-k-closest-points-to-origin
+  kind: problem
+  title: "K Closest Points to Origin"
+  at: {web: '973'}
+  url: https://leetcode.com/problems/k-closest-points-to-origin/
+  difficulty: medium
+  practises: [cs/sorting/selection, cs/sorting/randomized-selection]
+- id: res-leetcode-different-ways-to-add-parentheses
+  kind: problem
+  title: "Different Ways to Add Parentheses"
+  at: {web: '241'}
+  url: https://leetcode.com/problems/different-ways-to-add-parentheses/
+  difficulty: medium
+  practises: [cs/algorithms/divide-and-conquer]
+- id: res-leetcode-balanced-binary-tree
+  kind: problem
+  title: "Balanced Binary Tree"
+  at: {web: '110'}
+  url: https://leetcode.com/problems/balanced-binary-tree/
+  difficulty: easy
+  practises: [cs/data-structures/avl-trees]
+- id: res-leetcode-erect-the-fence
+  kind: problem
+  title: "Erect the Fence"
+  at: {web: '587'}
+  url: https://leetcode.com/problems/erect-the-fence/
+  difficulty: hard
+  practises: [cs/algorithm-topics/convex-hull]
+- id: res-leetcode-merge-sorted-array
+  kind: problem
+  title: "Merge Sorted Array"
+  at: {web: '88'}
+  url: https://leetcode.com/problems/merge-sorted-array/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-remove-element
+  kind: problem
+  title: "Remove Element"
+  at: {web: '27'}
+  url: https://leetcode.com/problems/remove-element/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-remove-duplicates-from-sorted-array
+  kind: problem
+  title: "Remove Duplicates from Sorted Array"
+  at: {web: '26'}
+  url: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-remove-duplicates-from-sorted-array-ii
+  kind: problem
+  title: "Remove Duplicates from Sorted Array II"
+  at: {web: '80'}
+  url: https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-best-time-to-buy-and-sell-stock-ii
+  kind: problem
+  title: "Best Time to Buy and Sell Stock II"
+  at: {web: '122'}
+  url: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/greedy-algorithms]
+- id: res-leetcode-h-index
+  kind: problem
+  title: "H-Index"
+  at: {web: '274'}
+  url: https://leetcode.com/problems/h-index/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/sorting/counting-sort]
+- id: res-leetcode-insert-delete-getrandom-o1
+  kind: problem
+  title: "Insert Delete GetRandom O(1)"
+  at: {web: '380'}
+  url: https://leetcode.com/problems/insert-delete-getrandom-o1/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/dynamic-arrays, cs/data-structures/hashing]
+- id: res-leetcode-gas-station
+  kind: problem
+  title: "Gas Station"
+  at: {web: '134'}
+  url: https://leetcode.com/problems/gas-station/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/greedy-algorithms]
+- id: res-leetcode-candy
+  kind: problem
+  title: "Candy"
+  at: {web: '135'}
+  url: https://leetcode.com/problems/candy/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/algorithm-design/greedy-algorithms]
+- id: res-leetcode-roman-to-integer
+  kind: problem
+  title: "Roman to Integer"
+  at: {web: '13'}
+  url: https://leetcode.com/problems/roman-to-integer/
+  difficulty: easy
+  lists: [top150]
+- id: res-leetcode-integer-to-roman
+  kind: problem
+  title: "Integer to Roman"
+  at: {web: '12'}
+  url: https://leetcode.com/problems/integer-to-roman/
+  difficulty: medium
+  lists: [top150]
+- id: res-leetcode-length-of-last-word
+  kind: problem
+  title: "Length of Last Word"
+  at: {web: '58'}
+  url: https://leetcode.com/problems/length-of-last-word/
+  difficulty: easy
+  lists: [top150]
+- id: res-leetcode-longest-common-prefix
+  kind: problem
+  title: "Longest Common Prefix"
+  at: {web: '14'}
+  url: https://leetcode.com/problems/longest-common-prefix/
+  difficulty: easy
+  lists: [top150]
+- id: res-leetcode-reverse-words-in-a-string
+  kind: problem
+  title: "Reverse Words in a String"
+  at: {web: '151'}
+  url: https://leetcode.com/problems/reverse-words-in-a-string/
+  difficulty: medium
+  lists: [top150]
+- id: res-leetcode-zigzag-conversion
+  kind: problem
+  title: "Zigzag Conversion"
+  at: {web: '6'}
+  url: https://leetcode.com/problems/zigzag-conversion/
+  difficulty: medium
+  lists: [top150]
+- id: res-leetcode-text-justification
+  kind: problem
+  title: "Text Justification"
+  at: {web: '68'}
+  url: https://leetcode.com/problems/text-justification/
+  difficulty: hard
+  lists: [top150]
+- id: res-leetcode-valid-palindrome
+  kind: problem
+  title: "Valid Palindrome"
+  at: {web: '125'}
+  url: https://leetcode.com/problems/valid-palindrome/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-is-subsequence
+  kind: problem
+  title: "Is Subsequence"
+  at: {web: '392'}
+  url: https://leetcode.com/problems/is-subsequence/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-two-sum-ii-input-array-is-sorted
+  kind: problem
+  title: "Two Sum II - Input Array Is Sorted"
+  at: {web: '167'}
+  url: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-minimum-size-subarray-sum
+  kind: problem
+  title: "Minimum Size Subarray Sum"
+  at: {web: '209'}
+  url: https://leetcode.com/problems/minimum-size-subarray-sum/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-patterns/sliding-window]
+- id: res-leetcode-substring-with-concatenation-of-all-words
+  kind: problem
+  title: "Substring with Concatenation of All Words"
+  at: {web: '30'}
+  url: https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/algorithm-patterns/sliding-window, cs/data-structures/hashing]
+- id: res-leetcode-valid-sudoku
+  kind: problem
+  title: "Valid Sudoku"
+  at: {web: '36'}
+  url: https://leetcode.com/problems/valid-sudoku/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-game-of-life
+  kind: problem
+  title: "Game of Life"
+  at: {web: '289'}
+  url: https://leetcode.com/problems/game-of-life/
+  difficulty: medium
+  lists: [top150]
+- id: res-leetcode-ransom-note
+  kind: problem
+  title: "Ransom Note"
+  at: {web: '383'}
+  url: https://leetcode.com/problems/ransom-note/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-isomorphic-strings
+  kind: problem
+  title: "Isomorphic Strings"
+  at: {web: '205'}
+  url: https://leetcode.com/problems/isomorphic-strings/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-word-pattern
+  kind: problem
+  title: "Word Pattern"
+  at: {web: '290'}
+  url: https://leetcode.com/problems/word-pattern/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-valid-anagram
+  kind: problem
+  title: "Valid Anagram"
+  at: {web: '242'}
+  url: https://leetcode.com/problems/valid-anagram/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-happy-number
+  kind: problem
+  title: "Happy Number"
+  at: {web: '202'}
+  url: https://leetcode.com/problems/happy-number/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-contains-duplicate-ii
+  kind: problem
+  title: "Contains Duplicate II"
+  at: {web: '219'}
+  url: https://leetcode.com/problems/contains-duplicate-ii/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-summary-ranges
+  kind: problem
+  title: "Summary Ranges"
+  at: {web: '228'}
+  url: https://leetcode.com/problems/summary-ranges/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-insert-interval
+  kind: problem
+  title: "Insert Interval"
+  at: {web: '57'}
+  url: https://leetcode.com/problems/insert-interval/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-minimum-number-of-arrows-to-burst-balloons
+  kind: problem
+  title: "Minimum Number of Arrows to Burst Balloons"
+  at: {web: '452'}
+  url: https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/greedy-algorithms]
+- id: res-leetcode-simplify-path
+  kind: problem
+  title: "Simplify Path"
+  at: {web: '71'}
+  url: https://leetcode.com/problems/simplify-path/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-evaluate-reverse-polish-notation
+  kind: problem
+  title: "Evaluate Reverse Polish Notation"
+  at: {web: '150'}
+  url: https://leetcode.com/problems/evaluate-reverse-polish-notation/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-basic-calculator
+  kind: problem
+  title: "Basic Calculator"
+  at: {web: '224'}
+  url: https://leetcode.com/problems/basic-calculator/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-reverse-linked-list-ii
+  kind: problem
+  title: "Reverse Linked List II"
+  at: {web: '92'}
+  url: https://leetcode.com/problems/reverse-linked-list-ii/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/linked-lists]
+- id: res-leetcode-remove-duplicates-from-sorted-list-ii
+  kind: problem
+  title: "Remove Duplicates from Sorted List II"
+  at: {web: '82'}
+  url: https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/linked-lists]
+- id: res-leetcode-rotate-list
+  kind: problem
+  title: "Rotate List"
+  at: {web: '61'}
+  url: https://leetcode.com/problems/rotate-list/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/linked-lists]
+- id: res-leetcode-partition-list
+  kind: problem
+  title: "Partition List"
+  at: {web: '86'}
+  url: https://leetcode.com/problems/partition-list/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/linked-lists]
+- id: res-leetcode-same-tree
+  kind: problem
+  title: "Same Tree"
+  at: {web: '100'}
+  url: https://leetcode.com/problems/same-tree/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees]
+- id: res-leetcode-construct-binary-tree-from-inorder-and-postorder-traversal
+  kind: problem
+  title: "Construct Binary Tree from Inorder and Postorder Traversal"
+  at: {web: '106'}
+  url: https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees]
+- id: res-leetcode-populating-next-right-pointers-in-each-node-ii
+  kind: problem
+  title: "Populating Next Right Pointers in Each Node II"
+  at: {web: '117'}
+  url: https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees]
+- id: res-leetcode-path-sum
+  kind: problem
+  title: "Path Sum"
+  at: {web: '112'}
+  url: https://leetcode.com/problems/path-sum/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees]
+- id: res-leetcode-sum-root-to-leaf-numbers
+  kind: problem
+  title: "Sum Root to Leaf Numbers"
+  at: {web: '129'}
+  url: https://leetcode.com/problems/sum-root-to-leaf-numbers/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees]
+- id: res-leetcode-binary-search-tree-iterator
+  kind: problem
+  title: "Binary Search Tree Iterator"
+  at: {web: '173'}
+  url: https://leetcode.com/problems/binary-search-tree-iterator/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees, cs/data-structures/stacks-and-queues]
+- id: res-leetcode-count-complete-tree-nodes
+  kind: problem
+  title: "Count Complete Tree Nodes"
+  at: {web: '222'}
+  url: https://leetcode.com/problems/count-complete-tree-nodes/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees]
+- id: res-leetcode-average-of-levels-in-binary-tree
+  kind: problem
+  title: "Average of Levels in Binary Tree"
+  at: {web: '637'}
+  url: https://leetcode.com/problems/average-of-levels-in-binary-tree/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/graph-algorithms/breadth-first-search, cs/data-structures/binary-trees]
+- id: res-leetcode-binary-tree-zigzag-level-order-traversal
+  kind: problem
+  title: "Binary Tree Zigzag Level Order Traversal"
+  at: {web: '103'}
+  url: https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/graph-algorithms/breadth-first-search]
+- id: res-leetcode-minimum-absolute-difference-in-bst
+  kind: problem
+  title: "Minimum Absolute Difference in BST"
+  at: {web: '530'}
+  url: https://leetcode.com/problems/minimum-absolute-difference-in-bst/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-structures/binary-trees]
+- id: res-leetcode-surrounded-regions
+  kind: problem
+  title: "Surrounded Regions"
+  at: {web: '130'}
+  url: https://leetcode.com/problems/surrounded-regions/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/graph-algorithms/depth-first-search]
+- id: res-leetcode-evaluate-division
+  kind: problem
+  title: "Evaluate Division"
+  at: {web: '399'}
+  url: https://leetcode.com/problems/evaluate-division/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/graph-algorithms/depth-first-search, cs/advanced-data-structures/union-find]
+- id: res-leetcode-snakes-and-ladders
+  kind: problem
+  title: "Snakes and Ladders"
+  at: {web: '909'}
+  url: https://leetcode.com/problems/snakes-and-ladders/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/graph-algorithms/breadth-first-search]
+- id: res-leetcode-minimum-genetic-mutation
+  kind: problem
+  title: "Minimum Genetic Mutation"
+  at: {web: '433'}
+  url: https://leetcode.com/problems/minimum-genetic-mutation/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/graph-algorithms/breadth-first-search]
+- id: res-leetcode-design-add-and-search-words-data-structure
+  kind: problem
+  title: "Design Add and Search Words Data Structure"
+  at: {web: '211'}
+  url: https://leetcode.com/problems/design-add-and-search-words-data-structure/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/tries]
+- id: res-leetcode-word-search-ii
+  kind: problem
+  title: "Word Search II"
+  at: {web: '212'}
+  url: https://leetcode.com/problems/word-search-ii/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/data-structures/tries, cs/algorithm-patterns/backtracking]
+- id: res-leetcode-combinations
+  kind: problem
+  title: "Combinations"
+  at: {web: '77'}
+  url: https://leetcode.com/problems/combinations/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-n-queens-ii
+  kind: problem
+  title: "N-Queens II"
+  at: {web: '52'}
+  url: https://leetcode.com/problems/n-queens-ii/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-construct-quad-tree
+  kind: problem
+  title: "Construct Quad Tree"
+  at: {web: '427'}
+  url: https://leetcode.com/problems/construct-quad-tree/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithms/divide-and-conquer]
+- id: res-leetcode-maximum-sum-circular-subarray
+  kind: problem
+  title: "Maximum Sum Circular Subarray"
+  at: {web: '918'}
+  url: https://leetcode.com/problems/maximum-sum-circular-subarray/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/subproblem-design]
+- id: res-leetcode-find-peak-element
+  kind: problem
+  title: "Find Peak Element"
+  at: {web: '162'}
+  url: https://leetcode.com/problems/find-peak-element/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/sorting/binary-search]
+- id: res-leetcode-ipo
+  kind: problem
+  title: "IPO"
+  at: {web: '502'}
+  url: https://leetcode.com/problems/ipo/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/algorithm-design/greedy-algorithms, cs/data-structures/binary-heaps]
+- id: res-leetcode-find-k-pairs-with-smallest-sums
+  kind: problem
+  title: "Find K Pairs with Smallest Sums"
+  at: {web: '373'}
+  url: https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-structures/binary-heaps]
+- id: res-leetcode-add-binary
+  kind: problem
+  title: "Add Binary"
+  at: {web: '67'}
+  url: https://leetcode.com/problems/add-binary/
+  difficulty: easy
+  lists: [top150]
+- id: res-leetcode-reverse-bits
+  kind: problem
+  title: "Reverse Bits"
+  at: {web: '190'}
+  url: https://leetcode.com/problems/reverse-bits/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-representation/bits-and-bit-operations]
+- id: res-leetcode-number-of-1-bits
+  kind: problem
+  title: "Number of 1 Bits"
+  at: {web: '191'}
+  url: https://leetcode.com/problems/number-of-1-bits/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/data-representation/bits-and-bit-operations]
+- id: res-leetcode-single-number-ii
+  kind: problem
+  title: "Single Number II"
+  at: {web: '137'}
+  url: https://leetcode.com/problems/single-number-ii/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-representation/bits-and-bit-operations]
+- id: res-leetcode-bitwise-and-of-numbers-range
+  kind: problem
+  title: "Bitwise AND of Numbers Range"
+  at: {web: '201'}
+  url: https://leetcode.com/problems/bitwise-and-of-numbers-range/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/data-representation/bits-and-bit-operations]
+- id: res-leetcode-palindrome-number
+  kind: problem
+  title: "Palindrome Number"
+  at: {web: '9'}
+  url: https://leetcode.com/problems/palindrome-number/
+  difficulty: easy
+  lists: [top150]
+- id: res-leetcode-plus-one
+  kind: problem
+  title: "Plus One"
+  at: {web: '66'}
+  url: https://leetcode.com/problems/plus-one/
+  difficulty: easy
+  lists: [top150]
+- id: res-leetcode-factorial-trailing-zeroes
+  kind: problem
+  title: "Factorial Trailing Zeroes"
+  at: {web: '172'}
+  url: https://leetcode.com/problems/factorial-trailing-zeroes/
+  difficulty: medium
+  lists: [top150]
+- id: res-leetcode-sqrtx
+  kind: problem
+  title: "Sqrt(x)"
+  at: {web: '69'}
+  url: https://leetcode.com/problems/sqrtx/
+  difficulty: easy
+  lists: [top150]
+  practises: [cs/sorting/binary-search]
+- id: res-leetcode-powx-n
+  kind: problem
+  title: "Pow(x, n)"
+  at: {web: '50'}
+  url: https://leetcode.com/problems/powx-n/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithms/divide-and-conquer]
+- id: res-leetcode-max-points-on-a-line
+  kind: problem
+  title: "Max Points on a Line"
+  at: {web: '149'}
+  url: https://leetcode.com/problems/max-points-on-a-line/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/data-structures/hashing]
+- id: res-leetcode-triangle
+  kind: problem
+  title: "Triangle"
+  at: {web: '120'}
+  url: https://leetcode.com/problems/triangle/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/subproblem-design]
+- id: res-leetcode-unique-paths-ii
+  kind: problem
+  title: "Unique Paths II"
+  at: {web: '63'}
+  url: https://leetcode.com/problems/unique-paths-ii/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/subproblem-design]
+- id: res-leetcode-interleaving-string
+  kind: problem
+  title: "Interleaving String"
+  at: {web: '97'}
+  url: https://leetcode.com/problems/interleaving-string/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/subproblem-design]
+- id: res-leetcode-best-time-to-buy-and-sell-stock-iii
+  kind: problem
+  title: "Best Time to Buy and Sell Stock III"
+  at: {web: '123'}
+  url: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/algorithm-design/subproblem-design]
+- id: res-leetcode-best-time-to-buy-and-sell-stock-iv
+  kind: problem
+  title: "Best Time to Buy and Sell Stock IV"
+  at: {web: '188'}
+  url: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+  difficulty: hard
+  lists: [top150]
+  practises: [cs/algorithm-design/subproblem-design]
+- id: res-leetcode-maximal-square
+  kind: problem
+  title: "Maximal Square"
+  at: {web: '221'}
+  url: https://leetcode.com/problems/maximal-square/
+  difficulty: medium
+  lists: [top150]
+  practises: [cs/algorithm-design/subproblem-design]
