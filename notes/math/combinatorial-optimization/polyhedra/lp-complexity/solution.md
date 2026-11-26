@@ -2,7 +2,7 @@
      no official solutions were available. Owner to review, then remove status. -->
 
 ::: {.solution for="prob-mit6854ps-4-q2" status="draft"}
-Assume every row of $A$ has a positive entry (otherwise the primal is infeasible), and let $\mathrm{OPT}$ be the common optimal value (both programs are feasible, @thm-lp-strong-duality). Write $\sigma=\sum_js_j$, which grows at rate $1$, so $\sigma$ is the elapsed time.
+Assume every row of $A$ has a positive entry (otherwise the primal is infeasible), and let $\mathrm{OPT}$ be the common optimal value (both programs are feasible, @thm-strong-duality). Write $\sigma=\sum_js_j$, which grows at rate $1$, so $\sigma$ is the elapsed time.
 
 *1.* Once $\alpha>0$: $\sum_ja_{ij}x_j=\sum_ja_{ij}s_j/\alpha\ge1$, so $x\ge0$ is primal feasible. $\sum_ia_{ij}y_i=d_j/D\le1$ and $y\ge0$, so $y$ is dual feasible, of value $\sum_it_i/D$. By weak duality every such value is at most $\mathrm{OPT}$, hence so is $LB$, the largest value seen so far.
 

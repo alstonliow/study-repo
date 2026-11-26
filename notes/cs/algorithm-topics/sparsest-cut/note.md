@@ -111,7 +111,7 @@ Since every metric embeds in $\ell_\infty$, the two formulas differ only in the 
 
 1. *$\beta^*$.* A cut metric $\delta_S$ gives $\Phi(\delta_S)=u(\delta(S))/D(S)$, so the minimum over $\ell_1$ metrics is at most $\beta^*$. Conversely an $\ell_1$ metric is $\ell=\sum_S\lambda_S\delta_S$ with $\lambda\ge0$, and $\Phi(\ell)$ is a ratio of sums $\sum\lambda_S\,u(\delta(S))$ over $\sum\lambda_SD(S)$, which is at least the smallest of the ratios, $\beta^*$.
 
-2. *$\alpha^*$.* Write the concurrent flow with path variables. Its LP dual has a length $\ell_e\ge0$ on each edge and a value $z_i$ for each commodity, minimising $\sum_eu_e\ell_e$ subject to $\sum_id_iz_i\ge1$ and every $s_i$–$t_i$ path having length at least $z_i$. At an optimum $z_i$ is the shortest-path distance $\ell(s_i,t_i)$ for the lengths $\ell_e$, which is a metric; scaling removes the normalisation $\sum_id_i\ell(s_i,t_i)=1$. By LP duality (@thm-lp-strong-duality) the optimal values agree.
+2. *$\alpha^*$.* Write the concurrent flow with path variables. Its LP dual has a length $\ell_e\ge0$ on each edge and a value $z_i$ for each commodity, minimising $\sum_eu_e\ell_e$ subject to $\sum_id_iz_i\ge1$ and every $s_i$–$t_i$ path having length at least $z_i$. At an optimum $z_i$ is the shortest-path distance $\ell(s_i,t_i)$ for the lengths $\ell_e$, which is a metric; scaling removes the normalisation $\sum_id_i\ell(s_i,t_i)=1$. By LP duality (@thm-strong-duality) the optimal values agree.
 
 3. Shortest-path distances never exceed the edge lengths, and replacing $\ell_e$ by the distance $\ell(x,y)$ can only lower the numerator, so the minimum over all metrics equals the minimum over shortest-path metrics.
 

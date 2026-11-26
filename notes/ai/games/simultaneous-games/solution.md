@@ -20,5 +20,5 @@ and symmetrically Bob solves
 $$\text{(B)}\quad\max\Big\{u:\sum_ja_{ij}y_j\ge u\ \forall i,\ \sum_jy_j=1,\ y\ge0\Big\}.$$
 Both are linear programs of polynomial size, solvable in polynomial time (@thm-lp-polynomial).
 
-*3.* Write (A) with the constraints $t-\sum_ia_{ij}x_i\ge0$ (multipliers $y_j\ge0$) and $\sum_ix_i=1$ (free multiplier $u$). The dual has the constraints: from the free variable $t$, $\sum_jy_j=1$; from $x_i\ge0$, $u-\sum_ja_{ij}y_j\le0$; objective $\max u$. That is exactly (B). Both are feasible (any distributions with $t,u$ large or small enough), so by strong duality (@thm-lp-strong-duality) their optimal values are equal: $\min_x\max_y=\max_y\min_x$.
+*3.* Write (A) with the constraints $t-\sum_ia_{ij}x_i\ge0$ (multipliers $y_j\ge0$) and $\sum_ix_i=1$ (free multiplier $u$). The dual has the constraints: from the free variable $t$, $\sum_jy_j=1$; from $x_i\ge0$, $u-\sum_ja_{ij}y_j\le0$; objective $\max u$. That is exactly (B). Both are feasible (any distributions with $t,u$ large or small enough), so by strong duality (@thm-strong-duality) their optimal values are equal: $\min_x\max_y=\max_y\min_x$.
 :::

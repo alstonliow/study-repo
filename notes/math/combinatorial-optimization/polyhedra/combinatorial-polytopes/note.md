@@ -15,7 +15,7 @@ For a proposed $P=\{x:Ax\le b\}$, the inclusion $\operatorname{conv}(X)\subseteq
 
 1. *Algorithmic (duality).* For every cost $c$,
 $$\max_{x\in X}c^{\mathsf T}x=\max_{x\in\operatorname{conv}(X)}c^{\mathsf T}x\le\max_{x\in P}c^{\mathsf T}x=\min\{b^{\mathsf T}y:A^{\mathsf T}y=c,\ y\ge0\}$$
-by strong duality (@thm-lp-strong-duality). Exhibit, for each $c$, a point $x\in X$ and a dual feasible $y$ with $c^{\mathsf T}x=b^{\mathsf T}y$; then equality holds throughout for every $c$, which forces $P=\operatorname{conv}(X)$ (a point of $P$ outside $\operatorname{conv}(X)$ would be separated from it by some $c$). The Hungarian method (@sec-math-combinatorial-optimization-matching-hungarian-method) is an example.
+by strong duality (@thm-strong-duality). Exhibit, for each $c$, a point $x\in X$ and a dual feasible $y$ with $c^{\mathsf T}x=b^{\mathsf T}y$; then equality holds throughout for every $c$, which forces $P=\operatorname{conv}(X)$ (a point of $P$ outside $\operatorname{conv}(X)$ would be separated from it by some $c$). The Hungarian method (@sec-math-combinatorial-optimization-matching-hungarian-method) is an example.
 
 2. *Vertices.* Show that $P$ is bounded and that each vertex of $P$ lies in $X$. Then $P=\operatorname{conv}(\text{vertices})\subseteq\operatorname{conv}(X)$ by @thm-minkowski-polytope. Total unimodularity (@sec-math-combinatorial-optimization-polyhedra-total-unimodularity) is the main tool.
 

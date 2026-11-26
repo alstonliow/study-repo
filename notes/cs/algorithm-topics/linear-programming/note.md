@@ -1,7 +1,7 @@
 ---
 title: "Linear Programming"
 sources: [mit6046-15]
-requires: [cs/algorithms/randomized-algorithms, cs/graph-optimization/maximum-flow]
+requires: [cs/algorithms/randomized-algorithms, cs/graph-optimization/maximum-flow, math/combinatorial-optimization/polyhedra/lp-duality]
 aliases: [cs/algorithm-design/linear-programming]   # old ids (moved)
 relations:
   related: [math/optimization/convex-problems/linear-and-quadratic-programs]
@@ -50,31 +50,9 @@ The feasible region of the campaign example (shaded, unbounded upwards). The obj
 
 ## Duality
 
-::: {#def-dual-lp .definition name="Dual program"}
+<!-- 2026-11-26: the duality blocks def-dual-lp, thm-weak-duality and thm-strong-duality were merged into math/combinatorial-optimization/polyhedra/lp-duality (owner decision, best-version rule), which also proves strong duality. -->
 
-The *dual* of the standard-form LP (the *primal*) "maximise $c^{\mathsf T}x$ subject to $Ax\le b$, $x\ge0$" is "minimise $b^{\mathsf T}y$ subject to $A^{\mathsf T}y\ge c$, $y\ge0$", with one variable $y_i$ per primal constraint.
-
-:::
-
-::: {#thm-weak-duality .theorem name="Weak duality"}
-
-If $x$ is feasible for the primal and $y$ for the dual, then $c^{\mathsf T}x\le b^{\mathsf T}y$.
-
-:::
-
-::: {.proof}
-
-$c^{\mathsf T}x\le(A^{\mathsf T}y)^{\mathsf T}x=y^{\mathsf T}Ax\le y^{\mathsf T}b$. The first step uses $c\le A^{\mathsf T}y$ and $x\ge0$; the second uses $Ax\le b$ and $y\ge0$.
-
-:::
-
-So any dual feasible $y$ *certifies* an upper bound on the primal optimum. The strong form, which we state without proof, says that the bounds meet.
-
-::: {#thm-strong-duality .theorem name="Strong duality"}
-
-If the primal has an optimal solution, so does the dual, and the two optimal values are equal.
-
-:::
+Every LP has a *dual* LP with one variable $y_i$ per primal constraint (@def-dual-lp): the dual of "maximise $c^{\mathsf T}x$ subject to $Ax\le b$, $x\ge0$" is "minimise $b^{\mathsf T}y$ subject to $A^{\mathsf T}y\ge c$, $y\ge0$". Any dual feasible $y$ *certifies* an upper bound on the primal optimum (weak duality, @thm-weak-duality), and the best such bound equals the optimum (strong duality, @thm-strong-duality); both are proved in @sec-math-combinatorial-optimization-polyhedra-lp-duality.
 
 Max-flow min-cut (@thm-max-flow-min-cut) is an instance: the maximum flow is an LP whose dual is (a relaxation of) the minimum cut. In the example above, multiplying the constraints by $y_1=\frac25$ and $y_2=\frac15$ and adding gives $x_1+x_2\ge\frac{24}5$, which proves that $\frac{24}5$ is optimal.
 

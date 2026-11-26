@@ -146,7 +146,7 @@ chapters:
     points:
       - id: "15.1"
         title: "Linear programming"
-        covers: [cs/algorithm-topics/linear-programming]
+        covers: [cs/algorithm-topics/linear-programming, def-dual-lp, thm-weak-duality, thm-strong-duality]
   - num: 16
     title: "NP-completeness"
     points:

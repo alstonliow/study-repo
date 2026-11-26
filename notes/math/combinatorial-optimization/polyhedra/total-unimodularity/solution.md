@@ -16,7 +16,7 @@ Every square submatrix of $A^{\mathsf T}$ is the transpose of a square submatrix
 ::: {.solution for="prob-mit18433-3-q16" status="draft"}
 Let $A$ be the vertex–edge incidence matrix of the bipartite graph; it is TU (@thm-bipartite-incidence-tu), and so is $A^{\mathsf T}$.
 
-1. Consider $\max\{\mathbf 1^{\mathsf T}x:Ax\le\mathbf 1,\ x\ge0\}$ and its dual $\min\{\mathbf 1^{\mathsf T}y:A^{\mathsf T}y\ge\mathbf 1,\ y\ge0\}$. Both are feasible ($x=0$, $y=\mathbf 1$) and bounded, so by strong duality (@thm-lp-strong-duality) their optima are equal, and both are attained at vertices (@cor-minimal-faces-are-vertices; the constraint matrices contain $\pm I$, so have full column rank).
+1. Consider $\max\{\mathbf 1^{\mathsf T}x:Ax\le\mathbf 1,\ x\ge0\}$ and its dual $\min\{\mathbf 1^{\mathsf T}y:A^{\mathsf T}y\ge\mathbf 1,\ y\ge0\}$. Both are feasible ($x=0$, $y=\mathbf 1$) and bounded, so by strong duality (@thm-strong-duality) their optima are equal, and both are attained at vertices (@cor-minimal-faces-are-vertices; the constraint matrices contain $\pm I$, so have full column rank).
 
 2. By @thm-tu-integral-polyhedron both polyhedra are integral. An integral primal vertex has $x_e\le1$ (from the degree constraint at an end of $e$), so it is the incidence vector of a matching.
 

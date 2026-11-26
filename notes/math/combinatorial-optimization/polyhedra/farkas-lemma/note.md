@@ -73,6 +73,6 @@ The system $x_1+x_2\le1$, $-x_1\le-1$, $-x_2\le-1$ (that is, $x_1,x_2\ge1$ and $
 
 ::: {#rmk-farkas-lemma-1 .remark name="Mixed systems"}
 
-The same argument applies to systems mixing inequalities and equalities: write each equality as two inequalities. The multipliers of an inequality are then $\ge0$, while the multiplier of an equality, the difference of two nonnegative numbers, is free. This form is used in the proof of strong duality (@thm-lp-strong-duality).
+The same argument applies to systems mixing inequalities and equalities: write each equality as two inequalities. The multipliers of an inequality are then $\ge0$, while the multiplier of an equality, the difference of two nonnegative numbers, is free. This form is used in the proof of strong duality (@thm-strong-duality).
 
 :::

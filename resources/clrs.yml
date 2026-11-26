@@ -818,7 +818,7 @@ nodes:
       title: Duality
       at:
         3e: '29.4'
-      covers: [cs/algorithm-topics/linear-programming]
+      covers: [cs/algorithm-topics/linear-programming, def-dual-lp, thm-weak-duality, thm-strong-duality]
     - id: res-clrs-initial-feasible-solution
       kind: section
       title: The initial basic feasible solution

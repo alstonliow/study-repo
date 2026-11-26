@@ -61,7 +61,7 @@ Both the yes and the no instances of the decision version have certificates of s
 
 1. *Yes.* If the minimum is finite and at most $\lambda$, an optimal vertex exists (@thm-optimal-vertex) and has polynomial size by @thm-vertex-size; checking $Ax=b$, $x\ge0$, $c^{\mathsf T}x\le\lambda$ is easy. If the program is unbounded, a vertex of the feasible set together with a vertex of $\{x:Ax=0,\ x\ge0,\ c^{\mathsf T}x=-1\}$ (a direction of decrease) is a certificate, again of polynomial size.
 
-2. *No.* If the program is infeasible, Farkas' lemma (@lem-farkas) gives $y$ with $A^{\mathsf T}y\ge0$, $b^{\mathsf T}y<0$, and a vertex of the corresponding polyhedron is small. Otherwise the minimum exceeds $\lambda$, and by strong duality (@thm-lp-strong-duality) a vertex $y$ of $\{y:A^{\mathsf T}y\le c\}$ with $b^{\mathsf T}y>\lambda$ exists and is small.
+2. *No.* If the program is infeasible, Farkas' lemma (@lem-farkas) gives $y$ with $A^{\mathsf T}y\ge0$, $b^{\mathsf T}y<0$, and a vertex of the corresponding polyhedron is small. Otherwise the minimum exceeds $\lambda$, and by strong duality (@thm-strong-duality) a vertex $y$ of $\{y:A^{\mathsf T}y\le c\}$ with $b^{\mathsf T}y>\lambda$ exists and is small.
 
 :::
 
@@ -77,9 +77,9 @@ Optimising $\min\{c^{\mathsf T}x:Ax=b,\ x\ge0\}$ reduces to at most three feasib
 
 ::: {.proof}
 
-1. If the primal is feasible and the dual is not, the primal is unbounded, by strong duality (@thm-lp-strong-duality) applied to the alternatives.
+1. If the primal is feasible and the dual is not, the primal is unbounded, by strong duality (@thm-strong-duality) applied to the alternatives.
 
-2. If both are feasible, both have optima with equal values, and weak duality (@thm-lp-weak-duality) shows that any feasible pair with $c^{\mathsf T}x=b^{\mathsf T}y$ is optimal. So the last system is non-empty and its points are the optimal pairs.
+2. If both are feasible, both have optima with equal values, and weak duality (@thm-weak-duality) shows that any feasible pair with $c^{\mathsf T}x=b^{\mathsf T}y$ is optimal. So the last system is non-empty and its points are the optimal pairs.
 
 :::
 

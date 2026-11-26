@@ -39,7 +39,7 @@ for some $I\subseteq\{1,\dots,m\}$. Hence $P$ has at most $2^m$ non-empty faces.
 
 1. Let $F$ be the non-empty face of the valid inequality $\alpha^{\mathsf T}x\le\beta$. Then $F$ is the set of optimal solutions of the LP $\max\{\alpha^{\mathsf T}x:x\in P\}$, whose optimum value is $\beta$.
 
-2. This LP is feasible and bounded, so by strong duality (@thm-lp-strong-duality) its dual has an optimal solution $y^*$.
+2. This LP is feasible and bounded, so by strong duality (@thm-strong-duality) its dual has an optimal solution $y^*$.
 
 3. By complementary slackness (@thm-lp-complementary-slackness), a point $x\in P$ is optimal exactly when $a_i^{\mathsf T}x=b_i$ for all $i\in I=\{i:y^*_i>0\}$. So $F=F_I$.
 

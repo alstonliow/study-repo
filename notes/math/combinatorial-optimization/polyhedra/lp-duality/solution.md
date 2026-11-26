@@ -2,7 +2,7 @@
      no official solutions were available. Owner to review, then remove status. -->
 
 ::: {.solution for="prob-mit18433-3-q2" status="draft"}
-1. Write (D) $\min\{b^{\mathsf T}y:A^{\mathsf T}y=c,\ y\ge0\}$ in the primal form of @def-lp-primal-dual: maximise $(-b)^{\mathsf T}y$ subject to $A^{\mathsf T}y\le c$, $-A^{\mathsf T}y\le-c$, $-y\le0$.
+1. Write (D) $\min\{b^{\mathsf T}y:A^{\mathsf T}y=c,\ y\ge0\}$ in the primal form of @def-dual-lp: maximise $(-b)^{\mathsf T}y$ subject to $A^{\mathsf T}y\le c$, $-A^{\mathsf T}y\le-c$, $-y\le0$.
 
 2. Its dual has one nonnegative variable per row, $p,q,s\ge0$, and reads: minimise $c^{\mathsf T}p-c^{\mathsf T}q$ subject to $Ap-Aq-s=-b$.
 

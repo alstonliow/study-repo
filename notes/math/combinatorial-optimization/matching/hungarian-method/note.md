@@ -35,7 +35,7 @@ Equality holds exactly when $x_{ij}>0$ only on edges with $w_{ij}=0$.
 
 :::
 
-So maximising $\sum u_i+\sum v_j$ subject to $u_i+v_j\le c_{ij}$ is the dual LP (D) of (P) (@def-lp-primal-dual), and the equality condition is complementary slackness (@thm-lp-complementary-slackness). A *primal–dual* algorithm keeps a feasible dual $(u,v)$ and looks for a perfect matching among the *tight* edges $E_=\{ij:w_{ij}=0\}$; such a matching is optimal by @prp-assignment-dual.
+So maximising $\sum u_i+\sum v_j$ subject to $u_i+v_j\le c_{ij}$ is the dual LP (D) of (P) (@def-dual-lp), and the equality condition is complementary slackness (@thm-lp-complementary-slackness). A *primal–dual* algorithm keeps a feasible dual $(u,v)$ and looks for a perfect matching among the *tight* edges $E_=\{ij:w_{ij}=0\}$; such a matching is optimal by @prp-assignment-dual.
 
 ::: {#def-hungarian-method .definition name="Hungarian method"}
 

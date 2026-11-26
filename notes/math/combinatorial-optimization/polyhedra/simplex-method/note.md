@@ -74,7 +74,7 @@ If $\bar c\ge0$, the basic feasible solution $x$ is optimal and $y^{\mathsf T}=c
 
 ::: {.proof}
 
-1. $\bar c\ge0$ says $A^{\mathsf T}y\le c$, so $y$ is dual feasible, and $b^{\mathsf T}y=c_B^{\mathsf T}A_B^{-1}b=c^{\mathsf T}x$. By weak duality (@thm-lp-weak-duality) both are optimal.
+1. $\bar c\ge0$ says $A^{\mathsf T}y\le c$, so $y$ is dual feasible, and $b^{\mathsf T}y=c_B^{\mathsf T}A_B^{-1}b=c^{\mathsf T}x$. By weak duality (@thm-weak-duality) both are optimal.
 
 2. Moving to $x(t)$ with $x_k=t$, $x_B=A_B^{-1}b+td$ and the other non-basic coordinates $0$ keeps $Ax=b$, and changes the cost by $t\bar c_k$. If $d\ge0$, every $t\ge0$ is feasible and the cost tends to $-\infty$.
 

@@ -76,7 +76,7 @@ Let $x^*$ be an optimal solution of the relaxation and $C=\{v:x^*_v\ge\tfrac12\}
 
 The dual of the relaxation puts a variable $y_e\ge0$ on every edge:
 $$\max\Big\{\sum_ey_e:\sum_{e\ni v}y_e\le c_v\ \ \forall v\in V,\ y\ge0\Big\}.$$
-By weak duality (@thm-lp-weak-duality) every feasible $y$ has $\sum_ey_e\le\mathrm{LP}\le\mathrm{OPT}$. The primal–dual method keeps a feasible dual solution and an infeasible integral primal one, raises dual variables until some dual constraint becomes tight, and adds the corresponding primal element; it stops when the primal is feasible.
+By weak duality (@thm-weak-duality) every feasible $y$ has $\sum_ey_e\le\mathrm{LP}\le\mathrm{OPT}$. The primal–dual method keeps a feasible dual solution and an infeasible integral primal one, raises dual variables until some dual constraint becomes tight, and adds the corresponding primal element; it stops when the primal is feasible.
 
 ::: {#def-vertex-cover-primal-dual .definition name="Primal–dual vertex cover"}
 

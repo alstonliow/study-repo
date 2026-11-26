@@ -1,13 +1,14 @@
 ---
 title: "Linear Programming Duality"
-sources: [mit18433-3]
+sources: [mit18433-3, mit6046-15]
 requires: [math/combinatorial-optimization/polyhedra/farkas-lemma]
 status: draft
 ---
 
-<!-- Added 2026-11-26 from MIT 18.433 (Spring 2015), lecture notes on polyhedral theory and linear programming (Section 3.2), in our own wording; example our own (checked by computation); proofs written out in steps. The same theorems appear for the standard form, without proof of strong duality, in @thm-weak-duality and @thm-strong-duality, and as a special case of Lagrange duality in @thm-weak-strong-duality and @prp-complementary-slackness; merge proposed to the owner (best-version rule). -->
+<!-- Added 2026-11-26 from MIT 18.433 (Spring 2015), lecture notes on polyhedral theory and linear programming (Section 3.2), in our own wording; example our own (checked by computation); proofs written out in steps.
+     Merged 2026-11-26 (owner decision, best-version rule) with the duality blocks of cs/algorithm-topics/linear-programming (MIT 6.046, Lecture 15): the ids def-dual-lp, thm-weak-duality and thm-strong-duality are kept from there; the statements and proofs are the 18.433 general form; the standard-form dual in def-dual-lp and the "primal has an optimum" case of strong duality come from the 6.046 version. Lagrange duality (@thm-weak-strong-duality, @prp-complementary-slackness) is the convex generalisation and stays separate. -->
 
-::: {#def-lp-primal-dual .definition name="Primal and dual linear programs" related="def-dual-lp"}
+::: {#def-dual-lp .definition name="Primal and dual linear programs"}
 
 For $A\in\mathbb R^{m\times n}$, $b\in\mathbb R^m$ and $c\in\mathbb R^n$, the *primal* and *dual* linear programs are
 $$(P)\quad\max\{c^{\mathsf T}x: Ax\le b\},\qquad\qquad (D)\quad\min\{b^{\mathsf T}y: A^{\mathsf T}y=c,\ y\ge0\}.$$
@@ -15,9 +16,9 @@ A point satisfying the constraints is *feasible*. The optimum value of (P) is $-
 
 :::
 
-Other forms, such as $\min\{c^{\mathsf T}x:Ax=b,\ x\ge0\}$, reduce to this one by writing equalities as two inequalities and sign constraints as rows of $A$.
+Other forms reduce to this one by writing equalities as two inequalities and sign constraints as rows of $A$. In particular the dual of the *standard form* "maximise $c^{\mathsf T}x$ subject to $Ax\le b$, $x\ge0$" is "minimise $b^{\mathsf T}y$ subject to $A^{\mathsf T}y\ge c$, $y\ge0$": the multipliers of the rows $-x\le0$ are the slack in $A^{\mathsf T}y\ge c$.
 
-::: {#thm-lp-weak-duality .theorem name="Weak duality" related="thm-weak-duality"}
+::: {#thm-weak-duality .theorem name="Weak duality"}
 
 If $x$ is feasible for (P) and $y$ for (D), then
 $$c^{\mathsf T}x\le b^{\mathsf T}y .$$
@@ -31,14 +32,16 @@ $c^{\mathsf T}x=(A^{\mathsf T}y)^{\mathsf T}x=y^{\mathsf T}(Ax)\le y^{\mathsf T}
 
 :::
 
-::: {#thm-lp-strong-duality .theorem name="Strong duality" related="thm-strong-duality"}
+::: {#thm-strong-duality .theorem name="Strong duality"}
 
-If (P) and (D) are both feasible, then both have optimal solutions and
+If (P) has an optimal solution, or if (P) and (D) are both feasible, then both have optimal solutions and
 $$\max\{c^{\mathsf T}x:Ax\le b\}=\min\{b^{\mathsf T}y:A^{\mathsf T}y=c,\ y\ge0\}.$$
 
 :::
 
 ::: {.proof}
+
+0. If (P) has an optimal solution, (D) is feasible: otherwise Farkas' lemma (@lem-farkas, applied to $A^{\mathsf T}y=c$, $y\ge0$) gives $d$ with $Ad\le0$ and $c^{\mathsf T}d>0$, and moving from a feasible point along $d$ would make (P) unbounded. So in both cases (P) and (D) are feasible.
 
 1. Fix feasible $x^*$ for (P) and $y^*$ for (D). It suffices to find feasible $x,y$ with $c^{\mathsf T}x\ge b^{\mathsf T}y$: by weak duality they are then equal and both optimal. Suppose, for a contradiction, that the system
 $$Ax\le b,\qquad A^{\mathsf T}y=c,\qquad -y\le0,\qquad -c^{\mathsf T}x+b^{\mathsf T}y\le0$$
