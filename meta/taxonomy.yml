@@ -867,6 +867,8 @@ parts:
           - order-statistic-trees
           - range-trees
           - skip-lists
+          - stacks-and-queues
+          - tries
       - id: cs/sorting
         title: Sorting and Selection
         desc: Comparison sorts, lower bounds, sorting in linear time, selection
@@ -923,6 +925,15 @@ parts:
           - greedy-algorithms
           - weighted-interval-scheduling
           - amortized-analysis
+      - id: cs/algorithm-patterns
+        title: Algorithmic Patterns
+        desc: Two pointers, sliding windows, prefix sums, backtracking, in-place array and matrix techniques
+        notes:   # topic order on the website
+          - two-pointers
+          - sliding-window
+          - prefix-sums
+          - backtracking
+          - array-techniques
       - id: cs/advanced-data-structures
         title: Advanced Data Structures
         desc: B-trees, Fibonacci heaps, van Emde Boas trees, disjoint sets

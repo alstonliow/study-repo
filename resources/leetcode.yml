@@ -178,7 +178,7 @@ nodes:
   url: https://leetcode.com/problems/path-sum-iii/
   difficulty: medium
   lists: [hot100]
-  practises: [cs/data-structures/binary-trees]
+  practises: [cs/data-structures/binary-trees, cs/algorithm-patterns/prefix-sums]
 - id: res-leetcode-diameter-of-binary-tree
   kind: problem
   title: "Diameter of Binary Tree"
@@ -338,7 +338,7 @@ nodes:
   url: https://leetcode.com/problems/subarray-sum-equals-k/
   difficulty: medium
   lists: [hot100]
-  practises: [cs/data-structures/hashing]
+  practises: [cs/data-structures/hashing, cs/algorithm-patterns/prefix-sums]
 - id: res-leetcode-find-median-from-data-stream
   kind: problem
   title: "Find Median from Data Stream"
@@ -767,3 +767,251 @@ nodes:
   url: https://leetcode.com/problems/distinct-echo-substrings/
   difficulty: hard
   practises: [cs/algorithm-topics/rabin-karp]
+- id: res-leetcode-letter-combinations-of-a-phone-number
+  kind: problem
+  title: "Letter Combinations of a Phone Number"
+  at: {web: '17'}
+  url: https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-generate-parentheses
+  kind: problem
+  title: "Generate Parentheses"
+  at: {web: '22'}
+  url: https://leetcode.com/problems/generate-parentheses/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-combination-sum
+  kind: problem
+  title: "Combination Sum"
+  at: {web: '39'}
+  url: https://leetcode.com/problems/combination-sum/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-permutations
+  kind: problem
+  title: "Permutations"
+  at: {web: '46'}
+  url: https://leetcode.com/problems/permutations/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-n-queens
+  kind: problem
+  title: "N-Queens"
+  at: {web: '51'}
+  url: https://leetcode.com/problems/n-queens/
+  difficulty: hard
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-subsets
+  kind: problem
+  title: "Subsets"
+  at: {web: '78'}
+  url: https://leetcode.com/problems/subsets/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-word-search
+  kind: problem
+  title: "Word Search"
+  at: {web: '79'}
+  url: https://leetcode.com/problems/word-search/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-palindrome-partitioning
+  kind: problem
+  title: "Palindrome Partitioning"
+  at: {web: '131'}
+  url: https://leetcode.com/problems/palindrome-partitioning/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/backtracking]
+- id: res-leetcode-valid-parentheses
+  kind: problem
+  title: "Valid Parentheses"
+  at: {web: '20'}
+  url: https://leetcode.com/problems/valid-parentheses/
+  difficulty: easy
+  lists: [hot100]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-largest-rectangle-in-histogram
+  kind: problem
+  title: "Largest Rectangle in Histogram"
+  at: {web: '84'}
+  url: https://leetcode.com/problems/largest-rectangle-in-histogram/
+  difficulty: hard
+  lists: [hot100]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-min-stack
+  kind: problem
+  title: "Min Stack"
+  at: {web: '155'}
+  url: https://leetcode.com/problems/min-stack/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-decode-string
+  kind: problem
+  title: "Decode String"
+  at: {web: '394'}
+  url: https://leetcode.com/problems/decode-string/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-daily-temperatures
+  kind: problem
+  title: "Daily Temperatures"
+  at: {web: '739'}
+  url: https://leetcode.com/problems/daily-temperatures/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/data-structures/stacks-and-queues]
+- id: res-leetcode-sliding-window-maximum
+  kind: problem
+  title: "Sliding Window Maximum"
+  at: {web: '239'}
+  url: https://leetcode.com/problems/sliding-window-maximum/
+  difficulty: hard
+  lists: [hot100]
+  practises: [cs/data-structures/stacks-and-queues, cs/algorithm-patterns/sliding-window]
+- id: res-leetcode-container-with-most-water
+  kind: problem
+  title: "Container With Most Water"
+  at: {web: '11'}
+  url: https://leetcode.com/problems/container-with-most-water/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-3sum
+  kind: problem
+  title: "3Sum"
+  at: {web: '15'}
+  url: https://leetcode.com/problems/3sum/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-trapping-rain-water
+  kind: problem
+  title: "Trapping Rain Water"
+  at: {web: '42'}
+  url: https://leetcode.com/problems/trapping-rain-water/
+  difficulty: hard
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/two-pointers, cs/data-structures/stacks-and-queues]
+- id: res-leetcode-move-zeroes
+  kind: problem
+  title: "Move Zeroes"
+  at: {web: '283'}
+  url: https://leetcode.com/problems/move-zeroes/
+  difficulty: easy
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/two-pointers]
+- id: res-leetcode-longest-substring-without-repeating-characters
+  kind: problem
+  title: "Longest Substring Without Repeating Characters"
+  at: {web: '3'}
+  url: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/sliding-window]
+- id: res-leetcode-minimum-window-substring
+  kind: problem
+  title: "Minimum Window Substring"
+  at: {web: '76'}
+  url: https://leetcode.com/problems/minimum-window-substring/
+  difficulty: hard
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/sliding-window]
+- id: res-leetcode-find-all-anagrams-in-a-string
+  kind: problem
+  title: "Find All Anagrams in a String"
+  at: {web: '438'}
+  url: https://leetcode.com/problems/find-all-anagrams-in-a-string/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/sliding-window]
+- id: res-leetcode-implement-trie-prefix-tree
+  kind: problem
+  title: "Implement Trie (Prefix Tree)"
+  at: {web: '208'}
+  url: https://leetcode.com/problems/implement-trie-prefix-tree/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/data-structures/tries]
+- id: res-leetcode-next-permutation
+  kind: problem
+  title: "Next Permutation"
+  at: {web: '31'}
+  url: https://leetcode.com/problems/next-permutation/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-first-missing-positive
+  kind: problem
+  title: "First Missing Positive"
+  at: {web: '41'}
+  url: https://leetcode.com/problems/first-missing-positive/
+  difficulty: hard
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-majority-element
+  kind: problem
+  title: "Majority Element"
+  at: {web: '169'}
+  url: https://leetcode.com/problems/majority-element/
+  difficulty: easy
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-rotate-array
+  kind: problem
+  title: "Rotate Array"
+  at: {web: '189'}
+  url: https://leetcode.com/problems/rotate-array/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-rotate-image
+  kind: problem
+  title: "Rotate Image"
+  at: {web: '48'}
+  url: https://leetcode.com/problems/rotate-image/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-spiral-matrix
+  kind: problem
+  title: "Spiral Matrix"
+  at: {web: '54'}
+  url: https://leetcode.com/problems/spiral-matrix/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-set-matrix-zeroes
+  kind: problem
+  title: "Set Matrix Zeroes"
+  at: {web: '73'}
+  url: https://leetcode.com/problems/set-matrix-zeroes/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-search-a-2d-matrix-ii
+  kind: problem
+  title: "Search a 2D Matrix II"
+  at: {web: '240'}
+  url: https://leetcode.com/problems/search-a-2d-matrix-ii/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/array-techniques]
+- id: res-leetcode-product-of-array-except-self
+  kind: problem
+  title: "Product of Array Except Self"
+  at: {web: '238'}
+  url: https://leetcode.com/problems/product-of-array-except-self/
+  difficulty: medium
+  lists: [hot100]
+  practises: [cs/algorithm-patterns/prefix-sums]
