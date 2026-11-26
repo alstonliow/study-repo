@@ -3,12 +3,12 @@
 # (owner decision, 2026-11-26), so the resource is `unrated`: problems sit under one section node per
 # CSES section, in CSES's own order. One node per problem: the official title, the task number
 # (locator) and the link. Statements, hints and solutions are never copied. Each node names the
-# notes it practises (first = primary). Problems whose intended solution has no note yet (centroid
-# decomposition, Catalan numbers, Burnside, convex hull trick, linear basis, Manacher, Z-function,
-# digit DP and other general DP, merge-sort or persistent trees for range counting, ad-hoc and
-# construction problems) are left out. Extended 2026-11-26 with matches in the MIT 6.851 / 18.433 /
-# CS 97SI notes, and again with notes written for CSES (segment trees, lazy propagation, sieve,
-# bridges, 2-SAT, coin change, edit distance).
+# notes it practises (first = primary). Problems whose intended solution has no note yet (Z-function,
+# other general DP, merge-sort or persistent trees for range counting, hashing-based palindrome and
+# substring queries, ad-hoc and construction problems) are left out. Extended 2026-11-26 with matches
+# in the MIT 6.851 / 18.433 / CS 97SI notes, and with notes written for CSES (segment trees, lazy
+# propagation, sieve, bridges, 2-SAT, coin change, edit distance, Catalan numbers, Burnside, Manacher,
+# centroid decomposition, XOR basis, convex hull trick, digit DP).
 # Node ids are the problem's title slug, never its number, and are never renamed.
 id: res-cses
 kind: problem-set
@@ -320,6 +320,12 @@ nodes:
     at: {web: '2181'}
     url: https://cses.fi/problemset/task/2181
     practises: [cs/algorithm-design/bitmask-dp]
+  - id: res-cses-counting-numbers
+    kind: problem
+    title: Counting Numbers
+    at: {web: '2220'}
+    url: https://cses.fi/problemset/task/2220
+    practises: [cs/algorithm-design/digit-dp]
   - id: res-cses-increasing-subsequence-ii
     kind: problem
     title: Increasing Subsequence II
@@ -722,6 +728,24 @@ nodes:
     at: {web: '2134'}
     url: https://cses.fi/problemset/task/2134
     practises: [cs/advanced-data-structures/link-cut-trees]
+  - id: res-cses-finding-a-centroid
+    kind: problem
+    title: Finding a Centroid
+    at: {web: '2079'}
+    url: https://cses.fi/problemset/task/2079
+    practises: [cs/graph-algorithms/centroid-decomposition]
+  - id: res-cses-fixed-length-paths-i
+    kind: problem
+    title: Fixed-Length Paths I
+    at: {web: '2080'}
+    url: https://cses.fi/problemset/task/2080
+    practises: [cs/graph-algorithms/centroid-decomposition]
+  - id: res-cses-fixed-length-paths-ii
+    kind: problem
+    title: Fixed-Length Paths II
+    at: {web: '2081'}
+    url: https://cses.fi/problemset/task/2081
+    practises: [cs/graph-algorithms/centroid-decomposition]
 - id: res-cses-mathematics
   kind: section
   title: Mathematics
@@ -792,6 +816,30 @@ nodes:
     at: {web: '1717'}
     url: https://cses.fi/problemset/task/1717
     practises: [math/discrete/counting/derangements]
+  - id: res-cses-bracket-sequences-i
+    kind: problem
+    title: Bracket Sequences I
+    at: {web: '2064'}
+    url: https://cses.fi/problemset/task/2064
+    practises: [math/discrete/counting/catalan-numbers]
+  - id: res-cses-bracket-sequences-ii
+    kind: problem
+    title: Bracket Sequences II
+    at: {web: '2187'}
+    url: https://cses.fi/problemset/task/2187
+    practises: [math/discrete/counting/catalan-numbers]
+  - id: res-cses-counting-necklaces
+    kind: problem
+    title: Counting Necklaces
+    at: {web: '2209'}
+    url: https://cses.fi/problemset/task/2209
+    practises: [math/discrete/counting/burnside-lemma]
+  - id: res-cses-counting-grids
+    kind: problem
+    title: Counting Grids
+    at: {web: '2210'}
+    url: https://cses.fi/problemset/task/2210
+    practises: [math/discrete/counting/burnside-lemma]
   - id: res-cses-fibonacci-numbers
     kind: problem
     title: Fibonacci Numbers
@@ -898,6 +946,18 @@ nodes:
     at: {web: '1733'}
     url: https://cses.fi/problemset/task/1733
     practises: [cs/algorithm-topics/knuth-morris-pratt]
+  - id: res-cses-longest-palindrome
+    kind: problem
+    title: Longest Palindrome
+    at: {web: '1111'}
+    url: https://cses.fi/problemset/task/1111
+    practises: [cs/algorithm-topics/manacher]
+  - id: res-cses-all-palindromes
+    kind: problem
+    title: All Palindromes
+    at: {web: '3138'}
+    url: https://cses.fi/problemset/task/3138
+    practises: [cs/algorithm-topics/manacher]
   - id: res-cses-required-substring
     kind: problem
     title: Required Substring
@@ -1022,6 +1082,12 @@ nodes:
     at: {web: '1740'}
     url: https://cses.fi/problemset/task/1740
     practises: [cs/computational-geometry/sweep-line, cs/data-structures/fenwick-trees]
+  - id: res-cses-lines-and-queries-i
+    kind: problem
+    title: Lines and Queries I
+    at: {web: '3429'}
+    url: https://cses.fi/problemset/task/3429
+    practises: [cs/algorithm-topics/convex-hull-trick]
   - id: res-cses-area-of-rectangles
     kind: problem
     title: Area of Rectangles
@@ -1074,6 +1140,18 @@ nodes:
     at: {web: '2077'}
     url: https://cses.fi/problemset/task/2077
     practises: [cs/graph-algorithms/bridges-and-articulation-points]
+  - id: res-cses-monster-game-i
+    kind: problem
+    title: Monster Game I
+    at: {web: '2084'}
+    url: https://cses.fi/problemset/task/2084
+    practises: [cs/algorithm-topics/convex-hull-trick]
+  - id: res-cses-monster-game-ii
+    kind: problem
+    title: Monster Game II
+    at: {web: '2085'}
+    url: https://cses.fi/problemset/task/2085
+    practises: [cs/algorithm-topics/convex-hull-trick]
   - id: res-cses-apples-and-bananas
     kind: problem
     title: Apples and Bananas
@@ -1188,6 +1266,24 @@ nodes:
     at: {web: '1655'}
     url: https://cses.fi/problemset/task/1655
     practises: [cs/data-structures/tries, cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-maximum-xor-subset
+    kind: problem
+    title: Maximum Xor Subset
+    at: {web: '3191'}
+    url: https://cses.fi/problemset/task/3191
+    practises: [cs/algorithm-topics/xor-basis]
+  - id: res-cses-number-of-subset-xors
+    kind: problem
+    title: Number of Subset Xors
+    at: {web: '3211'}
+    url: https://cses.fi/problemset/task/3211
+    practises: [cs/algorithm-topics/xor-basis]
+  - id: res-cses-k-subset-xors
+    kind: problem
+    title: K Subset Xors
+    at: {web: '3192'}
+    url: https://cses.fi/problemset/task/3192
+    practises: [cs/algorithm-topics/xor-basis]
 - id: res-cses-advanced-graph-problems
   kind: section
   title: Advanced Graph Problems

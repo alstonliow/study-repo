@@ -114,6 +114,8 @@ parts:
           - derangements
           - selection
           - combinations
+          - catalan-numbers
+          - burnside-lemma
           - stars-and-bars
           - generating-functions
       - id: math/discrete/graph
@@ -947,6 +949,7 @@ parts:
           - strongly-connected-components
           - two-satisfiability
           - bridges-and-articulation-points
+          - centroid-decomposition
           - eulerian-circuits
           - weighted-shortest-paths
           - dag-shortest-paths
@@ -976,6 +979,7 @@ parts:
           - knapsack
           - coin-change
           - edit-distance
+          - digit-dp
           - interval-subproblems
           - longest-palindromic-subsequence
           - optimal-bst
@@ -1051,12 +1055,15 @@ parts:
           - rabin-karp
           - string-matching-automaton
           - knuth-morris-pratt
+          - manacher
           - suffix-tries
           - suffix-arrays
           - suffix-trees
           - dc3-suffix-arrays
           - compact-suffix-arrays
           - convex-hull
+          - convex-hull-trick
+          - xor-basis
           - approximation-algorithms
           - christofides
           - lp-rounding-and-primal-dual
