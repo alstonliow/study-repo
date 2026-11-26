@@ -185,7 +185,12 @@ def parse(path: Path) -> Resource:
                     problems.append(f"{nid}: a problem node needs a url (https://...)")
                 if "difficulty" in item and str(item["difficulty"]) not in DIFFICULTIES:
                     problems.append(f"{nid}: difficulty must be one of {', '.join(DIFFICULTIES)}")
-                if "difficulty" not in item and "rating" not in item:
+                if d.get("unrated"):           # a judge left unscored (CSES): grouped by its sections
+                    if "difficulty" in item or "rating" in item:
+                        problems.append(f"{nid}: an unrated resource has no difficulty or rating")
+                    if parent not in nodes or nodes[parent].kind != "section":
+                        problems.append(f"{nid}: a problem of an unrated resource sits under a section node")
+                elif "difficulty" not in item and "rating" not in item:
                     problems.append(f"{nid}: a problem node needs a difficulty or a rating")
                 if "rating" in item:
                     r = item["rating"]

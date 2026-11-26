@@ -1093,6 +1093,27 @@ class TestPractice(Repo):
         (self.root / self.RES).write_text(text.replace("  rating: 3\n", ""))
         self.assertIn("res-judge-two-gadgets: a problem node needs a difficulty or a rating", self.check().stdout)
 
+    def test_unrated_judge_by_section(self):
+        text = ("id: res-judge\nkind: problem-set\ntitle: Judge\nurl: https://judge.example/\nunrated: true\n"
+                "editions:\n- id: web\n  current: true\nnodes:\n"
+                "- id: res-judge-basics\n  kind: section\n  title: Basic Tasks\n  nodes:\n"
+                "  - id: res-judge-two-gadgets\n    kind: problem\n    title: Two Gadgets\n    at: {web: '7'}\n"
+                "    url: https://judge.example/task/7\n    practises: [t/alpha/first]\n"
+                "  - id: res-judge-one-gadget\n    kind: problem\n    title: One Gadget\n    at: {web: '3'}\n"
+                "    url: https://judge.example/task/3\n    practises: [t/alpha/first]\n")
+        (self.root / self.RES).write_text(text)
+        self.assertEqual(self.check().returncode, 0, self.check().stdout)
+        first = (generate(self.root) / "notes/t/alpha/first.qmd").read_text()
+        self.assertIn('<span class="lc-section">Basic Tasks</span>', first)
+        self.assertNotIn('class="lc-diff"', first)
+        self.assertLess(first.index("Two Gadgets"), first.index("One Gadget"))      # the judge's order, not the number
+        (self.root / self.RES).write_text(text.replace("    practises: [t/alpha/first]\n", "    difficulty: easy\n    practises: [t/alpha/first]\n", 1))
+        self.assertIn("res-judge-two-gadgets: an unrated resource has no difficulty or rating", self.check().stdout)
+        flat = text.replace("- id: res-judge-basics\n  kind: section\n  title: Basic Tasks\n  nodes:\n", "")
+        (self.root / self.RES).write_text("\n".join(l[2:] if l.startswith("  ") and not l.startswith("  current") else l
+                                                    for l in flat.split("\n")))
+        self.assertIn("res-judge-two-gadgets: a problem of an unrated resource sits under a section node", self.check().stdout)
+
 class TestProjects(Repo):
     """Projects (SPEC §17.13): loader, checks, pages and the "Applied in" group."""
 

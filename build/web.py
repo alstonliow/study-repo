@@ -389,6 +389,8 @@ def practice_nodes(target: str | None = None) -> list:
     def key(rn):
         loc = rn[0].locator(rn[1].id)
         r = rn[1].extra.get("rating")
+        if rn[0].meta.get("unrated"):      # by section, then the judge's own order (file order)
+            return (9, 99, list(rn[0].nodes).index(rn[1].id), rn[1].title)
         return (rank.get(str(rn[1].extra.get("difficulty")), 9), r if isinstance(r, int) else 99,
                 int(loc) if loc.isdigit() else 10**9, rn[1].title)
     return sorted(out, key=key)
@@ -429,6 +431,8 @@ def practice_cards(items: list, filter_bar: bool = False, grid: bool = True) -> 
             f'<div class="lc-card lc-{d}" data-lc="{d}" data-lists="{e(" ".join(lids))}" data-item="{e(n.id)}">'
             f'<span class="lc-top"><span class="lc-num">{"#" + e(loc) if loc else e(res.title)}</span>{tags}'
             + (f'<span class="lc-diff">{words.get(d, d)}</span>' if d else "")
+            + (f'<span class="lc-section">{e(res.nodes[n.parent].title)}</span>'
+               if res.meta.get("unrated") and n.parent in res.nodes else "")
             + (f'<span class="lc-rating" title="Rating by {e(str(res.meta.get("rating_from", "")))}, 0 (easiest) to 10">'
                f'{n.extra["rating"]}/10</span>' if isinstance(n.extra.get("rating"), int) else "")
             + '</span>'

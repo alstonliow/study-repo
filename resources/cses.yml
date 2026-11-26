@@ -1,0 +1,1065 @@
+# CSES Problem Set (cses.fi/problemset), an online judge, as a resource (meta/SPEC.md §17.12.7
+# item 6). DRAFT for owner review. CSES gives no difficulty, and the owner decided not to rate it
+# (owner decision, 2026-11-26), so the resource is `unrated`: problems sit under one section node per
+# CSES section, in CSES's own order. One node per problem: the official title, the task number
+# (locator) and the link. Statements, hints and solutions are never copied. Each node names the
+# notes it practises (first = primary). Problems whose intended solution has no note yet (segment
+# trees, sparse tables, sieves, bridges and articulation points, 2-SAT, Catalan numbers, Burnside,
+# general DP such as coin change and edit distance, ad-hoc and construction problems) are left out.
+# Node ids are the problem's title slug, never its number, and are never renamed.
+id: res-cses
+kind: problem-set
+title: CSES
+status: draft
+url: https://cses.fi/problemset/
+unrated: true
+editions:
+- id: web
+  current: true
+nodes:
+- id: res-cses-introductory-problems
+  kind: section
+  title: Introductory Problems
+  nodes:
+  - id: res-cses-bit-strings
+    kind: problem
+    title: Bit Strings
+    at: {web: '1617'}
+    url: https://cses.fi/problemset/task/1617
+    practises: [math/discrete/number-theory/modular-exponentiation]
+  - id: res-cses-tower-of-hanoi
+    kind: problem
+    title: Tower of Hanoi
+    at: {web: '2165'}
+    url: https://cses.fi/problemset/task/2165
+    practises: [math/discrete/sequences/solving-recurrences]
+  - id: res-cses-creating-strings
+    kind: problem
+    title: Creating Strings
+    at: {web: '1622'}
+    url: https://cses.fi/problemset/task/1622
+    practises: [cs/algorithm-patterns/backtracking]
+  - id: res-cses-apple-division
+    kind: problem
+    title: Apple Division
+    at: {web: '1623'}
+    url: https://cses.fi/problemset/task/1623
+    practises: [cs/algorithm-patterns/backtracking]
+  - id: res-cses-chessboard-and-queens
+    kind: problem
+    title: Chessboard and Queens
+    at: {web: '1624'}
+    url: https://cses.fi/problemset/task/1624
+    practises: [cs/algorithm-patterns/backtracking]
+  - id: res-cses-knight-moves-grid
+    kind: problem
+    title: Knight Moves Grid
+    at: {web: '3217'}
+    url: https://cses.fi/problemset/task/3217
+    practises: [cs/graph-algorithms/breadth-first-search]
+  - id: res-cses-grid-path-description
+    kind: problem
+    title: Grid Path Description
+    at: {web: '1625'}
+    url: https://cses.fi/problemset/task/1625
+    practises: [cs/algorithm-patterns/backtracking]
+- id: res-cses-sorting-and-searching
+  kind: section
+  title: Sorting and Searching
+  nodes:
+  - id: res-cses-distinct-numbers
+    kind: problem
+    title: Distinct Numbers
+    at: {web: '1621'}
+    url: https://cses.fi/problemset/task/1621
+    practises: [cs/sorting/comparison-sorting]
+  - id: res-cses-apartments
+    kind: problem
+    title: Apartments
+    at: {web: '1084'}
+    url: https://cses.fi/problemset/task/1084
+    practises: [cs/algorithm-patterns/two-pointers]
+  - id: res-cses-ferris-wheel
+    kind: problem
+    title: Ferris Wheel
+    at: {web: '1090'}
+    url: https://cses.fi/problemset/task/1090
+    practises: [cs/algorithm-patterns/two-pointers]
+  - id: res-cses-restaurant-customers
+    kind: problem
+    title: Restaurant Customers
+    at: {web: '1619'}
+    url: https://cses.fi/problemset/task/1619
+    practises: [cs/computational-geometry/sweep-line]
+  - id: res-cses-movie-festival
+    kind: problem
+    title: Movie Festival
+    at: {web: '1629'}
+    url: https://cses.fi/problemset/task/1629
+    practises: [cs/algorithm-design/greedy-algorithms]
+  - id: res-cses-sum-of-two-values
+    kind: problem
+    title: Sum of Two Values
+    at: {web: '1640'}
+    url: https://cses.fi/problemset/task/1640
+    practises: [cs/algorithm-patterns/two-pointers]
+  - id: res-cses-maximum-subarray-sum
+    kind: problem
+    title: Maximum Subarray Sum
+    at: {web: '1643'}
+    url: https://cses.fi/problemset/task/1643
+    practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-stick-lengths
+    kind: problem
+    title: Stick Lengths
+    at: {web: '1074'}
+    url: https://cses.fi/problemset/task/1074
+    practises: [cs/sorting/selection]
+  - id: res-cses-playlist
+    kind: problem
+    title: Playlist
+    at: {web: '1141'}
+    url: https://cses.fi/problemset/task/1141
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-towers
+    kind: problem
+    title: Towers
+    at: {web: '1073'}
+    url: https://cses.fi/problemset/task/1073
+    practises: [cs/algorithm-design/lis]
+  - id: res-cses-distinct-values-subarrays
+    kind: problem
+    title: Distinct Values Subarrays
+    at: {web: '3420'}
+    url: https://cses.fi/problemset/task/3420
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-josephus-problem-ii
+    kind: problem
+    title: Josephus Problem II
+    at: {web: '2163'}
+    url: https://cses.fi/problemset/task/2163
+    practises: [cs/data-structures/order-statistic-trees]
+  - id: res-cses-nested-ranges-count
+    kind: problem
+    title: Nested Ranges Count
+    at: {web: '2169'}
+    url: https://cses.fi/problemset/task/2169
+    practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-room-allocation
+    kind: problem
+    title: Room Allocation
+    at: {web: '1164'}
+    url: https://cses.fi/problemset/task/1164
+    practises: [cs/data-structures/binary-heaps]
+  - id: res-cses-factory-machines
+    kind: problem
+    title: Factory Machines
+    at: {web: '1620'}
+    url: https://cses.fi/problemset/task/1620
+    practises: [cs/sorting/binary-search]
+  - id: res-cses-tasks-and-deadlines
+    kind: problem
+    title: Tasks and Deadlines
+    at: {web: '1630'}
+    url: https://cses.fi/problemset/task/1630
+    practises: [cs/algorithm-design/greedy-algorithms]
+  - id: res-cses-sum-of-three-values
+    kind: problem
+    title: Sum of Three Values
+    at: {web: '1641'}
+    url: https://cses.fi/problemset/task/1641
+    practises: [cs/algorithm-patterns/two-pointers]
+  - id: res-cses-nearest-smaller-values
+    kind: problem
+    title: Nearest Smaller Values
+    at: {web: '1645'}
+    url: https://cses.fi/problemset/task/1645
+    practises: [cs/data-structures/stacks-and-queues]
+  - id: res-cses-subarray-sums-i
+    kind: problem
+    title: Subarray Sums I
+    at: {web: '1660'}
+    url: https://cses.fi/problemset/task/1660
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-subarray-sums-ii
+    kind: problem
+    title: Subarray Sums II
+    at: {web: '1661'}
+    url: https://cses.fi/problemset/task/1661
+    practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-subarray-divisibility
+    kind: problem
+    title: Subarray Divisibility
+    at: {web: '1662'}
+    url: https://cses.fi/problemset/task/1662
+    practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-distinct-values-subarrays-ii
+    kind: problem
+    title: Distinct Values Subarrays II
+    at: {web: '2428'}
+    url: https://cses.fi/problemset/task/2428
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-array-division
+    kind: problem
+    title: Array Division
+    at: {web: '1085'}
+    url: https://cses.fi/problemset/task/1085
+    practises: [cs/sorting/binary-search]
+  - id: res-cses-maximum-subarray-sum-ii
+    kind: problem
+    title: Maximum Subarray Sum II
+    at: {web: '1644'}
+    url: https://cses.fi/problemset/task/1644
+    practises: [cs/algorithm-patterns/prefix-sums, cs/data-structures/stacks-and-queues]
+- id: res-cses-dynamic-programming
+  kind: section
+  title: Dynamic Programming
+  nodes:
+  - id: res-cses-book-shop
+    kind: problem
+    title: Book Shop
+    at: {web: '1158'}
+    url: https://cses.fi/problemset/task/1158
+    practises: [cs/algorithm-design/knapsack]
+  - id: res-cses-longest-common-subsequence
+    kind: problem
+    title: Longest Common Subsequence
+    at: {web: '3403'}
+    url: https://cses.fi/problemset/task/3403
+    practises: [cs/algorithm-design/lcs]
+  - id: res-cses-money-sums
+    kind: problem
+    title: Money Sums
+    at: {web: '1745'}
+    url: https://cses.fi/problemset/task/1745
+    practises: [cs/algorithm-design/subset-sum]
+  - id: res-cses-removal-game
+    kind: problem
+    title: Removal Game
+    at: {web: '1097'}
+    url: https://cses.fi/problemset/task/1097
+    practises: [cs/algorithm-design/coin-game]
+  - id: res-cses-two-sets-ii
+    kind: problem
+    title: Two Sets II
+    at: {web: '1093'}
+    url: https://cses.fi/problemset/task/1093
+    practises: [cs/algorithm-design/subset-sum]
+  - id: res-cses-increasing-subsequence
+    kind: problem
+    title: Increasing Subsequence
+    at: {web: '1145'}
+    url: https://cses.fi/problemset/task/1145
+    practises: [cs/algorithm-design/lis]
+  - id: res-cses-projects
+    kind: problem
+    title: Projects
+    at: {web: '1140'}
+    url: https://cses.fi/problemset/task/1140
+    practises: [cs/algorithm-design/weighted-interval-scheduling]
+  - id: res-cses-elevator-rides
+    kind: problem
+    title: Elevator Rides
+    at: {web: '1653'}
+    url: https://cses.fi/problemset/task/1653
+    practises: [cs/algorithm-design/bitmask-dp]
+  - id: res-cses-increasing-subsequence-ii
+    kind: problem
+    title: Increasing Subsequence II
+    at: {web: '1748'}
+    url: https://cses.fi/problemset/task/1748
+    practises: [cs/data-structures/fenwick-trees, cs/algorithm-design/lis]
+- id: res-cses-graph-algorithms
+  kind: section
+  title: Graph Algorithms
+  nodes:
+  - id: res-cses-counting-rooms
+    kind: problem
+    title: Counting Rooms
+    at: {web: '1192'}
+    url: https://cses.fi/problemset/task/1192
+    practises: [cs/graph-algorithms/depth-first-search]
+  - id: res-cses-labyrinth
+    kind: problem
+    title: Labyrinth
+    at: {web: '1193'}
+    url: https://cses.fi/problemset/task/1193
+    practises: [cs/graph-algorithms/breadth-first-search]
+  - id: res-cses-building-roads
+    kind: problem
+    title: Building Roads
+    at: {web: '1666'}
+    url: https://cses.fi/problemset/task/1666
+    practises: [cs/graph-algorithms/depth-first-search, cs/advanced-data-structures/union-find]
+  - id: res-cses-message-route
+    kind: problem
+    title: Message Route
+    at: {web: '1667'}
+    url: https://cses.fi/problemset/task/1667
+    practises: [cs/graph-algorithms/breadth-first-search]
+  - id: res-cses-building-teams
+    kind: problem
+    title: Building Teams
+    at: {web: '1668'}
+    url: https://cses.fi/problemset/task/1668
+    practises: [cs/graph-algorithms/breadth-first-search, math/discrete/graph/bipartite-graphs]
+  - id: res-cses-round-trip
+    kind: problem
+    title: Round Trip
+    at: {web: '1669'}
+    url: https://cses.fi/problemset/task/1669
+    practises: [cs/graph-algorithms/depth-first-search]
+  - id: res-cses-monsters
+    kind: problem
+    title: Monsters
+    at: {web: '1194'}
+    url: https://cses.fi/problemset/task/1194
+    practises: [cs/graph-algorithms/breadth-first-search]
+  - id: res-cses-shortest-routes-i
+    kind: problem
+    title: Shortest Routes I
+    at: {web: '1671'}
+    url: https://cses.fi/problemset/task/1671
+    practises: [cs/graph-algorithms/dijkstra]
+  - id: res-cses-shortest-routes-ii
+    kind: problem
+    title: Shortest Routes II
+    at: {web: '1672'}
+    url: https://cses.fi/problemset/task/1672
+    practises: [cs/algorithm-design/floyd-warshall]
+  - id: res-cses-high-score
+    kind: problem
+    title: High Score
+    at: {web: '1673'}
+    url: https://cses.fi/problemset/task/1673
+    practises: [cs/graph-algorithms/bellman-ford]
+  - id: res-cses-flight-discount
+    kind: problem
+    title: Flight Discount
+    at: {web: '1195'}
+    url: https://cses.fi/problemset/task/1195
+    practises: [cs/graph-algorithms/dijkstra]
+  - id: res-cses-cycle-finding
+    kind: problem
+    title: Cycle Finding
+    at: {web: '1197'}
+    url: https://cses.fi/problemset/task/1197
+    practises: [cs/graph-algorithms/bellman-ford]
+  - id: res-cses-flight-routes
+    kind: problem
+    title: Flight Routes
+    at: {web: '1196'}
+    url: https://cses.fi/problemset/task/1196
+    practises: [cs/graph-algorithms/dijkstra]
+  - id: res-cses-round-trip-ii
+    kind: problem
+    title: Round Trip II
+    at: {web: '1678'}
+    url: https://cses.fi/problemset/task/1678
+    practises: [cs/graph-algorithms/depth-first-search]
+  - id: res-cses-course-schedule
+    kind: problem
+    title: Course Schedule
+    at: {web: '1679'}
+    url: https://cses.fi/problemset/task/1679
+    practises: [cs/graph-algorithms/topological-sort]
+  - id: res-cses-longest-flight-route
+    kind: problem
+    title: Longest Flight Route
+    at: {web: '1680'}
+    url: https://cses.fi/problemset/task/1680
+    practises: [cs/graph-algorithms/dag-shortest-paths, cs/graph-algorithms/topological-sort]
+  - id: res-cses-game-routes
+    kind: problem
+    title: Game Routes
+    at: {web: '1681'}
+    url: https://cses.fi/problemset/task/1681
+    practises: [cs/graph-algorithms/topological-sort]
+  - id: res-cses-investigation
+    kind: problem
+    title: Investigation
+    at: {web: '1202'}
+    url: https://cses.fi/problemset/task/1202
+    practises: [cs/graph-algorithms/dijkstra]
+  - id: res-cses-planets-queries-i
+    kind: problem
+    title: Planets Queries I
+    at: {web: '1750'}
+    url: https://cses.fi/problemset/task/1750
+    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+  - id: res-cses-road-reparation
+    kind: problem
+    title: Road Reparation
+    at: {web: '1675'}
+    url: https://cses.fi/problemset/task/1675
+    practises: [cs/graph-optimization/kruskal, cs/graph-optimization/prim]
+  - id: res-cses-road-construction
+    kind: problem
+    title: Road Construction
+    at: {web: '1676'}
+    url: https://cses.fi/problemset/task/1676
+    practises: [cs/advanced-data-structures/union-find]
+  - id: res-cses-flight-routes-check
+    kind: problem
+    title: Flight Routes Check
+    at: {web: '1682'}
+    url: https://cses.fi/problemset/task/1682
+    practises: [cs/graph-algorithms/strongly-connected-components]
+  - id: res-cses-planets-and-kingdoms
+    kind: problem
+    title: Planets and Kingdoms
+    at: {web: '1683'}
+    url: https://cses.fi/problemset/task/1683
+    practises: [cs/graph-algorithms/strongly-connected-components]
+  - id: res-cses-coin-collector
+    kind: problem
+    title: Coin Collector
+    at: {web: '1686'}
+    url: https://cses.fi/problemset/task/1686
+    practises: [cs/graph-algorithms/strongly-connected-components, cs/graph-algorithms/topological-sort]
+  - id: res-cses-mail-delivery
+    kind: problem
+    title: Mail Delivery
+    at: {web: '1691'}
+    url: https://cses.fi/problemset/task/1691
+    practises: [cs/graph-algorithms/eulerian-circuits]
+  - id: res-cses-de-bruijn-sequence
+    kind: problem
+    title: De Bruijn Sequence
+    at: {web: '1692'}
+    url: https://cses.fi/problemset/task/1692
+    practises: [cs/graph-algorithms/eulerian-circuits]
+  - id: res-cses-teleporters-path
+    kind: problem
+    title: Teleporters Path
+    at: {web: '1693'}
+    url: https://cses.fi/problemset/task/1693
+    practises: [cs/graph-algorithms/eulerian-circuits]
+  - id: res-cses-hamiltonian-flights
+    kind: problem
+    title: Hamiltonian Flights
+    at: {web: '1690'}
+    url: https://cses.fi/problemset/task/1690
+    practises: [cs/algorithm-design/bitmask-dp]
+  - id: res-cses-download-speed
+    kind: problem
+    title: Download Speed
+    at: {web: '1694'}
+    url: https://cses.fi/problemset/task/1694
+    practises: [cs/graph-optimization/maximum-flow, cs/graph-optimization/ford-fulkerson]
+  - id: res-cses-police-chase
+    kind: problem
+    title: Police Chase
+    at: {web: '1695'}
+    url: https://cses.fi/problemset/task/1695
+    practises: [cs/graph-optimization/maximum-flow, cs/graph-optimization/ford-fulkerson]
+  - id: res-cses-school-dance
+    kind: problem
+    title: School Dance
+    at: {web: '1696'}
+    url: https://cses.fi/problemset/task/1696
+    practises: [cs/graph-optimization/bipartite-matching]
+  - id: res-cses-distinct-routes
+    kind: problem
+    title: Distinct Routes
+    at: {web: '1711'}
+    url: https://cses.fi/problemset/task/1711
+    practises: [cs/graph-optimization/maximum-flow]
+- id: res-cses-range-queries
+  kind: section
+  title: Range Queries
+  nodes:
+  - id: res-cses-static-range-sum-queries
+    kind: problem
+    title: Static Range Sum Queries
+    at: {web: '1646'}
+    url: https://cses.fi/problemset/task/1646
+    practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-dynamic-range-sum-queries
+    kind: problem
+    title: Dynamic Range Sum Queries
+    at: {web: '1648'}
+    url: https://cses.fi/problemset/task/1648
+    practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-range-xor-queries
+    kind: problem
+    title: Range Xor Queries
+    at: {web: '1650'}
+    url: https://cses.fi/problemset/task/1650
+    practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-range-update-queries
+    kind: problem
+    title: Range Update Queries
+    at: {web: '1651'}
+    url: https://cses.fi/problemset/task/1651
+    practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-forest-queries
+    kind: problem
+    title: Forest Queries
+    at: {web: '1652'}
+    url: https://cses.fi/problemset/task/1652
+    practises: [cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-list-removals
+    kind: problem
+    title: List Removals
+    at: {web: '1749'}
+    url: https://cses.fi/problemset/task/1749
+    practises: [cs/data-structures/order-statistic-trees]
+  - id: res-cses-salary-queries
+    kind: problem
+    title: Salary Queries
+    at: {web: '1144'}
+    url: https://cses.fi/problemset/task/1144
+    practises: [cs/data-structures/fenwick-trees]
+  - id: res-cses-distinct-values-queries
+    kind: problem
+    title: Distinct Values Queries
+    at: {web: '1734'}
+    url: https://cses.fi/problemset/task/1734
+    practises: [cs/data-structures/fenwick-trees]
+- id: res-cses-tree-algorithms
+  kind: section
+  title: Tree Algorithms
+  nodes:
+  - id: res-cses-subordinates
+    kind: problem
+    title: Subordinates
+    at: {web: '1674'}
+    url: https://cses.fi/problemset/task/1674
+    practises: [cs/algorithm-design/tree-dp]
+  - id: res-cses-tree-matching
+    kind: problem
+    title: Tree Matching
+    at: {web: '1130'}
+    url: https://cses.fi/problemset/task/1130
+    practises: [cs/algorithm-design/tree-dp]
+  - id: res-cses-tree-diameter
+    kind: problem
+    title: Tree Diameter
+    at: {web: '1131'}
+    url: https://cses.fi/problemset/task/1131
+    practises: [cs/algorithm-design/tree-dp]
+  - id: res-cses-tree-distances-i
+    kind: problem
+    title: Tree Distances I
+    at: {web: '1132'}
+    url: https://cses.fi/problemset/task/1132
+    practises: [cs/algorithm-design/tree-dp]
+  - id: res-cses-tree-distances-ii
+    kind: problem
+    title: Tree Distances II
+    at: {web: '1133'}
+    url: https://cses.fi/problemset/task/1133
+    practises: [cs/algorithm-design/tree-dp]
+  - id: res-cses-company-queries-i
+    kind: problem
+    title: Company Queries I
+    at: {web: '1687'}
+    url: https://cses.fi/problemset/task/1687
+    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+  - id: res-cses-company-queries-ii
+    kind: problem
+    title: Company Queries II
+    at: {web: '1688'}
+    url: https://cses.fi/problemset/task/1688
+    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+  - id: res-cses-distance-queries
+    kind: problem
+    title: Distance Queries
+    at: {web: '1135'}
+    url: https://cses.fi/problemset/task/1135
+    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+  - id: res-cses-counting-paths
+    kind: problem
+    title: Counting Paths
+    at: {web: '1136'}
+    url: https://cses.fi/problemset/task/1136
+    practises: [cs/advanced-data-structures/lowest-common-ancestor, cs/algorithm-patterns/prefix-sums]
+  - id: res-cses-subtree-queries
+    kind: problem
+    title: Subtree Queries
+    at: {web: '1137'}
+    url: https://cses.fi/problemset/task/1137
+    practises: [cs/data-structures/fenwick-trees, cs/graph-algorithms/depth-first-search]
+  - id: res-cses-path-queries
+    kind: problem
+    title: Path Queries
+    at: {web: '1138'}
+    url: https://cses.fi/problemset/task/1138
+    practises: [cs/data-structures/fenwick-trees, cs/graph-algorithms/depth-first-search]
+- id: res-cses-mathematics
+  kind: section
+  title: Mathematics
+  nodes:
+  - id: res-cses-exponentiation
+    kind: problem
+    title: Exponentiation
+    at: {web: '1095'}
+    url: https://cses.fi/problemset/task/1095
+    practises: [math/discrete/number-theory/modular-exponentiation]
+  - id: res-cses-exponentiation-ii
+    kind: problem
+    title: Exponentiation II
+    at: {web: '1712'}
+    url: https://cses.fi/problemset/task/1712
+    practises: [math/discrete/number-theory/modular-exponentiation, math/discrete/number-theory/euler-totient]
+  - id: res-cses-prime-multiples
+    kind: problem
+    title: Prime Multiples
+    at: {web: '2185'}
+    url: https://cses.fi/problemset/task/2185
+    practises: [math/discrete/counting/inclusion-exclusion]
+  - id: res-cses-counting-coprime-pairs
+    kind: problem
+    title: Counting Coprime Pairs
+    at: {web: '2417'}
+    url: https://cses.fi/problemset/task/2417
+    practises: [math/discrete/counting/inclusion-exclusion]
+  - id: res-cses-binomial-coefficients
+    kind: problem
+    title: Binomial Coefficients
+    at: {web: '1079'}
+    url: https://cses.fi/problemset/task/1079
+    practises: [math/discrete/counting/combinations, math/discrete/number-theory/modular-exponentiation]
+  - id: res-cses-creating-strings-ii
+    kind: problem
+    title: Creating Strings II
+    at: {web: '1715'}
+    url: https://cses.fi/problemset/task/1715
+    practises: [math/discrete/counting/combinations]
+  - id: res-cses-distributing-apples
+    kind: problem
+    title: Distributing Apples
+    at: {web: '1716'}
+    url: https://cses.fi/problemset/task/1716
+    practises: [math/discrete/counting/stars-and-bars]
+  - id: res-cses-christmas-party
+    kind: problem
+    title: Christmas Party
+    at: {web: '1717'}
+    url: https://cses.fi/problemset/task/1717
+    practises: [math/discrete/counting/derangements]
+  - id: res-cses-fibonacci-numbers
+    kind: problem
+    title: Fibonacci Numbers
+    at: {web: '1722'}
+    url: https://cses.fi/problemset/task/1722
+    practises: [math/discrete/sequences/fibonacci]
+  - id: res-cses-throwing-dice
+    kind: problem
+    title: Throwing Dice
+    at: {web: '1096'}
+    url: https://cses.fi/problemset/task/1096
+    practises: [math/discrete/sequences/fibonacci]
+  - id: res-cses-graph-paths-i
+    kind: problem
+    title: Graph Paths I
+    at: {web: '1723'}
+    url: https://cses.fi/problemset/task/1723
+    practises: [math/discrete/graph/representing-graphs]
+  - id: res-cses-graph-paths-ii
+    kind: problem
+    title: Graph Paths II
+    at: {web: '1724'}
+    url: https://cses.fi/problemset/task/1724
+    practises: [cs/graph-algorithms/shortest-paths-by-squaring]
+  - id: res-cses-stick-game
+    kind: problem
+    title: Stick Game
+    at: {web: '1729'}
+    url: https://cses.fi/problemset/task/1729
+    practises: [math/discrete/graph/winning-positions]
+  - id: res-cses-nim-game-i
+    kind: problem
+    title: Nim Game I
+    at: {web: '1730'}
+    url: https://cses.fi/problemset/task/1730
+    practises: [math/discrete/graph/nim]
+  - id: res-cses-nim-game-ii
+    kind: problem
+    title: Nim Game II
+    at: {web: '1098'}
+    url: https://cses.fi/problemset/task/1098
+    practises: [math/discrete/graph/sprague-grundy]
+  - id: res-cses-stair-game
+    kind: problem
+    title: Stair Game
+    at: {web: '1099'}
+    url: https://cses.fi/problemset/task/1099
+    practises: [math/discrete/graph/nim]
+  - id: res-cses-grundys-game
+    kind: problem
+    title: 'Grundy''s Game'
+    at: {web: '2207'}
+    url: https://cses.fi/problemset/task/2207
+    practises: [math/discrete/graph/sprague-grundy]
+- id: res-cses-string-algorithms
+  kind: section
+  title: String Algorithms
+  nodes:
+  - id: res-cses-word-combinations
+    kind: problem
+    title: Word Combinations
+    at: {web: '1731'}
+    url: https://cses.fi/problemset/task/1731
+    practises: [cs/data-structures/tries]
+  - id: res-cses-string-matching
+    kind: problem
+    title: String Matching
+    at: {web: '1753'}
+    url: https://cses.fi/problemset/task/1753
+    practises: [cs/algorithm-topics/knuth-morris-pratt, cs/algorithm-topics/rabin-karp]
+  - id: res-cses-finding-borders
+    kind: problem
+    title: Finding Borders
+    at: {web: '1732'}
+    url: https://cses.fi/problemset/task/1732
+    practises: [cs/algorithm-topics/knuth-morris-pratt]
+  - id: res-cses-finding-periods
+    kind: problem
+    title: Finding Periods
+    at: {web: '1733'}
+    url: https://cses.fi/problemset/task/1733
+    practises: [cs/algorithm-topics/knuth-morris-pratt]
+  - id: res-cses-required-substring
+    kind: problem
+    title: Required Substring
+    at: {web: '1112'}
+    url: https://cses.fi/problemset/task/1112
+    practises: [cs/algorithm-topics/string-matching-automaton]
+  - id: res-cses-finding-patterns
+    kind: problem
+    title: Finding Patterns
+    at: {web: '2102'}
+    url: https://cses.fi/problemset/task/2102
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-counting-patterns
+    kind: problem
+    title: Counting Patterns
+    at: {web: '2103'}
+    url: https://cses.fi/problemset/task/2103
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-pattern-positions
+    kind: problem
+    title: Pattern Positions
+    at: {web: '2104'}
+    url: https://cses.fi/problemset/task/2104
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-distinct-substrings
+    kind: problem
+    title: Distinct Substrings
+    at: {web: '2105'}
+    url: https://cses.fi/problemset/task/2105
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-repeating-substring
+    kind: problem
+    title: Repeating Substring
+    at: {web: '2106'}
+    url: https://cses.fi/problemset/task/2106
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-string-functions
+    kind: problem
+    title: String Functions
+    at: {web: '2107'}
+    url: https://cses.fi/problemset/task/2107
+    practises: [cs/algorithm-topics/knuth-morris-pratt]
+  - id: res-cses-substring-order-i
+    kind: problem
+    title: Substring Order I
+    at: {web: '2108'}
+    url: https://cses.fi/problemset/task/2108
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-substring-order-ii
+    kind: problem
+    title: Substring Order II
+    at: {web: '2109'}
+    url: https://cses.fi/problemset/task/2109
+    practises: [cs/algorithm-topics/suffix-arrays]
+  - id: res-cses-substring-distribution
+    kind: problem
+    title: Substring Distribution
+    at: {web: '2110'}
+    url: https://cses.fi/problemset/task/2110
+    practises: [cs/algorithm-topics/suffix-arrays]
+- id: res-cses-geometry
+  kind: section
+  title: Geometry
+  nodes:
+  - id: res-cses-point-location-test
+    kind: problem
+    title: Point Location Test
+    at: {web: '2189'}
+    url: https://cses.fi/problemset/task/2189
+    practises: [cs/computational-geometry/vector-geometry]
+  - id: res-cses-line-segment-intersection
+    kind: problem
+    title: Line Segment Intersection
+    at: {web: '2190'}
+    url: https://cses.fi/problemset/task/2190
+    practises: [cs/computational-geometry/segment-intersection]
+  - id: res-cses-polygon-area
+    kind: problem
+    title: Polygon Area
+    at: {web: '2191'}
+    url: https://cses.fi/problemset/task/2191
+    practises: [cs/computational-geometry/vector-geometry]
+  - id: res-cses-convex-hull
+    kind: problem
+    title: Convex Hull
+    at: {web: '2195'}
+    url: https://cses.fi/problemset/task/2195
+    practises: [cs/computational-geometry/graham-scan, cs/algorithm-topics/convex-hull]
+  - id: res-cses-intersection-points
+    kind: problem
+    title: Intersection Points
+    at: {web: '1740'}
+    url: https://cses.fi/problemset/task/1740
+    practises: [cs/computational-geometry/sweep-line, cs/data-structures/fenwick-trees]
+  - id: res-cses-area-of-rectangles
+    kind: problem
+    title: Area of Rectangles
+    at: {web: '1741'}
+    url: https://cses.fi/problemset/task/1741
+    practises: [cs/computational-geometry/sweep-line]
+- id: res-cses-advanced-techniques
+  kind: section
+  title: Advanced Techniques
+  nodes:
+  - id: res-cses-apples-and-bananas
+    kind: problem
+    title: Apples and Bananas
+    at: {web: '2111'}
+    url: https://cses.fi/problemset/task/2111
+    practises: [cs/algorithm-topics/fast-fourier-transform]
+  - id: res-cses-one-bit-positions
+    kind: problem
+    title: One Bit Positions
+    at: {web: '2112'}
+    url: https://cses.fi/problemset/task/2112
+    practises: [cs/algorithm-topics/fast-fourier-transform]
+  - id: res-cses-signal-processing
+    kind: problem
+    title: Signal Processing
+    at: {web: '2113'}
+    url: https://cses.fi/problemset/task/2113
+    practises: [cs/algorithm-topics/fast-fourier-transform]
+  - id: res-cses-parcel-delivery
+    kind: problem
+    title: Parcel Delivery
+    at: {web: '2121'}
+    url: https://cses.fi/problemset/task/2121
+    practises: [cs/graph-optimization/min-cost-flow]
+  - id: res-cses-task-assignment
+    kind: problem
+    title: Task Assignment
+    at: {web: '2129'}
+    url: https://cses.fi/problemset/task/2129
+    practises: [cs/graph-optimization/min-cost-flow]
+  - id: res-cses-distinct-routes-ii
+    kind: problem
+    title: Distinct Routes II
+    at: {web: '2130'}
+    url: https://cses.fi/problemset/task/2130
+    practises: [cs/graph-optimization/min-cost-flow]
+- id: res-cses-sliding-window-problems
+  kind: section
+  title: Sliding Window Problems
+  nodes:
+  - id: res-cses-sliding-window-sum
+    kind: problem
+    title: Sliding Window Sum
+    at: {web: '3220'}
+    url: https://cses.fi/problemset/task/3220
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-sliding-window-minimum
+    kind: problem
+    title: Sliding Window Minimum
+    at: {web: '3221'}
+    url: https://cses.fi/problemset/task/3221
+    practises: [cs/data-structures/stacks-and-queues, cs/algorithm-patterns/sliding-window]
+  - id: res-cses-sliding-window-xor
+    kind: problem
+    title: Sliding Window Xor
+    at: {web: '3426'}
+    url: https://cses.fi/problemset/task/3426
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-sliding-window-or
+    kind: problem
+    title: Sliding Window Or
+    at: {web: '3405'}
+    url: https://cses.fi/problemset/task/3405
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-sliding-window-distinct-values
+    kind: problem
+    title: Sliding Window Distinct Values
+    at: {web: '3222'}
+    url: https://cses.fi/problemset/task/3222
+    practises: [cs/algorithm-patterns/sliding-window]
+  - id: res-cses-sliding-window-inversions
+    kind: problem
+    title: Sliding Window Inversions
+    at: {web: '3223'}
+    url: https://cses.fi/problemset/task/3223
+    practises: [cs/data-structures/fenwick-trees, cs/algorithm-patterns/sliding-window]
+- id: res-cses-interactive-problems
+  kind: section
+  title: Interactive Problems
+  nodes:
+  - id: res-cses-hidden-integer
+    kind: problem
+    title: Hidden Integer
+    at: {web: '3112'}
+    url: https://cses.fi/problemset/task/3112
+    practises: [cs/sorting/binary-search]
+- id: res-cses-bitwise-operations
+  kind: section
+  title: Bitwise Operations
+  nodes:
+  - id: res-cses-maximum-xor-subarray
+    kind: problem
+    title: Maximum Xor Subarray
+    at: {web: '1655'}
+    url: https://cses.fi/problemset/task/1655
+    practises: [cs/data-structures/tries, cs/algorithm-patterns/prefix-sums]
+- id: res-cses-advanced-graph-problems
+  kind: section
+  title: Advanced Graph Problems
+  nodes:
+  - id: res-cses-tree-traversals
+    kind: problem
+    title: Tree Traversals
+    at: {web: '1702'}
+    url: https://cses.fi/problemset/task/1702
+    practises: [cs/data-structures/binary-trees]
+  - id: res-cses-course-schedule-ii
+    kind: problem
+    title: Course Schedule II
+    at: {web: '1757'}
+    url: https://cses.fi/problemset/task/1757
+    practises: [cs/graph-algorithms/topological-sort, cs/data-structures/binary-heaps]
+  - id: res-cses-graph-girth
+    kind: problem
+    title: Graph Girth
+    at: {web: '1707'}
+    url: https://cses.fi/problemset/task/1707
+    practises: [cs/graph-algorithms/breadth-first-search]
+  - id: res-cses-mst-edge-check
+    kind: problem
+    title: MST Edge Check
+    at: {web: '3407'}
+    url: https://cses.fi/problemset/task/3407
+    practises: [cs/graph-optimization/kruskal]
+  - id: res-cses-mst-edge-cost
+    kind: problem
+    title: MST Edge Cost
+    at: {web: '3409'}
+    url: https://cses.fi/problemset/task/3409
+    practises: [cs/graph-optimization/kruskal, cs/advanced-data-structures/lowest-common-ancestor]
+  - id: res-cses-network-breakdown
+    kind: problem
+    title: Network Breakdown
+    at: {web: '1677'}
+    url: https://cses.fi/problemset/task/1677
+    practises: [cs/advanced-data-structures/union-find]
+  - id: res-cses-flight-route-requests
+    kind: problem
+    title: Flight Route Requests
+    at: {web: '1699'}
+    url: https://cses.fi/problemset/task/1699
+    practises: [cs/graph-algorithms/strongly-connected-components]
+  - id: res-cses-visiting-cities
+    kind: problem
+    title: Visiting Cities
+    at: {web: '1203'}
+    url: https://cses.fi/problemset/task/1203
+    practises: [cs/graph-algorithms/dijkstra]
+  - id: res-cses-new-flight-routes
+    kind: problem
+    title: New Flight Routes
+    at: {web: '1685'}
+    url: https://cses.fi/problemset/task/1685
+    practises: [cs/graph-algorithms/strongly-connected-components]
+- id: res-cses-counting-problems
+  kind: section
+  title: Counting Problems
+  nodes:
+  - id: res-cses-empty-string
+    kind: problem
+    title: Empty String
+    at: {web: '1080'}
+    url: https://cses.fi/problemset/task/1080
+    practises: [cs/algorithm-design/interval-subproblems, math/discrete/counting/combinations]
+  - id: res-cses-counting-sequences
+    kind: problem
+    title: Counting Sequences
+    at: {web: '2228'}
+    url: https://cses.fi/problemset/task/2228
+    practises: [math/discrete/counting/inclusion-exclusion]
+  - id: res-cses-grid-paths-ii
+    kind: problem
+    title: Grid Paths II
+    at: {web: '1078'}
+    url: https://cses.fi/problemset/task/1078
+    practises: [math/discrete/counting/combinations, math/discrete/counting/inclusion-exclusion]
+- id: res-cses-additional-problems-i
+  kind: section
+  title: Additional Problems I
+  nodes:
+  - id: res-cses-swap-game
+    kind: problem
+    title: Swap Game
+    at: {web: '1670'}
+    url: https://cses.fi/problemset/task/1670
+    practises: [cs/graph-algorithms/breadth-first-search]
+  - id: res-cses-multiplication-table
+    kind: problem
+    title: Multiplication Table
+    at: {web: '2422'}
+    url: https://cses.fi/problemset/task/2422
+    practises: [cs/sorting/binary-search]
+  - id: res-cses-advertisement
+    kind: problem
+    title: Advertisement
+    at: {web: '1142'}
+    url: https://cses.fi/problemset/task/1142
+    practises: [cs/data-structures/stacks-and-queues]
+  - id: res-cses-maximum-building-i
+    kind: problem
+    title: Maximum Building I
+    at: {web: '1147'}
+    url: https://cses.fi/problemset/task/1147
+    practises: [cs/data-structures/stacks-and-queues]
+- id: res-cses-additional-problems-ii
+  kind: section
+  title: Additional Problems II
+  nodes:
+  - id: res-cses-school-excursion
+    kind: problem
+    title: School Excursion
+    at: {web: '1706'}
+    url: https://cses.fi/problemset/task/1706
+    practises: [cs/algorithm-design/subset-sum, cs/advanced-data-structures/union-find]
+  - id: res-cses-coin-grid
+    kind: problem
+    title: Coin Grid
+    at: {web: '1709'}
+    url: https://cses.fi/problemset/task/1709
+    practises: [cs/graph-optimization/bipartite-matching]
+  - id: res-cses-grid-puzzle-i
+    kind: problem
+    title: Grid Puzzle I
+    at: {web: '2432'}
+    url: https://cses.fi/problemset/task/2432
+    practises: [cs/graph-optimization/maximum-flow]
+  - id: res-cses-grid-puzzle-ii
+    kind: problem
+    title: Grid Puzzle II
+    at: {web: '2131'}
+    url: https://cses.fi/problemset/task/2131
+    practises: [cs/graph-optimization/min-cost-flow]
+  - id: res-cses-book-shop-ii
+    kind: problem
+    title: Book Shop II
+    at: {web: '1159'}
+    url: https://cses.fi/problemset/task/1159
+    practises: [cs/algorithm-design/knapsack]

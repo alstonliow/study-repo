@@ -1222,6 +1222,13 @@ and `meta/sources.yml` was removed.
      `rating_from:` on the resource naming who rated it (CS 97SI for
      `resources/poj.yml`). Cards show it as "3/10". A problem `url` may be
      `http://` when the judge serves no https (POJ).
+     A judge that has neither a difficulty nor a rating it should get (CSES,
+     owner decision, 2026-11-26) sets `unrated: true` on the resource. Its
+     problem nodes then have no `difficulty` or `rating`. They sit under
+     `kind: section` nodes, one per section of the judge, in the judge's own
+     order. A section node's title is the judge's section name, which counts as
+     a name (like official titles). Cards show the section name where the
+     difficulty would go, and sort by section and then by the judge's order.
    - **Named lists** (owner decision, 2026-11-26), such as LeetCode's Top 100
      Liked ("Hot 100"): declared once in the resource file under `lists:`
      (`id`, `label`, `title`, `url`), and named on a node with

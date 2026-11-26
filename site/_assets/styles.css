@@ -422,6 +422,8 @@ body.quarto-dark {
 .lc-diff, .lc-rating { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--c);
   padding: 0.08rem 0.55rem; border-radius: 999px; background: color-mix(in srgb, var(--c) 13%, transparent); }
 .lc-rating { text-transform: none; font-variant-numeric: tabular-nums; }   /* a course's 0-10 rating (POJ) */
+.lc-section { font-size: 0.7rem; font-weight: 600; color: var(--notec); padding: 0.08rem 0.55rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--notec) 10%, transparent); }   /* an unrated judge's section (CSES) */
 .lc-title { font-size: 1rem; font-weight: 600; line-height: 1.3; color: var(--probfg) !important; text-decoration: none !important; }
 .lc-title::after { content: ""; position: absolute; inset: 0; z-index: 1; }      /* the whole card opens the problem */
 .lc-title:focus-visible { outline: none; }
