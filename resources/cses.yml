@@ -587,6 +587,12 @@ nodes:
     at: {web: '1138'}
     url: https://cses.fi/problemset/task/1138
     practises: [cs/data-structures/fenwick-trees, cs/graph-algorithms/depth-first-search]
+  - id: res-cses-path-queries-ii
+    kind: problem
+    title: Path Queries II
+    at: {web: '2134'}
+    url: https://cses.fi/problemset/task/2134
+    practises: [cs/advanced-data-structures/link-cut-trees]
 - id: res-cses-mathematics
   kind: section
   title: Mathematics
@@ -825,6 +831,24 @@ nodes:
   kind: section
   title: Advanced Techniques
   nodes:
+  - id: res-cses-cut-and-paste
+    kind: problem
+    title: Cut and Paste
+    at: {web: '2072'}
+    url: https://cses.fi/problemset/task/2072
+    practises: [cs/advanced-data-structures/splay-trees]
+  - id: res-cses-substring-reversals
+    kind: problem
+    title: Substring Reversals
+    at: {web: '2073'}
+    url: https://cses.fi/problemset/task/2073
+    practises: [cs/advanced-data-structures/splay-trees]
+  - id: res-cses-reversals-and-sums
+    kind: problem
+    title: Reversals and Sums
+    at: {web: '2074'}
+    url: https://cses.fi/problemset/task/2074
+    practises: [cs/advanced-data-structures/splay-trees]
   - id: res-cses-apples-and-bananas
     kind: problem
     title: Apples and Bananas
