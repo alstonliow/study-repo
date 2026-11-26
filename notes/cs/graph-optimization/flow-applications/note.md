@@ -1,6 +1,6 @@
 ---
 title: "Applications of Maximum Flow"
-sources: [mit6046-14, mit6046r-7]
+sources: [mit6046-14, mit6046r-7, mit18433-4]
 requires: [cs/graph-optimization/ford-fulkerson]
 aliases: [cs/graph-algorithms/flow-applications]   # old ids (moved)
 status: draft
@@ -82,3 +82,28 @@ The network for the example with $W=72$ (labels are flow/capacity; the middle ed
 ## Other uses
 
 Edge-disjoint paths from $s$ to $t$ (all capacities $1$; the maximum number equals the minimum number of edges whose removal separates $t$ from $s$, which is Menger's theorem), assigning people to tasks with capacities, and image segmentation by minimum cuts all follow the same pattern.
+
+## Arc-disjoint paths
+
+<!-- Added 2026-11-26 from MIT 18.433 (Spring 2015), lecture notes on flows and cuts (Sections 4.1.1 and 4.2.1), in our own wording; proof written out in steps. It makes the remark on Menger's theorem above precise. -->
+
+::: {#thm-menger-arc-disjoint .theorem name="Menger's theorem (arc version)"}
+
+A directed graph has $k$ pairwise arc-disjoint paths from $s$ to $t$ if and only if $|\delta^+(S)|\ge k$ for every set $S$ with $s\in S$, $t\notin S$.
+
+:::
+
+::: {.proof}
+
+1. *Necessity.* Each path from $s$ to $t$ leaves every such $S$ through an arc of $\delta^+(S)$, and disjoint paths use different arcs.
+
+2. *Sufficiency.* Give every arc capacity $1$. Every $s$–$t$ cut has capacity at least $k$, so by @thm-max-flow-min-cut and @cor-integral-flow there is an integral flow $f$ of value at least $k$, with $f\in\{0,1\}$ on each arc.
+
+3. *Flow decomposition.* While the value is positive, leave $s$ along an arc carrying flow; at every vertex $v\ne t$ that is entered, conservation provides an unused outgoing arc with flow (also when the walk returns to $s$). The walk ends at $t$. Shortcut repeated vertices to get a simple path, and remove the flow on the arcs of the walk; conservation is kept and the value drops by $1$.
+
+4. Repeating $k$ times gives $k$ paths that use disjoint sets of arcs.
+
+:::
+
+The same network argument, with infinite capacity on the edges of a bipartite graph directed from $A$ to $B$, shows that a minimum cut corresponds to a vertex cover $(A\setminus S)\cup(B\cap S)$, which rederives König's theorem (@thm-konig).
+

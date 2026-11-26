@@ -776,6 +776,42 @@ parts:
           - trust-region-methods
           - adjoint-methods
           - derivative-free-optimization
+  - title: Combinatorial Optimization
+    field: Mathematics
+    branches:
+      - id: math/combinatorial-optimization/polyhedra
+        title: Polyhedra and Linear Programming
+        desc: Fourier–Motzkin elimination, Farkas' lemma, LP duality, faces and vertices of polyhedra, polytopes of combinatorial objects, total unimodularity, the ellipsoid method
+        notes:   # topic order on the website
+          - fourier-motzkin
+          - farkas-lemma
+          - lp-duality
+          - faces-of-polyhedra
+          - vertices-of-polyhedra
+          - combinatorial-polytopes
+          - total-unimodularity
+          - ellipsoid-method
+      - id: math/combinatorial-optimization/matching
+        title: Matching
+        desc: Augmenting paths, König's theorem, the assignment problem and the Hungarian method, Edmonds' blossom algorithm, the Tutte–Berge formula
+        notes:   # topic order on the website
+          - augmenting-paths
+          - konig-theorem
+          - hungarian-method
+          - blossom-algorithm
+          - tutte-berge-formula
+      - id: math/combinatorial-optimization/matroids
+        title: Matroids
+        desc: Matroids and circuits, the greedy algorithm, rank and span, the matroid polytope, matroid intersection and its polytope, minimum-cost arborescences, duality and matroid union
+        notes:   # topic order on the website
+          - matroids
+          - matroid-greedy
+          - matroid-rank
+          - matroid-polytope
+          - matroid-intersection
+          - matroid-intersection-polytope
+          - arborescences
+          - matroid-union
   - title: Numerical Analysis
     field: Mathematics
     branches:
@@ -955,7 +991,7 @@ parts:
           - lowest-common-ancestor
       - id: cs/graph-optimization
         title: Spanning Trees, Matching and Flows
-        desc: Minimum spanning trees, maximum flow and minimum cut, bipartite and stable matching
+        desc: Minimum spanning trees, maximum flow and minimum cut, minimum-cost flow, global and T-odd minimum cuts, bipartite and stable matching
         notes:   # topic order on the website
           - minimum-spanning-trees
           - kruskal
@@ -965,6 +1001,8 @@ parts:
           - flow-applications
           - bipartite-matching
           - min-cost-flow
+          - global-minimum-cut
+          - minimum-t-odd-cut
           - stable-matching
       - id: cs/algorithm-topics
         title: Selected Topics in Algorithms

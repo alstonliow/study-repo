@@ -1,0 +1,3 @@
+::: {.problem #prob-mit18433-5-q8 origin="external" source="mit18433-5-q8"}
+We are given $n$ jobs that each take one unit of processing time. All jobs are available at time 0, and job $j$ has a profit of $c_j$ and a deadline $d_j$. The profit for job $j$ will only be earned if the job completes by time $d_j$. The problem is to find an ordering of the jobs that maximizes the total profit. First, prove that if a subset of the jobs can be completed on time, then they can also be completed on time if they are scheduled in the order of their deadlines. Now, let $E(M)=\{1,2,\cdots,n\}$ and let $\mathcal I(M)=\{J\subseteq E(M):J\text{ can be completed on time}\}$. Prove that $M$ is a matroid and describe how to find an optimal ordering for the jobs.
+:::

@@ -280,6 +280,25 @@ not here.
 | $L(x,\lambda,\nu)$, $g(\lambda,\nu)$ | Lagrangian, Lagrange dual function |
 | $\Delta x_{\rm nt}$, $\lambda(x)$ | Newton step, Newton decrement |
 
+### Combinatorial optimization (`math/combinatorial-optimization`)
+
+<!-- Added 2026-11-26 with MIT 18.433 (Spring 2015). Vectors plain lowercase and inequalities between vectors componentwise, written $\le$, as in the course; otherwise as in convex optimization. -->
+
+| Symbol | Meaning |
+|---|---|
+| $x\le y$ for vectors | componentwise inequality |
+| $x(S)=\sum_{e\in S}x_e$ | sum of the components of $x$ over a set $S$ |
+| $\chi_S\in\{0,1\}^E$ | incidence vector of $S\subseteq E$ |
+| $S+e$, $S-e$ | $S\cup\{e\}$, $S\setminus\{e\}$ |
+| $A\triangle B$ | symmetric difference $(A\setminus B)\cup(B\setminus A)$ |
+| $\delta(S)$; $\delta^+(S)$, $\delta^-(S)$ | edges with exactly one end in $S$; arcs leaving, entering $S$ |
+| $E(S)$, $N(S)$ | edges with both ends in $S$; neighbours of $S$ |
+| $G-U$, $o(G-U)$ | graph with the vertices $U$ deleted; its number of odd components |
+| $G/B$ | graph with the vertex set $B$ shrunk to one vertex |
+| $M=(E,\mathcal I)$, $r$, $\operatorname{span}$ | matroid with independent sets $\mathcal I$; its rank function and span |
+| $\kappa(F)$ | number of connected components of $(V,F)$, isolated vertices included |
+| $\operatorname{conv}$, $\operatorname{cone}$, $\operatorname{aff}$, $\dim$ | convex, conic, affine hull; dimension of a polyhedron |
+
 ### Numerical analysis (`math/numerical`)
 
 <!-- Added 2026-11-22 with MIT 18.335 (Spring 2019). Vectors bold, as in the linear algebra notes; scalars and matrices as there. -->
