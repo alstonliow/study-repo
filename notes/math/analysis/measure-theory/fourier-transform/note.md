@@ -21,7 +21,7 @@ For a random variable $X$ in $\mathbb R^d$ with law $\mu_X$, $\varphi_X(u)=\hat\
 
 :::
 
-If $\mu$ has density $f$ then $\hat\mu=\hat f$, and for $d=1$ the characteristic function is the one of @sec-math-probability-continuous-transforms.
+If $\mu$ has density $f$ then $\hat\mu=\hat f$, and for $d=1$ the characteristic function is the one of @sec-math-probability-joint-distributions-transforms.
 
 ::: {#prp-fourier-bounded-continuous .proposition name="Fourier transforms are bounded and continuous"}
 

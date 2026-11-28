@@ -20,13 +20,13 @@ chapters:
   points:
   - id: '1.1'
     title: Persistence
-    covers: [cs/advanced-data-structures/persistent-data-structures]
+    covers: [cs/data-structure-models/persistent-data-structures]
 - num: 2
   title: Retroactive data structures
   points:
   - id: '2.1'
     title: Retroactivity
-    covers: [cs/advanced-data-structures/retroactive-data-structures]
+    covers: [cs/data-structure-models/retroactive-data-structures]
 - num: 3
   title: 'Geometry: point location and orthogonal range search'
   points:
@@ -35,16 +35,16 @@ chapters:
     covers: [cs/computational-geometry/planar-point-location]
   - id: '3.2'
     title: Range trees
-    covers: [cs/data-structures/range-trees]
+    covers: [cs/range-queries/range-trees]
   - id: '3.3'
     title: Fractional cascading and layered range trees
-    covers: [cs/advanced-data-structures/fractional-cascading]
+    covers: [cs/data-structure-models/fractional-cascading]
 - num: 4
   title: Kinetic data structures
   points:
   - id: '4.1'
     title: Kinetic sorting and kinetic heaps
-    covers: [cs/advanced-data-structures/kinetic-data-structures]
+    covers: [cs/data-structure-models/kinetic-data-structures]
 - num: 5
   title: Dynamic optimality and the geometry of BSTs
   points:
@@ -68,7 +68,7 @@ chapters:
   points:
   - id: '7.1'
     title: External memory and cache-oblivious models
-    covers: [cs/algorithm-topics/cache-oblivious-algorithms]
+    covers: [cs/data-structure-models/cache-oblivious-algorithms]
   - id: '7.2'
     title: Cache-oblivious B-trees
     covers: [def-co-b-tree, thm-co-b-tree]
@@ -77,7 +77,7 @@ chapters:
   points:
   - id: '8.1'
     title: Ordered file maintenance
-    covers: [cs/advanced-data-structures/ordered-file-maintenance]
+    covers: [cs/data-structure-models/ordered-file-maintenance]
 - num: 9
   title: Funnelsort and cache-oblivious range search
   points:
@@ -89,82 +89,82 @@ chapters:
   points:
   - id: '10.1'
     title: Universal hashing and perfect hashing
-    covers: [cs/data-structures/perfect-hashing]
+    covers: [cs/hashing/perfect-hashing]
   - id: '10.2'
     title: k-independent hashing and tabulation
-    covers: [cs/data-structures/independent-hash-families]
+    covers: [cs/hashing/independent-hash-families]
   - id: '10.3'
     title: Linear probing
-    covers: [cs/data-structures/linear-probing]
+    covers: [cs/hashing/linear-probing]
   - id: '10.4'
     title: Cuckoo hashing
-    covers: [cs/data-structures/cuckoo-hashing]
+    covers: [cs/hashing/cuckoo-hashing]
 - num: 11
   title: Integer data structures
   points:
   - id: '11.1'
     title: van Emde Boas trees
-    covers: [cs/advanced-data-structures/van-emde-boas]
+    covers: [cs/integer-data-structures/van-emde-boas]
   - id: '11.2'
     title: x-fast and y-fast tries
-    covers: [cs/advanced-data-structures/y-fast-trees]
+    covers: [cs/integer-data-structures/y-fast-trees]
 - num: 12
   title: Fusion trees
   points:
   - id: '12.1'
     title: Fusion trees
-    covers: [cs/advanced-data-structures/fusion-trees]
+    covers: [cs/integer-data-structures/fusion-trees]
 - num: 13
   title: Predecessor lower bounds
   points:
   - id: '13.1'
     title: Round elimination
-    covers: [cs/advanced-data-structures/predecessor-lower-bounds]
+    covers: [cs/integer-data-structures/predecessor-lower-bounds]
 - num: 14
   title: Integer sorting
   points:
   - id: '14.1'
     title: Packed sorting and signature sort
-    covers: [cs/sorting/packed-and-signature-sorting]
+    covers: [cs/integer-data-structures/packed-and-signature-sorting]
 - num: 15
   title: 'Static trees: RMQ, LCA and level ancestors'
   points:
   - id: '15.1'
     title: Cartesian trees
-    covers: [cs/advanced-data-structures/cartesian-trees]
+    covers: [cs/range-queries/cartesian-trees]
   - id: '15.2'
     title: Range minimum queries
-    covers: [cs/advanced-data-structures/range-minimum-query]
+    covers: [cs/range-queries/range-minimum-query]
   - id: '15.3'
     title: Level ancestors
-    covers: [cs/advanced-data-structures/level-ancestors]
+    covers: [cs/range-queries/level-ancestors]
 - num: 16
   title: String data structures
   points:
   - id: '16.1'
     title: Suffix trees
-    covers: [cs/algorithm-topics/suffix-trees]
+    covers: [cs/strings/suffix-trees]
   - id: '16.2'
     title: Suffix arrays
-    covers: [cs/algorithm-topics/suffix-arrays]
+    covers: [cs/strings/suffix-arrays]
   - id: '16.3'
     title: Linear-time suffix array construction
-    covers: [cs/algorithm-topics/dc3-suffix-arrays]
+    covers: [cs/strings/dc3-suffix-arrays]
 - num: 17
   title: Succinct data structures
   points:
   - id: '17.1'
     title: Rank and select
-    covers: [cs/advanced-data-structures/rank-and-select]
+    covers: [cs/data-structure-models/rank-and-select]
   - id: '17.2'
     title: Succinct binary tries
-    covers: [cs/advanced-data-structures/succinct-trees]
+    covers: [cs/data-structure-models/succinct-trees]
 - num: 18
   title: Compact suffix arrays
   points:
   - id: '18.1'
     title: Compact suffix arrays
-    covers: [cs/algorithm-topics/compact-suffix-arrays]
+    covers: [cs/strings/compact-suffix-arrays]
 - num: 19
   title: Dynamic trees
   points:
@@ -188,34 +188,34 @@ chapters:
     covers: [cs/advanced-data-structures/connectivity-lower-bound]
   - id: '21.2'
     title: Creationist successor
-    covers: [cs/advanced-data-structures/retroactive-data-structures]
+    covers: [cs/data-structure-models/retroactive-data-structures]
   - id: '21.3'
     title: Range tree construction
-    covers: [cs/advanced-data-structures/fractional-cascading]
+    covers: [cs/data-structure-models/fractional-cascading]
   - id: '21.4'
     title: Geometric basics, working set
     covers: [cs/advanced-data-structures/dynamic-optimality]
   - id: '21.5'
     title: Median, queue
-    covers: [cs/algorithm-topics/cache-oblivious-algorithms]
+    covers: [cs/data-structure-models/cache-oblivious-algorithms]
   - id: '21.6'
     title: Orthogonal segment intersection, visibility
-    covers: [cs/algorithm-topics/cache-oblivious-algorithms]
+    covers: [cs/data-structure-models/cache-oblivious-algorithms]
   - id: '21.7'
     title: Concise vEB, union-split-find
-    covers: [cs/advanced-data-structures/van-emde-boas]
+    covers: [cs/integer-data-structures/van-emde-boas]
   - id: '21.8'
     title: Faster static predecessor
-    covers: [cs/advanced-data-structures/van-emde-boas]
+    covers: [cs/integer-data-structures/van-emde-boas]
   - id: '21.9'
     title: Signature compression
-    covers: [cs/sorting/packed-and-signature-sorting]
+    covers: [cs/integer-data-structures/packed-and-signature-sorting]
   - id: '21.10'
     title: Level ancestors construction
-    covers: [cs/advanced-data-structures/level-ancestors]
+    covers: [cs/range-queries/level-ancestors]
   - id: '21.11'
     title: Substring matching
-    covers: [cs/algorithm-topics/suffix-arrays]
+    covers: [cs/strings/suffix-arrays]
   - id: '21.12'
     title: Balanced parentheses
-    covers: [cs/advanced-data-structures/succinct-trees]
+    covers: [cs/data-structure-models/succinct-trees]

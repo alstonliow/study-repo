@@ -1,7 +1,7 @@
 ---
 title: "Data Preprocessing: Centring, Scaling, PCA and Whitening"
 sources: [cs231n-6]
-requires: [ai/deep-learning/neural-networks, math/linear-algebra/matrix-methods/low-rank-approximation, math/probability/discrete/covariance-and-correlation]
+requires: [ai/deep-learning/neural-networks, math/linear-algebra/matrix-methods/low-rank-approximation, math/probability/random-variables/covariance-and-correlation]
 status: draft
 ---
 

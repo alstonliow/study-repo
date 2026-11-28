@@ -1,7 +1,7 @@
 ---
 title: "Dynamic Connectivity"
 sources: [mit6851-20]
-requires: [cs/advanced-data-structures/euler-tour-trees, cs/advanced-data-structures/union-find]
+requires: [cs/advanced-data-structures/euler-tour-trees, cs/data-structures/union-find]
 status: draft
 ---
 

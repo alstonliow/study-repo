@@ -210,55 +210,55 @@ chapters:
   points:
   - id: '4.1'
     title: Random variables and PMFs
-    covers: [math/probability/discrete/random-variables]
+    covers: [math/probability/random-variables/random-variables]
   - id: '4.2'
     title: Discrete uniform distribution
-    covers: [math/probability/discrete/uniform-distribution]
+    covers: [math/probability/distributions/uniform-distribution]
   - id: '4.3'
     title: Bernoulli and binomial distributions
-    covers: [math/probability/discrete/binomial-distribution]
+    covers: [math/probability/distributions/binomial-distribution]
   - id: '4.4'
     title: Geometric distribution
-    covers: [math/probability/discrete/geometric-distribution]
+    covers: [math/probability/distributions/geometric-distribution]
   - id: '4.5'
     title: Expectation and variance
-    covers: [math/probability/discrete/expectation-and-variance]
+    covers: [math/probability/random-variables/expectation-and-variance]
 - num: 5
   title: Variance and continuous random variables
   points:
   - id: '5.1'
     title: Functions of a random variable
-    covers: [math/probability/discrete/functions-of-random-variables]
+    covers: [math/probability/random-variables/functions-of-random-variables]
   - id: '5.2'
     title: Densities and distribution functions
-    covers: [math/probability/continuous/continuous-random-variables]
+    covers: [math/probability/random-variables/continuous-random-variables]
   - id: '5.3'
     title: Exponential distribution
-    covers: [math/probability/continuous/exponential-distribution]
+    covers: [math/probability/distributions/exponential-distribution]
   - id: '5.4'
     title: Normal distribution
-    covers: [math/probability/continuous/normal-distribution]
+    covers: [math/probability/distributions/normal-distribution]
   - id: '5.5'
     title: Transforming a continuous random variable
-    covers: [math/probability/continuous/derived-distributions]
+    covers: [math/probability/joint-distributions/derived-distributions]
 - num: 6
   title: Law of large numbers and central limit theorem
   points:
   - id: '6.1'
     title: Law of large numbers
-    covers: [math/probability/tail-bounds/concentration-inequalities]
+    covers: [math/probability/limit-theorems/concentration-inequalities]
   - id: '6.2'
     title: Central limit theorem
-    covers: [math/probability/continuous/central-limit-theorem]
+    covers: [math/probability/limit-theorems/central-limit-theorem]
 - num: 7
   title: Joint distributions, covariance and correlation
   points:
   - id: '7.1'
     title: Joint densities
-    covers: [math/probability/continuous/joint-distributions]
+    covers: [math/probability/joint-distributions/joint-distributions]
   - id: '7.2'
     title: Covariance and correlation
-    covers: [math/probability/discrete/covariance-and-correlation]
+    covers: [math/probability/random-variables/covariance-and-correlation]
 - num: 10
   title: Introduction to statistics; maximum likelihood
   points:

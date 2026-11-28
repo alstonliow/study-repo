@@ -1,7 +1,7 @@
 ---
 title: "Principal Component Analysis as a Statistical Method"
 sources: [mit18650-9]
-requires: [math/linear-algebra/matrix-methods/low-rank-approximation, math/probability/discrete/covariance-and-correlation]
+requires: [math/linear-algebra/matrix-methods/low-rank-approximation, math/probability/random-variables/covariance-and-correlation]
 status: draft
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Laws, Distribution Functions and Skorokhod Representation"
 sources: [camii-pm-2, camii-pm-3]
-requires: [math/probability/measure-theoretic/probability-spaces-and-independence, math/analysis/measure-theory/product-measures, math/probability/continuous/modes-of-convergence]
+requires: [math/probability/measure-theoretic/probability-spaces-and-independence, math/analysis/measure-theory/product-measures, math/probability/limit-theorems/modes-of-convergence]
 status: draft
 ---
 

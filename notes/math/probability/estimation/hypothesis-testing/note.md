@@ -1,7 +1,7 @@
 ---
 title: "Hypothesis Testing"
 sources: [eecs126-9, eecs126hw-12, eecs126d-11]
-requires: [math/probability/foundations/bayes-theorem, math/probability/continuous/normal-distribution]
+requires: [math/probability/foundations/bayes-theorem, math/probability/distributions/normal-distribution]
 status: draft
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Finite Markov Chains"
 sources: [cs70-21]
-requires: [math/probability/discrete/random-variables]
+requires: [math/probability/random-variables/random-variables]
 status: draft
 ---
 

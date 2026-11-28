@@ -231,52 +231,52 @@ chapters:
   points:
   - id: '5.1'
     title: Random variables and PMFs
-    covers: [math/probability/discrete/random-variables]
+    covers: [math/probability/random-variables/random-variables]
   - id: '5.2'
     title: Expectation and variance
-    covers: [math/probability/discrete/expectation-and-variance]
+    covers: [math/probability/random-variables/expectation-and-variance]
   - id: '5.3'
     title: Binomial random variables
-    covers: [math/probability/discrete/binomial-distribution]
+    covers: [math/probability/distributions/binomial-distribution]
 - num: 6
   title: Conditional PMFs and the geometric law
   points:
   - id: '6.1'
     title: Functions of random variables
-    covers: [math/probability/discrete/functions-of-random-variables]
+    covers: [math/probability/random-variables/functions-of-random-variables]
   - id: '6.2'
     title: Conditional expectation
-    covers: [math/probability/discrete/conditional-expectation]
+    covers: [math/probability/random-variables/conditional-expectation]
   - id: '6.3'
     title: Geometric random variables
-    covers: [math/probability/discrete/geometric-distribution]
+    covers: [math/probability/distributions/geometric-distribution]
 - num: 7
   title: Multiple discrete random variables
   points:
   - id: '7.1'
     title: Indicators and linearity
-    covers: [math/probability/discrete/indicator-variables]
+    covers: [math/probability/random-variables/indicator-variables]
   - id: '7.2'
     title: Uniform and Poisson random variables
-    covers: [math/probability/discrete/uniform-distribution, math/probability/discrete/poisson-distribution]
+    covers: [math/probability/distributions/uniform-distribution, math/probability/distributions/poisson-distribution]
 - num: 8
   title: Continuous random variables
   points:
   - id: '8.1'
     title: Densities and CDFs
-    covers: [math/probability/continuous/continuous-random-variables]
+    covers: [math/probability/random-variables/continuous-random-variables]
   - id: '8.2'
     title: Exponential random variables
-    covers: [math/probability/continuous/exponential-distribution]
+    covers: [math/probability/distributions/exponential-distribution]
   - id: '8.3'
     title: Normal random variables
-    covers: [math/probability/continuous/normal-distribution]
+    covers: [math/probability/distributions/normal-distribution]
 - num: 9
   title: Multiple continuous random variables
   points:
   - id: '9.1'
     title: Joint and conditional densities
-    covers: [math/probability/continuous/joint-distributions]
+    covers: [math/probability/joint-distributions/joint-distributions]
 - num: 10
   title: Derived distributions
   points:
@@ -291,22 +291,22 @@ chapters:
     covers: [thm-convolution-density, exm-sum-of-uniforms, fig-derived-distributions-1, prob-mit6041f10-6-q1]
   - id: '11.2'
     title: Covariance and correlation
-    covers: [math/probability/discrete/covariance-and-correlation]
+    covers: [math/probability/random-variables/covariance-and-correlation]
 - num: 12
   title: Iterated expectations and random sums
   points:
   - id: '12.1'
     title: Conditional expectation as a random variable
-    covers: [math/probability/continuous/iterated-expectations]
+    covers: [math/probability/joint-distributions/iterated-expectations]
   - id: '12.2'
     title: Transforms
-    covers: [math/probability/continuous/transforms]
+    covers: [math/probability/joint-distributions/transforms]
 - num: 13
   title: The Bernoulli process
   points:
   - id: '13.1'
     title: Bernoulli process
-    covers: [math/probability/random-processes/bernoulli-process]
+    covers: [math/probability/markov-chains/bernoulli-process]
 - num: 14
   title: The Poisson process
   points:
@@ -345,16 +345,16 @@ chapters:
   points:
   - id: '19.1'
     title: Markov and Chebyshev inequalities, weak law
-    covers: [math/probability/tail-bounds/concentration-inequalities]
+    covers: [math/probability/limit-theorems/concentration-inequalities]
   - id: '19.2'
     title: Convergence in probability
-    covers: [math/probability/continuous/modes-of-convergence]
+    covers: [math/probability/limit-theorems/modes-of-convergence]
 - num: 20
   title: Central limit theorem
   points:
   - id: '20.1'
     title: Central limit theorem
-    covers: [math/probability/continuous/central-limit-theorem]
+    covers: [math/probability/limit-theorems/central-limit-theorem]
 - num: 21
   title: Bayesian inference
   points:

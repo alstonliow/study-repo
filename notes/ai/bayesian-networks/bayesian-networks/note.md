@@ -1,7 +1,7 @@
 ---
 title: "Bayesian Networks and Exact Inference"
 sources: [cs221-16]
-requires: [ai/deep-learning/einsum, math/probability/foundations/bayes-theorem, math/probability/discrete/random-variables]
+requires: [ai/deep-learning/einsum, math/probability/foundations/bayes-theorem, math/probability/random-variables/random-variables]
 status: draft
 ---
 

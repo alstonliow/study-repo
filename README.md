@@ -16,19 +16,22 @@ Generated from the notes by `make readme`:
 
 | Field | Part | Branches | Notes | Exercises | Figures |
 |---|---|--:|--:|--:|--:|
-| Mathematics | Discrete Mathematics | 11 | 98 | 272 | 84 |
+| Mathematics | Discrete Mathematics | 11 | 101 | 272 | 87 |
 |  | Single Variable Calculus | 7 | 36 | 214 | 7 |
 |  | Linear Algebra | 13 | 66 | 226 | 262 |
 |  | Multivariable Calculus | 5 | 30 | 198 | 90 |
 |  | Matrix Calculus | 3 | 12 | 10 | 23 |
 |  | Differential Equations | 6 | 27 | 35 | 55 |
 |  | Real Analysis | 12 | 55 | 114 | 138 |
-|  | Probability | 8 | 51 | 252 | 130 |
+|  | Probability | 7 | 44 | 227 | 123 |
+|  | Advanced Probability | 1 | 7 | 25 | 7 |
 |  | Statistics | 4 | 28 | 85 | 20 |
 |  | Convex Optimization | 6 | 41 | 18 | 117 |
 |  | Combinatorial Optimization | 3 | 23 | 69 | 23 |
 |  | Numerical Analysis | 7 | 32 | 10 | 60 |
-| Computer Science | Algorithms | 10 | 152 | 133 | 176 |
+| Computer Science | Algorithms | 7 | 94 | 75 | 119 |
+|  | Advanced Data Structures | 4 | 25 | 17 | 21 |
+|  | Advanced Algorithms | 5 | 44 | 41 | 49 |
 |  | Theory of Computation | 2 | 32 | 53 | 59 |
 |  | Cryptography | 1 | 2 | 0 | 1 |
 |  | Computer Systems | 8 | 51 | 21 | 165 |
@@ -37,7 +40,7 @@ Generated from the notes by `make readme`:
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
 |  | Reinforcement Learning and Games | 2 | 20 | 23 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **119** | **835** | **1822** | **1569** |
+| **Total** | | **125** | **849** | **1822** | **1585** |
 
 31 courses are mapped onto the topic tree:
 

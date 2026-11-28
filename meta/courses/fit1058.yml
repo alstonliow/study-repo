@@ -758,37 +758,37 @@ chapters:
     points:
       - id: "10.1"
         title: "Random variables"
-        covers: [math/probability/discrete/random-variables]
+        covers: [math/probability/random-variables/random-variables]
       - id: "10.2"
         title: "Probability distributions"
-        covers: [math/probability/discrete/random-variables]
+        covers: [math/probability/random-variables/random-variables]
       - id: "10.3"
         title: "Expectation"
-        covers: [math/probability/discrete/expectation-and-variance]
+        covers: [math/probability/random-variables/expectation-and-variance]
       - id: "10.4"
         title: "Median"
-        covers: [math/probability/discrete/expectation-and-variance]
+        covers: [math/probability/random-variables/expectation-and-variance]
       - id: "10.5"
         title: "Mode"
-        covers: [math/probability/discrete/expectation-and-variance]
+        covers: [math/probability/random-variables/expectation-and-variance]
       - id: "10.6"
         title: "Variance"
-        covers: [math/probability/discrete/expectation-and-variance]
+        covers: [math/probability/random-variables/expectation-and-variance]
       - id: "10.7"
         title: "Uniform distribution"
-        covers: [math/probability/discrete/uniform-distribution]
+        covers: [math/probability/distributions/uniform-distribution]
       - id: "10.8"
         title: "Binomial distribution"
-        covers: [math/probability/discrete/binomial-distribution]
+        covers: [math/probability/distributions/binomial-distribution]
       - id: "10.9"
         title: "Poisson distribution"
-        covers: [math/probability/discrete/poisson-distribution]
+        covers: [math/probability/distributions/poisson-distribution]
       - id: "10.10"
         title: "Geometric distribution"
-        covers: [math/probability/discrete/geometric-distribution, math/probability/continuous/standard-distributions]
+        covers: [math/probability/distributions/geometric-distribution, math/probability/distributions/standard-distributions]
       - id: "10.11"
         title: "The coupon collector’s problem"
-        covers: [math/probability/tail-bounds/coupon-collector]
+        covers: [math/probability/limit-theorems/coupon-collector]
   - num: 11
     title: "Graph Theory I"
     points:

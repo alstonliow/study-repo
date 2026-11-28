@@ -23,4 +23,4 @@ nodes:
   title: Suffix arrays in contests
   at:
     ginfo-2005: sa
-  covers: [cs/algorithm-topics/suffix-arrays]
+  covers: [cs/strings/suffix-arrays]

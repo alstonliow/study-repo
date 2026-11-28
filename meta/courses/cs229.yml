@@ -125,7 +125,7 @@ chapters:
   points:
   - id: '3.1'
     title: Exponential family
-    covers: [math/probability/continuous/exponential-family]
+    covers: [math/probability/distributions/exponential-family]
   - id: '3.2'
     title: Constructing GLMs
     covers: [ai/machine-learning/generalized-linear-models]

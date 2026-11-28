@@ -19,4 +19,4 @@ Many problems on sequences use *substring* subproblems $x(i,j)$, one for each co
 | longest palindromic subsequence (@sec-cs-algorithm-design-longest-palindromic-subsequence) | substrings | whether the two ends match | $O(n^2)$ |
 | optimal binary search tree (@sec-cs-algorithm-design-optimal-bst) | intervals of keys | the root | $O(n^3)$ |
 
-Weighted interval scheduling (@sec-cs-algorithm-design-weighted-interval-scheduling) and stacking blocks (@exm-stacking-blocks) were taught alongside these, but use suffix subproblems.
+Weighted interval scheduling (@sec-cs-algorithm-patterns-weighted-interval-scheduling) and stacking blocks (@exm-stacking-blocks) were taught alongside these, but use suffix subproblems.

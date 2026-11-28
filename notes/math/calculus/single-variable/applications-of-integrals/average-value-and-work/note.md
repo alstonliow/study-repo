@@ -4,7 +4,7 @@ sources: [mit1801-23, mit1801n-AV]
 requires: [math/calculus/single-variable/applications-of-integrals/volumes]
 aliases: [math/calculus/applications-of-integrals/average-value-and-work]   # old ids (moved)
 relations:
-  related: [math/probability/continuous/continuous-random-variables]
+  related: [math/probability/random-variables/continuous-random-variables]
 status: draft
 ---
 

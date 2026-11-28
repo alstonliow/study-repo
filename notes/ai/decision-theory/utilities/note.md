@@ -1,7 +1,7 @@
 ---
 title: "Utilities and Rational Preferences"
 sources: [cs188-7]
-requires: [math/probability/discrete/expectation-and-variance]
+requires: [math/probability/random-variables/expectation-and-variance]
 status: draft
 ---
 

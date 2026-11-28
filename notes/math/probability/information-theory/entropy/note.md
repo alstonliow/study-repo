@@ -1,7 +1,7 @@
 ---
 title: "Entropy and Mutual Information"
 sources: [eecs126-7]
-requires: [math/probability/discrete/conditional-expectation]
+requires: [math/probability/random-variables/conditional-expectation]
 status: draft
 ---
 

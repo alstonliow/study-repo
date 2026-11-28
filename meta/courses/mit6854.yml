@@ -25,7 +25,7 @@ chapters:
   points:
   - id: '1.1'
     title: Fibonacci heaps
-    covers: [cs/advanced-data-structures/fibonacci-heaps]
+    covers: [cs/data-structures/fibonacci-heaps]
 - num: 2
   title: Shortest paths and maximum flow
   points:
@@ -144,16 +144,16 @@ chapters:
   points:
   - id: '16.1'
     title: Christofides' algorithm
-    covers: [cs/algorithm-topics/christofides]
+    covers: [cs/approximation-algorithms/christofides]
   - id: '16.2'
     title: LP rounding and primal-dual
-    covers: [cs/algorithm-topics/lp-rounding-and-primal-dual]
+    covers: [cs/approximation-algorithms/lp-rounding-and-primal-dual]
 - num: 17
   title: Facility location
   points:
   - id: '17.1'
     title: Facility location
-    covers: [cs/algorithm-topics/facility-location]
+    covers: [cs/approximation-algorithms/facility-location]
 - num: 18
   title: Maximum cut
   points:
@@ -168,7 +168,7 @@ chapters:
     covers: [def-goemans-williamson, thm-goemans-williamson, exm-goemans-williamson-c5, rmk-max-cut-1]
   - id: '19.2'
     title: Multicommodity cut and metrics
-    covers: [cs/algorithm-topics/sparsest-cut]
+    covers: [cs/approximation-algorithms/sparsest-cut]
 - num: 22
   title: Linear programming in fixed dimension
   points:

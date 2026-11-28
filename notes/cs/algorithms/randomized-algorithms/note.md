@@ -1,7 +1,7 @@
 ---
 title: "Randomized Algorithms"
 sources: [mit6046-6, mit6046r-4]
-requires: [math/probability/discrete/expectation-and-variance]
+requires: [math/probability/random-variables/expectation-and-variance]
 aliases: [cs/algorithm-design/randomized-algorithms]   # old ids (moved)
 status: draft
 ---

@@ -105,7 +105,7 @@ nodes:
     title: Movie Festival
     at: {web: '1629'}
     url: https://cses.fi/problemset/task/1629
-    practises: [cs/algorithm-design/greedy-algorithms]
+    practises: [cs/algorithm-patterns/greedy-algorithms]
   - id: res-cses-sum-of-two-values
     kind: problem
     title: Sum of Two Values
@@ -117,7 +117,7 @@ nodes:
     title: Maximum Subarray Sum
     at: {web: '1643'}
     url: https://cses.fi/problemset/task/1643
-    practises: [cs/algorithm-patterns/prefix-sums]
+    practises: [cs/range-queries/prefix-sums]
   - id: res-cses-stick-lengths
     kind: problem
     title: Stick Lengths
@@ -159,7 +159,7 @@ nodes:
     title: Nested Ranges Count
     at: {web: '2169'}
     url: https://cses.fi/problemset/task/2169
-    practises: [cs/data-structures/fenwick-trees]
+    practises: [cs/range-queries/fenwick-trees]
   - id: res-cses-room-allocation
     kind: problem
     title: Room Allocation
@@ -177,7 +177,7 @@ nodes:
     title: Tasks and Deadlines
     at: {web: '1630'}
     url: https://cses.fi/problemset/task/1630
-    practises: [cs/algorithm-design/greedy-algorithms]
+    practises: [cs/algorithm-patterns/greedy-algorithms]
   - id: res-cses-sum-of-three-values
     kind: problem
     title: Sum of Three Values
@@ -201,13 +201,13 @@ nodes:
     title: Subarray Sums II
     at: {web: '1661'}
     url: https://cses.fi/problemset/task/1661
-    practises: [cs/algorithm-patterns/prefix-sums]
+    practises: [cs/range-queries/prefix-sums]
   - id: res-cses-subarray-divisibility
     kind: problem
     title: Subarray Divisibility
     at: {web: '1662'}
     url: https://cses.fi/problemset/task/1662
-    practises: [cs/algorithm-patterns/prefix-sums]
+    practises: [cs/range-queries/prefix-sums]
   - id: res-cses-distinct-values-subarrays-ii
     kind: problem
     title: Distinct Values Subarrays II
@@ -225,13 +225,13 @@ nodes:
     title: Movie Festival II
     at: {web: '1632'}
     url: https://cses.fi/problemset/task/1632
-    practises: [cs/algorithm-design/greedy-algorithms]
+    practises: [cs/algorithm-patterns/greedy-algorithms]
   - id: res-cses-maximum-subarray-sum-ii
     kind: problem
     title: Maximum Subarray Sum II
     at: {web: '1644'}
     url: https://cses.fi/problemset/task/1644
-    practises: [cs/algorithm-patterns/prefix-sums, cs/data-structures/stacks-and-queues]
+    practises: [cs/range-queries/prefix-sums, cs/data-structures/stacks-and-queues]
 - id: res-cses-dynamic-programming
   kind: section
   title: Dynamic Programming
@@ -307,7 +307,7 @@ nodes:
     title: Projects
     at: {web: '1140'}
     url: https://cses.fi/problemset/task/1140
-    practises: [cs/algorithm-design/weighted-interval-scheduling]
+    practises: [cs/algorithm-patterns/weighted-interval-scheduling]
   - id: res-cses-elevator-rides
     kind: problem
     title: Elevator Rides
@@ -331,7 +331,7 @@ nodes:
     title: Increasing Subsequence II
     at: {web: '1748'}
     url: https://cses.fi/problemset/task/1748
-    practises: [cs/data-structures/fenwick-trees, cs/algorithm-design/lis]
+    practises: [cs/range-queries/fenwick-trees, cs/algorithm-design/lis]
 - id: res-cses-graph-algorithms
   kind: section
   title: Graph Algorithms
@@ -353,7 +353,7 @@ nodes:
     title: Building Roads
     at: {web: '1666'}
     url: https://cses.fi/problemset/task/1666
-    practises: [cs/graph-algorithms/depth-first-search, cs/advanced-data-structures/union-find]
+    practises: [cs/graph-algorithms/depth-first-search, cs/data-structures/union-find]
   - id: res-cses-message-route
     kind: problem
     title: Message Route
@@ -449,25 +449,25 @@ nodes:
     title: Planets Queries I
     at: {web: '1750'}
     url: https://cses.fi/problemset/task/1750
-    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+    practises: [cs/range-queries/lowest-common-ancestor]
   - id: res-cses-planets-queries-ii
     kind: problem
     title: Planets Queries II
     at: {web: '1160'}
     url: https://cses.fi/problemset/task/1160
-    practises: [cs/advanced-data-structures/level-ancestors]
+    practises: [cs/range-queries/level-ancestors]
   - id: res-cses-road-reparation
     kind: problem
     title: Road Reparation
     at: {web: '1675'}
     url: https://cses.fi/problemset/task/1675
-    practises: [cs/graph-optimization/kruskal, cs/graph-optimization/prim]
+    practises: [cs/graph-algorithms/kruskal, cs/graph-algorithms/prim]
   - id: res-cses-road-construction
     kind: problem
     title: Road Construction
     at: {web: '1676'}
     url: https://cses.fi/problemset/task/1676
-    practises: [cs/advanced-data-structures/union-find]
+    practises: [cs/data-structures/union-find]
   - id: res-cses-flight-routes-check
     kind: problem
     title: Flight Routes Check
@@ -549,49 +549,49 @@ nodes:
     title: Static Range Sum Queries
     at: {web: '1646'}
     url: https://cses.fi/problemset/task/1646
-    practises: [cs/algorithm-patterns/prefix-sums]
+    practises: [cs/range-queries/prefix-sums]
   - id: res-cses-static-range-minimum-queries
     kind: problem
     title: Static Range Minimum Queries
     at: {web: '1647'}
     url: https://cses.fi/problemset/task/1647
-    practises: [cs/advanced-data-structures/range-minimum-query]
+    practises: [cs/range-queries/range-minimum-query]
   - id: res-cses-dynamic-range-sum-queries
     kind: problem
     title: Dynamic Range Sum Queries
     at: {web: '1648'}
     url: https://cses.fi/problemset/task/1648
-    practises: [cs/data-structures/fenwick-trees]
+    practises: [cs/range-queries/fenwick-trees]
   - id: res-cses-dynamic-range-minimum-queries
     kind: problem
     title: Dynamic Range Minimum Queries
     at: {web: '1649'}
     url: https://cses.fi/problemset/task/1649
-    practises: [cs/data-structures/segment-trees]
+    practises: [cs/range-queries/segment-trees]
   - id: res-cses-range-xor-queries
     kind: problem
     title: Range Xor Queries
     at: {web: '1650'}
     url: https://cses.fi/problemset/task/1650
-    practises: [cs/algorithm-patterns/prefix-sums]
+    practises: [cs/range-queries/prefix-sums]
   - id: res-cses-range-update-queries
     kind: problem
     title: Range Update Queries
     at: {web: '1651'}
     url: https://cses.fi/problemset/task/1651
-    practises: [cs/data-structures/fenwick-trees]
+    practises: [cs/range-queries/fenwick-trees]
   - id: res-cses-forest-queries
     kind: problem
     title: Forest Queries
     at: {web: '1652'}
     url: https://cses.fi/problemset/task/1652
-    practises: [cs/algorithm-patterns/prefix-sums]
+    practises: [cs/range-queries/prefix-sums]
   - id: res-cses-hotel-queries
     kind: problem
     title: Hotel Queries
     at: {web: '1143'}
     url: https://cses.fi/problemset/task/1143
-    practises: [cs/data-structures/segment-trees]
+    practises: [cs/range-queries/segment-trees]
   - id: res-cses-list-removals
     kind: problem
     title: List Removals
@@ -603,55 +603,55 @@ nodes:
     title: Salary Queries
     at: {web: '1144'}
     url: https://cses.fi/problemset/task/1144
-    practises: [cs/data-structures/fenwick-trees]
+    practises: [cs/range-queries/fenwick-trees]
   - id: res-cses-prefix-sum-queries
     kind: problem
     title: Prefix Sum Queries
     at: {web: '2166'}
     url: https://cses.fi/problemset/task/2166
-    practises: [cs/data-structures/segment-trees]
+    practises: [cs/range-queries/segment-trees]
   - id: res-cses-pizzeria-queries
     kind: problem
     title: Pizzeria Queries
     at: {web: '2206'}
     url: https://cses.fi/problemset/task/2206
-    practises: [cs/data-structures/segment-trees]
+    practises: [cs/range-queries/segment-trees]
   - id: res-cses-subarray-sum-queries
     kind: problem
     title: Subarray Sum Queries
     at: {web: '1190'}
     url: https://cses.fi/problemset/task/1190
-    practises: [cs/data-structures/segment-trees]
+    practises: [cs/range-queries/segment-trees]
   - id: res-cses-distinct-values-queries
     kind: problem
     title: Distinct Values Queries
     at: {web: '1734'}
     url: https://cses.fi/problemset/task/1734
-    practises: [cs/data-structures/fenwick-trees]
+    practises: [cs/range-queries/fenwick-trees]
   - id: res-cses-forest-queries-ii
     kind: problem
     title: Forest Queries II
     at: {web: '1739'}
     url: https://cses.fi/problemset/task/1739
-    practises: [cs/data-structures/fenwick-trees]
+    practises: [cs/range-queries/fenwick-trees]
   - id: res-cses-range-updates-and-sums
     kind: problem
     title: Range Updates and Sums
     at: {web: '1735'}
     url: https://cses.fi/problemset/task/1735
-    practises: [cs/data-structures/lazy-propagation, cs/data-structures/segment-trees]
+    practises: [cs/range-queries/lazy-propagation, cs/range-queries/segment-trees]
   - id: res-cses-polynomial-queries
     kind: problem
     title: Polynomial Queries
     at: {web: '1736'}
     url: https://cses.fi/problemset/task/1736
-    practises: [cs/data-structures/lazy-propagation, cs/data-structures/segment-trees]
+    practises: [cs/range-queries/lazy-propagation, cs/range-queries/segment-trees]
   - id: res-cses-range-queries-and-copies
     kind: problem
     title: Range Queries and Copies
     at: {web: '1737'}
     url: https://cses.fi/problemset/task/1737
-    practises: [cs/advanced-data-structures/persistent-data-structures]
+    practises: [cs/data-structure-models/persistent-data-structures]
 - id: res-cses-tree-algorithms
   kind: section
   title: Tree Algorithms
@@ -691,37 +691,37 @@ nodes:
     title: Company Queries I
     at: {web: '1687'}
     url: https://cses.fi/problemset/task/1687
-    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+    practises: [cs/range-queries/lowest-common-ancestor]
   - id: res-cses-company-queries-ii
     kind: problem
     title: Company Queries II
     at: {web: '1688'}
     url: https://cses.fi/problemset/task/1688
-    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+    practises: [cs/range-queries/lowest-common-ancestor]
   - id: res-cses-distance-queries
     kind: problem
     title: Distance Queries
     at: {web: '1135'}
     url: https://cses.fi/problemset/task/1135
-    practises: [cs/advanced-data-structures/lowest-common-ancestor]
+    practises: [cs/range-queries/lowest-common-ancestor]
   - id: res-cses-counting-paths
     kind: problem
     title: Counting Paths
     at: {web: '1136'}
     url: https://cses.fi/problemset/task/1136
-    practises: [cs/advanced-data-structures/lowest-common-ancestor, cs/algorithm-patterns/prefix-sums]
+    practises: [cs/range-queries/lowest-common-ancestor, cs/range-queries/prefix-sums]
   - id: res-cses-subtree-queries
     kind: problem
     title: Subtree Queries
     at: {web: '1137'}
     url: https://cses.fi/problemset/task/1137
-    practises: [cs/data-structures/fenwick-trees, cs/graph-algorithms/depth-first-search]
+    practises: [cs/range-queries/fenwick-trees, cs/graph-algorithms/depth-first-search]
   - id: res-cses-path-queries
     kind: problem
     title: Path Queries
     at: {web: '1138'}
     url: https://cses.fi/problemset/task/1138
-    practises: [cs/data-structures/fenwick-trees, cs/graph-algorithms/depth-first-search]
+    practises: [cs/range-queries/fenwick-trees, cs/graph-algorithms/depth-first-search]
   - id: res-cses-path-queries-ii
     kind: problem
     title: Path Queries II
@@ -869,19 +869,19 @@ nodes:
     title: Moving Robots
     at: {web: '1726'}
     url: https://cses.fi/problemset/task/1726
-    practises: [math/probability/discrete/indicator-variables, math/probability/discrete/expectation-and-variance]
+    practises: [math/probability/random-variables/indicator-variables, math/probability/random-variables/expectation-and-variance]
   - id: res-cses-candy-lottery
     kind: problem
     title: Candy Lottery
     at: {web: '1727'}
     url: https://cses.fi/problemset/task/1727
-    practises: [math/probability/discrete/expectation-and-variance]
+    practises: [math/probability/random-variables/expectation-and-variance]
   - id: res-cses-inversion-probability
     kind: problem
     title: Inversion Probability
     at: {web: '1728'}
     url: https://cses.fi/problemset/task/1728
-    practises: [math/probability/discrete/expectation-and-variance]
+    practises: [math/probability/random-variables/expectation-and-variance]
   - id: res-cses-stick-game
     kind: problem
     title: Stick Game
@@ -933,103 +933,103 @@ nodes:
     title: String Matching
     at: {web: '1753'}
     url: https://cses.fi/problemset/task/1753
-    practises: [cs/algorithm-topics/knuth-morris-pratt, cs/algorithm-topics/rabin-karp]
+    practises: [cs/strings/knuth-morris-pratt, cs/strings/rabin-karp]
   - id: res-cses-finding-borders
     kind: problem
     title: Finding Borders
     at: {web: '1732'}
     url: https://cses.fi/problemset/task/1732
-    practises: [cs/algorithm-topics/knuth-morris-pratt]
+    practises: [cs/strings/knuth-morris-pratt]
   - id: res-cses-finding-periods
     kind: problem
     title: Finding Periods
     at: {web: '1733'}
     url: https://cses.fi/problemset/task/1733
-    practises: [cs/algorithm-topics/knuth-morris-pratt]
+    practises: [cs/strings/knuth-morris-pratt]
   - id: res-cses-longest-palindrome
     kind: problem
     title: Longest Palindrome
     at: {web: '1111'}
     url: https://cses.fi/problemset/task/1111
-    practises: [cs/algorithm-topics/manacher]
+    practises: [cs/strings/manacher]
   - id: res-cses-all-palindromes
     kind: problem
     title: All Palindromes
     at: {web: '3138'}
     url: https://cses.fi/problemset/task/3138
-    practises: [cs/algorithm-topics/manacher]
+    practises: [cs/strings/manacher]
   - id: res-cses-required-substring
     kind: problem
     title: Required Substring
     at: {web: '1112'}
     url: https://cses.fi/problemset/task/1112
-    practises: [cs/algorithm-topics/string-matching-automaton]
+    practises: [cs/strings/string-matching-automaton]
   - id: res-cses-finding-patterns
     kind: problem
     title: Finding Patterns
     at: {web: '2102'}
     url: https://cses.fi/problemset/task/2102
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-counting-patterns
     kind: problem
     title: Counting Patterns
     at: {web: '2103'}
     url: https://cses.fi/problemset/task/2103
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-pattern-positions
     kind: problem
     title: Pattern Positions
     at: {web: '2104'}
     url: https://cses.fi/problemset/task/2104
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-distinct-substrings
     kind: problem
     title: Distinct Substrings
     at: {web: '2105'}
     url: https://cses.fi/problemset/task/2105
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-repeating-substring
     kind: problem
     title: Repeating Substring
     at: {web: '2106'}
     url: https://cses.fi/problemset/task/2106
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-string-functions
     kind: problem
     title: String Functions
     at: {web: '2107'}
     url: https://cses.fi/problemset/task/2107
-    practises: [cs/algorithm-topics/knuth-morris-pratt]
+    practises: [cs/strings/knuth-morris-pratt]
   - id: res-cses-inverse-suffix-array
     kind: problem
     title: Inverse Suffix Array
     at: {web: '3225'}
     url: https://cses.fi/problemset/task/3225
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-string-transform
     kind: problem
     title: String Transform
     at: {web: '1113'}
     url: https://cses.fi/problemset/task/1113
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-substring-order-i
     kind: problem
     title: Substring Order I
     at: {web: '2108'}
     url: https://cses.fi/problemset/task/2108
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-substring-order-ii
     kind: problem
     title: Substring Order II
     at: {web: '2109'}
     url: https://cses.fi/problemset/task/2109
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
   - id: res-cses-substring-distribution
     kind: problem
     title: Substring Distribution
     at: {web: '2110'}
     url: https://cses.fi/problemset/task/2110
-    practises: [cs/algorithm-topics/suffix-arrays]
+    practises: [cs/strings/suffix-arrays]
 - id: res-cses-geometry
   kind: section
   title: Geometry
@@ -1075,19 +1075,19 @@ nodes:
     title: Convex Hull
     at: {web: '2195'}
     url: https://cses.fi/problemset/task/2195
-    practises: [cs/computational-geometry/graham-scan, cs/algorithm-topics/convex-hull]
+    practises: [cs/computational-geometry/graham-scan, cs/computational-geometry/convex-hull]
   - id: res-cses-intersection-points
     kind: problem
     title: Intersection Points
     at: {web: '1740'}
     url: https://cses.fi/problemset/task/1740
-    practises: [cs/computational-geometry/sweep-line, cs/data-structures/fenwick-trees]
+    practises: [cs/computational-geometry/sweep-line, cs/range-queries/fenwick-trees]
   - id: res-cses-lines-and-queries-i
     kind: problem
     title: Lines and Queries I
     at: {web: '3429'}
     url: https://cses.fi/problemset/task/3429
-    practises: [cs/algorithm-topics/convex-hull-trick]
+    practises: [cs/computational-geometry/convex-hull-trick]
   - id: res-cses-area-of-rectangles
     kind: problem
     title: Area of Rectangles
@@ -1145,13 +1145,13 @@ nodes:
     title: Monster Game I
     at: {web: '2084'}
     url: https://cses.fi/problemset/task/2084
-    practises: [cs/algorithm-topics/convex-hull-trick]
+    practises: [cs/computational-geometry/convex-hull-trick]
   - id: res-cses-monster-game-ii
     kind: problem
     title: Monster Game II
     at: {web: '2085'}
     url: https://cses.fi/problemset/task/2085
-    practises: [cs/algorithm-topics/convex-hull-trick]
+    practises: [cs/computational-geometry/convex-hull-trick]
   - id: res-cses-apples-and-bananas
     kind: problem
     title: Apples and Bananas
@@ -1175,7 +1175,7 @@ nodes:
     title: New Roads Queries
     at: {web: '2101'}
     url: https://cses.fi/problemset/task/2101
-    practises: [cs/advanced-data-structures/union-find]
+    practises: [cs/data-structures/union-find]
   - id: res-cses-dynamic-connectivity
     kind: problem
     title: Dynamic Connectivity
@@ -1245,7 +1245,7 @@ nodes:
     title: Sliding Window Inversions
     at: {web: '3223'}
     url: https://cses.fi/problemset/task/3223
-    practises: [cs/data-structures/fenwick-trees, cs/algorithm-patterns/sliding-window]
+    practises: [cs/range-queries/fenwick-trees, cs/algorithm-patterns/sliding-window]
 - id: res-cses-interactive-problems
   kind: section
   title: Interactive Problems
@@ -1265,7 +1265,7 @@ nodes:
     title: Maximum Xor Subarray
     at: {web: '1655'}
     url: https://cses.fi/problemset/task/1655
-    practises: [cs/data-structures/tries, cs/algorithm-patterns/prefix-sums]
+    practises: [cs/data-structures/tries, cs/range-queries/prefix-sums]
   - id: res-cses-maximum-xor-subset
     kind: problem
     title: Maximum Xor Subset
@@ -1329,25 +1329,25 @@ nodes:
     title: MST Edge Check
     at: {web: '3407'}
     url: https://cses.fi/problemset/task/3407
-    practises: [cs/graph-optimization/kruskal]
+    practises: [cs/graph-algorithms/kruskal]
   - id: res-cses-mst-edge-set-check
     kind: problem
     title: MST Edge Set Check
     at: {web: '3408'}
     url: https://cses.fi/problemset/task/3408
-    practises: [cs/graph-optimization/minimum-spanning-trees]
+    practises: [cs/graph-algorithms/minimum-spanning-trees]
   - id: res-cses-mst-edge-cost
     kind: problem
     title: MST Edge Cost
     at: {web: '3409'}
     url: https://cses.fi/problemset/task/3409
-    practises: [cs/graph-optimization/kruskal, cs/advanced-data-structures/lowest-common-ancestor]
+    practises: [cs/graph-algorithms/kruskal, cs/range-queries/lowest-common-ancestor]
   - id: res-cses-network-breakdown
     kind: problem
     title: Network Breakdown
     at: {web: '1677'}
     url: https://cses.fi/problemset/task/1677
-    practises: [cs/advanced-data-structures/union-find]
+    practises: [cs/data-structures/union-find]
   - id: res-cses-flight-route-requests
     kind: problem
     title: Flight Route Requests
@@ -1425,7 +1425,7 @@ nodes:
     title: School Excursion
     at: {web: '1706'}
     url: https://cses.fi/problemset/task/1706
-    practises: [cs/algorithm-design/subset-sum, cs/advanced-data-structures/union-find]
+    practises: [cs/algorithm-design/subset-sum, cs/data-structures/union-find]
   - id: res-cses-coin-grid
     kind: problem
     title: Coin Grid

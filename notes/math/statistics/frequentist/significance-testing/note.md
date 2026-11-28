@@ -1,7 +1,7 @@
 ---
 title: "Null Hypothesis Significance Testing"
 sources: [mit1805-17, mit1805-18, mit1805-20]
-requires: [math/probability/estimation/hypothesis-testing, math/probability/continuous/central-limit-theorem, math/statistics/bayesian/credible-intervals]
+requires: [math/probability/estimation/hypothesis-testing, math/probability/limit-theorems/central-limit-theorem, math/statistics/bayesian/credible-intervals]
 status: draft
 ---
 

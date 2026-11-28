@@ -1,7 +1,7 @@
 ---
 title: "Hitting Times and Hitting Probabilities"
 sources: [cs70-21]
-requires: [math/probability/markov-chains/finite-markov-chains, math/probability/discrete/expectation-and-variance]
+requires: [math/probability/markov-chains/finite-markov-chains, math/probability/random-variables/expectation-and-variance]
 status: draft
 ---
 

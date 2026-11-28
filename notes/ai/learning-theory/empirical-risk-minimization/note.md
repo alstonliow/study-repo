@@ -1,7 +1,7 @@
 ---
 title: "Empirical Risk Minimization and Finite Hypothesis Classes"
 sources: [cs229-8]
-requires: [ai/machine-learning/bias-variance-tradeoff, math/probability/tail-bounds/chernoff-bounds]
+requires: [ai/machine-learning/bias-variance-tradeoff, math/probability/limit-theorems/chernoff-bounds]
 status: draft
 ---
 

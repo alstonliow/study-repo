@@ -1,7 +1,7 @@
 ---
 title: "A Cell-Probe Lower Bound for Dynamic Connectivity"
 sources: [mit6851-21]
-requires: [cs/advanced-data-structures/dynamic-connectivity, cs/advanced-data-structures/predecessor-lower-bounds]
+requires: [cs/advanced-data-structures/dynamic-connectivity, cs/integer-data-structures/predecessor-lower-bounds]
 status: draft
 ---
 

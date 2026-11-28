@@ -1,7 +1,7 @@
 ---
 title: "Jointly Gaussian Random Variables"
 sources: [eecs126hw-12, eecs126hw-13, eecs126d-12, eecs126d-13]
-requires: [math/probability/estimation/linear-estimation, math/probability/continuous/transforms]
+requires: [math/probability/estimation/linear-estimation, math/probability/joint-distributions/transforms]
 status: draft
 ---
 

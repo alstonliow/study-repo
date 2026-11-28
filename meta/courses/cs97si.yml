@@ -61,10 +61,10 @@ chapters:
     covers: [def-binary-search-tree]
   - id: '3.5'
     title: Fenwick trees
-    covers: [cs/data-structures/fenwick-trees]
+    covers: [cs/range-queries/fenwick-trees]
   - id: '3.6'
     title: Lowest common ancestor
-    covers: [cs/advanced-data-structures/lowest-common-ancestor]
+    covers: [cs/range-queries/lowest-common-ancestor]
 - num: 4
   title: Dynamic programming
   points:
@@ -175,7 +175,7 @@ chapters:
     covers: [def-prefix-function, thm-kmp]
   - id: '10.3'
     title: Suffix tries
-    covers: [cs/algorithm-topics/suffix-tries]
+    covers: [cs/strings/suffix-tries]
   - id: '10.4'
     title: Suffix arrays
-    covers: [cs/algorithm-topics/suffix-arrays]
+    covers: [cs/strings/suffix-arrays]

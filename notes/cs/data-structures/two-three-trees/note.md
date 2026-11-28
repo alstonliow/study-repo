@@ -105,4 +105,4 @@ Inserting $35$ overfills a leaf ($25,30,35$). It splits and sends $30$ up; now t
 
 Deletion is the reverse. Swap a key in an internal node with its successor (which is in a leaf) and remove it from the leaf. If a node becomes empty, *borrow* a key through the parent from a neighbouring sibling that has two keys, or else *merge* with a sibling by pulling a key down from the parent, and repeat upwards. This also takes $O(\log n)$ time.
 
-Allowing nodes with many keys gives B-trees (@sec-cs-advanced-data-structures-b-trees), the version used for data on disk.
+Allowing nodes with many keys gives B-trees (@sec-cs-data-structure-models-b-trees), the version used for data on disk.

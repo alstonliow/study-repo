@@ -1,7 +1,7 @@
 ---
 title: "Markov Decision Processes"
 sources: [cs221-8]
-requires: [ai/search/search-problems, math/probability/discrete/conditional-expectation, math/probability/markov-chains/finite-markov-chains]
+requires: [ai/search/search-problems, math/probability/random-variables/conditional-expectation, math/probability/markov-chains/finite-markov-chains]
 status: draft
 ---
 
@@ -85,7 +85,7 @@ $$
 
 2. Condition on the first transition: after taking $a$ in $s$ we land in $s'$ with probability $T(s,a,s')$ and receive $\text{Reward}(s,a,s')$; the rest of the utility is $\gamma$ times the utility of a rollout of $\pi$ from $s'$.
 
-3. By the Markov property that rollout is distributed as a fresh rollout from $s'$, so its expected utility is $V_\pi(s')$. The law of total expectation (@sec-math-probability-discrete-conditional-expectation) gives the formula for $Q_\pi(s,a)$.
+3. By the Markov property that rollout is distributed as a fresh rollout from $s'$, so its expected utility is $V_\pi(s')$. The law of total expectation (@sec-math-probability-random-variables-conditional-expectation) gives the formula for $Q_\pi(s,a)$.
 
 :::
 
@@ -97,7 +97,7 @@ For the policy "always quit", $V(\text{in})=10$. For "always stay", the Bellman 
 
 ::: {#def-monte-carlo-estimate .definition name="Monte Carlo estimate"}
 
-The *Monte Carlo* estimate of an expectation $E[f(X)]$ draws independent samples $x_1,\dots,x_m$ of $X$ and returns $\frac1m\sum_{i}f(x_i)$. It is unbiased, and by the law of large numbers (@sec-math-probability-tail-bounds-concentration-inequalities) it converges to $E[f(X)]$ as $m\to\infty$, with standard deviation proportional to $1/\sqrt m$. *Monte Carlo policy evaluation* estimates $V_\pi(s)$ as the average utility of $m$ rollouts of $\pi$ from $s$.
+The *Monte Carlo* estimate of an expectation $E[f(X)]$ draws independent samples $x_1,\dots,x_m$ of $X$ and returns $\frac1m\sum_{i}f(x_i)$. It is unbiased, and by the law of large numbers (@sec-math-probability-limit-theorems-concentration-inequalities) it converges to $E[f(X)]$ as $m\to\infty$, with standard deviation proportional to $1/\sqrt m$. *Monte Carlo policy evaluation* estimates $V_\pi(s)$ as the average utility of $m$ rollouts of $\pi$ from $s$.
 
 :::
 

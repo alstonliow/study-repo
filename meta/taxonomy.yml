@@ -590,49 +590,53 @@ parts:
           - events
           - conditional-probability
           - bayes-theorem
-      - id: math/probability/discrete
-        title: Discrete Probability
-        desc: Random variables, expectation and variance, indicators, covariance, discrete distributions
+      - id: math/probability/random-variables
+        title: Random Variables
+        desc: Random variables, expectation and variance, indicators, functions of random variables, covariance, conditional expectation, continuous random variables, Buffon's needle
         notes:   # topic order on the website
           - random-variables
           - expectation-and-variance
-          - conditional-expectation
           - indicator-variables
           - functions-of-random-variables
           - covariance-and-correlation
+          - conditional-expectation
+          - continuous-random-variables
+          - buffons-needle
+      - id: math/probability/distributions
+        title: Distributions
+        desc: Uniform, binomial, hypergeometric, Poisson, geometric, exponential and normal distributions, overview of standard distributions, the exponential family
+        notes:   # topic order on the website
           - uniform-distribution
           - binomial-distribution
           - hypergeometric-distribution
           - poisson-distribution
           - geometric-distribution
-      - id: math/probability/tail-bounds
-        title: Tail Bounds and Applications
-        desc: Markov, Chebyshev and Chernoff bounds; coupon collector, hashing and load balancing, random graphs
+          - exponential-distribution
+          - normal-distribution
+          - standard-distributions
+          - exponential-family
+      - id: math/probability/joint-distributions
+        title: Joint Distributions
+        desc: Joint distributions, derived distributions, transforms, iterated expectations
+        notes:   # topic order on the website
+          - joint-distributions
+          - derived-distributions
+          - transforms
+          - iterated-expectations
+      - id: math/probability/limit-theorems
+        title: Limit Theorems
+        desc: Markov, Chebyshev and Chernoff bounds, coupon collector, hashing and load balancing, random graphs, the central limit theorem, modes of convergence
         notes:   # topic order on the website
           - concentration-inequalities
           - chernoff-bounds
           - coupon-collector
           - hashing-and-load-balancing
           - random-graphs
-      - id: math/probability/continuous
-        title: Continuous Probability
-        desc: Densities, exponential and normal distributions, central limit theorem, overview of distributions
-        notes:   # topic order on the website
-          - continuous-random-variables
-          - exponential-distribution
-          - normal-distribution
           - central-limit-theorem
-          - buffons-needle
-          - standard-distributions
-          - exponential-family
-          - joint-distributions
-          - derived-distributions
-          - transforms
-          - iterated-expectations
           - modes-of-convergence
       - id: math/probability/markov-chains
-        title: Markov Chains
-        desc: Finite Markov chains, invariant distributions, hitting times
+        title: Markov Processes
+        desc: Finite and countable Markov chains, invariant distributions, hitting times, reversibility, Bernoulli and Poisson processes, continuous-time Markov chains
         notes:   # topic order on the website
           - finite-markov-chains
           - invariant-distributions
@@ -640,10 +644,6 @@ parts:
           - hitting-times
           - countable-markov-chains
           - reversible-markov-chains
-      - id: math/probability/random-processes
-        title: Random Processes
-        desc: Bernoulli and Poisson processes, continuous-time Markov chains, queues
-        notes:   # topic order on the website
           - bernoulli-process
           - poisson-process
           - continuous-time-markov-chains
@@ -654,8 +654,11 @@ parts:
           - entropy
           - source-coding
           - channel-capacity
+  - title: Advanced Probability
+    field: Mathematics
+    branches:
       - id: math/probability/measure-theoretic
-        title: Measure-Theoretic Probability
+        title: Measure-Theoretic Foundations
         desc: Probability spaces and independence of σ-algebras, distribution functions and laws, Skorokhod representation, tail events and Kolmogorov's zero-one law, uniform integrability, characteristic functions and weak convergence, ergodic theorems, the strong law of large numbers
         notes:   # topic order on the website
           - probability-spaces-and-independence
@@ -895,31 +898,26 @@ parts:
           - freivalds
       - id: cs/data-structures
         title: Data Structures
-        desc: Sequences and sets, hashing, binary trees, heaps, balanced search trees, augmentation
+        desc: Sequences and sets, amortized analysis, hashing, binary trees, heaps, balanced search trees, augmentation, tries, disjoint sets
         notes:   # topic order on the website
           - interfaces
           - linked-lists-and-dynamic-arrays
           - linked-lists
           - dynamic-arrays
+          - amortized-analysis
+          - stacks-and-queues
           - hashing
-          - perfect-hashing
-          - independent-hash-families
-          - linear-probing
-          - cuckoo-hashing
           - binary-trees
           - avl-trees
           - binary-heaps
+          - fibonacci-heaps
           - two-three-trees
           - red-black-trees
           - augmented-search-trees
           - order-statistic-trees
-          - range-trees
           - skip-lists
-          - stacks-and-queues
           - tries
-          - fenwick-trees
-          - segment-trees
-          - lazy-propagation
+          - union-find
       - id: cs/sorting
         title: Sorting and Selection
         desc: Comparison sorts, lower bounds, sorting in linear time, selection
@@ -935,13 +933,12 @@ parts:
           - linear-sorting
           - counting-sort
           - radix-sort
-          - packed-and-signature-sorting
           - selection
           - randomized-selection
           - median-of-medians
       - id: cs/graph-algorithms
-        title: Graph Search and Shortest Paths
-        desc: Breadth- and depth-first search, strongly connected components, single-source and all-pairs shortest paths
+        title: Graph Algorithms
+        desc: Breadth- and depth-first search, strongly connected components, shortest paths, minimum spanning trees
         notes:   # topic order on the website
           - breadth-first-search
           - depth-first-search
@@ -959,9 +956,25 @@ parts:
           - all-pairs-shortest-paths
           - shortest-paths-by-squaring
           - johnson
+          - minimum-spanning-trees
+          - kruskal
+          - prim
+      - id: cs/range-queries
+        title: Range Queries
+        desc: Prefix sums, Fenwick trees, segment trees, lazy propagation, range trees, Cartesian trees, lowest common ancestors, range minimum queries, level ancestors
+        notes:   # topic order on the website
+          - prefix-sums
+          - fenwick-trees
+          - segment-trees
+          - lazy-propagation
+          - range-trees
+          - cartesian-trees
+          - lowest-common-ancestor
+          - range-minimum-query
+          - level-ancestors
       - id: cs/algorithm-design
-        title: Dynamic Programming, Greedy Algorithms and Amortized Analysis
-        desc: Recursive algorithm design, subproblems, pseudopolynomial time, greedy algorithms, amortized analysis
+        title: Dynamic Programming
+        desc: Recursive algorithm design, subproblems, classic dynamic programs, pseudopolynomial time, tree and bitmask DP
         notes:   # topic order on the website
           - recursive-algorithms
           - bowling
@@ -986,53 +999,67 @@ parts:
           - tri-tiling
           - tree-dp
           - bitmask-dp
+      - id: cs/algorithm-patterns
+        title: Techniques
+        desc: Greedy algorithms, interval scheduling, two pointers, sliding windows, backtracking, in-place array and matrix techniques
+        notes:   # topic order on the website
           - greedy-algorithms
           - weighted-interval-scheduling
-          - amortized-analysis
-      - id: cs/algorithm-patterns
-        title: Algorithmic Patterns
-        desc: Two pointers, sliding windows, prefix sums, backtracking, in-place array and matrix techniques
-        notes:   # topic order on the website
           - two-pointers
           - sliding-window
-          - prefix-sums
           - backtracking
           - array-techniques
-      - id: cs/advanced-data-structures
-        title: Advanced Data Structures
-        desc: B-trees, Fibonacci heaps, integer structures (van Emde Boas, y-fast, fusion trees), disjoint sets, static and dynamic trees, persistence and retroactivity, succinct structures, kinetic and cache-oblivious structures
+  - title: Advanced Data Structures
+    field: Computer Science
+    branches:
+      - id: cs/hashing
+        title: Hashing
+        desc: Perfect hashing, independent hash families, linear probing, cuckoo hashing
         notes:   # topic order on the website
-          - b-trees
-          - fibonacci-heaps
+          - perfect-hashing
+          - independent-hash-families
+          - linear-probing
+          - cuckoo-hashing
+      - id: cs/integer-data-structures
+        title: Integer Data Structures
+        desc: van Emde Boas trees, y-fast trees, fusion trees, packed and signature sorting, predecessor lower bounds
+        notes:   # topic order on the website
           - van-emde-boas
           - y-fast-trees
           - fusion-trees
+          - packed-and-signature-sorting
           - predecessor-lower-bounds
-          - union-find
-          - lowest-common-ancestor
-          - cartesian-trees
-          - range-minimum-query
-          - level-ancestors
-          - rank-and-select
-          - succinct-trees
+      - id: cs/advanced-data-structures
+        title: Dynamic Trees
+        desc: Splay trees, dynamic optimality, link-cut trees, Euler tour trees, dynamic connectivity
+        notes:   # topic order on the website
           - splay-trees
-          - link-cut-trees
           - dynamic-optimality
+          - link-cut-trees
           - euler-tour-trees
           - dynamic-connectivity
           - connectivity-lower-bound
+      - id: cs/data-structure-models
+        title: Other Models
+        desc: Persistence and retroactivity, kinetic structures, B-trees, fractional cascading, succinct structures, ordered file maintenance, cache-oblivious structures
+        notes:   # topic order on the website
           - persistent-data-structures
           - retroactive-data-structures
-          - fractional-cascading
           - kinetic-data-structures
+          - b-trees
+          - fractional-cascading
+          - rank-and-select
+          - succinct-trees
           - ordered-file-maintenance
+          - cache-oblivious-algorithms
+          - cache-oblivious-b-trees
+  - title: Advanced Algorithms
+    field: Computer Science
+    branches:
       - id: cs/graph-optimization
-        title: Spanning Trees, Matching and Flows
-        desc: Minimum spanning trees, maximum flow and minimum cut, minimum-cost flow, global and T-odd minimum cuts, bipartite and stable matching
+        title: Flows and Matching
+        desc: Maximum flow and minimum cut, minimum-cost flow, global and T-odd minimum cuts, bipartite and stable matching
         notes:   # topic order on the website
-          - minimum-spanning-trees
-          - kruskal
-          - prim
           - maximum-flow
           - ford-fulkerson
           - flow-applications
@@ -1043,14 +1070,10 @@ parts:
           - global-minimum-cut
           - minimum-t-odd-cut
           - stable-matching
-      - id: cs/algorithm-topics
-        title: Selected Topics in Algorithms
-        desc: Distributed algorithms, linear programming, the FFT, string matching, the convex hull, approximation and fixed-parameter algorithms, cache-oblivious algorithms
+      - id: cs/strings
+        title: Strings
+        desc: String matching, Rabin-Karp, automata, Knuth-Morris-Pratt, Manacher, suffix tries, arrays and trees
         notes:   # topic order on the website
-          - distributed-algorithms
-          - linear-programming
-          - fast-fourier-transform
-          - cooley-tukey-algorithms
           - string-matching
           - rabin-karp
           - string-matching-automaton
@@ -1061,25 +1084,15 @@ parts:
           - suffix-trees
           - dc3-suffix-arrays
           - compact-suffix-arrays
-          - convex-hull
-          - convex-hull-trick
-          - xor-basis
-          - approximation-algorithms
-          - christofides
-          - lp-rounding-and-primal-dual
-          - facility-location
-          - max-cut
-          - sparsest-cut
-          - fixed-parameter-algorithms
-          - cache-oblivious-algorithms
-          - cache-oblivious-b-trees
       - id: cs/computational-geometry
         title: Computational Geometry
-        desc: Vectors and the cross product, segment intersection, the Graham scan, sweep lines, half-plane intersection
+        desc: Vectors and the cross product, segment intersection, convex hulls, sweep lines, half-plane intersection, linear programming in the plane, Voronoi diagrams
         notes:   # topic order on the website
           - vector-geometry
           - segment-intersection
+          - convex-hull
           - graham-scan
+          - convex-hull-trick
           - sweep-line
           - planar-point-location
           - half-plane-intersection
@@ -1087,6 +1100,26 @@ parts:
           - randomized-incremental-hull
           - voronoi-diagrams
           - fortune-sweep
+      - id: cs/approximation-algorithms
+        title: Approximation
+        desc: Approximation algorithms, Christofides, LP rounding and primal-dual, facility location, cuts, fixed-parameter algorithms
+        notes:   # topic order on the website
+          - approximation-algorithms
+          - christofides
+          - lp-rounding-and-primal-dual
+          - facility-location
+          - max-cut
+          - sparsest-cut
+          - fixed-parameter-algorithms
+      - id: cs/algorithm-topics
+        title: Further Topics
+        desc: Linear programming, the FFT, distributed algorithms, XOR basis
+        notes:   # topic order on the website
+          - linear-programming
+          - fast-fourier-transform
+          - cooley-tukey-algorithms
+          - distributed-algorithms
+          - xor-basis
   - title: Theory of Computation
     field: Computer Science
     branches:

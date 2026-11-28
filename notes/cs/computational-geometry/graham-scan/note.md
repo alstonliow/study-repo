@@ -7,7 +7,7 @@ status: draft
 
 <!-- Added 2026-11-26 from Stanford CS 97SI (Winter 2011-12), Lecture 9, in our own wording; proofs written out in steps. The example is our own. -->
 
-The convex hull (@def-convex-hull) of $n$ points can be found by divide and conquer (@sec-cs-algorithm-topics-convex-hull). The Graham scan is the version usually written in contests: one sort and one pass with a stack.
+The convex hull (@def-convex-hull) of $n$ points can be found by divide and conquer (@sec-cs-computational-geometry-convex-hull). The Graham scan is the version usually written in contests: one sort and one pass with a stack.
 
 ::: {#prp-hull-edge-test .proposition name="Hull edges by orientation"}
 

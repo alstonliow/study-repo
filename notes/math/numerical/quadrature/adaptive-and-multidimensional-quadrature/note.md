@@ -1,7 +1,7 @@
 ---
 title: "Adaptive and Multidimensional Quadrature"
 sources: [mit18335-37]
-requires: [math/numerical/quadrature/gaussian-quadrature, math/probability/continuous/central-limit-theorem]
+requires: [math/numerical/quadrature/gaussian-quadrature, math/probability/limit-theorems/central-limit-theorem]
 status: draft
 ---
 

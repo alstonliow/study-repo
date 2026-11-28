@@ -129,7 +129,7 @@ nodes:
       title: Indicator random variables
       at:
         3e: '5.2'
-      covers: [math/probability/discrete/indicator-variables]
+      covers: [math/probability/random-variables/indicator-variables]
     - id: res-clrs-random-permutations
       kind: section
       title: Randomised algorithms and permutations
@@ -331,7 +331,7 @@ nodes:
       title: Perfect hashing
       at:
         3e: '11.5'
-      covers: [cs/data-structures/perfect-hashing]
+      covers: [cs/hashing/perfect-hashing]
   - id: res-clrs-binary-search-trees
     kind: chapter
     title: Binary search trees
@@ -466,13 +466,13 @@ nodes:
       title: Activity selection
       at:
         3e: '16.1'
-      covers: [cs/algorithm-design/greedy-algorithms]
+      covers: [cs/algorithm-patterns/greedy-algorithms]
     - id: res-clrs-greedy-elements
       kind: section
       title: Elements of the greedy strategy
       at:
         3e: '16.2'
-      covers: [cs/algorithm-design/greedy-algorithms]
+      covers: [cs/algorithm-patterns/greedy-algorithms]
     - id: res-clrs-huffman-codes
       kind: section
       title: Huffman codes
@@ -499,25 +499,25 @@ nodes:
       title: Aggregate analysis
       at:
         3e: '17.1'
-      covers: [cs/algorithm-design/amortized-analysis]
+      covers: [cs/data-structures/amortized-analysis]
     - id: res-clrs-accounting-method
       kind: section
       title: Accounting method
       at:
         3e: '17.2'
-      covers: [cs/algorithm-design/amortized-analysis]
+      covers: [cs/data-structures/amortized-analysis]
     - id: res-clrs-potential-method
       kind: section
       title: Potential method
       at:
         3e: '17.3'
-      covers: [cs/algorithm-design/amortized-analysis]
+      covers: [cs/data-structures/amortized-analysis]
     - id: res-clrs-dynamic-tables
       kind: section
       title: Dynamic tables
       at:
         3e: '17.4'
-      covers: [cs/algorithm-design/amortized-analysis, cs/data-structures/dynamic-arrays]
+      covers: [cs/data-structures/amortized-analysis, cs/data-structures/dynamic-arrays]
 - id: res-clrs-advanced-data-structures
   kind: part
   title: Advanced data structures
@@ -535,19 +535,19 @@ nodes:
       title: Definition
       at:
         3e: '18.1'
-      covers: [def-b-tree, cs/advanced-data-structures/b-trees]
+      covers: [def-b-tree, cs/data-structure-models/b-trees]
     - id: res-clrs-b-tree-operations
       kind: section
       title: Search and insertion
       at:
         3e: '18.2'
-      covers: [cs/advanced-data-structures/b-trees]
+      covers: [cs/data-structure-models/b-trees]
     - id: res-clrs-b-tree-deletion
       kind: section
       title: Deletion
       at:
         3e: '18.3'
-      covers: [cs/advanced-data-structures/b-trees]
+      covers: [cs/data-structure-models/b-trees]
   - id: res-clrs-fibonacci-heaps
     kind: chapter
     title: Fibonacci heaps
@@ -559,25 +559,25 @@ nodes:
       title: Structure
       at:
         3e: '19.1'
-      covers: [cs/advanced-data-structures/fibonacci-heaps]
+      covers: [cs/data-structures/fibonacci-heaps]
     - id: res-clrs-mergeable-heap-operations
       kind: section
       title: Mergeable-heap operations
       at:
         3e: '19.2'
-      covers: [cs/advanced-data-structures/fibonacci-heaps]
+      covers: [cs/data-structures/fibonacci-heaps]
     - id: res-clrs-fibonacci-decrease-key
       kind: section
       title: Decrease-key and delete
       at:
         3e: '19.3'
-      covers: [cs/advanced-data-structures/fibonacci-heaps]
+      covers: [cs/data-structures/fibonacci-heaps]
     - id: res-clrs-fibonacci-degree-bound
       kind: section
       title: Bounding the degree
       at:
         3e: '19.4'
-      covers: [cs/advanced-data-structures/fibonacci-heaps]
+      covers: [cs/data-structures/fibonacci-heaps]
   - id: res-clrs-van-emde-boas
     kind: chapter
     title: Van Emde Boas trees
@@ -589,19 +589,19 @@ nodes:
       title: Preliminary approaches
       at:
         3e: '20.1'
-      covers: [cs/advanced-data-structures/van-emde-boas]
+      covers: [cs/integer-data-structures/van-emde-boas]
     - id: res-clrs-proto-veb
       kind: section
       title: A recursive structure
       at:
         3e: '20.2'
-      covers: [cs/advanced-data-structures/van-emde-boas]
+      covers: [cs/integer-data-structures/van-emde-boas]
     - id: res-clrs-veb-tree
       kind: section
       title: The van Emde Boas tree
       at:
         3e: '20.3'
-      covers: [cs/advanced-data-structures/van-emde-boas]
+      covers: [cs/integer-data-structures/van-emde-boas]
   - id: res-clrs-disjoint-sets
     kind: chapter
     title: Disjoint sets
@@ -613,19 +613,19 @@ nodes:
       title: Operations
       at:
         3e: '21.1'
-      covers: [cs/advanced-data-structures/union-find]
+      covers: [cs/data-structures/union-find]
     - id: res-clrs-disjoint-set-lists
       kind: section
       title: Linked-list representation
       at:
         3e: '21.2'
-      covers: [cs/advanced-data-structures/union-find]
+      covers: [cs/data-structures/union-find]
     - id: res-clrs-disjoint-set-forests
       kind: section
       title: Disjoint-set forests
       at:
         3e: '21.3'
-      covers: [cs/advanced-data-structures/union-find]
+      covers: [cs/data-structures/union-find]
     - id: res-clrs-union-by-rank-analysis
       kind: section
       title: Analysis of union by rank with path compression
@@ -684,13 +684,13 @@ nodes:
       title: Growing a minimum spanning tree
       at:
         3e: '23.1'
-      covers: [cs/graph-optimization/minimum-spanning-trees]
+      covers: [cs/graph-algorithms/minimum-spanning-trees]
     - id: res-clrs-kruskal-and-prim
       kind: section
       title: Kruskal and Prim
       at:
         3e: '23.2'
-      covers: [cs/graph-optimization/kruskal, cs/graph-optimization/prim]
+      covers: [cs/graph-algorithms/kruskal, cs/graph-algorithms/prim]
   - id: res-clrs-single-source-shortest-paths
     kind: chapter
     title: Single-source shortest paths
@@ -916,25 +916,25 @@ nodes:
       title: The naive algorithm
       at:
         3e: '32.1'
-      covers: [cs/algorithm-topics/string-matching]
+      covers: [cs/strings/string-matching]
     - id: res-clrs-rabin-karp
       kind: section
       title: Rabin-Karp
       at:
         3e: '32.2'
-      covers: [cs/algorithm-topics/rabin-karp]
+      covers: [cs/strings/rabin-karp]
     - id: res-clrs-string-matching-automata
       kind: section
       title: Matching with finite automata
       at:
         3e: '32.3'
-      covers: [cs/algorithm-topics/string-matching-automaton]
+      covers: [cs/strings/string-matching-automaton]
     - id: res-clrs-knuth-morris-pratt
       kind: section
       title: Knuth-Morris-Pratt
       at:
         3e: '32.4'
-      covers: [cs/algorithm-topics/knuth-morris-pratt]
+      covers: [cs/strings/knuth-morris-pratt]
   - id: res-clrs-np-completeness
     kind: chapter
     title: NP-completeness
@@ -982,19 +982,19 @@ nodes:
       title: Vertex cover
       at:
         3e: '35.1'
-      covers: [cs/algorithm-topics/approximation-algorithms]
+      covers: [cs/approximation-algorithms/approximation-algorithms]
     - id: res-clrs-travelling-salesman
       kind: section
       title: Travelling salesman
       at:
         3e: '35.2'
-      covers: [cs/algorithm-topics/approximation-algorithms]
+      covers: [cs/approximation-algorithms/approximation-algorithms]
     - id: res-clrs-set-cover
       kind: section
       title: Set cover
       at:
         3e: '35.3'
-      covers: [cs/algorithm-topics/approximation-algorithms]
+      covers: [cs/approximation-algorithms/approximation-algorithms]
     - id: res-clrs-randomization-and-lp
       kind: section
       title: Randomisation and linear programming

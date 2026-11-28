@@ -1,7 +1,7 @@
 ---
 title: "Generalized Linear Models"
 sources: [cs229-2, cs229-3, mit18650-10]
-requires: [math/probability/continuous/exponential-family, ai/machine-learning/logistic-regression, math/optimization/algorithms/newtons-method-for-minimization, math/statistics/inference/fisher-information, math/statistics/frequentist/multiple-linear-regression]
+requires: [math/probability/distributions/exponential-family, ai/machine-learning/logistic-regression, math/optimization/algorithms/newtons-method-for-minimization, math/statistics/inference/fisher-information, math/statistics/frequentist/multiple-linear-regression]
 status: draft
 ---
 

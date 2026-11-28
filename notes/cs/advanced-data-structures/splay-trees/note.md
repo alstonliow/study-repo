@@ -1,7 +1,7 @@
 ---
 title: "Splay Trees"
 sources: [mit6854-5, mit6854-6]
-requires: [cs/data-structures/avl-trees, cs/algorithm-design/amortized-analysis]
+requires: [cs/data-structures/avl-trees, cs/data-structures/amortized-analysis]
 status: draft
 ---
 

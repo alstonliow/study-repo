@@ -1,7 +1,7 @@
 ---
 title: "Conjugate Priors: Beta and Normal"
 sources: [mit1805-15]
-requires: [math/statistics/bayesian/odds-and-prediction, math/probability/continuous/normal-distribution]
+requires: [math/statistics/bayesian/odds-and-prediction, math/probability/distributions/normal-distribution]
 status: draft
 ---
 

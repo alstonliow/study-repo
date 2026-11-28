@@ -122,4 +122,4 @@ $$E|X_n-X|\le E|X_n-\phi_K(X_n)|+E|\phi_K(X_n)-\phi_K(X)|+E|\phi_K(X)-X| .$$
 
 :::
 
-In particular, if $X_n\to X$ in probability and $\sup_nE|X_n|^p<\infty$ for some $p>1$, then $E[X_n]\to E[X]$; this complements the remark on expectations in @sec-math-probability-continuous-modes-of-convergence.
+In particular, if $X_n\to X$ in probability and $\sup_nE|X_n|^p<\infty$ for some $p>1$, then $E[X_n]\to E[X]$; this complements the remark on expectations in @sec-math-probability-limit-theorems-modes-of-convergence.

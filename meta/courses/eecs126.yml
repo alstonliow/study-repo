@@ -189,43 +189,43 @@ chapters:
     covers: [math/probability/foundations/sample-spaces, math/probability/foundations/events, math/probability/foundations/conditional-probability, math/probability/foundations/bayes-theorem]
   - id: '1.2'
     title: Discrete random variables
-    covers: [math/probability/discrete/random-variables, math/probability/discrete/expectation-and-variance, math/probability/discrete/conditional-expectation, math/probability/discrete/indicator-variables, math/probability/discrete/functions-of-random-variables, math/probability/discrete/covariance-and-correlation]
+    covers: [math/probability/random-variables/random-variables, math/probability/random-variables/expectation-and-variance, math/probability/random-variables/conditional-expectation, math/probability/random-variables/indicator-variables, math/probability/random-variables/functions-of-random-variables, math/probability/random-variables/covariance-and-correlation]
   - id: '1.3'
     title: Discrete distributions
-    covers: [math/probability/discrete/uniform-distribution, math/probability/discrete/binomial-distribution, math/probability/discrete/hypergeometric-distribution, math/probability/discrete/poisson-distribution, math/probability/discrete/geometric-distribution, math/probability/tail-bounds/coupon-collector]
+    covers: [math/probability/distributions/uniform-distribution, math/probability/distributions/binomial-distribution, math/probability/distributions/hypergeometric-distribution, math/probability/distributions/poisson-distribution, math/probability/distributions/geometric-distribution, math/probability/limit-theorems/coupon-collector]
 - num: 2
   title: Continuous probability
   points:
   - id: '2.1'
     title: Densities
-    covers: [math/probability/continuous/continuous-random-variables, math/probability/continuous/exponential-distribution, math/probability/continuous/normal-distribution]
+    covers: [math/probability/random-variables/continuous-random-variables, math/probability/distributions/exponential-distribution, math/probability/distributions/normal-distribution]
   - id: '2.2'
     title: Joint distributions
-    covers: [math/probability/continuous/joint-distributions]
+    covers: [math/probability/joint-distributions/joint-distributions]
 - num: 3
   title: Concentration and limit theorems
   points:
   - id: '3.1'
     title: Markov, Chebyshev and the law of large numbers
-    covers: [math/probability/tail-bounds/concentration-inequalities]
+    covers: [math/probability/limit-theorems/concentration-inequalities]
   - id: '3.2'
     title: Chernoff and Hoeffding bounds
-    covers: [math/probability/tail-bounds/chernoff-bounds]
+    covers: [math/probability/limit-theorems/chernoff-bounds]
   - id: '3.3'
     title: Transforms
-    covers: [math/probability/continuous/transforms]
+    covers: [math/probability/joint-distributions/transforms]
   - id: '3.4'
     title: Central limit theorem
-    covers: [math/probability/continuous/central-limit-theorem]
+    covers: [math/probability/limit-theorems/central-limit-theorem]
   - id: '3.5'
     title: Modes of convergence
-    covers: [math/probability/continuous/modes-of-convergence]
+    covers: [math/probability/limit-theorems/modes-of-convergence]
 - num: 4
   title: Random graphs
   points:
   - id: '4.1'
     title: Erdős–Rényi graphs and thresholds
-    covers: [math/probability/tail-bounds/random-graphs]
+    covers: [math/probability/limit-theorems/random-graphs]
 - num: 5
   title: Discrete-time Markov chains
   points:
@@ -243,13 +243,13 @@ chapters:
   points:
   - id: '6.1'
     title: Poisson processes
-    covers: [math/probability/random-processes/poisson-process]
+    covers: [math/probability/markov-chains/poisson-process]
 - num: 7
   title: Continuous-time Markov chains
   points:
   - id: '7.1'
     title: CTMCs and queues
-    covers: [math/probability/random-processes/continuous-time-markov-chains]
+    covers: [math/probability/markov-chains/continuous-time-markov-chains]
 - num: 8
   title: Information theory
   points:

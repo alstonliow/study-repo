@@ -56,16 +56,16 @@ chapters:
     points:
       - id: "1.1"
         title: "Greedy interval scheduling"
-        covers: [cs/algorithm-design/greedy-algorithms]
+        covers: [cs/algorithm-patterns/greedy-algorithms]
       - id: "1.2"
         title: "Weighted interval scheduling"
-        covers: [cs/algorithm-design/weighted-interval-scheduling]
+        covers: [cs/algorithm-patterns/weighted-interval-scheduling]
   - num: 2
     title: "Divide and conquer"
     points:
       - id: "2.1"
         title: "Convex hull, median, Strassen"
-        covers: [cs/algorithms/divide-and-conquer, cs/algorithm-topics/convex-hull, cs/sorting/selection, cs/sorting/median-of-medians, cs/algorithms/strassen]
+        covers: [cs/algorithms/divide-and-conquer, cs/computational-geometry/convex-hull, cs/sorting/selection, cs/sorting/median-of-medians, cs/algorithms/strassen]
       - id: "2.2"
         title: "Master theorem"
         covers: [thm-master-theorem, thm-master-theorem-special-case-extra, prob-mit6046s15-1-q12]
@@ -83,19 +83,19 @@ chapters:
     points:
       - id: "4.1"
         title: "van Emde Boas trees"
-        covers: [cs/advanced-data-structures/van-emde-boas]
+        covers: [cs/integer-data-structures/van-emde-boas]
   - num: 5
     title: "Amortization"
     points:
       - id: "5.1"
         title: "Amortized analysis"
-        covers: [cs/algorithm-design/amortized-analysis]
+        covers: [cs/data-structures/amortized-analysis]
       - id: "5.2"
         title: "2-3 trees and B-trees"
         covers: [cs/data-structures/two-three-trees, def-b-tree]
       - id: "5.3"
         title: "Union-find"
-        covers: [cs/advanced-data-structures/union-find]
+        covers: [cs/data-structures/union-find]
   - num: 6
     title: "Randomized algorithms"
     points:
@@ -113,13 +113,13 @@ chapters:
     points:
       - id: "8.1"
         title: "Universal and perfect hashing"
-        covers: [cs/data-structures/perfect-hashing, def-universal-hash-family, thm-universal-hash-family, thm-chain-length]
+        covers: [cs/hashing/perfect-hashing, def-universal-hash-family, thm-universal-hash-family, thm-chain-length]
   - num: 9
     title: "Augmentation"
     points:
       - id: "9.1"
         title: "Order statistics and range trees"
-        covers: [cs/data-structures/augmented-search-trees, cs/data-structures/order-statistic-trees, cs/data-structures/range-trees, def-subtree-augmentation]
+        covers: [cs/data-structures/augmented-search-trees, cs/data-structures/order-statistic-trees, cs/range-queries/range-trees, def-subtree-augmentation]
   - num: 10
     title: "Dynamic programming"
     points:
@@ -137,7 +137,7 @@ chapters:
     points:
       - id: "12.1"
         title: "Prim and Kruskal"
-        covers: [cs/graph-optimization/minimum-spanning-trees, cs/graph-optimization/kruskal, cs/graph-optimization/prim]
+        covers: [cs/graph-algorithms/minimum-spanning-trees, cs/graph-algorithms/kruskal, cs/graph-algorithms/prim]
   - num: 13
     title: "Network flow"
     points:
@@ -167,13 +167,13 @@ chapters:
     points:
       - id: "17.1"
         title: "Approximation algorithms"
-        covers: [cs/algorithm-topics/approximation-algorithms]
+        covers: [cs/approximation-algorithms/approximation-algorithms]
   - num: 18
     title: "Fixed-parameter algorithms"
     points:
       - id: "18.1"
         title: "Fixed-parameter algorithms"
-        covers: [cs/algorithm-topics/fixed-parameter-algorithms]
+        covers: [cs/approximation-algorithms/fixed-parameter-algorithms]
   - num: 19
     title: "Distributed algorithms"
     points:
@@ -197,4 +197,4 @@ chapters:
     points:
       - id: "23.1"
         title: "External memory and cache-oblivious algorithms"
-        covers: [cs/algorithm-topics/cache-oblivious-algorithms]
+        covers: [cs/data-structure-models/cache-oblivious-algorithms]

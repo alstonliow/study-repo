@@ -65,7 +65,7 @@ nodes:
   url: http://poj.org/problem?id=1195
   rating: 8
   lists: [cs97si, cs97si-challenge]
-  practises: [cs/data-structures/fenwick-trees]
+  practises: [cs/range-queries/fenwick-trees]
 - id: res-poj-nearest-common-ancestors
   kind: problem
   title: 'Nearest Common Ancestors'
@@ -73,7 +73,7 @@ nodes:
   url: http://poj.org/problem?id=1330
   rating: 3
   lists: [cs97si]
-  practises: [cs/advanced-data-structures/lowest-common-ancestor]
+  practises: [cs/range-queries/lowest-common-ancestor]
 - id: res-poj-find-them-catch-them
   kind: problem
   title: 'Find them, Catch them'
@@ -81,7 +81,7 @@ nodes:
   url: http://poj.org/problem?id=1703
   rating: 6
   lists: [cs97si]
-  practises: [cs/advanced-data-structures/union-find]
+  practises: [cs/data-structures/union-find]
 - id: res-poj-navigation-nightmare
   kind: problem
   title: 'Navigation Nightmare'
@@ -89,7 +89,7 @@ nodes:
   url: http://poj.org/problem?id=1984
   rating: 5
   lists: [cs97si]
-  practises: [cs/advanced-data-structures/union-find]
+  practises: [cs/data-structures/union-find]
 - id: res-poj-cube-stacking
   kind: problem
   title: 'Cube Stacking'
@@ -97,7 +97,7 @@ nodes:
   url: http://poj.org/problem?id=1988
   rating: 6
   lists: [cs97si]
-  practises: [cs/advanced-data-structures/union-find]
+  practises: [cs/data-structures/union-find]
 - id: res-poj-hardwood-species
   kind: problem
   title: 'Hardwood Species'
@@ -113,7 +113,7 @@ nodes:
   url: http://poj.org/problem?id=3321
   rating: 6
   lists: [cs97si]
-  practises: [cs/data-structures/fenwick-trees, cs/graph-algorithms/depth-first-search]
+  practises: [cs/range-queries/fenwick-trees, cs/graph-algorithms/depth-first-search]
 - id: res-poj-expressions
   kind: problem
   title: 'Expressions'
@@ -249,7 +249,7 @@ nodes:
   url: http://poj.org/problem?id=1258
   rating: 2
   lists: [cs97si]
-  practises: [cs/graph-optimization/prim]
+  practises: [cs/graph-algorithms/prim]
 - id: res-poj-power-hungry-cows
   kind: problem
   title: 'Power Hungry Cows'
@@ -281,7 +281,7 @@ nodes:
   url: http://poj.org/problem?id=2395
   rating: 4
   lists: [cs97si]
-  practises: [cs/graph-optimization/kruskal]
+  practises: [cs/graph-algorithms/kruskal]
 - id: res-poj-a-knights-journey
   kind: problem
   title: "A Knight's Journey"
@@ -553,7 +553,7 @@ nodes:
   url: http://poj.org/problem?id=1961
   rating: 5
   lists: [cs97si]
-  practises: [cs/algorithm-topics/knuth-morris-pratt]
+  practises: [cs/strings/knuth-morris-pratt]
 - id: res-poj-milking-grid
   kind: problem
   title: 'Milking Grid'
@@ -561,7 +561,7 @@ nodes:
   url: http://poj.org/problem?id=2185
   rating: 7
   lists: [cs97si]
-  practises: [cs/algorithm-topics/knuth-morris-pratt]
+  practises: [cs/strings/knuth-morris-pratt]
 - id: res-poj-anagram-groups
   kind: problem
   title: 'Anagram Groups'
@@ -577,7 +577,7 @@ nodes:
   url: http://poj.org/problem?id=2752
   rating: 4
   lists: [cs97si]
-  practises: [cs/algorithm-topics/knuth-morris-pratt]
+  practises: [cs/strings/knuth-morris-pratt]
 - id: res-poj-long-long-message
   kind: problem
   title: 'Long Long Message'
@@ -585,7 +585,7 @@ nodes:
   url: http://poj.org/problem?id=2774
   rating: 9
   lists: [cs97si, cs97si-challenge]
-  practises: [cs/algorithm-topics/suffix-arrays]
+  practises: [cs/strings/suffix-arrays]
 - id: res-poj-cow-patterns
   kind: problem
   title: 'Cow Patterns'
@@ -593,7 +593,7 @@ nodes:
   url: http://poj.org/problem?id=3167
   rating: 8
   lists: [cs97si, cs97si-challenge]
-  practises: [cs/algorithm-topics/knuth-morris-pratt]
+  practises: [cs/strings/knuth-morris-pratt]
 - id: res-poj-milk-patterns
   kind: problem
   title: 'Milk Patterns'
@@ -601,7 +601,7 @@ nodes:
   url: http://poj.org/problem?id=3261
   rating: 6
   lists: [cs97si]
-  practises: [cs/algorithm-topics/suffix-arrays]
+  practises: [cs/strings/suffix-arrays]
 - id: res-poj-snowflake-snow-snowflakes
   kind: problem
   title: 'Snowflake Snow Snowflakes'

@@ -1,7 +1,7 @@
 ---
 title: "Planar Point Location by Persistence"
 sources: [mit6851-3]
-requires: [cs/advanced-data-structures/persistent-data-structures, cs/computational-geometry/sweep-line]
+requires: [cs/data-structure-models/persistent-data-structures, cs/computational-geometry/sweep-line]
 status: draft
 ---
 

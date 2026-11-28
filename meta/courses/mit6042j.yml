@@ -583,25 +583,25 @@ chapters:
     points:
       - id: "18.1"
         title: "Random variables"
-        covers: [math/probability/discrete/random-variables, math/probability/discrete/uniform-distribution, math/probability/discrete/binomial-distribution, math/probability/discrete/geometric-distribution]
+        covers: [math/probability/random-variables/random-variables, math/probability/distributions/uniform-distribution, math/probability/distributions/binomial-distribution, math/probability/distributions/geometric-distribution]
       - id: "18.4"
         title: "Expectation"
-        covers: [math/probability/discrete/expectation-and-variance, math/probability/discrete/conditional-expectation]
+        covers: [math/probability/random-variables/expectation-and-variance, math/probability/random-variables/conditional-expectation]
       - id: "18.5"
         title: "Linearity of expectation"
-        covers: [math/probability/discrete/indicator-variables, math/probability/tail-bounds/coupon-collector]
+        covers: [math/probability/random-variables/indicator-variables, math/probability/limit-theorems/coupon-collector]
   - num: 19
     title: "Deviation from the mean"
     points:
       - id: "19.1"
         title: "Markov's and Chebyshev's theorems"
-        covers: [math/probability/tail-bounds/concentration-inequalities]
+        covers: [math/probability/limit-theorems/concentration-inequalities]
       - id: "19.3"
         title: "Properties of variance"
-        covers: [math/probability/discrete/functions-of-random-variables, math/probability/discrete/covariance-and-correlation]
+        covers: [math/probability/random-variables/functions-of-random-variables, math/probability/random-variables/covariance-and-correlation]
       - id: "19.6"
         title: "Sums of random variables"
-        covers: [math/probability/tail-bounds/chernoff-bounds, math/probability/tail-bounds/hashing-and-load-balancing]
+        covers: [math/probability/limit-theorems/chernoff-bounds, math/probability/limit-theorems/hashing-and-load-balancing]
   - num: 20
     title: "Random walks"
     points:

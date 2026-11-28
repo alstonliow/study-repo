@@ -9,7 +9,7 @@ status: draft
 
 Augmentation (@def-subtree-augmentation) stores at every node a value computed from its subtree. If the value of a node is computed in $O(1)$ time from the node and its children, it can be maintained through rotations in AVL trees and splits and merges in 2-3 trees, at the cost of updating the $O(\log n)$ ancestors of each change.
 
-Two augmented trees have their own notes: order-statistic trees (@sec-cs-data-structures-order-statistic-trees), augmented with subtree sizes, and range trees (@sec-cs-data-structures-range-trees), which answer range queries.
+Two augmented trees have their own notes: order-statistic trees (@sec-cs-data-structures-order-statistic-trees), augmented with subtree sizes, and range trees (@sec-cs-range-queries-range-trees), which answer range queries.
 
 ::: {#rmk-augmented-search-trees-finger .remark name="Finger search"}
 

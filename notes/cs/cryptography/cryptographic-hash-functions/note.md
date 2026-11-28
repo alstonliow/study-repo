@@ -1,7 +1,7 @@
 ---
 title: "Cryptographic Hash Functions"
 sources: [mit6046-21, mit6046r-11]
-requires: [cs/data-structures/perfect-hashing, cs/theory/complexity-classes]
+requires: [cs/hashing/perfect-hashing, cs/theory/complexity-classes]
 status: draft
 ---
 

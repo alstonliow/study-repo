@@ -1,7 +1,7 @@
 ---
 title: "Classical Parameter Estimation"
 sources: [mit6041-23, mit6041-24]
-requires: [math/probability/continuous/modes-of-convergence]
+requires: [math/probability/limit-theorems/modes-of-convergence]
 status: draft
 ---
 

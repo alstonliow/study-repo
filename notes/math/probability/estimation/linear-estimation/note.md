@@ -1,7 +1,7 @@
 ---
 title: "Linear and Nonlinear Estimation"
 sources: [eecs126-10, eecs126hw-14, eecs126d-13]
-requires: [math/probability/discrete/conditional-expectation, math/probability/discrete/covariance-and-correlation, math/linear-algebra/orthogonality/orthonormal-bases-and-gram-schmidt]
+requires: [math/probability/random-variables/conditional-expectation, math/probability/random-variables/covariance-and-correlation, math/linear-algebra/orthogonality/orthonormal-bases-and-gram-schmidt]
 status: draft
 ---
 

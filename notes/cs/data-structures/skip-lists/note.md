@@ -1,7 +1,7 @@
 ---
 title: "Skip Lists"
 sources: [mit6046-7]
-requires: [cs/data-structures/linked-lists, math/probability/tail-bounds/chernoff-bounds, math/probability/discrete/geometric-distribution]
+requires: [cs/data-structures/linked-lists, math/probability/limit-theorems/chernoff-bounds, math/probability/distributions/geometric-distribution]
 status: draft
 ---
 

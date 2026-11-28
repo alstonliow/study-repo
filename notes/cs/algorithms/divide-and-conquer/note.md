@@ -12,7 +12,7 @@ status: draft
 
 ## The algorithms
 
-Each algorithm has its own note: the convex hull (@sec-cs-algorithm-topics-convex-hull), selection in linear time by the median of medians (@sec-cs-sorting-median-of-medians) and Strassen's matrix multiplication (@sec-cs-algorithms-strassen). Merge sort (@sec-cs-sorting-merge-sort) is another example.
+Each algorithm has its own note: the convex hull (@sec-cs-computational-geometry-convex-hull), selection in linear time by the median of medians (@sec-cs-sorting-median-of-medians) and Strassen's matrix multiplication (@sec-cs-algorithms-strassen). Merge sort (@sec-cs-sorting-merge-sort) is another example.
 
 | algorithm | recurrence | time |
 |---|---|---|
