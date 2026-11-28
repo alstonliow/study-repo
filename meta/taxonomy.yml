@@ -702,6 +702,23 @@ parts:
         desc: Exponential decay of tail probabilities of sums and Cramér's theorem
         notes:   # topic order on the website
           - cramers-theorem
+      - id: math/probability/stochastic-calculus
+        title: Stochastic Calculus
+        desc: Gaussian white noise, Lebesgue-Stieltjes integrals, local martingales, quadratic variation, the Ito integral and Ito's formula, Levy's characterisation, Girsanov's theorem, stochastic differential equations and their PDEs
+        notes:   # topic order on the website
+          - white-noise-and-wiener-integral
+          - lebesgue-stieltjes-integral
+          - finite-variation-and-previsible-processes
+          - local-martingales
+          - square-integrable-martingales
+          - quadratic-variation
+          - ito-integral
+          - itos-formula
+          - levy-and-dubins-schwarz
+          - girsanov-theorem
+          - sde-existence-and-uniqueness
+          - sde-examples
+          - sde-and-pdes
   - title: Statistics
     field: Mathematics
     branches:
