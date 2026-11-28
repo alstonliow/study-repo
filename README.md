@@ -22,9 +22,9 @@ Generated from the notes by `make readme`:
 |  | Multivariable Calculus | 5 | 30 | 198 | 90 |
 |  | Matrix Calculus | 3 | 12 | 10 | 23 |
 |  | Differential Equations | 6 | 27 | 35 | 55 |
-|  | Real Analysis | 12 | 55 | 114 | 138 |
+|  | Real Analysis | 15 | 72 | 171 | 155 |
 |  | Probability | 7 | 44 | 227 | 123 |
-|  | Advanced Probability | 1 | 7 | 25 | 7 |
+|  | Advanced Probability | 6 | 38 | 25 | 38 |
 |  | Statistics | 4 | 28 | 85 | 20 |
 |  | Convex Optimization | 6 | 41 | 18 | 117 |
 |  | Combinatorial Optimization | 3 | 23 | 69 | 23 |
@@ -40,9 +40,9 @@ Generated from the notes by `make readme`:
 |  | Search and Constraint Satisfaction | 2 | 10 | 11 | 13 |
 |  | Reinforcement Learning and Games | 2 | 20 | 23 | 16 |
 |  | Probabilistic Reasoning | 3 | 15 | 18 | 13 |
-| **Total** | | **125** | **849** | **1822** | **1585** |
+| **Total** | | **133** | **897** | **1879** | **1633** |
 
-31 courses are mapped onto the topic tree:
+34 courses are mapped onto the topic tree:
 
 | Course | Title | Institution |
 |---|---|---|
@@ -76,7 +76,10 @@ Generated from the notes by `make readme`:
 | Cambridge IA Analysis I | Analysis I | University of Cambridge |
 | Cambridge IB Analysis and Topology | Analysis and Topology | University of Cambridge |
 | Cambridge IB Linear Algebra | Linear Algebra | University of Cambridge |
+| Cambridge II Linear Analysis | Linear Analysis | University of Cambridge |
 | Cambridge II Probability and Measure | Probability and Measure | University of Cambridge |
+| Cambridge III Advanced Probability | Advanced Probability | University of Cambridge |
+| Cambridge Part III Stochastic Calculus | Stochastic Calculus and Applications | University of Cambridge |
 
 <!-- stats:end -->
 
