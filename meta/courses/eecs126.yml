@@ -13,6 +13,15 @@ outline_from: UC Berkeley EECS126 Probability and Random Processes, Fall 2021 su
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Cambridge IB Statistics example-sheet problems (added 2026-11-28) are outside this course.
+  - prob-camib-sts-1-q10
+  - prob-camib-sts-2-q1
+  - prob-camib-sts-2-q12
+  - prob-camib-sts-2-q2
+  - prob-camib-sts-2-q5
+  - prob-camib-sts-3-q1
+  - prob-camib-sts-3-q2
+  - prob-camib-sts-3-q4
   # Lecture-note problems backfill (2026-11-24): other courses' problems in shared notes
   - prob-mit1805-2-q1
   - prob-mit1805-2-q2

@@ -93,3 +93,15 @@ def test_useless_measurement():
     assert np.allclose(x, [1.0, 2.0], atol=1e-9) and np.allclose(S, np.eye(2), atol=1e-9)
 ```
 :::
+
+::: {.problem #prob-camib-sts-3-q1 origin="external" source="camib-sts-3-q1"}
+Let $X\sim N_n(\mu,\Sigma)$, and let $A$ be an arbitrary $m\times n$ matrix. Prove directly from the definition that $AX$ has an $m$-variate normal distribution $AX\sim N_m(A\mu,A\Sigma A^{\mathsf T})$.
+:::
+
+::: {.problem #prob-camib-sts-3-q2 origin="external" source="camib-sts-3-q2"}
+Let $X$ and $Y$ be $N(0,1)$ random variables such that $\mathrm{cov}(X,Y)=0$. Show by example that $X$ and $Y$ need not be independent. (Hint: Take $Y=XZ$ where $X$ and $Z$ are independent and the distribution of $Z$ is chosen appropriately.)
+:::
+
+::: {.problem #prob-camib-sts-3-q4 origin="external" source="camib-sts-3-q4"}
+Let $X\sim N_n(\mu,\Sigma)$, and let $X_1$ denote the first $n_1$ components of $X$. Let $\mu_1$ denote the first $n_1$ components of $\mu$, and let $\Sigma_{11}$ denote the upper left $n_1\times n_1$ block of $\Sigma$. Show that $X_1\sim N_{n_1}(\mu_1,\Sigma_{11})$.
+:::

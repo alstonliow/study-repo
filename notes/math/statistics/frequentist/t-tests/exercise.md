@@ -35,3 +35,14 @@ Hence the moral of this problem: Knowing the mean and standard deviation of a qu
 
 *Note (these notes):* The PDF and standard deviation in (c) were garbled in the text extraction and are restored here from the $t_3$ density (the constant $\frac{2}{\sqrt3\,\pi}$ makes it integrate to $1$).
 :::
+
+::: {.problem #prob-camib-sts-2-q9 origin="external" source="camib-sts-2-q9"}
+If $X\sim N(0,1)$ and $Y\sim\chi^2_n$ are independent, we say that $T=X/\sqrt{Y/n}$ has a $t$-distribution with $n$ degrees of freedom and write $T\sim t_n$. Show that the probability density function of $T$ is
+$$f_T(t)=\frac{\Gamma\bigl(\frac{n+1}{2}\bigr)}{\Gamma\bigl(\frac n2\bigr)}\,\frac1{(n\pi)^{1/2}}\,\frac1{(1+t^2/n)^{(n+1)/2}},\qquad t\in\mathbb R.$$
+:::
+
+::: {.problem #prob-camib-sts-2-q10 origin="external" source="camib-sts-2-q10"}
+Let $X_1,\dots,X_n\overset{\text{iid}}{\sim}N(\mu,\sigma^2)$, where $\sigma^2$ is unknown, and suppose we are interested in testing $H_0:\mu=\mu_0$ against $H_1:\mu\ne\mu_0$. Letting $\bar X=n^{-1}\sum_{i=1}^nX_i$ and $S_{XX}=\sum_{i=1}^n(X_i-\bar X)^2$, show that the likelihood ratio can be expressed as
+$$L_X(H_0,H_1)=\Bigl(1+\frac{T^2}{n-1}\Bigr)^{n/2},$$
+where $T=\dfrac{n^{1/2}(\bar X-\mu_0)}{\{S_{XX}/(n-1)\}^{1/2}}$. Determine the distribution of $T$ under $H_0$, and hence determine the size $\alpha$ likelihood ratio test.
+:::

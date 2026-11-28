@@ -54,3 +54,7 @@ where $\lambda$ is a tuning parameter, i.e., a given number chosen by the statis
 
 *Note (these notes):* The handout writes the minimisation over $t\in\mathbb{R}^S$; the minimisation is over $\mathbb{R}^p$.
 :::
+
+::: {.problem #prob-camib-sts-1-q9 origin="external" source="camib-sts-1-q9"}
+Let $X_1,\dots,X_n$ be independent and identically distributed with conditional probability density function $f(x\mid\theta)=\theta x^{\theta-1}\mathbf 1_{\{0\le x\le1\}}$ for some $\theta>0$. Suppose the prior distribution for $\theta$ is $\Gamma(\alpha,\lambda)$. Find the posterior distribution of $\theta$ given $X=(X_1,\dots,X_n)$ and the Bayesian point estimator of $\theta$ under the quadratic loss function.
+:::

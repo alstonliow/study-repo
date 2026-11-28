@@ -55,3 +55,9 @@ $$p_0(m,n)\to\exp(-\lambda).$$
 (Try using the results you have already proven.) Conclude that
 $$p_k(m,n)\to\frac{\lambda^k\exp(-\lambda)}{k!}.$$
 :::
+
+::: {.problem #prob-camib-sts-1-q10 origin="external" source="camib-sts-1-q10"}
+(Law of small numbers) For each $n\in\mathbb N$, let $X_{n1},\dots,X_{nn}\overset{\text{iid}}{\sim}\mathrm{Bernoulli}(p_n)$ and let $S_n=\sum_{i=1}^nX_{ni}$. Prove that if $np_n\to\lambda\in(0,\infty)$ as $n\to\infty$, then for each $x\in\{0,1,2,\dots\}$,
+$$P(S_n=x)\to P(Y=x)$$
+as $n\to\infty$ where $Y\sim\mathrm{Poisson}(\lambda)$.
+:::

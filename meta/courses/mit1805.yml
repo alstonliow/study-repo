@@ -10,6 +10,14 @@ outline_from: MIT 18.05 Introduction to Probability and Statistics, Spring 2022 
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Cambridge IB Statistics example-sheet problems (added 2026-11-28) are outside this course.
+  - prob-camib-sts-1-q7
+  - prob-camib-sts-2-q10
+  - prob-camib-sts-2-q11
+  - prob-camib-sts-2-q4
+  - prob-camib-sts-2-q9
+  - prob-camib-sts-3-q5
+  - prob-camib-sts-3-q6
   # Stanford CS 97SI additions (2026-11-26) in shared notes
   - prp-pascal-table
   # MIT 18.065 integration (2026-11-21): its problems in shared notes

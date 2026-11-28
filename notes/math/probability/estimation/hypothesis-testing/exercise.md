@@ -100,3 +100,27 @@ def test_extreme_levels():
     assert pfa(r, p1) == 1
 ```
 :::
+
+::: {.problem #prob-camib-sts-2-q1 origin="external" source="camib-sts-2-q1"}
+Let $X$ have density function
+$$f(x\mid\theta)=\frac{\theta}{(x+\theta)^2},\qquad x>0,$$
+where $\theta\in(0,\infty)$ is an unknown parameter. Find the likelihood ratio test of size $0.05$ of $H_0:\theta=1$ against $H_1:\theta=2$ and show that the probability of Type II error is $19/21$.
+:::
+
+::: {.problem #prob-camib-sts-2-q2 origin="external" source="camib-sts-2-q2"}
+Let $X\sim N(\mu,1)$ where $\mu$ is unknown. Find the most powerful tests of sizes $0.05$ and $0.01$ for the following hypotheses:
+
+(a) $H_0:\mu=0$ vs $H_1:\mu=4$.
+
+(b) $H_0:\mu=4$ vs $H_1:\mu=0$.
+
+Explain how to interpret your results when the realised value is $X(\omega)=2.1$.
+:::
+
+::: {.problem #prob-camib-sts-2-q5 origin="external" source="camib-sts-2-q5"}
+Let $f_0$ and $f_1$ be probability mass functions on a countable set $\mathcal X$. State and prove a version of the Neyman–Pearson lemma for a size $\alpha$ test of $H_0:f=f_0$ against $H_1:f=f_1$ assuming that $\alpha$ is such that there exists a likelihood ratio test of exact size $\alpha$.
+:::
+
+::: {.problem #prob-camib-sts-2-q12 origin="external" source="camib-sts-2-q12"}
+(Harder) In Question 5, does there exist a version of the Neyman–Pearson lemma when a likelihood ratio test of exact size $\alpha$ does not exist?
+:::

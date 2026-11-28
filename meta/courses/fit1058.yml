@@ -12,6 +12,8 @@ outline_from: "FIT1058 Course Notes (16 June 2026), table of contents"
 status: draft  # draft until the owner has reviewed the mapping
 
 exclude:
+  # Cambridge IB Statistics example-sheet problems (added 2026-11-28) are outside this course.
+  - prob-camib-sts-1-q10
   # Stanford CS 97SI additions (2026-11-26) in shared notes
   - prp-fibonacci-matrix-power
   - prp-pascal-table

@@ -9,7 +9,10 @@ source_prefix: mit18650
 outline_from: MIT 18.650 Statistics for Applications, Fall 2016 lecture slides (Chapters 1-10)
 status: draft  # draft until the owner has reviewed the mapping
 
-exclude: []
+exclude:
+  # Cambridge IB Statistics example-sheet problems (added 2026-11-28) are outside this course.
+  - prob-camib-sts-1-q9
+  - prob-camib-sts-3-q9
 
 chapters:
 - num: 1

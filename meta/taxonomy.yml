@@ -638,9 +638,12 @@ parts:
           - uniform-distribution
           - binomial-distribution
           - hypergeometric-distribution
+          - multinomial-distribution
           - poisson-distribution
           - geometric-distribution
+          - negative-binomial-distribution
           - exponential-distribution
+          - gamma-distribution
           - normal-distribution
           - standard-distributions
           - exponential-family
@@ -776,23 +779,36 @@ parts:
           - significance-testing
           - t-tests
           - chi-square-and-f-tests
+          - contingency-tables
+          - exact-tests
           - confidence-intervals
           - bootstrap
           - least-squares-regression
           - multiple-linear-regression
+          - gauss-markov
           - regression-inference
+          - gaussian-projections
+          - anova-nested-models
+          - linear-model-confidence-sets
+          - two-sample-power
           - nonparametric-regression
       - id: math/statistics/inference
         title: Statistical Inference
         desc: Statistical models, Slutsky and the delta method, asymptotic intervals, KL divergence and maximum likelihood, Fisher information, method of moments, Wald and likelihood ratio tests, goodness of fit, Jeffreys priors
         notes:   # topic order on the website
           - statistical-models
+          - unbiased-estimators
+          - sufficient-statistics
+          - minimal-sufficiency
+          - rao-blackwell
           - slutsky-and-delta-method
           - asymptotic-confidence-intervals
+          - pivotal-quantities
           - kl-divergence-and-likelihood
           - fisher-information
           - method-of-moments
           - parametric-tests
+          - composite-hypotheses
           - goodness-of-fit
           - bayesian-estimators
   - title: Convex Optimization

@@ -76,3 +76,11 @@ Run a one-way ANOVA (F-test) at $\alpha = 0.01$ for equal means "by hand". That 
 
 If exactly one of these tests resulted in a rejection, would it be appropriate to conclude that we have rejected the null hypothesis in part (a) at significance level $\alpha = 0.01$?
 :::
+
+::: {.problem #prob-camib-sts-2-q4 origin="external" source="camib-sts-2-q4"}
+A machine produces biodegradable plastic articles (many of which are defective) in bunches of three articles at a time. Under the null hypothesis that each article has a constant (but unknown) probability $\theta$ of being defective, write down the probabilities $p_i(\theta)$ of a bunch having $i$ defective articles, for $i=0,1,2,3$. In a trial run in which $512$ bunches were produced, the numbers of bunches with $i$ defective articles were $213$ ($i=0$), $228$ ($i=1$), $57$ ($i=2$) and $14$ ($i=3$). Carry out Pearson's chi-squared test at the $5\%$ level of the null hypothesis, explaining carefully why the test statistic should be referred to the $\chi^2_2$ distribution.
+:::
+
+::: {.problem #prob-camib-sts-2-q11 origin="external" source="camib-sts-2-q11"}
+Statisticians A and B obtain independent samples $X_1,\dots,X_{10}$ and $Y_1,\dots,Y_{17}$ respectively, both from a $N(\mu,\sigma^2)$ distribution with both $\mu$ and $\sigma$ unknown. They estimate $(\mu,\sigma^2)$ by $(\bar X,S_{XX}/9)$ and $(\bar Y,S_{YY}/16)$ respectively, where for example $\bar X=\frac1{10}\sum_{i=1}^{10}X_i$ and $S_{XX}=\sum_{i=1}^{10}(X_i-\bar X)^2$. Given that the values $\bar X=5.5$ and $\bar Y=5.8$, which statistician's estimate of $\sigma^2$ is more probable to have exceeded the true value by more than $50\%$? Find this probability (approximately) in each case.
+:::

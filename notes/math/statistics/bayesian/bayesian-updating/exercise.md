@@ -33,3 +33,12 @@ Hint: Bayes' theorem, conditioning on $B$ throughout.
 
 Carefully explain at least two errors in Meadow's argument.
 :::
+
+::: {.problem #prob-camib-sts-1-q7 origin="external" source="camib-sts-1-q7"}
+Suppose the number of defects in a silicon wafer can be modelled with a Poisson distribution for which the parameter $\lambda$ is known to be either $1$ or $1.5$. Suppose the prior mass function for $\lambda$ is
+$$\pi_\lambda(1)=0.4,\qquad\pi_\lambda(1.5)=0.6.$$
+A random sample of five wafers finds $x=(3,1,4,6,2)$ defects respectively. Show that the posterior distribution for $\lambda$ given $x$ is
+$$\pi_{\lambda|X}(1\mid x)=0.012,\qquad\pi_{\lambda|X}(1.5\mid x)=0.988.$$
+
+*Note (these notes):* The sheet prints the subscript of the first posterior as $\lambda|Z$; $\lambda|X$ is meant.
+:::

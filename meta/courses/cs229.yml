@@ -85,6 +85,10 @@ exclude:
 - prob-reinforce-code
 - prob-softmax-regression-code
 - prob-value-iteration-code
+# Cambridge IB Statistics example-sheet problems (added 2026-11-28) are outside this course.
+- prob-camib-sts-3-q1
+- prob-camib-sts-3-q2
+- prob-camib-sts-3-q4
 
 chapters:
 - num: 1

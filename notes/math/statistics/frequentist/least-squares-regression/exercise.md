@@ -26,3 +26,20 @@ Note: We gave you a specific value of $\sigma$, to avoid the distraction of one 
 
 (c) Use R to plot the data and the regression line you found in part (ii) The commands plot(x,y, pch=19) and abline() will come in handy. For abline be careful: the parameter a is the intercept and b is the slope -- exactly the opposite of our usage. Print the plot and turn it in.
 :::
+
+::: {.problem #prob-camib-sts-3-q5 origin="external" source="camib-sts-3-q5"}
+Consider the simple linear regression model
+$$Y_i=a+bx_i+\varepsilon_i,\qquad i=1,\dots,n$$
+where $\varepsilon_1,\dots,\varepsilon_n\overset{\text{iid}}{\sim}N(0,\sigma^2)$ and $\sum_{i=1}^nx_i=0$. Derive from first principles explicit expressions for the MLEs $\hat a$, $\hat b$, and $\hat\sigma^2$. Show that we can obtain the same expressions if we regard the simple linear regression model as a special case of the general linear regression model $Y=X\beta+\varepsilon$ and specialise the formulae $\hat\beta=(X^{\mathsf T}X)^{-1}X^{\mathsf T}Y$ and $\hat\sigma^2=n^{-1}\|Y-X\hat\beta\|^2$.
+:::
+
+::: {.problem #prob-camib-sts-3-q6 origin="external" source="camib-sts-3-q6"}
+The relationship between the range in metres, $Y$, of a howitzer with muzzle velocity $v$ metres per second fired at angle of elevation $\alpha$ degrees is assumed to be
+$$Y=\frac{v^2}{g}\sin(2\alpha)+\varepsilon,$$
+where $g=9.81$ and $\varepsilon\sim N(0,\sigma^2)$. Estimate $v$ from the following independent observations made on $9$ shells.
+
+| $\alpha$ (deg) | 5 | 10 | 15 | 20 | 25 | 30 | 35 | 40 | 45 |
+|---|---|---|---|---|---|---|---|---|---|
+| $\sin(2\alpha)$ | 0.1736 | 0.3420 | 0.5 | 0.6428 | 0.7660 | 0.8660 | 0.9397 | 0.9848 | 1 |
+| range (m) | 4860 | 9580 | 14080 | 18100 | 21550 | 24350 | 26400 | 27700 | 28300 |
+:::
