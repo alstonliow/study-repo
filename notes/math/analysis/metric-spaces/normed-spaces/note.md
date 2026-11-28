@@ -1,6 +1,6 @@
 ---
 title: "Normed Spaces and Equivalence of Norms"
-sources: [camib-at-a4, camib-at-m1]
+sources: [camib-at-a4, camib-at-m1, camii-lans-1]
 requires: [math/analysis/metric-spaces/metric-spaces, math/analysis/real/sequences/monotone-sequences, math/linear-algebra/systems/vectors-and-dot-products]
 status: draft
 ---

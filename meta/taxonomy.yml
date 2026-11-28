@@ -579,6 +579,35 @@ parts:
           - lp-spaces
           - fourier-transform
           - fourier-inversion
+      - id: math/analysis/banach-spaces
+        title: Banach Spaces
+        desc: Bounded linear maps and the operator norm, dual spaces and adjoints, sequence spaces, Riesz's lemma, the Hahn–Banach theorem and the double dual, the Baire category theorem, the uniform boundedness principle, the open mapping and closed graph theorems
+        notes:   # topic order on the website
+          - bounded-linear-maps
+          - sequence-spaces
+          - riesz-lemma
+          - hahn-banach
+          - double-dual
+          - baire-category
+          - uniform-boundedness
+          - open-mapping
+      - id: math/analysis/function-spaces
+        title: Spaces of Continuous Functions
+        desc: Urysohn's lemma and the Tietze extension theorem, the Arzelà–Ascoli theorem, the Stone–Weierstrass theorem
+        notes:   # topic order on the website
+          - urysohn-tietze
+          - arzela-ascoli
+          - stone-weierstrass
+      - id: math/analysis/hilbert-spaces
+        title: Hilbert Spaces and Operators
+        desc: Hilbert spaces, orthogonal projection and the Riesz representation theorem, orthonormal bases and Parseval, the spectrum of a bounded operator, compact operators, the spectral theorem for compact self-adjoint operators
+        notes:   # topic order on the website
+          - hilbert-spaces
+          - riesz-representation
+          - orthonormal-bases
+          - spectrum
+          - compact-operators
+          - spectral-theorem-compact
   - title: Probability
     field: Mathematics
     branches:
