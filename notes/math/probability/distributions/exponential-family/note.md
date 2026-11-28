@@ -1,6 +1,6 @@
 ---
 title: "Exponential Families"
-sources: [cs229-3, mit18650-10]
+sources: [cs229-3, mit18650-10, camii-sms-3-q4, camii-sms-3-q5, camii-sms-3-q9]
 requires: [math/probability/distributions/standard-distributions]
 aliases: [math/probability/continuous/exponential-family]   # old ids (moved)
 status: draft

@@ -1,6 +1,6 @@
 ---
 title: "Multiple Linear Regression"
-sources: [mit18650-7, mit18650-10]
+sources: [mit18650-7, mit18650-10, camii-sms-1-q6, camii-sms-1-q10, camii-sms-2-q1]
 requires: [math/statistics/frequentist/least-squares-regression]
 status: draft
 ---

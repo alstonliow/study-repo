@@ -772,6 +772,7 @@ parts:
           - odds-and-prediction
           - conjugate-priors
           - credible-intervals
+          - tweedies-formula
       - id: math/statistics/frequentist
         title: Frequentist Statistics
         desc: Significance testing, p-values, t, chi-square and F tests, confidence intervals, the bootstrap, least squares regression, the linear model and its tests, nonparametric regression
@@ -792,6 +793,11 @@ parts:
           - linear-model-confidence-sets
           - two-sample-power
           - nonparametric-regression
+          - misspecified-linear-models
+          - leverage-and-influence
+          - prediction-error-in-linear-models
+          - model-selection-criteria
+          - box-cox-transformation
       - id: math/statistics/inference
         title: Statistical Inference
         desc: Statistical models, Slutsky and the delta method, asymptotic intervals, KL divergence and maximum likelihood, Fisher information, method of moments, Wald and likelihood ratio tests, goodness of fit, Jeffreys priors
@@ -811,6 +817,20 @@ parts:
           - composite-hypotheses
           - goodness-of-fit
           - bayesian-estimators
+          - exponential-family-inference
+          - deviance
+      - id: math/statistics/glm
+        title: Generalized Linear Models
+        desc: Canonical-link GLMs and their normal equations, overdispersion, analysis of deviance, GLM diagnostics, binomial and Poisson regression, the Poisson trick, log-linear models for contingency tables
+        notes:   # topic order on the website
+          - glm-canonical-form
+          - overdispersion
+          - analysis-of-deviance
+          - glm-diagnostics
+          - binomial-regression
+          - poisson-regression
+          - poisson-trick
+          - log-linear-models
   - title: Convex Optimization
     field: Mathematics
     branches:

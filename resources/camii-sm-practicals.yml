@@ -1,0 +1,62 @@
+# Cambridge Part II Statistical Modelling R practicals P1-P8 (Michaelmas 2024, plus P1.R ... P8.R scripts), as a resource (meta/SPEC.md §17.12).
+# DRAFT for owner review. No licence is stated, so the sheets (P1.pdf ... P8.pdf) and scripts are kept only locally in raw/CAM_II_STATISTICAL_MODELLING/lecturer-2024;
+# nothing is copied. P6Sol.pdf (an official solution, 2019) was not opened. P7 carries a 2021 header.
+# The practicals are R data-analysis sessions on data sets downloaded from the lecturer's web page, not course projects or problems with a stated answer. They are only registered here
+# (SPEC §6.4: coursework is coding exercises, ours; the integrate-course rule for programming homework); no exercises, projects or code excerpts are added until the owner decides how to treat them.
+# Locator = practical number; a source key is camii-smp-3. Titles are our own short titles.
+id: res-camii-sm-practicals
+kind: homework
+title: Cambridge II Statistical Modelling R Practicals (Michaelmas 2024)
+status: draft
+courses:
+- camii-sm
+editions:
+- id: 2024-michaelmas
+  current: true
+legacy_keys:
+  prefix: camii-smp-
+  edition: 2024-michaelmas
+  pattern: ^camii\-smp-(?P<section>\d+)(?:-q(?P<n>\d+))?$
+  label: Stat Mod Practical {section}
+  problem_label: Stat Mod Practical {section} Q{n}
+nodes:
+- id: res-camii-sm-practicals-r-basics
+  kind: homework
+  title: Introduction to R and simulation
+  at:
+    2024-michaelmas: '1'
+- id: res-camii-sm-practicals-linear-models-in-r
+  kind: homework
+  title: Loops and linear models
+  at:
+    2024-michaelmas: '2'
+- id: res-camii-sm-practicals-regression-fits
+  kind: homework
+  title: Linear regression fits and diagnostics
+  at:
+    2024-michaelmas: '3'
+- id: res-camii-sm-practicals-model-selection
+  kind: homework
+  title: Model selection
+  at:
+    2024-michaelmas: '4'
+- id: res-camii-sm-practicals-exponential-families
+  kind: homework
+  title: Confidence intervals for gamma families
+  at:
+    2024-michaelmas: '5'
+- id: res-camii-sm-practicals-binomial-regression
+  kind: homework
+  title: Binomial regression
+  at:
+    2024-michaelmas: '6'
+- id: res-camii-sm-practicals-binomial-and-poisson
+  kind: homework
+  title: Binomial and Poisson regression
+  at:
+    2024-michaelmas: '7'
+- id: res-camii-sm-practicals-contingency-tables
+  kind: homework
+  title: Contingency tables and cross-validation
+  at:
+    2024-michaelmas: '8'

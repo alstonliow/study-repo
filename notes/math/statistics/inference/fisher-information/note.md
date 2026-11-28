@@ -1,6 +1,6 @@
 ---
 title: "Fisher Information and Asymptotics of the MLE"
-sources: [mit18650-3]
+sources: [mit18650-3, camii-sms-2-q7, camii-sms-2-q8, camii-sms-3-q3]
 requires: [math/statistics/inference/kl-divergence-and-likelihood, math/statistics/inference/slutsky-and-delta-method]
 status: draft
 ---

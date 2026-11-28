@@ -60,3 +60,25 @@ $$Y_i=a+bX_i+\varepsilon_i,\quad i=1,\dots,n .$$
 
    d) Propose a test with asymptotic level at most $\alpha\in(0,1)$ for the null hypothesis $H_0$: "$b>0$" (the moments of $X_1$ and $\sigma^2$ are not known).
 :::
+
+::: {.problem #prob-camii-sms-1-q6 origin="external" source="camii-sms-1-q6"}
+Data are available on weights of two groups of three rats at the beginning of a fortnight and at its end. During the fortnight, one group was fed normally, and the other was given a growth inhibitor. The weights of the $k$th rat in the $j$th group before and after the fortnight are $X_{jk}$ and $Y_{jk}$ respectively. It is assumed that $Y_{jk}=\alpha_j+\beta_jX_{jk}+\varepsilon_{jk}$ where $\varepsilon_{jk}$, $j=1,2$, $k=1,2,3$ are independent normally distributed noise with mean $0$ and unknown variance.
+
+(a) Let $W$ be the vector of responses, so $W=(Y_{11},Y_{12},Y_{13},Y_{21},Y_{22},Y_{23})^{\mathsf T}$, and similarly let $\delta$ be the vector of random errors. Write down the model above in the form $W=A\theta+\delta$, giving the design matrix $A$ explicitly and expressing the vector of parameters $\theta$ in terms of the $\alpha_j$ and $\beta_j$.
+
+(b) The model is to be reparametrised in such a way that it can be specialised to (i) two parallel lines for the two groups, (ii) two lines with the same intercept, (iii) one common line for both groups, just by setting parameters to zero. Give one design matrix that can be made to correspond to (i), (ii) and (iii), just by dropping columns, specifying which columns are to be dropped for which cases.
+:::
+
+::: {.problem #prob-camii-sms-1-q10 origin="external" source="camii-sms-1-q10"}
+Consider the normal linear model with a fixed design matrix $X$. Suppose only the first $p_0$ components of $\beta$ are non-zero. Show that
+$$\operatorname{Var}(\hat\beta_{0,j})\le\operatorname{Var}(\hat\beta_j)\quad\text{for }j=1,\dots,p_0.$$
+Here $\hat\beta_{0,j}$ denotes the $j$th component of $\hat\beta_0$. Hint: Use the partial regression characterisation of $\hat\beta_j$.
+
+*Note (these notes):* Sheet notation: $X$ is an $n\times p$ design matrix of full column rank, $P$ the orthogonal projection onto its column space, $X_0$ the first $p_0<p$ columns of $X$ and $P_0$ the orthogonal projection onto the column space of $X_0$; $Y\in\mathbb R^n$, $\hat\beta=(X^{\mathsf T}X)^{-1}X^{\mathsf T}Y$, $\hat\beta_0=(X_0^{\mathsf T}X_0)^{-1}X_0^{\mathsf T}Y$, $\hat\sigma^2=\|(I-P)Y\|^2/(n-p)$. The normal linear model is $Y=X\beta+\varepsilon$, $\varepsilon\mid X\sim N_n(0,\sigma^2I)$.
+:::
+
+::: {.problem #prob-camii-sms-2-q1 origin="external" source="camii-sms-2-q1"}
+Suppose we reparametrise the normal linear model $Y=X\beta+\varepsilon$ by letting $\theta=A\beta$ where $A\in\mathbb R^{p\times p}$ is invertible and known, so now we have $Y=XA^{-1}\theta+\varepsilon$ (with $XA^{-1}$ being the new model matrix). Show that the fitted values and predictions based on applying OLS in the reparametrised model will be identical to those in the original model.
+
+*Note (these notes):* Sheet notation: $X$ is an $n\times p$ design matrix of full column rank, $P$ the orthogonal projection onto its column space, $X_0$ the first $p_0<p$ columns of $X$ and $P_0$ the orthogonal projection onto the column space of $X_0$; $Y\in\mathbb R^n$, $\hat\beta=(X^{\mathsf T}X)^{-1}X^{\mathsf T}Y$, $\hat\beta_0=(X_0^{\mathsf T}X_0)^{-1}X_0^{\mathsf T}Y$, $\hat\sigma^2=\|(I-P)Y\|^2/(n-p)$. The normal linear model is $Y=X\beta+\varepsilon$, $\varepsilon\mid X\sim N_n(0,\sigma^2I)$.
+:::

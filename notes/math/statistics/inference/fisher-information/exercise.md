@@ -47,3 +47,23 @@ In a given population, $n$ individuals are sampled randomly, with replacement, a
 
    d) Compare $I_Y(\lambda)$ and $I_X(\lambda)$: Which one is the largest ? How do you interpret this fact ?
 :::
+
+::: {.problem #prob-camii-sms-2-q7 origin="external" source="camii-sms-2-q7"}
+Let $Y$ be a random variable with density $f(y;\theta)$ for $y\in\mathcal Y\subseteq\mathbb R^n$ and some $\theta\in\Theta\subseteq\mathbb R^d$, and write $\ell(\theta;Y)$ and $U(\theta;Y)$ for the corresponding log-likelihood and score functions.
+
+(a) Assume that the order of differentiation with respect to a component of $\theta$ and integration over $\mathcal Y$ may be interchanged where necessary. Show that, for $r,s=1,\dots,d$,
+$$\operatorname{Cov}_\theta\{U_r(\theta;Y),U_s(\theta;Y)\}=-\mathbb E_\theta\Bigl\{\frac{\partial^2}{\partial\theta_r\partial\theta_s}\ell(\theta;Y)\Bigr\}.$$
+
+(b) Let $I(\theta)$ denote the Fisher information matrix with $(r,s)$-entry given by the above expression. Let $\hat\theta$ be the maximum likelihood estimator of $\theta$ using an i.i.d. sample $Y_1,\dots,Y_n\sim f(y;\theta)$. By using the Taylor expansion for $U(\hat\theta;Y)$ at $\hat\theta=\theta$, sketch an argument that shows
+$$\sqrt n(\hat\theta-\theta)\xrightarrow{d}N(0,I(\theta)^{-1})\quad\text{as }n\to\infty.$$
+:::
+
+::: {.problem #prob-camii-sms-2-q8 origin="external" source="camii-sms-2-q8"}
+In the normal linear model, find the Fisher information matrix for the parameters $(\beta,\sigma^2)$. Assume $X^{\mathsf T}X/n\to\Sigma$. Use the result in the last Question to obtain the asymptotic covariance matrix of $(\hat\beta,\hat\sigma^2)$ and show that it is indeed the limit of the exact covariance matrix of $(\hat\beta,\hat\sigma^2)$.
+
+*Note (these notes):* Sheet notation: $X$ is an $n\times p$ design matrix of full column rank, $P$ the orthogonal projection onto its column space, $X_0$ the first $p_0<p$ columns of $X$ and $P_0$ the orthogonal projection onto the column space of $X_0$; $Y\in\mathbb R^n$, $\hat\beta=(X^{\mathsf T}X)^{-1}X^{\mathsf T}Y$, $\hat\beta_0=(X_0^{\mathsf T}X_0)^{-1}X_0^{\mathsf T}Y$, $\hat\sigma^2=\|(I-P)Y\|^2/(n-p)$. The normal linear model is $Y=X\beta+\varepsilon$, $\varepsilon\mid X\sim N_n(0,\sigma^2I)$.
+:::
+
+::: {.problem #prob-camii-sms-3-q3 origin="external" source="camii-sms-3-q3"}
+Suppose $Y_1,\dots,Y_n$ is an i.i.d. sample from $N(\mu,1)$. What is the asymptotic distribution of the maximum likelihood estimator of $\mathbb P(Y_1<0)$?
+:::

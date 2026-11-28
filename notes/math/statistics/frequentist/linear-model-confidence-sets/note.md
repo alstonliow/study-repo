@@ -1,6 +1,6 @@
 ---
 title: "Confidence Ellipsoids in the Normal Linear Model"
-sources: [camib-st-14, camib-sts-3-q11]
+sources: [camib-st-14, camib-sts-3-q11, camii-sms-1-q5]
 requires: [math/statistics/frequentist/regression-inference, math/statistics/frequentist/gaussian-projections]
 status: draft
 ---

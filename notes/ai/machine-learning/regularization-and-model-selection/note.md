@@ -1,6 +1,6 @@
 ---
 title: "Regularization and Model Selection"
-sources: [cs229-9]
+sources: [cs229-9, camii-sms-2-q2]
 requires: [ai/machine-learning/bias-variance-tradeoff, math/probability/estimation/bayesian-inference, math/linear-algebra/matrix-methods/matrix-derivatives]
 status: draft
 ---

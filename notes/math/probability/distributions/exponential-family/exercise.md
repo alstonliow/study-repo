@@ -49,3 +49,23 @@ Let $\ell(\theta)=\ln f_\theta(X)$, $\theta\in\Theta$, be the log-likelihood fun
 
    c) Using the previous questions, compute the expectation and the variance of the Gamma distribution with parameters $\alpha,\beta>0$.
 :::
+
+::: {.problem #prob-camii-sms-3-q4 origin="external" source="camii-sms-3-q4"}
+Show the following families of distributions are (possibly multi-parameter) exponential families; all parameters are unknown unless noted otherwise. Then find the corresponding natural parameters, sufficient statistics, and cumulant functions.
+
+(a) The normal distribution, $N(\mu,\sigma^2)$:
+$$f(y;\mu,\sigma^2)=\frac1{\sqrt{2\pi\sigma^2}}e^{-\frac{(y-\mu)^2}{2\sigma^2}},\quad y\in\mathbb R.$$
+
+(b) The negative binomial distribution (number of failures until $k$ successes are reached in Bernoulli trials), $\mathrm{NegBin}(k,p)$ with fixed $k$:
+$$f(y;p)=\binom{y+k-1}{y}p^k(1-p)^y,\quad y=0,1,2,\dots$$
+:::
+
+::: {.problem #prob-camii-sms-3-q5 origin="external" source="camii-sms-3-q5"}
+Let $Y$ be a real-valued random variable whose moment generating function is finite on an open interval containing zero. Show that the first three cumulants are $\kappa_1=\mathbb E(Y)$, $\kappa_2=\operatorname{Var}(Y)$, $\kappa_3=\mathbb E(Y-\kappa_1)^3$, respectively. Use these to find the mean and variance of the negative binomial distribution $\mathrm{NegBin}(k,p)$ (in terms of $k$ and $p$).
+:::
+
+::: {.problem #prob-camii-sms-3-q9 origin="external" source="camii-sms-3-q9"}
+The probability density function of the Gamma distribution with shape parameter $\alpha>0$ and rate parameter $\beta>0$ is given by
+$$f(y;\alpha,\beta)=\frac{\beta^\alpha y^{\alpha-1}e^{-\beta y}}{\Gamma(\alpha)}.$$
+Show that this is an exponential dispersion family by finding the natural and dispersion parameters. Hint: It may be useful to know that the mean and variance of the Gamma distribution are $\alpha/\beta$ and $\alpha/\beta^2$, respectively.
+:::

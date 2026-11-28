@@ -1,6 +1,6 @@
 ---
 title: "Nested Models, the F-Test and Analysis of Variance"
-sources: [camib-st-12, camib-st-14, camib-st-15, camib-sts-3-q7, camib-sts-3-q10]
+sources: [camib-st-12, camib-st-14, camib-st-15, camib-sts-3-q7, camib-sts-3-q10, camii-sms-1-q1, camii-sms-1-q2, camii-sms-1-q4, camii-sms-1-q12]
 requires: [math/statistics/frequentist/gaussian-projections, math/statistics/frequentist/regression-inference, math/statistics/inference/composite-hypotheses]
 status: draft
 ---

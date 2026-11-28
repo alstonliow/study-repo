@@ -1,6 +1,6 @@
 ---
 title: "Inference in the Linear Model"
-sources: [mit18650-7]
+sources: [mit18650-7, camii-sms-1-q3, camii-sms-1-q9]
 requires: [math/statistics/frequentist/multiple-linear-regression]
 status: draft
 ---

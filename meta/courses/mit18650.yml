@@ -13,6 +13,12 @@ exclude:
   # Cambridge IB Statistics example-sheet problems (added 2026-11-28) are outside this course.
   - prob-camib-sts-1-q9
   - prob-camib-sts-3-q9
+  # Cambridge II Statistical Modelling example-sheet problems (added 2026-11-28) are outside this course.
+  - prob-camii-sms-1-q3
+  - prob-camii-sms-1-q9
+  - prob-camii-sms-2-q7
+  - prob-camii-sms-2-q8
+  - prob-camii-sms-3-q3
 
 chapters:
 - num: 1

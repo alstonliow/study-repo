@@ -89,6 +89,11 @@ exclude:
 - prob-camib-sts-3-q1
 - prob-camib-sts-3-q2
 - prob-camib-sts-3-q4
+# Problems of the other course in the notes this course covers (SPEC §13): Cambridge II Statistical Modelling (added 2026-11-28).
+- prob-camii-sms-2-q2
+- prob-camii-sms-3-q4
+- prob-camii-sms-3-q5
+- prob-camii-sms-3-q9
 
 chapters:
 - num: 1

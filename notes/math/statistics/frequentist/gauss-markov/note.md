@@ -1,6 +1,6 @@
 ---
 title: "The Gauss–Markov Theorem"
-sources: [camib-st-13, camib-sts-3-q8]
+sources: [camib-st-13, camib-sts-3-q8, camii-sms-1-q7]
 requires: [math/statistics/frequentist/multiple-linear-regression]
 status: draft
 ---

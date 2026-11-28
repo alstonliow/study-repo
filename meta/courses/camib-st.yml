@@ -42,6 +42,12 @@ exclude:
 - prob-probability-2-04
 - prob-probability-2-07
 - prob-probability-2-08
+# Problems of the other course in the notes this course covers (SPEC §13): Cambridge II Statistical Modelling (added 2026-11-28).
+- prob-camii-sms-1-q5
+- prob-camii-sms-1-q7
+- prob-camii-sms-2-q7
+- prob-camii-sms-2-q8
+- prob-camii-sms-3-q3
 
 chapters:
 - num: 1
